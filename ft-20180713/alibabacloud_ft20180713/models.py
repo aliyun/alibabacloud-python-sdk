@@ -20,48 +20,45 @@ class TestFlowStrategy01Request(TeaModel):
         return self
 
 
+class TestFlowStrategy01ShrinkRequest(TeaModel):
+    def __init__(self, names_shrink=None):
+        self.names_shrink = names_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['Names'] = self.names_shrink
+        return result
+
+    def from_map(self, map={}):
+        self.names_shrink = map.get('Names')
+        return self
+
+
 class TestFlowStrategy01Response(TeaModel):
-    def __init__(self, request_id=None, list_=None, names=None):
+    def __init__(self, request_id=None, list=None, names=None):
         self.request_id = request_id
-        self.list_ = list_
+        self.list = list
         self.names = names
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.list_, 'list_')
+        self.validate_required(self.list, 'list')
         self.validate_required(self.names, 'names')
 
     def to_map(self):
         result = {}
         result['RequestId'] = self.request_id
-        result['List'] = []
-        if self.list_ is not None:
-            for k in self.list_:
-                result['List'].append(k)
-        else:
-            result['List'] = None
-        result['Names'] = []
-        if self.names is not None:
-            for k in self.names:
-                result['Names'].append(k)
-        else:
-            result['Names'] = None
+        result['List'] = self.list
+        result['Names'] = self.names
         return result
 
     def from_map(self, map={}):
         self.request_id = map.get('RequestId')
-        self.list_ = []
-        if map.get('List') is not None:
-            for k in map.get('List'):
-                self.list_.append(k)
-        else:
-            self.list_ = None
-        self.names = []
-        if map.get('Names') is not None:
-            for k in map.get('Names'):
-                self.names.append(k)
-        else:
-            self.names = None
+        self.list = map.get('List')
+        self.names = map.get('Names')
         return self
 
 
@@ -87,6 +84,33 @@ class TestHttpApiRequest(TeaModel):
         self.string_value = map.get('StringValue')
         self.default_value = map.get('DefaultValue')
         self.other_param = map.get('OtherParam')
+        self.boolean_param = map.get('BooleanParam')
+        return self
+
+
+class TestHttpApiShrinkRequest(TeaModel):
+    def __init__(self, string_value_shrink=None, default_value_shrink=None, other_param_shrink=None,
+                 boolean_param=None):
+        self.string_value_shrink = string_value_shrink
+        self.default_value_shrink = default_value_shrink
+        self.other_param_shrink = other_param_shrink
+        self.boolean_param = boolean_param
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['StringValue'] = self.string_value_shrink
+        result['DefaultValue'] = self.default_value_shrink
+        result['OtherParam'] = self.other_param_shrink
+        result['BooleanParam'] = self.boolean_param
+        return result
+
+    def from_map(self, map={}):
+        self.string_value_shrink = map.get('StringValue')
+        self.default_value_shrink = map.get('DefaultValue')
+        self.other_param_shrink = map.get('OtherParam')
         self.boolean_param = map.get('BooleanParam')
         return self
 
@@ -142,7 +166,7 @@ class BatchAuditTest01Response(TeaModel):
     def __init__(self, request_id=None, name=None, demo_01=None):
         self.request_id = request_id
         self.name = name
-        self.demo_01 = demo_01
+        self.demo_01 = demo_01  # type: BatchAuditTest01ResponseDemo01
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -215,8 +239,7 @@ class BatchAuditTest01ResponseDemo01Demo011(TeaModel):
         if map.get('Demo011') is not None:
             for k in map.get('Demo011'):
                 temp_model = BatchAuditTest01ResponseDemo01Demo011Demo011()
-                temp_model = temp_model.from_map(k)
-                self.demo_011.append(temp_model)
+                self.demo_011.append(temp_model.from_map(k))
         else:
             self.demo_011 = None
         return self
@@ -224,7 +247,7 @@ class BatchAuditTest01ResponseDemo01Demo011(TeaModel):
 
 class BatchAuditTest01ResponseDemo01(TeaModel):
     def __init__(self, demo_011=None):
-        self.demo_011 = demo_011
+        self.demo_011 = demo_011  # type: BatchAuditTest01ResponseDemo01Demo011
 
     def validate(self):
         self.validate_required(self.demo_011, 'demo_011')
@@ -246,6 +269,8 @@ class BatchAuditTest01ResponseDemo01(TeaModel):
         else:
             self.demo_011 = None
         return self
+
+
 class FtIpFlowControlRequest(TeaModel):
     def __init__(self, name=None):
         self.name = name
@@ -507,8 +532,7 @@ class FtParamListRequest(TeaModel):
         if map.get('Disk') is not None:
             for k in map.get('Disk'):
                 temp_model = FtParamListRequestDisk()
-                temp_model = temp_model.from_map(k)
-                self.disk.append(temp_model)
+                self.disk.append(temp_model.from_map(k))
         else:
             self.disk = None
         return self
@@ -525,34 +549,16 @@ class FtParamListRequestDisk(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Size'] = []
-        if self.size is not None:
-            for k in self.size:
-                result['Size'].append(k)
-        else:
-            result['Size'] = None
-        result['Type'] = []
-        if self.type is not None:
-            for k in self.type:
-                result['Type'].append(k)
-        else:
-            result['Type'] = None
+        result['Size'] = self.size
+        result['Type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.size = []
-        if map.get('Size') is not None:
-            for k in map.get('Size'):
-                self.size.append(k)
-        else:
-            self.size = None
-        self.type = []
-        if map.get('Type') is not None:
-            for k in map.get('Type'):
-                self.type.append(k)
-        else:
-            self.type = None
+        self.size = map.get('Size')
+        self.type = map.get('Type')
         return self
+
+
 class FtParamListResponse(TeaModel):
     def __init__(self, request_id=None, name=None):
         self.request_id = request_id
