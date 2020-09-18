@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
+from typing import List, BinaryIO
 
 
 class DetectKneeKeypointXRayRequest(TeaModel):
     def __init__(self, image_url=None, data_format=None, org_id=None, org_name=None, tracer_id=None):
-        self.image_url = image_url
-        self.data_format = data_format
-        self.org_id = org_id
-        self.org_name = org_name
-        self.tracer_id = tracer_id
+        self.image_url = image_url      # type: str
+        self.data_format = data_format  # type: str
+        self.org_id = org_id            # type: str
+        self.org_name = org_name        # type: str
+        self.tracer_id = tracer_id      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -37,8 +38,8 @@ class DetectKneeKeypointXRayRequest(TeaModel):
 
 class DetectKneeKeypointXRayResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectKneeKeypointXRayResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectKneeKeypointXRayResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -67,8 +68,8 @@ class DetectKneeKeypointXRayResponse(TeaModel):
 
 class DetectKneeKeypointXRayResponseDataKeyPointsTag(TeaModel):
     def __init__(self, direction=None, label=None):
-        self.direction = direction
-        self.label = label
+        self.direction = direction      # type: str
+        self.label = label              # type: str
 
     def validate(self):
         self.validate_required(self.direction, 'direction')
@@ -88,9 +89,9 @@ class DetectKneeKeypointXRayResponseDataKeyPointsTag(TeaModel):
 
 class DetectKneeKeypointXRayResponseDataKeyPoints(TeaModel):
     def __init__(self, value=None, tag=None, coordinates=None):
-        self.value = value
-        self.tag = tag  # type: DetectKneeKeypointXRayResponseDataKeyPointsTag
-        self.coordinates = coordinates
+        self.value = value              # type: float
+        self.tag = tag                  # type: DetectKneeKeypointXRayResponseDataKeyPointsTag
+        self.coordinates = coordinates  # type: List[int]
 
     def validate(self):
         self.validate_required(self.value, 'value')
@@ -122,10 +123,10 @@ class DetectKneeKeypointXRayResponseDataKeyPoints(TeaModel):
 
 class DetectKneeKeypointXRayResponseData(TeaModel):
     def __init__(self, image_url=None, org_id=None, org_name=None, key_points=None):
-        self.image_url = image_url
-        self.org_id = org_id
-        self.org_name = org_name
-        self.key_points = key_points
+        self.image_url = image_url      # type: str
+        self.org_id = org_id            # type: str
+        self.org_name = org_name        # type: str
+        self.key_points = key_points    # type: List[DetectKneeKeypointXRayResponseDataKeyPoints]
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -166,11 +167,11 @@ class DetectKneeKeypointXRayResponseData(TeaModel):
 
 class DetectKneeKeypointXRayAdvanceRequest(TeaModel):
     def __init__(self, image_url_object=None, data_format=None, org_id=None, org_name=None, tracer_id=None):
-        self.image_url_object = image_url_object
-        self.data_format = data_format
-        self.org_id = org_id
-        self.org_name = org_name
-        self.tracer_id = tracer_id
+        self.image_url_object = image_url_object  # type: BinaryIO
+        self.data_format = data_format  # type: str
+        self.org_id = org_id            # type: str
+        self.org_name = org_name        # type: str
+        self.tracer_id = tracer_id      # type: str
 
     def validate(self):
         self.validate_required(self.image_url_object, 'image_url_object')
@@ -198,11 +199,11 @@ class DetectKneeKeypointXRayAdvanceRequest(TeaModel):
 
 class ClassifyFNFRequest(TeaModel):
     def __init__(self, image_url=None, data_format=None, org_id=None, org_name=None, tracer_id=None):
-        self.image_url = image_url
-        self.data_format = data_format
-        self.org_id = org_id
-        self.org_name = org_name
-        self.tracer_id = tracer_id
+        self.image_url = image_url      # type: str
+        self.data_format = data_format  # type: str
+        self.org_id = org_id            # type: str
+        self.org_name = org_name        # type: str
+        self.tracer_id = tracer_id      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -230,8 +231,8 @@ class ClassifyFNFRequest(TeaModel):
 
 class ClassifyFNFResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: ClassifyFNFResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: ClassifyFNFResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -260,7 +261,7 @@ class ClassifyFNFResponse(TeaModel):
 
 class ClassifyFNFResponseDataFracturesTag(TeaModel):
     def __init__(self, label=None):
-        self.label = label
+        self.label = label              # type: str
 
     def validate(self):
         self.validate_required(self.label, 'label')
@@ -277,9 +278,9 @@ class ClassifyFNFResponseDataFracturesTag(TeaModel):
 
 class ClassifyFNFResponseDataFractures(TeaModel):
     def __init__(self, value=None, tag=None, boxes=None):
-        self.value = value
-        self.tag = tag  # type: ClassifyFNFResponseDataFracturesTag
-        self.boxes = boxes
+        self.value = value              # type: float
+        self.tag = tag                  # type: ClassifyFNFResponseDataFracturesTag
+        self.boxes = boxes              # type: List[int]
 
     def validate(self):
         self.validate_required(self.value, 'value')
@@ -311,10 +312,10 @@ class ClassifyFNFResponseDataFractures(TeaModel):
 
 class ClassifyFNFResponseData(TeaModel):
     def __init__(self, image_url=None, org_id=None, org_name=None, fractures=None):
-        self.image_url = image_url
-        self.org_id = org_id
-        self.org_name = org_name
-        self.fractures = fractures
+        self.image_url = image_url      # type: str
+        self.org_id = org_id            # type: str
+        self.org_name = org_name        # type: str
+        self.fractures = fractures      # type: List[ClassifyFNFResponseDataFractures]
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -355,11 +356,11 @@ class ClassifyFNFResponseData(TeaModel):
 
 class ClassifyFNFAdvanceRequest(TeaModel):
     def __init__(self, image_url_object=None, data_format=None, org_id=None, org_name=None, tracer_id=None):
-        self.image_url_object = image_url_object
-        self.data_format = data_format
-        self.org_id = org_id
-        self.org_name = org_name
-        self.tracer_id = tracer_id
+        self.image_url_object = image_url_object  # type: BinaryIO
+        self.data_format = data_format  # type: str
+        self.org_id = org_id            # type: str
+        self.org_name = org_name        # type: str
+        self.tracer_id = tracer_id      # type: str
 
     def validate(self):
         self.validate_required(self.image_url_object, 'image_url_object')
@@ -388,12 +389,12 @@ class ClassifyFNFAdvanceRequest(TeaModel):
 class RunCTRegistrationRequest(TeaModel):
     def __init__(self, reference_list=None, data_format=None, org_name=None, org_id=None, data_source_type=None,
                  floating_list=None):
-        self.reference_list = reference_list
-        self.data_format = data_format
-        self.org_name = org_name
-        self.org_id = org_id
-        self.data_source_type = data_source_type
-        self.floating_list = floating_list
+        self.reference_list = reference_list  # type: List[RunCTRegistrationRequestReferenceList]
+        self.data_format = data_format  # type: str
+        self.org_name = org_name        # type: str
+        self.org_id = org_id            # type: str
+        self.data_source_type = data_source_type  # type: str
+        self.floating_list = floating_list  # type: List[RunCTRegistrationRequestFloatingList]
 
     def validate(self):
         self.validate_required(self.reference_list, 'reference_list')
@@ -455,7 +456,7 @@ class RunCTRegistrationRequest(TeaModel):
 
 class RunCTRegistrationRequestReferenceList(TeaModel):
     def __init__(self, reference_url=None):
-        self.reference_url = reference_url
+        self.reference_url = reference_url  # type: str
 
     def validate(self):
         self.validate_required(self.reference_url, 'reference_url')
@@ -472,7 +473,7 @@ class RunCTRegistrationRequestReferenceList(TeaModel):
 
 class RunCTRegistrationRequestFloatingList(TeaModel):
     def __init__(self, floating_url=None):
-        self.floating_url = floating_url
+        self.floating_url = floating_url  # type: str
 
     def validate(self):
         self.validate_required(self.floating_url, 'floating_url')
@@ -489,8 +490,8 @@ class RunCTRegistrationRequestFloatingList(TeaModel):
 
 class RunCTRegistrationResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: RunCTRegistrationResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: RunCTRegistrationResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -519,8 +520,8 @@ class RunCTRegistrationResponse(TeaModel):
 
 class RunCTRegistrationResponseData(TeaModel):
     def __init__(self, durl=None, nurl=None):
-        self.durl = durl
-        self.nurl = nurl
+        self.durl = durl                # type: str
+        self.nurl = nurl                # type: str
 
     def validate(self):
         self.validate_required(self.durl, 'durl')
@@ -540,11 +541,11 @@ class RunCTRegistrationResponseData(TeaModel):
 
 class DetectHipKeypointXRayRequest(TeaModel):
     def __init__(self, image_url=None, data_format=None, org_id=None, org_name=None, tracer_id=None):
-        self.image_url = image_url
-        self.data_format = data_format
-        self.org_id = org_id
-        self.org_name = org_name
-        self.tracer_id = tracer_id
+        self.image_url = image_url      # type: str
+        self.data_format = data_format  # type: str
+        self.org_id = org_id            # type: str
+        self.org_name = org_name        # type: str
+        self.tracer_id = tracer_id      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -572,8 +573,8 @@ class DetectHipKeypointXRayRequest(TeaModel):
 
 class DetectHipKeypointXRayResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectHipKeypointXRayResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectHipKeypointXRayResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -602,8 +603,8 @@ class DetectHipKeypointXRayResponse(TeaModel):
 
 class DetectHipKeypointXRayResponseDataKeyPointsTag(TeaModel):
     def __init__(self, direction=None, label=None):
-        self.direction = direction
-        self.label = label
+        self.direction = direction      # type: str
+        self.label = label              # type: str
 
     def validate(self):
         self.validate_required(self.direction, 'direction')
@@ -623,9 +624,9 @@ class DetectHipKeypointXRayResponseDataKeyPointsTag(TeaModel):
 
 class DetectHipKeypointXRayResponseDataKeyPoints(TeaModel):
     def __init__(self, value=None, tag=None, coordinates=None):
-        self.value = value
-        self.tag = tag  # type: DetectHipKeypointXRayResponseDataKeyPointsTag
-        self.coordinates = coordinates
+        self.value = value              # type: float
+        self.tag = tag                  # type: DetectHipKeypointXRayResponseDataKeyPointsTag
+        self.coordinates = coordinates  # type: List[int]
 
     def validate(self):
         self.validate_required(self.value, 'value')
@@ -657,10 +658,10 @@ class DetectHipKeypointXRayResponseDataKeyPoints(TeaModel):
 
 class DetectHipKeypointXRayResponseData(TeaModel):
     def __init__(self, image_url=None, org_id=None, org_name=None, key_points=None):
-        self.image_url = image_url
-        self.org_id = org_id
-        self.org_name = org_name
-        self.key_points = key_points
+        self.image_url = image_url      # type: str
+        self.org_id = org_id            # type: str
+        self.org_name = org_name        # type: str
+        self.key_points = key_points    # type: List[DetectHipKeypointXRayResponseDataKeyPoints]
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -701,11 +702,11 @@ class DetectHipKeypointXRayResponseData(TeaModel):
 
 class DetectHipKeypointXRayAdvanceRequest(TeaModel):
     def __init__(self, image_url_object=None, data_format=None, org_id=None, org_name=None, tracer_id=None):
-        self.image_url_object = image_url_object
-        self.data_format = data_format
-        self.org_id = org_id
-        self.org_name = org_name
-        self.tracer_id = tracer_id
+        self.image_url_object = image_url_object  # type: BinaryIO
+        self.data_format = data_format  # type: str
+        self.org_id = org_id            # type: str
+        self.org_name = org_name        # type: str
+        self.tracer_id = tracer_id      # type: str
 
     def validate(self):
         self.validate_required(self.image_url_object, 'image_url_object')
@@ -733,11 +734,11 @@ class DetectHipKeypointXRayAdvanceRequest(TeaModel):
 
 class CalcCACSRequest(TeaModel):
     def __init__(self, urllist=None, data_format=None, org_name=None, org_id=None, data_source_type=None):
-        self.urllist = urllist
-        self.data_format = data_format
-        self.org_name = org_name
-        self.org_id = org_id
-        self.data_source_type = data_source_type
+        self.urllist = urllist          # type: List[CalcCACSRequestURLList]
+        self.data_format = data_format  # type: str
+        self.org_name = org_name        # type: str
+        self.org_id = org_id            # type: str
+        self.data_source_type = data_source_type  # type: str
 
     def validate(self):
         self.validate_required(self.urllist, 'urllist')
@@ -781,7 +782,7 @@ class CalcCACSRequest(TeaModel):
 
 class CalcCACSRequestURLList(TeaModel):
     def __init__(self, url=None):
-        self.url = url
+        self.url = url                  # type: str
 
     def validate(self):
         self.validate_required(self.url, 'url')
@@ -798,8 +799,8 @@ class CalcCACSRequestURLList(TeaModel):
 
 class CalcCACSResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: CalcCACSResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: CalcCACSResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -828,7 +829,7 @@ class CalcCACSResponse(TeaModel):
 
 class CalcCACSResponseData(TeaModel):
     def __init__(self, score=None):
-        self.score = score
+        self.score = score              # type: str
 
     def validate(self):
         self.validate_required(self.score, 'score')
@@ -844,30 +845,38 @@ class CalcCACSResponseData(TeaModel):
 
 
 class DetectKneeXRayRequest(TeaModel):
-    def __init__(self, url=None, data_format=None):
-        self.url = url
-        self.data_format = data_format
+    def __init__(self, url=None, data_format=None, org_name=None, org_id=None):
+        self.url = url                  # type: str
+        self.data_format = data_format  # type: str
+        self.org_name = org_name        # type: str
+        self.org_id = org_id            # type: str
 
     def validate(self):
         self.validate_required(self.url, 'url')
         self.validate_required(self.data_format, 'data_format')
+        self.validate_required(self.org_name, 'org_name')
+        self.validate_required(self.org_id, 'org_id')
 
     def to_map(self):
         result = {}
         result['Url'] = self.url
         result['DataFormat'] = self.data_format
+        result['OrgName'] = self.org_name
+        result['OrgId'] = self.org_id
         return result
 
     def from_map(self, map={}):
         self.url = map.get('Url')
         self.data_format = map.get('DataFormat')
+        self.org_name = map.get('OrgName')
+        self.org_id = map.get('OrgId')
         return self
 
 
 class DetectKneeXRayResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectKneeXRayResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectKneeXRayResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -896,7 +905,7 @@ class DetectKneeXRayResponse(TeaModel):
 
 class DetectKneeXRayResponseDataKLDetections(TeaModel):
     def __init__(self, detections=None):
-        self.detections = detections
+        self.detections = detections    # type: List[float]
 
     def validate(self):
         self.validate_required(self.detections, 'detections')
@@ -913,7 +922,7 @@ class DetectKneeXRayResponseDataKLDetections(TeaModel):
 
 class DetectKneeXRayResponseData(TeaModel):
     def __init__(self, kldetections=None):
-        self.kldetections = kldetections
+        self.kldetections = kldetections  # type: List[DetectKneeXRayResponseDataKLDetections]
 
     def validate(self):
         self.validate_required(self.kldetections, 'kldetections')
@@ -944,29 +953,40 @@ class DetectKneeXRayResponseData(TeaModel):
 
 
 class DetectKneeXRayAdvanceRequest(TeaModel):
-    def __init__(self, url_object=None, data_format=None):
-        self.url_object = url_object
-        self.data_format = data_format
+    def __init__(self, url_object=None, data_format=None, org_name=None, org_id=None):
+        self.url_object = url_object    # type: BinaryIO
+        self.data_format = data_format  # type: str
+        self.org_name = org_name        # type: str
+        self.org_id = org_id            # type: str
 
     def validate(self):
         self.validate_required(self.url_object, 'url_object')
         self.validate_required(self.data_format, 'data_format')
+        self.validate_required(self.org_name, 'org_name')
+        self.validate_required(self.org_id, 'org_id')
 
     def to_map(self):
         result = {}
         result['UrlObject'] = self.url_object
         result['DataFormat'] = self.data_format
+        result['OrgName'] = self.org_name
+        result['OrgId'] = self.org_id
         return result
 
     def from_map(self, map={}):
         self.url_object = map.get('UrlObject')
         self.data_format = map.get('DataFormat')
+        self.org_name = map.get('OrgName')
+        self.org_id = map.get('OrgId')
         return self
 
 
 class DetectSpineMRIRequest(TeaModel):
-    def __init__(self, urllist=None):
-        self.urllist = urllist
+    def __init__(self, urllist=None, data_format=None, org_name=None, org_id=None):
+        self.urllist = urllist          # type: List[DetectSpineMRIRequestURLList]
+        self.data_format = data_format  # type: str
+        self.org_name = org_name        # type: str
+        self.org_id = org_id            # type: str
 
     def validate(self):
         self.validate_required(self.urllist, 'urllist')
@@ -974,6 +994,9 @@ class DetectSpineMRIRequest(TeaModel):
             for k in self.urllist:
                 if k:
                     k.validate()
+        self.validate_required(self.data_format, 'data_format')
+        self.validate_required(self.org_name, 'org_name')
+        self.validate_required(self.org_id, 'org_id')
 
     def to_map(self):
         result = {}
@@ -983,6 +1006,9 @@ class DetectSpineMRIRequest(TeaModel):
                 result['URLList'].append(k.to_map() if k else None)
         else:
             result['URLList'] = None
+        result['DataFormat'] = self.data_format
+        result['OrgName'] = self.org_name
+        result['OrgId'] = self.org_id
         return result
 
     def from_map(self, map={}):
@@ -993,12 +1019,15 @@ class DetectSpineMRIRequest(TeaModel):
                 self.urllist.append(temp_model.from_map(k))
         else:
             self.urllist = None
+        self.data_format = map.get('DataFormat')
+        self.org_name = map.get('OrgName')
+        self.org_id = map.get('OrgId')
         return self
 
 
 class DetectSpineMRIRequestURLList(TeaModel):
     def __init__(self, url=None):
-        self.url = url
+        self.url = url                  # type: str
 
     def validate(self):
         self.validate_required(self.url, 'url')
@@ -1015,8 +1044,8 @@ class DetectSpineMRIRequestURLList(TeaModel):
 
 class DetectSpineMRIResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectSpineMRIResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectSpineMRIResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1045,9 +1074,9 @@ class DetectSpineMRIResponse(TeaModel):
 
 class DetectSpineMRIResponseDataDiscs(TeaModel):
     def __init__(self, disease=None, identification=None, location=None):
-        self.disease = disease
-        self.identification = identification
-        self.location = location
+        self.disease = disease          # type: str
+        self.identification = identification  # type: str
+        self.location = location        # type: List[float]
 
     def validate(self):
         self.validate_required(self.disease, 'disease')
@@ -1070,9 +1099,9 @@ class DetectSpineMRIResponseDataDiscs(TeaModel):
 
 class DetectSpineMRIResponseDataVertebras(TeaModel):
     def __init__(self, disease=None, identification=None, location=None):
-        self.disease = disease
-        self.identification = identification
-        self.location = location
+        self.disease = disease          # type: str
+        self.identification = identification  # type: str
+        self.location = location        # type: List[float]
 
     def validate(self):
         self.validate_required(self.disease, 'disease')
@@ -1095,8 +1124,8 @@ class DetectSpineMRIResponseDataVertebras(TeaModel):
 
 class DetectSpineMRIResponseData(TeaModel):
     def __init__(self, discs=None, vertebras=None):
-        self.discs = discs
-        self.vertebras = vertebras
+        self.discs = discs              # type: List[DetectSpineMRIResponseDataDiscs]
+        self.vertebras = vertebras      # type: List[DetectSpineMRIResponseDataVertebras]
 
     def validate(self):
         self.validate_required(self.discs, 'discs')
@@ -1146,9 +1175,9 @@ class DetectSpineMRIResponseData(TeaModel):
 
 class TranslateMedRequest(TeaModel):
     def __init__(self, from_language=None, to_language=None, text=None):
-        self.from_language = from_language
-        self.to_language = to_language
-        self.text = text
+        self.from_language = from_language  # type: str
+        self.to_language = to_language  # type: str
+        self.text = text                # type: str
 
     def validate(self):
         self.validate_required(self.from_language, 'from_language')
@@ -1171,8 +1200,8 @@ class TranslateMedRequest(TeaModel):
 
 class TranslateMedResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: TranslateMedResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: TranslateMedResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1201,8 +1230,8 @@ class TranslateMedResponse(TeaModel):
 
 class TranslateMedResponseData(TeaModel):
     def __init__(self, text=None, words=None):
-        self.text = text
-        self.words = words
+        self.text = text                # type: str
+        self.words = words              # type: int
 
     def validate(self):
         self.validate_required(self.text, 'text')
@@ -1221,8 +1250,11 @@ class TranslateMedResponseData(TeaModel):
 
 
 class DetectLungNoduleRequest(TeaModel):
-    def __init__(self, urllist=None):
-        self.urllist = urllist
+    def __init__(self, urllist=None, data_format=None, org_name=None, org_id=None):
+        self.urllist = urllist          # type: List[DetectLungNoduleRequestURLList]
+        self.data_format = data_format  # type: str
+        self.org_name = org_name        # type: str
+        self.org_id = org_id            # type: str
 
     def validate(self):
         self.validate_required(self.urllist, 'urllist')
@@ -1230,6 +1262,9 @@ class DetectLungNoduleRequest(TeaModel):
             for k in self.urllist:
                 if k:
                     k.validate()
+        self.validate_required(self.data_format, 'data_format')
+        self.validate_required(self.org_name, 'org_name')
+        self.validate_required(self.org_id, 'org_id')
 
     def to_map(self):
         result = {}
@@ -1239,6 +1274,9 @@ class DetectLungNoduleRequest(TeaModel):
                 result['URLList'].append(k.to_map() if k else None)
         else:
             result['URLList'] = None
+        result['DataFormat'] = self.data_format
+        result['OrgName'] = self.org_name
+        result['OrgId'] = self.org_id
         return result
 
     def from_map(self, map={}):
@@ -1249,12 +1287,15 @@ class DetectLungNoduleRequest(TeaModel):
                 self.urllist.append(temp_model.from_map(k))
         else:
             self.urllist = None
+        self.data_format = map.get('DataFormat')
+        self.org_name = map.get('OrgName')
+        self.org_id = map.get('OrgId')
         return self
 
 
 class DetectLungNoduleRequestURLList(TeaModel):
     def __init__(self, url=None):
-        self.url = url
+        self.url = url                  # type: str
 
     def validate(self):
         self.validate_required(self.url, 'url')
@@ -1271,8 +1312,8 @@ class DetectLungNoduleRequestURLList(TeaModel):
 
 class DetectLungNoduleResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectLungNoduleResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectLungNoduleResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1300,15 +1341,19 @@ class DetectLungNoduleResponse(TeaModel):
 
 
 class DetectLungNoduleResponseDataSeriesElements(TeaModel):
-    def __init__(self, category=None, confidence=None, diameter=None, lobe=None, lung=None, x=None, z=None, y=None):
-        self.category = category
-        self.confidence = confidence
-        self.diameter = diameter
-        self.lobe = lobe
-        self.lung = lung
-        self.x = x
-        self.z = z
-        self.y = y
+    def __init__(self, category=None, confidence=None, diameter=None, lobe=None, lung=None, x=None, z=None, y=None,
+                 image_x=None, image_y=None, image_z=None):
+        self.category = category        # type: str
+        self.confidence = confidence    # type: float
+        self.diameter = diameter        # type: float
+        self.lobe = lobe                # type: str
+        self.lung = lung                # type: str
+        self.x = x                      # type: float
+        self.z = z                      # type: float
+        self.y = y                      # type: float
+        self.image_x = image_x          # type: float
+        self.image_y = image_y          # type: float
+        self.image_z = image_z          # type: float
 
     def validate(self):
         self.validate_required(self.category, 'category')
@@ -1319,6 +1364,9 @@ class DetectLungNoduleResponseDataSeriesElements(TeaModel):
         self.validate_required(self.x, 'x')
         self.validate_required(self.z, 'z')
         self.validate_required(self.y, 'y')
+        self.validate_required(self.image_x, 'image_x')
+        self.validate_required(self.image_y, 'image_y')
+        self.validate_required(self.image_z, 'image_z')
 
     def to_map(self):
         result = {}
@@ -1330,6 +1378,9 @@ class DetectLungNoduleResponseDataSeriesElements(TeaModel):
         result['X'] = self.x
         result['Z'] = self.z
         result['Y'] = self.y
+        result['ImageX'] = self.image_x
+        result['ImageY'] = self.image_y
+        result['ImageZ'] = self.image_z
         return result
 
     def from_map(self, map={}):
@@ -1341,13 +1392,18 @@ class DetectLungNoduleResponseDataSeriesElements(TeaModel):
         self.x = map.get('X')
         self.z = map.get('Z')
         self.y = map.get('Y')
+        self.image_x = map.get('ImageX')
+        self.image_y = map.get('ImageY')
+        self.image_z = map.get('ImageZ')
         return self
 
 
 class DetectLungNoduleResponseDataSeries(TeaModel):
-    def __init__(self, series_instance_uid=None, elements=None):
-        self.series_instance_uid = series_instance_uid
-        self.elements = elements
+    def __init__(self, series_instance_uid=None, elements=None, origin=None, spacing=None):
+        self.series_instance_uid = series_instance_uid  # type: str
+        self.elements = elements        # type: List[DetectLungNoduleResponseDataSeriesElements]
+        self.origin = origin            # type: List[float]
+        self.spacing = spacing          # type: List[float]
 
     def validate(self):
         self.validate_required(self.series_instance_uid, 'series_instance_uid')
@@ -1356,6 +1412,8 @@ class DetectLungNoduleResponseDataSeries(TeaModel):
             for k in self.elements:
                 if k:
                     k.validate()
+        self.validate_required(self.origin, 'origin')
+        self.validate_required(self.spacing, 'spacing')
 
     def to_map(self):
         result = {}
@@ -1366,6 +1424,8 @@ class DetectLungNoduleResponseDataSeries(TeaModel):
                 result['Elements'].append(k.to_map() if k else None)
         else:
             result['Elements'] = None
+        result['Origin'] = self.origin
+        result['Spacing'] = self.spacing
         return result
 
     def from_map(self, map={}):
@@ -1377,12 +1437,14 @@ class DetectLungNoduleResponseDataSeries(TeaModel):
                 self.elements.append(temp_model.from_map(k))
         else:
             self.elements = None
+        self.origin = map.get('Origin')
+        self.spacing = map.get('Spacing')
         return self
 
 
 class DetectLungNoduleResponseData(TeaModel):
     def __init__(self, series=None):
-        self.series = series
+        self.series = series            # type: List[DetectLungNoduleResponseDataSeries]
 
     def validate(self):
         self.validate_required(self.series, 'series')
@@ -1413,8 +1475,11 @@ class DetectLungNoduleResponseData(TeaModel):
 
 
 class DetectCovid19CadRequest(TeaModel):
-    def __init__(self, urllist=None):
-        self.urllist = urllist
+    def __init__(self, urllist=None, data_format=None, org_name=None, org_id=None):
+        self.urllist = urllist          # type: List[DetectCovid19CadRequestURLList]
+        self.data_format = data_format  # type: str
+        self.org_name = org_name        # type: str
+        self.org_id = org_id            # type: str
 
     def validate(self):
         self.validate_required(self.urllist, 'urllist')
@@ -1422,6 +1487,9 @@ class DetectCovid19CadRequest(TeaModel):
             for k in self.urllist:
                 if k:
                     k.validate()
+        self.validate_required(self.data_format, 'data_format')
+        self.validate_required(self.org_name, 'org_name')
+        self.validate_required(self.org_id, 'org_id')
 
     def to_map(self):
         result = {}
@@ -1431,6 +1499,9 @@ class DetectCovid19CadRequest(TeaModel):
                 result['URLList'].append(k.to_map() if k else None)
         else:
             result['URLList'] = None
+        result['DataFormat'] = self.data_format
+        result['OrgName'] = self.org_name
+        result['OrgId'] = self.org_id
         return result
 
     def from_map(self, map={}):
@@ -1441,12 +1512,15 @@ class DetectCovid19CadRequest(TeaModel):
                 self.urllist.append(temp_model.from_map(k))
         else:
             self.urllist = None
+        self.data_format = map.get('DataFormat')
+        self.org_name = map.get('OrgName')
+        self.org_id = map.get('OrgId')
         return self
 
 
 class DetectCovid19CadRequestURLList(TeaModel):
     def __init__(self, url=None):
-        self.url = url
+        self.url = url                  # type: str
 
     def validate(self):
         self.validate_required(self.url, 'url')
@@ -1463,8 +1537,8 @@ class DetectCovid19CadRequestURLList(TeaModel):
 
 class DetectCovid19CadResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectCovid19CadResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectCovid19CadResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1494,11 +1568,11 @@ class DetectCovid19CadResponse(TeaModel):
 class DetectCovid19CadResponseData(TeaModel):
     def __init__(self, new_probability=None, normal_probability=None, other_probability=None, lesion_ratio=None,
                  mask=None):
-        self.new_probability = new_probability
-        self.normal_probability = normal_probability
-        self.other_probability = other_probability
-        self.lesion_ratio = lesion_ratio
-        self.mask = mask
+        self.new_probability = new_probability  # type: str
+        self.normal_probability = normal_probability  # type: str
+        self.other_probability = other_probability  # type: str
+        self.lesion_ratio = lesion_ratio  # type: str
+        self.mask = mask                # type: str
 
     def validate(self):
         self.validate_required(self.new_probability, 'new_probability')
@@ -1527,7 +1601,7 @@ class DetectCovid19CadResponseData(TeaModel):
 
 class GetAsyncJobResultRequest(TeaModel):
     def __init__(self, job_id=None):
-        self.job_id = job_id
+        self.job_id = job_id            # type: str
 
     def validate(self):
         self.validate_required(self.job_id, 'job_id')
@@ -1544,8 +1618,8 @@ class GetAsyncJobResultRequest(TeaModel):
 
 class GetAsyncJobResultResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: GetAsyncJobResultResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: GetAsyncJobResultResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1574,11 +1648,11 @@ class GetAsyncJobResultResponse(TeaModel):
 
 class GetAsyncJobResultResponseData(TeaModel):
     def __init__(self, job_id=None, status=None, result=None, error_code=None, error_message=None):
-        self.job_id = job_id
-        self.status = status
-        self.result = result
-        self.error_code = error_code
-        self.error_message = error_message
+        self.job_id = job_id            # type: str
+        self.status = status            # type: str
+        self.result = result            # type: str
+        self.error_code = error_code    # type: str
+        self.error_message = error_message  # type: str
 
     def validate(self):
         self.validate_required(self.job_id, 'job_id')
