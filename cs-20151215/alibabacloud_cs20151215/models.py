@@ -5,11 +5,9 @@ from typing import List, Dict
 
 
 class AttachInstancesRequest(TeaModel):
-    def __init__(self, cluster_id=None, instances=None, runtime=None, image_id=None, format_disk=None,
-                 keep_instance_name=None, cpu_policy=None, key_pair=None, password=None, is_edge_worker=None, user_data=None,
-                 nodepool_id=None, rds_instances=None, tags=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, instances=None, runtime=None, image_id=None, format_disk=None, keep_instance_name=None,
+                 cpu_policy=None, key_pair=None, password=None, is_edge_worker=None, user_data=None, nodepool_id=None,
+                 rds_instances=None, tags=None):
         # 待添加的实例列表。
         self.instances = instances      # type: List[str]
         # 容器运行时。
@@ -47,7 +45,6 @@ class AttachInstancesRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['instances'] = self.instances
         if self.runtime is not None:
             result['runtime'] = self.runtime.to_map()
@@ -72,7 +69,6 @@ class AttachInstancesRequest(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.instances = map.get('instances')
         if map.get('runtime') is not None:
             temp_model = AttachInstancesRequestRuntime()
@@ -235,24 +231,6 @@ class AttachInstancesResponse(TeaModel):
         return self
 
 
-class CancelClusterUpgradeRequest(TeaModel):
-    def __init__(self, cluster_id=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['ClusterId'] = self.cluster_id
-        return result
-
-    def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
-        return self
-
-
 class CancelClusterUpgradeResponse(TeaModel):
     def __init__(self, headers=None):
         self.headers = headers          # type: Dict[str, str]
@@ -267,28 +245,6 @@ class CancelClusterUpgradeResponse(TeaModel):
 
     def from_map(self, map={}):
         self.headers = map.get('headers')
-        return self
-
-
-class CancelComponentUpgradeRequest(TeaModel):
-    def __init__(self, clusterid=None, componentid=None):
-        # 集群ID。
-        self.clusterid = clusterid      # type: str
-        # 组件ID。
-        self.componentid = componentid  # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['clusterid'] = self.clusterid
-        result['componentid'] = self.componentid
-        return result
-
-    def from_map(self, map={}):
-        self.clusterid = map.get('clusterid')
-        self.componentid = map.get('componentid')
         return self
 
 
@@ -899,9 +855,7 @@ class CreateKubernetesTriggerResponse(TeaModel):
 
 
 class DeleteClusterRequest(TeaModel):
-    def __init__(self, cluster_id=None, retain_resources=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, retain_resources=None):
         # 要保留的资源列表。
         self.retain_resources = retain_resources  # type: List[str]
 
@@ -910,12 +864,10 @@ class DeleteClusterRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['retain_resources'] = self.retain_resources
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.retain_resources = map.get('retain_resources')
         return self
 
@@ -934,24 +886,6 @@ class DeleteClusterResponse(TeaModel):
 
     def from_map(self, map={}):
         self.headers = map.get('headers')
-        return self
-
-
-class DeleteKubernetesTriggerRequest(TeaModel):
-    def __init__(self, id=None):
-        # 触发器ID。
-        self.id = id                    # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['Id'] = self.id
-        return result
-
-    def from_map(self, map={}):
-        self.id = map.get('Id')
         return self
 
 
@@ -1161,28 +1095,6 @@ class DescribeAddonsResponse(TeaModel):
         return self
 
 
-class DescribeClusterAddonUpgradeStatusRequest(TeaModel):
-    def __init__(self, cluster_id=None, component_id=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
-        # 组件ID。
-        self.component_id = component_id  # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['ClusterId'] = self.cluster_id
-        result['ComponentId'] = self.component_id
-        return result
-
-    def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
-        self.component_id = map.get('ComponentId')
-        return self
-
-
 class DescribeClusterAddonUpgradeStatusResponseBody(TeaModel):
     def __init__(self, addon_info=None, can_upgrade=None, template=None):
         # 组件信息。
@@ -1282,9 +1194,7 @@ class DescribeClusterAddonUpgradeStatusResponse(TeaModel):
 
 
 class DescribeClusterAddonsUpgradeStatusRequest(TeaModel):
-    def __init__(self, cluster_id=None, component_ids=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, component_ids=None):
         # 组件列表。
         self.component_ids = component_ids  # type: List[str]
 
@@ -1293,12 +1203,10 @@ class DescribeClusterAddonsUpgradeStatusRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['componentIds'] = self.component_ids
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.component_ids = map.get('componentIds')
         return self
 
@@ -1317,24 +1225,6 @@ class DescribeClusterAddonsUpgradeStatusResponse(TeaModel):
 
     def from_map(self, map={}):
         self.headers = map.get('headers')
-        return self
-
-
-class DescribeClusterAddonsVersionRequest(TeaModel):
-    def __init__(self, cluster_id=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['ClusterId'] = self.cluster_id
-        return result
-
-    def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         return self
 
 
@@ -1387,9 +1277,7 @@ class DescribeClusterAddonsVersionResponse(TeaModel):
 
 
 class DescribeClusterAttachScriptsRequest(TeaModel):
-    def __init__(self, cluster_id=None, arch=None, options=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, arch=None, options=None):
         # 节点CPU架构,支持amd64、arm、arm64。
         self.arch = arch                # type: str
         # 边缘托管版集群节点的接入配置。
@@ -1401,7 +1289,6 @@ class DescribeClusterAttachScriptsRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['arch'] = self.arch
         if self.options is not None:
             result['options'] = self.options.to_map()
@@ -1410,7 +1297,6 @@ class DescribeClusterAttachScriptsRequest(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.arch = map.get('arch')
         if map.get('options') is not None:
             temp_model = DescribeClusterAttachScriptsRequestOptions()
@@ -1481,24 +1367,6 @@ class DescribeClusterAttachScriptsResponse(TeaModel):
     def from_map(self, map={}):
         self.headers = map.get('headers')
         self.body = map.get('body')
-        return self
-
-
-class DescribeClusterDetailRequest(TeaModel):
-    def __init__(self, cluster_id=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['ClusterId'] = self.cluster_id
-        return result
-
-    def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         return self
 
 
@@ -1673,24 +1541,6 @@ class DescribeClusterDetailResponse(TeaModel):
         return self
 
 
-class DescribeClusterLogsRequest(TeaModel):
-    def __init__(self, cluster_id=None):
-        # 集群ID
-        self.cluster_id = cluster_id    # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['ClusterId'] = self.cluster_id
-        return result
-
-    def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
-        return self
-
-
 class DescribeClusterLogsResponseBody(TeaModel):
     def __init__(self, id=None, cluster_id=None, cluster_log=None, created=None, log_level=None, updated=None):
         # 日志ID。
@@ -1760,9 +1610,7 @@ class DescribeClusterLogsResponse(TeaModel):
 
 
 class DescribeClusterNodesRequest(TeaModel):
-    def __init__(self, cluster_id=None, page_size=None, page_number=None, nodepool_id=None, state=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, page_size=None, page_number=None, nodepool_id=None, state=None):
         # 每页展示结果数。
         self.page_size = page_size      # type: str
         # 结果只展示几页。
@@ -1777,7 +1625,6 @@ class DescribeClusterNodesRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['pageSize'] = self.page_size
         result['pageNumber'] = self.page_number
         result['nodepool_id'] = self.nodepool_id
@@ -1785,7 +1632,6 @@ class DescribeClusterNodesRequest(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.page_size = map.get('pageSize')
         self.page_number = map.get('pageNumber')
         self.nodepool_id = map.get('nodepool_id')
@@ -1987,24 +1833,6 @@ class DescribeClusterNodesResponse(TeaModel):
         return self
 
 
-class DescribeClusterResourcesRequest(TeaModel):
-    def __init__(self, cluster_id=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['ClusterId'] = self.cluster_id
-        return result
-
-    def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
-        return self
-
-
 class DescribeClusterResourcesResponse(TeaModel):
     def __init__(self, headers=None, body=None):
         self.headers = headers          # type: Dict[str, str]
@@ -2081,9 +1909,7 @@ class DescribeClusterResourcesResponseBody(TeaModel):
 
 
 class DescribeClusterUserKubeconfigRequest(TeaModel):
-    def __init__(self, cluster_id=None, private_ip_address=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, private_ip_address=None):
         # ApiServer是否为内网地址。
         self.private_ip_address = private_ip_address  # type: bool
 
@@ -2092,12 +1918,10 @@ class DescribeClusterUserKubeconfigRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['PrivateIpAddress'] = self.private_ip_address
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.private_ip_address = map.get('PrivateIpAddress')
         return self
 
@@ -2151,9 +1975,7 @@ class DescribeClusterUserKubeconfigResponse(TeaModel):
 
 
 class DescribeClusterV2UserKubeconfigRequest(TeaModel):
-    def __init__(self, cluster_id=None, private_ip_address=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, private_ip_address=None):
         # 是否为内网访问。
         self.private_ip_address = private_ip_address  # type: bool
 
@@ -2162,12 +1984,10 @@ class DescribeClusterV2UserKubeconfigRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['PrivateIpAddress'] = self.private_ip_address
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.private_ip_address = map.get('PrivateIpAddress')
         return self
 
@@ -2759,24 +2579,6 @@ class DescribeClustersV1Response(TeaModel):
         return self
 
 
-class DescribeExternalAgentRequest(TeaModel):
-    def __init__(self, cluster_id=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['ClusterId'] = self.cluster_id
-        return result
-
-    def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
-        return self
-
-
 class DescribeExternalAgentResponseBody(TeaModel):
     def __init__(self, config=None):
         # 代理配置。
@@ -3061,9 +2863,7 @@ class DescribeUserQuotaResponse(TeaModel):
 
 
 class GetKubernetesTriggerRequest(TeaModel):
-    def __init__(self, cluster_id=None, namespace=None, type=None, name=None):
-        # 集群ID
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, namespace=None, type=None, name=None):
         # 应用所属命名空间。
         self.namespace = namespace      # type: str
         # 应用类型。
@@ -3076,14 +2876,12 @@ class GetKubernetesTriggerRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['Namespace'] = self.namespace
         result['Type'] = self.type
         result['Name'] = self.name
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.namespace = map.get('Namespace')
         self.type = map.get('Type')
         self.name = map.get('Name')
@@ -3186,24 +2984,6 @@ class GetKubernetesTriggerResponse(TeaModel):
         return self
 
 
-class GetUpgradeStatusRequest(TeaModel):
-    def __init__(self, cluster_id=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['ClusterId'] = self.cluster_id
-        return result
-
-    def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
-        return self
-
-
 class GetUpgradeStatusResponseBody(TeaModel):
     def __init__(self, error_message=None, precheck_report_id=None, status=None, upgrade_step=None):
         # 错误信息描述。
@@ -3265,9 +3045,7 @@ class GetUpgradeStatusResponse(TeaModel):
 
 
 class InstallClusterAddonsRequest(TeaModel):
-    def __init__(self, cluster_id=None, body=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, body=None):
         # Addon列表。
         self.body = body                # type: List[InstallClusterAddonsRequestBody]
 
@@ -3279,7 +3057,6 @@ class InstallClusterAddonsRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['body'] = []
         if self.body is not None:
             for k in self.body:
@@ -3289,7 +3066,6 @@ class InstallClusterAddonsRequest(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.body = []
         if map.get('body') is not None:
             for k in map.get('body'):
@@ -3352,10 +3128,8 @@ class InstallClusterAddonsResponse(TeaModel):
 
 
 class ModifyClusterRequest(TeaModel):
-    def __init__(self, cluster_id=None, deletion_protection=None, ingress_loadbalancer_id=None,
-                 api_server_eip=None, api_server_eip_id=None, resource_group_id=None, ingress_domain_rebinding=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, deletion_protection=None, ingress_loadbalancer_id=None, api_server_eip=None,
+                 api_server_eip_id=None, resource_group_id=None, ingress_domain_rebinding=None):
         # 集群是否开启删除保护。
         self.deletion_protection = deletion_protection  # type: bool
         # 集群的Ingress SLB的ID。
@@ -3374,7 +3148,6 @@ class ModifyClusterRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['deletion_protection'] = self.deletion_protection
         result['ingress_loadbalancer_id'] = self.ingress_loadbalancer_id
         result['api_server_eip'] = self.api_server_eip
@@ -3384,7 +3157,6 @@ class ModifyClusterRequest(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.deletion_protection = map.get('deletion_protection')
         self.ingress_loadbalancer_id = map.get('ingress_loadbalancer_id')
         self.api_server_eip = map.get('api_server_eip')
@@ -3451,9 +3223,7 @@ class ModifyClusterResponse(TeaModel):
 
 
 class ModifyClusterConfigurationRequest(TeaModel):
-    def __init__(self, cluster_id=None, customize_config=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, customize_config=None):
         # 自定配置。
         self.customize_config = customize_config  # type: ModifyClusterConfigurationRequestCustomizeConfig
 
@@ -3463,7 +3233,6 @@ class ModifyClusterConfigurationRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         if self.customize_config is not None:
             result['customize_config'] = self.customize_config.to_map()
         else:
@@ -3471,7 +3240,6 @@ class ModifyClusterConfigurationRequest(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         if map.get('customize_config') is not None:
             temp_model = ModifyClusterConfigurationRequestCustomizeConfig()
             self.customize_config = temp_model.from_map(map['customize_config'])
@@ -3550,9 +3318,7 @@ class ModifyClusterConfigurationResponse(TeaModel):
 
 
 class ModifyClusterTagsRequest(TeaModel):
-    def __init__(self, cluster_id=None, body=None):
-        # 汲取ID
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, body=None):
         # 标签列表。
         self.body = body                # type: List[ModifyClusterTagsRequestBody]
 
@@ -3564,7 +3330,6 @@ class ModifyClusterTagsRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['body'] = []
         if self.body is not None:
             for k in self.body:
@@ -3574,7 +3339,6 @@ class ModifyClusterTagsRequest(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.body = []
         if map.get('body') is not None:
             for k in map.get('body'):
@@ -3624,28 +3388,6 @@ class ModifyClusterTagsResponse(TeaModel):
         return self
 
 
-class PauseComponentUpgradeRequest(TeaModel):
-    def __init__(self, clusterid=None, componentid=None):
-        # 集群ID。
-        self.clusterid = clusterid      # type: str
-        # 组件ID。
-        self.componentid = componentid  # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['clusterid'] = self.clusterid
-        result['componentid'] = self.componentid
-        return result
-
-    def from_map(self, map={}):
-        self.clusterid = map.get('clusterid')
-        self.componentid = map.get('componentid')
-        return self
-
-
 class PauseComponentUpgradeResponse(TeaModel):
     def __init__(self, headers=None):
         self.headers = headers          # type: Dict[str, str]
@@ -3664,9 +3406,7 @@ class PauseComponentUpgradeResponse(TeaModel):
 
 
 class RemoveClusterNodesRequest(TeaModel):
-    def __init__(self, cluster_id=None, release_node=None, drain_node=None, nodes=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, release_node=None, drain_node=None, nodes=None):
         # 是否同时释放ECS。
         self.release_node = release_node  # type: bool
         # 是否排空节点上的Pod。
@@ -3679,14 +3419,12 @@ class RemoveClusterNodesRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['release_node'] = self.release_node
         result['drain_node'] = self.drain_node
         result['nodes'] = self.nodes
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.release_node = map.get('release_node')
         self.drain_node = map.get('drain_node')
         self.nodes = map.get('nodes')
@@ -3710,28 +3448,6 @@ class RemoveClusterNodesResponse(TeaModel):
         return self
 
 
-class ResumeComponentUpgradeRequest(TeaModel):
-    def __init__(self, clusterid=None, componentid=None):
-        # 集群ID。
-        self.clusterid = clusterid      # type: str
-        # 组件ID。
-        self.componentid = componentid  # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['clusterid'] = self.clusterid
-        result['componentid'] = self.componentid
-        return result
-
-    def from_map(self, map={}):
-        self.clusterid = map.get('clusterid')
-        self.componentid = map.get('componentid')
-        return self
-
-
 class ResumeComponentUpgradeResponse(TeaModel):
     def __init__(self, headers=None):
         self.headers = headers          # type: Dict[str, str]
@@ -3750,13 +3466,11 @@ class ResumeComponentUpgradeResponse(TeaModel):
 
 
 class ScaleClusterRequest(TeaModel):
-    def __init__(self, cluster_id=None, count=None, key_pair=None, login_password=None, worker_data_disk=None,
+    def __init__(self, count=None, key_pair=None, login_password=None, worker_data_disk=None,
                  worker_instance_types=None, worker_instance_charge_type=None, worker_period=None, worker_period_unit=None,
                  worker_auto_renew=None, worker_auto_renew_period=None, worker_system_disk_category=None,
                  worker_system_disk_size=None, cloud_monitor_flags=None, cpu_policy=None, disable_rollback=None, vswitch_ids=None,
                  worker_data_disks=None, tags=None, taints=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
         # 扩容节点数。
         self.count = count              # type: int
         # keypair名称，和login_password二选一。
@@ -3812,7 +3526,6 @@ class ScaleClusterRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['count'] = self.count
         result['key_pair'] = self.key_pair
         result['login_password'] = self.login_password
@@ -3850,7 +3563,6 @@ class ScaleClusterRequest(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.count = map.get('count')
         self.key_pair = map.get('key_pair')
         self.login_password = map.get('login_password')
@@ -3962,13 +3674,11 @@ class ScaleClusterRequestTaints(TeaModel):
 
 
 class ScaleClusterShrinkRequest(TeaModel):
-    def __init__(self, cluster_id=None, count=None, key_pair=None, login_password=None, worker_data_disk=None,
+    def __init__(self, count=None, key_pair=None, login_password=None, worker_data_disk=None,
                  worker_instance_types=None, worker_instance_charge_type=None, worker_period=None, worker_period_unit=None,
                  worker_auto_renew=None, worker_auto_renew_period=None, worker_system_disk_category=None,
                  worker_system_disk_size=None, cloud_monitor_flags=None, cpu_policy=None, disable_rollback=None, vswitch_ids=None,
                  worker_data_disks=None, tags=None, taints_shrink=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
         # 扩容节点数。
         self.count = count              # type: int
         # keypair名称，和login_password二选一。
@@ -4020,7 +3730,6 @@ class ScaleClusterShrinkRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['count'] = self.count
         result['key_pair'] = self.key_pair
         result['login_password'] = self.login_password
@@ -4053,7 +3762,6 @@ class ScaleClusterShrinkRequest(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.count = map.get('count')
         self.key_pair = map.get('key_pair')
         self.login_password = map.get('login_password')
@@ -4189,13 +3897,11 @@ class ScaleClusterResponse(TeaModel):
 
 
 class ScaleOutClusterRequest(TeaModel):
-    def __init__(self, cluster_id=None, count=None, worker_instance_charge_type=None, worker_period=None,
-                 worker_period_unit=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_system_disk_category=None,
+    def __init__(self, count=None, worker_instance_charge_type=None, worker_period=None, worker_period_unit=None,
+                 worker_auto_renew=None, worker_auto_renew_period=None, worker_system_disk_category=None,
                  worker_system_disk_size=None, worker_data_disk=None, key_pair=None, login_password=None, cloud_monitor_flags=None,
                  cpu_policy=None, disable_rollback=None, image_id=None, user_data=None, runtime=None, vswitch_ids=None,
                  worker_instance_types=None, rds_instances=None, worker_data_disks=None, tags=None, taints=None):
-        # 扩容目标集群的集群ID。
-        self.cluster_id = cluster_id    # type: str
         # 扩容实例数量。
         self.count = count              # type: int
         # Worker节点付费类型。
@@ -4261,7 +3967,6 @@ class ScaleOutClusterRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['count'] = self.count
         result['worker_instance_charge_type'] = self.worker_instance_charge_type
         result['worker_period'] = self.worker_period
@@ -4306,7 +4011,6 @@ class ScaleOutClusterRequest(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.count = map.get('count')
         self.worker_instance_charge_type = map.get('worker_instance_charge_type')
         self.worker_period = map.get('worker_period')
@@ -4508,9 +4212,7 @@ class ScaleOutClusterResponse(TeaModel):
 
 
 class UnInstallClusterAddonsRequest(TeaModel):
-    def __init__(self, cluster_id=None, addons=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, addons=None):
         # 卸载组件列表。
         self.addons = addons            # type: List[UnInstallClusterAddonsRequestAddons]
 
@@ -4522,7 +4224,6 @@ class UnInstallClusterAddonsRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['addons'] = []
         if self.addons is not None:
             for k in self.addons:
@@ -4532,7 +4233,6 @@ class UnInstallClusterAddonsRequest(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.addons = []
         if map.get('addons') is not None:
             for k in map.get('addons'):
@@ -4579,9 +4279,7 @@ class UnInstallClusterAddonsResponse(TeaModel):
 
 
 class UpdateTemplateRequest(TeaModel):
-    def __init__(self, template_id=None, name=None, template=None, tags=None, description=None, template_type=None):
-        # 部署模板ID。
-        self.template_id = template_id  # type: str
+    def __init__(self, name=None, template=None, tags=None, description=None, template_type=None):
         # 部署模板名称。
         self.name = name                # type: str
         # 部署模板yaml。
@@ -4598,7 +4296,6 @@ class UpdateTemplateRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['TemplateId'] = self.template_id
         result['name'] = self.name
         result['template'] = self.template
         result['tags'] = self.tags
@@ -4607,7 +4304,6 @@ class UpdateTemplateRequest(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.template_id = map.get('TemplateId')
         self.name = map.get('name')
         self.template = map.get('template')
         self.tags = map.get('tags')
@@ -4634,9 +4330,7 @@ class UpdateTemplateResponse(TeaModel):
 
 
 class UpgradeClusterRequest(TeaModel):
-    def __init__(self, cluster_id=None, component_name=None, version=None, next_version=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, component_name=None, version=None, next_version=None):
         # 组件名称，集群升级时取值"k8s"。
         self.component_name = component_name  # type: str
         # 当前版本。
@@ -4649,14 +4343,12 @@ class UpgradeClusterRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['component_name'] = self.component_name
         result['version'] = self.version
         result['next_version'] = self.next_version
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.component_name = map.get('component_name')
         self.version = map.get('version')
         self.next_version = map.get('next_version')
@@ -4681,9 +4373,7 @@ class UpgradeClusterResponse(TeaModel):
 
 
 class UpgradeClusterAddonsRequest(TeaModel):
-    def __init__(self, cluster_id=None, body=None):
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(self, body=None):
         # Request body，类型是对象数组。
         self.body = body                # type: List[UpgradeClusterAddonsRequestBody]
 
@@ -4695,7 +4385,6 @@ class UpgradeClusterAddonsRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
         result['body'] = []
         if self.body is not None:
             for k in self.body:
@@ -4705,7 +4394,6 @@ class UpgradeClusterAddonsRequest(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
         self.body = []
         if map.get('body') is not None:
             for k in map.get('body'):

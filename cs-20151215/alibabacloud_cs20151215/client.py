@@ -73,48 +73,59 @@ class Client(OpenApiClient):
     def attach_instances_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         body = {}
-        body["instances"] = request.instances
-        body["runtime"] = request.runtime
-        body["image_id"] = request.image_id
-        body["format_disk"] = request.format_disk
-        body["keep_instance_name"] = request.keep_instance_name
-        body["cpu_policy"] = request.cpu_policy
-        body["key_pair"] = request.key_pair
-        body["password"] = request.password
-        body["is_edge_worker"] = request.is_edge_worker
-        body["user_data"] = request.user_data
-        body["nodepool_id"] = request.nodepool_id
-        body["rds_instances"] = request.rds_instances
-        body["tags"] = request.tags
+        if not UtilClient.is_unset(request.instances):
+            body["instances"] = request.instances
+        if not UtilClient.is_unset(request.runtime):
+            body["runtime"] = request.runtime
+        if not UtilClient.is_unset(request.image_id):
+            body["image_id"] = request.image_id
+        if not UtilClient.is_unset(request.format_disk):
+            body["format_disk"] = request.format_disk
+        if not UtilClient.is_unset(request.keep_instance_name):
+            body["keep_instance_name"] = request.keep_instance_name
+        if not UtilClient.is_unset(request.cpu_policy):
+            body["cpu_policy"] = request.cpu_policy
+        if not UtilClient.is_unset(request.key_pair):
+            body["key_pair"] = request.key_pair
+        if not UtilClient.is_unset(request.password):
+            body["password"] = request.password
+        if not UtilClient.is_unset(request.is_edge_worker):
+            body["is_edge_worker"] = request.is_edge_worker
+        if not UtilClient.is_unset(request.user_data):
+            body["user_data"] = request.user_data
+        if not UtilClient.is_unset(request.nodepool_id):
+            body["nodepool_id"] = request.nodepool_id
+        if not UtilClient.is_unset(request.rds_instances):
+            body["rds_instances"] = request.rds_instances
+        if not UtilClient.is_unset(request.tags):
+            body["tags"] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=body
         )
         return cs20151215_models.AttachInstancesResponse().from_map(self.do_roarequest_with_form("AttachInstances", "2015-12-15", "HTTPS", "POST", "AK", "/clusters/" + str(cluster_id) + "/attach", "json", req, runtime))
 
-    def cancel_cluster_upgrade(self, cluster_id, request):
+    def cancel_cluster_upgrade(self, cluster_id):
         runtime = util_models.RuntimeOptions(
 
         )
         headers = {}
-        return self.cancel_cluster_upgrade_with_options(cluster_id, request, headers, runtime)
+        return self.cancel_cluster_upgrade_with_options(cluster_id, headers, runtime)
 
-    def cancel_cluster_upgrade_with_options(self, cluster_id, request, headers, runtime):
-        UtilClient.validate_model(request)
+    def cancel_cluster_upgrade_with_options(self, cluster_id, headers, runtime):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         return cs20151215_models.CancelClusterUpgradeResponse().from_map(self.do_roarequest("CancelClusterUpgrade", "2015-12-15", "HTTPS", "POST", "AK", "/api/v2/clusters/" + str(cluster_id) + "/upgrade/cancel", "none", req, runtime))
 
-    def cancel_component_upgrade(self, clusterid, componentid, request):
+    def cancel_component_upgrade(self, clusterid, componentid):
         runtime = util_models.RuntimeOptions(
 
         )
         headers = {}
-        return self.cancel_component_upgrade_with_options(clusterid, componentid, request, headers, runtime)
+        return self.cancel_component_upgrade_with_options(clusterid, componentid, headers, runtime)
 
-    def cancel_component_upgrade_with_options(self, clusterid, componentid, request, headers, runtime):
-        UtilClient.validate_model(request)
+    def cancel_component_upgrade_with_options(self, clusterid, componentid, headers, runtime):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -130,63 +141,120 @@ class Client(OpenApiClient):
     def create_cluster_with_options(self, request, headers, runtime):
         UtilClient.validate_model(request)
         body = {}
-        body["name"] = request.name
-        body["cluster_type"] = request.cluster_type
-        body["region_id"] = request.region_id
-        body["zone_id"] = request.zone_id
-        body["kubernetes_version"] = request.kubernetes_version
-        body["deletion_protection"] = request.deletion_protection
-        body["runtime"] = request.runtime
-        body["vpcid"] = request.vpcid
-        body["worker_vswitch_ids"] = request.worker_vswitch_ids
-        body["container_cidr"] = request.container_cidr
-        body["service_cidr"] = request.service_cidr
-        body["node_cidr_mask"] = request.node_cidr_mask
-        body["snat_entry"] = request.snat_entry
-        body["endpoint_public_access"] = request.endpoint_public_access
-        body["ssh_flags"] = request.ssh_flags
-        body["rds_instances"] = request.rds_instances
-        body["security_group_id"] = request.security_group_id
-        body["is_enterprise_security_group"] = request.is_enterprise_security_group
-        body["proxy_mode"] = request.proxy_mode
-        body["tags"] = request.tags
-        body["images_id"] = request.images_id
-        body["master_instance_charge_type"] = request.master_instance_charge_type
-        body["master_period"] = request.master_period
-        body["master_period_unit"] = request.master_period_unit
-        body["master_auto_renew"] = request.master_auto_renew
-        body["master_auto_renew_period"] = request.master_auto_renew_period
-        body["master_count"] = request.master_count
-        body["master_vswitch_ids"] = request.master_vswitch_ids
-        body["master_instance_types"] = request.master_instance_types
-        body["master_system_disk_category"] = request.master_system_disk_category
-        body["master_system_disk_size"] = request.master_system_disk_size
-        body["worker_instance_charge_type"] = request.worker_instance_charge_type
-        body["worker_period"] = request.worker_period
-        body["worker_period_unit"] = request.worker_period_unit
-        body["worker_auto_renew"] = request.worker_auto_renew
-        body["worker_auto_renew_period"] = request.worker_auto_renew_period
-        body["num_of_nodes"] = request.num_of_nodes
-        body["worker_instance_types"] = request.worker_instance_types
-        body["worker_system_disk_category"] = request.worker_system_disk_category
-        body["worker_system_disk_size"] = request.worker_system_disk_size
-        body["worker_data_disks"] = request.worker_data_disks
-        body["os_type"] = request.os_type
-        body["key_pair"] = request.key_pair
-        body["login_password"] = request.login_password
-        body["user_data"] = request.user_data
-        body["node_port_range"] = request.node_port_range
-        body["cpu_policy"] = request.cpu_policy
-        body["taints"] = request.taints
-        body["cloud_monitor_flags"] = request.cloud_monitor_flags
-        body["addons"] = request.addons
-        body["platform"] = request.platform
-        body["vswitch_ids"] = request.vswitch_ids
-        body["private_zone"] = request.private_zone
-        body["profile"] = request.profile
-        body["pod_vswitch_ids"] = request.pod_vswitch_ids
-        body["disable_rollback"] = request.disable_rollback
-        body["timeout_mins"] = request.timeout_mins
+        if not UtilClient.is_unset(request.name):
+            body["name"] = request.name
+        if not UtilClient.is_unset(request.cluster_type):
+            body["cluster_type"] = request.cluster_type
+        if not UtilClient.is_unset(request.region_id):
+            body["region_id"] = request.region_id
+        if not UtilClient.is_unset(request.zone_id):
+            body["zone_id"] = request.zone_id
+        if not UtilClient.is_unset(request.kubernetes_version):
+            body["kubernetes_version"] = request.kubernetes_version
+        if not UtilClient.is_unset(request.deletion_protection):
+            body["deletion_protection"] = request.deletion_protection
+        if not UtilClient.is_unset(request.runtime):
+            body["runtime"] = request.runtime
+        if not UtilClient.is_unset(request.vpcid):
+            body["vpcid"] = request.vpcid
+        if not UtilClient.is_unset(request.worker_vswitch_ids):
+            body["worker_vswitch_ids"] = request.worker_vswitch_ids
+        if not UtilClient.is_unset(request.container_cidr):
+            body["container_cidr"] = request.container_cidr
+        if not UtilClient.is_unset(request.service_cidr):
+            body["service_cidr"] = request.service_cidr
+        if not UtilClient.is_unset(request.node_cidr_mask):
+            body["node_cidr_mask"] = request.node_cidr_mask
+        if not UtilClient.is_unset(request.snat_entry):
+            body["snat_entry"] = request.snat_entry
+        if not UtilClient.is_unset(request.endpoint_public_access):
+            body["endpoint_public_access"] = request.endpoint_public_access
+        if not UtilClient.is_unset(request.ssh_flags):
+            body["ssh_flags"] = request.ssh_flags
+        if not UtilClient.is_unset(request.rds_instances):
+            body["rds_instances"] = request.rds_instances
+        if not UtilClient.is_unset(request.security_group_id):
+            body["security_group_id"] = request.security_group_id
+        if not UtilClient.is_unset(request.is_enterprise_security_group):
+            body["is_enterprise_security_group"] = request.is_enterprise_security_group
+        if not UtilClient.is_unset(request.proxy_mode):
+            body["proxy_mode"] = request.proxy_mode
+        if not UtilClient.is_unset(request.tags):
+            body["tags"] = request.tags
+        if not UtilClient.is_unset(request.images_id):
+            body["images_id"] = request.images_id
+        if not UtilClient.is_unset(request.master_instance_charge_type):
+            body["master_instance_charge_type"] = request.master_instance_charge_type
+        if not UtilClient.is_unset(request.master_period):
+            body["master_period"] = request.master_period
+        if not UtilClient.is_unset(request.master_period_unit):
+            body["master_period_unit"] = request.master_period_unit
+        if not UtilClient.is_unset(request.master_auto_renew):
+            body["master_auto_renew"] = request.master_auto_renew
+        if not UtilClient.is_unset(request.master_auto_renew_period):
+            body["master_auto_renew_period"] = request.master_auto_renew_period
+        if not UtilClient.is_unset(request.master_count):
+            body["master_count"] = request.master_count
+        if not UtilClient.is_unset(request.master_vswitch_ids):
+            body["master_vswitch_ids"] = request.master_vswitch_ids
+        if not UtilClient.is_unset(request.master_instance_types):
+            body["master_instance_types"] = request.master_instance_types
+        if not UtilClient.is_unset(request.master_system_disk_category):
+            body["master_system_disk_category"] = request.master_system_disk_category
+        if not UtilClient.is_unset(request.master_system_disk_size):
+            body["master_system_disk_size"] = request.master_system_disk_size
+        if not UtilClient.is_unset(request.worker_instance_charge_type):
+            body["worker_instance_charge_type"] = request.worker_instance_charge_type
+        if not UtilClient.is_unset(request.worker_period):
+            body["worker_period"] = request.worker_period
+        if not UtilClient.is_unset(request.worker_period_unit):
+            body["worker_period_unit"] = request.worker_period_unit
+        if not UtilClient.is_unset(request.worker_auto_renew):
+            body["worker_auto_renew"] = request.worker_auto_renew
+        if not UtilClient.is_unset(request.worker_auto_renew_period):
+            body["worker_auto_renew_period"] = request.worker_auto_renew_period
+        if not UtilClient.is_unset(request.num_of_nodes):
+            body["num_of_nodes"] = request.num_of_nodes
+        if not UtilClient.is_unset(request.worker_instance_types):
+            body["worker_instance_types"] = request.worker_instance_types
+        if not UtilClient.is_unset(request.worker_system_disk_category):
+            body["worker_system_disk_category"] = request.worker_system_disk_category
+        if not UtilClient.is_unset(request.worker_system_disk_size):
+            body["worker_system_disk_size"] = request.worker_system_disk_size
+        if not UtilClient.is_unset(request.worker_data_disks):
+            body["worker_data_disks"] = request.worker_data_disks
+        if not UtilClient.is_unset(request.os_type):
+            body["os_type"] = request.os_type
+        if not UtilClient.is_unset(request.key_pair):
+            body["key_pair"] = request.key_pair
+        if not UtilClient.is_unset(request.login_password):
+            body["login_password"] = request.login_password
+        if not UtilClient.is_unset(request.user_data):
+            body["user_data"] = request.user_data
+        if not UtilClient.is_unset(request.node_port_range):
+            body["node_port_range"] = request.node_port_range
+        if not UtilClient.is_unset(request.cpu_policy):
+            body["cpu_policy"] = request.cpu_policy
+        if not UtilClient.is_unset(request.taints):
+            body["taints"] = request.taints
+        if not UtilClient.is_unset(request.cloud_monitor_flags):
+            body["cloud_monitor_flags"] = request.cloud_monitor_flags
+        if not UtilClient.is_unset(request.addons):
+            body["addons"] = request.addons
+        if not UtilClient.is_unset(request.platform):
+            body["platform"] = request.platform
+        if not UtilClient.is_unset(request.vswitch_ids):
+            body["vswitch_ids"] = request.vswitch_ids
+        if not UtilClient.is_unset(request.private_zone):
+            body["private_zone"] = request.private_zone
+        if not UtilClient.is_unset(request.profile):
+            body["profile"] = request.profile
+        if not UtilClient.is_unset(request.pod_vswitch_ids):
+            body["pod_vswitch_ids"] = request.pod_vswitch_ids
+        if not UtilClient.is_unset(request.disable_rollback):
+            body["disable_rollback"] = request.disable_rollback
+        if not UtilClient.is_unset(request.timeout_mins):
+            body["timeout_mins"] = request.timeout_mins
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=body
@@ -203,10 +271,14 @@ class Client(OpenApiClient):
     def create_kubernetes_trigger_with_options(self, request, headers, runtime):
         UtilClient.validate_model(request)
         body = {}
-        body["RegionId"] = request.region_id
-        body["ClusterId"] = request.cluster_id
-        body["ProjectId"] = request.project_id
-        body["Type"] = request.type
+        if not UtilClient.is_unset(request.region_id):
+            body["RegionId"] = request.region_id
+        if not UtilClient.is_unset(request.cluster_id):
+            body["ClusterId"] = request.cluster_id
+        if not UtilClient.is_unset(request.project_id):
+            body["ProjectId"] = request.project_id
+        if not UtilClient.is_unset(request.type):
+            body["Type"] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=body
@@ -223,22 +295,22 @@ class Client(OpenApiClient):
     def delete_cluster_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         query = {}
-        query["retain_resources"] = request.retain_resources
+        if not UtilClient.is_unset(request.retain_resources):
+            query["retain_resources"] = request.retain_resources
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         return cs20151215_models.DeleteClusterResponse().from_map(self.do_roarequest("DeleteCluster", "2015-12-15", "HTTPS", "DELETE", "AK", "/clusters/" + str(cluster_id) + "", "none", req, runtime))
 
-    def delete_kubernetes_trigger(self, id, request):
+    def delete_kubernetes_trigger(self, id):
         runtime = util_models.RuntimeOptions(
 
         )
         headers = {}
-        return self.delete_kubernetes_trigger_with_options(id, request, headers, runtime)
+        return self.delete_kubernetes_trigger_with_options(id, headers, runtime)
 
-    def delete_kubernetes_trigger_with_options(self, id, request, headers, runtime):
-        UtilClient.validate_model(request)
+    def delete_kubernetes_trigger_with_options(self, id, headers, runtime):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -254,23 +326,24 @@ class Client(OpenApiClient):
     def describe_addons_with_options(self, request, headers, runtime):
         UtilClient.validate_model(request)
         query = {}
-        query["region"] = request.region
-        query["cluster_type"] = request.cluster_type
+        if not UtilClient.is_unset(request.region):
+            query["region"] = request.region
+        if not UtilClient.is_unset(request.cluster_type):
+            query["cluster_type"] = request.cluster_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         return cs20151215_models.DescribeAddonsResponse().from_map(self.do_roarequest("DescribeAddons", "2015-12-15", "HTTPS", "GET", "AK", "/clusters/components/metadata", "json", req, runtime))
 
-    def describe_cluster_addon_upgrade_status(self, cluster_id, component_id, request):
+    def describe_cluster_addon_upgrade_status(self, cluster_id, component_id):
         runtime = util_models.RuntimeOptions(
 
         )
         headers = {}
-        return self.describe_cluster_addon_upgrade_status_with_options(cluster_id, component_id, request, headers, runtime)
+        return self.describe_cluster_addon_upgrade_status_with_options(cluster_id, component_id, headers, runtime)
 
-    def describe_cluster_addon_upgrade_status_with_options(self, cluster_id, component_id, request, headers, runtime):
-        UtilClient.validate_model(request)
+    def describe_cluster_addon_upgrade_status_with_options(self, cluster_id, component_id, headers, runtime):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -289,22 +362,22 @@ class Client(OpenApiClient):
     def describe_cluster_addons_upgrade_status_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         query = {}
-        query["componentIds"] = request.component_ids
+        if not UtilClient.is_unset(request.component_ids):
+            query["componentIds"] = request.component_ids
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         return cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse().from_map(self.do_roarequest("DescribeClusterAddonsUpgradeStatus", "2015-12-15", "HTTPS", "GET", "AK", "/clusters/[ClusterId]/components/upgradestatus", "none", req, runtime))
 
-    def describe_cluster_addons_version(self, cluster_id, request):
+    def describe_cluster_addons_version(self, cluster_id):
         runtime = util_models.RuntimeOptions(
 
         )
         headers = {}
-        return self.describe_cluster_addons_version_with_options(cluster_id, request, headers, runtime)
+        return self.describe_cluster_addons_version_with_options(cluster_id, headers, runtime)
 
-    def describe_cluster_addons_version_with_options(self, cluster_id, request, headers, runtime):
-        UtilClient.validate_model(request)
+    def describe_cluster_addons_version_with_options(self, cluster_id, headers, runtime):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -320,37 +393,37 @@ class Client(OpenApiClient):
     def describe_cluster_attach_scripts_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         body = {}
-        body["arch"] = request.arch
-        body["options"] = request.options
+        if not UtilClient.is_unset(request.arch):
+            body["arch"] = request.arch
+        if not UtilClient.is_unset(request.options):
+            body["options"] = request.options
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=body
         )
         return cs20151215_models.DescribeClusterAttachScriptsResponse().from_map(self.do_roarequest_with_form("DescribeClusterAttachScripts", "2015-12-15", "HTTPS", "POST", "AK", "/clusters/" + str(cluster_id) + "/attachscript", "string", req, runtime))
 
-    def describe_cluster_detail(self, cluster_id, request):
+    def describe_cluster_detail(self, cluster_id):
         runtime = util_models.RuntimeOptions(
 
         )
         headers = {}
-        return self.describe_cluster_detail_with_options(cluster_id, request, headers, runtime)
+        return self.describe_cluster_detail_with_options(cluster_id, headers, runtime)
 
-    def describe_cluster_detail_with_options(self, cluster_id, request, headers, runtime):
-        UtilClient.validate_model(request)
+    def describe_cluster_detail_with_options(self, cluster_id, headers, runtime):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         return cs20151215_models.DescribeClusterDetailResponse().from_map(self.do_roarequest("DescribeClusterDetail", "2015-12-15", "HTTPS", "GET", "AK", "/clusters/" + str(cluster_id) + "", "json", req, runtime))
 
-    def describe_cluster_logs(self, cluster_id, request):
+    def describe_cluster_logs(self, cluster_id):
         runtime = util_models.RuntimeOptions(
 
         )
         headers = {}
-        return self.describe_cluster_logs_with_options(cluster_id, request, headers, runtime)
+        return self.describe_cluster_logs_with_options(cluster_id, headers, runtime)
 
-    def describe_cluster_logs_with_options(self, cluster_id, request, headers, runtime):
-        UtilClient.validate_model(request)
+    def describe_cluster_logs_with_options(self, cluster_id, headers, runtime):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -366,25 +439,28 @@ class Client(OpenApiClient):
     def describe_cluster_nodes_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         query = {}
-        query["pageSize"] = request.page_size
-        query["pageNumber"] = request.page_number
-        query["nodepool_id"] = request.nodepool_id
-        query["state"] = request.state
+        if not UtilClient.is_unset(request.page_size):
+            query["pageSize"] = request.page_size
+        if not UtilClient.is_unset(request.page_number):
+            query["pageNumber"] = request.page_number
+        if not UtilClient.is_unset(request.nodepool_id):
+            query["nodepool_id"] = request.nodepool_id
+        if not UtilClient.is_unset(request.state):
+            query["state"] = request.state
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         return cs20151215_models.DescribeClusterNodesResponse().from_map(self.do_roarequest("DescribeClusterNodes", "2015-12-15", "HTTPS", "GET", "AK", "/clusters/" + str(cluster_id) + "/nodes", "json", req, runtime))
 
-    def describe_cluster_resources(self, cluster_id, request):
+    def describe_cluster_resources(self, cluster_id):
         runtime = util_models.RuntimeOptions(
 
         )
         headers = {}
-        return self.describe_cluster_resources_with_options(cluster_id, request, headers, runtime)
+        return self.describe_cluster_resources_with_options(cluster_id, headers, runtime)
 
-    def describe_cluster_resources_with_options(self, cluster_id, request, headers, runtime):
-        UtilClient.validate_model(request)
+    def describe_cluster_resources_with_options(self, cluster_id, headers, runtime):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -400,7 +476,8 @@ class Client(OpenApiClient):
     def describe_cluster_user_kubeconfig_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         query = {}
-        query["PrivateIpAddress"] = request.private_ip_address
+        if not UtilClient.is_unset(request.private_ip_address):
+            query["PrivateIpAddress"] = request.private_ip_address
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -417,7 +494,8 @@ class Client(OpenApiClient):
     def describe_cluster_v2user_kubeconfig_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         query = {}
-        query["PrivateIpAddress"] = request.private_ip_address
+        if not UtilClient.is_unset(request.private_ip_address):
+            query["PrivateIpAddress"] = request.private_ip_address
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -434,8 +512,10 @@ class Client(OpenApiClient):
     def describe_clusters_with_options(self, request, headers, runtime):
         UtilClient.validate_model(request)
         query = {}
-        query["name"] = request.name
-        query["clusterType"] = request.cluster_type
+        if not UtilClient.is_unset(request.name):
+            query["name"] = request.name
+        if not UtilClient.is_unset(request.cluster_type):
+            query["clusterType"] = request.cluster_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -452,25 +532,28 @@ class Client(OpenApiClient):
     def describe_clusters_v1with_options(self, request, headers, runtime):
         UtilClient.validate_model(request)
         query = {}
-        query["Name"] = request.name
-        query["ClusterType"] = request.cluster_type
-        query["page_size"] = request.page_size
-        query["page_number"] = request.page_number
+        if not UtilClient.is_unset(request.name):
+            query["Name"] = request.name
+        if not UtilClient.is_unset(request.cluster_type):
+            query["ClusterType"] = request.cluster_type
+        if not UtilClient.is_unset(request.page_size):
+            query["page_size"] = request.page_size
+        if not UtilClient.is_unset(request.page_number):
+            query["page_number"] = request.page_number
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         return cs20151215_models.DescribeClustersV1Response().from_map(self.do_roarequest("DescribeClustersV1", "2015-12-15", "HTTPS", "GET", "AK", "/api/v1/clusters", "json", req, runtime))
 
-    def describe_external_agent(self, cluster_id, request):
+    def describe_external_agent(self, cluster_id):
         runtime = util_models.RuntimeOptions(
 
         )
         headers = {}
-        return self.describe_external_agent_with_options(cluster_id, request, headers, runtime)
+        return self.describe_external_agent_with_options(cluster_id, headers, runtime)
 
-    def describe_external_agent_with_options(self, cluster_id, request, headers, runtime):
-        UtilClient.validate_model(request)
+    def describe_external_agent_with_options(self, cluster_id, headers, runtime):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -486,7 +569,8 @@ class Client(OpenApiClient):
     def describe_templates_with_options(self, request, headers, runtime):
         UtilClient.validate_model(request)
         query = {}
-        query["template_type"] = request.template_type
+        if not UtilClient.is_unset(request.template_type):
+            query["template_type"] = request.template_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -516,24 +600,26 @@ class Client(OpenApiClient):
     def get_kubernetes_trigger_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         query = {}
-        query["Namespace"] = request.namespace
-        query["Type"] = request.type
-        query["Name"] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            query["Namespace"] = request.namespace
+        if not UtilClient.is_unset(request.type):
+            query["Type"] = request.type
+        if not UtilClient.is_unset(request.name):
+            query["Name"] = request.name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         return cs20151215_models.GetKubernetesTriggerResponse().from_map(self.do_roarequest("GetKubernetesTrigger", "2015-12-15", "HTTPS", "GET", "AK", "/triggers/" + str(cluster_id) + "", "json", req, runtime))
 
-    def get_upgrade_status(self, cluster_id, request):
+    def get_upgrade_status(self, cluster_id):
         runtime = util_models.RuntimeOptions(
 
         )
         headers = {}
-        return self.get_upgrade_status_with_options(cluster_id, request, headers, runtime)
+        return self.get_upgrade_status_with_options(cluster_id, headers, runtime)
 
-    def get_upgrade_status_with_options(self, cluster_id, request, headers, runtime):
-        UtilClient.validate_model(request)
+    def get_upgrade_status_with_options(self, cluster_id, headers, runtime):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -564,12 +650,18 @@ class Client(OpenApiClient):
     def modify_cluster_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         body = {}
-        body["deletion_protection"] = request.deletion_protection
-        body["ingress_loadbalancer_id"] = request.ingress_loadbalancer_id
-        body["api_server_eip"] = request.api_server_eip
-        body["api_server_eip_id"] = request.api_server_eip_id
-        body["resource_group_id"] = request.resource_group_id
-        body["ingress_domain_rebinding"] = request.ingress_domain_rebinding
+        if not UtilClient.is_unset(request.deletion_protection):
+            body["deletion_protection"] = request.deletion_protection
+        if not UtilClient.is_unset(request.ingress_loadbalancer_id):
+            body["ingress_loadbalancer_id"] = request.ingress_loadbalancer_id
+        if not UtilClient.is_unset(request.api_server_eip):
+            body["api_server_eip"] = request.api_server_eip
+        if not UtilClient.is_unset(request.api_server_eip_id):
+            body["api_server_eip_id"] = request.api_server_eip_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body["resource_group_id"] = request.resource_group_id
+        if not UtilClient.is_unset(request.ingress_domain_rebinding):
+            body["ingress_domain_rebinding"] = request.ingress_domain_rebinding
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=body
@@ -586,7 +678,8 @@ class Client(OpenApiClient):
     def modify_cluster_configuration_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         body = {}
-        body["customize_config"] = request.customize_config
+        if not UtilClient.is_unset(request.customize_config):
+            body["customize_config"] = request.customize_config
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=body
@@ -608,15 +701,14 @@ class Client(OpenApiClient):
         )
         return cs20151215_models.ModifyClusterTagsResponse().from_map(self.do_roarequest("ModifyClusterTags", "2015-12-15", "HTTPS", "POST", "AK", "/clusters/" + str(cluster_id) + "/tags", "none", req, runtime))
 
-    def pause_component_upgrade(self, clusterid, componentid, request):
+    def pause_component_upgrade(self, clusterid, componentid):
         runtime = util_models.RuntimeOptions(
 
         )
         headers = {}
-        return self.pause_component_upgrade_with_options(clusterid, componentid, request, headers, runtime)
+        return self.pause_component_upgrade_with_options(clusterid, componentid, headers, runtime)
 
-    def pause_component_upgrade_with_options(self, clusterid, componentid, request, headers, runtime):
-        UtilClient.validate_model(request)
+    def pause_component_upgrade_with_options(self, clusterid, componentid, headers, runtime):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -632,24 +724,26 @@ class Client(OpenApiClient):
     def remove_cluster_nodes_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         body = {}
-        body["release_node"] = request.release_node
-        body["drain_node"] = request.drain_node
-        body["nodes"] = request.nodes
+        if not UtilClient.is_unset(request.release_node):
+            body["release_node"] = request.release_node
+        if not UtilClient.is_unset(request.drain_node):
+            body["drain_node"] = request.drain_node
+        if not UtilClient.is_unset(request.nodes):
+            body["nodes"] = request.nodes
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=body
         )
         return cs20151215_models.RemoveClusterNodesResponse().from_map(self.do_roarequest_with_form("RemoveClusterNodes", "2015-12-15", "HTTPS", "POST", "AK", "/api/v2/clusters/" + str(cluster_id) + "/nodes/remove", "none", req, runtime))
 
-    def resume_component_upgrade(self, clusterid, componentid, request):
+    def resume_component_upgrade(self, clusterid, componentid):
         runtime = util_models.RuntimeOptions(
 
         )
         headers = {}
-        return self.resume_component_upgrade_with_options(clusterid, componentid, request, headers, runtime)
+        return self.resume_component_upgrade_with_options(clusterid, componentid, headers, runtime)
 
-    def resume_component_upgrade_with_options(self, clusterid, componentid, request, headers, runtime):
-        UtilClient.validate_model(request)
+    def resume_component_upgrade_with_options(self, clusterid, componentid, headers, runtime):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -671,25 +765,44 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.taints):
             request.taints_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.taints, "taints", "json")
         body = {}
-        body["count"] = request.count
-        body["key_pair"] = request.key_pair
-        body["login_password"] = request.login_password
-        body["worker_data_disk"] = request.worker_data_disk
-        body["worker_instance_types"] = request.worker_instance_types
-        body["worker_instance_charge_type"] = request.worker_instance_charge_type
-        body["worker_period"] = request.worker_period
-        body["worker_period_unit"] = request.worker_period_unit
-        body["worker_auto_renew"] = request.worker_auto_renew
-        body["worker_auto_renew_period"] = request.worker_auto_renew_period
-        body["worker_system_disk_category"] = request.worker_system_disk_category
-        body["worker_system_disk_size"] = request.worker_system_disk_size
-        body["cloud_monitor_flags"] = request.cloud_monitor_flags
-        body["cpu_policy"] = request.cpu_policy
-        body["disable_rollback"] = request.disable_rollback
-        body["vswitch_ids"] = request.vswitch_ids
-        body["worker_data_disks"] = request.worker_data_disks
-        body["tags"] = request.tags
-        body["taints"] = request.taints_shrink
+        if not UtilClient.is_unset(request.count):
+            body["count"] = request.count
+        if not UtilClient.is_unset(request.key_pair):
+            body["key_pair"] = request.key_pair
+        if not UtilClient.is_unset(request.login_password):
+            body["login_password"] = request.login_password
+        if not UtilClient.is_unset(request.worker_data_disk):
+            body["worker_data_disk"] = request.worker_data_disk
+        if not UtilClient.is_unset(request.worker_instance_types):
+            body["worker_instance_types"] = request.worker_instance_types
+        if not UtilClient.is_unset(request.worker_instance_charge_type):
+            body["worker_instance_charge_type"] = request.worker_instance_charge_type
+        if not UtilClient.is_unset(request.worker_period):
+            body["worker_period"] = request.worker_period
+        if not UtilClient.is_unset(request.worker_period_unit):
+            body["worker_period_unit"] = request.worker_period_unit
+        if not UtilClient.is_unset(request.worker_auto_renew):
+            body["worker_auto_renew"] = request.worker_auto_renew
+        if not UtilClient.is_unset(request.worker_auto_renew_period):
+            body["worker_auto_renew_period"] = request.worker_auto_renew_period
+        if not UtilClient.is_unset(request.worker_system_disk_category):
+            body["worker_system_disk_category"] = request.worker_system_disk_category
+        if not UtilClient.is_unset(request.worker_system_disk_size):
+            body["worker_system_disk_size"] = request.worker_system_disk_size
+        if not UtilClient.is_unset(request.cloud_monitor_flags):
+            body["cloud_monitor_flags"] = request.cloud_monitor_flags
+        if not UtilClient.is_unset(request.cpu_policy):
+            body["cpu_policy"] = request.cpu_policy
+        if not UtilClient.is_unset(request.disable_rollback):
+            body["disable_rollback"] = request.disable_rollback
+        if not UtilClient.is_unset(request.vswitch_ids):
+            body["vswitch_ids"] = request.vswitch_ids
+        if not UtilClient.is_unset(request.worker_data_disks):
+            body["worker_data_disks"] = request.worker_data_disks
+        if not UtilClient.is_unset(request.tags):
+            body["tags"] = request.tags
+        if not UtilClient.is_unset(request.taints_shrink):
+            body["taints"] = request.taints_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=body
@@ -706,29 +819,52 @@ class Client(OpenApiClient):
     def scale_out_cluster_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         body = {}
-        body["count"] = request.count
-        body["worker_instance_charge_type"] = request.worker_instance_charge_type
-        body["worker_period"] = request.worker_period
-        body["worker_period_unit"] = request.worker_period_unit
-        body["worker_auto_renew"] = request.worker_auto_renew
-        body["worker_auto_renew_period"] = request.worker_auto_renew_period
-        body["worker_system_disk_category"] = request.worker_system_disk_category
-        body["worker_system_disk_size"] = request.worker_system_disk_size
-        body["worker_data_disk"] = request.worker_data_disk
-        body["key_pair"] = request.key_pair
-        body["login_password"] = request.login_password
-        body["cloud_monitor_flags"] = request.cloud_monitor_flags
-        body["cpu_policy"] = request.cpu_policy
-        body["disable_rollback"] = request.disable_rollback
-        body["image_id"] = request.image_id
-        body["user_data"] = request.user_data
-        body["runtime"] = request.runtime
-        body["vswitch_ids"] = request.vswitch_ids
-        body["worker_instance_types"] = request.worker_instance_types
-        body["rds_instances"] = request.rds_instances
-        body["worker_data_disks"] = request.worker_data_disks
-        body["tags"] = request.tags
-        body["taints"] = request.taints
+        if not UtilClient.is_unset(request.count):
+            body["count"] = request.count
+        if not UtilClient.is_unset(request.worker_instance_charge_type):
+            body["worker_instance_charge_type"] = request.worker_instance_charge_type
+        if not UtilClient.is_unset(request.worker_period):
+            body["worker_period"] = request.worker_period
+        if not UtilClient.is_unset(request.worker_period_unit):
+            body["worker_period_unit"] = request.worker_period_unit
+        if not UtilClient.is_unset(request.worker_auto_renew):
+            body["worker_auto_renew"] = request.worker_auto_renew
+        if not UtilClient.is_unset(request.worker_auto_renew_period):
+            body["worker_auto_renew_period"] = request.worker_auto_renew_period
+        if not UtilClient.is_unset(request.worker_system_disk_category):
+            body["worker_system_disk_category"] = request.worker_system_disk_category
+        if not UtilClient.is_unset(request.worker_system_disk_size):
+            body["worker_system_disk_size"] = request.worker_system_disk_size
+        if not UtilClient.is_unset(request.worker_data_disk):
+            body["worker_data_disk"] = request.worker_data_disk
+        if not UtilClient.is_unset(request.key_pair):
+            body["key_pair"] = request.key_pair
+        if not UtilClient.is_unset(request.login_password):
+            body["login_password"] = request.login_password
+        if not UtilClient.is_unset(request.cloud_monitor_flags):
+            body["cloud_monitor_flags"] = request.cloud_monitor_flags
+        if not UtilClient.is_unset(request.cpu_policy):
+            body["cpu_policy"] = request.cpu_policy
+        if not UtilClient.is_unset(request.disable_rollback):
+            body["disable_rollback"] = request.disable_rollback
+        if not UtilClient.is_unset(request.image_id):
+            body["image_id"] = request.image_id
+        if not UtilClient.is_unset(request.user_data):
+            body["user_data"] = request.user_data
+        if not UtilClient.is_unset(request.runtime):
+            body["runtime"] = request.runtime
+        if not UtilClient.is_unset(request.vswitch_ids):
+            body["vswitch_ids"] = request.vswitch_ids
+        if not UtilClient.is_unset(request.worker_instance_types):
+            body["worker_instance_types"] = request.worker_instance_types
+        if not UtilClient.is_unset(request.rds_instances):
+            body["rds_instances"] = request.rds_instances
+        if not UtilClient.is_unset(request.worker_data_disks):
+            body["worker_data_disks"] = request.worker_data_disks
+        if not UtilClient.is_unset(request.tags):
+            body["tags"] = request.tags
+        if not UtilClient.is_unset(request.taints):
+            body["taints"] = request.taints
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=body
@@ -745,7 +881,8 @@ class Client(OpenApiClient):
     def un_install_cluster_addons_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         body = {}
-        body["addons"] = request.addons
+        if not UtilClient.is_unset(request.addons):
+            body["addons"] = request.addons
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=body
@@ -762,11 +899,16 @@ class Client(OpenApiClient):
     def update_template_with_options(self, template_id, request, headers, runtime):
         UtilClient.validate_model(request)
         body = {}
-        body["name"] = request.name
-        body["template"] = request.template
-        body["tags"] = request.tags
-        body["description"] = request.description
-        body["template_type"] = request.template_type
+        if not UtilClient.is_unset(request.name):
+            body["name"] = request.name
+        if not UtilClient.is_unset(request.template):
+            body["template"] = request.template
+        if not UtilClient.is_unset(request.tags):
+            body["tags"] = request.tags
+        if not UtilClient.is_unset(request.description):
+            body["description"] = request.description
+        if not UtilClient.is_unset(request.template_type):
+            body["template_type"] = request.template_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=body
@@ -783,9 +925,12 @@ class Client(OpenApiClient):
     def upgrade_cluster_with_options(self, cluster_id, request, headers, runtime):
         UtilClient.validate_model(request)
         body = {}
-        body["component_name"] = request.component_name
-        body["version"] = request.version
-        body["next_version"] = request.next_version
+        if not UtilClient.is_unset(request.component_name):
+            body["component_name"] = request.component_name
+        if not UtilClient.is_unset(request.version):
+            body["version"] = request.version
+        if not UtilClient.is_unset(request.next_version):
+            body["next_version"] = request.next_version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=body
