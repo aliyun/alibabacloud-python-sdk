@@ -2070,20 +2070,582 @@ class DescribeClusterLogsResponseBody(TeaModel):
         return self
 
 
+class DescribeClusterNodePoolDetailResponseBody(TeaModel):
+    def __init__(self, auto_scaling=None, kubernetes_config=None, nodepool_info=None, scaling_group=None,
+                 status=None, tee_config=None):
+        # 节点池自动伸缩信息。
+        self.auto_scaling = auto_scaling  # type: DescribeClusterNodePoolDetailResponseBodyAutoScaling
+        # 节点池所属集群配置。
+        self.kubernetes_config = kubernetes_config  # type: DescribeClusterNodePoolDetailResponseBodyKubernetesConfig
+        # 节点池详情。
+        self.nodepool_info = nodepool_info  # type: DescribeClusterNodePoolDetailResponseBodyNodepoolInfo
+        # 节点池扩容组信息。
+        self.scaling_group = scaling_group  # type: DescribeClusterNodePoolDetailResponseBodyScalingGroup
+        # 节点池状态。
+        self.status = status            # type: DescribeClusterNodePoolDetailResponseBodyStatus
+        # 加密计算节点池信息。
+        self.tee_config = tee_config    # type: DescribeClusterNodePoolDetailResponseBodyTeeConfig
+
+    def validate(self):
+        if self.auto_scaling:
+            self.auto_scaling.validate()
+        if self.kubernetes_config:
+            self.kubernetes_config.validate()
+        if self.nodepool_info:
+            self.nodepool_info.validate()
+        if self.scaling_group:
+            self.scaling_group.validate()
+        if self.status:
+            self.status.validate()
+        if self.tee_config:
+            self.tee_config.validate()
+
+    def to_map(self):
+        result = {}
+        if self.auto_scaling is not None:
+            result['auto_scaling'] = self.auto_scaling.to_map()
+        else:
+            result['auto_scaling'] = None
+        if self.kubernetes_config is not None:
+            result['kubernetes_config'] = self.kubernetes_config.to_map()
+        else:
+            result['kubernetes_config'] = None
+        if self.nodepool_info is not None:
+            result['nodepool_info'] = self.nodepool_info.to_map()
+        else:
+            result['nodepool_info'] = None
+        if self.scaling_group is not None:
+            result['scaling_group'] = self.scaling_group.to_map()
+        else:
+            result['scaling_group'] = None
+        if self.status is not None:
+            result['status'] = self.status.to_map()
+        else:
+            result['status'] = None
+        if self.tee_config is not None:
+            result['tee_config'] = self.tee_config.to_map()
+        else:
+            result['tee_config'] = None
+        return result
+
+    def from_map(self, map={}):
+        if map.get('auto_scaling') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyAutoScaling()
+            self.auto_scaling = temp_model.from_map(map['auto_scaling'])
+        else:
+            self.auto_scaling = None
+        if map.get('kubernetes_config') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyKubernetesConfig()
+            self.kubernetes_config = temp_model.from_map(map['kubernetes_config'])
+        else:
+            self.kubernetes_config = None
+        if map.get('nodepool_info') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyNodepoolInfo()
+            self.nodepool_info = temp_model.from_map(map['nodepool_info'])
+        else:
+            self.nodepool_info = None
+        if map.get('scaling_group') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyScalingGroup()
+            self.scaling_group = temp_model.from_map(map['scaling_group'])
+        else:
+            self.scaling_group = None
+        if map.get('status') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyStatus()
+            self.status = temp_model.from_map(map['status'])
+        else:
+            self.status = None
+        if map.get('tee_config') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyTeeConfig()
+            self.tee_config = temp_model.from_map(map['tee_config'])
+        else:
+            self.tee_config = None
+        return self
+
+
+class DescribeClusterNodePoolDetailResponseBodyAutoScaling(TeaModel):
+    def __init__(self, eip_bandwidth=None, eip_internet_charge_type=None, enable=None, health_check_type=None,
+                 is_bond_eip=None, max_instances=None, min_instances=None, type=None):
+        # EIP带宽峰值。
+        self.eip_bandwidth = eip_bandwidth  # type: int
+        # 节点池付费类型。
+        self.eip_internet_charge_type = eip_internet_charge_type  # type: str
+        # 是否开启自动伸缩。
+        self.enable = enable            # type: bool
+        # 健康检查类型。
+        self.health_check_type = health_check_type  # type: str
+        # 是否绑定EIP。
+        self.is_bond_eip = is_bond_eip  # type: bool
+        # 最大实例数。
+        self.max_instances = max_instances  # type: int
+        # 最小实例数。
+        self.min_instances = min_instances  # type: int
+        # 节点规格类型。
+        self.type = type                # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['eip_bandwidth'] = self.eip_bandwidth
+        result['eip_internet_charge_type'] = self.eip_internet_charge_type
+        result['enable'] = self.enable
+        result['health_check_type'] = self.health_check_type
+        result['is_bond_eip'] = self.is_bond_eip
+        result['max_instances'] = self.max_instances
+        result['min_instances'] = self.min_instances
+        result['type'] = self.type
+        return result
+
+    def from_map(self, map={}):
+        self.eip_bandwidth = map.get('eip_bandwidth')
+        self.eip_internet_charge_type = map.get('eip_internet_charge_type')
+        self.enable = map.get('enable')
+        self.health_check_type = map.get('health_check_type')
+        self.is_bond_eip = map.get('is_bond_eip')
+        self.max_instances = map.get('max_instances')
+        self.min_instances = map.get('min_instances')
+        self.type = map.get('type')
+        return self
+
+
+class DescribeClusterNodePoolDetailResponseBodyKubernetesConfigLabels(TeaModel):
+    def __init__(self, key=None, value=None):
+        # 标签key
+        self.key = key                  # type: str
+        # 标签值
+        self.value = value              # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['key'] = self.key
+        result['value'] = self.value
+        return result
+
+    def from_map(self, map={}):
+        self.key = map.get('key')
+        self.value = map.get('value')
+        return self
+
+
+class DescribeClusterNodePoolDetailResponseBodyKubernetesConfigTaints(TeaModel):
+    def __init__(self, effect=None, key=None, value=None):
+        # 污点策略。
+        self.effect = effect            # type: str
+        # 污点key
+        self.key = key                  # type: str
+        # 污点值
+        self.value = value              # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['effect'] = self.effect
+        result['key'] = self.key
+        result['value'] = self.value
+        return result
+
+    def from_map(self, map={}):
+        self.effect = map.get('effect')
+        self.key = map.get('key')
+        self.value = map.get('value')
+        return self
+
+
+class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
+    def __init__(self, cms_enabled=None, cpu_policy=None, labels=None, node_name_mode=None, overwrite_hostname=None,
+                 runtime=None, runtime_version=None, taints=None, user_data=None):
+        # 是否开启云监控
+        self.cms_enabled = cms_enabled  # type: str
+        # CPU管理策略
+        self.cpu_policy = cpu_policy    # type: str
+        # 节点标签。
+        self.labels = labels            # type: List[DescribeClusterNodePoolDetailResponseBodyKubernetesConfigLabels]
+        # 节点命名规则。
+        self.node_name_mode = node_name_mode  # type: str
+        # 是否更新主机名。
+        self.overwrite_hostname = overwrite_hostname  # type: bool
+        # 容器运行时
+        self.runtime = runtime          # type: str
+        # 容器运行时版本。
+        self.runtime_version = runtime_version  # type: str
+        # 污点配置。
+        self.taints = taints            # type: List[DescribeClusterNodePoolDetailResponseBodyKubernetesConfigTaints]
+        # 节点自定义数据
+        self.user_data = user_data      # type: str
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+        if self.taints:
+            for k in self.taints:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['cms_enabled'] = self.cms_enabled
+        result['cpu_policy'] = self.cpu_policy
+        result['labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['labels'].append(k.to_map() if k else None)
+        else:
+            result['labels'] = None
+        result['node_name_mode'] = self.node_name_mode
+        result['overwrite_hostname'] = self.overwrite_hostname
+        result['runtime'] = self.runtime
+        result['runtime_version'] = self.runtime_version
+        result['taints'] = []
+        if self.taints is not None:
+            for k in self.taints:
+                result['taints'].append(k.to_map() if k else None)
+        else:
+            result['taints'] = None
+        result['user_data'] = self.user_data
+        return result
+
+    def from_map(self, map={}):
+        self.cms_enabled = map.get('cms_enabled')
+        self.cpu_policy = map.get('cpu_policy')
+        self.labels = []
+        if map.get('labels') is not None:
+            for k in map.get('labels'):
+                temp_model = DescribeClusterNodePoolDetailResponseBodyKubernetesConfigLabels()
+                self.labels.append(temp_model.from_map(k))
+        else:
+            self.labels = None
+        self.node_name_mode = map.get('node_name_mode')
+        self.overwrite_hostname = map.get('overwrite_hostname')
+        self.runtime = map.get('runtime')
+        self.runtime_version = map.get('runtime_version')
+        self.taints = []
+        if map.get('taints') is not None:
+            for k in map.get('taints'):
+                temp_model = DescribeClusterNodePoolDetailResponseBodyKubernetesConfigTaints()
+                self.taints.append(temp_model.from_map(k))
+        else:
+            self.taints = None
+        self.user_data = map.get('user_data')
+        return self
+
+
+class DescribeClusterNodePoolDetailResponseBodyNodepoolInfo(TeaModel):
+    def __init__(self, created=None, is_default=None, name=None, nodepool_id=None, region_id=None,
+                 resource_group_id=None, type=None, updated=None):
+        # 节点池创建时间。
+        self.created = created          # type: str
+        # 是否为默认节点池。
+        self.is_default = is_default    # type: bool
+        # 节点池名称。
+        self.name = name                # type: str
+        # 节点池ID。
+        self.nodepool_id = nodepool_id  # type: str
+        # 节点池所属地域ID。
+        self.region_id = region_id      # type: str
+        # 节点池所属资源组ID。
+        self.resource_group_id = resource_group_id  # type: str
+        # 节点池类型。
+        self.type = type                # type: str
+        # 节点池更新时间。
+        self.updated = updated          # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['created'] = self.created
+        result['is_default'] = self.is_default
+        result['name'] = self.name
+        result['nodepool_id'] = self.nodepool_id
+        result['region_id'] = self.region_id
+        result['resource_group_id'] = self.resource_group_id
+        result['type'] = self.type
+        result['updated'] = self.updated
+        return result
+
+    def from_map(self, map={}):
+        self.created = map.get('created')
+        self.is_default = map.get('is_default')
+        self.name = map.get('name')
+        self.nodepool_id = map.get('nodepool_id')
+        self.region_id = map.get('region_id')
+        self.resource_group_id = map.get('resource_group_id')
+        self.type = map.get('type')
+        self.updated = map.get('updated')
+        return self
+
+
+class DescribeClusterNodePoolDetailResponseBodyScalingGroupDataDisks(TeaModel):
+    def __init__(self, category=None, encrypted=None, size=None):
+        # 数据盘类型。
+        self.category = category        # type: str
+        # 是否开启数据盘加密。
+        self.encrypted = encrypted      # type: bool
+        # 数据盘大小。
+        self.size = size                # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['category'] = self.category
+        result['encrypted'] = self.encrypted
+        result['size'] = self.size
+        return result
+
+    def from_map(self, map={}):
+        self.category = map.get('category')
+        self.encrypted = map.get('encrypted')
+        self.size = map.get('size')
+        return self
+
+
+class DescribeClusterNodePoolDetailResponseBodyScalingGroupTags(TeaModel):
+    def __init__(self, key=None, value=None):
+        # key
+        self.key = key                  # type: str
+        # value
+        self.value = value              # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['key'] = self.key
+        result['value'] = self.value
+        return result
+
+    def from_map(self, map={}):
+        self.key = map.get('key')
+        self.value = map.get('value')
+        return self
+
+
+class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
+    def __init__(self, auto_renew=None, auto_renew_period=None, data_disks=None, image_id=None,
+                 instance_charge_type=None, instance_types=None, multi_az_policy=None, period=None, period_unit=None, platform=None,
+                 ram_policy=None, rds_instances=None, scaling_group_id=None, scaling_policy=None, security_group_id=None,
+                 system_disk_category=None, system_disk_size=None, tags=None, vswitch_ids=None):
+        # 节点是否开启自动续费。
+        self.auto_renew = auto_renew    # type: bool
+        # 节点自动续费周期。
+        self.auto_renew_period = auto_renew_period  # type: int
+        # 数据盘配置。
+        self.data_disks = data_disks    # type: List[DescribeClusterNodePoolDetailResponseBodyScalingGroupDataDisks]
+        # 自定义镜像ID。
+        self.image_id = image_id        # type: str
+        # 节点付费类型。
+        self.instance_charge_type = instance_charge_type  # type: str
+        # 节点ECS规格类型。
+        self.instance_types = instance_types  # type: List[str]
+        # 多可用区策略。
+        self.multi_az_policy = multi_az_policy  # type: str
+        # 节点包年包月时长。
+        self.period = period            # type: int
+        # 节点付费周期。
+        self.period_unit = period_unit  # type: str
+        # 操作系统发行版。取值： CentOS，AliyunLinux，Windows，WindowsCore。
+        self.platform = platform        # type: str
+        # 节点RAM 角色名称。
+        self.ram_policy = ram_policy    # type: str
+        # RDS实例列表。
+        self.rds_instances = rds_instances  # type: List[str]
+        # 扩容组ID。
+        self.scaling_group_id = scaling_group_id  # type: str
+        # 扩容策略。
+        self.scaling_policy = scaling_policy  # type: str
+        # 节点所属安全组ID。
+        self.security_group_id = security_group_id  # type: str
+        # 系统盘类型
+        self.system_disk_category = system_disk_category  # type: str
+        # 系统盘大小
+        self.system_disk_size = system_disk_size  # type: int
+        # ECS标签
+        self.tags = tags                # type: List[DescribeClusterNodePoolDetailResponseBodyScalingGroupTags]
+        # 虚拟交换机ID。
+        self.vswitch_ids = vswitch_ids  # type: List[str]
+
+    def validate(self):
+        if self.data_disks:
+            for k in self.data_disks:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['auto_renew'] = self.auto_renew
+        result['auto_renew_period'] = self.auto_renew_period
+        result['data_disks'] = []
+        if self.data_disks is not None:
+            for k in self.data_disks:
+                result['data_disks'].append(k.to_map() if k else None)
+        else:
+            result['data_disks'] = None
+        result['image_id'] = self.image_id
+        result['instance_charge_type'] = self.instance_charge_type
+        result['instance_types'] = self.instance_types
+        result['multi_az_policy'] = self.multi_az_policy
+        result['period'] = self.period
+        result['period_unit'] = self.period_unit
+        result['platform'] = self.platform
+        result['ram_policy'] = self.ram_policy
+        result['rds_instances'] = self.rds_instances
+        result['scaling_group_id'] = self.scaling_group_id
+        result['scaling_policy'] = self.scaling_policy
+        result['security_group_id'] = self.security_group_id
+        result['system_disk_category'] = self.system_disk_category
+        result['system_disk_size'] = self.system_disk_size
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        else:
+            result['tags'] = None
+        result['vswitch_ids'] = self.vswitch_ids
+        return result
+
+    def from_map(self, map={}):
+        self.auto_renew = map.get('auto_renew')
+        self.auto_renew_period = map.get('auto_renew_period')
+        self.data_disks = []
+        if map.get('data_disks') is not None:
+            for k in map.get('data_disks'):
+                temp_model = DescribeClusterNodePoolDetailResponseBodyScalingGroupDataDisks()
+                self.data_disks.append(temp_model.from_map(k))
+        else:
+            self.data_disks = None
+        self.image_id = map.get('image_id')
+        self.instance_charge_type = map.get('instance_charge_type')
+        self.instance_types = map.get('instance_types')
+        self.multi_az_policy = map.get('multi_az_policy')
+        self.period = map.get('period')
+        self.period_unit = map.get('period_unit')
+        self.platform = map.get('platform')
+        self.ram_policy = map.get('ram_policy')
+        self.rds_instances = map.get('rds_instances')
+        self.scaling_group_id = map.get('scaling_group_id')
+        self.scaling_policy = map.get('scaling_policy')
+        self.security_group_id = map.get('security_group_id')
+        self.system_disk_category = map.get('system_disk_category')
+        self.system_disk_size = map.get('system_disk_size')
+        self.tags = []
+        if map.get('tags') is not None:
+            for k in map.get('tags'):
+                temp_model = DescribeClusterNodePoolDetailResponseBodyScalingGroupTags()
+                self.tags.append(temp_model.from_map(k))
+        else:
+            self.tags = None
+        self.vswitch_ids = map.get('vswitch_ids')
+        return self
+
+
+class DescribeClusterNodePoolDetailResponseBodyStatus(TeaModel):
+    def __init__(self, failed_nodes=None, healthy_nodes=None, initial_nodes=None, offline_nodes=None,
+                 removing_nodes=None, serving_nodes=None, state=None, total_nodes=None):
+        # 失败节点数。
+        self.failed_nodes = failed_nodes  # type: int
+        # 处于健康状态节点数。
+        self.healthy_nodes = healthy_nodes  # type: int
+        # 正在初始化节点数。
+        self.initial_nodes = initial_nodes  # type: int
+        # 离线节点数量。
+        self.offline_nodes = offline_nodes  # type: int
+        # 正在被移除节点数。
+        self.removing_nodes = removing_nodes  # type: int
+        # 工作节点数量。
+        self.serving_nodes = serving_nodes  # type: int
+        # 节点池状态。
+        self.state = state              # type: str
+        # 总节点数。
+        self.total_nodes = total_nodes  # type: int
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['failed_nodes'] = self.failed_nodes
+        result['healthy_nodes'] = self.healthy_nodes
+        result['initial_nodes'] = self.initial_nodes
+        result['offline_nodes'] = self.offline_nodes
+        result['removing_nodes'] = self.removing_nodes
+        result['serving_nodes'] = self.serving_nodes
+        result['state'] = self.state
+        result['total_nodes'] = self.total_nodes
+        return result
+
+    def from_map(self, map={}):
+        self.failed_nodes = map.get('failed_nodes')
+        self.healthy_nodes = map.get('healthy_nodes')
+        self.initial_nodes = map.get('initial_nodes')
+        self.offline_nodes = map.get('offline_nodes')
+        self.removing_nodes = map.get('removing_nodes')
+        self.serving_nodes = map.get('serving_nodes')
+        self.state = map.get('state')
+        self.total_nodes = map.get('total_nodes')
+        return self
+
+
+class DescribeClusterNodePoolDetailResponseBodyTeeConfig(TeaModel):
+    def __init__(self, tee_enable=None):
+        # 是否为加密计算节点池。
+        self.tee_enable = tee_enable    # type: bool
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['tee_enable'] = self.tee_enable
+        return result
+
+    def from_map(self, map={}):
+        self.tee_enable = map.get('tee_enable')
+        return self
+
+
 class DescribeClusterNodePoolDetailResponse(TeaModel):
-    def __init__(self, headers=None):
+    def __init__(self, headers=None, body=None):
         self.headers = headers          # type: Dict[str, str]
+        self.body = body                # type: DescribeClusterNodePoolDetailResponseBody
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         result = {}
         result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        else:
+            result['body'] = None
         return result
 
     def from_map(self, map={}):
         self.headers = map.get('headers')
+        if map.get('body') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBody()
+            self.body = temp_model.from_map(map['body'])
+        else:
+            self.body = None
         return self
 
 
@@ -3716,20 +4278,123 @@ class ListTagResourcesRequest(TeaModel):
         return self
 
 
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(self, tag_resources=None):
+        # 资源标签列表。
+        self.tag_resources = tag_resources  # type: ListTagResourcesResponseBodyTagResources
+
+    def validate(self):
+        if self.tag_resources:
+            self.tag_resources.validate()
+
+    def to_map(self):
+        result = {}
+        if self.tag_resources is not None:
+            result['tag_resources'] = self.tag_resources.to_map()
+        else:
+            result['tag_resources'] = None
+        return result
+
+    def from_map(self, map={}):
+        if map.get('tag_resources') is not None:
+            temp_model = ListTagResourcesResponseBodyTagResources()
+            self.tag_resources = temp_model.from_map(map['tag_resources'])
+        else:
+            self.tag_resources = None
+        return self
+
+
+class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
+    def __init__(self, resource_id=None, resource_type=None, tag_key=None, tag_value=None):
+        # 资源ID。
+        self.resource_id = resource_id  # type: str
+        # 资源类型
+        self.resource_type = resource_type  # type: str
+        # 标签key。
+        self.tag_key = tag_key          # type: str
+        # 标签值。
+        self.tag_value = tag_value      # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['resource_id'] = self.resource_id
+        result['resource_type'] = self.resource_type
+        result['tag_key'] = self.tag_key
+        result['tag_value'] = self.tag_value
+        return result
+
+    def from_map(self, map={}):
+        self.resource_id = map.get('resource_id')
+        self.resource_type = map.get('resource_type')
+        self.tag_key = map.get('tag_key')
+        self.tag_value = map.get('tag_value')
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(self, next_token=None, request_id=None, tag_resource=None):
+        # 可用版本。
+        self.next_token = next_token    # type: str
+        # 请求ID.
+        self.request_id = request_id    # type: str
+        # 资源标签。
+        self.tag_resource = tag_resource  # type: ListTagResourcesResponseBodyTagResourcesTagResource
+
+    def validate(self):
+        if self.tag_resource:
+            self.tag_resource.validate()
+
+    def to_map(self):
+        result = {}
+        result['next_token'] = self.next_token
+        result['request_id'] = self.request_id
+        if self.tag_resource is not None:
+            result['tag_resource'] = self.tag_resource.to_map()
+        else:
+            result['tag_resource'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.next_token = map.get('next_token')
+        self.request_id = map.get('request_id')
+        if map.get('tag_resource') is not None:
+            temp_model = ListTagResourcesResponseBodyTagResourcesTagResource()
+            self.tag_resource = temp_model.from_map(map['tag_resource'])
+        else:
+            self.tag_resource = None
+        return self
+
+
 class ListTagResourcesResponse(TeaModel):
-    def __init__(self, headers=None):
+    def __init__(self, headers=None, body=None):
         self.headers = headers          # type: Dict[str, str]
+        self.body = body                # type: ListTagResourcesResponseBody
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         result = {}
         result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        else:
+            result['body'] = None
         return result
 
     def from_map(self, map={}):
         self.headers = map.get('headers')
+        if map.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(map['body'])
+        else:
+            self.body = None
         return self
 
 

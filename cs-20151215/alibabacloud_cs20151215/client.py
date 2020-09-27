@@ -481,7 +481,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cs20151215_models.DescribeClusterNodePoolDetailResponse().from_map(self.do_roarequest("DescribeClusterNodePoolDetail", "2015-12-15", "HTTPS", "GET", "AK", "/clusters/" + str(cluster_id) + "/nodepools/{NodepoolId}", "none", req, runtime))
+        return cs20151215_models.DescribeClusterNodePoolDetailResponse().from_map(self.do_roarequest("DescribeClusterNodePoolDetail", "2015-12-15", "HTTPS", "GET", "AK", "/clusters/" + str(cluster_id) + "/nodepools/{NodepoolId}", "json", req, runtime))
 
     def describe_cluster_node_pools(self, cluster_id):
         runtime = util_models.RuntimeOptions(
@@ -766,7 +766,7 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cs20151215_models.ListTagResourcesResponse().from_map(self.do_roarequest("ListTagResources", "2015-12-15", "HTTPS", "GET", "AK", "/tags", "none", req, runtime))
+        return cs20151215_models.ListTagResourcesResponse().from_map(self.do_roarequest("ListTagResources", "2015-12-15", "HTTPS", "GET", "AK", "/tags", "json", req, runtime))
 
     def modify_cluster(self, cluster_id, request):
         runtime = util_models.RuntimeOptions(
