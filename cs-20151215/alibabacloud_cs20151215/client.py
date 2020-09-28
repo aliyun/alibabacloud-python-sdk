@@ -494,7 +494,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cs20151215_models.DescribeClusterNodePoolsResponse().from_map(self.do_roarequest("DescribeClusterNodePools", "2015-12-15", "HTTPS", "GET", "AK", "/clusters/" + str(cluster_id) + "/nodepools", "none", req, runtime))
+        return cs20151215_models.DescribeClusterNodePoolsResponse().from_map(self.do_roarequest("DescribeClusterNodePools", "2015-12-15", "HTTPS", "GET", "AK", "/clusters/" + str(cluster_id) + "/nodepools", "json", req, runtime))
 
     def describe_cluster_nodes(self, cluster_id, request):
         runtime = util_models.RuntimeOptions(
@@ -638,6 +638,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.region):
             query["Region"] = request.region
+        if not UtilClient.is_unset(request.multi_az):
+            query["MultiAZ"] = request.multi_az
         if not UtilClient.is_unset(request.cluster_type):
             query["ClusterType"] = request.cluster_type
         if not UtilClient.is_unset(request.kubernetes_version):
@@ -648,7 +650,7 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cs20151215_models.DescribeKubernetesVersionMetadataResponse().from_map(self.do_roarequest("DescribeKubernetesVersionMetadata", "2015-12-15", "HTTPS", "GET", "AK", "/api/v1/metadata/versions", "none", req, runtime))
+        return cs20151215_models.DescribeKubernetesVersionMetadataResponse().from_map(self.do_roarequest("DescribeKubernetesVersionMetadata", "2015-12-15", "HTTPS", "GET", "AK", "/api/v1/metadata/versions", "array", req, runtime))
 
     def describe_template_attribute(self, template_id):
         runtime = util_models.RuntimeOptions(
@@ -661,7 +663,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cs20151215_models.DescribeTemplateAttributeResponse().from_map(self.do_roarequest("DescribeTemplateAttribute", "2015-12-15", "HTTPS", "GET", "AK", "/templates/" + str(template_id) + "", "none", req, runtime))
+        return cs20151215_models.DescribeTemplateAttributeResponse().from_map(self.do_roarequest("DescribeTemplateAttribute", "2015-12-15", "HTTPS", "GET", "AK", "/templates/" + str(template_id) + "", "array", req, runtime))
 
     def describe_templates(self, request):
         runtime = util_models.RuntimeOptions(
