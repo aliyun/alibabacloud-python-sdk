@@ -1,7 +1,180 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, BinaryIO
+from typing import Dict, Any, BinaryIO, List
+
+
+class DetectSkinDiseaseRequest(TeaModel):
+    def __init__(self, url=None, org_id=None, org_name=None):
+        self.url = url                  # type: str
+        self.org_id = org_id            # type: str
+        self.org_name = org_name        # type: str
+
+    def validate(self):
+        self.validate_required(self.url, 'url')
+        self.validate_required(self.org_id, 'org_id')
+        self.validate_required(self.org_name, 'org_name')
+
+    def to_map(self):
+        result = {}
+        result['Url'] = self.url
+        result['OrgId'] = self.org_id
+        result['OrgName'] = self.org_name
+        return result
+
+    def from_map(self, map={}):
+        self.url = map.get('Url')
+        self.org_id = map.get('OrgId')
+        self.org_name = map.get('OrgName')
+        return self
+
+
+class DetectSkinDiseaseResponse(TeaModel):
+    def __init__(self, request_id=None, data=None):
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectSkinDiseaseResponseData
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        else:
+            result['Data'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            temp_model = DetectSkinDiseaseResponseData()
+            self.data = temp_model.from_map(map['Data'])
+        else:
+            self.data = None
+        return self
+
+
+class DetectSkinDiseaseResponseData(TeaModel):
+    def __init__(self, results=None):
+        self.results = results          # type: Dict[str, Any]
+
+    def validate(self):
+        self.validate_required(self.results, 'results')
+
+    def to_map(self):
+        result = {}
+        result['Results'] = self.results
+        return result
+
+    def from_map(self, map={}):
+        self.results = map.get('Results')
+        return self
+
+
+class DetectSkinDiseaseAdvanceRequest(TeaModel):
+    def __init__(self, url_object=None, org_id=None, org_name=None):
+        self.url_object = url_object    # type: BinaryIO
+        self.org_id = org_id            # type: str
+        self.org_name = org_name        # type: str
+
+    def validate(self):
+        self.validate_required(self.url_object, 'url_object')
+        self.validate_required(self.org_id, 'org_id')
+        self.validate_required(self.org_name, 'org_name')
+
+    def to_map(self):
+        result = {}
+        result['UrlObject'] = self.url_object
+        result['OrgId'] = self.org_id
+        result['OrgName'] = self.org_name
+        return result
+
+    def from_map(self, map={}):
+        self.url_object = map.get('UrlObject')
+        self.org_id = map.get('OrgId')
+        self.org_name = map.get('OrgName')
+        return self
+
+
+class RunMedQARequest(TeaModel):
+    def __init__(self, question=None, org_id=None, org_name=None):
+        self.question = question        # type: str
+        self.org_id = org_id            # type: str
+        self.org_name = org_name        # type: str
+
+    def validate(self):
+        self.validate_required(self.question, 'question')
+        self.validate_required(self.org_id, 'org_id')
+        self.validate_required(self.org_name, 'org_name')
+
+    def to_map(self):
+        result = {}
+        result['Question'] = self.question
+        result['OrgId'] = self.org_id
+        result['OrgName'] = self.org_name
+        return result
+
+    def from_map(self, map={}):
+        self.question = map.get('Question')
+        self.org_id = map.get('OrgId')
+        self.org_name = map.get('OrgName')
+        return self
+
+
+class RunMedQAResponse(TeaModel):
+    def __init__(self, request_id=None, data=None):
+        self.request_id = request_id    # type: str
+        self.data = data                # type: RunMedQAResponseData
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        else:
+            result['Data'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            temp_model = RunMedQAResponseData()
+            self.data = temp_model.from_map(map['Data'])
+        else:
+            self.data = None
+        return self
+
+
+class RunMedQAResponseData(TeaModel):
+    def __init__(self, answer=None, similar_question=None):
+        self.answer = answer            # type: str
+        self.similar_question = similar_question  # type: List[str]
+
+    def validate(self):
+        self.validate_required(self.answer, 'answer')
+        self.validate_required(self.similar_question, 'similar_question')
+
+    def to_map(self):
+        result = {}
+        result['Answer'] = self.answer
+        result['SimilarQuestion'] = self.similar_question
+        return result
+
+    def from_map(self, map={}):
+        self.answer = map.get('Answer')
+        self.similar_question = map.get('SimilarQuestion')
+        return self
 
 
 class DetectKneeKeypointXRayRequest(TeaModel):
@@ -828,19 +1001,23 @@ class CalcCACSResponse(TeaModel):
 
 
 class CalcCACSResponseData(TeaModel):
-    def __init__(self, score=None):
+    def __init__(self, score=None, result_url=None):
         self.score = score              # type: str
+        self.result_url = result_url    # type: str
 
     def validate(self):
         self.validate_required(self.score, 'score')
+        self.validate_required(self.result_url, 'result_url')
 
     def to_map(self):
         result = {}
         result['Score'] = self.score
+        result['ResultUrl'] = self.result_url
         return result
 
     def from_map(self, map={}):
         self.score = map.get('Score')
+        self.result_url = map.get('ResultUrl')
         return self
 
 

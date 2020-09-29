@@ -21,6 +21,84 @@ class Client(RPCClient):
         self.check_config(config)
         self._endpoint = self.get_endpoint("imageprocess", self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
+    def detect_skin_disease(self, request, runtime):
+        UtilClient.validate_model(request)
+        return imageprocess_20200320_models.DetectSkinDiseaseResponse().from_map(self.do_request("DetectSkinDisease", "HTTPS", "POST", "2020-03-20", "AK", None, request.to_map(), runtime))
+
+    def detect_skin_disease_advance(self, request, runtime):
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type="access_key",
+            endpoint="openplatform.aliyuncs.com",
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product="imageprocess",
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse(
+
+        )
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type="access_key",
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField(
+
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+
+        )
+        upload_request = oss_models.PostObjectRequest(
+
+        )
+        oss_runtime = ossutil_models.RuntimeOptions(
+
+        )
+        RPCUtilClient.convert(runtime, oss_runtime)
+        detect_skin_diseasereq = imageprocess_20200320_models.DetectSkinDiseaseRequest(
+
+        )
+        RPCUtilClient.convert(request, detect_skin_diseasereq)
+        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = RPCUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.url_object,
+            content_type=""
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status="201"
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        oss_client.post_object(upload_request, oss_runtime)
+        detect_skin_diseasereq.url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        detect_skin_disease_resp = self.detect_skin_disease(detect_skin_diseasereq, runtime)
+        return detect_skin_disease_resp
+
+    def run_med_qa(self, request, runtime):
+        UtilClient.validate_model(request)
+        return imageprocess_20200320_models.RunMedQAResponse().from_map(self.do_request("RunMedQA", "HTTPS", "POST", "2020-03-20", "AK", None, request.to_map(), runtime))
+
     def detect_knee_keypoint_xray(self, request, runtime):
         UtilClient.validate_model(request)
         return imageprocess_20200320_models.DetectKneeKeypointXRayResponse().from_map(self.do_request("DetectKneeKeypointXRay", "HTTPS", "POST", "2020-03-20", "AK", None, request.to_map(), runtime))
