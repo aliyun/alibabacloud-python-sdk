@@ -1,12 +1,94 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
+from typing import BinaryIO, List
+
+
+class SegmentSkinRequest(TeaModel):
+    def __init__(self, url=None):
+        self.url = url                  # type: str
+
+    def validate(self):
+        self.validate_required(self.url, 'url')
+
+    def to_map(self):
+        result = {}
+        result['URL'] = self.url
+        return result
+
+    def from_map(self, map={}):
+        self.url = map.get('URL')
+        return self
+
+
+class SegmentSkinResponse(TeaModel):
+    def __init__(self, request_id=None, data=None):
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentSkinResponseData
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        else:
+            result['Data'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            temp_model = SegmentSkinResponseData()
+            self.data = temp_model.from_map(map['Data'])
+        else:
+            self.data = None
+        return self
+
+
+class SegmentSkinResponseData(TeaModel):
+    def __init__(self, url=None):
+        self.url = url                  # type: str
+
+    def validate(self):
+        self.validate_required(self.url, 'url')
+
+    def to_map(self):
+        result = {}
+        result['URL'] = self.url
+        return result
+
+    def from_map(self, map={}):
+        self.url = map.get('URL')
+        return self
+
+
+class SegmentSkinAdvanceRequest(TeaModel):
+    def __init__(self, urlobject=None):
+        self.urlobject = urlobject      # type: BinaryIO
+
+    def validate(self):
+        self.validate_required(self.urlobject, 'urlobject')
+
+    def to_map(self):
+        result = {}
+        result['URLObject'] = self.urlobject
+        return result
+
+    def from_map(self, map={}):
+        self.urlobject = map.get('URLObject')
+        return self
 
 
 class ChangeSkyRequest(TeaModel):
     def __init__(self, image_url=None, replace_image_url=None):
-        self.image_url = image_url
-        self.replace_image_url = replace_image_url
+        self.image_url = image_url      # type: str
+        self.replace_image_url = replace_image_url  # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -26,8 +108,8 @@ class ChangeSkyRequest(TeaModel):
 
 class ChangeSkyResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: ChangeSkyResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: ChangeSkyResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -56,7 +138,7 @@ class ChangeSkyResponse(TeaModel):
 
 class ChangeSkyResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -73,8 +155,8 @@ class ChangeSkyResponseData(TeaModel):
 
 class ChangeSkyAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None, replace_image_url=None):
-        self.image_urlobject = image_urlobject
-        self.replace_image_url = replace_image_url
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+        self.replace_image_url = replace_image_url  # type: str
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -94,7 +176,7 @@ class ChangeSkyAdvanceRequest(TeaModel):
 
 class SegmentLogoRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -111,8 +193,8 @@ class SegmentLogoRequest(TeaModel):
 
 class SegmentLogoResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentLogoResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentLogoResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -141,7 +223,7 @@ class SegmentLogoResponse(TeaModel):
 
 class SegmentLogoResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -158,7 +240,7 @@ class SegmentLogoResponseData(TeaModel):
 
 class SegmentLogoAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -175,7 +257,7 @@ class SegmentLogoAdvanceRequest(TeaModel):
 
 class SegmentSceneRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -192,8 +274,8 @@ class SegmentSceneRequest(TeaModel):
 
 class SegmentSceneResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentSceneResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentSceneResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -222,7 +304,7 @@ class SegmentSceneResponse(TeaModel):
 
 class SegmentSceneResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -239,7 +321,7 @@ class SegmentSceneResponseData(TeaModel):
 
 class SegmentSceneAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -256,7 +338,7 @@ class SegmentSceneAdvanceRequest(TeaModel):
 
 class SegmentFoodRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -273,8 +355,8 @@ class SegmentFoodRequest(TeaModel):
 
 class SegmentFoodResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentFoodResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentFoodResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -303,7 +385,7 @@ class SegmentFoodResponse(TeaModel):
 
 class SegmentFoodResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -320,7 +402,7 @@ class SegmentFoodResponseData(TeaModel):
 
 class SegmentFoodAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -337,7 +419,7 @@ class SegmentFoodAdvanceRequest(TeaModel):
 
 class SegmentClothRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -354,8 +436,8 @@ class SegmentClothRequest(TeaModel):
 
 class SegmentClothResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentClothResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentClothResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -384,7 +466,7 @@ class SegmentClothResponse(TeaModel):
 
 class SegmentClothResponseDataElements(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -401,7 +483,7 @@ class SegmentClothResponseDataElements(TeaModel):
 
 class SegmentClothResponseData(TeaModel):
     def __init__(self, elements=None):
-        self.elements = elements
+        self.elements = elements        # type: List[SegmentClothResponseDataElements]
 
     def validate(self):
         self.validate_required(self.elements, 'elements')
@@ -433,7 +515,7 @@ class SegmentClothResponseData(TeaModel):
 
 class SegmentClothAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -450,7 +532,7 @@ class SegmentClothAdvanceRequest(TeaModel):
 
 class SegmentAnimalRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -467,8 +549,8 @@ class SegmentAnimalRequest(TeaModel):
 
 class SegmentAnimalResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentAnimalResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentAnimalResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -497,7 +579,7 @@ class SegmentAnimalResponse(TeaModel):
 
 class SegmentAnimalResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -514,7 +596,7 @@ class SegmentAnimalResponseData(TeaModel):
 
 class SegmentAnimalAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -531,7 +613,7 @@ class SegmentAnimalAdvanceRequest(TeaModel):
 
 class SegmentHDBodyRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -548,8 +630,8 @@ class SegmentHDBodyRequest(TeaModel):
 
 class SegmentHDBodyResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentHDBodyResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentHDBodyResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -578,7 +660,7 @@ class SegmentHDBodyResponse(TeaModel):
 
 class SegmentHDBodyResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -595,7 +677,7 @@ class SegmentHDBodyResponseData(TeaModel):
 
 class SegmentHDBodyAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -612,7 +694,7 @@ class SegmentHDBodyAdvanceRequest(TeaModel):
 
 class SegmentSkyRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -629,8 +711,8 @@ class SegmentSkyRequest(TeaModel):
 
 class SegmentSkyResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentSkyResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentSkyResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -659,7 +741,7 @@ class SegmentSkyResponse(TeaModel):
 
 class SegmentSkyResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -676,7 +758,7 @@ class SegmentSkyResponseData(TeaModel):
 
 class SegmentSkyAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -693,7 +775,7 @@ class SegmentSkyAdvanceRequest(TeaModel):
 
 class GetAsyncJobResultRequest(TeaModel):
     def __init__(self, job_id=None):
-        self.job_id = job_id
+        self.job_id = job_id            # type: str
 
     def validate(self):
         self.validate_required(self.job_id, 'job_id')
@@ -710,8 +792,8 @@ class GetAsyncJobResultRequest(TeaModel):
 
 class GetAsyncJobResultResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: GetAsyncJobResultResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: GetAsyncJobResultResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -740,11 +822,11 @@ class GetAsyncJobResultResponse(TeaModel):
 
 class GetAsyncJobResultResponseData(TeaModel):
     def __init__(self, error_code=None, error_message=None, job_id=None, result=None, status=None):
-        self.error_code = error_code
-        self.error_message = error_message
-        self.job_id = job_id
-        self.result = result
-        self.status = status
+        self.error_code = error_code    # type: str
+        self.error_message = error_message  # type: str
+        self.job_id = job_id            # type: str
+        self.result = result            # type: str
+        self.status = status            # type: str
 
     def validate(self):
         self.validate_required(self.error_code, 'error_code')
@@ -773,7 +855,7 @@ class GetAsyncJobResultResponseData(TeaModel):
 
 class SegmentFurnitureRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -790,8 +872,8 @@ class SegmentFurnitureRequest(TeaModel):
 
 class SegmentFurnitureResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentFurnitureResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentFurnitureResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -820,7 +902,7 @@ class SegmentFurnitureResponse(TeaModel):
 
 class SegmentFurnitureResponseDataElements(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -837,7 +919,7 @@ class SegmentFurnitureResponseDataElements(TeaModel):
 
 class SegmentFurnitureResponseData(TeaModel):
     def __init__(self, elements=None):
-        self.elements = elements
+        self.elements = elements        # type: List[SegmentFurnitureResponseDataElements]
 
     def validate(self):
         self.validate_required(self.elements, 'elements')
@@ -869,7 +951,7 @@ class SegmentFurnitureResponseData(TeaModel):
 
 class SegmentFurnitureAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -886,8 +968,8 @@ class SegmentFurnitureAdvanceRequest(TeaModel):
 
 class RefineMaskRequest(TeaModel):
     def __init__(self, mask_image_url=None, image_url=None):
-        self.mask_image_url = mask_image_url
-        self.image_url = image_url
+        self.mask_image_url = mask_image_url  # type: str
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.mask_image_url, 'mask_image_url')
@@ -907,8 +989,8 @@ class RefineMaskRequest(TeaModel):
 
 class RefineMaskResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: RefineMaskResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: RefineMaskResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -937,7 +1019,7 @@ class RefineMaskResponse(TeaModel):
 
 class RefineMaskResponseDataElements(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -954,7 +1036,7 @@ class RefineMaskResponseDataElements(TeaModel):
 
 class RefineMaskResponseData(TeaModel):
     def __init__(self, elements=None):
-        self.elements = elements
+        self.elements = elements        # type: List[RefineMaskResponseDataElements]
 
     def validate(self):
         self.validate_required(self.elements, 'elements')
@@ -986,8 +1068,8 @@ class RefineMaskResponseData(TeaModel):
 
 class RefineMaskAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None, mask_image_url=None):
-        self.image_urlobject = image_urlobject
-        self.mask_image_url = mask_image_url
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+        self.mask_image_url = mask_image_url  # type: str
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -1007,7 +1089,7 @@ class RefineMaskAdvanceRequest(TeaModel):
 
 class ParseFaceRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1024,8 +1106,8 @@ class ParseFaceRequest(TeaModel):
 
 class ParseFaceResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: ParseFaceResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: ParseFaceResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1054,8 +1136,8 @@ class ParseFaceResponse(TeaModel):
 
 class ParseFaceResponseDataElements(TeaModel):
     def __init__(self, name=None, image_url=None):
-        self.name = name
-        self.image_url = image_url
+        self.name = name                # type: str
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.name, 'name')
@@ -1075,8 +1157,8 @@ class ParseFaceResponseDataElements(TeaModel):
 
 class ParseFaceResponseData(TeaModel):
     def __init__(self, origin_image_url=None, elements=None):
-        self.origin_image_url = origin_image_url
-        self.elements = elements
+        self.origin_image_url = origin_image_url  # type: str
+        self.elements = elements        # type: List[ParseFaceResponseDataElements]
 
     def validate(self):
         self.validate_required(self.origin_image_url, 'origin_image_url')
@@ -1111,7 +1193,7 @@ class ParseFaceResponseData(TeaModel):
 
 class ParseFaceAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -1128,7 +1210,7 @@ class ParseFaceAdvanceRequest(TeaModel):
 
 class SegmentVehicleRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1145,8 +1227,8 @@ class SegmentVehicleRequest(TeaModel):
 
 class SegmentVehicleResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentVehicleResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentVehicleResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1175,8 +1257,8 @@ class SegmentVehicleResponse(TeaModel):
 
 class SegmentVehicleResponseDataElements(TeaModel):
     def __init__(self, origin_image_url=None, image_url=None):
-        self.origin_image_url = origin_image_url
-        self.image_url = image_url
+        self.origin_image_url = origin_image_url  # type: str
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.origin_image_url, 'origin_image_url')
@@ -1196,7 +1278,7 @@ class SegmentVehicleResponseDataElements(TeaModel):
 
 class SegmentVehicleResponseData(TeaModel):
     def __init__(self, elements=None):
-        self.elements = elements
+        self.elements = elements        # type: List[SegmentVehicleResponseDataElements]
 
     def validate(self):
         self.validate_required(self.elements, 'elements')
@@ -1228,7 +1310,7 @@ class SegmentVehicleResponseData(TeaModel):
 
 class SegmentVehicleAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -1245,7 +1327,7 @@ class SegmentVehicleAdvanceRequest(TeaModel):
 
 class SegmentHairRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1262,8 +1344,8 @@ class SegmentHairRequest(TeaModel):
 
 class SegmentHairResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentHairResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentHairResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1292,11 +1374,11 @@ class SegmentHairResponse(TeaModel):
 
 class SegmentHairResponseDataElements(TeaModel):
     def __init__(self, image_url=None, x=None, y=None, width=None, height=None):
-        self.image_url = image_url
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
+        self.image_url = image_url      # type: str
+        self.x = x                      # type: int
+        self.y = y                      # type: int
+        self.width = width              # type: int
+        self.height = height            # type: int
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1325,7 +1407,7 @@ class SegmentHairResponseDataElements(TeaModel):
 
 class SegmentHairResponseData(TeaModel):
     def __init__(self, elements=None):
-        self.elements = elements
+        self.elements = elements        # type: List[SegmentHairResponseDataElements]
 
     def validate(self):
         self.validate_required(self.elements, 'elements')
@@ -1357,7 +1439,7 @@ class SegmentHairResponseData(TeaModel):
 
 class SegmentHairAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -1374,7 +1456,7 @@ class SegmentHairAdvanceRequest(TeaModel):
 
 class SegmentFaceRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1391,8 +1473,8 @@ class SegmentFaceRequest(TeaModel):
 
 class SegmentFaceResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentFaceResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentFaceResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1421,11 +1503,11 @@ class SegmentFaceResponse(TeaModel):
 
 class SegmentFaceResponseDataElements(TeaModel):
     def __init__(self, image_url=None, x=None, y=None, width=None, height=None):
-        self.image_url = image_url
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
+        self.image_url = image_url      # type: str
+        self.x = x                      # type: int
+        self.y = y                      # type: int
+        self.width = width              # type: int
+        self.height = height            # type: int
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1454,7 +1536,7 @@ class SegmentFaceResponseDataElements(TeaModel):
 
 class SegmentFaceResponseData(TeaModel):
     def __init__(self, elements=None):
-        self.elements = elements
+        self.elements = elements        # type: List[SegmentFaceResponseDataElements]
 
     def validate(self):
         self.validate_required(self.elements, 'elements')
@@ -1486,7 +1568,7 @@ class SegmentFaceResponseData(TeaModel):
 
 class SegmentFaceAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -1503,7 +1585,7 @@ class SegmentFaceAdvanceRequest(TeaModel):
 
 class SegmentHeadRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1520,8 +1602,8 @@ class SegmentHeadRequest(TeaModel):
 
 class SegmentHeadResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentHeadResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentHeadResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1550,11 +1632,11 @@ class SegmentHeadResponse(TeaModel):
 
 class SegmentHeadResponseDataElements(TeaModel):
     def __init__(self, image_url=None, x=None, y=None, width=None, height=None):
-        self.image_url = image_url
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
+        self.image_url = image_url      # type: str
+        self.x = x                      # type: int
+        self.y = y                      # type: int
+        self.width = width              # type: int
+        self.height = height            # type: int
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1583,7 +1665,7 @@ class SegmentHeadResponseDataElements(TeaModel):
 
 class SegmentHeadResponseData(TeaModel):
     def __init__(self, elements=None):
-        self.elements = elements
+        self.elements = elements        # type: List[SegmentHeadResponseDataElements]
 
     def validate(self):
         self.validate_required(self.elements, 'elements')
@@ -1615,7 +1697,7 @@ class SegmentHeadResponseData(TeaModel):
 
 class SegmentHeadAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -1632,7 +1714,7 @@ class SegmentHeadAdvanceRequest(TeaModel):
 
 class SegmentCommodityRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1649,8 +1731,8 @@ class SegmentCommodityRequest(TeaModel):
 
 class SegmentCommodityResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentCommodityResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentCommodityResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1679,7 +1761,7 @@ class SegmentCommodityResponse(TeaModel):
 
 class SegmentCommodityResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1696,7 +1778,7 @@ class SegmentCommodityResponseData(TeaModel):
 
 class SegmentCommodityAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -1713,8 +1795,8 @@ class SegmentCommodityAdvanceRequest(TeaModel):
 
 class SegmentBodyRequest(TeaModel):
     def __init__(self, image_url=None, async_=None):
-        self.image_url = image_url
-        self.async_ = async_
+        self.image_url = image_url      # type: str
+        self.async_ = async_            # type: bool
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1733,8 +1815,8 @@ class SegmentBodyRequest(TeaModel):
 
 class SegmentBodyResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentBodyResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentBodyResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1763,7 +1845,7 @@ class SegmentBodyResponse(TeaModel):
 
 class SegmentBodyResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1780,8 +1862,8 @@ class SegmentBodyResponseData(TeaModel):
 
 class SegmentBodyAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None, async_=None):
-        self.image_urlobject = image_urlobject
-        self.async_ = async_
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+        self.async_ = async_            # type: bool
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -1800,7 +1882,7 @@ class SegmentBodyAdvanceRequest(TeaModel):
 
 class SegmentCommonImageRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1817,8 +1899,8 @@ class SegmentCommonImageRequest(TeaModel):
 
 class SegmentCommonImageResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SegmentCommonImageResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentCommonImageResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1847,7 +1929,7 @@ class SegmentCommonImageResponse(TeaModel):
 
 class SegmentCommonImageResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1864,7 +1946,7 @@ class SegmentCommonImageResponseData(TeaModel):
 
 class SegmentCommonImageAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')

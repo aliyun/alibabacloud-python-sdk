@@ -21,6 +21,80 @@ class Client(RPCClient):
         self.check_config(config)
         self._endpoint = self.get_endpoint("imageseg", self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
+    def segment_skin(self, request, runtime):
+        UtilClient.validate_model(request)
+        return imageseg_20191230_models.SegmentSkinResponse().from_map(self.do_request("SegmentSkin", "HTTPS", "POST", "2019-12-30", "AK", None, request.to_map(), runtime))
+
+    def segment_skin_advance(self, request, runtime):
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type="access_key",
+            endpoint="openplatform.aliyuncs.com",
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product="imageseg",
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse(
+
+        )
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type="access_key",
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField(
+
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+
+        )
+        upload_request = oss_models.PostObjectRequest(
+
+        )
+        oss_runtime = ossutil_models.RuntimeOptions(
+
+        )
+        RPCUtilClient.convert(runtime, oss_runtime)
+        segment_skinreq = imageseg_20191230_models.SegmentSkinRequest(
+
+        )
+        RPCUtilClient.convert(request, segment_skinreq)
+        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = RPCUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.urlobject,
+            content_type=""
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status="201"
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        oss_client.post_object(upload_request, oss_runtime)
+        segment_skinreq.url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        segment_skin_resp = self.segment_skin(segment_skinreq, runtime)
+        return segment_skin_resp
+
     def change_sky(self, request, runtime):
         UtilClient.validate_model(request)
         return imageseg_20191230_models.ChangeSkyResponse().from_map(self.do_request("ChangeSky", "HTTPS", "POST", "2019-12-30", "AK", None, request.to_map(), runtime))
