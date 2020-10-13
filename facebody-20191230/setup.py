@@ -25,28 +25,33 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_facebody20191230.
 
-Created on 09/09/2020
+Created on 13/10/2020
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_facebody20191230"
-NAME = "alibabacloud_facebody20191230"
+NAME = "alibabacloud_facebody20191230" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud facebody (20191230) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
 URL = "https://github.com/aliyun/alibabacloud-sdk"
+REQUIRES = ["alibabacloud_oss_sdk>=0.0.4, <1.0.0","alibabacloud_openplatform20191219>=1.0.2, <2.0.0","alibabacloud_rpc_util>=0.0.3, <1.0.0","alibabacloud_tea_rpc>=0.0.6, <1.0.0","alibabacloud_oss_util>=0.0.2, <1.0.0","alibabacloud_tea_util>=0.2.0, <1.0.0","alibabacloud_tea_fileform>=0.0.3, <1.0.0","alibabacloud_endpoint_util>=0.0.2, <1.0.0"]
 
-TOPDIR = os.path.dirname(__file__) or "."
-VERSION = __import__(PACKAGE).__version__
-REQUIRES = ["alibabacloud_oss_sdk>=0.0.3, <1.0.0","alibabacloud_openplatform20191219>=1.0.2, <2.0.0","alibabacloud_rpc_util>=0.0.3, <1.0.0","alibabacloud_tea_rpc>=0.0.5, <1.0.0","alibabacloud_oss_util>=0.0.2, <1.0.0","alibabacloud_tea_util>=0.2.0, <1.0.0","alibabacloud_tea_fileform>=0.0.3, <1.0.0","alibabacloud_endpoint_util>=0.0.2, <1.0.0"]
+try:
+    VERSION = __import__(PACKAGE).__version__
+except AttributeError:
+    VERSION = '1.0.0'
 
-if sys.version_info[0] == 2:
-    with open("README.md") as fp:
-        LONG_DESCRIPTION = fp.read()
-else:
-    with open("README.md", encoding='utf-8') as fp:
-        LONG_DESCRIPTION = fp.read()
+LONG_DESCRIPTION = ''
+if os.path.exists('./README.md'):
+    if sys.version_info[0] == 2:
+        with open("README.md") as fp:
+            LONG_DESCRIPTION = fp.read()
+    else:
+        with open("README.md", encoding='utf-8') as fp:
+            LONG_DESCRIPTION = fp.read()
+
 
 setup(
     name=NAME,
@@ -67,8 +72,6 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",

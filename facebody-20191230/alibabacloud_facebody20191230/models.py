@@ -1,11 +1,586 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
+from typing import List, BinaryIO
+
+
+class PedestrianDetectAttributeRequest(TeaModel):
+    def __init__(self, image_url=None):
+        self.image_url = image_url      # type: str
+
+    def validate(self):
+        self.validate_required(self.image_url, 'image_url')
+
+    def to_map(self):
+        result = {}
+        result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, map={}):
+        self.image_url = map.get('ImageURL')
+        return self
+
+
+class PedestrianDetectAttributeResponse(TeaModel):
+    def __init__(self, request_id=None, data=None):
+        self.request_id = request_id    # type: str
+        self.data = data                # type: PedestrianDetectAttributeResponseData
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        else:
+            result['Data'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            temp_model = PedestrianDetectAttributeResponseData()
+            self.data = temp_model.from_map(map['Data'])
+        else:
+            self.data = None
+        return self
+
+
+class PedestrianDetectAttributeResponseDataAttributesAge(TeaModel):
+    def __init__(self, name=None, score=None):
+        self.name = name                # type: str
+        self.score = score              # type: float
+
+    def validate(self):
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.score, 'score')
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['Score'] = self.score
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.score = map.get('Score')
+        return self
+
+
+class PedestrianDetectAttributeResponseDataAttributesBackpack(TeaModel):
+    def __init__(self, name=None, score=None):
+        self.name = name                # type: str
+        self.score = score              # type: float
+
+    def validate(self):
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.score, 'score')
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['Score'] = self.score
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.score = map.get('Score')
+        return self
+
+
+class PedestrianDetectAttributeResponseDataAttributesGender(TeaModel):
+    def __init__(self, name=None, score=None):
+        self.name = name                # type: str
+        self.score = score              # type: float
+
+    def validate(self):
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.score, 'score')
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['Score'] = self.score
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.score = map.get('Score')
+        return self
+
+
+class PedestrianDetectAttributeResponseDataAttributesGlasses(TeaModel):
+    def __init__(self, name=None, score=None):
+        self.name = name                # type: str
+        self.score = score              # type: float
+
+    def validate(self):
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.score, 'score')
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['Score'] = self.score
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.score = map.get('Score')
+        return self
+
+
+class PedestrianDetectAttributeResponseDataAttributesHandbag(TeaModel):
+    def __init__(self, name=None, score=None):
+        self.name = name                # type: str
+        self.score = score              # type: float
+
+    def validate(self):
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.score, 'score')
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['Score'] = self.score
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.score = map.get('Score')
+        return self
+
+
+class PedestrianDetectAttributeResponseDataAttributesHat(TeaModel):
+    def __init__(self, name=None, score=None):
+        self.name = name                # type: str
+        self.score = score              # type: float
+
+    def validate(self):
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.score, 'score')
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['Score'] = self.score
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.score = map.get('Score')
+        return self
+
+
+class PedestrianDetectAttributeResponseDataAttributesLowerColor(TeaModel):
+    def __init__(self, name=None, score=None):
+        self.name = name                # type: str
+        self.score = score              # type: float
+
+    def validate(self):
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.score, 'score')
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['Score'] = self.score
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.score = map.get('Score')
+        return self
+
+
+class PedestrianDetectAttributeResponseDataAttributesLowerWear(TeaModel):
+    def __init__(self, name=None, score=None):
+        self.name = name                # type: str
+        self.score = score              # type: float
+
+    def validate(self):
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.score, 'score')
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['Score'] = self.score
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.score = map.get('Score')
+        return self
+
+
+class PedestrianDetectAttributeResponseDataAttributesOrient(TeaModel):
+    def __init__(self, name=None, score=None):
+        self.name = name                # type: str
+        self.score = score              # type: float
+
+    def validate(self):
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.score, 'score')
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['Score'] = self.score
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.score = map.get('Score')
+        return self
+
+
+class PedestrianDetectAttributeResponseDataAttributesShoulderBag(TeaModel):
+    def __init__(self, name=None, score=None):
+        self.name = name                # type: str
+        self.score = score              # type: float
+
+    def validate(self):
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.score, 'score')
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['Score'] = self.score
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.score = map.get('Score')
+        return self
+
+
+class PedestrianDetectAttributeResponseDataAttributesUpperColor(TeaModel):
+    def __init__(self, name=None, score=None):
+        self.name = name                # type: str
+        self.score = score              # type: float
+
+    def validate(self):
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.score, 'score')
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['Score'] = self.score
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.score = map.get('Score')
+        return self
+
+
+class PedestrianDetectAttributeResponseDataAttributesUpperWear(TeaModel):
+    def __init__(self, name=None, score=None):
+        self.name = name                # type: str
+        self.score = score              # type: float
+
+    def validate(self):
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.score, 'score')
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['Score'] = self.score
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.score = map.get('Score')
+        return self
+
+
+class PedestrianDetectAttributeResponseDataAttributes(TeaModel):
+    def __init__(self, age=None, backpack=None, gender=None, glasses=None, handbag=None, hat=None, lower_color=None,
+                 lower_wear=None, orient=None, shoulder_bag=None, upper_color=None, upper_wear=None):
+        self.age = age                  # type: PedestrianDetectAttributeResponseDataAttributesAge
+        self.backpack = backpack        # type: PedestrianDetectAttributeResponseDataAttributesBackpack
+        self.gender = gender            # type: PedestrianDetectAttributeResponseDataAttributesGender
+        self.glasses = glasses          # type: PedestrianDetectAttributeResponseDataAttributesGlasses
+        self.handbag = handbag          # type: PedestrianDetectAttributeResponseDataAttributesHandbag
+        self.hat = hat                  # type: PedestrianDetectAttributeResponseDataAttributesHat
+        self.lower_color = lower_color  # type: PedestrianDetectAttributeResponseDataAttributesLowerColor
+        self.lower_wear = lower_wear    # type: PedestrianDetectAttributeResponseDataAttributesLowerWear
+        self.orient = orient            # type: PedestrianDetectAttributeResponseDataAttributesOrient
+        self.shoulder_bag = shoulder_bag  # type: PedestrianDetectAttributeResponseDataAttributesShoulderBag
+        self.upper_color = upper_color  # type: PedestrianDetectAttributeResponseDataAttributesUpperColor
+        self.upper_wear = upper_wear    # type: PedestrianDetectAttributeResponseDataAttributesUpperWear
+
+    def validate(self):
+        self.validate_required(self.age, 'age')
+        if self.age:
+            self.age.validate()
+        self.validate_required(self.backpack, 'backpack')
+        if self.backpack:
+            self.backpack.validate()
+        self.validate_required(self.gender, 'gender')
+        if self.gender:
+            self.gender.validate()
+        self.validate_required(self.glasses, 'glasses')
+        if self.glasses:
+            self.glasses.validate()
+        self.validate_required(self.handbag, 'handbag')
+        if self.handbag:
+            self.handbag.validate()
+        self.validate_required(self.hat, 'hat')
+        if self.hat:
+            self.hat.validate()
+        self.validate_required(self.lower_color, 'lower_color')
+        if self.lower_color:
+            self.lower_color.validate()
+        self.validate_required(self.lower_wear, 'lower_wear')
+        if self.lower_wear:
+            self.lower_wear.validate()
+        self.validate_required(self.orient, 'orient')
+        if self.orient:
+            self.orient.validate()
+        self.validate_required(self.shoulder_bag, 'shoulder_bag')
+        if self.shoulder_bag:
+            self.shoulder_bag.validate()
+        self.validate_required(self.upper_color, 'upper_color')
+        if self.upper_color:
+            self.upper_color.validate()
+        self.validate_required(self.upper_wear, 'upper_wear')
+        if self.upper_wear:
+            self.upper_wear.validate()
+
+    def to_map(self):
+        result = {}
+        if self.age is not None:
+            result['Age'] = self.age.to_map()
+        else:
+            result['Age'] = None
+        if self.backpack is not None:
+            result['Backpack'] = self.backpack.to_map()
+        else:
+            result['Backpack'] = None
+        if self.gender is not None:
+            result['Gender'] = self.gender.to_map()
+        else:
+            result['Gender'] = None
+        if self.glasses is not None:
+            result['Glasses'] = self.glasses.to_map()
+        else:
+            result['Glasses'] = None
+        if self.handbag is not None:
+            result['Handbag'] = self.handbag.to_map()
+        else:
+            result['Handbag'] = None
+        if self.hat is not None:
+            result['Hat'] = self.hat.to_map()
+        else:
+            result['Hat'] = None
+        if self.lower_color is not None:
+            result['LowerColor'] = self.lower_color.to_map()
+        else:
+            result['LowerColor'] = None
+        if self.lower_wear is not None:
+            result['LowerWear'] = self.lower_wear.to_map()
+        else:
+            result['LowerWear'] = None
+        if self.orient is not None:
+            result['Orient'] = self.orient.to_map()
+        else:
+            result['Orient'] = None
+        if self.shoulder_bag is not None:
+            result['ShoulderBag'] = self.shoulder_bag.to_map()
+        else:
+            result['ShoulderBag'] = None
+        if self.upper_color is not None:
+            result['UpperColor'] = self.upper_color.to_map()
+        else:
+            result['UpperColor'] = None
+        if self.upper_wear is not None:
+            result['UpperWear'] = self.upper_wear.to_map()
+        else:
+            result['UpperWear'] = None
+        return result
+
+    def from_map(self, map={}):
+        if map.get('Age') is not None:
+            temp_model = PedestrianDetectAttributeResponseDataAttributesAge()
+            self.age = temp_model.from_map(map['Age'])
+        else:
+            self.age = None
+        if map.get('Backpack') is not None:
+            temp_model = PedestrianDetectAttributeResponseDataAttributesBackpack()
+            self.backpack = temp_model.from_map(map['Backpack'])
+        else:
+            self.backpack = None
+        if map.get('Gender') is not None:
+            temp_model = PedestrianDetectAttributeResponseDataAttributesGender()
+            self.gender = temp_model.from_map(map['Gender'])
+        else:
+            self.gender = None
+        if map.get('Glasses') is not None:
+            temp_model = PedestrianDetectAttributeResponseDataAttributesGlasses()
+            self.glasses = temp_model.from_map(map['Glasses'])
+        else:
+            self.glasses = None
+        if map.get('Handbag') is not None:
+            temp_model = PedestrianDetectAttributeResponseDataAttributesHandbag()
+            self.handbag = temp_model.from_map(map['Handbag'])
+        else:
+            self.handbag = None
+        if map.get('Hat') is not None:
+            temp_model = PedestrianDetectAttributeResponseDataAttributesHat()
+            self.hat = temp_model.from_map(map['Hat'])
+        else:
+            self.hat = None
+        if map.get('LowerColor') is not None:
+            temp_model = PedestrianDetectAttributeResponseDataAttributesLowerColor()
+            self.lower_color = temp_model.from_map(map['LowerColor'])
+        else:
+            self.lower_color = None
+        if map.get('LowerWear') is not None:
+            temp_model = PedestrianDetectAttributeResponseDataAttributesLowerWear()
+            self.lower_wear = temp_model.from_map(map['LowerWear'])
+        else:
+            self.lower_wear = None
+        if map.get('Orient') is not None:
+            temp_model = PedestrianDetectAttributeResponseDataAttributesOrient()
+            self.orient = temp_model.from_map(map['Orient'])
+        else:
+            self.orient = None
+        if map.get('ShoulderBag') is not None:
+            temp_model = PedestrianDetectAttributeResponseDataAttributesShoulderBag()
+            self.shoulder_bag = temp_model.from_map(map['ShoulderBag'])
+        else:
+            self.shoulder_bag = None
+        if map.get('UpperColor') is not None:
+            temp_model = PedestrianDetectAttributeResponseDataAttributesUpperColor()
+            self.upper_color = temp_model.from_map(map['UpperColor'])
+        else:
+            self.upper_color = None
+        if map.get('UpperWear') is not None:
+            temp_model = PedestrianDetectAttributeResponseDataAttributesUpperWear()
+            self.upper_wear = temp_model.from_map(map['UpperWear'])
+        else:
+            self.upper_wear = None
+        return self
+
+
+class PedestrianDetectAttributeResponseDataBoxes(TeaModel):
+    def __init__(self, score=None, top_left_x=None, top_left_y=None, bottom_right_x=None, bottom_right_y=None):
+        self.score = score              # type: float
+        self.top_left_x = top_left_x    # type: float
+        self.top_left_y = top_left_y    # type: float
+        self.bottom_right_x = bottom_right_x  # type: float
+        self.bottom_right_y = bottom_right_y  # type: float
+
+    def validate(self):
+        self.validate_required(self.score, 'score')
+        self.validate_required(self.top_left_x, 'top_left_x')
+        self.validate_required(self.top_left_y, 'top_left_y')
+        self.validate_required(self.bottom_right_x, 'bottom_right_x')
+        self.validate_required(self.bottom_right_y, 'bottom_right_y')
+
+    def to_map(self):
+        result = {}
+        result['Score'] = self.score
+        result['TopLeftX'] = self.top_left_x
+        result['TopLeftY'] = self.top_left_y
+        result['BottomRightX'] = self.bottom_right_x
+        result['BottomRightY'] = self.bottom_right_y
+        return result
+
+    def from_map(self, map={}):
+        self.score = map.get('Score')
+        self.top_left_x = map.get('TopLeftX')
+        self.top_left_y = map.get('TopLeftY')
+        self.bottom_right_x = map.get('BottomRightX')
+        self.bottom_right_y = map.get('BottomRightY')
+        return self
+
+
+class PedestrianDetectAttributeResponseData(TeaModel):
+    def __init__(self, person_number=None, attributes=None, boxes=None):
+        self.person_number = person_number  # type: int
+        self.attributes = attributes    # type: List[PedestrianDetectAttributeResponseDataAttributes]
+        self.boxes = boxes              # type: List[PedestrianDetectAttributeResponseDataBoxes]
+
+    def validate(self):
+        self.validate_required(self.person_number, 'person_number')
+        self.validate_required(self.attributes, 'attributes')
+        if self.attributes:
+            for k in self.attributes:
+                if k:
+                    k.validate()
+        self.validate_required(self.boxes, 'boxes')
+        if self.boxes:
+            for k in self.boxes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['PersonNumber'] = self.person_number
+        result['Attributes'] = []
+        if self.attributes is not None:
+            for k in self.attributes:
+                result['Attributes'].append(k.to_map() if k else None)
+        else:
+            result['Attributes'] = None
+        result['Boxes'] = []
+        if self.boxes is not None:
+            for k in self.boxes:
+                result['Boxes'].append(k.to_map() if k else None)
+        else:
+            result['Boxes'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.person_number = map.get('PersonNumber')
+        self.attributes = []
+        if map.get('Attributes') is not None:
+            for k in map.get('Attributes'):
+                temp_model = PedestrianDetectAttributeResponseDataAttributes()
+                self.attributes.append(temp_model.from_map(k))
+        else:
+            self.attributes = None
+        self.boxes = []
+        if map.get('Boxes') is not None:
+            for k in map.get('Boxes'):
+                temp_model = PedestrianDetectAttributeResponseDataBoxes()
+                self.boxes.append(temp_model.from_map(k))
+        else:
+            self.boxes = None
+        return self
+
+
+class PedestrianDetectAttributeAdvanceRequest(TeaModel):
+    def __init__(self, image_urlobject=None):
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        result = {}
+        result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, map={}):
+        self.image_urlobject = map.get('ImageURLObject')
+        return self
 
 
 class DetectChefCapRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -22,8 +597,8 @@ class DetectChefCapRequest(TeaModel):
 
 class DetectChefCapResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectChefCapResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectChefCapResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -52,9 +627,9 @@ class DetectChefCapResponse(TeaModel):
 
 class DetectChefCapResponseDataElements(TeaModel):
     def __init__(self, category=None, confidence=None, box=None):
-        self.category = category
-        self.confidence = confidence
-        self.box = box
+        self.category = category        # type: str
+        self.confidence = confidence    # type: float
+        self.box = box                  # type: List[float]
 
     def validate(self):
         self.validate_required(self.category, 'category')
@@ -77,7 +652,7 @@ class DetectChefCapResponseDataElements(TeaModel):
 
 class DetectChefCapResponseData(TeaModel):
     def __init__(self, elements=None):
-        self.elements = elements
+        self.elements = elements        # type: List[DetectChefCapResponseDataElements]
 
     def validate(self):
         self.validate_required(self.elements, 'elements')
@@ -109,7 +684,7 @@ class DetectChefCapResponseData(TeaModel):
 
 class DetectChefCapAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -126,8 +701,8 @@ class DetectChefCapAdvanceRequest(TeaModel):
 
 class ExtractPedestrianFeatureAttrRequest(TeaModel):
     def __init__(self, image_url=None, mode=None):
-        self.image_url = image_url
-        self.mode = mode
+        self.image_url = image_url      # type: str
+        self.mode = mode                # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -146,8 +721,8 @@ class ExtractPedestrianFeatureAttrRequest(TeaModel):
 
 class ExtractPedestrianFeatureAttrResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: ExtractPedestrianFeatureAttrResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: ExtractPedestrianFeatureAttrResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -179,24 +754,24 @@ class ExtractPedestrianFeatureAttrResponseData(TeaModel):
                  upper_color_score=None, upper_type=None, upper_type_score=None, lower_color=None, lower_color_score=None,
                  lower_type=None, lower_type_score=None, gender=None, gender_score=None, hair=None, hair_score=None, age=None,
                  age_score=None):
-        self.obj_type = obj_type
-        self.obj_type_score = obj_type_score
-        self.feature = feature
-        self.quality_score = quality_score
-        self.upper_color = upper_color
-        self.upper_color_score = upper_color_score
-        self.upper_type = upper_type
-        self.upper_type_score = upper_type_score
-        self.lower_color = lower_color
-        self.lower_color_score = lower_color_score
-        self.lower_type = lower_type
-        self.lower_type_score = lower_type_score
-        self.gender = gender
-        self.gender_score = gender_score
-        self.hair = hair
-        self.hair_score = hair_score
-        self.age = age
-        self.age_score = age_score
+        self.obj_type = obj_type        # type: str
+        self.obj_type_score = obj_type_score  # type: float
+        self.feature = feature          # type: str
+        self.quality_score = quality_score  # type: float
+        self.upper_color = upper_color  # type: str
+        self.upper_color_score = upper_color_score  # type: float
+        self.upper_type = upper_type    # type: str
+        self.upper_type_score = upper_type_score  # type: float
+        self.lower_color = lower_color  # type: str
+        self.lower_color_score = lower_color_score  # type: float
+        self.lower_type = lower_type    # type: str
+        self.lower_type_score = lower_type_score  # type: float
+        self.gender = gender            # type: str
+        self.gender_score = gender_score  # type: float
+        self.hair = hair                # type: str
+        self.hair_score = hair_score    # type: float
+        self.age = age                  # type: str
+        self.age_score = age_score      # type: float
 
     def validate(self):
         self.validate_required(self.obj_type, 'obj_type')
@@ -264,8 +839,8 @@ class ExtractPedestrianFeatureAttrResponseData(TeaModel):
 
 class ExtractPedestrianFeatureAttrAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None, mode=None):
-        self.image_urlobject = image_urlobject
-        self.mode = mode
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+        self.mode = mode                # type: str
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -284,9 +859,9 @@ class ExtractPedestrianFeatureAttrAdvanceRequest(TeaModel):
 
 class DetectIPCPedestrianRequest(TeaModel):
     def __init__(self, image_data=None, width=None, height=None):
-        self.image_data = image_data
-        self.width = width
-        self.height = height
+        self.image_data = image_data    # type: str
+        self.width = width              # type: int
+        self.height = height            # type: int
 
     def validate(self):
         pass
@@ -307,8 +882,8 @@ class DetectIPCPedestrianRequest(TeaModel):
 
 class DetectIPCPedestrianResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectIPCPedestrianResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectIPCPedestrianResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -337,8 +912,8 @@ class DetectIPCPedestrianResponse(TeaModel):
 
 class DetectIPCPedestrianResponseDataImageInfoListElements(TeaModel):
     def __init__(self, score=None, boxes=None):
-        self.score = score
-        self.boxes = boxes
+        self.score = score              # type: float
+        self.boxes = boxes              # type: List[int]
 
     def validate(self):
         self.validate_required(self.score, 'score')
@@ -358,10 +933,10 @@ class DetectIPCPedestrianResponseDataImageInfoListElements(TeaModel):
 
 class DetectIPCPedestrianResponseDataImageInfoList(TeaModel):
     def __init__(self, error_code=None, error_message=None, data_id=None, elements=None):
-        self.error_code = error_code
-        self.error_message = error_message
-        self.data_id = data_id
-        self.elements = elements
+        self.error_code = error_code    # type: str
+        self.error_message = error_message  # type: str
+        self.data_id = data_id          # type: str
+        self.elements = elements        # type: List[DetectIPCPedestrianResponseDataImageInfoListElements]
 
     def validate(self):
         self.validate_required(self.error_code, 'error_code')
@@ -402,7 +977,7 @@ class DetectIPCPedestrianResponseDataImageInfoList(TeaModel):
 
 class DetectIPCPedestrianResponseData(TeaModel):
     def __init__(self, image_info_list=None):
-        self.image_info_list = image_info_list
+        self.image_info_list = image_info_list  # type: List[DetectIPCPedestrianResponseDataImageInfoList]
 
     def validate(self):
         self.validate_required(self.image_info_list, 'image_info_list')
@@ -434,7 +1009,7 @@ class DetectIPCPedestrianResponseData(TeaModel):
 
 class BlurFaceRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -451,8 +1026,8 @@ class BlurFaceRequest(TeaModel):
 
 class BlurFaceResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: BlurFaceResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: BlurFaceResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -481,7 +1056,7 @@ class BlurFaceResponse(TeaModel):
 
 class BlurFaceResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -498,7 +1073,7 @@ class BlurFaceResponseData(TeaModel):
 
 class BlurFaceAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -514,26 +1089,29 @@ class BlurFaceAdvanceRequest(TeaModel):
 
 
 class ExtractPedestrianFeatureAttributeRequest(TeaModel):
-    def __init__(self, image_url=None):
-        self.image_url = image_url
+    def __init__(self, mode=None, image_url=None):
+        self.mode = mode                # type: str
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
 
     def to_map(self):
         result = {}
+        result['Mode'] = self.mode
         result['ImageURL'] = self.image_url
         return result
 
     def from_map(self, map={}):
+        self.mode = map.get('Mode')
         self.image_url = map.get('ImageURL')
         return self
 
 
 class ExtractPedestrianFeatureAttributeResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: ExtractPedestrianFeatureAttributeResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: ExtractPedestrianFeatureAttributeResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -565,24 +1143,24 @@ class ExtractPedestrianFeatureAttributeResponseData(TeaModel):
                  upper_color_score=None, upper_type=None, upper_type_score=None, lower_color=None, lower_color_score=None,
                  lower_type=None, lower_type_score=None, gender=None, gender_score=None, hair=None, hair_score=None, age=None,
                  age_score=None):
-        self.obj_type = obj_type
-        self.obj_type_score = obj_type_score
-        self.feature = feature
-        self.quality_score = quality_score
-        self.upper_color = upper_color
-        self.upper_color_score = upper_color_score
-        self.upper_type = upper_type
-        self.upper_type_score = upper_type_score
-        self.lower_color = lower_color
-        self.lower_color_score = lower_color_score
-        self.lower_type = lower_type
-        self.lower_type_score = lower_type_score
-        self.gender = gender
-        self.gender_score = gender_score
-        self.hair = hair
-        self.hair_score = hair_score
-        self.age = age
-        self.age_score = age_score
+        self.obj_type = obj_type        # type: str
+        self.obj_type_score = obj_type_score  # type: float
+        self.feature = feature          # type: str
+        self.quality_score = quality_score  # type: float
+        self.upper_color = upper_color  # type: str
+        self.upper_color_score = upper_color_score  # type: float
+        self.upper_type = upper_type    # type: str
+        self.upper_type_score = upper_type_score  # type: float
+        self.lower_color = lower_color  # type: str
+        self.lower_color_score = lower_color_score  # type: float
+        self.lower_type = lower_type    # type: str
+        self.lower_type_score = lower_type_score  # type: float
+        self.gender = gender            # type: str
+        self.gender_score = gender_score  # type: float
+        self.hair = hair                # type: str
+        self.hair_score = hair_score    # type: float
+        self.age = age                  # type: str
+        self.age_score = age_score      # type: float
 
     def validate(self):
         self.validate_required(self.obj_type, 'obj_type')
@@ -648,26 +1226,9 @@ class ExtractPedestrianFeatureAttributeResponseData(TeaModel):
         return self
 
 
-class ExtractPedestrianFeatureAttributeAdvanceRequest(TeaModel):
-    def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
-
-    def to_map(self):
-        result = {}
-        result['ImageURLObject'] = self.image_urlobject
-        return result
-
-    def from_map(self, map={}):
-        self.image_urlobject = map.get('ImageURLObject')
-        return self
-
-
 class DetectCelebrityRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -684,8 +1245,8 @@ class DetectCelebrityRequest(TeaModel):
 
 class DetectCelebrityResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectCelebrityResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectCelebrityResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -714,8 +1275,8 @@ class DetectCelebrityResponse(TeaModel):
 
 class DetectCelebrityResponseDataFaceRecognizeResults(TeaModel):
     def __init__(self, name=None, face_boxes=None):
-        self.name = name
-        self.face_boxes = face_boxes
+        self.name = name                # type: str
+        self.face_boxes = face_boxes    # type: List[float]
 
     def validate(self):
         self.validate_required(self.name, 'name')
@@ -735,9 +1296,9 @@ class DetectCelebrityResponseDataFaceRecognizeResults(TeaModel):
 
 class DetectCelebrityResponseData(TeaModel):
     def __init__(self, width=None, height=None, face_recognize_results=None):
-        self.width = width
-        self.height = height
-        self.face_recognize_results = face_recognize_results
+        self.width = width              # type: int
+        self.height = height            # type: int
+        self.face_recognize_results = face_recognize_results  # type: List[DetectCelebrityResponseDataFaceRecognizeResults]
 
     def validate(self):
         self.validate_required(self.width, 'width')
@@ -775,7 +1336,7 @@ class DetectCelebrityResponseData(TeaModel):
 
 class DetectCelebrityAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -792,8 +1353,8 @@ class DetectCelebrityAdvanceRequest(TeaModel):
 
 class VerifyFaceMaskRequest(TeaModel):
     def __init__(self, image_url=None, ref_url=None):
-        self.image_url = image_url
-        self.ref_url = ref_url
+        self.image_url = image_url      # type: str
+        self.ref_url = ref_url          # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -813,8 +1374,8 @@ class VerifyFaceMaskRequest(TeaModel):
 
 class VerifyFaceMaskResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: VerifyFaceMaskResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: VerifyFaceMaskResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -844,12 +1405,12 @@ class VerifyFaceMaskResponse(TeaModel):
 class VerifyFaceMaskResponseData(TeaModel):
     def __init__(self, confidence=None, mask=None, mask_ref=None, rectangle=None, rectangle_ref=None,
                  thresholds=None):
-        self.confidence = confidence
-        self.mask = mask
-        self.mask_ref = mask_ref
-        self.rectangle = rectangle
-        self.rectangle_ref = rectangle_ref
-        self.thresholds = thresholds
+        self.confidence = confidence    # type: float
+        self.mask = mask                # type: int
+        self.mask_ref = mask_ref        # type: int
+        self.rectangle = rectangle      # type: List[int]
+        self.rectangle_ref = rectangle_ref  # type: List[int]
+        self.thresholds = thresholds    # type: List[float]
 
     def validate(self):
         self.validate_required(self.confidence, 'confidence')
@@ -881,8 +1442,8 @@ class VerifyFaceMaskResponseData(TeaModel):
 
 class VerifyFaceMaskAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None, ref_url=None):
-        self.image_urlobject = image_urlobject
-        self.ref_url = ref_url
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+        self.ref_url = ref_url          # type: str
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -902,9 +1463,9 @@ class VerifyFaceMaskAdvanceRequest(TeaModel):
 
 class RecognizeActionRequest(TeaModel):
     def __init__(self, urllist=None, type=None, video_url=None):
-        self.urllist = urllist
-        self.type = type
-        self.video_url = video_url
+        self.urllist = urllist          # type: List[RecognizeActionRequestURLList]
+        self.type = type                # type: int
+        self.video_url = video_url      # type: str
 
     def validate(self):
         if self.urllist:
@@ -940,7 +1501,7 @@ class RecognizeActionRequest(TeaModel):
 
 class RecognizeActionRequestURLList(TeaModel):
     def __init__(self, url=None):
-        self.url = url
+        self.url = url                  # type: str
 
     def validate(self):
         pass
@@ -957,8 +1518,8 @@ class RecognizeActionRequestURLList(TeaModel):
 
 class RecognizeActionResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: RecognizeActionResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: RecognizeActionResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -987,7 +1548,7 @@ class RecognizeActionResponse(TeaModel):
 
 class RecognizeActionResponseDataElementsBoxes(TeaModel):
     def __init__(self, box=None):
-        self.box = box
+        self.box = box                  # type: List[int]
 
     def validate(self):
         self.validate_required(self.box, 'box')
@@ -1004,10 +1565,10 @@ class RecognizeActionResponseDataElementsBoxes(TeaModel):
 
 class RecognizeActionResponseDataElements(TeaModel):
     def __init__(self, timestamp=None, boxes=None, scores=None, labels=None):
-        self.timestamp = timestamp
-        self.boxes = boxes
-        self.scores = scores
-        self.labels = labels
+        self.timestamp = timestamp      # type: int
+        self.boxes = boxes              # type: List[RecognizeActionResponseDataElementsBoxes]
+        self.scores = scores            # type: List[float]
+        self.labels = labels            # type: List[str]
 
     def validate(self):
         self.validate_required(self.timestamp, 'timestamp')
@@ -1048,7 +1609,7 @@ class RecognizeActionResponseDataElements(TeaModel):
 
 class RecognizeActionResponseData(TeaModel):
     def __init__(self, elements=None):
-        self.elements = elements
+        self.elements = elements        # type: List[RecognizeActionResponseDataElements]
 
     def validate(self):
         self.validate_required(self.elements, 'elements')
@@ -1080,7 +1641,7 @@ class RecognizeActionResponseData(TeaModel):
 
 class DetectVideoLivingFaceRequest(TeaModel):
     def __init__(self, video_url=None):
-        self.video_url = video_url
+        self.video_url = video_url      # type: str
 
     def validate(self):
         self.validate_required(self.video_url, 'video_url')
@@ -1097,8 +1658,8 @@ class DetectVideoLivingFaceRequest(TeaModel):
 
 class DetectVideoLivingFaceResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectVideoLivingFaceResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectVideoLivingFaceResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1127,9 +1688,9 @@ class DetectVideoLivingFaceResponse(TeaModel):
 
 class DetectVideoLivingFaceResponseDataElements(TeaModel):
     def __init__(self, live_confidence=None, face_confidence=None, rect=None):
-        self.live_confidence = live_confidence
-        self.face_confidence = face_confidence
-        self.rect = rect
+        self.live_confidence = live_confidence  # type: float
+        self.face_confidence = face_confidence  # type: float
+        self.rect = rect                # type: List[int]
 
     def validate(self):
         self.validate_required(self.live_confidence, 'live_confidence')
@@ -1152,7 +1713,7 @@ class DetectVideoLivingFaceResponseDataElements(TeaModel):
 
 class DetectVideoLivingFaceResponseData(TeaModel):
     def __init__(self, elements=None):
-        self.elements = elements
+        self.elements = elements        # type: List[DetectVideoLivingFaceResponseDataElements]
 
     def validate(self):
         self.validate_required(self.elements, 'elements')
@@ -1184,7 +1745,7 @@ class DetectVideoLivingFaceResponseData(TeaModel):
 
 class DetectVideoLivingFaceAdvanceRequest(TeaModel):
     def __init__(self, video_url_object=None):
-        self.video_url_object = video_url_object
+        self.video_url_object = video_url_object  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.video_url_object, 'video_url_object')
@@ -1201,9 +1762,9 @@ class DetectVideoLivingFaceAdvanceRequest(TeaModel):
 
 class SwapFacialFeaturesRequest(TeaModel):
     def __init__(self, source_image_url=None, edit_part=None, target_image_url=None):
-        self.source_image_url = source_image_url
-        self.edit_part = edit_part
-        self.target_image_url = target_image_url
+        self.source_image_url = source_image_url  # type: str
+        self.edit_part = edit_part      # type: str
+        self.target_image_url = target_image_url  # type: str
 
     def validate(self):
         self.validate_required(self.source_image_url, 'source_image_url')
@@ -1226,8 +1787,8 @@ class SwapFacialFeaturesRequest(TeaModel):
 
 class SwapFacialFeaturesResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SwapFacialFeaturesResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SwapFacialFeaturesResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1256,7 +1817,7 @@ class SwapFacialFeaturesResponse(TeaModel):
 
 class SwapFacialFeaturesResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1273,9 +1834,9 @@ class SwapFacialFeaturesResponseData(TeaModel):
 
 class SwapFacialFeaturesAdvanceRequest(TeaModel):
     def __init__(self, source_image_urlobject=None, edit_part=None, target_image_url=None):
-        self.source_image_urlobject = source_image_urlobject
-        self.edit_part = edit_part
-        self.target_image_url = target_image_url
+        self.source_image_urlobject = source_image_urlobject  # type: BinaryIO
+        self.edit_part = edit_part      # type: str
+        self.target_image_url = target_image_url  # type: str
 
     def validate(self):
         self.validate_required(self.source_image_urlobject, 'source_image_urlobject')
@@ -1298,9 +1859,9 @@ class SwapFacialFeaturesAdvanceRequest(TeaModel):
 
 class AddFaceEntityRequest(TeaModel):
     def __init__(self, db_name=None, entity_id=None, labels=None):
-        self.db_name = db_name
-        self.entity_id = entity_id
-        self.labels = labels
+        self.db_name = db_name          # type: str
+        self.entity_id = entity_id      # type: str
+        self.labels = labels            # type: str
 
     def validate(self):
         self.validate_required(self.db_name, 'db_name')
@@ -1322,7 +1883,7 @@ class AddFaceEntityRequest(TeaModel):
 
 class AddFaceEntityResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1339,8 +1900,8 @@ class AddFaceEntityResponse(TeaModel):
 
 class DeleteFaceEntityRequest(TeaModel):
     def __init__(self, db_name=None, entity_id=None):
-        self.db_name = db_name
-        self.entity_id = entity_id
+        self.db_name = db_name          # type: str
+        self.entity_id = entity_id      # type: str
 
     def validate(self):
         self.validate_required(self.db_name, 'db_name')
@@ -1360,7 +1921,7 @@ class DeleteFaceEntityRequest(TeaModel):
 
 class DeleteFaceEntityResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1378,13 +1939,13 @@ class DeleteFaceEntityResponse(TeaModel):
 class ListFaceEntitiesRequest(TeaModel):
     def __init__(self, db_name=None, offset=None, limit=None, token=None, labels=None, entity_id_prefix=None,
                  order=None):
-        self.db_name = db_name
-        self.offset = offset
-        self.limit = limit
-        self.token = token
-        self.labels = labels
-        self.entity_id_prefix = entity_id_prefix
-        self.order = order
+        self.db_name = db_name          # type: str
+        self.offset = offset            # type: int
+        self.limit = limit              # type: int
+        self.token = token              # type: str
+        self.labels = labels            # type: str
+        self.entity_id_prefix = entity_id_prefix  # type: str
+        self.order = order              # type: str
 
     def validate(self):
         self.validate_required(self.db_name, 'db_name')
@@ -1413,8 +1974,8 @@ class ListFaceEntitiesRequest(TeaModel):
 
 class ListFaceEntitiesResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: ListFaceEntitiesResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: ListFaceEntitiesResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1443,12 +2004,12 @@ class ListFaceEntitiesResponse(TeaModel):
 
 class ListFaceEntitiesResponseDataEntities(TeaModel):
     def __init__(self, db_name=None, entity_id=None, face_count=None, labels=None, created_at=None, updated_at=None):
-        self.db_name = db_name
-        self.entity_id = entity_id
-        self.face_count = face_count
-        self.labels = labels
-        self.created_at = created_at
-        self.updated_at = updated_at
+        self.db_name = db_name          # type: str
+        self.entity_id = entity_id      # type: str
+        self.face_count = face_count    # type: int
+        self.labels = labels            # type: str
+        self.created_at = created_at    # type: int
+        self.updated_at = updated_at    # type: int
 
     def validate(self):
         self.validate_required(self.db_name, 'db_name')
@@ -1480,9 +2041,9 @@ class ListFaceEntitiesResponseDataEntities(TeaModel):
 
 class ListFaceEntitiesResponseData(TeaModel):
     def __init__(self, token=None, total_count=None, entities=None):
-        self.token = token
-        self.total_count = total_count
-        self.entities = entities
+        self.token = token              # type: str
+        self.total_count = total_count  # type: int
+        self.entities = entities        # type: List[ListFaceEntitiesResponseDataEntities]
 
     def validate(self):
         self.validate_required(self.token, 'token')
@@ -1520,8 +2081,8 @@ class ListFaceEntitiesResponseData(TeaModel):
 
 class GetFaceEntityRequest(TeaModel):
     def __init__(self, db_name=None, entity_id=None):
-        self.db_name = db_name
-        self.entity_id = entity_id
+        self.db_name = db_name          # type: str
+        self.entity_id = entity_id      # type: str
 
     def validate(self):
         self.validate_required(self.db_name, 'db_name')
@@ -1541,8 +2102,8 @@ class GetFaceEntityRequest(TeaModel):
 
 class GetFaceEntityResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: GetFaceEntityResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: GetFaceEntityResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1571,7 +2132,7 @@ class GetFaceEntityResponse(TeaModel):
 
 class GetFaceEntityResponseDataFaces(TeaModel):
     def __init__(self, face_id=None):
-        self.face_id = face_id
+        self.face_id = face_id          # type: str
 
     def validate(self):
         self.validate_required(self.face_id, 'face_id')
@@ -1588,10 +2149,10 @@ class GetFaceEntityResponseDataFaces(TeaModel):
 
 class GetFaceEntityResponseData(TeaModel):
     def __init__(self, db_name=None, entity_id=None, labels=None, faces=None):
-        self.db_name = db_name
-        self.entity_id = entity_id
-        self.labels = labels
-        self.faces = faces
+        self.db_name = db_name          # type: str
+        self.entity_id = entity_id      # type: str
+        self.labels = labels            # type: str
+        self.faces = faces              # type: List[GetFaceEntityResponseDataFaces]
 
     def validate(self):
         self.validate_required(self.db_name, 'db_name')
@@ -1632,9 +2193,9 @@ class GetFaceEntityResponseData(TeaModel):
 
 class UpdateFaceEntityRequest(TeaModel):
     def __init__(self, db_name=None, entity_id=None, labels=None):
-        self.db_name = db_name
-        self.entity_id = entity_id
-        self.labels = labels
+        self.db_name = db_name          # type: str
+        self.entity_id = entity_id      # type: str
+        self.labels = labels            # type: str
 
     def validate(self):
         self.validate_required(self.db_name, 'db_name')
@@ -1656,7 +2217,7 @@ class UpdateFaceEntityRequest(TeaModel):
 
 class UpdateFaceEntityResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1673,10 +2234,10 @@ class UpdateFaceEntityResponse(TeaModel):
 
 class FaceMakeupRequest(TeaModel):
     def __init__(self, image_url=None, makeup_type=None, resource_type=None, strength=None):
-        self.image_url = image_url
-        self.makeup_type = makeup_type
-        self.resource_type = resource_type
-        self.strength = strength
+        self.image_url = image_url      # type: str
+        self.makeup_type = makeup_type  # type: str
+        self.resource_type = resource_type  # type: str
+        self.strength = strength        # type: float
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1702,8 +2263,8 @@ class FaceMakeupRequest(TeaModel):
 
 class FaceMakeupResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: FaceMakeupResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: FaceMakeupResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1732,7 +2293,7 @@ class FaceMakeupResponse(TeaModel):
 
 class FaceMakeupResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1749,10 +2310,10 @@ class FaceMakeupResponseData(TeaModel):
 
 class FaceMakeupAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None, makeup_type=None, resource_type=None, strength=None):
-        self.image_urlobject = image_urlobject
-        self.makeup_type = makeup_type
-        self.resource_type = resource_type
-        self.strength = strength
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+        self.makeup_type = makeup_type  # type: str
+        self.resource_type = resource_type  # type: str
+        self.strength = strength        # type: float
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -1778,7 +2339,7 @@ class FaceMakeupAdvanceRequest(TeaModel):
 
 class HandPostureRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1795,8 +2356,8 @@ class HandPostureRequest(TeaModel):
 
 class HandPostureResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: HandPostureResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: HandPostureResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1825,7 +2386,7 @@ class HandPostureResponse(TeaModel):
 
 class HandPostureResponseDataOutputsResultsBoxPositions(TeaModel):
     def __init__(self, points=None):
-        self.points = points
+        self.points = points            # type: List[float]
 
     def validate(self):
         self.validate_required(self.points, 'points')
@@ -1842,8 +2403,8 @@ class HandPostureResponseDataOutputsResultsBoxPositions(TeaModel):
 
 class HandPostureResponseDataOutputsResultsBox(TeaModel):
     def __init__(self, confident=None, positions=None):
-        self.confident = confident
-        self.positions = positions
+        self.confident = confident      # type: float
+        self.positions = positions      # type: List[HandPostureResponseDataOutputsResultsBoxPositions]
 
     def validate(self):
         self.validate_required(self.confident, 'confident')
@@ -1878,7 +2439,7 @@ class HandPostureResponseDataOutputsResultsBox(TeaModel):
 
 class HandPostureResponseDataOutputsResultsHandsKeyPointsPositions(TeaModel):
     def __init__(self, points=None):
-        self.points = points
+        self.points = points            # type: List[float]
 
     def validate(self):
         self.validate_required(self.points, 'points')
@@ -1895,8 +2456,8 @@ class HandPostureResponseDataOutputsResultsHandsKeyPointsPositions(TeaModel):
 
 class HandPostureResponseDataOutputsResultsHandsKeyPoints(TeaModel):
     def __init__(self, label=None, positions=None):
-        self.label = label
-        self.positions = positions
+        self.label = label              # type: str
+        self.positions = positions      # type: List[HandPostureResponseDataOutputsResultsHandsKeyPointsPositions]
 
     def validate(self):
         self.validate_required(self.label, 'label')
@@ -1931,8 +2492,8 @@ class HandPostureResponseDataOutputsResultsHandsKeyPoints(TeaModel):
 
 class HandPostureResponseDataOutputsResultsHands(TeaModel):
     def __init__(self, confident=None, key_points=None):
-        self.confident = confident
-        self.key_points = key_points
+        self.confident = confident      # type: float
+        self.key_points = key_points    # type: List[HandPostureResponseDataOutputsResultsHandsKeyPoints]
 
     def validate(self):
         self.validate_required(self.confident, 'confident')
@@ -1967,8 +2528,8 @@ class HandPostureResponseDataOutputsResultsHands(TeaModel):
 
 class HandPostureResponseDataOutputsResults(TeaModel):
     def __init__(self, box=None, hands=None):
-        self.box = box  # type: HandPostureResponseDataOutputsResultsBox
-        self.hands = hands  # type: HandPostureResponseDataOutputsResultsHands
+        self.box = box                  # type: HandPostureResponseDataOutputsResultsBox
+        self.hands = hands              # type: HandPostureResponseDataOutputsResultsHands
 
     def validate(self):
         self.validate_required(self.box, 'box')
@@ -2006,8 +2567,8 @@ class HandPostureResponseDataOutputsResults(TeaModel):
 
 class HandPostureResponseDataOutputs(TeaModel):
     def __init__(self, hand_count=None, results=None):
-        self.hand_count = hand_count
-        self.results = results
+        self.hand_count = hand_count    # type: int
+        self.results = results          # type: List[HandPostureResponseDataOutputsResults]
 
     def validate(self):
         self.validate_required(self.hand_count, 'hand_count')
@@ -2042,8 +2603,8 @@ class HandPostureResponseDataOutputs(TeaModel):
 
 class HandPostureResponseDataMetaObject(TeaModel):
     def __init__(self, height=None, width=None):
-        self.height = height
-        self.width = width
+        self.height = height            # type: int
+        self.width = width              # type: int
 
     def validate(self):
         self.validate_required(self.height, 'height')
@@ -2063,7 +2624,7 @@ class HandPostureResponseDataMetaObject(TeaModel):
 
 class HandPostureResponseData(TeaModel):
     def __init__(self, outputs=None, meta_object=None):
-        self.outputs = outputs
+        self.outputs = outputs          # type: List[HandPostureResponseDataOutputs]
         self.meta_object = meta_object  # type: HandPostureResponseDataMetaObject
 
     def validate(self):
@@ -2108,7 +2669,7 @@ class HandPostureResponseData(TeaModel):
 
 class HandPostureAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -2125,7 +2686,7 @@ class HandPostureAdvanceRequest(TeaModel):
 
 class BodyPostureRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -2142,8 +2703,8 @@ class BodyPostureRequest(TeaModel):
 
 class BodyPostureResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: BodyPostureResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: BodyPostureResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2172,7 +2733,7 @@ class BodyPostureResponse(TeaModel):
 
 class BodyPostureResponseDataOutputsResultsBodiesPositions(TeaModel):
     def __init__(self, points=None):
-        self.points = points
+        self.points = points            # type: List[float]
 
     def validate(self):
         self.validate_required(self.points, 'points')
@@ -2189,9 +2750,9 @@ class BodyPostureResponseDataOutputsResultsBodiesPositions(TeaModel):
 
 class BodyPostureResponseDataOutputsResultsBodies(TeaModel):
     def __init__(self, confident=None, label=None, positions=None):
-        self.confident = confident
-        self.label = label
-        self.positions = positions
+        self.confident = confident      # type: float
+        self.label = label              # type: str
+        self.positions = positions      # type: List[BodyPostureResponseDataOutputsResultsBodiesPositions]
 
     def validate(self):
         self.validate_required(self.confident, 'confident')
@@ -2229,7 +2790,7 @@ class BodyPostureResponseDataOutputsResultsBodies(TeaModel):
 
 class BodyPostureResponseDataOutputsResults(TeaModel):
     def __init__(self, bodies=None):
-        self.bodies = bodies
+        self.bodies = bodies            # type: List[BodyPostureResponseDataOutputsResultsBodies]
 
     def validate(self):
         self.validate_required(self.bodies, 'bodies')
@@ -2261,8 +2822,8 @@ class BodyPostureResponseDataOutputsResults(TeaModel):
 
 class BodyPostureResponseDataOutputs(TeaModel):
     def __init__(self, human_count=None, results=None):
-        self.human_count = human_count
-        self.results = results
+        self.human_count = human_count  # type: int
+        self.results = results          # type: List[BodyPostureResponseDataOutputsResults]
 
     def validate(self):
         self.validate_required(self.human_count, 'human_count')
@@ -2297,8 +2858,8 @@ class BodyPostureResponseDataOutputs(TeaModel):
 
 class BodyPostureResponseDataMetaObject(TeaModel):
     def __init__(self, height=None, width=None):
-        self.height = height
-        self.width = width
+        self.height = height            # type: int
+        self.width = width              # type: int
 
     def validate(self):
         self.validate_required(self.height, 'height')
@@ -2318,7 +2879,7 @@ class BodyPostureResponseDataMetaObject(TeaModel):
 
 class BodyPostureResponseData(TeaModel):
     def __init__(self, outputs=None, meta_object=None):
-        self.outputs = outputs
+        self.outputs = outputs          # type: List[BodyPostureResponseDataOutputs]
         self.meta_object = meta_object  # type: BodyPostureResponseDataMetaObject
 
     def validate(self):
@@ -2363,7 +2924,7 @@ class BodyPostureResponseData(TeaModel):
 
 class BodyPostureAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -2380,7 +2941,7 @@ class BodyPostureAdvanceRequest(TeaModel):
 
 class DetectPedestrianRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -2397,8 +2958,8 @@ class DetectPedestrianRequest(TeaModel):
 
 class DetectPedestrianResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectPedestrianResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectPedestrianResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2427,9 +2988,9 @@ class DetectPedestrianResponse(TeaModel):
 
 class DetectPedestrianResponseDataElements(TeaModel):
     def __init__(self, score=None, type=None, boxes=None):
-        self.score = score
-        self.type = type
-        self.boxes = boxes
+        self.score = score              # type: float
+        self.type = type                # type: str
+        self.boxes = boxes              # type: List[int]
 
     def validate(self):
         self.validate_required(self.score, 'score')
@@ -2452,9 +3013,9 @@ class DetectPedestrianResponseDataElements(TeaModel):
 
 class DetectPedestrianResponseData(TeaModel):
     def __init__(self, width=None, height=None, elements=None):
-        self.width = width
-        self.height = height
-        self.elements = elements
+        self.width = width              # type: int
+        self.height = height            # type: int
+        self.elements = elements        # type: List[DetectPedestrianResponseDataElements]
 
     def validate(self):
         self.validate_required(self.width, 'width')
@@ -2492,7 +3053,7 @@ class DetectPedestrianResponseData(TeaModel):
 
 class DetectPedestrianAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -2509,10 +3070,10 @@ class DetectPedestrianAdvanceRequest(TeaModel):
 
 class FaceBeautyRequest(TeaModel):
     def __init__(self, image_url=None, sharp=None, smooth=None, white=None):
-        self.image_url = image_url
-        self.sharp = sharp
-        self.smooth = smooth
-        self.white = white
+        self.image_url = image_url      # type: str
+        self.sharp = sharp              # type: float
+        self.smooth = smooth            # type: float
+        self.white = white              # type: float
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -2538,8 +3099,8 @@ class FaceBeautyRequest(TeaModel):
 
 class FaceBeautyResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: FaceBeautyResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: FaceBeautyResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2568,7 +3129,7 @@ class FaceBeautyResponse(TeaModel):
 
 class FaceBeautyResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -2585,10 +3146,10 @@ class FaceBeautyResponseData(TeaModel):
 
 class FaceBeautyAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None, sharp=None, smooth=None, white=None):
-        self.image_urlobject = image_urlobject
-        self.sharp = sharp
-        self.smooth = smooth
-        self.white = white
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+        self.sharp = sharp              # type: float
+        self.smooth = smooth            # type: float
+        self.white = white              # type: float
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -2614,9 +3175,9 @@ class FaceBeautyAdvanceRequest(TeaModel):
 
 class FaceFilterRequest(TeaModel):
     def __init__(self, image_url=None, resource_type=None, strength=None):
-        self.image_url = image_url
-        self.resource_type = resource_type
-        self.strength = strength
+        self.image_url = image_url      # type: str
+        self.resource_type = resource_type  # type: str
+        self.strength = strength        # type: float
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -2639,8 +3200,8 @@ class FaceFilterRequest(TeaModel):
 
 class FaceFilterResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: FaceFilterResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: FaceFilterResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2669,7 +3230,7 @@ class FaceFilterResponse(TeaModel):
 
 class FaceFilterResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -2686,9 +3247,9 @@ class FaceFilterResponseData(TeaModel):
 
 class FaceFilterAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None, resource_type=None, strength=None):
-        self.image_urlobject = image_urlobject
-        self.resource_type = resource_type
-        self.strength = strength
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+        self.resource_type = resource_type  # type: str
+        self.strength = strength        # type: float
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -2711,7 +3272,7 @@ class FaceFilterAdvanceRequest(TeaModel):
 
 class EnhanceFaceRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -2728,8 +3289,8 @@ class EnhanceFaceRequest(TeaModel):
 
 class EnhanceFaceResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: EnhanceFaceResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: EnhanceFaceResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2758,7 +3319,7 @@ class EnhanceFaceResponse(TeaModel):
 
 class EnhanceFaceResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -2775,7 +3336,7 @@ class EnhanceFaceResponseData(TeaModel):
 
 class EnhanceFaceAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -2792,9 +3353,9 @@ class EnhanceFaceAdvanceRequest(TeaModel):
 
 class FaceTidyupRequest(TeaModel):
     def __init__(self, image_url=None, shape_type=None, strength=None):
-        self.image_url = image_url
-        self.shape_type = shape_type
-        self.strength = strength
+        self.image_url = image_url      # type: str
+        self.shape_type = shape_type    # type: int
+        self.strength = strength        # type: float
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -2817,8 +3378,8 @@ class FaceTidyupRequest(TeaModel):
 
 class FaceTidyupResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: FaceTidyupResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: FaceTidyupResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2847,7 +3408,7 @@ class FaceTidyupResponse(TeaModel):
 
 class FaceTidyupResponseData(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -2864,9 +3425,9 @@ class FaceTidyupResponseData(TeaModel):
 
 class FaceTidyupAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None, shape_type=None, strength=None):
-        self.image_urlobject = image_urlobject
-        self.shape_type = shape_type
-        self.strength = strength
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+        self.shape_type = shape_type    # type: int
+        self.strength = strength        # type: float
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -2889,9 +3450,9 @@ class FaceTidyupAdvanceRequest(TeaModel):
 
 class SearchFaceRequest(TeaModel):
     def __init__(self, db_name=None, image_url=None, limit=None):
-        self.db_name = db_name
-        self.image_url = image_url
-        self.limit = limit
+        self.db_name = db_name          # type: str
+        self.image_url = image_url      # type: str
+        self.limit = limit              # type: int
 
     def validate(self):
         self.validate_required(self.db_name, 'db_name')
@@ -2914,8 +3475,8 @@ class SearchFaceRequest(TeaModel):
 
 class SearchFaceResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: SearchFaceResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SearchFaceResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2944,10 +3505,10 @@ class SearchFaceResponse(TeaModel):
 
 class SearchFaceResponseDataMatchListFaceItems(TeaModel):
     def __init__(self, face_id=None, score=None, extra_data=None, entity_id=None):
-        self.face_id = face_id
-        self.score = score
-        self.extra_data = extra_data
-        self.entity_id = entity_id
+        self.face_id = face_id          # type: str
+        self.score = score              # type: float
+        self.extra_data = extra_data    # type: str
+        self.entity_id = entity_id      # type: str
 
     def validate(self):
         self.validate_required(self.face_id, 'face_id')
@@ -2973,10 +3534,10 @@ class SearchFaceResponseDataMatchListFaceItems(TeaModel):
 
 class SearchFaceResponseDataMatchListLocation(TeaModel):
     def __init__(self, x=None, y=None, width=None, height=None):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
+        self.x = x                      # type: int
+        self.y = y                      # type: int
+        self.width = width              # type: int
+        self.height = height            # type: int
 
     def validate(self):
         self.validate_required(self.x, 'x')
@@ -3002,8 +3563,8 @@ class SearchFaceResponseDataMatchListLocation(TeaModel):
 
 class SearchFaceResponseDataMatchList(TeaModel):
     def __init__(self, face_items=None, location=None):
-        self.face_items = face_items
-        self.location = location  # type: SearchFaceResponseDataMatchListLocation
+        self.face_items = face_items    # type: List[SearchFaceResponseDataMatchListFaceItems]
+        self.location = location        # type: SearchFaceResponseDataMatchListLocation
 
     def validate(self):
         self.validate_required(self.face_items, 'face_items')
@@ -3047,7 +3608,7 @@ class SearchFaceResponseDataMatchList(TeaModel):
 
 class SearchFaceResponseData(TeaModel):
     def __init__(self, match_list=None):
-        self.match_list = match_list
+        self.match_list = match_list    # type: List[SearchFaceResponseDataMatchList]
 
     def validate(self):
         self.validate_required(self.match_list, 'match_list')
@@ -3079,9 +3640,9 @@ class SearchFaceResponseData(TeaModel):
 
 class SearchFaceAdvanceRequest(TeaModel):
     def __init__(self, image_url_object=None, db_name=None, limit=None):
-        self.image_url_object = image_url_object
-        self.db_name = db_name
-        self.limit = limit
+        self.image_url_object = image_url_object  # type: BinaryIO
+        self.db_name = db_name          # type: str
+        self.limit = limit              # type: int
 
     def validate(self):
         self.validate_required(self.image_url_object, 'image_url_object')
@@ -3119,8 +3680,8 @@ class ListFaceDbsRequest(TeaModel):
 
 class ListFaceDbsResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: ListFaceDbsResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: ListFaceDbsResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3149,7 +3710,7 @@ class ListFaceDbsResponse(TeaModel):
 
 class ListFaceDbsResponseDataDbList(TeaModel):
     def __init__(self, name=None):
-        self.name = name
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.name, 'name')
@@ -3166,7 +3727,7 @@ class ListFaceDbsResponseDataDbList(TeaModel):
 
 class ListFaceDbsResponseData(TeaModel):
     def __init__(self, db_list=None):
-        self.db_list = db_list
+        self.db_list = db_list          # type: List[ListFaceDbsResponseDataDbList]
 
     def validate(self):
         self.validate_required(self.db_list, 'db_list')
@@ -3198,7 +3759,7 @@ class ListFaceDbsResponseData(TeaModel):
 
 class CreateFaceDbRequest(TeaModel):
     def __init__(self, name=None):
-        self.name = name
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.name, 'name')
@@ -3215,7 +3776,7 @@ class CreateFaceDbRequest(TeaModel):
 
 class CreateFaceDbResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3232,8 +3793,8 @@ class CreateFaceDbResponse(TeaModel):
 
 class DeleteFaceRequest(TeaModel):
     def __init__(self, db_name=None, face_id=None):
-        self.db_name = db_name
-        self.face_id = face_id
+        self.db_name = db_name          # type: str
+        self.face_id = face_id          # type: str
 
     def validate(self):
         self.validate_required(self.db_name, 'db_name')
@@ -3253,7 +3814,7 @@ class DeleteFaceRequest(TeaModel):
 
 class DeleteFaceResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3270,7 +3831,7 @@ class DeleteFaceResponse(TeaModel):
 
 class DeleteFaceDbRequest(TeaModel):
     def __init__(self, name=None):
-        self.name = name
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.name, 'name')
@@ -3287,7 +3848,7 @@ class DeleteFaceDbRequest(TeaModel):
 
 class DeleteFaceDbResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3304,10 +3865,10 @@ class DeleteFaceDbResponse(TeaModel):
 
 class AddFaceRequest(TeaModel):
     def __init__(self, db_name=None, image_url=None, entity_id=None, extra_data=None):
-        self.db_name = db_name
-        self.image_url = image_url
-        self.entity_id = entity_id
-        self.extra_data = extra_data
+        self.db_name = db_name          # type: str
+        self.image_url = image_url      # type: str
+        self.entity_id = entity_id      # type: str
+        self.extra_data = extra_data    # type: str
 
     def validate(self):
         self.validate_required(self.db_name, 'db_name')
@@ -3332,8 +3893,8 @@ class AddFaceRequest(TeaModel):
 
 class AddFaceResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: AddFaceResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: AddFaceResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3362,7 +3923,7 @@ class AddFaceResponse(TeaModel):
 
 class AddFaceResponseData(TeaModel):
     def __init__(self, face_id=None):
-        self.face_id = face_id
+        self.face_id = face_id          # type: str
 
     def validate(self):
         self.validate_required(self.face_id, 'face_id')
@@ -3379,10 +3940,10 @@ class AddFaceResponseData(TeaModel):
 
 class AddFaceAdvanceRequest(TeaModel):
     def __init__(self, image_url_object=None, db_name=None, entity_id=None, extra_data=None):
-        self.image_url_object = image_url_object
-        self.db_name = db_name
-        self.entity_id = entity_id
-        self.extra_data = extra_data
+        self.image_url_object = image_url_object  # type: BinaryIO
+        self.db_name = db_name          # type: str
+        self.entity_id = entity_id      # type: str
+        self.extra_data = extra_data    # type: str
 
     def validate(self):
         self.validate_required(self.image_url_object, 'image_url_object')
@@ -3407,7 +3968,7 @@ class AddFaceAdvanceRequest(TeaModel):
 
 class RecognizeExpressionRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -3424,8 +3985,8 @@ class RecognizeExpressionRequest(TeaModel):
 
 class RecognizeExpressionResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: RecognizeExpressionResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: RecognizeExpressionResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3454,10 +4015,10 @@ class RecognizeExpressionResponse(TeaModel):
 
 class RecognizeExpressionResponseDataElementsFaceRectangle(TeaModel):
     def __init__(self, height=None, left=None, top=None, width=None):
-        self.height = height
-        self.left = left
-        self.top = top
-        self.width = width
+        self.height = height            # type: int
+        self.left = left                # type: int
+        self.top = top                  # type: int
+        self.width = width              # type: int
 
     def validate(self):
         self.validate_required(self.height, 'height')
@@ -3483,8 +4044,8 @@ class RecognizeExpressionResponseDataElementsFaceRectangle(TeaModel):
 
 class RecognizeExpressionResponseDataElements(TeaModel):
     def __init__(self, expression=None, face_probability=None, face_rectangle=None):
-        self.expression = expression
-        self.face_probability = face_probability
+        self.expression = expression    # type: str
+        self.face_probability = face_probability  # type: float
         self.face_rectangle = face_rectangle  # type: RecognizeExpressionResponseDataElementsFaceRectangle
 
     def validate(self):
@@ -3517,7 +4078,7 @@ class RecognizeExpressionResponseDataElements(TeaModel):
 
 class RecognizeExpressionResponseData(TeaModel):
     def __init__(self, elements=None):
-        self.elements = elements
+        self.elements = elements        # type: List[RecognizeExpressionResponseDataElements]
 
     def validate(self):
         self.validate_required(self.elements, 'elements')
@@ -3549,7 +4110,7 @@ class RecognizeExpressionResponseData(TeaModel):
 
 class RecognizeExpressionAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -3566,7 +4127,7 @@ class RecognizeExpressionAdvanceRequest(TeaModel):
 
 class RecognizePublicFaceRequest(TeaModel):
     def __init__(self, task=None):
-        self.task = task
+        self.task = task                # type: List[RecognizePublicFaceRequestTask]
 
     def validate(self):
         self.validate_required(self.task, 'task')
@@ -3598,7 +4159,7 @@ class RecognizePublicFaceRequest(TeaModel):
 
 class RecognizePublicFaceRequestTask(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -3615,8 +4176,8 @@ class RecognizePublicFaceRequestTask(TeaModel):
 
 class RecognizePublicFaceResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: RecognizePublicFaceResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: RecognizePublicFaceResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3645,9 +4206,9 @@ class RecognizePublicFaceResponse(TeaModel):
 
 class RecognizePublicFaceResponseDataElementsResultsSubResultsFaces(TeaModel):
     def __init__(self, id=None, name=None, rate=None):
-        self.id = id
-        self.name = name
-        self.rate = rate
+        self.id = id                    # type: str
+        self.name = name                # type: str
+        self.rate = rate                # type: float
 
     def validate(self):
         self.validate_required(self.id, 'id')
@@ -3670,11 +4231,11 @@ class RecognizePublicFaceResponseDataElementsResultsSubResultsFaces(TeaModel):
 
 class RecognizePublicFaceResponseDataElementsResultsSubResults(TeaModel):
     def __init__(self, h=None, w=None, x=None, y=None, faces=None):
-        self.h = h
-        self.w = w
-        self.x = x
-        self.y = y
-        self.faces = faces
+        self.h = h                      # type: float
+        self.w = w                      # type: float
+        self.x = x                      # type: float
+        self.y = y                      # type: float
+        self.faces = faces              # type: List[RecognizePublicFaceResponseDataElementsResultsSubResultsFaces]
 
     def validate(self):
         self.validate_required(self.h, 'h')
@@ -3718,10 +4279,10 @@ class RecognizePublicFaceResponseDataElementsResultsSubResults(TeaModel):
 
 class RecognizePublicFaceResponseDataElementsResults(TeaModel):
     def __init__(self, label=None, suggestion=None, rate=None, sub_results=None):
-        self.label = label
-        self.suggestion = suggestion
-        self.rate = rate
-        self.sub_results = sub_results
+        self.label = label              # type: str
+        self.suggestion = suggestion    # type: str
+        self.rate = rate                # type: float
+        self.sub_results = sub_results  # type: List[RecognizePublicFaceResponseDataElementsResultsSubResults]
 
     def validate(self):
         self.validate_required(self.label, 'label')
@@ -3762,9 +4323,9 @@ class RecognizePublicFaceResponseDataElementsResults(TeaModel):
 
 class RecognizePublicFaceResponseDataElements(TeaModel):
     def __init__(self, task_id=None, image_url=None, results=None):
-        self.task_id = task_id
-        self.image_url = image_url
-        self.results = results
+        self.task_id = task_id          # type: str
+        self.image_url = image_url      # type: str
+        self.results = results          # type: List[RecognizePublicFaceResponseDataElementsResults]
 
     def validate(self):
         self.validate_required(self.task_id, 'task_id')
@@ -3802,7 +4363,7 @@ class RecognizePublicFaceResponseDataElements(TeaModel):
 
 class RecognizePublicFaceResponseData(TeaModel):
     def __init__(self, elements=None):
-        self.elements = elements
+        self.elements = elements        # type: List[RecognizePublicFaceResponseDataElements]
 
     def validate(self):
         self.validate_required(self.elements, 'elements')
@@ -3834,7 +4395,7 @@ class RecognizePublicFaceResponseData(TeaModel):
 
 class DetectLivingFaceRequest(TeaModel):
     def __init__(self, tasks=None):
-        self.tasks = tasks
+        self.tasks = tasks              # type: List[DetectLivingFaceRequestTasks]
 
     def validate(self):
         self.validate_required(self.tasks, 'tasks')
@@ -3866,7 +4427,7 @@ class DetectLivingFaceRequest(TeaModel):
 
 class DetectLivingFaceRequestTasks(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -3883,8 +4444,8 @@ class DetectLivingFaceRequestTasks(TeaModel):
 
 class DetectLivingFaceResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectLivingFaceResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectLivingFaceResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3913,8 +4474,8 @@ class DetectLivingFaceResponse(TeaModel):
 
 class DetectLivingFaceResponseDataElementsResultsFrames(TeaModel):
     def __init__(self, rate=None, url=None):
-        self.rate = rate
-        self.url = url
+        self.rate = rate                # type: float
+        self.url = url                  # type: str
 
     def validate(self):
         self.validate_required(self.rate, 'rate')
@@ -3934,10 +4495,10 @@ class DetectLivingFaceResponseDataElementsResultsFrames(TeaModel):
 
 class DetectLivingFaceResponseDataElementsResults(TeaModel):
     def __init__(self, label=None, suggestion=None, rate=None, frames=None):
-        self.label = label
-        self.suggestion = suggestion
-        self.rate = rate
-        self.frames = frames
+        self.label = label              # type: str
+        self.suggestion = suggestion    # type: str
+        self.rate = rate                # type: float
+        self.frames = frames            # type: List[DetectLivingFaceResponseDataElementsResultsFrames]
 
     def validate(self):
         self.validate_required(self.label, 'label')
@@ -3978,9 +4539,9 @@ class DetectLivingFaceResponseDataElementsResults(TeaModel):
 
 class DetectLivingFaceResponseDataElements(TeaModel):
     def __init__(self, task_id=None, image_url=None, results=None):
-        self.task_id = task_id
-        self.image_url = image_url
-        self.results = results
+        self.task_id = task_id          # type: str
+        self.image_url = image_url      # type: str
+        self.results = results          # type: List[DetectLivingFaceResponseDataElementsResults]
 
     def validate(self):
         self.validate_required(self.task_id, 'task_id')
@@ -4018,7 +4579,7 @@ class DetectLivingFaceResponseDataElements(TeaModel):
 
 class DetectLivingFaceResponseData(TeaModel):
     def __init__(self, elements=None):
-        self.elements = elements
+        self.elements = elements        # type: List[DetectLivingFaceResponseDataElements]
 
     def validate(self):
         self.validate_required(self.elements, 'elements')
@@ -4050,7 +4611,7 @@ class DetectLivingFaceResponseData(TeaModel):
 
 class DetectBodyCountRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -4067,8 +4628,8 @@ class DetectBodyCountRequest(TeaModel):
 
 class DetectBodyCountResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectBodyCountResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectBodyCountResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -4097,7 +4658,7 @@ class DetectBodyCountResponse(TeaModel):
 
 class DetectBodyCountResponseData(TeaModel):
     def __init__(self, person_number=None):
-        self.person_number = person_number
+        self.person_number = person_number  # type: int
 
     def validate(self):
         self.validate_required(self.person_number, 'person_number')
@@ -4114,7 +4675,7 @@ class DetectBodyCountResponseData(TeaModel):
 
 class DetectBodyCountAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -4131,7 +4692,7 @@ class DetectBodyCountAdvanceRequest(TeaModel):
 
 class DetectMaskRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -4148,8 +4709,8 @@ class DetectMaskRequest(TeaModel):
 
 class DetectMaskResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectMaskResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectMaskResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -4178,8 +4739,8 @@ class DetectMaskResponse(TeaModel):
 
 class DetectMaskResponseData(TeaModel):
     def __init__(self, mask=None, face_probability=None):
-        self.mask = mask
-        self.face_probability = face_probability
+        self.mask = mask                # type: int
+        self.face_probability = face_probability  # type: float
 
     def validate(self):
         self.validate_required(self.mask, 'mask')
@@ -4199,7 +4760,7 @@ class DetectMaskResponseData(TeaModel):
 
 class DetectMaskAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -4216,7 +4777,7 @@ class DetectMaskAdvanceRequest(TeaModel):
 
 class RecognizeFaceRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -4233,8 +4794,8 @@ class RecognizeFaceRequest(TeaModel):
 
 class RecognizeFaceResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: RecognizeFaceResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: RecognizeFaceResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -4265,19 +4826,19 @@ class RecognizeFaceResponseData(TeaModel):
     def __init__(self, face_count=None, landmark_count=None, dense_feature_length=None, face_rectangles=None,
                  face_probability_list=None, pose_list=None, landmarks=None, pupils=None, gender_list=None, age_list=None,
                  expressions=None, glasses=None, dense_features=None):
-        self.face_count = face_count
-        self.landmark_count = landmark_count
-        self.dense_feature_length = dense_feature_length
-        self.face_rectangles = face_rectangles
-        self.face_probability_list = face_probability_list
-        self.pose_list = pose_list
-        self.landmarks = landmarks
-        self.pupils = pupils
-        self.gender_list = gender_list
-        self.age_list = age_list
-        self.expressions = expressions
-        self.glasses = glasses
-        self.dense_features = dense_features
+        self.face_count = face_count    # type: int
+        self.landmark_count = landmark_count  # type: int
+        self.dense_feature_length = dense_feature_length  # type: int
+        self.face_rectangles = face_rectangles  # type: List[int]
+        self.face_probability_list = face_probability_list  # type: List[float]
+        self.pose_list = pose_list      # type: List[float]
+        self.landmarks = landmarks      # type: List[float]
+        self.pupils = pupils            # type: List[float]
+        self.gender_list = gender_list  # type: List[int]
+        self.age_list = age_list        # type: List[int]
+        self.expressions = expressions  # type: List[int]
+        self.glasses = glasses          # type: List[int]
+        self.dense_features = dense_features  # type: List[str]
 
     def validate(self):
         self.validate_required(self.face_count, 'face_count')
@@ -4330,7 +4891,7 @@ class RecognizeFaceResponseData(TeaModel):
 
 class RecognizeFaceAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -4347,8 +4908,8 @@ class RecognizeFaceAdvanceRequest(TeaModel):
 
 class CompareFaceRequest(TeaModel):
     def __init__(self, image_urla=None, image_urlb=None):
-        self.image_urla = image_urla
-        self.image_urlb = image_urlb
+        self.image_urla = image_urla    # type: str
+        self.image_urlb = image_urlb    # type: str
 
     def validate(self):
         self.validate_required(self.image_urla, 'image_urla')
@@ -4368,8 +4929,8 @@ class CompareFaceRequest(TeaModel):
 
 class CompareFaceResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: CompareFaceResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: CompareFaceResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -4398,10 +4959,10 @@ class CompareFaceResponse(TeaModel):
 
 class CompareFaceResponseData(TeaModel):
     def __init__(self, confidence=None, thresholds=None, rect_alist=None, rect_blist=None):
-        self.confidence = confidence
-        self.thresholds = thresholds
-        self.rect_alist = rect_alist
-        self.rect_blist = rect_blist
+        self.confidence = confidence    # type: float
+        self.thresholds = thresholds    # type: List[float]
+        self.rect_alist = rect_alist    # type: List[int]
+        self.rect_blist = rect_blist    # type: List[int]
 
     def validate(self):
         self.validate_required(self.confidence, 'confidence')
@@ -4427,7 +4988,7 @@ class CompareFaceResponseData(TeaModel):
 
 class DetectFaceRequest(TeaModel):
     def __init__(self, image_url=None):
-        self.image_url = image_url
+        self.image_url = image_url      # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -4444,8 +5005,8 @@ class DetectFaceRequest(TeaModel):
 
 class DetectFaceResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DetectFaceResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DetectFaceResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -4475,13 +5036,13 @@ class DetectFaceResponse(TeaModel):
 class DetectFaceResponseData(TeaModel):
     def __init__(self, face_count=None, landmark_count=None, face_rectangles=None, face_probability_list=None,
                  pose_list=None, landmarks=None, pupils=None):
-        self.face_count = face_count
-        self.landmark_count = landmark_count
-        self.face_rectangles = face_rectangles
-        self.face_probability_list = face_probability_list
-        self.pose_list = pose_list
-        self.landmarks = landmarks
-        self.pupils = pupils
+        self.face_count = face_count    # type: int
+        self.landmark_count = landmark_count  # type: int
+        self.face_rectangles = face_rectangles  # type: List[int]
+        self.face_probability_list = face_probability_list  # type: List[float]
+        self.pose_list = pose_list      # type: List[float]
+        self.landmarks = landmarks      # type: List[float]
+        self.pupils = pupils            # type: List[float]
 
     def validate(self):
         self.validate_required(self.face_count, 'face_count')
@@ -4516,7 +5077,7 @@ class DetectFaceResponseData(TeaModel):
 
 class DetectFaceAdvanceRequest(TeaModel):
     def __init__(self, image_urlobject=None):
-        self.image_urlobject = image_urlobject
+        self.image_urlobject = image_urlobject  # type: BinaryIO
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
