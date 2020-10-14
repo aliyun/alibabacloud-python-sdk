@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+try:
+    from typing import List, Dict, Any
+except ImportError:
+    pass
 
 
 class ListQualityResultsByEntityRequest(TeaModel):
@@ -10544,7 +10547,7 @@ class UpdateFileRequest(TeaModel):
                  auto_rerun_times=None, auto_rerun_interval_millis=None, rerun_mode=None, stop=None, para_value=None,
                  start_effect_date=None, end_effect_date=None, cron_express=None, cycle_type=None, dependent_type=None,
                  dependent_node_id_list=None, input_list=None, project_identifier=None, file_id=None, output_list=None,
-                 resource_group_identifier=None):
+                 resource_group_identifier=None, connection_name=None, owner=None):
         self.file_folder_path = file_folder_path  # type: str
         self.project_id = project_id    # type: int
         self.file_name = file_name      # type: str
@@ -10566,6 +10569,8 @@ class UpdateFileRequest(TeaModel):
         self.file_id = file_id          # type: int
         self.output_list = output_list  # type: str
         self.resource_group_identifier = resource_group_identifier  # type: str
+        self.connection_name = connection_name  # type: str
+        self.owner = owner              # type: str
 
     def validate(self):
         self.validate_required(self.file_id, 'file_id')
@@ -10593,6 +10598,8 @@ class UpdateFileRequest(TeaModel):
         result['FileId'] = self.file_id
         result['OutputList'] = self.output_list
         result['ResourceGroupIdentifier'] = self.resource_group_identifier
+        result['ConnectionName'] = self.connection_name
+        result['Owner'] = self.owner
         return result
 
     def from_map(self, map={}):
@@ -10617,6 +10624,8 @@ class UpdateFileRequest(TeaModel):
         self.file_id = map.get('FileId')
         self.output_list = map.get('OutputList')
         self.resource_group_identifier = map.get('ResourceGroupIdentifier')
+        self.connection_name = map.get('ConnectionName')
+        self.owner = map.get('Owner')
         return self
 
 
@@ -11371,7 +11380,7 @@ class CreateFileRequest(TeaModel):
                  file_type=None, owner=None, content=None, auto_rerun_times=None, auto_rerun_interval_millis=None,
                  rerun_mode=None, stop=None, para_value=None, start_effect_date=None, end_effect_date=None, cron_express=None,
                  cycle_type=None, dependent_type=None, dependent_node_id_list=None, input_list=None, project_identifier=None,
-                 resource_group_identifier=None):
+                 resource_group_identifier=None, resource_group_id=None, connection_name=None):
         self.file_folder_path = file_folder_path  # type: str
         self.project_id = project_id    # type: int
         self.file_name = file_name      # type: str
@@ -11393,6 +11402,8 @@ class CreateFileRequest(TeaModel):
         self.input_list = input_list    # type: str
         self.project_identifier = project_identifier  # type: str
         self.resource_group_identifier = resource_group_identifier  # type: str
+        self.resource_group_id = resource_group_id  # type: int
+        self.connection_name = connection_name  # type: str
 
     def validate(self):
         self.validate_required(self.file_name, 'file_name')
@@ -11422,6 +11433,8 @@ class CreateFileRequest(TeaModel):
         result['InputList'] = self.input_list
         result['ProjectIdentifier'] = self.project_identifier
         result['ResourceGroupIdentifier'] = self.resource_group_identifier
+        result['ResourceGroupId'] = self.resource_group_id
+        result['ConnectionName'] = self.connection_name
         return result
 
     def from_map(self, map={}):
@@ -11446,6 +11459,8 @@ class CreateFileRequest(TeaModel):
         self.input_list = map.get('InputList')
         self.project_identifier = map.get('ProjectIdentifier')
         self.resource_group_identifier = map.get('ResourceGroupIdentifier')
+        self.resource_group_id = map.get('ResourceGroupId')
+        self.connection_name = map.get('ConnectionName')
         return self
 
 
