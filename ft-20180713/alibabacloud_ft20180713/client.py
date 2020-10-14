@@ -65,25 +65,19 @@ class Client(RPCClient):
 
     def test_flow_strategy_01with_options(self, tmp, runtime):
         UtilClient.validate_model(tmp)
-        request = ft_20180713_models.TestFlowStrategy01ShrinkRequest(
-
-        )
+        request = ft_20180713_models.TestFlowStrategy01ShrinkRequest()
         RPCUtilClient.convert(tmp, request)
         if not UtilClient.is_unset(tmp.names):
             request.names_shrink = UtilClient.to_jsonstring(tmp.names)
         return ft_20180713_models.TestFlowStrategy01Response().from_map(self.do_request("TestFlowStrategy01", "HTTPS", "PUT", "2018-07-13", "AK", None, request.to_map(), runtime))
 
     def test_flow_strategy_01(self, request):
-        runtime = util_models.RuntimeOptions(
-
-        )
+        runtime = util_models.RuntimeOptions()
         return self.test_flow_strategy_01with_options(request, runtime)
 
     def test_http_api_with_options(self, tmp, runtime):
         UtilClient.validate_model(tmp)
-        request = ft_20180713_models.TestHttpApiShrinkRequest(
-
-        )
+        request = ft_20180713_models.TestHttpApiShrinkRequest()
         RPCUtilClient.convert(tmp, request)
         if not UtilClient.is_unset(tmp.string_value):
             request.string_value_shrink = UtilClient.to_jsonstring(tmp.string_value)
@@ -94,9 +88,7 @@ class Client(RPCClient):
         return ft_20180713_models.TestHttpApiResponse().from_map(self.do_request("TestHttpApi", "HTTPS", "POST", "2018-07-13", "AK", None, request.to_map(), runtime))
 
     def test_http_api(self, request):
-        runtime = util_models.RuntimeOptions(
-
-        )
+        runtime = util_models.RuntimeOptions()
         return self.test_http_api_with_options(request, runtime)
 
     def batch_audit_test_01with_options(self, request, runtime):
@@ -104,9 +96,7 @@ class Client(RPCClient):
         return ft_20180713_models.BatchAuditTest01Response().from_map(self.do_request("BatchAuditTest01", "HTTPS", "POST", "2018-07-13", "Anonymous", None, request.to_map(), runtime))
 
     def batch_audit_test_01(self, request):
-        runtime = util_models.RuntimeOptions(
-
-        )
+        runtime = util_models.RuntimeOptions()
         return self.batch_audit_test_01with_options(request, runtime)
 
     def ft_ip_flow_control_with_options(self, request, runtime):
@@ -114,9 +104,7 @@ class Client(RPCClient):
         return ft_20180713_models.FtIpFlowControlResponse().from_map(self.do_request("FtIpFlowControl", "HTTPS", "POST", "2018-07-13", "Anonymous", None, request.to_map(), runtime))
 
     def ft_ip_flow_control(self, request):
-        runtime = util_models.RuntimeOptions(
-
-        )
+        runtime = util_models.RuntimeOptions()
         return self.ft_ip_flow_control_with_options(request, runtime)
 
     def ft_dynamic_address_dubbo_with_options(self, request, runtime):
@@ -124,9 +112,7 @@ class Client(RPCClient):
         return ft_20180713_models.FtDynamicAddressDubboResponse().from_map(self.do_request("FtDynamicAddressDubbo", "HTTPS", "POST", "2018-07-13", "AK", None, request.to_map(), runtime))
 
     def ft_dynamic_address_dubbo(self, request):
-        runtime = util_models.RuntimeOptions(
-
-        )
+        runtime = util_models.RuntimeOptions()
         return self.ft_dynamic_address_dubbo_with_options(request, runtime)
 
     def ft_dynamic_address_hsf_with_options(self, request, runtime):
@@ -134,9 +120,7 @@ class Client(RPCClient):
         return ft_20180713_models.FtDynamicAddressHsfResponse().from_map(self.do_request("FtDynamicAddressHsf", "HTTPS", "POST", "2018-07-13", "AK", None, request.to_map(), runtime))
 
     def ft_dynamic_address_hsf(self, request):
-        runtime = util_models.RuntimeOptions(
-
-        )
+        runtime = util_models.RuntimeOptions()
         return self.ft_dynamic_address_hsf_with_options(request, runtime)
 
     def ft_flow_special_with_options(self, request, runtime):
@@ -144,9 +128,7 @@ class Client(RPCClient):
         return ft_20180713_models.FtFlowSpecialResponse().from_map(self.do_request("FtFlowSpecial", "HTTPS", "POST", "2018-07-13", "AK", None, request.to_map(), runtime))
 
     def ft_flow_special(self, request):
-        runtime = util_models.RuntimeOptions(
-
-        )
+        runtime = util_models.RuntimeOptions()
         return self.ft_flow_special_with_options(request, runtime)
 
     def ftapi_alias_api_with_options(self, request, runtime):
@@ -154,9 +136,7 @@ class Client(RPCClient):
         return ft_20180713_models.FTApiAliasApiResponse().from_map(self.do_request("FTApiAliasApi", "HTTPS", "POST", "2018-07-13", "AK", None, request.to_map(), runtime))
 
     def ftapi_alias_api(self, request):
-        runtime = util_models.RuntimeOptions(
-
-        )
+        runtime = util_models.RuntimeOptions()
         return self.ftapi_alias_api_with_options(request, runtime)
 
     def ft_eagle_eye_with_options(self, request, runtime):
@@ -164,9 +144,7 @@ class Client(RPCClient):
         return ft_20180713_models.FtEagleEyeResponse().from_map(self.do_request("FtEagleEye", "HTTPS", "POST", "2018-07-13", "AK", None, request.to_map(), runtime))
 
     def ft_eagle_eye(self, request):
-        runtime = util_models.RuntimeOptions(
-
-        )
+        runtime = util_models.RuntimeOptions()
         return self.ft_eagle_eye_with_options(request, runtime)
 
     def ft_param_list_with_options(self, request, runtime):
@@ -174,9 +152,7 @@ class Client(RPCClient):
         return ft_20180713_models.FtParamListResponse().from_map(self.do_request("FtParamList", "HTTPS", "POST", "2018-07-13", "AK", None, request.to_map(), runtime))
 
     def ft_param_list(self, request):
-        runtime = util_models.RuntimeOptions(
-
-        )
+        runtime = util_models.RuntimeOptions()
         return self.ft_param_list_with_options(request, runtime)
 
     def ft_gated_launch_policy_4with_options(self, request, runtime):
@@ -184,9 +160,7 @@ class Client(RPCClient):
         return ft_20180713_models.FtGatedLaunchPolicy4Response().from_map(self.do_request("FtGatedLaunchPolicy4", "HTTPS", "POST", "2018-07-13", "AK", None, request.to_map(), runtime))
 
     def ft_gated_launch_policy_4(self, request):
-        runtime = util_models.RuntimeOptions(
-
-        )
+        runtime = util_models.RuntimeOptions()
         return self.ft_gated_launch_policy_4with_options(request, runtime)
 
     def get_endpoint(self, product_id, region_id, endpoint_rule, network, suffix, endpoint_map, endpoint):

@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
+try:
+    from typing import Dict, Any, List
+except ImportError:
+    pass
 
 
 class TestFlowStrategy01Request(TeaModel):
     def __init__(self, names=None):
-        self.names = names
+        self.names = names              # type: Dict[str, Any]
 
     def validate(self):
         pass
@@ -22,7 +26,7 @@ class TestFlowStrategy01Request(TeaModel):
 
 class TestFlowStrategy01ShrinkRequest(TeaModel):
     def __init__(self, names_shrink=None):
-        self.names_shrink = names_shrink
+        self.names_shrink = names_shrink  # type: str
 
     def validate(self):
         pass
@@ -39,9 +43,9 @@ class TestFlowStrategy01ShrinkRequest(TeaModel):
 
 class TestFlowStrategy01Response(TeaModel):
     def __init__(self, request_id=None, list=None, names=None):
-        self.request_id = request_id
-        self.list = list
-        self.names = names
+        self.request_id = request_id    # type: str
+        self.list = list                # type: List[str]
+        self.names = names              # type: List[str]
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -64,10 +68,10 @@ class TestFlowStrategy01Response(TeaModel):
 
 class TestHttpApiRequest(TeaModel):
     def __init__(self, string_value=None, default_value=None, other_param=None, boolean_param=None):
-        self.string_value = string_value
-        self.default_value = default_value
-        self.other_param = other_param
-        self.boolean_param = boolean_param
+        self.string_value = string_value  # type: Dict[str, Any]
+        self.default_value = default_value  # type: Dict[str, Any]
+        self.other_param = other_param  # type: Dict[str, Any]
+        self.boolean_param = boolean_param  # type: bool
 
     def validate(self):
         pass
@@ -91,10 +95,10 @@ class TestHttpApiRequest(TeaModel):
 class TestHttpApiShrinkRequest(TeaModel):
     def __init__(self, string_value_shrink=None, default_value_shrink=None, other_param_shrink=None,
                  boolean_param=None):
-        self.string_value_shrink = string_value_shrink
-        self.default_value_shrink = default_value_shrink
-        self.other_param_shrink = other_param_shrink
-        self.boolean_param = boolean_param
+        self.string_value_shrink = string_value_shrink  # type: str
+        self.default_value_shrink = default_value_shrink  # type: str
+        self.other_param_shrink = other_param_shrink  # type: str
+        self.boolean_param = boolean_param  # type: bool
 
     def validate(self):
         pass
@@ -117,8 +121,8 @@ class TestHttpApiShrinkRequest(TeaModel):
 
 class TestHttpApiResponse(TeaModel):
     def __init__(self, params=None, service_rpc_sign=None):
-        self.params = params
-        self.service_rpc_sign = service_rpc_sign
+        self.params = params            # type: str
+        self.service_rpc_sign = service_rpc_sign  # type: str
 
     def validate(self):
         self.validate_required(self.params, 'params')
@@ -138,10 +142,10 @@ class TestHttpApiResponse(TeaModel):
 
 class BatchAuditTest01Request(TeaModel):
     def __init__(self, name=None, batch_audit_test_01=None, demo_01=None, test_010101=None):
-        self.name = name
-        self.batch_audit_test_01 = batch_audit_test_01
-        self.demo_01 = demo_01
-        self.test_010101 = test_010101
+        self.name = name                # type: str
+        self.batch_audit_test_01 = batch_audit_test_01  # type: str
+        self.demo_01 = demo_01          # type: str
+        self.test_010101 = test_010101  # type: bool
 
     def validate(self):
         pass
@@ -164,9 +168,9 @@ class BatchAuditTest01Request(TeaModel):
 
 class BatchAuditTest01Response(TeaModel):
     def __init__(self, request_id=None, name=None, demo_01=None):
-        self.request_id = request_id
-        self.name = name
-        self.demo_01 = demo_01  # type: BatchAuditTest01ResponseDemo01
+        self.request_id = request_id    # type: str
+        self.name = name                # type: str
+        self.demo_01 = demo_01          # type: BatchAuditTest01ResponseDemo01
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -198,7 +202,7 @@ class BatchAuditTest01Response(TeaModel):
 
 class BatchAuditTest01ResponseDemo01Demo011Demo011(TeaModel):
     def __init__(self, demo_0111=None):
-        self.demo_0111 = demo_0111
+        self.demo_0111 = demo_0111      # type: str
 
     def validate(self):
         self.validate_required(self.demo_0111, 'demo_0111')
@@ -215,7 +219,7 @@ class BatchAuditTest01ResponseDemo01Demo011Demo011(TeaModel):
 
 class BatchAuditTest01ResponseDemo01Demo011(TeaModel):
     def __init__(self, demo_011=None):
-        self.demo_011 = demo_011
+        self.demo_011 = demo_011        # type: List[BatchAuditTest01ResponseDemo01Demo011Demo011]
 
     def validate(self):
         self.validate_required(self.demo_011, 'demo_011')
@@ -247,7 +251,7 @@ class BatchAuditTest01ResponseDemo01Demo011(TeaModel):
 
 class BatchAuditTest01ResponseDemo01(TeaModel):
     def __init__(self, demo_011=None):
-        self.demo_011 = demo_011  # type: BatchAuditTest01ResponseDemo01Demo011
+        self.demo_011 = demo_011        # type: BatchAuditTest01ResponseDemo01Demo011
 
     def validate(self):
         self.validate_required(self.demo_011, 'demo_011')
@@ -273,7 +277,7 @@ class BatchAuditTest01ResponseDemo01(TeaModel):
 
 class FtIpFlowControlRequest(TeaModel):
     def __init__(self, name=None):
-        self.name = name
+        self.name = name                # type: str
 
     def validate(self):
         pass
@@ -290,8 +294,8 @@ class FtIpFlowControlRequest(TeaModel):
 
 class FtIpFlowControlResponse(TeaModel):
     def __init__(self, request_id=None, name=None):
-        self.request_id = request_id
-        self.name = name
+        self.request_id = request_id    # type: str
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -311,8 +315,8 @@ class FtIpFlowControlResponse(TeaModel):
 
 class FtDynamicAddressDubboRequest(TeaModel):
     def __init__(self, int_value=None, string_value=None):
-        self.int_value = int_value
-        self.string_value = string_value
+        self.int_value = int_value      # type: int
+        self.string_value = string_value  # type: str
 
     def validate(self):
         pass
@@ -331,9 +335,9 @@ class FtDynamicAddressDubboRequest(TeaModel):
 
 class FtDynamicAddressDubboResponse(TeaModel):
     def __init__(self, request_id=None, string_value=None, int_value=None):
-        self.request_id = request_id
-        self.string_value = string_value
-        self.int_value = int_value
+        self.request_id = request_id    # type: str
+        self.string_value = string_value  # type: str
+        self.int_value = int_value      # type: int
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -371,7 +375,7 @@ class FtDynamicAddressHsfRequest(TeaModel):
 
 class FtDynamicAddressHsfResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -388,7 +392,7 @@ class FtDynamicAddressHsfResponse(TeaModel):
 
 class FtFlowSpecialRequest(TeaModel):
     def __init__(self, name=None):
-        self.name = name
+        self.name = name                # type: str
 
     def validate(self):
         pass
@@ -405,8 +409,8 @@ class FtFlowSpecialRequest(TeaModel):
 
 class FtFlowSpecialResponse(TeaModel):
     def __init__(self, request_id=None, name=None):
-        self.request_id = request_id
-        self.name = name
+        self.request_id = request_id    # type: str
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -426,7 +430,7 @@ class FtFlowSpecialResponse(TeaModel):
 
 class FTApiAliasApiRequest(TeaModel):
     def __init__(self, name=None):
-        self.name = name
+        self.name = name                # type: str
 
     def validate(self):
         pass
@@ -443,8 +447,8 @@ class FTApiAliasApiRequest(TeaModel):
 
 class FTApiAliasApiResponse(TeaModel):
     def __init__(self, request_id=None, name=None):
-        self.request_id = request_id
-        self.name = name
+        self.request_id = request_id    # type: str
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -464,7 +468,7 @@ class FTApiAliasApiResponse(TeaModel):
 
 class FtEagleEyeRequest(TeaModel):
     def __init__(self, name=None):
-        self.name = name
+        self.name = name                # type: str
 
     def validate(self):
         pass
@@ -481,9 +485,9 @@ class FtEagleEyeRequest(TeaModel):
 
 class FtEagleEyeResponse(TeaModel):
     def __init__(self, request_id=None, name=None, eagle_eye_trace_id=None):
-        self.request_id = request_id
-        self.name = name
-        self.eagle_eye_trace_id = eagle_eye_trace_id
+        self.request_id = request_id    # type: str
+        self.name = name                # type: str
+        self.eagle_eye_trace_id = eagle_eye_trace_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -506,8 +510,8 @@ class FtEagleEyeResponse(TeaModel):
 
 class FtParamListRequest(TeaModel):
     def __init__(self, name=None, disk=None):
-        self.name = name
-        self.disk = disk
+        self.name = name                # type: str
+        self.disk = disk                # type: List[FtParamListRequestDisk]
 
     def validate(self):
         if self.disk:
@@ -540,12 +544,11 @@ class FtParamListRequest(TeaModel):
 
 class FtParamListRequestDisk(TeaModel):
     def __init__(self, size=None, type=None):
-        self.size = size
-        self.type = type
+        self.size = size                # type: List[str]
+        self.type = type                # type: List[str]
 
     def validate(self):
-        self.validate_required(self.size, 'size')
-        self.validate_required(self.type, 'type')
+        pass
 
     def to_map(self):
         result = {}
@@ -561,8 +564,8 @@ class FtParamListRequestDisk(TeaModel):
 
 class FtParamListResponse(TeaModel):
     def __init__(self, request_id=None, name=None):
-        self.request_id = request_id
-        self.name = name
+        self.request_id = request_id    # type: str
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -582,7 +585,7 @@ class FtParamListResponse(TeaModel):
 
 class FtGatedLaunchPolicy4Request(TeaModel):
     def __init__(self, is_gated_launch=None):
-        self.is_gated_launch = is_gated_launch
+        self.is_gated_launch = is_gated_launch  # type: str
 
     def validate(self):
         pass
@@ -599,8 +602,8 @@ class FtGatedLaunchPolicy4Request(TeaModel):
 
 class FtGatedLaunchPolicy4Response(TeaModel):
     def __init__(self, request_id=None, is_gated_launch=None):
-        self.request_id = request_id
-        self.is_gated_launch = is_gated_launch
+        self.request_id = request_id    # type: str
+        self.is_gated_launch = is_gated_launch  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
