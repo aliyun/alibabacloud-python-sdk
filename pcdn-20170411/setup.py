@@ -25,7 +25,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_pcdn20170411.
 
-Created on 13/10/2020
+Created on 20/10/2020
 
 @author: Alibaba Cloud SDK
 """
@@ -37,11 +37,8 @@ AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
 URL = "https://github.com/aliyun/alibabacloud-sdk"
 REQUIRES = ["alibabacloud_tea_util>=0.2.0, <1.0.0","alibabacloud_tea_rpc>=0.0.6, <1.0.0","alibabacloud_endpoint_util>=0.0.2, <1.0.0"]
+VERSION = __import__(PACKAGE).__version__
 
-try:
-    VERSION = __import__(PACKAGE).__version__
-except AttributeError:
-    VERSION = '1.0.0'
 
 LONG_DESCRIPTION = ''
 if os.path.exists('./README.md'):
@@ -58,6 +55,7 @@ setup(
     version=VERSION,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
+    long_description_content_type='text/markdown',
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     license="Apache License 2.0",

@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List
+try:
+    from typing import List
+except ImportError:
+    pass
 
 
 class StopDomainRequest(TeaModel):
@@ -1420,7 +1423,7 @@ class GetConsumerStatusResponse(TeaModel):
         self.realtime_monitor = realtime_monitor  # type: bool
         self.live_monitor = live_monitor  # type: bool
         self.cdn_url_redirect_flag = cdn_url_redirect_flag  # type: bool
-        self.business_type = business_type  # type: bool
+        self.business_type = business_type  # type: str
         self.audit = audit              # type: int
         self.comment = comment          # type: str
         self.created_at = created_at    # type: str
