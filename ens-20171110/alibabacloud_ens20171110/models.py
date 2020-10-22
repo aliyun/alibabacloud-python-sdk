@@ -707,10 +707,11 @@ class AddNetworkInterfaceToInstanceResponse(TeaModel):
 
 
 class DescribeImageSharePermissionRequest(TeaModel):
-    def __init__(self, image_id=None, page_number=None, page_size=None):
+    def __init__(self, image_id=None, page_number=None, page_size=None, aliyun_id=None):
         self.image_id = image_id        # type: str
         self.page_number = page_number  # type: str
         self.page_size = page_size      # type: str
+        self.aliyun_id = aliyun_id      # type: int
 
     def validate(self):
         self.validate_required(self.image_id, 'image_id')
@@ -720,12 +721,14 @@ class DescribeImageSharePermissionRequest(TeaModel):
         result['ImageId'] = self.image_id
         result['PageNumber'] = self.page_number
         result['PageSize'] = self.page_size
+        result['AliyunId'] = self.aliyun_id
         return result
 
     def from_map(self, map={}):
         self.image_id = map.get('ImageId')
         self.page_number = map.get('PageNumber')
         self.page_size = map.get('PageSize')
+        self.aliyun_id = map.get('AliyunId')
         return self
 
 
