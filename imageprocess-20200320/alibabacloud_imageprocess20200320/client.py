@@ -42,9 +42,7 @@ class Client(RPCClient):
             product="imageprocess",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -52,22 +50,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        detect_skin_diseasereq = imageprocess_20200320_models.DetectSkinDiseaseRequest(
-
-        )
+        detect_skin_diseasereq = imageprocess_20200320_models.DetectSkinDiseaseRequest()
         RPCUtilClient.convert(request, detect_skin_diseasereq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -91,7 +79,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        detect_skin_diseasereq.url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        detect_skin_diseasereq.url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         detect_skin_disease_resp = self.detect_skin_disease(detect_skin_diseasereq, runtime)
         return detect_skin_disease_resp
 
@@ -120,9 +108,7 @@ class Client(RPCClient):
             product="imageprocess",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -130,22 +116,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        detect_knee_keypoint_xrayreq = imageprocess_20200320_models.DetectKneeKeypointXRayRequest(
-
-        )
+        detect_knee_keypoint_xrayreq = imageprocess_20200320_models.DetectKneeKeypointXRayRequest()
         RPCUtilClient.convert(request, detect_knee_keypoint_xrayreq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -169,7 +145,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        detect_knee_keypoint_xrayreq.image_url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        detect_knee_keypoint_xrayreq.image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         detect_knee_keypoint_xray_resp = self.detect_knee_keypoint_xray(detect_knee_keypoint_xrayreq, runtime)
         return detect_knee_keypoint_xray_resp
 
@@ -194,9 +170,7 @@ class Client(RPCClient):
             product="imageprocess",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -204,22 +178,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        classify_fnfreq = imageprocess_20200320_models.ClassifyFNFRequest(
-
-        )
+        classify_fnfreq = imageprocess_20200320_models.ClassifyFNFRequest()
         RPCUtilClient.convert(request, classify_fnfreq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -243,7 +207,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        classify_fnfreq.image_url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        classify_fnfreq.image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         classify_fnfresp = self.classify_fnf(classify_fnfreq, runtime)
         return classify_fnfresp
 
@@ -272,9 +236,7 @@ class Client(RPCClient):
             product="imageprocess",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -282,22 +244,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        detect_hip_keypoint_xrayreq = imageprocess_20200320_models.DetectHipKeypointXRayRequest(
-
-        )
+        detect_hip_keypoint_xrayreq = imageprocess_20200320_models.DetectHipKeypointXRayRequest()
         RPCUtilClient.convert(request, detect_hip_keypoint_xrayreq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -321,7 +273,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        detect_hip_keypoint_xrayreq.image_url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        detect_hip_keypoint_xrayreq.image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         detect_hip_keypoint_xray_resp = self.detect_hip_keypoint_xray(detect_hip_keypoint_xrayreq, runtime)
         return detect_hip_keypoint_xray_resp
 
@@ -350,9 +302,7 @@ class Client(RPCClient):
             product="imageprocess",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -360,22 +310,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        detect_knee_xrayreq = imageprocess_20200320_models.DetectKneeXRayRequest(
-
-        )
+        detect_knee_xrayreq = imageprocess_20200320_models.DetectKneeXRayRequest()
         RPCUtilClient.convert(request, detect_knee_xrayreq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -399,7 +339,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        detect_knee_xrayreq.url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        detect_knee_xrayreq.url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         detect_knee_xray_resp = self.detect_knee_xray(detect_knee_xrayreq, runtime)
         return detect_knee_xray_resp
 

@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, BinaryIO, List
+try:
+    from typing import Dict, Any, BinaryIO, List
+except ImportError:
+    pass
 
 
 class DetectSkinDiseaseRequest(TeaModel):
@@ -1519,7 +1522,7 @@ class DetectLungNoduleResponse(TeaModel):
 
 class DetectLungNoduleResponseDataSeriesElements(TeaModel):
     def __init__(self, category=None, confidence=None, diameter=None, lobe=None, lung=None, x=None, z=None, y=None,
-                 image_x=None, image_y=None, image_z=None):
+                 image_x=None, image_y=None, image_z=None, sopinstance_uid=None):
         self.category = category        # type: str
         self.confidence = confidence    # type: float
         self.diameter = diameter        # type: float
@@ -1531,6 +1534,7 @@ class DetectLungNoduleResponseDataSeriesElements(TeaModel):
         self.image_x = image_x          # type: float
         self.image_y = image_y          # type: float
         self.image_z = image_z          # type: float
+        self.sopinstance_uid = sopinstance_uid  # type: str
 
     def validate(self):
         self.validate_required(self.category, 'category')
@@ -1544,6 +1548,7 @@ class DetectLungNoduleResponseDataSeriesElements(TeaModel):
         self.validate_required(self.image_x, 'image_x')
         self.validate_required(self.image_y, 'image_y')
         self.validate_required(self.image_z, 'image_z')
+        self.validate_required(self.sopinstance_uid, 'sopinstance_uid')
 
     def to_map(self):
         result = {}
@@ -1558,6 +1563,7 @@ class DetectLungNoduleResponseDataSeriesElements(TeaModel):
         result['ImageX'] = self.image_x
         result['ImageY'] = self.image_y
         result['ImageZ'] = self.image_z
+        result['SOPInstanceUID'] = self.sopinstance_uid
         return result
 
     def from_map(self, map={}):
@@ -1572,6 +1578,7 @@ class DetectLungNoduleResponseDataSeriesElements(TeaModel):
         self.image_x = map.get('ImageX')
         self.image_y = map.get('ImageY')
         self.image_z = map.get('ImageZ')
+        self.sopinstance_uid = map.get('SOPInstanceUID')
         return self
 
 
