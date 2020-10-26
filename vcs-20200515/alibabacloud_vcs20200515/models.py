@@ -7,6 +7,468 @@ except ImportError:
     pass
 
 
+class UnsubscribeDeviceEventRequest(TeaModel):
+    def __init__(self, device_id=None):
+        self.device_id = device_id      # type: str
+
+    def validate(self):
+        self.validate_required(self.device_id, 'device_id')
+
+    def to_map(self):
+        result = {}
+        result['DeviceId'] = self.device_id
+        return result
+
+    def from_map(self, map={}):
+        self.device_id = map.get('DeviceId')
+        return self
+
+
+class UnsubscribeDeviceEventResponse(TeaModel):
+    def __init__(self, code=None, message=None, request_id=None):
+        self.code = code                # type: str
+        self.message = message          # type: str
+        self.request_id = request_id    # type: str
+
+    def validate(self):
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.message, 'message')
+        self.validate_required(self.request_id, 'request_id')
+
+    def to_map(self):
+        result = {}
+        result['Code'] = self.code
+        result['Message'] = self.message
+        result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, map={}):
+        self.code = map.get('Code')
+        self.message = map.get('Message')
+        self.request_id = map.get('RequestId')
+        return self
+
+
+class ListSubscribeDeviceRequest(TeaModel):
+    def __init__(self, page_num=None, page_size=None):
+        self.page_num = page_num        # type: int
+        self.page_size = page_size      # type: int
+
+    def validate(self):
+        self.validate_required(self.page_num, 'page_num')
+        self.validate_required(self.page_size, 'page_size')
+
+    def to_map(self):
+        result = {}
+        result['PageNum'] = self.page_num
+        result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, map={}):
+        self.page_num = map.get('PageNum')
+        self.page_size = map.get('PageSize')
+        return self
+
+
+class ListSubscribeDeviceResponse(TeaModel):
+    def __init__(self, code=None, message=None, request_id=None, data=None):
+        self.code = code                # type: str
+        self.message = message          # type: str
+        self.request_id = request_id    # type: str
+        self.data = data                # type: ListSubscribeDeviceResponseData
+
+    def validate(self):
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.message, 'message')
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = {}
+        result['Code'] = self.code
+        result['Message'] = self.message
+        result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        else:
+            result['Data'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.code = map.get('Code')
+        self.message = map.get('Message')
+        self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            temp_model = ListSubscribeDeviceResponseData()
+            self.data = temp_model.from_map(map['Data'])
+        else:
+            self.data = None
+        return self
+
+
+class ListSubscribeDeviceResponseDataSubscribeList(TeaModel):
+    def __init__(self, user_id=None, device_id=None, push_config=None, create_time=None, update_time=None):
+        self.user_id = user_id          # type: str
+        self.device_id = device_id      # type: str
+        self.push_config = push_config  # type: str
+        self.create_time = create_time  # type: str
+        self.update_time = update_time  # type: str
+
+    def validate(self):
+        self.validate_required(self.user_id, 'user_id')
+        self.validate_required(self.device_id, 'device_id')
+        self.validate_required(self.push_config, 'push_config')
+        self.validate_required(self.create_time, 'create_time')
+        self.validate_required(self.update_time, 'update_time')
+
+    def to_map(self):
+        result = {}
+        result['UserId'] = self.user_id
+        result['DeviceId'] = self.device_id
+        result['PushConfig'] = self.push_config
+        result['CreateTime'] = self.create_time
+        result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, map={}):
+        self.user_id = map.get('UserId')
+        self.device_id = map.get('DeviceId')
+        self.push_config = map.get('PushConfig')
+        self.create_time = map.get('CreateTime')
+        self.update_time = map.get('UpdateTime')
+        return self
+
+
+class ListSubscribeDeviceResponseData(TeaModel):
+    def __init__(self, total_count=None, subscribe_list=None):
+        self.total_count = total_count  # type: int
+        self.subscribe_list = subscribe_list  # type: List[ListSubscribeDeviceResponseDataSubscribeList]
+
+    def validate(self):
+        self.validate_required(self.total_count, 'total_count')
+        self.validate_required(self.subscribe_list, 'subscribe_list')
+        if self.subscribe_list:
+            for k in self.subscribe_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['TotalCount'] = self.total_count
+        result['SubscribeList'] = []
+        if self.subscribe_list is not None:
+            for k in self.subscribe_list:
+                result['SubscribeList'].append(k.to_map() if k else None)
+        else:
+            result['SubscribeList'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.total_count = map.get('TotalCount')
+        self.subscribe_list = []
+        if map.get('SubscribeList') is not None:
+            for k in map.get('SubscribeList'):
+                temp_model = ListSubscribeDeviceResponseDataSubscribeList()
+                self.subscribe_list.append(temp_model.from_map(k))
+        else:
+            self.subscribe_list = None
+        return self
+
+
+class SubscribeDeviceEventRequest(TeaModel):
+    def __init__(self, device_id=None, push_config=None):
+        self.device_id = device_id      # type: str
+        self.push_config = push_config  # type: str
+
+    def validate(self):
+        self.validate_required(self.device_id, 'device_id')
+        self.validate_required(self.push_config, 'push_config')
+
+    def to_map(self):
+        result = {}
+        result['DeviceId'] = self.device_id
+        result['PushConfig'] = self.push_config
+        return result
+
+    def from_map(self, map={}):
+        self.device_id = map.get('DeviceId')
+        self.push_config = map.get('PushConfig')
+        return self
+
+
+class SubscribeDeviceEventResponse(TeaModel):
+    def __init__(self, request_id=None, code=None, message=None):
+        self.request_id = request_id    # type: str
+        self.code = code                # type: str
+        self.message = message          # type: str
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.message, 'message')
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['Code'] = self.code
+        result['Message'] = self.message
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.code = map.get('Code')
+        self.message = map.get('Message')
+        return self
+
+
+class SubscribeSpaceEventRequest(TeaModel):
+    def __init__(self, space_id=None, push_config=None):
+        self.space_id = space_id        # type: str
+        self.push_config = push_config  # type: str
+
+    def validate(self):
+        self.validate_required(self.space_id, 'space_id')
+        self.validate_required(self.push_config, 'push_config')
+
+    def to_map(self):
+        result = {}
+        result['SpaceId'] = self.space_id
+        result['PushConfig'] = self.push_config
+        return result
+
+    def from_map(self, map={}):
+        self.space_id = map.get('SpaceId')
+        self.push_config = map.get('PushConfig')
+        return self
+
+
+class SubscribeSpaceEventResponse(TeaModel):
+    def __init__(self, code=None, message=None, request_id=None):
+        self.code = code                # type: str
+        self.message = message          # type: str
+        self.request_id = request_id    # type: str
+
+    def validate(self):
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.message, 'message')
+        self.validate_required(self.request_id, 'request_id')
+
+    def to_map(self):
+        result = {}
+        result['Code'] = self.code
+        result['Message'] = self.message
+        result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, map={}):
+        self.code = map.get('Code')
+        self.message = map.get('Message')
+        self.request_id = map.get('RequestId')
+        return self
+
+
+class UnsubscribeSpaceEventRequest(TeaModel):
+    def __init__(self, space_id=None):
+        self.space_id = space_id        # type: str
+
+    def validate(self):
+        self.validate_required(self.space_id, 'space_id')
+
+    def to_map(self):
+        result = {}
+        result['SpaceId'] = self.space_id
+        return result
+
+    def from_map(self, map={}):
+        self.space_id = map.get('SpaceId')
+        return self
+
+
+class UnsubscribeSpaceEventResponse(TeaModel):
+    def __init__(self, code=None, message=None, request_id=None):
+        self.code = code                # type: str
+        self.message = message          # type: str
+        self.request_id = request_id    # type: str
+
+    def validate(self):
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.message, 'message')
+        self.validate_required(self.request_id, 'request_id')
+
+    def to_map(self):
+        result = {}
+        result['Code'] = self.code
+        result['Message'] = self.message
+        result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, map={}):
+        self.code = map.get('Code')
+        self.message = map.get('Message')
+        self.request_id = map.get('RequestId')
+        return self
+
+
+class ListPersonTraceDetailsRequest(TeaModel):
+    def __init__(self, corp_id=None, page_number=None, page_size=None, end_time=None, person_id=None,
+                 start_time=None, sub_id=None, data_source_id=None):
+        self.corp_id = corp_id          # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.end_time = end_time        # type: str
+        self.person_id = person_id      # type: str
+        self.start_time = start_time    # type: str
+        self.sub_id = sub_id            # type: str
+        self.data_source_id = data_source_id  # type: str
+
+    def validate(self):
+        self.validate_required(self.page_number, 'page_number')
+        self.validate_required(self.page_size, 'page_size')
+        self.validate_required(self.end_time, 'end_time')
+        self.validate_required(self.start_time, 'start_time')
+
+    def to_map(self):
+        result = {}
+        result['CorpId'] = self.corp_id
+        result['PageNumber'] = self.page_number
+        result['PageSize'] = self.page_size
+        result['EndTime'] = self.end_time
+        result['PersonId'] = self.person_id
+        result['StartTime'] = self.start_time
+        result['SubId'] = self.sub_id
+        result['DataSourceId'] = self.data_source_id
+        return result
+
+    def from_map(self, map={}):
+        self.corp_id = map.get('CorpId')
+        self.page_number = map.get('PageNumber')
+        self.page_size = map.get('PageSize')
+        self.end_time = map.get('EndTime')
+        self.person_id = map.get('PersonId')
+        self.start_time = map.get('StartTime')
+        self.sub_id = map.get('SubId')
+        self.data_source_id = map.get('DataSourceId')
+        return self
+
+
+class ListPersonTraceDetailsResponse(TeaModel):
+    def __init__(self, code=None, message=None, request_id=None, page_number=None, page_size=None, total_count=None,
+                 data=None):
+        self.code = code                # type: str
+        self.message = message          # type: str
+        self.request_id = request_id    # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.total_count = total_count  # type: int
+        self.data = data                # type: List[ListPersonTraceDetailsResponseData]
+
+    def validate(self):
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.message, 'message')
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.page_number, 'page_number')
+        self.validate_required(self.page_size, 'page_size')
+        self.validate_required(self.total_count, 'total_count')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['Code'] = self.code
+        result['Message'] = self.message
+        result['RequestId'] = self.request_id
+        result['PageNumber'] = self.page_number
+        result['PageSize'] = self.page_size
+        result['TotalCount'] = self.total_count
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        else:
+            result['Data'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.code = map.get('Code')
+        self.message = map.get('Message')
+        self.request_id = map.get('RequestId')
+        self.page_number = map.get('PageNumber')
+        self.page_size = map.get('PageSize')
+        self.total_count = map.get('TotalCount')
+        self.data = []
+        if map.get('Data') is not None:
+            for k in map.get('Data'):
+                temp_model = ListPersonTraceDetailsResponseData()
+                self.data.append(temp_model.from_map(k))
+        else:
+            self.data = None
+        return self
+
+
+class ListPersonTraceDetailsResponseData(TeaModel):
+    def __init__(self, target_pic_url_path=None, data_source_id=None, person_id=None, pic_url_path=None,
+                 right_bottom_y=None, right_bottom_x=None, shot_time=None, corp_id=None, sub_id=None, left_top_y=None,
+                 left_top_x=None):
+        self.target_pic_url_path = target_pic_url_path  # type: str
+        self.data_source_id = data_source_id  # type: str
+        self.person_id = person_id      # type: str
+        self.pic_url_path = pic_url_path  # type: str
+        self.right_bottom_y = right_bottom_y  # type: str
+        self.right_bottom_x = right_bottom_x  # type: str
+        self.shot_time = shot_time      # type: str
+        self.corp_id = corp_id          # type: str
+        self.sub_id = sub_id            # type: str
+        self.left_top_y = left_top_y    # type: str
+        self.left_top_x = left_top_x    # type: str
+
+    def validate(self):
+        self.validate_required(self.target_pic_url_path, 'target_pic_url_path')
+        self.validate_required(self.data_source_id, 'data_source_id')
+        self.validate_required(self.person_id, 'person_id')
+        self.validate_required(self.pic_url_path, 'pic_url_path')
+        self.validate_required(self.right_bottom_y, 'right_bottom_y')
+        self.validate_required(self.right_bottom_x, 'right_bottom_x')
+        self.validate_required(self.shot_time, 'shot_time')
+        self.validate_required(self.corp_id, 'corp_id')
+        self.validate_required(self.sub_id, 'sub_id')
+        self.validate_required(self.left_top_y, 'left_top_y')
+        self.validate_required(self.left_top_x, 'left_top_x')
+
+    def to_map(self):
+        result = {}
+        result['TargetPicUrlPath'] = self.target_pic_url_path
+        result['DataSourceId'] = self.data_source_id
+        result['PersonId'] = self.person_id
+        result['PicUrlPath'] = self.pic_url_path
+        result['RightBottomY'] = self.right_bottom_y
+        result['RightBottomX'] = self.right_bottom_x
+        result['ShotTime'] = self.shot_time
+        result['CorpId'] = self.corp_id
+        result['SubId'] = self.sub_id
+        result['LeftTopY'] = self.left_top_y
+        result['LeftTopX'] = self.left_top_x
+        return result
+
+    def from_map(self, map={}):
+        self.target_pic_url_path = map.get('TargetPicUrlPath')
+        self.data_source_id = map.get('DataSourceId')
+        self.person_id = map.get('PersonId')
+        self.pic_url_path = map.get('PicUrlPath')
+        self.right_bottom_y = map.get('RightBottomY')
+        self.right_bottom_x = map.get('RightBottomX')
+        self.shot_time = map.get('ShotTime')
+        self.corp_id = map.get('CorpId')
+        self.sub_id = map.get('SubId')
+        self.left_top_y = map.get('LeftTopY')
+        self.left_top_x = map.get('LeftTopX')
+        return self
+
+
 class GetMonitorListRequest(TeaModel):
     def __init__(self, corp_id=None, page_no=None, page_size=None):
         self.corp_id = corp_id          # type: str
@@ -8741,7 +9203,8 @@ class RecognizeImageResponseDataBodyList(TeaModel):
 
 class RecognizeImageResponseDataFaceList(TeaModel):
     def __init__(self, feature=None, file_name=None, image_base_six_four=None, left_top_x=None, left_top_y=None,
-                 local_feature=None, respirator_color=None, right_bottom_x=None, right_bottom_y=None):
+                 local_feature=None, respirator_color=None, right_bottom_x=None, right_bottom_y=None, quality=None,
+                 key_point_quality=None):
         self.feature = feature          # type: str
         self.file_name = file_name      # type: str
         self.image_base_six_four = image_base_six_four  # type: str
@@ -8751,6 +9214,8 @@ class RecognizeImageResponseDataFaceList(TeaModel):
         self.respirator_color = respirator_color  # type: str
         self.right_bottom_x = right_bottom_x  # type: str
         self.right_bottom_y = right_bottom_y  # type: str
+        self.quality = quality          # type: float
+        self.key_point_quality = key_point_quality  # type: float
 
     def validate(self):
         self.validate_required(self.feature, 'feature')
@@ -8762,6 +9227,8 @@ class RecognizeImageResponseDataFaceList(TeaModel):
         self.validate_required(self.respirator_color, 'respirator_color')
         self.validate_required(self.right_bottom_x, 'right_bottom_x')
         self.validate_required(self.right_bottom_y, 'right_bottom_y')
+        self.validate_required(self.quality, 'quality')
+        self.validate_required(self.key_point_quality, 'key_point_quality')
 
     def to_map(self):
         result = {}
@@ -8774,6 +9241,8 @@ class RecognizeImageResponseDataFaceList(TeaModel):
         result['RespiratorColor'] = self.respirator_color
         result['RightBottomX'] = self.right_bottom_x
         result['RightBottomY'] = self.right_bottom_y
+        result['Quality'] = self.quality
+        result['KeyPointQuality'] = self.key_point_quality
         return result
 
     def from_map(self, map={}):
@@ -8786,6 +9255,8 @@ class RecognizeImageResponseDataFaceList(TeaModel):
         self.respirator_color = map.get('RespiratorColor')
         self.right_bottom_x = map.get('RightBottomX')
         self.right_bottom_y = map.get('RightBottomY')
+        self.quality = map.get('Quality')
+        self.key_point_quality = map.get('KeyPointQuality')
         return self
 
 

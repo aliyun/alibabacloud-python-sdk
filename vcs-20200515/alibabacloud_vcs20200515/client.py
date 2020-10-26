@@ -15,6 +15,54 @@ class Client(RPCClient):
         self.check_config(config)
         self._endpoint = self.get_endpoint("vcs", self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
+    def unsubscribe_device_event_with_options(self, request, runtime):
+        UtilClient.validate_model(request)
+        return vcs_20200515_models.UnsubscribeDeviceEventResponse().from_map(self.do_request("UnsubscribeDeviceEvent", "HTTPS", "POST", "2020-05-15", "AK", None, request.to_map(), runtime))
+
+    def unsubscribe_device_event(self, request):
+        runtime = util_models.RuntimeOptions()
+        return self.unsubscribe_device_event_with_options(request, runtime)
+
+    def list_subscribe_device_with_options(self, request, runtime):
+        UtilClient.validate_model(request)
+        return vcs_20200515_models.ListSubscribeDeviceResponse().from_map(self.do_request("ListSubscribeDevice", "HTTPS", "POST", "2020-05-15", "AK", None, request.to_map(), runtime))
+
+    def list_subscribe_device(self, request):
+        runtime = util_models.RuntimeOptions()
+        return self.list_subscribe_device_with_options(request, runtime)
+
+    def subscribe_device_event_with_options(self, request, runtime):
+        UtilClient.validate_model(request)
+        return vcs_20200515_models.SubscribeDeviceEventResponse().from_map(self.do_request("SubscribeDeviceEvent", "HTTPS", "POST", "2020-05-15", "AK", None, request.to_map(), runtime))
+
+    def subscribe_device_event(self, request):
+        runtime = util_models.RuntimeOptions()
+        return self.subscribe_device_event_with_options(request, runtime)
+
+    def subscribe_space_event_with_options(self, request, runtime):
+        UtilClient.validate_model(request)
+        return vcs_20200515_models.SubscribeSpaceEventResponse().from_map(self.do_request("SubscribeSpaceEvent", "HTTPS", "POST", "2020-05-15", "AK", None, request.to_map(), runtime))
+
+    def subscribe_space_event(self, request):
+        runtime = util_models.RuntimeOptions()
+        return self.subscribe_space_event_with_options(request, runtime)
+
+    def unsubscribe_space_event_with_options(self, request, runtime):
+        UtilClient.validate_model(request)
+        return vcs_20200515_models.UnsubscribeSpaceEventResponse().from_map(self.do_request("UnsubscribeSpaceEvent", "HTTPS", "POST", "2020-05-15", "AK", None, request.to_map(), runtime))
+
+    def unsubscribe_space_event(self, request):
+        runtime = util_models.RuntimeOptions()
+        return self.unsubscribe_space_event_with_options(request, runtime)
+
+    def list_person_trace_details_with_options(self, request, runtime):
+        UtilClient.validate_model(request)
+        return vcs_20200515_models.ListPersonTraceDetailsResponse().from_map(self.do_request("ListPersonTraceDetails", "HTTPS", "POST", "2020-05-15", "AK,APP", None, request.to_map(), runtime))
+
+    def list_person_trace_details(self, request):
+        runtime = util_models.RuntimeOptions()
+        return self.list_person_trace_details_with_options(request, runtime)
+
     def get_monitor_list_with_options(self, request, runtime):
         UtilClient.validate_model(request)
         return vcs_20200515_models.GetMonitorListResponse().from_map(self.do_request("GetMonitorList", "HTTPS", "POST", "2020-05-15", "AK", None, request.to_map(), runtime))
