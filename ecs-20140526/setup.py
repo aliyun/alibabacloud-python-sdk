@@ -25,34 +25,37 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_ecs20140526.
 
-Created on 02/09/2020
+Created on 27/10/2020
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_ecs20140526"
-NAME = "alibabacloud_ecs20140526"
+NAME = "alibabacloud_ecs20140526" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud Elastic Compute Service (20140526) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
 URL = "https://github.com/aliyun/alibabacloud-sdk"
-
-TOPDIR = os.path.dirname(__file__) or "."
+REQUIRES = ["alibabacloud_tea_util>=0.2.0, <1.0.0","alibabacloud_rpc_util>=0.0.3, <1.0.0","alibabacloud_tea_rpc>=0.0.6, <1.0.0","alibabacloud_endpoint_util>=0.0.3, <1.0.0"]
 VERSION = __import__(PACKAGE).__version__
-REQUIRES = ["alibabacloud_tea_util>=0.2.0, <1.0.0","alibabacloud_tea_rpc>=0.0.4, <1.0.0","alibabacloud_endpoint_util>=0.0.2, <1.0.0"]
 
-if sys.version_info[0] == 2:
-    with open("README.md") as fp:
-        LONG_DESCRIPTION = fp.read()
-else:
-    with open("README.md", encoding='utf-8') as fp:
-        LONG_DESCRIPTION = fp.read()
+
+LONG_DESCRIPTION = ''
+if os.path.exists('./README.md'):
+    if sys.version_info[0] == 2:
+        with open("README.md") as fp:
+            LONG_DESCRIPTION = fp.read()
+    else:
+        with open("README.md", encoding='utf-8') as fp:
+            LONG_DESCRIPTION = fp.read()
+
 
 setup(
     name=NAME,
     version=VERSION,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
+    long_description_content_type='text/markdown',
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     license="Apache License 2.0",
@@ -67,8 +70,6 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",

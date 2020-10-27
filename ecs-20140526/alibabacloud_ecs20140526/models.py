@@ -1,15 +1,1728 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
+try:
+    from typing import List, Dict, Any
+except ImportError:
+    pass
+
+
+class ReleaseCapacityReservationRequest(TeaModel):
+    def __init__(self, region_id=None, private_pool_options=None, dry_run=None):
+        self.region_id = region_id      # type: str
+        self.private_pool_options = private_pool_options  # type: ReleaseCapacityReservationRequestPrivatePoolOptions
+        self.dry_run = dry_run          # type: bool
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+        if self.private_pool_options:
+            self.private_pool_options.validate()
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        else:
+            result['PrivatePoolOptions'] = None
+        result['DryRun'] = self.dry_run
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        if map.get('PrivatePoolOptions') is not None:
+            temp_model = ReleaseCapacityReservationRequestPrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(map['PrivatePoolOptions'])
+        else:
+            self.private_pool_options = None
+        self.dry_run = map.get('DryRun')
+        return self
+
+
+class ReleaseCapacityReservationRequestPrivatePoolOptions(TeaModel):
+    def __init__(self, id=None):
+        self.id = id                    # type: str
+
+    def validate(self):
+        self.validate_required(self.id, 'id')
+
+    def to_map(self):
+        result = {}
+        result['Id'] = self.id
+        return result
+
+    def from_map(self, map={}):
+        self.id = map.get('Id')
+        return self
+
+
+class ReleaseCapacityReservationResponse(TeaModel):
+    def __init__(self, request_id=None):
+        self.request_id = request_id    # type: str
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        return self
+
+
+class DescribeCapacityReservationsRequest(TeaModel):
+    def __init__(self, region_id=None, max_results=None, next_token=None, private_pool_options=None, platform=None,
+                 instance_type=None, zone_id=None, instance_charge_type=None):
+        self.region_id = region_id      # type: str
+        self.max_results = max_results  # type: int
+        self.next_token = next_token    # type: str
+        self.private_pool_options = private_pool_options  # type: DescribeCapacityReservationsRequestPrivatePoolOptions
+        self.platform = platform        # type: str
+        self.instance_type = instance_type  # type: str
+        self.zone_id = zone_id          # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+        if self.private_pool_options:
+            self.private_pool_options.validate()
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        result['MaxResults'] = self.max_results
+        result['NextToken'] = self.next_token
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        else:
+            result['PrivatePoolOptions'] = None
+        result['Platform'] = self.platform
+        result['InstanceType'] = self.instance_type
+        result['ZoneId'] = self.zone_id
+        result['InstanceChargeType'] = self.instance_charge_type
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        self.max_results = map.get('MaxResults')
+        self.next_token = map.get('NextToken')
+        if map.get('PrivatePoolOptions') is not None:
+            temp_model = DescribeCapacityReservationsRequestPrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(map['PrivatePoolOptions'])
+        else:
+            self.private_pool_options = None
+        self.platform = map.get('Platform')
+        self.instance_type = map.get('InstanceType')
+        self.zone_id = map.get('ZoneId')
+        self.instance_charge_type = map.get('InstanceChargeType')
+        return self
+
+
+class DescribeCapacityReservationsRequestPrivatePoolOptions(TeaModel):
+    def __init__(self, ids=None):
+        self.ids = ids                  # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['Ids'] = self.ids
+        return result
+
+    def from_map(self, map={}):
+        self.ids = map.get('Ids')
+        return self
+
+
+class DescribeCapacityReservationsResponse(TeaModel):
+    def __init__(self, request_id=None, next_token=None, max_results=None, total_count=None,
+                 capacity_reservation_set=None):
+        self.request_id = request_id    # type: str
+        self.next_token = next_token    # type: str
+        self.max_results = max_results  # type: int
+        self.total_count = total_count  # type: int
+        self.capacity_reservation_set = capacity_reservation_set  # type: DescribeCapacityReservationsResponseCapacityReservationSet
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.next_token, 'next_token')
+        self.validate_required(self.max_results, 'max_results')
+        self.validate_required(self.total_count, 'total_count')
+        self.validate_required(self.capacity_reservation_set, 'capacity_reservation_set')
+        if self.capacity_reservation_set:
+            self.capacity_reservation_set.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['NextToken'] = self.next_token
+        result['MaxResults'] = self.max_results
+        result['TotalCount'] = self.total_count
+        if self.capacity_reservation_set is not None:
+            result['CapacityReservationSet'] = self.capacity_reservation_set.to_map()
+        else:
+            result['CapacityReservationSet'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.next_token = map.get('NextToken')
+        self.max_results = map.get('MaxResults')
+        self.total_count = map.get('TotalCount')
+        if map.get('CapacityReservationSet') is not None:
+            temp_model = DescribeCapacityReservationsResponseCapacityReservationSet()
+            self.capacity_reservation_set = temp_model.from_map(map['CapacityReservationSet'])
+        else:
+            self.capacity_reservation_set = None
+        return self
+
+
+class DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource(TeaModel):
+    def __init__(self, zone_id=None, instance_type=None, total_amount=None, used_amount=None):
+        self.zone_id = zone_id          # type: str
+        self.instance_type = instance_type  # type: str
+        self.total_amount = total_amount  # type: int
+        self.used_amount = used_amount  # type: int
+
+    def validate(self):
+        self.validate_required(self.zone_id, 'zone_id')
+        self.validate_required(self.instance_type, 'instance_type')
+        self.validate_required(self.total_amount, 'total_amount')
+        self.validate_required(self.used_amount, 'used_amount')
+
+    def to_map(self):
+        result = {}
+        result['zoneId'] = self.zone_id
+        result['InstanceType'] = self.instance_type
+        result['TotalAmount'] = self.total_amount
+        result['UsedAmount'] = self.used_amount
+        return result
+
+    def from_map(self, map={}):
+        self.zone_id = map.get('zoneId')
+        self.instance_type = map.get('InstanceType')
+        self.total_amount = map.get('TotalAmount')
+        self.used_amount = map.get('UsedAmount')
+        return self
+
+
+class DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResources(TeaModel):
+    def __init__(self, allocated_resource=None):
+        self.allocated_resource = allocated_resource  # type: List[DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource]
+
+    def validate(self):
+        self.validate_required(self.allocated_resource, 'allocated_resource')
+        if self.allocated_resource:
+            for k in self.allocated_resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['AllocatedResource'] = []
+        if self.allocated_resource is not None:
+            for k in self.allocated_resource:
+                result['AllocatedResource'].append(k.to_map() if k else None)
+        else:
+            result['AllocatedResource'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.allocated_resource = []
+        if map.get('AllocatedResource') is not None:
+            for k in map.get('AllocatedResource'):
+                temp_model = DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource()
+                self.allocated_resource.append(temp_model.from_map(k))
+        else:
+            self.allocated_resource = None
+        return self
+
+
+class DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem(TeaModel):
+    def __init__(self, private_pool_options_id=None, private_pool_options_name=None, description=None,
+                 region_id=None, private_pool_options_match_criteria=None, status=None, start_time=None, end_time=None,
+                 end_time_type=None, instance_charge_type=None, platform=None, allocated_resources=None):
+        self.private_pool_options_id = private_pool_options_id  # type: str
+        self.private_pool_options_name = private_pool_options_name  # type: str
+        self.description = description  # type: str
+        self.region_id = region_id      # type: str
+        self.private_pool_options_match_criteria = private_pool_options_match_criteria  # type: str
+        self.status = status            # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.end_time_type = end_time_type  # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.platform = platform        # type: str
+        self.allocated_resources = allocated_resources  # type: DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResources
+
+    def validate(self):
+        self.validate_required(self.private_pool_options_id, 'private_pool_options_id')
+        self.validate_required(self.private_pool_options_name, 'private_pool_options_name')
+        self.validate_required(self.description, 'description')
+        self.validate_required(self.region_id, 'region_id')
+        self.validate_required(self.private_pool_options_match_criteria, 'private_pool_options_match_criteria')
+        self.validate_required(self.status, 'status')
+        self.validate_required(self.start_time, 'start_time')
+        self.validate_required(self.end_time, 'end_time')
+        self.validate_required(self.end_time_type, 'end_time_type')
+        self.validate_required(self.instance_charge_type, 'instance_charge_type')
+        self.validate_required(self.platform, 'platform')
+        self.validate_required(self.allocated_resources, 'allocated_resources')
+        if self.allocated_resources:
+            self.allocated_resources.validate()
+
+    def to_map(self):
+        result = {}
+        result['PrivatePoolOptionsId'] = self.private_pool_options_id
+        result['PrivatePoolOptionsName'] = self.private_pool_options_name
+        result['Description'] = self.description
+        result['RegionId'] = self.region_id
+        result['PrivatePoolOptionsMatchCriteria'] = self.private_pool_options_match_criteria
+        result['Status'] = self.status
+        result['StartTime'] = self.start_time
+        result['EndTime'] = self.end_time
+        result['EndTimeType'] = self.end_time_type
+        result['InstanceChargeType'] = self.instance_charge_type
+        result['Platform'] = self.platform
+        if self.allocated_resources is not None:
+            result['AllocatedResources'] = self.allocated_resources.to_map()
+        else:
+            result['AllocatedResources'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.private_pool_options_id = map.get('PrivatePoolOptionsId')
+        self.private_pool_options_name = map.get('PrivatePoolOptionsName')
+        self.description = map.get('Description')
+        self.region_id = map.get('RegionId')
+        self.private_pool_options_match_criteria = map.get('PrivatePoolOptionsMatchCriteria')
+        self.status = map.get('Status')
+        self.start_time = map.get('StartTime')
+        self.end_time = map.get('EndTime')
+        self.end_time_type = map.get('EndTimeType')
+        self.instance_charge_type = map.get('InstanceChargeType')
+        self.platform = map.get('Platform')
+        if map.get('AllocatedResources') is not None:
+            temp_model = DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItemAllocatedResources()
+            self.allocated_resources = temp_model.from_map(map['AllocatedResources'])
+        else:
+            self.allocated_resources = None
+        return self
+
+
+class DescribeCapacityReservationsResponseCapacityReservationSet(TeaModel):
+    def __init__(self, capacity_reservation_item=None):
+        self.capacity_reservation_item = capacity_reservation_item  # type: List[DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem]
+
+    def validate(self):
+        self.validate_required(self.capacity_reservation_item, 'capacity_reservation_item')
+        if self.capacity_reservation_item:
+            for k in self.capacity_reservation_item:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['CapacityReservationItem'] = []
+        if self.capacity_reservation_item is not None:
+            for k in self.capacity_reservation_item:
+                result['CapacityReservationItem'].append(k.to_map() if k else None)
+        else:
+            result['CapacityReservationItem'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.capacity_reservation_item = []
+        if map.get('CapacityReservationItem') is not None:
+            for k in map.get('CapacityReservationItem'):
+                temp_model = DescribeCapacityReservationsResponseCapacityReservationSetCapacityReservationItem()
+                self.capacity_reservation_item.append(temp_model.from_map(k))
+        else:
+            self.capacity_reservation_item = None
+        return self
+
+
+class DescribeCapacityReservationInstancesRequest(TeaModel):
+    def __init__(self, region_id=None, max_results=None, next_token=None, private_pool_options=None):
+        self.region_id = region_id      # type: str
+        self.max_results = max_results  # type: int
+        self.next_token = next_token    # type: str
+        self.private_pool_options = private_pool_options  # type: DescribeCapacityReservationInstancesRequestPrivatePoolOptions
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+        if self.private_pool_options:
+            self.private_pool_options.validate()
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        result['MaxResults'] = self.max_results
+        result['NextToken'] = self.next_token
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        else:
+            result['PrivatePoolOptions'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        self.max_results = map.get('MaxResults')
+        self.next_token = map.get('NextToken')
+        if map.get('PrivatePoolOptions') is not None:
+            temp_model = DescribeCapacityReservationInstancesRequestPrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(map['PrivatePoolOptions'])
+        else:
+            self.private_pool_options = None
+        return self
+
+
+class DescribeCapacityReservationInstancesRequestPrivatePoolOptions(TeaModel):
+    def __init__(self, id=None):
+        self.id = id                    # type: str
+
+    def validate(self):
+        self.validate_required(self.id, 'id')
+
+    def to_map(self):
+        result = {}
+        result['Id'] = self.id
+        return result
+
+    def from_map(self, map={}):
+        self.id = map.get('Id')
+        return self
+
+
+class DescribeCapacityReservationInstancesResponse(TeaModel):
+    def __init__(self, request_id=None, next_token=None, max_results=None, total_count=None,
+                 capacity_reservation_item=None):
+        self.request_id = request_id    # type: str
+        self.next_token = next_token    # type: str
+        self.max_results = max_results  # type: int
+        self.total_count = total_count  # type: int
+        self.capacity_reservation_item = capacity_reservation_item  # type: DescribeCapacityReservationInstancesResponseCapacityReservationItem
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.next_token, 'next_token')
+        self.validate_required(self.max_results, 'max_results')
+        self.validate_required(self.total_count, 'total_count')
+        self.validate_required(self.capacity_reservation_item, 'capacity_reservation_item')
+        if self.capacity_reservation_item:
+            self.capacity_reservation_item.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['NextToken'] = self.next_token
+        result['MaxResults'] = self.max_results
+        result['TotalCount'] = self.total_count
+        if self.capacity_reservation_item is not None:
+            result['CapacityReservationItem'] = self.capacity_reservation_item.to_map()
+        else:
+            result['CapacityReservationItem'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.next_token = map.get('NextToken')
+        self.max_results = map.get('MaxResults')
+        self.total_count = map.get('TotalCount')
+        if map.get('CapacityReservationItem') is not None:
+            temp_model = DescribeCapacityReservationInstancesResponseCapacityReservationItem()
+            self.capacity_reservation_item = temp_model.from_map(map['CapacityReservationItem'])
+        else:
+            self.capacity_reservation_item = None
+        return self
+
+
+class DescribeCapacityReservationInstancesResponseCapacityReservationItemInstanceIdSet(TeaModel):
+    def __init__(self, instance_id=None):
+        self.instance_id = instance_id  # type: str
+
+    def validate(self):
+        self.validate_required(self.instance_id, 'instance_id')
+
+    def to_map(self):
+        result = {}
+        result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, map={}):
+        self.instance_id = map.get('InstanceId')
+        return self
+
+
+class DescribeCapacityReservationInstancesResponseCapacityReservationItem(TeaModel):
+    def __init__(self, instance_id_set=None):
+        self.instance_id_set = instance_id_set  # type: List[DescribeCapacityReservationInstancesResponseCapacityReservationItemInstanceIdSet]
+
+    def validate(self):
+        self.validate_required(self.instance_id_set, 'instance_id_set')
+        if self.instance_id_set:
+            for k in self.instance_id_set:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['InstanceIdSet'] = []
+        if self.instance_id_set is not None:
+            for k in self.instance_id_set:
+                result['InstanceIdSet'].append(k.to_map() if k else None)
+        else:
+            result['InstanceIdSet'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.instance_id_set = []
+        if map.get('InstanceIdSet') is not None:
+            for k in map.get('InstanceIdSet'):
+                temp_model = DescribeCapacityReservationInstancesResponseCapacityReservationItemInstanceIdSet()
+                self.instance_id_set.append(temp_model.from_map(k))
+        else:
+            self.instance_id_set = None
+        return self
+
+
+class CreateCapacityReservationRequest(TeaModel):
+    def __init__(self, region_id=None, client_token=None, zone_id=None, private_pool_options=None, description=None,
+                 instance_amount=None, instance_type=None, start_time=None, end_time=None, end_time_type=None, platform=None):
+        self.region_id = region_id      # type: str
+        self.client_token = client_token  # type: str
+        self.zone_id = zone_id          # type: List[str]
+        self.private_pool_options = private_pool_options  # type: CreateCapacityReservationRequestPrivatePoolOptions
+        self.description = description  # type: str
+        self.instance_amount = instance_amount  # type: int
+        self.instance_type = instance_type  # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.end_time_type = end_time_type  # type: str
+        self.platform = platform        # type: str
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+        self.validate_required(self.zone_id, 'zone_id')
+        if self.private_pool_options:
+            self.private_pool_options.validate()
+        self.validate_required(self.instance_amount, 'instance_amount')
+        self.validate_required(self.instance_type, 'instance_type')
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        result['ClientToken'] = self.client_token
+        result['ZoneId'] = self.zone_id
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        else:
+            result['PrivatePoolOptions'] = None
+        result['Description'] = self.description
+        result['InstanceAmount'] = self.instance_amount
+        result['InstanceType'] = self.instance_type
+        result['StartTime'] = self.start_time
+        result['EndTime'] = self.end_time
+        result['EndTimeType'] = self.end_time_type
+        result['Platform'] = self.platform
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        self.client_token = map.get('ClientToken')
+        self.zone_id = map.get('ZoneId')
+        if map.get('PrivatePoolOptions') is not None:
+            temp_model = CreateCapacityReservationRequestPrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(map['PrivatePoolOptions'])
+        else:
+            self.private_pool_options = None
+        self.description = map.get('Description')
+        self.instance_amount = map.get('InstanceAmount')
+        self.instance_type = map.get('InstanceType')
+        self.start_time = map.get('StartTime')
+        self.end_time = map.get('EndTime')
+        self.end_time_type = map.get('EndTimeType')
+        self.platform = map.get('Platform')
+        return self
+
+
+class CreateCapacityReservationRequestPrivatePoolOptions(TeaModel):
+    def __init__(self, name=None, match_criteria=None):
+        self.name = name                # type: str
+        self.match_criteria = match_criteria  # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['MatchCriteria'] = self.match_criteria
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.match_criteria = map.get('MatchCriteria')
+        return self
+
+
+class CreateCapacityReservationResponse(TeaModel):
+    def __init__(self, request_id=None, private_pool_options_id=None):
+        self.request_id = request_id    # type: str
+        self.private_pool_options_id = private_pool_options_id  # type: str
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.private_pool_options_id, 'private_pool_options_id')
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['PrivatePoolOptionsId'] = self.private_pool_options_id
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.private_pool_options_id = map.get('PrivatePoolOptionsId')
+        return self
+
+
+class StartElasticityAssuranceRequest(TeaModel):
+    def __init__(self, region_id=None, private_pool_options=None):
+        self.region_id = region_id      # type: str
+        self.private_pool_options = private_pool_options  # type: StartElasticityAssuranceRequestPrivatePoolOptions
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+        if self.private_pool_options:
+            self.private_pool_options.validate()
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        else:
+            result['PrivatePoolOptions'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        if map.get('PrivatePoolOptions') is not None:
+            temp_model = StartElasticityAssuranceRequestPrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(map['PrivatePoolOptions'])
+        else:
+            self.private_pool_options = None
+        return self
+
+
+class StartElasticityAssuranceRequestPrivatePoolOptions(TeaModel):
+    def __init__(self, id=None):
+        self.id = id                    # type: str
+
+    def validate(self):
+        self.validate_required(self.id, 'id')
+
+    def to_map(self):
+        result = {}
+        result['Id'] = self.id
+        return result
+
+    def from_map(self, map={}):
+        self.id = map.get('Id')
+        return self
+
+
+class StartElasticityAssuranceResponse(TeaModel):
+    def __init__(self, request_id=None):
+        self.request_id = request_id    # type: str
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        return self
+
+
+class ModifyInstanceAttachmentAttributesRequest(TeaModel):
+    def __init__(self, region_id=None, instance_id=None, private_pool_options=None):
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.private_pool_options = private_pool_options  # type: ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+        self.validate_required(self.instance_id, 'instance_id')
+        if self.private_pool_options:
+            self.private_pool_options.validate()
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        result['InstanceId'] = self.instance_id
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        else:
+            result['PrivatePoolOptions'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        self.instance_id = map.get('InstanceId')
+        if map.get('PrivatePoolOptions') is not None:
+            temp_model = ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(map['PrivatePoolOptions'])
+        else:
+            self.private_pool_options = None
+        return self
+
+
+class ModifyInstanceAttachmentAttributesRequestPrivatePoolOptions(TeaModel):
+    def __init__(self, match_criteria=None, id=None):
+        self.match_criteria = match_criteria  # type: str
+        self.id = id                    # type: str
+
+    def validate(self):
+        self.validate_required(self.match_criteria, 'match_criteria')
+
+    def to_map(self):
+        result = {}
+        result['MatchCriteria'] = self.match_criteria
+        result['Id'] = self.id
+        return result
+
+    def from_map(self, map={}):
+        self.match_criteria = map.get('MatchCriteria')
+        self.id = map.get('Id')
+        return self
+
+
+class ModifyInstanceAttachmentAttributesResponse(TeaModel):
+    def __init__(self, request_id=None):
+        self.request_id = request_id    # type: str
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        return self
+
+
+class DescribeInstanceAttachmentAttributesRequest(TeaModel):
+    def __init__(self, region_id=None, instance_ids=None, page_number=None, page_size=None):
+        self.region_id = region_id      # type: str
+        self.instance_ids = instance_ids  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+        self.validate_required(self.instance_ids, 'instance_ids')
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        result['InstanceIds'] = self.instance_ids
+        result['PageNumber'] = self.page_number
+        result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        self.instance_ids = map.get('InstanceIds')
+        self.page_number = map.get('PageNumber')
+        self.page_size = map.get('PageSize')
+        return self
+
+
+class DescribeInstanceAttachmentAttributesResponse(TeaModel):
+    def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, instances=None):
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.instances = instances      # type: DescribeInstanceAttachmentAttributesResponseInstances
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.total_count, 'total_count')
+        self.validate_required(self.page_number, 'page_number')
+        self.validate_required(self.page_size, 'page_size')
+        self.validate_required(self.instances, 'instances')
+        if self.instances:
+            self.instances.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['TotalCount'] = self.total_count
+        result['PageNumber'] = self.page_number
+        result['PageSize'] = self.page_size
+        if self.instances is not None:
+            result['Instances'] = self.instances.to_map()
+        else:
+            result['Instances'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.total_count = map.get('TotalCount')
+        self.page_number = map.get('PageNumber')
+        self.page_size = map.get('PageSize')
+        if map.get('Instances') is not None:
+            temp_model = DescribeInstanceAttachmentAttributesResponseInstances()
+            self.instances = temp_model.from_map(map['Instances'])
+        else:
+            self.instances = None
+        return self
+
+
+class DescribeInstanceAttachmentAttributesResponseInstancesInstance(TeaModel):
+    def __init__(self, instance_id=None, private_pool_options_id=None, private_pool_options_match_criteria=None):
+        self.instance_id = instance_id  # type: str
+        self.private_pool_options_id = private_pool_options_id  # type: str
+        self.private_pool_options_match_criteria = private_pool_options_match_criteria  # type: str
+
+    def validate(self):
+        self.validate_required(self.instance_id, 'instance_id')
+        self.validate_required(self.private_pool_options_id, 'private_pool_options_id')
+        self.validate_required(self.private_pool_options_match_criteria, 'private_pool_options_match_criteria')
+
+    def to_map(self):
+        result = {}
+        result['InstanceId'] = self.instance_id
+        result['PrivatePoolOptionsId'] = self.private_pool_options_id
+        result['PrivatePoolOptionsMatchCriteria'] = self.private_pool_options_match_criteria
+        return result
+
+    def from_map(self, map={}):
+        self.instance_id = map.get('InstanceId')
+        self.private_pool_options_id = map.get('PrivatePoolOptionsId')
+        self.private_pool_options_match_criteria = map.get('PrivatePoolOptionsMatchCriteria')
+        return self
+
+
+class DescribeInstanceAttachmentAttributesResponseInstances(TeaModel):
+    def __init__(self, instance=None):
+        self.instance = instance        # type: List[DescribeInstanceAttachmentAttributesResponseInstancesInstance]
+
+    def validate(self):
+        self.validate_required(self.instance, 'instance')
+        if self.instance:
+            for k in self.instance:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['Instance'] = []
+        if self.instance is not None:
+            for k in self.instance:
+                result['Instance'].append(k.to_map() if k else None)
+        else:
+            result['Instance'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.instance = []
+        if map.get('Instance') is not None:
+            for k in map.get('Instance'):
+                temp_model = DescribeInstanceAttachmentAttributesResponseInstancesInstance()
+                self.instance.append(temp_model.from_map(k))
+        else:
+            self.instance = None
+        return self
+
+
+class DescribeElasticityAssurancesRequest(TeaModel):
+    def __init__(self, region_id=None, max_results=None, next_token=None, private_pool_options=None, platform=None,
+                 instance_type=None, zone_id=None, instance_charge_type=None):
+        self.region_id = region_id      # type: str
+        self.max_results = max_results  # type: int
+        self.next_token = next_token    # type: str
+        self.private_pool_options = private_pool_options  # type: DescribeElasticityAssurancesRequestPrivatePoolOptions
+        self.platform = platform        # type: str
+        self.instance_type = instance_type  # type: str
+        self.zone_id = zone_id          # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+        if self.private_pool_options:
+            self.private_pool_options.validate()
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        result['MaxResults'] = self.max_results
+        result['NextToken'] = self.next_token
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        else:
+            result['PrivatePoolOptions'] = None
+        result['Platform'] = self.platform
+        result['InstanceType'] = self.instance_type
+        result['ZoneId'] = self.zone_id
+        result['InstanceChargeType'] = self.instance_charge_type
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        self.max_results = map.get('MaxResults')
+        self.next_token = map.get('NextToken')
+        if map.get('PrivatePoolOptions') is not None:
+            temp_model = DescribeElasticityAssurancesRequestPrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(map['PrivatePoolOptions'])
+        else:
+            self.private_pool_options = None
+        self.platform = map.get('Platform')
+        self.instance_type = map.get('InstanceType')
+        self.zone_id = map.get('ZoneId')
+        self.instance_charge_type = map.get('InstanceChargeType')
+        return self
+
+
+class DescribeElasticityAssurancesRequestPrivatePoolOptions(TeaModel):
+    def __init__(self, ids=None):
+        self.ids = ids                  # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['Ids'] = self.ids
+        return result
+
+    def from_map(self, map={}):
+        self.ids = map.get('Ids')
+        return self
+
+
+class DescribeElasticityAssurancesResponse(TeaModel):
+    def __init__(self, request_id=None, next_token=None, max_results=None, total_count=None,
+                 elasticity_assurance_set=None):
+        self.request_id = request_id    # type: str
+        self.next_token = next_token    # type: str
+        self.max_results = max_results  # type: int
+        self.total_count = total_count  # type: int
+        self.elasticity_assurance_set = elasticity_assurance_set  # type: DescribeElasticityAssurancesResponseElasticityAssuranceSet
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.next_token, 'next_token')
+        self.validate_required(self.max_results, 'max_results')
+        self.validate_required(self.total_count, 'total_count')
+        self.validate_required(self.elasticity_assurance_set, 'elasticity_assurance_set')
+        if self.elasticity_assurance_set:
+            self.elasticity_assurance_set.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['NextToken'] = self.next_token
+        result['MaxResults'] = self.max_results
+        result['TotalCount'] = self.total_count
+        if self.elasticity_assurance_set is not None:
+            result['ElasticityAssuranceSet'] = self.elasticity_assurance_set.to_map()
+        else:
+            result['ElasticityAssuranceSet'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.next_token = map.get('NextToken')
+        self.max_results = map.get('MaxResults')
+        self.total_count = map.get('TotalCount')
+        if map.get('ElasticityAssuranceSet') is not None:
+            temp_model = DescribeElasticityAssurancesResponseElasticityAssuranceSet()
+            self.elasticity_assurance_set = temp_model.from_map(map['ElasticityAssuranceSet'])
+        else:
+            self.elasticity_assurance_set = None
+        return self
+
+
+class DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource(TeaModel):
+    def __init__(self, zone_id=None, instance_type=None, total_amount=None, used_amount=None):
+        self.zone_id = zone_id          # type: str
+        self.instance_type = instance_type  # type: str
+        self.total_amount = total_amount  # type: int
+        self.used_amount = used_amount  # type: int
+
+    def validate(self):
+        self.validate_required(self.zone_id, 'zone_id')
+        self.validate_required(self.instance_type, 'instance_type')
+        self.validate_required(self.total_amount, 'total_amount')
+        self.validate_required(self.used_amount, 'used_amount')
+
+    def to_map(self):
+        result = {}
+        result['zoneId'] = self.zone_id
+        result['InstanceType'] = self.instance_type
+        result['TotalAmount'] = self.total_amount
+        result['UsedAmount'] = self.used_amount
+        return result
+
+    def from_map(self, map={}):
+        self.zone_id = map.get('zoneId')
+        self.instance_type = map.get('InstanceType')
+        self.total_amount = map.get('TotalAmount')
+        self.used_amount = map.get('UsedAmount')
+        return self
+
+
+class DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResources(TeaModel):
+    def __init__(self, allocated_resource=None):
+        self.allocated_resource = allocated_resource  # type: List[DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource]
+
+    def validate(self):
+        self.validate_required(self.allocated_resource, 'allocated_resource')
+        if self.allocated_resource:
+            for k in self.allocated_resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['AllocatedResource'] = []
+        if self.allocated_resource is not None:
+            for k in self.allocated_resource:
+                result['AllocatedResource'].append(k.to_map() if k else None)
+        else:
+            result['AllocatedResource'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.allocated_resource = []
+        if map.get('AllocatedResource') is not None:
+            for k in map.get('AllocatedResource'):
+                temp_model = DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResourcesAllocatedResource()
+                self.allocated_resource.append(temp_model.from_map(k))
+        else:
+            self.allocated_resource = None
+        return self
+
+
+class DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem(TeaModel):
+    def __init__(self, private_pool_options_id=None, private_pool_options_name=None, description=None,
+                 region_id=None, private_pool_options_match_criteria=None, used_assurance_times=None,
+                 total_assurance_times=None, status=None, start_time=None, end_time=None, latest_start_time=None,
+                 allocated_resources=None):
+        self.private_pool_options_id = private_pool_options_id  # type: str
+        self.private_pool_options_name = private_pool_options_name  # type: str
+        self.description = description  # type: str
+        self.region_id = region_id      # type: str
+        self.private_pool_options_match_criteria = private_pool_options_match_criteria  # type: str
+        self.used_assurance_times = used_assurance_times  # type: int
+        self.total_assurance_times = total_assurance_times  # type: str
+        self.status = status            # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.latest_start_time = latest_start_time  # type: str
+        self.allocated_resources = allocated_resources  # type: DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResources
+
+    def validate(self):
+        self.validate_required(self.private_pool_options_id, 'private_pool_options_id')
+        self.validate_required(self.private_pool_options_name, 'private_pool_options_name')
+        self.validate_required(self.description, 'description')
+        self.validate_required(self.region_id, 'region_id')
+        self.validate_required(self.private_pool_options_match_criteria, 'private_pool_options_match_criteria')
+        self.validate_required(self.used_assurance_times, 'used_assurance_times')
+        self.validate_required(self.total_assurance_times, 'total_assurance_times')
+        self.validate_required(self.status, 'status')
+        self.validate_required(self.start_time, 'start_time')
+        self.validate_required(self.end_time, 'end_time')
+        self.validate_required(self.latest_start_time, 'latest_start_time')
+        self.validate_required(self.allocated_resources, 'allocated_resources')
+        if self.allocated_resources:
+            self.allocated_resources.validate()
+
+    def to_map(self):
+        result = {}
+        result['PrivatePoolOptionsId'] = self.private_pool_options_id
+        result['PrivatePoolOptionsName'] = self.private_pool_options_name
+        result['Description'] = self.description
+        result['RegionId'] = self.region_id
+        result['PrivatePoolOptionsMatchCriteria'] = self.private_pool_options_match_criteria
+        result['UsedAssuranceTimes'] = self.used_assurance_times
+        result['TotalAssuranceTimes'] = self.total_assurance_times
+        result['Status'] = self.status
+        result['StartTime'] = self.start_time
+        result['EndTime'] = self.end_time
+        result['LatestStartTime'] = self.latest_start_time
+        if self.allocated_resources is not None:
+            result['AllocatedResources'] = self.allocated_resources.to_map()
+        else:
+            result['AllocatedResources'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.private_pool_options_id = map.get('PrivatePoolOptionsId')
+        self.private_pool_options_name = map.get('PrivatePoolOptionsName')
+        self.description = map.get('Description')
+        self.region_id = map.get('RegionId')
+        self.private_pool_options_match_criteria = map.get('PrivatePoolOptionsMatchCriteria')
+        self.used_assurance_times = map.get('UsedAssuranceTimes')
+        self.total_assurance_times = map.get('TotalAssuranceTimes')
+        self.status = map.get('Status')
+        self.start_time = map.get('StartTime')
+        self.end_time = map.get('EndTime')
+        self.latest_start_time = map.get('LatestStartTime')
+        if map.get('AllocatedResources') is not None:
+            temp_model = DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItemAllocatedResources()
+            self.allocated_resources = temp_model.from_map(map['AllocatedResources'])
+        else:
+            self.allocated_resources = None
+        return self
+
+
+class DescribeElasticityAssurancesResponseElasticityAssuranceSet(TeaModel):
+    def __init__(self, elasticity_assurance_item=None):
+        self.elasticity_assurance_item = elasticity_assurance_item  # type: List[DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem]
+
+    def validate(self):
+        self.validate_required(self.elasticity_assurance_item, 'elasticity_assurance_item')
+        if self.elasticity_assurance_item:
+            for k in self.elasticity_assurance_item:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['ElasticityAssuranceItem'] = []
+        if self.elasticity_assurance_item is not None:
+            for k in self.elasticity_assurance_item:
+                result['ElasticityAssuranceItem'].append(k.to_map() if k else None)
+        else:
+            result['ElasticityAssuranceItem'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.elasticity_assurance_item = []
+        if map.get('ElasticityAssuranceItem') is not None:
+            for k in map.get('ElasticityAssuranceItem'):
+                temp_model = DescribeElasticityAssurancesResponseElasticityAssuranceSetElasticityAssuranceItem()
+                self.elasticity_assurance_item.append(temp_model.from_map(k))
+        else:
+            self.elasticity_assurance_item = None
+        return self
+
+
+class DescribeElasticityAssuranceInstancesRequest(TeaModel):
+    def __init__(self, region_id=None, max_results=None, next_token=None, private_pool_options=None):
+        self.region_id = region_id      # type: str
+        self.max_results = max_results  # type: int
+        self.next_token = next_token    # type: str
+        self.private_pool_options = private_pool_options  # type: DescribeElasticityAssuranceInstancesRequestPrivatePoolOptions
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+        if self.private_pool_options:
+            self.private_pool_options.validate()
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        result['MaxResults'] = self.max_results
+        result['NextToken'] = self.next_token
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        else:
+            result['PrivatePoolOptions'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        self.max_results = map.get('MaxResults')
+        self.next_token = map.get('NextToken')
+        if map.get('PrivatePoolOptions') is not None:
+            temp_model = DescribeElasticityAssuranceInstancesRequestPrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(map['PrivatePoolOptions'])
+        else:
+            self.private_pool_options = None
+        return self
+
+
+class DescribeElasticityAssuranceInstancesRequestPrivatePoolOptions(TeaModel):
+    def __init__(self, id=None):
+        self.id = id                    # type: str
+
+    def validate(self):
+        self.validate_required(self.id, 'id')
+
+    def to_map(self):
+        result = {}
+        result['Id'] = self.id
+        return result
+
+    def from_map(self, map={}):
+        self.id = map.get('Id')
+        return self
+
+
+class DescribeElasticityAssuranceInstancesResponse(TeaModel):
+    def __init__(self, request_id=None, next_token=None, max_results=None, total_count=None,
+                 elasticity_assurance_item=None):
+        self.request_id = request_id    # type: str
+        self.next_token = next_token    # type: str
+        self.max_results = max_results  # type: int
+        self.total_count = total_count  # type: int
+        self.elasticity_assurance_item = elasticity_assurance_item  # type: DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItem
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.next_token, 'next_token')
+        self.validate_required(self.max_results, 'max_results')
+        self.validate_required(self.total_count, 'total_count')
+        self.validate_required(self.elasticity_assurance_item, 'elasticity_assurance_item')
+        if self.elasticity_assurance_item:
+            self.elasticity_assurance_item.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['NextToken'] = self.next_token
+        result['MaxResults'] = self.max_results
+        result['TotalCount'] = self.total_count
+        if self.elasticity_assurance_item is not None:
+            result['ElasticityAssuranceItem'] = self.elasticity_assurance_item.to_map()
+        else:
+            result['ElasticityAssuranceItem'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.next_token = map.get('NextToken')
+        self.max_results = map.get('MaxResults')
+        self.total_count = map.get('TotalCount')
+        if map.get('ElasticityAssuranceItem') is not None:
+            temp_model = DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItem()
+            self.elasticity_assurance_item = temp_model.from_map(map['ElasticityAssuranceItem'])
+        else:
+            self.elasticity_assurance_item = None
+        return self
+
+
+class DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItemInstanceIdSet(TeaModel):
+    def __init__(self, instance_id=None):
+        self.instance_id = instance_id  # type: str
+
+    def validate(self):
+        self.validate_required(self.instance_id, 'instance_id')
+
+    def to_map(self):
+        result = {}
+        result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, map={}):
+        self.instance_id = map.get('InstanceId')
+        return self
+
+
+class DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItem(TeaModel):
+    def __init__(self, instance_id_set=None):
+        self.instance_id_set = instance_id_set  # type: List[DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItemInstanceIdSet]
+
+    def validate(self):
+        self.validate_required(self.instance_id_set, 'instance_id_set')
+        if self.instance_id_set:
+            for k in self.instance_id_set:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['InstanceIdSet'] = []
+        if self.instance_id_set is not None:
+            for k in self.instance_id_set:
+                result['InstanceIdSet'].append(k.to_map() if k else None)
+        else:
+            result['InstanceIdSet'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.instance_id_set = []
+        if map.get('InstanceIdSet') is not None:
+            for k in map.get('InstanceIdSet'):
+                temp_model = DescribeElasticityAssuranceInstancesResponseElasticityAssuranceItemInstanceIdSet()
+                self.instance_id_set.append(temp_model.from_map(k))
+        else:
+            self.instance_id_set = None
+        return self
+
+
+class CreateElasticityAssuranceRequest(TeaModel):
+    def __init__(self, region_id=None, period=None, period_unit=None, client_token=None, private_pool_options=None,
+                 description=None, assurance_times=None, zone_id=None, instance_type=None, instance_amount=None,
+                 instance_cpu_core_count=None, start_time=None):
+        self.region_id = region_id      # type: str
+        self.period = period            # type: int
+        self.period_unit = period_unit  # type: str
+        self.client_token = client_token  # type: str
+        self.private_pool_options = private_pool_options  # type: CreateElasticityAssuranceRequestPrivatePoolOptions
+        self.description = description  # type: str
+        self.assurance_times = assurance_times  # type: str
+        self.zone_id = zone_id          # type: List[str]
+        self.instance_type = instance_type  # type: List[str]
+        self.instance_amount = instance_amount  # type: int
+        self.instance_cpu_core_count = instance_cpu_core_count  # type: int
+        self.start_time = start_time    # type: str
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+        if self.private_pool_options:
+            self.private_pool_options.validate()
+        self.validate_required(self.zone_id, 'zone_id')
+        self.validate_required(self.instance_type, 'instance_type')
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        result['Period'] = self.period
+        result['PeriodUnit'] = self.period_unit
+        result['ClientToken'] = self.client_token
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        else:
+            result['PrivatePoolOptions'] = None
+        result['Description'] = self.description
+        result['AssuranceTimes'] = self.assurance_times
+        result['ZoneId'] = self.zone_id
+        result['InstanceType'] = self.instance_type
+        result['InstanceAmount'] = self.instance_amount
+        result['InstanceCpuCoreCount'] = self.instance_cpu_core_count
+        result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        self.period = map.get('Period')
+        self.period_unit = map.get('PeriodUnit')
+        self.client_token = map.get('ClientToken')
+        if map.get('PrivatePoolOptions') is not None:
+            temp_model = CreateElasticityAssuranceRequestPrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(map['PrivatePoolOptions'])
+        else:
+            self.private_pool_options = None
+        self.description = map.get('Description')
+        self.assurance_times = map.get('AssuranceTimes')
+        self.zone_id = map.get('ZoneId')
+        self.instance_type = map.get('InstanceType')
+        self.instance_amount = map.get('InstanceAmount')
+        self.instance_cpu_core_count = map.get('InstanceCpuCoreCount')
+        self.start_time = map.get('StartTime')
+        return self
+
+
+class CreateElasticityAssuranceRequestPrivatePoolOptions(TeaModel):
+    def __init__(self, name=None, match_criteria=None):
+        self.name = name                # type: str
+        self.match_criteria = match_criteria  # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['Name'] = self.name
+        result['MatchCriteria'] = self.match_criteria
+        return result
+
+    def from_map(self, map={}):
+        self.name = map.get('Name')
+        self.match_criteria = map.get('MatchCriteria')
+        return self
+
+
+class CreateElasticityAssuranceResponse(TeaModel):
+    def __init__(self, request_id=None, private_pool_options_id=None, order_id=None):
+        self.request_id = request_id    # type: str
+        self.private_pool_options_id = private_pool_options_id  # type: str
+        self.order_id = order_id        # type: str
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.private_pool_options_id, 'private_pool_options_id')
+        self.validate_required(self.order_id, 'order_id')
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['PrivatePoolOptionsId'] = self.private_pool_options_id
+        result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.private_pool_options_id = map.get('PrivatePoolOptionsId')
+        self.order_id = map.get('OrderId')
+        return self
+
+
+class SendFileRequest(TeaModel):
+    def __init__(self, region_id=None, name=None, description=None, timeout=None, target_dir=None, instance_id=None,
+                 content_type=None, content=None, file_owner=None, file_group=None, file_mode=None, overwrite=None):
+        self.region_id = region_id      # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
+        self.timeout = timeout          # type: int
+        self.target_dir = target_dir    # type: str
+        self.instance_id = instance_id  # type: List[str]
+        self.content_type = content_type  # type: str
+        self.content = content          # type: str
+        self.file_owner = file_owner    # type: str
+        self.file_group = file_group    # type: str
+        self.file_mode = file_mode      # type: str
+        self.overwrite = overwrite      # type: bool
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.target_dir, 'target_dir')
+        self.validate_required(self.instance_id, 'instance_id')
+        self.validate_required(self.content, 'content')
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        result['Name'] = self.name
+        result['Description'] = self.description
+        result['Timeout'] = self.timeout
+        result['TargetDir'] = self.target_dir
+        result['InstanceId'] = self.instance_id
+        result['ContentType'] = self.content_type
+        result['Content'] = self.content
+        result['FileOwner'] = self.file_owner
+        result['FileGroup'] = self.file_group
+        result['FileMode'] = self.file_mode
+        result['Overwrite'] = self.overwrite
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        self.name = map.get('Name')
+        self.description = map.get('Description')
+        self.timeout = map.get('Timeout')
+        self.target_dir = map.get('TargetDir')
+        self.instance_id = map.get('InstanceId')
+        self.content_type = map.get('ContentType')
+        self.content = map.get('Content')
+        self.file_owner = map.get('FileOwner')
+        self.file_group = map.get('FileGroup')
+        self.file_mode = map.get('FileMode')
+        self.overwrite = map.get('Overwrite')
+        return self
+
+
+class SendFileResponse(TeaModel):
+    def __init__(self, request_id=None, invoke_id=None):
+        self.request_id = request_id    # type: str
+        self.invoke_id = invoke_id      # type: str
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.invoke_id, 'invoke_id')
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['InvokeId'] = self.invoke_id
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.invoke_id = map.get('InvokeId')
+        return self
+
+
+class DescribeSendFileResultsRequest(TeaModel):
+    def __init__(self, region_id=None, invoke_id=None, name=None, instance_id=None, page_number=None, page_size=None):
+        self.region_id = region_id      # type: str
+        self.invoke_id = invoke_id      # type: str
+        self.name = name                # type: str
+        self.instance_id = instance_id  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        result['InvokeId'] = self.invoke_id
+        result['Name'] = self.name
+        result['InstanceId'] = self.instance_id
+        result['PageNumber'] = self.page_number
+        result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        self.invoke_id = map.get('InvokeId')
+        self.name = map.get('Name')
+        self.instance_id = map.get('InstanceId')
+        self.page_number = map.get('PageNumber')
+        self.page_size = map.get('PageSize')
+        return self
+
+
+class DescribeSendFileResultsResponse(TeaModel):
+    def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, invocations=None):
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.invocations = invocations  # type: DescribeSendFileResultsResponseInvocations
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.total_count, 'total_count')
+        self.validate_required(self.page_number, 'page_number')
+        self.validate_required(self.page_size, 'page_size')
+        self.validate_required(self.invocations, 'invocations')
+        if self.invocations:
+            self.invocations.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['TotalCount'] = self.total_count
+        result['PageNumber'] = self.page_number
+        result['PageSize'] = self.page_size
+        if self.invocations is not None:
+            result['Invocations'] = self.invocations.to_map()
+        else:
+            result['Invocations'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.total_count = map.get('TotalCount')
+        self.page_number = map.get('PageNumber')
+        self.page_size = map.get('PageSize')
+        if map.get('Invocations') is not None:
+            temp_model = DescribeSendFileResultsResponseInvocations()
+            self.invocations = temp_model.from_map(map['Invocations'])
+        else:
+            self.invocations = None
+        return self
+
+
+class DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance(TeaModel):
+    def __init__(self, instance_id=None, invocation_status=None, creation_time=None, start_time=None,
+                 finish_time=None, update_time=None, error_code=None, error_info=None):
+        self.instance_id = instance_id  # type: str
+        self.invocation_status = invocation_status  # type: str
+        self.creation_time = creation_time  # type: str
+        self.start_time = start_time    # type: str
+        self.finish_time = finish_time  # type: str
+        self.update_time = update_time  # type: str
+        self.error_code = error_code    # type: str
+        self.error_info = error_info    # type: str
+
+    def validate(self):
+        self.validate_required(self.instance_id, 'instance_id')
+        self.validate_required(self.invocation_status, 'invocation_status')
+        self.validate_required(self.creation_time, 'creation_time')
+        self.validate_required(self.start_time, 'start_time')
+        self.validate_required(self.finish_time, 'finish_time')
+        self.validate_required(self.update_time, 'update_time')
+        self.validate_required(self.error_code, 'error_code')
+        self.validate_required(self.error_info, 'error_info')
+
+    def to_map(self):
+        result = {}
+        result['InstanceId'] = self.instance_id
+        result['InvocationStatus'] = self.invocation_status
+        result['CreationTime'] = self.creation_time
+        result['StartTime'] = self.start_time
+        result['FinishTime'] = self.finish_time
+        result['UpdateTime'] = self.update_time
+        result['ErrorCode'] = self.error_code
+        result['ErrorInfo'] = self.error_info
+        return result
+
+    def from_map(self, map={}):
+        self.instance_id = map.get('InstanceId')
+        self.invocation_status = map.get('InvocationStatus')
+        self.creation_time = map.get('CreationTime')
+        self.start_time = map.get('StartTime')
+        self.finish_time = map.get('FinishTime')
+        self.update_time = map.get('UpdateTime')
+        self.error_code = map.get('ErrorCode')
+        self.error_info = map.get('ErrorInfo')
+        return self
+
+
+class DescribeSendFileResultsResponseInvocationsInvocationInvokeInstances(TeaModel):
+    def __init__(self, invoke_instance=None):
+        self.invoke_instance = invoke_instance  # type: List[DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance]
+
+    def validate(self):
+        self.validate_required(self.invoke_instance, 'invoke_instance')
+        if self.invoke_instance:
+            for k in self.invoke_instance:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['InvokeInstance'] = []
+        if self.invoke_instance is not None:
+            for k in self.invoke_instance:
+                result['InvokeInstance'].append(k.to_map() if k else None)
+        else:
+            result['InvokeInstance'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.invoke_instance = []
+        if map.get('InvokeInstance') is not None:
+            for k in map.get('InvokeInstance'):
+                temp_model = DescribeSendFileResultsResponseInvocationsInvocationInvokeInstancesInvokeInstance()
+                self.invoke_instance.append(temp_model.from_map(k))
+        else:
+            self.invoke_instance = None
+        return self
+
+
+class DescribeSendFileResultsResponseInvocationsInvocation(TeaModel):
+    def __init__(self, invoke_id=None, name=None, description=None, target_dir=None, content_type=None, content=None,
+                 file_owner=None, file_group=None, file_mode=None, overwrite=None, vm_count=None, creation_time=None,
+                 invocation_status=None, invoke_instances=None):
+        self.invoke_id = invoke_id      # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
+        self.target_dir = target_dir    # type: str
+        self.content_type = content_type  # type: str
+        self.content = content          # type: str
+        self.file_owner = file_owner    # type: str
+        self.file_group = file_group    # type: str
+        self.file_mode = file_mode      # type: str
+        self.overwrite = overwrite      # type: str
+        self.vm_count = vm_count        # type: int
+        self.creation_time = creation_time  # type: str
+        self.invocation_status = invocation_status  # type: str
+        self.invoke_instances = invoke_instances  # type: DescribeSendFileResultsResponseInvocationsInvocationInvokeInstances
+
+    def validate(self):
+        self.validate_required(self.invoke_id, 'invoke_id')
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.description, 'description')
+        self.validate_required(self.target_dir, 'target_dir')
+        self.validate_required(self.content_type, 'content_type')
+        self.validate_required(self.content, 'content')
+        self.validate_required(self.file_owner, 'file_owner')
+        self.validate_required(self.file_group, 'file_group')
+        self.validate_required(self.file_mode, 'file_mode')
+        self.validate_required(self.overwrite, 'overwrite')
+        self.validate_required(self.vm_count, 'vm_count')
+        self.validate_required(self.creation_time, 'creation_time')
+        self.validate_required(self.invocation_status, 'invocation_status')
+        self.validate_required(self.invoke_instances, 'invoke_instances')
+        if self.invoke_instances:
+            self.invoke_instances.validate()
+
+    def to_map(self):
+        result = {}
+        result['InvokeId'] = self.invoke_id
+        result['Name'] = self.name
+        result['Description'] = self.description
+        result['TargetDir'] = self.target_dir
+        result['ContentType'] = self.content_type
+        result['Content'] = self.content
+        result['FileOwner'] = self.file_owner
+        result['FileGroup'] = self.file_group
+        result['FileMode'] = self.file_mode
+        result['Overwrite'] = self.overwrite
+        result['VmCount'] = self.vm_count
+        result['CreationTime'] = self.creation_time
+        result['InvocationStatus'] = self.invocation_status
+        if self.invoke_instances is not None:
+            result['InvokeInstances'] = self.invoke_instances.to_map()
+        else:
+            result['InvokeInstances'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.invoke_id = map.get('InvokeId')
+        self.name = map.get('Name')
+        self.description = map.get('Description')
+        self.target_dir = map.get('TargetDir')
+        self.content_type = map.get('ContentType')
+        self.content = map.get('Content')
+        self.file_owner = map.get('FileOwner')
+        self.file_group = map.get('FileGroup')
+        self.file_mode = map.get('FileMode')
+        self.overwrite = map.get('Overwrite')
+        self.vm_count = map.get('VmCount')
+        self.creation_time = map.get('CreationTime')
+        self.invocation_status = map.get('InvocationStatus')
+        if map.get('InvokeInstances') is not None:
+            temp_model = DescribeSendFileResultsResponseInvocationsInvocationInvokeInstances()
+            self.invoke_instances = temp_model.from_map(map['InvokeInstances'])
+        else:
+            self.invoke_instances = None
+        return self
+
+
+class DescribeSendFileResultsResponseInvocations(TeaModel):
+    def __init__(self, invocation=None):
+        self.invocation = invocation    # type: List[DescribeSendFileResultsResponseInvocationsInvocation]
+
+    def validate(self):
+        self.validate_required(self.invocation, 'invocation')
+        if self.invocation:
+            for k in self.invocation:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['Invocation'] = []
+        if self.invocation is not None:
+            for k in self.invocation:
+                result['Invocation'].append(k.to_map() if k else None)
+        else:
+            result['Invocation'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.invocation = []
+        if map.get('Invocation') is not None:
+            for k in map.get('Invocation'):
+                temp_model = DescribeSendFileResultsResponseInvocationsInvocation()
+                self.invocation.append(temp_model.from_map(k))
+        else:
+            self.invocation = None
+        return self
 
 
 class ModifyDedicatedHostClusterAttributeRequest(TeaModel):
     def __init__(self, region_id=None, dedicated_host_cluster_id=None, dedicated_host_cluster_name=None,
                  description=None):
-        self.region_id = region_id
-        self.dedicated_host_cluster_id = dedicated_host_cluster_id
-        self.dedicated_host_cluster_name = dedicated_host_cluster_name
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.dedicated_host_cluster_id = dedicated_host_cluster_id  # type: str
+        self.dedicated_host_cluster_name = dedicated_host_cluster_name  # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -33,7 +1746,7 @@ class ModifyDedicatedHostClusterAttributeRequest(TeaModel):
 
 class ModifyDedicatedHostClusterAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -51,16 +1764,16 @@ class ModifyDedicatedHostClusterAttributeResponse(TeaModel):
 class DescribeDedicatedHostClustersRequest(TeaModel):
     def __init__(self, status=None, lock_reason=None, tag=None, resource_group_id=None, region_id=None, zone_id=None,
                  dedicated_host_cluster_ids=None, dedicated_host_cluster_name=None, page_number=None, page_size=None):
-        self.status = status
-        self.lock_reason = lock_reason
-        self.tag = tag
-        self.resource_group_id = resource_group_id
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.dedicated_host_cluster_ids = dedicated_host_cluster_ids
-        self.dedicated_host_cluster_name = dedicated_host_cluster_name
-        self.page_number = page_number
-        self.page_size = page_size
+        self.status = status            # type: str
+        self.lock_reason = lock_reason  # type: str
+        self.tag = tag                  # type: List[DescribeDedicatedHostClustersRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.dedicated_host_cluster_ids = dedicated_host_cluster_ids  # type: str
+        self.dedicated_host_cluster_name = dedicated_host_cluster_name  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         if self.tag:
@@ -110,12 +1823,11 @@ class DescribeDedicatedHostClustersRequest(TeaModel):
 
 class DescribeDedicatedHostClustersRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -132,10 +1844,10 @@ class DescribeDedicatedHostClustersRequestTag(TeaModel):
 class DescribeDedicatedHostClustersResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None,
                  dedicated_host_clusters=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.dedicated_host_clusters = dedicated_host_clusters  # type: DescribeDedicatedHostClustersResponseDedicatedHostClusters
 
     def validate(self):
@@ -174,8 +1886,8 @@ class DescribeDedicatedHostClustersResponse(TeaModel):
 
 class DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClusterTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -195,7 +1907,7 @@ class DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClu
 
 class DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClusterTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClusterTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -227,9 +1939,9 @@ class DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClu
 
 class DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClusterDedicatedHostClusterCapacityLocalStorageCapacitiesLocalStorageCapacity(TeaModel):
     def __init__(self, total_disk=None, available_disk=None, data_disk_category=None):
-        self.total_disk = total_disk
-        self.available_disk = available_disk
-        self.data_disk_category = data_disk_category
+        self.total_disk = total_disk    # type: int
+        self.available_disk = available_disk  # type: int
+        self.data_disk_category = data_disk_category  # type: str
 
     def validate(self):
         self.validate_required(self.total_disk, 'total_disk')
@@ -252,7 +1964,7 @@ class DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClu
 
 class DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClusterDedicatedHostClusterCapacityLocalStorageCapacities(TeaModel):
     def __init__(self, local_storage_capacity=None):
-        self.local_storage_capacity = local_storage_capacity
+        self.local_storage_capacity = local_storage_capacity  # type: List[DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClusterDedicatedHostClusterCapacityLocalStorageCapacitiesLocalStorageCapacity]
 
     def validate(self):
         self.validate_required(self.local_storage_capacity, 'local_storage_capacity')
@@ -285,10 +1997,10 @@ class DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClu
 class DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClusterDedicatedHostClusterCapacity(TeaModel):
     def __init__(self, total_vcpus=None, available_vcpus=None, total_memory=None, available_memory=None,
                  local_storage_capacities=None):
-        self.total_vcpus = total_vcpus
-        self.available_vcpus = available_vcpus
-        self.total_memory = total_memory
-        self.available_memory = available_memory
+        self.total_vcpus = total_vcpus  # type: int
+        self.available_vcpus = available_vcpus  # type: int
+        self.total_memory = total_memory  # type: int
+        self.available_memory = available_memory  # type: int
         self.local_storage_capacities = local_storage_capacities  # type: DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClusterDedicatedHostClusterCapacityLocalStorageCapacities
 
     def validate(self):
@@ -328,7 +2040,7 @@ class DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClu
 class DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClusterDedicatedHostIds(TeaModel):
     def __init__(self, dedicated_host_id=None):
         # DedicatedHostId
-        self.dedicated_host_id = dedicated_host_id
+        self.dedicated_host_id = dedicated_host_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.dedicated_host_id, 'dedicated_host_id')
@@ -347,13 +2059,13 @@ class DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClu
     def __init__(self, dedicated_host_cluster_id=None, region_id=None, zone_id=None,
                  dedicated_host_cluster_name=None, description=None, resource_group_id=None, tags=None, dedicated_host_cluster_capacity=None,
                  dedicated_host_ids=None):
-        self.dedicated_host_cluster_id = dedicated_host_cluster_id
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.dedicated_host_cluster_name = dedicated_host_cluster_name
-        self.description = description
-        self.resource_group_id = resource_group_id
-        self.tags = tags  # type: DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClusterTags
+        self.dedicated_host_cluster_id = dedicated_host_cluster_id  # type: str
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.dedicated_host_cluster_name = dedicated_host_cluster_name  # type: str
+        self.description = description  # type: str
+        self.resource_group_id = resource_group_id  # type: str
+        self.tags = tags                # type: DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClusterTags
         self.dedicated_host_cluster_capacity = dedicated_host_cluster_capacity  # type: DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClusterDedicatedHostClusterCapacity
         self.dedicated_host_ids = dedicated_host_ids  # type: DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClusterDedicatedHostIds
 
@@ -423,7 +2135,7 @@ class DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostClu
 
 class DescribeDedicatedHostClustersResponseDedicatedHostClusters(TeaModel):
     def __init__(self, dedicated_host_cluster=None):
-        self.dedicated_host_cluster = dedicated_host_cluster
+        self.dedicated_host_cluster = dedicated_host_cluster  # type: List[DescribeDedicatedHostClustersResponseDedicatedHostClustersDedicatedHostCluster]
 
     def validate(self):
         self.validate_required(self.dedicated_host_cluster, 'dedicated_host_cluster')
@@ -455,8 +2167,8 @@ class DescribeDedicatedHostClustersResponseDedicatedHostClusters(TeaModel):
 
 class DeleteDedicatedHostClusterRequest(TeaModel):
     def __init__(self, region_id=None, dedicated_host_cluster_id=None):
-        self.region_id = region_id
-        self.dedicated_host_cluster_id = dedicated_host_cluster_id
+        self.region_id = region_id      # type: str
+        self.dedicated_host_cluster_id = dedicated_host_cluster_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -476,7 +2188,7 @@ class DeleteDedicatedHostClusterRequest(TeaModel):
 
 class DeleteDedicatedHostClusterResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -494,13 +2206,13 @@ class DeleteDedicatedHostClusterResponse(TeaModel):
 class CreateDedicatedHostClusterRequest(TeaModel):
     def __init__(self, region_id=None, dry_run=None, tag=None, resource_group_id=None, zone_id=None,
                  dedicated_host_cluster_name=None, description=None):
-        self.region_id = region_id
-        self.dry_run = dry_run
-        self.tag = tag
-        self.resource_group_id = resource_group_id
-        self.zone_id = zone_id
-        self.dedicated_host_cluster_name = dedicated_host_cluster_name
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.dry_run = dry_run          # type: bool
+        self.tag = tag                  # type: List[CreateDedicatedHostClusterRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
+        self.zone_id = zone_id          # type: str
+        self.dedicated_host_cluster_name = dedicated_host_cluster_name  # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -544,12 +2256,11 @@ class CreateDedicatedHostClusterRequest(TeaModel):
 
 class CreateDedicatedHostClusterRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -565,8 +2276,8 @@ class CreateDedicatedHostClusterRequestTag(TeaModel):
 
 class CreateDedicatedHostClusterResponse(TeaModel):
     def __init__(self, request_id=None, dedicated_host_cluster_id=None):
-        self.request_id = request_id
-        self.dedicated_host_cluster_id = dedicated_host_cluster_id
+        self.request_id = request_id    # type: str
+        self.dedicated_host_cluster_id = dedicated_host_cluster_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -586,7 +2297,7 @@ class CreateDedicatedHostClusterResponse(TeaModel):
 
 class DescribeDeploymentSetSupportedInstanceTypeFamilyRequest(TeaModel):
     def __init__(self, region_id=None):
-        self.region_id = region_id
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -603,8 +2314,8 @@ class DescribeDeploymentSetSupportedInstanceTypeFamilyRequest(TeaModel):
 
 class DescribeDeploymentSetSupportedInstanceTypeFamilyResponse(TeaModel):
     def __init__(self, request_id=None, instance_type_families=None):
-        self.request_id = request_id
-        self.instance_type_families = instance_type_families
+        self.request_id = request_id    # type: str
+        self.instance_type_families = instance_type_families  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -624,10 +2335,10 @@ class DescribeDeploymentSetSupportedInstanceTypeFamilyResponse(TeaModel):
 
 class DescribeNetworkInterfaceAttributeRequest(TeaModel):
     def __init__(self, region_id=None, tag=None, network_interface_id=None, attribute=None):
-        self.region_id = region_id
-        self.tag = tag
-        self.network_interface_id = network_interface_id
-        self.attribute = attribute
+        self.region_id = region_id      # type: str
+        self.tag = tag                  # type: List[DescribeNetworkInterfaceAttributeRequestTag]
+        self.network_interface_id = network_interface_id  # type: str
+        self.attribute = attribute      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -666,12 +2377,11 @@ class DescribeNetworkInterfaceAttributeRequest(TeaModel):
 
 class DescribeNetworkInterfaceAttributeRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -691,29 +2401,29 @@ class DescribeNetworkInterfaceAttributeResponse(TeaModel):
                  description=None, instance_id=None, creation_time=None, resource_group_id=None, service_id=None,
                  service_managed=None, queue_number=None, owner_id=None, private_ip_sets=None, ipv_6sets=None, tags=None,
                  associated_public_ip=None, attachment=None, security_group_ids=None):
-        self.request_id = request_id
-        self.network_interface_id = network_interface_id
-        self.status = status
-        self.type = type
-        self.vpc_id = vpc_id
-        self.v_switch_id = v_switch_id
-        self.zone_id = zone_id
-        self.private_ip_address = private_ip_address
-        self.mac_address = mac_address
-        self.network_interface_name = network_interface_name
-        self.description = description
-        self.instance_id = instance_id
-        self.creation_time = creation_time
-        self.resource_group_id = resource_group_id
-        self.service_id = service_id
-        self.service_managed = service_managed
-        self.queue_number = queue_number
-        self.owner_id = owner_id
+        self.request_id = request_id    # type: str
+        self.network_interface_id = network_interface_id  # type: str
+        self.status = status            # type: str
+        self.type = type                # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.zone_id = zone_id          # type: str
+        self.private_ip_address = private_ip_address  # type: str
+        self.mac_address = mac_address  # type: str
+        self.network_interface_name = network_interface_name  # type: str
+        self.description = description  # type: str
+        self.instance_id = instance_id  # type: str
+        self.creation_time = creation_time  # type: str
+        self.resource_group_id = resource_group_id  # type: str
+        self.service_id = service_id    # type: int
+        self.service_managed = service_managed  # type: bool
+        self.queue_number = queue_number  # type: int
+        self.owner_id = owner_id        # type: str
         self.private_ip_sets = private_ip_sets  # type: DescribeNetworkInterfaceAttributeResponsePrivateIpSets
-        self.ipv_6sets = ipv_6sets  # type: DescribeNetworkInterfaceAttributeResponseIpv6Sets
-        self.tags = tags  # type: DescribeNetworkInterfaceAttributeResponseTags
+        self.ipv_6sets = ipv_6sets      # type: DescribeNetworkInterfaceAttributeResponseIpv6Sets
+        self.tags = tags                # type: DescribeNetworkInterfaceAttributeResponseTags
         self.associated_public_ip = associated_public_ip  # type: DescribeNetworkInterfaceAttributeResponseAssociatedPublicIp
-        self.attachment = attachment  # type: DescribeNetworkInterfaceAttributeResponseAttachment
+        self.attachment = attachment    # type: DescribeNetworkInterfaceAttributeResponseAttachment
         self.security_group_ids = security_group_ids  # type: DescribeNetworkInterfaceAttributeResponseSecurityGroupIds
 
     def validate(self):
@@ -854,8 +2564,8 @@ class DescribeNetworkInterfaceAttributeResponse(TeaModel):
 
 class DescribeNetworkInterfaceAttributeResponsePrivateIpSetsPrivateIpSetAssociatedPublicIp(TeaModel):
     def __init__(self, public_ip_address=None, allocation_id=None):
-        self.public_ip_address = public_ip_address
-        self.allocation_id = allocation_id
+        self.public_ip_address = public_ip_address  # type: str
+        self.allocation_id = allocation_id  # type: str
 
     def validate(self):
         self.validate_required(self.public_ip_address, 'public_ip_address')
@@ -875,8 +2585,8 @@ class DescribeNetworkInterfaceAttributeResponsePrivateIpSetsPrivateIpSetAssociat
 
 class DescribeNetworkInterfaceAttributeResponsePrivateIpSetsPrivateIpSet(TeaModel):
     def __init__(self, private_ip_address=None, primary=None, associated_public_ip=None):
-        self.private_ip_address = private_ip_address
-        self.primary = primary
+        self.private_ip_address = private_ip_address  # type: str
+        self.primary = primary          # type: bool
         self.associated_public_ip = associated_public_ip  # type: DescribeNetworkInterfaceAttributeResponsePrivateIpSetsPrivateIpSetAssociatedPublicIp
 
     def validate(self):
@@ -909,7 +2619,7 @@ class DescribeNetworkInterfaceAttributeResponsePrivateIpSetsPrivateIpSet(TeaMode
 
 class DescribeNetworkInterfaceAttributeResponsePrivateIpSets(TeaModel):
     def __init__(self, private_ip_set=None):
-        self.private_ip_set = private_ip_set
+        self.private_ip_set = private_ip_set  # type: List[DescribeNetworkInterfaceAttributeResponsePrivateIpSetsPrivateIpSet]
 
     def validate(self):
         self.validate_required(self.private_ip_set, 'private_ip_set')
@@ -941,7 +2651,7 @@ class DescribeNetworkInterfaceAttributeResponsePrivateIpSets(TeaModel):
 
 class DescribeNetworkInterfaceAttributeResponseIpv6SetsIpv6Set(TeaModel):
     def __init__(self, ipv_6address=None):
-        self.ipv_6address = ipv_6address
+        self.ipv_6address = ipv_6address  # type: str
 
     def validate(self):
         self.validate_required(self.ipv_6address, 'ipv_6address')
@@ -958,7 +2668,7 @@ class DescribeNetworkInterfaceAttributeResponseIpv6SetsIpv6Set(TeaModel):
 
 class DescribeNetworkInterfaceAttributeResponseIpv6Sets(TeaModel):
     def __init__(self, ipv_6set=None):
-        self.ipv_6set = ipv_6set
+        self.ipv_6set = ipv_6set        # type: List[DescribeNetworkInterfaceAttributeResponseIpv6SetsIpv6Set]
 
     def validate(self):
         self.validate_required(self.ipv_6set, 'ipv_6set')
@@ -990,8 +2700,8 @@ class DescribeNetworkInterfaceAttributeResponseIpv6Sets(TeaModel):
 
 class DescribeNetworkInterfaceAttributeResponseTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -1011,7 +2721,7 @@ class DescribeNetworkInterfaceAttributeResponseTagsTag(TeaModel):
 
 class DescribeNetworkInterfaceAttributeResponseTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeNetworkInterfaceAttributeResponseTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -1043,8 +2753,8 @@ class DescribeNetworkInterfaceAttributeResponseTags(TeaModel):
 
 class DescribeNetworkInterfaceAttributeResponseAssociatedPublicIp(TeaModel):
     def __init__(self, public_ip_address=None, allocation_id=None):
-        self.public_ip_address = public_ip_address
-        self.allocation_id = allocation_id
+        self.public_ip_address = public_ip_address  # type: str
+        self.allocation_id = allocation_id  # type: str
 
     def validate(self):
         self.validate_required(self.public_ip_address, 'public_ip_address')
@@ -1065,7 +2775,7 @@ class DescribeNetworkInterfaceAttributeResponseAssociatedPublicIp(TeaModel):
 class DescribeNetworkInterfaceAttributeResponseAttachmentMemberNetworkInterfaceIds(TeaModel):
     def __init__(self, member_network_interface_id=None):
         # MemberNetworkInterfaceId
-        self.member_network_interface_id = member_network_interface_id
+        self.member_network_interface_id = member_network_interface_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.member_network_interface_id, 'member_network_interface_id')
@@ -1083,9 +2793,9 @@ class DescribeNetworkInterfaceAttributeResponseAttachmentMemberNetworkInterfaceI
 class DescribeNetworkInterfaceAttributeResponseAttachment(TeaModel):
     def __init__(self, instance_id=None, trunk_network_interface_id=None, device_index=None,
                  member_network_interface_ids=None):
-        self.instance_id = instance_id
-        self.trunk_network_interface_id = trunk_network_interface_id
-        self.device_index = device_index
+        self.instance_id = instance_id  # type: str
+        self.trunk_network_interface_id = trunk_network_interface_id  # type: str
+        self.device_index = device_index  # type: int
         self.member_network_interface_ids = member_network_interface_ids  # type: DescribeNetworkInterfaceAttributeResponseAttachmentMemberNetworkInterfaceIds
 
     def validate(self):
@@ -1121,7 +2831,7 @@ class DescribeNetworkInterfaceAttributeResponseAttachment(TeaModel):
 
 class DescribeNetworkInterfaceAttributeResponseSecurityGroupIds(TeaModel):
     def __init__(self, security_group_id=None):
-        self.security_group_id = security_group_id
+        self.security_group_id = security_group_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.security_group_id, 'security_group_id')
@@ -1139,14 +2849,14 @@ class DescribeNetworkInterfaceAttributeResponseSecurityGroupIds(TeaModel):
 class CopySnapshotRequest(TeaModel):
     def __init__(self, tag=None, resource_group_id=None, region_id=None, destination_region_id=None,
                  snapshot_id=None, destination_snapshot_name=None, destination_snapshot_description=None, retention_days=None):
-        self.tag = tag
-        self.resource_group_id = resource_group_id
-        self.region_id = region_id
-        self.destination_region_id = destination_region_id
-        self.snapshot_id = snapshot_id
-        self.destination_snapshot_name = destination_snapshot_name
-        self.destination_snapshot_description = destination_snapshot_description
-        self.retention_days = retention_days
+        self.tag = tag                  # type: List[CopySnapshotRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
+        self.region_id = region_id      # type: str
+        self.destination_region_id = destination_region_id  # type: str
+        self.snapshot_id = snapshot_id  # type: str
+        self.destination_snapshot_name = destination_snapshot_name  # type: str
+        self.destination_snapshot_description = destination_snapshot_description  # type: str
+        self.retention_days = retention_days  # type: int
 
     def validate(self):
         if self.tag:
@@ -1196,12 +2906,11 @@ class CopySnapshotRequest(TeaModel):
 
 class CopySnapshotRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -1217,8 +2926,8 @@ class CopySnapshotRequestTag(TeaModel):
 
 class CopySnapshotResponse(TeaModel):
     def __init__(self, request_id=None, snapshot_id=None):
-        self.request_id = request_id
-        self.snapshot_id = snapshot_id
+        self.request_id = request_id    # type: str
+        self.snapshot_id = snapshot_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1239,15 +2948,15 @@ class CopySnapshotResponse(TeaModel):
 class ModifyDedicatedHostsChargeTypeRequest(TeaModel):
     def __init__(self, dedicated_host_ids=None, region_id=None, period=None, period_unit=None, dry_run=None,
                  auto_pay=None, dedicated_host_charge_type=None, client_token=None, detail_fee=None):
-        self.dedicated_host_ids = dedicated_host_ids
-        self.region_id = region_id
-        self.period = period
-        self.period_unit = period_unit
-        self.dry_run = dry_run
-        self.auto_pay = auto_pay
-        self.dedicated_host_charge_type = dedicated_host_charge_type
-        self.client_token = client_token
-        self.detail_fee = detail_fee
+        self.dedicated_host_ids = dedicated_host_ids  # type: str
+        self.region_id = region_id      # type: str
+        self.period = period            # type: int
+        self.period_unit = period_unit  # type: str
+        self.dry_run = dry_run          # type: bool
+        self.auto_pay = auto_pay        # type: bool
+        self.dedicated_host_charge_type = dedicated_host_charge_type  # type: str
+        self.client_token = client_token  # type: str
+        self.detail_fee = detail_fee    # type: bool
 
     def validate(self):
         self.validate_required(self.dedicated_host_ids, 'dedicated_host_ids')
@@ -1281,8 +2990,8 @@ class ModifyDedicatedHostsChargeTypeRequest(TeaModel):
 
 class ModifyDedicatedHostsChargeTypeResponse(TeaModel):
     def __init__(self, request_id=None, order_id=None, fee_of_instances=None):
-        self.request_id = request_id
-        self.order_id = order_id
+        self.request_id = request_id    # type: str
+        self.order_id = order_id        # type: str
         self.fee_of_instances = fee_of_instances  # type: ModifyDedicatedHostsChargeTypeResponseFeeOfInstances
 
     def validate(self):
@@ -1315,9 +3024,9 @@ class ModifyDedicatedHostsChargeTypeResponse(TeaModel):
 
 class ModifyDedicatedHostsChargeTypeResponseFeeOfInstancesFeeOfInstance(TeaModel):
     def __init__(self, instance_id=None, fee=None, currency=None):
-        self.instance_id = instance_id
-        self.fee = fee
-        self.currency = currency
+        self.instance_id = instance_id  # type: str
+        self.fee = fee                  # type: str
+        self.currency = currency        # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -1340,7 +3049,7 @@ class ModifyDedicatedHostsChargeTypeResponseFeeOfInstancesFeeOfInstance(TeaModel
 
 class ModifyDedicatedHostsChargeTypeResponseFeeOfInstances(TeaModel):
     def __init__(self, fee_of_instance=None):
-        self.fee_of_instance = fee_of_instance
+        self.fee_of_instance = fee_of_instance  # type: List[ModifyDedicatedHostsChargeTypeResponseFeeOfInstancesFeeOfInstance]
 
     def validate(self):
         self.validate_required(self.fee_of_instance, 'fee_of_instance')
@@ -1373,11 +3082,11 @@ class ModifyDedicatedHostsChargeTypeResponseFeeOfInstances(TeaModel):
 class ModifyInstanceMetadataOptionsRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, http_endpoint=None, http_tokens=None,
                  http_put_response_hop_limit=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.http_endpoint = http_endpoint
-        self.http_tokens = http_tokens
-        self.http_put_response_hop_limit = http_put_response_hop_limit
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.http_endpoint = http_endpoint  # type: str
+        self.http_tokens = http_tokens  # type: str
+        self.http_put_response_hop_limit = http_put_response_hop_limit  # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -1403,7 +3112,7 @@ class ModifyInstanceMetadataOptionsRequest(TeaModel):
 
 class ModifyInstanceMetadataOptionsResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1420,8 +3129,8 @@ class ModifyInstanceMetadataOptionsResponse(TeaModel):
 
 class DescribeImageFromFamilyRequest(TeaModel):
     def __init__(self, region_id=None, image_family=None):
-        self.region_id = region_id
-        self.image_family = image_family
+        self.region_id = region_id      # type: str
+        self.image_family = image_family  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -1441,8 +3150,8 @@ class DescribeImageFromFamilyRequest(TeaModel):
 
 class DescribeImageFromFamilyResponse(TeaModel):
     def __init__(self, request_id=None, image=None):
-        self.request_id = request_id
-        self.image = image  # type: DescribeImageFromFamilyResponseImage
+        self.request_id = request_id    # type: str
+        self.image = image              # type: DescribeImageFromFamilyResponseImage
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1472,13 +3181,13 @@ class DescribeImageFromFamilyResponse(TeaModel):
 class DescribeImageFromFamilyResponseImageDiskDeviceMappingsDiskDeviceMapping(TeaModel):
     def __init__(self, snapshot_id=None, size=None, device=None, type=None, format=None, import_ossbucket=None,
                  import_ossobject=None):
-        self.snapshot_id = snapshot_id
-        self.size = size
-        self.device = device
-        self.type = type
-        self.format = format
-        self.import_ossbucket = import_ossbucket
-        self.import_ossobject = import_ossobject
+        self.snapshot_id = snapshot_id  # type: str
+        self.size = size                # type: str
+        self.device = device            # type: str
+        self.type = type                # type: str
+        self.format = format            # type: str
+        self.import_ossbucket = import_ossbucket  # type: str
+        self.import_ossobject = import_ossobject  # type: str
 
     def validate(self):
         self.validate_required(self.snapshot_id, 'snapshot_id')
@@ -1513,7 +3222,7 @@ class DescribeImageFromFamilyResponseImageDiskDeviceMappingsDiskDeviceMapping(Te
 
 class DescribeImageFromFamilyResponseImageDiskDeviceMappings(TeaModel):
     def __init__(self, disk_device_mapping=None):
-        self.disk_device_mapping = disk_device_mapping
+        self.disk_device_mapping = disk_device_mapping  # type: List[DescribeImageFromFamilyResponseImageDiskDeviceMappingsDiskDeviceMapping]
 
     def validate(self):
         self.validate_required(self.disk_device_mapping, 'disk_device_mapping')
@@ -1545,8 +3254,8 @@ class DescribeImageFromFamilyResponseImageDiskDeviceMappings(TeaModel):
 
 class DescribeImageFromFamilyResponseImageTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -1566,7 +3275,7 @@ class DescribeImageFromFamilyResponseImageTagsTag(TeaModel):
 
 class DescribeImageFromFamilyResponseImageTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeImageFromFamilyResponseImageTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -1601,29 +3310,29 @@ class DescribeImageFromFamilyResponseImage(TeaModel):
                  description=None, size=None, image_owner_alias=None, is_support_io_optimized=None, is_support_cloudinit=None,
                  osname=None, architecture=None, status=None, product_code=None, is_subscribed=None, creation_time=None,
                  is_self_shared=None, ostype=None, platform=None, usage=None, is_copied=None, disk_device_mappings=None, tags=None):
-        self.progress = progress
-        self.image_id = image_id
-        self.image_name = image_name
-        self.image_family = image_family
-        self.image_version = image_version
-        self.description = description
-        self.size = size
-        self.image_owner_alias = image_owner_alias
-        self.is_support_io_optimized = is_support_io_optimized
-        self.is_support_cloudinit = is_support_cloudinit
-        self.osname = osname
-        self.architecture = architecture
-        self.status = status
-        self.product_code = product_code
-        self.is_subscribed = is_subscribed
-        self.creation_time = creation_time
-        self.is_self_shared = is_self_shared
-        self.ostype = ostype
-        self.platform = platform
-        self.usage = usage
-        self.is_copied = is_copied
+        self.progress = progress        # type: str
+        self.image_id = image_id        # type: str
+        self.image_name = image_name    # type: str
+        self.image_family = image_family  # type: str
+        self.image_version = image_version  # type: str
+        self.description = description  # type: str
+        self.size = size                # type: int
+        self.image_owner_alias = image_owner_alias  # type: str
+        self.is_support_io_optimized = is_support_io_optimized  # type: bool
+        self.is_support_cloudinit = is_support_cloudinit  # type: bool
+        self.osname = osname            # type: str
+        self.architecture = architecture  # type: str
+        self.status = status            # type: str
+        self.product_code = product_code  # type: str
+        self.is_subscribed = is_subscribed  # type: bool
+        self.creation_time = creation_time  # type: str
+        self.is_self_shared = is_self_shared  # type: str
+        self.ostype = ostype            # type: str
+        self.platform = platform        # type: str
+        self.usage = usage              # type: str
+        self.is_copied = is_copied      # type: bool
         self.disk_device_mappings = disk_device_mappings  # type: DescribeImageFromFamilyResponseImageDiskDeviceMappings
-        self.tags = tags  # type: DescribeImageFromFamilyResponseImageTags
+        self.tags = tags                # type: DescribeImageFromFamilyResponseImageTags
 
     def validate(self):
         self.validate_required(self.progress, 'progress')
@@ -1725,12 +3434,12 @@ class DescribeImageFromFamilyResponseImage(TeaModel):
 class StopInstancesRequest(TeaModel):
     def __init__(self, dry_run=None, instance_id=None, region_id=None, force_stop=None, stopped_mode=None,
                  batch_optimization=None):
-        self.dry_run = dry_run
-        self.instance_id = instance_id
-        self.region_id = region_id
-        self.force_stop = force_stop
-        self.stopped_mode = stopped_mode
-        self.batch_optimization = batch_optimization
+        self.dry_run = dry_run          # type: bool
+        self.instance_id = instance_id  # type: List[str]
+        self.region_id = region_id      # type: str
+        self.force_stop = force_stop    # type: bool
+        self.stopped_mode = stopped_mode  # type: str
+        self.batch_optimization = batch_optimization  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -1758,7 +3467,7 @@ class StopInstancesRequest(TeaModel):
 
 class StopInstancesResponse(TeaModel):
     def __init__(self, request_id=None, instance_responses=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.instance_responses = instance_responses  # type: StopInstancesResponseInstanceResponses
 
     def validate(self):
@@ -1788,11 +3497,11 @@ class StopInstancesResponse(TeaModel):
 
 class StopInstancesResponseInstanceResponsesInstanceResponse(TeaModel):
     def __init__(self, instance_id=None, previous_status=None, current_status=None, code=None, message=None):
-        self.instance_id = instance_id
-        self.previous_status = previous_status
-        self.current_status = current_status
-        self.code = code
-        self.message = message
+        self.instance_id = instance_id  # type: str
+        self.previous_status = previous_status  # type: str
+        self.current_status = current_status  # type: str
+        self.code = code                # type: str
+        self.message = message          # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -1821,7 +3530,7 @@ class StopInstancesResponseInstanceResponsesInstanceResponse(TeaModel):
 
 class StopInstancesResponseInstanceResponses(TeaModel):
     def __init__(self, instance_response=None):
-        self.instance_response = instance_response
+        self.instance_response = instance_response  # type: List[StopInstancesResponseInstanceResponsesInstanceResponse]
 
     def validate(self):
         self.validate_required(self.instance_response, 'instance_response')
@@ -1853,10 +3562,10 @@ class StopInstancesResponseInstanceResponses(TeaModel):
 
 class StartInstancesRequest(TeaModel):
     def __init__(self, dry_run=None, instance_id=None, region_id=None, batch_optimization=None):
-        self.dry_run = dry_run
-        self.instance_id = instance_id
-        self.region_id = region_id
-        self.batch_optimization = batch_optimization
+        self.dry_run = dry_run          # type: bool
+        self.instance_id = instance_id  # type: List[str]
+        self.region_id = region_id      # type: str
+        self.batch_optimization = batch_optimization  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -1880,7 +3589,7 @@ class StartInstancesRequest(TeaModel):
 
 class StartInstancesResponse(TeaModel):
     def __init__(self, request_id=None, instance_responses=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.instance_responses = instance_responses  # type: StartInstancesResponseInstanceResponses
 
     def validate(self):
@@ -1910,11 +3619,11 @@ class StartInstancesResponse(TeaModel):
 
 class StartInstancesResponseInstanceResponsesInstanceResponse(TeaModel):
     def __init__(self, instance_id=None, previous_status=None, current_status=None, code=None, message=None):
-        self.instance_id = instance_id
-        self.previous_status = previous_status
-        self.current_status = current_status
-        self.code = code
-        self.message = message
+        self.instance_id = instance_id  # type: str
+        self.previous_status = previous_status  # type: str
+        self.current_status = current_status  # type: str
+        self.code = code                # type: str
+        self.message = message          # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -1943,7 +3652,7 @@ class StartInstancesResponseInstanceResponsesInstanceResponse(TeaModel):
 
 class StartInstancesResponseInstanceResponses(TeaModel):
     def __init__(self, instance_response=None):
-        self.instance_response = instance_response
+        self.instance_response = instance_response  # type: List[StartInstancesResponseInstanceResponsesInstanceResponse]
 
     def validate(self):
         self.validate_required(self.instance_response, 'instance_response')
@@ -1975,11 +3684,11 @@ class StartInstancesResponseInstanceResponses(TeaModel):
 
 class RebootInstancesRequest(TeaModel):
     def __init__(self, dry_run=None, instance_id=None, region_id=None, force_reboot=None, batch_optimization=None):
-        self.dry_run = dry_run
-        self.instance_id = instance_id
-        self.region_id = region_id
-        self.force_reboot = force_reboot
-        self.batch_optimization = batch_optimization
+        self.dry_run = dry_run          # type: bool
+        self.instance_id = instance_id  # type: List[str]
+        self.region_id = region_id      # type: str
+        self.force_reboot = force_reboot  # type: bool
+        self.batch_optimization = batch_optimization  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -2005,7 +3714,7 @@ class RebootInstancesRequest(TeaModel):
 
 class RebootInstancesResponse(TeaModel):
     def __init__(self, request_id=None, instance_responses=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.instance_responses = instance_responses  # type: RebootInstancesResponseInstanceResponses
 
     def validate(self):
@@ -2035,11 +3744,11 @@ class RebootInstancesResponse(TeaModel):
 
 class RebootInstancesResponseInstanceResponsesInstanceResponse(TeaModel):
     def __init__(self, instance_id=None, previous_status=None, current_status=None, code=None, message=None):
-        self.instance_id = instance_id
-        self.previous_status = previous_status
-        self.current_status = current_status
-        self.code = code
-        self.message = message
+        self.instance_id = instance_id  # type: str
+        self.previous_status = previous_status  # type: str
+        self.current_status = current_status  # type: str
+        self.code = code                # type: str
+        self.message = message          # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -2068,7 +3777,7 @@ class RebootInstancesResponseInstanceResponsesInstanceResponse(TeaModel):
 
 class RebootInstancesResponseInstanceResponses(TeaModel):
     def __init__(self, instance_response=None):
-        self.instance_response = instance_response
+        self.instance_response = instance_response  # type: List[RebootInstancesResponseInstanceResponsesInstanceResponse]
 
     def validate(self):
         self.validate_required(self.instance_response, 'instance_response')
@@ -2100,8 +3809,8 @@ class RebootInstancesResponseInstanceResponses(TeaModel):
 
 class RedeployDedicatedHostRequest(TeaModel):
     def __init__(self, region_id=None, dedicated_host_id=None):
-        self.region_id = region_id
-        self.dedicated_host_id = dedicated_host_id
+        self.region_id = region_id      # type: str
+        self.dedicated_host_id = dedicated_host_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -2121,7 +3830,7 @@ class RedeployDedicatedHostRequest(TeaModel):
 
 class RedeployDedicatedHostResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2138,10 +3847,10 @@ class RedeployDedicatedHostResponse(TeaModel):
 
 class ModifyInstanceMaintenanceAttributesRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, maintenance_window=None, action_on_maintenance=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.maintenance_window = maintenance_window
-        self.action_on_maintenance = action_on_maintenance
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: List[str]
+        self.maintenance_window = maintenance_window  # type: List[ModifyInstanceMaintenanceAttributesRequestMaintenanceWindow]
+        self.action_on_maintenance = action_on_maintenance  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -2179,12 +3888,11 @@ class ModifyInstanceMaintenanceAttributesRequest(TeaModel):
 
 class ModifyInstanceMaintenanceAttributesRequestMaintenanceWindow(TeaModel):
     def __init__(self, start_time=None, end_time=None):
-        self.start_time = start_time
-        self.end_time = end_time
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
 
     def validate(self):
-        self.validate_required(self.start_time, 'start_time')
-        self.validate_required(self.end_time, 'end_time')
+        pass
 
     def to_map(self):
         result = {}
@@ -2200,7 +3908,7 @@ class ModifyInstanceMaintenanceAttributesRequestMaintenanceWindow(TeaModel):
 
 class ModifyInstanceMaintenanceAttributesResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2217,10 +3925,10 @@ class ModifyInstanceMaintenanceAttributesResponse(TeaModel):
 
 class DescribeInstanceMaintenanceAttributesRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, page_number=None, page_size=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: List[str]
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -2244,10 +3952,10 @@ class DescribeInstanceMaintenanceAttributesRequest(TeaModel):
 class DescribeInstanceMaintenanceAttributesResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None,
                  maintenance_attributes=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.maintenance_attributes = maintenance_attributes  # type: DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributes
 
     def validate(self):
@@ -2286,8 +3994,8 @@ class DescribeInstanceMaintenanceAttributesResponse(TeaModel):
 
 class DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintenanceAttributeMaintenanceWindowsMaintenanceWindow(TeaModel):
     def __init__(self, start_time=None, end_time=None):
-        self.start_time = start_time
-        self.end_time = end_time
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
 
     def validate(self):
         self.validate_required(self.start_time, 'start_time')
@@ -2307,7 +4015,7 @@ class DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintena
 
 class DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintenanceAttributeMaintenanceWindows(TeaModel):
     def __init__(self, maintenance_window=None):
-        self.maintenance_window = maintenance_window
+        self.maintenance_window = maintenance_window  # type: List[DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintenanceAttributeMaintenanceWindowsMaintenanceWindow]
 
     def validate(self):
         self.validate_required(self.maintenance_window, 'maintenance_window')
@@ -2340,7 +4048,7 @@ class DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintena
 class DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintenanceAttributeActionOnMaintenanceSupportedValues(TeaModel):
     def __init__(self, supported_value=None):
         # SupportedValue
-        self.supported_value = supported_value
+        self.supported_value = supported_value  # type: List[str]
 
     def validate(self):
         self.validate_required(self.supported_value, 'supported_value')
@@ -2357,8 +4065,8 @@ class DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintena
 
 class DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintenanceAttributeActionOnMaintenance(TeaModel):
     def __init__(self, value=None, default_value=None, supported_values=None):
-        self.value = value
-        self.default_value = default_value
+        self.value = value              # type: str
+        self.default_value = default_value  # type: str
         self.supported_values = supported_values  # type: DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintenanceAttributeActionOnMaintenanceSupportedValues
 
     def validate(self):
@@ -2391,7 +4099,7 @@ class DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintena
 
 class DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintenanceAttribute(TeaModel):
     def __init__(self, instance_id=None, maintenance_windows=None, action_on_maintenance=None):
-        self.instance_id = instance_id
+        self.instance_id = instance_id  # type: str
         self.maintenance_windows = maintenance_windows  # type: DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintenanceAttributeMaintenanceWindows
         self.action_on_maintenance = action_on_maintenance  # type: DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintenanceAttributeActionOnMaintenance
 
@@ -2434,7 +4142,7 @@ class DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintena
 
 class DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributes(TeaModel):
     def __init__(self, maintenance_attribute=None):
-        self.maintenance_attribute = maintenance_attribute
+        self.maintenance_attribute = maintenance_attribute  # type: List[DescribeInstanceMaintenanceAttributesResponseMaintenanceAttributesMaintenanceAttribute]
 
     def validate(self):
         self.validate_required(self.maintenance_attribute, 'maintenance_attribute')
@@ -2468,19 +4176,19 @@ class ModifyDemandRequest(TeaModel):
     def __init__(self, client_token=None, region_id=None, zone_id=None, demand_id=None, demand_name=None,
                  demand_description=None, instance_type=None, amount=None, instance_charge_type=None, period=None, period_unit=None,
                  start_time=None, end_time=None):
-        self.client_token = client_token
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.demand_id = demand_id
-        self.demand_name = demand_name
-        self.demand_description = demand_description
-        self.instance_type = instance_type
-        self.amount = amount
-        self.instance_charge_type = instance_charge_type
-        self.period = period
-        self.period_unit = period_unit
-        self.start_time = start_time
-        self.end_time = end_time
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.demand_id = demand_id      # type: str
+        self.demand_name = demand_name  # type: str
+        self.demand_description = demand_description  # type: str
+        self.instance_type = instance_type  # type: str
+        self.amount = amount            # type: int
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.period = period            # type: int
+        self.period_unit = period_unit  # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -2522,7 +4230,7 @@ class ModifyDemandRequest(TeaModel):
 
 class ModifyDemandResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2539,10 +4247,10 @@ class ModifyDemandResponse(TeaModel):
 
 class DeleteDemandRequest(TeaModel):
     def __init__(self, client_token=None, region_id=None, demand_id=None, reason=None):
-        self.client_token = client_token
-        self.region_id = region_id
-        self.demand_id = demand_id
-        self.reason = reason
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
+        self.demand_id = demand_id      # type: str
+        self.reason = reason            # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -2566,7 +4274,7 @@ class DeleteDemandRequest(TeaModel):
 
 class DeleteDemandResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2585,18 +4293,18 @@ class CreateDemandRequest(TeaModel):
     def __init__(self, client_token=None, region_id=None, zone_id=None, demand_name=None, demand_description=None,
                  instance_type=None, amount=None, instance_charge_type=None, period=None, period_unit=None, start_time=None,
                  end_time=None):
-        self.client_token = client_token
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.demand_name = demand_name
-        self.demand_description = demand_description
-        self.instance_type = instance_type
-        self.amount = amount
-        self.instance_charge_type = instance_charge_type
-        self.period = period
-        self.period_unit = period_unit
-        self.start_time = start_time
-        self.end_time = end_time
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.demand_name = demand_name  # type: str
+        self.demand_description = demand_description  # type: str
+        self.instance_type = instance_type  # type: str
+        self.amount = amount            # type: int
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.period = period            # type: int
+        self.period_unit = period_unit  # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -2642,8 +4350,8 @@ class CreateDemandRequest(TeaModel):
 
 class CreateDemandResponse(TeaModel):
     def __init__(self, request_id=None, demand_id=None):
-        self.request_id = request_id
-        self.demand_id = demand_id
+        self.request_id = request_id    # type: str
+        self.demand_id = demand_id      # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2664,16 +4372,16 @@ class CreateDemandResponse(TeaModel):
 class PurchaseStorageCapacityUnitRequest(TeaModel):
     def __init__(self, region_id=None, name=None, capacity=None, description=None, start_time=None, period=None,
                  period_unit=None, from_app=None, client_token=None, amount=None):
-        self.region_id = region_id
-        self.name = name
-        self.capacity = capacity
-        self.description = description
-        self.start_time = start_time
-        self.period = period
-        self.period_unit = period_unit
-        self.from_app = from_app
-        self.client_token = client_token
-        self.amount = amount
+        self.region_id = region_id      # type: str
+        self.name = name                # type: str
+        self.capacity = capacity        # type: int
+        self.description = description  # type: str
+        self.start_time = start_time    # type: str
+        self.period = period            # type: int
+        self.period_unit = period_unit  # type: str
+        self.from_app = from_app        # type: str
+        self.client_token = client_token  # type: str
+        self.amount = amount            # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -2709,8 +4417,8 @@ class PurchaseStorageCapacityUnitRequest(TeaModel):
 
 class PurchaseStorageCapacityUnitResponse(TeaModel):
     def __init__(self, request_id=None, order_id=None, storage_capacity_unit_ids=None):
-        self.request_id = request_id
-        self.order_id = order_id
+        self.request_id = request_id    # type: str
+        self.order_id = order_id        # type: str
         self.storage_capacity_unit_ids = storage_capacity_unit_ids  # type: PurchaseStorageCapacityUnitResponseStorageCapacityUnitIds
 
     def validate(self):
@@ -2743,7 +4451,7 @@ class PurchaseStorageCapacityUnitResponse(TeaModel):
 
 class PurchaseStorageCapacityUnitResponseStorageCapacityUnitIds(TeaModel):
     def __init__(self, storage_capacity_unit_id=None):
-        self.storage_capacity_unit_id = storage_capacity_unit_id
+        self.storage_capacity_unit_id = storage_capacity_unit_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.storage_capacity_unit_id, 'storage_capacity_unit_id')
@@ -2760,10 +4468,10 @@ class PurchaseStorageCapacityUnitResponseStorageCapacityUnitIds(TeaModel):
 
 class ModifyStorageCapacityUnitAttributeRequest(TeaModel):
     def __init__(self, region_id=None, storage_capacity_unit_id=None, name=None, description=None):
-        self.region_id = region_id
-        self.storage_capacity_unit_id = storage_capacity_unit_id
-        self.name = name
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.storage_capacity_unit_id = storage_capacity_unit_id  # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -2787,7 +4495,7 @@ class ModifyStorageCapacityUnitAttributeRequest(TeaModel):
 
 class ModifyStorageCapacityUnitAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2805,14 +4513,14 @@ class ModifyStorageCapacityUnitAttributeResponse(TeaModel):
 class DescribeStorageCapacityUnitsRequest(TeaModel):
     def __init__(self, region_id=None, page_number=None, page_size=None, name=None, capacity=None,
                  storage_capacity_unit_id=None, status=None, allocation_type=None):
-        self.region_id = region_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.name = name
-        self.capacity = capacity
-        self.storage_capacity_unit_id = storage_capacity_unit_id
-        self.status = status
-        self.allocation_type = allocation_type
+        self.region_id = region_id      # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.name = name                # type: str
+        self.capacity = capacity        # type: int
+        self.storage_capacity_unit_id = storage_capacity_unit_id  # type: List[str]
+        self.status = status            # type: List[str]
+        self.allocation_type = allocation_type  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -2844,10 +4552,10 @@ class DescribeStorageCapacityUnitsRequest(TeaModel):
 class DescribeStorageCapacityUnitsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None,
                  storage_capacity_units=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.storage_capacity_units = storage_capacity_units  # type: DescribeStorageCapacityUnitsResponseStorageCapacityUnits
 
     def validate(self):
@@ -2887,16 +4595,16 @@ class DescribeStorageCapacityUnitsResponse(TeaModel):
 class DescribeStorageCapacityUnitsResponseStorageCapacityUnitsStorageCapacityUnit(TeaModel):
     def __init__(self, region_id=None, storage_capacity_unit_id=None, name=None, capacity=None, status=None,
                  creation_time=None, expired_time=None, start_time=None, description=None, allocation_status=None):
-        self.region_id = region_id
-        self.storage_capacity_unit_id = storage_capacity_unit_id
-        self.name = name
-        self.capacity = capacity
-        self.status = status
-        self.creation_time = creation_time
-        self.expired_time = expired_time
-        self.start_time = start_time
-        self.description = description
-        self.allocation_status = allocation_status
+        self.region_id = region_id      # type: str
+        self.storage_capacity_unit_id = storage_capacity_unit_id  # type: str
+        self.name = name                # type: str
+        self.capacity = capacity        # type: int
+        self.status = status            # type: str
+        self.creation_time = creation_time  # type: str
+        self.expired_time = expired_time  # type: str
+        self.start_time = start_time    # type: str
+        self.description = description  # type: str
+        self.allocation_status = allocation_status  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -2940,7 +4648,7 @@ class DescribeStorageCapacityUnitsResponseStorageCapacityUnitsStorageCapacityUni
 
 class DescribeStorageCapacityUnitsResponseStorageCapacityUnits(TeaModel):
     def __init__(self, storage_capacity_unit=None):
-        self.storage_capacity_unit = storage_capacity_unit
+        self.storage_capacity_unit = storage_capacity_unit  # type: List[DescribeStorageCapacityUnitsResponseStorageCapacityUnitsStorageCapacityUnit]
 
     def validate(self):
         self.validate_required(self.storage_capacity_unit, 'storage_capacity_unit')
@@ -2974,20 +4682,20 @@ class RunCommandRequest(TeaModel):
     def __init__(self, region_id=None, name=None, description=None, type=None, command_content=None,
                  working_dir=None, timeout=None, enable_parameter=None, timed=None, frequency=None, instance_id=None,
                  parameters=None, keep_command=None, content_encoding=None):
-        self.region_id = region_id
-        self.name = name
-        self.description = description
-        self.type = type
-        self.command_content = command_content
-        self.working_dir = working_dir
-        self.timeout = timeout
-        self.enable_parameter = enable_parameter
-        self.timed = timed
-        self.frequency = frequency
-        self.instance_id = instance_id
-        self.parameters = parameters
-        self.keep_command = keep_command
-        self.content_encoding = content_encoding
+        self.region_id = region_id      # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
+        self.type = type                # type: str
+        self.command_content = command_content  # type: str
+        self.working_dir = working_dir  # type: str
+        self.timeout = timeout          # type: int
+        self.enable_parameter = enable_parameter  # type: bool
+        self.timed = timed              # type: bool
+        self.frequency = frequency      # type: str
+        self.instance_id = instance_id  # type: List[str]
+        self.parameters = parameters    # type: Dict[str, Any]
+        self.keep_command = keep_command  # type: bool
+        self.content_encoding = content_encoding  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -3031,11 +4739,72 @@ class RunCommandRequest(TeaModel):
         return self
 
 
+class RunCommandShrinkRequest(TeaModel):
+    def __init__(self, region_id=None, name=None, description=None, type=None, command_content=None,
+                 working_dir=None, timeout=None, enable_parameter=None, timed=None, frequency=None, instance_id=None,
+                 parameters_shrink=None, keep_command=None, content_encoding=None):
+        self.region_id = region_id      # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
+        self.type = type                # type: str
+        self.command_content = command_content  # type: str
+        self.working_dir = working_dir  # type: str
+        self.timeout = timeout          # type: int
+        self.enable_parameter = enable_parameter  # type: bool
+        self.timed = timed              # type: bool
+        self.frequency = frequency      # type: str
+        self.instance_id = instance_id  # type: List[str]
+        self.parameters_shrink = parameters_shrink  # type: str
+        self.keep_command = keep_command  # type: bool
+        self.content_encoding = content_encoding  # type: str
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+        self.validate_required(self.type, 'type')
+        self.validate_required(self.command_content, 'command_content')
+        self.validate_required(self.instance_id, 'instance_id')
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        result['Name'] = self.name
+        result['Description'] = self.description
+        result['Type'] = self.type
+        result['CommandContent'] = self.command_content
+        result['WorkingDir'] = self.working_dir
+        result['Timeout'] = self.timeout
+        result['EnableParameter'] = self.enable_parameter
+        result['Timed'] = self.timed
+        result['Frequency'] = self.frequency
+        result['InstanceId'] = self.instance_id
+        result['Parameters'] = self.parameters_shrink
+        result['KeepCommand'] = self.keep_command
+        result['ContentEncoding'] = self.content_encoding
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        self.name = map.get('Name')
+        self.description = map.get('Description')
+        self.type = map.get('Type')
+        self.command_content = map.get('CommandContent')
+        self.working_dir = map.get('WorkingDir')
+        self.timeout = map.get('Timeout')
+        self.enable_parameter = map.get('EnableParameter')
+        self.timed = map.get('Timed')
+        self.frequency = map.get('Frequency')
+        self.instance_id = map.get('InstanceId')
+        self.parameters_shrink = map.get('Parameters')
+        self.keep_command = map.get('KeepCommand')
+        self.content_encoding = map.get('ContentEncoding')
+        return self
+
+
 class RunCommandResponse(TeaModel):
     def __init__(self, request_id=None, command_id=None, invoke_id=None):
-        self.request_id = request_id
-        self.command_id = command_id
-        self.invoke_id = invoke_id
+        self.request_id = request_id    # type: str
+        self.command_id = command_id    # type: str
+        self.invoke_id = invoke_id      # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3059,12 +4828,12 @@ class RunCommandResponse(TeaModel):
 class DeleteInstancesRequest(TeaModel):
     def __init__(self, instance_id=None, dry_run=None, force=None, terminate_subscription=None, client_token=None,
                  region_id=None):
-        self.instance_id = instance_id
-        self.dry_run = dry_run
-        self.force = force
-        self.terminate_subscription = terminate_subscription
-        self.client_token = client_token
-        self.region_id = region_id
+        self.instance_id = instance_id  # type: List[str]
+        self.dry_run = dry_run          # type: bool
+        self.force = force              # type: bool
+        self.terminate_subscription = terminate_subscription  # type: bool
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -3092,7 +4861,7 @@ class DeleteInstancesRequest(TeaModel):
 
 class DeleteInstancesResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3110,11 +4879,11 @@ class DeleteInstancesResponse(TeaModel):
 class ModifyStorageSetAttributeRequest(TeaModel):
     def __init__(self, client_token=None, region_id=None, storage_set_id=None, storage_set_name=None,
                  description=None):
-        self.client_token = client_token
-        self.region_id = region_id
-        self.storage_set_id = storage_set_id
-        self.storage_set_name = storage_set_name
-        self.description = description
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
+        self.storage_set_id = storage_set_id  # type: str
+        self.storage_set_name = storage_set_name  # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -3140,7 +4909,7 @@ class ModifyStorageSetAttributeRequest(TeaModel):
 
 class ModifyStorageSetAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3158,13 +4927,13 @@ class ModifyStorageSetAttributeResponse(TeaModel):
 class DescribeStorageSetsRequest(TeaModel):
     def __init__(self, client_token=None, region_id=None, storage_set_ids=None, zone_id=None, storage_set_name=None,
                  page_number=None, page_size=None):
-        self.client_token = client_token
-        self.region_id = region_id
-        self.storage_set_ids = storage_set_ids
-        self.zone_id = zone_id
-        self.storage_set_name = storage_set_name
-        self.page_number = page_number
-        self.page_size = page_size
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
+        self.storage_set_ids = storage_set_ids  # type: str
+        self.zone_id = zone_id          # type: str
+        self.storage_set_name = storage_set_name  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -3193,10 +4962,10 @@ class DescribeStorageSetsRequest(TeaModel):
 
 class DescribeStorageSetsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, storage_sets=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.storage_sets = storage_sets  # type: DescribeStorageSetsResponseStorageSets
 
     def validate(self):
@@ -3236,13 +5005,13 @@ class DescribeStorageSetsResponse(TeaModel):
 class DescribeStorageSetsResponseStorageSetsStorageSet(TeaModel):
     def __init__(self, storage_set_id=None, creation_time=None, storage_set_name=None, description=None,
                  storage_set_partition_number=None, region_id=None, zone_id=None):
-        self.storage_set_id = storage_set_id
-        self.creation_time = creation_time
-        self.storage_set_name = storage_set_name
-        self.description = description
-        self.storage_set_partition_number = storage_set_partition_number
-        self.region_id = region_id
-        self.zone_id = zone_id
+        self.storage_set_id = storage_set_id  # type: str
+        self.creation_time = creation_time  # type: str
+        self.storage_set_name = storage_set_name  # type: str
+        self.description = description  # type: str
+        self.storage_set_partition_number = storage_set_partition_number  # type: int
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
 
     def validate(self):
         self.validate_required(self.storage_set_id, 'storage_set_id')
@@ -3277,7 +5046,7 @@ class DescribeStorageSetsResponseStorageSetsStorageSet(TeaModel):
 
 class DescribeStorageSetsResponseStorageSets(TeaModel):
     def __init__(self, storage_set=None):
-        self.storage_set = storage_set
+        self.storage_set = storage_set  # type: List[DescribeStorageSetsResponseStorageSetsStorageSet]
 
     def validate(self):
         self.validate_required(self.storage_set, 'storage_set')
@@ -3310,13 +5079,13 @@ class DescribeStorageSetsResponseStorageSets(TeaModel):
 class DescribeStorageSetDetailsRequest(TeaModel):
     def __init__(self, client_token=None, region_id=None, storage_set_id=None, storage_set_partition_number=None,
                  disk_ids=None, page_number=None, page_size=None):
-        self.client_token = client_token
-        self.region_id = region_id
-        self.storage_set_id = storage_set_id
-        self.storage_set_partition_number = storage_set_partition_number
-        self.disk_ids = disk_ids
-        self.page_number = page_number
-        self.page_size = page_size
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
+        self.storage_set_id = storage_set_id  # type: str
+        self.storage_set_partition_number = storage_set_partition_number  # type: int
+        self.disk_ids = disk_ids        # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -3346,11 +5115,11 @@ class DescribeStorageSetDetailsRequest(TeaModel):
 
 class DescribeStorageSetDetailsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, disks=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.disks = disks  # type: DescribeStorageSetDetailsResponseDisks
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.disks = disks              # type: DescribeStorageSetDetailsResponseDisks
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3389,14 +5158,14 @@ class DescribeStorageSetDetailsResponse(TeaModel):
 class DescribeStorageSetDetailsResponseDisksDisk(TeaModel):
     def __init__(self, disk_id=None, disk_name=None, category=None, storage_set_id=None, creation_time=None,
                  storage_set_partition_number=None, region_id=None, zone_id=None):
-        self.disk_id = disk_id
-        self.disk_name = disk_name
-        self.category = category
-        self.storage_set_id = storage_set_id
-        self.creation_time = creation_time
-        self.storage_set_partition_number = storage_set_partition_number
-        self.region_id = region_id
-        self.zone_id = zone_id
+        self.disk_id = disk_id          # type: str
+        self.disk_name = disk_name      # type: str
+        self.category = category        # type: str
+        self.storage_set_id = storage_set_id  # type: str
+        self.creation_time = creation_time  # type: str
+        self.storage_set_partition_number = storage_set_partition_number  # type: int
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
 
     def validate(self):
         self.validate_required(self.disk_id, 'disk_id')
@@ -3434,7 +5203,7 @@ class DescribeStorageSetDetailsResponseDisksDisk(TeaModel):
 
 class DescribeStorageSetDetailsResponseDisks(TeaModel):
     def __init__(self, disk=None):
-        self.disk = disk
+        self.disk = disk                # type: List[DescribeStorageSetDetailsResponseDisksDisk]
 
     def validate(self):
         self.validate_required(self.disk, 'disk')
@@ -3466,9 +5235,9 @@ class DescribeStorageSetDetailsResponseDisks(TeaModel):
 
 class DeleteStorageSetRequest(TeaModel):
     def __init__(self, client_token=None, region_id=None, storage_set_id=None):
-        self.client_token = client_token
-        self.region_id = region_id
-        self.storage_set_id = storage_set_id
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
+        self.storage_set_id = storage_set_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -3490,7 +5259,7 @@ class DeleteStorageSetRequest(TeaModel):
 
 class DeleteStorageSetResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3508,12 +5277,12 @@ class DeleteStorageSetResponse(TeaModel):
 class CreateStorageSetRequest(TeaModel):
     def __init__(self, client_token=None, region_id=None, zone_id=None, storage_set_name=None, description=None,
                  max_partition_number=None):
-        self.client_token = client_token
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.storage_set_name = storage_set_name
-        self.description = description
-        self.max_partition_number = max_partition_number
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.storage_set_name = storage_set_name  # type: str
+        self.description = description  # type: str
+        self.max_partition_number = max_partition_number  # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -3541,8 +5310,8 @@ class CreateStorageSetRequest(TeaModel):
 
 class CreateStorageSetResponse(TeaModel):
     def __init__(self, request_id=None, storage_set_id=None):
-        self.request_id = request_id
-        self.storage_set_id = storage_set_id
+        self.request_id = request_id    # type: str
+        self.storage_set_id = storage_set_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3562,10 +5331,10 @@ class CreateStorageSetResponse(TeaModel):
 
 class ModifyDiskSpecRequest(TeaModel):
     def __init__(self, disk_id=None, performance_level=None, disk_category=None, dry_run=None):
-        self.disk_id = disk_id
-        self.performance_level = performance_level
-        self.disk_category = disk_category
-        self.dry_run = dry_run
+        self.disk_id = disk_id          # type: str
+        self.performance_level = performance_level  # type: str
+        self.disk_category = disk_category  # type: str
+        self.dry_run = dry_run          # type: bool
 
     def validate(self):
         self.validate_required(self.disk_id, 'disk_id')
@@ -3588,8 +5357,8 @@ class ModifyDiskSpecRequest(TeaModel):
 
 class ModifyDiskSpecResponse(TeaModel):
     def __init__(self, request_id=None, task_id=None):
-        self.request_id = request_id
-        self.task_id = task_id
+        self.request_id = request_id    # type: str
+        self.task_id = task_id          # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3611,16 +5380,16 @@ class ModifyAutoProvisioningGroupRequest(TeaModel):
     def __init__(self, region_id=None, auto_provisioning_group_id=None, excess_capacity_termination_policy=None,
                  default_target_capacity_type=None, terminate_instances_with_expiration=None, max_spot_price=None, total_target_capacity=None,
                  pay_as_you_go_target_capacity=None, spot_target_capacity=None, auto_provisioning_group_name=None):
-        self.region_id = region_id
-        self.auto_provisioning_group_id = auto_provisioning_group_id
-        self.excess_capacity_termination_policy = excess_capacity_termination_policy
-        self.default_target_capacity_type = default_target_capacity_type
-        self.terminate_instances_with_expiration = terminate_instances_with_expiration
-        self.max_spot_price = max_spot_price
-        self.total_target_capacity = total_target_capacity
-        self.pay_as_you_go_target_capacity = pay_as_you_go_target_capacity
-        self.spot_target_capacity = spot_target_capacity
-        self.auto_provisioning_group_name = auto_provisioning_group_name
+        self.region_id = region_id      # type: str
+        self.auto_provisioning_group_id = auto_provisioning_group_id  # type: str
+        self.excess_capacity_termination_policy = excess_capacity_termination_policy  # type: str
+        self.default_target_capacity_type = default_target_capacity_type  # type: str
+        self.terminate_instances_with_expiration = terminate_instances_with_expiration  # type: bool
+        self.max_spot_price = max_spot_price  # type: float
+        self.total_target_capacity = total_target_capacity  # type: str
+        self.pay_as_you_go_target_capacity = pay_as_you_go_target_capacity  # type: str
+        self.spot_target_capacity = spot_target_capacity  # type: str
+        self.auto_provisioning_group_name = auto_provisioning_group_name  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -3655,7 +5424,7 @@ class ModifyAutoProvisioningGroupRequest(TeaModel):
 
 class ModifyAutoProvisioningGroupResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3673,12 +5442,12 @@ class ModifyAutoProvisioningGroupResponse(TeaModel):
 class DescribeAutoProvisioningGroupsRequest(TeaModel):
     def __init__(self, region_id=None, page_number=None, page_size=None, auto_provisioning_group_name=None,
                  auto_provisioning_group_id=None, auto_provisioning_group_status=None):
-        self.region_id = region_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.auto_provisioning_group_name = auto_provisioning_group_name
-        self.auto_provisioning_group_id = auto_provisioning_group_id
-        self.auto_provisioning_group_status = auto_provisioning_group_status
+        self.region_id = region_id      # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.auto_provisioning_group_name = auto_provisioning_group_name  # type: str
+        self.auto_provisioning_group_id = auto_provisioning_group_id  # type: List[str]
+        self.auto_provisioning_group_status = auto_provisioning_group_status  # type: List[str]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -3706,10 +5475,10 @@ class DescribeAutoProvisioningGroupsRequest(TeaModel):
 class DescribeAutoProvisioningGroupsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None,
                  auto_provisioning_groups=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.auto_provisioning_groups = auto_provisioning_groups  # type: DescribeAutoProvisioningGroupsResponseAutoProvisioningGroups
 
     def validate(self):
@@ -3748,11 +5517,11 @@ class DescribeAutoProvisioningGroupsResponse(TeaModel):
 
 class DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioningGroupLaunchTemplateConfigsLaunchTemplateConfig(TeaModel):
     def __init__(self, instance_type=None, max_price=None, v_switch_id=None, weighted_capacity=None, priority=None):
-        self.instance_type = instance_type
-        self.max_price = max_price
-        self.v_switch_id = v_switch_id
-        self.weighted_capacity = weighted_capacity
-        self.priority = priority
+        self.instance_type = instance_type  # type: str
+        self.max_price = max_price      # type: float
+        self.v_switch_id = v_switch_id  # type: str
+        self.weighted_capacity = weighted_capacity  # type: float
+        self.priority = priority        # type: float
 
     def validate(self):
         self.validate_required(self.instance_type, 'instance_type')
@@ -3781,7 +5550,7 @@ class DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioni
 
 class DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioningGroupLaunchTemplateConfigs(TeaModel):
     def __init__(self, launch_template_config=None):
-        self.launch_template_config = launch_template_config
+        self.launch_template_config = launch_template_config  # type: List[DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioningGroupLaunchTemplateConfigsLaunchTemplateConfig]
 
     def validate(self):
         self.validate_required(self.launch_template_config, 'launch_template_config')
@@ -3814,9 +5583,9 @@ class DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioni
 class DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioningGroupSpotOptions(TeaModel):
     def __init__(self, allocation_strategy=None, instance_interruption_behavior=None,
                  instance_pools_to_use_count=None):
-        self.allocation_strategy = allocation_strategy
-        self.instance_interruption_behavior = instance_interruption_behavior
-        self.instance_pools_to_use_count = instance_pools_to_use_count
+        self.allocation_strategy = allocation_strategy  # type: str
+        self.instance_interruption_behavior = instance_interruption_behavior  # type: str
+        self.instance_pools_to_use_count = instance_pools_to_use_count  # type: int
 
     def validate(self):
         self.validate_required(self.allocation_strategy, 'allocation_strategy')
@@ -3839,7 +5608,7 @@ class DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioni
 
 class DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioningGroupPayAsYouGoOptions(TeaModel):
     def __init__(self, allocation_strategy=None):
-        self.allocation_strategy = allocation_strategy
+        self.allocation_strategy = allocation_strategy  # type: str
 
     def validate(self):
         self.validate_required(self.allocation_strategy, 'allocation_strategy')
@@ -3857,10 +5626,10 @@ class DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioni
 class DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioningGroupTargetCapacitySpecification(TeaModel):
     def __init__(self, total_target_capacity=None, pay_as_you_go_target_capacity=None, spot_target_capacity=None,
                  default_target_capacity_type=None):
-        self.total_target_capacity = total_target_capacity
-        self.pay_as_you_go_target_capacity = pay_as_you_go_target_capacity
-        self.spot_target_capacity = spot_target_capacity
-        self.default_target_capacity_type = default_target_capacity_type
+        self.total_target_capacity = total_target_capacity  # type: float
+        self.pay_as_you_go_target_capacity = pay_as_you_go_target_capacity  # type: float
+        self.spot_target_capacity = spot_target_capacity  # type: float
+        self.default_target_capacity_type = default_target_capacity_type  # type: str
 
     def validate(self):
         self.validate_required(self.total_target_capacity, 'total_target_capacity')
@@ -3890,21 +5659,21 @@ class DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioni
                  excess_capacity_termination_policy=None, max_spot_price=None, launch_template_id=None, launch_template_version=None,
                  terminate_instances=None, terminate_instances_with_expiration=None, creation_time=None, launch_template_configs=None,
                  spot_options=None, pay_as_you_go_options=None, target_capacity_specification=None):
-        self.auto_provisioning_group_id = auto_provisioning_group_id
-        self.auto_provisioning_group_name = auto_provisioning_group_name
-        self.auto_provisioning_group_type = auto_provisioning_group_type
-        self.status = status
-        self.state = state
-        self.region_id = region_id
-        self.valid_from = valid_from
-        self.valid_until = valid_until
-        self.excess_capacity_termination_policy = excess_capacity_termination_policy
-        self.max_spot_price = max_spot_price
-        self.launch_template_id = launch_template_id
-        self.launch_template_version = launch_template_version
-        self.terminate_instances = terminate_instances
-        self.terminate_instances_with_expiration = terminate_instances_with_expiration
-        self.creation_time = creation_time
+        self.auto_provisioning_group_id = auto_provisioning_group_id  # type: str
+        self.auto_provisioning_group_name = auto_provisioning_group_name  # type: str
+        self.auto_provisioning_group_type = auto_provisioning_group_type  # type: str
+        self.status = status            # type: str
+        self.state = state              # type: str
+        self.region_id = region_id      # type: str
+        self.valid_from = valid_from    # type: str
+        self.valid_until = valid_until  # type: str
+        self.excess_capacity_termination_policy = excess_capacity_termination_policy  # type: str
+        self.max_spot_price = max_spot_price  # type: float
+        self.launch_template_id = launch_template_id  # type: str
+        self.launch_template_version = launch_template_version  # type: str
+        self.terminate_instances = terminate_instances  # type: bool
+        self.terminate_instances_with_expiration = terminate_instances_with_expiration  # type: bool
+        self.creation_time = creation_time  # type: str
         self.launch_template_configs = launch_template_configs  # type: DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioningGroupLaunchTemplateConfigs
         self.spot_options = spot_options  # type: DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioningGroupSpotOptions
         self.pay_as_you_go_options = pay_as_you_go_options  # type: DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioningGroupPayAsYouGoOptions
@@ -4015,7 +5784,7 @@ class DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioni
 
 class DescribeAutoProvisioningGroupsResponseAutoProvisioningGroups(TeaModel):
     def __init__(self, auto_provisioning_group=None):
-        self.auto_provisioning_group = auto_provisioning_group
+        self.auto_provisioning_group = auto_provisioning_group  # type: List[DescribeAutoProvisioningGroupsResponseAutoProvisioningGroupsAutoProvisioningGroup]
 
     def validate(self):
         self.validate_required(self.auto_provisioning_group, 'auto_provisioning_group')
@@ -4047,10 +5816,10 @@ class DescribeAutoProvisioningGroupsResponseAutoProvisioningGroups(TeaModel):
 
 class DescribeAutoProvisioningGroupInstancesRequest(TeaModel):
     def __init__(self, region_id=None, page_number=None, page_size=None, auto_provisioning_group_id=None):
-        self.region_id = region_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.auto_provisioning_group_id = auto_provisioning_group_id
+        self.region_id = region_id      # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.auto_provisioning_group_id = auto_provisioning_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -4074,11 +5843,11 @@ class DescribeAutoProvisioningGroupInstancesRequest(TeaModel):
 
 class DescribeAutoProvisioningGroupInstancesResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, instances=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.instances = instances  # type: DescribeAutoProvisioningGroupInstancesResponseInstances
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.instances = instances      # type: DescribeAutoProvisioningGroupInstancesResponseInstances
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -4117,18 +5886,18 @@ class DescribeAutoProvisioningGroupInstancesResponse(TeaModel):
 class DescribeAutoProvisioningGroupInstancesResponseInstancesInstance(TeaModel):
     def __init__(self, instance_id=None, status=None, region_id=None, zone_id=None, cpu=None, memory=None,
                  instance_type=None, is_spot=None, io_optimized=None, network_type=None, os_type=None, creation_time=None):
-        self.instance_id = instance_id
-        self.status = status
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.cpu = cpu
-        self.memory = memory
-        self.instance_type = instance_type
-        self.is_spot = is_spot
-        self.io_optimized = io_optimized
-        self.network_type = network_type
-        self.os_type = os_type
-        self.creation_time = creation_time
+        self.instance_id = instance_id  # type: str
+        self.status = status            # type: str
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.cpu = cpu                  # type: int
+        self.memory = memory            # type: int
+        self.instance_type = instance_type  # type: str
+        self.is_spot = is_spot          # type: bool
+        self.io_optimized = io_optimized  # type: bool
+        self.network_type = network_type  # type: str
+        self.os_type = os_type          # type: str
+        self.creation_time = creation_time  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -4178,7 +5947,7 @@ class DescribeAutoProvisioningGroupInstancesResponseInstancesInstance(TeaModel):
 
 class DescribeAutoProvisioningGroupInstancesResponseInstances(TeaModel):
     def __init__(self, instance=None):
-        self.instance = instance
+        self.instance = instance        # type: List[DescribeAutoProvisioningGroupInstancesResponseInstancesInstance]
 
     def validate(self):
         self.validate_required(self.instance, 'instance')
@@ -4210,9 +5979,9 @@ class DescribeAutoProvisioningGroupInstancesResponseInstances(TeaModel):
 
 class DeleteAutoProvisioningGroupRequest(TeaModel):
     def __init__(self, region_id=None, auto_provisioning_group_id=None, terminate_instances=None):
-        self.region_id = region_id
-        self.auto_provisioning_group_id = auto_provisioning_group_id
-        self.terminate_instances = terminate_instances
+        self.region_id = region_id      # type: str
+        self.auto_provisioning_group_id = auto_provisioning_group_id  # type: str
+        self.terminate_instances = terminate_instances  # type: bool
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -4235,7 +6004,7 @@ class DeleteAutoProvisioningGroupRequest(TeaModel):
 
 class DeleteAutoProvisioningGroupResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -4258,28 +6027,28 @@ class CreateAutoProvisioningGroupRequest(TeaModel):
                  max_spot_price=None, total_target_capacity=None, pay_as_you_go_target_capacity=None, spot_target_capacity=None,
                  default_target_capacity_type=None, launch_template_id=None, launch_template_version=None, launch_template_config=None,
                  description=None):
-        self.region_id = region_id
-        self.resource_group_id = resource_group_id
-        self.auto_provisioning_group_name = auto_provisioning_group_name
-        self.auto_provisioning_group_type = auto_provisioning_group_type
-        self.spot_allocation_strategy = spot_allocation_strategy
-        self.spot_instance_interruption_behavior = spot_instance_interruption_behavior
-        self.spot_instance_pools_to_use_count = spot_instance_pools_to_use_count
-        self.pay_as_you_go_allocation_strategy = pay_as_you_go_allocation_strategy
-        self.excess_capacity_termination_policy = excess_capacity_termination_policy
-        self.valid_from = valid_from
-        self.valid_until = valid_until
-        self.terminate_instances_with_expiration = terminate_instances_with_expiration
-        self.terminate_instances = terminate_instances
-        self.max_spot_price = max_spot_price
-        self.total_target_capacity = total_target_capacity
-        self.pay_as_you_go_target_capacity = pay_as_you_go_target_capacity
-        self.spot_target_capacity = spot_target_capacity
-        self.default_target_capacity_type = default_target_capacity_type
-        self.launch_template_id = launch_template_id
-        self.launch_template_version = launch_template_version
-        self.launch_template_config = launch_template_config
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.resource_group_id = resource_group_id  # type: str
+        self.auto_provisioning_group_name = auto_provisioning_group_name  # type: str
+        self.auto_provisioning_group_type = auto_provisioning_group_type  # type: str
+        self.spot_allocation_strategy = spot_allocation_strategy  # type: str
+        self.spot_instance_interruption_behavior = spot_instance_interruption_behavior  # type: str
+        self.spot_instance_pools_to_use_count = spot_instance_pools_to_use_count  # type: int
+        self.pay_as_you_go_allocation_strategy = pay_as_you_go_allocation_strategy  # type: str
+        self.excess_capacity_termination_policy = excess_capacity_termination_policy  # type: str
+        self.valid_from = valid_from    # type: str
+        self.valid_until = valid_until  # type: str
+        self.terminate_instances_with_expiration = terminate_instances_with_expiration  # type: bool
+        self.terminate_instances = terminate_instances  # type: bool
+        self.max_spot_price = max_spot_price  # type: float
+        self.total_target_capacity = total_target_capacity  # type: str
+        self.pay_as_you_go_target_capacity = pay_as_you_go_target_capacity  # type: str
+        self.spot_target_capacity = spot_target_capacity  # type: str
+        self.default_target_capacity_type = default_target_capacity_type  # type: str
+        self.launch_template_id = launch_template_id  # type: str
+        self.launch_template_version = launch_template_version  # type: str
+        self.launch_template_config = launch_template_config  # type: List[CreateAutoProvisioningGroupRequestLaunchTemplateConfig]
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -4355,18 +6124,14 @@ class CreateAutoProvisioningGroupRequest(TeaModel):
 
 class CreateAutoProvisioningGroupRequestLaunchTemplateConfig(TeaModel):
     def __init__(self, instance_type=None, max_price=None, v_switch_id=None, weighted_capacity=None, priority=None):
-        self.instance_type = instance_type
-        self.max_price = max_price
-        self.v_switch_id = v_switch_id
-        self.weighted_capacity = weighted_capacity
-        self.priority = priority
+        self.instance_type = instance_type  # type: str
+        self.max_price = max_price      # type: float
+        self.v_switch_id = v_switch_id  # type: str
+        self.weighted_capacity = weighted_capacity  # type: float
+        self.priority = priority        # type: int
 
     def validate(self):
-        self.validate_required(self.instance_type, 'instance_type')
-        self.validate_required(self.max_price, 'max_price')
-        self.validate_required(self.v_switch_id, 'v_switch_id')
-        self.validate_required(self.weighted_capacity, 'weighted_capacity')
-        self.validate_required(self.priority, 'priority')
+        pass
 
     def to_map(self):
         result = {}
@@ -4388,8 +6153,8 @@ class CreateAutoProvisioningGroupRequestLaunchTemplateConfig(TeaModel):
 
 class CreateAutoProvisioningGroupResponse(TeaModel):
     def __init__(self, request_id=None, auto_provisioning_group_id=None):
-        self.request_id = request_id
-        self.auto_provisioning_group_id = auto_provisioning_group_id
+        self.request_id = request_id    # type: str
+        self.auto_provisioning_group_id = auto_provisioning_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -4410,12 +6175,12 @@ class CreateAutoProvisioningGroupResponse(TeaModel):
 class DescribeAutoProvisioningGroupHistoryRequest(TeaModel):
     def __init__(self, region_id=None, page_number=None, page_size=None, auto_provisioning_group_id=None,
                  start_time=None, end_time=None):
-        self.region_id = region_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.auto_provisioning_group_id = auto_provisioning_group_id
-        self.start_time = start_time
-        self.end_time = end_time
+        self.region_id = region_id      # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.auto_provisioning_group_id = auto_provisioning_group_id  # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -4444,10 +6209,10 @@ class DescribeAutoProvisioningGroupHistoryRequest(TeaModel):
 class DescribeAutoProvisioningGroupHistoryResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None,
                  auto_provisioning_group_histories=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.auto_provisioning_group_histories = auto_provisioning_group_histories  # type: DescribeAutoProvisioningGroupHistoryResponseAutoProvisioningGroupHistories
 
     def validate(self):
@@ -4486,8 +6251,8 @@ class DescribeAutoProvisioningGroupHistoryResponse(TeaModel):
 
 class DescribeAutoProvisioningGroupHistoryResponseAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetail(TeaModel):
     def __init__(self, detail=None, status=None):
-        self.detail = detail
-        self.status = status
+        self.detail = detail            # type: str
+        self.status = status            # type: str
 
     def validate(self):
         self.validate_required(self.detail, 'detail')
@@ -4507,7 +6272,7 @@ class DescribeAutoProvisioningGroupHistoryResponseAutoProvisioningGroupHistories
 
 class DescribeAutoProvisioningGroupHistoryResponseAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetails(TeaModel):
     def __init__(self, activity_detail=None):
-        self.activity_detail = activity_detail
+        self.activity_detail = activity_detail  # type: List[DescribeAutoProvisioningGroupHistoryResponseAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetail]
 
     def validate(self):
         self.validate_required(self.activity_detail, 'activity_detail')
@@ -4539,10 +6304,10 @@ class DescribeAutoProvisioningGroupHistoryResponseAutoProvisioningGroupHistories
 
 class DescribeAutoProvisioningGroupHistoryResponseAutoProvisioningGroupHistoriesAutoProvisioningGroupHistory(TeaModel):
     def __init__(self, task_id=None, status=None, last_event_time=None, start_time=None, activity_details=None):
-        self.task_id = task_id
-        self.status = status
-        self.last_event_time = last_event_time
-        self.start_time = start_time
+        self.task_id = task_id          # type: str
+        self.status = status            # type: str
+        self.last_event_time = last_event_time  # type: str
+        self.start_time = start_time    # type: str
         self.activity_details = activity_details  # type: DescribeAutoProvisioningGroupHistoryResponseAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetails
 
     def validate(self):
@@ -4581,7 +6346,7 @@ class DescribeAutoProvisioningGroupHistoryResponseAutoProvisioningGroupHistories
 
 class DescribeAutoProvisioningGroupHistoryResponseAutoProvisioningGroupHistories(TeaModel):
     def __init__(self, auto_provisioning_group_history=None):
-        self.auto_provisioning_group_history = auto_provisioning_group_history
+        self.auto_provisioning_group_history = auto_provisioning_group_history  # type: List[DescribeAutoProvisioningGroupHistoryResponseAutoProvisioningGroupHistoriesAutoProvisioningGroupHistory]
 
     def validate(self):
         self.validate_required(self.auto_provisioning_group_history, 'auto_provisioning_group_history')
@@ -4614,14 +6379,14 @@ class DescribeAutoProvisioningGroupHistoryResponseAutoProvisioningGroupHistories
 class ReportInstancesStatusRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, disk_id=None, device=None, reason=None, description=None,
                  start_time=None, end_time=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.disk_id = disk_id
-        self.device = device
-        self.reason = reason
-        self.description = description
-        self.start_time = start_time
-        self.end_time = end_time
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: List[str]
+        self.disk_id = disk_id          # type: List[str]
+        self.device = device            # type: List[str]
+        self.reason = reason            # type: str
+        self.description = description  # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -4655,7 +6420,7 @@ class ReportInstancesStatusRequest(TeaModel):
 
 class ReportInstancesStatusResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -4672,10 +6437,10 @@ class ReportInstancesStatusResponse(TeaModel):
 
 class ModifyReservedInstanceAttributeRequest(TeaModel):
     def __init__(self, region_id=None, reserved_instance_id=None, reserved_instance_name=None, description=None):
-        self.region_id = region_id
-        self.reserved_instance_id = reserved_instance_id
-        self.reserved_instance_name = reserved_instance_name
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.reserved_instance_id = reserved_instance_id  # type: str
+        self.reserved_instance_name = reserved_instance_name  # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -4699,10 +6464,10 @@ class ModifyReservedInstanceAttributeRequest(TeaModel):
 
 class ModifyReservedInstanceAttributeResponse(TeaModel):
     def __init__(self, request_id=None, code=None, message=None, http_status_code=None):
-        self.request_id = request_id
-        self.code = code
-        self.message = message
-        self.http_status_code = http_status_code
+        self.request_id = request_id    # type: str
+        self.code = code                # type: str
+        self.message = message          # type: str
+        self.http_status_code = http_status_code  # type: int
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -4730,20 +6495,20 @@ class PurchaseReservedInstancesOfferingRequest(TeaModel):
     def __init__(self, region_id=None, tag=None, resource_group_id=None, zone_id=None, reserved_instance_name=None,
                  instance_type=None, scope=None, instance_amount=None, offering_type=None, description=None, platform=None,
                  period=None, period_unit=None, client_token=None):
-        self.region_id = region_id
-        self.tag = tag
-        self.resource_group_id = resource_group_id
-        self.zone_id = zone_id
-        self.reserved_instance_name = reserved_instance_name
-        self.instance_type = instance_type
-        self.scope = scope
-        self.instance_amount = instance_amount
-        self.offering_type = offering_type
-        self.description = description
-        self.platform = platform
-        self.period = period
-        self.period_unit = period_unit
-        self.client_token = client_token
+        self.region_id = region_id      # type: str
+        self.tag = tag                  # type: List[PurchaseReservedInstancesOfferingRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
+        self.zone_id = zone_id          # type: str
+        self.reserved_instance_name = reserved_instance_name  # type: str
+        self.instance_type = instance_type  # type: str
+        self.scope = scope              # type: str
+        self.instance_amount = instance_amount  # type: int
+        self.offering_type = offering_type  # type: str
+        self.description = description  # type: str
+        self.platform = platform        # type: str
+        self.period = period            # type: int
+        self.period_unit = period_unit  # type: str
+        self.client_token = client_token  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -4802,12 +6567,11 @@ class PurchaseReservedInstancesOfferingRequest(TeaModel):
 
 class PurchaseReservedInstancesOfferingRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -4823,7 +6587,7 @@ class PurchaseReservedInstancesOfferingRequestTag(TeaModel):
 
 class PurchaseReservedInstancesOfferingResponse(TeaModel):
     def __init__(self, request_id=None, reserved_instance_id_sets=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.reserved_instance_id_sets = reserved_instance_id_sets  # type: PurchaseReservedInstancesOfferingResponseReservedInstanceIdSets
 
     def validate(self):
@@ -4853,7 +6617,7 @@ class PurchaseReservedInstancesOfferingResponse(TeaModel):
 
 class PurchaseReservedInstancesOfferingResponseReservedInstanceIdSets(TeaModel):
     def __init__(self, reserved_instance_id=None):
-        self.reserved_instance_id = reserved_instance_id
+        self.reserved_instance_id = reserved_instance_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.reserved_instance_id, 'reserved_instance_id')
@@ -4870,9 +6634,9 @@ class PurchaseReservedInstancesOfferingResponseReservedInstanceIdSets(TeaModel):
 
 class ModifyReservedInstancesRequest(TeaModel):
     def __init__(self, region_id=None, reserved_instance_id=None, configuration=None):
-        self.region_id = region_id
-        self.reserved_instance_id = reserved_instance_id
-        self.configuration = configuration
+        self.region_id = region_id      # type: str
+        self.reserved_instance_id = reserved_instance_id  # type: List[str]
+        self.configuration = configuration  # type: List[ModifyReservedInstancesRequestConfiguration]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -4910,18 +6674,14 @@ class ModifyReservedInstancesRequest(TeaModel):
 class ModifyReservedInstancesRequestConfiguration(TeaModel):
     def __init__(self, zone_id=None, reserved_instance_name=None, instance_type=None, scope=None,
                  instance_amount=None):
-        self.zone_id = zone_id
-        self.reserved_instance_name = reserved_instance_name
-        self.instance_type = instance_type
-        self.scope = scope
-        self.instance_amount = instance_amount
+        self.zone_id = zone_id          # type: str
+        self.reserved_instance_name = reserved_instance_name  # type: str
+        self.instance_type = instance_type  # type: str
+        self.scope = scope              # type: str
+        self.instance_amount = instance_amount  # type: int
 
     def validate(self):
-        self.validate_required(self.zone_id, 'zone_id')
-        self.validate_required(self.reserved_instance_name, 'reserved_instance_name')
-        self.validate_required(self.instance_type, 'instance_type')
-        self.validate_required(self.scope, 'scope')
-        self.validate_required(self.instance_amount, 'instance_amount')
+        pass
 
     def to_map(self):
         result = {}
@@ -4943,7 +6703,7 @@ class ModifyReservedInstancesRequestConfiguration(TeaModel):
 
 class ModifyReservedInstancesResponse(TeaModel):
     def __init__(self, request_id=None, reserved_instance_id_sets=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.reserved_instance_id_sets = reserved_instance_id_sets  # type: ModifyReservedInstancesResponseReservedInstanceIdSets
 
     def validate(self):
@@ -4973,7 +6733,7 @@ class ModifyReservedInstancesResponse(TeaModel):
 
 class ModifyReservedInstancesResponseReservedInstanceIdSets(TeaModel):
     def __init__(self, reserved_instance_id=None):
-        self.reserved_instance_id = reserved_instance_id
+        self.reserved_instance_id = reserved_instance_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.reserved_instance_id, 'reserved_instance_id')
@@ -4992,20 +6752,20 @@ class DescribeReservedInstancesRequest(TeaModel):
     def __init__(self, region_id=None, tag=None, page_number=None, page_size=None, zone_id=None,
                  reserved_instance_id=None, reserved_instance_name=None, status=None, lock_reason=None, instance_type=None,
                  instance_type_family=None, scope=None, offering_type=None, allocation_type=None):
-        self.region_id = region_id
-        self.tag = tag
-        self.page_number = page_number
-        self.page_size = page_size
-        self.zone_id = zone_id
-        self.reserved_instance_id = reserved_instance_id
-        self.reserved_instance_name = reserved_instance_name
-        self.status = status
-        self.lock_reason = lock_reason
-        self.instance_type = instance_type
-        self.instance_type_family = instance_type_family
-        self.scope = scope
-        self.offering_type = offering_type
-        self.allocation_type = allocation_type
+        self.region_id = region_id      # type: str
+        self.tag = tag                  # type: List[DescribeReservedInstancesRequestTag]
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.zone_id = zone_id          # type: str
+        self.reserved_instance_id = reserved_instance_id  # type: List[str]
+        self.reserved_instance_name = reserved_instance_name  # type: str
+        self.status = status            # type: List[str]
+        self.lock_reason = lock_reason  # type: str
+        self.instance_type = instance_type  # type: str
+        self.instance_type_family = instance_type_family  # type: str
+        self.scope = scope              # type: str
+        self.offering_type = offering_type  # type: str
+        self.allocation_type = allocation_type  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -5063,12 +6823,11 @@ class DescribeReservedInstancesRequest(TeaModel):
 
 class DescribeReservedInstancesRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -5084,10 +6843,10 @@ class DescribeReservedInstancesRequestTag(TeaModel):
 
 class DescribeReservedInstancesResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, reserved_instances=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.reserved_instances = reserved_instances  # type: DescribeReservedInstancesResponseReservedInstances
 
     def validate(self):
@@ -5126,7 +6885,7 @@ class DescribeReservedInstancesResponse(TeaModel):
 
 class DescribeReservedInstancesResponseReservedInstancesReservedInstanceOperationLocksOperationLock(TeaModel):
     def __init__(self, lock_reason=None):
-        self.lock_reason = lock_reason
+        self.lock_reason = lock_reason  # type: str
 
     def validate(self):
         self.validate_required(self.lock_reason, 'lock_reason')
@@ -5143,7 +6902,7 @@ class DescribeReservedInstancesResponseReservedInstancesReservedInstanceOperatio
 
 class DescribeReservedInstancesResponseReservedInstancesReservedInstanceOperationLocks(TeaModel):
     def __init__(self, operation_lock=None):
-        self.operation_lock = operation_lock
+        self.operation_lock = operation_lock  # type: List[DescribeReservedInstancesResponseReservedInstancesReservedInstanceOperationLocksOperationLock]
 
     def validate(self):
         self.validate_required(self.operation_lock, 'operation_lock')
@@ -5175,8 +6934,8 @@ class DescribeReservedInstancesResponseReservedInstancesReservedInstanceOperatio
 
 class DescribeReservedInstancesResponseReservedInstancesReservedInstanceTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -5196,7 +6955,7 @@ class DescribeReservedInstancesResponseReservedInstancesReservedInstanceTagsTag(
 
 class DescribeReservedInstancesResponseReservedInstancesReservedInstanceTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeReservedInstancesResponseReservedInstancesReservedInstanceTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -5231,24 +6990,24 @@ class DescribeReservedInstancesResponseReservedInstancesReservedInstance(TeaMode
                  description=None, instance_type=None, scope=None, offering_type=None, platform=None, instance_amount=None,
                  status=None, creation_time=None, expired_time=None, start_time=None, resource_group_id=None,
                  allocation_status=None, operation_locks=None, tags=None):
-        self.reserved_instance_id = reserved_instance_id
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.reserved_instance_name = reserved_instance_name
-        self.description = description
-        self.instance_type = instance_type
-        self.scope = scope
-        self.offering_type = offering_type
-        self.platform = platform
-        self.instance_amount = instance_amount
-        self.status = status
-        self.creation_time = creation_time
-        self.expired_time = expired_time
-        self.start_time = start_time
-        self.resource_group_id = resource_group_id
-        self.allocation_status = allocation_status
+        self.reserved_instance_id = reserved_instance_id  # type: str
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.reserved_instance_name = reserved_instance_name  # type: str
+        self.description = description  # type: str
+        self.instance_type = instance_type  # type: str
+        self.scope = scope              # type: str
+        self.offering_type = offering_type  # type: str
+        self.platform = platform        # type: str
+        self.instance_amount = instance_amount  # type: int
+        self.status = status            # type: str
+        self.creation_time = creation_time  # type: str
+        self.expired_time = expired_time  # type: str
+        self.start_time = start_time    # type: str
+        self.resource_group_id = resource_group_id  # type: str
+        self.allocation_status = allocation_status  # type: str
         self.operation_locks = operation_locks  # type: DescribeReservedInstancesResponseReservedInstancesReservedInstanceOperationLocks
-        self.tags = tags  # type: DescribeReservedInstancesResponseReservedInstancesReservedInstanceTags
+        self.tags = tags                # type: DescribeReservedInstancesResponseReservedInstancesReservedInstanceTags
 
     def validate(self):
         self.validate_required(self.reserved_instance_id, 'reserved_instance_id')
@@ -5334,7 +7093,7 @@ class DescribeReservedInstancesResponseReservedInstancesReservedInstance(TeaMode
 
 class DescribeReservedInstancesResponseReservedInstances(TeaModel):
     def __init__(self, reserved_instance=None):
-        self.reserved_instance = reserved_instance
+        self.reserved_instance = reserved_instance  # type: List[DescribeReservedInstancesResponseReservedInstancesReservedInstance]
 
     def validate(self):
         self.validate_required(self.reserved_instance, 'reserved_instance')
@@ -5368,18 +7127,18 @@ class DescribeDemandsRequest(TeaModel):
     def __init__(self, region_id=None, tag=None, page_number=None, page_size=None, dry_run=None, zone_id=None,
                  demand_id=None, instance_type_family=None, instance_type=None, instance_charge_type=None, demand_type=None,
                  demand_status=None):
-        self.region_id = region_id
-        self.tag = tag
-        self.page_number = page_number
-        self.page_size = page_size
-        self.dry_run = dry_run
-        self.zone_id = zone_id
-        self.demand_id = demand_id
-        self.instance_type_family = instance_type_family
-        self.instance_type = instance_type
-        self.instance_charge_type = instance_charge_type
-        self.demand_type = demand_type
-        self.demand_status = demand_status
+        self.region_id = region_id      # type: str
+        self.tag = tag                  # type: List[DescribeDemandsRequestTag]
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.dry_run = dry_run          # type: bool
+        self.zone_id = zone_id          # type: str
+        self.demand_id = demand_id      # type: str
+        self.instance_type_family = instance_type_family  # type: str
+        self.instance_type = instance_type  # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.demand_type = demand_type  # type: str
+        self.demand_status = demand_status  # type: List[str]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -5433,12 +7192,11 @@ class DescribeDemandsRequest(TeaModel):
 
 class DescribeDemandsRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -5455,12 +7213,12 @@ class DescribeDemandsRequestTag(TeaModel):
 class DescribeDemandsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, region_id=None,
                  demands=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.region_id = region_id
-        self.demands = demands  # type: DescribeDemandsResponseDemands
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.region_id = region_id      # type: str
+        self.demands = demands          # type: DescribeDemandsResponseDemands
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -5501,10 +7259,10 @@ class DescribeDemandsResponse(TeaModel):
 
 class DescribeDemandsResponseDemandsDemandSupplyInfosSupplyInfo(TeaModel):
     def __init__(self, amount=None, supply_status=None, supply_start_time=None, supply_end_time=None):
-        self.amount = amount
-        self.supply_status = supply_status
-        self.supply_start_time = supply_start_time
-        self.supply_end_time = supply_end_time
+        self.amount = amount            # type: int
+        self.supply_status = supply_status  # type: str
+        self.supply_start_time = supply_start_time  # type: str
+        self.supply_end_time = supply_end_time  # type: str
 
     def validate(self):
         self.validate_required(self.amount, 'amount')
@@ -5530,7 +7288,7 @@ class DescribeDemandsResponseDemandsDemandSupplyInfosSupplyInfo(TeaModel):
 
 class DescribeDemandsResponseDemandsDemandSupplyInfos(TeaModel):
     def __init__(self, supply_info=None):
-        self.supply_info = supply_info
+        self.supply_info = supply_info  # type: List[DescribeDemandsResponseDemandsDemandSupplyInfosSupplyInfo]
 
     def validate(self):
         self.validate_required(self.supply_info, 'supply_info')
@@ -5565,24 +7323,24 @@ class DescribeDemandsResponseDemandsDemand(TeaModel):
                  comment=None, demand_description=None, instance_type=None, instance_charge_type=None, period=None,
                  period_unit=None, start_time=None, end_time=None, demand_status=None, total_amount=None, available_amount=None,
                  used_amount=None, delivering_amount=None, supply_infos=None):
-        self.zone_id = zone_id
-        self.demand_time = demand_time
-        self.instance_type_family = instance_type_family
-        self.demand_id = demand_id
-        self.demand_name = demand_name
-        self.comment = comment
-        self.demand_description = demand_description
-        self.instance_type = instance_type
-        self.instance_charge_type = instance_charge_type
-        self.period = period
-        self.period_unit = period_unit
-        self.start_time = start_time
-        self.end_time = end_time
-        self.demand_status = demand_status
-        self.total_amount = total_amount
-        self.available_amount = available_amount
-        self.used_amount = used_amount
-        self.delivering_amount = delivering_amount
+        self.zone_id = zone_id          # type: str
+        self.demand_time = demand_time  # type: str
+        self.instance_type_family = instance_type_family  # type: str
+        self.demand_id = demand_id      # type: str
+        self.demand_name = demand_name  # type: str
+        self.comment = comment          # type: str
+        self.demand_description = demand_description  # type: str
+        self.instance_type = instance_type  # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.period = period            # type: int
+        self.period_unit = period_unit  # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.demand_status = demand_status  # type: str
+        self.total_amount = total_amount  # type: int
+        self.available_amount = available_amount  # type: int
+        self.used_amount = used_amount  # type: int
+        self.delivering_amount = delivering_amount  # type: int
         self.supply_infos = supply_infos  # type: DescribeDemandsResponseDemandsDemandSupplyInfos
 
     def validate(self):
@@ -5663,7 +7421,7 @@ class DescribeDemandsResponseDemandsDemand(TeaModel):
 
 class DescribeDemandsResponseDemands(TeaModel):
     def __init__(self, demand=None):
-        self.demand = demand
+        self.demand = demand            # type: List[DescribeDemandsResponseDemandsDemand]
 
     def validate(self):
         self.validate_required(self.demand, 'demand')
@@ -5695,11 +7453,11 @@ class DescribeDemandsResponseDemands(TeaModel):
 
 class ImportSnapshotRequest(TeaModel):
     def __init__(self, snapshot_name=None, region_id=None, oss_bucket=None, oss_object=None, role_name=None):
-        self.snapshot_name = snapshot_name
-        self.region_id = region_id
-        self.oss_bucket = oss_bucket
-        self.oss_object = oss_object
-        self.role_name = role_name
+        self.snapshot_name = snapshot_name  # type: str
+        self.region_id = region_id      # type: str
+        self.oss_bucket = oss_bucket    # type: str
+        self.oss_object = oss_object    # type: str
+        self.role_name = role_name      # type: str
 
     def validate(self):
         self.validate_required(self.snapshot_name, 'snapshot_name')
@@ -5727,9 +7485,9 @@ class ImportSnapshotRequest(TeaModel):
 
 class ImportSnapshotResponse(TeaModel):
     def __init__(self, request_id=None, task_id=None, snapshot_id=None):
-        self.request_id = request_id
-        self.task_id = task_id
-        self.snapshot_id = snapshot_id
+        self.request_id = request_id    # type: str
+        self.task_id = task_id          # type: str
+        self.snapshot_id = snapshot_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -5752,10 +7510,10 @@ class ImportSnapshotResponse(TeaModel):
 
 class ExportSnapshotRequest(TeaModel):
     def __init__(self, snapshot_id=None, region_id=None, oss_bucket=None, role_name=None):
-        self.snapshot_id = snapshot_id
-        self.region_id = region_id
-        self.oss_bucket = oss_bucket
-        self.role_name = role_name
+        self.snapshot_id = snapshot_id  # type: str
+        self.region_id = region_id      # type: str
+        self.oss_bucket = oss_bucket    # type: str
+        self.role_name = role_name      # type: str
 
     def validate(self):
         self.validate_required(self.snapshot_id, 'snapshot_id')
@@ -5780,8 +7538,8 @@ class ExportSnapshotRequest(TeaModel):
 
 class ExportSnapshotResponse(TeaModel):
     def __init__(self, request_id=None, task_id=None):
-        self.request_id = request_id
-        self.task_id = task_id
+        self.request_id = request_id    # type: str
+        self.task_id = task_id          # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -5801,11 +7559,11 @@ class ExportSnapshotResponse(TeaModel):
 
 class UntagResourcesRequest(TeaModel):
     def __init__(self, region_id=None, resource_id=None, resource_type=None, tag_key=None, all=None):
-        self.region_id = region_id
-        self.resource_id = resource_id
-        self.resource_type = resource_type
-        self.tag_key = tag_key
-        self.all = all
+        self.region_id = region_id      # type: str
+        self.resource_id = resource_id  # type: List[str]
+        self.resource_type = resource_type  # type: str
+        self.tag_key = tag_key          # type: List[str]
+        self.all = all                  # type: bool
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -5832,7 +7590,7 @@ class UntagResourcesRequest(TeaModel):
 
 class UntagResourcesResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -5849,10 +7607,10 @@ class UntagResourcesResponse(TeaModel):
 
 class TagResourcesRequest(TeaModel):
     def __init__(self, region_id=None, resource_type=None, resource_id=None, tag=None):
-        self.region_id = region_id
-        self.resource_type = resource_type
-        self.resource_id = resource_id
-        self.tag = tag
+        self.region_id = region_id      # type: str
+        self.resource_type = resource_type  # type: str
+        self.resource_id = resource_id  # type: List[str]
+        self.tag = tag                  # type: List[TagResourcesRequestTag]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -5893,12 +7651,11 @@ class TagResourcesRequest(TeaModel):
 
 class TagResourcesRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -5914,7 +7671,7 @@ class TagResourcesRequestTag(TeaModel):
 
 class TagResourcesResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -5932,12 +7689,12 @@ class TagResourcesResponse(TeaModel):
 class ListTagResourcesRequest(TeaModel):
     def __init__(self, region_id=None, resource_id=None, tag=None, tag_filter=None, next_token=None,
                  resource_type=None):
-        self.region_id = region_id
-        self.resource_id = resource_id
-        self.tag = tag
-        self.tag_filter = tag_filter
-        self.next_token = next_token
-        self.resource_type = resource_type
+        self.region_id = region_id      # type: str
+        self.resource_id = resource_id  # type: List[str]
+        self.tag = tag                  # type: List[ListTagResourcesRequestTag]
+        self.tag_filter = tag_filter    # type: List[ListTagResourcesRequestTagFilter]
+        self.next_token = next_token    # type: str
+        self.resource_type = resource_type  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -5995,12 +7752,11 @@ class ListTagResourcesRequest(TeaModel):
 
 class ListTagResourcesRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -6016,8 +7772,8 @@ class ListTagResourcesRequestTag(TeaModel):
 
 class ListTagResourcesRequestTagFilter(TeaModel):
     def __init__(self, tag_key=None, tag_values=None):
-        self.tag_key = tag_key
-        self.tag_values = tag_values
+        self.tag_key = tag_key          # type: str
+        self.tag_values = tag_values    # type: List[str]
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -6036,8 +7792,8 @@ class ListTagResourcesRequestTagFilter(TeaModel):
 
 class ListTagResourcesResponse(TeaModel):
     def __init__(self, request_id=None, next_token=None, tag_resources=None):
-        self.request_id = request_id
-        self.next_token = next_token
+        self.request_id = request_id    # type: str
+        self.next_token = next_token    # type: str
         self.tag_resources = tag_resources  # type: ListTagResourcesResponseTagResources
 
     def validate(self):
@@ -6070,10 +7826,10 @@ class ListTagResourcesResponse(TeaModel):
 
 class ListTagResourcesResponseTagResourcesTagResource(TeaModel):
     def __init__(self, resource_type=None, resource_id=None, tag_key=None, tag_value=None):
-        self.resource_type = resource_type
-        self.resource_id = resource_id
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.resource_type = resource_type  # type: str
+        self.resource_id = resource_id  # type: str
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.resource_type, 'resource_type')
@@ -6099,7 +7855,7 @@ class ListTagResourcesResponseTagResourcesTagResource(TeaModel):
 
 class ListTagResourcesResponseTagResources(TeaModel):
     def __init__(self, tag_resource=None):
-        self.tag_resource = tag_resource
+        self.tag_resource = tag_resource  # type: List[ListTagResourcesResponseTagResourcesTagResource]
 
     def validate(self):
         self.validate_required(self.tag_resource, 'tag_resource')
@@ -6131,8 +7887,8 @@ class ListTagResourcesResponseTagResources(TeaModel):
 
 class AcceptInquiredSystemEventRequest(TeaModel):
     def __init__(self, region_id=None, event_id=None):
-        self.region_id = region_id
-        self.event_id = event_id
+        self.region_id = region_id      # type: str
+        self.event_id = event_id        # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -6152,7 +7908,7 @@ class AcceptInquiredSystemEventRequest(TeaModel):
 
 class AcceptInquiredSystemEventResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -6169,8 +7925,8 @@ class AcceptInquiredSystemEventResponse(TeaModel):
 
 class RedeployInstanceRequest(TeaModel):
     def __init__(self, instance_id=None, force_stop=None):
-        self.instance_id = instance_id
-        self.force_stop = force_stop
+        self.instance_id = instance_id  # type: str
+        self.force_stop = force_stop    # type: bool
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -6189,8 +7945,8 @@ class RedeployInstanceRequest(TeaModel):
 
 class RedeployInstanceResponse(TeaModel):
     def __init__(self, request_id=None, task_id=None):
-        self.request_id = request_id
-        self.task_id = task_id
+        self.request_id = request_id    # type: str
+        self.task_id = task_id          # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -6210,9 +7966,9 @@ class RedeployInstanceResponse(TeaModel):
 
 class UnassignIpv6AddressesRequest(TeaModel):
     def __init__(self, region_id=None, network_interface_id=None, ipv_6address=None):
-        self.region_id = region_id
-        self.network_interface_id = network_interface_id
-        self.ipv_6address = ipv_6address
+        self.region_id = region_id      # type: str
+        self.network_interface_id = network_interface_id  # type: str
+        self.ipv_6address = ipv_6address  # type: List[str]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -6235,7 +7991,7 @@ class UnassignIpv6AddressesRequest(TeaModel):
 
 class UnassignIpv6AddressesResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -6252,10 +8008,10 @@ class UnassignIpv6AddressesResponse(TeaModel):
 
 class AssignIpv6AddressesRequest(TeaModel):
     def __init__(self, region_id=None, network_interface_id=None, ipv_6address=None, ipv_6address_count=None):
-        self.region_id = region_id
-        self.network_interface_id = network_interface_id
-        self.ipv_6address = ipv_6address
-        self.ipv_6address_count = ipv_6address_count
+        self.region_id = region_id      # type: str
+        self.network_interface_id = network_interface_id  # type: str
+        self.ipv_6address = ipv_6address  # type: List[str]
+        self.ipv_6address_count = ipv_6address_count  # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -6279,7 +8035,7 @@ class AssignIpv6AddressesRequest(TeaModel):
 
 class AssignIpv6AddressesResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -6296,8 +8052,8 @@ class AssignIpv6AddressesResponse(TeaModel):
 
 class DescribeInstanceTopologyRequest(TeaModel):
     def __init__(self, region_id=None, instance_ids=None):
-        self.region_id = region_id
-        self.instance_ids = instance_ids
+        self.region_id = region_id      # type: str
+        self.instance_ids = instance_ids  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -6316,8 +8072,8 @@ class DescribeInstanceTopologyRequest(TeaModel):
 
 class DescribeInstanceTopologyResponse(TeaModel):
     def __init__(self, request_id=None, topologys=None):
-        self.request_id = request_id
-        self.topologys = topologys  # type: DescribeInstanceTopologyResponseTopologys
+        self.request_id = request_id    # type: str
+        self.topologys = topologys      # type: DescribeInstanceTopologyResponseTopologys
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -6346,8 +8102,8 @@ class DescribeInstanceTopologyResponse(TeaModel):
 
 class DescribeInstanceTopologyResponseTopologysTopology(TeaModel):
     def __init__(self, instance_id=None, host_id=None):
-        self.instance_id = instance_id
-        self.host_id = host_id
+        self.instance_id = instance_id  # type: str
+        self.host_id = host_id          # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -6367,7 +8123,7 @@ class DescribeInstanceTopologyResponseTopologysTopology(TeaModel):
 
 class DescribeInstanceTopologyResponseTopologys(TeaModel):
     def __init__(self, topology=None):
-        self.topology = topology
+        self.topology = topology        # type: List[DescribeInstanceTopologyResponseTopologysTopology]
 
     def validate(self):
         self.validate_required(self.topology, 'topology')
@@ -6399,11 +8155,11 @@ class DescribeInstanceTopologyResponseTopologys(TeaModel):
 
 class RenewDedicatedHostsRequest(TeaModel):
     def __init__(self, dedicated_host_ids=None, region_id=None, period=None, period_unit=None, client_token=None):
-        self.dedicated_host_ids = dedicated_host_ids
-        self.region_id = region_id
-        self.period = period
-        self.period_unit = period_unit
-        self.client_token = client_token
+        self.dedicated_host_ids = dedicated_host_ids  # type: str
+        self.region_id = region_id      # type: str
+        self.period = period            # type: int
+        self.period_unit = period_unit  # type: str
+        self.client_token = client_token  # type: str
 
     def validate(self):
         self.validate_required(self.dedicated_host_ids, 'dedicated_host_ids')
@@ -6430,7 +8186,7 @@ class RenewDedicatedHostsRequest(TeaModel):
 
 class RenewDedicatedHostsResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -6447,8 +8203,8 @@ class RenewDedicatedHostsResponse(TeaModel):
 
 class ReleaseDedicatedHostRequest(TeaModel):
     def __init__(self, region_id=None, dedicated_host_id=None):
-        self.region_id = region_id
-        self.dedicated_host_id = dedicated_host_id
+        self.region_id = region_id      # type: str
+        self.dedicated_host_id = dedicated_host_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -6468,7 +8224,7 @@ class ReleaseDedicatedHostRequest(TeaModel):
 
 class ReleaseDedicatedHostResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -6487,17 +8243,17 @@ class ModifyInstanceDeploymentRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, dedicated_host_id=None, deployment_set_id=None,
                  deployment_set_group_no=None, force=None, affinity=None, tenancy=None, migration_type=None, instance_type=None,
                  dedicated_host_cluster_id=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.dedicated_host_id = dedicated_host_id
-        self.deployment_set_id = deployment_set_id
-        self.deployment_set_group_no = deployment_set_group_no
-        self.force = force
-        self.affinity = affinity
-        self.tenancy = tenancy
-        self.migration_type = migration_type
-        self.instance_type = instance_type
-        self.dedicated_host_cluster_id = dedicated_host_cluster_id
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.dedicated_host_id = dedicated_host_id  # type: str
+        self.deployment_set_id = deployment_set_id  # type: str
+        self.deployment_set_group_no = deployment_set_group_no  # type: int
+        self.force = force              # type: bool
+        self.affinity = affinity        # type: str
+        self.tenancy = tenancy          # type: str
+        self.migration_type = migration_type  # type: str
+        self.instance_type = instance_type  # type: str
+        self.dedicated_host_cluster_id = dedicated_host_cluster_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -6535,7 +8291,7 @@ class ModifyInstanceDeploymentRequest(TeaModel):
 
 class ModifyInstanceDeploymentResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -6553,12 +8309,12 @@ class ModifyInstanceDeploymentResponse(TeaModel):
 class ModifyDedicatedHostAutoRenewAttributeRequest(TeaModel):
     def __init__(self, dedicated_host_ids=None, region_id=None, duration=None, period_unit=None, auto_renew=None,
                  renewal_status=None):
-        self.dedicated_host_ids = dedicated_host_ids
-        self.region_id = region_id
-        self.duration = duration
-        self.period_unit = period_unit
-        self.auto_renew = auto_renew
-        self.renewal_status = renewal_status
+        self.dedicated_host_ids = dedicated_host_ids  # type: str
+        self.region_id = region_id      # type: str
+        self.duration = duration        # type: int
+        self.period_unit = period_unit  # type: str
+        self.auto_renew = auto_renew    # type: bool
+        self.renewal_status = renewal_status  # type: str
 
     def validate(self):
         self.validate_required(self.dedicated_host_ids, 'dedicated_host_ids')
@@ -6586,7 +8342,7 @@ class ModifyDedicatedHostAutoRenewAttributeRequest(TeaModel):
 
 class ModifyDedicatedHostAutoRenewAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -6603,9 +8359,9 @@ class ModifyDedicatedHostAutoRenewAttributeResponse(TeaModel):
 
 class ModifyDedicatedHostAutoReleaseTimeRequest(TeaModel):
     def __init__(self, region_id=None, dedicated_host_id=None, auto_release_time=None):
-        self.region_id = region_id
-        self.dedicated_host_id = dedicated_host_id
-        self.auto_release_time = auto_release_time
+        self.region_id = region_id      # type: str
+        self.dedicated_host_id = dedicated_host_id  # type: str
+        self.auto_release_time = auto_release_time  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -6627,7 +8383,7 @@ class ModifyDedicatedHostAutoReleaseTimeRequest(TeaModel):
 
 class ModifyDedicatedHostAutoReleaseTimeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -6646,15 +8402,15 @@ class ModifyDedicatedHostAttributeRequest(TeaModel):
     def __init__(self, region_id=None, dedicated_host_id=None, dedicated_host_name=None, description=None,
                  action_on_maintenance=None, network_attributes=None, auto_placement=None, dedicated_host_cluster_id=None,
                  cpu_over_commit_ratio=None):
-        self.region_id = region_id
-        self.dedicated_host_id = dedicated_host_id
-        self.dedicated_host_name = dedicated_host_name
-        self.description = description
-        self.action_on_maintenance = action_on_maintenance
+        self.region_id = region_id      # type: str
+        self.dedicated_host_id = dedicated_host_id  # type: str
+        self.dedicated_host_name = dedicated_host_name  # type: str
+        self.description = description  # type: str
+        self.action_on_maintenance = action_on_maintenance  # type: str
         self.network_attributes = network_attributes  # type: ModifyDedicatedHostAttributeRequestNetworkAttributes
-        self.auto_placement = auto_placement
-        self.dedicated_host_cluster_id = dedicated_host_cluster_id
-        self.cpu_over_commit_ratio = cpu_over_commit_ratio
+        self.auto_placement = auto_placement  # type: str
+        self.dedicated_host_cluster_id = dedicated_host_cluster_id  # type: str
+        self.cpu_over_commit_ratio = cpu_over_commit_ratio  # type: float
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -6697,8 +8453,8 @@ class ModifyDedicatedHostAttributeRequest(TeaModel):
 
 class ModifyDedicatedHostAttributeRequestNetworkAttributes(TeaModel):
     def __init__(self, slb_udp_timeout=None, udp_timeout=None):
-        self.slb_udp_timeout = slb_udp_timeout
-        self.udp_timeout = udp_timeout
+        self.slb_udp_timeout = slb_udp_timeout  # type: int
+        self.udp_timeout = udp_timeout  # type: int
 
     def validate(self):
         pass
@@ -6717,7 +8473,7 @@ class ModifyDedicatedHostAttributeRequestNetworkAttributes(TeaModel):
 
 class ModifyDedicatedHostAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -6735,17 +8491,17 @@ class ModifyDedicatedHostAttributeResponse(TeaModel):
 class DescribeDedicatedHostsRequest(TeaModel):
     def __init__(self, region_id=None, zone_id=None, dedicated_host_ids=None, dedicated_host_name=None, status=None,
                  dedicated_host_type=None, lock_reason=None, page_number=None, page_size=None, tag=None, resource_group_id=None):
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.dedicated_host_ids = dedicated_host_ids
-        self.dedicated_host_name = dedicated_host_name
-        self.status = status
-        self.dedicated_host_type = dedicated_host_type
-        self.lock_reason = lock_reason
-        self.page_number = page_number
-        self.page_size = page_size
-        self.tag = tag
-        self.resource_group_id = resource_group_id
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.dedicated_host_ids = dedicated_host_ids  # type: str
+        self.dedicated_host_name = dedicated_host_name  # type: str
+        self.status = status            # type: str
+        self.dedicated_host_type = dedicated_host_type  # type: str
+        self.lock_reason = lock_reason  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.tag = tag                  # type: List[DescribeDedicatedHostsRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -6797,12 +8553,11 @@ class DescribeDedicatedHostsRequest(TeaModel):
 
 class DescribeDedicatedHostsRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -6818,10 +8573,10 @@ class DescribeDedicatedHostsRequestTag(TeaModel):
 
 class DescribeDedicatedHostsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, dedicated_hosts=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.dedicated_hosts = dedicated_hosts  # type: DescribeDedicatedHostsResponseDedicatedHosts
 
     def validate(self):
@@ -6860,8 +8615,8 @@ class DescribeDedicatedHostsResponse(TeaModel):
 
 class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostInstancesInstance(TeaModel):
     def __init__(self, instance_id=None, instance_type=None):
-        self.instance_id = instance_id
-        self.instance_type = instance_type
+        self.instance_id = instance_id  # type: str
+        self.instance_type = instance_type  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -6881,7 +8636,7 @@ class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostInstancesInstance
 
 class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostInstances(TeaModel):
     def __init__(self, instance=None):
-        self.instance = instance
+        self.instance = instance        # type: List[DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostInstancesInstance]
 
     def validate(self):
         self.validate_required(self.instance, 'instance')
@@ -6913,7 +8668,7 @@ class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostInstances(TeaMode
 
 class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostOperationLocksOperationLock(TeaModel):
     def __init__(self, lock_reason=None):
-        self.lock_reason = lock_reason
+        self.lock_reason = lock_reason  # type: str
 
     def validate(self):
         self.validate_required(self.lock_reason, 'lock_reason')
@@ -6930,7 +8685,7 @@ class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostOperationLocksOpe
 
 class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostOperationLocks(TeaModel):
     def __init__(self, operation_lock=None):
-        self.operation_lock = operation_lock
+        self.operation_lock = operation_lock  # type: List[DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostOperationLocksOperationLock]
 
     def validate(self):
         self.validate_required(self.operation_lock, 'operation_lock')
@@ -6962,8 +8717,8 @@ class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostOperationLocks(Te
 
 class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -6983,7 +8738,7 @@ class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostTagsTag(TeaModel)
 
 class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -7017,15 +8772,15 @@ class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostCapacity(TeaModel
     def __init__(self, total_vcpus=None, available_vcpus=None, total_vgpus=None, available_vgpus=None,
                  total_memory=None, available_memory=None, total_local_storage=None, available_local_storage=None,
                  local_storage_category=None):
-        self.total_vcpus = total_vcpus
-        self.available_vcpus = available_vcpus
-        self.total_vgpus = total_vgpus
-        self.available_vgpus = available_vgpus
-        self.total_memory = total_memory
-        self.available_memory = available_memory
-        self.total_local_storage = total_local_storage
-        self.available_local_storage = available_local_storage
-        self.local_storage_category = local_storage_category
+        self.total_vcpus = total_vcpus  # type: int
+        self.available_vcpus = available_vcpus  # type: int
+        self.total_vgpus = total_vgpus  # type: int
+        self.available_vgpus = available_vgpus  # type: int
+        self.total_memory = total_memory  # type: float
+        self.available_memory = available_memory  # type: float
+        self.total_local_storage = total_local_storage  # type: int
+        self.available_local_storage = available_local_storage  # type: int
+        self.local_storage_category = local_storage_category  # type: str
 
     def validate(self):
         self.validate_required(self.total_vcpus, 'total_vcpus')
@@ -7066,8 +8821,8 @@ class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostCapacity(TeaModel
 
 class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostNetworkAttributes(TeaModel):
     def __init__(self, slb_udp_timeout=None, udp_timeout=None):
-        self.slb_udp_timeout = slb_udp_timeout
-        self.udp_timeout = udp_timeout
+        self.slb_udp_timeout = slb_udp_timeout  # type: int
+        self.udp_timeout = udp_timeout  # type: int
 
     def validate(self):
         self.validate_required(self.slb_udp_timeout, 'slb_udp_timeout')
@@ -7088,7 +8843,7 @@ class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostNetworkAttributes
 class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostSupportedInstanceTypeFamilies(TeaModel):
     def __init__(self, supported_instance_type_family=None):
         # SupportedInstanceTypeFamily
-        self.supported_instance_type_family = supported_instance_type_family
+        self.supported_instance_type_family = supported_instance_type_family  # type: List[str]
 
     def validate(self):
         self.validate_required(self.supported_instance_type_family, 'supported_instance_type_family')
@@ -7106,7 +8861,7 @@ class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostSupportedInstance
 class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostSupportedCustomInstanceTypeFamilies(TeaModel):
     def __init__(self, supported_custom_instance_type_family=None):
         # SupportedCustomInstanceTypeFamily
-        self.supported_custom_instance_type_family = supported_custom_instance_type_family
+        self.supported_custom_instance_type_family = supported_custom_instance_type_family  # type: List[str]
 
     def validate(self):
         self.validate_required(self.supported_custom_instance_type_family, 'supported_custom_instance_type_family')
@@ -7124,7 +8879,7 @@ class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostSupportedCustomIn
 class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostSupportedInstanceTypesList(TeaModel):
     def __init__(self, supported_instance_types_list=None):
         # SupportedInstanceTypesList
-        self.supported_instance_types_list = supported_instance_types_list
+        self.supported_instance_types_list = supported_instance_types_list  # type: List[str]
 
     def validate(self):
         self.validate_required(self.supported_instance_types_list, 'supported_instance_types_list')
@@ -7147,32 +8902,32 @@ class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHost(TeaModel):
                  dedicated_host_cluster_id=None, cpu_over_commit_ratio=None, instances=None, operation_locks=None, tags=None, capacity=None,
                  network_attributes=None, supported_instance_type_families=None, supported_custom_instance_type_families=None,
                  supported_instance_types_list=None):
-        self.dedicated_host_id = dedicated_host_id
-        self.auto_placement = auto_placement
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.dedicated_host_name = dedicated_host_name
-        self.machine_id = machine_id
-        self.description = description
-        self.dedicated_host_type = dedicated_host_type
-        self.sockets = sockets
-        self.cores = cores
-        self.physical_gpus = physical_gpus
-        self.gpuspec = gpuspec
-        self.action_on_maintenance = action_on_maintenance
-        self.status = status
-        self.creation_time = creation_time
-        self.charge_type = charge_type
-        self.sale_cycle = sale_cycle
-        self.expired_time = expired_time
-        self.auto_release_time = auto_release_time
-        self.resource_group_id = resource_group_id
-        self.dedicated_host_cluster_id = dedicated_host_cluster_id
-        self.cpu_over_commit_ratio = cpu_over_commit_ratio
-        self.instances = instances  # type: DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostInstances
+        self.dedicated_host_id = dedicated_host_id  # type: str
+        self.auto_placement = auto_placement  # type: str
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.dedicated_host_name = dedicated_host_name  # type: str
+        self.machine_id = machine_id    # type: str
+        self.description = description  # type: str
+        self.dedicated_host_type = dedicated_host_type  # type: str
+        self.sockets = sockets          # type: int
+        self.cores = cores              # type: int
+        self.physical_gpus = physical_gpus  # type: int
+        self.gpuspec = gpuspec          # type: str
+        self.action_on_maintenance = action_on_maintenance  # type: str
+        self.status = status            # type: str
+        self.creation_time = creation_time  # type: str
+        self.charge_type = charge_type  # type: str
+        self.sale_cycle = sale_cycle    # type: str
+        self.expired_time = expired_time  # type: str
+        self.auto_release_time = auto_release_time  # type: str
+        self.resource_group_id = resource_group_id  # type: str
+        self.dedicated_host_cluster_id = dedicated_host_cluster_id  # type: str
+        self.cpu_over_commit_ratio = cpu_over_commit_ratio  # type: float
+        self.instances = instances      # type: DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostInstances
         self.operation_locks = operation_locks  # type: DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostOperationLocks
-        self.tags = tags  # type: DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostTags
-        self.capacity = capacity  # type: DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostCapacity
+        self.tags = tags                # type: DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostTags
+        self.capacity = capacity        # type: DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostCapacity
         self.network_attributes = network_attributes  # type: DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostNetworkAttributes
         self.supported_instance_type_families = supported_instance_type_families  # type: DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostSupportedInstanceTypeFamilies
         self.supported_custom_instance_type_families = supported_custom_instance_type_families  # type: DescribeDedicatedHostsResponseDedicatedHostsDedicatedHostSupportedCustomInstanceTypeFamilies
@@ -7352,7 +9107,7 @@ class DescribeDedicatedHostsResponseDedicatedHostsDedicatedHost(TeaModel):
 
 class DescribeDedicatedHostsResponseDedicatedHosts(TeaModel):
     def __init__(self, dedicated_host=None):
-        self.dedicated_host = dedicated_host
+        self.dedicated_host = dedicated_host  # type: List[DescribeDedicatedHostsResponseDedicatedHostsDedicatedHost]
 
     def validate(self):
         self.validate_required(self.dedicated_host, 'dedicated_host')
@@ -7384,9 +9139,9 @@ class DescribeDedicatedHostsResponseDedicatedHosts(TeaModel):
 
 class DescribeDedicatedHostTypesRequest(TeaModel):
     def __init__(self, region_id=None, dedicated_host_type=None, supported_instance_type_family=None):
-        self.region_id = region_id
-        self.dedicated_host_type = dedicated_host_type
-        self.supported_instance_type_family = supported_instance_type_family
+        self.region_id = region_id      # type: str
+        self.dedicated_host_type = dedicated_host_type  # type: str
+        self.supported_instance_type_family = supported_instance_type_family  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -7407,7 +9162,7 @@ class DescribeDedicatedHostTypesRequest(TeaModel):
 
 class DescribeDedicatedHostTypesResponse(TeaModel):
     def __init__(self, request_id=None, dedicated_host_types=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.dedicated_host_types = dedicated_host_types  # type: DescribeDedicatedHostTypesResponseDedicatedHostTypes
 
     def validate(self):
@@ -7438,7 +9193,7 @@ class DescribeDedicatedHostTypesResponse(TeaModel):
 class DescribeDedicatedHostTypesResponseDedicatedHostTypesDedicatedHostTypeSupportedInstanceTypeFamilies(TeaModel):
     def __init__(self, supported_instance_type_family=None):
         # SupportedInstanceTypeFamily
-        self.supported_instance_type_family = supported_instance_type_family
+        self.supported_instance_type_family = supported_instance_type_family  # type: List[str]
 
     def validate(self):
         self.validate_required(self.supported_instance_type_family, 'supported_instance_type_family')
@@ -7456,7 +9211,7 @@ class DescribeDedicatedHostTypesResponseDedicatedHostTypesDedicatedHostTypeSuppo
 class DescribeDedicatedHostTypesResponseDedicatedHostTypesDedicatedHostTypeSupportedInstanceTypesList(TeaModel):
     def __init__(self, supported_instance_types_list=None):
         # SupportedInstanceTypesList
-        self.supported_instance_types_list = supported_instance_types_list
+        self.supported_instance_types_list = supported_instance_types_list  # type: List[str]
 
     def validate(self):
         self.validate_required(self.supported_instance_types_list, 'supported_instance_types_list')
@@ -7476,19 +9231,19 @@ class DescribeDedicatedHostTypesResponseDedicatedHostTypesDedicatedHostType(TeaM
                  physical_gpus=None, memory_size=None, local_storage_capacity=None, local_storage_amount=None,
                  local_storage_category=None, gpuspec=None, support_cpu_over_commit_ratio=None, cpu_over_commit_ratio_range=None,
                  supported_instance_type_families=None, supported_instance_types_list=None):
-        self.dedicated_host_type = dedicated_host_type
-        self.sockets = sockets
-        self.total_vcpus = total_vcpus
-        self.total_vgpus = total_vgpus
-        self.cores = cores
-        self.physical_gpus = physical_gpus
-        self.memory_size = memory_size
-        self.local_storage_capacity = local_storage_capacity
-        self.local_storage_amount = local_storage_amount
-        self.local_storage_category = local_storage_category
-        self.gpuspec = gpuspec
-        self.support_cpu_over_commit_ratio = support_cpu_over_commit_ratio
-        self.cpu_over_commit_ratio_range = cpu_over_commit_ratio_range
+        self.dedicated_host_type = dedicated_host_type  # type: str
+        self.sockets = sockets          # type: int
+        self.total_vcpus = total_vcpus  # type: int
+        self.total_vgpus = total_vgpus  # type: int
+        self.cores = cores              # type: int
+        self.physical_gpus = physical_gpus  # type: int
+        self.memory_size = memory_size  # type: float
+        self.local_storage_capacity = local_storage_capacity  # type: int
+        self.local_storage_amount = local_storage_amount  # type: int
+        self.local_storage_category = local_storage_category  # type: str
+        self.gpuspec = gpuspec          # type: str
+        self.support_cpu_over_commit_ratio = support_cpu_over_commit_ratio  # type: bool
+        self.cpu_over_commit_ratio_range = cpu_over_commit_ratio_range  # type: str
         self.supported_instance_type_families = supported_instance_type_families  # type: DescribeDedicatedHostTypesResponseDedicatedHostTypesDedicatedHostTypeSupportedInstanceTypeFamilies
         self.supported_instance_types_list = supported_instance_types_list  # type: DescribeDedicatedHostTypesResponseDedicatedHostTypesDedicatedHostTypeSupportedInstanceTypesList
 
@@ -7567,7 +9322,7 @@ class DescribeDedicatedHostTypesResponseDedicatedHostTypesDedicatedHostType(TeaM
 
 class DescribeDedicatedHostTypesResponseDedicatedHostTypes(TeaModel):
     def __init__(self, dedicated_host_type=None):
-        self.dedicated_host_type = dedicated_host_type
+        self.dedicated_host_type = dedicated_host_type  # type: List[DescribeDedicatedHostTypesResponseDedicatedHostTypesDedicatedHostType]
 
     def validate(self):
         self.validate_required(self.dedicated_host_type, 'dedicated_host_type')
@@ -7599,8 +9354,8 @@ class DescribeDedicatedHostTypesResponseDedicatedHostTypes(TeaModel):
 
 class DescribeDedicatedHostAutoRenewRequest(TeaModel):
     def __init__(self, dedicated_host_ids=None, region_id=None):
-        self.dedicated_host_ids = dedicated_host_ids
-        self.region_id = region_id
+        self.dedicated_host_ids = dedicated_host_ids  # type: str
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.dedicated_host_ids, 'dedicated_host_ids')
@@ -7620,7 +9375,7 @@ class DescribeDedicatedHostAutoRenewRequest(TeaModel):
 
 class DescribeDedicatedHostAutoRenewResponse(TeaModel):
     def __init__(self, request_id=None, dedicated_host_renew_attributes=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.dedicated_host_renew_attributes = dedicated_host_renew_attributes  # type: DescribeDedicatedHostAutoRenewResponseDedicatedHostRenewAttributes
 
     def validate(self):
@@ -7651,11 +9406,11 @@ class DescribeDedicatedHostAutoRenewResponse(TeaModel):
 class DescribeDedicatedHostAutoRenewResponseDedicatedHostRenewAttributesDedicatedHostRenewAttribute(TeaModel):
     def __init__(self, dedicated_host_id=None, auto_renew_enabled=None, duration=None, period_unit=None,
                  renewal_status=None):
-        self.dedicated_host_id = dedicated_host_id
-        self.auto_renew_enabled = auto_renew_enabled
-        self.duration = duration
-        self.period_unit = period_unit
-        self.renewal_status = renewal_status
+        self.dedicated_host_id = dedicated_host_id  # type: str
+        self.auto_renew_enabled = auto_renew_enabled  # type: bool
+        self.duration = duration        # type: int
+        self.period_unit = period_unit  # type: str
+        self.renewal_status = renewal_status  # type: str
 
     def validate(self):
         self.validate_required(self.dedicated_host_id, 'dedicated_host_id')
@@ -7684,7 +9439,7 @@ class DescribeDedicatedHostAutoRenewResponseDedicatedHostRenewAttributesDedicate
 
 class DescribeDedicatedHostAutoRenewResponseDedicatedHostRenewAttributes(TeaModel):
     def __init__(self, dedicated_host_renew_attribute=None):
-        self.dedicated_host_renew_attribute = dedicated_host_renew_attribute
+        self.dedicated_host_renew_attribute = dedicated_host_renew_attribute  # type: List[DescribeDedicatedHostAutoRenewResponseDedicatedHostRenewAttributesDedicatedHostRenewAttribute]
 
     def validate(self):
         self.validate_required(self.dedicated_host_renew_attribute, 'dedicated_host_renew_attribute')
@@ -7720,26 +9475,26 @@ class AllocateDedicatedHostsRequest(TeaModel):
                  description=None, auto_placement=None, cpu_over_commit_ratio=None, charge_type=None, quantity=None,
                  period=None, period_unit=None, auto_renew=None, auto_renew_period=None, auto_release_time=None,
                  client_token=None):
-        self.region_id = region_id
-        self.tag = tag
-        self.resource_group_id = resource_group_id
-        self.zone_id = zone_id
-        self.dedicated_host_name = dedicated_host_name
-        self.dedicated_host_cluster_id = dedicated_host_cluster_id
-        self.dedicated_host_type = dedicated_host_type
-        self.action_on_maintenance = action_on_maintenance
+        self.region_id = region_id      # type: str
+        self.tag = tag                  # type: List[AllocateDedicatedHostsRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
+        self.zone_id = zone_id          # type: str
+        self.dedicated_host_name = dedicated_host_name  # type: str
+        self.dedicated_host_cluster_id = dedicated_host_cluster_id  # type: str
+        self.dedicated_host_type = dedicated_host_type  # type: str
+        self.action_on_maintenance = action_on_maintenance  # type: str
         self.network_attributes = network_attributes  # type: AllocateDedicatedHostsRequestNetworkAttributes
-        self.description = description
-        self.auto_placement = auto_placement
-        self.cpu_over_commit_ratio = cpu_over_commit_ratio
-        self.charge_type = charge_type
-        self.quantity = quantity
-        self.period = period
-        self.period_unit = period_unit
-        self.auto_renew = auto_renew
-        self.auto_renew_period = auto_renew_period
-        self.auto_release_time = auto_release_time
-        self.client_token = client_token
+        self.description = description  # type: str
+        self.auto_placement = auto_placement  # type: str
+        self.cpu_over_commit_ratio = cpu_over_commit_ratio  # type: float
+        self.charge_type = charge_type  # type: str
+        self.quantity = quantity        # type: int
+        self.period = period            # type: int
+        self.period_unit = period_unit  # type: str
+        self.auto_renew = auto_renew    # type: bool
+        self.auto_renew_period = auto_renew_period  # type: int
+        self.auto_release_time = auto_release_time  # type: str
+        self.client_token = client_token  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -7819,12 +9574,11 @@ class AllocateDedicatedHostsRequest(TeaModel):
 
 class AllocateDedicatedHostsRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -7840,8 +9594,8 @@ class AllocateDedicatedHostsRequestTag(TeaModel):
 
 class AllocateDedicatedHostsRequestNetworkAttributes(TeaModel):
     def __init__(self, slb_udp_timeout=None, udp_timeout=None):
-        self.slb_udp_timeout = slb_udp_timeout
-        self.udp_timeout = udp_timeout
+        self.slb_udp_timeout = slb_udp_timeout  # type: int
+        self.udp_timeout = udp_timeout  # type: int
 
     def validate(self):
         pass
@@ -7860,7 +9614,7 @@ class AllocateDedicatedHostsRequestNetworkAttributes(TeaModel):
 
 class AllocateDedicatedHostsResponse(TeaModel):
     def __init__(self, request_id=None, dedicated_host_id_sets=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.dedicated_host_id_sets = dedicated_host_id_sets  # type: AllocateDedicatedHostsResponseDedicatedHostIdSets
 
     def validate(self):
@@ -7890,7 +9644,7 @@ class AllocateDedicatedHostsResponse(TeaModel):
 
 class AllocateDedicatedHostsResponseDedicatedHostIdSets(TeaModel):
     def __init__(self, dedicated_host_id=None):
-        self.dedicated_host_id = dedicated_host_id
+        self.dedicated_host_id = dedicated_host_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.dedicated_host_id, 'dedicated_host_id')
@@ -7907,10 +9661,10 @@ class AllocateDedicatedHostsResponseDedicatedHostIdSets(TeaModel):
 
 class CreateSimulatedSystemEventsRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, event_type=None, not_before=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.event_type = event_type
-        self.not_before = not_before
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: List[str]
+        self.event_type = event_type    # type: str
+        self.not_before = not_before    # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -7936,7 +9690,7 @@ class CreateSimulatedSystemEventsRequest(TeaModel):
 
 class CreateSimulatedSystemEventsResponse(TeaModel):
     def __init__(self, request_id=None, event_id_set=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.event_id_set = event_id_set  # type: CreateSimulatedSystemEventsResponseEventIdSet
 
     def validate(self):
@@ -7966,7 +9720,7 @@ class CreateSimulatedSystemEventsResponse(TeaModel):
 
 class CreateSimulatedSystemEventsResponseEventIdSet(TeaModel):
     def __init__(self, event_id=None):
-        self.event_id = event_id
+        self.event_id = event_id        # type: List[str]
 
     def validate(self):
         self.validate_required(self.event_id, 'event_id')
@@ -7983,8 +9737,8 @@ class CreateSimulatedSystemEventsResponseEventIdSet(TeaModel):
 
 class CancelSimulatedSystemEventsRequest(TeaModel):
     def __init__(self, region_id=None, event_id=None):
-        self.region_id = region_id
-        self.event_id = event_id
+        self.region_id = region_id      # type: str
+        self.event_id = event_id        # type: List[str]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -8004,7 +9758,7 @@ class CancelSimulatedSystemEventsRequest(TeaModel):
 
 class CancelSimulatedSystemEventsResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -8021,12 +9775,12 @@ class CancelSimulatedSystemEventsResponse(TeaModel):
 
 class DescribeEniMonitorDataRequest(TeaModel):
     def __init__(self, eni_id=None, region_id=None, instance_id=None, start_time=None, end_time=None, period=None):
-        self.eni_id = eni_id
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.start_time = start_time
-        self.end_time = end_time
-        self.period = period
+        self.eni_id = eni_id            # type: str
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.period = period            # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -8056,8 +9810,8 @@ class DescribeEniMonitorDataRequest(TeaModel):
 
 class DescribeEniMonitorDataResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, monitor_data=None):
-        self.request_id = request_id
-        self.total_count = total_count
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
         self.monitor_data = monitor_data  # type: DescribeEniMonitorDataResponseMonitorData
 
     def validate(self):
@@ -8091,14 +9845,14 @@ class DescribeEniMonitorDataResponse(TeaModel):
 class DescribeEniMonitorDataResponseMonitorDataEniMonitorData(TeaModel):
     def __init__(self, eni_id=None, time_stamp=None, packet_tx=None, packet_rx=None, intranet_tx=None,
                  intranet_rx=None, drop_packet_tx=None, drop_packet_rx=None):
-        self.eni_id = eni_id
-        self.time_stamp = time_stamp
-        self.packet_tx = packet_tx
-        self.packet_rx = packet_rx
-        self.intranet_tx = intranet_tx
-        self.intranet_rx = intranet_rx
-        self.drop_packet_tx = drop_packet_tx
-        self.drop_packet_rx = drop_packet_rx
+        self.eni_id = eni_id            # type: str
+        self.time_stamp = time_stamp    # type: str
+        self.packet_tx = packet_tx      # type: str
+        self.packet_rx = packet_rx      # type: str
+        self.intranet_tx = intranet_tx  # type: str
+        self.intranet_rx = intranet_rx  # type: str
+        self.drop_packet_tx = drop_packet_tx  # type: str
+        self.drop_packet_rx = drop_packet_rx  # type: str
 
     def validate(self):
         self.validate_required(self.eni_id, 'eni_id')
@@ -8136,7 +9890,7 @@ class DescribeEniMonitorDataResponseMonitorDataEniMonitorData(TeaModel):
 
 class DescribeEniMonitorDataResponseMonitorData(TeaModel):
     def __init__(self, eni_monitor_data=None):
-        self.eni_monitor_data = eni_monitor_data
+        self.eni_monitor_data = eni_monitor_data  # type: List[DescribeEniMonitorDataResponseMonitorDataEniMonitorData]
 
     def validate(self):
         self.validate_required(self.eni_monitor_data, 'eni_monitor_data')
@@ -8168,9 +9922,9 @@ class DescribeEniMonitorDataResponseMonitorData(TeaModel):
 
 class DescribeAccountAttributesRequest(TeaModel):
     def __init__(self, region_id=None, zone_id=None, attribute_name=None):
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.attribute_name = attribute_name
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.attribute_name = attribute_name  # type: List[str]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -8191,7 +9945,7 @@ class DescribeAccountAttributesRequest(TeaModel):
 
 class DescribeAccountAttributesResponse(TeaModel):
     def __init__(self, request_id=None, account_attribute_items=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.account_attribute_items = account_attribute_items  # type: DescribeAccountAttributesResponseAccountAttributeItems
 
     def validate(self):
@@ -8222,13 +9976,13 @@ class DescribeAccountAttributesResponse(TeaModel):
 class DescribeAccountAttributesResponseAccountAttributeItemsAccountAttributeItemAttributeValuesValueItem(TeaModel):
     def __init__(self, value=None, expired_time=None, zone_id=None, instance_charge_type=None, instance_type=None,
                  count=None, disk_category=None):
-        self.value = value
-        self.expired_time = expired_time
-        self.zone_id = zone_id
-        self.instance_charge_type = instance_charge_type
-        self.instance_type = instance_type
-        self.count = count
-        self.disk_category = disk_category
+        self.value = value              # type: str
+        self.expired_time = expired_time  # type: str
+        self.zone_id = zone_id          # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.instance_type = instance_type  # type: str
+        self.count = count              # type: int
+        self.disk_category = disk_category  # type: str
 
     def validate(self):
         self.validate_required(self.value, 'value')
@@ -8263,7 +10017,7 @@ class DescribeAccountAttributesResponseAccountAttributeItemsAccountAttributeItem
 
 class DescribeAccountAttributesResponseAccountAttributeItemsAccountAttributeItemAttributeValues(TeaModel):
     def __init__(self, value_item=None):
-        self.value_item = value_item
+        self.value_item = value_item    # type: List[DescribeAccountAttributesResponseAccountAttributeItemsAccountAttributeItemAttributeValuesValueItem]
 
     def validate(self):
         self.validate_required(self.value_item, 'value_item')
@@ -8295,7 +10049,7 @@ class DescribeAccountAttributesResponseAccountAttributeItemsAccountAttributeItem
 
 class DescribeAccountAttributesResponseAccountAttributeItemsAccountAttributeItem(TeaModel):
     def __init__(self, attribute_name=None, attribute_values=None):
-        self.attribute_name = attribute_name
+        self.attribute_name = attribute_name  # type: str
         self.attribute_values = attribute_values  # type: DescribeAccountAttributesResponseAccountAttributeItemsAccountAttributeItemAttributeValues
 
     def validate(self):
@@ -8325,7 +10079,7 @@ class DescribeAccountAttributesResponseAccountAttributeItemsAccountAttributeItem
 
 class DescribeAccountAttributesResponseAccountAttributeItems(TeaModel):
     def __init__(self, account_attribute_item=None):
-        self.account_attribute_item = account_attribute_item
+        self.account_attribute_item = account_attribute_item  # type: List[DescribeAccountAttributesResponseAccountAttributeItemsAccountAttributeItem]
 
     def validate(self):
         self.validate_required(self.account_attribute_item, 'account_attribute_item')
@@ -8358,10 +10112,10 @@ class DescribeAccountAttributesResponseAccountAttributeItems(TeaModel):
 class ModifyLaunchTemplateDefaultVersionRequest(TeaModel):
     def __init__(self, region_id=None, launch_template_id=None, launch_template_name=None,
                  default_version_number=None):
-        self.region_id = region_id
-        self.launch_template_id = launch_template_id
-        self.launch_template_name = launch_template_name
-        self.default_version_number = default_version_number
+        self.region_id = region_id      # type: str
+        self.launch_template_id = launch_template_id  # type: str
+        self.launch_template_name = launch_template_name  # type: str
+        self.default_version_number = default_version_number  # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -8385,7 +10139,7 @@ class ModifyLaunchTemplateDefaultVersionRequest(TeaModel):
 
 class ModifyLaunchTemplateDefaultVersionResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -8403,13 +10157,13 @@ class ModifyLaunchTemplateDefaultVersionResponse(TeaModel):
 class DescribeLaunchTemplatesRequest(TeaModel):
     def __init__(self, region_id=None, template_tag=None, launch_template_id=None, launch_template_name=None,
                  page_number=None, page_size=None, template_resource_group_id=None):
-        self.region_id = region_id
-        self.template_tag = template_tag
-        self.launch_template_id = launch_template_id
-        self.launch_template_name = launch_template_name
-        self.page_number = page_number
-        self.page_size = page_size
-        self.template_resource_group_id = template_resource_group_id
+        self.region_id = region_id      # type: str
+        self.template_tag = template_tag  # type: List[DescribeLaunchTemplatesRequestTemplateTag]
+        self.launch_template_id = launch_template_id  # type: List[str]
+        self.launch_template_name = launch_template_name  # type: List[str]
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.template_resource_group_id = template_resource_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -8453,12 +10207,11 @@ class DescribeLaunchTemplatesRequest(TeaModel):
 
 class DescribeLaunchTemplatesRequestTemplateTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -8475,10 +10228,10 @@ class DescribeLaunchTemplatesRequestTemplateTag(TeaModel):
 class DescribeLaunchTemplatesResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None,
                  launch_template_sets=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.launch_template_sets = launch_template_sets  # type: DescribeLaunchTemplatesResponseLaunchTemplateSets
 
     def validate(self):
@@ -8517,8 +10270,8 @@ class DescribeLaunchTemplatesResponse(TeaModel):
 
 class DescribeLaunchTemplatesResponseLaunchTemplateSetsLaunchTemplateSetTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -8538,7 +10291,7 @@ class DescribeLaunchTemplatesResponseLaunchTemplateSetsLaunchTemplateSetTagsTag(
 
 class DescribeLaunchTemplatesResponseLaunchTemplateSetsLaunchTemplateSetTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeLaunchTemplatesResponseLaunchTemplateSetsLaunchTemplateSetTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -8571,15 +10324,15 @@ class DescribeLaunchTemplatesResponseLaunchTemplateSetsLaunchTemplateSetTags(Tea
 class DescribeLaunchTemplatesResponseLaunchTemplateSetsLaunchTemplateSet(TeaModel):
     def __init__(self, create_time=None, modified_time=None, launch_template_id=None, launch_template_name=None,
                  default_version_number=None, latest_version_number=None, created_by=None, resource_group_id=None, tags=None):
-        self.create_time = create_time
-        self.modified_time = modified_time
-        self.launch_template_id = launch_template_id
-        self.launch_template_name = launch_template_name
-        self.default_version_number = default_version_number
-        self.latest_version_number = latest_version_number
-        self.created_by = created_by
-        self.resource_group_id = resource_group_id
-        self.tags = tags  # type: DescribeLaunchTemplatesResponseLaunchTemplateSetsLaunchTemplateSetTags
+        self.create_time = create_time  # type: str
+        self.modified_time = modified_time  # type: str
+        self.launch_template_id = launch_template_id  # type: str
+        self.launch_template_name = launch_template_name  # type: str
+        self.default_version_number = default_version_number  # type: int
+        self.latest_version_number = latest_version_number  # type: int
+        self.created_by = created_by    # type: str
+        self.resource_group_id = resource_group_id  # type: str
+        self.tags = tags                # type: DescribeLaunchTemplatesResponseLaunchTemplateSetsLaunchTemplateSetTags
 
     def validate(self):
         self.validate_required(self.create_time, 'create_time')
@@ -8629,7 +10382,7 @@ class DescribeLaunchTemplatesResponseLaunchTemplateSetsLaunchTemplateSet(TeaMode
 
 class DescribeLaunchTemplatesResponseLaunchTemplateSets(TeaModel):
     def __init__(self, launch_template_set=None):
-        self.launch_template_set = launch_template_set
+        self.launch_template_set = launch_template_set  # type: List[DescribeLaunchTemplatesResponseLaunchTemplateSetsLaunchTemplateSet]
 
     def validate(self):
         self.validate_required(self.launch_template_set, 'launch_template_set')
@@ -8663,16 +10416,16 @@ class DescribeLaunchTemplateVersionsRequest(TeaModel):
     def __init__(self, region_id=None, launch_template_id=None, launch_template_name=None,
                  launch_template_version=None, min_version=None, max_version=None, default_version=None, detail_flag=None, page_number=None,
                  page_size=None):
-        self.region_id = region_id
-        self.launch_template_id = launch_template_id
-        self.launch_template_name = launch_template_name
-        self.launch_template_version = launch_template_version
-        self.min_version = min_version
-        self.max_version = max_version
-        self.default_version = default_version
-        self.detail_flag = detail_flag
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.launch_template_id = launch_template_id  # type: str
+        self.launch_template_name = launch_template_name  # type: str
+        self.launch_template_version = launch_template_version  # type: List[int]
+        self.min_version = min_version  # type: int
+        self.max_version = max_version  # type: int
+        self.default_version = default_version  # type: bool
+        self.detail_flag = detail_flag  # type: bool
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -8708,10 +10461,10 @@ class DescribeLaunchTemplateVersionsRequest(TeaModel):
 class DescribeLaunchTemplateVersionsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None,
                  launch_template_version_sets=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.launch_template_version_sets = launch_template_version_sets  # type: DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSets
 
     def validate(self):
@@ -8750,11 +10503,11 @@ class DescribeLaunchTemplateVersionsResponse(TeaModel):
 
 class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSystemDisk(TeaModel):
     def __init__(self, size=None, category=None, disk_name=None, description=None, iops=None):
-        self.size = size
-        self.category = category
-        self.disk_name = disk_name
-        self.description = description
-        self.iops = iops
+        self.size = size                # type: int
+        self.category = category        # type: str
+        self.disk_name = disk_name      # type: str
+        self.description = description  # type: str
+        self.iops = iops                # type: int
 
     def validate(self):
         self.validate_required(self.size, 'size')
@@ -8784,14 +10537,14 @@ class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTempl
 class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataDataDisksDataDisk(TeaModel):
     def __init__(self, size=None, snapshot_id=None, category=None, encrypted=None, disk_name=None, description=None,
                  delete_with_instance=None, device=None):
-        self.size = size
-        self.snapshot_id = snapshot_id
-        self.category = category
-        self.encrypted = encrypted
-        self.disk_name = disk_name
-        self.description = description
-        self.delete_with_instance = delete_with_instance
-        self.device = device
+        self.size = size                # type: int
+        self.snapshot_id = snapshot_id  # type: str
+        self.category = category        # type: str
+        self.encrypted = encrypted      # type: str
+        self.disk_name = disk_name      # type: str
+        self.description = description  # type: str
+        self.delete_with_instance = delete_with_instance  # type: bool
+        self.device = device            # type: str
 
     def validate(self):
         self.validate_required(self.size, 'size')
@@ -8829,7 +10582,7 @@ class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTempl
 
 class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataDataDisks(TeaModel):
     def __init__(self, data_disk=None):
-        self.data_disk = data_disk
+        self.data_disk = data_disk      # type: List[DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataDataDisksDataDisk]
 
     def validate(self):
         self.validate_required(self.data_disk, 'data_disk')
@@ -8862,11 +10615,11 @@ class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTempl
 class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataNetworkInterfacesNetworkInterface(TeaModel):
     def __init__(self, primary_ip_address=None, v_switch_id=None, security_group_id=None,
                  network_interface_name=None, description=None):
-        self.primary_ip_address = primary_ip_address
-        self.v_switch_id = v_switch_id
-        self.security_group_id = security_group_id
-        self.network_interface_name = network_interface_name
-        self.description = description
+        self.primary_ip_address = primary_ip_address  # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.network_interface_name = network_interface_name  # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.primary_ip_address, 'primary_ip_address')
@@ -8895,7 +10648,7 @@ class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTempl
 
 class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataNetworkInterfaces(TeaModel):
     def __init__(self, network_interface=None):
-        self.network_interface = network_interface
+        self.network_interface = network_interface  # type: List[DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataNetworkInterfacesNetworkInterface]
 
     def validate(self):
         self.validate_required(self.network_interface, 'network_interface')
@@ -8927,8 +10680,8 @@ class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTempl
 
 class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataTagsInstanceTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
         self.validate_required(self.key, 'key')
@@ -8948,7 +10701,7 @@ class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTempl
 
 class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataTags(TeaModel):
     def __init__(self, instance_tag=None):
-        self.instance_tag = instance_tag
+        self.instance_tag = instance_tag  # type: List[DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataTagsInstanceTag]
 
     def validate(self):
         self.validate_required(self.instance_tag, 'instance_tag')
@@ -8986,38 +10739,38 @@ class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTempl
                  user_data=None, key_pair_name=None, ram_role_name=None, auto_release_time=None, spot_strategy=None,
                  spot_price_limit=None, spot_duration=None, resource_group_id=None, security_enhancement_strategy=None,
                  system_disk=None, data_disks=None, network_interfaces=None, tags=None):
-        self.image_id = image_id
-        self.image_owner_alias = image_owner_alias
-        self.password_inherit = password_inherit
-        self.instance_type = instance_type
-        self.security_group_id = security_group_id
-        self.vpc_id = vpc_id
-        self.v_switch_id = v_switch_id
-        self.instance_name = instance_name
-        self.description = description
-        self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        self.host_name = host_name
-        self.zone_id = zone_id
-        self.io_optimized = io_optimized
-        self.instance_charge_type = instance_charge_type
-        self.period = period
-        self.internet_charge_type = internet_charge_type
-        self.enable_vm_os_config = enable_vm_os_config
-        self.network_type = network_type
-        self.user_data = user_data
-        self.key_pair_name = key_pair_name
-        self.ram_role_name = ram_role_name
-        self.auto_release_time = auto_release_time
-        self.spot_strategy = spot_strategy
-        self.spot_price_limit = spot_price_limit
-        self.spot_duration = spot_duration
-        self.resource_group_id = resource_group_id
-        self.security_enhancement_strategy = security_enhancement_strategy
+        self.image_id = image_id        # type: str
+        self.image_owner_alias = image_owner_alias  # type: str
+        self.password_inherit = password_inherit  # type: bool
+        self.instance_type = instance_type  # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.instance_name = instance_name  # type: str
+        self.description = description  # type: str
+        self.internet_max_bandwidth_in = internet_max_bandwidth_in  # type: int
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out  # type: int
+        self.host_name = host_name      # type: str
+        self.zone_id = zone_id          # type: str
+        self.io_optimized = io_optimized  # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.period = period            # type: int
+        self.internet_charge_type = internet_charge_type  # type: str
+        self.enable_vm_os_config = enable_vm_os_config  # type: bool
+        self.network_type = network_type  # type: str
+        self.user_data = user_data      # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.ram_role_name = ram_role_name  # type: str
+        self.auto_release_time = auto_release_time  # type: str
+        self.spot_strategy = spot_strategy  # type: str
+        self.spot_price_limit = spot_price_limit  # type: float
+        self.spot_duration = spot_duration  # type: int
+        self.resource_group_id = resource_group_id  # type: str
+        self.security_enhancement_strategy = security_enhancement_strategy  # type: str
         self.system_disk = system_disk  # type: DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSystemDisk
-        self.data_disks = data_disks  # type: DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataDataDisks
+        self.data_disks = data_disks    # type: DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataDataDisks
         self.network_interfaces = network_interfaces  # type: DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataNetworkInterfaces
-        self.tags = tags  # type: DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataTags
+        self.tags = tags                # type: DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataTags
 
     def validate(self):
         self.validate_required(self.image_id, 'image_id')
@@ -9164,14 +10917,14 @@ class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTempl
 class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSet(TeaModel):
     def __init__(self, create_time=None, modified_time=None, launch_template_id=None, launch_template_name=None,
                  default_version=None, version_number=None, version_description=None, created_by=None, launch_template_data=None):
-        self.create_time = create_time
-        self.modified_time = modified_time
-        self.launch_template_id = launch_template_id
-        self.launch_template_name = launch_template_name
-        self.default_version = default_version
-        self.version_number = version_number
-        self.version_description = version_description
-        self.created_by = created_by
+        self.create_time = create_time  # type: str
+        self.modified_time = modified_time  # type: str
+        self.launch_template_id = launch_template_id  # type: str
+        self.launch_template_name = launch_template_name  # type: str
+        self.default_version = default_version  # type: bool
+        self.version_number = version_number  # type: int
+        self.version_description = version_description  # type: str
+        self.created_by = created_by    # type: str
         self.launch_template_data = launch_template_data  # type: DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateData
 
     def validate(self):
@@ -9222,7 +10975,7 @@ class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTempl
 
 class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSets(TeaModel):
     def __init__(self, launch_template_version_set=None):
-        self.launch_template_version_set = launch_template_version_set
+        self.launch_template_version_set = launch_template_version_set  # type: List[DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSetsLaunchTemplateVersionSet]
 
     def validate(self):
         self.validate_required(self.launch_template_version_set, 'launch_template_version_set')
@@ -9254,10 +11007,10 @@ class DescribeLaunchTemplateVersionsResponseLaunchTemplateVersionSets(TeaModel):
 
 class DeleteLaunchTemplateVersionRequest(TeaModel):
     def __init__(self, region_id=None, launch_template_id=None, launch_template_name=None, delete_version=None):
-        self.region_id = region_id
-        self.launch_template_id = launch_template_id
-        self.launch_template_name = launch_template_name
-        self.delete_version = delete_version
+        self.region_id = region_id      # type: str
+        self.launch_template_id = launch_template_id  # type: str
+        self.launch_template_name = launch_template_name  # type: str
+        self.delete_version = delete_version  # type: List[int]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -9281,7 +11034,7 @@ class DeleteLaunchTemplateVersionRequest(TeaModel):
 
 class DeleteLaunchTemplateVersionResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -9298,9 +11051,9 @@ class DeleteLaunchTemplateVersionResponse(TeaModel):
 
 class DeleteLaunchTemplateRequest(TeaModel):
     def __init__(self, region_id=None, launch_template_id=None, launch_template_name=None):
-        self.region_id = region_id
-        self.launch_template_id = launch_template_id
-        self.launch_template_name = launch_template_name
+        self.region_id = region_id      # type: str
+        self.launch_template_id = launch_template_id  # type: str
+        self.launch_template_name = launch_template_name  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -9321,7 +11074,7 @@ class DeleteLaunchTemplateRequest(TeaModel):
 
 class DeleteLaunchTemplateResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -9345,42 +11098,42 @@ class CreateLaunchTemplateVersionRequest(TeaModel):
                  internet_charge_type=None, enable_vm_os_config=None, network_type=None, user_data=None, key_pair_name=None,
                  ram_role_name=None, auto_release_time=None, spot_strategy=None, spot_price_limit=None, spot_duration=None,
                  resource_group_id=None, security_enhancement_strategy=None, tag=None):
-        self.region_id = region_id
-        self.launch_template_id = launch_template_id
-        self.launch_template_name = launch_template_name
-        self.version_description = version_description
-        self.image_id = image_id
-        self.image_owner_alias = image_owner_alias
-        self.password_inherit = password_inherit
-        self.instance_type = instance_type
-        self.security_group_id = security_group_id
-        self.vpc_id = vpc_id
-        self.v_switch_id = v_switch_id
-        self.instance_name = instance_name
-        self.description = description
-        self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        self.host_name = host_name
-        self.zone_id = zone_id
+        self.region_id = region_id      # type: str
+        self.launch_template_id = launch_template_id  # type: str
+        self.launch_template_name = launch_template_name  # type: str
+        self.version_description = version_description  # type: str
+        self.image_id = image_id        # type: str
+        self.image_owner_alias = image_owner_alias  # type: str
+        self.password_inherit = password_inherit  # type: bool
+        self.instance_type = instance_type  # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.instance_name = instance_name  # type: str
+        self.description = description  # type: str
+        self.internet_max_bandwidth_in = internet_max_bandwidth_in  # type: int
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out  # type: int
+        self.host_name = host_name      # type: str
+        self.zone_id = zone_id          # type: str
         self.system_disk = system_disk  # type: CreateLaunchTemplateVersionRequestSystemDisk
-        self.data_disk = data_disk
-        self.io_optimized = io_optimized
-        self.network_interface = network_interface
-        self.instance_charge_type = instance_charge_type
-        self.period = period
-        self.internet_charge_type = internet_charge_type
-        self.enable_vm_os_config = enable_vm_os_config
-        self.network_type = network_type
-        self.user_data = user_data
-        self.key_pair_name = key_pair_name
-        self.ram_role_name = ram_role_name
-        self.auto_release_time = auto_release_time
-        self.spot_strategy = spot_strategy
-        self.spot_price_limit = spot_price_limit
-        self.spot_duration = spot_duration
-        self.resource_group_id = resource_group_id
-        self.security_enhancement_strategy = security_enhancement_strategy
-        self.tag = tag
+        self.data_disk = data_disk      # type: List[CreateLaunchTemplateVersionRequestDataDisk]
+        self.io_optimized = io_optimized  # type: str
+        self.network_interface = network_interface  # type: List[CreateLaunchTemplateVersionRequestNetworkInterface]
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.period = period            # type: int
+        self.internet_charge_type = internet_charge_type  # type: str
+        self.enable_vm_os_config = enable_vm_os_config  # type: bool
+        self.network_type = network_type  # type: str
+        self.user_data = user_data      # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.ram_role_name = ram_role_name  # type: str
+        self.auto_release_time = auto_release_time  # type: str
+        self.spot_strategy = spot_strategy  # type: str
+        self.spot_price_limit = spot_price_limit  # type: float
+        self.spot_duration = spot_duration  # type: int
+        self.resource_group_id = resource_group_id  # type: str
+        self.security_enhancement_strategy = security_enhancement_strategy  # type: str
+        self.tag = tag                  # type: List[CreateLaunchTemplateVersionRequestTag]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -9521,11 +11274,11 @@ class CreateLaunchTemplateVersionRequest(TeaModel):
 
 class CreateLaunchTemplateVersionRequestSystemDisk(TeaModel):
     def __init__(self, category=None, size=None, disk_name=None, description=None, iops=None):
-        self.category = category
-        self.size = size
-        self.disk_name = disk_name
-        self.description = description
-        self.iops = iops
+        self.category = category        # type: str
+        self.size = size                # type: int
+        self.disk_name = disk_name      # type: str
+        self.description = description  # type: str
+        self.iops = iops                # type: int
 
     def validate(self):
         pass
@@ -9551,24 +11304,17 @@ class CreateLaunchTemplateVersionRequestSystemDisk(TeaModel):
 class CreateLaunchTemplateVersionRequestDataDisk(TeaModel):
     def __init__(self, size=None, snapshot_id=None, category=None, encrypted=None, disk_name=None, description=None,
                  delete_with_instance=None, device=None):
-        self.size = size
-        self.snapshot_id = snapshot_id
-        self.category = category
-        self.encrypted = encrypted
-        self.disk_name = disk_name
-        self.description = description
-        self.delete_with_instance = delete_with_instance
-        self.device = device
+        self.size = size                # type: int
+        self.snapshot_id = snapshot_id  # type: str
+        self.category = category        # type: str
+        self.encrypted = encrypted      # type: str
+        self.disk_name = disk_name      # type: str
+        self.description = description  # type: str
+        self.delete_with_instance = delete_with_instance  # type: bool
+        self.device = device            # type: str
 
     def validate(self):
-        self.validate_required(self.size, 'size')
-        self.validate_required(self.snapshot_id, 'snapshot_id')
-        self.validate_required(self.category, 'category')
-        self.validate_required(self.encrypted, 'encrypted')
-        self.validate_required(self.disk_name, 'disk_name')
-        self.validate_required(self.description, 'description')
-        self.validate_required(self.delete_with_instance, 'delete_with_instance')
-        self.validate_required(self.device, 'device')
+        pass
 
     def to_map(self):
         result = {}
@@ -9597,18 +11343,14 @@ class CreateLaunchTemplateVersionRequestDataDisk(TeaModel):
 class CreateLaunchTemplateVersionRequestNetworkInterface(TeaModel):
     def __init__(self, primary_ip_address=None, v_switch_id=None, security_group_id=None,
                  network_interface_name=None, description=None):
-        self.primary_ip_address = primary_ip_address
-        self.v_switch_id = v_switch_id
-        self.security_group_id = security_group_id
-        self.network_interface_name = network_interface_name
-        self.description = description
+        self.primary_ip_address = primary_ip_address  # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.network_interface_name = network_interface_name  # type: str
+        self.description = description  # type: str
 
     def validate(self):
-        self.validate_required(self.primary_ip_address, 'primary_ip_address')
-        self.validate_required(self.v_switch_id, 'v_switch_id')
-        self.validate_required(self.security_group_id, 'security_group_id')
-        self.validate_required(self.network_interface_name, 'network_interface_name')
-        self.validate_required(self.description, 'description')
+        pass
 
     def to_map(self):
         result = {}
@@ -9630,12 +11372,11 @@ class CreateLaunchTemplateVersionRequestNetworkInterface(TeaModel):
 
 class CreateLaunchTemplateVersionRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -9651,8 +11392,8 @@ class CreateLaunchTemplateVersionRequestTag(TeaModel):
 
 class CreateLaunchTemplateVersionResponse(TeaModel):
     def __init__(self, request_id=None, launch_template_version_number=None):
-        self.request_id = request_id
-        self.launch_template_version_number = launch_template_version_number
+        self.request_id = request_id    # type: str
+        self.launch_template_version_number = launch_template_version_number  # type: int
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -9679,43 +11420,43 @@ class CreateLaunchTemplateRequest(TeaModel):
                  network_type=None, user_data=None, key_pair_name=None, ram_role_name=None, auto_release_time=None,
                  spot_strategy=None, spot_price_limit=None, spot_duration=None, resource_group_id=None,
                  template_resource_group_id=None, security_enhancement_strategy=None, tag=None):
-        self.region_id = region_id
-        self.template_tag = template_tag
-        self.launch_template_name = launch_template_name
-        self.version_description = version_description
-        self.image_id = image_id
-        self.image_owner_alias = image_owner_alias
-        self.password_inherit = password_inherit
-        self.instance_type = instance_type
-        self.security_group_id = security_group_id
-        self.vpc_id = vpc_id
-        self.v_switch_id = v_switch_id
-        self.instance_name = instance_name
-        self.description = description
-        self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        self.host_name = host_name
-        self.zone_id = zone_id
+        self.region_id = region_id      # type: str
+        self.template_tag = template_tag  # type: List[CreateLaunchTemplateRequestTemplateTag]
+        self.launch_template_name = launch_template_name  # type: str
+        self.version_description = version_description  # type: str
+        self.image_id = image_id        # type: str
+        self.image_owner_alias = image_owner_alias  # type: str
+        self.password_inherit = password_inherit  # type: bool
+        self.instance_type = instance_type  # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.instance_name = instance_name  # type: str
+        self.description = description  # type: str
+        self.internet_max_bandwidth_in = internet_max_bandwidth_in  # type: int
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out  # type: int
+        self.host_name = host_name      # type: str
+        self.zone_id = zone_id          # type: str
         self.system_disk = system_disk  # type: CreateLaunchTemplateRequestSystemDisk
-        self.data_disk = data_disk
-        self.io_optimized = io_optimized
-        self.network_interface = network_interface
-        self.instance_charge_type = instance_charge_type
-        self.period = period
-        self.internet_charge_type = internet_charge_type
-        self.enable_vm_os_config = enable_vm_os_config
-        self.network_type = network_type
-        self.user_data = user_data
-        self.key_pair_name = key_pair_name
-        self.ram_role_name = ram_role_name
-        self.auto_release_time = auto_release_time
-        self.spot_strategy = spot_strategy
-        self.spot_price_limit = spot_price_limit
-        self.spot_duration = spot_duration
-        self.resource_group_id = resource_group_id
-        self.template_resource_group_id = template_resource_group_id
-        self.security_enhancement_strategy = security_enhancement_strategy
-        self.tag = tag
+        self.data_disk = data_disk      # type: List[CreateLaunchTemplateRequestDataDisk]
+        self.io_optimized = io_optimized  # type: str
+        self.network_interface = network_interface  # type: List[CreateLaunchTemplateRequestNetworkInterface]
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.period = period            # type: int
+        self.internet_charge_type = internet_charge_type  # type: str
+        self.enable_vm_os_config = enable_vm_os_config  # type: bool
+        self.network_type = network_type  # type: str
+        self.user_data = user_data      # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.ram_role_name = ram_role_name  # type: str
+        self.auto_release_time = auto_release_time  # type: str
+        self.spot_strategy = spot_strategy  # type: str
+        self.spot_price_limit = spot_price_limit  # type: float
+        self.spot_duration = spot_duration  # type: int
+        self.resource_group_id = resource_group_id  # type: str
+        self.template_resource_group_id = template_resource_group_id  # type: str
+        self.security_enhancement_strategy = security_enhancement_strategy  # type: str
+        self.tag = tag                  # type: List[CreateLaunchTemplateRequestTag]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -9874,12 +11615,11 @@ class CreateLaunchTemplateRequest(TeaModel):
 
 class CreateLaunchTemplateRequestTemplateTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -9895,11 +11635,11 @@ class CreateLaunchTemplateRequestTemplateTag(TeaModel):
 
 class CreateLaunchTemplateRequestSystemDisk(TeaModel):
     def __init__(self, category=None, size=None, disk_name=None, description=None, iops=None):
-        self.category = category
-        self.size = size
-        self.disk_name = disk_name
-        self.description = description
-        self.iops = iops
+        self.category = category        # type: str
+        self.size = size                # type: int
+        self.disk_name = disk_name      # type: str
+        self.description = description  # type: str
+        self.iops = iops                # type: int
 
     def validate(self):
         pass
@@ -9925,24 +11665,17 @@ class CreateLaunchTemplateRequestSystemDisk(TeaModel):
 class CreateLaunchTemplateRequestDataDisk(TeaModel):
     def __init__(self, size=None, snapshot_id=None, category=None, encrypted=None, disk_name=None, description=None,
                  delete_with_instance=None, device=None):
-        self.size = size
-        self.snapshot_id = snapshot_id
-        self.category = category
-        self.encrypted = encrypted
-        self.disk_name = disk_name
-        self.description = description
-        self.delete_with_instance = delete_with_instance
-        self.device = device
+        self.size = size                # type: int
+        self.snapshot_id = snapshot_id  # type: str
+        self.category = category        # type: str
+        self.encrypted = encrypted      # type: str
+        self.disk_name = disk_name      # type: str
+        self.description = description  # type: str
+        self.delete_with_instance = delete_with_instance  # type: bool
+        self.device = device            # type: str
 
     def validate(self):
-        self.validate_required(self.size, 'size')
-        self.validate_required(self.snapshot_id, 'snapshot_id')
-        self.validate_required(self.category, 'category')
-        self.validate_required(self.encrypted, 'encrypted')
-        self.validate_required(self.disk_name, 'disk_name')
-        self.validate_required(self.description, 'description')
-        self.validate_required(self.delete_with_instance, 'delete_with_instance')
-        self.validate_required(self.device, 'device')
+        pass
 
     def to_map(self):
         result = {}
@@ -9971,18 +11704,14 @@ class CreateLaunchTemplateRequestDataDisk(TeaModel):
 class CreateLaunchTemplateRequestNetworkInterface(TeaModel):
     def __init__(self, primary_ip_address=None, v_switch_id=None, security_group_id=None,
                  network_interface_name=None, description=None):
-        self.primary_ip_address = primary_ip_address
-        self.v_switch_id = v_switch_id
-        self.security_group_id = security_group_id
-        self.network_interface_name = network_interface_name
-        self.description = description
+        self.primary_ip_address = primary_ip_address  # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.network_interface_name = network_interface_name  # type: str
+        self.description = description  # type: str
 
     def validate(self):
-        self.validate_required(self.primary_ip_address, 'primary_ip_address')
-        self.validate_required(self.v_switch_id, 'v_switch_id')
-        self.validate_required(self.security_group_id, 'security_group_id')
-        self.validate_required(self.network_interface_name, 'network_interface_name')
-        self.validate_required(self.description, 'description')
+        pass
 
     def to_map(self):
         result = {}
@@ -10004,12 +11733,11 @@ class CreateLaunchTemplateRequestNetworkInterface(TeaModel):
 
 class CreateLaunchTemplateRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -10025,8 +11753,8 @@ class CreateLaunchTemplateRequestTag(TeaModel):
 
 class CreateLaunchTemplateResponse(TeaModel):
     def __init__(self, request_id=None, launch_template_id=None):
-        self.request_id = request_id
-        self.launch_template_id = launch_template_id
+        self.request_id = request_id    # type: str
+        self.launch_template_id = launch_template_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -10046,8 +11774,8 @@ class CreateLaunchTemplateResponse(TeaModel):
 
 class InstallCloudAssistantRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -10067,7 +11795,7 @@ class InstallCloudAssistantRequest(TeaModel):
 
 class InstallCloudAssistantResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -10084,8 +11812,8 @@ class InstallCloudAssistantResponse(TeaModel):
 
 class DescribeCloudAssistantStatusRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -10105,7 +11833,7 @@ class DescribeCloudAssistantStatusRequest(TeaModel):
 
 class DescribeCloudAssistantStatusResponse(TeaModel):
     def __init__(self, request_id=None, instance_cloud_assistant_status_set=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.instance_cloud_assistant_status_set = instance_cloud_assistant_status_set  # type: DescribeCloudAssistantStatusResponseInstanceCloudAssistantStatusSet
 
     def validate(self):
@@ -10135,9 +11863,9 @@ class DescribeCloudAssistantStatusResponse(TeaModel):
 
 class DescribeCloudAssistantStatusResponseInstanceCloudAssistantStatusSetInstanceCloudAssistantStatus(TeaModel):
     def __init__(self, instance_id=None, cloud_assistant_status=None, cloud_assistant_version=None):
-        self.instance_id = instance_id
-        self.cloud_assistant_status = cloud_assistant_status
-        self.cloud_assistant_version = cloud_assistant_version
+        self.instance_id = instance_id  # type: str
+        self.cloud_assistant_status = cloud_assistant_status  # type: str
+        self.cloud_assistant_version = cloud_assistant_version  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -10160,7 +11888,7 @@ class DescribeCloudAssistantStatusResponseInstanceCloudAssistantStatusSetInstanc
 
 class DescribeCloudAssistantStatusResponseInstanceCloudAssistantStatusSet(TeaModel):
     def __init__(self, instance_cloud_assistant_status=None):
-        self.instance_cloud_assistant_status = instance_cloud_assistant_status
+        self.instance_cloud_assistant_status = instance_cloud_assistant_status  # type: List[DescribeCloudAssistantStatusResponseInstanceCloudAssistantStatusSetInstanceCloudAssistantStatus]
 
     def validate(self):
         self.validate_required(self.instance_cloud_assistant_status, 'instance_cloud_assistant_status')
@@ -10192,9 +11920,9 @@ class DescribeCloudAssistantStatusResponseInstanceCloudAssistantStatusSet(TeaMod
 
 class UnassignPrivateIpAddressesRequest(TeaModel):
     def __init__(self, region_id=None, network_interface_id=None, private_ip_address=None):
-        self.region_id = region_id
-        self.network_interface_id = network_interface_id
-        self.private_ip_address = private_ip_address
+        self.region_id = region_id      # type: str
+        self.network_interface_id = network_interface_id  # type: str
+        self.private_ip_address = private_ip_address  # type: List[str]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -10217,7 +11945,7 @@ class UnassignPrivateIpAddressesRequest(TeaModel):
 
 class UnassignPrivateIpAddressesResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -10235,11 +11963,11 @@ class UnassignPrivateIpAddressesResponse(TeaModel):
 class AssignPrivateIpAddressesRequest(TeaModel):
     def __init__(self, region_id=None, network_interface_id=None, private_ip_address=None,
                  secondary_private_ip_address_count=None, client_token=None):
-        self.region_id = region_id
-        self.network_interface_id = network_interface_id
-        self.private_ip_address = private_ip_address
-        self.secondary_private_ip_address_count = secondary_private_ip_address_count
-        self.client_token = client_token
+        self.region_id = region_id      # type: str
+        self.network_interface_id = network_interface_id  # type: str
+        self.private_ip_address = private_ip_address  # type: List[str]
+        self.secondary_private_ip_address_count = secondary_private_ip_address_count  # type: int
+        self.client_token = client_token  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -10265,7 +11993,7 @@ class AssignPrivateIpAddressesRequest(TeaModel):
 
 class AssignPrivateIpAddressesResponse(TeaModel):
     def __init__(self, request_id=None, assigned_private_ip_addresses_set=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.assigned_private_ip_addresses_set = assigned_private_ip_addresses_set  # type: AssignPrivateIpAddressesResponseAssignedPrivateIpAddressesSet
 
     def validate(self):
@@ -10296,7 +12024,7 @@ class AssignPrivateIpAddressesResponse(TeaModel):
 class AssignPrivateIpAddressesResponseAssignedPrivateIpAddressesSetPrivateIpSet(TeaModel):
     def __init__(self, private_ip_address=None):
         # PrivateIpAddress
-        self.private_ip_address = private_ip_address
+        self.private_ip_address = private_ip_address  # type: List[str]
 
     def validate(self):
         self.validate_required(self.private_ip_address, 'private_ip_address')
@@ -10313,7 +12041,7 @@ class AssignPrivateIpAddressesResponseAssignedPrivateIpAddressesSetPrivateIpSet(
 
 class AssignPrivateIpAddressesResponseAssignedPrivateIpAddressesSet(TeaModel):
     def __init__(self, network_interface_id=None, private_ip_set=None):
-        self.network_interface_id = network_interface_id
+        self.network_interface_id = network_interface_id  # type: str
         self.private_ip_set = private_ip_set  # type: AssignPrivateIpAddressesResponseAssignedPrivateIpAddressesSetPrivateIpSet
 
     def validate(self):
@@ -10344,11 +12072,11 @@ class AssignPrivateIpAddressesResponseAssignedPrivateIpAddressesSet(TeaModel):
 class DescribeNetworkInterfacePermissionsRequest(TeaModel):
     def __init__(self, region_id=None, network_interface_id=None, network_interface_permission_id=None,
                  page_number=None, page_size=None):
-        self.region_id = region_id
-        self.network_interface_id = network_interface_id
-        self.network_interface_permission_id = network_interface_permission_id
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.network_interface_id = network_interface_id  # type: str
+        self.network_interface_permission_id = network_interface_permission_id  # type: List[str]
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -10374,10 +12102,10 @@ class DescribeNetworkInterfacePermissionsRequest(TeaModel):
 class DescribeNetworkInterfacePermissionsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None,
                  network_interface_permissions=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.network_interface_permissions = network_interface_permissions  # type: DescribeNetworkInterfacePermissionsResponseNetworkInterfacePermissions
 
     def validate(self):
@@ -10417,12 +12145,12 @@ class DescribeNetworkInterfacePermissionsResponse(TeaModel):
 class DescribeNetworkInterfacePermissionsResponseNetworkInterfacePermissionsNetworkInterfacePermission(TeaModel):
     def __init__(self, account_id=None, service_name=None, network_interface_id=None,
                  network_interface_permission_id=None, permission=None, permission_state=None):
-        self.account_id = account_id
-        self.service_name = service_name
-        self.network_interface_id = network_interface_id
-        self.network_interface_permission_id = network_interface_permission_id
-        self.permission = permission
-        self.permission_state = permission_state
+        self.account_id = account_id    # type: int
+        self.service_name = service_name  # type: str
+        self.network_interface_id = network_interface_id  # type: str
+        self.network_interface_permission_id = network_interface_permission_id  # type: str
+        self.permission = permission    # type: str
+        self.permission_state = permission_state  # type: str
 
     def validate(self):
         self.validate_required(self.account_id, 'account_id')
@@ -10454,7 +12182,7 @@ class DescribeNetworkInterfacePermissionsResponseNetworkInterfacePermissionsNetw
 
 class DescribeNetworkInterfacePermissionsResponseNetworkInterfacePermissions(TeaModel):
     def __init__(self, network_interface_permission=None):
-        self.network_interface_permission = network_interface_permission
+        self.network_interface_permission = network_interface_permission  # type: List[DescribeNetworkInterfacePermissionsResponseNetworkInterfacePermissionsNetworkInterfacePermission]
 
     def validate(self):
         self.validate_required(self.network_interface_permission, 'network_interface_permission')
@@ -10486,9 +12214,9 @@ class DescribeNetworkInterfacePermissionsResponseNetworkInterfacePermissions(Tea
 
 class DeleteNetworkInterfacePermissionRequest(TeaModel):
     def __init__(self, region_id=None, network_interface_permission_id=None, force=None):
-        self.region_id = region_id
-        self.network_interface_permission_id = network_interface_permission_id
-        self.force = force
+        self.region_id = region_id      # type: str
+        self.network_interface_permission_id = network_interface_permission_id  # type: str
+        self.force = force              # type: bool
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -10510,7 +12238,7 @@ class DeleteNetworkInterfacePermissionRequest(TeaModel):
 
 class DeleteNetworkInterfacePermissionResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -10527,10 +12255,10 @@ class DeleteNetworkInterfacePermissionResponse(TeaModel):
 
 class CreateNetworkInterfacePermissionRequest(TeaModel):
     def __init__(self, region_id=None, account_id=None, network_interface_id=None, permission=None):
-        self.region_id = region_id
-        self.account_id = account_id
-        self.network_interface_id = network_interface_id
-        self.permission = permission
+        self.region_id = region_id      # type: str
+        self.account_id = account_id    # type: int
+        self.network_interface_id = network_interface_id  # type: str
+        self.permission = permission    # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -10556,7 +12284,7 @@ class CreateNetworkInterfacePermissionRequest(TeaModel):
 
 class CreateNetworkInterfacePermissionResponse(TeaModel):
     def __init__(self, request_id=None, network_interface_permission=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.network_interface_permission = network_interface_permission  # type: CreateNetworkInterfacePermissionResponseNetworkInterfacePermission
 
     def validate(self):
@@ -10587,12 +12315,12 @@ class CreateNetworkInterfacePermissionResponse(TeaModel):
 class CreateNetworkInterfacePermissionResponseNetworkInterfacePermission(TeaModel):
     def __init__(self, account_id=None, service_name=None, network_interface_id=None,
                  network_interface_permission_id=None, permission=None, permission_state=None):
-        self.account_id = account_id
-        self.service_name = service_name
-        self.network_interface_id = network_interface_id
-        self.network_interface_permission_id = network_interface_permission_id
-        self.permission = permission
-        self.permission_state = permission_state
+        self.account_id = account_id    # type: int
+        self.service_name = service_name  # type: str
+        self.network_interface_id = network_interface_id  # type: str
+        self.network_interface_permission_id = network_interface_permission_id  # type: str
+        self.permission = permission    # type: str
+        self.permission_state = permission_state  # type: str
 
     def validate(self):
         self.validate_required(self.account_id, 'account_id')
@@ -10624,9 +12352,9 @@ class CreateNetworkInterfacePermissionResponseNetworkInterfacePermission(TeaMode
 
 class GetInstanceScreenshotRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, wake_up=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.wake_up = wake_up
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.wake_up = wake_up          # type: bool
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -10648,9 +12376,9 @@ class GetInstanceScreenshotRequest(TeaModel):
 
 class GetInstanceScreenshotResponse(TeaModel):
     def __init__(self, request_id=None, instance_id=None, screenshot=None):
-        self.request_id = request_id
-        self.instance_id = instance_id
-        self.screenshot = screenshot
+        self.request_id = request_id    # type: str
+        self.instance_id = instance_id  # type: str
+        self.screenshot = screenshot    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -10673,9 +12401,9 @@ class GetInstanceScreenshotResponse(TeaModel):
 
 class GetInstanceConsoleOutputRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, remove_symbols=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.remove_symbols = remove_symbols
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.remove_symbols = remove_symbols  # type: bool
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -10697,10 +12425,10 @@ class GetInstanceConsoleOutputRequest(TeaModel):
 
 class GetInstanceConsoleOutputResponse(TeaModel):
     def __init__(self, request_id=None, instance_id=None, console_output=None, last_update_time=None):
-        self.request_id = request_id
-        self.instance_id = instance_id
-        self.console_output = console_output
-        self.last_update_time = last_update_time
+        self.request_id = request_id    # type: str
+        self.instance_id = instance_id  # type: str
+        self.console_output = console_output  # type: str
+        self.last_update_time = last_update_time  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -10727,14 +12455,14 @@ class GetInstanceConsoleOutputResponse(TeaModel):
 class DescribeResourcesModificationRequest(TeaModel):
     def __init__(self, region_id=None, resource_id=None, migrate_across_zone=None, destination_resource=None,
                  operation_type=None, instance_type=None, cores=None, memory=None):
-        self.region_id = region_id
-        self.resource_id = resource_id
-        self.migrate_across_zone = migrate_across_zone
-        self.destination_resource = destination_resource
-        self.operation_type = operation_type
-        self.instance_type = instance_type
-        self.cores = cores
-        self.memory = memory
+        self.region_id = region_id      # type: str
+        self.resource_id = resource_id  # type: str
+        self.migrate_across_zone = migrate_across_zone  # type: bool
+        self.destination_resource = destination_resource  # type: str
+        self.operation_type = operation_type  # type: str
+        self.instance_type = instance_type  # type: str
+        self.cores = cores              # type: int
+        self.memory = memory            # type: float
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -10767,7 +12495,7 @@ class DescribeResourcesModificationRequest(TeaModel):
 
 class DescribeResourcesModificationResponse(TeaModel):
     def __init__(self, request_id=None, available_zones=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.available_zones = available_zones  # type: DescribeResourcesModificationResponseAvailableZones
 
     def validate(self):
@@ -10797,12 +12525,12 @@ class DescribeResourcesModificationResponse(TeaModel):
 
 class DescribeResourcesModificationResponseAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResourcesSupportedResource(TeaModel):
     def __init__(self, value=None, status=None, status_category=None, min=None, max=None, unit=None):
-        self.value = value
-        self.status = status
-        self.status_category = status_category
-        self.min = min
-        self.max = max
-        self.unit = unit
+        self.value = value              # type: str
+        self.status = status            # type: str
+        self.status_category = status_category  # type: str
+        self.min = min                  # type: int
+        self.max = max                  # type: int
+        self.unit = unit                # type: str
 
     def validate(self):
         self.validate_required(self.value, 'value')
@@ -10834,7 +12562,7 @@ class DescribeResourcesModificationResponseAvailableZonesAvailableZoneAvailableR
 
 class DescribeResourcesModificationResponseAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResources(TeaModel):
     def __init__(self, supported_resource=None):
-        self.supported_resource = supported_resource
+        self.supported_resource = supported_resource  # type: List[DescribeResourcesModificationResponseAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResourcesSupportedResource]
 
     def validate(self):
         self.validate_required(self.supported_resource, 'supported_resource')
@@ -10866,7 +12594,7 @@ class DescribeResourcesModificationResponseAvailableZonesAvailableZoneAvailableR
 
 class DescribeResourcesModificationResponseAvailableZonesAvailableZoneAvailableResourcesAvailableResource(TeaModel):
     def __init__(self, type=None, supported_resources=None):
-        self.type = type
+        self.type = type                # type: str
         self.supported_resources = supported_resources  # type: DescribeResourcesModificationResponseAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResources
 
     def validate(self):
@@ -10896,7 +12624,7 @@ class DescribeResourcesModificationResponseAvailableZonesAvailableZoneAvailableR
 
 class DescribeResourcesModificationResponseAvailableZonesAvailableZoneAvailableResources(TeaModel):
     def __init__(self, available_resource=None):
-        self.available_resource = available_resource
+        self.available_resource = available_resource  # type: List[DescribeResourcesModificationResponseAvailableZonesAvailableZoneAvailableResourcesAvailableResource]
 
     def validate(self):
         self.validate_required(self.available_resource, 'available_resource')
@@ -10928,10 +12656,10 @@ class DescribeResourcesModificationResponseAvailableZonesAvailableZoneAvailableR
 
 class DescribeResourcesModificationResponseAvailableZonesAvailableZone(TeaModel):
     def __init__(self, region_id=None, zone_id=None, status=None, status_category=None, available_resources=None):
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.status = status
-        self.status_category = status_category
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.status = status            # type: str
+        self.status_category = status_category  # type: str
         self.available_resources = available_resources  # type: DescribeResourcesModificationResponseAvailableZonesAvailableZoneAvailableResources
 
     def validate(self):
@@ -10970,7 +12698,7 @@ class DescribeResourcesModificationResponseAvailableZonesAvailableZone(TeaModel)
 
 class DescribeResourcesModificationResponseAvailableZones(TeaModel):
     def __init__(self, available_zone=None):
-        self.available_zone = available_zone
+        self.available_zone = available_zone  # type: List[DescribeResourcesModificationResponseAvailableZonesAvailableZone]
 
     def validate(self):
         self.validate_required(self.available_zone, 'available_zone')
@@ -11003,12 +12731,12 @@ class DescribeResourcesModificationResponseAvailableZones(TeaModel):
 class DescribeBandwidthLimitationRequest(TeaModel):
     def __init__(self, region_id=None, instance_charge_type=None, spot_strategy=None, instance_type=None,
                  resource_id=None, operation_type=None):
-        self.region_id = region_id
-        self.instance_charge_type = instance_charge_type
-        self.spot_strategy = spot_strategy
-        self.instance_type = instance_type
-        self.resource_id = resource_id
-        self.operation_type = operation_type
+        self.region_id = region_id      # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.spot_strategy = spot_strategy  # type: str
+        self.instance_type = instance_type  # type: str
+        self.resource_id = resource_id  # type: str
+        self.operation_type = operation_type  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -11035,8 +12763,8 @@ class DescribeBandwidthLimitationRequest(TeaModel):
 
 class DescribeBandwidthLimitationResponse(TeaModel):
     def __init__(self, request_id=None, bandwidths=None):
-        self.request_id = request_id
-        self.bandwidths = bandwidths  # type: DescribeBandwidthLimitationResponseBandwidths
+        self.request_id = request_id    # type: str
+        self.bandwidths = bandwidths    # type: DescribeBandwidthLimitationResponseBandwidths
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -11065,10 +12793,10 @@ class DescribeBandwidthLimitationResponse(TeaModel):
 
 class DescribeBandwidthLimitationResponseBandwidthsBandwidth(TeaModel):
     def __init__(self, internet_charge_type=None, min=None, max=None, unit=None):
-        self.internet_charge_type = internet_charge_type
-        self.min = min
-        self.max = max
-        self.unit = unit
+        self.internet_charge_type = internet_charge_type  # type: str
+        self.min = min                  # type: int
+        self.max = max                  # type: int
+        self.unit = unit                # type: str
 
     def validate(self):
         self.validate_required(self.internet_charge_type, 'internet_charge_type')
@@ -11094,7 +12822,7 @@ class DescribeBandwidthLimitationResponseBandwidthsBandwidth(TeaModel):
 
 class DescribeBandwidthLimitationResponseBandwidths(TeaModel):
     def __init__(self, bandwidth=None):
-        self.bandwidth = bandwidth
+        self.bandwidth = bandwidth      # type: List[DescribeBandwidthLimitationResponseBandwidthsBandwidth]
 
     def validate(self):
         self.validate_required(self.bandwidth, 'bandwidth')
@@ -11129,22 +12857,22 @@ class DescribeAvailableResourceRequest(TeaModel):
                  destination_resource=None, zone_id=None, io_optimized=None, dedicated_host_id=None, instance_type=None,
                  system_disk_category=None, data_disk_category=None, network_category=None, cores=None, memory=None, resource_type=None,
                  scope=None):
-        self.region_id = region_id
-        self.instance_charge_type = instance_charge_type
-        self.spot_strategy = spot_strategy
-        self.spot_duration = spot_duration
-        self.destination_resource = destination_resource
-        self.zone_id = zone_id
-        self.io_optimized = io_optimized
-        self.dedicated_host_id = dedicated_host_id
-        self.instance_type = instance_type
-        self.system_disk_category = system_disk_category
-        self.data_disk_category = data_disk_category
-        self.network_category = network_category
-        self.cores = cores
-        self.memory = memory
-        self.resource_type = resource_type
-        self.scope = scope
+        self.region_id = region_id      # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.spot_strategy = spot_strategy  # type: str
+        self.spot_duration = spot_duration  # type: int
+        self.destination_resource = destination_resource  # type: str
+        self.zone_id = zone_id          # type: str
+        self.io_optimized = io_optimized  # type: str
+        self.dedicated_host_id = dedicated_host_id  # type: str
+        self.instance_type = instance_type  # type: str
+        self.system_disk_category = system_disk_category  # type: str
+        self.data_disk_category = data_disk_category  # type: str
+        self.network_category = network_category  # type: str
+        self.cores = cores              # type: int
+        self.memory = memory            # type: float
+        self.resource_type = resource_type  # type: str
+        self.scope = scope              # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -11192,7 +12920,7 @@ class DescribeAvailableResourceRequest(TeaModel):
 
 class DescribeAvailableResourceResponse(TeaModel):
     def __init__(self, request_id=None, available_zones=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.available_zones = available_zones  # type: DescribeAvailableResourceResponseAvailableZones
 
     def validate(self):
@@ -11222,12 +12950,12 @@ class DescribeAvailableResourceResponse(TeaModel):
 
 class DescribeAvailableResourceResponseAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResourcesSupportedResource(TeaModel):
     def __init__(self, value=None, status=None, status_category=None, min=None, max=None, unit=None):
-        self.value = value
-        self.status = status
-        self.status_category = status_category
-        self.min = min
-        self.max = max
-        self.unit = unit
+        self.value = value              # type: str
+        self.status = status            # type: str
+        self.status_category = status_category  # type: str
+        self.min = min                  # type: int
+        self.max = max                  # type: int
+        self.unit = unit                # type: str
 
     def validate(self):
         self.validate_required(self.value, 'value')
@@ -11259,7 +12987,7 @@ class DescribeAvailableResourceResponseAvailableZonesAvailableZoneAvailableResou
 
 class DescribeAvailableResourceResponseAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResources(TeaModel):
     def __init__(self, supported_resource=None):
-        self.supported_resource = supported_resource
+        self.supported_resource = supported_resource  # type: List[DescribeAvailableResourceResponseAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResourcesSupportedResource]
 
     def validate(self):
         self.validate_required(self.supported_resource, 'supported_resource')
@@ -11291,7 +13019,7 @@ class DescribeAvailableResourceResponseAvailableZonesAvailableZoneAvailableResou
 
 class DescribeAvailableResourceResponseAvailableZonesAvailableZoneAvailableResourcesAvailableResource(TeaModel):
     def __init__(self, type=None, supported_resources=None):
-        self.type = type
+        self.type = type                # type: str
         self.supported_resources = supported_resources  # type: DescribeAvailableResourceResponseAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResources
 
     def validate(self):
@@ -11321,7 +13049,7 @@ class DescribeAvailableResourceResponseAvailableZonesAvailableZoneAvailableResou
 
 class DescribeAvailableResourceResponseAvailableZonesAvailableZoneAvailableResources(TeaModel):
     def __init__(self, available_resource=None):
-        self.available_resource = available_resource
+        self.available_resource = available_resource  # type: List[DescribeAvailableResourceResponseAvailableZonesAvailableZoneAvailableResourcesAvailableResource]
 
     def validate(self):
         self.validate_required(self.available_resource, 'available_resource')
@@ -11353,10 +13081,10 @@ class DescribeAvailableResourceResponseAvailableZonesAvailableZoneAvailableResou
 
 class DescribeAvailableResourceResponseAvailableZonesAvailableZone(TeaModel):
     def __init__(self, region_id=None, zone_id=None, status=None, status_category=None, available_resources=None):
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.status = status
-        self.status_category = status_category
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.status = status            # type: str
+        self.status_category = status_category  # type: str
         self.available_resources = available_resources  # type: DescribeAvailableResourceResponseAvailableZonesAvailableZoneAvailableResources
 
     def validate(self):
@@ -11395,7 +13123,7 @@ class DescribeAvailableResourceResponseAvailableZonesAvailableZone(TeaModel):
 
 class DescribeAvailableResourceResponseAvailableZones(TeaModel):
     def __init__(self, available_zone=None):
-        self.available_zone = available_zone
+        self.available_zone = available_zone  # type: List[DescribeAvailableResourceResponseAvailableZonesAvailableZone]
 
     def validate(self):
         self.validate_required(self.available_zone, 'available_zone')
@@ -11427,8 +13155,8 @@ class DescribeAvailableResourceResponseAvailableZones(TeaModel):
 
 class ReActivateInstancesRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -11447,7 +13175,7 @@ class ReActivateInstancesRequest(TeaModel):
 
 class ReActivateInstancesResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -11465,17 +13193,17 @@ class ReActivateInstancesResponse(TeaModel):
 class DescribeInstancesFullStatusRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, event_id=None, status=None, health_status=None,
                  instance_event_type=None, event_type=None, not_before=None, event_publish_time=None, page_number=None, page_size=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.event_id = event_id
-        self.status = status
-        self.health_status = health_status
-        self.instance_event_type = instance_event_type
-        self.event_type = event_type
-        self.not_before = not_before  # type: DescribeInstancesFullStatusRequestNotBefore
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: List[str]
+        self.event_id = event_id        # type: List[str]
+        self.status = status            # type: str
+        self.health_status = health_status  # type: str
+        self.instance_event_type = instance_event_type  # type: List[str]
+        self.event_type = event_type    # type: str
+        self.not_before = not_before    # type: DescribeInstancesFullStatusRequestNotBefore
         self.event_publish_time = event_publish_time  # type: DescribeInstancesFullStatusRequestEventPublishTime
-        self.page_number = page_number
-        self.page_size = page_size
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -11530,8 +13258,8 @@ class DescribeInstancesFullStatusRequest(TeaModel):
 
 class DescribeInstancesFullStatusRequestNotBefore(TeaModel):
     def __init__(self, start=None, end=None):
-        self.start = start
-        self.end = end
+        self.start = start              # type: str
+        self.end = end                  # type: str
 
     def validate(self):
         pass
@@ -11550,8 +13278,8 @@ class DescribeInstancesFullStatusRequestNotBefore(TeaModel):
 
 class DescribeInstancesFullStatusRequestEventPublishTime(TeaModel):
     def __init__(self, start=None, end=None):
-        self.start = start
-        self.end = end
+        self.start = start              # type: str
+        self.end = end                  # type: str
 
     def validate(self):
         pass
@@ -11571,10 +13299,10 @@ class DescribeInstancesFullStatusRequestEventPublishTime(TeaModel):
 class DescribeInstancesFullStatusResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None,
                  instance_full_status_set=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.instance_full_status_set = instance_full_status_set  # type: DescribeInstancesFullStatusResponseInstanceFullStatusSet
 
     def validate(self):
@@ -11613,8 +13341,8 @@ class DescribeInstancesFullStatusResponse(TeaModel):
 
 class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeEventCycleStatus(TeaModel):
     def __init__(self, code=None, name=None):
-        self.code = code
-        self.name = name
+        self.code = code                # type: int
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.code, 'code')
@@ -11634,8 +13362,8 @@ class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatus
 
 class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeEventType(TeaModel):
     def __init__(self, code=None, name=None):
-        self.code = code
-        self.name = name
+        self.code = code                # type: int
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.code, 'code')
@@ -11656,11 +13384,11 @@ class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatus
 class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeExtendedAttributeInactiveDisksInactiveDisk(TeaModel):
     def __init__(self, creation_time=None, release_time=None, device_type=None, device_category=None,
                  device_size=None):
-        self.creation_time = creation_time
-        self.release_time = release_time
-        self.device_type = device_type
-        self.device_category = device_category
-        self.device_size = device_size
+        self.creation_time = creation_time  # type: str
+        self.release_time = release_time  # type: str
+        self.device_type = device_type  # type: str
+        self.device_category = device_category  # type: str
+        self.device_size = device_size  # type: str
 
     def validate(self):
         self.validate_required(self.creation_time, 'creation_time')
@@ -11689,7 +13417,7 @@ class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatus
 
 class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeExtendedAttributeInactiveDisks(TeaModel):
     def __init__(self, inactive_disk=None):
-        self.inactive_disk = inactive_disk
+        self.inactive_disk = inactive_disk  # type: List[DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeExtendedAttributeInactiveDisksInactiveDisk]
 
     def validate(self):
         self.validate_required(self.inactive_disk, 'inactive_disk')
@@ -11721,8 +13449,8 @@ class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatus
 
 class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeExtendedAttribute(TeaModel):
     def __init__(self, disk_id=None, device=None, inactive_disks=None):
-        self.disk_id = disk_id
-        self.device = device
+        self.disk_id = disk_id          # type: str
+        self.device = device            # type: str
         self.inactive_disks = inactive_disks  # type: DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeExtendedAttributeInactiveDisks
 
     def validate(self):
@@ -11756,13 +13484,13 @@ class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatus
 class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventType(TeaModel):
     def __init__(self, event_id=None, event_publish_time=None, not_before=None, reason=None, impact_level=None,
                  event_cycle_status=None, event_type=None, extended_attribute=None):
-        self.event_id = event_id
-        self.event_publish_time = event_publish_time
-        self.not_before = not_before
-        self.reason = reason
-        self.impact_level = impact_level
+        self.event_id = event_id        # type: str
+        self.event_publish_time = event_publish_time  # type: str
+        self.not_before = not_before    # type: str
+        self.reason = reason            # type: str
+        self.impact_level = impact_level  # type: str
         self.event_cycle_status = event_cycle_status  # type: DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeEventCycleStatus
-        self.event_type = event_type  # type: DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeEventType
+        self.event_type = event_type    # type: DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeEventType
         self.extended_attribute = extended_attribute  # type: DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventTypeExtendedAttribute
 
     def validate(self):
@@ -11828,7 +13556,7 @@ class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatus
 
 class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSet(TeaModel):
     def __init__(self, scheduled_system_event_type=None):
-        self.scheduled_system_event_type = scheduled_system_event_type
+        self.scheduled_system_event_type = scheduled_system_event_type  # type: List[DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSetScheduledSystemEventType]
 
     def validate(self):
         self.validate_required(self.scheduled_system_event_type, 'scheduled_system_event_type')
@@ -11860,8 +13588,8 @@ class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatus
 
 class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeStatus(TeaModel):
     def __init__(self, code=None, name=None):
-        self.code = code
-        self.name = name
+        self.code = code                # type: int
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.code, 'code')
@@ -11881,8 +13609,8 @@ class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatus
 
 class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeHealthStatus(TeaModel):
     def __init__(self, code=None, name=None):
-        self.code = code
-        self.name = name
+        self.code = code                # type: int
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.code, 'code')
@@ -11902,9 +13630,9 @@ class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatus
 
 class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusType(TeaModel):
     def __init__(self, instance_id=None, scheduled_system_event_set=None, status=None, health_status=None):
-        self.instance_id = instance_id
+        self.instance_id = instance_id  # type: str
         self.scheduled_system_event_set = scheduled_system_event_set  # type: DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeScheduledSystemEventSet
-        self.status = status  # type: DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeStatus
+        self.status = status            # type: DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeStatus
         self.health_status = health_status  # type: DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusTypeHealthStatus
 
     def validate(self):
@@ -11958,7 +13686,7 @@ class DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatus
 
 class DescribeInstancesFullStatusResponseInstanceFullStatusSet(TeaModel):
     def __init__(self, instance_full_status_type=None):
-        self.instance_full_status_type = instance_full_status_type
+        self.instance_full_status_type = instance_full_status_type  # type: List[DescribeInstancesFullStatusResponseInstanceFullStatusSetInstanceFullStatusType]
 
     def validate(self):
         self.validate_required(self.instance_full_status_type, 'instance_full_status_type')
@@ -11992,18 +13720,18 @@ class DescribeInstanceHistoryEventsRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, event_id=None, instance_event_cycle_status=None,
                  event_cycle_status=None, instance_event_type=None, event_type=None, not_before=None, event_publish_time=None,
                  impact_level=None, page_number=None, page_size=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.event_id = event_id
-        self.instance_event_cycle_status = instance_event_cycle_status
-        self.event_cycle_status = event_cycle_status
-        self.instance_event_type = instance_event_type
-        self.event_type = event_type
-        self.not_before = not_before  # type: DescribeInstanceHistoryEventsRequestNotBefore
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.event_id = event_id        # type: List[str]
+        self.instance_event_cycle_status = instance_event_cycle_status  # type: List[str]
+        self.event_cycle_status = event_cycle_status  # type: str
+        self.instance_event_type = instance_event_type  # type: List[str]
+        self.event_type = event_type    # type: str
+        self.not_before = not_before    # type: DescribeInstanceHistoryEventsRequestNotBefore
         self.event_publish_time = event_publish_time  # type: DescribeInstanceHistoryEventsRequestEventPublishTime
-        self.impact_level = impact_level
-        self.page_number = page_number
-        self.page_size = page_size
+        self.impact_level = impact_level  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -12060,8 +13788,8 @@ class DescribeInstanceHistoryEventsRequest(TeaModel):
 
 class DescribeInstanceHistoryEventsRequestNotBefore(TeaModel):
     def __init__(self, start=None, end=None):
-        self.start = start
-        self.end = end
+        self.start = start              # type: str
+        self.end = end                  # type: str
 
     def validate(self):
         pass
@@ -12080,8 +13808,8 @@ class DescribeInstanceHistoryEventsRequestNotBefore(TeaModel):
 
 class DescribeInstanceHistoryEventsRequestEventPublishTime(TeaModel):
     def __init__(self, start=None, end=None):
-        self.start = start
-        self.end = end
+        self.start = start              # type: str
+        self.end = end                  # type: str
 
     def validate(self):
         pass
@@ -12101,10 +13829,10 @@ class DescribeInstanceHistoryEventsRequestEventPublishTime(TeaModel):
 class DescribeInstanceHistoryEventsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None,
                  instance_system_event_set=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.instance_system_event_set = instance_system_event_set  # type: DescribeInstanceHistoryEventsResponseInstanceSystemEventSet
 
     def validate(self):
@@ -12143,8 +13871,8 @@ class DescribeInstanceHistoryEventsResponse(TeaModel):
 
 class DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemEventTypeEventType(TeaModel):
     def __init__(self, code=None, name=None):
-        self.code = code
-        self.name = name
+        self.code = code                # type: int
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.code, 'code')
@@ -12164,8 +13892,8 @@ class DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemE
 
 class DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemEventTypeEventCycleStatus(TeaModel):
     def __init__(self, code=None, name=None):
-        self.code = code
-        self.name = name
+        self.code = code                # type: int
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.code, 'code')
@@ -12186,11 +13914,11 @@ class DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemE
 class DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisksInactiveDisk(TeaModel):
     def __init__(self, creation_time=None, release_time=None, device_type=None, device_category=None,
                  device_size=None):
-        self.creation_time = creation_time
-        self.release_time = release_time
-        self.device_type = device_type
-        self.device_category = device_category
-        self.device_size = device_size
+        self.creation_time = creation_time  # type: str
+        self.release_time = release_time  # type: str
+        self.device_type = device_type  # type: str
+        self.device_category = device_category  # type: str
+        self.device_size = device_size  # type: str
 
     def validate(self):
         self.validate_required(self.creation_time, 'creation_time')
@@ -12219,7 +13947,7 @@ class DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemE
 
 class DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisks(TeaModel):
     def __init__(self, inactive_disk=None):
-        self.inactive_disk = inactive_disk
+        self.inactive_disk = inactive_disk  # type: List[DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisksInactiveDisk]
 
     def validate(self):
         self.validate_required(self.inactive_disk, 'inactive_disk')
@@ -12251,8 +13979,8 @@ class DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemE
 
 class DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute(TeaModel):
     def __init__(self, disk_id=None, device=None, inactive_disks=None):
-        self.disk_id = disk_id
-        self.device = device
+        self.disk_id = disk_id          # type: str
+        self.device = device            # type: str
         self.inactive_disks = inactive_disks  # type: DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisks
 
     def validate(self):
@@ -12287,14 +14015,14 @@ class DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemE
     def __init__(self, instance_id=None, event_id=None, event_publish_time=None, not_before=None,
                  event_finish_time=None, reason=None, impact_level=None, event_type=None, event_cycle_status=None,
                  extended_attribute=None):
-        self.instance_id = instance_id
-        self.event_id = event_id
-        self.event_publish_time = event_publish_time
-        self.not_before = not_before
-        self.event_finish_time = event_finish_time
-        self.reason = reason
-        self.impact_level = impact_level
-        self.event_type = event_type  # type: DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemEventTypeEventType
+        self.instance_id = instance_id  # type: str
+        self.event_id = event_id        # type: str
+        self.event_publish_time = event_publish_time  # type: str
+        self.not_before = not_before    # type: str
+        self.event_finish_time = event_finish_time  # type: str
+        self.reason = reason            # type: str
+        self.impact_level = impact_level  # type: str
+        self.event_type = event_type    # type: DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemEventTypeEventType
         self.event_cycle_status = event_cycle_status  # type: DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemEventTypeEventCycleStatus
         self.extended_attribute = extended_attribute  # type: DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute
 
@@ -12367,7 +14095,7 @@ class DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemE
 
 class DescribeInstanceHistoryEventsResponseInstanceSystemEventSet(TeaModel):
     def __init__(self, instance_system_event_type=None):
-        self.instance_system_event_type = instance_system_event_type
+        self.instance_system_event_type = instance_system_event_type  # type: List[DescribeInstanceHistoryEventsResponseInstanceSystemEventSetInstanceSystemEventType]
 
     def validate(self):
         self.validate_required(self.instance_system_event_type, 'instance_system_event_type')
@@ -12400,15 +14128,15 @@ class DescribeInstanceHistoryEventsResponseInstanceSystemEventSet(TeaModel):
 class DescribeDisksFullStatusRequest(TeaModel):
     def __init__(self, region_id=None, disk_id=None, event_id=None, status=None, health_status=None, event_type=None,
                  event_time=None, page_number=None, page_size=None):
-        self.region_id = region_id
-        self.disk_id = disk_id
-        self.event_id = event_id
-        self.status = status
-        self.health_status = health_status
-        self.event_type = event_type
-        self.event_time = event_time  # type: DescribeDisksFullStatusRequestEventTime
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.disk_id = disk_id          # type: List[str]
+        self.event_id = event_id        # type: List[str]
+        self.status = status            # type: str
+        self.health_status = health_status  # type: str
+        self.event_type = event_type    # type: str
+        self.event_time = event_time    # type: DescribeDisksFullStatusRequestEventTime
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -12450,8 +14178,8 @@ class DescribeDisksFullStatusRequest(TeaModel):
 
 class DescribeDisksFullStatusRequestEventTime(TeaModel):
     def __init__(self, start=None, end=None):
-        self.start = start
-        self.end = end
+        self.start = start              # type: str
+        self.end = end                  # type: str
 
     def validate(self):
         pass
@@ -12471,10 +14199,10 @@ class DescribeDisksFullStatusRequestEventTime(TeaModel):
 class DescribeDisksFullStatusResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None,
                  disk_full_status_set=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.disk_full_status_set = disk_full_status_set  # type: DescribeDisksFullStatusResponseDiskFullStatusSet
 
     def validate(self):
@@ -12513,8 +14241,8 @@ class DescribeDisksFullStatusResponse(TeaModel):
 
 class DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeDiskEventSetDiskEventTypeEventType(TeaModel):
     def __init__(self, code=None, name=None):
-        self.code = code
-        self.name = name
+        self.code = code                # type: int
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.code, 'code')
@@ -12534,11 +14262,11 @@ class DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeDiskEven
 
 class DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeDiskEventSetDiskEventType(TeaModel):
     def __init__(self, event_id=None, event_time=None, event_end_time=None, impact_level=None, event_type=None):
-        self.event_id = event_id
-        self.event_time = event_time
-        self.event_end_time = event_end_time
-        self.impact_level = impact_level
-        self.event_type = event_type  # type: DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeDiskEventSetDiskEventTypeEventType
+        self.event_id = event_id        # type: str
+        self.event_time = event_time    # type: str
+        self.event_end_time = event_end_time  # type: str
+        self.impact_level = impact_level  # type: str
+        self.event_type = event_type    # type: DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeDiskEventSetDiskEventTypeEventType
 
     def validate(self):
         self.validate_required(self.event_id, 'event_id')
@@ -12576,7 +14304,7 @@ class DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeDiskEven
 
 class DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeDiskEventSet(TeaModel):
     def __init__(self, disk_event_type=None):
-        self.disk_event_type = disk_event_type
+        self.disk_event_type = disk_event_type  # type: List[DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeDiskEventSetDiskEventType]
 
     def validate(self):
         self.validate_required(self.disk_event_type, 'disk_event_type')
@@ -12608,8 +14336,8 @@ class DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeDiskEven
 
 class DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeStatus(TeaModel):
     def __init__(self, code=None, name=None):
-        self.code = code
-        self.name = name
+        self.code = code                # type: int
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.code, 'code')
@@ -12629,8 +14357,8 @@ class DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeStatus(T
 
 class DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeHealthStatus(TeaModel):
     def __init__(self, code=None, name=None):
-        self.code = code
-        self.name = name
+        self.code = code                # type: int
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.code, 'code')
@@ -12651,11 +14379,11 @@ class DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeHealthSt
 class DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusType(TeaModel):
     def __init__(self, disk_id=None, instance_id=None, device=None, disk_event_set=None, status=None,
                  health_status=None):
-        self.disk_id = disk_id
-        self.instance_id = instance_id
-        self.device = device
+        self.disk_id = disk_id          # type: str
+        self.instance_id = instance_id  # type: str
+        self.device = device            # type: str
         self.disk_event_set = disk_event_set  # type: DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeDiskEventSet
-        self.status = status  # type: DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeStatus
+        self.status = status            # type: DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeStatus
         self.health_status = health_status  # type: DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusTypeHealthStatus
 
     def validate(self):
@@ -12715,7 +14443,7 @@ class DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusType(TeaMode
 
 class DescribeDisksFullStatusResponseDiskFullStatusSet(TeaModel):
     def __init__(self, disk_full_status_type=None):
-        self.disk_full_status_type = disk_full_status_type
+        self.disk_full_status_type = disk_full_status_type  # type: List[DescribeDisksFullStatusResponseDiskFullStatusSetDiskFullStatusType]
 
     def validate(self):
         self.validate_required(self.disk_full_status_type, 'disk_full_status_type')
@@ -12747,9 +14475,9 @@ class DescribeDisksFullStatusResponseDiskFullStatusSet(TeaModel):
 
 class ModifyUserBusinessBehaviorRequest(TeaModel):
     def __init__(self, region_id=None, status_key=None, status_value=None):
-        self.region_id = region_id
-        self.status_key = status_key
-        self.status_value = status_value
+        self.region_id = region_id      # type: str
+        self.status_key = status_key    # type: str
+        self.status_value = status_value  # type: str
 
     def validate(self):
         self.validate_required(self.status_key, 'status_key')
@@ -12771,7 +14499,7 @@ class ModifyUserBusinessBehaviorRequest(TeaModel):
 
 class ModifyUserBusinessBehaviorResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -12788,8 +14516,8 @@ class ModifyUserBusinessBehaviorResponse(TeaModel):
 
 class DescribeUserBusinessBehaviorRequest(TeaModel):
     def __init__(self, region_id=None, status_key=None):
-        self.region_id = region_id
-        self.status_key = status_key
+        self.region_id = region_id      # type: str
+        self.status_key = status_key    # type: str
 
     def validate(self):
         self.validate_required(self.status_key, 'status_key')
@@ -12808,8 +14536,8 @@ class DescribeUserBusinessBehaviorRequest(TeaModel):
 
 class DescribeUserBusinessBehaviorResponse(TeaModel):
     def __init__(self, request_id=None, status_value=None):
-        self.request_id = request_id
-        self.status_value = status_value
+        self.request_id = request_id    # type: str
+        self.status_value = status_value  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -12838,71 +14566,73 @@ class RunInstancesRequest(TeaModel):
                  launch_template_id=None, launch_template_name=None, launch_template_version=None, resource_group_id=None,
                  period=None, period_unit=None, auto_renew=None, auto_renew_period=None, instance_charge_type=None,
                  deployment_set_id=None, deployment_set_group_no=None, private_ip_address=None, credit_specification=None,
-                 ipv_6address=None, ipv_6address_count=None, deletion_protection=None, affinity=None, tenancy=None,
-                 storage_set_id=None, storage_set_partition_number=None, cpu_options=None, http_endpoint=None, http_tokens=None,
-                 http_put_response_hop_limit=None):
-        self.region_id = region_id
-        self.image_id = image_id
-        self.image_family = image_family
-        self.instance_type = instance_type
-        self.security_group_id = security_group_id
-        self.security_group_ids = security_group_ids
-        self.v_switch_id = v_switch_id
-        self.instance_name = instance_name
-        self.description = description
-        self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        self.host_name = host_name
-        self.unique_suffix = unique_suffix
-        self.password = password
-        self.password_inherit = password_inherit
-        self.zone_id = zone_id
-        self.internet_charge_type = internet_charge_type
+                 ipv_6address=None, ipv_6address_count=None, network_interface_queue_number=None, deletion_protection=None,
+                 affinity=None, tenancy=None, storage_set_id=None, storage_set_partition_number=None, cpu_options=None,
+                 http_endpoint=None, http_tokens=None, http_put_response_hop_limit=None, private_pool_options=None):
+        self.region_id = region_id      # type: str
+        self.image_id = image_id        # type: str
+        self.image_family = image_family  # type: str
+        self.instance_type = instance_type  # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.security_group_ids = security_group_ids  # type: List[str]
+        self.v_switch_id = v_switch_id  # type: str
+        self.instance_name = instance_name  # type: str
+        self.description = description  # type: str
+        self.internet_max_bandwidth_in = internet_max_bandwidth_in  # type: int
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out  # type: int
+        self.host_name = host_name      # type: str
+        self.unique_suffix = unique_suffix  # type: bool
+        self.password = password        # type: str
+        self.password_inherit = password_inherit  # type: bool
+        self.zone_id = zone_id          # type: str
+        self.internet_charge_type = internet_charge_type  # type: str
         self.system_disk = system_disk  # type: RunInstancesRequestSystemDisk
-        self.data_disk = data_disk
-        self.arn = arn
-        self.io_optimized = io_optimized
-        self.network_interface = network_interface
-        self.user_data = user_data
-        self.key_pair_name = key_pair_name
-        self.ram_role_name = ram_role_name
-        self.amount = amount
-        self.min_amount = min_amount
-        self.auto_release_time = auto_release_time
-        self.spot_strategy = spot_strategy
-        self.spot_duration = spot_duration
-        self.spot_price_limit = spot_price_limit
-        self.spot_interruption_behavior = spot_interruption_behavior
-        self.security_enhancement_strategy = security_enhancement_strategy
-        self.client_token = client_token
-        self.tag = tag
-        self.hpc_cluster_id = hpc_cluster_id
-        self.dry_run = dry_run
-        self.dedicated_host_id = dedicated_host_id
-        self.launch_template_id = launch_template_id
-        self.launch_template_name = launch_template_name
-        self.launch_template_version = launch_template_version
-        self.resource_group_id = resource_group_id
-        self.period = period
-        self.period_unit = period_unit
-        self.auto_renew = auto_renew
-        self.auto_renew_period = auto_renew_period
-        self.instance_charge_type = instance_charge_type
-        self.deployment_set_id = deployment_set_id
-        self.deployment_set_group_no = deployment_set_group_no
-        self.private_ip_address = private_ip_address
-        self.credit_specification = credit_specification
-        self.ipv_6address = ipv_6address
-        self.ipv_6address_count = ipv_6address_count
-        self.deletion_protection = deletion_protection
-        self.affinity = affinity
-        self.tenancy = tenancy
-        self.storage_set_id = storage_set_id
-        self.storage_set_partition_number = storage_set_partition_number
+        self.data_disk = data_disk      # type: List[RunInstancesRequestDataDisk]
+        self.arn = arn                  # type: List[RunInstancesRequestArn]
+        self.io_optimized = io_optimized  # type: str
+        self.network_interface = network_interface  # type: List[RunInstancesRequestNetworkInterface]
+        self.user_data = user_data      # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.ram_role_name = ram_role_name  # type: str
+        self.amount = amount            # type: int
+        self.min_amount = min_amount    # type: int
+        self.auto_release_time = auto_release_time  # type: str
+        self.spot_strategy = spot_strategy  # type: str
+        self.spot_duration = spot_duration  # type: int
+        self.spot_price_limit = spot_price_limit  # type: float
+        self.spot_interruption_behavior = spot_interruption_behavior  # type: str
+        self.security_enhancement_strategy = security_enhancement_strategy  # type: str
+        self.client_token = client_token  # type: str
+        self.tag = tag                  # type: List[RunInstancesRequestTag]
+        self.hpc_cluster_id = hpc_cluster_id  # type: str
+        self.dry_run = dry_run          # type: bool
+        self.dedicated_host_id = dedicated_host_id  # type: str
+        self.launch_template_id = launch_template_id  # type: str
+        self.launch_template_name = launch_template_name  # type: str
+        self.launch_template_version = launch_template_version  # type: int
+        self.resource_group_id = resource_group_id  # type: str
+        self.period = period            # type: int
+        self.period_unit = period_unit  # type: str
+        self.auto_renew = auto_renew    # type: bool
+        self.auto_renew_period = auto_renew_period  # type: int
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.deployment_set_id = deployment_set_id  # type: str
+        self.deployment_set_group_no = deployment_set_group_no  # type: int
+        self.private_ip_address = private_ip_address  # type: str
+        self.credit_specification = credit_specification  # type: str
+        self.ipv_6address = ipv_6address  # type: List[str]
+        self.ipv_6address_count = ipv_6address_count  # type: int
+        self.network_interface_queue_number = network_interface_queue_number  # type: int
+        self.deletion_protection = deletion_protection  # type: bool
+        self.affinity = affinity        # type: str
+        self.tenancy = tenancy          # type: str
+        self.storage_set_id = storage_set_id  # type: str
+        self.storage_set_partition_number = storage_set_partition_number  # type: int
         self.cpu_options = cpu_options  # type: RunInstancesRequestCpuOptions
-        self.http_endpoint = http_endpoint
-        self.http_tokens = http_tokens
-        self.http_put_response_hop_limit = http_put_response_hop_limit
+        self.http_endpoint = http_endpoint  # type: str
+        self.http_tokens = http_tokens  # type: str
+        self.http_put_response_hop_limit = http_put_response_hop_limit  # type: int
+        self.private_pool_options = private_pool_options  # type: RunInstancesRequestPrivatePoolOptions
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -12926,6 +14656,8 @@ class RunInstancesRequest(TeaModel):
                     k.validate()
         if self.cpu_options:
             self.cpu_options.validate()
+        if self.private_pool_options:
+            self.private_pool_options.validate()
 
     def to_map(self):
         result = {}
@@ -13005,6 +14737,7 @@ class RunInstancesRequest(TeaModel):
         result['CreditSpecification'] = self.credit_specification
         result['Ipv6Address'] = self.ipv_6address
         result['Ipv6AddressCount'] = self.ipv_6address_count
+        result['NetworkInterfaceQueueNumber'] = self.network_interface_queue_number
         result['DeletionProtection'] = self.deletion_protection
         result['Affinity'] = self.affinity
         result['Tenancy'] = self.tenancy
@@ -13017,6 +14750,10 @@ class RunInstancesRequest(TeaModel):
         result['HttpEndpoint'] = self.http_endpoint
         result['HttpTokens'] = self.http_tokens
         result['HttpPutResponseHopLimit'] = self.http_put_response_hop_limit
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        else:
+            result['PrivatePoolOptions'] = None
         return result
 
     def from_map(self, map={}):
@@ -13101,6 +14838,7 @@ class RunInstancesRequest(TeaModel):
         self.credit_specification = map.get('CreditSpecification')
         self.ipv_6address = map.get('Ipv6Address')
         self.ipv_6address_count = map.get('Ipv6AddressCount')
+        self.network_interface_queue_number = map.get('NetworkInterfaceQueueNumber')
         self.deletion_protection = map.get('DeletionProtection')
         self.affinity = map.get('Affinity')
         self.tenancy = map.get('Tenancy')
@@ -13114,18 +14852,23 @@ class RunInstancesRequest(TeaModel):
         self.http_endpoint = map.get('HttpEndpoint')
         self.http_tokens = map.get('HttpTokens')
         self.http_put_response_hop_limit = map.get('HttpPutResponseHopLimit')
+        if map.get('PrivatePoolOptions') is not None:
+            temp_model = RunInstancesRequestPrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(map['PrivatePoolOptions'])
+        else:
+            self.private_pool_options = None
         return self
 
 
 class RunInstancesRequestSystemDisk(TeaModel):
     def __init__(self, size=None, category=None, disk_name=None, description=None, performance_level=None,
                  auto_snapshot_policy_id=None):
-        self.size = size
-        self.category = category
-        self.disk_name = disk_name
-        self.description = description
-        self.performance_level = performance_level
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
+        self.size = size                # type: str
+        self.category = category        # type: str
+        self.disk_name = disk_name      # type: str
+        self.description = description  # type: str
+        self.performance_level = performance_level  # type: str
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id  # type: str
 
     def validate(self):
         pass
@@ -13154,32 +14897,21 @@ class RunInstancesRequestDataDisk(TeaModel):
     def __init__(self, size=None, snapshot_id=None, category=None, encrypted=None, kmskey_id=None, disk_name=None,
                  description=None, device=None, delete_with_instance=None, performance_level=None,
                  auto_snapshot_policy_id=None, encrypt_algorithm=None):
-        self.size = size
-        self.snapshot_id = snapshot_id
-        self.category = category
-        self.encrypted = encrypted
-        self.kmskey_id = kmskey_id
-        self.disk_name = disk_name
-        self.description = description
-        self.device = device
-        self.delete_with_instance = delete_with_instance
-        self.performance_level = performance_level
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        self.encrypt_algorithm = encrypt_algorithm
+        self.size = size                # type: int
+        self.snapshot_id = snapshot_id  # type: str
+        self.category = category        # type: str
+        self.encrypted = encrypted      # type: str
+        self.kmskey_id = kmskey_id      # type: str
+        self.disk_name = disk_name      # type: str
+        self.description = description  # type: str
+        self.device = device            # type: str
+        self.delete_with_instance = delete_with_instance  # type: bool
+        self.performance_level = performance_level  # type: str
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id  # type: str
+        self.encrypt_algorithm = encrypt_algorithm  # type: str
 
     def validate(self):
-        self.validate_required(self.size, 'size')
-        self.validate_required(self.snapshot_id, 'snapshot_id')
-        self.validate_required(self.category, 'category')
-        self.validate_required(self.encrypted, 'encrypted')
-        self.validate_required(self.kmskey_id, 'kmskey_id')
-        self.validate_required(self.disk_name, 'disk_name')
-        self.validate_required(self.description, 'description')
-        self.validate_required(self.device, 'device')
-        self.validate_required(self.delete_with_instance, 'delete_with_instance')
-        self.validate_required(self.performance_level, 'performance_level')
-        self.validate_required(self.auto_snapshot_policy_id, 'auto_snapshot_policy_id')
-        self.validate_required(self.encrypt_algorithm, 'encrypt_algorithm')
+        pass
 
     def to_map(self):
         result = {}
@@ -13215,14 +14947,12 @@ class RunInstancesRequestDataDisk(TeaModel):
 
 class RunInstancesRequestArn(TeaModel):
     def __init__(self, assume_role_for=None, rolearn=None, role_type=None):
-        self.assume_role_for = assume_role_for
-        self.rolearn = rolearn
-        self.role_type = role_type
+        self.assume_role_for = assume_role_for  # type: int
+        self.rolearn = rolearn          # type: str
+        self.role_type = role_type      # type: str
 
     def validate(self):
-        self.validate_required(self.assume_role_for, 'assume_role_for')
-        self.validate_required(self.rolearn, 'rolearn')
-        self.validate_required(self.role_type, 'role_type')
+        pass
 
     def to_map(self):
         result = {}
@@ -13240,20 +14970,17 @@ class RunInstancesRequestArn(TeaModel):
 
 class RunInstancesRequestNetworkInterface(TeaModel):
     def __init__(self, primary_ip_address=None, v_switch_id=None, security_group_id=None, security_group_ids=None,
-                 network_interface_name=None, description=None):
-        self.primary_ip_address = primary_ip_address
-        self.v_switch_id = v_switch_id
-        self.security_group_id = security_group_id
-        self.security_group_ids = security_group_ids
-        self.network_interface_name = network_interface_name
-        self.description = description
+                 network_interface_name=None, description=None, queue_number=None):
+        self.primary_ip_address = primary_ip_address  # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.security_group_ids = security_group_ids  # type: List[str]
+        self.network_interface_name = network_interface_name  # type: str
+        self.description = description  # type: str
+        self.queue_number = queue_number  # type: int
 
     def validate(self):
-        self.validate_required(self.primary_ip_address, 'primary_ip_address')
-        self.validate_required(self.v_switch_id, 'v_switch_id')
-        self.validate_required(self.security_group_id, 'security_group_id')
-        self.validate_required(self.network_interface_name, 'network_interface_name')
-        self.validate_required(self.description, 'description')
+        pass
 
     def to_map(self):
         result = {}
@@ -13263,6 +14990,7 @@ class RunInstancesRequestNetworkInterface(TeaModel):
         result['SecurityGroupIds'] = self.security_group_ids
         result['NetworkInterfaceName'] = self.network_interface_name
         result['Description'] = self.description
+        result['QueueNumber'] = self.queue_number
         return result
 
     def from_map(self, map={}):
@@ -13272,17 +15000,17 @@ class RunInstancesRequestNetworkInterface(TeaModel):
         self.security_group_ids = map.get('SecurityGroupIds')
         self.network_interface_name = map.get('NetworkInterfaceName')
         self.description = map.get('Description')
+        self.queue_number = map.get('QueueNumber')
         return self
 
 
 class RunInstancesRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -13298,9 +15026,9 @@ class RunInstancesRequestTag(TeaModel):
 
 class RunInstancesRequestCpuOptions(TeaModel):
     def __init__(self, core=None, threads_per_core=None, numa=None):
-        self.core = core
-        self.threads_per_core = threads_per_core
-        self.numa = numa
+        self.core = core                # type: int
+        self.threads_per_core = threads_per_core  # type: int
+        self.numa = numa                # type: str
 
     def validate(self):
         pass
@@ -13319,10 +15047,30 @@ class RunInstancesRequestCpuOptions(TeaModel):
         return self
 
 
+class RunInstancesRequestPrivatePoolOptions(TeaModel):
+    def __init__(self, match_criteria=None, id=None):
+        self.match_criteria = match_criteria  # type: str
+        self.id = id                    # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['MatchCriteria'] = self.match_criteria
+        result['Id'] = self.id
+        return result
+
+    def from_map(self, map={}):
+        self.match_criteria = map.get('MatchCriteria')
+        self.id = map.get('Id')
+        return self
+
+
 class RunInstancesResponse(TeaModel):
     def __init__(self, request_id=None, trade_price=None, instance_id_sets=None):
-        self.request_id = request_id
-        self.trade_price = trade_price
+        self.request_id = request_id    # type: str
+        self.trade_price = trade_price  # type: float
         self.instance_id_sets = instance_id_sets  # type: RunInstancesResponseInstanceIdSets
 
     def validate(self):
@@ -13355,7 +15103,7 @@ class RunInstancesResponse(TeaModel):
 
 class RunInstancesResponseInstanceIdSets(TeaModel):
     def __init__(self, instance_id_set=None):
-        self.instance_id_set = instance_id_set
+        self.instance_id_set = instance_id_set  # type: List[str]
 
     def validate(self):
         self.validate_required(self.instance_id_set, 'instance_id_set')
@@ -13372,8 +15120,8 @@ class RunInstancesResponseInstanceIdSets(TeaModel):
 
 class ConvertNatPublicIpToEipRequest(TeaModel):
     def __init__(self, instance_id=None, region_id=None):
-        self.instance_id = instance_id
-        self.region_id = region_id
+        self.instance_id = instance_id  # type: str
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -13393,7 +15141,7 @@ class ConvertNatPublicIpToEipRequest(TeaModel):
 
 class ConvertNatPublicIpToEipResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -13410,11 +15158,11 @@ class ConvertNatPublicIpToEipResponse(TeaModel):
 
 class ModifyHpcClusterAttributeRequest(TeaModel):
     def __init__(self, region_id=None, client_token=None, hpc_cluster_id=None, description=None, name=None):
-        self.region_id = region_id
-        self.client_token = client_token
-        self.hpc_cluster_id = hpc_cluster_id
-        self.description = description
-        self.name = name
+        self.region_id = region_id      # type: str
+        self.client_token = client_token  # type: str
+        self.hpc_cluster_id = hpc_cluster_id  # type: str
+        self.description = description  # type: str
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -13440,7 +15188,7 @@ class ModifyHpcClusterAttributeRequest(TeaModel):
 
 class ModifyHpcClusterAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -13457,11 +15205,11 @@ class ModifyHpcClusterAttributeResponse(TeaModel):
 
 class DescribeHpcClustersRequest(TeaModel):
     def __init__(self, region_id=None, client_token=None, hpc_cluster_ids=None, page_number=None, page_size=None):
-        self.region_id = region_id
-        self.client_token = client_token
-        self.hpc_cluster_ids = hpc_cluster_ids
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.client_token = client_token  # type: str
+        self.hpc_cluster_ids = hpc_cluster_ids  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -13486,10 +15234,10 @@ class DescribeHpcClustersRequest(TeaModel):
 
 class DescribeHpcClustersResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, hpc_clusters=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.hpc_clusters = hpc_clusters  # type: DescribeHpcClustersResponseHpcClusters
 
     def validate(self):
@@ -13528,9 +15276,9 @@ class DescribeHpcClustersResponse(TeaModel):
 
 class DescribeHpcClustersResponseHpcClustersHpcCluster(TeaModel):
     def __init__(self, hpc_cluster_id=None, name=None, description=None):
-        self.hpc_cluster_id = hpc_cluster_id
-        self.name = name
-        self.description = description
+        self.hpc_cluster_id = hpc_cluster_id  # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.hpc_cluster_id, 'hpc_cluster_id')
@@ -13553,7 +15301,7 @@ class DescribeHpcClustersResponseHpcClustersHpcCluster(TeaModel):
 
 class DescribeHpcClustersResponseHpcClusters(TeaModel):
     def __init__(self, hpc_cluster=None):
-        self.hpc_cluster = hpc_cluster
+        self.hpc_cluster = hpc_cluster  # type: List[DescribeHpcClustersResponseHpcClustersHpcCluster]
 
     def validate(self):
         self.validate_required(self.hpc_cluster, 'hpc_cluster')
@@ -13585,9 +15333,9 @@ class DescribeHpcClustersResponseHpcClusters(TeaModel):
 
 class DeleteHpcClusterRequest(TeaModel):
     def __init__(self, region_id=None, client_token=None, hpc_cluster_id=None):
-        self.region_id = region_id
-        self.client_token = client_token
-        self.hpc_cluster_id = hpc_cluster_id
+        self.region_id = region_id      # type: str
+        self.client_token = client_token  # type: str
+        self.hpc_cluster_id = hpc_cluster_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -13609,7 +15357,7 @@ class DeleteHpcClusterRequest(TeaModel):
 
 class DeleteHpcClusterResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -13626,10 +15374,10 @@ class DeleteHpcClusterResponse(TeaModel):
 
 class CreateHpcClusterRequest(TeaModel):
     def __init__(self, region_id=None, client_token=None, description=None, name=None):
-        self.region_id = region_id
-        self.client_token = client_token
-        self.description = description
-        self.name = name
+        self.region_id = region_id      # type: str
+        self.client_token = client_token  # type: str
+        self.description = description  # type: str
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -13653,8 +15401,8 @@ class CreateHpcClusterRequest(TeaModel):
 
 class CreateHpcClusterResponse(TeaModel):
     def __init__(self, request_id=None, hpc_cluster_id=None):
-        self.request_id = request_id
-        self.hpc_cluster_id = hpc_cluster_id
+        self.request_id = request_id    # type: str
+        self.hpc_cluster_id = hpc_cluster_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -13674,7 +15422,7 @@ class CreateHpcClusterResponse(TeaModel):
 
 class DescribeSnapshotsUsageRequest(TeaModel):
     def __init__(self, region_id=None):
-        self.region_id = region_id
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -13691,9 +15439,9 @@ class DescribeSnapshotsUsageRequest(TeaModel):
 
 class DescribeSnapshotsUsageResponse(TeaModel):
     def __init__(self, request_id=None, snapshot_count=None, snapshot_size=None):
-        self.request_id = request_id
-        self.snapshot_count = snapshot_count
-        self.snapshot_size = snapshot_size
+        self.request_id = request_id    # type: str
+        self.snapshot_count = snapshot_count  # type: int
+        self.snapshot_size = snapshot_size  # type: int
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -13717,16 +15465,16 @@ class DescribeSnapshotsUsageResponse(TeaModel):
 class DescribeSpotPriceHistoryRequest(TeaModel):
     def __init__(self, region_id=None, zone_id=None, network_type=None, instance_type=None, spot_duration=None,
                  io_optimized=None, start_time=None, end_time=None, ostype=None, offset=None):
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.network_type = network_type
-        self.instance_type = instance_type
-        self.spot_duration = spot_duration
-        self.io_optimized = io_optimized
-        self.start_time = start_time
-        self.end_time = end_time
-        self.ostype = ostype
-        self.offset = offset
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.network_type = network_type  # type: str
+        self.instance_type = instance_type  # type: str
+        self.spot_duration = spot_duration  # type: int
+        self.io_optimized = io_optimized  # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.ostype = ostype            # type: str
+        self.offset = offset            # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -13763,9 +15511,9 @@ class DescribeSpotPriceHistoryRequest(TeaModel):
 
 class DescribeSpotPriceHistoryResponse(TeaModel):
     def __init__(self, request_id=None, next_offset=None, currency=None, spot_prices=None):
-        self.request_id = request_id
-        self.next_offset = next_offset
-        self.currency = currency
+        self.request_id = request_id    # type: str
+        self.next_offset = next_offset  # type: int
+        self.currency = currency        # type: str
         self.spot_prices = spot_prices  # type: DescribeSpotPriceHistoryResponseSpotPrices
 
     def validate(self):
@@ -13802,13 +15550,13 @@ class DescribeSpotPriceHistoryResponse(TeaModel):
 class DescribeSpotPriceHistoryResponseSpotPricesSpotPriceType(TeaModel):
     def __init__(self, zone_id=None, instance_type=None, io_optimized=None, timestamp=None, network_type=None,
                  spot_price=None, origin_price=None):
-        self.zone_id = zone_id
-        self.instance_type = instance_type
-        self.io_optimized = io_optimized
-        self.timestamp = timestamp
-        self.network_type = network_type
-        self.spot_price = spot_price
-        self.origin_price = origin_price
+        self.zone_id = zone_id          # type: str
+        self.instance_type = instance_type  # type: str
+        self.io_optimized = io_optimized  # type: str
+        self.timestamp = timestamp      # type: str
+        self.network_type = network_type  # type: str
+        self.spot_price = spot_price    # type: float
+        self.origin_price = origin_price  # type: float
 
     def validate(self):
         self.validate_required(self.zone_id, 'zone_id')
@@ -13843,7 +15591,7 @@ class DescribeSpotPriceHistoryResponseSpotPricesSpotPriceType(TeaModel):
 
 class DescribeSpotPriceHistoryResponseSpotPrices(TeaModel):
     def __init__(self, spot_price_type=None):
-        self.spot_price_type = spot_price_type
+        self.spot_price_type = spot_price_type  # type: List[DescribeSpotPriceHistoryResponseSpotPricesSpotPriceType]
 
     def validate(self):
         self.validate_required(self.spot_price_type, 'spot_price_type')
@@ -13875,9 +15623,9 @@ class DescribeSpotPriceHistoryResponseSpotPrices(TeaModel):
 
 class StopInvocationRequest(TeaModel):
     def __init__(self, region_id=None, invoke_id=None, instance_id=None):
-        self.region_id = region_id
-        self.invoke_id = invoke_id
-        self.instance_id = instance_id
+        self.region_id = region_id      # type: str
+        self.invoke_id = invoke_id      # type: str
+        self.instance_id = instance_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -13899,7 +15647,7 @@ class StopInvocationRequest(TeaModel):
 
 class StopInvocationResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -13917,13 +15665,13 @@ class StopInvocationResponse(TeaModel):
 class ModifyCommandRequest(TeaModel):
     def __init__(self, region_id=None, command_id=None, name=None, description=None, command_content=None,
                  working_dir=None, timeout=None):
-        self.region_id = region_id
-        self.command_id = command_id
-        self.name = name
-        self.description = description
-        self.command_content = command_content
-        self.working_dir = working_dir
-        self.timeout = timeout
+        self.region_id = region_id      # type: str
+        self.command_id = command_id    # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
+        self.command_content = command_content  # type: str
+        self.working_dir = working_dir  # type: str
+        self.timeout = timeout          # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -13953,7 +15701,7 @@ class ModifyCommandRequest(TeaModel):
 
 class ModifyCommandResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -13971,12 +15719,12 @@ class ModifyCommandResponse(TeaModel):
 class InvokeCommandRequest(TeaModel):
     def __init__(self, region_id=None, command_id=None, timed=None, frequency=None, instance_id=None,
                  parameters=None):
-        self.region_id = region_id
-        self.command_id = command_id
-        self.timed = timed
-        self.frequency = frequency
-        self.instance_id = instance_id
-        self.parameters = parameters
+        self.region_id = region_id      # type: str
+        self.command_id = command_id    # type: str
+        self.timed = timed              # type: bool
+        self.frequency = frequency      # type: str
+        self.instance_id = instance_id  # type: List[str]
+        self.parameters = parameters    # type: Dict[str, Any]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -14003,10 +15751,45 @@ class InvokeCommandRequest(TeaModel):
         return self
 
 
+class InvokeCommandShrinkRequest(TeaModel):
+    def __init__(self, region_id=None, command_id=None, timed=None, frequency=None, instance_id=None,
+                 parameters_shrink=None):
+        self.region_id = region_id      # type: str
+        self.command_id = command_id    # type: str
+        self.timed = timed              # type: bool
+        self.frequency = frequency      # type: str
+        self.instance_id = instance_id  # type: List[str]
+        self.parameters_shrink = parameters_shrink  # type: str
+
+    def validate(self):
+        self.validate_required(self.region_id, 'region_id')
+        self.validate_required(self.command_id, 'command_id')
+        self.validate_required(self.instance_id, 'instance_id')
+
+    def to_map(self):
+        result = {}
+        result['RegionId'] = self.region_id
+        result['CommandId'] = self.command_id
+        result['Timed'] = self.timed
+        result['Frequency'] = self.frequency
+        result['InstanceId'] = self.instance_id
+        result['Parameters'] = self.parameters_shrink
+        return result
+
+    def from_map(self, map={}):
+        self.region_id = map.get('RegionId')
+        self.command_id = map.get('CommandId')
+        self.timed = map.get('Timed')
+        self.frequency = map.get('Frequency')
+        self.instance_id = map.get('InstanceId')
+        self.parameters_shrink = map.get('Parameters')
+        return self
+
+
 class InvokeCommandResponse(TeaModel):
     def __init__(self, request_id=None, invoke_id=None):
-        self.request_id = request_id
-        self.invoke_id = invoke_id
+        self.request_id = request_id    # type: str
+        self.invoke_id = invoke_id      # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -14028,18 +15811,18 @@ class DescribeInvocationsRequest(TeaModel):
     def __init__(self, region_id=None, invoke_id=None, command_id=None, command_name=None, command_type=None,
                  timed=None, invoke_status=None, instance_id=None, content_encoding=None, include_output=None,
                  page_number=None, page_size=None):
-        self.region_id = region_id
-        self.invoke_id = invoke_id
-        self.command_id = command_id
-        self.command_name = command_name
-        self.command_type = command_type
-        self.timed = timed
-        self.invoke_status = invoke_status
-        self.instance_id = instance_id
-        self.content_encoding = content_encoding
-        self.include_output = include_output
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.invoke_id = invoke_id      # type: str
+        self.command_id = command_id    # type: str
+        self.command_name = command_name  # type: str
+        self.command_type = command_type  # type: str
+        self.timed = timed              # type: bool
+        self.invoke_status = invoke_status  # type: str
+        self.instance_id = instance_id  # type: str
+        self.content_encoding = content_encoding  # type: str
+        self.include_output = include_output  # type: bool
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -14078,10 +15861,10 @@ class DescribeInvocationsRequest(TeaModel):
 
 class DescribeInvocationsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, invocations=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.invocations = invocations  # type: DescribeInvocationsResponseInvocations
 
     def validate(self):
@@ -14122,20 +15905,20 @@ class DescribeInvocationsResponseInvocationsInvocationInvokeInstancesInvokeInsta
     def __init__(self, instance_id=None, repeats=None, instance_invoke_status=None, invocation_status=None,
                  output=None, exit_code=None, dropped=None, error_code=None, error_info=None, creation_time=None,
                  start_time=None, stop_time=None, finish_time=None, update_time=None):
-        self.instance_id = instance_id
-        self.repeats = repeats
-        self.instance_invoke_status = instance_invoke_status
-        self.invocation_status = invocation_status
-        self.output = output
-        self.exit_code = exit_code
-        self.dropped = dropped
-        self.error_code = error_code
-        self.error_info = error_info
-        self.creation_time = creation_time
-        self.start_time = start_time
-        self.stop_time = stop_time
-        self.finish_time = finish_time
-        self.update_time = update_time
+        self.instance_id = instance_id  # type: str
+        self.repeats = repeats          # type: int
+        self.instance_invoke_status = instance_invoke_status  # type: str
+        self.invocation_status = invocation_status  # type: str
+        self.output = output            # type: str
+        self.exit_code = exit_code      # type: int
+        self.dropped = dropped          # type: int
+        self.error_code = error_code    # type: str
+        self.error_info = error_info    # type: str
+        self.creation_time = creation_time  # type: str
+        self.start_time = start_time    # type: str
+        self.stop_time = stop_time      # type: str
+        self.finish_time = finish_time  # type: str
+        self.update_time = update_time  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -14191,7 +15974,7 @@ class DescribeInvocationsResponseInvocationsInvocationInvokeInstancesInvokeInsta
 
 class DescribeInvocationsResponseInvocationsInvocationInvokeInstances(TeaModel):
     def __init__(self, invoke_instance=None):
-        self.invoke_instance = invoke_instance
+        self.invoke_instance = invoke_instance  # type: List[DescribeInvocationsResponseInvocationsInvocationInvokeInstancesInvokeInstance]
 
     def validate(self):
         self.validate_required(self.invoke_instance, 'invoke_instance')
@@ -14225,17 +16008,17 @@ class DescribeInvocationsResponseInvocationsInvocation(TeaModel):
     def __init__(self, invoke_id=None, creation_time=None, command_id=None, command_type=None, command_name=None,
                  command_content=None, frequency=None, timed=None, invoke_status=None, invocation_status=None, parameters=None,
                  invoke_instances=None):
-        self.invoke_id = invoke_id
-        self.creation_time = creation_time
-        self.command_id = command_id
-        self.command_type = command_type
-        self.command_name = command_name
-        self.command_content = command_content
-        self.frequency = frequency
-        self.timed = timed
-        self.invoke_status = invoke_status
-        self.invocation_status = invocation_status
-        self.parameters = parameters
+        self.invoke_id = invoke_id      # type: str
+        self.creation_time = creation_time  # type: str
+        self.command_id = command_id    # type: str
+        self.command_type = command_type  # type: str
+        self.command_name = command_name  # type: str
+        self.command_content = command_content  # type: str
+        self.frequency = frequency      # type: str
+        self.timed = timed              # type: bool
+        self.invoke_status = invoke_status  # type: str
+        self.invocation_status = invocation_status  # type: str
+        self.parameters = parameters    # type: str
         self.invoke_instances = invoke_instances  # type: DescribeInvocationsResponseInvocationsInvocationInvokeInstances
 
     def validate(self):
@@ -14295,7 +16078,7 @@ class DescribeInvocationsResponseInvocationsInvocation(TeaModel):
 
 class DescribeInvocationsResponseInvocations(TeaModel):
     def __init__(self, invocation=None):
-        self.invocation = invocation
+        self.invocation = invocation    # type: List[DescribeInvocationsResponseInvocationsInvocation]
 
     def validate(self):
         self.validate_required(self.invocation, 'invocation')
@@ -14328,15 +16111,15 @@ class DescribeInvocationsResponseInvocations(TeaModel):
 class DescribeInvocationResultsRequest(TeaModel):
     def __init__(self, region_id=None, invoke_id=None, instance_id=None, command_id=None, invoke_record_status=None,
                  include_history=None, content_encoding=None, page_number=None, page_size=None):
-        self.region_id = region_id
-        self.invoke_id = invoke_id
-        self.instance_id = instance_id
-        self.command_id = command_id
-        self.invoke_record_status = invoke_record_status
-        self.include_history = include_history
-        self.content_encoding = content_encoding
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.invoke_id = invoke_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.command_id = command_id    # type: str
+        self.invoke_record_status = invoke_record_status  # type: str
+        self.include_history = include_history  # type: bool
+        self.content_encoding = content_encoding  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -14369,8 +16152,8 @@ class DescribeInvocationResultsRequest(TeaModel):
 
 class DescribeInvocationResultsResponse(TeaModel):
     def __init__(self, request_id=None, invocation=None):
-        self.request_id = request_id
-        self.invocation = invocation  # type: DescribeInvocationResultsResponseInvocation
+        self.request_id = request_id    # type: str
+        self.invocation = invocation    # type: DescribeInvocationResultsResponseInvocation
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -14401,20 +16184,20 @@ class DescribeInvocationResultsResponseInvocationInvocationResultsInvocationResu
     def __init__(self, command_id=None, invoke_id=None, instance_id=None, start_time=None, stop_time=None,
                  finished_time=None, repeats=None, output=None, dropped=None, invoke_record_status=None, invocation_status=None,
                  exit_code=None, error_code=None, error_info=None):
-        self.command_id = command_id
-        self.invoke_id = invoke_id
-        self.instance_id = instance_id
-        self.start_time = start_time
-        self.stop_time = stop_time
-        self.finished_time = finished_time
-        self.repeats = repeats
-        self.output = output
-        self.dropped = dropped
-        self.invoke_record_status = invoke_record_status
-        self.invocation_status = invocation_status
-        self.exit_code = exit_code
-        self.error_code = error_code
-        self.error_info = error_info
+        self.command_id = command_id    # type: str
+        self.invoke_id = invoke_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.start_time = start_time    # type: str
+        self.stop_time = stop_time      # type: str
+        self.finished_time = finished_time  # type: str
+        self.repeats = repeats          # type: int
+        self.output = output            # type: str
+        self.dropped = dropped          # type: int
+        self.invoke_record_status = invoke_record_status  # type: str
+        self.invocation_status = invocation_status  # type: str
+        self.exit_code = exit_code      # type: int
+        self.error_code = error_code    # type: str
+        self.error_info = error_info    # type: str
 
     def validate(self):
         self.validate_required(self.command_id, 'command_id')
@@ -14470,7 +16253,7 @@ class DescribeInvocationResultsResponseInvocationInvocationResultsInvocationResu
 
 class DescribeInvocationResultsResponseInvocationInvocationResults(TeaModel):
     def __init__(self, invocation_result=None):
-        self.invocation_result = invocation_result
+        self.invocation_result = invocation_result  # type: List[DescribeInvocationResultsResponseInvocationInvocationResultsInvocationResult]
 
     def validate(self):
         self.validate_required(self.invocation_result, 'invocation_result')
@@ -14502,9 +16285,9 @@ class DescribeInvocationResultsResponseInvocationInvocationResults(TeaModel):
 
 class DescribeInvocationResultsResponseInvocation(TeaModel):
     def __init__(self, page_size=None, page_number=None, total_count=None, invocation_results=None):
-        self.page_size = page_size
-        self.page_number = page_number
-        self.total_count = total_count
+        self.page_size = page_size      # type: int
+        self.page_number = page_number  # type: int
+        self.total_count = total_count  # type: int
         self.invocation_results = invocation_results  # type: DescribeInvocationResultsResponseInvocationInvocationResults
 
     def validate(self):
@@ -14541,14 +16324,14 @@ class DescribeInvocationResultsResponseInvocation(TeaModel):
 class DescribeCommandsRequest(TeaModel):
     def __init__(self, region_id=None, command_id=None, name=None, description=None, type=None,
                  content_encoding=None, page_number=None, page_size=None):
-        self.region_id = region_id
-        self.command_id = command_id
-        self.name = name
-        self.description = description
-        self.type = type
-        self.content_encoding = content_encoding
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.command_id = command_id    # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
+        self.type = type                # type: str
+        self.content_encoding = content_encoding  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -14579,11 +16362,11 @@ class DescribeCommandsRequest(TeaModel):
 
 class DescribeCommandsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, commands=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.commands = commands  # type: DescribeCommandsResponseCommands
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.commands = commands        # type: DescribeCommandsResponseCommands
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -14622,7 +16405,7 @@ class DescribeCommandsResponse(TeaModel):
 class DescribeCommandsResponseCommandsCommandParameterNames(TeaModel):
     def __init__(self, parameter_name=None):
         # ParameterName
-        self.parameter_name = parameter_name
+        self.parameter_name = parameter_name  # type: List[str]
 
     def validate(self):
         self.validate_required(self.parameter_name, 'parameter_name')
@@ -14641,16 +16424,16 @@ class DescribeCommandsResponseCommandsCommand(TeaModel):
     def __init__(self, command_id=None, name=None, type=None, description=None, command_content=None,
                  working_dir=None, timeout=None, invoke_times=None, creation_time=None, enable_parameter=None,
                  parameter_names=None):
-        self.command_id = command_id
-        self.name = name
-        self.type = type
-        self.description = description
-        self.command_content = command_content
-        self.working_dir = working_dir
-        self.timeout = timeout
-        self.invoke_times = invoke_times
-        self.creation_time = creation_time
-        self.enable_parameter = enable_parameter
+        self.command_id = command_id    # type: str
+        self.name = name                # type: str
+        self.type = type                # type: str
+        self.description = description  # type: str
+        self.command_content = command_content  # type: str
+        self.working_dir = working_dir  # type: str
+        self.timeout = timeout          # type: int
+        self.invoke_times = invoke_times  # type: int
+        self.creation_time = creation_time  # type: str
+        self.enable_parameter = enable_parameter  # type: bool
         self.parameter_names = parameter_names  # type: DescribeCommandsResponseCommandsCommandParameterNames
 
     def validate(self):
@@ -14707,7 +16490,7 @@ class DescribeCommandsResponseCommandsCommand(TeaModel):
 
 class DescribeCommandsResponseCommands(TeaModel):
     def __init__(self, command=None):
-        self.command = command
+        self.command = command          # type: List[DescribeCommandsResponseCommandsCommand]
 
     def validate(self):
         self.validate_required(self.command, 'command')
@@ -14739,8 +16522,8 @@ class DescribeCommandsResponseCommands(TeaModel):
 
 class DeleteCommandRequest(TeaModel):
     def __init__(self, region_id=None, command_id=None):
-        self.region_id = region_id
-        self.command_id = command_id
+        self.region_id = region_id      # type: str
+        self.command_id = command_id    # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -14760,7 +16543,7 @@ class DeleteCommandRequest(TeaModel):
 
 class DeleteCommandResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -14778,14 +16561,14 @@ class DeleteCommandResponse(TeaModel):
 class CreateCommandRequest(TeaModel):
     def __init__(self, region_id=None, name=None, description=None, type=None, command_content=None,
                  working_dir=None, timeout=None, enable_parameter=None):
-        self.region_id = region_id
-        self.name = name
-        self.description = description
-        self.type = type
-        self.command_content = command_content
-        self.working_dir = working_dir
-        self.timeout = timeout
-        self.enable_parameter = enable_parameter
+        self.region_id = region_id      # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
+        self.type = type                # type: str
+        self.command_content = command_content  # type: str
+        self.working_dir = working_dir  # type: str
+        self.timeout = timeout          # type: int
+        self.enable_parameter = enable_parameter  # type: bool
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -14819,8 +16602,8 @@ class CreateCommandRequest(TeaModel):
 
 class CreateCommandResponse(TeaModel):
     def __init__(self, request_id=None, command_id=None):
-        self.request_id = request_id
-        self.command_id = command_id
+        self.request_id = request_id    # type: str
+        self.command_id = command_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -14843,23 +16626,23 @@ class ModifySecurityGroupEgressRuleRequest(TeaModel):
                  dest_group_id=None, dest_group_owner_id=None, dest_group_owner_account=None, dest_cidr_ip=None,
                  ipv_6dest_cidr_ip=None, source_cidr_ip=None, ipv_6source_cidr_ip=None, source_port_range=None, policy=None,
                  priority=None, nic_type=None, client_token=None, description=None):
-        self.region_id = region_id
-        self.security_group_id = security_group_id
-        self.ip_protocol = ip_protocol
-        self.port_range = port_range
-        self.dest_group_id = dest_group_id
-        self.dest_group_owner_id = dest_group_owner_id
-        self.dest_group_owner_account = dest_group_owner_account
-        self.dest_cidr_ip = dest_cidr_ip
-        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
-        self.source_cidr_ip = source_cidr_ip
-        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        self.source_port_range = source_port_range
-        self.policy = policy
-        self.priority = priority
-        self.nic_type = nic_type
-        self.client_token = client_token
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.ip_protocol = ip_protocol  # type: str
+        self.port_range = port_range    # type: str
+        self.dest_group_id = dest_group_id  # type: str
+        self.dest_group_owner_id = dest_group_owner_id  # type: int
+        self.dest_group_owner_account = dest_group_owner_account  # type: str
+        self.dest_cidr_ip = dest_cidr_ip  # type: str
+        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip  # type: str
+        self.source_cidr_ip = source_cidr_ip  # type: str
+        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip  # type: str
+        self.source_port_range = source_port_range  # type: str
+        self.policy = policy            # type: str
+        self.priority = priority        # type: str
+        self.nic_type = nic_type        # type: str
+        self.client_token = client_token  # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -14911,7 +16694,7 @@ class ModifySecurityGroupEgressRuleRequest(TeaModel):
 
 class ModifySecurityGroupEgressRuleResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -14929,12 +16712,12 @@ class ModifySecurityGroupEgressRuleResponse(TeaModel):
 class ModifyDiskChargeTypeRequest(TeaModel):
     def __init__(self, instance_id=None, region_id=None, disk_ids=None, auto_pay=None, client_token=None,
                  disk_charge_type=None):
-        self.instance_id = instance_id
-        self.region_id = region_id
-        self.disk_ids = disk_ids
-        self.auto_pay = auto_pay
-        self.client_token = client_token
-        self.disk_charge_type = disk_charge_type
+        self.instance_id = instance_id  # type: str
+        self.region_id = region_id      # type: str
+        self.disk_ids = disk_ids        # type: str
+        self.auto_pay = auto_pay        # type: bool
+        self.client_token = client_token  # type: str
+        self.disk_charge_type = disk_charge_type  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -14963,8 +16746,8 @@ class ModifyDiskChargeTypeRequest(TeaModel):
 
 class ModifyDiskChargeTypeResponse(TeaModel):
     def __init__(self, request_id=None, order_id=None):
-        self.request_id = request_id
-        self.order_id = order_id
+        self.request_id = request_id    # type: str
+        self.order_id = order_id        # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -14985,12 +16768,12 @@ class ModifyDiskChargeTypeResponse(TeaModel):
 class ModifyNetworkInterfaceAttributeRequest(TeaModel):
     def __init__(self, region_id=None, security_group_id=None, network_interface_name=None,
                  network_interface_id=None, queue_number=None, description=None):
-        self.region_id = region_id
-        self.security_group_id = security_group_id
-        self.network_interface_name = network_interface_name
-        self.network_interface_id = network_interface_id
-        self.queue_number = queue_number
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.security_group_id = security_group_id  # type: List[str]
+        self.network_interface_name = network_interface_name  # type: str
+        self.network_interface_id = network_interface_id  # type: str
+        self.queue_number = queue_number  # type: int
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -15018,7 +16801,7 @@ class ModifyNetworkInterfaceAttributeRequest(TeaModel):
 
 class ModifyNetworkInterfaceAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -15035,10 +16818,10 @@ class ModifyNetworkInterfaceAttributeResponse(TeaModel):
 
 class DetachNetworkInterfaceRequest(TeaModel):
     def __init__(self, region_id=None, network_interface_id=None, instance_id=None, trunk_network_instance_id=None):
-        self.region_id = region_id
-        self.network_interface_id = network_interface_id
-        self.instance_id = instance_id
-        self.trunk_network_instance_id = trunk_network_instance_id
+        self.region_id = region_id      # type: str
+        self.network_interface_id = network_interface_id  # type: str
+        self.instance_id = instance_id  # type: str
+        self.trunk_network_instance_id = trunk_network_instance_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -15063,7 +16846,7 @@ class DetachNetworkInterfaceRequest(TeaModel):
 
 class DetachNetworkInterfaceResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -15083,24 +16866,24 @@ class DescribeNetworkInterfacesRequest(TeaModel):
                  primary_ip_address=None, private_ip_address=None, security_group_id=None, network_interface_name=None, type=None,
                  instance_id=None, network_interface_id=None, service_managed=None, status=None, page_number=None,
                  page_size=None, next_token=None, max_results=None):
-        self.region_id = region_id
-        self.tag = tag
-        self.resource_group_id = resource_group_id
-        self.v_switch_id = v_switch_id
-        self.vpc_id = vpc_id
-        self.primary_ip_address = primary_ip_address
-        self.private_ip_address = private_ip_address
-        self.security_group_id = security_group_id
-        self.network_interface_name = network_interface_name
-        self.type = type
-        self.instance_id = instance_id
-        self.network_interface_id = network_interface_id
-        self.service_managed = service_managed
-        self.status = status
-        self.page_number = page_number
-        self.page_size = page_size
-        self.next_token = next_token
-        self.max_results = max_results
+        self.region_id = region_id      # type: str
+        self.tag = tag                  # type: List[DescribeNetworkInterfacesRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.primary_ip_address = primary_ip_address  # type: str
+        self.private_ip_address = private_ip_address  # type: List[str]
+        self.security_group_id = security_group_id  # type: str
+        self.network_interface_name = network_interface_name  # type: str
+        self.type = type                # type: str
+        self.instance_id = instance_id  # type: str
+        self.network_interface_id = network_interface_id  # type: List[str]
+        self.service_managed = service_managed  # type: bool
+        self.status = status            # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.next_token = next_token    # type: str
+        self.max_results = max_results  # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -15166,12 +16949,11 @@ class DescribeNetworkInterfacesRequest(TeaModel):
 
 class DescribeNetworkInterfacesRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -15188,11 +16970,11 @@ class DescribeNetworkInterfacesRequestTag(TeaModel):
 class DescribeNetworkInterfacesResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, next_token=None,
                  network_interface_sets=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.next_token = next_token
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.next_token = next_token    # type: str
         self.network_interface_sets = network_interface_sets  # type: DescribeNetworkInterfacesResponseNetworkInterfaceSets
 
     def validate(self):
@@ -15234,8 +17016,8 @@ class DescribeNetworkInterfacesResponse(TeaModel):
 
 class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSetAssociatedPublicIp(TeaModel):
     def __init__(self, public_ip_address=None, allocation_id=None):
-        self.public_ip_address = public_ip_address
-        self.allocation_id = allocation_id
+        self.public_ip_address = public_ip_address  # type: str
+        self.allocation_id = allocation_id  # type: str
 
     def validate(self):
         self.validate_required(self.public_ip_address, 'public_ip_address')
@@ -15255,8 +17037,8 @@ class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetPr
 
 class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet(TeaModel):
     def __init__(self, private_ip_address=None, primary=None, associated_public_ip=None):
-        self.private_ip_address = private_ip_address
-        self.primary = primary
+        self.private_ip_address = private_ip_address  # type: str
+        self.primary = primary          # type: bool
         self.associated_public_ip = associated_public_ip  # type: DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSetAssociatedPublicIp
 
     def validate(self):
@@ -15289,7 +17071,7 @@ class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetPr
 
 class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets(TeaModel):
     def __init__(self, private_ip_set=None):
-        self.private_ip_set = private_ip_set
+        self.private_ip_set = private_ip_set  # type: List[DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet]
 
     def validate(self):
         self.validate_required(self.private_ip_set, 'private_ip_set')
@@ -15321,7 +17103,7 @@ class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetPr
 
 class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetIpv6SetsIpv6Set(TeaModel):
     def __init__(self, ipv_6address=None):
-        self.ipv_6address = ipv_6address
+        self.ipv_6address = ipv_6address  # type: str
 
     def validate(self):
         self.validate_required(self.ipv_6address, 'ipv_6address')
@@ -15338,7 +17120,7 @@ class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetIp
 
 class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetIpv6Sets(TeaModel):
     def __init__(self, ipv_6set=None):
-        self.ipv_6set = ipv_6set
+        self.ipv_6set = ipv_6set        # type: List[DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetIpv6SetsIpv6Set]
 
     def validate(self):
         self.validate_required(self.ipv_6set, 'ipv_6set')
@@ -15370,8 +17152,8 @@ class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetIp
 
 class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -15391,7 +17173,7 @@ class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetTa
 
 class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -15423,8 +17205,8 @@ class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetTa
 
 class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetAssociatedPublicIp(TeaModel):
     def __init__(self, public_ip_address=None, allocation_id=None):
-        self.public_ip_address = public_ip_address
-        self.allocation_id = allocation_id
+        self.public_ip_address = public_ip_address  # type: str
+        self.allocation_id = allocation_id  # type: str
 
     def validate(self):
         self.validate_required(self.public_ip_address, 'public_ip_address')
@@ -15444,9 +17226,9 @@ class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetAs
 
 class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetAttachment(TeaModel):
     def __init__(self, instance_id=None, trunk_network_interface_id=None, device_index=None):
-        self.instance_id = instance_id
-        self.trunk_network_interface_id = trunk_network_interface_id
-        self.device_index = device_index
+        self.instance_id = instance_id  # type: str
+        self.trunk_network_interface_id = trunk_network_interface_id  # type: str
+        self.device_index = device_index  # type: int
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -15470,7 +17252,7 @@ class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetAt
 class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetSecurityGroupIds(TeaModel):
     def __init__(self, security_group_id=None):
         # SecurityGroupId
-        self.security_group_id = security_group_id
+        self.security_group_id = security_group_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.security_group_id, 'security_group_id')
@@ -15491,28 +17273,28 @@ class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSet(T
                  instance_id=None, creation_time=None, resource_group_id=None, service_id=None, service_managed=None,
                  queue_number=None, owner_id=None, private_ip_sets=None, ipv_6sets=None, tags=None, associated_public_ip=None,
                  attachment=None, security_group_ids=None):
-        self.network_interface_id = network_interface_id
-        self.status = status
-        self.type = type
-        self.vpc_id = vpc_id
-        self.v_switch_id = v_switch_id
-        self.zone_id = zone_id
-        self.private_ip_address = private_ip_address
-        self.mac_address = mac_address
-        self.network_interface_name = network_interface_name
-        self.description = description
-        self.instance_id = instance_id
-        self.creation_time = creation_time
-        self.resource_group_id = resource_group_id
-        self.service_id = service_id
-        self.service_managed = service_managed
-        self.queue_number = queue_number
-        self.owner_id = owner_id
+        self.network_interface_id = network_interface_id  # type: str
+        self.status = status            # type: str
+        self.type = type                # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.zone_id = zone_id          # type: str
+        self.private_ip_address = private_ip_address  # type: str
+        self.mac_address = mac_address  # type: str
+        self.network_interface_name = network_interface_name  # type: str
+        self.description = description  # type: str
+        self.instance_id = instance_id  # type: str
+        self.creation_time = creation_time  # type: str
+        self.resource_group_id = resource_group_id  # type: str
+        self.service_id = service_id    # type: int
+        self.service_managed = service_managed  # type: bool
+        self.queue_number = queue_number  # type: int
+        self.owner_id = owner_id        # type: str
         self.private_ip_sets = private_ip_sets  # type: DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets
-        self.ipv_6sets = ipv_6sets  # type: DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetIpv6Sets
-        self.tags = tags  # type: DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetTags
+        self.ipv_6sets = ipv_6sets      # type: DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetIpv6Sets
+        self.tags = tags                # type: DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetTags
         self.associated_public_ip = associated_public_ip  # type: DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetAssociatedPublicIp
-        self.attachment = attachment  # type: DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetAttachment
+        self.attachment = attachment    # type: DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetAttachment
         self.security_group_ids = security_group_ids  # type: DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSetSecurityGroupIds
 
     def validate(self):
@@ -15650,7 +17432,7 @@ class DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSet(T
 
 class DescribeNetworkInterfacesResponseNetworkInterfaceSets(TeaModel):
     def __init__(self, network_interface_set=None):
-        self.network_interface_set = network_interface_set
+        self.network_interface_set = network_interface_set  # type: List[DescribeNetworkInterfacesResponseNetworkInterfaceSetsNetworkInterfaceSet]
 
     def validate(self):
         self.validate_required(self.network_interface_set, 'network_interface_set')
@@ -15682,8 +17464,8 @@ class DescribeNetworkInterfacesResponseNetworkInterfaceSets(TeaModel):
 
 class DeleteNetworkInterfaceRequest(TeaModel):
     def __init__(self, region_id=None, network_interface_id=None):
-        self.region_id = region_id
-        self.network_interface_id = network_interface_id
+        self.region_id = region_id      # type: str
+        self.network_interface_id = network_interface_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -15703,7 +17485,7 @@ class DeleteNetworkInterfaceRequest(TeaModel):
 
 class DeleteNetworkInterfaceResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -15722,22 +17504,23 @@ class CreateNetworkInterfaceRequest(TeaModel):
     def __init__(self, region_id=None, tag=None, resource_group_id=None, v_switch_id=None, primary_ip_address=None,
                  security_group_id=None, security_group_ids=None, network_interface_name=None, description=None, visible=None,
                  instance_type=None, business_type=None, private_ip_address=None, secondary_private_ip_address_count=None,
-                 client_token=None):
-        self.region_id = region_id
-        self.tag = tag
-        self.resource_group_id = resource_group_id
-        self.v_switch_id = v_switch_id
-        self.primary_ip_address = primary_ip_address
-        self.security_group_id = security_group_id
-        self.security_group_ids = security_group_ids
-        self.network_interface_name = network_interface_name
-        self.description = description
-        self.visible = visible
-        self.instance_type = instance_type
-        self.business_type = business_type
-        self.private_ip_address = private_ip_address
-        self.secondary_private_ip_address_count = secondary_private_ip_address_count
-        self.client_token = client_token
+                 queue_number=None, client_token=None):
+        self.region_id = region_id      # type: str
+        self.tag = tag                  # type: List[CreateNetworkInterfaceRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.primary_ip_address = primary_ip_address  # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.security_group_ids = security_group_ids  # type: List[str]
+        self.network_interface_name = network_interface_name  # type: str
+        self.description = description  # type: str
+        self.visible = visible          # type: bool
+        self.instance_type = instance_type  # type: str
+        self.business_type = business_type  # type: str
+        self.private_ip_address = private_ip_address  # type: List[str]
+        self.secondary_private_ip_address_count = secondary_private_ip_address_count  # type: int
+        self.queue_number = queue_number  # type: int
+        self.client_token = client_token  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -15768,6 +17551,7 @@ class CreateNetworkInterfaceRequest(TeaModel):
         result['BusinessType'] = self.business_type
         result['PrivateIpAddress'] = self.private_ip_address
         result['SecondaryPrivateIpAddressCount'] = self.secondary_private_ip_address_count
+        result['QueueNumber'] = self.queue_number
         result['ClientToken'] = self.client_token
         return result
 
@@ -15792,18 +17576,18 @@ class CreateNetworkInterfaceRequest(TeaModel):
         self.business_type = map.get('BusinessType')
         self.private_ip_address = map.get('PrivateIpAddress')
         self.secondary_private_ip_address_count = map.get('SecondaryPrivateIpAddressCount')
+        self.queue_number = map.get('QueueNumber')
         self.client_token = map.get('ClientToken')
         return self
 
 
 class CreateNetworkInterfaceRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -15822,23 +17606,23 @@ class CreateNetworkInterfaceResponse(TeaModel):
                  v_switch_id=None, zone_id=None, private_ip_address=None, mac_address=None, network_interface_name=None,
                  description=None, resource_group_id=None, service_id=None, service_managed=None, owner_id=None,
                  private_ip_sets=None, tags=None, security_group_ids=None):
-        self.request_id = request_id
-        self.network_interface_id = network_interface_id
-        self.status = status
-        self.type = type
-        self.vpc_id = vpc_id
-        self.v_switch_id = v_switch_id
-        self.zone_id = zone_id
-        self.private_ip_address = private_ip_address
-        self.mac_address = mac_address
-        self.network_interface_name = network_interface_name
-        self.description = description
-        self.resource_group_id = resource_group_id
-        self.service_id = service_id
-        self.service_managed = service_managed
-        self.owner_id = owner_id
+        self.request_id = request_id    # type: str
+        self.network_interface_id = network_interface_id  # type: str
+        self.status = status            # type: str
+        self.type = type                # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.zone_id = zone_id          # type: str
+        self.private_ip_address = private_ip_address  # type: str
+        self.mac_address = mac_address  # type: str
+        self.network_interface_name = network_interface_name  # type: str
+        self.description = description  # type: str
+        self.resource_group_id = resource_group_id  # type: str
+        self.service_id = service_id    # type: int
+        self.service_managed = service_managed  # type: bool
+        self.owner_id = owner_id        # type: str
         self.private_ip_sets = private_ip_sets  # type: CreateNetworkInterfaceResponsePrivateIpSets
-        self.tags = tags  # type: CreateNetworkInterfaceResponseTags
+        self.tags = tags                # type: CreateNetworkInterfaceResponseTags
         self.security_group_ids = security_group_ids  # type: CreateNetworkInterfaceResponseSecurityGroupIds
 
     def validate(self):
@@ -15934,8 +17718,8 @@ class CreateNetworkInterfaceResponse(TeaModel):
 
 class CreateNetworkInterfaceResponsePrivateIpSetsPrivateIpSet(TeaModel):
     def __init__(self, private_ip_address=None, primary=None):
-        self.private_ip_address = private_ip_address
-        self.primary = primary
+        self.private_ip_address = private_ip_address  # type: str
+        self.primary = primary          # type: bool
 
     def validate(self):
         self.validate_required(self.private_ip_address, 'private_ip_address')
@@ -15955,7 +17739,7 @@ class CreateNetworkInterfaceResponsePrivateIpSetsPrivateIpSet(TeaModel):
 
 class CreateNetworkInterfaceResponsePrivateIpSets(TeaModel):
     def __init__(self, private_ip_set=None):
-        self.private_ip_set = private_ip_set
+        self.private_ip_set = private_ip_set  # type: List[CreateNetworkInterfaceResponsePrivateIpSetsPrivateIpSet]
 
     def validate(self):
         self.validate_required(self.private_ip_set, 'private_ip_set')
@@ -15987,8 +17771,8 @@ class CreateNetworkInterfaceResponsePrivateIpSets(TeaModel):
 
 class CreateNetworkInterfaceResponseTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -16008,7 +17792,7 @@ class CreateNetworkInterfaceResponseTagsTag(TeaModel):
 
 class CreateNetworkInterfaceResponseTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[CreateNetworkInterfaceResponseTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -16040,7 +17824,7 @@ class CreateNetworkInterfaceResponseTags(TeaModel):
 
 class CreateNetworkInterfaceResponseSecurityGroupIds(TeaModel):
     def __init__(self, security_group_id=None):
-        self.security_group_id = security_group_id
+        self.security_group_id = security_group_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.security_group_id, 'security_group_id')
@@ -16058,11 +17842,11 @@ class CreateNetworkInterfaceResponseSecurityGroupIds(TeaModel):
 class AttachNetworkInterfaceRequest(TeaModel):
     def __init__(self, region_id=None, network_interface_id=None, instance_id=None, trunk_network_instance_id=None,
                  wait_for_network_configuration_ready=None):
-        self.region_id = region_id
-        self.network_interface_id = network_interface_id
-        self.instance_id = instance_id
-        self.trunk_network_instance_id = trunk_network_instance_id
-        self.wait_for_network_configuration_ready = wait_for_network_configuration_ready
+        self.region_id = region_id      # type: str
+        self.network_interface_id = network_interface_id  # type: str
+        self.instance_id = instance_id  # type: str
+        self.trunk_network_instance_id = trunk_network_instance_id  # type: str
+        self.wait_for_network_configuration_ready = wait_for_network_configuration_ready  # type: bool
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -16089,7 +17873,7 @@ class AttachNetworkInterfaceRequest(TeaModel):
 
 class AttachNetworkInterfaceResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -16108,21 +17892,21 @@ class DescribeRecommendInstanceTypeRequest(TeaModel):
     def __init__(self, cores=None, memory=None, instance_family_level=None, instance_type=None, network_type=None,
                  instance_charge_type=None, spot_strategy=None, io_optimized=None, instance_type_family=None, priority_strategy=None,
                  max_price=None, region_id=None, zone_id=None, system_disk_category=None, scene=None):
-        self.cores = cores
-        self.memory = memory
-        self.instance_family_level = instance_family_level
-        self.instance_type = instance_type
-        self.network_type = network_type
-        self.instance_charge_type = instance_charge_type
-        self.spot_strategy = spot_strategy
-        self.io_optimized = io_optimized
-        self.instance_type_family = instance_type_family
-        self.priority_strategy = priority_strategy
-        self.max_price = max_price
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.system_disk_category = system_disk_category
-        self.scene = scene
+        self.cores = cores              # type: int
+        self.memory = memory            # type: float
+        self.instance_family_level = instance_family_level  # type: str
+        self.instance_type = instance_type  # type: str
+        self.network_type = network_type  # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.spot_strategy = spot_strategy  # type: str
+        self.io_optimized = io_optimized  # type: str
+        self.instance_type_family = instance_type_family  # type: List[str]
+        self.priority_strategy = priority_strategy  # type: str
+        self.max_price = max_price      # type: float
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.system_disk_category = system_disk_category  # type: str
+        self.scene = scene              # type: str
 
     def validate(self):
         self.validate_required(self.network_type, 'network_type')
@@ -16168,8 +17952,8 @@ class DescribeRecommendInstanceTypeRequest(TeaModel):
 
 class DescribeRecommendInstanceTypeResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data  # type: DescribeRecommendInstanceTypeResponseData
+        self.request_id = request_id    # type: str
+        self.data = data                # type: DescribeRecommendInstanceTypeResponseData
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -16199,7 +17983,7 @@ class DescribeRecommendInstanceTypeResponse(TeaModel):
 class DescribeRecommendInstanceTypeResponseDataRecommendInstanceTypeZonesZoneNetworkTypes(TeaModel):
     def __init__(self, network_type=None):
         # NetworkType
-        self.network_type = network_type
+        self.network_type = network_type  # type: List[str]
 
     def validate(self):
         self.validate_required(self.network_type, 'network_type')
@@ -16216,7 +18000,7 @@ class DescribeRecommendInstanceTypeResponseDataRecommendInstanceTypeZonesZoneNet
 
 class DescribeRecommendInstanceTypeResponseDataRecommendInstanceTypeZonesZone(TeaModel):
     def __init__(self, zone_no=None, network_types=None):
-        self.zone_no = zone_no
+        self.zone_no = zone_no          # type: str
         self.network_types = network_types  # type: DescribeRecommendInstanceTypeResponseDataRecommendInstanceTypeZonesZoneNetworkTypes
 
     def validate(self):
@@ -16246,7 +18030,7 @@ class DescribeRecommendInstanceTypeResponseDataRecommendInstanceTypeZonesZone(Te
 
 class DescribeRecommendInstanceTypeResponseDataRecommendInstanceTypeZones(TeaModel):
     def __init__(self, zone=None):
-        self.zone = zone
+        self.zone = zone                # type: List[DescribeRecommendInstanceTypeResponseDataRecommendInstanceTypeZonesZone]
 
     def validate(self):
         self.validate_required(self.zone, 'zone')
@@ -16279,12 +18063,12 @@ class DescribeRecommendInstanceTypeResponseDataRecommendInstanceTypeZones(TeaMod
 class DescribeRecommendInstanceTypeResponseDataRecommendInstanceTypeInstanceType(TeaModel):
     def __init__(self, generation=None, instance_type_family=None, instance_type=None, support_io_optimized=None,
                  cores=None, memory=None):
-        self.generation = generation
-        self.instance_type_family = instance_type_family
-        self.instance_type = instance_type
-        self.support_io_optimized = support_io_optimized
-        self.cores = cores
-        self.memory = memory
+        self.generation = generation    # type: str
+        self.instance_type_family = instance_type_family  # type: str
+        self.instance_type = instance_type  # type: str
+        self.support_io_optimized = support_io_optimized  # type: str
+        self.cores = cores              # type: int
+        self.memory = memory            # type: int
 
     def validate(self):
         self.validate_required(self.generation, 'generation')
@@ -16317,13 +18101,13 @@ class DescribeRecommendInstanceTypeResponseDataRecommendInstanceTypeInstanceType
 class DescribeRecommendInstanceTypeResponseDataRecommendInstanceType(TeaModel):
     def __init__(self, region_id=None, commodity_code=None, scene=None, instance_charge_type=None,
                  spot_strategy=None, priority=None, zones=None, instance_type=None):
-        self.region_id = region_id
-        self.commodity_code = commodity_code
-        self.scene = scene
-        self.instance_charge_type = instance_charge_type
-        self.spot_strategy = spot_strategy
-        self.priority = priority
-        self.zones = zones  # type: DescribeRecommendInstanceTypeResponseDataRecommendInstanceTypeZones
+        self.region_id = region_id      # type: str
+        self.commodity_code = commodity_code  # type: str
+        self.scene = scene              # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.spot_strategy = spot_strategy  # type: str
+        self.priority = priority        # type: int
+        self.zones = zones              # type: DescribeRecommendInstanceTypeResponseDataRecommendInstanceTypeZones
         self.instance_type = instance_type  # type: DescribeRecommendInstanceTypeResponseDataRecommendInstanceTypeInstanceType
 
     def validate(self):
@@ -16380,7 +18164,7 @@ class DescribeRecommendInstanceTypeResponseDataRecommendInstanceType(TeaModel):
 
 class DescribeRecommendInstanceTypeResponseData(TeaModel):
     def __init__(self, recommend_instance_type=None):
-        self.recommend_instance_type = recommend_instance_type
+        self.recommend_instance_type = recommend_instance_type  # type: List[DescribeRecommendInstanceTypeResponseDataRecommendInstanceType]
 
     def validate(self):
         self.validate_required(self.recommend_instance_type, 'recommend_instance_type')
@@ -16414,17 +18198,17 @@ class ModifyPrepayInstanceSpecRequest(TeaModel):
     def __init__(self, instance_id=None, region_id=None, instance_type=None, operator_type=None, client_token=None,
                  auto_pay=None, migrate_across_zone=None, system_disk=None, reboot_time=None, end_time=None,
                  reboot_when_finished=None):
-        self.instance_id = instance_id
-        self.region_id = region_id
-        self.instance_type = instance_type
-        self.operator_type = operator_type
-        self.client_token = client_token
-        self.auto_pay = auto_pay
-        self.migrate_across_zone = migrate_across_zone
+        self.instance_id = instance_id  # type: str
+        self.region_id = region_id      # type: str
+        self.instance_type = instance_type  # type: str
+        self.operator_type = operator_type  # type: str
+        self.client_token = client_token  # type: str
+        self.auto_pay = auto_pay        # type: bool
+        self.migrate_across_zone = migrate_across_zone  # type: bool
         self.system_disk = system_disk  # type: ModifyPrepayInstanceSpecRequestSystemDisk
-        self.reboot_time = reboot_time
-        self.end_time = end_time
-        self.reboot_when_finished = reboot_when_finished
+        self.reboot_time = reboot_time  # type: str
+        self.end_time = end_time        # type: str
+        self.reboot_when_finished = reboot_when_finished  # type: bool
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -16472,7 +18256,7 @@ class ModifyPrepayInstanceSpecRequest(TeaModel):
 
 class ModifyPrepayInstanceSpecRequestSystemDisk(TeaModel):
     def __init__(self, category=None):
-        self.category = category
+        self.category = category        # type: str
 
     def validate(self):
         pass
@@ -16489,8 +18273,8 @@ class ModifyPrepayInstanceSpecRequestSystemDisk(TeaModel):
 
 class ModifyPrepayInstanceSpecResponse(TeaModel):
     def __init__(self, request_id=None, order_id=None):
-        self.request_id = request_id
-        self.order_id = order_id
+        self.request_id = request_id    # type: str
+        self.order_id = order_id        # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -16511,16 +18295,16 @@ class ModifyPrepayInstanceSpecResponse(TeaModel):
 class ModifyInstanceChargeTypeRequest(TeaModel):
     def __init__(self, instance_ids=None, region_id=None, period=None, period_unit=None, include_data_disks=None,
                  dry_run=None, auto_pay=None, instance_charge_type=None, client_token=None, is_detail_fee=None):
-        self.instance_ids = instance_ids
-        self.region_id = region_id
-        self.period = period
-        self.period_unit = period_unit
-        self.include_data_disks = include_data_disks
-        self.dry_run = dry_run
-        self.auto_pay = auto_pay
-        self.instance_charge_type = instance_charge_type
-        self.client_token = client_token
-        self.is_detail_fee = is_detail_fee
+        self.instance_ids = instance_ids  # type: str
+        self.region_id = region_id      # type: str
+        self.period = period            # type: int
+        self.period_unit = period_unit  # type: str
+        self.include_data_disks = include_data_disks  # type: bool
+        self.dry_run = dry_run          # type: bool
+        self.auto_pay = auto_pay        # type: bool
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.client_token = client_token  # type: str
+        self.is_detail_fee = is_detail_fee  # type: bool
 
     def validate(self):
         self.validate_required(self.instance_ids, 'instance_ids')
@@ -16556,8 +18340,8 @@ class ModifyInstanceChargeTypeRequest(TeaModel):
 
 class ModifyInstanceChargeTypeResponse(TeaModel):
     def __init__(self, request_id=None, order_id=None, fee_of_instances=None):
-        self.request_id = request_id
-        self.order_id = order_id
+        self.request_id = request_id    # type: str
+        self.order_id = order_id        # type: str
         self.fee_of_instances = fee_of_instances  # type: ModifyInstanceChargeTypeResponseFeeOfInstances
 
     def validate(self):
@@ -16590,9 +18374,9 @@ class ModifyInstanceChargeTypeResponse(TeaModel):
 
 class ModifyInstanceChargeTypeResponseFeeOfInstancesFeeOfInstance(TeaModel):
     def __init__(self, instance_id=None, fee=None, currency=None):
-        self.instance_id = instance_id
-        self.fee = fee
-        self.currency = currency
+        self.instance_id = instance_id  # type: str
+        self.fee = fee                  # type: str
+        self.currency = currency        # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -16615,7 +18399,7 @@ class ModifyInstanceChargeTypeResponseFeeOfInstancesFeeOfInstance(TeaModel):
 
 class ModifyInstanceChargeTypeResponseFeeOfInstances(TeaModel):
     def __init__(self, fee_of_instance=None):
-        self.fee_of_instance = fee_of_instance
+        self.fee_of_instance = fee_of_instance  # type: List[ModifyInstanceChargeTypeResponseFeeOfInstancesFeeOfInstance]
 
     def validate(self):
         self.validate_required(self.fee_of_instance, 'fee_of_instance')
@@ -16647,10 +18431,10 @@ class ModifyInstanceChargeTypeResponseFeeOfInstances(TeaModel):
 
 class JoinResourceGroupRequest(TeaModel):
     def __init__(self, resource_type=None, resource_id=None, region_id=None, resource_group_id=None):
-        self.resource_type = resource_type
-        self.resource_id = resource_id
-        self.region_id = region_id
-        self.resource_group_id = resource_group_id
+        self.resource_type = resource_type  # type: str
+        self.resource_id = resource_id  # type: str
+        self.region_id = region_id      # type: str
+        self.resource_group_id = resource_group_id  # type: str
 
     def validate(self):
         pass
@@ -16673,7 +18457,7 @@ class JoinResourceGroupRequest(TeaModel):
 
 class JoinResourceGroupResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -16690,10 +18474,10 @@ class JoinResourceGroupResponse(TeaModel):
 
 class ModifySecurityGroupPolicyRequest(TeaModel):
     def __init__(self, security_group_id=None, region_id=None, inner_access_policy=None, client_token=None):
-        self.security_group_id = security_group_id
-        self.region_id = region_id
-        self.inner_access_policy = inner_access_policy
-        self.client_token = client_token
+        self.security_group_id = security_group_id  # type: str
+        self.region_id = region_id      # type: str
+        self.inner_access_policy = inner_access_policy  # type: str
+        self.client_token = client_token  # type: str
 
     def validate(self):
         self.validate_required(self.security_group_id, 'security_group_id')
@@ -16718,7 +18502,7 @@ class ModifySecurityGroupPolicyRequest(TeaModel):
 
 class ModifySecurityGroupPolicyResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -16735,8 +18519,8 @@ class ModifySecurityGroupPolicyResponse(TeaModel):
 
 class DescribeSecurityGroupReferencesRequest(TeaModel):
     def __init__(self, region_id=None, security_group_id=None):
-        self.region_id = region_id
-        self.security_group_id = security_group_id
+        self.region_id = region_id      # type: str
+        self.security_group_id = security_group_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -16756,7 +18540,7 @@ class DescribeSecurityGroupReferencesRequest(TeaModel):
 
 class DescribeSecurityGroupReferencesResponse(TeaModel):
     def __init__(self, request_id=None, security_group_references=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.security_group_references = security_group_references  # type: DescribeSecurityGroupReferencesResponseSecurityGroupReferences
 
     def validate(self):
@@ -16786,8 +18570,8 @@ class DescribeSecurityGroupReferencesResponse(TeaModel):
 
 class DescribeSecurityGroupReferencesResponseSecurityGroupReferencesSecurityGroupReferenceReferencingSecurityGroupsReferencingSecurityGroup(TeaModel):
     def __init__(self, ali_uid=None, security_group_id=None):
-        self.ali_uid = ali_uid
-        self.security_group_id = security_group_id
+        self.ali_uid = ali_uid          # type: str
+        self.security_group_id = security_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.ali_uid, 'ali_uid')
@@ -16807,7 +18591,7 @@ class DescribeSecurityGroupReferencesResponseSecurityGroupReferencesSecurityGrou
 
 class DescribeSecurityGroupReferencesResponseSecurityGroupReferencesSecurityGroupReferenceReferencingSecurityGroups(TeaModel):
     def __init__(self, referencing_security_group=None):
-        self.referencing_security_group = referencing_security_group
+        self.referencing_security_group = referencing_security_group  # type: List[DescribeSecurityGroupReferencesResponseSecurityGroupReferencesSecurityGroupReferenceReferencingSecurityGroupsReferencingSecurityGroup]
 
     def validate(self):
         self.validate_required(self.referencing_security_group, 'referencing_security_group')
@@ -16839,7 +18623,7 @@ class DescribeSecurityGroupReferencesResponseSecurityGroupReferencesSecurityGrou
 
 class DescribeSecurityGroupReferencesResponseSecurityGroupReferencesSecurityGroupReference(TeaModel):
     def __init__(self, security_group_id=None, referencing_security_groups=None):
-        self.security_group_id = security_group_id
+        self.security_group_id = security_group_id  # type: str
         self.referencing_security_groups = referencing_security_groups  # type: DescribeSecurityGroupReferencesResponseSecurityGroupReferencesSecurityGroupReferenceReferencingSecurityGroups
 
     def validate(self):
@@ -16869,7 +18653,7 @@ class DescribeSecurityGroupReferencesResponseSecurityGroupReferencesSecurityGrou
 
 class DescribeSecurityGroupReferencesResponseSecurityGroupReferences(TeaModel):
     def __init__(self, security_group_reference=None):
-        self.security_group_reference = security_group_reference
+        self.security_group_reference = security_group_reference  # type: List[DescribeSecurityGroupReferencesResponseSecurityGroupReferencesSecurityGroupReference]
 
     def validate(self):
         self.validate_required(self.security_group_reference, 'security_group_reference')
@@ -16901,9 +18685,9 @@ class DescribeSecurityGroupReferencesResponseSecurityGroupReferences(TeaModel):
 
 class DetachClassicLinkVpcRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, vpc_id=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.vpc_id = vpc_id
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.vpc_id = vpc_id            # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -16926,7 +18710,7 @@ class DetachClassicLinkVpcRequest(TeaModel):
 
 class DetachClassicLinkVpcResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -16943,11 +18727,11 @@ class DetachClassicLinkVpcResponse(TeaModel):
 
 class DescribeClassicLinkInstancesRequest(TeaModel):
     def __init__(self, region_id=None, vpc_id=None, instance_id=None, page_number=None, page_size=None):
-        self.region_id = region_id
-        self.vpc_id = vpc_id
-        self.instance_id = instance_id
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.instance_id = instance_id  # type: str
+        self.page_number = page_number  # type: str
+        self.page_size = page_size      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -16972,11 +18756,11 @@ class DescribeClassicLinkInstancesRequest(TeaModel):
 
 class DescribeClassicLinkInstancesResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, links=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.links = links  # type: DescribeClassicLinkInstancesResponseLinks
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.links = links              # type: DescribeClassicLinkInstancesResponseLinks
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -17014,8 +18798,8 @@ class DescribeClassicLinkInstancesResponse(TeaModel):
 
 class DescribeClassicLinkInstancesResponseLinksLink(TeaModel):
     def __init__(self, instance_id=None, vpc_id=None):
-        self.instance_id = instance_id
-        self.vpc_id = vpc_id
+        self.instance_id = instance_id  # type: str
+        self.vpc_id = vpc_id            # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -17035,7 +18819,7 @@ class DescribeClassicLinkInstancesResponseLinksLink(TeaModel):
 
 class DescribeClassicLinkInstancesResponseLinks(TeaModel):
     def __init__(self, link=None):
-        self.link = link
+        self.link = link                # type: List[DescribeClassicLinkInstancesResponseLinksLink]
 
     def validate(self):
         self.validate_required(self.link, 'link')
@@ -17067,9 +18851,9 @@ class DescribeClassicLinkInstancesResponseLinks(TeaModel):
 
 class AttachClassicLinkVpcRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, vpc_id=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.vpc_id = vpc_id
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.vpc_id = vpc_id            # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -17092,7 +18876,7 @@ class AttachClassicLinkVpcRequest(TeaModel):
 
 class AttachClassicLinkVpcResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -17109,9 +18893,9 @@ class AttachClassicLinkVpcResponse(TeaModel):
 
 class DetachInstanceRamRoleRequest(TeaModel):
     def __init__(self, region_id=None, ram_role_name=None, instance_ids=None):
-        self.region_id = region_id
-        self.ram_role_name = ram_role_name
-        self.instance_ids = instance_ids
+        self.region_id = region_id      # type: str
+        self.ram_role_name = ram_role_name  # type: str
+        self.instance_ids = instance_ids  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -17134,10 +18918,10 @@ class DetachInstanceRamRoleRequest(TeaModel):
 class DetachInstanceRamRoleResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, fail_count=None, ram_role_name=None,
                  detach_instance_ram_role_results=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.fail_count = fail_count
-        self.ram_role_name = ram_role_name
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.fail_count = fail_count    # type: int
+        self.ram_role_name = ram_role_name  # type: str
         self.detach_instance_ram_role_results = detach_instance_ram_role_results  # type: DetachInstanceRamRoleResponseDetachInstanceRamRoleResults
 
     def validate(self):
@@ -17176,8 +18960,8 @@ class DetachInstanceRamRoleResponse(TeaModel):
 
 class DetachInstanceRamRoleResponseDetachInstanceRamRoleResultsDetachInstanceRamRoleResultInstanceRamRoleSetsInstanceRamRoleSet(TeaModel):
     def __init__(self, instance_id=None, ram_role_name=None):
-        self.instance_id = instance_id
-        self.ram_role_name = ram_role_name
+        self.instance_id = instance_id  # type: str
+        self.ram_role_name = ram_role_name  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -17197,7 +18981,7 @@ class DetachInstanceRamRoleResponseDetachInstanceRamRoleResultsDetachInstanceRam
 
 class DetachInstanceRamRoleResponseDetachInstanceRamRoleResultsDetachInstanceRamRoleResultInstanceRamRoleSets(TeaModel):
     def __init__(self, instance_ram_role_set=None):
-        self.instance_ram_role_set = instance_ram_role_set
+        self.instance_ram_role_set = instance_ram_role_set  # type: List[DetachInstanceRamRoleResponseDetachInstanceRamRoleResultsDetachInstanceRamRoleResultInstanceRamRoleSetsInstanceRamRoleSet]
 
     def validate(self):
         self.validate_required(self.instance_ram_role_set, 'instance_ram_role_set')
@@ -17229,10 +19013,10 @@ class DetachInstanceRamRoleResponseDetachInstanceRamRoleResultsDetachInstanceRam
 
 class DetachInstanceRamRoleResponseDetachInstanceRamRoleResultsDetachInstanceRamRoleResult(TeaModel):
     def __init__(self, instance_id=None, success=None, code=None, message=None, instance_ram_role_sets=None):
-        self.instance_id = instance_id
-        self.success = success
-        self.code = code
-        self.message = message
+        self.instance_id = instance_id  # type: str
+        self.success = success          # type: bool
+        self.code = code                # type: str
+        self.message = message          # type: str
         self.instance_ram_role_sets = instance_ram_role_sets  # type: DetachInstanceRamRoleResponseDetachInstanceRamRoleResultsDetachInstanceRamRoleResultInstanceRamRoleSets
 
     def validate(self):
@@ -17271,7 +19055,7 @@ class DetachInstanceRamRoleResponseDetachInstanceRamRoleResultsDetachInstanceRam
 
 class DetachInstanceRamRoleResponseDetachInstanceRamRoleResults(TeaModel):
     def __init__(self, detach_instance_ram_role_result=None):
-        self.detach_instance_ram_role_result = detach_instance_ram_role_result
+        self.detach_instance_ram_role_result = detach_instance_ram_role_result  # type: List[DetachInstanceRamRoleResponseDetachInstanceRamRoleResultsDetachInstanceRamRoleResult]
 
     def validate(self):
         self.validate_required(self.detach_instance_ram_role_result, 'detach_instance_ram_role_result')
@@ -17303,11 +19087,11 @@ class DetachInstanceRamRoleResponseDetachInstanceRamRoleResults(TeaModel):
 
 class DescribeInstanceRamRoleRequest(TeaModel):
     def __init__(self, page_number=None, page_size=None, region_id=None, instance_ids=None, ram_role_name=None):
-        self.page_number = page_number
-        self.page_size = page_size
-        self.region_id = region_id
-        self.instance_ids = instance_ids
-        self.ram_role_name = ram_role_name
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.region_id = region_id      # type: str
+        self.instance_ids = instance_ids  # type: str
+        self.ram_role_name = ram_role_name  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -17332,9 +19116,9 @@ class DescribeInstanceRamRoleRequest(TeaModel):
 
 class DescribeInstanceRamRoleResponse(TeaModel):
     def __init__(self, request_id=None, region_id=None, total_count=None, instance_ram_role_sets=None):
-        self.request_id = request_id
-        self.region_id = region_id
-        self.total_count = total_count
+        self.request_id = request_id    # type: str
+        self.region_id = region_id      # type: str
+        self.total_count = total_count  # type: int
         self.instance_ram_role_sets = instance_ram_role_sets  # type: DescribeInstanceRamRoleResponseInstanceRamRoleSets
 
     def validate(self):
@@ -17370,8 +19154,8 @@ class DescribeInstanceRamRoleResponse(TeaModel):
 
 class DescribeInstanceRamRoleResponseInstanceRamRoleSetsInstanceRamRoleSet(TeaModel):
     def __init__(self, instance_id=None, ram_role_name=None):
-        self.instance_id = instance_id
-        self.ram_role_name = ram_role_name
+        self.instance_id = instance_id  # type: str
+        self.ram_role_name = ram_role_name  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -17391,7 +19175,7 @@ class DescribeInstanceRamRoleResponseInstanceRamRoleSetsInstanceRamRoleSet(TeaMo
 
 class DescribeInstanceRamRoleResponseInstanceRamRoleSets(TeaModel):
     def __init__(self, instance_ram_role_set=None):
-        self.instance_ram_role_set = instance_ram_role_set
+        self.instance_ram_role_set = instance_ram_role_set  # type: List[DescribeInstanceRamRoleResponseInstanceRamRoleSetsInstanceRamRoleSet]
 
     def validate(self):
         self.validate_required(self.instance_ram_role_set, 'instance_ram_role_set')
@@ -17423,9 +19207,9 @@ class DescribeInstanceRamRoleResponseInstanceRamRoleSets(TeaModel):
 
 class AttachInstanceRamRoleRequest(TeaModel):
     def __init__(self, region_id=None, ram_role_name=None, instance_ids=None):
-        self.region_id = region_id
-        self.ram_role_name = ram_role_name
-        self.instance_ids = instance_ids
+        self.region_id = region_id      # type: str
+        self.ram_role_name = ram_role_name  # type: str
+        self.instance_ids = instance_ids  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -17449,10 +19233,10 @@ class AttachInstanceRamRoleRequest(TeaModel):
 class AttachInstanceRamRoleResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, fail_count=None, ram_role_name=None,
                  attach_instance_ram_role_results=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.fail_count = fail_count
-        self.ram_role_name = ram_role_name
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.fail_count = fail_count    # type: int
+        self.ram_role_name = ram_role_name  # type: str
         self.attach_instance_ram_role_results = attach_instance_ram_role_results  # type: AttachInstanceRamRoleResponseAttachInstanceRamRoleResults
 
     def validate(self):
@@ -17491,10 +19275,10 @@ class AttachInstanceRamRoleResponse(TeaModel):
 
 class AttachInstanceRamRoleResponseAttachInstanceRamRoleResultsAttachInstanceRamRoleResult(TeaModel):
     def __init__(self, instance_id=None, success=None, code=None, message=None):
-        self.instance_id = instance_id
-        self.success = success
-        self.code = code
-        self.message = message
+        self.instance_id = instance_id  # type: str
+        self.success = success          # type: bool
+        self.code = code                # type: str
+        self.message = message          # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -17520,7 +19304,7 @@ class AttachInstanceRamRoleResponseAttachInstanceRamRoleResultsAttachInstanceRam
 
 class AttachInstanceRamRoleResponseAttachInstanceRamRoleResults(TeaModel):
     def __init__(self, attach_instance_ram_role_result=None):
-        self.attach_instance_ram_role_result = attach_instance_ram_role_result
+        self.attach_instance_ram_role_result = attach_instance_ram_role_result  # type: List[AttachInstanceRamRoleResponseAttachInstanceRamRoleResultsAttachInstanceRamRoleResult]
 
     def validate(self):
         self.validate_required(self.attach_instance_ram_role_result, 'attach_instance_ram_role_result')
@@ -17552,9 +19336,9 @@ class AttachInstanceRamRoleResponseAttachInstanceRamRoleResults(TeaModel):
 
 class DescribeSnapshotPackageRequest(TeaModel):
     def __init__(self, page_number=None, page_size=None, region_id=None):
-        self.page_number = page_number
-        self.page_size = page_size
-        self.region_id = region_id
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -17575,10 +19359,10 @@ class DescribeSnapshotPackageRequest(TeaModel):
 
 class DescribeSnapshotPackageResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, snapshot_packages=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.snapshot_packages = snapshot_packages  # type: DescribeSnapshotPackageResponseSnapshotPackages
 
     def validate(self):
@@ -17617,10 +19401,10 @@ class DescribeSnapshotPackageResponse(TeaModel):
 
 class DescribeSnapshotPackageResponseSnapshotPackagesSnapshotPackage(TeaModel):
     def __init__(self, start_time=None, end_time=None, init_capacity=None, display_name=None):
-        self.start_time = start_time
-        self.end_time = end_time
-        self.init_capacity = init_capacity
-        self.display_name = display_name
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.init_capacity = init_capacity  # type: int
+        self.display_name = display_name  # type: str
 
     def validate(self):
         self.validate_required(self.start_time, 'start_time')
@@ -17646,7 +19430,7 @@ class DescribeSnapshotPackageResponseSnapshotPackagesSnapshotPackage(TeaModel):
 
 class DescribeSnapshotPackageResponseSnapshotPackages(TeaModel):
     def __init__(self, snapshot_package=None):
-        self.snapshot_package = snapshot_package
+        self.snapshot_package = snapshot_package  # type: List[DescribeSnapshotPackageResponseSnapshotPackagesSnapshotPackage]
 
     def validate(self):
         self.validate_required(self.snapshot_package, 'snapshot_package')
@@ -17681,23 +19465,23 @@ class ModifySecurityGroupRuleRequest(TeaModel):
                  source_group_id=None, source_group_owner_id=None, source_group_owner_account=None, source_cidr_ip=None,
                  ipv_6source_cidr_ip=None, source_port_range=None, dest_cidr_ip=None, ipv_6dest_cidr_ip=None, policy=None,
                  priority=None, nic_type=None, client_token=None, description=None):
-        self.region_id = region_id
-        self.security_group_id = security_group_id
-        self.ip_protocol = ip_protocol
-        self.port_range = port_range
-        self.source_group_id = source_group_id
-        self.source_group_owner_id = source_group_owner_id
-        self.source_group_owner_account = source_group_owner_account
-        self.source_cidr_ip = source_cidr_ip
-        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        self.source_port_range = source_port_range
-        self.dest_cidr_ip = dest_cidr_ip
-        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
-        self.policy = policy
-        self.priority = priority
-        self.nic_type = nic_type
-        self.client_token = client_token
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.ip_protocol = ip_protocol  # type: str
+        self.port_range = port_range    # type: str
+        self.source_group_id = source_group_id  # type: str
+        self.source_group_owner_id = source_group_owner_id  # type: int
+        self.source_group_owner_account = source_group_owner_account  # type: str
+        self.source_cidr_ip = source_cidr_ip  # type: str
+        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip  # type: str
+        self.source_port_range = source_port_range  # type: str
+        self.dest_cidr_ip = dest_cidr_ip  # type: str
+        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip  # type: str
+        self.policy = policy            # type: str
+        self.priority = priority        # type: str
+        self.nic_type = nic_type        # type: str
+        self.client_token = client_token  # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -17749,7 +19533,7 @@ class ModifySecurityGroupRuleRequest(TeaModel):
 
 class ModifySecurityGroupRuleResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -17766,11 +19550,11 @@ class ModifySecurityGroupRuleResponse(TeaModel):
 
 class DescribeSnapshotMonitorDataRequest(TeaModel):
     def __init__(self, region_id=None, start_time=None, end_time=None, period=None, category=None):
-        self.region_id = region_id
-        self.start_time = start_time
-        self.end_time = end_time
-        self.period = period
-        self.category = category
+        self.region_id = region_id      # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.period = period            # type: int
+        self.category = category        # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -17797,7 +19581,7 @@ class DescribeSnapshotMonitorDataRequest(TeaModel):
 
 class DescribeSnapshotMonitorDataResponse(TeaModel):
     def __init__(self, request_id=None, monitor_data=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.monitor_data = monitor_data  # type: DescribeSnapshotMonitorDataResponseMonitorData
 
     def validate(self):
@@ -17827,8 +19611,8 @@ class DescribeSnapshotMonitorDataResponse(TeaModel):
 
 class DescribeSnapshotMonitorDataResponseMonitorDataDataPoint(TeaModel):
     def __init__(self, time_stamp=None, size=None):
-        self.time_stamp = time_stamp
-        self.size = size
+        self.time_stamp = time_stamp    # type: str
+        self.size = size                # type: int
 
     def validate(self):
         self.validate_required(self.time_stamp, 'time_stamp')
@@ -17848,7 +19632,7 @@ class DescribeSnapshotMonitorDataResponseMonitorDataDataPoint(TeaModel):
 
 class DescribeSnapshotMonitorDataResponseMonitorData(TeaModel):
     def __init__(self, data_point=None):
-        self.data_point = data_point
+        self.data_point = data_point    # type: List[DescribeSnapshotMonitorDataResponseMonitorDataDataPoint]
 
     def validate(self):
         self.validate_required(self.data_point, 'data_point')
@@ -17880,11 +19664,11 @@ class DescribeSnapshotMonitorDataResponseMonitorData(TeaModel):
 
 class DescribeRenewalPriceRequest(TeaModel):
     def __init__(self, region_id=None, resource_type=None, resource_id=None, period=None, price_unit=None):
-        self.region_id = region_id
-        self.resource_type = resource_type
-        self.resource_id = resource_id
-        self.period = period
-        self.price_unit = price_unit
+        self.region_id = region_id      # type: str
+        self.resource_type = resource_type  # type: str
+        self.resource_id = resource_id  # type: str
+        self.period = period            # type: int
+        self.price_unit = price_unit    # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -17910,8 +19694,8 @@ class DescribeRenewalPriceRequest(TeaModel):
 
 class DescribeRenewalPriceResponse(TeaModel):
     def __init__(self, request_id=None, price_info=None):
-        self.request_id = request_id
-        self.price_info = price_info  # type: DescribeRenewalPriceResponsePriceInfo
+        self.request_id = request_id    # type: str
+        self.price_info = price_info    # type: DescribeRenewalPriceResponsePriceInfo
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -17940,8 +19724,8 @@ class DescribeRenewalPriceResponse(TeaModel):
 
 class DescribeRenewalPriceResponsePriceInfoRulesRule(TeaModel):
     def __init__(self, rule_id=None, description=None):
-        self.rule_id = rule_id
-        self.description = description
+        self.rule_id = rule_id          # type: int
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.rule_id, 'rule_id')
@@ -17961,7 +19745,7 @@ class DescribeRenewalPriceResponsePriceInfoRulesRule(TeaModel):
 
 class DescribeRenewalPriceResponsePriceInfoRules(TeaModel):
     def __init__(self, rule=None):
-        self.rule = rule
+        self.rule = rule                # type: List[DescribeRenewalPriceResponsePriceInfoRulesRule]
 
     def validate(self):
         self.validate_required(self.rule, 'rule')
@@ -17993,8 +19777,8 @@ class DescribeRenewalPriceResponsePriceInfoRules(TeaModel):
 
 class DescribeRenewalPriceResponsePriceInfoPriceDetailInfosResourcePriceModelSubRulesRule(TeaModel):
     def __init__(self, rule_id=None, description=None):
-        self.rule_id = rule_id
-        self.description = description
+        self.rule_id = rule_id          # type: int
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.rule_id, 'rule_id')
@@ -18014,7 +19798,7 @@ class DescribeRenewalPriceResponsePriceInfoPriceDetailInfosResourcePriceModelSub
 
 class DescribeRenewalPriceResponsePriceInfoPriceDetailInfosResourcePriceModelSubRules(TeaModel):
     def __init__(self, rule=None):
-        self.rule = rule
+        self.rule = rule                # type: List[DescribeRenewalPriceResponsePriceInfoPriceDetailInfosResourcePriceModelSubRulesRule]
 
     def validate(self):
         self.validate_required(self.rule, 'rule')
@@ -18046,11 +19830,11 @@ class DescribeRenewalPriceResponsePriceInfoPriceDetailInfosResourcePriceModelSub
 
 class DescribeRenewalPriceResponsePriceInfoPriceDetailInfosResourcePriceModel(TeaModel):
     def __init__(self, resource=None, original_price=None, discount_price=None, trade_price=None, sub_rules=None):
-        self.resource = resource
-        self.original_price = original_price
-        self.discount_price = discount_price
-        self.trade_price = trade_price
-        self.sub_rules = sub_rules  # type: DescribeRenewalPriceResponsePriceInfoPriceDetailInfosResourcePriceModelSubRules
+        self.resource = resource        # type: str
+        self.original_price = original_price  # type: float
+        self.discount_price = discount_price  # type: float
+        self.trade_price = trade_price  # type: float
+        self.sub_rules = sub_rules      # type: DescribeRenewalPriceResponsePriceInfoPriceDetailInfosResourcePriceModelSubRules
 
     def validate(self):
         self.validate_required(self.resource, 'resource')
@@ -18088,7 +19872,7 @@ class DescribeRenewalPriceResponsePriceInfoPriceDetailInfosResourcePriceModel(Te
 
 class DescribeRenewalPriceResponsePriceInfoPriceDetailInfos(TeaModel):
     def __init__(self, resource_price_model=None):
-        self.resource_price_model = resource_price_model
+        self.resource_price_model = resource_price_model  # type: List[DescribeRenewalPriceResponsePriceInfoPriceDetailInfosResourcePriceModel]
 
     def validate(self):
         self.validate_required(self.resource_price_model, 'resource_price_model')
@@ -18120,10 +19904,10 @@ class DescribeRenewalPriceResponsePriceInfoPriceDetailInfos(TeaModel):
 
 class DescribeRenewalPriceResponsePriceInfoPrice(TeaModel):
     def __init__(self, original_price=None, discount_price=None, trade_price=None, currency=None, detail_infos=None):
-        self.original_price = original_price
-        self.discount_price = discount_price
-        self.trade_price = trade_price
-        self.currency = currency
+        self.original_price = original_price  # type: float
+        self.discount_price = discount_price  # type: float
+        self.trade_price = trade_price  # type: float
+        self.currency = currency        # type: str
         self.detail_infos = detail_infos  # type: DescribeRenewalPriceResponsePriceInfoPriceDetailInfos
 
     def validate(self):
@@ -18162,8 +19946,8 @@ class DescribeRenewalPriceResponsePriceInfoPrice(TeaModel):
 
 class DescribeRenewalPriceResponsePriceInfo(TeaModel):
     def __init__(self, rules=None, price=None):
-        self.rules = rules  # type: DescribeRenewalPriceResponsePriceInfoRules
-        self.price = price  # type: DescribeRenewalPriceResponsePriceInfoPrice
+        self.rules = rules              # type: DescribeRenewalPriceResponsePriceInfoRules
+        self.price = price              # type: DescribeRenewalPriceResponsePriceInfoPrice
 
     def validate(self):
         self.validate_required(self.rules, 'rules')
@@ -18203,25 +19987,29 @@ class DescribePriceRequest(TeaModel):
     def __init__(self, region_id=None, resource_type=None, image_id=None, instance_type=None, io_optimized=None,
                  instance_network_type=None, internet_charge_type=None, internet_max_bandwidth_out=None, system_disk=None,
                  data_disk=None, period=None, price_unit=None, amount=None, offering_type=None, instance_amount=None,
-                 scope=None, platform=None, capacity=None):
-        self.region_id = region_id
-        self.resource_type = resource_type
-        self.image_id = image_id
-        self.instance_type = instance_type
-        self.io_optimized = io_optimized
-        self.instance_network_type = instance_network_type
-        self.internet_charge_type = internet_charge_type
-        self.internet_max_bandwidth_out = internet_max_bandwidth_out
+                 scope=None, platform=None, capacity=None, assurance_times=None, instance_cpu_core_count=None,
+                 instance_type_list=None):
+        self.region_id = region_id      # type: str
+        self.resource_type = resource_type  # type: str
+        self.image_id = image_id        # type: str
+        self.instance_type = instance_type  # type: str
+        self.io_optimized = io_optimized  # type: str
+        self.instance_network_type = instance_network_type  # type: str
+        self.internet_charge_type = internet_charge_type  # type: str
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out  # type: int
         self.system_disk = system_disk  # type: DescribePriceRequestSystemDisk
-        self.data_disk = data_disk
-        self.period = period
-        self.price_unit = price_unit
-        self.amount = amount
-        self.offering_type = offering_type
-        self.instance_amount = instance_amount
-        self.scope = scope
-        self.platform = platform
-        self.capacity = capacity
+        self.data_disk = data_disk      # type: List[DescribePriceRequestDataDisk]
+        self.period = period            # type: int
+        self.price_unit = price_unit    # type: str
+        self.amount = amount            # type: int
+        self.offering_type = offering_type  # type: str
+        self.instance_amount = instance_amount  # type: int
+        self.scope = scope              # type: str
+        self.platform = platform        # type: str
+        self.capacity = capacity        # type: int
+        self.assurance_times = assurance_times  # type: str
+        self.instance_cpu_core_count = instance_cpu_core_count  # type: int
+        self.instance_type_list = instance_type_list  # type: List[str]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -18260,6 +20048,9 @@ class DescribePriceRequest(TeaModel):
         result['Scope'] = self.scope
         result['Platform'] = self.platform
         result['Capacity'] = self.capacity
+        result['AssuranceTimes'] = self.assurance_times
+        result['InstanceCpuCoreCount'] = self.instance_cpu_core_count
+        result['InstanceTypeList'] = self.instance_type_list
         return result
 
     def from_map(self, map={}):
@@ -18291,14 +20082,17 @@ class DescribePriceRequest(TeaModel):
         self.scope = map.get('Scope')
         self.platform = map.get('Platform')
         self.capacity = map.get('Capacity')
+        self.assurance_times = map.get('AssuranceTimes')
+        self.instance_cpu_core_count = map.get('InstanceCpuCoreCount')
+        self.instance_type_list = map.get('InstanceTypeList')
         return self
 
 
 class DescribePriceRequestSystemDisk(TeaModel):
     def __init__(self, category=None, size=None, performance_level=None):
-        self.category = category
-        self.size = size
-        self.performance_level = performance_level
+        self.category = category        # type: str
+        self.size = size                # type: int
+        self.performance_level = performance_level  # type: str
 
     def validate(self):
         pass
@@ -18319,9 +20113,9 @@ class DescribePriceRequestSystemDisk(TeaModel):
 
 class DescribePriceRequestDataDisk(TeaModel):
     def __init__(self, size=None, category=None, performance_level=None):
-        self.size = size
-        self.category = category
-        self.performance_level = performance_level
+        self.size = size                # type: int
+        self.category = category        # type: str
+        self.performance_level = performance_level  # type: str
 
     def validate(self):
         pass
@@ -18342,8 +20136,8 @@ class DescribePriceRequestDataDisk(TeaModel):
 
 class DescribePriceResponse(TeaModel):
     def __init__(self, request_id=None, price_info=None):
-        self.request_id = request_id
-        self.price_info = price_info  # type: DescribePriceResponsePriceInfo
+        self.request_id = request_id    # type: str
+        self.price_info = price_info    # type: DescribePriceResponsePriceInfo
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -18372,8 +20166,8 @@ class DescribePriceResponse(TeaModel):
 
 class DescribePriceResponsePriceInfoRulesRule(TeaModel):
     def __init__(self, rule_id=None, description=None):
-        self.rule_id = rule_id
-        self.description = description
+        self.rule_id = rule_id          # type: int
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.rule_id, 'rule_id')
@@ -18393,7 +20187,7 @@ class DescribePriceResponsePriceInfoRulesRule(TeaModel):
 
 class DescribePriceResponsePriceInfoRules(TeaModel):
     def __init__(self, rule=None):
-        self.rule = rule
+        self.rule = rule                # type: List[DescribePriceResponsePriceInfoRulesRule]
 
     def validate(self):
         self.validate_required(self.rule, 'rule')
@@ -18425,8 +20219,8 @@ class DescribePriceResponsePriceInfoRules(TeaModel):
 
 class DescribePriceResponsePriceInfoPriceDetailInfosResourcePriceModelSubRulesRule(TeaModel):
     def __init__(self, rule_id=None, description=None):
-        self.rule_id = rule_id
-        self.description = description
+        self.rule_id = rule_id          # type: int
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.rule_id, 'rule_id')
@@ -18446,7 +20240,7 @@ class DescribePriceResponsePriceInfoPriceDetailInfosResourcePriceModelSubRulesRu
 
 class DescribePriceResponsePriceInfoPriceDetailInfosResourcePriceModelSubRules(TeaModel):
     def __init__(self, rule=None):
-        self.rule = rule
+        self.rule = rule                # type: List[DescribePriceResponsePriceInfoPriceDetailInfosResourcePriceModelSubRulesRule]
 
     def validate(self):
         self.validate_required(self.rule, 'rule')
@@ -18478,11 +20272,11 @@ class DescribePriceResponsePriceInfoPriceDetailInfosResourcePriceModelSubRules(T
 
 class DescribePriceResponsePriceInfoPriceDetailInfosResourcePriceModel(TeaModel):
     def __init__(self, resource=None, original_price=None, discount_price=None, trade_price=None, sub_rules=None):
-        self.resource = resource
-        self.original_price = original_price
-        self.discount_price = discount_price
-        self.trade_price = trade_price
-        self.sub_rules = sub_rules  # type: DescribePriceResponsePriceInfoPriceDetailInfosResourcePriceModelSubRules
+        self.resource = resource        # type: str
+        self.original_price = original_price  # type: float
+        self.discount_price = discount_price  # type: float
+        self.trade_price = trade_price  # type: float
+        self.sub_rules = sub_rules      # type: DescribePriceResponsePriceInfoPriceDetailInfosResourcePriceModelSubRules
 
     def validate(self):
         self.validate_required(self.resource, 'resource')
@@ -18520,7 +20314,7 @@ class DescribePriceResponsePriceInfoPriceDetailInfosResourcePriceModel(TeaModel)
 
 class DescribePriceResponsePriceInfoPriceDetailInfos(TeaModel):
     def __init__(self, resource_price_model=None):
-        self.resource_price_model = resource_price_model
+        self.resource_price_model = resource_price_model  # type: List[DescribePriceResponsePriceInfoPriceDetailInfosResourcePriceModel]
 
     def validate(self):
         self.validate_required(self.resource_price_model, 'resource_price_model')
@@ -18553,11 +20347,11 @@ class DescribePriceResponsePriceInfoPriceDetailInfos(TeaModel):
 class DescribePriceResponsePriceInfoPrice(TeaModel):
     def __init__(self, original_price=None, discount_price=None, trade_price=None,
                  reserved_instance_hour_price=None, currency=None, detail_infos=None):
-        self.original_price = original_price
-        self.discount_price = discount_price
-        self.trade_price = trade_price
-        self.reserved_instance_hour_price = reserved_instance_hour_price
-        self.currency = currency
+        self.original_price = original_price  # type: float
+        self.discount_price = discount_price  # type: float
+        self.trade_price = trade_price  # type: float
+        self.reserved_instance_hour_price = reserved_instance_hour_price  # type: float
+        self.currency = currency        # type: str
         self.detail_infos = detail_infos  # type: DescribePriceResponsePriceInfoPriceDetailInfos
 
     def validate(self):
@@ -18599,8 +20393,8 @@ class DescribePriceResponsePriceInfoPrice(TeaModel):
 
 class DescribePriceResponsePriceInfo(TeaModel):
     def __init__(self, rules=None, price=None):
-        self.rules = rules  # type: DescribePriceResponsePriceInfoRules
-        self.price = price  # type: DescribePriceResponsePriceInfoPrice
+        self.rules = rules              # type: DescribePriceResponsePriceInfoRules
+        self.price = price              # type: DescribePriceResponsePriceInfoPrice
 
     def validate(self):
         self.validate_required(self.rules, 'rules')
@@ -18638,10 +20432,10 @@ class DescribePriceResponsePriceInfo(TeaModel):
 
 class ModifyDeploymentSetAttributeRequest(TeaModel):
     def __init__(self, deployment_set_id=None, description=None, deployment_set_name=None, region_id=None):
-        self.deployment_set_id = deployment_set_id
-        self.description = description
-        self.deployment_set_name = deployment_set_name
-        self.region_id = region_id
+        self.deployment_set_id = deployment_set_id  # type: str
+        self.description = description  # type: str
+        self.deployment_set_name = deployment_set_name  # type: str
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.deployment_set_id, 'deployment_set_id')
@@ -18665,7 +20459,7 @@ class ModifyDeploymentSetAttributeRequest(TeaModel):
 
 class ModifyDeploymentSetAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -18683,15 +20477,15 @@ class ModifyDeploymentSetAttributeResponse(TeaModel):
 class DescribeDeploymentSetsRequest(TeaModel):
     def __init__(self, region_id=None, page_number=None, page_size=None, deployment_set_ids=None, network_type=None,
                  strategy=None, deployment_set_name=None, granularity=None, domain=None):
-        self.region_id = region_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.deployment_set_ids = deployment_set_ids
-        self.network_type = network_type
-        self.strategy = strategy
-        self.deployment_set_name = deployment_set_name
-        self.granularity = granularity
-        self.domain = domain
+        self.region_id = region_id      # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.deployment_set_ids = deployment_set_ids  # type: str
+        self.network_type = network_type  # type: str
+        self.strategy = strategy        # type: str
+        self.deployment_set_name = deployment_set_name  # type: str
+        self.granularity = granularity  # type: str
+        self.domain = domain            # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -18725,11 +20519,11 @@ class DescribeDeploymentSetsRequest(TeaModel):
 class DescribeDeploymentSetsResponse(TeaModel):
     def __init__(self, request_id=None, region_id=None, total_count=None, page_number=None, page_size=None,
                  deployment_sets=None):
-        self.request_id = request_id
-        self.region_id = region_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.region_id = region_id      # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.deployment_sets = deployment_sets  # type: DescribeDeploymentSetsResponseDeploymentSets
 
     def validate(self):
@@ -18772,7 +20566,7 @@ class DescribeDeploymentSetsResponse(TeaModel):
 class DescribeDeploymentSetsResponseDeploymentSetsDeploymentSetInstanceIds(TeaModel):
     def __init__(self, instance_id=None):
         # InstanceId
-        self.instance_id = instance_id
+        self.instance_id = instance_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -18791,16 +20585,16 @@ class DescribeDeploymentSetsResponseDeploymentSetsDeploymentSet(TeaModel):
     def __init__(self, deployment_set_id=None, deployment_set_description=None, deployment_set_name=None,
                  strategy=None, deployment_strategy=None, domain=None, granularity=None, group_count=None,
                  instance_amount=None, creation_time=None, instance_ids=None):
-        self.deployment_set_id = deployment_set_id
-        self.deployment_set_description = deployment_set_description
-        self.deployment_set_name = deployment_set_name
-        self.strategy = strategy
-        self.deployment_strategy = deployment_strategy
-        self.domain = domain
-        self.granularity = granularity
-        self.group_count = group_count
-        self.instance_amount = instance_amount
-        self.creation_time = creation_time
+        self.deployment_set_id = deployment_set_id  # type: str
+        self.deployment_set_description = deployment_set_description  # type: str
+        self.deployment_set_name = deployment_set_name  # type: str
+        self.strategy = strategy        # type: str
+        self.deployment_strategy = deployment_strategy  # type: str
+        self.domain = domain            # type: str
+        self.granularity = granularity  # type: str
+        self.group_count = group_count  # type: int
+        self.instance_amount = instance_amount  # type: int
+        self.creation_time = creation_time  # type: str
         self.instance_ids = instance_ids  # type: DescribeDeploymentSetsResponseDeploymentSetsDeploymentSetInstanceIds
 
     def validate(self):
@@ -18857,7 +20651,7 @@ class DescribeDeploymentSetsResponseDeploymentSetsDeploymentSet(TeaModel):
 
 class DescribeDeploymentSetsResponseDeploymentSets(TeaModel):
     def __init__(self, deployment_set=None):
-        self.deployment_set = deployment_set
+        self.deployment_set = deployment_set  # type: List[DescribeDeploymentSetsResponseDeploymentSetsDeploymentSet]
 
     def validate(self):
         self.validate_required(self.deployment_set, 'deployment_set')
@@ -18889,8 +20683,8 @@ class DescribeDeploymentSetsResponseDeploymentSets(TeaModel):
 
 class DeleteDeploymentSetRequest(TeaModel):
     def __init__(self, region_id=None, deployment_set_id=None):
-        self.region_id = region_id
-        self.deployment_set_id = deployment_set_id
+        self.region_id = region_id      # type: str
+        self.deployment_set_id = deployment_set_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -18910,7 +20704,7 @@ class DeleteDeploymentSetRequest(TeaModel):
 
 class DeleteDeploymentSetResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -18928,15 +20722,15 @@ class DeleteDeploymentSetResponse(TeaModel):
 class CreateDeploymentSetRequest(TeaModel):
     def __init__(self, region_id=None, on_unable_to_redeploy_failed_instance=None, description=None,
                  client_token=None, deployment_set_name=None, domain=None, granularity=None, strategy=None, group_count=None):
-        self.region_id = region_id
-        self.on_unable_to_redeploy_failed_instance = on_unable_to_redeploy_failed_instance
-        self.description = description
-        self.client_token = client_token
-        self.deployment_set_name = deployment_set_name
-        self.domain = domain
-        self.granularity = granularity
-        self.strategy = strategy
-        self.group_count = group_count
+        self.region_id = region_id      # type: str
+        self.on_unable_to_redeploy_failed_instance = on_unable_to_redeploy_failed_instance  # type: str
+        self.description = description  # type: str
+        self.client_token = client_token  # type: str
+        self.deployment_set_name = deployment_set_name  # type: str
+        self.domain = domain            # type: str
+        self.granularity = granularity  # type: str
+        self.strategy = strategy        # type: str
+        self.group_count = group_count  # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -18969,8 +20763,8 @@ class CreateDeploymentSetRequest(TeaModel):
 
 class CreateDeploymentSetResponse(TeaModel):
     def __init__(self, request_id=None, deployment_set_id=None):
-        self.request_id = request_id
-        self.deployment_set_id = deployment_set_id
+        self.request_id = request_id    # type: str
+        self.deployment_set_id = deployment_set_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -18990,11 +20784,11 @@ class CreateDeploymentSetResponse(TeaModel):
 
 class ImportKeyPairRequest(TeaModel):
     def __init__(self, region_id=None, key_pair_name=None, public_key_body=None, tag=None, resource_group_id=None):
-        self.region_id = region_id
-        self.key_pair_name = key_pair_name
-        self.public_key_body = public_key_body
-        self.tag = tag
-        self.resource_group_id = resource_group_id
+        self.region_id = region_id      # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.public_key_body = public_key_body  # type: str
+        self.tag = tag                  # type: List[ImportKeyPairRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -19036,12 +20830,11 @@ class ImportKeyPairRequest(TeaModel):
 
 class ImportKeyPairRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -19057,9 +20850,9 @@ class ImportKeyPairRequestTag(TeaModel):
 
 class ImportKeyPairResponse(TeaModel):
     def __init__(self, request_id=None, key_pair_name=None, key_pair_finger_print=None):
-        self.request_id = request_id
-        self.key_pair_name = key_pair_name
-        self.key_pair_finger_print = key_pair_finger_print
+        self.request_id = request_id    # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.key_pair_finger_print = key_pair_finger_print  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -19082,9 +20875,9 @@ class ImportKeyPairResponse(TeaModel):
 
 class DetachKeyPairRequest(TeaModel):
     def __init__(self, region_id=None, key_pair_name=None, instance_ids=None):
-        self.region_id = region_id
-        self.key_pair_name = key_pair_name
-        self.instance_ids = instance_ids
+        self.region_id = region_id      # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.instance_ids = instance_ids  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -19107,11 +20900,11 @@ class DetachKeyPairRequest(TeaModel):
 
 class DetachKeyPairResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, fail_count=None, key_pair_name=None, results=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.fail_count = fail_count
-        self.key_pair_name = key_pair_name
-        self.results = results  # type: DetachKeyPairResponseResults
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: str
+        self.fail_count = fail_count    # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.results = results          # type: DetachKeyPairResponseResults
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -19149,10 +20942,10 @@ class DetachKeyPairResponse(TeaModel):
 
 class DetachKeyPairResponseResultsResult(TeaModel):
     def __init__(self, instance_id=None, success=None, code=None, message=None):
-        self.instance_id = instance_id
-        self.success = success
-        self.code = code
-        self.message = message
+        self.instance_id = instance_id  # type: str
+        self.success = success          # type: str
+        self.code = code                # type: str
+        self.message = message          # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -19178,7 +20971,7 @@ class DetachKeyPairResponseResultsResult(TeaModel):
 
 class DetachKeyPairResponseResults(TeaModel):
     def __init__(self, result=None):
-        self.result = result
+        self.result = result            # type: List[DetachKeyPairResponseResultsResult]
 
     def validate(self):
         self.validate_required(self.result, 'result')
@@ -19211,13 +21004,13 @@ class DetachKeyPairResponseResults(TeaModel):
 class DescribeKeyPairsRequest(TeaModel):
     def __init__(self, region_id=None, key_pair_name=None, key_pair_finger_print=None, page_number=None,
                  page_size=None, tag=None, resource_group_id=None):
-        self.region_id = region_id
-        self.key_pair_name = key_pair_name
-        self.key_pair_finger_print = key_pair_finger_print
-        self.page_number = page_number
-        self.page_size = page_size
-        self.tag = tag
-        self.resource_group_id = resource_group_id
+        self.region_id = region_id      # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.key_pair_finger_print = key_pair_finger_print  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.tag = tag                  # type: List[DescribeKeyPairsRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -19261,12 +21054,11 @@ class DescribeKeyPairsRequest(TeaModel):
 
 class DescribeKeyPairsRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -19282,11 +21074,11 @@ class DescribeKeyPairsRequestTag(TeaModel):
 
 class DescribeKeyPairsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, key_pairs=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.key_pairs = key_pairs  # type: DescribeKeyPairsResponseKeyPairs
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.key_pairs = key_pairs      # type: DescribeKeyPairsResponseKeyPairs
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -19324,8 +21116,8 @@ class DescribeKeyPairsResponse(TeaModel):
 
 class DescribeKeyPairsResponseKeyPairsKeyPairTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -19345,7 +21137,7 @@ class DescribeKeyPairsResponseKeyPairsKeyPairTagsTag(TeaModel):
 
 class DescribeKeyPairsResponseKeyPairsKeyPairTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeKeyPairsResponseKeyPairsKeyPairTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -19378,11 +21170,11 @@ class DescribeKeyPairsResponseKeyPairsKeyPairTags(TeaModel):
 class DescribeKeyPairsResponseKeyPairsKeyPair(TeaModel):
     def __init__(self, key_pair_name=None, key_pair_finger_print=None, creation_time=None, resource_group_id=None,
                  tags=None):
-        self.key_pair_name = key_pair_name
-        self.key_pair_finger_print = key_pair_finger_print
-        self.creation_time = creation_time
-        self.resource_group_id = resource_group_id
-        self.tags = tags  # type: DescribeKeyPairsResponseKeyPairsKeyPairTags
+        self.key_pair_name = key_pair_name  # type: str
+        self.key_pair_finger_print = key_pair_finger_print  # type: str
+        self.creation_time = creation_time  # type: str
+        self.resource_group_id = resource_group_id  # type: str
+        self.tags = tags                # type: DescribeKeyPairsResponseKeyPairsKeyPairTags
 
     def validate(self):
         self.validate_required(self.key_pair_name, 'key_pair_name')
@@ -19420,7 +21212,7 @@ class DescribeKeyPairsResponseKeyPairsKeyPair(TeaModel):
 
 class DescribeKeyPairsResponseKeyPairs(TeaModel):
     def __init__(self, key_pair=None):
-        self.key_pair = key_pair
+        self.key_pair = key_pair        # type: List[DescribeKeyPairsResponseKeyPairsKeyPair]
 
     def validate(self):
         self.validate_required(self.key_pair, 'key_pair')
@@ -19452,8 +21244,8 @@ class DescribeKeyPairsResponseKeyPairs(TeaModel):
 
 class DeleteKeyPairsRequest(TeaModel):
     def __init__(self, region_id=None, key_pair_names=None):
-        self.region_id = region_id
-        self.key_pair_names = key_pair_names
+        self.region_id = region_id      # type: str
+        self.key_pair_names = key_pair_names  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -19473,7 +21265,7 @@ class DeleteKeyPairsRequest(TeaModel):
 
 class DeleteKeyPairsResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -19490,10 +21282,10 @@ class DeleteKeyPairsResponse(TeaModel):
 
 class CreateKeyPairRequest(TeaModel):
     def __init__(self, region_id=None, key_pair_name=None, tag=None, resource_group_id=None):
-        self.region_id = region_id
-        self.key_pair_name = key_pair_name
-        self.tag = tag
-        self.resource_group_id = resource_group_id
+        self.region_id = region_id      # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.tag = tag                  # type: List[CreateKeyPairRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -19532,12 +21324,11 @@ class CreateKeyPairRequest(TeaModel):
 
 class CreateKeyPairRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -19554,11 +21345,11 @@ class CreateKeyPairRequestTag(TeaModel):
 class CreateKeyPairResponse(TeaModel):
     def __init__(self, request_id=None, key_pair_id=None, key_pair_name=None, key_pair_finger_print=None,
                  private_key_body=None):
-        self.request_id = request_id
-        self.key_pair_id = key_pair_id
-        self.key_pair_name = key_pair_name
-        self.key_pair_finger_print = key_pair_finger_print
-        self.private_key_body = private_key_body
+        self.request_id = request_id    # type: str
+        self.key_pair_id = key_pair_id  # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.key_pair_finger_print = key_pair_finger_print  # type: str
+        self.private_key_body = private_key_body  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -19587,9 +21378,9 @@ class CreateKeyPairResponse(TeaModel):
 
 class AttachKeyPairRequest(TeaModel):
     def __init__(self, region_id=None, key_pair_name=None, instance_ids=None):
-        self.region_id = region_id
-        self.key_pair_name = key_pair_name
-        self.instance_ids = instance_ids
+        self.region_id = region_id      # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.instance_ids = instance_ids  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -19612,11 +21403,11 @@ class AttachKeyPairRequest(TeaModel):
 
 class AttachKeyPairResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, fail_count=None, key_pair_name=None, results=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.fail_count = fail_count
-        self.key_pair_name = key_pair_name
-        self.results = results  # type: AttachKeyPairResponseResults
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: str
+        self.fail_count = fail_count    # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.results = results          # type: AttachKeyPairResponseResults
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -19654,10 +21445,10 @@ class AttachKeyPairResponse(TeaModel):
 
 class AttachKeyPairResponseResultsResult(TeaModel):
     def __init__(self, instance_id=None, success=None, code=None, message=None):
-        self.instance_id = instance_id
-        self.success = success
-        self.code = code
-        self.message = message
+        self.instance_id = instance_id  # type: str
+        self.success = success          # type: str
+        self.code = code                # type: str
+        self.message = message          # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -19683,7 +21474,7 @@ class AttachKeyPairResponseResultsResult(TeaModel):
 
 class AttachKeyPairResponseResults(TeaModel):
     def __init__(self, result=None):
-        self.result = result
+        self.result = result            # type: List[AttachKeyPairResponseResultsResult]
 
     def validate(self):
         self.validate_required(self.result, 'result')
@@ -19716,12 +21507,12 @@ class AttachKeyPairResponseResults(TeaModel):
 class ModifyInstanceAutoRenewAttributeRequest(TeaModel):
     def __init__(self, instance_id=None, region_id=None, duration=None, auto_renew=None, renewal_status=None,
                  period_unit=None):
-        self.instance_id = instance_id
-        self.region_id = region_id
-        self.duration = duration
-        self.auto_renew = auto_renew
-        self.renewal_status = renewal_status
-        self.period_unit = period_unit
+        self.instance_id = instance_id  # type: str
+        self.region_id = region_id      # type: str
+        self.duration = duration        # type: int
+        self.auto_renew = auto_renew    # type: bool
+        self.renewal_status = renewal_status  # type: str
+        self.period_unit = period_unit  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -19749,7 +21540,7 @@ class ModifyInstanceAutoRenewAttributeRequest(TeaModel):
 
 class ModifyInstanceAutoRenewAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -19766,11 +21557,11 @@ class ModifyInstanceAutoRenewAttributeResponse(TeaModel):
 
 class DescribeInstanceAutoRenewAttributeRequest(TeaModel):
     def __init__(self, instance_id=None, region_id=None, renewal_status=None, page_size=None, page_number=None):
-        self.instance_id = instance_id
-        self.region_id = region_id
-        self.renewal_status = renewal_status
-        self.page_size = page_size
-        self.page_number = page_number
+        self.instance_id = instance_id  # type: str
+        self.region_id = region_id      # type: str
+        self.renewal_status = renewal_status  # type: str
+        self.page_size = page_size      # type: str
+        self.page_number = page_number  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -19796,10 +21587,10 @@ class DescribeInstanceAutoRenewAttributeRequest(TeaModel):
 class DescribeInstanceAutoRenewAttributeResponse(TeaModel):
     def __init__(self, request_id=None, page_number=None, page_size=None, total_count=None,
                  instance_renew_attributes=None):
-        self.request_id = request_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.total_count = total_count
+        self.request_id = request_id    # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.total_count = total_count  # type: int
         self.instance_renew_attributes = instance_renew_attributes  # type: DescribeInstanceAutoRenewAttributeResponseInstanceRenewAttributes
 
     def validate(self):
@@ -19839,11 +21630,11 @@ class DescribeInstanceAutoRenewAttributeResponse(TeaModel):
 class DescribeInstanceAutoRenewAttributeResponseInstanceRenewAttributesInstanceRenewAttribute(TeaModel):
     def __init__(self, instance_id=None, auto_renew_enabled=None, duration=None, period_unit=None,
                  renewal_status=None):
-        self.instance_id = instance_id
-        self.auto_renew_enabled = auto_renew_enabled
-        self.duration = duration
-        self.period_unit = period_unit
-        self.renewal_status = renewal_status
+        self.instance_id = instance_id  # type: str
+        self.auto_renew_enabled = auto_renew_enabled  # type: bool
+        self.duration = duration        # type: int
+        self.period_unit = period_unit  # type: str
+        self.renewal_status = renewal_status  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -19872,7 +21663,7 @@ class DescribeInstanceAutoRenewAttributeResponseInstanceRenewAttributesInstanceR
 
 class DescribeInstanceAutoRenewAttributeResponseInstanceRenewAttributes(TeaModel):
     def __init__(self, instance_renew_attribute=None):
-        self.instance_renew_attribute = instance_renew_attribute
+        self.instance_renew_attribute = instance_renew_attribute  # type: List[DescribeInstanceAutoRenewAttributeResponseInstanceRenewAttributesInstanceRenewAttribute]
 
     def validate(self):
         self.validate_required(self.instance_renew_attribute, 'instance_renew_attribute')
@@ -19905,12 +21696,12 @@ class DescribeInstanceAutoRenewAttributeResponseInstanceRenewAttributes(TeaModel
 class DescribeSnapshotLinksRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, disk_ids=None, snapshot_link_ids=None, page_number=None,
                  page_size=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.disk_ids = disk_ids
-        self.snapshot_link_ids = snapshot_link_ids
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.disk_ids = disk_ids        # type: str
+        self.snapshot_link_ids = snapshot_link_ids  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -19937,10 +21728,10 @@ class DescribeSnapshotLinksRequest(TeaModel):
 
 class DescribeSnapshotLinksResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, snapshot_links=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.snapshot_links = snapshot_links  # type: DescribeSnapshotLinksResponseSnapshotLinks
 
     def validate(self):
@@ -19981,17 +21772,17 @@ class DescribeSnapshotLinksResponseSnapshotLinksSnapshotLink(TeaModel):
     def __init__(self, snapshot_link_id=None, region_id=None, instance_id=None, instance_name=None,
                  source_disk_id=None, source_disk_name=None, source_disk_size=None, source_disk_type=None, category=None,
                  total_size=None, total_count=None):
-        self.snapshot_link_id = snapshot_link_id
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.instance_name = instance_name
-        self.source_disk_id = source_disk_id
-        self.source_disk_name = source_disk_name
-        self.source_disk_size = source_disk_size
-        self.source_disk_type = source_disk_type
-        self.category = category
-        self.total_size = total_size
-        self.total_count = total_count
+        self.snapshot_link_id = snapshot_link_id  # type: str
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.instance_name = instance_name  # type: str
+        self.source_disk_id = source_disk_id  # type: str
+        self.source_disk_name = source_disk_name  # type: str
+        self.source_disk_size = source_disk_size  # type: int
+        self.source_disk_type = source_disk_type  # type: str
+        self.category = category        # type: str
+        self.total_size = total_size    # type: int
+        self.total_count = total_count  # type: int
 
     def validate(self):
         self.validate_required(self.snapshot_link_id, 'snapshot_link_id')
@@ -20038,7 +21829,7 @@ class DescribeSnapshotLinksResponseSnapshotLinksSnapshotLink(TeaModel):
 
 class DescribeSnapshotLinksResponseSnapshotLinks(TeaModel):
     def __init__(self, snapshot_link=None):
-        self.snapshot_link = snapshot_link
+        self.snapshot_link = snapshot_link  # type: List[DescribeSnapshotLinksResponseSnapshotLinksSnapshotLink]
 
     def validate(self):
         self.validate_required(self.snapshot_link, 'snapshot_link')
@@ -20070,9 +21861,9 @@ class DescribeSnapshotLinksResponseSnapshotLinks(TeaModel):
 
 class ModifyInstanceAutoReleaseTimeRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None, auto_release_time=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.auto_release_time = auto_release_time
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.auto_release_time = auto_release_time  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -20093,7 +21884,7 @@ class ModifyInstanceAutoReleaseTimeRequest(TeaModel):
 
 class ModifyInstanceAutoReleaseTimeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -20110,11 +21901,11 @@ class ModifyInstanceAutoReleaseTimeResponse(TeaModel):
 
 class DescribeNewProjectEipMonitorDataRequest(TeaModel):
     def __init__(self, region_id=None, allocation_id=None, start_time=None, end_time=None, period=None):
-        self.region_id = region_id
-        self.allocation_id = allocation_id
-        self.start_time = start_time
-        self.end_time = end_time
-        self.period = period
+        self.region_id = region_id      # type: str
+        self.allocation_id = allocation_id  # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.period = period            # type: int
 
     def validate(self):
         self.validate_required(self.allocation_id, 'allocation_id')
@@ -20141,7 +21932,7 @@ class DescribeNewProjectEipMonitorDataRequest(TeaModel):
 
 class DescribeNewProjectEipMonitorDataResponse(TeaModel):
     def __init__(self, request_id=None, eip_monitor_datas=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.eip_monitor_datas = eip_monitor_datas  # type: DescribeNewProjectEipMonitorDataResponseEipMonitorDatas
 
     def validate(self):
@@ -20172,12 +21963,12 @@ class DescribeNewProjectEipMonitorDataResponse(TeaModel):
 class DescribeNewProjectEipMonitorDataResponseEipMonitorDatasEipMonitorData(TeaModel):
     def __init__(self, eip_rx=None, eip_tx=None, eip_flow=None, eip_bandwidth=None, eip_packets=None,
                  time_stamp=None):
-        self.eip_rx = eip_rx
-        self.eip_tx = eip_tx
-        self.eip_flow = eip_flow
-        self.eip_bandwidth = eip_bandwidth
-        self.eip_packets = eip_packets
-        self.time_stamp = time_stamp
+        self.eip_rx = eip_rx            # type: int
+        self.eip_tx = eip_tx            # type: int
+        self.eip_flow = eip_flow        # type: int
+        self.eip_bandwidth = eip_bandwidth  # type: int
+        self.eip_packets = eip_packets  # type: int
+        self.time_stamp = time_stamp    # type: str
 
     def validate(self):
         self.validate_required(self.eip_rx, 'eip_rx')
@@ -20209,7 +22000,7 @@ class DescribeNewProjectEipMonitorDataResponseEipMonitorDatasEipMonitorData(TeaM
 
 class DescribeNewProjectEipMonitorDataResponseEipMonitorDatas(TeaModel):
     def __init__(self, eip_monitor_data=None):
-        self.eip_monitor_data = eip_monitor_data
+        self.eip_monitor_data = eip_monitor_data  # type: List[DescribeNewProjectEipMonitorDataResponseEipMonitorDatasEipMonitorData]
 
     def validate(self):
         self.validate_required(self.eip_monitor_data, 'eip_monitor_data')
@@ -20241,8 +22032,8 @@ class DescribeNewProjectEipMonitorDataResponseEipMonitorDatas(TeaModel):
 
 class DescribeUserDataRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -20262,10 +22053,10 @@ class DescribeUserDataRequest(TeaModel):
 
 class DescribeUserDataResponse(TeaModel):
     def __init__(self, request_id=None, region_id=None, instance_id=None, user_data=None):
-        self.request_id = request_id
-        self.region_id = region_id
-        self.instance_id = instance_id
-        self.user_data = user_data
+        self.request_id = request_id    # type: str
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.user_data = user_data      # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -20291,10 +22082,10 @@ class DescribeUserDataResponse(TeaModel):
 
 class RemoveBandwidthPackageIpsRequest(TeaModel):
     def __init__(self, region_id=None, bandwidth_package_id=None, client_token=None, removed_ip_addresses=None):
-        self.region_id = region_id
-        self.bandwidth_package_id = bandwidth_package_id
-        self.client_token = client_token
-        self.removed_ip_addresses = removed_ip_addresses
+        self.region_id = region_id      # type: str
+        self.bandwidth_package_id = bandwidth_package_id  # type: str
+        self.client_token = client_token  # type: str
+        self.removed_ip_addresses = removed_ip_addresses  # type: List[str]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -20319,7 +22110,7 @@ class RemoveBandwidthPackageIpsRequest(TeaModel):
 
 class RemoveBandwidthPackageIpsResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -20337,14 +22128,14 @@ class RemoveBandwidthPackageIpsResponse(TeaModel):
 class ModifyForwardEntryRequest(TeaModel):
     def __init__(self, forward_table_id=None, forward_entry_id=None, external_ip=None, external_port=None,
                  internal_ip=None, internal_port=None, ip_protocol=None, region_id=None):
-        self.forward_table_id = forward_table_id
-        self.forward_entry_id = forward_entry_id
-        self.external_ip = external_ip
-        self.external_port = external_port
-        self.internal_ip = internal_ip
-        self.internal_port = internal_port
-        self.ip_protocol = ip_protocol
-        self.region_id = region_id
+        self.forward_table_id = forward_table_id  # type: str
+        self.forward_entry_id = forward_entry_id  # type: str
+        self.external_ip = external_ip  # type: str
+        self.external_port = external_port  # type: str
+        self.internal_ip = internal_ip  # type: str
+        self.internal_port = internal_port  # type: str
+        self.ip_protocol = ip_protocol  # type: str
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.forward_table_id, 'forward_table_id')
@@ -20377,7 +22168,7 @@ class ModifyForwardEntryRequest(TeaModel):
 
 class ModifyForwardEntryResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -20394,9 +22185,9 @@ class ModifyForwardEntryResponse(TeaModel):
 
 class ModifyBandwidthPackageSpecRequest(TeaModel):
     def __init__(self, region_id=None, bandwidth_package_id=None, bandwidth=None):
-        self.region_id = region_id
-        self.bandwidth_package_id = bandwidth_package_id
-        self.bandwidth = bandwidth
+        self.region_id = region_id      # type: str
+        self.bandwidth_package_id = bandwidth_package_id  # type: str
+        self.bandwidth = bandwidth      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -20419,7 +22210,7 @@ class ModifyBandwidthPackageSpecRequest(TeaModel):
 
 class ModifyBandwidthPackageSpecResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -20436,11 +22227,11 @@ class ModifyBandwidthPackageSpecResponse(TeaModel):
 
 class DescribeNatGatewaysRequest(TeaModel):
     def __init__(self, region_id=None, nat_gateway_id=None, vpc_id=None, page_number=None, page_size=None):
-        self.region_id = region_id
-        self.nat_gateway_id = nat_gateway_id
-        self.vpc_id = vpc_id
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.nat_gateway_id = nat_gateway_id  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -20465,10 +22256,10 @@ class DescribeNatGatewaysRequest(TeaModel):
 
 class DescribeNatGatewaysResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, nat_gateways=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.nat_gateways = nat_gateways  # type: DescribeNatGatewaysResponseNatGateways
 
     def validate(self):
@@ -20508,7 +22299,7 @@ class DescribeNatGatewaysResponse(TeaModel):
 class DescribeNatGatewaysResponseNatGatewaysNatGatewayForwardTableIds(TeaModel):
     def __init__(self, forward_table_id=None):
         # ForwardTableId
-        self.forward_table_id = forward_table_id
+        self.forward_table_id = forward_table_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.forward_table_id, 'forward_table_id')
@@ -20526,7 +22317,7 @@ class DescribeNatGatewaysResponseNatGatewaysNatGatewayForwardTableIds(TeaModel):
 class DescribeNatGatewaysResponseNatGatewaysNatGatewayBandwidthPackageIds(TeaModel):
     def __init__(self, bandwidth_package_id=None):
         # BandwidthPackageId
-        self.bandwidth_package_id = bandwidth_package_id
+        self.bandwidth_package_id = bandwidth_package_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.bandwidth_package_id, 'bandwidth_package_id')
@@ -20545,16 +22336,16 @@ class DescribeNatGatewaysResponseNatGatewaysNatGateway(TeaModel):
     def __init__(self, nat_gateway_id=None, region_id=None, name=None, description=None, vpc_id=None, spec=None,
                  instance_charge_type=None, business_status=None, creation_time=None, status=None, forward_table_ids=None,
                  bandwidth_package_ids=None):
-        self.nat_gateway_id = nat_gateway_id
-        self.region_id = region_id
-        self.name = name
-        self.description = description
-        self.vpc_id = vpc_id
-        self.spec = spec
-        self.instance_charge_type = instance_charge_type
-        self.business_status = business_status
-        self.creation_time = creation_time
-        self.status = status
+        self.nat_gateway_id = nat_gateway_id  # type: str
+        self.region_id = region_id      # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.spec = spec                # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.business_status = business_status  # type: str
+        self.creation_time = creation_time  # type: str
+        self.status = status            # type: str
         self.forward_table_ids = forward_table_ids  # type: DescribeNatGatewaysResponseNatGatewaysNatGatewayForwardTableIds
         self.bandwidth_package_ids = bandwidth_package_ids  # type: DescribeNatGatewaysResponseNatGatewaysNatGatewayBandwidthPackageIds
 
@@ -20624,7 +22415,7 @@ class DescribeNatGatewaysResponseNatGatewaysNatGateway(TeaModel):
 
 class DescribeNatGatewaysResponseNatGateways(TeaModel):
     def __init__(self, nat_gateway=None):
-        self.nat_gateway = nat_gateway
+        self.nat_gateway = nat_gateway  # type: List[DescribeNatGatewaysResponseNatGatewaysNatGateway]
 
     def validate(self):
         self.validate_required(self.nat_gateway, 'nat_gateway')
@@ -20657,11 +22448,11 @@ class DescribeNatGatewaysResponseNatGateways(TeaModel):
 class DescribeForwardTableEntriesRequest(TeaModel):
     def __init__(self, region_id=None, forward_table_id=None, forward_entry_id=None, page_number=None,
                  page_size=None):
-        self.region_id = region_id
-        self.forward_table_id = forward_table_id
-        self.forward_entry_id = forward_entry_id
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.forward_table_id = forward_table_id  # type: str
+        self.forward_entry_id = forward_entry_id  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -20688,10 +22479,10 @@ class DescribeForwardTableEntriesRequest(TeaModel):
 class DescribeForwardTableEntriesResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None,
                  forward_table_entries=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.forward_table_entries = forward_table_entries  # type: DescribeForwardTableEntriesResponseForwardTableEntries
 
     def validate(self):
@@ -20731,14 +22522,14 @@ class DescribeForwardTableEntriesResponse(TeaModel):
 class DescribeForwardTableEntriesResponseForwardTableEntriesForwardTableEntry(TeaModel):
     def __init__(self, forward_table_id=None, forward_entry_id=None, external_ip=None, external_port=None,
                  ip_protocol=None, internal_ip=None, internal_port=None, status=None):
-        self.forward_table_id = forward_table_id
-        self.forward_entry_id = forward_entry_id
-        self.external_ip = external_ip
-        self.external_port = external_port
-        self.ip_protocol = ip_protocol
-        self.internal_ip = internal_ip
-        self.internal_port = internal_port
-        self.status = status
+        self.forward_table_id = forward_table_id  # type: str
+        self.forward_entry_id = forward_entry_id  # type: str
+        self.external_ip = external_ip  # type: str
+        self.external_port = external_port  # type: str
+        self.ip_protocol = ip_protocol  # type: str
+        self.internal_ip = internal_ip  # type: str
+        self.internal_port = internal_port  # type: str
+        self.status = status            # type: str
 
     def validate(self):
         self.validate_required(self.forward_table_id, 'forward_table_id')
@@ -20776,7 +22567,7 @@ class DescribeForwardTableEntriesResponseForwardTableEntriesForwardTableEntry(Te
 
 class DescribeForwardTableEntriesResponseForwardTableEntries(TeaModel):
     def __init__(self, forward_table_entry=None):
-        self.forward_table_entry = forward_table_entry
+        self.forward_table_entry = forward_table_entry  # type: List[DescribeForwardTableEntriesResponseForwardTableEntriesForwardTableEntry]
 
     def validate(self):
         self.validate_required(self.forward_table_entry, 'forward_table_entry')
@@ -20809,11 +22600,11 @@ class DescribeForwardTableEntriesResponseForwardTableEntries(TeaModel):
 class DescribeBandwidthPackagesRequest(TeaModel):
     def __init__(self, region_id=None, bandwidth_package_id=None, nat_gateway_id=None, page_number=None,
                  page_size=None):
-        self.region_id = region_id
-        self.bandwidth_package_id = bandwidth_package_id
-        self.nat_gateway_id = nat_gateway_id
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.bandwidth_package_id = bandwidth_package_id  # type: str
+        self.nat_gateway_id = nat_gateway_id  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -20838,10 +22629,10 @@ class DescribeBandwidthPackagesRequest(TeaModel):
 
 class DescribeBandwidthPackagesResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, bandwidth_packages=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.bandwidth_packages = bandwidth_packages  # type: DescribeBandwidthPackagesResponseBandwidthPackages
 
     def validate(self):
@@ -20880,8 +22671,8 @@ class DescribeBandwidthPackagesResponse(TeaModel):
 
 class DescribeBandwidthPackagesResponseBandwidthPackagesBandwidthPackagePublicIpAddressesPublicIpAddresse(TeaModel):
     def __init__(self, allocation_id=None, ip_address=None):
-        self.allocation_id = allocation_id
-        self.ip_address = ip_address
+        self.allocation_id = allocation_id  # type: str
+        self.ip_address = ip_address    # type: str
 
     def validate(self):
         self.validate_required(self.allocation_id, 'allocation_id')
@@ -20901,7 +22692,7 @@ class DescribeBandwidthPackagesResponseBandwidthPackagesBandwidthPackagePublicIp
 
 class DescribeBandwidthPackagesResponseBandwidthPackagesBandwidthPackagePublicIpAddresses(TeaModel):
     def __init__(self, public_ip_addresse=None):
-        self.public_ip_addresse = public_ip_addresse
+        self.public_ip_addresse = public_ip_addresse  # type: List[DescribeBandwidthPackagesResponseBandwidthPackagesBandwidthPackagePublicIpAddressesPublicIpAddresse]
 
     def validate(self):
         self.validate_required(self.public_ip_addresse, 'public_ip_addresse')
@@ -20935,20 +22726,20 @@ class DescribeBandwidthPackagesResponseBandwidthPackagesBandwidthPackage(TeaMode
     def __init__(self, bandwidth_package_id=None, region_id=None, name=None, description=None, zone_id=None,
                  nat_gateway_id=None, bandwidth=None, instance_charge_type=None, internet_charge_type=None, business_status=None,
                  ip_count=None, isp=None, creation_time=None, status=None, public_ip_addresses=None):
-        self.bandwidth_package_id = bandwidth_package_id
-        self.region_id = region_id
-        self.name = name
-        self.description = description
-        self.zone_id = zone_id
-        self.nat_gateway_id = nat_gateway_id
-        self.bandwidth = bandwidth
-        self.instance_charge_type = instance_charge_type
-        self.internet_charge_type = internet_charge_type
-        self.business_status = business_status
-        self.ip_count = ip_count
-        self.isp = isp
-        self.creation_time = creation_time
-        self.status = status
+        self.bandwidth_package_id = bandwidth_package_id  # type: str
+        self.region_id = region_id      # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
+        self.zone_id = zone_id          # type: str
+        self.nat_gateway_id = nat_gateway_id  # type: str
+        self.bandwidth = bandwidth      # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.internet_charge_type = internet_charge_type  # type: str
+        self.business_status = business_status  # type: str
+        self.ip_count = ip_count        # type: str
+        self.isp = isp                  # type: str
+        self.creation_time = creation_time  # type: str
+        self.status = status            # type: str
         self.public_ip_addresses = public_ip_addresses  # type: DescribeBandwidthPackagesResponseBandwidthPackagesBandwidthPackagePublicIpAddresses
 
     def validate(self):
@@ -21017,7 +22808,7 @@ class DescribeBandwidthPackagesResponseBandwidthPackagesBandwidthPackage(TeaMode
 
 class DescribeBandwidthPackagesResponseBandwidthPackages(TeaModel):
     def __init__(self, bandwidth_package=None):
-        self.bandwidth_package = bandwidth_package
+        self.bandwidth_package = bandwidth_package  # type: List[DescribeBandwidthPackagesResponseBandwidthPackagesBandwidthPackage]
 
     def validate(self):
         self.validate_required(self.bandwidth_package, 'bandwidth_package')
@@ -21049,8 +22840,8 @@ class DescribeBandwidthPackagesResponseBandwidthPackages(TeaModel):
 
 class DeleteNatGatewayRequest(TeaModel):
     def __init__(self, region_id=None, nat_gateway_id=None):
-        self.region_id = region_id
-        self.nat_gateway_id = nat_gateway_id
+        self.region_id = region_id      # type: str
+        self.nat_gateway_id = nat_gateway_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -21070,7 +22861,7 @@ class DeleteNatGatewayRequest(TeaModel):
 
 class DeleteNatGatewayResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -21087,9 +22878,9 @@ class DeleteNatGatewayResponse(TeaModel):
 
 class DeleteForwardEntryRequest(TeaModel):
     def __init__(self, region_id=None, forward_table_id=None, forward_entry_id=None):
-        self.region_id = region_id
-        self.forward_table_id = forward_table_id
-        self.forward_entry_id = forward_entry_id
+        self.region_id = region_id      # type: str
+        self.forward_table_id = forward_table_id  # type: str
+        self.forward_entry_id = forward_entry_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -21112,7 +22903,7 @@ class DeleteForwardEntryRequest(TeaModel):
 
 class DeleteForwardEntryResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -21129,8 +22920,8 @@ class DeleteForwardEntryResponse(TeaModel):
 
 class DeleteBandwidthPackageRequest(TeaModel):
     def __init__(self, region_id=None, bandwidth_package_id=None):
-        self.region_id = region_id
-        self.bandwidth_package_id = bandwidth_package_id
+        self.region_id = region_id      # type: str
+        self.bandwidth_package_id = bandwidth_package_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -21150,7 +22941,7 @@ class DeleteBandwidthPackageRequest(TeaModel):
 
 class DeleteBandwidthPackageResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -21168,12 +22959,12 @@ class DeleteBandwidthPackageResponse(TeaModel):
 class CreateNatGatewayRequest(TeaModel):
     def __init__(self, region_id=None, vpc_id=None, name=None, description=None, client_token=None,
                  bandwidth_package=None):
-        self.region_id = region_id
-        self.vpc_id = vpc_id
-        self.name = name
-        self.description = description
-        self.client_token = client_token
-        self.bandwidth_package = bandwidth_package
+        self.region_id = region_id      # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
+        self.client_token = client_token  # type: str
+        self.bandwidth_package = bandwidth_package  # type: List[CreateNatGatewayRequestBandwidthPackage]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -21217,14 +23008,12 @@ class CreateNatGatewayRequest(TeaModel):
 
 class CreateNatGatewayRequestBandwidthPackage(TeaModel):
     def __init__(self, ip_count=None, bandwidth=None, zone=None):
-        self.ip_count = ip_count
-        self.bandwidth = bandwidth
-        self.zone = zone
+        self.ip_count = ip_count        # type: int
+        self.bandwidth = bandwidth      # type: int
+        self.zone = zone                # type: str
 
     def validate(self):
-        self.validate_required(self.ip_count, 'ip_count')
-        self.validate_required(self.bandwidth, 'bandwidth')
-        self.validate_required(self.zone, 'zone')
+        pass
 
     def to_map(self):
         result = {}
@@ -21242,8 +23031,8 @@ class CreateNatGatewayRequestBandwidthPackage(TeaModel):
 
 class CreateNatGatewayResponse(TeaModel):
     def __init__(self, request_id=None, nat_gateway_id=None, forward_table_ids=None, bandwidth_package_ids=None):
-        self.request_id = request_id
-        self.nat_gateway_id = nat_gateway_id
+        self.request_id = request_id    # type: str
+        self.nat_gateway_id = nat_gateway_id  # type: str
         self.forward_table_ids = forward_table_ids  # type: CreateNatGatewayResponseForwardTableIds
         self.bandwidth_package_ids = bandwidth_package_ids  # type: CreateNatGatewayResponseBandwidthPackageIds
 
@@ -21289,7 +23078,7 @@ class CreateNatGatewayResponse(TeaModel):
 
 class CreateNatGatewayResponseForwardTableIds(TeaModel):
     def __init__(self, forward_table_id=None):
-        self.forward_table_id = forward_table_id
+        self.forward_table_id = forward_table_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.forward_table_id, 'forward_table_id')
@@ -21306,7 +23095,7 @@ class CreateNatGatewayResponseForwardTableIds(TeaModel):
 
 class CreateNatGatewayResponseBandwidthPackageIds(TeaModel):
     def __init__(self, bandwidth_package_id=None):
-        self.bandwidth_package_id = bandwidth_package_id
+        self.bandwidth_package_id = bandwidth_package_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.bandwidth_package_id, 'bandwidth_package_id')
@@ -21324,13 +23113,13 @@ class CreateNatGatewayResponseBandwidthPackageIds(TeaModel):
 class CreateForwardEntryRequest(TeaModel):
     def __init__(self, region_id=None, forward_table_id=None, external_ip=None, external_port=None,
                  internal_ip=None, internal_port=None, ip_protocol=None):
-        self.region_id = region_id
-        self.forward_table_id = forward_table_id
-        self.external_ip = external_ip
-        self.external_port = external_port
-        self.internal_ip = internal_ip
-        self.internal_port = internal_port
-        self.ip_protocol = ip_protocol
+        self.region_id = region_id      # type: str
+        self.forward_table_id = forward_table_id  # type: str
+        self.external_ip = external_ip  # type: str
+        self.external_port = external_port  # type: str
+        self.internal_ip = internal_ip  # type: str
+        self.internal_port = internal_port  # type: str
+        self.ip_protocol = ip_protocol  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -21365,8 +23154,8 @@ class CreateForwardEntryRequest(TeaModel):
 
 class CreateForwardEntryResponse(TeaModel):
     def __init__(self, request_id=None, forward_entry_id=None):
-        self.request_id = request_id
-        self.forward_entry_id = forward_entry_id
+        self.request_id = request_id    # type: str
+        self.forward_entry_id = forward_entry_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -21386,10 +23175,10 @@ class CreateForwardEntryResponse(TeaModel):
 
 class AddBandwidthPackageIpsRequest(TeaModel):
     def __init__(self, region_id=None, bandwidth_package_id=None, ip_count=None, client_token=None):
-        self.region_id = region_id
-        self.bandwidth_package_id = bandwidth_package_id
-        self.ip_count = ip_count
-        self.client_token = client_token
+        self.region_id = region_id      # type: str
+        self.bandwidth_package_id = bandwidth_package_id  # type: str
+        self.ip_count = ip_count        # type: str
+        self.client_token = client_token  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -21414,7 +23203,7 @@ class AddBandwidthPackageIpsRequest(TeaModel):
 
 class AddBandwidthPackageIpsResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -21431,9 +23220,9 @@ class AddBandwidthPackageIpsResponse(TeaModel):
 
 class EipFillProductRequest(TeaModel):
     def __init__(self, data=None, client_token=None, user_cidr=None):
-        self.data = data
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.data = data                # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.data, 'data')
@@ -21454,11 +23243,11 @@ class EipFillProductRequest(TeaModel):
 
 class EipFillProductResponse(TeaModel):
     def __init__(self, request_id=None, data=None, code=None, success=None, message=None):
-        self.request_id = request_id
-        self.data = data
-        self.code = code
-        self.success = success
-        self.message = message
+        self.request_id = request_id    # type: str
+        self.data = data                # type: str
+        self.code = code                # type: str
+        self.success = success          # type: bool
+        self.message = message          # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -21487,9 +23276,9 @@ class EipFillProductResponse(TeaModel):
 
 class EipNotifyPaidRequest(TeaModel):
     def __init__(self, data=None, client_token=None, user_cidr=None):
-        self.data = data
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.data = data                # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.data, 'data')
@@ -21510,11 +23299,11 @@ class EipNotifyPaidRequest(TeaModel):
 
 class EipNotifyPaidResponse(TeaModel):
     def __init__(self, request_id=None, data=None, code=None, message=None, success=None):
-        self.request_id = request_id
-        self.data = data
-        self.code = code
-        self.message = message
-        self.success = success
+        self.request_id = request_id    # type: str
+        self.data = data                # type: str
+        self.code = code                # type: str
+        self.message = message          # type: str
+        self.success = success          # type: bool
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -21543,9 +23332,9 @@ class EipNotifyPaidResponse(TeaModel):
 
 class EipFillParamsRequest(TeaModel):
     def __init__(self, data=None, client_token=None, user_cidr=None):
-        self.data = data
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.data = data                # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.data, 'data')
@@ -21566,11 +23355,11 @@ class EipFillParamsRequest(TeaModel):
 
 class EipFillParamsResponse(TeaModel):
     def __init__(self, request_id=None, data=None, code=None, success=None, message=None):
-        self.request_id = request_id
-        self.data = data
-        self.code = code
-        self.success = success
-        self.message = message
+        self.request_id = request_id    # type: str
+        self.data = data                # type: str
+        self.code = code                # type: str
+        self.success = success          # type: bool
+        self.message = message          # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -21601,15 +23390,15 @@ class ModifyAutoSnapshotPolicyExRequest(TeaModel):
     def __init__(self, region_id=None, auto_snapshot_policy_id=None, auto_snapshot_policy_name=None,
                  time_points=None, repeat_weekdays=None, retention_days=None, enable_cross_region_copy=None,
                  target_copy_regions=None, copied_snapshots_retention_days=None):
-        self.region_id = region_id
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        self.auto_snapshot_policy_name = auto_snapshot_policy_name
-        self.time_points = time_points
-        self.repeat_weekdays = repeat_weekdays
-        self.retention_days = retention_days
-        self.enable_cross_region_copy = enable_cross_region_copy
-        self.target_copy_regions = target_copy_regions
-        self.copied_snapshots_retention_days = copied_snapshots_retention_days
+        self.region_id = region_id      # type: str
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id  # type: str
+        self.auto_snapshot_policy_name = auto_snapshot_policy_name  # type: str
+        self.time_points = time_points  # type: str
+        self.repeat_weekdays = repeat_weekdays  # type: str
+        self.retention_days = retention_days  # type: int
+        self.enable_cross_region_copy = enable_cross_region_copy  # type: bool
+        self.target_copy_regions = target_copy_regions  # type: str
+        self.copied_snapshots_retention_days = copied_snapshots_retention_days  # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -21643,7 +23432,7 @@ class ModifyAutoSnapshotPolicyExRequest(TeaModel):
 
 class ModifyAutoSnapshotPolicyExResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -21660,11 +23449,11 @@ class ModifyAutoSnapshotPolicyExResponse(TeaModel):
 
 class DescribeAutoSnapshotPolicyExRequest(TeaModel):
     def __init__(self, region_id=None, auto_snapshot_policy_id=None, page_number=None, page_size=None, tag=None):
-        self.region_id = region_id
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.tag = tag
+        self.region_id = region_id      # type: str
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.tag = tag                  # type: List[DescribeAutoSnapshotPolicyExRequestTag]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -21704,12 +23493,11 @@ class DescribeAutoSnapshotPolicyExRequest(TeaModel):
 
 class DescribeAutoSnapshotPolicyExRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -21726,10 +23514,10 @@ class DescribeAutoSnapshotPolicyExRequestTag(TeaModel):
 class DescribeAutoSnapshotPolicyExResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None,
                  auto_snapshot_policies=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.auto_snapshot_policies = auto_snapshot_policies  # type: DescribeAutoSnapshotPolicyExResponseAutoSnapshotPolicies
 
     def validate(self):
@@ -21768,8 +23556,8 @@ class DescribeAutoSnapshotPolicyExResponse(TeaModel):
 
 class DescribeAutoSnapshotPolicyExResponseAutoSnapshotPoliciesAutoSnapshotPolicyTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -21789,7 +23577,7 @@ class DescribeAutoSnapshotPolicyExResponseAutoSnapshotPoliciesAutoSnapshotPolicy
 
 class DescribeAutoSnapshotPolicyExResponseAutoSnapshotPoliciesAutoSnapshotPolicyTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeAutoSnapshotPolicyExResponseAutoSnapshotPoliciesAutoSnapshotPolicyTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -21824,20 +23612,20 @@ class DescribeAutoSnapshotPolicyExResponseAutoSnapshotPoliciesAutoSnapshotPolicy
                  time_points=None, repeat_weekdays=None, retention_days=None, disk_nums=None, volume_nums=None,
                  creation_time=None, status=None, enable_cross_region_copy=None, target_copy_regions=None,
                  copied_snapshots_retention_days=None, tags=None):
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        self.region_id = region_id
-        self.auto_snapshot_policy_name = auto_snapshot_policy_name
-        self.time_points = time_points
-        self.repeat_weekdays = repeat_weekdays
-        self.retention_days = retention_days
-        self.disk_nums = disk_nums
-        self.volume_nums = volume_nums
-        self.creation_time = creation_time
-        self.status = status
-        self.enable_cross_region_copy = enable_cross_region_copy
-        self.target_copy_regions = target_copy_regions
-        self.copied_snapshots_retention_days = copied_snapshots_retention_days
-        self.tags = tags  # type: DescribeAutoSnapshotPolicyExResponseAutoSnapshotPoliciesAutoSnapshotPolicyTags
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id  # type: str
+        self.region_id = region_id      # type: str
+        self.auto_snapshot_policy_name = auto_snapshot_policy_name  # type: str
+        self.time_points = time_points  # type: str
+        self.repeat_weekdays = repeat_weekdays  # type: str
+        self.retention_days = retention_days  # type: int
+        self.disk_nums = disk_nums      # type: int
+        self.volume_nums = volume_nums  # type: int
+        self.creation_time = creation_time  # type: str
+        self.status = status            # type: str
+        self.enable_cross_region_copy = enable_cross_region_copy  # type: bool
+        self.target_copy_regions = target_copy_regions  # type: str
+        self.copied_snapshots_retention_days = copied_snapshots_retention_days  # type: int
+        self.tags = tags                # type: DescribeAutoSnapshotPolicyExResponseAutoSnapshotPoliciesAutoSnapshotPolicyTags
 
     def validate(self):
         self.validate_required(self.auto_snapshot_policy_id, 'auto_snapshot_policy_id')
@@ -21902,7 +23690,7 @@ class DescribeAutoSnapshotPolicyExResponseAutoSnapshotPoliciesAutoSnapshotPolicy
 
 class DescribeAutoSnapshotPolicyExResponseAutoSnapshotPolicies(TeaModel):
     def __init__(self, auto_snapshot_policy=None):
-        self.auto_snapshot_policy = auto_snapshot_policy
+        self.auto_snapshot_policy = auto_snapshot_policy  # type: List[DescribeAutoSnapshotPolicyExResponseAutoSnapshotPoliciesAutoSnapshotPolicy]
 
     def validate(self):
         self.validate_required(self.auto_snapshot_policy, 'auto_snapshot_policy')
@@ -21934,8 +23722,8 @@ class DescribeAutoSnapshotPolicyExResponseAutoSnapshotPolicies(TeaModel):
 
 class DeleteAutoSnapshotPolicyRequest(TeaModel):
     def __init__(self, region_id=None, auto_snapshot_policy_id=None):
-        self.region_id = region_id
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
+        self.region_id = region_id      # type: str
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -21955,7 +23743,7 @@ class DeleteAutoSnapshotPolicyRequest(TeaModel):
 
 class DeleteAutoSnapshotPolicyResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -21974,15 +23762,15 @@ class CreateAutoSnapshotPolicyRequest(TeaModel):
     def __init__(self, region_id=None, auto_snapshot_policy_name=None, time_points=None, repeat_weekdays=None,
                  retention_days=None, enable_cross_region_copy=None, target_copy_regions=None,
                  copied_snapshots_retention_days=None, tag=None):
-        self.region_id = region_id
-        self.auto_snapshot_policy_name = auto_snapshot_policy_name
-        self.time_points = time_points
-        self.repeat_weekdays = repeat_weekdays
-        self.retention_days = retention_days
-        self.enable_cross_region_copy = enable_cross_region_copy
-        self.target_copy_regions = target_copy_regions
-        self.copied_snapshots_retention_days = copied_snapshots_retention_days
-        self.tag = tag
+        self.region_id = region_id      # type: str
+        self.auto_snapshot_policy_name = auto_snapshot_policy_name  # type: str
+        self.time_points = time_points  # type: str
+        self.repeat_weekdays = repeat_weekdays  # type: str
+        self.retention_days = retention_days  # type: int
+        self.enable_cross_region_copy = enable_cross_region_copy  # type: bool
+        self.target_copy_regions = target_copy_regions  # type: str
+        self.copied_snapshots_retention_days = copied_snapshots_retention_days  # type: int
+        self.tag = tag                  # type: List[CreateAutoSnapshotPolicyRequestTag]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -22033,12 +23821,11 @@ class CreateAutoSnapshotPolicyRequest(TeaModel):
 
 class CreateAutoSnapshotPolicyRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -22054,8 +23841,8 @@ class CreateAutoSnapshotPolicyRequestTag(TeaModel):
 
 class CreateAutoSnapshotPolicyResponse(TeaModel):
     def __init__(self, request_id=None, auto_snapshot_policy_id=None):
-        self.request_id = request_id
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
+        self.request_id = request_id    # type: str
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -22075,8 +23862,8 @@ class CreateAutoSnapshotPolicyResponse(TeaModel):
 
 class CancelAutoSnapshotPolicyRequest(TeaModel):
     def __init__(self, region_id=None, disk_ids=None):
-        self.region_id = region_id
-        self.disk_ids = disk_ids
+        self.region_id = region_id      # type: str
+        self.disk_ids = disk_ids        # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -22096,7 +23883,7 @@ class CancelAutoSnapshotPolicyRequest(TeaModel):
 
 class CancelAutoSnapshotPolicyResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -22113,9 +23900,9 @@ class CancelAutoSnapshotPolicyResponse(TeaModel):
 
 class ApplyAutoSnapshotPolicyRequest(TeaModel):
     def __init__(self, region_id=None, auto_snapshot_policy_id=None, disk_ids=None):
-        self.region_id = region_id
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        self.disk_ids = disk_ids
+        self.region_id = region_id      # type: str
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id  # type: str
+        self.disk_ids = disk_ids        # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -22138,7 +23925,7 @@ class ApplyAutoSnapshotPolicyRequest(TeaModel):
 
 class ApplyAutoSnapshotPolicyResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -22155,10 +23942,10 @@ class ApplyAutoSnapshotPolicyResponse(TeaModel):
 
 class DescribeImageSupportInstanceTypesRequest(TeaModel):
     def __init__(self, region_id=None, image_id=None, action_type=None, filter=None):
-        self.region_id = region_id
-        self.image_id = image_id
-        self.action_type = action_type
-        self.filter = filter
+        self.region_id = region_id      # type: str
+        self.image_id = image_id        # type: str
+        self.action_type = action_type  # type: str
+        self.filter = filter            # type: List[DescribeImageSupportInstanceTypesRequestFilter]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -22196,12 +23983,11 @@ class DescribeImageSupportInstanceTypesRequest(TeaModel):
 
 class DescribeImageSupportInstanceTypesRequestFilter(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -22217,9 +24003,9 @@ class DescribeImageSupportInstanceTypesRequestFilter(TeaModel):
 
 class DescribeImageSupportInstanceTypesResponse(TeaModel):
     def __init__(self, request_id=None, region_id=None, image_id=None, instance_types=None):
-        self.request_id = request_id
-        self.region_id = region_id
-        self.image_id = image_id
+        self.request_id = request_id    # type: str
+        self.region_id = region_id      # type: str
+        self.image_id = image_id        # type: str
         self.instance_types = instance_types  # type: DescribeImageSupportInstanceTypesResponseInstanceTypes
 
     def validate(self):
@@ -22255,10 +24041,10 @@ class DescribeImageSupportInstanceTypesResponse(TeaModel):
 
 class DescribeImageSupportInstanceTypesResponseInstanceTypesInstanceType(TeaModel):
     def __init__(self, instance_type_id=None, cpu_core_count=None, memory_size=None, instance_type_family=None):
-        self.instance_type_id = instance_type_id
-        self.cpu_core_count = cpu_core_count
-        self.memory_size = memory_size
-        self.instance_type_family = instance_type_family
+        self.instance_type_id = instance_type_id  # type: str
+        self.cpu_core_count = cpu_core_count  # type: int
+        self.memory_size = memory_size  # type: float
+        self.instance_type_family = instance_type_family  # type: str
 
     def validate(self):
         self.validate_required(self.instance_type_id, 'instance_type_id')
@@ -22284,7 +24070,7 @@ class DescribeImageSupportInstanceTypesResponseInstanceTypesInstanceType(TeaMode
 
 class DescribeImageSupportInstanceTypesResponseInstanceTypes(TeaModel):
     def __init__(self, instance_type=None):
-        self.instance_type = instance_type
+        self.instance_type = instance_type  # type: List[DescribeImageSupportInstanceTypesResponseInstanceTypesInstanceType]
 
     def validate(self):
         self.validate_required(self.instance_type, 'instance_type')
@@ -22316,10 +24102,10 @@ class DescribeImageSupportInstanceTypesResponseInstanceTypes(TeaModel):
 
 class TerminateVirtualBorderRouterRequest(TeaModel):
     def __init__(self, region_id=None, vbr_id=None, client_token=None, user_cidr=None):
-        self.region_id = region_id
-        self.vbr_id = vbr_id
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.vbr_id = vbr_id            # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -22343,7 +24129,7 @@ class TerminateVirtualBorderRouterRequest(TeaModel):
 
 class TerminateVirtualBorderRouterResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -22360,10 +24146,10 @@ class TerminateVirtualBorderRouterResponse(TeaModel):
 
 class TerminatePhysicalConnectionRequest(TeaModel):
     def __init__(self, region_id=None, physical_connection_id=None, client_token=None, user_cidr=None):
-        self.region_id = region_id
-        self.physical_connection_id = physical_connection_id
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.physical_connection_id = physical_connection_id  # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -22387,7 +24173,7 @@ class TerminatePhysicalConnectionRequest(TeaModel):
 
 class TerminatePhysicalConnectionResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -22404,10 +24190,10 @@ class TerminatePhysicalConnectionResponse(TeaModel):
 
 class RecoverVirtualBorderRouterRequest(TeaModel):
     def __init__(self, region_id=None, vbr_id=None, client_token=None, user_cidr=None):
-        self.region_id = region_id
-        self.vbr_id = vbr_id
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.vbr_id = vbr_id            # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -22431,7 +24217,7 @@ class RecoverVirtualBorderRouterRequest(TeaModel):
 
 class RecoverVirtualBorderRouterResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -22449,17 +24235,17 @@ class RecoverVirtualBorderRouterResponse(TeaModel):
 class ModifyVirtualBorderRouterAttributeRequest(TeaModel):
     def __init__(self, region_id=None, vbr_id=None, vlan_id=None, circuit_code=None, local_gateway_ip=None,
                  peer_gateway_ip=None, peering_subnet_mask=None, description=None, name=None, client_token=None, user_cidr=None):
-        self.region_id = region_id
-        self.vbr_id = vbr_id
-        self.vlan_id = vlan_id
-        self.circuit_code = circuit_code
-        self.local_gateway_ip = local_gateway_ip
-        self.peer_gateway_ip = peer_gateway_ip
-        self.peering_subnet_mask = peering_subnet_mask
-        self.description = description
-        self.name = name
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.vbr_id = vbr_id            # type: str
+        self.vlan_id = vlan_id          # type: int
+        self.circuit_code = circuit_code  # type: str
+        self.local_gateway_ip = local_gateway_ip  # type: str
+        self.peer_gateway_ip = peer_gateway_ip  # type: str
+        self.peering_subnet_mask = peering_subnet_mask  # type: str
+        self.description = description  # type: str
+        self.name = name                # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -22497,7 +24283,7 @@ class ModifyVirtualBorderRouterAttributeRequest(TeaModel):
 
 class ModifyVirtualBorderRouterAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -22516,18 +24302,18 @@ class ModifyPhysicalConnectionAttributeRequest(TeaModel):
     def __init__(self, region_id=None, physical_connection_id=None, line_operator=None, bandwidth=None,
                  peer_location=None, port_type=None, redundant_physical_connection_id=None, description=None, name=None,
                  client_token=None, user_cidr=None, circuit_code=None):
-        self.region_id = region_id
-        self.physical_connection_id = physical_connection_id
-        self.line_operator = line_operator
-        self.bandwidth = bandwidth
-        self.peer_location = peer_location
-        self.port_type = port_type
-        self.redundant_physical_connection_id = redundant_physical_connection_id
-        self.description = description
-        self.name = name
-        self.client_token = client_token
-        self.user_cidr = user_cidr
-        self.circuit_code = circuit_code
+        self.region_id = region_id      # type: str
+        self.physical_connection_id = physical_connection_id  # type: str
+        self.line_operator = line_operator  # type: str
+        self.bandwidth = bandwidth      # type: int
+        self.peer_location = peer_location  # type: str
+        self.port_type = port_type      # type: str
+        self.redundant_physical_connection_id = redundant_physical_connection_id  # type: str
+        self.description = description  # type: str
+        self.name = name                # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
+        self.circuit_code = circuit_code  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -22567,7 +24353,7 @@ class ModifyPhysicalConnectionAttributeRequest(TeaModel):
 
 class ModifyPhysicalConnectionAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -22584,10 +24370,10 @@ class ModifyPhysicalConnectionAttributeResponse(TeaModel):
 
 class EnablePhysicalConnectionRequest(TeaModel):
     def __init__(self, region_id=None, physical_connection_id=None, client_token=None, user_cidr=None):
-        self.region_id = region_id
-        self.physical_connection_id = physical_connection_id
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.physical_connection_id = physical_connection_id  # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -22612,7 +24398,7 @@ class EnablePhysicalConnectionRequest(TeaModel):
 
 class EnablePhysicalConnectionResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -22629,11 +24415,11 @@ class EnablePhysicalConnectionResponse(TeaModel):
 
 class DescribeVirtualBorderRoutersForPhysicalConnectionRequest(TeaModel):
     def __init__(self, filter=None, region_id=None, physical_connection_id=None, page_number=None, page_size=None):
-        self.filter = filter
-        self.region_id = region_id
-        self.physical_connection_id = physical_connection_id
-        self.page_number = page_number
-        self.page_size = page_size
+        self.filter = filter            # type: List[DescribeVirtualBorderRoutersForPhysicalConnectionRequestFilter]
+        self.region_id = region_id      # type: str
+        self.physical_connection_id = physical_connection_id  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         if self.filter:
@@ -22674,12 +24460,11 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionRequest(TeaModel):
 
 class DescribeVirtualBorderRoutersForPhysicalConnectionRequestFilter(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: List[str]
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -22696,10 +24481,10 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionRequestFilter(TeaModel):
 class DescribeVirtualBorderRoutersForPhysicalConnectionResponse(TeaModel):
     def __init__(self, request_id=None, page_number=None, page_size=None, total_count=None,
                  virtual_border_router_for_physical_connection_set=None):
-        self.request_id = request_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.total_count = total_count
+        self.request_id = request_id    # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.total_count = total_count  # type: int
         self.virtual_border_router_for_physical_connection_set = virtual_border_router_for_physical_connection_set  # type: DescribeVirtualBorderRoutersForPhysicalConnectionResponseVirtualBorderRouterForPhysicalConnectionSet
 
     def validate(self):
@@ -22739,14 +24524,14 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponse(TeaModel):
 class DescribeVirtualBorderRoutersForPhysicalConnectionResponseVirtualBorderRouterForPhysicalConnectionSetVirtualBorderRouterForPhysicalConnectionType(TeaModel):
     def __init__(self, vbr_id=None, vbr_owner_uid=None, creation_time=None, activation_time=None,
                  termination_time=None, recovery_time=None, vlan_id=None, circuit_code=None):
-        self.vbr_id = vbr_id
-        self.vbr_owner_uid = vbr_owner_uid
-        self.creation_time = creation_time
-        self.activation_time = activation_time
-        self.termination_time = termination_time
-        self.recovery_time = recovery_time
-        self.vlan_id = vlan_id
-        self.circuit_code = circuit_code
+        self.vbr_id = vbr_id            # type: str
+        self.vbr_owner_uid = vbr_owner_uid  # type: int
+        self.creation_time = creation_time  # type: str
+        self.activation_time = activation_time  # type: str
+        self.termination_time = termination_time  # type: str
+        self.recovery_time = recovery_time  # type: str
+        self.vlan_id = vlan_id          # type: int
+        self.circuit_code = circuit_code  # type: str
 
     def validate(self):
         self.validate_required(self.vbr_id, 'vbr_id')
@@ -22784,7 +24569,7 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponseVirtualBorderRout
 
 class DescribeVirtualBorderRoutersForPhysicalConnectionResponseVirtualBorderRouterForPhysicalConnectionSet(TeaModel):
     def __init__(self, virtual_border_router_for_physical_connection_type=None):
-        self.virtual_border_router_for_physical_connection_type = virtual_border_router_for_physical_connection_type
+        self.virtual_border_router_for_physical_connection_type = virtual_border_router_for_physical_connection_type  # type: List[DescribeVirtualBorderRoutersForPhysicalConnectionResponseVirtualBorderRouterForPhysicalConnectionSetVirtualBorderRouterForPhysicalConnectionType]
 
     def validate(self):
         self.validate_required(self.virtual_border_router_for_physical_connection_type, 'virtual_border_router_for_physical_connection_type')
@@ -22816,10 +24601,10 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponseVirtualBorderRout
 
 class DescribeVirtualBorderRoutersRequest(TeaModel):
     def __init__(self, region_id=None, page_number=None, page_size=None, filter=None):
-        self.region_id = region_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.filter = filter
+        self.region_id = region_id      # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.filter = filter            # type: List[DescribeVirtualBorderRoutersRequestFilter]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -22857,12 +24642,11 @@ class DescribeVirtualBorderRoutersRequest(TeaModel):
 
 class DescribeVirtualBorderRoutersRequestFilter(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: List[str]
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -22879,10 +24663,10 @@ class DescribeVirtualBorderRoutersRequestFilter(TeaModel):
 class DescribeVirtualBorderRoutersResponse(TeaModel):
     def __init__(self, request_id=None, page_number=None, page_size=None, total_count=None,
                  virtual_border_router_set=None):
-        self.request_id = request_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.total_count = total_count
+        self.request_id = request_id    # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.total_count = total_count  # type: int
         self.virtual_border_router_set = virtual_border_router_set  # type: DescribeVirtualBorderRoutersResponseVirtualBorderRouterSet
 
     def validate(self):
@@ -22925,26 +24709,26 @@ class DescribeVirtualBorderRoutersResponseVirtualBorderRouterSetVirtualBorderRou
                  local_gateway_ip=None, peer_gateway_ip=None, peering_subnet_mask=None, physical_connection_id=None,
                  physical_connection_status=None, physical_connection_business_status=None, physical_connection_owner_uid=None,
                  access_point_id=None, name=None, description=None):
-        self.vbr_id = vbr_id
-        self.creation_time = creation_time
-        self.activation_time = activation_time
-        self.termination_time = termination_time
-        self.recovery_time = recovery_time
-        self.status = status
-        self.vlan_id = vlan_id
-        self.circuit_code = circuit_code
-        self.route_table_id = route_table_id
-        self.vlan_interface_id = vlan_interface_id
-        self.local_gateway_ip = local_gateway_ip
-        self.peer_gateway_ip = peer_gateway_ip
-        self.peering_subnet_mask = peering_subnet_mask
-        self.physical_connection_id = physical_connection_id
-        self.physical_connection_status = physical_connection_status
-        self.physical_connection_business_status = physical_connection_business_status
-        self.physical_connection_owner_uid = physical_connection_owner_uid
-        self.access_point_id = access_point_id
-        self.name = name
-        self.description = description
+        self.vbr_id = vbr_id            # type: str
+        self.creation_time = creation_time  # type: str
+        self.activation_time = activation_time  # type: str
+        self.termination_time = termination_time  # type: str
+        self.recovery_time = recovery_time  # type: str
+        self.status = status            # type: str
+        self.vlan_id = vlan_id          # type: int
+        self.circuit_code = circuit_code  # type: str
+        self.route_table_id = route_table_id  # type: str
+        self.vlan_interface_id = vlan_interface_id  # type: str
+        self.local_gateway_ip = local_gateway_ip  # type: str
+        self.peer_gateway_ip = peer_gateway_ip  # type: str
+        self.peering_subnet_mask = peering_subnet_mask  # type: str
+        self.physical_connection_id = physical_connection_id  # type: str
+        self.physical_connection_status = physical_connection_status  # type: str
+        self.physical_connection_business_status = physical_connection_business_status  # type: str
+        self.physical_connection_owner_uid = physical_connection_owner_uid  # type: str
+        self.access_point_id = access_point_id  # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.vbr_id, 'vbr_id')
@@ -23018,7 +24802,7 @@ class DescribeVirtualBorderRoutersResponseVirtualBorderRouterSetVirtualBorderRou
 
 class DescribeVirtualBorderRoutersResponseVirtualBorderRouterSet(TeaModel):
     def __init__(self, virtual_border_router_type=None):
-        self.virtual_border_router_type = virtual_border_router_type
+        self.virtual_border_router_type = virtual_border_router_type  # type: List[DescribeVirtualBorderRoutersResponseVirtualBorderRouterSetVirtualBorderRouterType]
 
     def validate(self):
         self.validate_required(self.virtual_border_router_type, 'virtual_border_router_type')
@@ -23051,12 +24835,12 @@ class DescribeVirtualBorderRoutersResponseVirtualBorderRouterSet(TeaModel):
 class DescribePhysicalConnectionsRequest(TeaModel):
     def __init__(self, region_id=None, page_number=None, page_size=None, filter=None, client_token=None,
                  user_cidr=None):
-        self.region_id = region_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.filter = filter
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.filter = filter            # type: List[DescribePhysicalConnectionsRequestFilter]
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -23098,12 +24882,11 @@ class DescribePhysicalConnectionsRequest(TeaModel):
 
 class DescribePhysicalConnectionsRequestFilter(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: List[str]
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -23120,10 +24903,10 @@ class DescribePhysicalConnectionsRequestFilter(TeaModel):
 class DescribePhysicalConnectionsResponse(TeaModel):
     def __init__(self, request_id=None, page_number=None, page_size=None, total_count=None,
                  physical_connection_set=None):
-        self.request_id = request_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.total_count = total_count
+        self.request_id = request_id    # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.total_count = total_count  # type: int
         self.physical_connection_set = physical_connection_set  # type: DescribePhysicalConnectionsResponsePhysicalConnectionSet
 
     def validate(self):
@@ -23165,24 +24948,24 @@ class DescribePhysicalConnectionsResponsePhysicalConnectionSetPhysicalConnection
                  business_status=None, creation_time=None, enabled_time=None, line_operator=None, spec=None, peer_location=None,
                  port_type=None, redundant_physical_connection_id=None, name=None, description=None, ad_location=None,
                  port_number=None, circuit_code=None, bandwidth=None):
-        self.physical_connection_id = physical_connection_id
-        self.access_point_id = access_point_id
-        self.type = type
-        self.status = status
-        self.business_status = business_status
-        self.creation_time = creation_time
-        self.enabled_time = enabled_time
-        self.line_operator = line_operator
-        self.spec = spec
-        self.peer_location = peer_location
-        self.port_type = port_type
-        self.redundant_physical_connection_id = redundant_physical_connection_id
-        self.name = name
-        self.description = description
-        self.ad_location = ad_location
-        self.port_number = port_number
-        self.circuit_code = circuit_code
-        self.bandwidth = bandwidth
+        self.physical_connection_id = physical_connection_id  # type: str
+        self.access_point_id = access_point_id  # type: str
+        self.type = type                # type: str
+        self.status = status            # type: str
+        self.business_status = business_status  # type: str
+        self.creation_time = creation_time  # type: str
+        self.enabled_time = enabled_time  # type: str
+        self.line_operator = line_operator  # type: str
+        self.spec = spec                # type: str
+        self.peer_location = peer_location  # type: str
+        self.port_type = port_type      # type: str
+        self.redundant_physical_connection_id = redundant_physical_connection_id  # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
+        self.ad_location = ad_location  # type: str
+        self.port_number = port_number  # type: str
+        self.circuit_code = circuit_code  # type: str
+        self.bandwidth = bandwidth      # type: int
 
     def validate(self):
         self.validate_required(self.physical_connection_id, 'physical_connection_id')
@@ -23250,7 +25033,7 @@ class DescribePhysicalConnectionsResponsePhysicalConnectionSetPhysicalConnection
 
 class DescribePhysicalConnectionsResponsePhysicalConnectionSet(TeaModel):
     def __init__(self, physical_connection_type=None):
-        self.physical_connection_type = physical_connection_type
+        self.physical_connection_type = physical_connection_type  # type: List[DescribePhysicalConnectionsResponsePhysicalConnectionSetPhysicalConnectionType]
 
     def validate(self):
         self.validate_required(self.physical_connection_type, 'physical_connection_type')
@@ -23282,11 +25065,11 @@ class DescribePhysicalConnectionsResponsePhysicalConnectionSet(TeaModel):
 
 class DescribeAccessPointsRequest(TeaModel):
     def __init__(self, filter=None, region_id=None, type=None, page_number=None, page_size=None):
-        self.filter = filter
-        self.region_id = region_id
-        self.type = type
-        self.page_number = page_number
-        self.page_size = page_size
+        self.filter = filter            # type: List[DescribeAccessPointsRequestFilter]
+        self.region_id = region_id      # type: str
+        self.type = type                # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         if self.filter:
@@ -23326,12 +25109,11 @@ class DescribeAccessPointsRequest(TeaModel):
 
 class DescribeAccessPointsRequestFilter(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: List[str]
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -23347,10 +25129,10 @@ class DescribeAccessPointsRequestFilter(TeaModel):
 
 class DescribeAccessPointsResponse(TeaModel):
     def __init__(self, request_id=None, page_number=None, page_size=None, total_count=None, access_point_set=None):
-        self.request_id = request_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.total_count = total_count
+        self.request_id = request_id    # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.total_count = total_count  # type: int
         self.access_point_set = access_point_set  # type: DescribeAccessPointsResponseAccessPointSet
 
     def validate(self):
@@ -23390,14 +25172,14 @@ class DescribeAccessPointsResponse(TeaModel):
 class DescribeAccessPointsResponseAccessPointSetAccessPointType(TeaModel):
     def __init__(self, access_point_id=None, status=None, type=None, attached_region_no=None, location=None,
                  host_operator=None, name=None, description=None):
-        self.access_point_id = access_point_id
-        self.status = status
-        self.type = type
-        self.attached_region_no = attached_region_no
-        self.location = location
-        self.host_operator = host_operator
-        self.name = name
-        self.description = description
+        self.access_point_id = access_point_id  # type: str
+        self.status = status            # type: str
+        self.type = type                # type: str
+        self.attached_region_no = attached_region_no  # type: str
+        self.location = location        # type: str
+        self.host_operator = host_operator  # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.access_point_id, 'access_point_id')
@@ -23435,7 +25217,7 @@ class DescribeAccessPointsResponseAccessPointSetAccessPointType(TeaModel):
 
 class DescribeAccessPointsResponseAccessPointSet(TeaModel):
     def __init__(self, access_point_type=None):
-        self.access_point_type = access_point_type
+        self.access_point_type = access_point_type  # type: List[DescribeAccessPointsResponseAccessPointSetAccessPointType]
 
     def validate(self):
         self.validate_required(self.access_point_type, 'access_point_type')
@@ -23467,10 +25249,10 @@ class DescribeAccessPointsResponseAccessPointSet(TeaModel):
 
 class DeleteVirtualBorderRouterRequest(TeaModel):
     def __init__(self, region_id=None, vbr_id=None, client_token=None, user_cidr=None):
-        self.region_id = region_id
-        self.vbr_id = vbr_id
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.vbr_id = vbr_id            # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -23494,7 +25276,7 @@ class DeleteVirtualBorderRouterRequest(TeaModel):
 
 class DeleteVirtualBorderRouterResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -23511,9 +25293,9 @@ class DeleteVirtualBorderRouterResponse(TeaModel):
 
 class DeletePhysicalConnectionRequest(TeaModel):
     def __init__(self, region_id=None, physical_connection_id=None, client_token=None):
-        self.region_id = region_id
-        self.physical_connection_id = physical_connection_id
-        self.client_token = client_token
+        self.region_id = region_id      # type: str
+        self.physical_connection_id = physical_connection_id  # type: str
+        self.client_token = client_token  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -23535,7 +25317,7 @@ class DeletePhysicalConnectionRequest(TeaModel):
 
 class DeletePhysicalConnectionResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -23554,18 +25336,18 @@ class CreateVirtualBorderRouterRequest(TeaModel):
     def __init__(self, region_id=None, physical_connection_id=None, vbr_owner_id=None, vlan_id=None,
                  circuit_code=None, local_gateway_ip=None, peer_gateway_ip=None, peering_subnet_mask=None, description=None,
                  name=None, client_token=None, user_cidr=None):
-        self.region_id = region_id
-        self.physical_connection_id = physical_connection_id
-        self.vbr_owner_id = vbr_owner_id
-        self.vlan_id = vlan_id
-        self.circuit_code = circuit_code
-        self.local_gateway_ip = local_gateway_ip
-        self.peer_gateway_ip = peer_gateway_ip
-        self.peering_subnet_mask = peering_subnet_mask
-        self.description = description
-        self.name = name
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.physical_connection_id = physical_connection_id  # type: str
+        self.vbr_owner_id = vbr_owner_id  # type: int
+        self.vlan_id = vlan_id          # type: int
+        self.circuit_code = circuit_code  # type: str
+        self.local_gateway_ip = local_gateway_ip  # type: str
+        self.peer_gateway_ip = peer_gateway_ip  # type: str
+        self.peering_subnet_mask = peering_subnet_mask  # type: str
+        self.description = description  # type: str
+        self.name = name                # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -23606,8 +25388,8 @@ class CreateVirtualBorderRouterRequest(TeaModel):
 
 class CreateVirtualBorderRouterResponse(TeaModel):
     def __init__(self, request_id=None, vbr_id=None):
-        self.request_id = request_id
-        self.vbr_id = vbr_id
+        self.request_id = request_id    # type: str
+        self.vbr_id = vbr_id            # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -23629,19 +25411,19 @@ class CreatePhysicalConnectionRequest(TeaModel):
     def __init__(self, region_id=None, access_point_id=None, type=None, line_operator=None, bandwidth=None,
                  peer_location=None, port_type=None, redundant_physical_connection_id=None, description=None, name=None,
                  circuit_code=None, client_token=None, user_cidr=None):
-        self.region_id = region_id
-        self.access_point_id = access_point_id
-        self.type = type
-        self.line_operator = line_operator
-        self.bandwidth = bandwidth
-        self.peer_location = peer_location
-        self.port_type = port_type
-        self.redundant_physical_connection_id = redundant_physical_connection_id
-        self.description = description
-        self.name = name
-        self.circuit_code = circuit_code
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.access_point_id = access_point_id  # type: str
+        self.type = type                # type: str
+        self.line_operator = line_operator  # type: str
+        self.bandwidth = bandwidth      # type: int
+        self.peer_location = peer_location  # type: str
+        self.port_type = port_type      # type: str
+        self.redundant_physical_connection_id = redundant_physical_connection_id  # type: str
+        self.description = description  # type: str
+        self.name = name                # type: str
+        self.circuit_code = circuit_code  # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -23685,8 +25467,8 @@ class CreatePhysicalConnectionRequest(TeaModel):
 
 class CreatePhysicalConnectionResponse(TeaModel):
     def __init__(self, request_id=None, physical_connection_id=None):
-        self.request_id = request_id
-        self.physical_connection_id = physical_connection_id
+        self.request_id = request_id    # type: str
+        self.physical_connection_id = physical_connection_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -23706,10 +25488,10 @@ class CreatePhysicalConnectionResponse(TeaModel):
 
 class CancelPhysicalConnectionRequest(TeaModel):
     def __init__(self, region_id=None, physical_connection_id=None, client_token=None, user_cidr=None):
-        self.region_id = region_id
-        self.physical_connection_id = physical_connection_id
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.physical_connection_id = physical_connection_id  # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -23733,7 +25515,7 @@ class CancelPhysicalConnectionRequest(TeaModel):
 
 class CancelPhysicalConnectionResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -23752,18 +25534,18 @@ class ImportImageRequest(TeaModel):
     def __init__(self, disk_device_mapping=None, region_id=None, image_name=None, description=None,
                  architecture=None, ostype=None, platform=None, boot_mode=None, role_name=None, license_type=None, tag=None,
                  resource_group_id=None):
-        self.disk_device_mapping = disk_device_mapping
-        self.region_id = region_id
-        self.image_name = image_name
-        self.description = description
-        self.architecture = architecture
-        self.ostype = ostype
-        self.platform = platform
-        self.boot_mode = boot_mode
-        self.role_name = role_name
-        self.license_type = license_type
-        self.tag = tag
-        self.resource_group_id = resource_group_id
+        self.disk_device_mapping = disk_device_mapping  # type: List[ImportImageRequestDiskDeviceMapping]
+        self.region_id = region_id      # type: str
+        self.image_name = image_name    # type: str
+        self.description = description  # type: str
+        self.architecture = architecture  # type: str
+        self.ostype = ostype            # type: str
+        self.platform = platform        # type: str
+        self.boot_mode = boot_mode      # type: str
+        self.role_name = role_name      # type: str
+        self.license_type = license_type  # type: str
+        self.tag = tag                  # type: List[ImportImageRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
 
     def validate(self):
         if self.disk_device_mapping:
@@ -23833,12 +25615,12 @@ class ImportImageRequest(TeaModel):
 class ImportImageRequestDiskDeviceMapping(TeaModel):
     def __init__(self, format=None, ossbucket=None, ossobject=None, disk_im_size=None, disk_image_size=None,
                  device=None):
-        self.format = format
-        self.ossbucket = ossbucket
-        self.ossobject = ossobject
-        self.disk_im_size = disk_im_size
-        self.disk_image_size = disk_image_size
-        self.device = device
+        self.format = format            # type: str
+        self.ossbucket = ossbucket      # type: str
+        self.ossobject = ossobject      # type: str
+        self.disk_im_size = disk_im_size  # type: int
+        self.disk_image_size = disk_image_size  # type: int
+        self.device = device            # type: str
 
     def validate(self):
         pass
@@ -23865,12 +25647,11 @@ class ImportImageRequestDiskDeviceMapping(TeaModel):
 
 class ImportImageRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -23886,10 +25667,10 @@ class ImportImageRequestTag(TeaModel):
 
 class ImportImageResponse(TeaModel):
     def __init__(self, request_id=None, task_id=None, region_id=None, image_id=None):
-        self.request_id = request_id
-        self.task_id = task_id
-        self.region_id = region_id
-        self.image_id = image_id
+        self.request_id = request_id    # type: str
+        self.task_id = task_id          # type: str
+        self.region_id = region_id      # type: str
+        self.image_id = image_id        # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -23916,12 +25697,12 @@ class ImportImageResponse(TeaModel):
 class ExportImageRequest(TeaModel):
     def __init__(self, region_id=None, image_id=None, ossbucket=None, ossprefix=None, image_format=None,
                  role_name=None):
-        self.region_id = region_id
-        self.image_id = image_id
-        self.ossbucket = ossbucket
-        self.ossprefix = ossprefix
-        self.image_format = image_format
-        self.role_name = role_name
+        self.region_id = region_id      # type: str
+        self.image_id = image_id        # type: str
+        self.ossbucket = ossbucket      # type: str
+        self.ossprefix = ossprefix      # type: str
+        self.image_format = image_format  # type: str
+        self.role_name = role_name      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -23950,9 +25731,9 @@ class ExportImageRequest(TeaModel):
 
 class ExportImageResponse(TeaModel):
     def __init__(self, request_id=None, task_id=None, region_id=None):
-        self.request_id = request_id
-        self.task_id = task_id
-        self.region_id = region_id
+        self.request_id = request_id    # type: str
+        self.task_id = task_id          # type: str
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -23976,14 +25757,14 @@ class ExportImageResponse(TeaModel):
 class DescribeTasksRequest(TeaModel):
     def __init__(self, page_number=None, page_size=None, region_id=None, task_ids=None, task_action=None,
                  task_status=None, start_time=None, end_time=None):
-        self.page_number = page_number
-        self.page_size = page_size
-        self.region_id = region_id
-        self.task_ids = task_ids
-        self.task_action = task_action
-        self.task_status = task_status
-        self.start_time = start_time
-        self.end_time = end_time
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.region_id = region_id      # type: str
+        self.task_ids = task_ids        # type: str
+        self.task_action = task_action  # type: str
+        self.task_status = task_status  # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -24015,12 +25796,12 @@ class DescribeTasksRequest(TeaModel):
 class DescribeTasksResponse(TeaModel):
     def __init__(self, request_id=None, region_id=None, total_count=None, page_number=None, page_size=None,
                  task_set=None):
-        self.request_id = request_id
-        self.region_id = region_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.task_set = task_set  # type: DescribeTasksResponseTaskSet
+        self.request_id = request_id    # type: str
+        self.region_id = region_id      # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.task_set = task_set        # type: DescribeTasksResponseTaskSet
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -24062,12 +25843,12 @@ class DescribeTasksResponse(TeaModel):
 class DescribeTasksResponseTaskSetTask(TeaModel):
     def __init__(self, task_id=None, task_action=None, task_status=None, support_cancel=None, creation_time=None,
                  finished_time=None):
-        self.task_id = task_id
-        self.task_action = task_action
-        self.task_status = task_status
-        self.support_cancel = support_cancel
-        self.creation_time = creation_time
-        self.finished_time = finished_time
+        self.task_id = task_id          # type: str
+        self.task_action = task_action  # type: str
+        self.task_status = task_status  # type: str
+        self.support_cancel = support_cancel  # type: str
+        self.creation_time = creation_time  # type: str
+        self.finished_time = finished_time  # type: str
 
     def validate(self):
         self.validate_required(self.task_id, 'task_id')
@@ -24099,7 +25880,7 @@ class DescribeTasksResponseTaskSetTask(TeaModel):
 
 class DescribeTasksResponseTaskSet(TeaModel):
     def __init__(self, task=None):
-        self.task = task
+        self.task = task                # type: List[DescribeTasksResponseTaskSetTask]
 
     def validate(self):
         self.validate_required(self.task, 'task')
@@ -24131,8 +25912,8 @@ class DescribeTasksResponseTaskSet(TeaModel):
 
 class DescribeTaskAttributeRequest(TeaModel):
     def __init__(self, region_id=None, task_id=None):
-        self.region_id = region_id
-        self.task_id = task_id
+        self.region_id = region_id      # type: str
+        self.task_id = task_id          # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -24154,18 +25935,18 @@ class DescribeTaskAttributeResponse(TeaModel):
     def __init__(self, request_id=None, task_id=None, region_id=None, task_action=None, task_status=None,
                  task_process=None, support_cancel=None, total_count=None, success_count=None, failed_count=None,
                  creation_time=None, finished_time=None, operation_progress_set=None):
-        self.request_id = request_id
-        self.task_id = task_id
-        self.region_id = region_id
-        self.task_action = task_action
-        self.task_status = task_status
-        self.task_process = task_process
-        self.support_cancel = support_cancel
-        self.total_count = total_count
-        self.success_count = success_count
-        self.failed_count = failed_count
-        self.creation_time = creation_time
-        self.finished_time = finished_time
+        self.request_id = request_id    # type: str
+        self.task_id = task_id          # type: str
+        self.region_id = region_id      # type: str
+        self.task_action = task_action  # type: str
+        self.task_status = task_status  # type: str
+        self.task_process = task_process  # type: str
+        self.support_cancel = support_cancel  # type: str
+        self.total_count = total_count  # type: int
+        self.success_count = success_count  # type: int
+        self.failed_count = failed_count  # type: int
+        self.creation_time = creation_time  # type: str
+        self.finished_time = finished_time  # type: str
         self.operation_progress_set = operation_progress_set  # type: DescribeTaskAttributeResponseOperationProgressSet
 
     def validate(self):
@@ -24228,8 +26009,8 @@ class DescribeTaskAttributeResponse(TeaModel):
 
 class DescribeTaskAttributeResponseOperationProgressSetOperationProgressRelatedItemSetRelatedItem(TeaModel):
     def __init__(self, name=None, value=None):
-        self.name = name
-        self.value = value
+        self.name = name                # type: str
+        self.value = value              # type: str
 
     def validate(self):
         self.validate_required(self.name, 'name')
@@ -24249,7 +26030,7 @@ class DescribeTaskAttributeResponseOperationProgressSetOperationProgressRelatedI
 
 class DescribeTaskAttributeResponseOperationProgressSetOperationProgressRelatedItemSet(TeaModel):
     def __init__(self, related_item=None):
-        self.related_item = related_item
+        self.related_item = related_item  # type: List[DescribeTaskAttributeResponseOperationProgressSetOperationProgressRelatedItemSetRelatedItem]
 
     def validate(self):
         self.validate_required(self.related_item, 'related_item')
@@ -24281,9 +26062,9 @@ class DescribeTaskAttributeResponseOperationProgressSetOperationProgressRelatedI
 
 class DescribeTaskAttributeResponseOperationProgressSetOperationProgress(TeaModel):
     def __init__(self, operation_status=None, error_code=None, error_msg=None, related_item_set=None):
-        self.operation_status = operation_status
-        self.error_code = error_code
-        self.error_msg = error_msg
+        self.operation_status = operation_status  # type: str
+        self.error_code = error_code    # type: str
+        self.error_msg = error_msg      # type: str
         self.related_item_set = related_item_set  # type: DescribeTaskAttributeResponseOperationProgressSetOperationProgressRelatedItemSet
 
     def validate(self):
@@ -24319,7 +26100,7 @@ class DescribeTaskAttributeResponseOperationProgressSetOperationProgress(TeaMode
 
 class DescribeTaskAttributeResponseOperationProgressSet(TeaModel):
     def __init__(self, operation_progress=None):
-        self.operation_progress = operation_progress
+        self.operation_progress = operation_progress  # type: List[DescribeTaskAttributeResponseOperationProgressSetOperationProgress]
 
     def validate(self):
         self.validate_required(self.operation_progress, 'operation_progress')
@@ -24351,8 +26132,8 @@ class DescribeTaskAttributeResponseOperationProgressSet(TeaModel):
 
 class CancelTaskRequest(TeaModel):
     def __init__(self, region_id=None, task_id=None):
-        self.region_id = region_id
-        self.task_id = task_id
+        self.region_id = region_id      # type: str
+        self.task_id = task_id          # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -24372,7 +26153,7 @@ class CancelTaskRequest(TeaModel):
 
 class CancelTaskResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -24389,8 +26170,8 @@ class CancelTaskResponse(TeaModel):
 
 class DescribeInstanceTypeFamiliesRequest(TeaModel):
     def __init__(self, region_id=None, generation=None):
-        self.region_id = region_id
-        self.generation = generation
+        self.region_id = region_id      # type: str
+        self.generation = generation    # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -24409,7 +26190,7 @@ class DescribeInstanceTypeFamiliesRequest(TeaModel):
 
 class DescribeInstanceTypeFamiliesResponse(TeaModel):
     def __init__(self, request_id=None, instance_type_families=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.instance_type_families = instance_type_families  # type: DescribeInstanceTypeFamiliesResponseInstanceTypeFamilies
 
     def validate(self):
@@ -24439,8 +26220,8 @@ class DescribeInstanceTypeFamiliesResponse(TeaModel):
 
 class DescribeInstanceTypeFamiliesResponseInstanceTypeFamiliesInstanceTypeFamily(TeaModel):
     def __init__(self, instance_type_family_id=None, generation=None):
-        self.instance_type_family_id = instance_type_family_id
-        self.generation = generation
+        self.instance_type_family_id = instance_type_family_id  # type: str
+        self.generation = generation    # type: str
 
     def validate(self):
         self.validate_required(self.instance_type_family_id, 'instance_type_family_id')
@@ -24460,7 +26241,7 @@ class DescribeInstanceTypeFamiliesResponseInstanceTypeFamiliesInstanceTypeFamily
 
 class DescribeInstanceTypeFamiliesResponseInstanceTypeFamilies(TeaModel):
     def __init__(self, instance_type_family=None):
-        self.instance_type_family = instance_type_family
+        self.instance_type_family = instance_type_family  # type: List[DescribeInstanceTypeFamiliesResponseInstanceTypeFamiliesInstanceTypeFamily]
 
     def validate(self):
         self.validate_required(self.instance_type_family, 'instance_type_family')
@@ -24492,11 +26273,11 @@ class DescribeInstanceTypeFamiliesResponseInstanceTypeFamilies(TeaModel):
 
 class ModifyRouterInterfaceSpecRequest(TeaModel):
     def __init__(self, region_id=None, router_interface_id=None, spec=None, client_token=None, user_cidr=None):
-        self.region_id = region_id
-        self.router_interface_id = router_interface_id
-        self.spec = spec
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.router_interface_id = router_interface_id  # type: str
+        self.spec = spec                # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -24523,8 +26304,8 @@ class ModifyRouterInterfaceSpecRequest(TeaModel):
 
 class ModifyRouterInterfaceSpecResponse(TeaModel):
     def __init__(self, request_id=None, spec=None):
-        self.request_id = request_id
-        self.spec = spec
+        self.request_id = request_id    # type: str
+        self.spec = spec                # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -24546,16 +26327,16 @@ class ModifyRouterInterfaceAttributeRequest(TeaModel):
     def __init__(self, region_id=None, router_interface_id=None, name=None, description=None,
                  opposite_interface_id=None, opposite_router_id=None, opposite_router_type=None, opposite_interface_owner_id=None,
                  health_check_source_ip=None, health_check_target_ip=None):
-        self.region_id = region_id
-        self.router_interface_id = router_interface_id
-        self.name = name
-        self.description = description
-        self.opposite_interface_id = opposite_interface_id
-        self.opposite_router_id = opposite_router_id
-        self.opposite_router_type = opposite_router_type
-        self.opposite_interface_owner_id = opposite_interface_owner_id
-        self.health_check_source_ip = health_check_source_ip
-        self.health_check_target_ip = health_check_target_ip
+        self.region_id = region_id      # type: str
+        self.router_interface_id = router_interface_id  # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
+        self.opposite_interface_id = opposite_interface_id  # type: str
+        self.opposite_router_id = opposite_router_id  # type: str
+        self.opposite_router_type = opposite_router_type  # type: str
+        self.opposite_interface_owner_id = opposite_interface_owner_id  # type: int
+        self.health_check_source_ip = health_check_source_ip  # type: str
+        self.health_check_target_ip = health_check_target_ip  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -24591,7 +26372,7 @@ class ModifyRouterInterfaceAttributeRequest(TeaModel):
 
 class ModifyRouterInterfaceAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -24608,10 +26389,10 @@ class ModifyRouterInterfaceAttributeResponse(TeaModel):
 
 class DescribeRouterInterfacesRequest(TeaModel):
     def __init__(self, region_id=None, page_number=None, page_size=None, filter=None):
-        self.region_id = region_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.filter = filter
+        self.region_id = region_id      # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.filter = filter            # type: List[DescribeRouterInterfacesRequestFilter]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -24649,12 +26430,11 @@ class DescribeRouterInterfacesRequest(TeaModel):
 
 class DescribeRouterInterfacesRequestFilter(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: List[str]
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -24671,10 +26451,10 @@ class DescribeRouterInterfacesRequestFilter(TeaModel):
 class DescribeRouterInterfacesResponse(TeaModel):
     def __init__(self, request_id=None, page_number=None, page_size=None, total_count=None,
                  router_interface_set=None):
-        self.request_id = request_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.total_count = total_count
+        self.request_id = request_id    # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.total_count = total_count  # type: int
         self.router_interface_set = router_interface_set  # type: DescribeRouterInterfacesResponseRouterInterfaceSet
 
     def validate(self):
@@ -24718,31 +26498,31 @@ class DescribeRouterInterfacesResponseRouterInterfaceSetRouterInterfaceType(TeaM
                  opposite_interface_spec=None, opposite_interface_status=None, opposite_interface_business_status=None,
                  opposite_router_id=None, opposite_router_type=None, opposite_interface_owner_id=None, access_point_id=None,
                  opposite_access_point_id=None, health_check_source_ip=None, health_check_target_ip=None):
-        self.router_interface_id = router_interface_id
-        self.opposite_region_id = opposite_region_id
-        self.role = role
-        self.spec = spec
-        self.name = name
-        self.description = description
-        self.router_id = router_id
-        self.router_type = router_type
-        self.creation_time = creation_time
-        self.end_time = end_time
-        self.charge_type = charge_type
-        self.status = status
-        self.business_status = business_status
-        self.connected_time = connected_time
-        self.opposite_interface_id = opposite_interface_id
-        self.opposite_interface_spec = opposite_interface_spec
-        self.opposite_interface_status = opposite_interface_status
-        self.opposite_interface_business_status = opposite_interface_business_status
-        self.opposite_router_id = opposite_router_id
-        self.opposite_router_type = opposite_router_type
-        self.opposite_interface_owner_id = opposite_interface_owner_id
-        self.access_point_id = access_point_id
-        self.opposite_access_point_id = opposite_access_point_id
-        self.health_check_source_ip = health_check_source_ip
-        self.health_check_target_ip = health_check_target_ip
+        self.router_interface_id = router_interface_id  # type: str
+        self.opposite_region_id = opposite_region_id  # type: str
+        self.role = role                # type: str
+        self.spec = spec                # type: str
+        self.name = name                # type: str
+        self.description = description  # type: str
+        self.router_id = router_id      # type: str
+        self.router_type = router_type  # type: str
+        self.creation_time = creation_time  # type: str
+        self.end_time = end_time        # type: str
+        self.charge_type = charge_type  # type: str
+        self.status = status            # type: str
+        self.business_status = business_status  # type: str
+        self.connected_time = connected_time  # type: str
+        self.opposite_interface_id = opposite_interface_id  # type: str
+        self.opposite_interface_spec = opposite_interface_spec  # type: str
+        self.opposite_interface_status = opposite_interface_status  # type: str
+        self.opposite_interface_business_status = opposite_interface_business_status  # type: str
+        self.opposite_router_id = opposite_router_id  # type: str
+        self.opposite_router_type = opposite_router_type  # type: str
+        self.opposite_interface_owner_id = opposite_interface_owner_id  # type: str
+        self.access_point_id = access_point_id  # type: str
+        self.opposite_access_point_id = opposite_access_point_id  # type: str
+        self.health_check_source_ip = health_check_source_ip  # type: str
+        self.health_check_target_ip = health_check_target_ip  # type: str
 
     def validate(self):
         self.validate_required(self.router_interface_id, 'router_interface_id')
@@ -24831,7 +26611,7 @@ class DescribeRouterInterfacesResponseRouterInterfaceSetRouterInterfaceType(TeaM
 
 class DescribeRouterInterfacesResponseRouterInterfaceSet(TeaModel):
     def __init__(self, router_interface_type=None):
-        self.router_interface_type = router_interface_type
+        self.router_interface_type = router_interface_type  # type: List[DescribeRouterInterfacesResponseRouterInterfaceSetRouterInterfaceType]
 
     def validate(self):
         self.validate_required(self.router_interface_type, 'router_interface_type')
@@ -24863,10 +26643,10 @@ class DescribeRouterInterfacesResponseRouterInterfaceSet(TeaModel):
 
 class DeleteRouterInterfaceRequest(TeaModel):
     def __init__(self, region_id=None, router_interface_id=None, client_token=None, user_cidr=None):
-        self.region_id = region_id
-        self.router_interface_id = router_interface_id
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.router_interface_id = router_interface_id  # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -24890,7 +26670,7 @@ class DeleteRouterInterfaceRequest(TeaModel):
 
 class DeleteRouterInterfaceResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -24907,8 +26687,8 @@ class DeleteRouterInterfaceResponse(TeaModel):
 
 class DeactivateRouterInterfaceRequest(TeaModel):
     def __init__(self, region_id=None, router_interface_id=None):
-        self.region_id = region_id
-        self.router_interface_id = router_interface_id
+        self.region_id = region_id      # type: str
+        self.router_interface_id = router_interface_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -24928,7 +26708,7 @@ class DeactivateRouterInterfaceRequest(TeaModel):
 
 class DeactivateRouterInterfaceResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -24949,28 +26729,28 @@ class CreateRouterInterfaceRequest(TeaModel):
                  opposite_interface_owner_id=None, health_check_source_ip=None, health_check_target_ip=None, access_point_id=None,
                  opposite_access_point_id=None, description=None, name=None, period=None, instance_charge_type=None, auto_pay=None,
                  pricing_cycle=None, client_token=None, user_cidr=None):
-        self.region_id = region_id
-        self.role = role
-        self.opposite_region_id = opposite_region_id
-        self.spec = spec
-        self.router_type = router_type
-        self.router_id = router_id
-        self.opposite_interface_id = opposite_interface_id
-        self.opposite_router_id = opposite_router_id
-        self.opposite_router_type = opposite_router_type
-        self.opposite_interface_owner_id = opposite_interface_owner_id
-        self.health_check_source_ip = health_check_source_ip
-        self.health_check_target_ip = health_check_target_ip
-        self.access_point_id = access_point_id
-        self.opposite_access_point_id = opposite_access_point_id
-        self.description = description
-        self.name = name
-        self.period = period
-        self.instance_charge_type = instance_charge_type
-        self.auto_pay = auto_pay
-        self.pricing_cycle = pricing_cycle
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.role = role                # type: str
+        self.opposite_region_id = opposite_region_id  # type: str
+        self.spec = spec                # type: str
+        self.router_type = router_type  # type: str
+        self.router_id = router_id      # type: str
+        self.opposite_interface_id = opposite_interface_id  # type: str
+        self.opposite_router_id = opposite_router_id  # type: str
+        self.opposite_router_type = opposite_router_type  # type: str
+        self.opposite_interface_owner_id = opposite_interface_owner_id  # type: str
+        self.health_check_source_ip = health_check_source_ip  # type: str
+        self.health_check_target_ip = health_check_target_ip  # type: str
+        self.access_point_id = access_point_id  # type: str
+        self.opposite_access_point_id = opposite_access_point_id  # type: str
+        self.description = description  # type: str
+        self.name = name                # type: str
+        self.period = period            # type: int
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.auto_pay = auto_pay        # type: bool
+        self.pricing_cycle = pricing_cycle  # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -25034,9 +26814,9 @@ class CreateRouterInterfaceRequest(TeaModel):
 
 class CreateRouterInterfaceResponse(TeaModel):
     def __init__(self, request_id=None, router_interface_id=None, order_id=None):
-        self.request_id = request_id
-        self.router_interface_id = router_interface_id
-        self.order_id = order_id
+        self.request_id = request_id    # type: str
+        self.router_interface_id = router_interface_id  # type: str
+        self.order_id = order_id        # type: int
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -25059,8 +26839,8 @@ class CreateRouterInterfaceResponse(TeaModel):
 
 class ConnectRouterInterfaceRequest(TeaModel):
     def __init__(self, region_id=None, router_interface_id=None):
-        self.region_id = region_id
-        self.router_interface_id = router_interface_id
+        self.region_id = region_id      # type: str
+        self.router_interface_id = router_interface_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -25080,7 +26860,7 @@ class ConnectRouterInterfaceRequest(TeaModel):
 
 class ConnectRouterInterfaceResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -25097,8 +26877,8 @@ class ConnectRouterInterfaceResponse(TeaModel):
 
 class ActivateRouterInterfaceRequest(TeaModel):
     def __init__(self, region_id=None, router_interface_id=None):
-        self.region_id = region_id
-        self.router_interface_id = router_interface_id
+        self.region_id = region_id      # type: str
+        self.router_interface_id = router_interface_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -25118,7 +26898,7 @@ class ActivateRouterInterfaceRequest(TeaModel):
 
 class ActivateRouterInterfaceResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -25135,11 +26915,11 @@ class ActivateRouterInterfaceResponse(TeaModel):
 
 class UnassociateHaVipRequest(TeaModel):
     def __init__(self, client_token=None, region_id=None, ha_vip_id=None, instance_id=None, force=None):
-        self.client_token = client_token
-        self.region_id = region_id
-        self.ha_vip_id = ha_vip_id
-        self.instance_id = instance_id
-        self.force = force
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
+        self.ha_vip_id = ha_vip_id      # type: str
+        self.instance_id = instance_id  # type: str
+        self.force = force              # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -25166,7 +26946,7 @@ class UnassociateHaVipRequest(TeaModel):
 
 class UnassociateHaVipResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -25183,10 +26963,10 @@ class UnassociateHaVipResponse(TeaModel):
 
 class ModifyHaVipAttributeRequest(TeaModel):
     def __init__(self, client_token=None, region_id=None, ha_vip_id=None, description=None):
-        self.client_token = client_token
-        self.region_id = region_id
-        self.ha_vip_id = ha_vip_id
-        self.description = description
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
+        self.ha_vip_id = ha_vip_id      # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -25210,7 +26990,7 @@ class ModifyHaVipAttributeRequest(TeaModel):
 
 class ModifyHaVipAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -25227,10 +27007,10 @@ class ModifyHaVipAttributeResponse(TeaModel):
 
 class DescribeHaVipsRequest(TeaModel):
     def __init__(self, region_id=None, page_number=None, page_size=None, filter=None):
-        self.region_id = region_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.filter = filter
+        self.region_id = region_id      # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.filter = filter            # type: List[DescribeHaVipsRequestFilter]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -25269,12 +27049,11 @@ class DescribeHaVipsRequest(TeaModel):
 
 class DescribeHaVipsRequestFilter(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: List[str]
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -25290,11 +27069,11 @@ class DescribeHaVipsRequestFilter(TeaModel):
 
 class DescribeHaVipsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, ha_vips=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.ha_vips = ha_vips  # type: DescribeHaVipsResponseHaVips
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.ha_vips = ha_vips          # type: DescribeHaVipsResponseHaVips
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -25333,7 +27112,7 @@ class DescribeHaVipsResponse(TeaModel):
 class DescribeHaVipsResponseHaVipsHaVipAssociatedInstances(TeaModel):
     def __init__(self, associated_instance=None):
         # associatedInstance
-        self.associated_instance = associated_instance
+        self.associated_instance = associated_instance  # type: List[str]
 
     def validate(self):
         self.validate_required(self.associated_instance, 'associated_instance')
@@ -25351,7 +27130,7 @@ class DescribeHaVipsResponseHaVipsHaVipAssociatedInstances(TeaModel):
 class DescribeHaVipsResponseHaVipsHaVipAssociatedEipAddresses(TeaModel):
     def __init__(self, associated_eip_addresse=None):
         # associatedEipAddresse
-        self.associated_eip_addresse = associated_eip_addresse
+        self.associated_eip_addresse = associated_eip_addresse  # type: List[str]
 
     def validate(self):
         self.validate_required(self.associated_eip_addresse, 'associated_eip_addresse')
@@ -25370,15 +27149,15 @@ class DescribeHaVipsResponseHaVipsHaVip(TeaModel):
     def __init__(self, ha_vip_id=None, region_id=None, vpc_id=None, v_switch_id=None, ip_address=None, status=None,
                  master_instance_id=None, description=None, create_time=None, associated_instances=None,
                  associated_eip_addresses=None):
-        self.ha_vip_id = ha_vip_id
-        self.region_id = region_id
-        self.vpc_id = vpc_id
-        self.v_switch_id = v_switch_id
-        self.ip_address = ip_address
-        self.status = status
-        self.master_instance_id = master_instance_id
-        self.description = description
-        self.create_time = create_time
+        self.ha_vip_id = ha_vip_id      # type: str
+        self.region_id = region_id      # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.ip_address = ip_address    # type: str
+        self.status = status            # type: str
+        self.master_instance_id = master_instance_id  # type: str
+        self.description = description  # type: str
+        self.create_time = create_time  # type: str
         self.associated_instances = associated_instances  # type: DescribeHaVipsResponseHaVipsHaVipAssociatedInstances
         self.associated_eip_addresses = associated_eip_addresses  # type: DescribeHaVipsResponseHaVipsHaVipAssociatedEipAddresses
 
@@ -25445,7 +27224,7 @@ class DescribeHaVipsResponseHaVipsHaVip(TeaModel):
 
 class DescribeHaVipsResponseHaVips(TeaModel):
     def __init__(self, ha_vip=None):
-        self.ha_vip = ha_vip
+        self.ha_vip = ha_vip            # type: List[DescribeHaVipsResponseHaVipsHaVip]
 
     def validate(self):
         self.validate_required(self.ha_vip, 'ha_vip')
@@ -25477,9 +27256,9 @@ class DescribeHaVipsResponseHaVips(TeaModel):
 
 class DeleteHaVipRequest(TeaModel):
     def __init__(self, client_token=None, region_id=None, ha_vip_id=None):
-        self.client_token = client_token
-        self.region_id = region_id
-        self.ha_vip_id = ha_vip_id
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
+        self.ha_vip_id = ha_vip_id      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -25501,7 +27280,7 @@ class DeleteHaVipRequest(TeaModel):
 
 class DeleteHaVipResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -25518,11 +27297,11 @@ class DeleteHaVipResponse(TeaModel):
 
 class CreateHaVipRequest(TeaModel):
     def __init__(self, client_token=None, region_id=None, v_switch_id=None, ip_address=None, description=None):
-        self.client_token = client_token
-        self.region_id = region_id
-        self.v_switch_id = v_switch_id
-        self.ip_address = ip_address
-        self.description = description
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.ip_address = ip_address    # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -25548,8 +27327,8 @@ class CreateHaVipRequest(TeaModel):
 
 class CreateHaVipResponse(TeaModel):
     def __init__(self, request_id=None, ha_vip_id=None):
-        self.request_id = request_id
-        self.ha_vip_id = ha_vip_id
+        self.request_id = request_id    # type: str
+        self.ha_vip_id = ha_vip_id      # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -25569,10 +27348,10 @@ class CreateHaVipResponse(TeaModel):
 
 class AssociateHaVipRequest(TeaModel):
     def __init__(self, client_token=None, region_id=None, ha_vip_id=None, instance_id=None):
-        self.client_token = client_token
-        self.region_id = region_id
-        self.ha_vip_id = ha_vip_id
-        self.instance_id = instance_id
+        self.client_token = client_token  # type: str
+        self.region_id = region_id      # type: str
+        self.ha_vip_id = ha_vip_id      # type: str
+        self.instance_id = instance_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -25597,7 +27376,7 @@ class AssociateHaVipRequest(TeaModel):
 
 class AssociateHaVipResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -25614,10 +27393,10 @@ class AssociateHaVipResponse(TeaModel):
 
 class RenewInstanceRequest(TeaModel):
     def __init__(self, client_token=None, instance_id=None, period=None, period_unit=None):
-        self.client_token = client_token
-        self.instance_id = instance_id
-        self.period = period
-        self.period_unit = period_unit
+        self.client_token = client_token  # type: str
+        self.instance_id = instance_id  # type: str
+        self.period = period            # type: int
+        self.period_unit = period_unit  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -25641,7 +27420,7 @@ class RenewInstanceRequest(TeaModel):
 
 class RenewInstanceResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -25658,10 +27437,10 @@ class RenewInstanceResponse(TeaModel):
 
 class RemoveTagsRequest(TeaModel):
     def __init__(self, region_id=None, resource_type=None, resource_id=None, tag=None):
-        self.region_id = region_id
-        self.resource_type = resource_type
-        self.resource_id = resource_id
-        self.tag = tag
+        self.region_id = region_id      # type: str
+        self.resource_type = resource_type  # type: str
+        self.resource_id = resource_id  # type: str
+        self.tag = tag                  # type: List[RemoveTagsRequestTag]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -25701,12 +27480,11 @@ class RemoveTagsRequest(TeaModel):
 
 class RemoveTagsRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -25722,7 +27500,7 @@ class RemoveTagsRequestTag(TeaModel):
 
 class RemoveTagsResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -25740,13 +27518,13 @@ class RemoveTagsResponse(TeaModel):
 class DescribeTagsRequest(TeaModel):
     def __init__(self, page_size=None, page_number=None, resource_type=None, resource_id=None, region_id=None,
                  tag=None, category=None):
-        self.page_size = page_size
-        self.page_number = page_number
-        self.resource_type = resource_type
-        self.resource_id = resource_id
-        self.region_id = region_id
-        self.tag = tag
-        self.category = category
+        self.page_size = page_size      # type: int
+        self.page_number = page_number  # type: int
+        self.resource_type = resource_type  # type: str
+        self.resource_id = resource_id  # type: str
+        self.region_id = region_id      # type: str
+        self.tag = tag                  # type: List[DescribeTagsRequestTag]
+        self.category = category        # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -25790,12 +27568,11 @@ class DescribeTagsRequest(TeaModel):
 
 class DescribeTagsRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -25811,11 +27588,11 @@ class DescribeTagsRequestTag(TeaModel):
 
 class DescribeTagsResponse(TeaModel):
     def __init__(self, request_id=None, page_size=None, page_number=None, total_count=None, tags=None):
-        self.request_id = request_id
-        self.page_size = page_size
-        self.page_number = page_number
-        self.total_count = total_count
-        self.tags = tags  # type: DescribeTagsResponseTags
+        self.request_id = request_id    # type: str
+        self.page_size = page_size      # type: int
+        self.page_number = page_number  # type: int
+        self.total_count = total_count  # type: int
+        self.tags = tags                # type: DescribeTagsResponseTags
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -25854,18 +27631,18 @@ class DescribeTagsResponse(TeaModel):
 class DescribeTagsResponseTagsTagResourceTypeCount(TeaModel):
     def __init__(self, instance=None, disk=None, volume=None, image=None, snapshot=None, securitygroup=None,
                  launch_template=None, eni=None, ddh=None, key_pair=None, snapshot_policy=None, reserved_instance=None):
-        self.instance = instance
-        self.disk = disk
-        self.volume = volume
-        self.image = image
-        self.snapshot = snapshot
-        self.securitygroup = securitygroup
-        self.launch_template = launch_template
-        self.eni = eni
-        self.ddh = ddh
-        self.key_pair = key_pair
-        self.snapshot_policy = snapshot_policy
-        self.reserved_instance = reserved_instance
+        self.instance = instance        # type: int
+        self.disk = disk                # type: int
+        self.volume = volume            # type: int
+        self.image = image              # type: int
+        self.snapshot = snapshot        # type: int
+        self.securitygroup = securitygroup  # type: int
+        self.launch_template = launch_template  # type: int
+        self.eni = eni                  # type: int
+        self.ddh = ddh                  # type: int
+        self.key_pair = key_pair        # type: int
+        self.snapshot_policy = snapshot_policy  # type: int
+        self.reserved_instance = reserved_instance  # type: int
 
     def validate(self):
         self.validate_required(self.instance, 'instance')
@@ -25915,8 +27692,8 @@ class DescribeTagsResponseTagsTagResourceTypeCount(TeaModel):
 
 class DescribeTagsResponseTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None, resource_type_count=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
         self.resource_type_count = resource_type_count  # type: DescribeTagsResponseTagsTagResourceTypeCount
 
     def validate(self):
@@ -25949,7 +27726,7 @@ class DescribeTagsResponseTagsTag(TeaModel):
 
 class DescribeTagsResponseTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeTagsResponseTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -25981,11 +27758,11 @@ class DescribeTagsResponseTags(TeaModel):
 
 class DescribeResourceByTagsRequest(TeaModel):
     def __init__(self, page_size=None, page_number=None, resource_type=None, region_id=None, tag=None):
-        self.page_size = page_size
-        self.page_number = page_number
-        self.resource_type = resource_type
-        self.region_id = region_id
-        self.tag = tag
+        self.page_size = page_size      # type: int
+        self.page_number = page_number  # type: int
+        self.resource_type = resource_type  # type: str
+        self.region_id = region_id      # type: str
+        self.tag = tag                  # type: List[DescribeResourceByTagsRequestTag]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -26025,12 +27802,11 @@ class DescribeResourceByTagsRequest(TeaModel):
 
 class DescribeResourceByTagsRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -26046,11 +27822,11 @@ class DescribeResourceByTagsRequestTag(TeaModel):
 
 class DescribeResourceByTagsResponse(TeaModel):
     def __init__(self, request_id=None, page_size=None, page_number=None, total_count=None, resources=None):
-        self.request_id = request_id
-        self.page_size = page_size
-        self.page_number = page_number
-        self.total_count = total_count
-        self.resources = resources  # type: DescribeResourceByTagsResponseResources
+        self.request_id = request_id    # type: str
+        self.page_size = page_size      # type: int
+        self.page_number = page_number  # type: int
+        self.total_count = total_count  # type: int
+        self.resources = resources      # type: DescribeResourceByTagsResponseResources
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26088,9 +27864,9 @@ class DescribeResourceByTagsResponse(TeaModel):
 
 class DescribeResourceByTagsResponseResourcesResource(TeaModel):
     def __init__(self, resource_id=None, resource_type=None, region_id=None):
-        self.resource_id = resource_id
-        self.resource_type = resource_type
-        self.region_id = region_id
+        self.resource_id = resource_id  # type: str
+        self.resource_type = resource_type  # type: str
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.resource_id, 'resource_id')
@@ -26113,7 +27889,7 @@ class DescribeResourceByTagsResponseResourcesResource(TeaModel):
 
 class DescribeResourceByTagsResponseResources(TeaModel):
     def __init__(self, resource=None):
-        self.resource = resource
+        self.resource = resource        # type: List[DescribeResourceByTagsResponseResourcesResource]
 
     def validate(self):
         self.validate_required(self.resource, 'resource')
@@ -26145,10 +27921,10 @@ class DescribeResourceByTagsResponseResources(TeaModel):
 
 class AddTagsRequest(TeaModel):
     def __init__(self, region_id=None, resource_type=None, resource_id=None, tag=None):
-        self.region_id = region_id
-        self.resource_type = resource_type
-        self.resource_id = resource_id
-        self.tag = tag
+        self.region_id = region_id      # type: str
+        self.resource_type = resource_type  # type: str
+        self.resource_id = resource_id  # type: str
+        self.tag = tag                  # type: List[AddTagsRequestTag]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -26189,12 +27965,11 @@ class AddTagsRequest(TeaModel):
 
 class AddTagsRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -26210,7 +27985,7 @@ class AddTagsRequestTag(TeaModel):
 
 class AddTagsResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26227,10 +28002,10 @@ class AddTagsResponse(TeaModel):
 
 class UnassociateEipAddressRequest(TeaModel):
     def __init__(self, region_id=None, allocation_id=None, instance_id=None, instance_type=None):
-        self.region_id = region_id
-        self.allocation_id = allocation_id
-        self.instance_id = instance_id
-        self.instance_type = instance_type
+        self.region_id = region_id      # type: str
+        self.allocation_id = allocation_id  # type: str
+        self.instance_id = instance_id  # type: str
+        self.instance_type = instance_type  # type: str
 
     def validate(self):
         self.validate_required(self.allocation_id, 'allocation_id')
@@ -26254,7 +28029,7 @@ class UnassociateEipAddressRequest(TeaModel):
 
 class UnassociateEipAddressResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26271,11 +28046,11 @@ class UnassociateEipAddressResponse(TeaModel):
 
 class StopInstanceRequest(TeaModel):
     def __init__(self, instance_id=None, confirm_stop=None, force_stop=None, stopped_mode=None, dry_run=None):
-        self.instance_id = instance_id
-        self.confirm_stop = confirm_stop
-        self.force_stop = force_stop
-        self.stopped_mode = stopped_mode
-        self.dry_run = dry_run
+        self.instance_id = instance_id  # type: str
+        self.confirm_stop = confirm_stop  # type: bool
+        self.force_stop = force_stop    # type: bool
+        self.stopped_mode = stopped_mode  # type: str
+        self.dry_run = dry_run          # type: bool
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -26300,7 +28075,7 @@ class StopInstanceRequest(TeaModel):
 
 class StopInstanceResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26317,10 +28092,10 @@ class StopInstanceResponse(TeaModel):
 
 class StartInstanceRequest(TeaModel):
     def __init__(self, source_region_id=None, instance_id=None, init_local_disk=None, dry_run=None):
-        self.source_region_id = source_region_id
-        self.instance_id = instance_id
-        self.init_local_disk = init_local_disk
-        self.dry_run = dry_run
+        self.source_region_id = source_region_id  # type: str
+        self.instance_id = instance_id  # type: str
+        self.init_local_disk = init_local_disk  # type: bool
+        self.dry_run = dry_run          # type: bool
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -26343,7 +28118,7 @@ class StartInstanceRequest(TeaModel):
 
 class StartInstanceResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26363,23 +28138,23 @@ class RevokeSecurityGroupEgressRequest(TeaModel):
                  dest_group_id=None, dest_group_owner_id=None, dest_group_owner_account=None, dest_cidr_ip=None,
                  ipv_6dest_cidr_ip=None, source_cidr_ip=None, ipv_6source_cidr_ip=None, source_port_range=None, policy=None,
                  priority=None, nic_type=None, client_token=None, description=None):
-        self.region_id = region_id
-        self.security_group_id = security_group_id
-        self.ip_protocol = ip_protocol
-        self.port_range = port_range
-        self.dest_group_id = dest_group_id
-        self.dest_group_owner_id = dest_group_owner_id
-        self.dest_group_owner_account = dest_group_owner_account
-        self.dest_cidr_ip = dest_cidr_ip
-        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
-        self.source_cidr_ip = source_cidr_ip
-        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        self.source_port_range = source_port_range
-        self.policy = policy
-        self.priority = priority
-        self.nic_type = nic_type
-        self.client_token = client_token
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.ip_protocol = ip_protocol  # type: str
+        self.port_range = port_range    # type: str
+        self.dest_group_id = dest_group_id  # type: str
+        self.dest_group_owner_id = dest_group_owner_id  # type: int
+        self.dest_group_owner_account = dest_group_owner_account  # type: str
+        self.dest_cidr_ip = dest_cidr_ip  # type: str
+        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip  # type: str
+        self.source_cidr_ip = source_cidr_ip  # type: str
+        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip  # type: str
+        self.source_port_range = source_port_range  # type: str
+        self.policy = policy            # type: str
+        self.priority = priority        # type: str
+        self.nic_type = nic_type        # type: str
+        self.client_token = client_token  # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -26431,7 +28206,7 @@ class RevokeSecurityGroupEgressRequest(TeaModel):
 
 class RevokeSecurityGroupEgressResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26451,23 +28226,23 @@ class RevokeSecurityGroupRequest(TeaModel):
                  port_range=None, ip_protocol=None, source_group_id=None, source_group_owner_id=None,
                  source_group_owner_account=None, source_cidr_ip=None, ipv_6source_cidr_ip=None, source_port_range=None, policy=None,
                  priority=None, nic_type=None, client_token=None, description=None):
-        self.region_id = region_id
-        self.security_group_id = security_group_id
-        self.dest_cidr_ip = dest_cidr_ip
-        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
-        self.port_range = port_range
-        self.ip_protocol = ip_protocol
-        self.source_group_id = source_group_id
-        self.source_group_owner_id = source_group_owner_id
-        self.source_group_owner_account = source_group_owner_account
-        self.source_cidr_ip = source_cidr_ip
-        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        self.source_port_range = source_port_range
-        self.policy = policy
-        self.priority = priority
-        self.nic_type = nic_type
-        self.client_token = client_token
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.dest_cidr_ip = dest_cidr_ip  # type: str
+        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip  # type: str
+        self.port_range = port_range    # type: str
+        self.ip_protocol = ip_protocol  # type: str
+        self.source_group_id = source_group_id  # type: str
+        self.source_group_owner_id = source_group_owner_id  # type: int
+        self.source_group_owner_account = source_group_owner_account  # type: str
+        self.source_cidr_ip = source_cidr_ip  # type: str
+        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip  # type: str
+        self.source_port_range = source_port_range  # type: str
+        self.policy = policy            # type: str
+        self.priority = priority        # type: str
+        self.nic_type = nic_type        # type: str
+        self.client_token = client_token  # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -26519,7 +28294,7 @@ class RevokeSecurityGroupRequest(TeaModel):
 
 class RevokeSecurityGroupResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26536,10 +28311,10 @@ class RevokeSecurityGroupResponse(TeaModel):
 
 class ResizeDiskRequest(TeaModel):
     def __init__(self, disk_id=None, type=None, new_size=None, client_token=None):
-        self.disk_id = disk_id
-        self.type = type
-        self.new_size = new_size
-        self.client_token = client_token
+        self.disk_id = disk_id          # type: str
+        self.type = type                # type: str
+        self.new_size = new_size        # type: int
+        self.client_token = client_token  # type: str
 
     def validate(self):
         self.validate_required(self.disk_id, 'disk_id')
@@ -26563,7 +28338,7 @@ class ResizeDiskRequest(TeaModel):
 
 class ResizeDiskResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26580,8 +28355,8 @@ class ResizeDiskResponse(TeaModel):
 
 class ResetDiskRequest(TeaModel):
     def __init__(self, disk_id=None, snapshot_id=None):
-        self.disk_id = disk_id
-        self.snapshot_id = snapshot_id
+        self.disk_id = disk_id          # type: str
+        self.snapshot_id = snapshot_id  # type: str
 
     def validate(self):
         self.validate_required(self.disk_id, 'disk_id')
@@ -26601,7 +28376,7 @@ class ResetDiskRequest(TeaModel):
 
 class ResetDiskResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26620,18 +28395,18 @@ class ReplaceSystemDiskRequest(TeaModel):
     def __init__(self, instance_id=None, image_id=None, system_disk=None, client_token=None,
                  use_additional_service=None, password=None, password_inherit=None, key_pair_name=None, disk_id=None, platform=None,
                  architecture=None, security_enhancement_strategy=None):
-        self.instance_id = instance_id
-        self.image_id = image_id
+        self.instance_id = instance_id  # type: str
+        self.image_id = image_id        # type: str
         self.system_disk = system_disk  # type: ReplaceSystemDiskRequestSystemDisk
-        self.client_token = client_token
-        self.use_additional_service = use_additional_service
-        self.password = password
-        self.password_inherit = password_inherit
-        self.key_pair_name = key_pair_name
-        self.disk_id = disk_id
-        self.platform = platform
-        self.architecture = architecture
-        self.security_enhancement_strategy = security_enhancement_strategy
+        self.client_token = client_token  # type: str
+        self.use_additional_service = use_additional_service  # type: bool
+        self.password = password        # type: str
+        self.password_inherit = password_inherit  # type: bool
+        self.key_pair_name = key_pair_name  # type: str
+        self.disk_id = disk_id          # type: str
+        self.platform = platform        # type: str
+        self.architecture = architecture  # type: str
+        self.security_enhancement_strategy = security_enhancement_strategy  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -26679,7 +28454,7 @@ class ReplaceSystemDiskRequest(TeaModel):
 
 class ReplaceSystemDiskRequestSystemDisk(TeaModel):
     def __init__(self, size=None):
-        self.size = size
+        self.size = size                # type: int
 
     def validate(self):
         pass
@@ -26696,8 +28471,8 @@ class ReplaceSystemDiskRequestSystemDisk(TeaModel):
 
 class ReplaceSystemDiskResponse(TeaModel):
     def __init__(self, request_id=None, disk_id=None):
-        self.request_id = request_id
-        self.disk_id = disk_id
+        self.request_id = request_id    # type: str
+        self.disk_id = disk_id          # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26717,8 +28492,8 @@ class ReplaceSystemDiskResponse(TeaModel):
 
 class ReleasePublicIpAddressRequest(TeaModel):
     def __init__(self, instance_id=None, public_ip_address=None):
-        self.instance_id = instance_id
-        self.public_ip_address = public_ip_address
+        self.instance_id = instance_id  # type: str
+        self.public_ip_address = public_ip_address  # type: str
 
     def validate(self):
         self.validate_required(self.public_ip_address, 'public_ip_address')
@@ -26737,7 +28512,7 @@ class ReleasePublicIpAddressRequest(TeaModel):
 
 class ReleasePublicIpAddressResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26754,8 +28529,8 @@ class ReleasePublicIpAddressResponse(TeaModel):
 
 class ReleaseEipAddressRequest(TeaModel):
     def __init__(self, region_id=None, allocation_id=None):
-        self.region_id = region_id
-        self.allocation_id = allocation_id
+        self.region_id = region_id      # type: str
+        self.allocation_id = allocation_id  # type: str
 
     def validate(self):
         self.validate_required(self.allocation_id, 'allocation_id')
@@ -26774,7 +28549,7 @@ class ReleaseEipAddressRequest(TeaModel):
 
 class ReleaseEipAddressResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26792,11 +28567,11 @@ class ReleaseEipAddressResponse(TeaModel):
 class ReInitDiskRequest(TeaModel):
     def __init__(self, disk_id=None, password=None, key_pair_name=None, auto_start_instance=None,
                  security_enhancement_strategy=None):
-        self.disk_id = disk_id
-        self.password = password
-        self.key_pair_name = key_pair_name
-        self.auto_start_instance = auto_start_instance
-        self.security_enhancement_strategy = security_enhancement_strategy
+        self.disk_id = disk_id          # type: str
+        self.password = password        # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.auto_start_instance = auto_start_instance  # type: bool
+        self.security_enhancement_strategy = security_enhancement_strategy  # type: str
 
     def validate(self):
         self.validate_required(self.disk_id, 'disk_id')
@@ -26821,7 +28596,7 @@ class ReInitDiskRequest(TeaModel):
 
 class ReInitDiskResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26838,9 +28613,9 @@ class ReInitDiskResponse(TeaModel):
 
 class RebootInstanceRequest(TeaModel):
     def __init__(self, instance_id=None, force_stop=None, dry_run=None):
-        self.instance_id = instance_id
-        self.force_stop = force_stop
-        self.dry_run = dry_run
+        self.instance_id = instance_id  # type: str
+        self.force_stop = force_stop    # type: bool
+        self.dry_run = dry_run          # type: bool
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -26861,7 +28636,7 @@ class RebootInstanceRequest(TeaModel):
 
 class RebootInstanceResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26878,10 +28653,10 @@ class RebootInstanceResponse(TeaModel):
 
 class ModifyVSwitchAttributeRequest(TeaModel):
     def __init__(self, v_switch_id=None, v_switch_name=None, region_id=None, description=None):
-        self.v_switch_id = v_switch_id
-        self.v_switch_name = v_switch_name
-        self.region_id = region_id
-        self.description = description
+        self.v_switch_id = v_switch_id  # type: str
+        self.v_switch_name = v_switch_name  # type: str
+        self.region_id = region_id      # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.v_switch_id, 'v_switch_id')
@@ -26904,7 +28679,7 @@ class ModifyVSwitchAttributeRequest(TeaModel):
 
 class ModifyVSwitchAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26921,10 +28696,10 @@ class ModifyVSwitchAttributeResponse(TeaModel):
 
 class ModifyVRouterAttributeRequest(TeaModel):
     def __init__(self, region_id=None, vrouter_id=None, vrouter_name=None, description=None):
-        self.region_id = region_id
-        self.vrouter_id = vrouter_id
-        self.vrouter_name = vrouter_name
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.vrouter_id = vrouter_id    # type: str
+        self.vrouter_name = vrouter_name  # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.vrouter_id, 'vrouter_id')
@@ -26947,7 +28722,7 @@ class ModifyVRouterAttributeRequest(TeaModel):
 
 class ModifyVRouterAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -26964,12 +28739,12 @@ class ModifyVRouterAttributeResponse(TeaModel):
 
 class ModifyVpcAttributeRequest(TeaModel):
     def __init__(self, vpc_id=None, description=None, vpc_name=None, cidr_block=None, region_id=None, user_cidr=None):
-        self.vpc_id = vpc_id
-        self.description = description
-        self.vpc_name = vpc_name
-        self.cidr_block = cidr_block
-        self.region_id = region_id
-        self.user_cidr = user_cidr
+        self.vpc_id = vpc_id            # type: str
+        self.description = description  # type: str
+        self.vpc_name = vpc_name        # type: str
+        self.cidr_block = cidr_block    # type: str
+        self.region_id = region_id      # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.vpc_id, 'vpc_id')
@@ -26996,7 +28771,7 @@ class ModifyVpcAttributeRequest(TeaModel):
 
 class ModifyVpcAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27013,9 +28788,9 @@ class ModifyVpcAttributeResponse(TeaModel):
 
 class ModifySnapshotAttributeRequest(TeaModel):
     def __init__(self, snapshot_id=None, snapshot_name=None, description=None):
-        self.snapshot_id = snapshot_id
-        self.snapshot_name = snapshot_name
-        self.description = description
+        self.snapshot_id = snapshot_id  # type: str
+        self.snapshot_name = snapshot_name  # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.snapshot_id, 'snapshot_id')
@@ -27036,7 +28811,7 @@ class ModifySnapshotAttributeRequest(TeaModel):
 
 class ModifySnapshotAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27053,10 +28828,10 @@ class ModifySnapshotAttributeResponse(TeaModel):
 
 class ModifySecurityGroupAttributeRequest(TeaModel):
     def __init__(self, security_group_id=None, description=None, security_group_name=None, region_id=None):
-        self.security_group_id = security_group_id
-        self.description = description
-        self.security_group_name = security_group_name
-        self.region_id = region_id
+        self.security_group_id = security_group_id  # type: str
+        self.description = description  # type: str
+        self.security_group_name = security_group_name  # type: str
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.security_group_id, 'security_group_id')
@@ -27080,7 +28855,7 @@ class ModifySecurityGroupAttributeRequest(TeaModel):
 
 class ModifySecurityGroupAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27098,11 +28873,11 @@ class ModifySecurityGroupAttributeResponse(TeaModel):
 class ModifyInstanceVpcAttributeRequest(TeaModel):
     def __init__(self, instance_id=None, v_switch_id=None, private_ip_address=None, vpc_id=None,
                  security_group_id=None):
-        self.instance_id = instance_id
-        self.v_switch_id = v_switch_id
-        self.private_ip_address = private_ip_address
-        self.vpc_id = vpc_id
-        self.security_group_id = security_group_id
+        self.instance_id = instance_id  # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.private_ip_address = private_ip_address  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.security_group_id = security_group_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -27128,7 +28903,7 @@ class ModifyInstanceVpcAttributeRequest(TeaModel):
 
 class ModifyInstanceVpcAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27145,9 +28920,9 @@ class ModifyInstanceVpcAttributeResponse(TeaModel):
 
 class ModifyInstanceVncPasswdRequest(TeaModel):
     def __init__(self, instance_id=None, region_id=None, vnc_password=None):
-        self.instance_id = instance_id
-        self.region_id = region_id
-        self.vnc_password = vnc_password
+        self.instance_id = instance_id  # type: str
+        self.region_id = region_id      # type: str
+        self.vnc_password = vnc_password  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -27170,7 +28945,7 @@ class ModifyInstanceVncPasswdRequest(TeaModel):
 
 class ModifyInstanceVncPasswdResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27189,15 +28964,15 @@ class ModifyInstanceSpecRequest(TeaModel):
     def __init__(self, instance_id=None, instance_type=None, internet_max_bandwidth_out=None,
                  internet_max_bandwidth_in=None, temporary=None, async_=None, allow_migrate_across_zone=None, system_disk=None,
                  client_token=None):
-        self.instance_id = instance_id
-        self.instance_type = instance_type
-        self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        self.temporary = temporary  # type: ModifyInstanceSpecRequestTemporary
-        self.async_ = async_
-        self.allow_migrate_across_zone = allow_migrate_across_zone
+        self.instance_id = instance_id  # type: str
+        self.instance_type = instance_type  # type: str
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out  # type: int
+        self.internet_max_bandwidth_in = internet_max_bandwidth_in  # type: int
+        self.temporary = temporary      # type: ModifyInstanceSpecRequestTemporary
+        self.async_ = async_            # type: bool
+        self.allow_migrate_across_zone = allow_migrate_across_zone  # type: bool
         self.system_disk = system_disk  # type: ModifyInstanceSpecRequestSystemDisk
-        self.client_token = client_token
+        self.client_token = client_token  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -27248,9 +29023,9 @@ class ModifyInstanceSpecRequest(TeaModel):
 
 class ModifyInstanceSpecRequestTemporary(TeaModel):
     def __init__(self, start_time=None, end_time=None, internet_max_bandwidth_out=None):
-        self.start_time = start_time
-        self.end_time = end_time
-        self.internet_max_bandwidth_out = internet_max_bandwidth_out
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out  # type: int
 
     def validate(self):
         pass
@@ -27271,7 +29046,7 @@ class ModifyInstanceSpecRequestTemporary(TeaModel):
 
 class ModifyInstanceSpecRequestSystemDisk(TeaModel):
     def __init__(self, category=None):
-        self.category = category
+        self.category = category        # type: str
 
     def validate(self):
         pass
@@ -27288,7 +29063,7 @@ class ModifyInstanceSpecRequestSystemDisk(TeaModel):
 
 class ModifyInstanceSpecResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27306,15 +29081,15 @@ class ModifyInstanceSpecResponse(TeaModel):
 class ModifyInstanceNetworkSpecRequest(TeaModel):
     def __init__(self, instance_id=None, internet_max_bandwidth_out=None, internet_max_bandwidth_in=None,
                  network_charge_type=None, allocate_public_ip=None, start_time=None, end_time=None, auto_pay=None, client_token=None):
-        self.instance_id = instance_id
-        self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        self.network_charge_type = network_charge_type
-        self.allocate_public_ip = allocate_public_ip
-        self.start_time = start_time
-        self.end_time = end_time
-        self.auto_pay = auto_pay
-        self.client_token = client_token
+        self.instance_id = instance_id  # type: str
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out  # type: int
+        self.internet_max_bandwidth_in = internet_max_bandwidth_in  # type: int
+        self.network_charge_type = network_charge_type  # type: str
+        self.allocate_public_ip = allocate_public_ip  # type: bool
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.auto_pay = auto_pay        # type: bool
+        self.client_token = client_token  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -27347,8 +29122,8 @@ class ModifyInstanceNetworkSpecRequest(TeaModel):
 
 class ModifyInstanceNetworkSpecResponse(TeaModel):
     def __init__(self, request_id=None, order_id=None):
-        self.request_id = request_id
-        self.order_id = order_id
+        self.request_id = request_id    # type: str
+        self.order_id = order_id        # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27369,17 +29144,18 @@ class ModifyInstanceNetworkSpecResponse(TeaModel):
 class ModifyInstanceAttributeRequest(TeaModel):
     def __init__(self, instance_id=None, password=None, host_name=None, instance_name=None, description=None,
                  user_data=None, recyclable=None, credit_specification=None, deletion_protection=None,
-                 security_group_ids=None):
-        self.instance_id = instance_id
-        self.password = password
-        self.host_name = host_name
-        self.instance_name = instance_name
-        self.description = description
-        self.user_data = user_data
-        self.recyclable = recyclable
-        self.credit_specification = credit_specification
-        self.deletion_protection = deletion_protection
-        self.security_group_ids = security_group_ids
+                 security_group_ids=None, network_interface_queue_number=None):
+        self.instance_id = instance_id  # type: str
+        self.password = password        # type: str
+        self.host_name = host_name      # type: str
+        self.instance_name = instance_name  # type: str
+        self.description = description  # type: str
+        self.user_data = user_data      # type: str
+        self.recyclable = recyclable    # type: bool
+        self.credit_specification = credit_specification  # type: str
+        self.deletion_protection = deletion_protection  # type: bool
+        self.security_group_ids = security_group_ids  # type: List[str]
+        self.network_interface_queue_number = network_interface_queue_number  # type: int
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -27396,6 +29172,7 @@ class ModifyInstanceAttributeRequest(TeaModel):
         result['CreditSpecification'] = self.credit_specification
         result['DeletionProtection'] = self.deletion_protection
         result['SecurityGroupIds'] = self.security_group_ids
+        result['NetworkInterfaceQueueNumber'] = self.network_interface_queue_number
         return result
 
     def from_map(self, map={}):
@@ -27409,12 +29186,13 @@ class ModifyInstanceAttributeRequest(TeaModel):
         self.credit_specification = map.get('CreditSpecification')
         self.deletion_protection = map.get('DeletionProtection')
         self.security_group_ids = map.get('SecurityGroupIds')
+        self.network_interface_queue_number = map.get('NetworkInterfaceQueueNumber')
         return self
 
 
 class ModifyInstanceAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27431,11 +29209,11 @@ class ModifyInstanceAttributeResponse(TeaModel):
 
 class ModifyImageSharePermissionRequest(TeaModel):
     def __init__(self, region_id=None, image_id=None, add_account=None, remove_account=None, launch_permission=None):
-        self.region_id = region_id
-        self.image_id = image_id
-        self.add_account = add_account
-        self.remove_account = remove_account
-        self.launch_permission = launch_permission
+        self.region_id = region_id      # type: str
+        self.image_id = image_id        # type: str
+        self.add_account = add_account  # type: List[str]
+        self.remove_account = remove_account  # type: List[str]
+        self.launch_permission = launch_permission  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -27461,7 +29239,7 @@ class ModifyImageSharePermissionRequest(TeaModel):
 
 class ModifyImageSharePermissionResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27478,10 +29256,10 @@ class ModifyImageSharePermissionResponse(TeaModel):
 
 class ModifyImageShareGroupPermissionRequest(TeaModel):
     def __init__(self, region_id=None, image_id=None, add_group=None, remove_group=None):
-        self.region_id = region_id
-        self.image_id = image_id
-        self.add_group = add_group
-        self.remove_group = remove_group
+        self.region_id = region_id      # type: str
+        self.image_id = image_id        # type: str
+        self.add_group = add_group      # type: List[str]
+        self.remove_group = remove_group  # type: List[str]
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -27505,7 +29283,7 @@ class ModifyImageShareGroupPermissionRequest(TeaModel):
 
 class ModifyImageShareGroupPermissionResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27523,13 +29301,13 @@ class ModifyImageShareGroupPermissionResponse(TeaModel):
 class ModifyImageAttributeRequest(TeaModel):
     def __init__(self, region_id=None, image_id=None, image_name=None, status=None, image_family=None,
                  boot_mode=None, description=None):
-        self.region_id = region_id
-        self.image_id = image_id
-        self.image_name = image_name
-        self.status = status
-        self.image_family = image_family
-        self.boot_mode = boot_mode
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.image_id = image_id        # type: str
+        self.image_name = image_name    # type: str
+        self.status = status            # type: str
+        self.image_family = image_family  # type: str
+        self.boot_mode = boot_mode      # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -27559,7 +29337,7 @@ class ModifyImageAttributeRequest(TeaModel):
 
 class ModifyImageAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27576,9 +29354,9 @@ class ModifyImageAttributeResponse(TeaModel):
 
 class ModifyEipAddressAttributeRequest(TeaModel):
     def __init__(self, region_id=None, allocation_id=None, bandwidth=None):
-        self.region_id = region_id
-        self.allocation_id = allocation_id
-        self.bandwidth = bandwidth
+        self.region_id = region_id      # type: str
+        self.allocation_id = allocation_id  # type: str
+        self.bandwidth = bandwidth      # type: str
 
     def validate(self):
         self.validate_required(self.allocation_id, 'allocation_id')
@@ -27600,7 +29378,7 @@ class ModifyEipAddressAttributeRequest(TeaModel):
 
 class ModifyEipAddressAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27618,13 +29396,13 @@ class ModifyEipAddressAttributeResponse(TeaModel):
 class ModifyDiskAttributeRequest(TeaModel):
     def __init__(self, disk_id=None, disk_ids=None, disk_name=None, description=None, delete_with_instance=None,
                  delete_auto_snapshot=None, enable_auto_snapshot=None):
-        self.disk_id = disk_id
-        self.disk_ids = disk_ids
-        self.disk_name = disk_name
-        self.description = description
-        self.delete_with_instance = delete_with_instance
-        self.delete_auto_snapshot = delete_auto_snapshot
-        self.enable_auto_snapshot = enable_auto_snapshot
+        self.disk_id = disk_id          # type: str
+        self.disk_ids = disk_ids        # type: List[str]
+        self.disk_name = disk_name      # type: str
+        self.description = description  # type: str
+        self.delete_with_instance = delete_with_instance  # type: bool
+        self.delete_auto_snapshot = delete_auto_snapshot  # type: bool
+        self.enable_auto_snapshot = enable_auto_snapshot  # type: bool
 
     def validate(self):
         pass
@@ -27653,7 +29431,7 @@ class ModifyDiskAttributeRequest(TeaModel):
 
 class ModifyDiskAttributeResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27672,14 +29450,14 @@ class ModifyAutoSnapshotPolicyRequest(TeaModel):
     def __init__(self, system_disk_policy_enabled=None, system_disk_policy_time_period=None,
                  system_disk_policy_retention_days=None, system_disk_policy_retention_last_week=None, data_disk_policy_enabled=None,
                  data_disk_policy_time_period=None, data_disk_policy_retention_days=None, data_disk_policy_retention_last_week=None):
-        self.system_disk_policy_enabled = system_disk_policy_enabled
-        self.system_disk_policy_time_period = system_disk_policy_time_period
-        self.system_disk_policy_retention_days = system_disk_policy_retention_days
-        self.system_disk_policy_retention_last_week = system_disk_policy_retention_last_week
-        self.data_disk_policy_enabled = data_disk_policy_enabled
-        self.data_disk_policy_time_period = data_disk_policy_time_period
-        self.data_disk_policy_retention_days = data_disk_policy_retention_days
-        self.data_disk_policy_retention_last_week = data_disk_policy_retention_last_week
+        self.system_disk_policy_enabled = system_disk_policy_enabled  # type: bool
+        self.system_disk_policy_time_period = system_disk_policy_time_period  # type: int
+        self.system_disk_policy_retention_days = system_disk_policy_retention_days  # type: int
+        self.system_disk_policy_retention_last_week = system_disk_policy_retention_last_week  # type: bool
+        self.data_disk_policy_enabled = data_disk_policy_enabled  # type: bool
+        self.data_disk_policy_time_period = data_disk_policy_time_period  # type: int
+        self.data_disk_policy_retention_days = data_disk_policy_retention_days  # type: int
+        self.data_disk_policy_retention_last_week = data_disk_policy_retention_last_week  # type: bool
 
     def validate(self):
         pass
@@ -27710,7 +29488,7 @@ class ModifyAutoSnapshotPolicyRequest(TeaModel):
 
 class ModifyAutoSnapshotPolicyResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27727,8 +29505,8 @@ class ModifyAutoSnapshotPolicyResponse(TeaModel):
 
 class LeaveSecurityGroupRequest(TeaModel):
     def __init__(self, security_group_id=None, instance_id=None):
-        self.security_group_id = security_group_id
-        self.instance_id = instance_id
+        self.security_group_id = security_group_id  # type: str
+        self.instance_id = instance_id  # type: str
 
     def validate(self):
         self.validate_required(self.security_group_id, 'security_group_id')
@@ -27748,7 +29526,7 @@ class LeaveSecurityGroupRequest(TeaModel):
 
 class LeaveSecurityGroupResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27765,8 +29543,8 @@ class LeaveSecurityGroupResponse(TeaModel):
 
 class JoinSecurityGroupRequest(TeaModel):
     def __init__(self, security_group_id=None, instance_id=None):
-        self.security_group_id = security_group_id
-        self.instance_id = instance_id
+        self.security_group_id = security_group_id  # type: str
+        self.instance_id = instance_id  # type: str
 
     def validate(self):
         self.validate_required(self.security_group_id, 'security_group_id')
@@ -27786,7 +29564,7 @@ class JoinSecurityGroupRequest(TeaModel):
 
 class JoinSecurityGroupResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27803,9 +29581,9 @@ class JoinSecurityGroupResponse(TeaModel):
 
 class DetachDiskRequest(TeaModel):
     def __init__(self, instance_id=None, disk_id=None, delete_with_instance=None):
-        self.instance_id = instance_id
-        self.disk_id = disk_id
-        self.delete_with_instance = delete_with_instance
+        self.instance_id = instance_id  # type: str
+        self.disk_id = disk_id          # type: str
+        self.delete_with_instance = delete_with_instance  # type: bool
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -27827,7 +29605,7 @@ class DetachDiskRequest(TeaModel):
 
 class DetachDiskResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27845,11 +29623,11 @@ class DetachDiskResponse(TeaModel):
 class DescribeZonesRequest(TeaModel):
     def __init__(self, region_id=None, verbose=None, instance_charge_type=None, spot_strategy=None,
                  accept_language=None):
-        self.region_id = region_id
-        self.verbose = verbose
-        self.instance_charge_type = instance_charge_type
-        self.spot_strategy = spot_strategy
-        self.accept_language = accept_language
+        self.region_id = region_id      # type: str
+        self.verbose = verbose          # type: bool
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.spot_strategy = spot_strategy  # type: str
+        self.accept_language = accept_language  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -27874,8 +29652,8 @@ class DescribeZonesRequest(TeaModel):
 
 class DescribeZonesResponse(TeaModel):
     def __init__(self, request_id=None, zones=None):
-        self.request_id = request_id
-        self.zones = zones  # type: DescribeZonesResponseZones
+        self.request_id = request_id    # type: str
+        self.zones = zones              # type: DescribeZonesResponseZones
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -27905,7 +29683,7 @@ class DescribeZonesResponse(TeaModel):
 class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoSystemDiskCategories(TeaModel):
     def __init__(self, supported_system_disk_category=None):
         # supportedSystemDiskCategory
-        self.supported_system_disk_category = supported_system_disk_category
+        self.supported_system_disk_category = supported_system_disk_category  # type: List[str]
 
     def validate(self):
         self.validate_required(self.supported_system_disk_category, 'supported_system_disk_category')
@@ -27923,7 +29701,7 @@ class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoSystemDiskCat
 class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoDataDiskCategories(TeaModel):
     def __init__(self, supported_data_disk_category=None):
         # supportedDataDiskCategory
-        self.supported_data_disk_category = supported_data_disk_category
+        self.supported_data_disk_category = supported_data_disk_category  # type: List[str]
 
     def validate(self):
         self.validate_required(self.supported_data_disk_category, 'supported_data_disk_category')
@@ -27941,7 +29719,7 @@ class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoDataDiskCateg
 class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoNetworkTypes(TeaModel):
     def __init__(self, supported_network_category=None):
         # supportedNetworkCategory
-        self.supported_network_category = supported_network_category
+        self.supported_network_category = supported_network_category  # type: List[str]
 
     def validate(self):
         self.validate_required(self.supported_network_category, 'supported_network_category')
@@ -27959,7 +29737,7 @@ class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoNetworkTypes(
 class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoInstanceTypes(TeaModel):
     def __init__(self, supported_instance_type=None):
         # supportedInstanceType
-        self.supported_instance_type = supported_instance_type
+        self.supported_instance_type = supported_instance_type  # type: List[str]
 
     def validate(self):
         self.validate_required(self.supported_instance_type, 'supported_instance_type')
@@ -27977,7 +29755,7 @@ class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoInstanceTypes
 class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoInstanceTypeFamilies(TeaModel):
     def __init__(self, supported_instance_type_family=None):
         # supportedInstanceTypeFamily
-        self.supported_instance_type_family = supported_instance_type_family
+        self.supported_instance_type_family = supported_instance_type_family  # type: List[str]
 
     def validate(self):
         self.validate_required(self.supported_instance_type_family, 'supported_instance_type_family')
@@ -27995,7 +29773,7 @@ class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoInstanceTypeF
 class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoInstanceGenerations(TeaModel):
     def __init__(self, supported_instance_generation=None):
         # supportedInstanceGeneration
-        self.supported_instance_generation = supported_instance_generation
+        self.supported_instance_generation = supported_instance_generation  # type: List[str]
 
     def validate(self):
         self.validate_required(self.supported_instance_generation, 'supported_instance_generation')
@@ -28013,7 +29791,7 @@ class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoInstanceGener
 class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfo(TeaModel):
     def __init__(self, io_optimized=None, system_disk_categories=None, data_disk_categories=None,
                  network_types=None, instance_types=None, instance_type_families=None, instance_generations=None):
-        self.io_optimized = io_optimized
+        self.io_optimized = io_optimized  # type: bool
         self.system_disk_categories = system_disk_categories  # type: DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoSystemDiskCategories
         self.data_disk_categories = data_disk_categories  # type: DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoDataDiskCategories
         self.network_types = network_types  # type: DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfoNetworkTypes
@@ -28108,7 +29886,7 @@ class DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfo(TeaModel):
 
 class DescribeZonesResponseZonesZoneAvailableResources(TeaModel):
     def __init__(self, resources_info=None):
-        self.resources_info = resources_info
+        self.resources_info = resources_info  # type: List[DescribeZonesResponseZonesZoneAvailableResourcesResourcesInfo]
 
     def validate(self):
         self.validate_required(self.resources_info, 'resources_info')
@@ -28141,7 +29919,7 @@ class DescribeZonesResponseZonesZoneAvailableResources(TeaModel):
 class DescribeZonesResponseZonesZoneAvailableResourceCreation(TeaModel):
     def __init__(self, resource_types=None):
         # ResourceTypes
-        self.resource_types = resource_types
+        self.resource_types = resource_types  # type: List[str]
 
     def validate(self):
         self.validate_required(self.resource_types, 'resource_types')
@@ -28159,7 +29937,7 @@ class DescribeZonesResponseZonesZoneAvailableResourceCreation(TeaModel):
 class DescribeZonesResponseZonesZoneAvailableDiskCategories(TeaModel):
     def __init__(self, disk_categories=None):
         # DiskCategories
-        self.disk_categories = disk_categories
+        self.disk_categories = disk_categories  # type: List[str]
 
     def validate(self):
         self.validate_required(self.disk_categories, 'disk_categories')
@@ -28177,7 +29955,7 @@ class DescribeZonesResponseZonesZoneAvailableDiskCategories(TeaModel):
 class DescribeZonesResponseZonesZoneAvailableInstanceTypes(TeaModel):
     def __init__(self, instance_types=None):
         # InstanceTypes
-        self.instance_types = instance_types
+        self.instance_types = instance_types  # type: List[str]
 
     def validate(self):
         self.validate_required(self.instance_types, 'instance_types')
@@ -28195,7 +29973,7 @@ class DescribeZonesResponseZonesZoneAvailableInstanceTypes(TeaModel):
 class DescribeZonesResponseZonesZoneAvailableVolumeCategories(TeaModel):
     def __init__(self, volume_categories=None):
         # VolumeCategories
-        self.volume_categories = volume_categories
+        self.volume_categories = volume_categories  # type: List[str]
 
     def validate(self):
         self.validate_required(self.volume_categories, 'volume_categories')
@@ -28213,7 +29991,7 @@ class DescribeZonesResponseZonesZoneAvailableVolumeCategories(TeaModel):
 class DescribeZonesResponseZonesZoneAvailableDedicatedHostTypes(TeaModel):
     def __init__(self, dedicated_host_type=None):
         # DedicatedHostType
-        self.dedicated_host_type = dedicated_host_type
+        self.dedicated_host_type = dedicated_host_type  # type: List[str]
 
     def validate(self):
         self.validate_required(self.dedicated_host_type, 'dedicated_host_type')
@@ -28231,7 +30009,7 @@ class DescribeZonesResponseZonesZoneAvailableDedicatedHostTypes(TeaModel):
 class DescribeZonesResponseZonesZoneDedicatedHostGenerations(TeaModel):
     def __init__(self, dedicated_host_generation=None):
         # DedicatedHostGeneration
-        self.dedicated_host_generation = dedicated_host_generation
+        self.dedicated_host_generation = dedicated_host_generation  # type: List[str]
 
     def validate(self):
         self.validate_required(self.dedicated_host_generation, 'dedicated_host_generation')
@@ -28250,8 +30028,8 @@ class DescribeZonesResponseZonesZone(TeaModel):
     def __init__(self, zone_id=None, local_name=None, available_resources=None, available_resource_creation=None,
                  available_disk_categories=None, available_instance_types=None, available_volume_categories=None,
                  available_dedicated_host_types=None, dedicated_host_generations=None):
-        self.zone_id = zone_id
-        self.local_name = local_name
+        self.zone_id = zone_id          # type: str
+        self.local_name = local_name    # type: str
         self.available_resources = available_resources  # type: DescribeZonesResponseZonesZoneAvailableResources
         self.available_resource_creation = available_resource_creation  # type: DescribeZonesResponseZonesZoneAvailableResourceCreation
         self.available_disk_categories = available_disk_categories  # type: DescribeZonesResponseZonesZoneAvailableDiskCategories
@@ -28362,7 +30140,7 @@ class DescribeZonesResponseZonesZone(TeaModel):
 
 class DescribeZonesResponseZones(TeaModel):
     def __init__(self, zone=None):
-        self.zone = zone
+        self.zone = zone                # type: List[DescribeZonesResponseZonesZone]
 
     def validate(self):
         self.validate_required(self.zone, 'zone')
@@ -28395,13 +30173,13 @@ class DescribeZonesResponseZones(TeaModel):
 class DescribeVSwitchesRequest(TeaModel):
     def __init__(self, vpc_id=None, v_switch_id=None, zone_id=None, region_id=None, is_default=None,
                  page_number=None, page_size=None):
-        self.vpc_id = vpc_id
-        self.v_switch_id = v_switch_id
-        self.zone_id = zone_id
-        self.region_id = region_id
-        self.is_default = is_default
-        self.page_number = page_number
-        self.page_size = page_size
+        self.vpc_id = vpc_id            # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.zone_id = zone_id          # type: str
+        self.region_id = region_id      # type: str
+        self.is_default = is_default    # type: bool
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         pass
@@ -28430,11 +30208,11 @@ class DescribeVSwitchesRequest(TeaModel):
 
 class DescribeVSwitchesResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, v_switches=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.v_switches = v_switches  # type: DescribeVSwitchesResponseVSwitches
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.v_switches = v_switches    # type: DescribeVSwitchesResponseVSwitches
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -28474,17 +30252,17 @@ class DescribeVSwitchesResponseVSwitchesVSwitch(TeaModel):
     def __init__(self, v_switch_id=None, vpc_id=None, status=None, cidr_block=None, zone_id=None,
                  available_ip_address_count=None, description=None, v_switch_name=None, creation_time=None, is_default=None,
                  resource_group_id=None):
-        self.v_switch_id = v_switch_id
-        self.vpc_id = vpc_id
-        self.status = status
-        self.cidr_block = cidr_block
-        self.zone_id = zone_id
-        self.available_ip_address_count = available_ip_address_count
-        self.description = description
-        self.v_switch_name = v_switch_name
-        self.creation_time = creation_time
-        self.is_default = is_default
-        self.resource_group_id = resource_group_id
+        self.v_switch_id = v_switch_id  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.status = status            # type: str
+        self.cidr_block = cidr_block    # type: str
+        self.zone_id = zone_id          # type: str
+        self.available_ip_address_count = available_ip_address_count  # type: int
+        self.description = description  # type: str
+        self.v_switch_name = v_switch_name  # type: str
+        self.creation_time = creation_time  # type: str
+        self.is_default = is_default    # type: bool
+        self.resource_group_id = resource_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.v_switch_id, 'v_switch_id')
@@ -28531,7 +30309,7 @@ class DescribeVSwitchesResponseVSwitchesVSwitch(TeaModel):
 
 class DescribeVSwitchesResponseVSwitches(TeaModel):
     def __init__(self, v_switch=None):
-        self.v_switch = v_switch
+        self.v_switch = v_switch        # type: List[DescribeVSwitchesResponseVSwitchesVSwitch]
 
     def validate(self):
         self.validate_required(self.v_switch, 'v_switch')
@@ -28563,10 +30341,10 @@ class DescribeVSwitchesResponseVSwitches(TeaModel):
 
 class DescribeVRoutersRequest(TeaModel):
     def __init__(self, vrouter_id=None, region_id=None, page_number=None, page_size=None):
-        self.vrouter_id = vrouter_id
-        self.region_id = region_id
-        self.page_number = page_number
-        self.page_size = page_size
+        self.vrouter_id = vrouter_id    # type: str
+        self.region_id = region_id      # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -28589,11 +30367,11 @@ class DescribeVRoutersRequest(TeaModel):
 
 class DescribeVRoutersResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, vrouters=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.vrouters = vrouters  # type: DescribeVRoutersResponseVRouters
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.vrouters = vrouters        # type: DescribeVRoutersResponseVRouters
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -28632,7 +30410,7 @@ class DescribeVRoutersResponse(TeaModel):
 class DescribeVRoutersResponseVRoutersVRouterRouteTableIds(TeaModel):
     def __init__(self, route_table_id=None):
         # RouteTableId
-        self.route_table_id = route_table_id
+        self.route_table_id = route_table_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.route_table_id, 'route_table_id')
@@ -28650,12 +30428,12 @@ class DescribeVRoutersResponseVRoutersVRouterRouteTableIds(TeaModel):
 class DescribeVRoutersResponseVRoutersVRouter(TeaModel):
     def __init__(self, region_id=None, vpc_id=None, vrouter_name=None, description=None, vrouter_id=None,
                  creation_time=None, route_table_ids=None):
-        self.region_id = region_id
-        self.vpc_id = vpc_id
-        self.vrouter_name = vrouter_name
-        self.description = description
-        self.vrouter_id = vrouter_id
-        self.creation_time = creation_time
+        self.region_id = region_id      # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.vrouter_name = vrouter_name  # type: str
+        self.description = description  # type: str
+        self.vrouter_id = vrouter_id    # type: str
+        self.creation_time = creation_time  # type: str
         self.route_table_ids = route_table_ids  # type: DescribeVRoutersResponseVRoutersVRouterRouteTableIds
 
     def validate(self):
@@ -28700,7 +30478,7 @@ class DescribeVRoutersResponseVRoutersVRouter(TeaModel):
 
 class DescribeVRoutersResponseVRouters(TeaModel):
     def __init__(self, vrouter=None):
-        self.vrouter = vrouter
+        self.vrouter = vrouter          # type: List[DescribeVRoutersResponseVRoutersVRouter]
 
     def validate(self):
         self.validate_required(self.vrouter, 'vrouter')
@@ -28732,11 +30510,11 @@ class DescribeVRoutersResponseVRouters(TeaModel):
 
 class DescribeVpcsRequest(TeaModel):
     def __init__(self, vpc_id=None, region_id=None, is_default=None, page_number=None, page_size=None):
-        self.vpc_id = vpc_id
-        self.region_id = region_id
-        self.is_default = is_default
-        self.page_number = page_number
-        self.page_size = page_size
+        self.vpc_id = vpc_id            # type: str
+        self.region_id = region_id      # type: str
+        self.is_default = is_default    # type: bool
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -28761,11 +30539,11 @@ class DescribeVpcsRequest(TeaModel):
 
 class DescribeVpcsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, vpcs=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.vpcs = vpcs  # type: DescribeVpcsResponseVpcs
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.vpcs = vpcs                # type: DescribeVpcsResponseVpcs
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -28804,7 +30582,7 @@ class DescribeVpcsResponse(TeaModel):
 class DescribeVpcsResponseVpcsVpcVSwitchIds(TeaModel):
     def __init__(self, v_switch_id=None):
         # VSwitchId
-        self.v_switch_id = v_switch_id
+        self.v_switch_id = v_switch_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.v_switch_id, 'v_switch_id')
@@ -28822,7 +30600,7 @@ class DescribeVpcsResponseVpcsVpcVSwitchIds(TeaModel):
 class DescribeVpcsResponseVpcsVpcUserCidrs(TeaModel):
     def __init__(self, user_cidr=None):
         # UserCidr
-        self.user_cidr = user_cidr
+        self.user_cidr = user_cidr      # type: List[str]
 
     def validate(self):
         self.validate_required(self.user_cidr, 'user_cidr')
@@ -28840,17 +30618,17 @@ class DescribeVpcsResponseVpcsVpcUserCidrs(TeaModel):
 class DescribeVpcsResponseVpcsVpc(TeaModel):
     def __init__(self, vpc_id=None, region_id=None, status=None, vpc_name=None, creation_time=None, cidr_block=None,
                  vrouter_id=None, description=None, is_default=None, v_switch_ids=None, user_cidrs=None):
-        self.vpc_id = vpc_id
-        self.region_id = region_id
-        self.status = status
-        self.vpc_name = vpc_name
-        self.creation_time = creation_time
-        self.cidr_block = cidr_block
-        self.vrouter_id = vrouter_id
-        self.description = description
-        self.is_default = is_default
+        self.vpc_id = vpc_id            # type: str
+        self.region_id = region_id      # type: str
+        self.status = status            # type: str
+        self.vpc_name = vpc_name        # type: str
+        self.creation_time = creation_time  # type: str
+        self.cidr_block = cidr_block    # type: str
+        self.vrouter_id = vrouter_id    # type: str
+        self.description = description  # type: str
+        self.is_default = is_default    # type: bool
         self.v_switch_ids = v_switch_ids  # type: DescribeVpcsResponseVpcsVpcVSwitchIds
-        self.user_cidrs = user_cidrs  # type: DescribeVpcsResponseVpcsVpcUserCidrs
+        self.user_cidrs = user_cidrs    # type: DescribeVpcsResponseVpcsVpcUserCidrs
 
     def validate(self):
         self.validate_required(self.vpc_id, 'vpc_id')
@@ -28915,7 +30693,7 @@ class DescribeVpcsResponseVpcsVpc(TeaModel):
 
 class DescribeVpcsResponseVpcs(TeaModel):
     def __init__(self, vpc=None):
-        self.vpc = vpc
+        self.vpc = vpc                  # type: List[DescribeVpcsResponseVpcsVpc]
 
     def validate(self):
         self.validate_required(self.vpc, 'vpc')
@@ -28949,25 +30727,25 @@ class DescribeSnapshotsRequest(TeaModel):
     def __init__(self, instance_id=None, disk_id=None, snapshot_link_id=None, region_id=None, snapshot_ids=None,
                  page_number=None, page_size=None, snapshot_name=None, status=None, snapshot_type=None, filter=None, usage=None,
                  source_disk_type=None, tag=None, encrypted=None, resource_group_id=None, dry_run=None, kmskey_id=None, category=None):
-        self.instance_id = instance_id
-        self.disk_id = disk_id
-        self.snapshot_link_id = snapshot_link_id
-        self.region_id = region_id
-        self.snapshot_ids = snapshot_ids
-        self.page_number = page_number
-        self.page_size = page_size
-        self.snapshot_name = snapshot_name
-        self.status = status
-        self.snapshot_type = snapshot_type
-        self.filter = filter
-        self.usage = usage
-        self.source_disk_type = source_disk_type
-        self.tag = tag
-        self.encrypted = encrypted
-        self.resource_group_id = resource_group_id
-        self.dry_run = dry_run
-        self.kmskey_id = kmskey_id
-        self.category = category
+        self.instance_id = instance_id  # type: str
+        self.disk_id = disk_id          # type: str
+        self.snapshot_link_id = snapshot_link_id  # type: str
+        self.region_id = region_id      # type: str
+        self.snapshot_ids = snapshot_ids  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.snapshot_name = snapshot_name  # type: str
+        self.status = status            # type: str
+        self.snapshot_type = snapshot_type  # type: str
+        self.filter = filter            # type: List[DescribeSnapshotsRequestFilter]
+        self.usage = usage              # type: str
+        self.source_disk_type = source_disk_type  # type: str
+        self.tag = tag                  # type: List[DescribeSnapshotsRequestTag]
+        self.encrypted = encrypted      # type: bool
+        self.resource_group_id = resource_group_id  # type: str
+        self.dry_run = dry_run          # type: bool
+        self.kmskey_id = kmskey_id      # type: str
+        self.category = category        # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -29050,8 +30828,8 @@ class DescribeSnapshotsRequest(TeaModel):
 
 class DescribeSnapshotsRequestFilter(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
         pass
@@ -29070,12 +30848,11 @@ class DescribeSnapshotsRequestFilter(TeaModel):
 
 class DescribeSnapshotsRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -29091,11 +30868,11 @@ class DescribeSnapshotsRequestTag(TeaModel):
 
 class DescribeSnapshotsResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, snapshots=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.snapshots = snapshots  # type: DescribeSnapshotsResponseSnapshots
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.snapshots = snapshots      # type: DescribeSnapshotsResponseSnapshots
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -29133,8 +30910,8 @@ class DescribeSnapshotsResponse(TeaModel):
 
 class DescribeSnapshotsResponseSnapshotsSnapshotTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -29154,7 +30931,7 @@ class DescribeSnapshotsResponseSnapshotsSnapshotTagsTag(TeaModel):
 
 class DescribeSnapshotsResponseSnapshotsSnapshotTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeSnapshotsResponseSnapshotsSnapshotTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -29190,28 +30967,28 @@ class DescribeSnapshotsResponseSnapshotsSnapshot(TeaModel):
                  description=None, creation_time=None, last_modified_time=None, status=None, usage=None,
                  source_storage_type=None, remain_time=None, resource_group_id=None, kmskey_id=None, category=None, snapshot_type=None,
                  tags=None):
-        self.snapshot_id = snapshot_id
-        self.snapshot_sn = snapshot_sn
-        self.snapshot_name = snapshot_name
-        self.progress = progress
-        self.product_code = product_code
-        self.source_disk_id = source_disk_id
-        self.source_disk_type = source_disk_type
-        self.retention_days = retention_days
-        self.encrypted = encrypted
-        self.source_disk_size = source_disk_size
-        self.description = description
-        self.creation_time = creation_time
-        self.last_modified_time = last_modified_time
-        self.status = status
-        self.usage = usage
-        self.source_storage_type = source_storage_type
-        self.remain_time = remain_time
-        self.resource_group_id = resource_group_id
-        self.kmskey_id = kmskey_id
-        self.category = category
-        self.snapshot_type = snapshot_type
-        self.tags = tags  # type: DescribeSnapshotsResponseSnapshotsSnapshotTags
+        self.snapshot_id = snapshot_id  # type: str
+        self.snapshot_sn = snapshot_sn  # type: str
+        self.snapshot_name = snapshot_name  # type: str
+        self.progress = progress        # type: str
+        self.product_code = product_code  # type: str
+        self.source_disk_id = source_disk_id  # type: str
+        self.source_disk_type = source_disk_type  # type: str
+        self.retention_days = retention_days  # type: int
+        self.encrypted = encrypted      # type: bool
+        self.source_disk_size = source_disk_size  # type: str
+        self.description = description  # type: str
+        self.creation_time = creation_time  # type: str
+        self.last_modified_time = last_modified_time  # type: str
+        self.status = status            # type: str
+        self.usage = usage              # type: str
+        self.source_storage_type = source_storage_type  # type: str
+        self.remain_time = remain_time  # type: int
+        self.resource_group_id = resource_group_id  # type: str
+        self.kmskey_id = kmskey_id      # type: str
+        self.category = category        # type: str
+        self.snapshot_type = snapshot_type  # type: str
+        self.tags = tags                # type: DescribeSnapshotsResponseSnapshotsSnapshotTags
 
     def validate(self):
         self.validate_required(self.snapshot_id, 'snapshot_id')
@@ -29300,7 +31077,7 @@ class DescribeSnapshotsResponseSnapshotsSnapshot(TeaModel):
 
 class DescribeSnapshotsResponseSnapshots(TeaModel):
     def __init__(self, snapshot=None):
-        self.snapshot = snapshot
+        self.snapshot = snapshot        # type: List[DescribeSnapshotsResponseSnapshotsSnapshot]
 
     def validate(self):
         self.validate_required(self.snapshot, 'snapshot')
@@ -29334,20 +31111,20 @@ class DescribeSecurityGroupsRequest(TeaModel):
     def __init__(self, region_id=None, vpc_id=None, page_number=None, page_size=None, security_group_ids=None,
                  tag=None, resource_group_id=None, network_type=None, security_group_id=None, security_group_name=None,
                  is_query_ecs_count=None, fuzzy_query=None, security_group_type=None, dry_run=None):
-        self.region_id = region_id
-        self.vpc_id = vpc_id
-        self.page_number = page_number
-        self.page_size = page_size
-        self.security_group_ids = security_group_ids
-        self.tag = tag
-        self.resource_group_id = resource_group_id
-        self.network_type = network_type
-        self.security_group_id = security_group_id
-        self.security_group_name = security_group_name
-        self.is_query_ecs_count = is_query_ecs_count
-        self.fuzzy_query = fuzzy_query
-        self.security_group_type = security_group_type
-        self.dry_run = dry_run
+        self.region_id = region_id      # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.security_group_ids = security_group_ids  # type: str
+        self.tag = tag                  # type: List[DescribeSecurityGroupsRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
+        self.network_type = network_type  # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.security_group_name = security_group_name  # type: str
+        self.is_query_ecs_count = is_query_ecs_count  # type: bool
+        self.fuzzy_query = fuzzy_query  # type: bool
+        self.security_group_type = security_group_type  # type: str
+        self.dry_run = dry_run          # type: bool
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -29405,12 +31182,11 @@ class DescribeSecurityGroupsRequest(TeaModel):
 
 class DescribeSecurityGroupsRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -29427,11 +31203,11 @@ class DescribeSecurityGroupsRequestTag(TeaModel):
 class DescribeSecurityGroupsResponse(TeaModel):
     def __init__(self, request_id=None, region_id=None, total_count=None, page_number=None, page_size=None,
                  security_groups=None):
-        self.request_id = request_id
-        self.region_id = region_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.region_id = region_id      # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.security_groups = security_groups  # type: DescribeSecurityGroupsResponseSecurityGroups
 
     def validate(self):
@@ -29473,8 +31249,8 @@ class DescribeSecurityGroupsResponse(TeaModel):
 
 class DescribeSecurityGroupsResponseSecurityGroupsSecurityGroupTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -29494,7 +31270,7 @@ class DescribeSecurityGroupsResponseSecurityGroupsSecurityGroupTagsTag(TeaModel)
 
 class DescribeSecurityGroupsResponseSecurityGroupsSecurityGroupTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeSecurityGroupsResponseSecurityGroupsSecurityGroupTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -29528,18 +31304,18 @@ class DescribeSecurityGroupsResponseSecurityGroupsSecurityGroup(TeaModel):
     def __init__(self, security_group_id=None, description=None, security_group_name=None, vpc_id=None,
                  creation_time=None, security_group_type=None, available_instance_amount=None, ecs_count=None,
                  resource_group_id=None, service_id=None, service_managed=None, tags=None):
-        self.security_group_id = security_group_id
-        self.description = description
-        self.security_group_name = security_group_name
-        self.vpc_id = vpc_id
-        self.creation_time = creation_time
-        self.security_group_type = security_group_type
-        self.available_instance_amount = available_instance_amount
-        self.ecs_count = ecs_count
-        self.resource_group_id = resource_group_id
-        self.service_id = service_id
-        self.service_managed = service_managed
-        self.tags = tags  # type: DescribeSecurityGroupsResponseSecurityGroupsSecurityGroupTags
+        self.security_group_id = security_group_id  # type: str
+        self.description = description  # type: str
+        self.security_group_name = security_group_name  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.creation_time = creation_time  # type: str
+        self.security_group_type = security_group_type  # type: str
+        self.available_instance_amount = available_instance_amount  # type: int
+        self.ecs_count = ecs_count      # type: int
+        self.resource_group_id = resource_group_id  # type: str
+        self.service_id = service_id    # type: int
+        self.service_managed = service_managed  # type: bool
+        self.tags = tags                # type: DescribeSecurityGroupsResponseSecurityGroupsSecurityGroupTags
 
     def validate(self):
         self.validate_required(self.security_group_id, 'security_group_id')
@@ -29598,7 +31374,7 @@ class DescribeSecurityGroupsResponseSecurityGroupsSecurityGroup(TeaModel):
 
 class DescribeSecurityGroupsResponseSecurityGroups(TeaModel):
     def __init__(self, security_group=None):
-        self.security_group = security_group
+        self.security_group = security_group  # type: List[DescribeSecurityGroupsResponseSecurityGroupsSecurityGroup]
 
     def validate(self):
         self.validate_required(self.security_group, 'security_group')
@@ -29630,10 +31406,10 @@ class DescribeSecurityGroupsResponseSecurityGroups(TeaModel):
 
 class DescribeSecurityGroupAttributeRequest(TeaModel):
     def __init__(self, security_group_id=None, region_id=None, nic_type=None, direction=None):
-        self.security_group_id = security_group_id
-        self.region_id = region_id
-        self.nic_type = nic_type
-        self.direction = direction
+        self.security_group_id = security_group_id  # type: str
+        self.region_id = region_id      # type: str
+        self.nic_type = nic_type        # type: str
+        self.direction = direction      # type: str
 
     def validate(self):
         self.validate_required(self.security_group_id, 'security_group_id')
@@ -29658,13 +31434,13 @@ class DescribeSecurityGroupAttributeRequest(TeaModel):
 class DescribeSecurityGroupAttributeResponse(TeaModel):
     def __init__(self, request_id=None, region_id=None, security_group_id=None, description=None,
                  security_group_name=None, vpc_id=None, inner_access_policy=None, permissions=None):
-        self.request_id = request_id
-        self.region_id = region_id
-        self.security_group_id = security_group_id
-        self.description = description
-        self.security_group_name = security_group_name
-        self.vpc_id = vpc_id
-        self.inner_access_policy = inner_access_policy
+        self.request_id = request_id    # type: str
+        self.region_id = region_id      # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.description = description  # type: str
+        self.security_group_name = security_group_name  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.inner_access_policy = inner_access_policy  # type: str
         self.permissions = permissions  # type: DescribeSecurityGroupAttributeResponsePermissions
 
     def validate(self):
@@ -29715,25 +31491,25 @@ class DescribeSecurityGroupAttributeResponsePermissionsPermission(TeaModel):
                  source_group_name=None, source_cidr_ip=None, ipv_6source_cidr_ip=None, policy=None, nic_type=None,
                  source_group_owner_account=None, dest_group_id=None, dest_group_name=None, dest_cidr_ip=None, ipv_6dest_cidr_ip=None,
                  dest_group_owner_account=None, priority=None, direction=None, description=None, create_time=None):
-        self.ip_protocol = ip_protocol
-        self.port_range = port_range
-        self.source_port_range = source_port_range
-        self.source_group_id = source_group_id
-        self.source_group_name = source_group_name
-        self.source_cidr_ip = source_cidr_ip
-        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        self.policy = policy
-        self.nic_type = nic_type
-        self.source_group_owner_account = source_group_owner_account
-        self.dest_group_id = dest_group_id
-        self.dest_group_name = dest_group_name
-        self.dest_cidr_ip = dest_cidr_ip
-        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
-        self.dest_group_owner_account = dest_group_owner_account
-        self.priority = priority
-        self.direction = direction
-        self.description = description
-        self.create_time = create_time
+        self.ip_protocol = ip_protocol  # type: str
+        self.port_range = port_range    # type: str
+        self.source_port_range = source_port_range  # type: str
+        self.source_group_id = source_group_id  # type: str
+        self.source_group_name = source_group_name  # type: str
+        self.source_cidr_ip = source_cidr_ip  # type: str
+        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip  # type: str
+        self.policy = policy            # type: str
+        self.nic_type = nic_type        # type: str
+        self.source_group_owner_account = source_group_owner_account  # type: str
+        self.dest_group_id = dest_group_id  # type: str
+        self.dest_group_name = dest_group_name  # type: str
+        self.dest_cidr_ip = dest_cidr_ip  # type: str
+        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip  # type: str
+        self.dest_group_owner_account = dest_group_owner_account  # type: str
+        self.priority = priority        # type: str
+        self.direction = direction      # type: str
+        self.description = description  # type: str
+        self.create_time = create_time  # type: str
 
     def validate(self):
         self.validate_required(self.ip_protocol, 'ip_protocol')
@@ -29804,7 +31580,7 @@ class DescribeSecurityGroupAttributeResponsePermissionsPermission(TeaModel):
 
 class DescribeSecurityGroupAttributeResponsePermissions(TeaModel):
     def __init__(self, permission=None):
-        self.permission = permission
+        self.permission = permission    # type: List[DescribeSecurityGroupAttributeResponsePermissionsPermission]
 
     def validate(self):
         self.validate_required(self.permission, 'permission')
@@ -29837,14 +31613,14 @@ class DescribeSecurityGroupAttributeResponsePermissions(TeaModel):
 class DescribeRouteTablesRequest(TeaModel):
     def __init__(self, region_id=None, vrouter_id=None, route_table_id=None, router_type=None, router_id=None,
                  route_table_name=None, page_number=None, page_size=None):
-        self.region_id = region_id
-        self.vrouter_id = vrouter_id
-        self.route_table_id = route_table_id
-        self.router_type = router_type
-        self.router_id = router_id
-        self.route_table_name = route_table_name
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.vrouter_id = vrouter_id    # type: str
+        self.route_table_id = route_table_id  # type: str
+        self.router_type = router_type  # type: str
+        self.router_id = router_id      # type: str
+        self.route_table_name = route_table_name  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         pass
@@ -29875,10 +31651,10 @@ class DescribeRouteTablesRequest(TeaModel):
 
 class DescribeRouteTablesResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, route_tables=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.route_tables = route_tables  # type: DescribeRouteTablesResponseRouteTables
 
     def validate(self):
@@ -29917,10 +31693,10 @@ class DescribeRouteTablesResponse(TeaModel):
 
 class DescribeRouteTablesResponseRouteTablesRouteTableRouteEntrysRouteEntryNextHopsNextHop(TeaModel):
     def __init__(self, next_hop_type=None, next_hop_id=None, enabled=None, weight=None):
-        self.next_hop_type = next_hop_type
-        self.next_hop_id = next_hop_id
-        self.enabled = enabled
-        self.weight = weight
+        self.next_hop_type = next_hop_type  # type: str
+        self.next_hop_id = next_hop_id  # type: str
+        self.enabled = enabled          # type: int
+        self.weight = weight            # type: int
 
     def validate(self):
         self.validate_required(self.next_hop_type, 'next_hop_type')
@@ -29946,7 +31722,7 @@ class DescribeRouteTablesResponseRouteTablesRouteTableRouteEntrysRouteEntryNextH
 
 class DescribeRouteTablesResponseRouteTablesRouteTableRouteEntrysRouteEntryNextHops(TeaModel):
     def __init__(self, next_hop=None):
-        self.next_hop = next_hop
+        self.next_hop = next_hop        # type: List[DescribeRouteTablesResponseRouteTablesRouteTableRouteEntrysRouteEntryNextHopsNextHop]
 
     def validate(self):
         self.validate_required(self.next_hop, 'next_hop')
@@ -29979,13 +31755,13 @@ class DescribeRouteTablesResponseRouteTablesRouteTableRouteEntrysRouteEntryNextH
 class DescribeRouteTablesResponseRouteTablesRouteTableRouteEntrysRouteEntry(TeaModel):
     def __init__(self, route_table_id=None, destination_cidr_block=None, type=None, status=None, instance_id=None,
                  next_hop_type=None, next_hops=None):
-        self.route_table_id = route_table_id
-        self.destination_cidr_block = destination_cidr_block
-        self.type = type
-        self.status = status
-        self.instance_id = instance_id
-        self.next_hop_type = next_hop_type
-        self.next_hops = next_hops  # type: DescribeRouteTablesResponseRouteTablesRouteTableRouteEntrysRouteEntryNextHops
+        self.route_table_id = route_table_id  # type: str
+        self.destination_cidr_block = destination_cidr_block  # type: str
+        self.type = type                # type: str
+        self.status = status            # type: str
+        self.instance_id = instance_id  # type: str
+        self.next_hop_type = next_hop_type  # type: str
+        self.next_hops = next_hops      # type: DescribeRouteTablesResponseRouteTablesRouteTableRouteEntrysRouteEntryNextHops
 
     def validate(self):
         self.validate_required(self.route_table_id, 'route_table_id')
@@ -30029,7 +31805,7 @@ class DescribeRouteTablesResponseRouteTablesRouteTableRouteEntrysRouteEntry(TeaM
 
 class DescribeRouteTablesResponseRouteTablesRouteTableRouteEntrys(TeaModel):
     def __init__(self, route_entry=None):
-        self.route_entry = route_entry
+        self.route_entry = route_entry  # type: List[DescribeRouteTablesResponseRouteTablesRouteTableRouteEntrysRouteEntry]
 
     def validate(self):
         self.validate_required(self.route_entry, 'route_entry')
@@ -30062,11 +31838,11 @@ class DescribeRouteTablesResponseRouteTablesRouteTableRouteEntrys(TeaModel):
 class DescribeRouteTablesResponseRouteTablesRouteTable(TeaModel):
     def __init__(self, vrouter_id=None, route_table_id=None, route_table_type=None, creation_time=None,
                  resource_group_id=None, route_entrys=None):
-        self.vrouter_id = vrouter_id
-        self.route_table_id = route_table_id
-        self.route_table_type = route_table_type
-        self.creation_time = creation_time
-        self.resource_group_id = resource_group_id
+        self.vrouter_id = vrouter_id    # type: str
+        self.route_table_id = route_table_id  # type: str
+        self.route_table_type = route_table_type  # type: str
+        self.creation_time = creation_time  # type: str
+        self.resource_group_id = resource_group_id  # type: str
         self.route_entrys = route_entrys  # type: DescribeRouteTablesResponseRouteTablesRouteTableRouteEntrys
 
     def validate(self):
@@ -30108,7 +31884,7 @@ class DescribeRouteTablesResponseRouteTablesRouteTable(TeaModel):
 
 class DescribeRouteTablesResponseRouteTables(TeaModel):
     def __init__(self, route_table=None):
-        self.route_table = route_table
+        self.route_table = route_table  # type: List[DescribeRouteTablesResponseRouteTablesRouteTable]
 
     def validate(self):
         self.validate_required(self.route_table, 'route_table')
@@ -30140,9 +31916,9 @@ class DescribeRouteTablesResponseRouteTables(TeaModel):
 
 class DescribeRegionsRequest(TeaModel):
     def __init__(self, instance_charge_type=None, resource_type=None, accept_language=None):
-        self.instance_charge_type = instance_charge_type
-        self.resource_type = resource_type
-        self.accept_language = accept_language
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.resource_type = resource_type  # type: str
+        self.accept_language = accept_language  # type: str
 
     def validate(self):
         pass
@@ -30163,8 +31939,8 @@ class DescribeRegionsRequest(TeaModel):
 
 class DescribeRegionsResponse(TeaModel):
     def __init__(self, request_id=None, regions=None):
-        self.request_id = request_id
-        self.regions = regions  # type: DescribeRegionsResponseRegions
+        self.request_id = request_id    # type: str
+        self.regions = regions          # type: DescribeRegionsResponseRegions
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -30193,10 +31969,10 @@ class DescribeRegionsResponse(TeaModel):
 
 class DescribeRegionsResponseRegionsRegion(TeaModel):
     def __init__(self, region_id=None, local_name=None, region_endpoint=None, status=None):
-        self.region_id = region_id
-        self.local_name = local_name
-        self.region_endpoint = region_endpoint
-        self.status = status
+        self.region_id = region_id      # type: str
+        self.local_name = local_name    # type: str
+        self.region_endpoint = region_endpoint  # type: str
+        self.status = status            # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -30222,7 +31998,7 @@ class DescribeRegionsResponseRegionsRegion(TeaModel):
 
 class DescribeRegionsResponseRegions(TeaModel):
     def __init__(self, region=None):
-        self.region = region
+        self.region = region            # type: List[DescribeRegionsResponseRegionsRegion]
 
     def validate(self):
         self.validate_required(self.region, 'region')
@@ -30254,7 +32030,7 @@ class DescribeRegionsResponseRegions(TeaModel):
 
 class DescribeLimitationRequest(TeaModel):
     def __init__(self, limitation=None):
-        self.limitation = limitation
+        self.limitation = limitation    # type: str
 
     def validate(self):
         self.validate_required(self.limitation, 'limitation')
@@ -30271,9 +32047,9 @@ class DescribeLimitationRequest(TeaModel):
 
 class DescribeLimitationResponse(TeaModel):
     def __init__(self, request_id=None, limitation=None, value=None):
-        self.request_id = request_id
-        self.limitation = limitation
-        self.value = value
+        self.request_id = request_id    # type: str
+        self.limitation = limitation    # type: str
+        self.value = value              # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -30296,8 +32072,8 @@ class DescribeLimitationResponse(TeaModel):
 
 class DescribeInstanceVncUrlRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -30317,8 +32093,8 @@ class DescribeInstanceVncUrlRequest(TeaModel):
 
 class DescribeInstanceVncUrlResponse(TeaModel):
     def __init__(self, request_id=None, vnc_url=None):
-        self.request_id = request_id
-        self.vnc_url = vnc_url
+        self.request_id = request_id    # type: str
+        self.vnc_url = vnc_url          # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -30338,8 +32114,8 @@ class DescribeInstanceVncUrlResponse(TeaModel):
 
 class DescribeInstanceVncPasswdRequest(TeaModel):
     def __init__(self, region_id=None, instance_id=None):
-        self.region_id = region_id
-        self.instance_id = instance_id
+        self.region_id = region_id      # type: str
+        self.instance_id = instance_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -30359,8 +32135,8 @@ class DescribeInstanceVncPasswdRequest(TeaModel):
 
 class DescribeInstanceVncPasswdResponse(TeaModel):
     def __init__(self, request_id=None, vnc_passwd=None):
-        self.request_id = request_id
-        self.vnc_passwd = vnc_passwd
+        self.request_id = request_id    # type: str
+        self.vnc_passwd = vnc_passwd    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -30379,8 +32155,9 @@ class DescribeInstanceVncPasswdResponse(TeaModel):
 
 
 class DescribeInstanceTypesRequest(TeaModel):
-    def __init__(self, instance_type_family=None):
-        self.instance_type_family = instance_type_family
+    def __init__(self, instance_type_family=None, instance_types=None):
+        self.instance_type_family = instance_type_family  # type: str
+        self.instance_types = instance_types  # type: List[str]
 
     def validate(self):
         pass
@@ -30388,16 +32165,18 @@ class DescribeInstanceTypesRequest(TeaModel):
     def to_map(self):
         result = {}
         result['InstanceTypeFamily'] = self.instance_type_family
+        result['InstanceTypes'] = self.instance_types
         return result
 
     def from_map(self, map={}):
         self.instance_type_family = map.get('InstanceTypeFamily')
+        self.instance_types = map.get('InstanceTypes')
         return self
 
 
 class DescribeInstanceTypesResponse(TeaModel):
     def __init__(self, request_id=None, instance_types=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.instance_types = instance_types  # type: DescribeInstanceTypesResponseInstanceTypes
 
     def validate(self):
@@ -30431,29 +32210,33 @@ class DescribeInstanceTypesResponseInstanceTypesInstanceType(TeaModel):
                  initial_credit=None, baseline_credit=None, eni_quantity=None, eni_private_ip_address_quantity=None,
                  eni_ipv_6address_quantity=None, instance_bandwidth_rx=None, instance_bandwidth_tx=None, instance_pps_rx=None,
                  instance_pps_tx=None, instance_family_level=None, total_eni_queue_quantity=None, eni_trunk_supported=None,
-                 eni_total_quantity=None):
-        self.instance_type_id = instance_type_id
-        self.cpu_core_count = cpu_core_count
-        self.memory_size = memory_size
-        self.instance_type_family = instance_type_family
-        self.local_storage_capacity = local_storage_capacity
-        self.local_storage_amount = local_storage_amount
-        self.local_storage_category = local_storage_category
-        self.gpuamount = gpuamount
-        self.gpuspec = gpuspec
-        self.initial_credit = initial_credit
-        self.baseline_credit = baseline_credit
-        self.eni_quantity = eni_quantity
-        self.eni_private_ip_address_quantity = eni_private_ip_address_quantity
-        self.eni_ipv_6address_quantity = eni_ipv_6address_quantity
-        self.instance_bandwidth_rx = instance_bandwidth_rx
-        self.instance_bandwidth_tx = instance_bandwidth_tx
-        self.instance_pps_rx = instance_pps_rx
-        self.instance_pps_tx = instance_pps_tx
-        self.instance_family_level = instance_family_level
-        self.total_eni_queue_quantity = total_eni_queue_quantity
-        self.eni_trunk_supported = eni_trunk_supported
-        self.eni_total_quantity = eni_total_quantity
+                 eni_total_quantity=None, maximum_queue_number_per_eni=None, primary_eni_queue_number=None,
+                 secondary_eni_queue_number=None):
+        self.instance_type_id = instance_type_id  # type: str
+        self.cpu_core_count = cpu_core_count  # type: int
+        self.memory_size = memory_size  # type: float
+        self.instance_type_family = instance_type_family  # type: str
+        self.local_storage_capacity = local_storage_capacity  # type: int
+        self.local_storage_amount = local_storage_amount  # type: int
+        self.local_storage_category = local_storage_category  # type: str
+        self.gpuamount = gpuamount      # type: int
+        self.gpuspec = gpuspec          # type: str
+        self.initial_credit = initial_credit  # type: int
+        self.baseline_credit = baseline_credit  # type: int
+        self.eni_quantity = eni_quantity  # type: int
+        self.eni_private_ip_address_quantity = eni_private_ip_address_quantity  # type: int
+        self.eni_ipv_6address_quantity = eni_ipv_6address_quantity  # type: int
+        self.instance_bandwidth_rx = instance_bandwidth_rx  # type: int
+        self.instance_bandwidth_tx = instance_bandwidth_tx  # type: int
+        self.instance_pps_rx = instance_pps_rx  # type: int
+        self.instance_pps_tx = instance_pps_tx  # type: int
+        self.instance_family_level = instance_family_level  # type: str
+        self.total_eni_queue_quantity = total_eni_queue_quantity  # type: int
+        self.eni_trunk_supported = eni_trunk_supported  # type: bool
+        self.eni_total_quantity = eni_total_quantity  # type: int
+        self.maximum_queue_number_per_eni = maximum_queue_number_per_eni  # type: int
+        self.primary_eni_queue_number = primary_eni_queue_number  # type: int
+        self.secondary_eni_queue_number = secondary_eni_queue_number  # type: int
 
     def validate(self):
         self.validate_required(self.instance_type_id, 'instance_type_id')
@@ -30478,6 +32261,9 @@ class DescribeInstanceTypesResponseInstanceTypesInstanceType(TeaModel):
         self.validate_required(self.total_eni_queue_quantity, 'total_eni_queue_quantity')
         self.validate_required(self.eni_trunk_supported, 'eni_trunk_supported')
         self.validate_required(self.eni_total_quantity, 'eni_total_quantity')
+        self.validate_required(self.maximum_queue_number_per_eni, 'maximum_queue_number_per_eni')
+        self.validate_required(self.primary_eni_queue_number, 'primary_eni_queue_number')
+        self.validate_required(self.secondary_eni_queue_number, 'secondary_eni_queue_number')
 
     def to_map(self):
         result = {}
@@ -30503,6 +32289,9 @@ class DescribeInstanceTypesResponseInstanceTypesInstanceType(TeaModel):
         result['TotalEniQueueQuantity'] = self.total_eni_queue_quantity
         result['EniTrunkSupported'] = self.eni_trunk_supported
         result['EniTotalQuantity'] = self.eni_total_quantity
+        result['MaximumQueueNumberPerEni'] = self.maximum_queue_number_per_eni
+        result['PrimaryEniQueueNumber'] = self.primary_eni_queue_number
+        result['SecondaryEniQueueNumber'] = self.secondary_eni_queue_number
         return result
 
     def from_map(self, map={}):
@@ -30528,12 +32317,15 @@ class DescribeInstanceTypesResponseInstanceTypesInstanceType(TeaModel):
         self.total_eni_queue_quantity = map.get('TotalEniQueueQuantity')
         self.eni_trunk_supported = map.get('EniTrunkSupported')
         self.eni_total_quantity = map.get('EniTotalQuantity')
+        self.maximum_queue_number_per_eni = map.get('MaximumQueueNumberPerEni')
+        self.primary_eni_queue_number = map.get('PrimaryEniQueueNumber')
+        self.secondary_eni_queue_number = map.get('SecondaryEniQueueNumber')
         return self
 
 
 class DescribeInstanceTypesResponseInstanceTypes(TeaModel):
     def __init__(self, instance_type=None):
-        self.instance_type = instance_type
+        self.instance_type = instance_type  # type: List[DescribeInstanceTypesResponseInstanceTypesInstanceType]
 
     def validate(self):
         self.validate_required(self.instance_type, 'instance_type')
@@ -30566,12 +32358,12 @@ class DescribeInstanceTypesResponseInstanceTypes(TeaModel):
 class DescribeInstanceStatusRequest(TeaModel):
     def __init__(self, instance_id=None, region_id=None, zone_id=None, cluster_id=None, page_number=None,
                  page_size=None):
-        self.instance_id = instance_id
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.cluster_id = cluster_id
-        self.page_number = page_number
-        self.page_size = page_size
+        self.instance_id = instance_id  # type: List[str]
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.cluster_id = cluster_id    # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -30598,10 +32390,10 @@ class DescribeInstanceStatusRequest(TeaModel):
 
 class DescribeInstanceStatusResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, instance_statuses=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.instance_statuses = instance_statuses  # type: DescribeInstanceStatusResponseInstanceStatuses
 
     def validate(self):
@@ -30640,8 +32432,8 @@ class DescribeInstanceStatusResponse(TeaModel):
 
 class DescribeInstanceStatusResponseInstanceStatusesInstanceStatus(TeaModel):
     def __init__(self, instance_id=None, status=None):
-        self.instance_id = instance_id
-        self.status = status
+        self.instance_id = instance_id  # type: str
+        self.status = status            # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -30661,7 +32453,7 @@ class DescribeInstanceStatusResponseInstanceStatusesInstanceStatus(TeaModel):
 
 class DescribeInstanceStatusResponseInstanceStatuses(TeaModel):
     def __init__(self, instance_status=None):
-        self.instance_status = instance_status
+        self.instance_status = instance_status  # type: List[DescribeInstanceStatusResponseInstanceStatusesInstanceStatus]
 
     def validate(self):
         self.validate_required(self.instance_status, 'instance_status')
@@ -30700,41 +32492,41 @@ class DescribeInstancesRequest(TeaModel):
                  instance_type_family=None, key_pair_name=None, resource_group_id=None, hpc_cluster_id=None, rdma_ip_addresses=None,
                  dry_run=None, additional_attributes=None, http_endpoint=None, http_tokens=None,
                  http_put_response_hop_limit=None):
-        self.region_id = region_id
-        self.vpc_id = vpc_id
-        self.v_switch_id = v_switch_id
-        self.zone_id = zone_id
-        self.instance_network_type = instance_network_type
-        self.security_group_id = security_group_id
-        self.instance_ids = instance_ids
-        self.page_number = page_number
-        self.page_size = page_size
-        self.inner_ip_addresses = inner_ip_addresses
-        self.private_ip_addresses = private_ip_addresses
-        self.public_ip_addresses = public_ip_addresses
-        self.eip_addresses = eip_addresses
-        self.instance_charge_type = instance_charge_type
-        self.internet_charge_type = internet_charge_type
-        self.instance_name = instance_name
-        self.image_id = image_id
-        self.status = status
-        self.lock_reason = lock_reason
-        self.filter = filter
-        self.device_available = device_available
-        self.io_optimized = io_optimized
-        self.need_sale_cycle = need_sale_cycle
-        self.tag = tag
-        self.instance_type = instance_type
-        self.instance_type_family = instance_type_family
-        self.key_pair_name = key_pair_name
-        self.resource_group_id = resource_group_id
-        self.hpc_cluster_id = hpc_cluster_id
-        self.rdma_ip_addresses = rdma_ip_addresses
-        self.dry_run = dry_run
-        self.additional_attributes = additional_attributes
-        self.http_endpoint = http_endpoint
-        self.http_tokens = http_tokens
-        self.http_put_response_hop_limit = http_put_response_hop_limit
+        self.region_id = region_id      # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.zone_id = zone_id          # type: str
+        self.instance_network_type = instance_network_type  # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.instance_ids = instance_ids  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.inner_ip_addresses = inner_ip_addresses  # type: str
+        self.private_ip_addresses = private_ip_addresses  # type: str
+        self.public_ip_addresses = public_ip_addresses  # type: str
+        self.eip_addresses = eip_addresses  # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.internet_charge_type = internet_charge_type  # type: str
+        self.instance_name = instance_name  # type: str
+        self.image_id = image_id        # type: str
+        self.status = status            # type: str
+        self.lock_reason = lock_reason  # type: str
+        self.filter = filter            # type: List[DescribeInstancesRequestFilter]
+        self.device_available = device_available  # type: bool
+        self.io_optimized = io_optimized  # type: bool
+        self.need_sale_cycle = need_sale_cycle  # type: bool
+        self.tag = tag                  # type: List[DescribeInstancesRequestTag]
+        self.instance_type = instance_type  # type: str
+        self.instance_type_family = instance_type_family  # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.resource_group_id = resource_group_id  # type: str
+        self.hpc_cluster_id = hpc_cluster_id  # type: str
+        self.rdma_ip_addresses = rdma_ip_addresses  # type: str
+        self.dry_run = dry_run          # type: bool
+        self.additional_attributes = additional_attributes  # type: List[str]
+        self.http_endpoint = http_endpoint  # type: str
+        self.http_tokens = http_tokens  # type: str
+        self.http_put_response_hop_limit = http_put_response_hop_limit  # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -30849,8 +32641,8 @@ class DescribeInstancesRequest(TeaModel):
 
 class DescribeInstancesRequestFilter(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
         pass
@@ -30869,12 +32661,11 @@ class DescribeInstancesRequestFilter(TeaModel):
 
 class DescribeInstancesRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -30890,11 +32681,11 @@ class DescribeInstancesRequestTag(TeaModel):
 
 class DescribeInstancesResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, instances=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.instances = instances  # type: DescribeInstancesResponseInstances
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.instances = instances      # type: DescribeInstancesResponseInstances
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -30932,9 +32723,9 @@ class DescribeInstancesResponse(TeaModel):
 
 class DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterface(TeaModel):
     def __init__(self, network_interface_id=None, mac_address=None, primary_ip_address=None):
-        self.network_interface_id = network_interface_id
-        self.mac_address = mac_address
-        self.primary_ip_address = primary_ip_address
+        self.network_interface_id = network_interface_id  # type: str
+        self.mac_address = mac_address  # type: str
+        self.primary_ip_address = primary_ip_address  # type: str
 
     def validate(self):
         self.validate_required(self.network_interface_id, 'network_interface_id')
@@ -30957,7 +32748,7 @@ class DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterfac
 
 class DescribeInstancesResponseInstancesInstanceNetworkInterfaces(TeaModel):
     def __init__(self, network_interface=None):
-        self.network_interface = network_interface
+        self.network_interface = network_interface  # type: List[DescribeInstancesResponseInstancesInstanceNetworkInterfacesNetworkInterface]
 
     def validate(self):
         self.validate_required(self.network_interface, 'network_interface')
@@ -30989,8 +32780,8 @@ class DescribeInstancesResponseInstancesInstanceNetworkInterfaces(TeaModel):
 
 class DescribeInstancesResponseInstancesInstanceOperationLocksLockReason(TeaModel):
     def __init__(self, lock_reason=None, lock_msg=None):
-        self.lock_reason = lock_reason
-        self.lock_msg = lock_msg
+        self.lock_reason = lock_reason  # type: str
+        self.lock_msg = lock_msg        # type: str
 
     def validate(self):
         self.validate_required(self.lock_reason, 'lock_reason')
@@ -31010,7 +32801,7 @@ class DescribeInstancesResponseInstancesInstanceOperationLocksLockReason(TeaMode
 
 class DescribeInstancesResponseInstancesInstanceOperationLocks(TeaModel):
     def __init__(self, lock_reason=None):
-        self.lock_reason = lock_reason
+        self.lock_reason = lock_reason  # type: List[DescribeInstancesResponseInstancesInstanceOperationLocksLockReason]
 
     def validate(self):
         self.validate_required(self.lock_reason, 'lock_reason')
@@ -31042,8 +32833,8 @@ class DescribeInstancesResponseInstancesInstanceOperationLocks(TeaModel):
 
 class DescribeInstancesResponseInstancesInstanceTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -31063,7 +32854,7 @@ class DescribeInstancesResponseInstancesInstanceTagsTag(TeaModel):
 
 class DescribeInstancesResponseInstancesInstanceTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeInstancesResponseInstancesInstanceTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -31096,7 +32887,7 @@ class DescribeInstancesResponseInstancesInstanceTags(TeaModel):
 class DescribeInstancesResponseInstancesInstanceVpcAttributesPrivateIpAddress(TeaModel):
     def __init__(self, ip_address=None):
         # IpAddress
-        self.ip_address = ip_address
+        self.ip_address = ip_address    # type: List[str]
 
     def validate(self):
         self.validate_required(self.ip_address, 'ip_address')
@@ -31113,9 +32904,9 @@ class DescribeInstancesResponseInstancesInstanceVpcAttributesPrivateIpAddress(Te
 
 class DescribeInstancesResponseInstancesInstanceVpcAttributes(TeaModel):
     def __init__(self, vpc_id=None, v_switch_id=None, nat_ip_address=None, private_ip_address=None):
-        self.vpc_id = vpc_id
-        self.v_switch_id = v_switch_id
-        self.nat_ip_address = nat_ip_address
+        self.vpc_id = vpc_id            # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.nat_ip_address = nat_ip_address  # type: str
         self.private_ip_address = private_ip_address  # type: DescribeInstancesResponseInstancesInstanceVpcAttributesPrivateIpAddress
 
     def validate(self):
@@ -31152,11 +32943,11 @@ class DescribeInstancesResponseInstancesInstanceVpcAttributes(TeaModel):
 class DescribeInstancesResponseInstancesInstanceEipAddress(TeaModel):
     def __init__(self, allocation_id=None, ip_address=None, bandwidth=None, internet_charge_type=None,
                  is_support_unassociate=None):
-        self.allocation_id = allocation_id
-        self.ip_address = ip_address
-        self.bandwidth = bandwidth
-        self.internet_charge_type = internet_charge_type
-        self.is_support_unassociate = is_support_unassociate
+        self.allocation_id = allocation_id  # type: str
+        self.ip_address = ip_address    # type: str
+        self.bandwidth = bandwidth      # type: int
+        self.internet_charge_type = internet_charge_type  # type: str
+        self.is_support_unassociate = is_support_unassociate  # type: bool
 
     def validate(self):
         self.validate_required(self.allocation_id, 'allocation_id')
@@ -31185,9 +32976,9 @@ class DescribeInstancesResponseInstancesInstanceEipAddress(TeaModel):
 
 class DescribeInstancesResponseInstancesInstanceDedicatedHostAttribute(TeaModel):
     def __init__(self, dedicated_host_id=None, dedicated_host_name=None, dedicated_host_cluster_id=None):
-        self.dedicated_host_id = dedicated_host_id
-        self.dedicated_host_name = dedicated_host_name
-        self.dedicated_host_cluster_id = dedicated_host_cluster_id
+        self.dedicated_host_id = dedicated_host_id  # type: str
+        self.dedicated_host_name = dedicated_host_name  # type: str
+        self.dedicated_host_cluster_id = dedicated_host_cluster_id  # type: str
 
     def validate(self):
         self.validate_required(self.dedicated_host_id, 'dedicated_host_id')
@@ -31210,8 +33001,8 @@ class DescribeInstancesResponseInstancesInstanceDedicatedHostAttribute(TeaModel)
 
 class DescribeInstancesResponseInstancesInstanceEcsCapacityReservationAttr(TeaModel):
     def __init__(self, capacity_reservation_id=None, capacity_reservation_preference=None):
-        self.capacity_reservation_id = capacity_reservation_id
-        self.capacity_reservation_preference = capacity_reservation_preference
+        self.capacity_reservation_id = capacity_reservation_id  # type: str
+        self.capacity_reservation_preference = capacity_reservation_preference  # type: str
 
     def validate(self):
         self.validate_required(self.capacity_reservation_id, 'capacity_reservation_id')
@@ -31231,8 +33022,8 @@ class DescribeInstancesResponseInstancesInstanceEcsCapacityReservationAttr(TeaMo
 
 class DescribeInstancesResponseInstancesInstanceDedicatedInstanceAttribute(TeaModel):
     def __init__(self, tenancy=None, affinity=None):
-        self.tenancy = tenancy
-        self.affinity = affinity
+        self.tenancy = tenancy          # type: str
+        self.affinity = affinity        # type: str
 
     def validate(self):
         self.validate_required(self.tenancy, 'tenancy')
@@ -31252,9 +33043,9 @@ class DescribeInstancesResponseInstancesInstanceDedicatedInstanceAttribute(TeaMo
 
 class DescribeInstancesResponseInstancesInstanceCpuOptions(TeaModel):
     def __init__(self, core_count=None, threads_per_core=None, numa=None):
-        self.core_count = core_count
-        self.threads_per_core = threads_per_core
-        self.numa = numa
+        self.core_count = core_count    # type: int
+        self.threads_per_core = threads_per_core  # type: int
+        self.numa = numa                # type: str
 
     def validate(self):
         self.validate_required(self.core_count, 'core_count')
@@ -31277,9 +33068,9 @@ class DescribeInstancesResponseInstancesInstanceCpuOptions(TeaModel):
 
 class DescribeInstancesResponseInstancesInstanceMetadataOptions(TeaModel):
     def __init__(self, http_endpoint=None, http_tokens=None, http_put_response_hop_limit=None):
-        self.http_endpoint = http_endpoint
-        self.http_tokens = http_tokens
-        self.http_put_response_hop_limit = http_put_response_hop_limit
+        self.http_endpoint = http_endpoint  # type: str
+        self.http_tokens = http_tokens  # type: str
+        self.http_put_response_hop_limit = http_put_response_hop_limit  # type: int
 
     def validate(self):
         self.validate_required(self.http_endpoint, 'http_endpoint')
@@ -31303,7 +33094,7 @@ class DescribeInstancesResponseInstancesInstanceMetadataOptions(TeaModel):
 class DescribeInstancesResponseInstancesInstanceSecurityGroupIds(TeaModel):
     def __init__(self, security_group_id=None):
         # SecurityGroupId
-        self.security_group_id = security_group_id
+        self.security_group_id = security_group_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.security_group_id, 'security_group_id')
@@ -31321,7 +33112,7 @@ class DescribeInstancesResponseInstancesInstanceSecurityGroupIds(TeaModel):
 class DescribeInstancesResponseInstancesInstancePublicIpAddress(TeaModel):
     def __init__(self, ip_address=None):
         # IpAddress
-        self.ip_address = ip_address
+        self.ip_address = ip_address    # type: List[str]
 
     def validate(self):
         self.validate_required(self.ip_address, 'ip_address')
@@ -31339,7 +33130,7 @@ class DescribeInstancesResponseInstancesInstancePublicIpAddress(TeaModel):
 class DescribeInstancesResponseInstancesInstanceInnerIpAddress(TeaModel):
     def __init__(self, ip_address=None):
         # IpAddress
-        self.ip_address = ip_address
+        self.ip_address = ip_address    # type: List[str]
 
     def validate(self):
         self.validate_required(self.ip_address, 'ip_address')
@@ -31357,7 +33148,7 @@ class DescribeInstancesResponseInstancesInstanceInnerIpAddress(TeaModel):
 class DescribeInstancesResponseInstancesInstanceRdmaIpAddress(TeaModel):
     def __init__(self, ip_address=None):
         # IpAddress
-        self.ip_address = ip_address
+        self.ip_address = ip_address    # type: List[str]
 
     def validate(self):
         self.validate_required(self.ip_address, 'ip_address')
@@ -31380,60 +33171,61 @@ class DescribeInstancesResponseInstancesInstance(TeaModel):
                  vlan_id=None, creation_time=None, start_time=None, instance_network_type=None, instance_charge_type=None,
                  sale_cycle=None, expired_time=None, auto_release_time=None, io_optimized=None, device_available=None,
                  instance_type_family=None, local_storage_capacity=None, local_storage_amount=None, gpuamount=None, gpuspec=None,
-                 spot_strategy=None, spot_price_limit=None, resource_group_id=None, key_pair_name=None, recyclable=None,
-                 hpc_cluster_id=None, stopped_mode=None, credit_specification=None, deletion_protection=None,
+                 spot_strategy=None, spot_price_limit=None, spot_duration=None, resource_group_id=None, key_pair_name=None,
+                 recyclable=None, hpc_cluster_id=None, stopped_mode=None, credit_specification=None, deletion_protection=None,
                  network_interfaces=None, operation_locks=None, tags=None, vpc_attributes=None, eip_address=None,
                  dedicated_host_attribute=None, ecs_capacity_reservation_attr=None, dedicated_instance_attribute=None, cpu_options=None,
                  metadata_options=None, security_group_ids=None, public_ip_address=None, inner_ip_address=None,
                  rdma_ip_address=None):
-        self.instance_id = instance_id
-        self.instance_name = instance_name
-        self.description = description
-        self.image_id = image_id
-        self.osname = osname
-        self.osname_en = osname_en
-        self.ostype = ostype
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.cluster_id = cluster_id
-        self.instance_type = instance_type
-        self.cpu = cpu
-        self.memory = memory
-        self.host_name = host_name
-        self.deployment_set_id = deployment_set_id
-        self.deployment_set_group_no = deployment_set_group_no
-        self.status = status
-        self.serial_number = serial_number
-        self.internet_charge_type = internet_charge_type
-        self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        self.vlan_id = vlan_id
-        self.creation_time = creation_time
-        self.start_time = start_time
-        self.instance_network_type = instance_network_type
-        self.instance_charge_type = instance_charge_type
-        self.sale_cycle = sale_cycle
-        self.expired_time = expired_time
-        self.auto_release_time = auto_release_time
-        self.io_optimized = io_optimized
-        self.device_available = device_available
-        self.instance_type_family = instance_type_family
-        self.local_storage_capacity = local_storage_capacity
-        self.local_storage_amount = local_storage_amount
-        self.gpuamount = gpuamount
-        self.gpuspec = gpuspec
-        self.spot_strategy = spot_strategy
-        self.spot_price_limit = spot_price_limit
-        self.resource_group_id = resource_group_id
-        self.key_pair_name = key_pair_name
-        self.recyclable = recyclable
-        self.hpc_cluster_id = hpc_cluster_id
-        self.stopped_mode = stopped_mode
-        self.credit_specification = credit_specification
-        self.deletion_protection = deletion_protection
+        self.instance_id = instance_id  # type: str
+        self.instance_name = instance_name  # type: str
+        self.description = description  # type: str
+        self.image_id = image_id        # type: str
+        self.osname = osname            # type: str
+        self.osname_en = osname_en      # type: str
+        self.ostype = ostype            # type: str
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.cluster_id = cluster_id    # type: str
+        self.instance_type = instance_type  # type: str
+        self.cpu = cpu                  # type: int
+        self.memory = memory            # type: int
+        self.host_name = host_name      # type: str
+        self.deployment_set_id = deployment_set_id  # type: str
+        self.deployment_set_group_no = deployment_set_group_no  # type: int
+        self.status = status            # type: str
+        self.serial_number = serial_number  # type: str
+        self.internet_charge_type = internet_charge_type  # type: str
+        self.internet_max_bandwidth_in = internet_max_bandwidth_in  # type: int
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out  # type: int
+        self.vlan_id = vlan_id          # type: str
+        self.creation_time = creation_time  # type: str
+        self.start_time = start_time    # type: str
+        self.instance_network_type = instance_network_type  # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.sale_cycle = sale_cycle    # type: str
+        self.expired_time = expired_time  # type: str
+        self.auto_release_time = auto_release_time  # type: str
+        self.io_optimized = io_optimized  # type: bool
+        self.device_available = device_available  # type: bool
+        self.instance_type_family = instance_type_family  # type: str
+        self.local_storage_capacity = local_storage_capacity  # type: int
+        self.local_storage_amount = local_storage_amount  # type: int
+        self.gpuamount = gpuamount      # type: int
+        self.gpuspec = gpuspec          # type: str
+        self.spot_strategy = spot_strategy  # type: str
+        self.spot_price_limit = spot_price_limit  # type: float
+        self.spot_duration = spot_duration  # type: int
+        self.resource_group_id = resource_group_id  # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.recyclable = recyclable    # type: bool
+        self.hpc_cluster_id = hpc_cluster_id  # type: str
+        self.stopped_mode = stopped_mode  # type: str
+        self.credit_specification = credit_specification  # type: str
+        self.deletion_protection = deletion_protection  # type: bool
         self.network_interfaces = network_interfaces  # type: DescribeInstancesResponseInstancesInstanceNetworkInterfaces
         self.operation_locks = operation_locks  # type: DescribeInstancesResponseInstancesInstanceOperationLocks
-        self.tags = tags  # type: DescribeInstancesResponseInstancesInstanceTags
+        self.tags = tags                # type: DescribeInstancesResponseInstancesInstanceTags
         self.vpc_attributes = vpc_attributes  # type: DescribeInstancesResponseInstancesInstanceVpcAttributes
         self.eip_address = eip_address  # type: DescribeInstancesResponseInstancesInstanceEipAddress
         self.dedicated_host_attribute = dedicated_host_attribute  # type: DescribeInstancesResponseInstancesInstanceDedicatedHostAttribute
@@ -31485,6 +33277,7 @@ class DescribeInstancesResponseInstancesInstance(TeaModel):
         self.validate_required(self.gpuspec, 'gpuspec')
         self.validate_required(self.spot_strategy, 'spot_strategy')
         self.validate_required(self.spot_price_limit, 'spot_price_limit')
+        self.validate_required(self.spot_duration, 'spot_duration')
         self.validate_required(self.resource_group_id, 'resource_group_id')
         self.validate_required(self.key_pair_name, 'key_pair_name')
         self.validate_required(self.recyclable, 'recyclable')
@@ -31575,6 +33368,7 @@ class DescribeInstancesResponseInstancesInstance(TeaModel):
         result['GPUSpec'] = self.gpuspec
         result['SpotStrategy'] = self.spot_strategy
         result['SpotPriceLimit'] = self.spot_price_limit
+        result['SpotDuration'] = self.spot_duration
         result['ResourceGroupId'] = self.resource_group_id
         result['KeyPairName'] = self.key_pair_name
         result['Recyclable'] = self.recyclable
@@ -31679,6 +33473,7 @@ class DescribeInstancesResponseInstancesInstance(TeaModel):
         self.gpuspec = map.get('GPUSpec')
         self.spot_strategy = map.get('SpotStrategy')
         self.spot_price_limit = map.get('SpotPriceLimit')
+        self.spot_duration = map.get('SpotDuration')
         self.resource_group_id = map.get('ResourceGroupId')
         self.key_pair_name = map.get('KeyPairName')
         self.recyclable = map.get('Recyclable')
@@ -31761,7 +33556,7 @@ class DescribeInstancesResponseInstancesInstance(TeaModel):
 
 class DescribeInstancesResponseInstances(TeaModel):
     def __init__(self, instance=None):
-        self.instance = instance
+        self.instance = instance        # type: List[DescribeInstancesResponseInstancesInstance]
 
     def validate(self):
         self.validate_required(self.instance, 'instance')
@@ -31793,10 +33588,10 @@ class DescribeInstancesResponseInstances(TeaModel):
 
 class DescribeInstanceMonitorDataRequest(TeaModel):
     def __init__(self, instance_id=None, start_time=None, end_time=None, period=None):
-        self.instance_id = instance_id
-        self.start_time = start_time
-        self.end_time = end_time
-        self.period = period
+        self.instance_id = instance_id  # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.period = period            # type: int
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -31821,7 +33616,7 @@ class DescribeInstanceMonitorDataRequest(TeaModel):
 
 class DescribeInstanceMonitorDataResponse(TeaModel):
     def __init__(self, request_id=None, monitor_data=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.monitor_data = monitor_data  # type: DescribeInstanceMonitorDataResponseMonitorData
 
     def validate(self):
@@ -31854,23 +33649,23 @@ class DescribeInstanceMonitorDataResponseMonitorDataInstanceMonitorData(TeaModel
                  internet_rx=None, internet_tx=None, internet_bandwidth=None, iopsread=None, iopswrite=None, bpsread=None,
                  bpswrite=None, cpucredit_usage=None, cpucredit_balance=None, cpuadvance_credit_balance=None,
                  cpunotpaid_surplus_credit_usage=None, time_stamp=None):
-        self.instance_id = instance_id
-        self.cpu = cpu
-        self.intranet_rx = intranet_rx
-        self.intranet_tx = intranet_tx
-        self.intranet_bandwidth = intranet_bandwidth
-        self.internet_rx = internet_rx
-        self.internet_tx = internet_tx
-        self.internet_bandwidth = internet_bandwidth
-        self.iopsread = iopsread
-        self.iopswrite = iopswrite
-        self.bpsread = bpsread
-        self.bpswrite = bpswrite
-        self.cpucredit_usage = cpucredit_usage
-        self.cpucredit_balance = cpucredit_balance
-        self.cpuadvance_credit_balance = cpuadvance_credit_balance
-        self.cpunotpaid_surplus_credit_usage = cpunotpaid_surplus_credit_usage
-        self.time_stamp = time_stamp
+        self.instance_id = instance_id  # type: str
+        self.cpu = cpu                  # type: int
+        self.intranet_rx = intranet_rx  # type: int
+        self.intranet_tx = intranet_tx  # type: int
+        self.intranet_bandwidth = intranet_bandwidth  # type: int
+        self.internet_rx = internet_rx  # type: int
+        self.internet_tx = internet_tx  # type: int
+        self.internet_bandwidth = internet_bandwidth  # type: int
+        self.iopsread = iopsread        # type: int
+        self.iopswrite = iopswrite      # type: int
+        self.bpsread = bpsread          # type: int
+        self.bpswrite = bpswrite        # type: int
+        self.cpucredit_usage = cpucredit_usage  # type: float
+        self.cpucredit_balance = cpucredit_balance  # type: float
+        self.cpuadvance_credit_balance = cpuadvance_credit_balance  # type: float
+        self.cpunotpaid_surplus_credit_usage = cpunotpaid_surplus_credit_usage  # type: float
+        self.time_stamp = time_stamp    # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -31935,7 +33730,7 @@ class DescribeInstanceMonitorDataResponseMonitorDataInstanceMonitorData(TeaModel
 
 class DescribeInstanceMonitorDataResponseMonitorData(TeaModel):
     def __init__(self, instance_monitor_data=None):
-        self.instance_monitor_data = instance_monitor_data
+        self.instance_monitor_data = instance_monitor_data  # type: List[DescribeInstanceMonitorDataResponseMonitorDataInstanceMonitorData]
 
     def validate(self):
         self.validate_required(self.instance_monitor_data, 'instance_monitor_data')
@@ -31967,7 +33762,7 @@ class DescribeInstanceMonitorDataResponseMonitorData(TeaModel):
 
 class DescribeInstanceAttributeRequest(TeaModel):
     def __init__(self, instance_id=None):
-        self.instance_id = instance_id
+        self.instance_id = instance_id  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -31990,31 +33785,31 @@ class DescribeInstanceAttributeResponse(TeaModel):
                  instance_charge_type=None, expired_time=None, stopped_mode=None, credit_specification=None, operation_locks=None,
                  vpc_attributes=None, eip_address=None, dedicated_host_attribute=None, security_group_ids=None,
                  public_ip_address=None, inner_ip_address=None):
-        self.request_id = request_id
-        self.instance_id = instance_id
-        self.instance_name = instance_name
-        self.image_id = image_id
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.cluster_id = cluster_id
-        self.instance_type = instance_type
-        self.cpu = cpu
-        self.memory = memory
-        self.host_name = host_name
-        self.status = status
-        self.internet_charge_type = internet_charge_type
-        self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        self.vlan_id = vlan_id
-        self.serial_number = serial_number
-        self.creation_time = creation_time
-        self.description = description
-        self.instance_network_type = instance_network_type
-        self.io_optimized = io_optimized
-        self.instance_charge_type = instance_charge_type
-        self.expired_time = expired_time
-        self.stopped_mode = stopped_mode
-        self.credit_specification = credit_specification
+        self.request_id = request_id    # type: str
+        self.instance_id = instance_id  # type: str
+        self.instance_name = instance_name  # type: str
+        self.image_id = image_id        # type: str
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.cluster_id = cluster_id    # type: str
+        self.instance_type = instance_type  # type: str
+        self.cpu = cpu                  # type: int
+        self.memory = memory            # type: int
+        self.host_name = host_name      # type: str
+        self.status = status            # type: str
+        self.internet_charge_type = internet_charge_type  # type: str
+        self.internet_max_bandwidth_in = internet_max_bandwidth_in  # type: int
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out  # type: int
+        self.vlan_id = vlan_id          # type: str
+        self.serial_number = serial_number  # type: str
+        self.creation_time = creation_time  # type: str
+        self.description = description  # type: str
+        self.instance_network_type = instance_network_type  # type: str
+        self.io_optimized = io_optimized  # type: str
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.expired_time = expired_time  # type: str
+        self.stopped_mode = stopped_mode  # type: str
+        self.credit_specification = credit_specification  # type: str
         self.operation_locks = operation_locks  # type: DescribeInstanceAttributeResponseOperationLocks
         self.vpc_attributes = vpc_attributes  # type: DescribeInstanceAttributeResponseVpcAttributes
         self.eip_address = eip_address  # type: DescribeInstanceAttributeResponseEipAddress
@@ -32194,7 +33989,7 @@ class DescribeInstanceAttributeResponse(TeaModel):
 
 class DescribeInstanceAttributeResponseOperationLocksLockReason(TeaModel):
     def __init__(self, lock_reason=None):
-        self.lock_reason = lock_reason
+        self.lock_reason = lock_reason  # type: str
 
     def validate(self):
         self.validate_required(self.lock_reason, 'lock_reason')
@@ -32211,7 +34006,7 @@ class DescribeInstanceAttributeResponseOperationLocksLockReason(TeaModel):
 
 class DescribeInstanceAttributeResponseOperationLocks(TeaModel):
     def __init__(self, lock_reason=None):
-        self.lock_reason = lock_reason
+        self.lock_reason = lock_reason  # type: List[DescribeInstanceAttributeResponseOperationLocksLockReason]
 
     def validate(self):
         self.validate_required(self.lock_reason, 'lock_reason')
@@ -32244,7 +34039,7 @@ class DescribeInstanceAttributeResponseOperationLocks(TeaModel):
 class DescribeInstanceAttributeResponseVpcAttributesPrivateIpAddress(TeaModel):
     def __init__(self, ip_address=None):
         # IpAddress
-        self.ip_address = ip_address
+        self.ip_address = ip_address    # type: List[str]
 
     def validate(self):
         self.validate_required(self.ip_address, 'ip_address')
@@ -32261,9 +34056,9 @@ class DescribeInstanceAttributeResponseVpcAttributesPrivateIpAddress(TeaModel):
 
 class DescribeInstanceAttributeResponseVpcAttributes(TeaModel):
     def __init__(self, vpc_id=None, v_switch_id=None, nat_ip_address=None, private_ip_address=None):
-        self.vpc_id = vpc_id
-        self.v_switch_id = v_switch_id
-        self.nat_ip_address = nat_ip_address
+        self.vpc_id = vpc_id            # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.nat_ip_address = nat_ip_address  # type: str
         self.private_ip_address = private_ip_address  # type: DescribeInstanceAttributeResponseVpcAttributesPrivateIpAddress
 
     def validate(self):
@@ -32299,10 +34094,10 @@ class DescribeInstanceAttributeResponseVpcAttributes(TeaModel):
 
 class DescribeInstanceAttributeResponseEipAddress(TeaModel):
     def __init__(self, allocation_id=None, ip_address=None, bandwidth=None, internet_charge_type=None):
-        self.allocation_id = allocation_id
-        self.ip_address = ip_address
-        self.bandwidth = bandwidth
-        self.internet_charge_type = internet_charge_type
+        self.allocation_id = allocation_id  # type: str
+        self.ip_address = ip_address    # type: str
+        self.bandwidth = bandwidth      # type: int
+        self.internet_charge_type = internet_charge_type  # type: str
 
     def validate(self):
         self.validate_required(self.allocation_id, 'allocation_id')
@@ -32328,8 +34123,8 @@ class DescribeInstanceAttributeResponseEipAddress(TeaModel):
 
 class DescribeInstanceAttributeResponseDedicatedHostAttribute(TeaModel):
     def __init__(self, dedicated_host_id=None, dedicated_host_name=None):
-        self.dedicated_host_id = dedicated_host_id
-        self.dedicated_host_name = dedicated_host_name
+        self.dedicated_host_id = dedicated_host_id  # type: str
+        self.dedicated_host_name = dedicated_host_name  # type: str
 
     def validate(self):
         self.validate_required(self.dedicated_host_id, 'dedicated_host_id')
@@ -32349,7 +34144,7 @@ class DescribeInstanceAttributeResponseDedicatedHostAttribute(TeaModel):
 
 class DescribeInstanceAttributeResponseSecurityGroupIds(TeaModel):
     def __init__(self, security_group_id=None):
-        self.security_group_id = security_group_id
+        self.security_group_id = security_group_id  # type: List[str]
 
     def validate(self):
         self.validate_required(self.security_group_id, 'security_group_id')
@@ -32366,7 +34161,7 @@ class DescribeInstanceAttributeResponseSecurityGroupIds(TeaModel):
 
 class DescribeInstanceAttributeResponsePublicIpAddress(TeaModel):
     def __init__(self, ip_address=None):
-        self.ip_address = ip_address
+        self.ip_address = ip_address    # type: List[str]
 
     def validate(self):
         self.validate_required(self.ip_address, 'ip_address')
@@ -32383,7 +34178,7 @@ class DescribeInstanceAttributeResponsePublicIpAddress(TeaModel):
 
 class DescribeInstanceAttributeResponseInnerIpAddress(TeaModel):
     def __init__(self, ip_address=None):
-        self.ip_address = ip_address
+        self.ip_address = ip_address    # type: List[str]
 
     def validate(self):
         self.validate_required(self.ip_address, 'ip_address')
@@ -32400,10 +34195,10 @@ class DescribeInstanceAttributeResponseInnerIpAddress(TeaModel):
 
 class DescribeImageSharePermissionRequest(TeaModel):
     def __init__(self, region_id=None, image_id=None, page_number=None, page_size=None):
-        self.region_id = region_id
-        self.image_id = image_id
-        self.page_number = page_number
-        self.page_size = page_size
+        self.region_id = region_id      # type: str
+        self.image_id = image_id        # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -32428,14 +34223,14 @@ class DescribeImageSharePermissionRequest(TeaModel):
 class DescribeImageSharePermissionResponse(TeaModel):
     def __init__(self, request_id=None, region_id=None, total_count=None, page_number=None, page_size=None,
                  image_id=None, share_groups=None, accounts=None):
-        self.request_id = request_id
-        self.region_id = region_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.image_id = image_id
+        self.request_id = request_id    # type: str
+        self.region_id = region_id      # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.image_id = image_id        # type: str
         self.share_groups = share_groups  # type: DescribeImageSharePermissionResponseShareGroups
-        self.accounts = accounts  # type: DescribeImageSharePermissionResponseAccounts
+        self.accounts = accounts        # type: DescribeImageSharePermissionResponseAccounts
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -32491,7 +34286,7 @@ class DescribeImageSharePermissionResponse(TeaModel):
 
 class DescribeImageSharePermissionResponseShareGroupsShareGroup(TeaModel):
     def __init__(self, group=None):
-        self.group = group
+        self.group = group              # type: str
 
     def validate(self):
         self.validate_required(self.group, 'group')
@@ -32508,7 +34303,7 @@ class DescribeImageSharePermissionResponseShareGroupsShareGroup(TeaModel):
 
 class DescribeImageSharePermissionResponseShareGroups(TeaModel):
     def __init__(self, share_group=None):
-        self.share_group = share_group
+        self.share_group = share_group  # type: List[DescribeImageSharePermissionResponseShareGroupsShareGroup]
 
     def validate(self):
         self.validate_required(self.share_group, 'share_group')
@@ -32540,7 +34335,7 @@ class DescribeImageSharePermissionResponseShareGroups(TeaModel):
 
 class DescribeImageSharePermissionResponseAccountsAccount(TeaModel):
     def __init__(self, aliyun_id=None):
-        self.aliyun_id = aliyun_id
+        self.aliyun_id = aliyun_id      # type: str
 
     def validate(self):
         self.validate_required(self.aliyun_id, 'aliyun_id')
@@ -32557,7 +34352,7 @@ class DescribeImageSharePermissionResponseAccountsAccount(TeaModel):
 
 class DescribeImageSharePermissionResponseAccounts(TeaModel):
     def __init__(self, account=None):
-        self.account = account
+        self.account = account          # type: List[DescribeImageSharePermissionResponseAccountsAccount]
 
     def validate(self):
         self.validate_required(self.account, 'account')
@@ -32592,27 +34387,27 @@ class DescribeImagesRequest(TeaModel):
                  image_name=None, image_family=None, image_owner_alias=None, instance_type=None, is_support_io_optimized=None,
                  is_support_cloudinit=None, ostype=None, architecture=None, page_number=None, page_size=None, usage=None, tag=None,
                  dry_run=None, action_type=None, filter=None, resource_group_id=None):
-        self.region_id = region_id
-        self.status = status
-        self.image_id = image_id
-        self.show_expired = show_expired
-        self.snapshot_id = snapshot_id
-        self.image_name = image_name
-        self.image_family = image_family
-        self.image_owner_alias = image_owner_alias
-        self.instance_type = instance_type
-        self.is_support_io_optimized = is_support_io_optimized
-        self.is_support_cloudinit = is_support_cloudinit
-        self.ostype = ostype
-        self.architecture = architecture
-        self.page_number = page_number
-        self.page_size = page_size
-        self.usage = usage
-        self.tag = tag
-        self.dry_run = dry_run
-        self.action_type = action_type
-        self.filter = filter
-        self.resource_group_id = resource_group_id
+        self.region_id = region_id      # type: str
+        self.status = status            # type: str
+        self.image_id = image_id        # type: str
+        self.show_expired = show_expired  # type: bool
+        self.snapshot_id = snapshot_id  # type: str
+        self.image_name = image_name    # type: str
+        self.image_family = image_family  # type: str
+        self.image_owner_alias = image_owner_alias  # type: str
+        self.instance_type = instance_type  # type: str
+        self.is_support_io_optimized = is_support_io_optimized  # type: bool
+        self.is_support_cloudinit = is_support_cloudinit  # type: bool
+        self.ostype = ostype            # type: str
+        self.architecture = architecture  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.usage = usage              # type: str
+        self.tag = tag                  # type: List[DescribeImagesRequestTag]
+        self.dry_run = dry_run          # type: bool
+        self.action_type = action_type  # type: str
+        self.filter = filter            # type: List[DescribeImagesRequestFilter]
+        self.resource_group_id = resource_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -32699,12 +34494,11 @@ class DescribeImagesRequest(TeaModel):
 
 class DescribeImagesRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -32720,12 +34514,11 @@ class DescribeImagesRequestTag(TeaModel):
 
 class DescribeImagesRequestFilter(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -32742,12 +34535,12 @@ class DescribeImagesRequestFilter(TeaModel):
 class DescribeImagesResponse(TeaModel):
     def __init__(self, request_id=None, region_id=None, total_count=None, page_number=None, page_size=None,
                  images=None):
-        self.request_id = request_id
-        self.region_id = region_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.images = images  # type: DescribeImagesResponseImages
+        self.request_id = request_id    # type: str
+        self.region_id = region_id      # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.images = images            # type: DescribeImagesResponseImages
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -32789,15 +34582,15 @@ class DescribeImagesResponse(TeaModel):
 class DescribeImagesResponseImagesImageDiskDeviceMappingsDiskDeviceMapping(TeaModel):
     def __init__(self, snapshot_id=None, size=None, device=None, type=None, format=None, import_ossbucket=None,
                  import_ossobject=None, progress=None, remain_time=None):
-        self.snapshot_id = snapshot_id
-        self.size = size
-        self.device = device
-        self.type = type
-        self.format = format
-        self.import_ossbucket = import_ossbucket
-        self.import_ossobject = import_ossobject
-        self.progress = progress
-        self.remain_time = remain_time
+        self.snapshot_id = snapshot_id  # type: str
+        self.size = size                # type: str
+        self.device = device            # type: str
+        self.type = type                # type: str
+        self.format = format            # type: str
+        self.import_ossbucket = import_ossbucket  # type: str
+        self.import_ossobject = import_ossobject  # type: str
+        self.progress = progress        # type: str
+        self.remain_time = remain_time  # type: int
 
     def validate(self):
         self.validate_required(self.snapshot_id, 'snapshot_id')
@@ -32838,7 +34631,7 @@ class DescribeImagesResponseImagesImageDiskDeviceMappingsDiskDeviceMapping(TeaMo
 
 class DescribeImagesResponseImagesImageDiskDeviceMappings(TeaModel):
     def __init__(self, disk_device_mapping=None):
-        self.disk_device_mapping = disk_device_mapping
+        self.disk_device_mapping = disk_device_mapping  # type: List[DescribeImagesResponseImagesImageDiskDeviceMappingsDiskDeviceMapping]
 
     def validate(self):
         self.validate_required(self.disk_device_mapping, 'disk_device_mapping')
@@ -32870,8 +34663,8 @@ class DescribeImagesResponseImagesImageDiskDeviceMappings(TeaModel):
 
 class DescribeImagesResponseImagesImageTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -32891,7 +34684,7 @@ class DescribeImagesResponseImagesImageTagsTag(TeaModel):
 
 class DescribeImagesResponseImagesImageTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeImagesResponseImagesImageTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -32927,31 +34720,31 @@ class DescribeImagesResponseImagesImage(TeaModel):
                  osname=None, osname_en=None, architecture=None, status=None, product_code=None, is_subscribed=None,
                  creation_time=None, is_self_shared=None, ostype=None, platform=None, usage=None, is_copied=None,
                  resource_group_id=None, disk_device_mappings=None, tags=None):
-        self.progress = progress
-        self.image_id = image_id
-        self.image_name = image_name
-        self.image_family = image_family
-        self.image_version = image_version
-        self.description = description
-        self.size = size
-        self.image_owner_alias = image_owner_alias
-        self.is_support_io_optimized = is_support_io_optimized
-        self.is_support_cloudinit = is_support_cloudinit
-        self.osname = osname
-        self.osname_en = osname_en
-        self.architecture = architecture
-        self.status = status
-        self.product_code = product_code
-        self.is_subscribed = is_subscribed
-        self.creation_time = creation_time
-        self.is_self_shared = is_self_shared
-        self.ostype = ostype
-        self.platform = platform
-        self.usage = usage
-        self.is_copied = is_copied
-        self.resource_group_id = resource_group_id
+        self.progress = progress        # type: str
+        self.image_id = image_id        # type: str
+        self.image_name = image_name    # type: str
+        self.image_family = image_family  # type: str
+        self.image_version = image_version  # type: str
+        self.description = description  # type: str
+        self.size = size                # type: int
+        self.image_owner_alias = image_owner_alias  # type: str
+        self.is_support_io_optimized = is_support_io_optimized  # type: bool
+        self.is_support_cloudinit = is_support_cloudinit  # type: bool
+        self.osname = osname            # type: str
+        self.osname_en = osname_en      # type: str
+        self.architecture = architecture  # type: str
+        self.status = status            # type: str
+        self.product_code = product_code  # type: str
+        self.is_subscribed = is_subscribed  # type: bool
+        self.creation_time = creation_time  # type: str
+        self.is_self_shared = is_self_shared  # type: str
+        self.ostype = ostype            # type: str
+        self.platform = platform        # type: str
+        self.usage = usage              # type: str
+        self.is_copied = is_copied      # type: bool
+        self.resource_group_id = resource_group_id  # type: str
         self.disk_device_mappings = disk_device_mappings  # type: DescribeImagesResponseImagesImageDiskDeviceMappings
-        self.tags = tags  # type: DescribeImagesResponseImagesImageTags
+        self.tags = tags                # type: DescribeImagesResponseImagesImageTags
 
     def validate(self):
         self.validate_required(self.progress, 'progress')
@@ -33058,7 +34851,7 @@ class DescribeImagesResponseImagesImage(TeaModel):
 
 class DescribeImagesResponseImages(TeaModel):
     def __init__(self, image=None):
-        self.image = image
+        self.image = image              # type: List[DescribeImagesResponseImagesImage]
 
     def validate(self):
         self.validate_required(self.image, 'image')
@@ -33090,11 +34883,11 @@ class DescribeImagesResponseImages(TeaModel):
 
 class DescribeEipMonitorDataRequest(TeaModel):
     def __init__(self, region_id=None, allocation_id=None, start_time=None, end_time=None, period=None):
-        self.region_id = region_id
-        self.allocation_id = allocation_id
-        self.start_time = start_time
-        self.end_time = end_time
-        self.period = period
+        self.region_id = region_id      # type: str
+        self.allocation_id = allocation_id  # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.period = period            # type: int
 
     def validate(self):
         self.validate_required(self.allocation_id, 'allocation_id')
@@ -33121,7 +34914,7 @@ class DescribeEipMonitorDataRequest(TeaModel):
 
 class DescribeEipMonitorDataResponse(TeaModel):
     def __init__(self, request_id=None, eip_monitor_datas=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.eip_monitor_datas = eip_monitor_datas  # type: DescribeEipMonitorDataResponseEipMonitorDatas
 
     def validate(self):
@@ -33152,12 +34945,12 @@ class DescribeEipMonitorDataResponse(TeaModel):
 class DescribeEipMonitorDataResponseEipMonitorDatasEipMonitorData(TeaModel):
     def __init__(self, eip_rx=None, eip_tx=None, eip_flow=None, eip_bandwidth=None, eip_packets=None,
                  time_stamp=None):
-        self.eip_rx = eip_rx
-        self.eip_tx = eip_tx
-        self.eip_flow = eip_flow
-        self.eip_bandwidth = eip_bandwidth
-        self.eip_packets = eip_packets
-        self.time_stamp = time_stamp
+        self.eip_rx = eip_rx            # type: int
+        self.eip_tx = eip_tx            # type: int
+        self.eip_flow = eip_flow        # type: int
+        self.eip_bandwidth = eip_bandwidth  # type: int
+        self.eip_packets = eip_packets  # type: int
+        self.time_stamp = time_stamp    # type: str
 
     def validate(self):
         self.validate_required(self.eip_rx, 'eip_rx')
@@ -33189,7 +34982,7 @@ class DescribeEipMonitorDataResponseEipMonitorDatasEipMonitorData(TeaModel):
 
 class DescribeEipMonitorDataResponseEipMonitorDatas(TeaModel):
     def __init__(self, eip_monitor_data=None):
-        self.eip_monitor_data = eip_monitor_data
+        self.eip_monitor_data = eip_monitor_data  # type: List[DescribeEipMonitorDataResponseEipMonitorDatasEipMonitorData]
 
     def validate(self):
         self.validate_required(self.eip_monitor_data, 'eip_monitor_data')
@@ -33223,18 +35016,18 @@ class DescribeEipAddressesRequest(TeaModel):
     def __init__(self, region_id=None, status=None, eip_address=None, allocation_id=None, isp=None, page_number=None,
                  page_size=None, filter=None, lock_reason=None, associated_instance_type=None, associated_instance_id=None,
                  charge_type=None):
-        self.region_id = region_id
-        self.status = status
-        self.eip_address = eip_address
-        self.allocation_id = allocation_id
-        self.isp = isp
-        self.page_number = page_number
-        self.page_size = page_size
-        self.filter = filter
-        self.lock_reason = lock_reason
-        self.associated_instance_type = associated_instance_type
-        self.associated_instance_id = associated_instance_id
-        self.charge_type = charge_type
+        self.region_id = region_id      # type: str
+        self.status = status            # type: str
+        self.eip_address = eip_address  # type: str
+        self.allocation_id = allocation_id  # type: str
+        self.isp = isp                  # type: str
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.filter = filter            # type: List[DescribeEipAddressesRequestFilter]
+        self.lock_reason = lock_reason  # type: str
+        self.associated_instance_type = associated_instance_type  # type: str
+        self.associated_instance_id = associated_instance_id  # type: str
+        self.charge_type = charge_type  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -33288,8 +35081,8 @@ class DescribeEipAddressesRequest(TeaModel):
 
 class DescribeEipAddressesRequestFilter(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
         pass
@@ -33308,10 +35101,10 @@ class DescribeEipAddressesRequestFilter(TeaModel):
 
 class DescribeEipAddressesResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, eip_addresses=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
         self.eip_addresses = eip_addresses  # type: DescribeEipAddressesResponseEipAddresses
 
     def validate(self):
@@ -33350,7 +35143,7 @@ class DescribeEipAddressesResponse(TeaModel):
 
 class DescribeEipAddressesResponseEipAddressesEipAddressOperationLocksLockReason(TeaModel):
     def __init__(self, lock_reason=None):
-        self.lock_reason = lock_reason
+        self.lock_reason = lock_reason  # type: str
 
     def validate(self):
         self.validate_required(self.lock_reason, 'lock_reason')
@@ -33367,7 +35160,7 @@ class DescribeEipAddressesResponseEipAddressesEipAddressOperationLocksLockReason
 
 class DescribeEipAddressesResponseEipAddressesEipAddressOperationLocks(TeaModel):
     def __init__(self, lock_reason=None):
-        self.lock_reason = lock_reason
+        self.lock_reason = lock_reason  # type: List[DescribeEipAddressesResponseEipAddressesEipAddressOperationLocksLockReason]
 
     def validate(self):
         self.validate_required(self.lock_reason, 'lock_reason')
@@ -33401,18 +35194,18 @@ class DescribeEipAddressesResponseEipAddressesEipAddress(TeaModel):
     def __init__(self, region_id=None, ip_address=None, allocation_id=None, status=None, instance_id=None,
                  bandwidth=None, eip_bandwidth=None, internet_charge_type=None, allocation_time=None, instance_type=None,
                  charge_type=None, expired_time=None, operation_locks=None):
-        self.region_id = region_id
-        self.ip_address = ip_address
-        self.allocation_id = allocation_id
-        self.status = status
-        self.instance_id = instance_id
-        self.bandwidth = bandwidth
-        self.eip_bandwidth = eip_bandwidth
-        self.internet_charge_type = internet_charge_type
-        self.allocation_time = allocation_time
-        self.instance_type = instance_type
-        self.charge_type = charge_type
-        self.expired_time = expired_time
+        self.region_id = region_id      # type: str
+        self.ip_address = ip_address    # type: str
+        self.allocation_id = allocation_id  # type: str
+        self.status = status            # type: str
+        self.instance_id = instance_id  # type: str
+        self.bandwidth = bandwidth      # type: str
+        self.eip_bandwidth = eip_bandwidth  # type: str
+        self.internet_charge_type = internet_charge_type  # type: str
+        self.allocation_time = allocation_time  # type: str
+        self.instance_type = instance_type  # type: str
+        self.charge_type = charge_type  # type: str
+        self.expired_time = expired_time  # type: str
         self.operation_locks = operation_locks  # type: DescribeEipAddressesResponseEipAddressesEipAddressOperationLocks
 
     def validate(self):
@@ -33475,7 +35268,7 @@ class DescribeEipAddressesResponseEipAddressesEipAddress(TeaModel):
 
 class DescribeEipAddressesResponseEipAddresses(TeaModel):
     def __init__(self, eip_address=None):
-        self.eip_address = eip_address
+        self.eip_address = eip_address  # type: List[DescribeEipAddressesResponseEipAddressesEipAddress]
 
     def validate(self):
         self.validate_required(self.eip_address, 'eip_address')
@@ -33512,35 +35305,35 @@ class DescribeDisksRequest(TeaModel):
                  auto_snapshot_policy_id=None, enable_auto_snapshot=None, enable_automated_snapshot_policy=None, disk_charge_type=None,
                  lock_reason=None, filter=None, tag=None, resource_group_id=None, enable_shared=None, encrypted=None,
                  additional_attributes=None, dry_run=None, kmskey_id=None):
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.disk_ids = disk_ids
-        self.instance_id = instance_id
-        self.disk_type = disk_type
-        self.category = category
-        self.status = status
-        self.snapshot_id = snapshot_id
-        self.portable = portable
-        self.delete_with_instance = delete_with_instance
-        self.delete_auto_snapshot = delete_auto_snapshot
-        self.page_number = page_number
-        self.page_size = page_size
-        self.next_token = next_token
-        self.max_results = max_results
-        self.disk_name = disk_name
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        self.enable_auto_snapshot = enable_auto_snapshot
-        self.enable_automated_snapshot_policy = enable_automated_snapshot_policy
-        self.disk_charge_type = disk_charge_type
-        self.lock_reason = lock_reason
-        self.filter = filter
-        self.tag = tag
-        self.resource_group_id = resource_group_id
-        self.enable_shared = enable_shared
-        self.encrypted = encrypted
-        self.additional_attributes = additional_attributes
-        self.dry_run = dry_run
-        self.kmskey_id = kmskey_id
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.disk_ids = disk_ids        # type: str
+        self.instance_id = instance_id  # type: str
+        self.disk_type = disk_type      # type: str
+        self.category = category        # type: str
+        self.status = status            # type: str
+        self.snapshot_id = snapshot_id  # type: str
+        self.portable = portable        # type: bool
+        self.delete_with_instance = delete_with_instance  # type: bool
+        self.delete_auto_snapshot = delete_auto_snapshot  # type: bool
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.next_token = next_token    # type: str
+        self.max_results = max_results  # type: int
+        self.disk_name = disk_name      # type: str
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id  # type: str
+        self.enable_auto_snapshot = enable_auto_snapshot  # type: bool
+        self.enable_automated_snapshot_policy = enable_automated_snapshot_policy  # type: bool
+        self.disk_charge_type = disk_charge_type  # type: str
+        self.lock_reason = lock_reason  # type: str
+        self.filter = filter            # type: List[DescribeDisksRequestFilter]
+        self.tag = tag                  # type: List[DescribeDisksRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
+        self.enable_shared = enable_shared  # type: bool
+        self.encrypted = encrypted      # type: bool
+        self.additional_attributes = additional_attributes  # type: List[str]
+        self.dry_run = dry_run          # type: bool
+        self.kmskey_id = kmskey_id      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -33643,8 +35436,8 @@ class DescribeDisksRequest(TeaModel):
 
 class DescribeDisksRequestFilter(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
         pass
@@ -33663,12 +35456,11 @@ class DescribeDisksRequestFilter(TeaModel):
 
 class DescribeDisksRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -33685,12 +35477,12 @@ class DescribeDisksRequestTag(TeaModel):
 class DescribeDisksResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, page_number=None, page_size=None, next_token=None,
                  disks=None):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.next_token = next_token
-        self.disks = disks  # type: DescribeDisksResponseDisks
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
+        self.page_number = page_number  # type: int
+        self.page_size = page_size      # type: int
+        self.next_token = next_token    # type: str
+        self.disks = disks              # type: DescribeDisksResponseDisks
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -33731,7 +35523,7 @@ class DescribeDisksResponse(TeaModel):
 
 class DescribeDisksResponseDisksDiskOperationLocksOperationLock(TeaModel):
     def __init__(self, lock_reason=None):
-        self.lock_reason = lock_reason
+        self.lock_reason = lock_reason  # type: str
 
     def validate(self):
         self.validate_required(self.lock_reason, 'lock_reason')
@@ -33748,7 +35540,7 @@ class DescribeDisksResponseDisksDiskOperationLocksOperationLock(TeaModel):
 
 class DescribeDisksResponseDisksDiskOperationLocks(TeaModel):
     def __init__(self, operation_lock=None):
-        self.operation_lock = operation_lock
+        self.operation_lock = operation_lock  # type: List[DescribeDisksResponseDisksDiskOperationLocksOperationLock]
 
     def validate(self):
         self.validate_required(self.operation_lock, 'operation_lock')
@@ -33780,9 +35572,9 @@ class DescribeDisksResponseDisksDiskOperationLocks(TeaModel):
 
 class DescribeDisksResponseDisksDiskMountInstancesMountInstance(TeaModel):
     def __init__(self, instance_id=None, device=None, attached_time=None):
-        self.instance_id = instance_id
-        self.device = device
-        self.attached_time = attached_time
+        self.instance_id = instance_id  # type: str
+        self.device = device            # type: str
+        self.attached_time = attached_time  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -33805,7 +35597,7 @@ class DescribeDisksResponseDisksDiskMountInstancesMountInstance(TeaModel):
 
 class DescribeDisksResponseDisksDiskMountInstances(TeaModel):
     def __init__(self, mount_instance=None):
-        self.mount_instance = mount_instance
+        self.mount_instance = mount_instance  # type: List[DescribeDisksResponseDisksDiskMountInstancesMountInstance]
 
     def validate(self):
         self.validate_required(self.mount_instance, 'mount_instance')
@@ -33837,8 +35629,8 @@ class DescribeDisksResponseDisksDiskMountInstances(TeaModel):
 
 class DescribeDisksResponseDisksDiskTagsTag(TeaModel):
     def __init__(self, tag_key=None, tag_value=None):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.tag_key = tag_key          # type: str
+        self.tag_value = tag_value      # type: str
 
     def validate(self):
         self.validate_required(self.tag_key, 'tag_key')
@@ -33858,7 +35650,7 @@ class DescribeDisksResponseDisksDiskTagsTag(TeaModel):
 
 class DescribeDisksResponseDisksDiskTags(TeaModel):
     def __init__(self, tag=None):
-        self.tag = tag
+        self.tag = tag                  # type: List[DescribeDisksResponseDisksDiskTagsTag]
 
     def validate(self):
         self.validate_required(self.tag, 'tag')
@@ -33897,46 +35689,46 @@ class DescribeDisksResponseDisksDisk(TeaModel):
                  encrypted=None, storage_set_id=None, storage_set_partition_number=None, mount_instance_num=None, iops=None,
                  iopsread=None, iopswrite=None, kmskey_id=None, performance_level=None, bdf_id=None, serial_number=None,
                  operation_locks=None, mount_instances=None, tags=None):
-        self.disk_id = disk_id
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.disk_name = disk_name
-        self.description = description
-        self.type = type
-        self.category = category
-        self.size = size
-        self.image_id = image_id
-        self.source_snapshot_id = source_snapshot_id
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        self.product_code = product_code
-        self.portable = portable
-        self.status = status
-        self.instance_id = instance_id
-        self.device = device
-        self.delete_with_instance = delete_with_instance
-        self.delete_auto_snapshot = delete_auto_snapshot
-        self.enable_auto_snapshot = enable_auto_snapshot
-        self.enable_automated_snapshot_policy = enable_automated_snapshot_policy
-        self.creation_time = creation_time
-        self.attached_time = attached_time
-        self.detached_time = detached_time
-        self.disk_charge_type = disk_charge_type
-        self.expired_time = expired_time
-        self.resource_group_id = resource_group_id
-        self.encrypted = encrypted
-        self.storage_set_id = storage_set_id
-        self.storage_set_partition_number = storage_set_partition_number
-        self.mount_instance_num = mount_instance_num
-        self.iops = iops
-        self.iopsread = iopsread
-        self.iopswrite = iopswrite
-        self.kmskey_id = kmskey_id
-        self.performance_level = performance_level
-        self.bdf_id = bdf_id
-        self.serial_number = serial_number
+        self.disk_id = disk_id          # type: str
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.disk_name = disk_name      # type: str
+        self.description = description  # type: str
+        self.type = type                # type: str
+        self.category = category        # type: str
+        self.size = size                # type: int
+        self.image_id = image_id        # type: str
+        self.source_snapshot_id = source_snapshot_id  # type: str
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id  # type: str
+        self.product_code = product_code  # type: str
+        self.portable = portable        # type: bool
+        self.status = status            # type: str
+        self.instance_id = instance_id  # type: str
+        self.device = device            # type: str
+        self.delete_with_instance = delete_with_instance  # type: bool
+        self.delete_auto_snapshot = delete_auto_snapshot  # type: bool
+        self.enable_auto_snapshot = enable_auto_snapshot  # type: bool
+        self.enable_automated_snapshot_policy = enable_automated_snapshot_policy  # type: bool
+        self.creation_time = creation_time  # type: str
+        self.attached_time = attached_time  # type: str
+        self.detached_time = detached_time  # type: str
+        self.disk_charge_type = disk_charge_type  # type: str
+        self.expired_time = expired_time  # type: str
+        self.resource_group_id = resource_group_id  # type: str
+        self.encrypted = encrypted      # type: bool
+        self.storage_set_id = storage_set_id  # type: str
+        self.storage_set_partition_number = storage_set_partition_number  # type: int
+        self.mount_instance_num = mount_instance_num  # type: int
+        self.iops = iops                # type: int
+        self.iopsread = iopsread        # type: int
+        self.iopswrite = iopswrite      # type: int
+        self.kmskey_id = kmskey_id      # type: str
+        self.performance_level = performance_level  # type: str
+        self.bdf_id = bdf_id            # type: str
+        self.serial_number = serial_number  # type: str
         self.operation_locks = operation_locks  # type: DescribeDisksResponseDisksDiskOperationLocks
         self.mount_instances = mount_instances  # type: DescribeDisksResponseDisksDiskMountInstances
-        self.tags = tags  # type: DescribeDisksResponseDisksDiskTags
+        self.tags = tags                # type: DescribeDisksResponseDisksDiskTags
 
     def validate(self):
         self.validate_required(self.disk_id, 'disk_id')
@@ -34097,7 +35889,7 @@ class DescribeDisksResponseDisksDisk(TeaModel):
 
 class DescribeDisksResponseDisks(TeaModel):
     def __init__(self, disk=None):
-        self.disk = disk
+        self.disk = disk                # type: List[DescribeDisksResponseDisksDisk]
 
     def validate(self):
         self.validate_required(self.disk, 'disk')
@@ -34129,10 +35921,10 @@ class DescribeDisksResponseDisks(TeaModel):
 
 class DescribeDiskMonitorDataRequest(TeaModel):
     def __init__(self, disk_id=None, start_time=None, end_time=None, period=None):
-        self.disk_id = disk_id
-        self.start_time = start_time
-        self.end_time = end_time
-        self.period = period
+        self.disk_id = disk_id          # type: str
+        self.start_time = start_time    # type: str
+        self.end_time = end_time        # type: str
+        self.period = period            # type: int
 
     def validate(self):
         self.validate_required(self.disk_id, 'disk_id')
@@ -34157,8 +35949,8 @@ class DescribeDiskMonitorDataRequest(TeaModel):
 
 class DescribeDiskMonitorDataResponse(TeaModel):
     def __init__(self, request_id=None, total_count=None, monitor_data=None):
-        self.request_id = request_id
-        self.total_count = total_count
+        self.request_id = request_id    # type: str
+        self.total_count = total_count  # type: int
         self.monitor_data = monitor_data  # type: DescribeDiskMonitorDataResponseMonitorData
 
     def validate(self):
@@ -34192,16 +35984,16 @@ class DescribeDiskMonitorDataResponse(TeaModel):
 class DescribeDiskMonitorDataResponseMonitorDataDiskMonitorData(TeaModel):
     def __init__(self, disk_id=None, iopsread=None, iopswrite=None, iopstotal=None, bpsread=None, bpswrite=None,
                  bpstotal=None, latency_read=None, latency_write=None, time_stamp=None):
-        self.disk_id = disk_id
-        self.iopsread = iopsread
-        self.iopswrite = iopswrite
-        self.iopstotal = iopstotal
-        self.bpsread = bpsread
-        self.bpswrite = bpswrite
-        self.bpstotal = bpstotal
-        self.latency_read = latency_read
-        self.latency_write = latency_write
-        self.time_stamp = time_stamp
+        self.disk_id = disk_id          # type: str
+        self.iopsread = iopsread        # type: int
+        self.iopswrite = iopswrite      # type: int
+        self.iopstotal = iopstotal      # type: int
+        self.bpsread = bpsread          # type: int
+        self.bpswrite = bpswrite        # type: int
+        self.bpstotal = bpstotal        # type: int
+        self.latency_read = latency_read  # type: int
+        self.latency_write = latency_write  # type: int
+        self.time_stamp = time_stamp    # type: str
 
     def validate(self):
         self.validate_required(self.disk_id, 'disk_id')
@@ -34245,7 +36037,7 @@ class DescribeDiskMonitorDataResponseMonitorDataDiskMonitorData(TeaModel):
 
 class DescribeDiskMonitorDataResponseMonitorData(TeaModel):
     def __init__(self, disk_monitor_data=None):
-        self.disk_monitor_data = disk_monitor_data
+        self.disk_monitor_data = disk_monitor_data  # type: List[DescribeDiskMonitorDataResponseMonitorDataDiskMonitorData]
 
     def validate(self):
         self.validate_required(self.disk_monitor_data, 'disk_monitor_data')
@@ -34277,7 +36069,7 @@ class DescribeDiskMonitorDataResponseMonitorData(TeaModel):
 
 class DescribeClustersRequest(TeaModel):
     def __init__(self, region_id=None):
-        self.region_id = region_id
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -34294,8 +36086,8 @@ class DescribeClustersRequest(TeaModel):
 
 class DescribeClustersResponse(TeaModel):
     def __init__(self, request_id=None, clusters=None):
-        self.request_id = request_id
-        self.clusters = clusters  # type: DescribeClustersResponseClusters
+        self.request_id = request_id    # type: str
+        self.clusters = clusters        # type: DescribeClustersResponseClusters
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -34324,7 +36116,7 @@ class DescribeClustersResponse(TeaModel):
 
 class DescribeClustersResponseClustersCluster(TeaModel):
     def __init__(self, cluster_id=None):
-        self.cluster_id = cluster_id
+        self.cluster_id = cluster_id    # type: str
 
     def validate(self):
         self.validate_required(self.cluster_id, 'cluster_id')
@@ -34341,7 +36133,7 @@ class DescribeClustersResponseClustersCluster(TeaModel):
 
 class DescribeClustersResponseClusters(TeaModel):
     def __init__(self, cluster=None):
-        self.cluster = cluster
+        self.cluster = cluster          # type: List[DescribeClustersResponseClustersCluster]
 
     def validate(self):
         self.validate_required(self.cluster, 'cluster')
@@ -34373,8 +36165,8 @@ class DescribeClustersResponseClusters(TeaModel):
 
 class DeleteVSwitchRequest(TeaModel):
     def __init__(self, v_switch_id=None, region_id=None):
-        self.v_switch_id = v_switch_id
-        self.region_id = region_id
+        self.v_switch_id = v_switch_id  # type: str
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.v_switch_id, 'v_switch_id')
@@ -34393,7 +36185,7 @@ class DeleteVSwitchRequest(TeaModel):
 
 class DeleteVSwitchResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -34410,8 +36202,8 @@ class DeleteVSwitchResponse(TeaModel):
 
 class DeleteVpcRequest(TeaModel):
     def __init__(self, vpc_id=None, region_id=None):
-        self.vpc_id = vpc_id
-        self.region_id = region_id
+        self.vpc_id = vpc_id            # type: str
+        self.region_id = region_id      # type: str
 
     def validate(self):
         self.validate_required(self.vpc_id, 'vpc_id')
@@ -34430,7 +36222,7 @@ class DeleteVpcRequest(TeaModel):
 
 class DeleteVpcResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -34447,8 +36239,8 @@ class DeleteVpcResponse(TeaModel):
 
 class DeleteSnapshotRequest(TeaModel):
     def __init__(self, snapshot_id=None, force=None):
-        self.snapshot_id = snapshot_id
-        self.force = force
+        self.snapshot_id = snapshot_id  # type: str
+        self.force = force              # type: bool
 
     def validate(self):
         self.validate_required(self.snapshot_id, 'snapshot_id')
@@ -34467,7 +36259,7 @@ class DeleteSnapshotRequest(TeaModel):
 
 class DeleteSnapshotResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -34484,8 +36276,8 @@ class DeleteSnapshotResponse(TeaModel):
 
 class DeleteSecurityGroupRequest(TeaModel):
     def __init__(self, region_id=None, security_group_id=None):
-        self.region_id = region_id
-        self.security_group_id = security_group_id
+        self.region_id = region_id      # type: str
+        self.security_group_id = security_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -34505,7 +36297,7 @@ class DeleteSecurityGroupRequest(TeaModel):
 
 class DeleteSecurityGroupResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -34523,11 +36315,11 @@ class DeleteSecurityGroupResponse(TeaModel):
 class DeleteRouteEntryRequest(TeaModel):
     def __init__(self, next_hop_list=None, region_id=None, route_table_id=None, destination_cidr_block=None,
                  next_hop_id=None):
-        self.next_hop_list = next_hop_list
-        self.region_id = region_id
-        self.route_table_id = route_table_id
-        self.destination_cidr_block = destination_cidr_block
-        self.next_hop_id = next_hop_id
+        self.next_hop_list = next_hop_list  # type: List[DeleteRouteEntryRequestNextHopList]
+        self.region_id = region_id      # type: str
+        self.route_table_id = route_table_id  # type: str
+        self.destination_cidr_block = destination_cidr_block  # type: str
+        self.next_hop_id = next_hop_id  # type: str
 
     def validate(self):
         if self.next_hop_list:
@@ -34568,12 +36360,11 @@ class DeleteRouteEntryRequest(TeaModel):
 
 class DeleteRouteEntryRequestNextHopList(TeaModel):
     def __init__(self, next_hop_type=None, next_hop_id=None):
-        self.next_hop_type = next_hop_type
-        self.next_hop_id = next_hop_id
+        self.next_hop_type = next_hop_type  # type: str
+        self.next_hop_id = next_hop_id  # type: str
 
     def validate(self):
-        self.validate_required(self.next_hop_type, 'next_hop_type')
-        self.validate_required(self.next_hop_id, 'next_hop_id')
+        pass
 
     def to_map(self):
         result = {}
@@ -34589,7 +36380,7 @@ class DeleteRouteEntryRequestNextHopList(TeaModel):
 
 class DeleteRouteEntryResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -34606,9 +36397,9 @@ class DeleteRouteEntryResponse(TeaModel):
 
 class DeleteInstanceRequest(TeaModel):
     def __init__(self, instance_id=None, force=None, terminate_subscription=None):
-        self.instance_id = instance_id
-        self.force = force
-        self.terminate_subscription = terminate_subscription
+        self.instance_id = instance_id  # type: str
+        self.force = force              # type: bool
+        self.terminate_subscription = terminate_subscription  # type: bool
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -34629,7 +36420,7 @@ class DeleteInstanceRequest(TeaModel):
 
 class DeleteInstanceResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -34646,9 +36437,9 @@ class DeleteInstanceResponse(TeaModel):
 
 class DeleteImageRequest(TeaModel):
     def __init__(self, region_id=None, image_id=None, force=None):
-        self.region_id = region_id
-        self.image_id = image_id
-        self.force = force
+        self.region_id = region_id      # type: str
+        self.image_id = image_id        # type: str
+        self.force = force              # type: bool
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -34670,7 +36461,7 @@ class DeleteImageRequest(TeaModel):
 
 class DeleteImageResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -34687,7 +36478,7 @@ class DeleteImageResponse(TeaModel):
 
 class DeleteDiskRequest(TeaModel):
     def __init__(self, disk_id=None):
-        self.disk_id = disk_id
+        self.disk_id = disk_id          # type: str
 
     def validate(self):
         self.validate_required(self.disk_id, 'disk_id')
@@ -34704,7 +36495,7 @@ class DeleteDiskRequest(TeaModel):
 
 class DeleteDiskResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -34722,13 +36513,13 @@ class DeleteDiskResponse(TeaModel):
 class CreateVSwitchRequest(TeaModel):
     def __init__(self, zone_id=None, cidr_block=None, vpc_id=None, region_id=None, v_switch_name=None,
                  description=None, client_token=None):
-        self.zone_id = zone_id
-        self.cidr_block = cidr_block
-        self.vpc_id = vpc_id
-        self.region_id = region_id
-        self.v_switch_name = v_switch_name
-        self.description = description
-        self.client_token = client_token
+        self.zone_id = zone_id          # type: str
+        self.cidr_block = cidr_block    # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.region_id = region_id      # type: str
+        self.v_switch_name = v_switch_name  # type: str
+        self.description = description  # type: str
+        self.client_token = client_token  # type: str
 
     def validate(self):
         self.validate_required(self.zone_id, 'zone_id')
@@ -34759,8 +36550,8 @@ class CreateVSwitchRequest(TeaModel):
 
 class CreateVSwitchResponse(TeaModel):
     def __init__(self, request_id=None, v_switch_id=None):
-        self.request_id = request_id
-        self.v_switch_id = v_switch_id
+        self.request_id = request_id    # type: str
+        self.v_switch_id = v_switch_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -34781,12 +36572,12 @@ class CreateVSwitchResponse(TeaModel):
 class CreateVpcRequest(TeaModel):
     def __init__(self, region_id=None, cidr_block=None, vpc_name=None, description=None, client_token=None,
                  user_cidr=None):
-        self.region_id = region_id
-        self.cidr_block = cidr_block
-        self.vpc_name = vpc_name
-        self.description = description
-        self.client_token = client_token
-        self.user_cidr = user_cidr
+        self.region_id = region_id      # type: str
+        self.cidr_block = cidr_block    # type: str
+        self.vpc_name = vpc_name        # type: str
+        self.description = description  # type: str
+        self.client_token = client_token  # type: str
+        self.user_cidr = user_cidr      # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -34813,10 +36604,10 @@ class CreateVpcRequest(TeaModel):
 
 class CreateVpcResponse(TeaModel):
     def __init__(self, request_id=None, vpc_id=None, vrouter_id=None, route_table_id=None):
-        self.request_id = request_id
-        self.vpc_id = vpc_id
-        self.vrouter_id = vrouter_id
-        self.route_table_id = route_table_id
+        self.request_id = request_id    # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.vrouter_id = vrouter_id    # type: str
+        self.route_table_id = route_table_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -34843,14 +36634,14 @@ class CreateVpcResponse(TeaModel):
 class CreateSnapshotRequest(TeaModel):
     def __init__(self, disk_id=None, snapshot_name=None, description=None, retention_days=None, category=None,
                  client_token=None, tag=None, resource_group_id=None):
-        self.disk_id = disk_id
-        self.snapshot_name = snapshot_name
-        self.description = description
-        self.retention_days = retention_days
-        self.category = category
-        self.client_token = client_token
-        self.tag = tag
-        self.resource_group_id = resource_group_id
+        self.disk_id = disk_id          # type: str
+        self.snapshot_name = snapshot_name  # type: str
+        self.description = description  # type: str
+        self.retention_days = retention_days  # type: int
+        self.category = category        # type: str
+        self.client_token = client_token  # type: str
+        self.tag = tag                  # type: List[CreateSnapshotRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.disk_id, 'disk_id')
@@ -34896,12 +36687,11 @@ class CreateSnapshotRequest(TeaModel):
 
 class CreateSnapshotRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -34917,8 +36707,8 @@ class CreateSnapshotRequestTag(TeaModel):
 
 class CreateSnapshotResponse(TeaModel):
     def __init__(self, request_id=None, snapshot_id=None):
-        self.request_id = request_id
-        self.snapshot_id = snapshot_id
+        self.request_id = request_id    # type: str
+        self.snapshot_id = snapshot_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -34938,15 +36728,16 @@ class CreateSnapshotResponse(TeaModel):
 
 class CreateSecurityGroupRequest(TeaModel):
     def __init__(self, region_id=None, description=None, client_token=None, security_group_name=None, vpc_id=None,
-                 security_group_type=None, tag=None, resource_group_id=None):
-        self.region_id = region_id
-        self.description = description
-        self.client_token = client_token
-        self.security_group_name = security_group_name
-        self.vpc_id = vpc_id
-        self.security_group_type = security_group_type
-        self.tag = tag
-        self.resource_group_id = resource_group_id
+                 security_group_type=None, service_managed=None, tag=None, resource_group_id=None):
+        self.region_id = region_id      # type: str
+        self.description = description  # type: str
+        self.client_token = client_token  # type: str
+        self.security_group_name = security_group_name  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.security_group_type = security_group_type  # type: str
+        self.service_managed = service_managed  # type: bool
+        self.tag = tag                  # type: List[CreateSecurityGroupRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -34963,6 +36754,7 @@ class CreateSecurityGroupRequest(TeaModel):
         result['SecurityGroupName'] = self.security_group_name
         result['VpcId'] = self.vpc_id
         result['SecurityGroupType'] = self.security_group_type
+        result['ServiceManaged'] = self.service_managed
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -34979,6 +36771,7 @@ class CreateSecurityGroupRequest(TeaModel):
         self.security_group_name = map.get('SecurityGroupName')
         self.vpc_id = map.get('VpcId')
         self.security_group_type = map.get('SecurityGroupType')
+        self.service_managed = map.get('ServiceManaged')
         self.tag = []
         if map.get('Tag') is not None:
             for k in map.get('Tag'):
@@ -34992,12 +36785,11 @@ class CreateSecurityGroupRequest(TeaModel):
 
 class CreateSecurityGroupRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -35013,8 +36805,8 @@ class CreateSecurityGroupRequestTag(TeaModel):
 
 class CreateSecurityGroupResponse(TeaModel):
     def __init__(self, request_id=None, security_group_id=None):
-        self.request_id = request_id
-        self.security_group_id = security_group_id
+        self.request_id = request_id    # type: str
+        self.security_group_id = security_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -35035,13 +36827,13 @@ class CreateSecurityGroupResponse(TeaModel):
 class CreateRouteEntryRequest(TeaModel):
     def __init__(self, region_id=None, route_table_id=None, destination_cidr_block=None, next_hop_id=None,
                  client_token=None, next_hop_type=None, next_hop_list=None):
-        self.region_id = region_id
-        self.route_table_id = route_table_id
-        self.destination_cidr_block = destination_cidr_block
-        self.next_hop_id = next_hop_id
-        self.client_token = client_token
-        self.next_hop_type = next_hop_type
-        self.next_hop_list = next_hop_list
+        self.region_id = region_id      # type: str
+        self.route_table_id = route_table_id  # type: str
+        self.destination_cidr_block = destination_cidr_block  # type: str
+        self.next_hop_id = next_hop_id  # type: str
+        self.client_token = client_token  # type: str
+        self.next_hop_type = next_hop_type  # type: str
+        self.next_hop_list = next_hop_list  # type: List[CreateRouteEntryRequestNextHopList]
 
     def validate(self):
         self.validate_required(self.route_table_id, 'route_table_id')
@@ -35086,12 +36878,11 @@ class CreateRouteEntryRequest(TeaModel):
 
 class CreateRouteEntryRequestNextHopList(TeaModel):
     def __init__(self, next_hop_type=None, next_hop_id=None):
-        self.next_hop_type = next_hop_type
-        self.next_hop_id = next_hop_id
+        self.next_hop_type = next_hop_type  # type: str
+        self.next_hop_id = next_hop_id  # type: str
 
     def validate(self):
-        self.validate_required(self.next_hop_type, 'next_hop_type')
-        self.validate_required(self.next_hop_id, 'next_hop_id')
+        pass
 
     def to_map(self):
         result = {}
@@ -35107,7 +36898,7 @@ class CreateRouteEntryRequestNextHopList(TeaModel):
 
 class CreateRouteEntryResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -35134,62 +36925,63 @@ class CreateInstanceRequest(TeaModel):
                  ram_role_name=None, security_enhancement_strategy=None, resource_group_id=None, hpc_cluster_id=None,
                  dry_run=None, dedicated_host_id=None, credit_specification=None, deletion_protection=None, affinity=None,
                  tenancy=None, storage_set_id=None, storage_set_partition_number=None, http_endpoint=None,
-                 http_tokens=None, http_put_response_hop_limit=None):
-        self.region_id = region_id
-        self.image_id = image_id
-        self.image_family = image_family
-        self.instance_type = instance_type
-        self.security_group_id = security_group_id
-        self.instance_name = instance_name
-        self.internet_charge_type = internet_charge_type
-        self.auto_renew = auto_renew
-        self.auto_renew_period = auto_renew_period
-        self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        self.host_name = host_name
-        self.password = password
-        self.password_inherit = password_inherit
-        self.deployment_set_id = deployment_set_id
-        self.deployment_set_group_no = deployment_set_group_no
-        self.zone_id = zone_id
-        self.cluster_id = cluster_id
-        self.client_token = client_token
-        self.vlan_id = vlan_id
-        self.inner_ip_address = inner_ip_address
+                 http_tokens=None, http_put_response_hop_limit=None, private_pool_options=None):
+        self.region_id = region_id      # type: str
+        self.image_id = image_id        # type: str
+        self.image_family = image_family  # type: str
+        self.instance_type = instance_type  # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.instance_name = instance_name  # type: str
+        self.internet_charge_type = internet_charge_type  # type: str
+        self.auto_renew = auto_renew    # type: bool
+        self.auto_renew_period = auto_renew_period  # type: int
+        self.internet_max_bandwidth_in = internet_max_bandwidth_in  # type: int
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out  # type: int
+        self.host_name = host_name      # type: str
+        self.password = password        # type: str
+        self.password_inherit = password_inherit  # type: bool
+        self.deployment_set_id = deployment_set_id  # type: str
+        self.deployment_set_group_no = deployment_set_group_no  # type: int
+        self.zone_id = zone_id          # type: str
+        self.cluster_id = cluster_id    # type: str
+        self.client_token = client_token  # type: str
+        self.vlan_id = vlan_id          # type: str
+        self.inner_ip_address = inner_ip_address  # type: str
         self.system_disk = system_disk  # type: CreateInstanceRequestSystemDisk
-        self.data_disk = data_disk
-        self.arn = arn
-        self.node_controller_id = node_controller_id
-        self.description = description
-        self.v_switch_id = v_switch_id
-        self.private_ip_address = private_ip_address
-        self.io_optimized = io_optimized
-        self.use_additional_service = use_additional_service
-        self.instance_charge_type = instance_charge_type
-        self.period = period
-        self.period_unit = period_unit
-        self.tag = tag
-        self.user_data = user_data
-        self.spot_strategy = spot_strategy
-        self.key_pair_name = key_pair_name
-        self.spot_price_limit = spot_price_limit
-        self.spot_duration = spot_duration
-        self.spot_interruption_behavior = spot_interruption_behavior
-        self.ram_role_name = ram_role_name
-        self.security_enhancement_strategy = security_enhancement_strategy
-        self.resource_group_id = resource_group_id
-        self.hpc_cluster_id = hpc_cluster_id
-        self.dry_run = dry_run
-        self.dedicated_host_id = dedicated_host_id
-        self.credit_specification = credit_specification
-        self.deletion_protection = deletion_protection
-        self.affinity = affinity
-        self.tenancy = tenancy
-        self.storage_set_id = storage_set_id
-        self.storage_set_partition_number = storage_set_partition_number
-        self.http_endpoint = http_endpoint
-        self.http_tokens = http_tokens
-        self.http_put_response_hop_limit = http_put_response_hop_limit
+        self.data_disk = data_disk      # type: List[CreateInstanceRequestDataDisk]
+        self.arn = arn                  # type: List[CreateInstanceRequestArn]
+        self.node_controller_id = node_controller_id  # type: str
+        self.description = description  # type: str
+        self.v_switch_id = v_switch_id  # type: str
+        self.private_ip_address = private_ip_address  # type: str
+        self.io_optimized = io_optimized  # type: str
+        self.use_additional_service = use_additional_service  # type: bool
+        self.instance_charge_type = instance_charge_type  # type: str
+        self.period = period            # type: int
+        self.period_unit = period_unit  # type: str
+        self.tag = tag                  # type: List[CreateInstanceRequestTag]
+        self.user_data = user_data      # type: str
+        self.spot_strategy = spot_strategy  # type: str
+        self.key_pair_name = key_pair_name  # type: str
+        self.spot_price_limit = spot_price_limit  # type: float
+        self.spot_duration = spot_duration  # type: int
+        self.spot_interruption_behavior = spot_interruption_behavior  # type: str
+        self.ram_role_name = ram_role_name  # type: str
+        self.security_enhancement_strategy = security_enhancement_strategy  # type: str
+        self.resource_group_id = resource_group_id  # type: str
+        self.hpc_cluster_id = hpc_cluster_id  # type: str
+        self.dry_run = dry_run          # type: bool
+        self.dedicated_host_id = dedicated_host_id  # type: str
+        self.credit_specification = credit_specification  # type: str
+        self.deletion_protection = deletion_protection  # type: bool
+        self.affinity = affinity        # type: str
+        self.tenancy = tenancy          # type: str
+        self.storage_set_id = storage_set_id  # type: str
+        self.storage_set_partition_number = storage_set_partition_number  # type: int
+        self.http_endpoint = http_endpoint  # type: str
+        self.http_tokens = http_tokens  # type: str
+        self.http_put_response_hop_limit = http_put_response_hop_limit  # type: int
+        self.private_pool_options = private_pool_options  # type: CreateInstanceRequestPrivatePoolOptions
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -35208,6 +37000,8 @@ class CreateInstanceRequest(TeaModel):
             for k in self.tag:
                 if k:
                     k.validate()
+        if self.private_pool_options:
+            self.private_pool_options.validate()
 
     def to_map(self):
         result = {}
@@ -35284,6 +37078,10 @@ class CreateInstanceRequest(TeaModel):
         result['HttpEndpoint'] = self.http_endpoint
         result['HttpTokens'] = self.http_tokens
         result['HttpPutResponseHopLimit'] = self.http_put_response_hop_limit
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        else:
+            result['PrivatePoolOptions'] = None
         return result
 
     def from_map(self, map={}):
@@ -35364,16 +37162,21 @@ class CreateInstanceRequest(TeaModel):
         self.http_endpoint = map.get('HttpEndpoint')
         self.http_tokens = map.get('HttpTokens')
         self.http_put_response_hop_limit = map.get('HttpPutResponseHopLimit')
+        if map.get('PrivatePoolOptions') is not None:
+            temp_model = CreateInstanceRequestPrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(map['PrivatePoolOptions'])
+        else:
+            self.private_pool_options = None
         return self
 
 
 class CreateInstanceRequestSystemDisk(TeaModel):
     def __init__(self, size=None, category=None, disk_name=None, description=None, performance_level=None):
-        self.size = size
-        self.category = category
-        self.disk_name = disk_name
-        self.description = description
-        self.performance_level = performance_level
+        self.size = size                # type: int
+        self.category = category        # type: str
+        self.disk_name = disk_name      # type: str
+        self.description = description  # type: str
+        self.performance_level = performance_level  # type: str
 
     def validate(self):
         pass
@@ -35399,30 +37202,20 @@ class CreateInstanceRequestSystemDisk(TeaModel):
 class CreateInstanceRequestDataDisk(TeaModel):
     def __init__(self, size=None, snapshot_id=None, category=None, disk_name=None, description=None, device=None,
                  delete_with_instance=None, encrypted=None, kmskey_id=None, performance_level=None, encrypt_algorithm=None):
-        self.size = size
-        self.snapshot_id = snapshot_id
-        self.category = category
-        self.disk_name = disk_name
-        self.description = description
-        self.device = device
-        self.delete_with_instance = delete_with_instance
-        self.encrypted = encrypted
-        self.kmskey_id = kmskey_id
-        self.performance_level = performance_level
-        self.encrypt_algorithm = encrypt_algorithm
+        self.size = size                # type: int
+        self.snapshot_id = snapshot_id  # type: str
+        self.category = category        # type: str
+        self.disk_name = disk_name      # type: str
+        self.description = description  # type: str
+        self.device = device            # type: str
+        self.delete_with_instance = delete_with_instance  # type: bool
+        self.encrypted = encrypted      # type: bool
+        self.kmskey_id = kmskey_id      # type: str
+        self.performance_level = performance_level  # type: str
+        self.encrypt_algorithm = encrypt_algorithm  # type: str
 
     def validate(self):
-        self.validate_required(self.size, 'size')
-        self.validate_required(self.snapshot_id, 'snapshot_id')
-        self.validate_required(self.category, 'category')
-        self.validate_required(self.disk_name, 'disk_name')
-        self.validate_required(self.description, 'description')
-        self.validate_required(self.device, 'device')
-        self.validate_required(self.delete_with_instance, 'delete_with_instance')
-        self.validate_required(self.encrypted, 'encrypted')
-        self.validate_required(self.kmskey_id, 'kmskey_id')
-        self.validate_required(self.performance_level, 'performance_level')
-        self.validate_required(self.encrypt_algorithm, 'encrypt_algorithm')
+        pass
 
     def to_map(self):
         result = {}
@@ -35456,14 +37249,12 @@ class CreateInstanceRequestDataDisk(TeaModel):
 
 class CreateInstanceRequestArn(TeaModel):
     def __init__(self, assume_role_for=None, rolearn=None, role_type=None):
-        self.assume_role_for = assume_role_for
-        self.rolearn = rolearn
-        self.role_type = role_type
+        self.assume_role_for = assume_role_for  # type: int
+        self.rolearn = rolearn          # type: str
+        self.role_type = role_type      # type: str
 
     def validate(self):
-        self.validate_required(self.assume_role_for, 'assume_role_for')
-        self.validate_required(self.rolearn, 'rolearn')
-        self.validate_required(self.role_type, 'role_type')
+        pass
 
     def to_map(self):
         result = {}
@@ -35481,12 +37272,11 @@ class CreateInstanceRequestArn(TeaModel):
 
 class CreateInstanceRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -35500,11 +37290,31 @@ class CreateInstanceRequestTag(TeaModel):
         return self
 
 
+class CreateInstanceRequestPrivatePoolOptions(TeaModel):
+    def __init__(self, match_criteria=None, id=None):
+        self.match_criteria = match_criteria  # type: str
+        self.id = id                    # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['MatchCriteria'] = self.match_criteria
+        result['Id'] = self.id
+        return result
+
+    def from_map(self, map={}):
+        self.match_criteria = map.get('MatchCriteria')
+        self.id = map.get('Id')
+        return self
+
+
 class CreateInstanceResponse(TeaModel):
     def __init__(self, request_id=None, instance_id=None, trade_price=None):
-        self.request_id = request_id
-        self.instance_id = instance_id
-        self.trade_price = trade_price
+        self.request_id = request_id    # type: str
+        self.instance_id = instance_id  # type: str
+        self.trade_price = trade_price  # type: float
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -35529,19 +37339,19 @@ class CreateImageRequest(TeaModel):
     def __init__(self, disk_device_mapping=None, region_id=None, snapshot_id=None, instance_id=None,
                  image_name=None, image_family=None, image_version=None, description=None, platform=None, architecture=None,
                  client_token=None, tag=None, resource_group_id=None):
-        self.disk_device_mapping = disk_device_mapping
-        self.region_id = region_id
-        self.snapshot_id = snapshot_id
-        self.instance_id = instance_id
-        self.image_name = image_name
-        self.image_family = image_family
-        self.image_version = image_version
-        self.description = description
-        self.platform = platform
-        self.architecture = architecture
-        self.client_token = client_token
-        self.tag = tag
-        self.resource_group_id = resource_group_id
+        self.disk_device_mapping = disk_device_mapping  # type: List[CreateImageRequestDiskDeviceMapping]
+        self.region_id = region_id      # type: str
+        self.snapshot_id = snapshot_id  # type: str
+        self.instance_id = instance_id  # type: str
+        self.image_name = image_name    # type: str
+        self.image_family = image_family  # type: str
+        self.image_version = image_version  # type: str
+        self.description = description  # type: str
+        self.platform = platform        # type: str
+        self.architecture = architecture  # type: str
+        self.client_token = client_token  # type: str
+        self.tag = tag                  # type: List[CreateImageRequestTag]
+        self.resource_group_id = resource_group_id  # type: str
 
     def validate(self):
         if self.disk_device_mapping:
@@ -35612,13 +37422,13 @@ class CreateImageRequest(TeaModel):
 
 class CreateImageRequestDiskDeviceMapping(TeaModel):
     def __init__(self, size=None, snapshot_id=None, device=None, disk_type=None):
-        self.size = size
-        self.snapshot_id = snapshot_id
-        self.device = device
-        self.disk_type = disk_type
+        self.size = size                # type: int
+        self.snapshot_id = snapshot_id  # type: str
+        self.device = device            # type: str
+        self.disk_type = disk_type      # type: str
 
     def validate(self):
-        self.validate_required(self.disk_type, 'disk_type')
+        pass
 
     def to_map(self):
         result = {}
@@ -35638,12 +37448,11 @@ class CreateImageRequestDiskDeviceMapping(TeaModel):
 
 class CreateImageRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -35659,8 +37468,8 @@ class CreateImageRequestTag(TeaModel):
 
 class CreateImageResponse(TeaModel):
     def __init__(self, request_id=None, image_id=None):
-        self.request_id = request_id
-        self.image_id = image_id
+        self.request_id = request_id    # type: str
+        self.image_id = image_id        # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -35683,25 +37492,25 @@ class CreateDiskRequest(TeaModel):
                  description=None, encrypted=None, client_token=None, instance_id=None, tag=None, arn=None,
                  resource_group_id=None, kmskey_id=None, performance_level=None, advanced_features=None, storage_set_id=None,
                  encrypt_algorithm=None, storage_set_partition_number=None):
-        self.region_id = region_id
-        self.zone_id = zone_id
-        self.snapshot_id = snapshot_id
-        self.disk_name = disk_name
-        self.size = size
-        self.disk_category = disk_category
-        self.description = description
-        self.encrypted = encrypted
-        self.client_token = client_token
-        self.instance_id = instance_id
-        self.tag = tag
-        self.arn = arn
-        self.resource_group_id = resource_group_id
-        self.kmskey_id = kmskey_id
-        self.performance_level = performance_level
-        self.advanced_features = advanced_features
-        self.storage_set_id = storage_set_id
-        self.encrypt_algorithm = encrypt_algorithm
-        self.storage_set_partition_number = storage_set_partition_number
+        self.region_id = region_id      # type: str
+        self.zone_id = zone_id          # type: str
+        self.snapshot_id = snapshot_id  # type: str
+        self.disk_name = disk_name      # type: str
+        self.size = size                # type: int
+        self.disk_category = disk_category  # type: str
+        self.description = description  # type: str
+        self.encrypted = encrypted      # type: bool
+        self.client_token = client_token  # type: str
+        self.instance_id = instance_id  # type: str
+        self.tag = tag                  # type: List[CreateDiskRequestTag]
+        self.arn = arn                  # type: List[CreateDiskRequestArn]
+        self.resource_group_id = resource_group_id  # type: str
+        self.kmskey_id = kmskey_id      # type: str
+        self.performance_level = performance_level  # type: str
+        self.advanced_features = advanced_features  # type: str
+        self.storage_set_id = storage_set_id  # type: str
+        self.encrypt_algorithm = encrypt_algorithm  # type: str
+        self.storage_set_partition_number = storage_set_partition_number  # type: int
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -35784,12 +37593,11 @@ class CreateDiskRequest(TeaModel):
 
 class CreateDiskRequestTag(TeaModel):
     def __init__(self, value=None, key=None):
-        self.value = value
-        self.key = key
+        self.value = value              # type: str
+        self.key = key                  # type: str
 
     def validate(self):
-        self.validate_required(self.value, 'value')
-        self.validate_required(self.key, 'key')
+        pass
 
     def to_map(self):
         result = {}
@@ -35805,14 +37613,12 @@ class CreateDiskRequestTag(TeaModel):
 
 class CreateDiskRequestArn(TeaModel):
     def __init__(self, assume_role_for=None, rolearn=None, role_type=None):
-        self.assume_role_for = assume_role_for
-        self.rolearn = rolearn
-        self.role_type = role_type
+        self.assume_role_for = assume_role_for  # type: int
+        self.rolearn = rolearn          # type: str
+        self.role_type = role_type      # type: str
 
     def validate(self):
-        self.validate_required(self.assume_role_for, 'assume_role_for')
-        self.validate_required(self.rolearn, 'rolearn')
-        self.validate_required(self.role_type, 'role_type')
+        pass
 
     def to_map(self):
         result = {}
@@ -35830,8 +37636,8 @@ class CreateDiskRequestArn(TeaModel):
 
 class CreateDiskResponse(TeaModel):
     def __init__(self, request_id=None, disk_id=None):
-        self.request_id = request_id
-        self.disk_id = disk_id
+        self.request_id = request_id    # type: str
+        self.disk_id = disk_id          # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -35852,16 +37658,16 @@ class CreateDiskResponse(TeaModel):
 class CopyImageRequest(TeaModel):
     def __init__(self, destination_image_name=None, destination_description=None, image_id=None, region_id=None,
                  destination_region_id=None, tag=None, encrypted=None, kmskey_id=None, encrypt_algorithm=None, resource_group_id=None):
-        self.destination_image_name = destination_image_name
-        self.destination_description = destination_description
-        self.image_id = image_id
-        self.region_id = region_id
-        self.destination_region_id = destination_region_id
-        self.tag = tag
-        self.encrypted = encrypted
-        self.kmskey_id = kmskey_id
-        self.encrypt_algorithm = encrypt_algorithm
-        self.resource_group_id = resource_group_id
+        self.destination_image_name = destination_image_name  # type: str
+        self.destination_description = destination_description  # type: str
+        self.image_id = image_id        # type: str
+        self.region_id = region_id      # type: str
+        self.destination_region_id = destination_region_id  # type: str
+        self.tag = tag                  # type: List[CopyImageRequestTag]
+        self.encrypted = encrypted      # type: bool
+        self.kmskey_id = kmskey_id      # type: str
+        self.encrypt_algorithm = encrypt_algorithm  # type: str
+        self.resource_group_id = resource_group_id  # type: str
 
     def validate(self):
         self.validate_required(self.image_id, 'image_id')
@@ -35912,12 +37718,11 @@ class CopyImageRequest(TeaModel):
 
 class CopyImageRequestTag(TeaModel):
     def __init__(self, key=None, value=None):
-        self.key = key
-        self.value = value
+        self.key = key                  # type: str
+        self.value = value              # type: str
 
     def validate(self):
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         result = {}
@@ -35933,8 +37738,8 @@ class CopyImageRequestTag(TeaModel):
 
 class CopyImageResponse(TeaModel):
     def __init__(self, request_id=None, image_id=None):
-        self.request_id = request_id
-        self.image_id = image_id
+        self.request_id = request_id    # type: str
+        self.image_id = image_id        # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -35954,8 +37759,8 @@ class CopyImageResponse(TeaModel):
 
 class CancelCopyImageRequest(TeaModel):
     def __init__(self, region_id=None, image_id=None):
-        self.region_id = region_id
-        self.image_id = image_id
+        self.region_id = region_id      # type: str
+        self.image_id = image_id        # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -35975,7 +37780,7 @@ class CancelCopyImageRequest(TeaModel):
 
 class CancelCopyImageResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -35995,23 +37800,23 @@ class AuthorizeSecurityGroupEgressRequest(TeaModel):
                  dest_group_id=None, dest_group_owner_id=None, dest_group_owner_account=None, dest_cidr_ip=None,
                  ipv_6dest_cidr_ip=None, source_cidr_ip=None, ipv_6source_cidr_ip=None, source_port_range=None, policy=None,
                  priority=None, nic_type=None, client_token=None, description=None):
-        self.region_id = region_id
-        self.security_group_id = security_group_id
-        self.ip_protocol = ip_protocol
-        self.port_range = port_range
-        self.dest_group_id = dest_group_id
-        self.dest_group_owner_id = dest_group_owner_id
-        self.dest_group_owner_account = dest_group_owner_account
-        self.dest_cidr_ip = dest_cidr_ip
-        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
-        self.source_cidr_ip = source_cidr_ip
-        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        self.source_port_range = source_port_range
-        self.policy = policy
-        self.priority = priority
-        self.nic_type = nic_type
-        self.client_token = client_token
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.ip_protocol = ip_protocol  # type: str
+        self.port_range = port_range    # type: str
+        self.dest_group_id = dest_group_id  # type: str
+        self.dest_group_owner_id = dest_group_owner_id  # type: int
+        self.dest_group_owner_account = dest_group_owner_account  # type: str
+        self.dest_cidr_ip = dest_cidr_ip  # type: str
+        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip  # type: str
+        self.source_cidr_ip = source_cidr_ip  # type: str
+        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip  # type: str
+        self.source_port_range = source_port_range  # type: str
+        self.policy = policy            # type: str
+        self.priority = priority        # type: str
+        self.nic_type = nic_type        # type: str
+        self.client_token = client_token  # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -36063,7 +37868,7 @@ class AuthorizeSecurityGroupEgressRequest(TeaModel):
 
 class AuthorizeSecurityGroupEgressResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -36083,23 +37888,23 @@ class AuthorizeSecurityGroupRequest(TeaModel):
                  source_group_id=None, source_group_owner_id=None, source_group_owner_account=None, source_cidr_ip=None,
                  ipv_6source_cidr_ip=None, source_port_range=None, dest_cidr_ip=None, ipv_6dest_cidr_ip=None, policy=None,
                  priority=None, nic_type=None, client_token=None, description=None):
-        self.region_id = region_id
-        self.security_group_id = security_group_id
-        self.ip_protocol = ip_protocol
-        self.port_range = port_range
-        self.source_group_id = source_group_id
-        self.source_group_owner_id = source_group_owner_id
-        self.source_group_owner_account = source_group_owner_account
-        self.source_cidr_ip = source_cidr_ip
-        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        self.source_port_range = source_port_range
-        self.dest_cidr_ip = dest_cidr_ip
-        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
-        self.policy = policy
-        self.priority = priority
-        self.nic_type = nic_type
-        self.client_token = client_token
-        self.description = description
+        self.region_id = region_id      # type: str
+        self.security_group_id = security_group_id  # type: str
+        self.ip_protocol = ip_protocol  # type: str
+        self.port_range = port_range    # type: str
+        self.source_group_id = source_group_id  # type: str
+        self.source_group_owner_id = source_group_owner_id  # type: int
+        self.source_group_owner_account = source_group_owner_account  # type: str
+        self.source_cidr_ip = source_cidr_ip  # type: str
+        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip  # type: str
+        self.source_port_range = source_port_range  # type: str
+        self.dest_cidr_ip = dest_cidr_ip  # type: str
+        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip  # type: str
+        self.policy = policy            # type: str
+        self.priority = priority        # type: str
+        self.nic_type = nic_type        # type: str
+        self.client_token = client_token  # type: str
+        self.description = description  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -36151,7 +37956,7 @@ class AuthorizeSecurityGroupRequest(TeaModel):
 
 class AuthorizeSecurityGroupResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -36169,13 +37974,13 @@ class AuthorizeSecurityGroupResponse(TeaModel):
 class AttachDiskRequest(TeaModel):
     def __init__(self, instance_id=None, disk_id=None, device=None, delete_with_instance=None, bootable=None,
                  password=None, key_pair_name=None):
-        self.instance_id = instance_id
-        self.disk_id = disk_id
-        self.device = device
-        self.delete_with_instance = delete_with_instance
-        self.bootable = bootable
-        self.password = password
-        self.key_pair_name = key_pair_name
+        self.instance_id = instance_id  # type: str
+        self.disk_id = disk_id          # type: str
+        self.device = device            # type: str
+        self.delete_with_instance = delete_with_instance  # type: bool
+        self.bootable = bootable        # type: bool
+        self.password = password        # type: str
+        self.key_pair_name = key_pair_name  # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -36205,7 +38010,7 @@ class AttachDiskRequest(TeaModel):
 
 class AttachDiskResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -36222,10 +38027,10 @@ class AttachDiskResponse(TeaModel):
 
 class AssociateEipAddressRequest(TeaModel):
     def __init__(self, region_id=None, allocation_id=None, instance_id=None, instance_type=None):
-        self.region_id = region_id
-        self.allocation_id = allocation_id
-        self.instance_id = instance_id
-        self.instance_type = instance_type
+        self.region_id = region_id      # type: str
+        self.allocation_id = allocation_id  # type: str
+        self.instance_id = instance_id  # type: str
+        self.instance_type = instance_type  # type: str
 
     def validate(self):
         self.validate_required(self.allocation_id, 'allocation_id')
@@ -36249,7 +38054,7 @@ class AssociateEipAddressRequest(TeaModel):
 
 class AssociateEipAddressResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -36266,9 +38071,9 @@ class AssociateEipAddressResponse(TeaModel):
 
 class AllocatePublicIpAddressRequest(TeaModel):
     def __init__(self, instance_id=None, ip_address=None, vlan_id=None):
-        self.instance_id = instance_id
-        self.ip_address = ip_address
-        self.vlan_id = vlan_id
+        self.instance_id = instance_id  # type: str
+        self.ip_address = ip_address    # type: str
+        self.vlan_id = vlan_id          # type: str
 
     def validate(self):
         self.validate_required(self.instance_id, 'instance_id')
@@ -36289,8 +38094,8 @@ class AllocatePublicIpAddressRequest(TeaModel):
 
 class AllocatePublicIpAddressResponse(TeaModel):
     def __init__(self, request_id=None, ip_address=None):
-        self.request_id = request_id
-        self.ip_address = ip_address
+        self.request_id = request_id    # type: str
+        self.ip_address = ip_address    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -36311,12 +38116,12 @@ class AllocatePublicIpAddressResponse(TeaModel):
 class AllocateEipAddressRequest(TeaModel):
     def __init__(self, region_id=None, bandwidth=None, isp=None, internet_charge_type=None, activity_id=None,
                  client_token=None):
-        self.region_id = region_id
-        self.bandwidth = bandwidth
-        self.isp = isp
-        self.internet_charge_type = internet_charge_type
-        self.activity_id = activity_id
-        self.client_token = client_token
+        self.region_id = region_id      # type: str
+        self.bandwidth = bandwidth      # type: str
+        self.isp = isp                  # type: str
+        self.internet_charge_type = internet_charge_type  # type: str
+        self.activity_id = activity_id  # type: int
+        self.client_token = client_token  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -36343,9 +38148,9 @@ class AllocateEipAddressRequest(TeaModel):
 
 class AllocateEipAddressResponse(TeaModel):
     def __init__(self, request_id=None, allocation_id=None, eip_address=None):
-        self.request_id = request_id
-        self.allocation_id = allocation_id
-        self.eip_address = eip_address
+        self.request_id = request_id    # type: str
+        self.allocation_id = allocation_id  # type: str
+        self.eip_address = eip_address  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
