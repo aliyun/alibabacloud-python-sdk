@@ -1,7 +1,182 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, BinaryIO
+try:
+    from typing import BinaryIO, List
+except ImportError:
+    pass
+
+
+class CountCrowdRequest(TeaModel):
+    def __init__(self, image_url=None, is_show=None):
+        self.image_url = image_url      # type: str
+        self.is_show = is_show          # type: bool
+
+    def validate(self):
+        self.validate_required(self.image_url, 'image_url')
+
+    def to_map(self):
+        result = {}
+        result['ImageURL'] = self.image_url
+        result['IsShow'] = self.is_show
+        return result
+
+    def from_map(self, map={}):
+        self.image_url = map.get('ImageURL')
+        self.is_show = map.get('IsShow')
+        return self
+
+
+class CountCrowdResponse(TeaModel):
+    def __init__(self, request_id=None, data=None):
+        self.request_id = request_id    # type: str
+        self.data = data                # type: CountCrowdResponseData
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        else:
+            result['Data'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            temp_model = CountCrowdResponseData()
+            self.data = temp_model.from_map(map['Data'])
+        else:
+            self.data = None
+        return self
+
+
+class CountCrowdResponseData(TeaModel):
+    def __init__(self, people_number=None, hot_map=None):
+        self.people_number = people_number  # type: int
+        self.hot_map = hot_map          # type: str
+
+    def validate(self):
+        self.validate_required(self.people_number, 'people_number')
+        self.validate_required(self.hot_map, 'hot_map')
+
+    def to_map(self):
+        result = {}
+        result['PeopleNumber'] = self.people_number
+        result['HotMap'] = self.hot_map
+        return result
+
+    def from_map(self, map={}):
+        self.people_number = map.get('PeopleNumber')
+        self.hot_map = map.get('HotMap')
+        return self
+
+
+class CountCrowdAdvanceRequest(TeaModel):
+    def __init__(self, image_urlobject=None, is_show=None):
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+        self.is_show = is_show          # type: bool
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        result = {}
+        result['ImageURLObject'] = self.image_urlobject
+        result['IsShow'] = self.is_show
+        return result
+
+    def from_map(self, map={}):
+        self.image_urlobject = map.get('ImageURLObject')
+        self.is_show = map.get('IsShow')
+        return self
+
+
+class GenerateHumanAnimeStyleRequest(TeaModel):
+    def __init__(self, image_url=None):
+        self.image_url = image_url      # type: str
+
+    def validate(self):
+        self.validate_required(self.image_url, 'image_url')
+
+    def to_map(self):
+        result = {}
+        result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, map={}):
+        self.image_url = map.get('ImageURL')
+        return self
+
+
+class GenerateHumanAnimeStyleResponse(TeaModel):
+    def __init__(self, request_id=None, data=None):
+        self.request_id = request_id    # type: str
+        self.data = data                # type: GenerateHumanAnimeStyleResponseData
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        else:
+            result['Data'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            temp_model = GenerateHumanAnimeStyleResponseData()
+            self.data = temp_model.from_map(map['Data'])
+        else:
+            self.data = None
+        return self
+
+
+class GenerateHumanAnimeStyleResponseData(TeaModel):
+    def __init__(self, image_url=None):
+        self.image_url = image_url      # type: str
+
+    def validate(self):
+        self.validate_required(self.image_url, 'image_url')
+
+    def to_map(self):
+        result = {}
+        result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, map={}):
+        self.image_url = map.get('ImageURL')
+        return self
+
+
+class GenerateHumanAnimeStyleAdvanceRequest(TeaModel):
+    def __init__(self, image_urlobject=None):
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        result = {}
+        result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, map={}):
+        self.image_urlobject = map.get('ImageURLObject')
+        return self
 
 
 class PedestrianDetectAttributeRequest(TeaModel):
@@ -1089,22 +1264,56 @@ class BlurFaceAdvanceRequest(TeaModel):
 
 
 class ExtractPedestrianFeatureAttributeRequest(TeaModel):
-    def __init__(self, mode=None, image_url=None):
+    def __init__(self, mode=None, image_url=None, url_list=None):
         self.mode = mode                # type: str
         self.image_url = image_url      # type: str
+        self.url_list = url_list        # type: List[ExtractPedestrianFeatureAttributeRequestUrlList]
 
     def validate(self):
-        self.validate_required(self.image_url, 'image_url')
+        if self.url_list:
+            for k in self.url_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         result = {}
         result['Mode'] = self.mode
         result['ImageURL'] = self.image_url
+        result['UrlList'] = []
+        if self.url_list is not None:
+            for k in self.url_list:
+                result['UrlList'].append(k.to_map() if k else None)
+        else:
+            result['UrlList'] = None
         return result
 
     def from_map(self, map={}):
         self.mode = map.get('Mode')
         self.image_url = map.get('ImageURL')
+        self.url_list = []
+        if map.get('UrlList') is not None:
+            for k in map.get('UrlList'):
+                temp_model = ExtractPedestrianFeatureAttributeRequestUrlList()
+                self.url_list.append(temp_model.from_map(k))
+        else:
+            self.url_list = None
+        return self
+
+
+class ExtractPedestrianFeatureAttributeRequestUrlList(TeaModel):
+    def __init__(self, url=None):
+        self.url = url                  # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        result['Url'] = self.url
+        return result
+
+    def from_map(self, map={}):
+        self.url = map.get('Url')
         return self
 
 
@@ -1138,7 +1347,7 @@ class ExtractPedestrianFeatureAttributeResponse(TeaModel):
         return self
 
 
-class ExtractPedestrianFeatureAttributeResponseData(TeaModel):
+class ExtractPedestrianFeatureAttributeResponseDataElements(TeaModel):
     def __init__(self, obj_type=None, obj_type_score=None, feature=None, quality_score=None, upper_color=None,
                  upper_color_score=None, upper_type=None, upper_type_score=None, lower_color=None, lower_color_score=None,
                  lower_type=None, lower_type_score=None, gender=None, gender_score=None, hair=None, hair_score=None, age=None,
@@ -1223,6 +1432,113 @@ class ExtractPedestrianFeatureAttributeResponseData(TeaModel):
         self.hair_score = map.get('HairScore')
         self.age = map.get('Age')
         self.age_score = map.get('AgeScore')
+        return self
+
+
+class ExtractPedestrianFeatureAttributeResponseData(TeaModel):
+    def __init__(self, obj_type=None, obj_type_score=None, feature=None, quality_score=None, upper_color=None,
+                 upper_color_score=None, upper_type=None, upper_type_score=None, lower_color=None, lower_color_score=None,
+                 lower_type=None, lower_type_score=None, gender=None, gender_score=None, hair=None, hair_score=None, age=None,
+                 age_score=None, elements=None):
+        self.obj_type = obj_type        # type: str
+        self.obj_type_score = obj_type_score  # type: float
+        self.feature = feature          # type: str
+        self.quality_score = quality_score  # type: float
+        self.upper_color = upper_color  # type: str
+        self.upper_color_score = upper_color_score  # type: float
+        self.upper_type = upper_type    # type: str
+        self.upper_type_score = upper_type_score  # type: float
+        self.lower_color = lower_color  # type: str
+        self.lower_color_score = lower_color_score  # type: float
+        self.lower_type = lower_type    # type: str
+        self.lower_type_score = lower_type_score  # type: float
+        self.gender = gender            # type: str
+        self.gender_score = gender_score  # type: float
+        self.hair = hair                # type: str
+        self.hair_score = hair_score    # type: float
+        self.age = age                  # type: str
+        self.age_score = age_score      # type: float
+        self.elements = elements        # type: List[ExtractPedestrianFeatureAttributeResponseDataElements]
+
+    def validate(self):
+        self.validate_required(self.obj_type, 'obj_type')
+        self.validate_required(self.obj_type_score, 'obj_type_score')
+        self.validate_required(self.feature, 'feature')
+        self.validate_required(self.quality_score, 'quality_score')
+        self.validate_required(self.upper_color, 'upper_color')
+        self.validate_required(self.upper_color_score, 'upper_color_score')
+        self.validate_required(self.upper_type, 'upper_type')
+        self.validate_required(self.upper_type_score, 'upper_type_score')
+        self.validate_required(self.lower_color, 'lower_color')
+        self.validate_required(self.lower_color_score, 'lower_color_score')
+        self.validate_required(self.lower_type, 'lower_type')
+        self.validate_required(self.lower_type_score, 'lower_type_score')
+        self.validate_required(self.gender, 'gender')
+        self.validate_required(self.gender_score, 'gender_score')
+        self.validate_required(self.hair, 'hair')
+        self.validate_required(self.hair_score, 'hair_score')
+        self.validate_required(self.age, 'age')
+        self.validate_required(self.age_score, 'age_score')
+        self.validate_required(self.elements, 'elements')
+        if self.elements:
+            for k in self.elements:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['ObjType'] = self.obj_type
+        result['ObjTypeScore'] = self.obj_type_score
+        result['Feature'] = self.feature
+        result['QualityScore'] = self.quality_score
+        result['UpperColor'] = self.upper_color
+        result['UpperColorScore'] = self.upper_color_score
+        result['UpperType'] = self.upper_type
+        result['UpperTypeScore'] = self.upper_type_score
+        result['LowerColor'] = self.lower_color
+        result['LowerColorScore'] = self.lower_color_score
+        result['LowerType'] = self.lower_type
+        result['LowerTypeScore'] = self.lower_type_score
+        result['Gender'] = self.gender
+        result['GenderScore'] = self.gender_score
+        result['Hair'] = self.hair
+        result['HairScore'] = self.hair_score
+        result['Age'] = self.age
+        result['AgeScore'] = self.age_score
+        result['Elements'] = []
+        if self.elements is not None:
+            for k in self.elements:
+                result['Elements'].append(k.to_map() if k else None)
+        else:
+            result['Elements'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.obj_type = map.get('ObjType')
+        self.obj_type_score = map.get('ObjTypeScore')
+        self.feature = map.get('Feature')
+        self.quality_score = map.get('QualityScore')
+        self.upper_color = map.get('UpperColor')
+        self.upper_color_score = map.get('UpperColorScore')
+        self.upper_type = map.get('UpperType')
+        self.upper_type_score = map.get('UpperTypeScore')
+        self.lower_color = map.get('LowerColor')
+        self.lower_color_score = map.get('LowerColorScore')
+        self.lower_type = map.get('LowerType')
+        self.lower_type_score = map.get('LowerTypeScore')
+        self.gender = map.get('Gender')
+        self.gender_score = map.get('GenderScore')
+        self.hair = map.get('Hair')
+        self.hair_score = map.get('HairScore')
+        self.age = map.get('Age')
+        self.age_score = map.get('AgeScore')
+        self.elements = []
+        if map.get('Elements') is not None:
+            for k in map.get('Elements'):
+                temp_model = ExtractPedestrianFeatureAttributeResponseDataElements()
+                self.elements.append(temp_model.from_map(k))
+        else:
+            self.elements = None
         return self
 
 
