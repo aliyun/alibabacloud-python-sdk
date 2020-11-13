@@ -1,7 +1,99 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import BinaryIO, List
+try:
+    from typing import BinaryIO, List
+except ImportError:
+    pass
+
+
+class ErasePersonRequest(TeaModel):
+    def __init__(self, image_url=None, user_mask=None):
+        self.image_url = image_url      # type: str
+        self.user_mask = user_mask      # type: str
+
+    def validate(self):
+        self.validate_required(self.image_url, 'image_url')
+        self.validate_required(self.user_mask, 'user_mask')
+
+    def to_map(self):
+        result = {}
+        result['ImageURL'] = self.image_url
+        result['UserMask'] = self.user_mask
+        return result
+
+    def from_map(self, map={}):
+        self.image_url = map.get('ImageURL')
+        self.user_mask = map.get('UserMask')
+        return self
+
+
+class ErasePersonResponse(TeaModel):
+    def __init__(self, request_id=None, data=None):
+        self.request_id = request_id    # type: str
+        self.data = data                # type: ErasePersonResponseData
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        else:
+            result['Data'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            temp_model = ErasePersonResponseData()
+            self.data = temp_model.from_map(map['Data'])
+        else:
+            self.data = None
+        return self
+
+
+class ErasePersonResponseData(TeaModel):
+    def __init__(self, image_url=None):
+        self.image_url = image_url      # type: str
+
+    def validate(self):
+        self.validate_required(self.image_url, 'image_url')
+
+    def to_map(self):
+        result = {}
+        result['ImageUrl'] = self.image_url
+        return result
+
+    def from_map(self, map={}):
+        self.image_url = map.get('ImageUrl')
+        return self
+
+
+class ErasePersonAdvanceRequest(TeaModel):
+    def __init__(self, image_urlobject=None, user_mask=None):
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+        self.user_mask = user_mask      # type: str
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+        self.validate_required(self.user_mask, 'user_mask')
+
+    def to_map(self):
+        result = {}
+        result['ImageURLObject'] = self.image_urlobject
+        result['UserMask'] = self.user_mask
+        return result
+
+    def from_map(self, map={}):
+        self.image_urlobject = map.get('ImageURLObject')
+        self.user_mask = map.get('UserMask')
+        return self
 
 
 class GenerateDynamicImageRequest(TeaModel):

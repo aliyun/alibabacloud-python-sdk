@@ -21,6 +21,68 @@ class Client(RPCClient):
         self.check_config(config)
         self._endpoint = self.get_endpoint("imageenhan", self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
+    def erase_person(self, request, runtime):
+        UtilClient.validate_model(request)
+        return imageenhan_20190930_models.ErasePersonResponse().from_map(self.do_request("ErasePerson", "HTTPS", "POST", "2019-09-30", "AK", None, request.to_map(), runtime))
+
+    def erase_person_advance(self, request, runtime):
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type="access_key",
+            endpoint="openplatform.aliyuncs.com",
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product="imageenhan",
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type="access_key",
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        RPCUtilClient.convert(runtime, oss_runtime)
+        erase_personreq = imageenhan_20190930_models.ErasePersonRequest()
+        RPCUtilClient.convert(request, erase_personreq)
+        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = RPCUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.image_urlobject,
+            content_type=""
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status="201"
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        oss_client.post_object(upload_request, oss_runtime)
+        erase_personreq.image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
+        erase_person_resp = self.erase_person(erase_personreq, runtime)
+        return erase_person_resp
+
     def generate_dynamic_image(self, request, runtime):
         UtilClient.validate_model(request)
         return imageenhan_20190930_models.GenerateDynamicImageResponse().from_map(self.do_request("GenerateDynamicImage", "HTTPS", "POST", "2019-09-30", "AK", None, request.to_map(), runtime))
@@ -42,9 +104,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -52,22 +112,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        generate_dynamic_imagereq = imageenhan_20190930_models.GenerateDynamicImageRequest(
-
-        )
+        generate_dynamic_imagereq = imageenhan_20190930_models.GenerateDynamicImageRequest()
         RPCUtilClient.convert(request, generate_dynamic_imagereq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -91,7 +141,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        generate_dynamic_imagereq.url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        generate_dynamic_imagereq.url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         generate_dynamic_image_resp = self.generate_dynamic_image(generate_dynamic_imagereq, runtime)
         return generate_dynamic_image_resp
 
@@ -120,9 +170,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -130,22 +178,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        imitate_photo_stylereq = imageenhan_20190930_models.ImitatePhotoStyleRequest(
-
-        )
+        imitate_photo_stylereq = imageenhan_20190930_models.ImitatePhotoStyleRequest()
         RPCUtilClient.convert(request, imitate_photo_stylereq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -169,7 +207,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        imitate_photo_stylereq.image_url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        imitate_photo_stylereq.image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         imitate_photo_style_resp = self.imitate_photo_style(imitate_photo_stylereq, runtime)
         return imitate_photo_style_resp
 
@@ -194,9 +232,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -204,22 +240,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        enhance_image_colorreq = imageenhan_20190930_models.EnhanceImageColorRequest(
-
-        )
+        enhance_image_colorreq = imageenhan_20190930_models.EnhanceImageColorRequest()
         RPCUtilClient.convert(request, enhance_image_colorreq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -243,7 +269,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        enhance_image_colorreq.image_url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        enhance_image_colorreq.image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         enhance_image_color_resp = self.enhance_image_color(enhance_image_colorreq, runtime)
         return enhance_image_color_resp
 
@@ -268,9 +294,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -278,22 +302,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        recolor_hdimagereq = imageenhan_20190930_models.RecolorHDImageRequest(
-
-        )
+        recolor_hdimagereq = imageenhan_20190930_models.RecolorHDImageRequest()
         RPCUtilClient.convert(request, recolor_hdimagereq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -317,7 +331,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        recolor_hdimagereq.url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        recolor_hdimagereq.url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         recolor_hdimage_resp = self.recolor_hdimage(recolor_hdimagereq, runtime)
         return recolor_hdimage_resp
 
@@ -342,9 +356,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -352,22 +364,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        assess_compositionreq = imageenhan_20190930_models.AssessCompositionRequest(
-
-        )
+        assess_compositionreq = imageenhan_20190930_models.AssessCompositionRequest()
         RPCUtilClient.convert(request, assess_compositionreq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -391,7 +393,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        assess_compositionreq.image_url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        assess_compositionreq.image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         assess_composition_resp = self.assess_composition(assess_compositionreq, runtime)
         return assess_composition_resp
 
@@ -416,9 +418,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -426,22 +426,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        assess_sharpnessreq = imageenhan_20190930_models.AssessSharpnessRequest(
-
-        )
+        assess_sharpnessreq = imageenhan_20190930_models.AssessSharpnessRequest()
         RPCUtilClient.convert(request, assess_sharpnessreq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -465,7 +455,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        assess_sharpnessreq.image_url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        assess_sharpnessreq.image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         assess_sharpness_resp = self.assess_sharpness(assess_sharpnessreq, runtime)
         return assess_sharpness_resp
 
@@ -490,9 +480,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -500,22 +488,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        assess_exposurereq = imageenhan_20190930_models.AssessExposureRequest(
-
-        )
+        assess_exposurereq = imageenhan_20190930_models.AssessExposureRequest()
         RPCUtilClient.convert(request, assess_exposurereq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -539,7 +517,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        assess_exposurereq.image_url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        assess_exposurereq.image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         assess_exposure_resp = self.assess_exposure(assess_exposurereq, runtime)
         return assess_exposure_resp
 
@@ -564,9 +542,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -574,22 +550,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        image_blind_character_watermarkreq = imageenhan_20190930_models.ImageBlindCharacterWatermarkRequest(
-
-        )
+        image_blind_character_watermarkreq = imageenhan_20190930_models.ImageBlindCharacterWatermarkRequest()
         RPCUtilClient.convert(request, image_blind_character_watermarkreq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -613,7 +579,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        image_blind_character_watermarkreq.origin_image_url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        image_blind_character_watermarkreq.origin_image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         image_blind_character_watermark_resp = self.image_blind_character_watermark(image_blind_character_watermarkreq, runtime)
         return image_blind_character_watermark_resp
 
@@ -638,9 +604,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -648,22 +612,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        remove_image_subtitlesreq = imageenhan_20190930_models.RemoveImageSubtitlesRequest(
-
-        )
+        remove_image_subtitlesreq = imageenhan_20190930_models.RemoveImageSubtitlesRequest()
         RPCUtilClient.convert(request, remove_image_subtitlesreq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -687,7 +641,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        remove_image_subtitlesreq.image_url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        remove_image_subtitlesreq.image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         remove_image_subtitles_resp = self.remove_image_subtitles(remove_image_subtitlesreq, runtime)
         return remove_image_subtitles_resp
 
@@ -712,9 +666,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -722,22 +674,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        remove_image_watermarkreq = imageenhan_20190930_models.RemoveImageWatermarkRequest(
-
-        )
+        remove_image_watermarkreq = imageenhan_20190930_models.RemoveImageWatermarkRequest()
         RPCUtilClient.convert(request, remove_image_watermarkreq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -761,7 +703,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        remove_image_watermarkreq.image_url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        remove_image_watermarkreq.image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         remove_image_watermark_resp = self.remove_image_watermark(remove_image_watermarkreq, runtime)
         return remove_image_watermark_resp
 
@@ -786,9 +728,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -796,22 +736,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        image_blind_pic_watermarkreq = imageenhan_20190930_models.ImageBlindPicWatermarkRequest(
-
-        )
+        image_blind_pic_watermarkreq = imageenhan_20190930_models.ImageBlindPicWatermarkRequest()
         RPCUtilClient.convert(request, image_blind_pic_watermarkreq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -835,7 +765,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        image_blind_pic_watermarkreq.origin_image_url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        image_blind_pic_watermarkreq.origin_image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         image_blind_pic_watermark_resp = self.image_blind_pic_watermark(image_blind_pic_watermarkreq, runtime)
         return image_blind_pic_watermark_resp
 
@@ -860,9 +790,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -870,22 +798,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        intelligent_compositionreq = imageenhan_20190930_models.IntelligentCompositionRequest(
-
-        )
+        intelligent_compositionreq = imageenhan_20190930_models.IntelligentCompositionRequest()
         RPCUtilClient.convert(request, intelligent_compositionreq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -909,7 +827,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        intelligent_compositionreq.image_url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        intelligent_compositionreq.image_url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         intelligent_composition_resp = self.intelligent_composition(intelligent_compositionreq, runtime)
         return intelligent_composition_resp
 
@@ -934,9 +852,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -944,22 +860,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        change_image_sizereq = imageenhan_20190930_models.ChangeImageSizeRequest(
-
-        )
+        change_image_sizereq = imageenhan_20190930_models.ChangeImageSizeRequest()
         RPCUtilClient.convert(request, change_image_sizereq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -983,7 +889,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        change_image_sizereq.url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        change_image_sizereq.url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         change_image_size_resp = self.change_image_size(change_image_sizereq, runtime)
         return change_image_size_resp
 
@@ -1012,9 +918,7 @@ class Client(RPCClient):
             product="imageenhan",
             region_id=self._region_id
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse(
-
-        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
             access_key_secret=access_key_secret,
             type="access_key",
@@ -1022,22 +926,12 @@ class Client(RPCClient):
             region_id=self._region_id
         )
         oss_client = None
-        file_obj = file_form_models.FileField(
-
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-
-        )
-        upload_request = oss_models.PostObjectRequest(
-
-        )
-        oss_runtime = ossutil_models.RuntimeOptions(
-
-        )
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
         RPCUtilClient.convert(runtime, oss_runtime)
-        make_super_resolution_imagereq = imageenhan_20190930_models.MakeSuperResolutionImageRequest(
-
-        )
+        make_super_resolution_imagereq = imageenhan_20190930_models.MakeSuperResolutionImageRequest()
         RPCUtilClient.convert(request, make_super_resolution_imagereq)
         auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
         oss_config.access_key_id = auth_response.access_key_id
@@ -1061,7 +955,7 @@ class Client(RPCClient):
             header=oss_header
         )
         oss_client.post_object(upload_request, oss_runtime)
-        make_super_resolution_imagereq.url = "http://" + str(auth_response.bucket) + "." + str(auth_response.endpoint) + "/" + str(auth_response.object_key) + ""
+        make_super_resolution_imagereq.url = 'http://%s.%s/%s' % (auth_response.bucket, auth_response.endpoint, auth_response.object_key)
         make_super_resolution_image_resp = self.make_super_resolution_image(make_super_resolution_imagereq, runtime)
         return make_super_resolution_image_resp
 
