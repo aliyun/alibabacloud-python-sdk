@@ -1,7 +1,172 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import BinaryIO, List
+try:
+    from typing import BinaryIO, List
+except ImportError:
+    pass
+
+
+class SegmentHDSkyRequest(TeaModel):
+    def __init__(self, image_url=None):
+        self.image_url = image_url      # type: str
+
+    def validate(self):
+        self.validate_required(self.image_url, 'image_url')
+
+    def to_map(self):
+        result = {}
+        result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, map={}):
+        self.image_url = map.get('ImageURL')
+        return self
+
+
+class SegmentHDSkyResponse(TeaModel):
+    def __init__(self, request_id=None, data=None):
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentHDSkyResponseData
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        else:
+            result['Data'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            temp_model = SegmentHDSkyResponseData()
+            self.data = temp_model.from_map(map['Data'])
+        else:
+            self.data = None
+        return self
+
+
+class SegmentHDSkyResponseData(TeaModel):
+    def __init__(self, image_url=None):
+        self.image_url = image_url      # type: str
+
+    def validate(self):
+        self.validate_required(self.image_url, 'image_url')
+
+    def to_map(self):
+        result = {}
+        result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, map={}):
+        self.image_url = map.get('ImageURL')
+        return self
+
+
+class SegmentHDSkyAdvanceRequest(TeaModel):
+    def __init__(self, image_urlobject=None):
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        result = {}
+        result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, map={}):
+        self.image_urlobject = map.get('ImageURLObject')
+        return self
+
+
+class SegmentHDCommonImageRequest(TeaModel):
+    def __init__(self, image_url=None):
+        self.image_url = image_url      # type: str
+
+    def validate(self):
+        self.validate_required(self.image_url, 'image_url')
+
+    def to_map(self):
+        result = {}
+        result['ImageUrl'] = self.image_url
+        return result
+
+    def from_map(self, map={}):
+        self.image_url = map.get('ImageUrl')
+        return self
+
+
+class SegmentHDCommonImageResponse(TeaModel):
+    def __init__(self, request_id=None, data=None):
+        self.request_id = request_id    # type: str
+        self.data = data                # type: SegmentHDCommonImageResponseData
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        else:
+            result['Data'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            temp_model = SegmentHDCommonImageResponseData()
+            self.data = temp_model.from_map(map['Data'])
+        else:
+            self.data = None
+        return self
+
+
+class SegmentHDCommonImageResponseData(TeaModel):
+    def __init__(self, image_url=None):
+        self.image_url = image_url      # type: str
+
+    def validate(self):
+        self.validate_required(self.image_url, 'image_url')
+
+    def to_map(self):
+        result = {}
+        result['ImageUrl'] = self.image_url
+        return result
+
+    def from_map(self, map={}):
+        self.image_url = map.get('ImageUrl')
+        return self
+
+
+class SegmentHDCommonImageAdvanceRequest(TeaModel):
+    def __init__(self, image_url_object=None):
+        self.image_url_object = image_url_object  # type: BinaryIO
+
+    def validate(self):
+        self.validate_required(self.image_url_object, 'image_url_object')
+
+    def to_map(self):
+        result = {}
+        result['ImageUrlObject'] = self.image_url_object
+        return result
+
+    def from_map(self, map={}):
+        self.image_url_object = map.get('ImageUrlObject')
+        return self
 
 
 class SegmentSkinRequest(TeaModel):

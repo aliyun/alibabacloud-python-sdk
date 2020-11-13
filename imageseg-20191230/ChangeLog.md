@@ -1,3 +1,6 @@
+2020-11-13 Version: 1.0.7
+- Release SegmentHDSky SegmentHDCommonImage.
+
 2020-10-13 Version: 1.0.6
 - Release SegmentSkin.
 
