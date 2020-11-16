@@ -5746,7 +5746,7 @@ class FindApisByPagingResponse(TeaModel):
 
 class FindGatewaysRequest(TeaModel):
     def __init__(self, gateway_unique_id=None, name=None, region=None, gateway_types=None, status=None,
-                 page_number=None, page_size=None):
+                 page_number=None, page_size=None, namespace=None):
         # gatewayUniqueId
         self.gateway_unique_id = gateway_unique_id  # type: str
         # name
@@ -5761,6 +5761,8 @@ class FindGatewaysRequest(TeaModel):
         self.page_number = page_number  # type: str
         # pageSize
         self.page_size = page_size      # type: str
+        # namespace
+        self.namespace = namespace      # type: str
 
     def validate(self):
         pass
@@ -5774,6 +5776,7 @@ class FindGatewaysRequest(TeaModel):
         result['status'] = self.status
         result['pageNumber'] = self.page_number
         result['pageSize'] = self.page_size
+        result['namespace'] = self.namespace
         return result
 
     def from_map(self, map={}):
@@ -5784,6 +5787,7 @@ class FindGatewaysRequest(TeaModel):
         self.status = map.get('status')
         self.page_number = map.get('pageNumber')
         self.page_size = map.get('pageSize')
+        self.namespace = map.get('namespace')
         return self
 
 

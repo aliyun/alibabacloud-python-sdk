@@ -933,9 +933,6 @@ class Client(OpenApiClient):
         return microgw_20200810_models.FindApisByPagingResponse().from_map(self.do_roarequest("FindApisByPaging", "2020-08-10", "HTTPS", "GET", "AK", '/v1/gateway/%s/api' % gateway_id, "json", req, runtime))
 
     def find_gateways(self, request):
-        """
-        findGateways
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.find_gateways_with_options(request, headers, runtime)
@@ -957,6 +954,8 @@ class Client(OpenApiClient):
             query["pageNumber"] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query["pageSize"] = request.page_size
+        if not UtilClient.is_unset(request.namespace):
+            query["namespace"] = request.namespace
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

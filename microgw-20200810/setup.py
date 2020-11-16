@@ -25,7 +25,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_microgw20200810.
 
-Created on 06/11/2020
+Created on 16/11/2020
 
 @author: Alibaba Cloud SDK
 """
