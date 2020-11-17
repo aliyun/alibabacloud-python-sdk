@@ -40,6 +40,38 @@ class Client(RPCClient):
         self.check_config(config)
         self._endpoint = self.get_endpoint("dataworks-public", self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
+    def get_dag_with_options(self, request, runtime):
+        UtilClient.validate_model(request)
+        return dataworks_public_20200518_models.GetDagResponse().from_map(self.do_request("GetDag", "HTTPS", "POST", "2020-05-18", "AK", None, request.to_map(), runtime))
+
+    def get_dag(self, request):
+        runtime = util_models.RuntimeOptions()
+        return self.get_dag_with_options(request, runtime)
+
+    def search_nodes_by_output_with_options(self, request, runtime):
+        UtilClient.validate_model(request)
+        return dataworks_public_20200518_models.SearchNodesByOutputResponse().from_map(self.do_request("SearchNodesByOutput", "HTTPS", "POST", "2020-05-18", "AK", None, request.to_map(), runtime))
+
+    def search_nodes_by_output(self, request):
+        runtime = util_models.RuntimeOptions()
+        return self.search_nodes_by_output_with_options(request, runtime)
+
+    def get_manual_dag_instances_with_options(self, request, runtime):
+        UtilClient.validate_model(request)
+        return dataworks_public_20200518_models.GetManualDagInstancesResponse().from_map(self.do_request("GetManualDagInstances", "HTTPS", "POST", "2020-05-18", "AK", None, request.to_map(), runtime))
+
+    def get_manual_dag_instances(self, request):
+        runtime = util_models.RuntimeOptions()
+        return self.get_manual_dag_instances_with_options(request, runtime)
+
+    def create_manual_dag_with_options(self, request, runtime):
+        UtilClient.validate_model(request)
+        return dataworks_public_20200518_models.CreateManualDagResponse().from_map(self.do_request("CreateManualDag", "HTTPS", "POST", "2020-05-18", "AK", None, request.to_map(), runtime))
+
+    def create_manual_dag(self, request):
+        runtime = util_models.RuntimeOptions()
+        return self.create_manual_dag_with_options(request, runtime)
+
     def list_quality_results_by_entity_with_options(self, request, runtime):
         UtilClient.validate_model(request)
         return dataworks_public_20200518_models.ListQualityResultsByEntityResponse().from_map(self.do_request("ListQualityResultsByEntity", "HTTPS", "POST", "2020-05-18", "AK", None, request.to_map(), runtime))

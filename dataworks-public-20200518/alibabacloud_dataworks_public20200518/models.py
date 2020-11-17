@@ -2,9 +2,391 @@
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
 try:
-    from typing import List, Dict, Any
+    from typing import Dict, Any, List
 except ImportError:
     pass
+
+
+class GetDagRequest(TeaModel):
+    def __init__(self, dag_id=None, project_env=None):
+        self.dag_id = dag_id            # type: int
+        self.project_env = project_env  # type: str
+
+    def validate(self):
+        self.validate_required(self.dag_id, 'dag_id')
+        self.validate_required(self.project_env, 'project_env')
+
+    def to_map(self):
+        result = {}
+        result['DagId'] = self.dag_id
+        result['ProjectEnv'] = self.project_env
+        return result
+
+    def from_map(self, map={}):
+        self.dag_id = map.get('DagId')
+        self.project_env = map.get('ProjectEnv')
+        return self
+
+
+class GetDagResponse(TeaModel):
+    def __init__(self, success=None, http_status_code=None, error_code=None, error_message=None, request_id=None,
+                 data=None):
+        self.success = success          # type: bool
+        self.http_status_code = http_status_code  # type: int
+        self.error_code = error_code    # type: str
+        self.error_message = error_message  # type: str
+        self.request_id = request_id    # type: str
+        self.data = data                # type: GetDagResponseData
+
+    def validate(self):
+        self.validate_required(self.success, 'success')
+        self.validate_required(self.http_status_code, 'http_status_code')
+        self.validate_required(self.error_code, 'error_code')
+        self.validate_required(self.error_message, 'error_message')
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = {}
+        result['Success'] = self.success
+        result['HttpStatusCode'] = self.http_status_code
+        result['ErrorCode'] = self.error_code
+        result['ErrorMessage'] = self.error_message
+        result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        else:
+            result['Data'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.success = map.get('Success')
+        self.http_status_code = map.get('HttpStatusCode')
+        self.error_code = map.get('ErrorCode')
+        self.error_message = map.get('ErrorMessage')
+        self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            temp_model = GetDagResponseData()
+            self.data = temp_model.from_map(map['Data'])
+        else:
+            self.data = None
+        return self
+
+
+class GetDagResponseData(TeaModel):
+    def __init__(self, project_id=None, dag_id=None, name=None, type=None, status=None, bizdate=None, gmtdate=None,
+                 start_time=None, finish_time=None, create_time=None, create_user=None, modify_time=None):
+        self.project_id = project_id    # type: int
+        self.dag_id = dag_id            # type: int
+        self.name = name                # type: str
+        self.type = type                # type: str
+        self.status = status            # type: str
+        self.bizdate = bizdate          # type: int
+        self.gmtdate = gmtdate          # type: int
+        self.start_time = start_time    # type: int
+        self.finish_time = finish_time  # type: int
+        self.create_time = create_time  # type: int
+        self.create_user = create_user  # type: str
+        self.modify_time = modify_time  # type: int
+
+    def validate(self):
+        self.validate_required(self.project_id, 'project_id')
+        self.validate_required(self.dag_id, 'dag_id')
+        self.validate_required(self.name, 'name')
+        self.validate_required(self.type, 'type')
+        self.validate_required(self.status, 'status')
+        self.validate_required(self.bizdate, 'bizdate')
+        self.validate_required(self.gmtdate, 'gmtdate')
+        self.validate_required(self.start_time, 'start_time')
+        self.validate_required(self.finish_time, 'finish_time')
+        self.validate_required(self.create_time, 'create_time')
+        self.validate_required(self.create_user, 'create_user')
+        self.validate_required(self.modify_time, 'modify_time')
+
+    def to_map(self):
+        result = {}
+        result['ProjectId'] = self.project_id
+        result['DagId'] = self.dag_id
+        result['Name'] = self.name
+        result['Type'] = self.type
+        result['Status'] = self.status
+        result['Bizdate'] = self.bizdate
+        result['Gmtdate'] = self.gmtdate
+        result['StartTime'] = self.start_time
+        result['FinishTime'] = self.finish_time
+        result['CreateTime'] = self.create_time
+        result['CreateUser'] = self.create_user
+        result['ModifyTime'] = self.modify_time
+        return result
+
+    def from_map(self, map={}):
+        self.project_id = map.get('ProjectId')
+        self.dag_id = map.get('DagId')
+        self.name = map.get('Name')
+        self.type = map.get('Type')
+        self.status = map.get('Status')
+        self.bizdate = map.get('Bizdate')
+        self.gmtdate = map.get('Gmtdate')
+        self.start_time = map.get('StartTime')
+        self.finish_time = map.get('FinishTime')
+        self.create_time = map.get('CreateTime')
+        self.create_user = map.get('CreateUser')
+        self.modify_time = map.get('ModifyTime')
+        return self
+
+
+class SearchNodesByOutputRequest(TeaModel):
+    def __init__(self, project_env=None, outputs=None):
+        self.project_env = project_env  # type: str
+        self.outputs = outputs          # type: str
+
+    def validate(self):
+        self.validate_required(self.project_env, 'project_env')
+        self.validate_required(self.outputs, 'outputs')
+
+    def to_map(self):
+        result = {}
+        result['ProjectEnv'] = self.project_env
+        result['Outputs'] = self.outputs
+        return result
+
+    def from_map(self, map={}):
+        self.project_env = map.get('ProjectEnv')
+        self.outputs = map.get('Outputs')
+        return self
+
+
+class SearchNodesByOutputResponse(TeaModel):
+    def __init__(self, success=None, http_status_code=None, error_code=None, error_message=None, request_id=None,
+                 data=None):
+        self.success = success          # type: bool
+        self.http_status_code = http_status_code  # type: int
+        self.error_code = error_code    # type: str
+        self.error_message = error_message  # type: str
+        self.request_id = request_id    # type: str
+        self.data = data                # type: Dict[str, Any]
+
+    def validate(self):
+        self.validate_required(self.success, 'success')
+        self.validate_required(self.http_status_code, 'http_status_code')
+        self.validate_required(self.error_code, 'error_code')
+        self.validate_required(self.error_message, 'error_message')
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.data, 'data')
+
+    def to_map(self):
+        result = {}
+        result['Success'] = self.success
+        result['HttpStatusCode'] = self.http_status_code
+        result['ErrorCode'] = self.error_code
+        result['ErrorMessage'] = self.error_message
+        result['RequestId'] = self.request_id
+        result['Data'] = self.data
+        return result
+
+    def from_map(self, map={}):
+        self.success = map.get('Success')
+        self.http_status_code = map.get('HttpStatusCode')
+        self.error_code = map.get('ErrorCode')
+        self.error_message = map.get('ErrorMessage')
+        self.request_id = map.get('RequestId')
+        self.data = map.get('Data')
+        return self
+
+
+class GetManualDagInstancesRequest(TeaModel):
+    def __init__(self, project_env=None, project_name=None, dag_id=None):
+        self.project_env = project_env  # type: str
+        self.project_name = project_name  # type: str
+        self.dag_id = dag_id            # type: str
+
+    def validate(self):
+        self.validate_required(self.project_env, 'project_env')
+        self.validate_required(self.project_name, 'project_name')
+        self.validate_required(self.dag_id, 'dag_id')
+
+    def to_map(self):
+        result = {}
+        result['ProjectEnv'] = self.project_env
+        result['ProjectName'] = self.project_name
+        result['DagId'] = self.dag_id
+        return result
+
+    def from_map(self, map={}):
+        self.project_env = map.get('ProjectEnv')
+        self.project_name = map.get('ProjectName')
+        self.dag_id = map.get('DagId')
+        return self
+
+
+class GetManualDagInstancesResponse(TeaModel):
+    def __init__(self, request_id=None, instances=None):
+        self.request_id = request_id    # type: str
+        self.instances = instances      # type: List[GetManualDagInstancesResponseInstances]
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.instances, 'instances')
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['Instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['Instances'].append(k.to_map() if k else None)
+        else:
+            result['Instances'] = None
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.instances = []
+        if map.get('Instances') is not None:
+            for k in map.get('Instances'):
+                temp_model = GetManualDagInstancesResponseInstances()
+                self.instances.append(temp_model.from_map(k))
+        else:
+            self.instances = None
+        return self
+
+
+class GetManualDagInstancesResponseInstances(TeaModel):
+    def __init__(self, node_id=None, instance_id=None, dag_id=None, dag_type=None, status=None, biz_date=None,
+                 cyc_time=None, create_time=None, modify_time=None, node_name=None, begin_wait_time_time=None,
+                 begin_wait_res_time=None, begin_running_time=None, param_values=None, finish_time=None):
+        self.node_id = node_id          # type: int
+        self.instance_id = instance_id  # type: int
+        self.dag_id = dag_id            # type: int
+        self.dag_type = dag_type        # type: str
+        self.status = status            # type: str
+        self.biz_date = biz_date        # type: int
+        self.cyc_time = cyc_time        # type: int
+        self.create_time = create_time  # type: int
+        self.modify_time = modify_time  # type: int
+        self.node_name = node_name      # type: str
+        self.begin_wait_time_time = begin_wait_time_time  # type: int
+        self.begin_wait_res_time = begin_wait_res_time  # type: int
+        self.begin_running_time = begin_running_time  # type: int
+        self.param_values = param_values  # type: str
+        self.finish_time = finish_time  # type: int
+
+    def validate(self):
+        self.validate_required(self.node_id, 'node_id')
+        self.validate_required(self.instance_id, 'instance_id')
+        self.validate_required(self.dag_id, 'dag_id')
+        self.validate_required(self.dag_type, 'dag_type')
+        self.validate_required(self.status, 'status')
+        self.validate_required(self.biz_date, 'biz_date')
+        self.validate_required(self.cyc_time, 'cyc_time')
+        self.validate_required(self.create_time, 'create_time')
+        self.validate_required(self.modify_time, 'modify_time')
+        self.validate_required(self.node_name, 'node_name')
+        self.validate_required(self.begin_wait_time_time, 'begin_wait_time_time')
+        self.validate_required(self.begin_wait_res_time, 'begin_wait_res_time')
+        self.validate_required(self.begin_running_time, 'begin_running_time')
+        self.validate_required(self.param_values, 'param_values')
+        self.validate_required(self.finish_time, 'finish_time')
+
+    def to_map(self):
+        result = {}
+        result['NodeId'] = self.node_id
+        result['InstanceId'] = self.instance_id
+        result['DagId'] = self.dag_id
+        result['DagType'] = self.dag_type
+        result['Status'] = self.status
+        result['BizDate'] = self.biz_date
+        result['CycTime'] = self.cyc_time
+        result['CreateTime'] = self.create_time
+        result['ModifyTime'] = self.modify_time
+        result['NodeName'] = self.node_name
+        result['BeginWaitTimeTime'] = self.begin_wait_time_time
+        result['BeginWaitResTime'] = self.begin_wait_res_time
+        result['BeginRunningTime'] = self.begin_running_time
+        result['ParamValues'] = self.param_values
+        result['FinishTime'] = self.finish_time
+        return result
+
+    def from_map(self, map={}):
+        self.node_id = map.get('NodeId')
+        self.instance_id = map.get('InstanceId')
+        self.dag_id = map.get('DagId')
+        self.dag_type = map.get('DagType')
+        self.status = map.get('Status')
+        self.biz_date = map.get('BizDate')
+        self.cyc_time = map.get('CycTime')
+        self.create_time = map.get('CreateTime')
+        self.modify_time = map.get('ModifyTime')
+        self.node_name = map.get('NodeName')
+        self.begin_wait_time_time = map.get('BeginWaitTimeTime')
+        self.begin_wait_res_time = map.get('BeginWaitResTime')
+        self.begin_running_time = map.get('BeginRunningTime')
+        self.param_values = map.get('ParamValues')
+        self.finish_time = map.get('FinishTime')
+        return self
+
+
+class CreateManualDagRequest(TeaModel):
+    def __init__(self, project_env=None, project_name=None, flow_name=None, biz_date=None, node_parameters=None,
+                 dag_parameters=None):
+        self.project_env = project_env  # type: str
+        self.project_name = project_name  # type: str
+        self.flow_name = flow_name      # type: str
+        self.biz_date = biz_date        # type: str
+        self.node_parameters = node_parameters  # type: str
+        self.dag_parameters = dag_parameters  # type: str
+
+    def validate(self):
+        self.validate_required(self.project_env, 'project_env')
+        self.validate_required(self.project_name, 'project_name')
+        self.validate_required(self.flow_name, 'flow_name')
+        self.validate_required(self.biz_date, 'biz_date')
+
+    def to_map(self):
+        result = {}
+        result['ProjectEnv'] = self.project_env
+        result['ProjectName'] = self.project_name
+        result['FlowName'] = self.flow_name
+        result['BizDate'] = self.biz_date
+        result['NodeParameters'] = self.node_parameters
+        result['DagParameters'] = self.dag_parameters
+        return result
+
+    def from_map(self, map={}):
+        self.project_env = map.get('ProjectEnv')
+        self.project_name = map.get('ProjectName')
+        self.flow_name = map.get('FlowName')
+        self.biz_date = map.get('BizDate')
+        self.node_parameters = map.get('NodeParameters')
+        self.dag_parameters = map.get('DagParameters')
+        return self
+
+
+class CreateManualDagResponse(TeaModel):
+    def __init__(self, request_id=None, dag_id=None):
+        self.request_id = request_id    # type: str
+        self.dag_id = dag_id            # type: int
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.dag_id, 'dag_id')
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['DagId'] = self.dag_id
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.dag_id = map.get('DagId')
+        return self
 
 
 class ListQualityResultsByEntityRequest(TeaModel):
@@ -1287,7 +1669,7 @@ class ListMetaDBResponseDatabaseInfo(TeaModel):
 class CreateTableRequest(TeaModel):
     def __init__(self, has_part=None, columns=None, is_view=None, visibility=None, life_cycle=None, category_id=None,
                  logical_level_id=None, physics_level_id=None, external_table_type=None, location=None, project_id=None,
-                 table_name=None, endpoint=None, env_type=None, themes=None, app_guid=None):
+                 table_name=None, endpoint=None, env_type=None, themes=None, app_guid=None, comment=None):
         self.has_part = has_part        # type: int
         self.columns = columns          # type: List[CreateTableRequestColumns]
         self.is_view = is_view          # type: int
@@ -1304,6 +1686,7 @@ class CreateTableRequest(TeaModel):
         self.env_type = env_type        # type: int
         self.themes = themes            # type: List[CreateTableRequestThemes]
         self.app_guid = app_guid        # type: str
+        self.comment = comment          # type: str
 
     def validate(self):
         self.validate_required(self.columns, 'columns')
@@ -1345,6 +1728,7 @@ class CreateTableRequest(TeaModel):
         else:
             result['Themes'] = None
         result['AppGuid'] = self.app_guid
+        result['Comment'] = self.comment
         return result
 
     def from_map(self, map={}):
@@ -1376,6 +1760,7 @@ class CreateTableRequest(TeaModel):
         else:
             self.themes = None
         self.app_guid = map.get('AppGuid')
+        self.comment = map.get('Comment')
         return self
 
 
@@ -9005,23 +9390,27 @@ class ListNodeIOResponse(TeaModel):
 
 
 class ListNodeIOResponseData(TeaModel):
-    def __init__(self, table_name=None, data=None):
+    def __init__(self, table_name=None, data=None, node_id=None):
         self.table_name = table_name    # type: str
         self.data = data                # type: str
+        self.node_id = node_id          # type: int
 
     def validate(self):
         self.validate_required(self.table_name, 'table_name')
         self.validate_required(self.data, 'data')
+        self.validate_required(self.node_id, 'node_id')
 
     def to_map(self):
         result = {}
         result['TableName'] = self.table_name
         result['Data'] = self.data
+        result['NodeId'] = self.node_id
         return result
 
     def from_map(self, map={}):
         self.table_name = map.get('TableName')
         self.data = map.get('Data')
+        self.node_id = map.get('NodeId')
         return self
 
 
@@ -9478,7 +9867,8 @@ class GetNodeResponse(TeaModel):
 class GetNodeResponseData(TeaModel):
     def __init__(self, node_id=None, owner_id=None, description=None, res_group_name=None, node_name=None,
                  cron_express=None, repeatability=None, program_type=None, project_id=None, scheduler_type=None,
-                 param_values=None):
+                 param_values=None, priority=None, baseline_id=None, repeat_interval=None, connection=None, dqc_type=None,
+                 dqc_description=None, related_flow_id=None):
         self.node_id = node_id          # type: int
         self.owner_id = owner_id        # type: str
         self.description = description  # type: str
@@ -9490,6 +9880,13 @@ class GetNodeResponseData(TeaModel):
         self.project_id = project_id    # type: int
         self.scheduler_type = scheduler_type  # type: str
         self.param_values = param_values  # type: str
+        self.priority = priority        # type: int
+        self.baseline_id = baseline_id  # type: int
+        self.repeat_interval = repeat_interval  # type: int
+        self.connection = connection    # type: str
+        self.dqc_type = dqc_type        # type: int
+        self.dqc_description = dqc_description  # type: str
+        self.related_flow_id = related_flow_id  # type: int
 
     def validate(self):
         self.validate_required(self.node_id, 'node_id')
@@ -9503,6 +9900,13 @@ class GetNodeResponseData(TeaModel):
         self.validate_required(self.project_id, 'project_id')
         self.validate_required(self.scheduler_type, 'scheduler_type')
         self.validate_required(self.param_values, 'param_values')
+        self.validate_required(self.priority, 'priority')
+        self.validate_required(self.baseline_id, 'baseline_id')
+        self.validate_required(self.repeat_interval, 'repeat_interval')
+        self.validate_required(self.connection, 'connection')
+        self.validate_required(self.dqc_type, 'dqc_type')
+        self.validate_required(self.dqc_description, 'dqc_description')
+        self.validate_required(self.related_flow_id, 'related_flow_id')
 
     def to_map(self):
         result = {}
@@ -9517,6 +9921,13 @@ class GetNodeResponseData(TeaModel):
         result['ProjectId'] = self.project_id
         result['SchedulerType'] = self.scheduler_type
         result['ParamValues'] = self.param_values
+        result['Priority'] = self.priority
+        result['BaselineId'] = self.baseline_id
+        result['RepeatInterval'] = self.repeat_interval
+        result['Connection'] = self.connection
+        result['DqcType'] = self.dqc_type
+        result['DqcDescription'] = self.dqc_description
+        result['RelatedFlowId'] = self.related_flow_id
         return result
 
     def from_map(self, map={}):
@@ -9531,6 +9942,13 @@ class GetNodeResponseData(TeaModel):
         self.project_id = map.get('ProjectId')
         self.scheduler_type = map.get('SchedulerType')
         self.param_values = map.get('ParamValues')
+        self.priority = map.get('Priority')
+        self.baseline_id = map.get('BaselineId')
+        self.repeat_interval = map.get('RepeatInterval')
+        self.connection = map.get('Connection')
+        self.dqc_type = map.get('DqcType')
+        self.dqc_description = map.get('DqcDescription')
+        self.related_flow_id = map.get('RelatedFlowId')
         return self
 
 
@@ -9624,7 +10042,8 @@ class ListNodesResponse(TeaModel):
 class ListNodesResponseDataNodes(TeaModel):
     def __init__(self, node_id=None, node_name=None, cron_express=None, scheduler_type=None, program_type=None,
                  owner_id=None, project_id=None, repeatability=None, param_values=None, description=None,
-                 res_group_name=None):
+                 res_group_name=None, priority=None, baseline_id=None, repeat_interval=None, connection=None, dqc_type=None,
+                 dqc_description=None, related_flow_id=None):
         self.node_id = node_id          # type: int
         self.node_name = node_name      # type: str
         self.cron_express = cron_express  # type: str
@@ -9636,6 +10055,13 @@ class ListNodesResponseDataNodes(TeaModel):
         self.param_values = param_values  # type: str
         self.description = description  # type: str
         self.res_group_name = res_group_name  # type: str
+        self.priority = priority        # type: int
+        self.baseline_id = baseline_id  # type: int
+        self.repeat_interval = repeat_interval  # type: int
+        self.connection = connection    # type: str
+        self.dqc_type = dqc_type        # type: int
+        self.dqc_description = dqc_description  # type: str
+        self.related_flow_id = related_flow_id  # type: int
 
     def validate(self):
         self.validate_required(self.node_id, 'node_id')
@@ -9649,6 +10075,13 @@ class ListNodesResponseDataNodes(TeaModel):
         self.validate_required(self.param_values, 'param_values')
         self.validate_required(self.description, 'description')
         self.validate_required(self.res_group_name, 'res_group_name')
+        self.validate_required(self.priority, 'priority')
+        self.validate_required(self.baseline_id, 'baseline_id')
+        self.validate_required(self.repeat_interval, 'repeat_interval')
+        self.validate_required(self.connection, 'connection')
+        self.validate_required(self.dqc_type, 'dqc_type')
+        self.validate_required(self.dqc_description, 'dqc_description')
+        self.validate_required(self.related_flow_id, 'related_flow_id')
 
     def to_map(self):
         result = {}
@@ -9663,6 +10096,13 @@ class ListNodesResponseDataNodes(TeaModel):
         result['ParamValues'] = self.param_values
         result['Description'] = self.description
         result['ResGroupName'] = self.res_group_name
+        result['Priority'] = self.priority
+        result['BaselineId'] = self.baseline_id
+        result['RepeatInterval'] = self.repeat_interval
+        result['Connection'] = self.connection
+        result['DqcType'] = self.dqc_type
+        result['DqcDescription'] = self.dqc_description
+        result['RelatedFlowId'] = self.related_flow_id
         return result
 
     def from_map(self, map={}):
@@ -9677,6 +10117,13 @@ class ListNodesResponseDataNodes(TeaModel):
         self.param_values = map.get('ParamValues')
         self.description = map.get('Description')
         self.res_group_name = map.get('ResGroupName')
+        self.priority = map.get('Priority')
+        self.baseline_id = map.get('BaselineId')
+        self.repeat_interval = map.get('RepeatInterval')
+        self.connection = map.get('Connection')
+        self.dqc_type = map.get('DqcType')
+        self.dqc_description = map.get('DqcDescription')
+        self.related_flow_id = map.get('RelatedFlowId')
         return self
 
 
@@ -11109,7 +11556,7 @@ class AddToMetaCategoryResponse(TeaModel):
 
 class ListInstancesRequest(TeaModel):
     def __init__(self, project_env=None, node_id=None, node_name=None, owner=None, project_id=None, biz_name=None,
-                 program_type=None, page_number=None, page_size=None):
+                 program_type=None, page_number=None, page_size=None, dag_id=None):
         self.project_env = project_env  # type: str
         self.node_id = node_id          # type: int
         self.node_name = node_name      # type: str
@@ -11119,6 +11566,7 @@ class ListInstancesRequest(TeaModel):
         self.program_type = program_type  # type: str
         self.page_number = page_number  # type: int
         self.page_size = page_size      # type: int
+        self.dag_id = dag_id            # type: int
 
     def validate(self):
         self.validate_required(self.project_env, 'project_env')
@@ -11135,6 +11583,7 @@ class ListInstancesRequest(TeaModel):
         result['ProgramType'] = self.program_type
         result['PageNumber'] = self.page_number
         result['PageSize'] = self.page_size
+        result['DagId'] = self.dag_id
         return result
 
     def from_map(self, map={}):
@@ -11147,6 +11596,7 @@ class ListInstancesRequest(TeaModel):
         self.program_type = map.get('ProgramType')
         self.page_number = map.get('PageNumber')
         self.page_size = map.get('PageSize')
+        self.dag_id = map.get('DagId')
         return self
 
 
@@ -11200,7 +11650,9 @@ class ListInstancesResponse(TeaModel):
 class ListInstancesResponseDataInstances(TeaModel):
     def __init__(self, node_id=None, instance_id=None, dag_id=None, dag_type=None, status=None, bizdate=None,
                  cyc_time=None, create_time=None, modify_time=None, node_name=None, begin_wait_time_time=None,
-                 begin_wait_res_time=None, begin_running_time=None, param_values=None, finish_time=None):
+                 begin_wait_res_time=None, begin_running_time=None, param_values=None, finish_time=None, priority=None,
+                 baseline_id=None, repeatability=None, repeat_interval=None, connection=None, dqc_type=None,
+                 dqc_description=None, error_message=None, related_flow_id=None):
         self.node_id = node_id          # type: int
         self.instance_id = instance_id  # type: int
         self.dag_id = dag_id            # type: int
@@ -11216,6 +11668,15 @@ class ListInstancesResponseDataInstances(TeaModel):
         self.begin_running_time = begin_running_time  # type: int
         self.param_values = param_values  # type: str
         self.finish_time = finish_time  # type: int
+        self.priority = priority        # type: int
+        self.baseline_id = baseline_id  # type: int
+        self.repeatability = repeatability  # type: bool
+        self.repeat_interval = repeat_interval  # type: int
+        self.connection = connection    # type: str
+        self.dqc_type = dqc_type        # type: int
+        self.dqc_description = dqc_description  # type: str
+        self.error_message = error_message  # type: str
+        self.related_flow_id = related_flow_id  # type: int
 
     def validate(self):
         self.validate_required(self.node_id, 'node_id')
@@ -11233,6 +11694,15 @@ class ListInstancesResponseDataInstances(TeaModel):
         self.validate_required(self.begin_running_time, 'begin_running_time')
         self.validate_required(self.param_values, 'param_values')
         self.validate_required(self.finish_time, 'finish_time')
+        self.validate_required(self.priority, 'priority')
+        self.validate_required(self.baseline_id, 'baseline_id')
+        self.validate_required(self.repeatability, 'repeatability')
+        self.validate_required(self.repeat_interval, 'repeat_interval')
+        self.validate_required(self.connection, 'connection')
+        self.validate_required(self.dqc_type, 'dqc_type')
+        self.validate_required(self.dqc_description, 'dqc_description')
+        self.validate_required(self.error_message, 'error_message')
+        self.validate_required(self.related_flow_id, 'related_flow_id')
 
     def to_map(self):
         result = {}
@@ -11251,6 +11721,15 @@ class ListInstancesResponseDataInstances(TeaModel):
         result['BeginRunningTime'] = self.begin_running_time
         result['ParamValues'] = self.param_values
         result['FinishTime'] = self.finish_time
+        result['Priority'] = self.priority
+        result['BaselineId'] = self.baseline_id
+        result['Repeatability'] = self.repeatability
+        result['RepeatInterval'] = self.repeat_interval
+        result['Connection'] = self.connection
+        result['DqcType'] = self.dqc_type
+        result['DqcDescription'] = self.dqc_description
+        result['ErrorMessage'] = self.error_message
+        result['RelatedFlowId'] = self.related_flow_id
         return result
 
     def from_map(self, map={}):
@@ -11269,6 +11748,15 @@ class ListInstancesResponseDataInstances(TeaModel):
         self.begin_running_time = map.get('BeginRunningTime')
         self.param_values = map.get('ParamValues')
         self.finish_time = map.get('FinishTime')
+        self.priority = map.get('Priority')
+        self.baseline_id = map.get('BaselineId')
+        self.repeatability = map.get('Repeatability')
+        self.repeat_interval = map.get('RepeatInterval')
+        self.connection = map.get('Connection')
+        self.dqc_type = map.get('DqcType')
+        self.dqc_description = map.get('DqcDescription')
+        self.error_message = map.get('ErrorMessage')
+        self.related_flow_id = map.get('RelatedFlowId')
         return self
 
 
@@ -13108,7 +13596,9 @@ class GetInstanceResponse(TeaModel):
 class GetInstanceResponseData(TeaModel):
     def __init__(self, node_id=None, instance_id=None, dag_id=None, dag_type=None, status=None, bizdate=None,
                  param_values=None, cyc_time=None, finish_time=None, begin_wait_time_time=None, begin_wait_res_time=None,
-                 begin_running_time=None, create_time=None, modify_time=None, node_name=None):
+                 begin_running_time=None, create_time=None, modify_time=None, node_name=None, priority=None, baseline_id=None,
+                 repeatability=None, repeat_interval=None, connection=None, dqc_type=None, dqc_description=None,
+                 error_message=None, related_flow_id=None):
         self.node_id = node_id          # type: int
         self.instance_id = instance_id  # type: int
         self.dag_id = dag_id            # type: int
@@ -13124,6 +13614,15 @@ class GetInstanceResponseData(TeaModel):
         self.create_time = create_time  # type: int
         self.modify_time = modify_time  # type: int
         self.node_name = node_name      # type: str
+        self.priority = priority        # type: int
+        self.baseline_id = baseline_id  # type: int
+        self.repeatability = repeatability  # type: bool
+        self.repeat_interval = repeat_interval  # type: int
+        self.connection = connection    # type: str
+        self.dqc_type = dqc_type        # type: int
+        self.dqc_description = dqc_description  # type: str
+        self.error_message = error_message  # type: str
+        self.related_flow_id = related_flow_id  # type: int
 
     def validate(self):
         self.validate_required(self.node_id, 'node_id')
@@ -13141,6 +13640,15 @@ class GetInstanceResponseData(TeaModel):
         self.validate_required(self.create_time, 'create_time')
         self.validate_required(self.modify_time, 'modify_time')
         self.validate_required(self.node_name, 'node_name')
+        self.validate_required(self.priority, 'priority')
+        self.validate_required(self.baseline_id, 'baseline_id')
+        self.validate_required(self.repeatability, 'repeatability')
+        self.validate_required(self.repeat_interval, 'repeat_interval')
+        self.validate_required(self.connection, 'connection')
+        self.validate_required(self.dqc_type, 'dqc_type')
+        self.validate_required(self.dqc_description, 'dqc_description')
+        self.validate_required(self.error_message, 'error_message')
+        self.validate_required(self.related_flow_id, 'related_flow_id')
 
     def to_map(self):
         result = {}
@@ -13159,6 +13667,15 @@ class GetInstanceResponseData(TeaModel):
         result['CreateTime'] = self.create_time
         result['ModifyTime'] = self.modify_time
         result['NodeName'] = self.node_name
+        result['Priority'] = self.priority
+        result['BaselineId'] = self.baseline_id
+        result['Repeatability'] = self.repeatability
+        result['RepeatInterval'] = self.repeat_interval
+        result['Connection'] = self.connection
+        result['DqcType'] = self.dqc_type
+        result['DqcDescription'] = self.dqc_description
+        result['ErrorMessage'] = self.error_message
+        result['RelatedFlowId'] = self.related_flow_id
         return result
 
     def from_map(self, map={}):
@@ -13177,6 +13694,15 @@ class GetInstanceResponseData(TeaModel):
         self.create_time = map.get('CreateTime')
         self.modify_time = map.get('ModifyTime')
         self.node_name = map.get('NodeName')
+        self.priority = map.get('Priority')
+        self.baseline_id = map.get('BaselineId')
+        self.repeatability = map.get('Repeatability')
+        self.repeat_interval = map.get('RepeatInterval')
+        self.connection = map.get('Connection')
+        self.dqc_type = map.get('DqcType')
+        self.dqc_description = map.get('DqcDescription')
+        self.error_message = map.get('ErrorMessage')
+        self.related_flow_id = map.get('RelatedFlowId')
         return self
 
 
