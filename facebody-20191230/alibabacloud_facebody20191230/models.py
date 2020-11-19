@@ -3328,14 +3328,14 @@ class DetectPedestrianResponseDataElements(TeaModel):
 
 
 class DetectPedestrianResponseData(TeaModel):
-    def __init__(self, width=None, height=None, elements=None):
-        self.width = width              # type: int
+    def __init__(self, height=None, width=None, elements=None):
         self.height = height            # type: int
+        self.width = width              # type: int
         self.elements = elements        # type: List[DetectPedestrianResponseDataElements]
 
     def validate(self):
-        self.validate_required(self.width, 'width')
         self.validate_required(self.height, 'height')
+        self.validate_required(self.width, 'width')
         self.validate_required(self.elements, 'elements')
         if self.elements:
             for k in self.elements:
@@ -3344,8 +3344,8 @@ class DetectPedestrianResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Width'] = self.width
         result['Height'] = self.height
+        result['Width'] = self.width
         result['Elements'] = []
         if self.elements is not None:
             for k in self.elements:
@@ -3355,8 +3355,8 @@ class DetectPedestrianResponseData(TeaModel):
         return result
 
     def from_map(self, map={}):
-        self.width = map.get('Width')
         self.height = map.get('Height')
+        self.width = map.get('Width')
         self.elements = []
         if map.get('Elements') is not None:
             for k in map.get('Elements'):
