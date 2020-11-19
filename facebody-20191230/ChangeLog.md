@@ -1,3 +1,6 @@
+2020-11-19 Version: 1.0.11
+- Update GenerateHumanAnimeStyle.
+
 2020-11-19 Version: 1.0.8
 - Update GenerateHumanAnimeStyle.
 
