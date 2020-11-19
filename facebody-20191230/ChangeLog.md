@@ -1,6 +1,9 @@
 2020-11-19 Version: 1.0.8
 - Update GenerateHumanAnimeStyle.
 
+2020-11-19 Version: 1.0.8
+- Update GenerateHumanAnimeStyle.
+
 2020-11-13 Version: 1.0.10
 - Release GenerateHumanAnimeStyle CountCrowd.
 
