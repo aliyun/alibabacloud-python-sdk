@@ -1,20 +1,24 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
+try:
+    from typing import List, Dict, Any
+except ImportError:
+    pass
 
 
 class AddVmAppToMeshRequest(TeaModel):
     def __init__(self, service_mesh_id=None, namespace=None, service_name=None, ips=None, ports=None, labels=None,
                  annotations=None, service_account=None, force=None):
-        self.service_mesh_id = service_mesh_id
-        self.namespace = namespace
-        self.service_name = service_name
-        self.ips = ips
-        self.ports = ports
-        self.labels = labels
-        self.annotations = annotations
-        self.service_account = service_account
-        self.force = force
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.namespace = namespace      # type: str
+        self.service_name = service_name  # type: str
+        self.ips = ips                  # type: str
+        self.ports = ports              # type: str
+        self.labels = labels            # type: str
+        self.annotations = annotations  # type: str
+        self.service_account = service_account  # type: str
+        self.force = force              # type: bool
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -52,8 +56,8 @@ class AddVmAppToMeshRequest(TeaModel):
 
 class AddVmAppToMeshResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data
+        self.request_id = request_id    # type: str
+        self.data = data                # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -73,7 +77,7 @@ class AddVmAppToMeshResponse(TeaModel):
 
 class GetVmAppMeshInfoRequest(TeaModel):
     def __init__(self, service_mesh_id=None):
-        self.service_mesh_id = service_mesh_id
+        self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -90,8 +94,8 @@ class GetVmAppMeshInfoRequest(TeaModel):
 
 class GetVmAppMeshInfoResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data
+        self.request_id = request_id    # type: str
+        self.data = data                # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -111,13 +115,15 @@ class GetVmAppMeshInfoResponse(TeaModel):
 
 class GetVmMetaRequest(TeaModel):
     def __init__(self, service_mesh_id=None, trust_domain=None, namespace=None, service_account=None):
-        self.service_mesh_id = service_mesh_id
-        self.trust_domain = trust_domain
-        self.namespace = namespace
-        self.service_account = service_account
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.trust_domain = trust_domain  # type: str
+        self.namespace = namespace      # type: str
+        self.service_account = service_account  # type: str
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
+        self.validate_required(self.namespace, 'namespace')
+        self.validate_required(self.service_account, 'service_account')
 
     def to_map(self):
         result = {}
@@ -137,7 +143,7 @@ class GetVmMetaRequest(TeaModel):
 
 class GetVmMetaResponse(TeaModel):
     def __init__(self, request_id=None, vm_meta_info=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.vm_meta_info = vm_meta_info  # type: GetVmMetaResponseVmMetaInfo
 
     def validate(self):
@@ -168,17 +174,19 @@ class GetVmMetaResponse(TeaModel):
 class GetVmMetaResponseVmMetaInfo(TeaModel):
     def __init__(self, root_cert_path=None, root_cert_content=None, key_path=None, key_content=None,
                  cert_chain_path=None, cert_chain_content=None, envoy_env_path=None, envoy_env_content=None, hosts_path=None,
-                 hosts_content=None):
-        self.root_cert_path = root_cert_path
-        self.root_cert_content = root_cert_content
-        self.key_path = key_path
-        self.key_content = key_content
-        self.cert_chain_path = cert_chain_path
-        self.cert_chain_content = cert_chain_content
-        self.envoy_env_path = envoy_env_path
-        self.envoy_env_content = envoy_env_content
-        self.hosts_path = hosts_path
-        self.hosts_content = hosts_content
+                 hosts_content=None, token_path=None, token_content=None):
+        self.root_cert_path = root_cert_path  # type: str
+        self.root_cert_content = root_cert_content  # type: str
+        self.key_path = key_path        # type: str
+        self.key_content = key_content  # type: str
+        self.cert_chain_path = cert_chain_path  # type: str
+        self.cert_chain_content = cert_chain_content  # type: str
+        self.envoy_env_path = envoy_env_path  # type: str
+        self.envoy_env_content = envoy_env_content  # type: str
+        self.hosts_path = hosts_path    # type: str
+        self.hosts_content = hosts_content  # type: str
+        self.token_path = token_path    # type: str
+        self.token_content = token_content  # type: str
 
     def validate(self):
         self.validate_required(self.root_cert_path, 'root_cert_path')
@@ -191,6 +199,8 @@ class GetVmMetaResponseVmMetaInfo(TeaModel):
         self.validate_required(self.envoy_env_content, 'envoy_env_content')
         self.validate_required(self.hosts_path, 'hosts_path')
         self.validate_required(self.hosts_content, 'hosts_content')
+        self.validate_required(self.token_path, 'token_path')
+        self.validate_required(self.token_content, 'token_content')
 
     def to_map(self):
         result = {}
@@ -204,6 +214,8 @@ class GetVmMetaResponseVmMetaInfo(TeaModel):
         result['EnvoyEnvContent'] = self.envoy_env_content
         result['HostsPath'] = self.hosts_path
         result['HostsContent'] = self.hosts_content
+        result['TokenPath'] = self.token_path
+        result['TokenContent'] = self.token_content
         return result
 
     def from_map(self, map={}):
@@ -217,14 +229,16 @@ class GetVmMetaResponseVmMetaInfo(TeaModel):
         self.envoy_env_content = map.get('EnvoyEnvContent')
         self.hosts_path = map.get('HostsPath')
         self.hosts_content = map.get('HostsContent')
+        self.token_path = map.get('TokenPath')
+        self.token_content = map.get('TokenContent')
         return self
 
 
 class RemoveVmAppFromMeshRequest(TeaModel):
     def __init__(self, service_mesh_id=None, namespace=None, service_name=None):
-        self.service_mesh_id = service_mesh_id
-        self.namespace = namespace
-        self.service_name = service_name
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.namespace = namespace      # type: str
+        self.service_name = service_name  # type: str
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -247,8 +261,8 @@ class RemoveVmAppFromMeshRequest(TeaModel):
 
 class RemoveVmAppFromMeshResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data
+        self.request_id = request_id    # type: str
+        self.data = data                # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -268,9 +282,9 @@ class RemoveVmAppFromMeshResponse(TeaModel):
 
 class GetRegisteredServiceEndpointsRequest(TeaModel):
     def __init__(self, service_mesh_id=None, namespace=None, name=None):
-        self.service_mesh_id = service_mesh_id
-        self.namespace = namespace
-        self.name = name
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.namespace = namespace      # type: str
+        self.name = name                # type: str
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -293,8 +307,8 @@ class GetRegisteredServiceEndpointsRequest(TeaModel):
 
 class GetRegisteredServiceEndpointsResponse(TeaModel):
     def __init__(self, request_id=None, service_endpoints=None):
-        self.request_id = request_id
-        self.service_endpoints = service_endpoints
+        self.request_id = request_id    # type: str
+        self.service_endpoints = service_endpoints  # type: List[GetRegisteredServiceEndpointsResponseServiceEndpoints]
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -329,8 +343,8 @@ class GetRegisteredServiceEndpointsResponse(TeaModel):
 
 class GetRegisteredServiceEndpointsResponseServiceEndpoints(TeaModel):
     def __init__(self, address=None, cluster_id=None):
-        self.address = address
-        self.cluster_id = cluster_id
+        self.address = address          # type: str
+        self.cluster_id = cluster_id    # type: str
 
     def validate(self):
         self.validate_required(self.address, 'address')
@@ -350,7 +364,7 @@ class GetRegisteredServiceEndpointsResponseServiceEndpoints(TeaModel):
 
 class GetServiceMeshSlbRequest(TeaModel):
     def __init__(self, service_mesh_id=None):
-        self.service_mesh_id = service_mesh_id
+        self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -367,8 +381,8 @@ class GetServiceMeshSlbRequest(TeaModel):
 
 class GetServiceMeshSlbResponse(TeaModel):
     def __init__(self, request_id=None, data=None):
-        self.request_id = request_id
-        self.data = data
+        self.request_id = request_id    # type: str
+        self.data = data                # type: List[GetServiceMeshSlbResponseData]
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -403,9 +417,9 @@ class GetServiceMeshSlbResponse(TeaModel):
 
 class GetServiceMeshSlbResponseData(TeaModel):
     def __init__(self, load_balancer_id=None, status=None, server_health_status=None):
-        self.load_balancer_id = load_balancer_id
-        self.status = status
-        self.server_health_status = server_health_status
+        self.load_balancer_id = load_balancer_id  # type: str
+        self.status = status            # type: str
+        self.server_health_status = server_health_status  # type: str
 
     def validate(self):
         self.validate_required(self.load_balancer_id, 'load_balancer_id')
@@ -428,8 +442,8 @@ class GetServiceMeshSlbResponseData(TeaModel):
 
 class GetRegisteredServicesRequest(TeaModel):
     def __init__(self, service_mesh_id=None, namespace=None):
-        self.service_mesh_id = service_mesh_id
-        self.namespace = namespace
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.namespace = namespace      # type: str
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -449,8 +463,8 @@ class GetRegisteredServicesRequest(TeaModel):
 
 class GetRegisteredServicesResponse(TeaModel):
     def __init__(self, request_id=None, services=None):
-        self.request_id = request_id
-        self.services = services
+        self.request_id = request_id    # type: str
+        self.services = services        # type: List[str]
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -470,7 +484,7 @@ class GetRegisteredServicesResponse(TeaModel):
 
 class GetDiagnosisRequest(TeaModel):
     def __init__(self, service_mesh_id=None):
-        self.service_mesh_id = service_mesh_id
+        self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -486,29 +500,33 @@ class GetDiagnosisRequest(TeaModel):
 
 
 class GetDiagnosisResponse(TeaModel):
-    def __init__(self, request_id=None, result=None):
-        self.request_id = request_id
-        self.result = result
+    def __init__(self, request_id=None, result=None, run_at=None):
+        self.request_id = request_id    # type: str
+        self.result = result            # type: str
+        self.run_at = run_at            # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
         self.validate_required(self.result, 'result')
+        self.validate_required(self.run_at, 'run_at')
 
     def to_map(self):
         result = {}
         result['RequestId'] = self.request_id
         result['Result'] = self.result
+        result['RunAt'] = self.run_at
         return result
 
     def from_map(self, map={}):
         self.request_id = map.get('RequestId')
         self.result = map.get('Result')
+        self.run_at = map.get('RunAt')
         return self
 
 
 class GetRegisteredServiceNamespacesRequest(TeaModel):
     def __init__(self, service_mesh_id=None):
-        self.service_mesh_id = service_mesh_id
+        self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -525,8 +543,8 @@ class GetRegisteredServiceNamespacesRequest(TeaModel):
 
 class GetRegisteredServiceNamespacesResponse(TeaModel):
     def __init__(self, request_id=None, namespaces=None):
-        self.request_id = request_id
-        self.namespaces = namespaces
+        self.request_id = request_id    # type: str
+        self.namespaces = namespaces    # type: List[str]
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -546,7 +564,7 @@ class GetRegisteredServiceNamespacesResponse(TeaModel):
 
 class RunDiagnosisRequest(TeaModel):
     def __init__(self, service_mesh_id=None):
-        self.service_mesh_id = service_mesh_id
+        self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -563,8 +581,8 @@ class RunDiagnosisRequest(TeaModel):
 
 class RunDiagnosisResponse(TeaModel):
     def __init__(self, request_id=None, result=None):
-        self.request_id = request_id
-        self.result = result
+        self.request_id = request_id    # type: str
+        self.result = result            # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -584,8 +602,8 @@ class RunDiagnosisResponse(TeaModel):
 
 class RemoveClusterFromServiceMeshRequest(TeaModel):
     def __init__(self, service_mesh_id=None, cluster_id=None):
-        self.service_mesh_id = service_mesh_id
-        self.cluster_id = cluster_id
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.cluster_id = cluster_id    # type: str
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -605,9 +623,9 @@ class RemoveClusterFromServiceMeshRequest(TeaModel):
 
 class RemoveClusterFromServiceMeshResponse(TeaModel):
     def __init__(self, request_id=None, code=None, message=None):
-        self.request_id = request_id
-        self.code = code
-        self.message = message
+        self.request_id = request_id    # type: str
+        self.code = code                # type: str
+        self.message = message          # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -630,8 +648,8 @@ class RemoveClusterFromServiceMeshResponse(TeaModel):
 
 class AddClusterIntoServiceMeshRequest(TeaModel):
     def __init__(self, service_mesh_id=None, cluster_id=None):
-        self.service_mesh_id = service_mesh_id
-        self.cluster_id = cluster_id
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.cluster_id = cluster_id    # type: str
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -651,9 +669,9 @@ class AddClusterIntoServiceMeshRequest(TeaModel):
 
 class AddClusterIntoServiceMeshResponse(TeaModel):
     def __init__(self, request_id=None, code=None, message=None):
-        self.request_id = request_id
-        self.code = code
-        self.message = message
+        self.request_id = request_id    # type: str
+        self.code = code                # type: str
+        self.message = message          # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -676,9 +694,9 @@ class AddClusterIntoServiceMeshResponse(TeaModel):
 
 class UpdateIstioInjectionConfigRequest(TeaModel):
     def __init__(self, service_mesh_id=None, namespace=None, enable_istio_injection=None):
-        self.service_mesh_id = service_mesh_id
-        self.namespace = namespace
-        self.enable_istio_injection = enable_istio_injection
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.namespace = namespace      # type: str
+        self.enable_istio_injection = enable_istio_injection  # type: bool
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -701,7 +719,7 @@ class UpdateIstioInjectionConfigRequest(TeaModel):
 
 class UpdateIstioInjectionConfigResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -718,7 +736,7 @@ class UpdateIstioInjectionConfigResponse(TeaModel):
 
 class DescribeGuestClusterAccessLogDashboardsRequest(TeaModel):
     def __init__(self, k_8s_cluster_id=None):
-        self.k_8s_cluster_id = k_8s_cluster_id
+        self.k_8s_cluster_id = k_8s_cluster_id  # type: str
 
     def validate(self):
         self.validate_required(self.k_8s_cluster_id, 'k_8s_cluster_id')
@@ -735,9 +753,9 @@ class DescribeGuestClusterAccessLogDashboardsRequest(TeaModel):
 
 class DescribeGuestClusterAccessLogDashboardsResponse(TeaModel):
     def __init__(self, request_id=None, k_8s_cluster_id=None, dashboards=None):
-        self.request_id = request_id
-        self.k_8s_cluster_id = k_8s_cluster_id
-        self.dashboards = dashboards
+        self.request_id = request_id    # type: str
+        self.k_8s_cluster_id = k_8s_cluster_id  # type: str
+        self.dashboards = dashboards    # type: List[DescribeGuestClusterAccessLogDashboardsResponseDashboards]
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -775,8 +793,8 @@ class DescribeGuestClusterAccessLogDashboardsResponse(TeaModel):
 
 class DescribeGuestClusterAccessLogDashboardsResponseDashboards(TeaModel):
     def __init__(self, title=None, url=None):
-        self.title = title
-        self.url = url
+        self.title = title              # type: str
+        self.url = url                  # type: str
 
     def validate(self):
         self.validate_required(self.title, 'title')
@@ -796,9 +814,9 @@ class DescribeGuestClusterAccessLogDashboardsResponseDashboards(TeaModel):
 
 class DescribeClusterPrometheusRequest(TeaModel):
     def __init__(self, service_mesh_id=None, k_8s_cluster_id=None, k_8s_cluster_region_id=None):
-        self.service_mesh_id = service_mesh_id
-        self.k_8s_cluster_id = k_8s_cluster_id
-        self.k_8s_cluster_region_id = k_8s_cluster_region_id
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.k_8s_cluster_id = k_8s_cluster_id  # type: str
+        self.k_8s_cluster_region_id = k_8s_cluster_region_id  # type: str
 
     def validate(self):
         pass
@@ -819,8 +837,8 @@ class DescribeClusterPrometheusRequest(TeaModel):
 
 class DescribeClusterPrometheusResponse(TeaModel):
     def __init__(self, request_id=None, prometheus=None):
-        self.request_id = request_id
-        self.prometheus = prometheus
+        self.request_id = request_id    # type: str
+        self.prometheus = prometheus    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -840,8 +858,8 @@ class DescribeClusterPrometheusResponse(TeaModel):
 
 class DescribeClusterGrafanaRequest(TeaModel):
     def __init__(self, service_mesh_id=None, k_8s_cluster_id=None):
-        self.service_mesh_id = service_mesh_id
-        self.k_8s_cluster_id = k_8s_cluster_id
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.k_8s_cluster_id = k_8s_cluster_id  # type: str
 
     def validate(self):
         pass
@@ -860,8 +878,8 @@ class DescribeClusterGrafanaRequest(TeaModel):
 
 class DescribeClusterGrafanaResponse(TeaModel):
     def __init__(self, request_id=None, dashboards=None):
-        self.request_id = request_id
-        self.dashboards = dashboards
+        self.request_id = request_id    # type: str
+        self.dashboards = dashboards    # type: List[DescribeClusterGrafanaResponseDashboards]
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -896,8 +914,8 @@ class DescribeClusterGrafanaResponse(TeaModel):
 
 class DescribeClusterGrafanaResponseDashboards(TeaModel):
     def __init__(self, url=None, title=None):
-        self.url = url
-        self.title = title
+        self.url = url                  # type: str
+        self.title = title              # type: str
 
     def validate(self):
         self.validate_required(self.url, 'url')
@@ -917,7 +935,7 @@ class DescribeClusterGrafanaResponseDashboards(TeaModel):
 
 class DescribeRegionsRequest(TeaModel):
     def __init__(self, accept_language=None):
-        self.accept_language = accept_language
+        self.accept_language = accept_language  # type: str
 
     def validate(self):
         pass
@@ -934,8 +952,8 @@ class DescribeRegionsRequest(TeaModel):
 
 class DescribeRegionsResponse(TeaModel):
     def __init__(self, request_id=None, business_locations=None):
-        self.request_id = request_id
-        self.business_locations = business_locations
+        self.request_id = request_id    # type: str
+        self.business_locations = business_locations  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -955,7 +973,7 @@ class DescribeRegionsResponse(TeaModel):
 
 class DescribeCensRequest(TeaModel):
     def __init__(self, service_mesh_id=None):
-        self.service_mesh_id = service_mesh_id
+        self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
         pass
@@ -972,8 +990,8 @@ class DescribeCensRequest(TeaModel):
 
 class DescribeCensResponse(TeaModel):
     def __init__(self, request_id=None, clusters=None):
-        self.request_id = request_id
-        self.clusters = clusters
+        self.request_id = request_id    # type: str
+        self.clusters = clusters        # type: List[str]
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -993,7 +1011,7 @@ class DescribeCensResponse(TeaModel):
 
 class DescribeClustersInServiceMeshRequest(TeaModel):
     def __init__(self, service_mesh_id=None):
-        self.service_mesh_id = service_mesh_id
+        self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
         pass
@@ -1010,8 +1028,8 @@ class DescribeClustersInServiceMeshRequest(TeaModel):
 
 class DescribeClustersInServiceMeshResponse(TeaModel):
     def __init__(self, request_id=None, clusters=None):
-        self.request_id = request_id
-        self.clusters = clusters
+        self.request_id = request_id    # type: str
+        self.clusters = clusters        # type: List[DescribeClustersInServiceMeshResponseClusters]
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1047,18 +1065,18 @@ class DescribeClustersInServiceMeshResponse(TeaModel):
 class DescribeClustersInServiceMeshResponseClusters(TeaModel):
     def __init__(self, cluster_id=None, cluster_type=None, creation_time=None, error_message=None, name=None,
                  region_id=None, state=None, update_time=None, version=None, vpc_id=None, sg_id=None, cluster_domain=None):
-        self.cluster_id = cluster_id
-        self.cluster_type = cluster_type
-        self.creation_time = creation_time
-        self.error_message = error_message
-        self.name = name
-        self.region_id = region_id
-        self.state = state
-        self.update_time = update_time
-        self.version = version
-        self.vpc_id = vpc_id
-        self.sg_id = sg_id
-        self.cluster_domain = cluster_domain
+        self.cluster_id = cluster_id    # type: str
+        self.cluster_type = cluster_type  # type: str
+        self.creation_time = creation_time  # type: str
+        self.error_message = error_message  # type: str
+        self.name = name                # type: str
+        self.region_id = region_id      # type: str
+        self.state = state              # type: str
+        self.update_time = update_time  # type: str
+        self.version = version          # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.sg_id = sg_id              # type: str
+        self.cluster_domain = cluster_domain  # type: str
 
     def validate(self):
         self.validate_required(self.cluster_id, 'cluster_id')
@@ -1108,7 +1126,7 @@ class DescribeClustersInServiceMeshResponseClusters(TeaModel):
 
 class DescribeIngressGatewaysRequest(TeaModel):
     def __init__(self, service_mesh_id=None):
-        self.service_mesh_id = service_mesh_id
+        self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
         pass
@@ -1125,8 +1143,8 @@ class DescribeIngressGatewaysRequest(TeaModel):
 
 class DescribeIngressGatewaysResponse(TeaModel):
     def __init__(self, request_id=None, ingress_gateways=None):
-        self.request_id = request_id
-        self.ingress_gateways = ingress_gateways
+        self.request_id = request_id    # type: str
+        self.ingress_gateways = ingress_gateways  # type: List[Dict[str, Any]]
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1146,7 +1164,7 @@ class DescribeIngressGatewaysResponse(TeaModel):
 
 class DescribeUpgradeVersionRequest(TeaModel):
     def __init__(self, service_mesh_id=None):
-        self.service_mesh_id = service_mesh_id
+        self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
         pass
@@ -1163,8 +1181,8 @@ class DescribeUpgradeVersionRequest(TeaModel):
 
 class DescribeUpgradeVersionResponse(TeaModel):
     def __init__(self, request_id=None, version=None):
-        self.request_id = request_id
-        self.version = version  # type: DescribeUpgradeVersionResponseVersion
+        self.request_id = request_id    # type: str
+        self.version = version          # type: DescribeUpgradeVersionResponseVersion
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1193,9 +1211,9 @@ class DescribeUpgradeVersionResponse(TeaModel):
 
 class DescribeUpgradeVersionResponseVersion(TeaModel):
     def __init__(self, istio_version=None, istio_operator_version=None, kubernetes_version=None):
-        self.istio_version = istio_version
-        self.istio_operator_version = istio_operator_version
-        self.kubernetes_version = kubernetes_version
+        self.istio_version = istio_version  # type: str
+        self.istio_operator_version = istio_operator_version  # type: str
+        self.kubernetes_version = kubernetes_version  # type: str
 
     def validate(self):
         self.validate_required(self.istio_version, 'istio_version')
@@ -1221,28 +1239,37 @@ class UpdateMeshFeatureRequest(TeaModel):
                  telemetry=None, open_agent_policy=None, opalog_level=None, oparequest_cpu=None, oparequest_memory=None,
                  opalimit_cpu=None, opalimit_memory=None, enable_audit=None, audit_project=None, cluster_domain=None,
                  customized_zipkin=None, outbound_traffic_policy=None, proxy_request_cpu=None, proxy_request_memory=None,
-                 proxy_limit_cpu=None, proxy_limit_memory=None, include_ipranges=None):
-        self.service_mesh_id = service_mesh_id
-        self.tracing = tracing
-        self.trace_sampling = trace_sampling
-        self.locality_load_balancing = locality_load_balancing
-        self.telemetry = telemetry
-        self.open_agent_policy = open_agent_policy
-        self.opalog_level = opalog_level
-        self.oparequest_cpu = oparequest_cpu
-        self.oparequest_memory = oparequest_memory
-        self.opalimit_cpu = opalimit_cpu
-        self.opalimit_memory = opalimit_memory
-        self.enable_audit = enable_audit
-        self.audit_project = audit_project
-        self.cluster_domain = cluster_domain
-        self.customized_zipkin = customized_zipkin
-        self.outbound_traffic_policy = outbound_traffic_policy
-        self.proxy_request_cpu = proxy_request_cpu
-        self.proxy_request_memory = proxy_request_memory
-        self.proxy_limit_cpu = proxy_limit_cpu
-        self.proxy_limit_memory = proxy_limit_memory
-        self.include_ipranges = include_ipranges
+                 proxy_limit_cpu=None, proxy_limit_memory=None, include_ipranges=None, enable_namespaces_by_default=None,
+                 auto_injection_policy_enabled=None, sidecar_injector_request_cpu=None, sidecar_injector_request_memory=None,
+                 sidecar_injector_limit_cpu=None, sidecar_injector_limit_memory=None, sidecar_injector_webhook_as_yaml=None):
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.tracing = tracing          # type: bool
+        self.trace_sampling = trace_sampling  # type: float
+        self.locality_load_balancing = locality_load_balancing  # type: bool
+        self.telemetry = telemetry      # type: bool
+        self.open_agent_policy = open_agent_policy  # type: bool
+        self.opalog_level = opalog_level  # type: str
+        self.oparequest_cpu = oparequest_cpu  # type: str
+        self.oparequest_memory = oparequest_memory  # type: str
+        self.opalimit_cpu = opalimit_cpu  # type: str
+        self.opalimit_memory = opalimit_memory  # type: str
+        self.enable_audit = enable_audit  # type: bool
+        self.audit_project = audit_project  # type: str
+        self.cluster_domain = cluster_domain  # type: str
+        self.customized_zipkin = customized_zipkin  # type: bool
+        self.outbound_traffic_policy = outbound_traffic_policy  # type: str
+        self.proxy_request_cpu = proxy_request_cpu  # type: str
+        self.proxy_request_memory = proxy_request_memory  # type: str
+        self.proxy_limit_cpu = proxy_limit_cpu  # type: str
+        self.proxy_limit_memory = proxy_limit_memory  # type: str
+        self.include_ipranges = include_ipranges  # type: str
+        self.enable_namespaces_by_default = enable_namespaces_by_default  # type: bool
+        self.auto_injection_policy_enabled = auto_injection_policy_enabled  # type: bool
+        self.sidecar_injector_request_cpu = sidecar_injector_request_cpu  # type: str
+        self.sidecar_injector_request_memory = sidecar_injector_request_memory  # type: str
+        self.sidecar_injector_limit_cpu = sidecar_injector_limit_cpu  # type: str
+        self.sidecar_injector_limit_memory = sidecar_injector_limit_memory  # type: str
+        self.sidecar_injector_webhook_as_yaml = sidecar_injector_webhook_as_yaml  # type: str
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -1270,6 +1297,13 @@ class UpdateMeshFeatureRequest(TeaModel):
         result['ProxyLimitCPU'] = self.proxy_limit_cpu
         result['ProxyLimitMemory'] = self.proxy_limit_memory
         result['IncludeIPRanges'] = self.include_ipranges
+        result['EnableNamespacesByDefault'] = self.enable_namespaces_by_default
+        result['AutoInjectionPolicyEnabled'] = self.auto_injection_policy_enabled
+        result['SidecarInjectorRequestCPU'] = self.sidecar_injector_request_cpu
+        result['SidecarInjectorRequestMemory'] = self.sidecar_injector_request_memory
+        result['SidecarInjectorLimitCPU'] = self.sidecar_injector_limit_cpu
+        result['SidecarInjectorLimitMemory'] = self.sidecar_injector_limit_memory
+        result['SidecarInjectorWebhookAsYaml'] = self.sidecar_injector_webhook_as_yaml
         return result
 
     def from_map(self, map={}):
@@ -1294,12 +1328,19 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.proxy_limit_cpu = map.get('ProxyLimitCPU')
         self.proxy_limit_memory = map.get('ProxyLimitMemory')
         self.include_ipranges = map.get('IncludeIPRanges')
+        self.enable_namespaces_by_default = map.get('EnableNamespacesByDefault')
+        self.auto_injection_policy_enabled = map.get('AutoInjectionPolicyEnabled')
+        self.sidecar_injector_request_cpu = map.get('SidecarInjectorRequestCPU')
+        self.sidecar_injector_request_memory = map.get('SidecarInjectorRequestMemory')
+        self.sidecar_injector_limit_cpu = map.get('SidecarInjectorLimitCPU')
+        self.sidecar_injector_limit_memory = map.get('SidecarInjectorLimitMemory')
+        self.sidecar_injector_webhook_as_yaml = map.get('SidecarInjectorWebhookAsYaml')
         return self
 
 
 class UpdateMeshFeatureResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1316,7 +1357,7 @@ class UpdateMeshFeatureResponse(TeaModel):
 
 class UpgradeMeshVersionRequest(TeaModel):
     def __init__(self, service_mesh_id=None):
-        self.service_mesh_id = service_mesh_id
+        self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
         pass
@@ -1333,7 +1374,7 @@ class UpgradeMeshVersionRequest(TeaModel):
 
 class UpgradeMeshVersionResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1365,8 +1406,8 @@ class DescribeServiceMeshesRequest(TeaModel):
 
 class DescribeServiceMeshesResponse(TeaModel):
     def __init__(self, request_id=None, service_meshes=None):
-        self.request_id = request_id
-        self.service_meshes = service_meshes
+        self.request_id = request_id    # type: str
+        self.service_meshes = service_meshes  # type: List[DescribeServiceMeshesResponseServiceMeshes]
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1402,11 +1443,11 @@ class DescribeServiceMeshesResponse(TeaModel):
 class DescribeServiceMeshesResponseServiceMeshesEndpoints(TeaModel):
     def __init__(self, intranet_api_server_endpoint=None, intranet_pilot_endpoint=None,
                  public_api_server_endpoint=None, public_pilot_endpoint=None, reverse_tunnel_endpoint=None):
-        self.intranet_api_server_endpoint = intranet_api_server_endpoint
-        self.intranet_pilot_endpoint = intranet_pilot_endpoint
-        self.public_api_server_endpoint = public_api_server_endpoint
-        self.public_pilot_endpoint = public_pilot_endpoint
-        self.reverse_tunnel_endpoint = reverse_tunnel_endpoint
+        self.intranet_api_server_endpoint = intranet_api_server_endpoint  # type: str
+        self.intranet_pilot_endpoint = intranet_pilot_endpoint  # type: str
+        self.public_api_server_endpoint = public_api_server_endpoint  # type: str
+        self.public_pilot_endpoint = public_pilot_endpoint  # type: str
+        self.reverse_tunnel_endpoint = reverse_tunnel_endpoint  # type: str
 
     def validate(self):
         self.validate_required(self.intranet_api_server_endpoint, 'intranet_api_server_endpoint')
@@ -1436,14 +1477,14 @@ class DescribeServiceMeshesResponseServiceMeshesEndpoints(TeaModel):
 class DescribeServiceMeshesResponseServiceMeshesServiceMeshInfo(TeaModel):
     def __init__(self, creation_time=None, error_message=None, name=None, region_id=None, service_mesh_id=None,
                  state=None, update_time=None, version=None):
-        self.creation_time = creation_time
-        self.error_message = error_message
-        self.name = name
-        self.region_id = region_id
-        self.service_mesh_id = service_mesh_id
-        self.state = state
-        self.update_time = update_time
-        self.version = version
+        self.creation_time = creation_time  # type: str
+        self.error_message = error_message  # type: str
+        self.name = name                # type: str
+        self.region_id = region_id      # type: str
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.state = state              # type: str
+        self.update_time = update_time  # type: str
+        self.version = version          # type: str
 
     def validate(self):
         self.validate_required(self.creation_time, 'creation_time')
@@ -1482,10 +1523,10 @@ class DescribeServiceMeshesResponseServiceMeshesServiceMeshInfo(TeaModel):
 class DescribeServiceMeshesResponseServiceMeshesSpecLoadBalancer(TeaModel):
     def __init__(self, api_server_loadbalancer_id=None, api_server_public_eip=None, pilot_public_eip=None,
                  pilot_public_loadbalancer_id=None):
-        self.api_server_loadbalancer_id = api_server_loadbalancer_id
-        self.api_server_public_eip = api_server_public_eip
-        self.pilot_public_eip = pilot_public_eip
-        self.pilot_public_loadbalancer_id = pilot_public_loadbalancer_id
+        self.api_server_loadbalancer_id = api_server_loadbalancer_id  # type: str
+        self.api_server_public_eip = api_server_public_eip  # type: bool
+        self.pilot_public_eip = pilot_public_eip  # type: bool
+        self.pilot_public_loadbalancer_id = pilot_public_loadbalancer_id  # type: str
 
     def validate(self):
         self.validate_required(self.api_server_loadbalancer_id, 'api_server_loadbalancer_id')
@@ -1511,11 +1552,11 @@ class DescribeServiceMeshesResponseServiceMeshesSpecLoadBalancer(TeaModel):
 
 class DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig(TeaModel):
     def __init__(self, mtls=None, outbound_traffic_policy=None, strict_mtls=None, tracing=None, telemetry=None):
-        self.mtls = mtls
-        self.outbound_traffic_policy = outbound_traffic_policy
-        self.strict_mtls = strict_mtls
-        self.tracing = tracing
-        self.telemetry = telemetry
+        self.mtls = mtls                # type: bool
+        self.outbound_traffic_policy = outbound_traffic_policy  # type: str
+        self.strict_mtls = strict_mtls  # type: bool
+        self.tracing = tracing          # type: bool
+        self.telemetry = telemetry      # type: bool
 
     def validate(self):
         self.validate_required(self.mtls, 'mtls')
@@ -1544,9 +1585,9 @@ class DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig(TeaModel):
 
 class DescribeServiceMeshesResponseServiceMeshesSpecNetwork(TeaModel):
     def __init__(self, security_group_id=None, vpc_id=None, v_switches=None):
-        self.security_group_id = security_group_id
-        self.vpc_id = vpc_id
-        self.v_switches = v_switches
+        self.security_group_id = security_group_id  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.v_switches = v_switches    # type: List[str]
 
     def validate(self):
         self.validate_required(self.security_group_id, 'security_group_id')
@@ -1571,7 +1612,7 @@ class DescribeServiceMeshesResponseServiceMeshesSpec(TeaModel):
     def __init__(self, load_balancer=None, mesh_config=None, network=None):
         self.load_balancer = load_balancer  # type: DescribeServiceMeshesResponseServiceMeshesSpecLoadBalancer
         self.mesh_config = mesh_config  # type: DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig
-        self.network = network  # type: DescribeServiceMeshesResponseServiceMeshesSpecNetwork
+        self.network = network          # type: DescribeServiceMeshesResponseServiceMeshesSpecNetwork
 
     def validate(self):
         self.validate_required(self.load_balancer, 'load_balancer')
@@ -1621,10 +1662,10 @@ class DescribeServiceMeshesResponseServiceMeshesSpec(TeaModel):
 
 class DescribeServiceMeshesResponseServiceMeshes(TeaModel):
     def __init__(self, endpoints=None, service_mesh_info=None, spec=None, clusters=None):
-        self.endpoints = endpoints  # type: DescribeServiceMeshesResponseServiceMeshesEndpoints
+        self.endpoints = endpoints      # type: DescribeServiceMeshesResponseServiceMeshesEndpoints
         self.service_mesh_info = service_mesh_info  # type: DescribeServiceMeshesResponseServiceMeshesServiceMeshInfo
-        self.spec = spec  # type: DescribeServiceMeshesResponseServiceMeshesSpec
-        self.clusters = clusters
+        self.spec = spec                # type: DescribeServiceMeshesResponseServiceMeshesSpec
+        self.clusters = clusters        # type: List[str]
 
     def validate(self):
         self.validate_required(self.endpoints, 'endpoints')
@@ -1677,7 +1718,7 @@ class DescribeServiceMeshesResponseServiceMeshes(TeaModel):
 
 class DescribeServiceMeshDetailRequest(TeaModel):
     def __init__(self, service_mesh_id=None):
-        self.service_mesh_id = service_mesh_id
+        self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -1694,7 +1735,7 @@ class DescribeServiceMeshDetailRequest(TeaModel):
 
 class DescribeServiceMeshDetailResponse(TeaModel):
     def __init__(self, request_id=None, service_mesh=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
         self.service_mesh = service_mesh  # type: DescribeServiceMeshDetailResponseServiceMesh
 
     def validate(self):
@@ -1725,10 +1766,10 @@ class DescribeServiceMeshDetailResponse(TeaModel):
 class DescribeServiceMeshDetailResponseServiceMeshEndpoints(TeaModel):
     def __init__(self, intranet_api_server_endpoint=None, intranet_pilot_endpoint=None,
                  public_api_server_endpoint=None, public_pilot_endpoint=None):
-        self.intranet_api_server_endpoint = intranet_api_server_endpoint
-        self.intranet_pilot_endpoint = intranet_pilot_endpoint
-        self.public_api_server_endpoint = public_api_server_endpoint
-        self.public_pilot_endpoint = public_pilot_endpoint
+        self.intranet_api_server_endpoint = intranet_api_server_endpoint  # type: str
+        self.intranet_pilot_endpoint = intranet_pilot_endpoint  # type: str
+        self.public_api_server_endpoint = public_api_server_endpoint  # type: str
+        self.public_pilot_endpoint = public_pilot_endpoint  # type: str
 
     def validate(self):
         self.validate_required(self.intranet_api_server_endpoint, 'intranet_api_server_endpoint')
@@ -1755,14 +1796,14 @@ class DescribeServiceMeshDetailResponseServiceMeshEndpoints(TeaModel):
 class DescribeServiceMeshDetailResponseServiceMeshServiceMeshInfo(TeaModel):
     def __init__(self, creation_time=None, error_message=None, name=None, region_id=None, service_mesh_id=None,
                  state=None, update_time=None, version=None):
-        self.creation_time = creation_time
-        self.error_message = error_message
-        self.name = name
-        self.region_id = region_id
-        self.service_mesh_id = service_mesh_id
-        self.state = state
-        self.update_time = update_time
-        self.version = version
+        self.creation_time = creation_time  # type: str
+        self.error_message = error_message  # type: str
+        self.name = name                # type: str
+        self.region_id = region_id      # type: str
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.state = state              # type: str
+        self.update_time = update_time  # type: str
+        self.version = version          # type: str
 
     def validate(self):
         self.validate_required(self.creation_time, 'creation_time')
@@ -1801,10 +1842,10 @@ class DescribeServiceMeshDetailResponseServiceMeshServiceMeshInfo(TeaModel):
 class DescribeServiceMeshDetailResponseServiceMeshSpecLoadBalancer(TeaModel):
     def __init__(self, api_server_loadbalancer_id=None, api_server_public_eip=None, pilot_public_eip=None,
                  pilot_public_loadbalancer_id=None):
-        self.api_server_loadbalancer_id = api_server_loadbalancer_id
-        self.api_server_public_eip = api_server_public_eip
-        self.pilot_public_eip = pilot_public_eip
-        self.pilot_public_loadbalancer_id = pilot_public_loadbalancer_id
+        self.api_server_loadbalancer_id = api_server_loadbalancer_id  # type: str
+        self.api_server_public_eip = api_server_public_eip  # type: bool
+        self.pilot_public_eip = pilot_public_eip  # type: bool
+        self.pilot_public_loadbalancer_id = pilot_public_loadbalancer_id  # type: str
 
     def validate(self):
         self.validate_required(self.api_server_loadbalancer_id, 'api_server_loadbalancer_id')
@@ -1830,7 +1871,7 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecLoadBalancer(TeaModel):
 
 class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot(TeaModel):
     def __init__(self, trace_sampling=None):
-        self.trace_sampling = trace_sampling
+        self.trace_sampling = trace_sampling  # type: float
 
     def validate(self):
         self.validate_required(self.trace_sampling, 'trace_sampling')
@@ -1848,12 +1889,12 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot(TeaModel):
 class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigOPA(TeaModel):
     def __init__(self, enabled=None, log_level=None, request_cpu=None, request_memory=None, limit_cpu=None,
                  limit_memory=None):
-        self.enabled = enabled
-        self.log_level = log_level
-        self.request_cpu = request_cpu
-        self.request_memory = request_memory
-        self.limit_cpu = limit_cpu
-        self.limit_memory = limit_memory
+        self.enabled = enabled          # type: bool
+        self.log_level = log_level      # type: str
+        self.request_cpu = request_cpu  # type: str
+        self.request_memory = request_memory  # type: str
+        self.limit_cpu = limit_cpu      # type: str
+        self.limit_memory = limit_memory  # type: str
 
     def validate(self):
         self.validate_required(self.enabled, 'enabled')
@@ -1885,8 +1926,8 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigOPA(TeaModel):
 
 class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigAudit(TeaModel):
     def __init__(self, enabled=None, project=None):
-        self.enabled = enabled
-        self.project = project
+        self.enabled = enabled          # type: bool
+        self.project = project          # type: str
 
     def validate(self):
         self.validate_required(self.enabled, 'enabled')
@@ -1907,11 +1948,11 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigAudit(TeaModel):
 class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigProxy(TeaModel):
     def __init__(self, cluster_domain=None, request_cpu=None, request_memory=None, limit_cpu=None,
                  limit_memory=None):
-        self.cluster_domain = cluster_domain
-        self.request_cpu = request_cpu
-        self.request_memory = request_memory
-        self.limit_cpu = limit_cpu
-        self.limit_memory = limit_memory
+        self.cluster_domain = cluster_domain  # type: str
+        self.request_cpu = request_cpu  # type: str
+        self.request_memory = request_memory  # type: str
+        self.limit_cpu = limit_cpu      # type: str
+        self.limit_memory = limit_memory  # type: str
 
     def validate(self):
         self.validate_required(self.cluster_domain, 'cluster_domain')
@@ -1938,19 +1979,62 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigProxy(TeaModel):
         return self
 
 
+class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector(TeaModel):
+    def __init__(self, enable_namespaces_by_default=None, auto_injection_policy_enabled=None, request_cpu=None,
+                 request_memory=None, limit_cpu=None, limit_memory=None, sidecar_injector_webhook_as_yaml=None):
+        self.enable_namespaces_by_default = enable_namespaces_by_default  # type: bool
+        self.auto_injection_policy_enabled = auto_injection_policy_enabled  # type: bool
+        self.request_cpu = request_cpu  # type: str
+        self.request_memory = request_memory  # type: str
+        self.limit_cpu = limit_cpu      # type: str
+        self.limit_memory = limit_memory  # type: str
+        self.sidecar_injector_webhook_as_yaml = sidecar_injector_webhook_as_yaml  # type: str
+
+    def validate(self):
+        self.validate_required(self.enable_namespaces_by_default, 'enable_namespaces_by_default')
+        self.validate_required(self.auto_injection_policy_enabled, 'auto_injection_policy_enabled')
+        self.validate_required(self.request_cpu, 'request_cpu')
+        self.validate_required(self.request_memory, 'request_memory')
+        self.validate_required(self.limit_cpu, 'limit_cpu')
+        self.validate_required(self.limit_memory, 'limit_memory')
+        self.validate_required(self.sidecar_injector_webhook_as_yaml, 'sidecar_injector_webhook_as_yaml')
+
+    def to_map(self):
+        result = {}
+        result['EnableNamespacesByDefault'] = self.enable_namespaces_by_default
+        result['AutoInjectionPolicyEnabled'] = self.auto_injection_policy_enabled
+        result['RequestCPU'] = self.request_cpu
+        result['RequestMemory'] = self.request_memory
+        result['LimitCPU'] = self.limit_cpu
+        result['LimitMemory'] = self.limit_memory
+        result['SidecarInjectorWebhookAsYaml'] = self.sidecar_injector_webhook_as_yaml
+        return result
+
+    def from_map(self, map={}):
+        self.enable_namespaces_by_default = map.get('EnableNamespacesByDefault')
+        self.auto_injection_policy_enabled = map.get('AutoInjectionPolicyEnabled')
+        self.request_cpu = map.get('RequestCPU')
+        self.request_memory = map.get('RequestMemory')
+        self.limit_cpu = map.get('LimitCPU')
+        self.limit_memory = map.get('LimitMemory')
+        self.sidecar_injector_webhook_as_yaml = map.get('SidecarInjectorWebhookAsYaml')
+        return self
+
+
 class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig(TeaModel):
     def __init__(self, enable_locality_lb=None, telemetry=None, tracing=None, customized_zipkin=None,
-                 outbound_traffic_policy=None, include_ipranges=None, pilot=None, opa=None, audit=None, proxy=None):
-        self.enable_locality_lb = enable_locality_lb
-        self.telemetry = telemetry
-        self.tracing = tracing
-        self.customized_zipkin = customized_zipkin
-        self.outbound_traffic_policy = outbound_traffic_policy
-        self.include_ipranges = include_ipranges
-        self.pilot = pilot  # type: DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot
-        self.opa = opa  # type: DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigOPA
-        self.audit = audit  # type: DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigAudit
-        self.proxy = proxy  # type: DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigProxy
+                 outbound_traffic_policy=None, include_ipranges=None, pilot=None, opa=None, audit=None, proxy=None, sidecar_injector=None):
+        self.enable_locality_lb = enable_locality_lb  # type: bool
+        self.telemetry = telemetry      # type: bool
+        self.tracing = tracing          # type: bool
+        self.customized_zipkin = customized_zipkin  # type: bool
+        self.outbound_traffic_policy = outbound_traffic_policy  # type: str
+        self.include_ipranges = include_ipranges  # type: str
+        self.pilot = pilot              # type: DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot
+        self.opa = opa                  # type: DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigOPA
+        self.audit = audit              # type: DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigAudit
+        self.proxy = proxy              # type: DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigProxy
+        self.sidecar_injector = sidecar_injector  # type: DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector
 
     def validate(self):
         self.validate_required(self.enable_locality_lb, 'enable_locality_lb')
@@ -1971,6 +2055,9 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig(TeaModel):
         self.validate_required(self.proxy, 'proxy')
         if self.proxy:
             self.proxy.validate()
+        self.validate_required(self.sidecar_injector, 'sidecar_injector')
+        if self.sidecar_injector:
+            self.sidecar_injector.validate()
 
     def to_map(self):
         result = {}
@@ -1996,6 +2083,10 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig(TeaModel):
             result['Proxy'] = self.proxy.to_map()
         else:
             result['Proxy'] = None
+        if self.sidecar_injector is not None:
+            result['SidecarInjector'] = self.sidecar_injector.to_map()
+        else:
+            result['SidecarInjector'] = None
         return result
 
     def from_map(self, map={}):
@@ -2025,14 +2116,19 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig(TeaModel):
             self.proxy = temp_model.from_map(map['Proxy'])
         else:
             self.proxy = None
+        if map.get('SidecarInjector') is not None:
+            temp_model = DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector()
+            self.sidecar_injector = temp_model.from_map(map['SidecarInjector'])
+        else:
+            self.sidecar_injector = None
         return self
 
 
 class DescribeServiceMeshDetailResponseServiceMeshSpecNetwork(TeaModel):
     def __init__(self, security_group_id=None, vpc_id=None, v_switches=None):
-        self.security_group_id = security_group_id
-        self.vpc_id = vpc_id
-        self.v_switches = v_switches
+        self.security_group_id = security_group_id  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.v_switches = v_switches    # type: List[str]
 
     def validate(self):
         self.validate_required(self.security_group_id, 'security_group_id')
@@ -2057,7 +2153,7 @@ class DescribeServiceMeshDetailResponseServiceMeshSpec(TeaModel):
     def __init__(self, load_balancer=None, mesh_config=None, network=None):
         self.load_balancer = load_balancer  # type: DescribeServiceMeshDetailResponseServiceMeshSpecLoadBalancer
         self.mesh_config = mesh_config  # type: DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig
-        self.network = network  # type: DescribeServiceMeshDetailResponseServiceMeshSpecNetwork
+        self.network = network          # type: DescribeServiceMeshDetailResponseServiceMeshSpecNetwork
 
     def validate(self):
         self.validate_required(self.load_balancer, 'load_balancer')
@@ -2107,10 +2203,10 @@ class DescribeServiceMeshDetailResponseServiceMeshSpec(TeaModel):
 
 class DescribeServiceMeshDetailResponseServiceMesh(TeaModel):
     def __init__(self, endpoints=None, service_mesh_info=None, spec=None, clusters=None):
-        self.endpoints = endpoints  # type: DescribeServiceMeshDetailResponseServiceMeshEndpoints
+        self.endpoints = endpoints      # type: DescribeServiceMeshDetailResponseServiceMeshEndpoints
         self.service_mesh_info = service_mesh_info  # type: DescribeServiceMeshDetailResponseServiceMeshServiceMeshInfo
-        self.spec = spec  # type: DescribeServiceMeshDetailResponseServiceMeshSpec
-        self.clusters = clusters
+        self.spec = spec                # type: DescribeServiceMeshDetailResponseServiceMeshSpec
+        self.clusters = clusters        # type: List[str]
 
     def validate(self):
         self.validate_required(self.endpoints, 'endpoints')
@@ -2163,8 +2259,8 @@ class DescribeServiceMeshDetailResponseServiceMesh(TeaModel):
 
 class DescribeServiceMeshKubeconfigRequest(TeaModel):
     def __init__(self, service_mesh_id=None, private_ip_address=None):
-        self.service_mesh_id = service_mesh_id
-        self.private_ip_address = private_ip_address
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.private_ip_address = private_ip_address  # type: bool
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -2183,8 +2279,8 @@ class DescribeServiceMeshKubeconfigRequest(TeaModel):
 
 class DescribeServiceMeshKubeconfigResponse(TeaModel):
     def __init__(self, kubeconfig=None, request_id=None):
-        self.kubeconfig = kubeconfig
-        self.request_id = request_id
+        self.kubeconfig = kubeconfig    # type: str
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.kubeconfig, 'kubeconfig')
@@ -2209,33 +2305,33 @@ class CreateServiceMeshRequest(TeaModel):
                  opalimit_cpu=None, opalimit_memory=None, enable_audit=None, audit_project=None, proxy_request_cpu=None,
                  proxy_request_memory=None, proxy_limit_cpu=None, proxy_limit_memory=None, include_ipranges=None, exclude_ipranges=None,
                  exclude_outbound_ports=None, exclude_inbound_ports=None):
-        self.region_id = region_id
-        self.istio_version = istio_version
-        self.vpc_id = vpc_id
-        self.api_server_public_eip = api_server_public_eip
-        self.pilot_public_eip = pilot_public_eip
-        self.tracing = tracing
-        self.name = name
-        self.v_switches = v_switches
-        self.trace_sampling = trace_sampling
-        self.locality_load_balancing = locality_load_balancing
-        self.telemetry = telemetry
-        self.open_agent_policy = open_agent_policy
-        self.opalog_level = opalog_level
-        self.oparequest_cpu = oparequest_cpu
-        self.oparequest_memory = oparequest_memory
-        self.opalimit_cpu = opalimit_cpu
-        self.opalimit_memory = opalimit_memory
-        self.enable_audit = enable_audit
-        self.audit_project = audit_project
-        self.proxy_request_cpu = proxy_request_cpu
-        self.proxy_request_memory = proxy_request_memory
-        self.proxy_limit_cpu = proxy_limit_cpu
-        self.proxy_limit_memory = proxy_limit_memory
-        self.include_ipranges = include_ipranges
-        self.exclude_ipranges = exclude_ipranges
-        self.exclude_outbound_ports = exclude_outbound_ports
-        self.exclude_inbound_ports = exclude_inbound_ports
+        self.region_id = region_id      # type: str
+        self.istio_version = istio_version  # type: str
+        self.vpc_id = vpc_id            # type: str
+        self.api_server_public_eip = api_server_public_eip  # type: bool
+        self.pilot_public_eip = pilot_public_eip  # type: bool
+        self.tracing = tracing          # type: bool
+        self.name = name                # type: str
+        self.v_switches = v_switches    # type: str
+        self.trace_sampling = trace_sampling  # type: float
+        self.locality_load_balancing = locality_load_balancing  # type: bool
+        self.telemetry = telemetry      # type: bool
+        self.open_agent_policy = open_agent_policy  # type: bool
+        self.opalog_level = opalog_level  # type: str
+        self.oparequest_cpu = oparequest_cpu  # type: str
+        self.oparequest_memory = oparequest_memory  # type: str
+        self.opalimit_cpu = opalimit_cpu  # type: str
+        self.opalimit_memory = opalimit_memory  # type: str
+        self.enable_audit = enable_audit  # type: bool
+        self.audit_project = audit_project  # type: str
+        self.proxy_request_cpu = proxy_request_cpu  # type: str
+        self.proxy_request_memory = proxy_request_memory  # type: str
+        self.proxy_limit_cpu = proxy_limit_cpu  # type: str
+        self.proxy_limit_memory = proxy_limit_memory  # type: str
+        self.include_ipranges = include_ipranges  # type: str
+        self.exclude_ipranges = exclude_ipranges  # type: str
+        self.exclude_outbound_ports = exclude_outbound_ports  # type: str
+        self.exclude_inbound_ports = exclude_inbound_ports  # type: str
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -2305,8 +2401,8 @@ class CreateServiceMeshRequest(TeaModel):
 
 class CreateServiceMeshResponse(TeaModel):
     def __init__(self, request_id=None, service_mesh_id=None):
-        self.request_id = request_id
-        self.service_mesh_id = service_mesh_id
+        self.request_id = request_id    # type: str
+        self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2326,8 +2422,8 @@ class CreateServiceMeshResponse(TeaModel):
 
 class DeleteServiceMeshRequest(TeaModel):
     def __init__(self, service_mesh_id=None, force=None):
-        self.service_mesh_id = service_mesh_id
-        self.force = force
+        self.service_mesh_id = service_mesh_id  # type: str
+        self.force = force              # type: bool
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -2346,7 +2442,7 @@ class DeleteServiceMeshRequest(TeaModel):
 
 class DeleteServiceMeshResponse(TeaModel):
     def __init__(self, request_id=None):
-        self.request_id = request_id
+        self.request_id = request_id    # type: str
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
