@@ -40,6 +40,14 @@ class Client(RPCClient):
         self.check_config(config)
         self._endpoint = self.get_endpoint("dataworks-public", self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
+    def run_trigger_node_with_options(self, request, runtime):
+        UtilClient.validate_model(request)
+        return dataworks_public_20200518_models.RunTriggerNodeResponse().from_map(self.do_request("RunTriggerNode", "HTTPS", "PUT", "2020-05-18", "AK", None, request.to_map(), runtime))
+
+    def run_trigger_node(self, request):
+        runtime = util_models.RuntimeOptions()
+        return self.run_trigger_node_with_options(request, runtime)
+
     def get_dag_with_options(self, request, runtime):
         UtilClient.validate_model(request)
         return dataworks_public_20200518_models.GetDagResponse().from_map(self.do_request("GetDag", "HTTPS", "POST", "2020-05-18", "AK", None, request.to_map(), runtime))

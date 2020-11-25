@@ -7,6 +7,56 @@ except ImportError:
     pass
 
 
+class RunTriggerNodeRequest(TeaModel):
+    def __init__(self, node_id=None, cycle_time=None, biz_date=None, app_id=None):
+        self.node_id = node_id          # type: int
+        self.cycle_time = cycle_time    # type: int
+        self.biz_date = biz_date        # type: int
+        self.app_id = app_id            # type: int
+
+    def validate(self):
+        self.validate_required(self.node_id, 'node_id')
+        self.validate_required(self.cycle_time, 'cycle_time')
+        self.validate_required(self.biz_date, 'biz_date')
+        self.validate_required(self.app_id, 'app_id')
+
+    def to_map(self):
+        result = {}
+        result['NodeId'] = self.node_id
+        result['CycleTime'] = self.cycle_time
+        result['BizDate'] = self.biz_date
+        result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, map={}):
+        self.node_id = map.get('NodeId')
+        self.cycle_time = map.get('CycleTime')
+        self.biz_date = map.get('BizDate')
+        self.app_id = map.get('AppId')
+        return self
+
+
+class RunTriggerNodeResponse(TeaModel):
+    def __init__(self, request_id=None, success=None):
+        self.request_id = request_id    # type: str
+        self.success = success          # type: bool
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.success, 'success')
+
+    def to_map(self):
+        result = {}
+        result['RequestId'] = self.request_id
+        result['Success'] = self.success
+        return result
+
+    def from_map(self, map={}):
+        self.request_id = map.get('RequestId')
+        self.success = map.get('Success')
+        return self
+
+
 class GetDagRequest(TeaModel):
     def __init__(self, dag_id=None, project_env=None):
         self.dag_id = dag_id            # type: int
