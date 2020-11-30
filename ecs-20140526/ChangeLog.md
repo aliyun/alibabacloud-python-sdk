@@ -1,3 +1,6 @@
+2020-11-30 Version: 1.2.0
+- Support network interface join or leave security group.
+
 2020-11-16 Version: 1.1.0
 - Nat public IP supports the ISP attribute.
 
