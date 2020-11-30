@@ -25,7 +25,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_ft20180713.
 
-Created on 14/10/2020
+Created on 30/11/2020
 
 @author: Alibaba Cloud SDK
 """
@@ -36,7 +36,12 @@ DESCRIPTION = "Alibaba Cloud Ft (20180713) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
 URL = "https://github.com/aliyun/alibabacloud-sdk"
-REQUIRES = ["alibabacloud_tea_util>=0.2.0, <1.0.0","alibabacloud_rpc_util>=0.0.3, <1.0.0","alibabacloud_tea_rpc>=0.0.6, <1.0.0","alibabacloud_endpoint_util>=0.0.2, <1.0.0"]
+REQUIRES = [
+    "alibabacloud_tea_util>=0.2.0, <1.0.0",
+    "alibabacloud_rpc_util>=0.0.3, <1.0.0",
+    "alibabacloud_tea_rpc>=0.0.6, <1.0.0",
+    "alibabacloud_endpoint_util>=0.0.3, <1.0.0"
+]
 VERSION = __import__(PACKAGE).__version__
 
 
