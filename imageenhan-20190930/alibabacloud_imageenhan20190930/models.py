@@ -7,6 +7,91 @@ except ImportError:
     pass
 
 
+class ColorizeImageRequest(TeaModel):
+    def __init__(self, image_url=None):
+        self.image_url = image_url      # type: str
+
+    def validate(self):
+        self.validate_required(self.image_url, 'image_url')
+
+    def to_map(self):
+        result = {}
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, map={}):
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
+        return self
+
+
+class ColorizeImageResponse(TeaModel):
+    def __init__(self, request_id=None, data=None):
+        self.request_id = request_id    # type: str
+        self.data = data                # type: ColorizeImageResponseData
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = {}
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, map={}):
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            temp_model = ColorizeImageResponseData()
+            self.data = temp_model.from_map(map['Data'])
+        return self
+
+
+class ColorizeImageResponseData(TeaModel):
+    def __init__(self, image_url=None):
+        self.image_url = image_url      # type: str
+
+    def validate(self):
+        self.validate_required(self.image_url, 'image_url')
+
+    def to_map(self):
+        result = {}
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, map={}):
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
+        return self
+
+
+class ColorizeImageAdvanceRequest(TeaModel):
+    def __init__(self, image_urlobject=None):
+        self.image_urlobject = image_urlobject  # type: BinaryIO
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        result = {}
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, map={}):
+        if map.get('ImageURLObject') is not None:
+            self.image_urlobject = map.get('ImageURLObject')
+        return self
+
+
 class ErasePersonRequest(TeaModel):
     def __init__(self, image_url=None, user_mask=None):
         self.image_url = image_url      # type: str
@@ -18,13 +103,17 @@ class ErasePersonRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURL'] = self.image_url
-        result['UserMask'] = self.user_mask
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.user_mask is not None:
+            result['UserMask'] = self.user_mask
         return result
 
     def from_map(self, map={}):
-        self.image_url = map.get('ImageURL')
-        self.user_mask = map.get('UserMask')
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
+        if map.get('UserMask') is not None:
+            self.user_mask = map.get('UserMask')
         return self
 
 
@@ -41,20 +130,18 @@ class ErasePersonResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = ErasePersonResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -67,11 +154,13 @@ class ErasePersonResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageUrl'] = self.image_url
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
         return result
 
     def from_map(self, map={}):
-        self.image_url = map.get('ImageUrl')
+        if map.get('ImageUrl') is not None:
+            self.image_url = map.get('ImageUrl')
         return self
 
 
@@ -86,13 +175,17 @@ class ErasePersonAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURLObject'] = self.image_urlobject
-        result['UserMask'] = self.user_mask
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        if self.user_mask is not None:
+            result['UserMask'] = self.user_mask
         return result
 
     def from_map(self, map={}):
-        self.image_urlobject = map.get('ImageURLObject')
-        self.user_mask = map.get('UserMask')
+        if map.get('ImageURLObject') is not None:
+            self.image_urlobject = map.get('ImageURLObject')
+        if map.get('UserMask') is not None:
+            self.user_mask = map.get('UserMask')
         return self
 
 
@@ -107,13 +200,17 @@ class GenerateDynamicImageRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Url'] = self.url
-        result['Operation'] = self.operation
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.operation is not None:
+            result['Operation'] = self.operation
         return result
 
     def from_map(self, map={}):
-        self.url = map.get('Url')
-        self.operation = map.get('Operation')
+        if map.get('Url') is not None:
+            self.url = map.get('Url')
+        if map.get('Operation') is not None:
+            self.operation = map.get('Operation')
         return self
 
 
@@ -130,20 +227,18 @@ class GenerateDynamicImageResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = GenerateDynamicImageResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -156,11 +251,13 @@ class GenerateDynamicImageResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Url'] = self.url
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.url = map.get('Url')
+        if map.get('Url') is not None:
+            self.url = map.get('Url')
         return self
 
 
@@ -175,13 +272,17 @@ class GenerateDynamicImageAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['UrlObject'] = self.url_object
-        result['Operation'] = self.operation
+        if self.url_object is not None:
+            result['UrlObject'] = self.url_object
+        if self.operation is not None:
+            result['Operation'] = self.operation
         return result
 
     def from_map(self, map={}):
-        self.url_object = map.get('UrlObject')
-        self.operation = map.get('Operation')
+        if map.get('UrlObject') is not None:
+            self.url_object = map.get('UrlObject')
+        if map.get('Operation') is not None:
+            self.operation = map.get('Operation')
         return self
 
 
@@ -194,11 +295,13 @@ class GetAsyncJobResultRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['JobId'] = self.job_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         return result
 
     def from_map(self, map={}):
-        self.job_id = map.get('JobId')
+        if map.get('JobId') is not None:
+            self.job_id = map.get('JobId')
         return self
 
 
@@ -215,20 +318,18 @@ class GetAsyncJobResultResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = GetAsyncJobResultResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -249,19 +350,29 @@ class GetAsyncJobResultResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['JobId'] = self.job_id
-        result['Status'] = self.status
-        result['Result'] = self.result
-        result['ErrorCode'] = self.error_code
-        result['ErrorMessage'] = self.error_message
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, map={}):
-        self.job_id = map.get('JobId')
-        self.status = map.get('Status')
-        self.result = map.get('Result')
-        self.error_code = map.get('ErrorCode')
-        self.error_message = map.get('ErrorMessage')
+        if map.get('JobId') is not None:
+            self.job_id = map.get('JobId')
+        if map.get('Status') is not None:
+            self.status = map.get('Status')
+        if map.get('Result') is not None:
+            self.result = map.get('Result')
+        if map.get('ErrorCode') is not None:
+            self.error_code = map.get('ErrorCode')
+        if map.get('ErrorMessage') is not None:
+            self.error_message = map.get('ErrorMessage')
         return self
 
 
@@ -276,13 +387,17 @@ class ImitatePhotoStyleRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['StyleUrl'] = self.style_url
-        result['ImageURL'] = self.image_url
+        if self.style_url is not None:
+            result['StyleUrl'] = self.style_url
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
         return result
 
     def from_map(self, map={}):
-        self.style_url = map.get('StyleUrl')
-        self.image_url = map.get('ImageURL')
+        if map.get('StyleUrl') is not None:
+            self.style_url = map.get('StyleUrl')
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
         return self
 
 
@@ -299,20 +414,18 @@ class ImitatePhotoStyleResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = ImitatePhotoStyleResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -325,11 +438,13 @@ class ImitatePhotoStyleResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURL'] = self.image_url
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
         return result
 
     def from_map(self, map={}):
-        self.image_url = map.get('ImageURL')
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
         return self
 
 
@@ -344,13 +459,17 @@ class ImitatePhotoStyleAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURLObject'] = self.image_urlobject
-        result['StyleUrl'] = self.style_url
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        if self.style_url is not None:
+            result['StyleUrl'] = self.style_url
         return result
 
     def from_map(self, map={}):
-        self.image_urlobject = map.get('ImageURLObject')
-        self.style_url = map.get('StyleUrl')
+        if map.get('ImageURLObject') is not None:
+            self.image_urlobject = map.get('ImageURLObject')
+        if map.get('StyleUrl') is not None:
+            self.style_url = map.get('StyleUrl')
         return self
 
 
@@ -367,15 +486,21 @@ class EnhanceImageColorRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURL'] = self.image_url
-        result['OutputFormat'] = self.output_format
-        result['Mode'] = self.mode
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.output_format is not None:
+            result['OutputFormat'] = self.output_format
+        if self.mode is not None:
+            result['Mode'] = self.mode
         return result
 
     def from_map(self, map={}):
-        self.image_url = map.get('ImageURL')
-        self.output_format = map.get('OutputFormat')
-        self.mode = map.get('Mode')
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
+        if map.get('OutputFormat') is not None:
+            self.output_format = map.get('OutputFormat')
+        if map.get('Mode') is not None:
+            self.mode = map.get('Mode')
         return self
 
 
@@ -392,20 +517,18 @@ class EnhanceImageColorResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = EnhanceImageColorResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -418,11 +541,13 @@ class EnhanceImageColorResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURL'] = self.image_url
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
         return result
 
     def from_map(self, map={}):
-        self.image_url = map.get('ImageURL')
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
         return self
 
 
@@ -439,15 +564,21 @@ class EnhanceImageColorAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURLObject'] = self.image_urlobject
-        result['OutputFormat'] = self.output_format
-        result['Mode'] = self.mode
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        if self.output_format is not None:
+            result['OutputFormat'] = self.output_format
+        if self.mode is not None:
+            result['Mode'] = self.mode
         return result
 
     def from_map(self, map={}):
-        self.image_urlobject = map.get('ImageURLObject')
-        self.output_format = map.get('OutputFormat')
-        self.mode = map.get('Mode')
+        if map.get('ImageURLObject') is not None:
+            self.image_urlobject = map.get('ImageURLObject')
+        if map.get('OutputFormat') is not None:
+            self.output_format = map.get('OutputFormat')
+        if map.get('Mode') is not None:
+            self.mode = map.get('Mode')
         return self
 
 
@@ -470,32 +601,38 @@ class RecolorHDImageRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Url'] = self.url
-        result['Mode'] = self.mode
-        result['RefUrl'] = self.ref_url
-        result['ColorCount'] = self.color_count
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.ref_url is not None:
+            result['RefUrl'] = self.ref_url
+        if self.color_count is not None:
+            result['ColorCount'] = self.color_count
         result['ColorTemplate'] = []
         if self.color_template is not None:
             for k in self.color_template:
                 result['ColorTemplate'].append(k.to_map() if k else None)
-        else:
-            result['ColorTemplate'] = None
-        result['Degree'] = self.degree
+        if self.degree is not None:
+            result['Degree'] = self.degree
         return result
 
     def from_map(self, map={}):
-        self.url = map.get('Url')
-        self.mode = map.get('Mode')
-        self.ref_url = map.get('RefUrl')
-        self.color_count = map.get('ColorCount')
+        if map.get('Url') is not None:
+            self.url = map.get('Url')
+        if map.get('Mode') is not None:
+            self.mode = map.get('Mode')
+        if map.get('RefUrl') is not None:
+            self.ref_url = map.get('RefUrl')
+        if map.get('ColorCount') is not None:
+            self.color_count = map.get('ColorCount')
         self.color_template = []
         if map.get('ColorTemplate') is not None:
             for k in map.get('ColorTemplate'):
                 temp_model = RecolorHDImageRequestColorTemplate()
                 self.color_template.append(temp_model.from_map(k))
-        else:
-            self.color_template = None
-        self.degree = map.get('Degree')
+        if map.get('Degree') is not None:
+            self.degree = map.get('Degree')
         return self
 
 
@@ -508,11 +645,13 @@ class RecolorHDImageRequestColorTemplate(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Color'] = self.color
+        if self.color is not None:
+            result['Color'] = self.color
         return result
 
     def from_map(self, map={}):
-        self.color = map.get('Color')
+        if map.get('Color') is not None:
+            self.color = map.get('Color')
         return self
 
 
@@ -529,20 +668,18 @@ class RecolorHDImageResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = RecolorHDImageResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -555,11 +692,13 @@ class RecolorHDImageResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageList'] = self.image_list
+        if self.image_list is not None:
+            result['ImageList'] = self.image_list
         return result
 
     def from_map(self, map={}):
-        self.image_list = map.get('ImageList')
+        if map.get('ImageList') is not None:
+            self.image_list = map.get('ImageList')
         return self
 
 
@@ -582,32 +721,38 @@ class RecolorHDImageAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['UrlObject'] = self.url_object
-        result['Mode'] = self.mode
-        result['RefUrl'] = self.ref_url
-        result['ColorCount'] = self.color_count
+        if self.url_object is not None:
+            result['UrlObject'] = self.url_object
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.ref_url is not None:
+            result['RefUrl'] = self.ref_url
+        if self.color_count is not None:
+            result['ColorCount'] = self.color_count
         result['ColorTemplate'] = []
         if self.color_template is not None:
             for k in self.color_template:
                 result['ColorTemplate'].append(k.to_map() if k else None)
-        else:
-            result['ColorTemplate'] = None
-        result['Degree'] = self.degree
+        if self.degree is not None:
+            result['Degree'] = self.degree
         return result
 
     def from_map(self, map={}):
-        self.url_object = map.get('UrlObject')
-        self.mode = map.get('Mode')
-        self.ref_url = map.get('RefUrl')
-        self.color_count = map.get('ColorCount')
+        if map.get('UrlObject') is not None:
+            self.url_object = map.get('UrlObject')
+        if map.get('Mode') is not None:
+            self.mode = map.get('Mode')
+        if map.get('RefUrl') is not None:
+            self.ref_url = map.get('RefUrl')
+        if map.get('ColorCount') is not None:
+            self.color_count = map.get('ColorCount')
         self.color_template = []
         if map.get('ColorTemplate') is not None:
             for k in map.get('ColorTemplate'):
                 temp_model = RecolorHDImageAdvanceRequestColorTemplate()
                 self.color_template.append(temp_model.from_map(k))
-        else:
-            self.color_template = None
-        self.degree = map.get('Degree')
+        if map.get('Degree') is not None:
+            self.degree = map.get('Degree')
         return self
 
 
@@ -620,11 +765,13 @@ class RecolorHDImageAdvanceRequestColorTemplate(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Color'] = self.color
+        if self.color is not None:
+            result['Color'] = self.color
         return result
 
     def from_map(self, map={}):
-        self.color = map.get('Color')
+        if map.get('Color') is not None:
+            self.color = map.get('Color')
         return self
 
 
@@ -637,11 +784,13 @@ class AssessCompositionRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURL'] = self.image_url
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
         return result
 
     def from_map(self, map={}):
-        self.image_url = map.get('ImageURL')
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
         return self
 
 
@@ -658,20 +807,18 @@ class AssessCompositionResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = AssessCompositionResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -684,11 +831,13 @@ class AssessCompositionResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Score'] = self.score
+        if self.score is not None:
+            result['Score'] = self.score
         return result
 
     def from_map(self, map={}):
-        self.score = map.get('Score')
+        if map.get('Score') is not None:
+            self.score = map.get('Score')
         return self
 
 
@@ -701,11 +850,13 @@ class AssessCompositionAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURLObject'] = self.image_urlobject
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
         return result
 
     def from_map(self, map={}):
-        self.image_urlobject = map.get('ImageURLObject')
+        if map.get('ImageURLObject') is not None:
+            self.image_urlobject = map.get('ImageURLObject')
         return self
 
 
@@ -718,11 +869,13 @@ class AssessSharpnessRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURL'] = self.image_url
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
         return result
 
     def from_map(self, map={}):
-        self.image_url = map.get('ImageURL')
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
         return self
 
 
@@ -739,20 +892,18 @@ class AssessSharpnessResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = AssessSharpnessResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -765,11 +916,13 @@ class AssessSharpnessResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Sharpness'] = self.sharpness
+        if self.sharpness is not None:
+            result['Sharpness'] = self.sharpness
         return result
 
     def from_map(self, map={}):
-        self.sharpness = map.get('Sharpness')
+        if map.get('Sharpness') is not None:
+            self.sharpness = map.get('Sharpness')
         return self
 
 
@@ -782,11 +935,13 @@ class AssessSharpnessAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURLObject'] = self.image_urlobject
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
         return result
 
     def from_map(self, map={}):
-        self.image_urlobject = map.get('ImageURLObject')
+        if map.get('ImageURLObject') is not None:
+            self.image_urlobject = map.get('ImageURLObject')
         return self
 
 
@@ -799,11 +954,13 @@ class AssessExposureRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURL'] = self.image_url
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
         return result
 
     def from_map(self, map={}):
-        self.image_url = map.get('ImageURL')
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
         return self
 
 
@@ -820,20 +977,18 @@ class AssessExposureResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = AssessExposureResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -846,11 +1001,13 @@ class AssessExposureResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Exposure'] = self.exposure
+        if self.exposure is not None:
+            result['Exposure'] = self.exposure
         return result
 
     def from_map(self, map={}):
-        self.exposure = map.get('Exposure')
+        if map.get('Exposure') is not None:
+            self.exposure = map.get('Exposure')
         return self
 
 
@@ -863,11 +1020,13 @@ class AssessExposureAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURLObject'] = self.image_urlobject
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
         return result
 
     def from_map(self, map={}):
-        self.image_urlobject = map.get('ImageURLObject')
+        if map.get('ImageURLObject') is not None:
+            self.image_urlobject = map.get('ImageURLObject')
         return self
 
 
@@ -888,21 +1047,33 @@ class ImageBlindCharacterWatermarkRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['FunctionType'] = self.function_type
-        result['Text'] = self.text
-        result['WatermarkImageURL'] = self.watermark_image_url
-        result['OutputFileType'] = self.output_file_type
-        result['QualityFactor'] = self.quality_factor
-        result['OriginImageURL'] = self.origin_image_url
+        if self.function_type is not None:
+            result['FunctionType'] = self.function_type
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.watermark_image_url is not None:
+            result['WatermarkImageURL'] = self.watermark_image_url
+        if self.output_file_type is not None:
+            result['OutputFileType'] = self.output_file_type
+        if self.quality_factor is not None:
+            result['QualityFactor'] = self.quality_factor
+        if self.origin_image_url is not None:
+            result['OriginImageURL'] = self.origin_image_url
         return result
 
     def from_map(self, map={}):
-        self.function_type = map.get('FunctionType')
-        self.text = map.get('Text')
-        self.watermark_image_url = map.get('WatermarkImageURL')
-        self.output_file_type = map.get('OutputFileType')
-        self.quality_factor = map.get('QualityFactor')
-        self.origin_image_url = map.get('OriginImageURL')
+        if map.get('FunctionType') is not None:
+            self.function_type = map.get('FunctionType')
+        if map.get('Text') is not None:
+            self.text = map.get('Text')
+        if map.get('WatermarkImageURL') is not None:
+            self.watermark_image_url = map.get('WatermarkImageURL')
+        if map.get('OutputFileType') is not None:
+            self.output_file_type = map.get('OutputFileType')
+        if map.get('QualityFactor') is not None:
+            self.quality_factor = map.get('QualityFactor')
+        if map.get('OriginImageURL') is not None:
+            self.origin_image_url = map.get('OriginImageURL')
         return self
 
 
@@ -919,20 +1090,18 @@ class ImageBlindCharacterWatermarkResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = ImageBlindCharacterWatermarkResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -947,13 +1116,17 @@ class ImageBlindCharacterWatermarkResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['WatermarkImageURL'] = self.watermark_image_url
-        result['TextImageURL'] = self.text_image_url
+        if self.watermark_image_url is not None:
+            result['WatermarkImageURL'] = self.watermark_image_url
+        if self.text_image_url is not None:
+            result['TextImageURL'] = self.text_image_url
         return result
 
     def from_map(self, map={}):
-        self.watermark_image_url = map.get('WatermarkImageURL')
-        self.text_image_url = map.get('TextImageURL')
+        if map.get('WatermarkImageURL') is not None:
+            self.watermark_image_url = map.get('WatermarkImageURL')
+        if map.get('TextImageURL') is not None:
+            self.text_image_url = map.get('TextImageURL')
         return self
 
 
@@ -974,21 +1147,33 @@ class ImageBlindCharacterWatermarkAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['OriginImageURLObject'] = self.origin_image_urlobject
-        result['FunctionType'] = self.function_type
-        result['Text'] = self.text
-        result['WatermarkImageURL'] = self.watermark_image_url
-        result['OutputFileType'] = self.output_file_type
-        result['QualityFactor'] = self.quality_factor
+        if self.origin_image_urlobject is not None:
+            result['OriginImageURLObject'] = self.origin_image_urlobject
+        if self.function_type is not None:
+            result['FunctionType'] = self.function_type
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.watermark_image_url is not None:
+            result['WatermarkImageURL'] = self.watermark_image_url
+        if self.output_file_type is not None:
+            result['OutputFileType'] = self.output_file_type
+        if self.quality_factor is not None:
+            result['QualityFactor'] = self.quality_factor
         return result
 
     def from_map(self, map={}):
-        self.origin_image_urlobject = map.get('OriginImageURLObject')
-        self.function_type = map.get('FunctionType')
-        self.text = map.get('Text')
-        self.watermark_image_url = map.get('WatermarkImageURL')
-        self.output_file_type = map.get('OutputFileType')
-        self.quality_factor = map.get('QualityFactor')
+        if map.get('OriginImageURLObject') is not None:
+            self.origin_image_urlobject = map.get('OriginImageURLObject')
+        if map.get('FunctionType') is not None:
+            self.function_type = map.get('FunctionType')
+        if map.get('Text') is not None:
+            self.text = map.get('Text')
+        if map.get('WatermarkImageURL') is not None:
+            self.watermark_image_url = map.get('WatermarkImageURL')
+        if map.get('OutputFileType') is not None:
+            self.output_file_type = map.get('OutputFileType')
+        if map.get('QualityFactor') is not None:
+            self.quality_factor = map.get('QualityFactor')
         return self
 
 
@@ -1005,19 +1190,29 @@ class RemoveImageSubtitlesRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURL'] = self.image_url
-        result['BX'] = self.bx
-        result['BY'] = self.by
-        result['BW'] = self.bw
-        result['BH'] = self.bh
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.bx is not None:
+            result['BX'] = self.bx
+        if self.by is not None:
+            result['BY'] = self.by
+        if self.bw is not None:
+            result['BW'] = self.bw
+        if self.bh is not None:
+            result['BH'] = self.bh
         return result
 
     def from_map(self, map={}):
-        self.image_url = map.get('ImageURL')
-        self.bx = map.get('BX')
-        self.by = map.get('BY')
-        self.bw = map.get('BW')
-        self.bh = map.get('BH')
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
+        if map.get('BX') is not None:
+            self.bx = map.get('BX')
+        if map.get('BY') is not None:
+            self.by = map.get('BY')
+        if map.get('BW') is not None:
+            self.bw = map.get('BW')
+        if map.get('BH') is not None:
+            self.bh = map.get('BH')
         return self
 
 
@@ -1034,20 +1229,18 @@ class RemoveImageSubtitlesResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = RemoveImageSubtitlesResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -1060,11 +1253,13 @@ class RemoveImageSubtitlesResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURL'] = self.image_url
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
         return result
 
     def from_map(self, map={}):
-        self.image_url = map.get('ImageURL')
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
         return self
 
 
@@ -1081,19 +1276,29 @@ class RemoveImageSubtitlesAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURLObject'] = self.image_urlobject
-        result['BX'] = self.bx
-        result['BY'] = self.by
-        result['BW'] = self.bw
-        result['BH'] = self.bh
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        if self.bx is not None:
+            result['BX'] = self.bx
+        if self.by is not None:
+            result['BY'] = self.by
+        if self.bw is not None:
+            result['BW'] = self.bw
+        if self.bh is not None:
+            result['BH'] = self.bh
         return result
 
     def from_map(self, map={}):
-        self.image_urlobject = map.get('ImageURLObject')
-        self.bx = map.get('BX')
-        self.by = map.get('BY')
-        self.bw = map.get('BW')
-        self.bh = map.get('BH')
+        if map.get('ImageURLObject') is not None:
+            self.image_urlobject = map.get('ImageURLObject')
+        if map.get('BX') is not None:
+            self.bx = map.get('BX')
+        if map.get('BY') is not None:
+            self.by = map.get('BY')
+        if map.get('BW') is not None:
+            self.bw = map.get('BW')
+        if map.get('BH') is not None:
+            self.bh = map.get('BH')
         return self
 
 
@@ -1106,11 +1311,13 @@ class RemoveImageWatermarkRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURL'] = self.image_url
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
         return result
 
     def from_map(self, map={}):
-        self.image_url = map.get('ImageURL')
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
         return self
 
 
@@ -1127,20 +1334,18 @@ class RemoveImageWatermarkResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = RemoveImageWatermarkResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -1153,11 +1358,13 @@ class RemoveImageWatermarkResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURL'] = self.image_url
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
         return result
 
     def from_map(self, map={}):
-        self.image_url = map.get('ImageURL')
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
         return self
 
 
@@ -1170,11 +1377,13 @@ class RemoveImageWatermarkAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURLObject'] = self.image_urlobject
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
         return result
 
     def from_map(self, map={}):
-        self.image_urlobject = map.get('ImageURLObject')
+        if map.get('ImageURLObject') is not None:
+            self.image_urlobject = map.get('ImageURLObject')
         return self
 
 
@@ -1195,21 +1404,33 @@ class ImageBlindPicWatermarkRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['FunctionType'] = self.function_type
-        result['LogoURL'] = self.logo_url
-        result['WatermarkImageURL'] = self.watermark_image_url
-        result['OutputFileType'] = self.output_file_type
-        result['QualityFactor'] = self.quality_factor
-        result['OriginImageURL'] = self.origin_image_url
+        if self.function_type is not None:
+            result['FunctionType'] = self.function_type
+        if self.logo_url is not None:
+            result['LogoURL'] = self.logo_url
+        if self.watermark_image_url is not None:
+            result['WatermarkImageURL'] = self.watermark_image_url
+        if self.output_file_type is not None:
+            result['OutputFileType'] = self.output_file_type
+        if self.quality_factor is not None:
+            result['QualityFactor'] = self.quality_factor
+        if self.origin_image_url is not None:
+            result['OriginImageURL'] = self.origin_image_url
         return result
 
     def from_map(self, map={}):
-        self.function_type = map.get('FunctionType')
-        self.logo_url = map.get('LogoURL')
-        self.watermark_image_url = map.get('WatermarkImageURL')
-        self.output_file_type = map.get('OutputFileType')
-        self.quality_factor = map.get('QualityFactor')
-        self.origin_image_url = map.get('OriginImageURL')
+        if map.get('FunctionType') is not None:
+            self.function_type = map.get('FunctionType')
+        if map.get('LogoURL') is not None:
+            self.logo_url = map.get('LogoURL')
+        if map.get('WatermarkImageURL') is not None:
+            self.watermark_image_url = map.get('WatermarkImageURL')
+        if map.get('OutputFileType') is not None:
+            self.output_file_type = map.get('OutputFileType')
+        if map.get('QualityFactor') is not None:
+            self.quality_factor = map.get('QualityFactor')
+        if map.get('OriginImageURL') is not None:
+            self.origin_image_url = map.get('OriginImageURL')
         return self
 
 
@@ -1226,20 +1447,18 @@ class ImageBlindPicWatermarkResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = ImageBlindPicWatermarkResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -1254,13 +1473,17 @@ class ImageBlindPicWatermarkResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['WatermarkImageURL'] = self.watermark_image_url
-        result['LogoURL'] = self.logo_url
+        if self.watermark_image_url is not None:
+            result['WatermarkImageURL'] = self.watermark_image_url
+        if self.logo_url is not None:
+            result['LogoURL'] = self.logo_url
         return result
 
     def from_map(self, map={}):
-        self.watermark_image_url = map.get('WatermarkImageURL')
-        self.logo_url = map.get('LogoURL')
+        if map.get('WatermarkImageURL') is not None:
+            self.watermark_image_url = map.get('WatermarkImageURL')
+        if map.get('LogoURL') is not None:
+            self.logo_url = map.get('LogoURL')
         return self
 
 
@@ -1281,21 +1504,33 @@ class ImageBlindPicWatermarkAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['OriginImageURLObject'] = self.origin_image_urlobject
-        result['FunctionType'] = self.function_type
-        result['LogoURL'] = self.logo_url
-        result['WatermarkImageURL'] = self.watermark_image_url
-        result['OutputFileType'] = self.output_file_type
-        result['QualityFactor'] = self.quality_factor
+        if self.origin_image_urlobject is not None:
+            result['OriginImageURLObject'] = self.origin_image_urlobject
+        if self.function_type is not None:
+            result['FunctionType'] = self.function_type
+        if self.logo_url is not None:
+            result['LogoURL'] = self.logo_url
+        if self.watermark_image_url is not None:
+            result['WatermarkImageURL'] = self.watermark_image_url
+        if self.output_file_type is not None:
+            result['OutputFileType'] = self.output_file_type
+        if self.quality_factor is not None:
+            result['QualityFactor'] = self.quality_factor
         return result
 
     def from_map(self, map={}):
-        self.origin_image_urlobject = map.get('OriginImageURLObject')
-        self.function_type = map.get('FunctionType')
-        self.logo_url = map.get('LogoURL')
-        self.watermark_image_url = map.get('WatermarkImageURL')
-        self.output_file_type = map.get('OutputFileType')
-        self.quality_factor = map.get('QualityFactor')
+        if map.get('OriginImageURLObject') is not None:
+            self.origin_image_urlobject = map.get('OriginImageURLObject')
+        if map.get('FunctionType') is not None:
+            self.function_type = map.get('FunctionType')
+        if map.get('LogoURL') is not None:
+            self.logo_url = map.get('LogoURL')
+        if map.get('WatermarkImageURL') is not None:
+            self.watermark_image_url = map.get('WatermarkImageURL')
+        if map.get('OutputFileType') is not None:
+            self.output_file_type = map.get('OutputFileType')
+        if map.get('QualityFactor') is not None:
+            self.quality_factor = map.get('QualityFactor')
         return self
 
 
@@ -1309,13 +1544,17 @@ class IntelligentCompositionRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['NumBoxes'] = self.num_boxes
-        result['ImageURL'] = self.image_url
+        if self.num_boxes is not None:
+            result['NumBoxes'] = self.num_boxes
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
         return result
 
     def from_map(self, map={}):
-        self.num_boxes = map.get('NumBoxes')
-        self.image_url = map.get('ImageURL')
+        if map.get('NumBoxes') is not None:
+            self.num_boxes = map.get('NumBoxes')
+        if map.get('ImageURL') is not None:
+            self.image_url = map.get('ImageURL')
         return self
 
 
@@ -1332,20 +1571,18 @@ class IntelligentCompositionResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = IntelligentCompositionResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -1366,19 +1603,29 @@ class IntelligentCompositionResponseDataElements(TeaModel):
 
     def to_map(self):
         result = {}
-        result['MinX'] = self.min_x
-        result['MinY'] = self.min_y
-        result['MaxX'] = self.max_x
-        result['MaxY'] = self.max_y
-        result['Score'] = self.score
+        if self.min_x is not None:
+            result['MinX'] = self.min_x
+        if self.min_y is not None:
+            result['MinY'] = self.min_y
+        if self.max_x is not None:
+            result['MaxX'] = self.max_x
+        if self.max_y is not None:
+            result['MaxY'] = self.max_y
+        if self.score is not None:
+            result['Score'] = self.score
         return result
 
     def from_map(self, map={}):
-        self.min_x = map.get('MinX')
-        self.min_y = map.get('MinY')
-        self.max_x = map.get('MaxX')
-        self.max_y = map.get('MaxY')
-        self.score = map.get('Score')
+        if map.get('MinX') is not None:
+            self.min_x = map.get('MinX')
+        if map.get('MinY') is not None:
+            self.min_y = map.get('MinY')
+        if map.get('MaxX') is not None:
+            self.max_x = map.get('MaxX')
+        if map.get('MaxY') is not None:
+            self.max_y = map.get('MaxY')
+        if map.get('Score') is not None:
+            self.score = map.get('Score')
         return self
 
 
@@ -1399,8 +1646,6 @@ class IntelligentCompositionResponseData(TeaModel):
         if self.elements is not None:
             for k in self.elements:
                 result['Elements'].append(k.to_map() if k else None)
-        else:
-            result['Elements'] = None
         return result
 
     def from_map(self, map={}):
@@ -1409,8 +1654,6 @@ class IntelligentCompositionResponseData(TeaModel):
             for k in map.get('Elements'):
                 temp_model = IntelligentCompositionResponseDataElements()
                 self.elements.append(temp_model.from_map(k))
-        else:
-            self.elements = None
         return self
 
 
@@ -1424,13 +1667,17 @@ class IntelligentCompositionAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageURLObject'] = self.image_urlobject
-        result['NumBoxes'] = self.num_boxes
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        if self.num_boxes is not None:
+            result['NumBoxes'] = self.num_boxes
         return result
 
     def from_map(self, map={}):
-        self.image_urlobject = map.get('ImageURLObject')
-        self.num_boxes = map.get('NumBoxes')
+        if map.get('ImageURLObject') is not None:
+            self.image_urlobject = map.get('ImageURLObject')
+        if map.get('NumBoxes') is not None:
+            self.num_boxes = map.get('NumBoxes')
         return self
 
 
@@ -1447,15 +1694,21 @@ class ChangeImageSizeRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Width'] = self.width
-        result['Height'] = self.height
-        result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.width = map.get('Width')
-        self.height = map.get('Height')
-        self.url = map.get('Url')
+        if map.get('Width') is not None:
+            self.width = map.get('Width')
+        if map.get('Height') is not None:
+            self.height = map.get('Height')
+        if map.get('Url') is not None:
+            self.url = map.get('Url')
         return self
 
 
@@ -1472,20 +1725,18 @@ class ChangeImageSizeResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = ChangeImageSizeResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -1504,17 +1755,25 @@ class ChangeImageSizeResponseDataRetainLocation(TeaModel):
 
     def to_map(self):
         result = {}
-        result['X'] = self.x
-        result['Y'] = self.y
-        result['Width'] = self.width
-        result['Height'] = self.height
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
         return result
 
     def from_map(self, map={}):
-        self.x = map.get('X')
-        self.y = map.get('Y')
-        self.width = map.get('Width')
-        self.height = map.get('Height')
+        if map.get('X') is not None:
+            self.x = map.get('X')
+        if map.get('Y') is not None:
+            self.y = map.get('Y')
+        if map.get('Width') is not None:
+            self.width = map.get('Width')
+        if map.get('Height') is not None:
+            self.height = map.get('Height')
         return self
 
 
@@ -1531,20 +1790,18 @@ class ChangeImageSizeResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Url'] = self.url
+        if self.url is not None:
+            result['Url'] = self.url
         if self.retain_location is not None:
             result['RetainLocation'] = self.retain_location.to_map()
-        else:
-            result['RetainLocation'] = None
         return result
 
     def from_map(self, map={}):
-        self.url = map.get('Url')
+        if map.get('Url') is not None:
+            self.url = map.get('Url')
         if map.get('RetainLocation') is not None:
             temp_model = ChangeImageSizeResponseDataRetainLocation()
             self.retain_location = temp_model.from_map(map['RetainLocation'])
-        else:
-            self.retain_location = None
         return self
 
 
@@ -1561,15 +1818,21 @@ class ChangeImageSizeAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['UrlObject'] = self.url_object
-        result['Width'] = self.width
-        result['Height'] = self.height
+        if self.url_object is not None:
+            result['UrlObject'] = self.url_object
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
         return result
 
     def from_map(self, map={}):
-        self.url_object = map.get('UrlObject')
-        self.width = map.get('Width')
-        self.height = map.get('Height')
+        if map.get('UrlObject') is not None:
+            self.url_object = map.get('UrlObject')
+        if map.get('Width') is not None:
+            self.width = map.get('Width')
+        if map.get('Height') is not None:
+            self.height = map.get('Height')
         return self
 
 
@@ -1584,13 +1847,17 @@ class ExtendImageStyleRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['StyleUrl'] = self.style_url
-        result['MajorUrl'] = self.major_url
+        if self.style_url is not None:
+            result['StyleUrl'] = self.style_url
+        if self.major_url is not None:
+            result['MajorUrl'] = self.major_url
         return result
 
     def from_map(self, map={}):
-        self.style_url = map.get('StyleUrl')
-        self.major_url = map.get('MajorUrl')
+        if map.get('StyleUrl') is not None:
+            self.style_url = map.get('StyleUrl')
+        if map.get('MajorUrl') is not None:
+            self.major_url = map.get('MajorUrl')
         return self
 
 
@@ -1607,20 +1874,18 @@ class ExtendImageStyleResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = ExtendImageStyleResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -1635,13 +1900,17 @@ class ExtendImageStyleResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Url'] = self.url
-        result['MajorUrl'] = self.major_url
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.major_url is not None:
+            result['MajorUrl'] = self.major_url
         return result
 
     def from_map(self, map={}):
-        self.url = map.get('Url')
-        self.major_url = map.get('MajorUrl')
+        if map.get('Url') is not None:
+            self.url = map.get('Url')
+        if map.get('MajorUrl') is not None:
+            self.major_url = map.get('MajorUrl')
         return self
 
 
@@ -1654,11 +1923,13 @@ class MakeSuperResolutionImageRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Url'] = self.url
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.url = map.get('Url')
+        if map.get('Url') is not None:
+            self.url = map.get('Url')
         return self
 
 
@@ -1675,20 +1946,18 @@ class MakeSuperResolutionImageResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = MakeSuperResolutionImageResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -1701,11 +1970,13 @@ class MakeSuperResolutionImageResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Url'] = self.url
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.url = map.get('Url')
+        if map.get('Url') is not None:
+            self.url = map.get('Url')
         return self
 
 
@@ -1718,11 +1989,13 @@ class MakeSuperResolutionImageAdvanceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['UrlObject'] = self.url_object
+        if self.url_object is not None:
+            result['UrlObject'] = self.url_object
         return result
 
     def from_map(self, map={}):
-        self.url_object = map.get('UrlObject')
+        if map.get('UrlObject') is not None:
+            self.url_object = map.get('UrlObject')
         return self
 
 
@@ -1743,30 +2016,34 @@ class RecolorImageRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Url'] = self.url
-        result['Mode'] = self.mode
-        result['RefUrl'] = self.ref_url
-        result['ColorCount'] = self.color_count
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.ref_url is not None:
+            result['RefUrl'] = self.ref_url
+        if self.color_count is not None:
+            result['ColorCount'] = self.color_count
         result['ColorTemplate'] = []
         if self.color_template is not None:
             for k in self.color_template:
                 result['ColorTemplate'].append(k.to_map() if k else None)
-        else:
-            result['ColorTemplate'] = None
         return result
 
     def from_map(self, map={}):
-        self.url = map.get('Url')
-        self.mode = map.get('Mode')
-        self.ref_url = map.get('RefUrl')
-        self.color_count = map.get('ColorCount')
+        if map.get('Url') is not None:
+            self.url = map.get('Url')
+        if map.get('Mode') is not None:
+            self.mode = map.get('Mode')
+        if map.get('RefUrl') is not None:
+            self.ref_url = map.get('RefUrl')
+        if map.get('ColorCount') is not None:
+            self.color_count = map.get('ColorCount')
         self.color_template = []
         if map.get('ColorTemplate') is not None:
             for k in map.get('ColorTemplate'):
                 temp_model = RecolorImageRequestColorTemplate()
                 self.color_template.append(temp_model.from_map(k))
-        else:
-            self.color_template = None
         return self
 
 
@@ -1779,11 +2056,13 @@ class RecolorImageRequestColorTemplate(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Color'] = self.color
+        if self.color is not None:
+            result['Color'] = self.color
         return result
 
     def from_map(self, map={}):
-        self.color = map.get('Color')
+        if map.get('Color') is not None:
+            self.color = map.get('Color')
         return self
 
 
@@ -1800,20 +2079,18 @@ class RecolorImageResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Data') is not None:
             temp_model = RecolorImageResponseData()
             self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
         return self
 
 
@@ -1826,11 +2103,13 @@ class RecolorImageResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ImageList'] = self.image_list
+        if self.image_list is not None:
+            result['ImageList'] = self.image_list
         return result
 
     def from_map(self, map={}):
-        self.image_list = map.get('ImageList')
+        if map.get('ImageList') is not None:
+            self.image_list = map.get('ImageList')
         return self
 
 
