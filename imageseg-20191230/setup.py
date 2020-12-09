@@ -25,7 +25,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_imageseg20191230.
 
-Created on 02/12/2020
+Created on 09/12/2020
 
 @author: Alibaba Cloud SDK
 """
@@ -42,7 +42,7 @@ REQUIRES = [
     "alibabacloud_tea_rpc>=0.0.6, <1.0.0",
     "alibabacloud_endpoint_util>=0.0.3, <1.0.0",
     "alibabacloud_oss_sdk>=0.0.5, <1.0.0",
-    "alibabacloud_openplatform20191219>=0.0.1, <1.0.0",
+    "alibabacloud_openplatform20191219>=1.0.3, <2.0.0",
     "alibabacloud_oss_util>=0.0.5, <1.0.0",
     "alibabacloud_tea_fileform>=0.0.3, <1.0.0"
 ]

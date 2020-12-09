@@ -1976,8 +1976,9 @@ class SegmentHeadAdvanceRequest(TeaModel):
 
 
 class SegmentCommodityRequest(TeaModel):
-    def __init__(self, image_url=None):
+    def __init__(self, image_url=None, return_form=None):
         self.image_url = image_url      # type: str
+        self.return_form = return_form  # type: str
 
     def validate(self):
         self.validate_required(self.image_url, 'image_url')
@@ -1986,11 +1987,15 @@ class SegmentCommodityRequest(TeaModel):
         result = {}
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
+        if self.return_form is not None:
+            result['ReturnForm'] = self.return_form
         return result
 
     def from_map(self, map={}):
         if map.get('ImageURL') is not None:
             self.image_url = map.get('ImageURL')
+        if map.get('ReturnForm') is not None:
+            self.return_form = map.get('ReturnForm')
         return self
 
 
@@ -2042,8 +2047,9 @@ class SegmentCommodityResponseData(TeaModel):
 
 
 class SegmentCommodityAdvanceRequest(TeaModel):
-    def __init__(self, image_urlobject=None):
+    def __init__(self, image_urlobject=None, return_form=None):
         self.image_urlobject = image_urlobject  # type: BinaryIO
+        self.return_form = return_form  # type: str
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -2052,11 +2058,15 @@ class SegmentCommodityAdvanceRequest(TeaModel):
         result = {}
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
+        if self.return_form is not None:
+            result['ReturnForm'] = self.return_form
         return result
 
     def from_map(self, map={}):
         if map.get('ImageURLObject') is not None:
             self.image_urlobject = map.get('ImageURLObject')
+        if map.get('ReturnForm') is not None:
+            self.return_form = map.get('ReturnForm')
         return self
 
 
