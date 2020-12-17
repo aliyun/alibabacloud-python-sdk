@@ -30,27 +30,45 @@ class AddVmAppToMeshRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['Namespace'] = self.namespace
-        result['ServiceName'] = self.service_name
-        result['Ips'] = self.ips
-        result['Ports'] = self.ports
-        result['Labels'] = self.labels
-        result['Annotations'] = self.annotations
-        result['ServiceAccount'] = self.service_account
-        result['Force'] = self.force
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.ips is not None:
+            result['Ips'] = self.ips
+        if self.ports is not None:
+            result['Ports'] = self.ports
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.annotations is not None:
+            result['Annotations'] = self.annotations
+        if self.service_account is not None:
+            result['ServiceAccount'] = self.service_account
+        if self.force is not None:
+            result['Force'] = self.force
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.namespace = map.get('Namespace')
-        self.service_name = map.get('ServiceName')
-        self.ips = map.get('Ips')
-        self.ports = map.get('Ports')
-        self.labels = map.get('Labels')
-        self.annotations = map.get('Annotations')
-        self.service_account = map.get('ServiceAccount')
-        self.force = map.get('Force')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('Namespace') is not None:
+            self.namespace = map.get('Namespace')
+        if map.get('ServiceName') is not None:
+            self.service_name = map.get('ServiceName')
+        if map.get('Ips') is not None:
+            self.ips = map.get('Ips')
+        if map.get('Ports') is not None:
+            self.ports = map.get('Ports')
+        if map.get('Labels') is not None:
+            self.labels = map.get('Labels')
+        if map.get('Annotations') is not None:
+            self.annotations = map.get('Annotations')
+        if map.get('ServiceAccount') is not None:
+            self.service_account = map.get('ServiceAccount')
+        if map.get('Force') is not None:
+            self.force = map.get('Force')
         return self
 
 
@@ -65,13 +83,17 @@ class AddVmAppToMeshResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.data = map.get('Data')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            self.data = map.get('Data')
         return self
 
 
@@ -84,11 +106,13 @@ class GetVmAppMeshInfoRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
         return self
 
 
@@ -103,13 +127,17 @@ class GetVmAppMeshInfoResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.data = map.get('Data')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            self.data = map.get('Data')
         return self
 
 
@@ -122,22 +150,28 @@ class GetVmMetaRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
-        self.validate_required(self.namespace, 'namespace')
-        self.validate_required(self.service_account, 'service_account')
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['TrustDomain'] = self.trust_domain
-        result['Namespace'] = self.namespace
-        result['ServiceAccount'] = self.service_account
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.trust_domain is not None:
+            result['TrustDomain'] = self.trust_domain
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.service_account is not None:
+            result['ServiceAccount'] = self.service_account
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.trust_domain = map.get('TrustDomain')
-        self.namespace = map.get('Namespace')
-        self.service_account = map.get('ServiceAccount')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('TrustDomain') is not None:
+            self.trust_domain = map.get('TrustDomain')
+        if map.get('Namespace') is not None:
+            self.namespace = map.get('Namespace')
+        if map.get('ServiceAccount') is not None:
+            self.service_account = map.get('ServiceAccount')
         return self
 
 
@@ -154,20 +188,18 @@ class GetVmMetaResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.vm_meta_info is not None:
             result['VmMetaInfo'] = self.vm_meta_info.to_map()
-        else:
-            result['VmMetaInfo'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('VmMetaInfo') is not None:
             temp_model = GetVmMetaResponseVmMetaInfo()
             self.vm_meta_info = temp_model.from_map(map['VmMetaInfo'])
-        else:
-            self.vm_meta_info = None
         return self
 
 
@@ -204,33 +236,57 @@ class GetVmMetaResponseVmMetaInfo(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RootCertPath'] = self.root_cert_path
-        result['RootCertContent'] = self.root_cert_content
-        result['KeyPath'] = self.key_path
-        result['KeyContent'] = self.key_content
-        result['CertChainPath'] = self.cert_chain_path
-        result['CertChainContent'] = self.cert_chain_content
-        result['EnvoyEnvPath'] = self.envoy_env_path
-        result['EnvoyEnvContent'] = self.envoy_env_content
-        result['HostsPath'] = self.hosts_path
-        result['HostsContent'] = self.hosts_content
-        result['TokenPath'] = self.token_path
-        result['TokenContent'] = self.token_content
+        if self.root_cert_path is not None:
+            result['RootCertPath'] = self.root_cert_path
+        if self.root_cert_content is not None:
+            result['RootCertContent'] = self.root_cert_content
+        if self.key_path is not None:
+            result['KeyPath'] = self.key_path
+        if self.key_content is not None:
+            result['KeyContent'] = self.key_content
+        if self.cert_chain_path is not None:
+            result['CertChainPath'] = self.cert_chain_path
+        if self.cert_chain_content is not None:
+            result['CertChainContent'] = self.cert_chain_content
+        if self.envoy_env_path is not None:
+            result['EnvoyEnvPath'] = self.envoy_env_path
+        if self.envoy_env_content is not None:
+            result['EnvoyEnvContent'] = self.envoy_env_content
+        if self.hosts_path is not None:
+            result['HostsPath'] = self.hosts_path
+        if self.hosts_content is not None:
+            result['HostsContent'] = self.hosts_content
+        if self.token_path is not None:
+            result['TokenPath'] = self.token_path
+        if self.token_content is not None:
+            result['TokenContent'] = self.token_content
         return result
 
     def from_map(self, map={}):
-        self.root_cert_path = map.get('RootCertPath')
-        self.root_cert_content = map.get('RootCertContent')
-        self.key_path = map.get('KeyPath')
-        self.key_content = map.get('KeyContent')
-        self.cert_chain_path = map.get('CertChainPath')
-        self.cert_chain_content = map.get('CertChainContent')
-        self.envoy_env_path = map.get('EnvoyEnvPath')
-        self.envoy_env_content = map.get('EnvoyEnvContent')
-        self.hosts_path = map.get('HostsPath')
-        self.hosts_content = map.get('HostsContent')
-        self.token_path = map.get('TokenPath')
-        self.token_content = map.get('TokenContent')
+        if map.get('RootCertPath') is not None:
+            self.root_cert_path = map.get('RootCertPath')
+        if map.get('RootCertContent') is not None:
+            self.root_cert_content = map.get('RootCertContent')
+        if map.get('KeyPath') is not None:
+            self.key_path = map.get('KeyPath')
+        if map.get('KeyContent') is not None:
+            self.key_content = map.get('KeyContent')
+        if map.get('CertChainPath') is not None:
+            self.cert_chain_path = map.get('CertChainPath')
+        if map.get('CertChainContent') is not None:
+            self.cert_chain_content = map.get('CertChainContent')
+        if map.get('EnvoyEnvPath') is not None:
+            self.envoy_env_path = map.get('EnvoyEnvPath')
+        if map.get('EnvoyEnvContent') is not None:
+            self.envoy_env_content = map.get('EnvoyEnvContent')
+        if map.get('HostsPath') is not None:
+            self.hosts_path = map.get('HostsPath')
+        if map.get('HostsContent') is not None:
+            self.hosts_content = map.get('HostsContent')
+        if map.get('TokenPath') is not None:
+            self.token_path = map.get('TokenPath')
+        if map.get('TokenContent') is not None:
+            self.token_content = map.get('TokenContent')
         return self
 
 
@@ -247,15 +303,21 @@ class RemoveVmAppFromMeshRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['Namespace'] = self.namespace
-        result['ServiceName'] = self.service_name
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.namespace = map.get('Namespace')
-        self.service_name = map.get('ServiceName')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('Namespace') is not None:
+            self.namespace = map.get('Namespace')
+        if map.get('ServiceName') is not None:
+            self.service_name = map.get('ServiceName')
         return self
 
 
@@ -270,13 +332,17 @@ class RemoveVmAppFromMeshResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.data = map.get('Data')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('Data') is not None:
+            self.data = map.get('Data')
         return self
 
 
@@ -293,15 +359,21 @@ class GetRegisteredServiceEndpointsRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['Namespace'] = self.namespace
-        result['Name'] = self.name
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.name is not None:
+            result['Name'] = self.name
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.namespace = map.get('Namespace')
-        self.name = map.get('Name')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('Namespace') is not None:
+            self.namespace = map.get('Namespace')
+        if map.get('Name') is not None:
+            self.name = map.get('Name')
         return self
 
 
@@ -320,24 +392,22 @@ class GetRegisteredServiceEndpointsResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         result['ServiceEndpoints'] = []
         if self.service_endpoints is not None:
             for k in self.service_endpoints:
                 result['ServiceEndpoints'].append(k.to_map() if k else None)
-        else:
-            result['ServiceEndpoints'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         self.service_endpoints = []
         if map.get('ServiceEndpoints') is not None:
             for k in map.get('ServiceEndpoints'):
                 temp_model = GetRegisteredServiceEndpointsResponseServiceEndpoints()
                 self.service_endpoints.append(temp_model.from_map(k))
-        else:
-            self.service_endpoints = None
         return self
 
 
@@ -352,13 +422,17 @@ class GetRegisteredServiceEndpointsResponseServiceEndpoints(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Address'] = self.address
-        result['ClusterId'] = self.cluster_id
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         return result
 
     def from_map(self, map={}):
-        self.address = map.get('Address')
-        self.cluster_id = map.get('ClusterId')
+        if map.get('Address') is not None:
+            self.address = map.get('Address')
+        if map.get('ClusterId') is not None:
+            self.cluster_id = map.get('ClusterId')
         return self
 
 
@@ -371,11 +445,13 @@ class GetServiceMeshSlbRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
         return self
 
 
@@ -394,24 +470,22 @@ class GetServiceMeshSlbResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         result['Data'] = []
         if self.data is not None:
             for k in self.data:
                 result['Data'].append(k.to_map() if k else None)
-        else:
-            result['Data'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         self.data = []
         if map.get('Data') is not None:
             for k in map.get('Data'):
                 temp_model = GetServiceMeshSlbResponseData()
                 self.data.append(temp_model.from_map(k))
-        else:
-            self.data = None
         return self
 
 
@@ -428,15 +502,21 @@ class GetServiceMeshSlbResponseData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['LoadBalancerId'] = self.load_balancer_id
-        result['Status'] = self.status
-        result['ServerHealthStatus'] = self.server_health_status
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.server_health_status is not None:
+            result['ServerHealthStatus'] = self.server_health_status
         return result
 
     def from_map(self, map={}):
-        self.load_balancer_id = map.get('LoadBalancerId')
-        self.status = map.get('Status')
-        self.server_health_status = map.get('ServerHealthStatus')
+        if map.get('LoadBalancerId') is not None:
+            self.load_balancer_id = map.get('LoadBalancerId')
+        if map.get('Status') is not None:
+            self.status = map.get('Status')
+        if map.get('ServerHealthStatus') is not None:
+            self.server_health_status = map.get('ServerHealthStatus')
         return self
 
 
@@ -451,13 +531,17 @@ class GetRegisteredServicesRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['Namespace'] = self.namespace
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.namespace = map.get('Namespace')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('Namespace') is not None:
+            self.namespace = map.get('Namespace')
         return self
 
 
@@ -472,13 +556,17 @@ class GetRegisteredServicesResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['Services'] = self.services
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.services is not None:
+            result['Services'] = self.services
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.services = map.get('Services')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('Services') is not None:
+            self.services = map.get('Services')
         return self
 
 
@@ -491,11 +579,13 @@ class GetDiagnosisRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
         return self
 
 
@@ -512,15 +602,21 @@ class GetDiagnosisResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['Result'] = self.result
-        result['RunAt'] = self.run_at
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.run_at is not None:
+            result['RunAt'] = self.run_at
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.result = map.get('Result')
-        self.run_at = map.get('RunAt')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('Result') is not None:
+            self.result = map.get('Result')
+        if map.get('RunAt') is not None:
+            self.run_at = map.get('RunAt')
         return self
 
 
@@ -533,11 +629,13 @@ class GetRegisteredServiceNamespacesRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
         return self
 
 
@@ -552,13 +650,17 @@ class GetRegisteredServiceNamespacesResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['Namespaces'] = self.namespaces
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.namespaces is not None:
+            result['Namespaces'] = self.namespaces
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.namespaces = map.get('Namespaces')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('Namespaces') is not None:
+            self.namespaces = map.get('Namespaces')
         return self
 
 
@@ -571,11 +673,13 @@ class RunDiagnosisRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
         return self
 
 
@@ -590,13 +694,17 @@ class RunDiagnosisResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['Result'] = self.result
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.result = map.get('Result')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('Result') is not None:
+            self.result = map.get('Result')
         return self
 
 
@@ -611,13 +719,17 @@ class RemoveClusterFromServiceMeshRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['ClusterId'] = self.cluster_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.cluster_id = map.get('ClusterId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('ClusterId') is not None:
+            self.cluster_id = map.get('ClusterId')
         return self
 
 
@@ -634,15 +746,21 @@ class RemoveClusterFromServiceMeshResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.message = map.get('Message')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('Code') is not None:
+            self.code = map.get('Code')
+        if map.get('Message') is not None:
+            self.message = map.get('Message')
         return self
 
 
@@ -657,13 +775,17 @@ class AddClusterIntoServiceMeshRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['ClusterId'] = self.cluster_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.cluster_id = map.get('ClusterId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('ClusterId') is not None:
+            self.cluster_id = map.get('ClusterId')
         return self
 
 
@@ -680,15 +802,21 @@ class AddClusterIntoServiceMeshResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.message = map.get('Message')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('Code') is not None:
+            self.code = map.get('Code')
+        if map.get('Message') is not None:
+            self.message = map.get('Message')
         return self
 
 
@@ -705,15 +833,21 @@ class UpdateIstioInjectionConfigRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['Namespace'] = self.namespace
-        result['EnableIstioInjection'] = self.enable_istio_injection
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.enable_istio_injection is not None:
+            result['EnableIstioInjection'] = self.enable_istio_injection
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.namespace = map.get('Namespace')
-        self.enable_istio_injection = map.get('EnableIstioInjection')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('Namespace') is not None:
+            self.namespace = map.get('Namespace')
+        if map.get('EnableIstioInjection') is not None:
+            self.enable_istio_injection = map.get('EnableIstioInjection')
         return self
 
 
@@ -726,11 +860,13 @@ class UpdateIstioInjectionConfigResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         return self
 
 
@@ -743,11 +879,13 @@ class DescribeGuestClusterAccessLogDashboardsRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['K8sClusterId'] = self.k_8s_cluster_id
+        if self.k_8s_cluster_id is not None:
+            result['K8sClusterId'] = self.k_8s_cluster_id
         return result
 
     def from_map(self, map={}):
-        self.k_8s_cluster_id = map.get('K8sClusterId')
+        if map.get('K8sClusterId') is not None:
+            self.k_8s_cluster_id = map.get('K8sClusterId')
         return self
 
 
@@ -768,26 +906,26 @@ class DescribeGuestClusterAccessLogDashboardsResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['K8sClusterId'] = self.k_8s_cluster_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.k_8s_cluster_id is not None:
+            result['K8sClusterId'] = self.k_8s_cluster_id
         result['Dashboards'] = []
         if self.dashboards is not None:
             for k in self.dashboards:
                 result['Dashboards'].append(k.to_map() if k else None)
-        else:
-            result['Dashboards'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.k_8s_cluster_id = map.get('K8sClusterId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('K8sClusterId') is not None:
+            self.k_8s_cluster_id = map.get('K8sClusterId')
         self.dashboards = []
         if map.get('Dashboards') is not None:
             for k in map.get('Dashboards'):
                 temp_model = DescribeGuestClusterAccessLogDashboardsResponseDashboards()
                 self.dashboards.append(temp_model.from_map(k))
-        else:
-            self.dashboards = None
         return self
 
 
@@ -802,13 +940,17 @@ class DescribeGuestClusterAccessLogDashboardsResponseDashboards(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Title'] = self.title
-        result['Url'] = self.url
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.title = map.get('Title')
-        self.url = map.get('Url')
+        if map.get('Title') is not None:
+            self.title = map.get('Title')
+        if map.get('Url') is not None:
+            self.url = map.get('Url')
         return self
 
 
@@ -823,15 +965,21 @@ class DescribeClusterPrometheusRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['K8sClusterId'] = self.k_8s_cluster_id
-        result['K8sClusterRegionId'] = self.k_8s_cluster_region_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.k_8s_cluster_id is not None:
+            result['K8sClusterId'] = self.k_8s_cluster_id
+        if self.k_8s_cluster_region_id is not None:
+            result['K8sClusterRegionId'] = self.k_8s_cluster_region_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.k_8s_cluster_id = map.get('K8sClusterId')
-        self.k_8s_cluster_region_id = map.get('K8sClusterRegionId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('K8sClusterId') is not None:
+            self.k_8s_cluster_id = map.get('K8sClusterId')
+        if map.get('K8sClusterRegionId') is not None:
+            self.k_8s_cluster_region_id = map.get('K8sClusterRegionId')
         return self
 
 
@@ -846,13 +994,17 @@ class DescribeClusterPrometheusResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['Prometheus'] = self.prometheus
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.prometheus is not None:
+            result['Prometheus'] = self.prometheus
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.prometheus = map.get('Prometheus')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('Prometheus') is not None:
+            self.prometheus = map.get('Prometheus')
         return self
 
 
@@ -862,17 +1014,22 @@ class DescribeClusterGrafanaRequest(TeaModel):
         self.k_8s_cluster_id = k_8s_cluster_id  # type: str
 
     def validate(self):
-        pass
+        self.validate_required(self.service_mesh_id, 'service_mesh_id')
+        self.validate_required(self.k_8s_cluster_id, 'k_8s_cluster_id')
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['K8sClusterId'] = self.k_8s_cluster_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.k_8s_cluster_id is not None:
+            result['K8sClusterId'] = self.k_8s_cluster_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.k_8s_cluster_id = map.get('K8sClusterId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('K8sClusterId') is not None:
+            self.k_8s_cluster_id = map.get('K8sClusterId')
         return self
 
 
@@ -891,24 +1048,22 @@ class DescribeClusterGrafanaResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         result['Dashboards'] = []
         if self.dashboards is not None:
             for k in self.dashboards:
                 result['Dashboards'].append(k.to_map() if k else None)
-        else:
-            result['Dashboards'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         self.dashboards = []
         if map.get('Dashboards') is not None:
             for k in map.get('Dashboards'):
                 temp_model = DescribeClusterGrafanaResponseDashboards()
                 self.dashboards.append(temp_model.from_map(k))
-        else:
-            self.dashboards = None
         return self
 
 
@@ -923,51 +1078,17 @@ class DescribeClusterGrafanaResponseDashboards(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Url'] = self.url
-        result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.title is not None:
+            result['Title'] = self.title
         return result
 
     def from_map(self, map={}):
-        self.url = map.get('Url')
-        self.title = map.get('Title')
-        return self
-
-
-class DescribeRegionsRequest(TeaModel):
-    def __init__(self, accept_language=None):
-        self.accept_language = accept_language  # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        result['AcceptLanguage'] = self.accept_language
-        return result
-
-    def from_map(self, map={}):
-        self.accept_language = map.get('AcceptLanguage')
-        return self
-
-
-class DescribeRegionsResponse(TeaModel):
-    def __init__(self, request_id=None, business_locations=None):
-        self.request_id = request_id    # type: str
-        self.business_locations = business_locations  # type: str
-
-    def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.business_locations, 'business_locations')
-
-    def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['BusinessLocations'] = self.business_locations
-        return result
-
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.business_locations = map.get('BusinessLocations')
+        if map.get('Url') is not None:
+            self.url = map.get('Url')
+        if map.get('Title') is not None:
+            self.title = map.get('Title')
         return self
 
 
@@ -980,11 +1101,13 @@ class DescribeCensRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
         return self
 
 
@@ -999,13 +1122,17 @@ class DescribeCensResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['Clusters'] = self.clusters
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.clusters is not None:
+            result['Clusters'] = self.clusters
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.clusters = map.get('Clusters')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('Clusters') is not None:
+            self.clusters = map.get('Clusters')
         return self
 
 
@@ -1014,15 +1141,17 @@ class DescribeClustersInServiceMeshRequest(TeaModel):
         self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
-        pass
+        self.validate_required(self.service_mesh_id, 'service_mesh_id')
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
         return self
 
 
@@ -1041,24 +1170,22 @@ class DescribeClustersInServiceMeshResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         result['Clusters'] = []
         if self.clusters is not None:
             for k in self.clusters:
                 result['Clusters'].append(k.to_map() if k else None)
-        else:
-            result['Clusters'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         self.clusters = []
         if map.get('Clusters') is not None:
             for k in map.get('Clusters'):
                 temp_model = DescribeClustersInServiceMeshResponseClusters()
                 self.clusters.append(temp_model.from_map(k))
-        else:
-            self.clusters = None
         return self
 
 
@@ -1094,33 +1221,57 @@ class DescribeClustersInServiceMeshResponseClusters(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterId'] = self.cluster_id
-        result['ClusterType'] = self.cluster_type
-        result['CreationTime'] = self.creation_time
-        result['ErrorMessage'] = self.error_message
-        result['Name'] = self.name
-        result['RegionId'] = self.region_id
-        result['State'] = self.state
-        result['UpdateTime'] = self.update_time
-        result['Version'] = self.version
-        result['VpcId'] = self.vpc_id
-        result['SgId'] = self.sg_id
-        result['ClusterDomain'] = self.cluster_domain
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.state is not None:
+            result['State'] = self.state
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.sg_id is not None:
+            result['SgId'] = self.sg_id
+        if self.cluster_domain is not None:
+            result['ClusterDomain'] = self.cluster_domain
         return result
 
     def from_map(self, map={}):
-        self.cluster_id = map.get('ClusterId')
-        self.cluster_type = map.get('ClusterType')
-        self.creation_time = map.get('CreationTime')
-        self.error_message = map.get('ErrorMessage')
-        self.name = map.get('Name')
-        self.region_id = map.get('RegionId')
-        self.state = map.get('State')
-        self.update_time = map.get('UpdateTime')
-        self.version = map.get('Version')
-        self.vpc_id = map.get('VpcId')
-        self.sg_id = map.get('SgId')
-        self.cluster_domain = map.get('ClusterDomain')
+        if map.get('ClusterId') is not None:
+            self.cluster_id = map.get('ClusterId')
+        if map.get('ClusterType') is not None:
+            self.cluster_type = map.get('ClusterType')
+        if map.get('CreationTime') is not None:
+            self.creation_time = map.get('CreationTime')
+        if map.get('ErrorMessage') is not None:
+            self.error_message = map.get('ErrorMessage')
+        if map.get('Name') is not None:
+            self.name = map.get('Name')
+        if map.get('RegionId') is not None:
+            self.region_id = map.get('RegionId')
+        if map.get('State') is not None:
+            self.state = map.get('State')
+        if map.get('UpdateTime') is not None:
+            self.update_time = map.get('UpdateTime')
+        if map.get('Version') is not None:
+            self.version = map.get('Version')
+        if map.get('VpcId') is not None:
+            self.vpc_id = map.get('VpcId')
+        if map.get('SgId') is not None:
+            self.sg_id = map.get('SgId')
+        if map.get('ClusterDomain') is not None:
+            self.cluster_domain = map.get('ClusterDomain')
         return self
 
 
@@ -1133,11 +1284,13 @@ class DescribeIngressGatewaysRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
         return self
 
 
@@ -1152,13 +1305,17 @@ class DescribeIngressGatewaysResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['IngressGateways'] = self.ingress_gateways
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ingress_gateways is not None:
+            result['IngressGateways'] = self.ingress_gateways
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.ingress_gateways = map.get('IngressGateways')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('IngressGateways') is not None:
+            self.ingress_gateways = map.get('IngressGateways')
         return self
 
 
@@ -1167,15 +1324,17 @@ class DescribeUpgradeVersionRequest(TeaModel):
         self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
-        pass
+        self.validate_required(self.service_mesh_id, 'service_mesh_id')
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
         return self
 
 
@@ -1192,20 +1351,18 @@ class DescribeUpgradeVersionResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.version is not None:
             result['Version'] = self.version.to_map()
-        else:
-            result['Version'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('Version') is not None:
             temp_model = DescribeUpgradeVersionResponseVersion()
             self.version = temp_model.from_map(map['Version'])
-        else:
-            self.version = None
         return self
 
 
@@ -1222,15 +1379,21 @@ class DescribeUpgradeVersionResponseVersion(TeaModel):
 
     def to_map(self):
         result = {}
-        result['IstioVersion'] = self.istio_version
-        result['IstioOperatorVersion'] = self.istio_operator_version
-        result['KubernetesVersion'] = self.kubernetes_version
+        if self.istio_version is not None:
+            result['IstioVersion'] = self.istio_version
+        if self.istio_operator_version is not None:
+            result['IstioOperatorVersion'] = self.istio_operator_version
+        if self.kubernetes_version is not None:
+            result['KubernetesVersion'] = self.kubernetes_version
         return result
 
     def from_map(self, map={}):
-        self.istio_version = map.get('IstioVersion')
-        self.istio_operator_version = map.get('IstioOperatorVersion')
-        self.kubernetes_version = map.get('KubernetesVersion')
+        if map.get('IstioVersion') is not None:
+            self.istio_version = map.get('IstioVersion')
+        if map.get('IstioOperatorVersion') is not None:
+            self.istio_operator_version = map.get('IstioOperatorVersion')
+        if map.get('KubernetesVersion') is not None:
+            self.kubernetes_version = map.get('KubernetesVersion')
         return self
 
 
@@ -1241,7 +1404,8 @@ class UpdateMeshFeatureRequest(TeaModel):
                  customized_zipkin=None, outbound_traffic_policy=None, proxy_request_cpu=None, proxy_request_memory=None,
                  proxy_limit_cpu=None, proxy_limit_memory=None, include_ipranges=None, enable_namespaces_by_default=None,
                  auto_injection_policy_enabled=None, sidecar_injector_request_cpu=None, sidecar_injector_request_memory=None,
-                 sidecar_injector_limit_cpu=None, sidecar_injector_limit_memory=None, sidecar_injector_webhook_as_yaml=None):
+                 sidecar_injector_limit_cpu=None, sidecar_injector_limit_memory=None, sidecar_injector_webhook_as_yaml=None,
+                 cni_enabled=None, cni_exclude_namespaces=None, opa_enabled=None, http_10enabled=None):
         self.service_mesh_id = service_mesh_id  # type: str
         self.tracing = tracing          # type: bool
         self.trace_sampling = trace_sampling  # type: float
@@ -1270,71 +1434,147 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.sidecar_injector_limit_cpu = sidecar_injector_limit_cpu  # type: str
         self.sidecar_injector_limit_memory = sidecar_injector_limit_memory  # type: str
         self.sidecar_injector_webhook_as_yaml = sidecar_injector_webhook_as_yaml  # type: str
+        self.cni_enabled = cni_enabled  # type: bool
+        self.cni_exclude_namespaces = cni_exclude_namespaces  # type: str
+        self.opa_enabled = opa_enabled  # type: bool
+        self.http_10enabled = http_10enabled  # type: bool
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['Tracing'] = self.tracing
-        result['TraceSampling'] = self.trace_sampling
-        result['LocalityLoadBalancing'] = self.locality_load_balancing
-        result['Telemetry'] = self.telemetry
-        result['OpenAgentPolicy'] = self.open_agent_policy
-        result['OPALogLevel'] = self.opalog_level
-        result['OPARequestCPU'] = self.oparequest_cpu
-        result['OPARequestMemory'] = self.oparequest_memory
-        result['OPALimitCPU'] = self.opalimit_cpu
-        result['OPALimitMemory'] = self.opalimit_memory
-        result['EnableAudit'] = self.enable_audit
-        result['AuditProject'] = self.audit_project
-        result['ClusterDomain'] = self.cluster_domain
-        result['CustomizedZipkin'] = self.customized_zipkin
-        result['OutboundTrafficPolicy'] = self.outbound_traffic_policy
-        result['ProxyRequestCPU'] = self.proxy_request_cpu
-        result['ProxyRequestMemory'] = self.proxy_request_memory
-        result['ProxyLimitCPU'] = self.proxy_limit_cpu
-        result['ProxyLimitMemory'] = self.proxy_limit_memory
-        result['IncludeIPRanges'] = self.include_ipranges
-        result['EnableNamespacesByDefault'] = self.enable_namespaces_by_default
-        result['AutoInjectionPolicyEnabled'] = self.auto_injection_policy_enabled
-        result['SidecarInjectorRequestCPU'] = self.sidecar_injector_request_cpu
-        result['SidecarInjectorRequestMemory'] = self.sidecar_injector_request_memory
-        result['SidecarInjectorLimitCPU'] = self.sidecar_injector_limit_cpu
-        result['SidecarInjectorLimitMemory'] = self.sidecar_injector_limit_memory
-        result['SidecarInjectorWebhookAsYaml'] = self.sidecar_injector_webhook_as_yaml
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.tracing is not None:
+            result['Tracing'] = self.tracing
+        if self.trace_sampling is not None:
+            result['TraceSampling'] = self.trace_sampling
+        if self.locality_load_balancing is not None:
+            result['LocalityLoadBalancing'] = self.locality_load_balancing
+        if self.telemetry is not None:
+            result['Telemetry'] = self.telemetry
+        if self.open_agent_policy is not None:
+            result['OpenAgentPolicy'] = self.open_agent_policy
+        if self.opalog_level is not None:
+            result['OPALogLevel'] = self.opalog_level
+        if self.oparequest_cpu is not None:
+            result['OPARequestCPU'] = self.oparequest_cpu
+        if self.oparequest_memory is not None:
+            result['OPARequestMemory'] = self.oparequest_memory
+        if self.opalimit_cpu is not None:
+            result['OPALimitCPU'] = self.opalimit_cpu
+        if self.opalimit_memory is not None:
+            result['OPALimitMemory'] = self.opalimit_memory
+        if self.enable_audit is not None:
+            result['EnableAudit'] = self.enable_audit
+        if self.audit_project is not None:
+            result['AuditProject'] = self.audit_project
+        if self.cluster_domain is not None:
+            result['ClusterDomain'] = self.cluster_domain
+        if self.customized_zipkin is not None:
+            result['CustomizedZipkin'] = self.customized_zipkin
+        if self.outbound_traffic_policy is not None:
+            result['OutboundTrafficPolicy'] = self.outbound_traffic_policy
+        if self.proxy_request_cpu is not None:
+            result['ProxyRequestCPU'] = self.proxy_request_cpu
+        if self.proxy_request_memory is not None:
+            result['ProxyRequestMemory'] = self.proxy_request_memory
+        if self.proxy_limit_cpu is not None:
+            result['ProxyLimitCPU'] = self.proxy_limit_cpu
+        if self.proxy_limit_memory is not None:
+            result['ProxyLimitMemory'] = self.proxy_limit_memory
+        if self.include_ipranges is not None:
+            result['IncludeIPRanges'] = self.include_ipranges
+        if self.enable_namespaces_by_default is not None:
+            result['EnableNamespacesByDefault'] = self.enable_namespaces_by_default
+        if self.auto_injection_policy_enabled is not None:
+            result['AutoInjectionPolicyEnabled'] = self.auto_injection_policy_enabled
+        if self.sidecar_injector_request_cpu is not None:
+            result['SidecarInjectorRequestCPU'] = self.sidecar_injector_request_cpu
+        if self.sidecar_injector_request_memory is not None:
+            result['SidecarInjectorRequestMemory'] = self.sidecar_injector_request_memory
+        if self.sidecar_injector_limit_cpu is not None:
+            result['SidecarInjectorLimitCPU'] = self.sidecar_injector_limit_cpu
+        if self.sidecar_injector_limit_memory is not None:
+            result['SidecarInjectorLimitMemory'] = self.sidecar_injector_limit_memory
+        if self.sidecar_injector_webhook_as_yaml is not None:
+            result['SidecarInjectorWebhookAsYaml'] = self.sidecar_injector_webhook_as_yaml
+        if self.cni_enabled is not None:
+            result['CniEnabled'] = self.cni_enabled
+        if self.cni_exclude_namespaces is not None:
+            result['CniExcludeNamespaces'] = self.cni_exclude_namespaces
+        if self.opa_enabled is not None:
+            result['OpaEnabled'] = self.opa_enabled
+        if self.http_10enabled is not None:
+            result['Http10Enabled'] = self.http_10enabled
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.tracing = map.get('Tracing')
-        self.trace_sampling = map.get('TraceSampling')
-        self.locality_load_balancing = map.get('LocalityLoadBalancing')
-        self.telemetry = map.get('Telemetry')
-        self.open_agent_policy = map.get('OpenAgentPolicy')
-        self.opalog_level = map.get('OPALogLevel')
-        self.oparequest_cpu = map.get('OPARequestCPU')
-        self.oparequest_memory = map.get('OPARequestMemory')
-        self.opalimit_cpu = map.get('OPALimitCPU')
-        self.opalimit_memory = map.get('OPALimitMemory')
-        self.enable_audit = map.get('EnableAudit')
-        self.audit_project = map.get('AuditProject')
-        self.cluster_domain = map.get('ClusterDomain')
-        self.customized_zipkin = map.get('CustomizedZipkin')
-        self.outbound_traffic_policy = map.get('OutboundTrafficPolicy')
-        self.proxy_request_cpu = map.get('ProxyRequestCPU')
-        self.proxy_request_memory = map.get('ProxyRequestMemory')
-        self.proxy_limit_cpu = map.get('ProxyLimitCPU')
-        self.proxy_limit_memory = map.get('ProxyLimitMemory')
-        self.include_ipranges = map.get('IncludeIPRanges')
-        self.enable_namespaces_by_default = map.get('EnableNamespacesByDefault')
-        self.auto_injection_policy_enabled = map.get('AutoInjectionPolicyEnabled')
-        self.sidecar_injector_request_cpu = map.get('SidecarInjectorRequestCPU')
-        self.sidecar_injector_request_memory = map.get('SidecarInjectorRequestMemory')
-        self.sidecar_injector_limit_cpu = map.get('SidecarInjectorLimitCPU')
-        self.sidecar_injector_limit_memory = map.get('SidecarInjectorLimitMemory')
-        self.sidecar_injector_webhook_as_yaml = map.get('SidecarInjectorWebhookAsYaml')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('Tracing') is not None:
+            self.tracing = map.get('Tracing')
+        if map.get('TraceSampling') is not None:
+            self.trace_sampling = map.get('TraceSampling')
+        if map.get('LocalityLoadBalancing') is not None:
+            self.locality_load_balancing = map.get('LocalityLoadBalancing')
+        if map.get('Telemetry') is not None:
+            self.telemetry = map.get('Telemetry')
+        if map.get('OpenAgentPolicy') is not None:
+            self.open_agent_policy = map.get('OpenAgentPolicy')
+        if map.get('OPALogLevel') is not None:
+            self.opalog_level = map.get('OPALogLevel')
+        if map.get('OPARequestCPU') is not None:
+            self.oparequest_cpu = map.get('OPARequestCPU')
+        if map.get('OPARequestMemory') is not None:
+            self.oparequest_memory = map.get('OPARequestMemory')
+        if map.get('OPALimitCPU') is not None:
+            self.opalimit_cpu = map.get('OPALimitCPU')
+        if map.get('OPALimitMemory') is not None:
+            self.opalimit_memory = map.get('OPALimitMemory')
+        if map.get('EnableAudit') is not None:
+            self.enable_audit = map.get('EnableAudit')
+        if map.get('AuditProject') is not None:
+            self.audit_project = map.get('AuditProject')
+        if map.get('ClusterDomain') is not None:
+            self.cluster_domain = map.get('ClusterDomain')
+        if map.get('CustomizedZipkin') is not None:
+            self.customized_zipkin = map.get('CustomizedZipkin')
+        if map.get('OutboundTrafficPolicy') is not None:
+            self.outbound_traffic_policy = map.get('OutboundTrafficPolicy')
+        if map.get('ProxyRequestCPU') is not None:
+            self.proxy_request_cpu = map.get('ProxyRequestCPU')
+        if map.get('ProxyRequestMemory') is not None:
+            self.proxy_request_memory = map.get('ProxyRequestMemory')
+        if map.get('ProxyLimitCPU') is not None:
+            self.proxy_limit_cpu = map.get('ProxyLimitCPU')
+        if map.get('ProxyLimitMemory') is not None:
+            self.proxy_limit_memory = map.get('ProxyLimitMemory')
+        if map.get('IncludeIPRanges') is not None:
+            self.include_ipranges = map.get('IncludeIPRanges')
+        if map.get('EnableNamespacesByDefault') is not None:
+            self.enable_namespaces_by_default = map.get('EnableNamespacesByDefault')
+        if map.get('AutoInjectionPolicyEnabled') is not None:
+            self.auto_injection_policy_enabled = map.get('AutoInjectionPolicyEnabled')
+        if map.get('SidecarInjectorRequestCPU') is not None:
+            self.sidecar_injector_request_cpu = map.get('SidecarInjectorRequestCPU')
+        if map.get('SidecarInjectorRequestMemory') is not None:
+            self.sidecar_injector_request_memory = map.get('SidecarInjectorRequestMemory')
+        if map.get('SidecarInjectorLimitCPU') is not None:
+            self.sidecar_injector_limit_cpu = map.get('SidecarInjectorLimitCPU')
+        if map.get('SidecarInjectorLimitMemory') is not None:
+            self.sidecar_injector_limit_memory = map.get('SidecarInjectorLimitMemory')
+        if map.get('SidecarInjectorWebhookAsYaml') is not None:
+            self.sidecar_injector_webhook_as_yaml = map.get('SidecarInjectorWebhookAsYaml')
+        if map.get('CniEnabled') is not None:
+            self.cni_enabled = map.get('CniEnabled')
+        if map.get('CniExcludeNamespaces') is not None:
+            self.cni_exclude_namespaces = map.get('CniExcludeNamespaces')
+        if map.get('OpaEnabled') is not None:
+            self.opa_enabled = map.get('OpaEnabled')
+        if map.get('Http10Enabled') is not None:
+            self.http_10enabled = map.get('Http10Enabled')
         return self
 
 
@@ -1347,11 +1587,13 @@ class UpdateMeshFeatureResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         return self
 
 
@@ -1360,15 +1602,17 @@ class UpgradeMeshVersionRequest(TeaModel):
         self.service_mesh_id = service_mesh_id  # type: str
 
     def validate(self):
-        pass
+        self.validate_required(self.service_mesh_id, 'service_mesh_id')
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
         return self
 
 
@@ -1381,11 +1625,13 @@ class UpgradeMeshVersionResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         return self
 
 
@@ -1419,24 +1665,22 @@ class DescribeServiceMeshesResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         result['ServiceMeshes'] = []
         if self.service_meshes is not None:
             for k in self.service_meshes:
                 result['ServiceMeshes'].append(k.to_map() if k else None)
-        else:
-            result['ServiceMeshes'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         self.service_meshes = []
         if map.get('ServiceMeshes') is not None:
             for k in map.get('ServiceMeshes'):
                 temp_model = DescribeServiceMeshesResponseServiceMeshes()
                 self.service_meshes.append(temp_model.from_map(k))
-        else:
-            self.service_meshes = None
         return self
 
 
@@ -1458,19 +1702,29 @@ class DescribeServiceMeshesResponseServiceMeshesEndpoints(TeaModel):
 
     def to_map(self):
         result = {}
-        result['IntranetApiServerEndpoint'] = self.intranet_api_server_endpoint
-        result['IntranetPilotEndpoint'] = self.intranet_pilot_endpoint
-        result['PublicApiServerEndpoint'] = self.public_api_server_endpoint
-        result['PublicPilotEndpoint'] = self.public_pilot_endpoint
-        result['ReverseTunnelEndpoint'] = self.reverse_tunnel_endpoint
+        if self.intranet_api_server_endpoint is not None:
+            result['IntranetApiServerEndpoint'] = self.intranet_api_server_endpoint
+        if self.intranet_pilot_endpoint is not None:
+            result['IntranetPilotEndpoint'] = self.intranet_pilot_endpoint
+        if self.public_api_server_endpoint is not None:
+            result['PublicApiServerEndpoint'] = self.public_api_server_endpoint
+        if self.public_pilot_endpoint is not None:
+            result['PublicPilotEndpoint'] = self.public_pilot_endpoint
+        if self.reverse_tunnel_endpoint is not None:
+            result['ReverseTunnelEndpoint'] = self.reverse_tunnel_endpoint
         return result
 
     def from_map(self, map={}):
-        self.intranet_api_server_endpoint = map.get('IntranetApiServerEndpoint')
-        self.intranet_pilot_endpoint = map.get('IntranetPilotEndpoint')
-        self.public_api_server_endpoint = map.get('PublicApiServerEndpoint')
-        self.public_pilot_endpoint = map.get('PublicPilotEndpoint')
-        self.reverse_tunnel_endpoint = map.get('ReverseTunnelEndpoint')
+        if map.get('IntranetApiServerEndpoint') is not None:
+            self.intranet_api_server_endpoint = map.get('IntranetApiServerEndpoint')
+        if map.get('IntranetPilotEndpoint') is not None:
+            self.intranet_pilot_endpoint = map.get('IntranetPilotEndpoint')
+        if map.get('PublicApiServerEndpoint') is not None:
+            self.public_api_server_endpoint = map.get('PublicApiServerEndpoint')
+        if map.get('PublicPilotEndpoint') is not None:
+            self.public_pilot_endpoint = map.get('PublicPilotEndpoint')
+        if map.get('ReverseTunnelEndpoint') is not None:
+            self.reverse_tunnel_endpoint = map.get('ReverseTunnelEndpoint')
         return self
 
 
@@ -1498,25 +1752,41 @@ class DescribeServiceMeshesResponseServiceMeshesServiceMeshInfo(TeaModel):
 
     def to_map(self):
         result = {}
-        result['CreationTime'] = self.creation_time
-        result['ErrorMessage'] = self.error_message
-        result['Name'] = self.name
-        result['RegionId'] = self.region_id
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['State'] = self.state
-        result['UpdateTime'] = self.update_time
-        result['Version'] = self.version
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.state is not None:
+            result['State'] = self.state
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, map={}):
-        self.creation_time = map.get('CreationTime')
-        self.error_message = map.get('ErrorMessage')
-        self.name = map.get('Name')
-        self.region_id = map.get('RegionId')
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.state = map.get('State')
-        self.update_time = map.get('UpdateTime')
-        self.version = map.get('Version')
+        if map.get('CreationTime') is not None:
+            self.creation_time = map.get('CreationTime')
+        if map.get('ErrorMessage') is not None:
+            self.error_message = map.get('ErrorMessage')
+        if map.get('Name') is not None:
+            self.name = map.get('Name')
+        if map.get('RegionId') is not None:
+            self.region_id = map.get('RegionId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('State') is not None:
+            self.state = map.get('State')
+        if map.get('UpdateTime') is not None:
+            self.update_time = map.get('UpdateTime')
+        if map.get('Version') is not None:
+            self.version = map.get('Version')
         return self
 
 
@@ -1536,27 +1806,123 @@ class DescribeServiceMeshesResponseServiceMeshesSpecLoadBalancer(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ApiServerLoadbalancerId'] = self.api_server_loadbalancer_id
-        result['ApiServerPublicEip'] = self.api_server_public_eip
-        result['PilotPublicEip'] = self.pilot_public_eip
-        result['PilotPublicLoadbalancerId'] = self.pilot_public_loadbalancer_id
+        if self.api_server_loadbalancer_id is not None:
+            result['ApiServerLoadbalancerId'] = self.api_server_loadbalancer_id
+        if self.api_server_public_eip is not None:
+            result['ApiServerPublicEip'] = self.api_server_public_eip
+        if self.pilot_public_eip is not None:
+            result['PilotPublicEip'] = self.pilot_public_eip
+        if self.pilot_public_loadbalancer_id is not None:
+            result['PilotPublicLoadbalancerId'] = self.pilot_public_loadbalancer_id
         return result
 
     def from_map(self, map={}):
-        self.api_server_loadbalancer_id = map.get('ApiServerLoadbalancerId')
-        self.api_server_public_eip = map.get('ApiServerPublicEip')
-        self.pilot_public_eip = map.get('PilotPublicEip')
-        self.pilot_public_loadbalancer_id = map.get('PilotPublicLoadbalancerId')
+        if map.get('ApiServerLoadbalancerId') is not None:
+            self.api_server_loadbalancer_id = map.get('ApiServerLoadbalancerId')
+        if map.get('ApiServerPublicEip') is not None:
+            self.api_server_public_eip = map.get('ApiServerPublicEip')
+        if map.get('PilotPublicEip') is not None:
+            self.pilot_public_eip = map.get('PilotPublicEip')
+        if map.get('PilotPublicLoadbalancerId') is not None:
+            self.pilot_public_loadbalancer_id = map.get('PilotPublicLoadbalancerId')
+        return self
+
+
+class DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigPilot(TeaModel):
+    def __init__(self, trace_sampling=None, http_10enabled=None):
+        self.trace_sampling = trace_sampling  # type: float
+        self.http_10enabled = http_10enabled  # type: bool
+
+    def validate(self):
+        self.validate_required(self.trace_sampling, 'trace_sampling')
+        self.validate_required(self.http_10enabled, 'http_10enabled')
+
+    def to_map(self):
+        result = {}
+        if self.trace_sampling is not None:
+            result['TraceSampling'] = self.trace_sampling
+        if self.http_10enabled is not None:
+            result['Http10Enabled'] = self.http_10enabled
+        return result
+
+    def from_map(self, map={}):
+        if map.get('TraceSampling') is not None:
+            self.trace_sampling = map.get('TraceSampling')
+        if map.get('Http10Enabled') is not None:
+            self.http_10enabled = map.get('Http10Enabled')
+        return self
+
+
+class DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration(TeaModel):
+    def __init__(self, enabled=None, exclude_namespaces=None):
+        self.enabled = enabled          # type: bool
+        self.exclude_namespaces = exclude_namespaces  # type: str
+
+    def validate(self):
+        self.validate_required(self.enabled, 'enabled')
+        self.validate_required(self.exclude_namespaces, 'exclude_namespaces')
+
+    def to_map(self):
+        result = {}
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.exclude_namespaces is not None:
+            result['ExcludeNamespaces'] = self.exclude_namespaces
+        return result
+
+    def from_map(self, map={}):
+        if map.get('Enabled') is not None:
+            self.enabled = map.get('Enabled')
+        if map.get('ExcludeNamespaces') is not None:
+            self.exclude_namespaces = map.get('ExcludeNamespaces')
+        return self
+
+
+class DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector(TeaModel):
+    def __init__(self, enable_namespaces_by_default=None, auto_injection_policy_enabled=None,
+                 init_cniconfiguration=None):
+        self.enable_namespaces_by_default = enable_namespaces_by_default  # type: bool
+        self.auto_injection_policy_enabled = auto_injection_policy_enabled  # type: bool
+        self.init_cniconfiguration = init_cniconfiguration  # type: DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration
+
+    def validate(self):
+        self.validate_required(self.enable_namespaces_by_default, 'enable_namespaces_by_default')
+        self.validate_required(self.auto_injection_policy_enabled, 'auto_injection_policy_enabled')
+        self.validate_required(self.init_cniconfiguration, 'init_cniconfiguration')
+        if self.init_cniconfiguration:
+            self.init_cniconfiguration.validate()
+
+    def to_map(self):
+        result = {}
+        if self.enable_namespaces_by_default is not None:
+            result['EnableNamespacesByDefault'] = self.enable_namespaces_by_default
+        if self.auto_injection_policy_enabled is not None:
+            result['AutoInjectionPolicyEnabled'] = self.auto_injection_policy_enabled
+        if self.init_cniconfiguration is not None:
+            result['InitCNIConfiguration'] = self.init_cniconfiguration.to_map()
+        return result
+
+    def from_map(self, map={}):
+        if map.get('EnableNamespacesByDefault') is not None:
+            self.enable_namespaces_by_default = map.get('EnableNamespacesByDefault')
+        if map.get('AutoInjectionPolicyEnabled') is not None:
+            self.auto_injection_policy_enabled = map.get('AutoInjectionPolicyEnabled')
+        if map.get('InitCNIConfiguration') is not None:
+            temp_model = DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration()
+            self.init_cniconfiguration = temp_model.from_map(map['InitCNIConfiguration'])
         return self
 
 
 class DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig(TeaModel):
-    def __init__(self, mtls=None, outbound_traffic_policy=None, strict_mtls=None, tracing=None, telemetry=None):
+    def __init__(self, mtls=None, outbound_traffic_policy=None, strict_mtls=None, tracing=None, telemetry=None,
+                 pilot=None, sidecar_injector=None):
         self.mtls = mtls                # type: bool
         self.outbound_traffic_policy = outbound_traffic_policy  # type: str
         self.strict_mtls = strict_mtls  # type: bool
         self.tracing = tracing          # type: bool
         self.telemetry = telemetry      # type: bool
+        self.pilot = pilot              # type: DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigPilot
+        self.sidecar_injector = sidecar_injector  # type: DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector
 
     def validate(self):
         self.validate_required(self.mtls, 'mtls')
@@ -1564,22 +1930,48 @@ class DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig(TeaModel):
         self.validate_required(self.strict_mtls, 'strict_mtls')
         self.validate_required(self.tracing, 'tracing')
         self.validate_required(self.telemetry, 'telemetry')
+        self.validate_required(self.pilot, 'pilot')
+        if self.pilot:
+            self.pilot.validate()
+        self.validate_required(self.sidecar_injector, 'sidecar_injector')
+        if self.sidecar_injector:
+            self.sidecar_injector.validate()
 
     def to_map(self):
         result = {}
-        result['Mtls'] = self.mtls
-        result['OutboundTrafficPolicy'] = self.outbound_traffic_policy
-        result['StrictMtls'] = self.strict_mtls
-        result['Tracing'] = self.tracing
-        result['Telemetry'] = self.telemetry
+        if self.mtls is not None:
+            result['Mtls'] = self.mtls
+        if self.outbound_traffic_policy is not None:
+            result['OutboundTrafficPolicy'] = self.outbound_traffic_policy
+        if self.strict_mtls is not None:
+            result['StrictMtls'] = self.strict_mtls
+        if self.tracing is not None:
+            result['Tracing'] = self.tracing
+        if self.telemetry is not None:
+            result['Telemetry'] = self.telemetry
+        if self.pilot is not None:
+            result['Pilot'] = self.pilot.to_map()
+        if self.sidecar_injector is not None:
+            result['SidecarInjector'] = self.sidecar_injector.to_map()
         return result
 
     def from_map(self, map={}):
-        self.mtls = map.get('Mtls')
-        self.outbound_traffic_policy = map.get('OutboundTrafficPolicy')
-        self.strict_mtls = map.get('StrictMtls')
-        self.tracing = map.get('Tracing')
-        self.telemetry = map.get('Telemetry')
+        if map.get('Mtls') is not None:
+            self.mtls = map.get('Mtls')
+        if map.get('OutboundTrafficPolicy') is not None:
+            self.outbound_traffic_policy = map.get('OutboundTrafficPolicy')
+        if map.get('StrictMtls') is not None:
+            self.strict_mtls = map.get('StrictMtls')
+        if map.get('Tracing') is not None:
+            self.tracing = map.get('Tracing')
+        if map.get('Telemetry') is not None:
+            self.telemetry = map.get('Telemetry')
+        if map.get('Pilot') is not None:
+            temp_model = DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigPilot()
+            self.pilot = temp_model.from_map(map['Pilot'])
+        if map.get('SidecarInjector') is not None:
+            temp_model = DescribeServiceMeshesResponseServiceMeshesSpecMeshConfigSidecarInjector()
+            self.sidecar_injector = temp_model.from_map(map['SidecarInjector'])
         return self
 
 
@@ -1596,15 +1988,21 @@ class DescribeServiceMeshesResponseServiceMeshesSpecNetwork(TeaModel):
 
     def to_map(self):
         result = {}
-        result['SecurityGroupId'] = self.security_group_id
-        result['VpcId'] = self.vpc_id
-        result['VSwitches'] = self.v_switches
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.v_switches is not None:
+            result['VSwitches'] = self.v_switches
         return result
 
     def from_map(self, map={}):
-        self.security_group_id = map.get('SecurityGroupId')
-        self.vpc_id = map.get('VpcId')
-        self.v_switches = map.get('VSwitches')
+        if map.get('SecurityGroupId') is not None:
+            self.security_group_id = map.get('SecurityGroupId')
+        if map.get('VpcId') is not None:
+            self.vpc_id = map.get('VpcId')
+        if map.get('VSwitches') is not None:
+            self.v_switches = map.get('VSwitches')
         return self
 
 
@@ -1629,34 +2027,22 @@ class DescribeServiceMeshesResponseServiceMeshesSpec(TeaModel):
         result = {}
         if self.load_balancer is not None:
             result['LoadBalancer'] = self.load_balancer.to_map()
-        else:
-            result['LoadBalancer'] = None
         if self.mesh_config is not None:
             result['MeshConfig'] = self.mesh_config.to_map()
-        else:
-            result['MeshConfig'] = None
         if self.network is not None:
             result['Network'] = self.network.to_map()
-        else:
-            result['Network'] = None
         return result
 
     def from_map(self, map={}):
         if map.get('LoadBalancer') is not None:
             temp_model = DescribeServiceMeshesResponseServiceMeshesSpecLoadBalancer()
             self.load_balancer = temp_model.from_map(map['LoadBalancer'])
-        else:
-            self.load_balancer = None
         if map.get('MeshConfig') is not None:
             temp_model = DescribeServiceMeshesResponseServiceMeshesSpecMeshConfig()
             self.mesh_config = temp_model.from_map(map['MeshConfig'])
-        else:
-            self.mesh_config = None
         if map.get('Network') is not None:
             temp_model = DescribeServiceMeshesResponseServiceMeshesSpecNetwork()
             self.network = temp_model.from_map(map['Network'])
-        else:
-            self.network = None
         return self
 
 
@@ -1683,36 +2069,26 @@ class DescribeServiceMeshesResponseServiceMeshes(TeaModel):
         result = {}
         if self.endpoints is not None:
             result['Endpoints'] = self.endpoints.to_map()
-        else:
-            result['Endpoints'] = None
         if self.service_mesh_info is not None:
             result['ServiceMeshInfo'] = self.service_mesh_info.to_map()
-        else:
-            result['ServiceMeshInfo'] = None
         if self.spec is not None:
             result['Spec'] = self.spec.to_map()
-        else:
-            result['Spec'] = None
-        result['Clusters'] = self.clusters
+        if self.clusters is not None:
+            result['Clusters'] = self.clusters
         return result
 
     def from_map(self, map={}):
         if map.get('Endpoints') is not None:
             temp_model = DescribeServiceMeshesResponseServiceMeshesEndpoints()
             self.endpoints = temp_model.from_map(map['Endpoints'])
-        else:
-            self.endpoints = None
         if map.get('ServiceMeshInfo') is not None:
             temp_model = DescribeServiceMeshesResponseServiceMeshesServiceMeshInfo()
             self.service_mesh_info = temp_model.from_map(map['ServiceMeshInfo'])
-        else:
-            self.service_mesh_info = None
         if map.get('Spec') is not None:
             temp_model = DescribeServiceMeshesResponseServiceMeshesSpec()
             self.spec = temp_model.from_map(map['Spec'])
-        else:
-            self.spec = None
-        self.clusters = map.get('Clusters')
+        if map.get('Clusters') is not None:
+            self.clusters = map.get('Clusters')
         return self
 
 
@@ -1725,11 +2101,13 @@ class DescribeServiceMeshDetailRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
         return self
 
 
@@ -1746,20 +2124,18 @@ class DescribeServiceMeshDetailResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.service_mesh is not None:
             result['ServiceMesh'] = self.service_mesh.to_map()
-        else:
-            result['ServiceMesh'] = None
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         if map.get('ServiceMesh') is not None:
             temp_model = DescribeServiceMeshDetailResponseServiceMesh()
             self.service_mesh = temp_model.from_map(map['ServiceMesh'])
-        else:
-            self.service_mesh = None
         return self
 
 
@@ -1779,17 +2155,25 @@ class DescribeServiceMeshDetailResponseServiceMeshEndpoints(TeaModel):
 
     def to_map(self):
         result = {}
-        result['IntranetApiServerEndpoint'] = self.intranet_api_server_endpoint
-        result['IntranetPilotEndpoint'] = self.intranet_pilot_endpoint
-        result['PublicApiServerEndpoint'] = self.public_api_server_endpoint
-        result['PublicPilotEndpoint'] = self.public_pilot_endpoint
+        if self.intranet_api_server_endpoint is not None:
+            result['IntranetApiServerEndpoint'] = self.intranet_api_server_endpoint
+        if self.intranet_pilot_endpoint is not None:
+            result['IntranetPilotEndpoint'] = self.intranet_pilot_endpoint
+        if self.public_api_server_endpoint is not None:
+            result['PublicApiServerEndpoint'] = self.public_api_server_endpoint
+        if self.public_pilot_endpoint is not None:
+            result['PublicPilotEndpoint'] = self.public_pilot_endpoint
         return result
 
     def from_map(self, map={}):
-        self.intranet_api_server_endpoint = map.get('IntranetApiServerEndpoint')
-        self.intranet_pilot_endpoint = map.get('IntranetPilotEndpoint')
-        self.public_api_server_endpoint = map.get('PublicApiServerEndpoint')
-        self.public_pilot_endpoint = map.get('PublicPilotEndpoint')
+        if map.get('IntranetApiServerEndpoint') is not None:
+            self.intranet_api_server_endpoint = map.get('IntranetApiServerEndpoint')
+        if map.get('IntranetPilotEndpoint') is not None:
+            self.intranet_pilot_endpoint = map.get('IntranetPilotEndpoint')
+        if map.get('PublicApiServerEndpoint') is not None:
+            self.public_api_server_endpoint = map.get('PublicApiServerEndpoint')
+        if map.get('PublicPilotEndpoint') is not None:
+            self.public_pilot_endpoint = map.get('PublicPilotEndpoint')
         return self
 
 
@@ -1817,25 +2201,41 @@ class DescribeServiceMeshDetailResponseServiceMeshServiceMeshInfo(TeaModel):
 
     def to_map(self):
         result = {}
-        result['CreationTime'] = self.creation_time
-        result['ErrorMessage'] = self.error_message
-        result['Name'] = self.name
-        result['RegionId'] = self.region_id
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['State'] = self.state
-        result['UpdateTime'] = self.update_time
-        result['Version'] = self.version
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.state is not None:
+            result['State'] = self.state
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, map={}):
-        self.creation_time = map.get('CreationTime')
-        self.error_message = map.get('ErrorMessage')
-        self.name = map.get('Name')
-        self.region_id = map.get('RegionId')
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.state = map.get('State')
-        self.update_time = map.get('UpdateTime')
-        self.version = map.get('Version')
+        if map.get('CreationTime') is not None:
+            self.creation_time = map.get('CreationTime')
+        if map.get('ErrorMessage') is not None:
+            self.error_message = map.get('ErrorMessage')
+        if map.get('Name') is not None:
+            self.name = map.get('Name')
+        if map.get('RegionId') is not None:
+            self.region_id = map.get('RegionId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('State') is not None:
+            self.state = map.get('State')
+        if map.get('UpdateTime') is not None:
+            self.update_time = map.get('UpdateTime')
+        if map.get('Version') is not None:
+            self.version = map.get('Version')
         return self
 
 
@@ -1855,34 +2255,50 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecLoadBalancer(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ApiServerLoadbalancerId'] = self.api_server_loadbalancer_id
-        result['ApiServerPublicEip'] = self.api_server_public_eip
-        result['PilotPublicEip'] = self.pilot_public_eip
-        result['PilotPublicLoadbalancerId'] = self.pilot_public_loadbalancer_id
+        if self.api_server_loadbalancer_id is not None:
+            result['ApiServerLoadbalancerId'] = self.api_server_loadbalancer_id
+        if self.api_server_public_eip is not None:
+            result['ApiServerPublicEip'] = self.api_server_public_eip
+        if self.pilot_public_eip is not None:
+            result['PilotPublicEip'] = self.pilot_public_eip
+        if self.pilot_public_loadbalancer_id is not None:
+            result['PilotPublicLoadbalancerId'] = self.pilot_public_loadbalancer_id
         return result
 
     def from_map(self, map={}):
-        self.api_server_loadbalancer_id = map.get('ApiServerLoadbalancerId')
-        self.api_server_public_eip = map.get('ApiServerPublicEip')
-        self.pilot_public_eip = map.get('PilotPublicEip')
-        self.pilot_public_loadbalancer_id = map.get('PilotPublicLoadbalancerId')
+        if map.get('ApiServerLoadbalancerId') is not None:
+            self.api_server_loadbalancer_id = map.get('ApiServerLoadbalancerId')
+        if map.get('ApiServerPublicEip') is not None:
+            self.api_server_public_eip = map.get('ApiServerPublicEip')
+        if map.get('PilotPublicEip') is not None:
+            self.pilot_public_eip = map.get('PilotPublicEip')
+        if map.get('PilotPublicLoadbalancerId') is not None:
+            self.pilot_public_loadbalancer_id = map.get('PilotPublicLoadbalancerId')
         return self
 
 
 class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot(TeaModel):
-    def __init__(self, trace_sampling=None):
+    def __init__(self, trace_sampling=None, http_10enabled=None):
         self.trace_sampling = trace_sampling  # type: float
+        self.http_10enabled = http_10enabled  # type: bool
 
     def validate(self):
         self.validate_required(self.trace_sampling, 'trace_sampling')
+        self.validate_required(self.http_10enabled, 'http_10enabled')
 
     def to_map(self):
         result = {}
-        result['TraceSampling'] = self.trace_sampling
+        if self.trace_sampling is not None:
+            result['TraceSampling'] = self.trace_sampling
+        if self.http_10enabled is not None:
+            result['Http10Enabled'] = self.http_10enabled
         return result
 
     def from_map(self, map={}):
-        self.trace_sampling = map.get('TraceSampling')
+        if map.get('TraceSampling') is not None:
+            self.trace_sampling = map.get('TraceSampling')
+        if map.get('Http10Enabled') is not None:
+            self.http_10enabled = map.get('Http10Enabled')
         return self
 
 
@@ -1906,21 +2322,33 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigOPA(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Enabled'] = self.enabled
-        result['LogLevel'] = self.log_level
-        result['RequestCPU'] = self.request_cpu
-        result['RequestMemory'] = self.request_memory
-        result['LimitCPU'] = self.limit_cpu
-        result['LimitMemory'] = self.limit_memory
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.log_level is not None:
+            result['LogLevel'] = self.log_level
+        if self.request_cpu is not None:
+            result['RequestCPU'] = self.request_cpu
+        if self.request_memory is not None:
+            result['RequestMemory'] = self.request_memory
+        if self.limit_cpu is not None:
+            result['LimitCPU'] = self.limit_cpu
+        if self.limit_memory is not None:
+            result['LimitMemory'] = self.limit_memory
         return result
 
     def from_map(self, map={}):
-        self.enabled = map.get('Enabled')
-        self.log_level = map.get('LogLevel')
-        self.request_cpu = map.get('RequestCPU')
-        self.request_memory = map.get('RequestMemory')
-        self.limit_cpu = map.get('LimitCPU')
-        self.limit_memory = map.get('LimitMemory')
+        if map.get('Enabled') is not None:
+            self.enabled = map.get('Enabled')
+        if map.get('LogLevel') is not None:
+            self.log_level = map.get('LogLevel')
+        if map.get('RequestCPU') is not None:
+            self.request_cpu = map.get('RequestCPU')
+        if map.get('RequestMemory') is not None:
+            self.request_memory = map.get('RequestMemory')
+        if map.get('LimitCPU') is not None:
+            self.limit_cpu = map.get('LimitCPU')
+        if map.get('LimitMemory') is not None:
+            self.limit_memory = map.get('LimitMemory')
         return self
 
 
@@ -1935,13 +2363,17 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigAudit(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Enabled'] = self.enabled
-        result['Project'] = self.project
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.project is not None:
+            result['Project'] = self.project
         return result
 
     def from_map(self, map={}):
-        self.enabled = map.get('Enabled')
-        self.project = map.get('Project')
+        if map.get('Enabled') is not None:
+            self.enabled = map.get('Enabled')
+        if map.get('Project') is not None:
+            self.project = map.get('Project')
         return self
 
 
@@ -1963,25 +2395,61 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigProxy(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClusterDomain'] = self.cluster_domain
-        result['RequestCPU'] = self.request_cpu
-        result['RequestMemory'] = self.request_memory
-        result['LimitCPU'] = self.limit_cpu
-        result['LimitMemory'] = self.limit_memory
+        if self.cluster_domain is not None:
+            result['ClusterDomain'] = self.cluster_domain
+        if self.request_cpu is not None:
+            result['RequestCPU'] = self.request_cpu
+        if self.request_memory is not None:
+            result['RequestMemory'] = self.request_memory
+        if self.limit_cpu is not None:
+            result['LimitCPU'] = self.limit_cpu
+        if self.limit_memory is not None:
+            result['LimitMemory'] = self.limit_memory
         return result
 
     def from_map(self, map={}):
-        self.cluster_domain = map.get('ClusterDomain')
-        self.request_cpu = map.get('RequestCPU')
-        self.request_memory = map.get('RequestMemory')
-        self.limit_cpu = map.get('LimitCPU')
-        self.limit_memory = map.get('LimitMemory')
+        if map.get('ClusterDomain') is not None:
+            self.cluster_domain = map.get('ClusterDomain')
+        if map.get('RequestCPU') is not None:
+            self.request_cpu = map.get('RequestCPU')
+        if map.get('RequestMemory') is not None:
+            self.request_memory = map.get('RequestMemory')
+        if map.get('LimitCPU') is not None:
+            self.limit_cpu = map.get('LimitCPU')
+        if map.get('LimitMemory') is not None:
+            self.limit_memory = map.get('LimitMemory')
+        return self
+
+
+class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration(TeaModel):
+    def __init__(self, enabled=None, exclude_namespaces=None):
+        self.enabled = enabled          # type: bool
+        self.exclude_namespaces = exclude_namespaces  # type: str
+
+    def validate(self):
+        self.validate_required(self.enabled, 'enabled')
+        self.validate_required(self.exclude_namespaces, 'exclude_namespaces')
+
+    def to_map(self):
+        result = {}
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.exclude_namespaces is not None:
+            result['ExcludeNamespaces'] = self.exclude_namespaces
+        return result
+
+    def from_map(self, map={}):
+        if map.get('Enabled') is not None:
+            self.enabled = map.get('Enabled')
+        if map.get('ExcludeNamespaces') is not None:
+            self.exclude_namespaces = map.get('ExcludeNamespaces')
         return self
 
 
 class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector(TeaModel):
     def __init__(self, enable_namespaces_by_default=None, auto_injection_policy_enabled=None, request_cpu=None,
-                 request_memory=None, limit_cpu=None, limit_memory=None, sidecar_injector_webhook_as_yaml=None):
+                 request_memory=None, limit_cpu=None, limit_memory=None, sidecar_injector_webhook_as_yaml=None,
+                 init_cniconfiguration=None):
         self.enable_namespaces_by_default = enable_namespaces_by_default  # type: bool
         self.auto_injection_policy_enabled = auto_injection_policy_enabled  # type: bool
         self.request_cpu = request_cpu  # type: str
@@ -1989,6 +2457,7 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector(
         self.limit_cpu = limit_cpu      # type: str
         self.limit_memory = limit_memory  # type: str
         self.sidecar_injector_webhook_as_yaml = sidecar_injector_webhook_as_yaml  # type: str
+        self.init_cniconfiguration = init_cniconfiguration  # type: DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration
 
     def validate(self):
         self.validate_required(self.enable_namespaces_by_default, 'enable_namespaces_by_default')
@@ -1998,26 +2467,48 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector(
         self.validate_required(self.limit_cpu, 'limit_cpu')
         self.validate_required(self.limit_memory, 'limit_memory')
         self.validate_required(self.sidecar_injector_webhook_as_yaml, 'sidecar_injector_webhook_as_yaml')
+        self.validate_required(self.init_cniconfiguration, 'init_cniconfiguration')
+        if self.init_cniconfiguration:
+            self.init_cniconfiguration.validate()
 
     def to_map(self):
         result = {}
-        result['EnableNamespacesByDefault'] = self.enable_namespaces_by_default
-        result['AutoInjectionPolicyEnabled'] = self.auto_injection_policy_enabled
-        result['RequestCPU'] = self.request_cpu
-        result['RequestMemory'] = self.request_memory
-        result['LimitCPU'] = self.limit_cpu
-        result['LimitMemory'] = self.limit_memory
-        result['SidecarInjectorWebhookAsYaml'] = self.sidecar_injector_webhook_as_yaml
+        if self.enable_namespaces_by_default is not None:
+            result['EnableNamespacesByDefault'] = self.enable_namespaces_by_default
+        if self.auto_injection_policy_enabled is not None:
+            result['AutoInjectionPolicyEnabled'] = self.auto_injection_policy_enabled
+        if self.request_cpu is not None:
+            result['RequestCPU'] = self.request_cpu
+        if self.request_memory is not None:
+            result['RequestMemory'] = self.request_memory
+        if self.limit_cpu is not None:
+            result['LimitCPU'] = self.limit_cpu
+        if self.limit_memory is not None:
+            result['LimitMemory'] = self.limit_memory
+        if self.sidecar_injector_webhook_as_yaml is not None:
+            result['SidecarInjectorWebhookAsYaml'] = self.sidecar_injector_webhook_as_yaml
+        if self.init_cniconfiguration is not None:
+            result['InitCNIConfiguration'] = self.init_cniconfiguration.to_map()
         return result
 
     def from_map(self, map={}):
-        self.enable_namespaces_by_default = map.get('EnableNamespacesByDefault')
-        self.auto_injection_policy_enabled = map.get('AutoInjectionPolicyEnabled')
-        self.request_cpu = map.get('RequestCPU')
-        self.request_memory = map.get('RequestMemory')
-        self.limit_cpu = map.get('LimitCPU')
-        self.limit_memory = map.get('LimitMemory')
-        self.sidecar_injector_webhook_as_yaml = map.get('SidecarInjectorWebhookAsYaml')
+        if map.get('EnableNamespacesByDefault') is not None:
+            self.enable_namespaces_by_default = map.get('EnableNamespacesByDefault')
+        if map.get('AutoInjectionPolicyEnabled') is not None:
+            self.auto_injection_policy_enabled = map.get('AutoInjectionPolicyEnabled')
+        if map.get('RequestCPU') is not None:
+            self.request_cpu = map.get('RequestCPU')
+        if map.get('RequestMemory') is not None:
+            self.request_memory = map.get('RequestMemory')
+        if map.get('LimitCPU') is not None:
+            self.limit_cpu = map.get('LimitCPU')
+        if map.get('LimitMemory') is not None:
+            self.limit_memory = map.get('LimitMemory')
+        if map.get('SidecarInjectorWebhookAsYaml') is not None:
+            self.sidecar_injector_webhook_as_yaml = map.get('SidecarInjectorWebhookAsYaml')
+        if map.get('InitCNIConfiguration') is not None:
+            temp_model = DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration()
+            self.init_cniconfiguration = temp_model.from_map(map['InitCNIConfiguration'])
         return self
 
 
@@ -2061,66 +2552,58 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig(TeaModel):
 
     def to_map(self):
         result = {}
-        result['EnableLocalityLB'] = self.enable_locality_lb
-        result['Telemetry'] = self.telemetry
-        result['Tracing'] = self.tracing
-        result['CustomizedZipkin'] = self.customized_zipkin
-        result['OutboundTrafficPolicy'] = self.outbound_traffic_policy
-        result['IncludeIPRanges'] = self.include_ipranges
+        if self.enable_locality_lb is not None:
+            result['EnableLocalityLB'] = self.enable_locality_lb
+        if self.telemetry is not None:
+            result['Telemetry'] = self.telemetry
+        if self.tracing is not None:
+            result['Tracing'] = self.tracing
+        if self.customized_zipkin is not None:
+            result['CustomizedZipkin'] = self.customized_zipkin
+        if self.outbound_traffic_policy is not None:
+            result['OutboundTrafficPolicy'] = self.outbound_traffic_policy
+        if self.include_ipranges is not None:
+            result['IncludeIPRanges'] = self.include_ipranges
         if self.pilot is not None:
             result['Pilot'] = self.pilot.to_map()
-        else:
-            result['Pilot'] = None
         if self.opa is not None:
             result['OPA'] = self.opa.to_map()
-        else:
-            result['OPA'] = None
         if self.audit is not None:
             result['Audit'] = self.audit.to_map()
-        else:
-            result['Audit'] = None
         if self.proxy is not None:
             result['Proxy'] = self.proxy.to_map()
-        else:
-            result['Proxy'] = None
         if self.sidecar_injector is not None:
             result['SidecarInjector'] = self.sidecar_injector.to_map()
-        else:
-            result['SidecarInjector'] = None
         return result
 
     def from_map(self, map={}):
-        self.enable_locality_lb = map.get('EnableLocalityLB')
-        self.telemetry = map.get('Telemetry')
-        self.tracing = map.get('Tracing')
-        self.customized_zipkin = map.get('CustomizedZipkin')
-        self.outbound_traffic_policy = map.get('OutboundTrafficPolicy')
-        self.include_ipranges = map.get('IncludeIPRanges')
+        if map.get('EnableLocalityLB') is not None:
+            self.enable_locality_lb = map.get('EnableLocalityLB')
+        if map.get('Telemetry') is not None:
+            self.telemetry = map.get('Telemetry')
+        if map.get('Tracing') is not None:
+            self.tracing = map.get('Tracing')
+        if map.get('CustomizedZipkin') is not None:
+            self.customized_zipkin = map.get('CustomizedZipkin')
+        if map.get('OutboundTrafficPolicy') is not None:
+            self.outbound_traffic_policy = map.get('OutboundTrafficPolicy')
+        if map.get('IncludeIPRanges') is not None:
+            self.include_ipranges = map.get('IncludeIPRanges')
         if map.get('Pilot') is not None:
             temp_model = DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigPilot()
             self.pilot = temp_model.from_map(map['Pilot'])
-        else:
-            self.pilot = None
         if map.get('OPA') is not None:
             temp_model = DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigOPA()
             self.opa = temp_model.from_map(map['OPA'])
-        else:
-            self.opa = None
         if map.get('Audit') is not None:
             temp_model = DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigAudit()
             self.audit = temp_model.from_map(map['Audit'])
-        else:
-            self.audit = None
         if map.get('Proxy') is not None:
             temp_model = DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigProxy()
             self.proxy = temp_model.from_map(map['Proxy'])
-        else:
-            self.proxy = None
         if map.get('SidecarInjector') is not None:
             temp_model = DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigSidecarInjector()
             self.sidecar_injector = temp_model.from_map(map['SidecarInjector'])
-        else:
-            self.sidecar_injector = None
         return self
 
 
@@ -2137,15 +2620,21 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecNetwork(TeaModel):
 
     def to_map(self):
         result = {}
-        result['SecurityGroupId'] = self.security_group_id
-        result['VpcId'] = self.vpc_id
-        result['VSwitches'] = self.v_switches
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.v_switches is not None:
+            result['VSwitches'] = self.v_switches
         return result
 
     def from_map(self, map={}):
-        self.security_group_id = map.get('SecurityGroupId')
-        self.vpc_id = map.get('VpcId')
-        self.v_switches = map.get('VSwitches')
+        if map.get('SecurityGroupId') is not None:
+            self.security_group_id = map.get('SecurityGroupId')
+        if map.get('VpcId') is not None:
+            self.vpc_id = map.get('VpcId')
+        if map.get('VSwitches') is not None:
+            self.v_switches = map.get('VSwitches')
         return self
 
 
@@ -2170,34 +2659,22 @@ class DescribeServiceMeshDetailResponseServiceMeshSpec(TeaModel):
         result = {}
         if self.load_balancer is not None:
             result['LoadBalancer'] = self.load_balancer.to_map()
-        else:
-            result['LoadBalancer'] = None
         if self.mesh_config is not None:
             result['MeshConfig'] = self.mesh_config.to_map()
-        else:
-            result['MeshConfig'] = None
         if self.network is not None:
             result['Network'] = self.network.to_map()
-        else:
-            result['Network'] = None
         return result
 
     def from_map(self, map={}):
         if map.get('LoadBalancer') is not None:
             temp_model = DescribeServiceMeshDetailResponseServiceMeshSpecLoadBalancer()
             self.load_balancer = temp_model.from_map(map['LoadBalancer'])
-        else:
-            self.load_balancer = None
         if map.get('MeshConfig') is not None:
             temp_model = DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfig()
             self.mesh_config = temp_model.from_map(map['MeshConfig'])
-        else:
-            self.mesh_config = None
         if map.get('Network') is not None:
             temp_model = DescribeServiceMeshDetailResponseServiceMeshSpecNetwork()
             self.network = temp_model.from_map(map['Network'])
-        else:
-            self.network = None
         return self
 
 
@@ -2224,36 +2701,26 @@ class DescribeServiceMeshDetailResponseServiceMesh(TeaModel):
         result = {}
         if self.endpoints is not None:
             result['Endpoints'] = self.endpoints.to_map()
-        else:
-            result['Endpoints'] = None
         if self.service_mesh_info is not None:
             result['ServiceMeshInfo'] = self.service_mesh_info.to_map()
-        else:
-            result['ServiceMeshInfo'] = None
         if self.spec is not None:
             result['Spec'] = self.spec.to_map()
-        else:
-            result['Spec'] = None
-        result['Clusters'] = self.clusters
+        if self.clusters is not None:
+            result['Clusters'] = self.clusters
         return result
 
     def from_map(self, map={}):
         if map.get('Endpoints') is not None:
             temp_model = DescribeServiceMeshDetailResponseServiceMeshEndpoints()
             self.endpoints = temp_model.from_map(map['Endpoints'])
-        else:
-            self.endpoints = None
         if map.get('ServiceMeshInfo') is not None:
             temp_model = DescribeServiceMeshDetailResponseServiceMeshServiceMeshInfo()
             self.service_mesh_info = temp_model.from_map(map['ServiceMeshInfo'])
-        else:
-            self.service_mesh_info = None
         if map.get('Spec') is not None:
             temp_model = DescribeServiceMeshDetailResponseServiceMeshSpec()
             self.spec = temp_model.from_map(map['Spec'])
-        else:
-            self.spec = None
-        self.clusters = map.get('Clusters')
+        if map.get('Clusters') is not None:
+            self.clusters = map.get('Clusters')
         return self
 
 
@@ -2267,13 +2734,17 @@ class DescribeServiceMeshKubeconfigRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['PrivateIpAddress'] = self.private_ip_address
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.private_ip_address is not None:
+            result['PrivateIpAddress'] = self.private_ip_address
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.private_ip_address = map.get('PrivateIpAddress')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('PrivateIpAddress') is not None:
+            self.private_ip_address = map.get('PrivateIpAddress')
         return self
 
 
@@ -2288,13 +2759,17 @@ class DescribeServiceMeshKubeconfigResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['Kubeconfig'] = self.kubeconfig
-        result['RequestId'] = self.request_id
+        if self.kubeconfig is not None:
+            result['Kubeconfig'] = self.kubeconfig
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, map={}):
-        self.kubeconfig = map.get('Kubeconfig')
-        self.request_id = map.get('RequestId')
+        if map.get('Kubeconfig') is not None:
+            self.kubeconfig = map.get('Kubeconfig')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         return self
 
 
@@ -2304,7 +2779,7 @@ class CreateServiceMeshRequest(TeaModel):
                  telemetry=None, open_agent_policy=None, opalog_level=None, oparequest_cpu=None, oparequest_memory=None,
                  opalimit_cpu=None, opalimit_memory=None, enable_audit=None, audit_project=None, proxy_request_cpu=None,
                  proxy_request_memory=None, proxy_limit_cpu=None, proxy_limit_memory=None, include_ipranges=None, exclude_ipranges=None,
-                 exclude_outbound_ports=None, exclude_inbound_ports=None):
+                 exclude_outbound_ports=None, exclude_inbound_ports=None, opa_enabled=None):
         self.region_id = region_id      # type: str
         self.istio_version = istio_version  # type: str
         self.vpc_id = vpc_id            # type: str
@@ -2332,70 +2807,130 @@ class CreateServiceMeshRequest(TeaModel):
         self.exclude_ipranges = exclude_ipranges  # type: str
         self.exclude_outbound_ports = exclude_outbound_ports  # type: str
         self.exclude_inbound_ports = exclude_inbound_ports  # type: str
+        self.opa_enabled = opa_enabled  # type: bool
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
         self.validate_required(self.vpc_id, 'vpc_id')
+        self.validate_required(self.v_switches, 'v_switches')
 
     def to_map(self):
         result = {}
-        result['RegionId'] = self.region_id
-        result['IstioVersion'] = self.istio_version
-        result['VpcId'] = self.vpc_id
-        result['ApiServerPublicEip'] = self.api_server_public_eip
-        result['PilotPublicEip'] = self.pilot_public_eip
-        result['Tracing'] = self.tracing
-        result['Name'] = self.name
-        result['VSwitches'] = self.v_switches
-        result['TraceSampling'] = self.trace_sampling
-        result['LocalityLoadBalancing'] = self.locality_load_balancing
-        result['Telemetry'] = self.telemetry
-        result['OpenAgentPolicy'] = self.open_agent_policy
-        result['OPALogLevel'] = self.opalog_level
-        result['OPARequestCPU'] = self.oparequest_cpu
-        result['OPARequestMemory'] = self.oparequest_memory
-        result['OPALimitCPU'] = self.opalimit_cpu
-        result['OPALimitMemory'] = self.opalimit_memory
-        result['EnableAudit'] = self.enable_audit
-        result['AuditProject'] = self.audit_project
-        result['ProxyRequestCPU'] = self.proxy_request_cpu
-        result['ProxyRequestMemory'] = self.proxy_request_memory
-        result['ProxyLimitCPU'] = self.proxy_limit_cpu
-        result['ProxyLimitMemory'] = self.proxy_limit_memory
-        result['IncludeIPRanges'] = self.include_ipranges
-        result['ExcludeIPRanges'] = self.exclude_ipranges
-        result['ExcludeOutboundPorts'] = self.exclude_outbound_ports
-        result['ExcludeInboundPorts'] = self.exclude_inbound_ports
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.istio_version is not None:
+            result['IstioVersion'] = self.istio_version
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.api_server_public_eip is not None:
+            result['ApiServerPublicEip'] = self.api_server_public_eip
+        if self.pilot_public_eip is not None:
+            result['PilotPublicEip'] = self.pilot_public_eip
+        if self.tracing is not None:
+            result['Tracing'] = self.tracing
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.v_switches is not None:
+            result['VSwitches'] = self.v_switches
+        if self.trace_sampling is not None:
+            result['TraceSampling'] = self.trace_sampling
+        if self.locality_load_balancing is not None:
+            result['LocalityLoadBalancing'] = self.locality_load_balancing
+        if self.telemetry is not None:
+            result['Telemetry'] = self.telemetry
+        if self.open_agent_policy is not None:
+            result['OpenAgentPolicy'] = self.open_agent_policy
+        if self.opalog_level is not None:
+            result['OPALogLevel'] = self.opalog_level
+        if self.oparequest_cpu is not None:
+            result['OPARequestCPU'] = self.oparequest_cpu
+        if self.oparequest_memory is not None:
+            result['OPARequestMemory'] = self.oparequest_memory
+        if self.opalimit_cpu is not None:
+            result['OPALimitCPU'] = self.opalimit_cpu
+        if self.opalimit_memory is not None:
+            result['OPALimitMemory'] = self.opalimit_memory
+        if self.enable_audit is not None:
+            result['EnableAudit'] = self.enable_audit
+        if self.audit_project is not None:
+            result['AuditProject'] = self.audit_project
+        if self.proxy_request_cpu is not None:
+            result['ProxyRequestCPU'] = self.proxy_request_cpu
+        if self.proxy_request_memory is not None:
+            result['ProxyRequestMemory'] = self.proxy_request_memory
+        if self.proxy_limit_cpu is not None:
+            result['ProxyLimitCPU'] = self.proxy_limit_cpu
+        if self.proxy_limit_memory is not None:
+            result['ProxyLimitMemory'] = self.proxy_limit_memory
+        if self.include_ipranges is not None:
+            result['IncludeIPRanges'] = self.include_ipranges
+        if self.exclude_ipranges is not None:
+            result['ExcludeIPRanges'] = self.exclude_ipranges
+        if self.exclude_outbound_ports is not None:
+            result['ExcludeOutboundPorts'] = self.exclude_outbound_ports
+        if self.exclude_inbound_ports is not None:
+            result['ExcludeInboundPorts'] = self.exclude_inbound_ports
+        if self.opa_enabled is not None:
+            result['OpaEnabled'] = self.opa_enabled
         return result
 
     def from_map(self, map={}):
-        self.region_id = map.get('RegionId')
-        self.istio_version = map.get('IstioVersion')
-        self.vpc_id = map.get('VpcId')
-        self.api_server_public_eip = map.get('ApiServerPublicEip')
-        self.pilot_public_eip = map.get('PilotPublicEip')
-        self.tracing = map.get('Tracing')
-        self.name = map.get('Name')
-        self.v_switches = map.get('VSwitches')
-        self.trace_sampling = map.get('TraceSampling')
-        self.locality_load_balancing = map.get('LocalityLoadBalancing')
-        self.telemetry = map.get('Telemetry')
-        self.open_agent_policy = map.get('OpenAgentPolicy')
-        self.opalog_level = map.get('OPALogLevel')
-        self.oparequest_cpu = map.get('OPARequestCPU')
-        self.oparequest_memory = map.get('OPARequestMemory')
-        self.opalimit_cpu = map.get('OPALimitCPU')
-        self.opalimit_memory = map.get('OPALimitMemory')
-        self.enable_audit = map.get('EnableAudit')
-        self.audit_project = map.get('AuditProject')
-        self.proxy_request_cpu = map.get('ProxyRequestCPU')
-        self.proxy_request_memory = map.get('ProxyRequestMemory')
-        self.proxy_limit_cpu = map.get('ProxyLimitCPU')
-        self.proxy_limit_memory = map.get('ProxyLimitMemory')
-        self.include_ipranges = map.get('IncludeIPRanges')
-        self.exclude_ipranges = map.get('ExcludeIPRanges')
-        self.exclude_outbound_ports = map.get('ExcludeOutboundPorts')
-        self.exclude_inbound_ports = map.get('ExcludeInboundPorts')
+        if map.get('RegionId') is not None:
+            self.region_id = map.get('RegionId')
+        if map.get('IstioVersion') is not None:
+            self.istio_version = map.get('IstioVersion')
+        if map.get('VpcId') is not None:
+            self.vpc_id = map.get('VpcId')
+        if map.get('ApiServerPublicEip') is not None:
+            self.api_server_public_eip = map.get('ApiServerPublicEip')
+        if map.get('PilotPublicEip') is not None:
+            self.pilot_public_eip = map.get('PilotPublicEip')
+        if map.get('Tracing') is not None:
+            self.tracing = map.get('Tracing')
+        if map.get('Name') is not None:
+            self.name = map.get('Name')
+        if map.get('VSwitches') is not None:
+            self.v_switches = map.get('VSwitches')
+        if map.get('TraceSampling') is not None:
+            self.trace_sampling = map.get('TraceSampling')
+        if map.get('LocalityLoadBalancing') is not None:
+            self.locality_load_balancing = map.get('LocalityLoadBalancing')
+        if map.get('Telemetry') is not None:
+            self.telemetry = map.get('Telemetry')
+        if map.get('OpenAgentPolicy') is not None:
+            self.open_agent_policy = map.get('OpenAgentPolicy')
+        if map.get('OPALogLevel') is not None:
+            self.opalog_level = map.get('OPALogLevel')
+        if map.get('OPARequestCPU') is not None:
+            self.oparequest_cpu = map.get('OPARequestCPU')
+        if map.get('OPARequestMemory') is not None:
+            self.oparequest_memory = map.get('OPARequestMemory')
+        if map.get('OPALimitCPU') is not None:
+            self.opalimit_cpu = map.get('OPALimitCPU')
+        if map.get('OPALimitMemory') is not None:
+            self.opalimit_memory = map.get('OPALimitMemory')
+        if map.get('EnableAudit') is not None:
+            self.enable_audit = map.get('EnableAudit')
+        if map.get('AuditProject') is not None:
+            self.audit_project = map.get('AuditProject')
+        if map.get('ProxyRequestCPU') is not None:
+            self.proxy_request_cpu = map.get('ProxyRequestCPU')
+        if map.get('ProxyRequestMemory') is not None:
+            self.proxy_request_memory = map.get('ProxyRequestMemory')
+        if map.get('ProxyLimitCPU') is not None:
+            self.proxy_limit_cpu = map.get('ProxyLimitCPU')
+        if map.get('ProxyLimitMemory') is not None:
+            self.proxy_limit_memory = map.get('ProxyLimitMemory')
+        if map.get('IncludeIPRanges') is not None:
+            self.include_ipranges = map.get('IncludeIPRanges')
+        if map.get('ExcludeIPRanges') is not None:
+            self.exclude_ipranges = map.get('ExcludeIPRanges')
+        if map.get('ExcludeOutboundPorts') is not None:
+            self.exclude_outbound_ports = map.get('ExcludeOutboundPorts')
+        if map.get('ExcludeInboundPorts') is not None:
+            self.exclude_inbound_ports = map.get('ExcludeInboundPorts')
+        if map.get('OpaEnabled') is not None:
+            self.opa_enabled = map.get('OpaEnabled')
         return self
 
 
@@ -2410,13 +2945,17 @@ class CreateServiceMeshResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
-        result['ServiceMeshId'] = self.service_mesh_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
         return self
 
 
@@ -2430,13 +2969,17 @@ class DeleteServiceMeshRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ServiceMeshId'] = self.service_mesh_id
-        result['Force'] = self.force
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.force is not None:
+            result['Force'] = self.force
         return result
 
     def from_map(self, map={}):
-        self.service_mesh_id = map.get('ServiceMeshId')
-        self.force = map.get('Force')
+        if map.get('ServiceMeshId') is not None:
+            self.service_mesh_id = map.get('ServiceMeshId')
+        if map.get('Force') is not None:
+            self.force = map.get('Force')
         return self
 
 
@@ -2449,9 +2992,11 @@ class DeleteServiceMeshResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['RequestId'] = self.request_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
+        if map.get('RequestId') is not None:
+            self.request_id = map.get('RequestId')
         return self

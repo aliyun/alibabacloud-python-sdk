@@ -25,7 +25,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_servicemesh20200111.
 
-Created on 20/11/2020
+Created on 17/12/2020
 
 @author: Alibaba Cloud SDK
 """
@@ -36,7 +36,11 @@ DESCRIPTION = "Alibaba Cloud Alibaba Cloud Service Mesh (20200111) SDK Library f
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
 URL = "https://github.com/aliyun/alibabacloud-sdk"
-REQUIRES = ["alibabacloud_tea_util>=0.2.0, <1.0.0","alibabacloud_tea_rpc>=0.0.6, <1.0.0","alibabacloud_endpoint_util>=0.0.3, <1.0.0"]
+REQUIRES = [
+    "alibabacloud_tea_util>=0.2.0, <1.0.0",
+    "alibabacloud_tea_rpc>=0.0.6, <1.0.0",
+    "alibabacloud_endpoint_util>=0.0.3, <1.0.0"
+]
 VERSION = __import__(PACKAGE).__version__
 
 
