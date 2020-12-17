@@ -1,3 +1,6 @@
+2020-12-17 Version: 20201217
+- Add updateserviceends.
+
 2020-11-16 Version: 20201116
 - Add params for FindGateways.
 

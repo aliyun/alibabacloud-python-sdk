@@ -28,21 +28,33 @@ class FindAllServiceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['pageNumber'] = self.page_number
-        result['pageSize'] = self.page_size
-        result['name'] = self.name
-        result['aliasName'] = self.alias_name
-        result['sourceType'] = self.source_type
-        result['isHealth'] = self.is_health
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.name is not None:
+            result['name'] = self.name
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        if self.is_health is not None:
+            result['isHealth'] = self.is_health
         return result
 
     def from_map(self, map={}):
-        self.page_number = map.get('pageNumber')
-        self.page_size = map.get('pageSize')
-        self.name = map.get('name')
-        self.alias_name = map.get('aliasName')
-        self.source_type = map.get('sourceType')
-        self.is_health = map.get('isHealth')
+        if map.get('pageNumber') is not None:
+            self.page_number = map.get('pageNumber')
+        if map.get('pageSize') is not None:
+            self.page_size = map.get('pageSize')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
+        if map.get('sourceType') is not None:
+            self.source_type = map.get('sourceType')
+        if map.get('isHealth') is not None:
+            self.is_health = map.get('isHealth')
         return self
 
 
@@ -61,22 +73,22 @@ class FindAllServiceResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         if map.get('data') is not None:
             temp_model = FindAllServiceResponseBodyData()
             self.data = temp_model.from_map(map['data'])
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -103,23 +115,37 @@ class FindAllServiceResponseBodyDataListServiceEnds(TeaModel):
 
     def to_map(self):
         result = {}
-        result['creationDateTime'] = self.creation_date_time
-        result['id'] = self.id
-        result['ipAddress'] = self.ip_address
-        result['port'] = self.port
-        result['serviceId'] = self.service_id
-        result['status'] = self.status
-        result['updateDateTime'] = self.update_date_time
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.ip_address is not None:
+            result['ipAddress'] = self.ip_address
+        if self.port is not None:
+            result['port'] = self.port
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.creation_date_time = map.get('creationDateTime')
-        self.id = map.get('id')
-        self.ip_address = map.get('ipAddress')
-        self.port = map.get('port')
-        self.service_id = map.get('serviceId')
-        self.status = map.get('status')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('ipAddress') is not None:
+            self.ip_address = map.get('ipAddress')
+        if map.get('port') is not None:
+            self.port = map.get('port')
+        if map.get('serviceId') is not None:
+            self.service_id = map.get('serviceId')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -160,44 +186,62 @@ class FindAllServiceResponseBodyDataList(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
-        result['creationDateTime'] = self.creation_date_time
-        result['description'] = self.description
-        result['id'] = self.id
-        result['isAutoRefresh'] = self.is_auto_refresh
-        result['isHealth'] = self.is_health
-        result['name'] = self.name
-        result['registryId'] = self.registry_id
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.is_auto_refresh is not None:
+            result['isAutoRefresh'] = self.is_auto_refresh
+        if self.is_health is not None:
+            result['isHealth'] = self.is_health
+        if self.name is not None:
+            result['name'] = self.name
+        if self.registry_id is not None:
+            result['registryId'] = self.registry_id
         result['serviceEnds'] = []
         if self.service_ends is not None:
             for k in self.service_ends:
                 result['serviceEnds'].append(k.to_map() if k else None)
-        else:
-            result['serviceEnds'] = None
-        result['serviceNameInRegistry'] = self.service_name_in_registry
-        result['sourceType'] = self.source_type
-        result['updateDateTime'] = self.update_date_time
+        if self.service_name_in_registry is not None:
+            result['serviceNameInRegistry'] = self.service_name_in_registry
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.description = map.get('description')
-        self.id = map.get('id')
-        self.is_auto_refresh = map.get('isAutoRefresh')
-        self.is_health = map.get('isHealth')
-        self.name = map.get('name')
-        self.registry_id = map.get('registryId')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('isAutoRefresh') is not None:
+            self.is_auto_refresh = map.get('isAutoRefresh')
+        if map.get('isHealth') is not None:
+            self.is_health = map.get('isHealth')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('registryId') is not None:
+            self.registry_id = map.get('registryId')
         self.service_ends = []
         if map.get('serviceEnds') is not None:
             for k in map.get('serviceEnds'):
                 temp_model = FindAllServiceResponseBodyDataListServiceEnds()
                 self.service_ends.append(temp_model.from_map(k))
-        else:
-            self.service_ends = None
-        self.service_name_in_registry = map.get('serviceNameInRegistry')
-        self.source_type = map.get('sourceType')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('serviceNameInRegistry') is not None:
+            self.service_name_in_registry = map.get('serviceNameInRegistry')
+        if map.get('sourceType') is not None:
+            self.source_type = map.get('sourceType')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -220,9 +264,8 @@ class FindAllServiceResponseBodyData(TeaModel):
         if self.list is not None:
             for k in self.list:
                 result['list'].append(k.to_map() if k else None)
-        else:
-            result['list'] = None
-        result['totalCount'] = self.total_count
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
         return result
 
     def from_map(self, map={}):
@@ -231,9 +274,8 @@ class FindAllServiceResponseBodyData(TeaModel):
             for k in map.get('list'):
                 temp_model = FindAllServiceResponseBodyDataList()
                 self.list.append(temp_model.from_map(k))
-        else:
-            self.list = None
-        self.total_count = map.get('totalCount')
+        if map.get('totalCount') is not None:
+            self.total_count = map.get('totalCount')
         return self
 
 
@@ -250,20 +292,18 @@ class FindAllServiceResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = FindAllServiceResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -288,21 +328,33 @@ class CreateApiRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
-        result['attachedServices'] = self.attached_services
-        result['basePath'] = self.base_path
-        result['description'] = self.description
-        result['name'] = self.name
-        result['status'] = self.status
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
+        if self.attached_services is not None:
+            result['attachedServices'] = self.attached_services
+        if self.base_path is not None:
+            result['basePath'] = self.base_path
+        if self.description is not None:
+            result['description'] = self.description
+        if self.name is not None:
+            result['name'] = self.name
+        if self.status is not None:
+            result['status'] = self.status
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
-        self.attached_services = map.get('attachedServices')
-        self.base_path = map.get('basePath')
-        self.description = map.get('description')
-        self.name = map.get('name')
-        self.status = map.get('status')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
+        if map.get('attachedServices') is not None:
+            self.attached_services = map.get('attachedServices')
+        if map.get('basePath') is not None:
+            self.base_path = map.get('basePath')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('status') is not None:
+            self.status = map.get('status')
         return self
 
 
@@ -320,15 +372,21 @@ class CreateApiResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -345,20 +403,18 @@ class CreateApiResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = CreateApiResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -379,26 +435,26 @@ class GetGatewayByIdResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         result['data'] = []
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         self.data = []
         if map.get('data') is not None:
             for k in map.get('data'):
                 temp_model = GetGatewayByIdResponseBodyData()
                 self.data.append(temp_model.from_map(k))
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -418,17 +474,25 @@ class GetGatewayByIdResponseBodyDataArmsInfo(TeaModel):
 
     def to_map(self):
         result = {}
-        result['appId'] = self.app_id
-        result['appName'] = self.app_name
-        result['description'] = self.description
-        result['licenseKey'] = self.license_key
+        if self.app_id is not None:
+            result['appId'] = self.app_id
+        if self.app_name is not None:
+            result['appName'] = self.app_name
+        if self.description is not None:
+            result['description'] = self.description
+        if self.license_key is not None:
+            result['licenseKey'] = self.license_key
         return result
 
     def from_map(self, map={}):
-        self.app_id = map.get('appId')
-        self.app_name = map.get('appName')
-        self.description = map.get('description')
-        self.license_key = map.get('licenseKey')
+        if map.get('appId') is not None:
+            self.app_id = map.get('appId')
+        if map.get('appName') is not None:
+            self.app_name = map.get('appName')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('licenseKey') is not None:
+            self.license_key = map.get('licenseKey')
         return self
 
 
@@ -484,52 +548,84 @@ class GetGatewayByIdResponseBodyData(TeaModel):
         result = {}
         if self.arms_info is not None:
             result['armsInfo'] = self.arms_info.to_map()
-        else:
-            result['armsInfo'] = None
-        result['autoCreateSlb'] = self.auto_create_slb
-        result['basePath'] = self.base_path
-        result['creationDateTime'] = self.creation_date_time
-        result['edasNamespaceId'] = self.edas_namespace_id
-        result['gatewayType'] = self.gateway_type
-        result['id'] = self.id
-        result['name'] = self.name
-        result['podCidr'] = self.pod_cidr
-        result['region'] = self.region
-        result['regionName'] = self.region_name
-        result['replica'] = self.replica
-        result['runtimeOn'] = self.runtime_on
-        result['securityGroup'] = self.security_group
-        result['slb'] = self.slb
-        result['slbAccessAddr'] = self.slb_access_addr
-        result['status'] = self.status
-        result['vpc'] = self.vpc
-        result['vswitch'] = self.vswitch
+        if self.auto_create_slb is not None:
+            result['autoCreateSlb'] = self.auto_create_slb
+        if self.base_path is not None:
+            result['basePath'] = self.base_path
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.edas_namespace_id is not None:
+            result['edasNamespaceId'] = self.edas_namespace_id
+        if self.gateway_type is not None:
+            result['gatewayType'] = self.gateway_type
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.pod_cidr is not None:
+            result['podCidr'] = self.pod_cidr
+        if self.region is not None:
+            result['region'] = self.region
+        if self.region_name is not None:
+            result['regionName'] = self.region_name
+        if self.replica is not None:
+            result['replica'] = self.replica
+        if self.runtime_on is not None:
+            result['runtimeOn'] = self.runtime_on
+        if self.security_group is not None:
+            result['securityGroup'] = self.security_group
+        if self.slb is not None:
+            result['slb'] = self.slb
+        if self.slb_access_addr is not None:
+            result['slbAccessAddr'] = self.slb_access_addr
+        if self.status is not None:
+            result['status'] = self.status
+        if self.vpc is not None:
+            result['vpc'] = self.vpc
+        if self.vswitch is not None:
+            result['vswitch'] = self.vswitch
         return result
 
     def from_map(self, map={}):
         if map.get('armsInfo') is not None:
             temp_model = GetGatewayByIdResponseBodyDataArmsInfo()
             self.arms_info = temp_model.from_map(map['armsInfo'])
-        else:
-            self.arms_info = None
-        self.auto_create_slb = map.get('autoCreateSlb')
-        self.base_path = map.get('basePath')
-        self.creation_date_time = map.get('creationDateTime')
-        self.edas_namespace_id = map.get('edasNamespaceId')
-        self.gateway_type = map.get('gatewayType')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.pod_cidr = map.get('podCidr')
-        self.region = map.get('region')
-        self.region_name = map.get('regionName')
-        self.replica = map.get('replica')
-        self.runtime_on = map.get('runtimeOn')
-        self.security_group = map.get('securityGroup')
-        self.slb = map.get('slb')
-        self.slb_access_addr = map.get('slbAccessAddr')
-        self.status = map.get('status')
-        self.vpc = map.get('vpc')
-        self.vswitch = map.get('vswitch')
+        if map.get('autoCreateSlb') is not None:
+            self.auto_create_slb = map.get('autoCreateSlb')
+        if map.get('basePath') is not None:
+            self.base_path = map.get('basePath')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('edasNamespaceId') is not None:
+            self.edas_namespace_id = map.get('edasNamespaceId')
+        if map.get('gatewayType') is not None:
+            self.gateway_type = map.get('gatewayType')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('podCidr') is not None:
+            self.pod_cidr = map.get('podCidr')
+        if map.get('region') is not None:
+            self.region = map.get('region')
+        if map.get('regionName') is not None:
+            self.region_name = map.get('regionName')
+        if map.get('replica') is not None:
+            self.replica = map.get('replica')
+        if map.get('runtimeOn') is not None:
+            self.runtime_on = map.get('runtimeOn')
+        if map.get('securityGroup') is not None:
+            self.security_group = map.get('securityGroup')
+        if map.get('slb') is not None:
+            self.slb = map.get('slb')
+        if map.get('slbAccessAddr') is not None:
+            self.slb_access_addr = map.get('slbAccessAddr')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('vpc') is not None:
+            self.vpc = map.get('vpc')
+        if map.get('vswitch') is not None:
+            self.vswitch = map.get('vswitch')
         return self
 
 
@@ -546,20 +642,18 @@ class GetGatewayByIdResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = GetGatewayByIdResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -586,23 +680,37 @@ class CreatePolicyRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
-        result['content'] = self.content
-        result['gatewayId'] = self.gateway_id
-        result['id'] = self.id
-        result['name'] = self.name
-        result['policyGroup'] = self.policy_group
-        result['type'] = self.type
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
+        if self.content is not None:
+            result['content'] = self.content
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.policy_group is not None:
+            result['policyGroup'] = self.policy_group
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
-        self.content = map.get('content')
-        self.gateway_id = map.get('gatewayId')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.policy_group = map.get('policyGroup')
-        self.type = map.get('type')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
+        if map.get('content') is not None:
+            self.content = map.get('content')
+        if map.get('gatewayId') is not None:
+            self.gateway_id = map.get('gatewayId')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('policyGroup') is not None:
+            self.policy_group = map.get('policyGroup')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -620,15 +728,21 @@ class CreatePolicyResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -645,20 +759,18 @@ class CreatePolicyResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = CreatePolicyResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -672,11 +784,13 @@ class GetServiceInstanceForRegistryByServiceNameRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['serviceName'] = self.service_name
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
         return result
 
     def from_map(self, map={}):
-        self.service_name = map.get('serviceName')
+        if map.get('serviceName') is not None:
+            self.service_name = map.get('serviceName')
         return self
 
 
@@ -697,26 +811,26 @@ class GetServiceInstanceForRegistryByServiceNameResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         result['data'] = []
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         self.data = []
         if map.get('data') is not None:
             for k in map.get('data'):
                 temp_model = GetServiceInstanceForRegistryByServiceNameResponseBodyData()
                 self.data.append(temp_model.from_map(k))
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -735,17 +849,25 @@ class GetServiceInstanceForRegistryByServiceNameResponseBodyData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['id'] = self.id
-        result['metaInfo'] = self.meta_info
-        result['serviceEnds'] = self.service_ends
-        result['serviceName'] = self.service_name
+        if self.id is not None:
+            result['id'] = self.id
+        if self.meta_info is not None:
+            result['metaInfo'] = self.meta_info
+        if self.service_ends is not None:
+            result['serviceEnds'] = self.service_ends
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
         return result
 
     def from_map(self, map={}):
-        self.id = map.get('id')
-        self.meta_info = map.get('metaInfo')
-        self.service_ends = map.get('serviceEnds')
-        self.service_name = map.get('serviceName')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('metaInfo') is not None:
+            self.meta_info = map.get('metaInfo')
+        if map.get('serviceEnds') is not None:
+            self.service_ends = map.get('serviceEnds')
+        if map.get('serviceName') is not None:
+            self.service_name = map.get('serviceName')
         return self
 
 
@@ -762,20 +884,18 @@ class GetServiceInstanceForRegistryByServiceNameResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = GetServiceInstanceForRegistryByServiceNameResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -793,15 +913,21 @@ class DeleteServiceResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -818,20 +944,18 @@ class DeleteServiceResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = DeleteServiceResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -855,21 +979,33 @@ class UpdateRegistryRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['address'] = self.address
-        result['description'] = self.description
-        result['gatewayId'] = self.gateway_id
-        result['id'] = self.id
-        result['name'] = self.name
-        result['type'] = self.type
+        if self.address is not None:
+            result['address'] = self.address
+        if self.description is not None:
+            result['description'] = self.description
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.address = map.get('address')
-        self.description = map.get('description')
-        self.gateway_id = map.get('gatewayId')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.type = map.get('type')
+        if map.get('address') is not None:
+            self.address = map.get('address')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('gatewayId') is not None:
+            self.gateway_id = map.get('gatewayId')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -887,15 +1023,21 @@ class UpdateRegistryResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -912,20 +1054,18 @@ class UpdateRegistryResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = UpdateRegistryResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -971,41 +1111,73 @@ class CreateGatewayRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['autoCreateSlb'] = self.auto_create_slb
-        result['basePath'] = self.base_path
-        result['edasNamespaceId'] = self.edas_namespace_id
-        result['gatewayType'] = self.gateway_type
-        result['name'] = self.name
-        result['podCidr'] = self.pod_cidr
-        result['region'] = self.region
-        result['regionName'] = self.region_name
-        result['replica'] = self.replica
-        result['runtimeOn'] = self.runtime_on
-        result['securityGroup'] = self.security_group
-        result['slb'] = self.slb
-        result['slbSpec'] = self.slb_spec
-        result['vpc'] = self.vpc
-        result['vswitch'] = self.vswitch
-        result['zone'] = self.zone
+        if self.auto_create_slb is not None:
+            result['autoCreateSlb'] = self.auto_create_slb
+        if self.base_path is not None:
+            result['basePath'] = self.base_path
+        if self.edas_namespace_id is not None:
+            result['edasNamespaceId'] = self.edas_namespace_id
+        if self.gateway_type is not None:
+            result['gatewayType'] = self.gateway_type
+        if self.name is not None:
+            result['name'] = self.name
+        if self.pod_cidr is not None:
+            result['podCidr'] = self.pod_cidr
+        if self.region is not None:
+            result['region'] = self.region
+        if self.region_name is not None:
+            result['regionName'] = self.region_name
+        if self.replica is not None:
+            result['replica'] = self.replica
+        if self.runtime_on is not None:
+            result['runtimeOn'] = self.runtime_on
+        if self.security_group is not None:
+            result['securityGroup'] = self.security_group
+        if self.slb is not None:
+            result['slb'] = self.slb
+        if self.slb_spec is not None:
+            result['slbSpec'] = self.slb_spec
+        if self.vpc is not None:
+            result['vpc'] = self.vpc
+        if self.vswitch is not None:
+            result['vswitch'] = self.vswitch
+        if self.zone is not None:
+            result['zone'] = self.zone
         return result
 
     def from_map(self, map={}):
-        self.auto_create_slb = map.get('autoCreateSlb')
-        self.base_path = map.get('basePath')
-        self.edas_namespace_id = map.get('edasNamespaceId')
-        self.gateway_type = map.get('gatewayType')
-        self.name = map.get('name')
-        self.pod_cidr = map.get('podCidr')
-        self.region = map.get('region')
-        self.region_name = map.get('regionName')
-        self.replica = map.get('replica')
-        self.runtime_on = map.get('runtimeOn')
-        self.security_group = map.get('securityGroup')
-        self.slb = map.get('slb')
-        self.slb_spec = map.get('slbSpec')
-        self.vpc = map.get('vpc')
-        self.vswitch = map.get('vswitch')
-        self.zone = map.get('zone')
+        if map.get('autoCreateSlb') is not None:
+            self.auto_create_slb = map.get('autoCreateSlb')
+        if map.get('basePath') is not None:
+            self.base_path = map.get('basePath')
+        if map.get('edasNamespaceId') is not None:
+            self.edas_namespace_id = map.get('edasNamespaceId')
+        if map.get('gatewayType') is not None:
+            self.gateway_type = map.get('gatewayType')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('podCidr') is not None:
+            self.pod_cidr = map.get('podCidr')
+        if map.get('region') is not None:
+            self.region = map.get('region')
+        if map.get('regionName') is not None:
+            self.region_name = map.get('regionName')
+        if map.get('replica') is not None:
+            self.replica = map.get('replica')
+        if map.get('runtimeOn') is not None:
+            self.runtime_on = map.get('runtimeOn')
+        if map.get('securityGroup') is not None:
+            self.security_group = map.get('securityGroup')
+        if map.get('slb') is not None:
+            self.slb = map.get('slb')
+        if map.get('slbSpec') is not None:
+            self.slb_spec = map.get('slbSpec')
+        if map.get('vpc') is not None:
+            self.vpc = map.get('vpc')
+        if map.get('vswitch') is not None:
+            self.vswitch = map.get('vswitch')
+        if map.get('zone') is not None:
+            self.zone = map.get('zone')
         return self
 
 
@@ -1023,15 +1195,21 @@ class CreateGatewayResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -1048,20 +1226,18 @@ class CreateGatewayResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = CreateGatewayResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -1077,13 +1253,17 @@ class CheckServiceHealthRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['id'] = self.id
-        result['operationIds'] = self.operation_ids
+        if self.id is not None:
+            result['id'] = self.id
+        if self.operation_ids is not None:
+            result['operationIds'] = self.operation_ids
         return result
 
     def from_map(self, map={}):
-        self.id = map.get('id')
-        self.operation_ids = map.get('operationIds')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('operationIds') is not None:
+            self.operation_ids = map.get('operationIds')
         return self
 
 
@@ -1104,26 +1284,26 @@ class CheckServiceHealthResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         result['data'] = []
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         self.data = []
         if map.get('data') is not None:
             for k in map.get('data'):
                 temp_model = CheckServiceHealthResponseBodyData()
                 self.data.append(temp_model.from_map(k))
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -1150,23 +1330,37 @@ class CheckServiceHealthResponseBodyDataServiceEnds(TeaModel):
 
     def to_map(self):
         result = {}
-        result['creationDateTime'] = self.creation_date_time
-        result['id'] = self.id
-        result['ipAddress'] = self.ip_address
-        result['port'] = self.port
-        result['serviceId'] = self.service_id
-        result['status'] = self.status
-        result['updateDateTime'] = self.update_date_time
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.ip_address is not None:
+            result['ipAddress'] = self.ip_address
+        if self.port is not None:
+            result['port'] = self.port
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.creation_date_time = map.get('creationDateTime')
-        self.id = map.get('id')
-        self.ip_address = map.get('ipAddress')
-        self.port = map.get('port')
-        self.service_id = map.get('serviceId')
-        self.status = map.get('status')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('ipAddress') is not None:
+            self.ip_address = map.get('ipAddress')
+        if map.get('port') is not None:
+            self.port = map.get('port')
+        if map.get('serviceId') is not None:
+            self.service_id = map.get('serviceId')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -1207,44 +1401,62 @@ class CheckServiceHealthResponseBodyData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
-        result['creationDateTime'] = self.creation_date_time
-        result['description'] = self.description
-        result['id'] = self.id
-        result['isAutoRefresh'] = self.is_auto_refresh
-        result['isHealth'] = self.is_health
-        result['name'] = self.name
-        result['registryId'] = self.registry_id
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.is_auto_refresh is not None:
+            result['isAutoRefresh'] = self.is_auto_refresh
+        if self.is_health is not None:
+            result['isHealth'] = self.is_health
+        if self.name is not None:
+            result['name'] = self.name
+        if self.registry_id is not None:
+            result['registryId'] = self.registry_id
         result['serviceEnds'] = []
         if self.service_ends is not None:
             for k in self.service_ends:
                 result['serviceEnds'].append(k.to_map() if k else None)
-        else:
-            result['serviceEnds'] = None
-        result['serviceNameInRegistry'] = self.service_name_in_registry
-        result['sourceType'] = self.source_type
-        result['updateDateTime'] = self.update_date_time
+        if self.service_name_in_registry is not None:
+            result['serviceNameInRegistry'] = self.service_name_in_registry
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.description = map.get('description')
-        self.id = map.get('id')
-        self.is_auto_refresh = map.get('isAutoRefresh')
-        self.is_health = map.get('isHealth')
-        self.name = map.get('name')
-        self.registry_id = map.get('registryId')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('isAutoRefresh') is not None:
+            self.is_auto_refresh = map.get('isAutoRefresh')
+        if map.get('isHealth') is not None:
+            self.is_health = map.get('isHealth')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('registryId') is not None:
+            self.registry_id = map.get('registryId')
         self.service_ends = []
         if map.get('serviceEnds') is not None:
             for k in map.get('serviceEnds'):
                 temp_model = CheckServiceHealthResponseBodyDataServiceEnds()
                 self.service_ends.append(temp_model.from_map(k))
-        else:
-            self.service_ends = None
-        self.service_name_in_registry = map.get('serviceNameInRegistry')
-        self.source_type = map.get('sourceType')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('serviceNameInRegistry') is not None:
+            self.service_name_in_registry = map.get('serviceNameInRegistry')
+        if map.get('sourceType') is not None:
+            self.source_type = map.get('sourceType')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -1261,20 +1473,18 @@ class CheckServiceHealthResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = CheckServiceHealthResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -1309,31 +1519,53 @@ class CreatePolicyToApiRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['creationDateTime'] = self.creation_date_time
-        result['direction'] = self.direction
-        result['policyAliasName'] = self.policy_alias_name
-        result['policyContent'] = self.policy_content
-        result['policyGroup'] = self.policy_group
-        result['policyId'] = self.policy_id
-        result['policyName'] = self.policy_name
-        result['priority'] = self.priority
-        result['scope'] = self.scope
-        result['status'] = self.status
-        result['type'] = self.type
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.policy_alias_name is not None:
+            result['policyAliasName'] = self.policy_alias_name
+        if self.policy_content is not None:
+            result['policyContent'] = self.policy_content
+        if self.policy_group is not None:
+            result['policyGroup'] = self.policy_group
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.creation_date_time = map.get('creationDateTime')
-        self.direction = map.get('direction')
-        self.policy_alias_name = map.get('policyAliasName')
-        self.policy_content = map.get('policyContent')
-        self.policy_group = map.get('policyGroup')
-        self.policy_id = map.get('policyId')
-        self.policy_name = map.get('policyName')
-        self.priority = map.get('priority')
-        self.scope = map.get('scope')
-        self.status = map.get('status')
-        self.type = map.get('type')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('direction') is not None:
+            self.direction = map.get('direction')
+        if map.get('policyAliasName') is not None:
+            self.policy_alias_name = map.get('policyAliasName')
+        if map.get('policyContent') is not None:
+            self.policy_content = map.get('policyContent')
+        if map.get('policyGroup') is not None:
+            self.policy_group = map.get('policyGroup')
+        if map.get('policyId') is not None:
+            self.policy_id = map.get('policyId')
+        if map.get('policyName') is not None:
+            self.policy_name = map.get('policyName')
+        if map.get('priority') is not None:
+            self.priority = map.get('priority')
+        if map.get('scope') is not None:
+            self.scope = map.get('scope')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -1351,15 +1583,21 @@ class CreatePolicyToApiResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -1376,20 +1614,18 @@ class CreatePolicyToApiResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = CreatePolicyToApiResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -1407,15 +1643,21 @@ class DetachPolicyResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -1432,20 +1674,18 @@ class DetachPolicyResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = DetachPolicyResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -1463,15 +1703,21 @@ class FindTemplateResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -1488,20 +1734,18 @@ class FindTemplateResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = FindTemplateResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -1517,13 +1761,17 @@ class ValidateRegistryAddressRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['address'] = self.address
-        result['type'] = self.type
+        if self.address is not None:
+            result['address'] = self.address
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.address = map.get('address')
-        self.type = map.get('type')
+        if map.get('address') is not None:
+            self.address = map.get('address')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -1541,15 +1789,21 @@ class ValidateRegistryAddressResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -1566,20 +1820,18 @@ class ValidateRegistryAddressResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = ValidateRegistryAddressResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -1600,26 +1852,26 @@ class GetApiDetailResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         result['data'] = []
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         self.data = []
         if map.get('data') is not None:
             for k in map.get('data'):
                 temp_model = GetApiDetailResponseBodyData()
                 self.data.append(temp_model.from_map(k))
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -1646,23 +1898,37 @@ class GetApiDetailResponseBodyDataAttachedServicesServiceEnds(TeaModel):
 
     def to_map(self):
         result = {}
-        result['creationDateTime'] = self.creation_date_time
-        result['id'] = self.id
-        result['ipAddress'] = self.ip_address
-        result['port'] = self.port
-        result['serviceId'] = self.service_id
-        result['status'] = self.status
-        result['updateDateTime'] = self.update_date_time
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.ip_address is not None:
+            result['ipAddress'] = self.ip_address
+        if self.port is not None:
+            result['port'] = self.port
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.creation_date_time = map.get('creationDateTime')
-        self.id = map.get('id')
-        self.ip_address = map.get('ipAddress')
-        self.port = map.get('port')
-        self.service_id = map.get('serviceId')
-        self.status = map.get('status')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('ipAddress') is not None:
+            self.ip_address = map.get('ipAddress')
+        if map.get('port') is not None:
+            self.port = map.get('port')
+        if map.get('serviceId') is not None:
+            self.service_id = map.get('serviceId')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -1703,44 +1969,62 @@ class GetApiDetailResponseBodyDataAttachedServices(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
-        result['creationDateTime'] = self.creation_date_time
-        result['description'] = self.description
-        result['id'] = self.id
-        result['isAutoRefresh'] = self.is_auto_refresh
-        result['isHealth'] = self.is_health
-        result['name'] = self.name
-        result['registryId'] = self.registry_id
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.is_auto_refresh is not None:
+            result['isAutoRefresh'] = self.is_auto_refresh
+        if self.is_health is not None:
+            result['isHealth'] = self.is_health
+        if self.name is not None:
+            result['name'] = self.name
+        if self.registry_id is not None:
+            result['registryId'] = self.registry_id
         result['serviceEnds'] = []
         if self.service_ends is not None:
             for k in self.service_ends:
                 result['serviceEnds'].append(k.to_map() if k else None)
-        else:
-            result['serviceEnds'] = None
-        result['serviceNameInRegistry'] = self.service_name_in_registry
-        result['sourceType'] = self.source_type
-        result['updateDateTime'] = self.update_date_time
+        if self.service_name_in_registry is not None:
+            result['serviceNameInRegistry'] = self.service_name_in_registry
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.description = map.get('description')
-        self.id = map.get('id')
-        self.is_auto_refresh = map.get('isAutoRefresh')
-        self.is_health = map.get('isHealth')
-        self.name = map.get('name')
-        self.registry_id = map.get('registryId')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('isAutoRefresh') is not None:
+            self.is_auto_refresh = map.get('isAutoRefresh')
+        if map.get('isHealth') is not None:
+            self.is_health = map.get('isHealth')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('registryId') is not None:
+            self.registry_id = map.get('registryId')
         self.service_ends = []
         if map.get('serviceEnds') is not None:
             for k in map.get('serviceEnds'):
                 temp_model = GetApiDetailResponseBodyDataAttachedServicesServiceEnds()
                 self.service_ends.append(temp_model.from_map(k))
-        else:
-            self.service_ends = None
-        self.service_name_in_registry = map.get('serviceNameInRegistry')
-        self.source_type = map.get('sourceType')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('serviceNameInRegistry') is not None:
+            self.service_name_in_registry = map.get('serviceNameInRegistry')
+        if map.get('sourceType') is not None:
+            self.source_type = map.get('sourceType')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -1784,39 +2068,69 @@ class GetApiDetailResponseBodyDataOwneredPolicies(TeaModel):
 
     def to_map(self):
         result = {}
-        result['apiId'] = self.api_id
-        result['apiName'] = self.api_name
-        result['creationDateTime'] = self.creation_date_time
-        result['direction'] = self.direction
-        result['id'] = self.id
-        result['policyAliasName'] = self.policy_alias_name
-        result['policyContent'] = self.policy_content
-        result['policyGroup'] = self.policy_group
-        result['policyId'] = self.policy_id
-        result['policyName'] = self.policy_name
-        result['priority'] = self.priority
-        result['scope'] = self.scope
-        result['status'] = self.status
-        result['type'] = self.type
-        result['updateDateTime'] = self.update_date_time
+        if self.api_id is not None:
+            result['apiId'] = self.api_id
+        if self.api_name is not None:
+            result['apiName'] = self.api_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.id is not None:
+            result['id'] = self.id
+        if self.policy_alias_name is not None:
+            result['policyAliasName'] = self.policy_alias_name
+        if self.policy_content is not None:
+            result['policyContent'] = self.policy_content
+        if self.policy_group is not None:
+            result['policyGroup'] = self.policy_group
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.api_id = map.get('apiId')
-        self.api_name = map.get('apiName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.direction = map.get('direction')
-        self.id = map.get('id')
-        self.policy_alias_name = map.get('policyAliasName')
-        self.policy_content = map.get('policyContent')
-        self.policy_group = map.get('policyGroup')
-        self.policy_id = map.get('policyId')
-        self.policy_name = map.get('policyName')
-        self.priority = map.get('priority')
-        self.scope = map.get('scope')
-        self.status = map.get('status')
-        self.type = map.get('type')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('apiId') is not None:
+            self.api_id = map.get('apiId')
+        if map.get('apiName') is not None:
+            self.api_name = map.get('apiName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('direction') is not None:
+            self.direction = map.get('direction')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('policyAliasName') is not None:
+            self.policy_alias_name = map.get('policyAliasName')
+        if map.get('policyContent') is not None:
+            self.policy_content = map.get('policyContent')
+        if map.get('policyGroup') is not None:
+            self.policy_group = map.get('policyGroup')
+        if map.get('policyId') is not None:
+            self.policy_id = map.get('policyId')
+        if map.get('policyName') is not None:
+            self.policy_name = map.get('policyName')
+        if map.get('priority') is not None:
+            self.priority = map.get('priority')
+        if map.get('scope') is not None:
+            self.scope = map.get('scope')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -1869,47 +2183,85 @@ class GetApiDetailResponseBodyDataPublishedGateway(TeaModel):
 
     def to_map(self):
         result = {}
-        result['armsInfo'] = self.arms_info
-        result['autoCreateSlb'] = self.auto_create_slb
-        result['basePath'] = self.base_path
-        result['creationDateTime'] = self.creation_date_time
-        result['edasNamespaceId'] = self.edas_namespace_id
-        result['gatewayType'] = self.gateway_type
-        result['id'] = self.id
-        result['name'] = self.name
-        result['podCidr'] = self.pod_cidr
-        result['region'] = self.region
-        result['regionName'] = self.region_name
-        result['replica'] = self.replica
-        result['runtimeOn'] = self.runtime_on
-        result['securityGroup'] = self.security_group
-        result['slb'] = self.slb
-        result['slbAccessAddr'] = self.slb_access_addr
-        result['status'] = self.status
-        result['vpc'] = self.vpc
-        result['vswitch'] = self.vswitch
+        if self.arms_info is not None:
+            result['armsInfo'] = self.arms_info
+        if self.auto_create_slb is not None:
+            result['autoCreateSlb'] = self.auto_create_slb
+        if self.base_path is not None:
+            result['basePath'] = self.base_path
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.edas_namespace_id is not None:
+            result['edasNamespaceId'] = self.edas_namespace_id
+        if self.gateway_type is not None:
+            result['gatewayType'] = self.gateway_type
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.pod_cidr is not None:
+            result['podCidr'] = self.pod_cidr
+        if self.region is not None:
+            result['region'] = self.region
+        if self.region_name is not None:
+            result['regionName'] = self.region_name
+        if self.replica is not None:
+            result['replica'] = self.replica
+        if self.runtime_on is not None:
+            result['runtimeOn'] = self.runtime_on
+        if self.security_group is not None:
+            result['securityGroup'] = self.security_group
+        if self.slb is not None:
+            result['slb'] = self.slb
+        if self.slb_access_addr is not None:
+            result['slbAccessAddr'] = self.slb_access_addr
+        if self.status is not None:
+            result['status'] = self.status
+        if self.vpc is not None:
+            result['vpc'] = self.vpc
+        if self.vswitch is not None:
+            result['vswitch'] = self.vswitch
         return result
 
     def from_map(self, map={}):
-        self.arms_info = map.get('armsInfo')
-        self.auto_create_slb = map.get('autoCreateSlb')
-        self.base_path = map.get('basePath')
-        self.creation_date_time = map.get('creationDateTime')
-        self.edas_namespace_id = map.get('edasNamespaceId')
-        self.gateway_type = map.get('gatewayType')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.pod_cidr = map.get('podCidr')
-        self.region = map.get('region')
-        self.region_name = map.get('regionName')
-        self.replica = map.get('replica')
-        self.runtime_on = map.get('runtimeOn')
-        self.security_group = map.get('securityGroup')
-        self.slb = map.get('slb')
-        self.slb_access_addr = map.get('slbAccessAddr')
-        self.status = map.get('status')
-        self.vpc = map.get('vpc')
-        self.vswitch = map.get('vswitch')
+        if map.get('armsInfo') is not None:
+            self.arms_info = map.get('armsInfo')
+        if map.get('autoCreateSlb') is not None:
+            self.auto_create_slb = map.get('autoCreateSlb')
+        if map.get('basePath') is not None:
+            self.base_path = map.get('basePath')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('edasNamespaceId') is not None:
+            self.edas_namespace_id = map.get('edasNamespaceId')
+        if map.get('gatewayType') is not None:
+            self.gateway_type = map.get('gatewayType')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('podCidr') is not None:
+            self.pod_cidr = map.get('podCidr')
+        if map.get('region') is not None:
+            self.region = map.get('region')
+        if map.get('regionName') is not None:
+            self.region_name = map.get('regionName')
+        if map.get('replica') is not None:
+            self.replica = map.get('replica')
+        if map.get('runtimeOn') is not None:
+            self.runtime_on = map.get('runtimeOn')
+        if map.get('securityGroup') is not None:
+            self.security_group = map.get('securityGroup')
+        if map.get('slb') is not None:
+            self.slb = map.get('slb')
+        if map.get('slbAccessAddr') is not None:
+            self.slb_access_addr = map.get('slbAccessAddr')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('vpc') is not None:
+            self.vpc = map.get('vpc')
+        if map.get('vswitch') is not None:
+            self.vswitch = map.get('vswitch')
         return self
 
 
@@ -1954,60 +2306,64 @@ class GetApiDetailResponseBodyData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
         result['attachedServices'] = []
         if self.attached_services is not None:
             for k in self.attached_services:
                 result['attachedServices'].append(k.to_map() if k else None)
-        else:
-            result['attachedServices'] = None
-        result['basePath'] = self.base_path
-        result['creationDateTime'] = self.creation_date_time
-        result['description'] = self.description
-        result['id'] = self.id
-        result['name'] = self.name
+        if self.base_path is not None:
+            result['basePath'] = self.base_path
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
         result['owneredPolicies'] = []
         if self.ownered_policies is not None:
             for k in self.ownered_policies:
                 result['owneredPolicies'].append(k.to_map() if k else None)
-        else:
-            result['owneredPolicies'] = None
         if self.published_gateway is not None:
             result['publishedGateway'] = self.published_gateway.to_map()
-        else:
-            result['publishedGateway'] = None
-        result['status'] = self.status
-        result['updateDateTime'] = self.update_date_time
+        if self.status is not None:
+            result['status'] = self.status
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
         self.attached_services = []
         if map.get('attachedServices') is not None:
             for k in map.get('attachedServices'):
                 temp_model = GetApiDetailResponseBodyDataAttachedServices()
                 self.attached_services.append(temp_model.from_map(k))
-        else:
-            self.attached_services = None
-        self.base_path = map.get('basePath')
-        self.creation_date_time = map.get('creationDateTime')
-        self.description = map.get('description')
-        self.id = map.get('id')
-        self.name = map.get('name')
+        if map.get('basePath') is not None:
+            self.base_path = map.get('basePath')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
         self.ownered_policies = []
         if map.get('owneredPolicies') is not None:
             for k in map.get('owneredPolicies'):
                 temp_model = GetApiDetailResponseBodyDataOwneredPolicies()
                 self.ownered_policies.append(temp_model.from_map(k))
-        else:
-            self.ownered_policies = None
         if map.get('publishedGateway') is not None:
             temp_model = GetApiDetailResponseBodyDataPublishedGateway()
             self.published_gateway = temp_model.from_map(map['publishedGateway'])
-        else:
-            self.published_gateway = None
-        self.status = map.get('status')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -2024,20 +2380,18 @@ class GetApiDetailResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = GetApiDetailResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -2055,15 +2409,21 @@ class CreateSpecialRouteForRegistryResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -2080,20 +2440,18 @@ class CreateSpecialRouteForRegistryResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = CreateSpecialRouteForRegistryResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -2111,15 +2469,21 @@ class PublishApiResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -2136,20 +2500,18 @@ class PublishApiResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = PublishApiResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -2167,15 +2529,21 @@ class CreateGatewayLogEtlResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -2192,20 +2560,18 @@ class CreateGatewayLogEtlResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = CreateGatewayLogEtlResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -2229,21 +2595,33 @@ class FindPoliciesRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['pageNumber'] = self.page_number
-        result['pageSize'] = self.page_size
-        result['name'] = self.name
-        result['aliasName'] = self.alias_name
-        result['type'] = self.type
-        result['group'] = self.group
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.name is not None:
+            result['name'] = self.name
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
+        if self.type is not None:
+            result['type'] = self.type
+        if self.group is not None:
+            result['group'] = self.group
         return result
 
     def from_map(self, map={}):
-        self.page_number = map.get('pageNumber')
-        self.page_size = map.get('pageSize')
-        self.name = map.get('name')
-        self.alias_name = map.get('aliasName')
-        self.type = map.get('type')
-        self.group = map.get('group')
+        if map.get('pageNumber') is not None:
+            self.page_number = map.get('pageNumber')
+        if map.get('pageSize') is not None:
+            self.page_size = map.get('pageSize')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('group') is not None:
+            self.group = map.get('group')
         return self
 
 
@@ -2262,22 +2640,22 @@ class FindPoliciesResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         if map.get('data') is not None:
             temp_model = FindPoliciesResponseBodyData()
             self.data = temp_model.from_map(map['data'])
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -2321,39 +2699,69 @@ class FindPoliciesResponseBodyDataListAttachedApi(TeaModel):
 
     def to_map(self):
         result = {}
-        result['apiId'] = self.api_id
-        result['apiName'] = self.api_name
-        result['creationDateTime'] = self.creation_date_time
-        result['direction'] = self.direction
-        result['id'] = self.id
-        result['policyAliasName'] = self.policy_alias_name
-        result['policyContent'] = self.policy_content
-        result['policyGroup'] = self.policy_group
-        result['policyId'] = self.policy_id
-        result['policyName'] = self.policy_name
-        result['priority'] = self.priority
-        result['scope'] = self.scope
-        result['status'] = self.status
-        result['type'] = self.type
-        result['updateDateTime'] = self.update_date_time
+        if self.api_id is not None:
+            result['apiId'] = self.api_id
+        if self.api_name is not None:
+            result['apiName'] = self.api_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.id is not None:
+            result['id'] = self.id
+        if self.policy_alias_name is not None:
+            result['policyAliasName'] = self.policy_alias_name
+        if self.policy_content is not None:
+            result['policyContent'] = self.policy_content
+        if self.policy_group is not None:
+            result['policyGroup'] = self.policy_group
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.api_id = map.get('apiId')
-        self.api_name = map.get('apiName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.direction = map.get('direction')
-        self.id = map.get('id')
-        self.policy_alias_name = map.get('policyAliasName')
-        self.policy_content = map.get('policyContent')
-        self.policy_group = map.get('policyGroup')
-        self.policy_id = map.get('policyId')
-        self.policy_name = map.get('policyName')
-        self.priority = map.get('priority')
-        self.scope = map.get('scope')
-        self.status = map.get('status')
-        self.type = map.get('type')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('apiId') is not None:
+            self.api_id = map.get('apiId')
+        if map.get('apiName') is not None:
+            self.api_name = map.get('apiName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('direction') is not None:
+            self.direction = map.get('direction')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('policyAliasName') is not None:
+            self.policy_alias_name = map.get('policyAliasName')
+        if map.get('policyContent') is not None:
+            self.policy_content = map.get('policyContent')
+        if map.get('policyGroup') is not None:
+            self.policy_group = map.get('policyGroup')
+        if map.get('policyId') is not None:
+            self.policy_id = map.get('policyId')
+        if map.get('policyName') is not None:
+            self.policy_name = map.get('policyName')
+        if map.get('priority') is not None:
+            self.priority = map.get('priority')
+        if map.get('scope') is not None:
+            self.scope = map.get('scope')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -2389,40 +2797,54 @@ class FindPoliciesResponseBodyDataList(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
         result['attachedApi'] = []
         if self.attached_api is not None:
             for k in self.attached_api:
                 result['attachedApi'].append(k.to_map() if k else None)
-        else:
-            result['attachedApi'] = None
-        result['content'] = self.content
-        result['creationDateTime'] = self.creation_date_time
-        result['id'] = self.id
-        result['name'] = self.name
-        result['policyGroup'] = self.policy_group
-        result['policyTypeName'] = self.policy_type_name
-        result['type'] = self.type
-        result['updateDateTime'] = self.update_date_time
+        if self.content is not None:
+            result['content'] = self.content
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.policy_group is not None:
+            result['policyGroup'] = self.policy_group
+        if self.policy_type_name is not None:
+            result['policyTypeName'] = self.policy_type_name
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
         self.attached_api = []
         if map.get('attachedApi') is not None:
             for k in map.get('attachedApi'):
                 temp_model = FindPoliciesResponseBodyDataListAttachedApi()
                 self.attached_api.append(temp_model.from_map(k))
-        else:
-            self.attached_api = None
-        self.content = map.get('content')
-        self.creation_date_time = map.get('creationDateTime')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.policy_group = map.get('policyGroup')
-        self.policy_type_name = map.get('policyTypeName')
-        self.type = map.get('type')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('content') is not None:
+            self.content = map.get('content')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('policyGroup') is not None:
+            self.policy_group = map.get('policyGroup')
+        if map.get('policyTypeName') is not None:
+            self.policy_type_name = map.get('policyTypeName')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -2445,9 +2867,8 @@ class FindPoliciesResponseBodyData(TeaModel):
         if self.list is not None:
             for k in self.list:
                 result['list'].append(k.to_map() if k else None)
-        else:
-            result['list'] = None
-        result['totalCount'] = self.total_count
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
         return result
 
     def from_map(self, map={}):
@@ -2456,9 +2877,8 @@ class FindPoliciesResponseBodyData(TeaModel):
             for k in map.get('list'):
                 temp_model = FindPoliciesResponseBodyDataList()
                 self.list.append(temp_model.from_map(k))
-        else:
-            self.list = None
-        self.total_count = map.get('totalCount')
+        if map.get('totalCount') is not None:
+            self.total_count = map.get('totalCount')
         return self
 
 
@@ -2475,20 +2895,18 @@ class FindPoliciesResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = FindPoliciesResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -2509,8 +2927,6 @@ class AttachPolicyRequest(TeaModel):
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        else:
-            result['data'] = None
         return result
 
     def from_map(self, map={}):
@@ -2519,8 +2935,6 @@ class AttachPolicyRequest(TeaModel):
             for k in map.get('data'):
                 temp_model = AttachPolicyRequestData()
                 self.data.append(temp_model.from_map(k))
-        else:
-            self.data = None
         return self
 
 
@@ -2555,31 +2969,53 @@ class AttachPolicyRequestData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['creationDateTime'] = self.creation_date_time
-        result['direction'] = self.direction
-        result['policyAliasName'] = self.policy_alias_name
-        result['policyContent'] = self.policy_content
-        result['policyGroup'] = self.policy_group
-        result['policyId'] = self.policy_id
-        result['policyName'] = self.policy_name
-        result['priority'] = self.priority
-        result['scope'] = self.scope
-        result['status'] = self.status
-        result['type'] = self.type
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.policy_alias_name is not None:
+            result['policyAliasName'] = self.policy_alias_name
+        if self.policy_content is not None:
+            result['policyContent'] = self.policy_content
+        if self.policy_group is not None:
+            result['policyGroup'] = self.policy_group
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.creation_date_time = map.get('creationDateTime')
-        self.direction = map.get('direction')
-        self.policy_alias_name = map.get('policyAliasName')
-        self.policy_content = map.get('policyContent')
-        self.policy_group = map.get('policyGroup')
-        self.policy_id = map.get('policyId')
-        self.policy_name = map.get('policyName')
-        self.priority = map.get('priority')
-        self.scope = map.get('scope')
-        self.status = map.get('status')
-        self.type = map.get('type')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('direction') is not None:
+            self.direction = map.get('direction')
+        if map.get('policyAliasName') is not None:
+            self.policy_alias_name = map.get('policyAliasName')
+        if map.get('policyContent') is not None:
+            self.policy_content = map.get('policyContent')
+        if map.get('policyGroup') is not None:
+            self.policy_group = map.get('policyGroup')
+        if map.get('policyId') is not None:
+            self.policy_id = map.get('policyId')
+        if map.get('policyName') is not None:
+            self.policy_name = map.get('policyName')
+        if map.get('priority') is not None:
+            self.priority = map.get('priority')
+        if map.get('scope') is not None:
+            self.scope = map.get('scope')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -2597,15 +3033,21 @@ class AttachPolicyResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -2622,20 +3064,18 @@ class AttachPolicyResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = AttachPolicyResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -2656,26 +3096,26 @@ class FindRegistryResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         result['data'] = []
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         self.data = []
         if map.get('data') is not None:
             for k in map.get('data'):
                 temp_model = FindRegistryResponseBodyData()
                 self.data.append(temp_model.from_map(k))
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -2704,25 +3144,41 @@ class FindRegistryResponseBodyData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['address'] = self.address
-        result['creationDateTime'] = self.creation_date_time
-        result['description'] = self.description
-        result['gatewayId'] = self.gateway_id
-        result['id'] = self.id
-        result['name'] = self.name
-        result['type'] = self.type
-        result['updateDateTime'] = self.update_date_time
+        if self.address is not None:
+            result['address'] = self.address
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.address = map.get('address')
-        self.creation_date_time = map.get('creationDateTime')
-        self.description = map.get('description')
-        self.gateway_id = map.get('gatewayId')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.type = map.get('type')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('address') is not None:
+            self.address = map.get('address')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('gatewayId') is not None:
+            self.gateway_id = map.get('gatewayId')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -2739,25 +3195,24 @@ class FindRegistryResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = FindRegistryResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
 class GetAuthTicketByIdHeaders(TeaModel):
-    def __init__(self, cookie=None):
+    def __init__(self, common_headers=None, cookie=None):
+        self.common_headers = common_headers  # type: Dict[str, str]
         # cookie
         self.cookie = cookie            # type: Dict[str, Any]
 
@@ -2766,16 +3221,23 @@ class GetAuthTicketByIdHeaders(TeaModel):
 
     def to_map(self):
         result = {}
-        result['cookie'] = self.cookie
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.cookie is not None:
+            result['cookie'] = self.cookie
         return result
 
     def from_map(self, map={}):
-        self.cookie = map.get('cookie')
+        if map.get('commonHeaders') is not None:
+            self.common_headers = map.get('commonHeaders')
+        if map.get('cookie') is not None:
+            self.cookie = map.get('cookie')
         return self
 
 
 class GetAuthTicketByIdShrinkHeaders(TeaModel):
-    def __init__(self, cookie_shrink=None):
+    def __init__(self, common_headers=None, cookie_shrink=None):
+        self.common_headers = common_headers  # type: Dict[str, str]
         # cookie
         self.cookie_shrink = cookie_shrink  # type: str
 
@@ -2784,11 +3246,17 @@ class GetAuthTicketByIdShrinkHeaders(TeaModel):
 
     def to_map(self):
         result = {}
-        result['cookie'] = self.cookie_shrink
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.cookie_shrink is not None:
+            result['cookie'] = self.cookie_shrink
         return result
 
     def from_map(self, map={}):
-        self.cookie_shrink = map.get('cookie')
+        if map.get('commonHeaders') is not None:
+            self.common_headers = map.get('commonHeaders')
+        if map.get('cookie') is not None:
+            self.cookie_shrink = map.get('cookie')
         return self
 
 
@@ -2809,26 +3277,26 @@ class GetAuthTicketByIdResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         result['data'] = []
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         self.data = []
         if map.get('data') is not None:
             for k in map.get('data'):
                 temp_model = GetAuthTicketByIdResponseBodyData()
                 self.data.append(temp_model.from_map(k))
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -2857,25 +3325,41 @@ class GetAuthTicketByIdResponseBodyData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['clientToken'] = self.client_token
-        result['comment'] = self.comment
-        result['id'] = self.id
-        result['name'] = self.name
-        result['serverKey'] = self.server_key
-        result['ticketType'] = self.ticket_type
-        result['validEndTime'] = self.valid_end_time
-        result['validStartTime'] = self.valid_start_time
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
+        if self.comment is not None:
+            result['comment'] = self.comment
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.server_key is not None:
+            result['serverKey'] = self.server_key
+        if self.ticket_type is not None:
+            result['ticketType'] = self.ticket_type
+        if self.valid_end_time is not None:
+            result['validEndTime'] = self.valid_end_time
+        if self.valid_start_time is not None:
+            result['validStartTime'] = self.valid_start_time
         return result
 
     def from_map(self, map={}):
-        self.client_token = map.get('clientToken')
-        self.comment = map.get('comment')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.server_key = map.get('serverKey')
-        self.ticket_type = map.get('ticketType')
-        self.valid_end_time = map.get('validEndTime')
-        self.valid_start_time = map.get('validStartTime')
+        if map.get('clientToken') is not None:
+            self.client_token = map.get('clientToken')
+        if map.get('comment') is not None:
+            self.comment = map.get('comment')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('serverKey') is not None:
+            self.server_key = map.get('serverKey')
+        if map.get('ticketType') is not None:
+            self.ticket_type = map.get('ticketType')
+        if map.get('validEndTime') is not None:
+            self.valid_end_time = map.get('validEndTime')
+        if map.get('validStartTime') is not None:
+            self.valid_start_time = map.get('validStartTime')
         return self
 
 
@@ -2892,20 +3376,18 @@ class GetAuthTicketByIdResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = GetAuthTicketByIdResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -2929,21 +3411,33 @@ class CreateRegistryRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['address'] = self.address
-        result['description'] = self.description
-        result['gatewayId'] = self.gateway_id
-        result['id'] = self.id
-        result['name'] = self.name
-        result['type'] = self.type
+        if self.address is not None:
+            result['address'] = self.address
+        if self.description is not None:
+            result['description'] = self.description
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.address = map.get('address')
-        self.description = map.get('description')
-        self.gateway_id = map.get('gatewayId')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.type = map.get('type')
+        if map.get('address') is not None:
+            self.address = map.get('address')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('gatewayId') is not None:
+            self.gateway_id = map.get('gatewayId')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -2961,15 +3455,21 @@ class CreateRegistryResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -2986,20 +3486,18 @@ class CreateRegistryResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = CreateRegistryResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -3017,15 +3515,21 @@ class RecycleApiResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -3042,20 +3546,18 @@ class RecycleApiResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = RecycleApiResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -3076,19 +3578,29 @@ class CreateAuthTicketRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['comment'] = self.comment
-        result['gatewayId'] = self.gateway_id
-        result['name'] = self.name
-        result['ticketType'] = self.ticket_type
-        result['validDuration'] = self.valid_duration
+        if self.comment is not None:
+            result['comment'] = self.comment
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.ticket_type is not None:
+            result['ticketType'] = self.ticket_type
+        if self.valid_duration is not None:
+            result['validDuration'] = self.valid_duration
         return result
 
     def from_map(self, map={}):
-        self.comment = map.get('comment')
-        self.gateway_id = map.get('gatewayId')
-        self.name = map.get('name')
-        self.ticket_type = map.get('ticketType')
-        self.valid_duration = map.get('validDuration')
+        if map.get('comment') is not None:
+            self.comment = map.get('comment')
+        if map.get('gatewayId') is not None:
+            self.gateway_id = map.get('gatewayId')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('ticketType') is not None:
+            self.ticket_type = map.get('ticketType')
+        if map.get('validDuration') is not None:
+            self.valid_duration = map.get('validDuration')
         return self
 
 
@@ -3106,15 +3618,21 @@ class CreateAuthTicketResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -3131,20 +3649,18 @@ class CreateAuthTicketResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = CreateAuthTicketResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -3162,15 +3678,21 @@ class DeleteGatewayResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -3187,20 +3709,18 @@ class DeleteGatewayResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = DeleteGatewayResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -3221,26 +3741,26 @@ class FindServiceResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         result['data'] = []
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         self.data = []
         if map.get('data') is not None:
             for k in map.get('data'):
                 temp_model = FindServiceResponseBodyData()
                 self.data.append(temp_model.from_map(k))
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -3267,23 +3787,37 @@ class FindServiceResponseBodyDataServiceEnds(TeaModel):
 
     def to_map(self):
         result = {}
-        result['creationDateTime'] = self.creation_date_time
-        result['id'] = self.id
-        result['ipAddress'] = self.ip_address
-        result['port'] = self.port
-        result['serviceId'] = self.service_id
-        result['status'] = self.status
-        result['updateDateTime'] = self.update_date_time
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.ip_address is not None:
+            result['ipAddress'] = self.ip_address
+        if self.port is not None:
+            result['port'] = self.port
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.creation_date_time = map.get('creationDateTime')
-        self.id = map.get('id')
-        self.ip_address = map.get('ipAddress')
-        self.port = map.get('port')
-        self.service_id = map.get('serviceId')
-        self.status = map.get('status')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('ipAddress') is not None:
+            self.ip_address = map.get('ipAddress')
+        if map.get('port') is not None:
+            self.port = map.get('port')
+        if map.get('serviceId') is not None:
+            self.service_id = map.get('serviceId')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -3324,44 +3858,62 @@ class FindServiceResponseBodyData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
-        result['creationDateTime'] = self.creation_date_time
-        result['description'] = self.description
-        result['id'] = self.id
-        result['isAutoRefresh'] = self.is_auto_refresh
-        result['isHealth'] = self.is_health
-        result['name'] = self.name
-        result['registryId'] = self.registry_id
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.is_auto_refresh is not None:
+            result['isAutoRefresh'] = self.is_auto_refresh
+        if self.is_health is not None:
+            result['isHealth'] = self.is_health
+        if self.name is not None:
+            result['name'] = self.name
+        if self.registry_id is not None:
+            result['registryId'] = self.registry_id
         result['serviceEnds'] = []
         if self.service_ends is not None:
             for k in self.service_ends:
                 result['serviceEnds'].append(k.to_map() if k else None)
-        else:
-            result['serviceEnds'] = None
-        result['serviceNameInRegistry'] = self.service_name_in_registry
-        result['sourceType'] = self.source_type
-        result['updateDateTime'] = self.update_date_time
+        if self.service_name_in_registry is not None:
+            result['serviceNameInRegistry'] = self.service_name_in_registry
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.description = map.get('description')
-        self.id = map.get('id')
-        self.is_auto_refresh = map.get('isAutoRefresh')
-        self.is_health = map.get('isHealth')
-        self.name = map.get('name')
-        self.registry_id = map.get('registryId')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('isAutoRefresh') is not None:
+            self.is_auto_refresh = map.get('isAutoRefresh')
+        if map.get('isHealth') is not None:
+            self.is_health = map.get('isHealth')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('registryId') is not None:
+            self.registry_id = map.get('registryId')
         self.service_ends = []
         if map.get('serviceEnds') is not None:
             for k in map.get('serviceEnds'):
                 temp_model = FindServiceResponseBodyDataServiceEnds()
                 self.service_ends.append(temp_model.from_map(k))
-        else:
-            self.service_ends = None
-        self.service_name_in_registry = map.get('serviceNameInRegistry')
-        self.source_type = map.get('sourceType')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('serviceNameInRegistry') is not None:
+            self.service_name_in_registry = map.get('serviceNameInRegistry')
+        if map.get('sourceType') is not None:
+            self.source_type = map.get('sourceType')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -3378,20 +3930,18 @@ class FindServiceResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = FindServiceResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -3409,15 +3959,21 @@ class DeletePolicyByIdResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -3434,20 +3990,18 @@ class DeletePolicyByIdResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = DeletePolicyByIdResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -3465,15 +4019,21 @@ class DeleteApiResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -3490,20 +4050,18 @@ class DeleteApiResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = DeleteApiResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -3523,17 +4081,25 @@ class FindAuthTicketsRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['gatewayId'] = self.gateway_id
-        result['name'] = self.name
-        result['pageNumber'] = self.page_number
-        result['pageSize'] = self.page_size
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
         return result
 
     def from_map(self, map={}):
-        self.gateway_id = map.get('gatewayId')
-        self.name = map.get('name')
-        self.page_number = map.get('pageNumber')
-        self.page_size = map.get('pageSize')
+        if map.get('gatewayId') is not None:
+            self.gateway_id = map.get('gatewayId')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('pageNumber') is not None:
+            self.page_number = map.get('pageNumber')
+        if map.get('pageSize') is not None:
+            self.page_size = map.get('pageSize')
         return self
 
 
@@ -3552,22 +4118,22 @@ class FindAuthTicketsResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         if map.get('data') is not None:
             temp_model = FindAuthTicketsResponseBodyData()
             self.data = temp_model.from_map(map['data'])
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -3596,25 +4162,41 @@ class FindAuthTicketsResponseBodyDataList(TeaModel):
 
     def to_map(self):
         result = {}
-        result['clientToken'] = self.client_token
-        result['comment'] = self.comment
-        result['id'] = self.id
-        result['name'] = self.name
-        result['serverKey'] = self.server_key
-        result['ticketType'] = self.ticket_type
-        result['validEndTime'] = self.valid_end_time
-        result['validStartTime'] = self.valid_start_time
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
+        if self.comment is not None:
+            result['comment'] = self.comment
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.server_key is not None:
+            result['serverKey'] = self.server_key
+        if self.ticket_type is not None:
+            result['ticketType'] = self.ticket_type
+        if self.valid_end_time is not None:
+            result['validEndTime'] = self.valid_end_time
+        if self.valid_start_time is not None:
+            result['validStartTime'] = self.valid_start_time
         return result
 
     def from_map(self, map={}):
-        self.client_token = map.get('clientToken')
-        self.comment = map.get('comment')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.server_key = map.get('serverKey')
-        self.ticket_type = map.get('ticketType')
-        self.valid_end_time = map.get('validEndTime')
-        self.valid_start_time = map.get('validStartTime')
+        if map.get('clientToken') is not None:
+            self.client_token = map.get('clientToken')
+        if map.get('comment') is not None:
+            self.comment = map.get('comment')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('serverKey') is not None:
+            self.server_key = map.get('serverKey')
+        if map.get('ticketType') is not None:
+            self.ticket_type = map.get('ticketType')
+        if map.get('validEndTime') is not None:
+            self.valid_end_time = map.get('validEndTime')
+        if map.get('validStartTime') is not None:
+            self.valid_start_time = map.get('validStartTime')
         return self
 
 
@@ -3637,9 +4219,8 @@ class FindAuthTicketsResponseBodyData(TeaModel):
         if self.list is not None:
             for k in self.list:
                 result['list'].append(k.to_map() if k else None)
-        else:
-            result['list'] = None
-        result['totalCount'] = self.total_count
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
         return result
 
     def from_map(self, map={}):
@@ -3648,9 +4229,8 @@ class FindAuthTicketsResponseBodyData(TeaModel):
             for k in map.get('list'):
                 temp_model = FindAuthTicketsResponseBodyDataList()
                 self.list.append(temp_model.from_map(k))
-        else:
-            self.list = None
-        self.total_count = map.get('totalCount')
+        if map.get('totalCount') is not None:
+            self.total_count = map.get('totalCount')
         return self
 
 
@@ -3667,20 +4247,18 @@ class FindAuthTicketsResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = FindAuthTicketsResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -3704,21 +4282,33 @@ class UpdatePolicyRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
-        result['content'] = self.content
-        result['id'] = self.id
-        result['name'] = self.name
-        result['policyGroup'] = self.policy_group
-        result['type'] = self.type
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
+        if self.content is not None:
+            result['content'] = self.content
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.policy_group is not None:
+            result['policyGroup'] = self.policy_group
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
-        self.content = map.get('content')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.policy_group = map.get('policyGroup')
-        self.type = map.get('type')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
+        if map.get('content') is not None:
+            self.content = map.get('content')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('policyGroup') is not None:
+            self.policy_group = map.get('policyGroup')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -3736,15 +4326,21 @@ class UpdatePolicyResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -3761,20 +4357,18 @@ class UpdatePolicyResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = UpdatePolicyResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -3790,13 +4384,17 @@ class UpdateAuthTicketRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['comment'] = self.comment
-        result['id'] = self.id
+        if self.comment is not None:
+            result['comment'] = self.comment
+        if self.id is not None:
+            result['id'] = self.id
         return result
 
     def from_map(self, map={}):
-        self.comment = map.get('comment')
-        self.id = map.get('id')
+        if map.get('comment') is not None:
+            self.comment = map.get('comment')
+        if map.get('id') is not None:
+            self.id = map.get('id')
         return self
 
 
@@ -3814,15 +4412,21 @@ class UpdateAuthTicketResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -3839,20 +4443,18 @@ class UpdateAuthTicketResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = UpdateAuthTicketResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -3870,15 +4472,21 @@ class InstallArmsAgentResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -3895,20 +4503,18 @@ class InstallArmsAgentResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = InstallArmsAgentResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -3926,15 +4532,21 @@ class DeleteAuthTicketResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -3951,20 +4563,18 @@ class DeleteAuthTicketResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = DeleteAuthTicketResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -3985,26 +4595,26 @@ class GetPolicyByIdResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         result['data'] = []
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         self.data = []
         if map.get('data') is not None:
             for k in map.get('data'):
                 temp_model = GetPolicyByIdResponseBodyData()
                 self.data.append(temp_model.from_map(k))
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -4048,39 +4658,69 @@ class GetPolicyByIdResponseBodyDataAttachedApi(TeaModel):
 
     def to_map(self):
         result = {}
-        result['apiId'] = self.api_id
-        result['apiName'] = self.api_name
-        result['creationDateTime'] = self.creation_date_time
-        result['direction'] = self.direction
-        result['id'] = self.id
-        result['policyAliasName'] = self.policy_alias_name
-        result['policyContent'] = self.policy_content
-        result['policyGroup'] = self.policy_group
-        result['policyId'] = self.policy_id
-        result['policyName'] = self.policy_name
-        result['priority'] = self.priority
-        result['scope'] = self.scope
-        result['status'] = self.status
-        result['type'] = self.type
-        result['updateDateTime'] = self.update_date_time
+        if self.api_id is not None:
+            result['apiId'] = self.api_id
+        if self.api_name is not None:
+            result['apiName'] = self.api_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.id is not None:
+            result['id'] = self.id
+        if self.policy_alias_name is not None:
+            result['policyAliasName'] = self.policy_alias_name
+        if self.policy_content is not None:
+            result['policyContent'] = self.policy_content
+        if self.policy_group is not None:
+            result['policyGroup'] = self.policy_group
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.api_id = map.get('apiId')
-        self.api_name = map.get('apiName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.direction = map.get('direction')
-        self.id = map.get('id')
-        self.policy_alias_name = map.get('policyAliasName')
-        self.policy_content = map.get('policyContent')
-        self.policy_group = map.get('policyGroup')
-        self.policy_id = map.get('policyId')
-        self.policy_name = map.get('policyName')
-        self.priority = map.get('priority')
-        self.scope = map.get('scope')
-        self.status = map.get('status')
-        self.type = map.get('type')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('apiId') is not None:
+            self.api_id = map.get('apiId')
+        if map.get('apiName') is not None:
+            self.api_name = map.get('apiName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('direction') is not None:
+            self.direction = map.get('direction')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('policyAliasName') is not None:
+            self.policy_alias_name = map.get('policyAliasName')
+        if map.get('policyContent') is not None:
+            self.policy_content = map.get('policyContent')
+        if map.get('policyGroup') is not None:
+            self.policy_group = map.get('policyGroup')
+        if map.get('policyId') is not None:
+            self.policy_id = map.get('policyId')
+        if map.get('policyName') is not None:
+            self.policy_name = map.get('policyName')
+        if map.get('priority') is not None:
+            self.priority = map.get('priority')
+        if map.get('scope') is not None:
+            self.scope = map.get('scope')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -4116,40 +4756,54 @@ class GetPolicyByIdResponseBodyData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
         result['attachedApi'] = []
         if self.attached_api is not None:
             for k in self.attached_api:
                 result['attachedApi'].append(k.to_map() if k else None)
-        else:
-            result['attachedApi'] = None
-        result['content'] = self.content
-        result['creationDateTime'] = self.creation_date_time
-        result['id'] = self.id
-        result['name'] = self.name
-        result['policyGroup'] = self.policy_group
-        result['policyTypeName'] = self.policy_type_name
-        result['type'] = self.type
-        result['updateDateTime'] = self.update_date_time
+        if self.content is not None:
+            result['content'] = self.content
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.policy_group is not None:
+            result['policyGroup'] = self.policy_group
+        if self.policy_type_name is not None:
+            result['policyTypeName'] = self.policy_type_name
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
         self.attached_api = []
         if map.get('attachedApi') is not None:
             for k in map.get('attachedApi'):
                 temp_model = GetPolicyByIdResponseBodyDataAttachedApi()
                 self.attached_api.append(temp_model.from_map(k))
-        else:
-            self.attached_api = None
-        self.content = map.get('content')
-        self.creation_date_time = map.get('creationDateTime')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.policy_group = map.get('policyGroup')
-        self.policy_type_name = map.get('policyTypeName')
-        self.type = map.get('type')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('content') is not None:
+            self.content = map.get('content')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('policyGroup') is not None:
+            self.policy_group = map.get('policyGroup')
+        if map.get('policyTypeName') is not None:
+            self.policy_type_name = map.get('policyTypeName')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -4166,20 +4820,18 @@ class GetPolicyByIdResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = GetPolicyByIdResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -4197,15 +4849,21 @@ class DeleteRegistryResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -4222,20 +4880,18 @@ class DeleteRegistryResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = DeleteRegistryResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -4256,26 +4912,26 @@ class GetPolicyOwnedByApiResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         result['data'] = {}
         if self.data is not None:
             for k, v in self.data.items():
                 result['data'][k] = v.to_map()
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         self.data = {}
         if map.get('data') is not None:
             for k, v in map.get('data').items():
                 temp_model = DataValue()
                 self.data[k] = temp_model.from_map(v)
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -4292,20 +4948,18 @@ class GetPolicyOwnedByApiResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = GetPolicyOwnedByApiResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -4350,60 +5004,64 @@ class UpdateApiRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
         result['attachedServices'] = []
         if self.attached_services is not None:
             for k in self.attached_services:
                 result['attachedServices'].append(k.to_map() if k else None)
-        else:
-            result['attachedServices'] = None
-        result['basePath'] = self.base_path
-        result['creationDateTime'] = self.creation_date_time
-        result['description'] = self.description
-        result['id'] = self.id
-        result['name'] = self.name
+        if self.base_path is not None:
+            result['basePath'] = self.base_path
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
         result['owneredPolicies'] = []
         if self.ownered_policies is not None:
             for k in self.ownered_policies:
                 result['owneredPolicies'].append(k.to_map() if k else None)
-        else:
-            result['owneredPolicies'] = None
         if self.published_gateway is not None:
             result['publishedGateway'] = self.published_gateway.to_map()
-        else:
-            result['publishedGateway'] = None
-        result['status'] = self.status
-        result['updateDateTime'] = self.update_date_time
+        if self.status is not None:
+            result['status'] = self.status
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
         self.attached_services = []
         if map.get('attachedServices') is not None:
             for k in map.get('attachedServices'):
                 temp_model = UpdateApiRequestAttachedServices()
                 self.attached_services.append(temp_model.from_map(k))
-        else:
-            self.attached_services = None
-        self.base_path = map.get('basePath')
-        self.creation_date_time = map.get('creationDateTime')
-        self.description = map.get('description')
-        self.id = map.get('id')
-        self.name = map.get('name')
+        if map.get('basePath') is not None:
+            self.base_path = map.get('basePath')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
         self.ownered_policies = []
         if map.get('owneredPolicies') is not None:
             for k in map.get('owneredPolicies'):
                 temp_model = UpdateApiRequestOwneredPolicies()
                 self.ownered_policies.append(temp_model.from_map(k))
-        else:
-            self.ownered_policies = None
         if map.get('publishedGateway') is not None:
             temp_model = UpdateApiRequestPublishedGateway()
             self.published_gateway = temp_model.from_map(map['publishedGateway'])
-        else:
-            self.published_gateway = None
-        self.status = map.get('status')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -4430,23 +5088,37 @@ class UpdateApiRequestAttachedServicesServiceEnds(TeaModel):
 
     def to_map(self):
         result = {}
-        result['creationDateTime'] = self.creation_date_time
-        result['id'] = self.id
-        result['ipAddress'] = self.ip_address
-        result['port'] = self.port
-        result['serviceId'] = self.service_id
-        result['status'] = self.status
-        result['updateDateTime'] = self.update_date_time
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.ip_address is not None:
+            result['ipAddress'] = self.ip_address
+        if self.port is not None:
+            result['port'] = self.port
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.creation_date_time = map.get('creationDateTime')
-        self.id = map.get('id')
-        self.ip_address = map.get('ipAddress')
-        self.port = map.get('port')
-        self.service_id = map.get('serviceId')
-        self.status = map.get('status')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('ipAddress') is not None:
+            self.ip_address = map.get('ipAddress')
+        if map.get('port') is not None:
+            self.port = map.get('port')
+        if map.get('serviceId') is not None:
+            self.service_id = map.get('serviceId')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -4487,44 +5159,62 @@ class UpdateApiRequestAttachedServices(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
-        result['creationDateTime'] = self.creation_date_time
-        result['description'] = self.description
-        result['id'] = self.id
-        result['isAutoRefresh'] = self.is_auto_refresh
-        result['isHealth'] = self.is_health
-        result['name'] = self.name
-        result['registryId'] = self.registry_id
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.is_auto_refresh is not None:
+            result['isAutoRefresh'] = self.is_auto_refresh
+        if self.is_health is not None:
+            result['isHealth'] = self.is_health
+        if self.name is not None:
+            result['name'] = self.name
+        if self.registry_id is not None:
+            result['registryId'] = self.registry_id
         result['serviceEnds'] = []
         if self.service_ends is not None:
             for k in self.service_ends:
                 result['serviceEnds'].append(k.to_map() if k else None)
-        else:
-            result['serviceEnds'] = None
-        result['serviceNameInRegistry'] = self.service_name_in_registry
-        result['sourceType'] = self.source_type
-        result['updateDateTime'] = self.update_date_time
+        if self.service_name_in_registry is not None:
+            result['serviceNameInRegistry'] = self.service_name_in_registry
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.description = map.get('description')
-        self.id = map.get('id')
-        self.is_auto_refresh = map.get('isAutoRefresh')
-        self.is_health = map.get('isHealth')
-        self.name = map.get('name')
-        self.registry_id = map.get('registryId')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('isAutoRefresh') is not None:
+            self.is_auto_refresh = map.get('isAutoRefresh')
+        if map.get('isHealth') is not None:
+            self.is_health = map.get('isHealth')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('registryId') is not None:
+            self.registry_id = map.get('registryId')
         self.service_ends = []
         if map.get('serviceEnds') is not None:
             for k in map.get('serviceEnds'):
                 temp_model = UpdateApiRequestAttachedServicesServiceEnds()
                 self.service_ends.append(temp_model.from_map(k))
-        else:
-            self.service_ends = None
-        self.service_name_in_registry = map.get('serviceNameInRegistry')
-        self.source_type = map.get('sourceType')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('serviceNameInRegistry') is not None:
+            self.service_name_in_registry = map.get('serviceNameInRegistry')
+        if map.get('sourceType') is not None:
+            self.source_type = map.get('sourceType')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -4568,39 +5258,69 @@ class UpdateApiRequestOwneredPolicies(TeaModel):
 
     def to_map(self):
         result = {}
-        result['apiId'] = self.api_id
-        result['apiName'] = self.api_name
-        result['creationDateTime'] = self.creation_date_time
-        result['direction'] = self.direction
-        result['id'] = self.id
-        result['policyAliasName'] = self.policy_alias_name
-        result['policyContent'] = self.policy_content
-        result['policyGroup'] = self.policy_group
-        result['policyId'] = self.policy_id
-        result['policyName'] = self.policy_name
-        result['priority'] = self.priority
-        result['scope'] = self.scope
-        result['status'] = self.status
-        result['type'] = self.type
-        result['updateDateTime'] = self.update_date_time
+        if self.api_id is not None:
+            result['apiId'] = self.api_id
+        if self.api_name is not None:
+            result['apiName'] = self.api_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.id is not None:
+            result['id'] = self.id
+        if self.policy_alias_name is not None:
+            result['policyAliasName'] = self.policy_alias_name
+        if self.policy_content is not None:
+            result['policyContent'] = self.policy_content
+        if self.policy_group is not None:
+            result['policyGroup'] = self.policy_group
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.api_id = map.get('apiId')
-        self.api_name = map.get('apiName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.direction = map.get('direction')
-        self.id = map.get('id')
-        self.policy_alias_name = map.get('policyAliasName')
-        self.policy_content = map.get('policyContent')
-        self.policy_group = map.get('policyGroup')
-        self.policy_id = map.get('policyId')
-        self.policy_name = map.get('policyName')
-        self.priority = map.get('priority')
-        self.scope = map.get('scope')
-        self.status = map.get('status')
-        self.type = map.get('type')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('apiId') is not None:
+            self.api_id = map.get('apiId')
+        if map.get('apiName') is not None:
+            self.api_name = map.get('apiName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('direction') is not None:
+            self.direction = map.get('direction')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('policyAliasName') is not None:
+            self.policy_alias_name = map.get('policyAliasName')
+        if map.get('policyContent') is not None:
+            self.policy_content = map.get('policyContent')
+        if map.get('policyGroup') is not None:
+            self.policy_group = map.get('policyGroup')
+        if map.get('policyId') is not None:
+            self.policy_id = map.get('policyId')
+        if map.get('policyName') is not None:
+            self.policy_name = map.get('policyName')
+        if map.get('priority') is not None:
+            self.priority = map.get('priority')
+        if map.get('scope') is not None:
+            self.scope = map.get('scope')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -4653,47 +5373,85 @@ class UpdateApiRequestPublishedGateway(TeaModel):
 
     def to_map(self):
         result = {}
-        result['armsInfo'] = self.arms_info
-        result['autoCreateSlb'] = self.auto_create_slb
-        result['basePath'] = self.base_path
-        result['creationDateTime'] = self.creation_date_time
-        result['edasNamespaceId'] = self.edas_namespace_id
-        result['gatewayType'] = self.gateway_type
-        result['id'] = self.id
-        result['name'] = self.name
-        result['podCidr'] = self.pod_cidr
-        result['region'] = self.region
-        result['regionName'] = self.region_name
-        result['replica'] = self.replica
-        result['runtimeOn'] = self.runtime_on
-        result['securityGroup'] = self.security_group
-        result['slb'] = self.slb
-        result['slbAccessAddr'] = self.slb_access_addr
-        result['status'] = self.status
-        result['vpc'] = self.vpc
-        result['vswitch'] = self.vswitch
+        if self.arms_info is not None:
+            result['armsInfo'] = self.arms_info
+        if self.auto_create_slb is not None:
+            result['autoCreateSlb'] = self.auto_create_slb
+        if self.base_path is not None:
+            result['basePath'] = self.base_path
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.edas_namespace_id is not None:
+            result['edasNamespaceId'] = self.edas_namespace_id
+        if self.gateway_type is not None:
+            result['gatewayType'] = self.gateway_type
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.pod_cidr is not None:
+            result['podCidr'] = self.pod_cidr
+        if self.region is not None:
+            result['region'] = self.region
+        if self.region_name is not None:
+            result['regionName'] = self.region_name
+        if self.replica is not None:
+            result['replica'] = self.replica
+        if self.runtime_on is not None:
+            result['runtimeOn'] = self.runtime_on
+        if self.security_group is not None:
+            result['securityGroup'] = self.security_group
+        if self.slb is not None:
+            result['slb'] = self.slb
+        if self.slb_access_addr is not None:
+            result['slbAccessAddr'] = self.slb_access_addr
+        if self.status is not None:
+            result['status'] = self.status
+        if self.vpc is not None:
+            result['vpc'] = self.vpc
+        if self.vswitch is not None:
+            result['vswitch'] = self.vswitch
         return result
 
     def from_map(self, map={}):
-        self.arms_info = map.get('armsInfo')
-        self.auto_create_slb = map.get('autoCreateSlb')
-        self.base_path = map.get('basePath')
-        self.creation_date_time = map.get('creationDateTime')
-        self.edas_namespace_id = map.get('edasNamespaceId')
-        self.gateway_type = map.get('gatewayType')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.pod_cidr = map.get('podCidr')
-        self.region = map.get('region')
-        self.region_name = map.get('regionName')
-        self.replica = map.get('replica')
-        self.runtime_on = map.get('runtimeOn')
-        self.security_group = map.get('securityGroup')
-        self.slb = map.get('slb')
-        self.slb_access_addr = map.get('slbAccessAddr')
-        self.status = map.get('status')
-        self.vpc = map.get('vpc')
-        self.vswitch = map.get('vswitch')
+        if map.get('armsInfo') is not None:
+            self.arms_info = map.get('armsInfo')
+        if map.get('autoCreateSlb') is not None:
+            self.auto_create_slb = map.get('autoCreateSlb')
+        if map.get('basePath') is not None:
+            self.base_path = map.get('basePath')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('edasNamespaceId') is not None:
+            self.edas_namespace_id = map.get('edasNamespaceId')
+        if map.get('gatewayType') is not None:
+            self.gateway_type = map.get('gatewayType')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('podCidr') is not None:
+            self.pod_cidr = map.get('podCidr')
+        if map.get('region') is not None:
+            self.region = map.get('region')
+        if map.get('regionName') is not None:
+            self.region_name = map.get('regionName')
+        if map.get('replica') is not None:
+            self.replica = map.get('replica')
+        if map.get('runtimeOn') is not None:
+            self.runtime_on = map.get('runtimeOn')
+        if map.get('securityGroup') is not None:
+            self.security_group = map.get('securityGroup')
+        if map.get('slb') is not None:
+            self.slb = map.get('slb')
+        if map.get('slbAccessAddr') is not None:
+            self.slb_access_addr = map.get('slbAccessAddr')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('vpc') is not None:
+            self.vpc = map.get('vpc')
+        if map.get('vswitch') is not None:
+            self.vswitch = map.get('vswitch')
         return self
 
 
@@ -4711,15 +5469,21 @@ class UpdateApiResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -4736,20 +5500,18 @@ class UpdateApiResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = UpdateApiResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -4780,27 +5542,45 @@ class CreateServiceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
-        result['description'] = self.description
-        result['isAutoRefresh'] = self.is_auto_refresh
-        result['metaInfo'] = self.meta_info
-        result['name'] = self.name
-        result['registryId'] = self.registry_id
-        result['serviceEnds'] = self.service_ends
-        result['serviceNameInRegistry'] = self.service_name_in_registry
-        result['sourceType'] = self.source_type
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
+        if self.description is not None:
+            result['description'] = self.description
+        if self.is_auto_refresh is not None:
+            result['isAutoRefresh'] = self.is_auto_refresh
+        if self.meta_info is not None:
+            result['metaInfo'] = self.meta_info
+        if self.name is not None:
+            result['name'] = self.name
+        if self.registry_id is not None:
+            result['registryId'] = self.registry_id
+        if self.service_ends is not None:
+            result['serviceEnds'] = self.service_ends
+        if self.service_name_in_registry is not None:
+            result['serviceNameInRegistry'] = self.service_name_in_registry
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
-        self.description = map.get('description')
-        self.is_auto_refresh = map.get('isAutoRefresh')
-        self.meta_info = map.get('metaInfo')
-        self.name = map.get('name')
-        self.registry_id = map.get('registryId')
-        self.service_ends = map.get('serviceEnds')
-        self.service_name_in_registry = map.get('serviceNameInRegistry')
-        self.source_type = map.get('sourceType')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('isAutoRefresh') is not None:
+            self.is_auto_refresh = map.get('isAutoRefresh')
+        if map.get('metaInfo') is not None:
+            self.meta_info = map.get('metaInfo')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('registryId') is not None:
+            self.registry_id = map.get('registryId')
+        if map.get('serviceEnds') is not None:
+            self.service_ends = map.get('serviceEnds')
+        if map.get('serviceNameInRegistry') is not None:
+            self.service_name_in_registry = map.get('serviceNameInRegistry')
+        if map.get('sourceType') is not None:
+            self.source_type = map.get('sourceType')
         return self
 
 
@@ -4818,15 +5598,21 @@ class CreateServiceResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -4843,20 +5629,18 @@ class CreateServiceResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = CreateServiceResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -4877,8 +5661,6 @@ class SaveAllPoliciesRequest(TeaModel):
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        else:
-            result['data'] = None
         return result
 
     def from_map(self, map={}):
@@ -4887,8 +5669,6 @@ class SaveAllPoliciesRequest(TeaModel):
             for k in map.get('data'):
                 temp_model = SaveAllPoliciesRequestData()
                 self.data.append(temp_model.from_map(k))
-        else:
-            self.data = None
         return self
 
 
@@ -4932,39 +5712,69 @@ class SaveAllPoliciesRequestData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['apiId'] = self.api_id
-        result['apiName'] = self.api_name
-        result['creationDateTime'] = self.creation_date_time
-        result['direction'] = self.direction
-        result['id'] = self.id
-        result['policyAliasName'] = self.policy_alias_name
-        result['policyContent'] = self.policy_content
-        result['policyGroup'] = self.policy_group
-        result['policyId'] = self.policy_id
-        result['policyName'] = self.policy_name
-        result['priority'] = self.priority
-        result['scope'] = self.scope
-        result['status'] = self.status
-        result['type'] = self.type
-        result['updateDateTime'] = self.update_date_time
+        if self.api_id is not None:
+            result['apiId'] = self.api_id
+        if self.api_name is not None:
+            result['apiName'] = self.api_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.id is not None:
+            result['id'] = self.id
+        if self.policy_alias_name is not None:
+            result['policyAliasName'] = self.policy_alias_name
+        if self.policy_content is not None:
+            result['policyContent'] = self.policy_content
+        if self.policy_group is not None:
+            result['policyGroup'] = self.policy_group
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.api_id = map.get('apiId')
-        self.api_name = map.get('apiName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.direction = map.get('direction')
-        self.id = map.get('id')
-        self.policy_alias_name = map.get('policyAliasName')
-        self.policy_content = map.get('policyContent')
-        self.policy_group = map.get('policyGroup')
-        self.policy_id = map.get('policyId')
-        self.policy_name = map.get('policyName')
-        self.priority = map.get('priority')
-        self.scope = map.get('scope')
-        self.status = map.get('status')
-        self.type = map.get('type')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('apiId') is not None:
+            self.api_id = map.get('apiId')
+        if map.get('apiName') is not None:
+            self.api_name = map.get('apiName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('direction') is not None:
+            self.direction = map.get('direction')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('policyAliasName') is not None:
+            self.policy_alias_name = map.get('policyAliasName')
+        if map.get('policyContent') is not None:
+            self.policy_content = map.get('policyContent')
+        if map.get('policyGroup') is not None:
+            self.policy_group = map.get('policyGroup')
+        if map.get('policyId') is not None:
+            self.policy_id = map.get('policyId')
+        if map.get('policyName') is not None:
+            self.policy_name = map.get('policyName')
+        if map.get('priority') is not None:
+            self.priority = map.get('priority')
+        if map.get('scope') is not None:
+            self.scope = map.get('scope')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -4982,15 +5792,21 @@ class SaveAllPoliciesResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -5007,20 +5823,18 @@ class SaveAllPoliciesResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = SaveAllPoliciesResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -5036,13 +5850,17 @@ class UpdateGatewayRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['id'] = self.id
-        result['replica'] = self.replica
+        if self.id is not None:
+            result['id'] = self.id
+        if self.replica is not None:
+            result['replica'] = self.replica
         return result
 
     def from_map(self, map={}):
-        self.id = map.get('id')
-        self.replica = map.get('replica')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('replica') is not None:
+            self.replica = map.get('replica')
         return self
 
 
@@ -5060,15 +5878,21 @@ class UpdateGatewayResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -5085,20 +5909,18 @@ class UpdateGatewayResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = UpdateGatewayResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -5136,33 +5958,57 @@ class UpdateServiceRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
-        result['creationDateTime'] = self.creation_date_time
-        result['description'] = self.description
-        result['id'] = self.id
-        result['isAutoRefresh'] = self.is_auto_refresh
-        result['isHealth'] = self.is_health
-        result['name'] = self.name
-        result['registryId'] = self.registry_id
-        result['serviceEnds'] = self.service_ends
-        result['serviceNameInRegistry'] = self.service_name_in_registry
-        result['sourceType'] = self.source_type
-        result['updateDateTime'] = self.update_date_time
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.is_auto_refresh is not None:
+            result['isAutoRefresh'] = self.is_auto_refresh
+        if self.is_health is not None:
+            result['isHealth'] = self.is_health
+        if self.name is not None:
+            result['name'] = self.name
+        if self.registry_id is not None:
+            result['registryId'] = self.registry_id
+        if self.service_ends is not None:
+            result['serviceEnds'] = self.service_ends
+        if self.service_name_in_registry is not None:
+            result['serviceNameInRegistry'] = self.service_name_in_registry
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.description = map.get('description')
-        self.id = map.get('id')
-        self.is_auto_refresh = map.get('isAutoRefresh')
-        self.is_health = map.get('isHealth')
-        self.name = map.get('name')
-        self.registry_id = map.get('registryId')
-        self.service_ends = map.get('serviceEnds')
-        self.service_name_in_registry = map.get('serviceNameInRegistry')
-        self.source_type = map.get('sourceType')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('isAutoRefresh') is not None:
+            self.is_auto_refresh = map.get('isAutoRefresh')
+        if map.get('isHealth') is not None:
+            self.is_health = map.get('isHealth')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('registryId') is not None:
+            self.registry_id = map.get('registryId')
+        if map.get('serviceEnds') is not None:
+            self.service_ends = map.get('serviceEnds')
+        if map.get('serviceNameInRegistry') is not None:
+            self.service_name_in_registry = map.get('serviceNameInRegistry')
+        if map.get('sourceType') is not None:
+            self.source_type = map.get('sourceType')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -5180,15 +6026,21 @@ class UpdateServiceResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['data'] = self.data
-        result['message'] = self.message
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.data = map.get('data')
-        self.message = map.get('message')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -5205,20 +6057,18 @@ class UpdateServiceResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = UpdateServiceResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -5240,19 +6090,29 @@ class FindApisByPagingRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['pageNumber'] = self.page_number
-        result['pageSize'] = self.page_size
-        result['status'] = self.status
-        result['name'] = self.name
-        result['aliasName'] = self.alias_name
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.status is not None:
+            result['status'] = self.status
+        if self.name is not None:
+            result['name'] = self.name
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
         return result
 
     def from_map(self, map={}):
-        self.page_number = map.get('pageNumber')
-        self.page_size = map.get('pageSize')
-        self.status = map.get('status')
-        self.name = map.get('name')
-        self.alias_name = map.get('aliasName')
+        if map.get('pageNumber') is not None:
+            self.page_number = map.get('pageNumber')
+        if map.get('pageSize') is not None:
+            self.page_size = map.get('pageSize')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
         return self
 
 
@@ -5271,22 +6131,22 @@ class FindApisByPagingResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         if map.get('data') is not None:
             temp_model = FindApisByPagingResponseBodyData()
             self.data = temp_model.from_map(map['data'])
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -5313,23 +6173,37 @@ class FindApisByPagingResponseBodyDataListAttachedServicesServiceEnds(TeaModel):
 
     def to_map(self):
         result = {}
-        result['creationDateTime'] = self.creation_date_time
-        result['id'] = self.id
-        result['ipAddress'] = self.ip_address
-        result['port'] = self.port
-        result['serviceId'] = self.service_id
-        result['status'] = self.status
-        result['updateDateTime'] = self.update_date_time
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.ip_address is not None:
+            result['ipAddress'] = self.ip_address
+        if self.port is not None:
+            result['port'] = self.port
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.creation_date_time = map.get('creationDateTime')
-        self.id = map.get('id')
-        self.ip_address = map.get('ipAddress')
-        self.port = map.get('port')
-        self.service_id = map.get('serviceId')
-        self.status = map.get('status')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('ipAddress') is not None:
+            self.ip_address = map.get('ipAddress')
+        if map.get('port') is not None:
+            self.port = map.get('port')
+        if map.get('serviceId') is not None:
+            self.service_id = map.get('serviceId')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -5370,44 +6244,62 @@ class FindApisByPagingResponseBodyDataListAttachedServices(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
-        result['creationDateTime'] = self.creation_date_time
-        result['description'] = self.description
-        result['id'] = self.id
-        result['isAutoRefresh'] = self.is_auto_refresh
-        result['isHealth'] = self.is_health
-        result['name'] = self.name
-        result['registryId'] = self.registry_id
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.is_auto_refresh is not None:
+            result['isAutoRefresh'] = self.is_auto_refresh
+        if self.is_health is not None:
+            result['isHealth'] = self.is_health
+        if self.name is not None:
+            result['name'] = self.name
+        if self.registry_id is not None:
+            result['registryId'] = self.registry_id
         result['serviceEnds'] = []
         if self.service_ends is not None:
             for k in self.service_ends:
                 result['serviceEnds'].append(k.to_map() if k else None)
-        else:
-            result['serviceEnds'] = None
-        result['serviceNameInRegistry'] = self.service_name_in_registry
-        result['sourceType'] = self.source_type
-        result['updateDateTime'] = self.update_date_time
+        if self.service_name_in_registry is not None:
+            result['serviceNameInRegistry'] = self.service_name_in_registry
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.description = map.get('description')
-        self.id = map.get('id')
-        self.is_auto_refresh = map.get('isAutoRefresh')
-        self.is_health = map.get('isHealth')
-        self.name = map.get('name')
-        self.registry_id = map.get('registryId')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('isAutoRefresh') is not None:
+            self.is_auto_refresh = map.get('isAutoRefresh')
+        if map.get('isHealth') is not None:
+            self.is_health = map.get('isHealth')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('registryId') is not None:
+            self.registry_id = map.get('registryId')
         self.service_ends = []
         if map.get('serviceEnds') is not None:
             for k in map.get('serviceEnds'):
                 temp_model = FindApisByPagingResponseBodyDataListAttachedServicesServiceEnds()
                 self.service_ends.append(temp_model.from_map(k))
-        else:
-            self.service_ends = None
-        self.service_name_in_registry = map.get('serviceNameInRegistry')
-        self.source_type = map.get('sourceType')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('serviceNameInRegistry') is not None:
+            self.service_name_in_registry = map.get('serviceNameInRegistry')
+        if map.get('sourceType') is not None:
+            self.source_type = map.get('sourceType')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -5451,39 +6343,69 @@ class FindApisByPagingResponseBodyDataListOwneredPolicies(TeaModel):
 
     def to_map(self):
         result = {}
-        result['apiId'] = self.api_id
-        result['apiName'] = self.api_name
-        result['creationDateTime'] = self.creation_date_time
-        result['direction'] = self.direction
-        result['id'] = self.id
-        result['policyAliasName'] = self.policy_alias_name
-        result['policyContent'] = self.policy_content
-        result['policyGroup'] = self.policy_group
-        result['policyId'] = self.policy_id
-        result['policyName'] = self.policy_name
-        result['priority'] = self.priority
-        result['scope'] = self.scope
-        result['status'] = self.status
-        result['type'] = self.type
-        result['updateDateTime'] = self.update_date_time
+        if self.api_id is not None:
+            result['apiId'] = self.api_id
+        if self.api_name is not None:
+            result['apiName'] = self.api_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.id is not None:
+            result['id'] = self.id
+        if self.policy_alias_name is not None:
+            result['policyAliasName'] = self.policy_alias_name
+        if self.policy_content is not None:
+            result['policyContent'] = self.policy_content
+        if self.policy_group is not None:
+            result['policyGroup'] = self.policy_group
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.api_id = map.get('apiId')
-        self.api_name = map.get('apiName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.direction = map.get('direction')
-        self.id = map.get('id')
-        self.policy_alias_name = map.get('policyAliasName')
-        self.policy_content = map.get('policyContent')
-        self.policy_group = map.get('policyGroup')
-        self.policy_id = map.get('policyId')
-        self.policy_name = map.get('policyName')
-        self.priority = map.get('priority')
-        self.scope = map.get('scope')
-        self.status = map.get('status')
-        self.type = map.get('type')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('apiId') is not None:
+            self.api_id = map.get('apiId')
+        if map.get('apiName') is not None:
+            self.api_name = map.get('apiName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('direction') is not None:
+            self.direction = map.get('direction')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('policyAliasName') is not None:
+            self.policy_alias_name = map.get('policyAliasName')
+        if map.get('policyContent') is not None:
+            self.policy_content = map.get('policyContent')
+        if map.get('policyGroup') is not None:
+            self.policy_group = map.get('policyGroup')
+        if map.get('policyId') is not None:
+            self.policy_id = map.get('policyId')
+        if map.get('policyName') is not None:
+            self.policy_name = map.get('policyName')
+        if map.get('priority') is not None:
+            self.priority = map.get('priority')
+        if map.get('scope') is not None:
+            self.scope = map.get('scope')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -5536,47 +6458,85 @@ class FindApisByPagingResponseBodyDataListPublishedGateway(TeaModel):
 
     def to_map(self):
         result = {}
-        result['armsInfo'] = self.arms_info
-        result['autoCreateSlb'] = self.auto_create_slb
-        result['basePath'] = self.base_path
-        result['creationDateTime'] = self.creation_date_time
-        result['edasNamespaceId'] = self.edas_namespace_id
-        result['gatewayType'] = self.gateway_type
-        result['id'] = self.id
-        result['name'] = self.name
-        result['podCidr'] = self.pod_cidr
-        result['region'] = self.region
-        result['regionName'] = self.region_name
-        result['replica'] = self.replica
-        result['runtimeOn'] = self.runtime_on
-        result['securityGroup'] = self.security_group
-        result['slb'] = self.slb
-        result['slbAccessAddr'] = self.slb_access_addr
-        result['status'] = self.status
-        result['vpc'] = self.vpc
-        result['vswitch'] = self.vswitch
+        if self.arms_info is not None:
+            result['armsInfo'] = self.arms_info
+        if self.auto_create_slb is not None:
+            result['autoCreateSlb'] = self.auto_create_slb
+        if self.base_path is not None:
+            result['basePath'] = self.base_path
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.edas_namespace_id is not None:
+            result['edasNamespaceId'] = self.edas_namespace_id
+        if self.gateway_type is not None:
+            result['gatewayType'] = self.gateway_type
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.pod_cidr is not None:
+            result['podCidr'] = self.pod_cidr
+        if self.region is not None:
+            result['region'] = self.region
+        if self.region_name is not None:
+            result['regionName'] = self.region_name
+        if self.replica is not None:
+            result['replica'] = self.replica
+        if self.runtime_on is not None:
+            result['runtimeOn'] = self.runtime_on
+        if self.security_group is not None:
+            result['securityGroup'] = self.security_group
+        if self.slb is not None:
+            result['slb'] = self.slb
+        if self.slb_access_addr is not None:
+            result['slbAccessAddr'] = self.slb_access_addr
+        if self.status is not None:
+            result['status'] = self.status
+        if self.vpc is not None:
+            result['vpc'] = self.vpc
+        if self.vswitch is not None:
+            result['vswitch'] = self.vswitch
         return result
 
     def from_map(self, map={}):
-        self.arms_info = map.get('armsInfo')
-        self.auto_create_slb = map.get('autoCreateSlb')
-        self.base_path = map.get('basePath')
-        self.creation_date_time = map.get('creationDateTime')
-        self.edas_namespace_id = map.get('edasNamespaceId')
-        self.gateway_type = map.get('gatewayType')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.pod_cidr = map.get('podCidr')
-        self.region = map.get('region')
-        self.region_name = map.get('regionName')
-        self.replica = map.get('replica')
-        self.runtime_on = map.get('runtimeOn')
-        self.security_group = map.get('securityGroup')
-        self.slb = map.get('slb')
-        self.slb_access_addr = map.get('slbAccessAddr')
-        self.status = map.get('status')
-        self.vpc = map.get('vpc')
-        self.vswitch = map.get('vswitch')
+        if map.get('armsInfo') is not None:
+            self.arms_info = map.get('armsInfo')
+        if map.get('autoCreateSlb') is not None:
+            self.auto_create_slb = map.get('autoCreateSlb')
+        if map.get('basePath') is not None:
+            self.base_path = map.get('basePath')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('edasNamespaceId') is not None:
+            self.edas_namespace_id = map.get('edasNamespaceId')
+        if map.get('gatewayType') is not None:
+            self.gateway_type = map.get('gatewayType')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('podCidr') is not None:
+            self.pod_cidr = map.get('podCidr')
+        if map.get('region') is not None:
+            self.region = map.get('region')
+        if map.get('regionName') is not None:
+            self.region_name = map.get('regionName')
+        if map.get('replica') is not None:
+            self.replica = map.get('replica')
+        if map.get('runtimeOn') is not None:
+            self.runtime_on = map.get('runtimeOn')
+        if map.get('securityGroup') is not None:
+            self.security_group = map.get('securityGroup')
+        if map.get('slb') is not None:
+            self.slb = map.get('slb')
+        if map.get('slbAccessAddr') is not None:
+            self.slb_access_addr = map.get('slbAccessAddr')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('vpc') is not None:
+            self.vpc = map.get('vpc')
+        if map.get('vswitch') is not None:
+            self.vswitch = map.get('vswitch')
         return self
 
 
@@ -5621,60 +6581,64 @@ class FindApisByPagingResponseBodyDataList(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aliasName'] = self.alias_name
+        if self.alias_name is not None:
+            result['aliasName'] = self.alias_name
         result['attachedServices'] = []
         if self.attached_services is not None:
             for k in self.attached_services:
                 result['attachedServices'].append(k.to_map() if k else None)
-        else:
-            result['attachedServices'] = None
-        result['basePath'] = self.base_path
-        result['creationDateTime'] = self.creation_date_time
-        result['description'] = self.description
-        result['id'] = self.id
-        result['name'] = self.name
+        if self.base_path is not None:
+            result['basePath'] = self.base_path
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
         result['owneredPolicies'] = []
         if self.ownered_policies is not None:
             for k in self.ownered_policies:
                 result['owneredPolicies'].append(k.to_map() if k else None)
-        else:
-            result['owneredPolicies'] = None
         if self.published_gateway is not None:
             result['publishedGateway'] = self.published_gateway.to_map()
-        else:
-            result['publishedGateway'] = None
-        result['status'] = self.status
-        result['updateDateTime'] = self.update_date_time
+        if self.status is not None:
+            result['status'] = self.status
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.alias_name = map.get('aliasName')
+        if map.get('aliasName') is not None:
+            self.alias_name = map.get('aliasName')
         self.attached_services = []
         if map.get('attachedServices') is not None:
             for k in map.get('attachedServices'):
                 temp_model = FindApisByPagingResponseBodyDataListAttachedServices()
                 self.attached_services.append(temp_model.from_map(k))
-        else:
-            self.attached_services = None
-        self.base_path = map.get('basePath')
-        self.creation_date_time = map.get('creationDateTime')
-        self.description = map.get('description')
-        self.id = map.get('id')
-        self.name = map.get('name')
+        if map.get('basePath') is not None:
+            self.base_path = map.get('basePath')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
         self.ownered_policies = []
         if map.get('owneredPolicies') is not None:
             for k in map.get('owneredPolicies'):
                 temp_model = FindApisByPagingResponseBodyDataListOwneredPolicies()
                 self.ownered_policies.append(temp_model.from_map(k))
-        else:
-            self.ownered_policies = None
         if map.get('publishedGateway') is not None:
             temp_model = FindApisByPagingResponseBodyDataListPublishedGateway()
             self.published_gateway = temp_model.from_map(map['publishedGateway'])
-        else:
-            self.published_gateway = None
-        self.status = map.get('status')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -5697,9 +6661,8 @@ class FindApisByPagingResponseBodyData(TeaModel):
         if self.list is not None:
             for k in self.list:
                 result['list'].append(k.to_map() if k else None)
-        else:
-            result['list'] = None
-        result['totalCount'] = self.total_count
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
         return result
 
     def from_map(self, map={}):
@@ -5708,9 +6671,8 @@ class FindApisByPagingResponseBodyData(TeaModel):
             for k in map.get('list'):
                 temp_model = FindApisByPagingResponseBodyDataList()
                 self.list.append(temp_model.from_map(k))
-        else:
-            self.list = None
-        self.total_count = map.get('totalCount')
+        if map.get('totalCount') is not None:
+            self.total_count = map.get('totalCount')
         return self
 
 
@@ -5727,20 +6689,144 @@ class FindApisByPagingResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = FindApisByPagingResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
+        return self
+
+
+class UpdateServiceEndsRequest(TeaModel):
+    def __init__(self, id=None, service_nodes=None):
+        # id
+        self.id = id                    # type: int
+        # serviceNodes
+        self.service_nodes = service_nodes  # type: List[UpdateServiceEndsRequestServiceNodes]
+
+    def validate(self):
+        if self.service_nodes:
+            for k in self.service_nodes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = {}
+        if self.id is not None:
+            result['id'] = self.id
+        result['serviceNodes'] = []
+        if self.service_nodes is not None:
+            for k in self.service_nodes:
+                result['serviceNodes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, map={}):
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        self.service_nodes = []
+        if map.get('serviceNodes') is not None:
+            for k in map.get('serviceNodes'):
+                temp_model = UpdateServiceEndsRequestServiceNodes()
+                self.service_nodes.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateServiceEndsRequestServiceNodes(TeaModel):
+    def __init__(self, port=None, ip_address=None, status=None):
+        # port
+        self.port = port                # type: str
+        # ipAddress
+        self.ip_address = ip_address    # type: str
+        # status
+        self.status = status            # type: int
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        if self.port is not None:
+            result['port'] = self.port
+        if self.ip_address is not None:
+            result['ipAddress'] = self.ip_address
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, map={}):
+        if map.get('port') is not None:
+            self.port = map.get('port')
+        if map.get('ipAddress') is not None:
+            self.ip_address = map.get('ipAddress')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        return self
+
+
+class UpdateServiceEndsResponseBody(TeaModel):
+    def __init__(self, code=None, data=None, message=None):
+        # code
+        self.code = code                # type: int
+        # data
+        self.data = data                # type: Dict[str, Any]
+        # message
+        self.message = message          # type: str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = {}
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
+        return result
+
+    def from_map(self, map={}):
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('message') is not None:
+            self.message = map.get('message')
+        return self
+
+
+class UpdateServiceEndsResponse(TeaModel):
+    def __init__(self, headers=None, body=None):
+        self.headers = headers          # type: Dict[str, str]
+        self.body = body                # type: UpdateServiceEndsResponseBody
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = {}
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, map={}):
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('body') is not None:
+            temp_model = UpdateServiceEndsResponseBody()
+            self.body = temp_model.from_map(map['body'])
         return self
 
 
@@ -5769,25 +6855,41 @@ class FindGatewaysRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['gatewayUniqueId'] = self.gateway_unique_id
-        result['name'] = self.name
-        result['region'] = self.region
-        result['gatewayTypes'] = self.gateway_types
-        result['status'] = self.status
-        result['pageNumber'] = self.page_number
-        result['pageSize'] = self.page_size
-        result['namespace'] = self.namespace
+        if self.gateway_unique_id is not None:
+            result['gatewayUniqueId'] = self.gateway_unique_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.region is not None:
+            result['region'] = self.region
+        if self.gateway_types is not None:
+            result['gatewayTypes'] = self.gateway_types
+        if self.status is not None:
+            result['status'] = self.status
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
         return result
 
     def from_map(self, map={}):
-        self.gateway_unique_id = map.get('gatewayUniqueId')
-        self.name = map.get('name')
-        self.region = map.get('region')
-        self.gateway_types = map.get('gatewayTypes')
-        self.status = map.get('status')
-        self.page_number = map.get('pageNumber')
-        self.page_size = map.get('pageSize')
-        self.namespace = map.get('namespace')
+        if map.get('gatewayUniqueId') is not None:
+            self.gateway_unique_id = map.get('gatewayUniqueId')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('region') is not None:
+            self.region = map.get('region')
+        if map.get('gatewayTypes') is not None:
+            self.gateway_types = map.get('gatewayTypes')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('pageNumber') is not None:
+            self.page_number = map.get('pageNumber')
+        if map.get('pageSize') is not None:
+            self.page_size = map.get('pageSize')
+        if map.get('namespace') is not None:
+            self.namespace = map.get('namespace')
         return self
 
 
@@ -5806,22 +6908,22 @@ class FindGatewaysResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         if map.get('data') is not None:
             temp_model = FindGatewaysResponseBodyData()
             self.data = temp_model.from_map(map['data'])
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -5841,17 +6943,25 @@ class FindGatewaysResponseBodyDataListArmsInfo(TeaModel):
 
     def to_map(self):
         result = {}
-        result['appId'] = self.app_id
-        result['appName'] = self.app_name
-        result['description'] = self.description
-        result['licenseKey'] = self.license_key
+        if self.app_id is not None:
+            result['appId'] = self.app_id
+        if self.app_name is not None:
+            result['appName'] = self.app_name
+        if self.description is not None:
+            result['description'] = self.description
+        if self.license_key is not None:
+            result['licenseKey'] = self.license_key
         return result
 
     def from_map(self, map={}):
-        self.app_id = map.get('appId')
-        self.app_name = map.get('appName')
-        self.description = map.get('description')
-        self.license_key = map.get('licenseKey')
+        if map.get('appId') is not None:
+            self.app_id = map.get('appId')
+        if map.get('appName') is not None:
+            self.app_name = map.get('appName')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('licenseKey') is not None:
+            self.license_key = map.get('licenseKey')
         return self
 
 
@@ -5907,52 +7017,84 @@ class FindGatewaysResponseBodyDataList(TeaModel):
         result = {}
         if self.arms_info is not None:
             result['armsInfo'] = self.arms_info.to_map()
-        else:
-            result['armsInfo'] = None
-        result['autoCreateSlb'] = self.auto_create_slb
-        result['basePath'] = self.base_path
-        result['creationDateTime'] = self.creation_date_time
-        result['edasNamespaceId'] = self.edas_namespace_id
-        result['gatewayType'] = self.gateway_type
-        result['id'] = self.id
-        result['name'] = self.name
-        result['podCidr'] = self.pod_cidr
-        result['region'] = self.region
-        result['regionName'] = self.region_name
-        result['replica'] = self.replica
-        result['runtimeOn'] = self.runtime_on
-        result['securityGroup'] = self.security_group
-        result['slb'] = self.slb
-        result['slbAccessAddr'] = self.slb_access_addr
-        result['status'] = self.status
-        result['vpc'] = self.vpc
-        result['vswitch'] = self.vswitch
+        if self.auto_create_slb is not None:
+            result['autoCreateSlb'] = self.auto_create_slb
+        if self.base_path is not None:
+            result['basePath'] = self.base_path
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.edas_namespace_id is not None:
+            result['edasNamespaceId'] = self.edas_namespace_id
+        if self.gateway_type is not None:
+            result['gatewayType'] = self.gateway_type
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.pod_cidr is not None:
+            result['podCidr'] = self.pod_cidr
+        if self.region is not None:
+            result['region'] = self.region
+        if self.region_name is not None:
+            result['regionName'] = self.region_name
+        if self.replica is not None:
+            result['replica'] = self.replica
+        if self.runtime_on is not None:
+            result['runtimeOn'] = self.runtime_on
+        if self.security_group is not None:
+            result['securityGroup'] = self.security_group
+        if self.slb is not None:
+            result['slb'] = self.slb
+        if self.slb_access_addr is not None:
+            result['slbAccessAddr'] = self.slb_access_addr
+        if self.status is not None:
+            result['status'] = self.status
+        if self.vpc is not None:
+            result['vpc'] = self.vpc
+        if self.vswitch is not None:
+            result['vswitch'] = self.vswitch
         return result
 
     def from_map(self, map={}):
         if map.get('armsInfo') is not None:
             temp_model = FindGatewaysResponseBodyDataListArmsInfo()
             self.arms_info = temp_model.from_map(map['armsInfo'])
-        else:
-            self.arms_info = None
-        self.auto_create_slb = map.get('autoCreateSlb')
-        self.base_path = map.get('basePath')
-        self.creation_date_time = map.get('creationDateTime')
-        self.edas_namespace_id = map.get('edasNamespaceId')
-        self.gateway_type = map.get('gatewayType')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.pod_cidr = map.get('podCidr')
-        self.region = map.get('region')
-        self.region_name = map.get('regionName')
-        self.replica = map.get('replica')
-        self.runtime_on = map.get('runtimeOn')
-        self.security_group = map.get('securityGroup')
-        self.slb = map.get('slb')
-        self.slb_access_addr = map.get('slbAccessAddr')
-        self.status = map.get('status')
-        self.vpc = map.get('vpc')
-        self.vswitch = map.get('vswitch')
+        if map.get('autoCreateSlb') is not None:
+            self.auto_create_slb = map.get('autoCreateSlb')
+        if map.get('basePath') is not None:
+            self.base_path = map.get('basePath')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('edasNamespaceId') is not None:
+            self.edas_namespace_id = map.get('edasNamespaceId')
+        if map.get('gatewayType') is not None:
+            self.gateway_type = map.get('gatewayType')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('podCidr') is not None:
+            self.pod_cidr = map.get('podCidr')
+        if map.get('region') is not None:
+            self.region = map.get('region')
+        if map.get('regionName') is not None:
+            self.region_name = map.get('regionName')
+        if map.get('replica') is not None:
+            self.replica = map.get('replica')
+        if map.get('runtimeOn') is not None:
+            self.runtime_on = map.get('runtimeOn')
+        if map.get('securityGroup') is not None:
+            self.security_group = map.get('securityGroup')
+        if map.get('slb') is not None:
+            self.slb = map.get('slb')
+        if map.get('slbAccessAddr') is not None:
+            self.slb_access_addr = map.get('slbAccessAddr')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('vpc') is not None:
+            self.vpc = map.get('vpc')
+        if map.get('vswitch') is not None:
+            self.vswitch = map.get('vswitch')
         return self
 
 
@@ -5975,9 +7117,8 @@ class FindGatewaysResponseBodyData(TeaModel):
         if self.list is not None:
             for k in self.list:
                 result['list'].append(k.to_map() if k else None)
-        else:
-            result['list'] = None
-        result['totalCount'] = self.total_count
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
         return result
 
     def from_map(self, map={}):
@@ -5986,9 +7127,8 @@ class FindGatewaysResponseBodyData(TeaModel):
             for k in map.get('list'):
                 temp_model = FindGatewaysResponseBodyDataList()
                 self.list.append(temp_model.from_map(k))
-        else:
-            self.list = None
-        self.total_count = map.get('totalCount')
+        if map.get('totalCount') is not None:
+            self.total_count = map.get('totalCount')
         return self
 
 
@@ -6005,20 +7145,18 @@ class FindGatewaysResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = FindGatewaysResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -6040,19 +7178,29 @@ class GetAllRegistryRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['pageNumber'] = self.page_number
-        result['pageSize'] = self.page_size
-        result['name'] = self.name
-        result['type'] = self.type
-        result['groupBy'] = self.group_by
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.name is not None:
+            result['name'] = self.name
+        if self.type is not None:
+            result['type'] = self.type
+        if self.group_by is not None:
+            result['groupBy'] = self.group_by
         return result
 
     def from_map(self, map={}):
-        self.page_number = map.get('pageNumber')
-        self.page_size = map.get('pageSize')
-        self.name = map.get('name')
-        self.type = map.get('type')
-        self.group_by = map.get('groupBy')
+        if map.get('pageNumber') is not None:
+            self.page_number = map.get('pageNumber')
+        if map.get('pageSize') is not None:
+            self.page_size = map.get('pageSize')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('groupBy') is not None:
+            self.group_by = map.get('groupBy')
         return self
 
 
@@ -6071,22 +7219,22 @@ class GetAllRegistryResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         if map.get('data') is not None:
             temp_model = GetAllRegistryResponseBodyData()
             self.data = temp_model.from_map(map['data'])
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -6115,25 +7263,41 @@ class GetAllRegistryResponseBodyDataList(TeaModel):
 
     def to_map(self):
         result = {}
-        result['address'] = self.address
-        result['creationDateTime'] = self.creation_date_time
-        result['description'] = self.description
-        result['gatewayId'] = self.gateway_id
-        result['id'] = self.id
-        result['name'] = self.name
-        result['type'] = self.type
-        result['updateDateTime'] = self.update_date_time
+        if self.address is not None:
+            result['address'] = self.address
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.address = map.get('address')
-        self.creation_date_time = map.get('creationDateTime')
-        self.description = map.get('description')
-        self.gateway_id = map.get('gatewayId')
-        self.id = map.get('id')
-        self.name = map.get('name')
-        self.type = map.get('type')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('address') is not None:
+            self.address = map.get('address')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('gatewayId') is not None:
+            self.gateway_id = map.get('gatewayId')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
 
 
@@ -6156,9 +7320,8 @@ class GetAllRegistryResponseBodyData(TeaModel):
         if self.list is not None:
             for k in self.list:
                 result['list'].append(k.to_map() if k else None)
-        else:
-            result['list'] = None
-        result['totalCount'] = self.total_count
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
         return result
 
     def from_map(self, map={}):
@@ -6167,9 +7330,8 @@ class GetAllRegistryResponseBodyData(TeaModel):
             for k in map.get('list'):
                 temp_model = GetAllRegistryResponseBodyDataList()
                 self.list.append(temp_model.from_map(k))
-        else:
-            self.list = None
-        self.total_count = map.get('totalCount')
+        if map.get('totalCount') is not None:
+            self.total_count = map.get('totalCount')
         return self
 
 
@@ -6186,20 +7348,18 @@ class GetAllRegistryResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = GetAllRegistryResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -6220,26 +7380,26 @@ class PullServiceInfoFromRegistryResponseBody(TeaModel):
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
+        if self.code is not None:
+            result['code'] = self.code
         result['data'] = []
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        else:
-            result['data'] = None
-        result['message'] = self.message
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
+        if map.get('code') is not None:
+            self.code = map.get('code')
         self.data = []
         if map.get('data') is not None:
             for k in map.get('data'):
                 temp_model = PullServiceInfoFromRegistryResponseBodyData()
                 self.data.append(temp_model.from_map(k))
-        else:
-            self.data = None
-        self.message = map.get('message')
+        if map.get('message') is not None:
+            self.message = map.get('message')
         return self
 
 
@@ -6258,17 +7418,25 @@ class PullServiceInfoFromRegistryResponseBodyData(TeaModel):
 
     def to_map(self):
         result = {}
-        result['id'] = self.id
-        result['metaInfo'] = self.meta_info
-        result['serviceEnds'] = self.service_ends
-        result['serviceName'] = self.service_name
+        if self.id is not None:
+            result['id'] = self.id
+        if self.meta_info is not None:
+            result['metaInfo'] = self.meta_info
+        if self.service_ends is not None:
+            result['serviceEnds'] = self.service_ends
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
         return result
 
     def from_map(self, map={}):
-        self.id = map.get('id')
-        self.meta_info = map.get('metaInfo')
-        self.service_ends = map.get('serviceEnds')
-        self.service_name = map.get('serviceName')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('metaInfo') is not None:
+            self.meta_info = map.get('metaInfo')
+        if map.get('serviceEnds') is not None:
+            self.service_ends = map.get('serviceEnds')
+        if map.get('serviceName') is not None:
+            self.service_name = map.get('serviceName')
         return self
 
 
@@ -6285,20 +7453,18 @@ class PullServiceInfoFromRegistryResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = PullServiceInfoFromRegistryResponseBody()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -6342,37 +7508,67 @@ class DataValue(TeaModel):
 
     def to_map(self):
         result = {}
-        result['apiId'] = self.api_id
-        result['apiName'] = self.api_name
-        result['creationDateTime'] = self.creation_date_time
-        result['direction'] = self.direction
-        result['id'] = self.id
-        result['policyAliasName'] = self.policy_alias_name
-        result['policyContent'] = self.policy_content
-        result['policyGroup'] = self.policy_group
-        result['policyId'] = self.policy_id
-        result['policyName'] = self.policy_name
-        result['priority'] = self.priority
-        result['scope'] = self.scope
-        result['status'] = self.status
-        result['type'] = self.type
-        result['updateDateTime'] = self.update_date_time
+        if self.api_id is not None:
+            result['apiId'] = self.api_id
+        if self.api_name is not None:
+            result['apiName'] = self.api_name
+        if self.creation_date_time is not None:
+            result['creationDateTime'] = self.creation_date_time
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.id is not None:
+            result['id'] = self.id
+        if self.policy_alias_name is not None:
+            result['policyAliasName'] = self.policy_alias_name
+        if self.policy_content is not None:
+            result['policyContent'] = self.policy_content
+        if self.policy_group is not None:
+            result['policyGroup'] = self.policy_group
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_date_time is not None:
+            result['updateDateTime'] = self.update_date_time
         return result
 
     def from_map(self, map={}):
-        self.api_id = map.get('apiId')
-        self.api_name = map.get('apiName')
-        self.creation_date_time = map.get('creationDateTime')
-        self.direction = map.get('direction')
-        self.id = map.get('id')
-        self.policy_alias_name = map.get('policyAliasName')
-        self.policy_content = map.get('policyContent')
-        self.policy_group = map.get('policyGroup')
-        self.policy_id = map.get('policyId')
-        self.policy_name = map.get('policyName')
-        self.priority = map.get('priority')
-        self.scope = map.get('scope')
-        self.status = map.get('status')
-        self.type = map.get('type')
-        self.update_date_time = map.get('updateDateTime')
+        if map.get('apiId') is not None:
+            self.api_id = map.get('apiId')
+        if map.get('apiName') is not None:
+            self.api_name = map.get('apiName')
+        if map.get('creationDateTime') is not None:
+            self.creation_date_time = map.get('creationDateTime')
+        if map.get('direction') is not None:
+            self.direction = map.get('direction')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('policyAliasName') is not None:
+            self.policy_alias_name = map.get('policyAliasName')
+        if map.get('policyContent') is not None:
+            self.policy_content = map.get('policyContent')
+        if map.get('policyGroup') is not None:
+            self.policy_group = map.get('policyGroup')
+        if map.get('policyId') is not None:
+            self.policy_id = map.get('policyId')
+        if map.get('policyName') is not None:
+            self.policy_name = map.get('policyName')
+        if map.get('priority') is not None:
+            self.priority = map.get('priority')
+        if map.get('scope') is not None:
+            self.scope = map.get('scope')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updateDateTime') is not None:
+            self.update_date_time = map.get('updateDateTime')
         return self
