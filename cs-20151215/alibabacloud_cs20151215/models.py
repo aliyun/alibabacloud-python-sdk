@@ -1,26 +1,59 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-try:
-    from typing import List, Dict, Any
-except ImportError:
-    pass
+from typing import List, Dict, Any
 
 
-class Taint(TeaModel):
-    def __init__(self, key=None, value=None, effect=None):
-        # key值。
-        self.key = key                  # type: str
-        # value值。
-        self.value = value              # type: str
-        # 污点生效策略。
-        self.effect = effect            # type: str
+class Runtime(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        version: str = None,
+    ):
+        # 容器运行时名称
+        self.name = name
+        # 容器运行时版本
+        self.version = version
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class Taint(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+        effect: str = None,
+    ):
+        # key值。
+        self.key = key
+        # value值。
+        self.value = value
+        # 污点生效策略。
+        self.effect = effect
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
         if self.key is not None:
             result['key'] = self.key
         if self.value is not None:
@@ -29,32 +62,39 @@ class Taint(TeaModel):
             result['effect'] = self.effect
         return result
 
-    def from_map(self, map={}):
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
-        if map.get('effect') is not None:
-            self.effect = map.get('effect')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        if m.get('effect') is not None:
+            self.effect = m.get('effect')
         return self
 
 
 class DataDisk(TeaModel):
-    def __init__(self, category=None, size=None, encrypted=None, auto_snapshot_policy_id=None):
+    def __init__(
+        self,
+        category: str = None,
+        size: int = None,
+        encrypted: str = None,
+        auto_snapshot_policy_id: str = None,
+    ):
         # 数据盘类型
-        self.category = category        # type: str
+        self.category = category
         # 数据盘大小，取值范围：40～32767
-        self.size = size                # type: int
+        self.size = size
         # 是否对数据盘加密。
-        self.encrypted = encrypted      # type: str
+        self.encrypted = encrypted
         # 开启云盘备份时的自动备份策略。
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id  # type: str
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.category is not None:
             result['category'] = self.category
         if self.size is not None:
@@ -65,90 +105,69 @@ class DataDisk(TeaModel):
             result['auto_snapshot_policy_id'] = self.auto_snapshot_policy_id
         return result
 
-    def from_map(self, map={}):
-        if map.get('category') is not None:
-            self.category = map.get('category')
-        if map.get('size') is not None:
-            self.size = map.get('size')
-        if map.get('encrypted') is not None:
-            self.encrypted = map.get('encrypted')
-        if map.get('auto_snapshot_policy_id') is not None:
-            self.auto_snapshot_policy_id = map.get('auto_snapshot_policy_id')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('encrypted') is not None:
+            self.encrypted = m.get('encrypted')
+        if m.get('auto_snapshot_policy_id') is not None:
+            self.auto_snapshot_policy_id = m.get('auto_snapshot_policy_id')
         return self
 
 
-class DataDisks(TeaModel):
-    def __init__(self, category=None, size=None, encrypted=None):
-        # 数据盘类型。取值cloud,cloud-ssd等
-        self.category = category        # type: str
-        # 数据盘大小。最小值40，单位：GiB
-        self.size = size                # type: int
-        # 是否对数据盘加密。默认值：false。
-        self.encrypted = encrypted      # type: bool
+class Tag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # key值。
+        self.key = key
+        # value值。
+        self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
-        if self.category is not None:
-            result['category'] = self.category
-        if self.size is not None:
-            result['size'] = self.size
-        if self.encrypted is not None:
-            result['encrypted'] = self.encrypted
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
         return result
 
-    def from_map(self, map={}):
-        if map.get('category') is not None:
-            self.category = map.get('category')
-        if map.get('size') is not None:
-            self.size = map.get('size')
-        if map.get('encrypted') is not None:
-            self.encrypted = map.get('encrypted')
-        return self
-
-
-class Runtimes(TeaModel):
-    def __init__(self, name=None, version=None):
-        # 容器运行时名称。
-        self.name = name                # type: str
-        # 容器运行时版本。
-        self.version = version          # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.name is not None:
-            result['name'] = self.name
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, map={}):
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('version') is not None:
-            self.version = map.get('version')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
 class Addon(TeaModel):
-    def __init__(self, name=None, config=None, disabled=None):
+    def __init__(
+        self,
+        name: str = None,
+        config: str = None,
+        disabled: bool = None,
+    ):
         # 插件名称。
-        self.name = name                # type: str
+        self.name = name
         # 插件配置参数。
-        self.config = config            # type: str
+        self.config = config
         # 是否禁止默认安装。true | false。
-        self.disabled = disabled        # type: bool
+        self.disabled = disabled
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.name is not None:
             result['name'] = self.name
         if self.config is not None:
@@ -157,32 +176,39 @@ class Addon(TeaModel):
             result['disabled'] = self.disabled
         return result
 
-    def from_map(self, map={}):
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('config') is not None:
-            self.config = map.get('config')
-        if map.get('disabled') is not None:
-            self.disabled = map.get('disabled')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('disabled') is not None:
+            self.disabled = m.get('disabled')
         return self
 
 
 class MaintenanceWindow(TeaModel):
-    def __init__(self, enable=None, maintenance_time=None, duration=None, weekly_period=None):
+    def __init__(
+        self,
+        enable: bool = None,
+        maintenance_time: str = None,
+        duration: str = None,
+        weekly_period: str = None,
+    ):
         # 是否开启维护窗口。默认值false。
-        self.enable = enable            # type: bool
+        self.enable = enable
         # 维护起始时间。Golang标准时间格式"15:04:05Z"。
-        self.maintenance_time = maintenance_time  # type: str
+        self.maintenance_time = maintenance_time
         # 维护时长。取值范围1～24，单位为小时。 默认值：3h。
-        self.duration = duration        # type: str
+        self.duration = duration
         # 维护周期。取值范围为:Monday~Sunday，多个值用逗号分隔。 默认值：Thursday。
-        self.weekly_period = weekly_period  # type: str
+        self.weekly_period = weekly_period
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.enable is not None:
             result['enable'] = self.enable
         if self.maintenance_time is not None:
@@ -193,136 +219,32 @@ class MaintenanceWindow(TeaModel):
             result['weekly_period'] = self.weekly_period
         return result
 
-    def from_map(self, map={}):
-        if map.get('enable') is not None:
-            self.enable = map.get('enable')
-        if map.get('maintenance_time') is not None:
-            self.maintenance_time = map.get('maintenance_time')
-        if map.get('duration') is not None:
-            self.duration = map.get('duration')
-        if map.get('weekly_period') is not None:
-            self.weekly_period = map.get('weekly_period')
-        return self
-
-
-class Runtime(TeaModel):
-    def __init__(self, name=None, version=None):
-        # 容器运行时名称
-        self.name = name                # type: str
-        # 容器运行时版本
-        self.version = version          # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.name is not None:
-            result['name'] = self.name
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, map={}):
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('version') is not None:
-            self.version = map.get('version')
-        return self
-
-
-class Taints(TeaModel):
-    def __init__(self, key=None, value=None, effect=None):
-        # 污点名。
-        self.key = key                  # type: str
-        # 污点值。
-        self.value = value              # type: str
-        # 污点生效策略。
-        self.effect = effect            # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        if self.effect is not None:
-            result['effect'] = self.effect
-        return result
-
-    def from_map(self, map={}):
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
-        if map.get('effect') is not None:
-            self.effect = map.get('effect')
-        return self
-
-
-class Tag(TeaModel):
-    def __init__(self, key=None, value=None):
-        # key值。
-        self.key = key                  # type: str
-        # value值。
-        self.value = value              # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, map={}):
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
-        return self
-
-
-class Tags(TeaModel):
-    def __init__(self, key=None, value=None):
-        # 标签名。
-        self.key = key                  # type: str
-        # 标签值。
-        self.value = value              # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, map={}):
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('maintenance_time') is not None:
+            self.maintenance_time = m.get('maintenance_time')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('weekly_period') is not None:
+            self.weekly_period = m.get('weekly_period')
         return self
 
 
 class ListTagResourcesRequest(TeaModel):
-    def __init__(self, resource_ids=None, tags=None, next_token=None):
+    def __init__(
+        self,
+        resource_ids: List[str] = None,
+        tags: List[Tag] = None,
+        next_token: str = None,
+    ):
         # 集群ID列表。
-        self.resource_ids = resource_ids  # type: List[str]
+        self.resource_ids = resource_ids
         # 按标签查找。
-        self.tags = tags                # type: List[ListTagResourcesRequestTags]
+        self.tags = tags
         # 下一次查询Token。
-        self.next_token = next_token    # type: str
+        self.next_token = next_token
 
     def validate(self):
         if self.tags:
@@ -331,7 +253,7 @@ class ListTagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.resource_ids is not None:
             result['resource_ids'] = self.resource_ids
         result['tags'] = []
@@ -342,95 +264,42 @@ class ListTagResourcesRequest(TeaModel):
             result['next_token'] = self.next_token
         return result
 
-    def from_map(self, map={}):
-        if map.get('resource_ids') is not None:
-            self.resource_ids = map.get('resource_ids')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('resource_ids') is not None:
+            self.resource_ids = m.get('resource_ids')
         self.tags = []
-        if map.get('tags') is not None:
-            for k in map.get('tags'):
-                temp_model = ListTagResourcesRequestTags()
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
-        if map.get('next_token') is not None:
-            self.next_token = map.get('next_token')
-        return self
-
-
-class ListTagResourcesRequestTags(TeaModel):
-    def __init__(self, key=None, value=None):
-        # 标签key。
-        self.key = key                  # type: str
-        # 标签值。
-        self.value = value              # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, map={}):
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
-        return self
-
-
-class ListTagResourcesResponseBody(TeaModel):
-    def __init__(self, next_token=None, request_id=None, tag_resources=None):
-        # 下一个查询token。
-        self.next_token = next_token    # type: str
-        # 请求ID。
-        self.request_id = request_id    # type: str
-        # 资源标签列表。
-        self.tag_resources = tag_resources  # type: ListTagResourcesResponseBodyTagResources
-
-    def validate(self):
-        if self.tag_resources:
-            self.tag_resources.validate()
-
-    def to_map(self):
-        result = {}
-        if self.next_token is not None:
-            result['next_token'] = self.next_token
-        if self.request_id is not None:
-            result['request_id'] = self.request_id
-        if self.tag_resources is not None:
-            result['tag_resources'] = self.tag_resources.to_map()
-        return result
-
-    def from_map(self, map={}):
-        if map.get('next_token') is not None:
-            self.next_token = map.get('next_token')
-        if map.get('request_id') is not None:
-            self.request_id = map.get('request_id')
-        if map.get('tag_resources') is not None:
-            temp_model = ListTagResourcesResponseBodyTagResources()
-            self.tag_resources = temp_model.from_map(map['tag_resources'])
+        if m.get('next_token') is not None:
+            self.next_token = m.get('next_token')
         return self
 
 
 class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
-    def __init__(self, tag_key=None, tag_value=None, resource_id=None, resource_type=None):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
         # 标签key。
-        self.tag_key = tag_key          # type: str
+        self.tag_key = tag_key
         # 标签值。
-        self.tag_value = tag_value      # type: str
+        self.tag_value = tag_value
         # 资源ID。
-        self.resource_id = resource_id  # type: str
+        self.resource_id = resource_id
         # 资源类型。
-        self.resource_type = resource_type  # type: str
+        self.resource_type = resource_type
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.tag_key is not None:
             result['tag_key'] = self.tag_key
         if self.tag_value is not None:
@@ -441,22 +310,26 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
             result['resource_type'] = self.resource_type
         return result
 
-    def from_map(self, map={}):
-        if map.get('tag_key') is not None:
-            self.tag_key = map.get('tag_key')
-        if map.get('tag_value') is not None:
-            self.tag_value = map.get('tag_value')
-        if map.get('resource_id') is not None:
-            self.resource_id = map.get('resource_id')
-        if map.get('resource_type') is not None:
-            self.resource_type = map.get('resource_type')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tag_key') is not None:
+            self.tag_key = m.get('tag_key')
+        if m.get('tag_value') is not None:
+            self.tag_value = m.get('tag_value')
+        if m.get('resource_id') is not None:
+            self.resource_id = m.get('resource_id')
+        if m.get('resource_type') is not None:
+            self.resource_type = m.get('resource_type')
         return self
 
 
 class ListTagResourcesResponseBodyTagResources(TeaModel):
-    def __init__(self, tag_resource=None):
+    def __init__(
+        self,
+        tag_resource: List[ListTagResourcesResponseBodyTagResourcesTagResource] = None,
+    ):
         # 资源标签。
-        self.tag_resource = tag_resource  # type: List[ListTagResourcesResponseBodyTagResourcesTagResource]
+        self.tag_resource = tag_resource
 
     def validate(self):
         if self.tag_resource:
@@ -465,26 +338,71 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['tag_resource'] = []
         if self.tag_resource is not None:
             for k in self.tag_resource:
                 result['tag_resource'].append(k.to_map() if k else None)
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.tag_resource = []
-        if map.get('tag_resource') is not None:
-            for k in map.get('tag_resource'):
+        if m.get('tag_resource') is not None:
+            for k in m.get('tag_resource'):
                 temp_model = ListTagResourcesResponseBodyTagResourcesTagResource()
                 self.tag_resource.append(temp_model.from_map(k))
         return self
 
 
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: ListTagResourcesResponseBodyTagResources = None,
+    ):
+        # 下一个查询开始Token，为空说明没有下一个
+        self.next_token = next_token
+        # 请求ID。
+        self.request_id = request_id
+        # 资源标签列表。
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            self.tag_resources.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.next_token is not None:
+            result['next_token'] = self.next_token
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.tag_resources is not None:
+            result['tag_resources'] = self.tag_resources.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('next_token') is not None:
+            self.next_token = m.get('next_token')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('tag_resources') is not None:
+            temp_model = ListTagResourcesResponseBodyTagResources()
+            self.tag_resources = temp_model.from_map(m['tag_resources'])
+        return self
+
+
 class ListTagResourcesResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: ListTagResourcesResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -493,48 +411,57 @@ class ListTagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class ModifyClusterRequest(TeaModel):
-    def __init__(self, api_server_eip=None, api_server_eip_id=None, deletion_protection=None,
-                 instance_deletion_protection=None, ingress_domain_rebinding=None, ingress_loadbalancer_id=None, resource_group_id=None,
-                 maintenance_window=None):
+    def __init__(
+        self,
+        api_server_eip: bool = None,
+        api_server_eip_id: str = None,
+        deletion_protection: bool = None,
+        instance_deletion_protection: bool = None,
+        ingress_domain_rebinding: str = None,
+        ingress_loadbalancer_id: str = None,
+        resource_group_id: str = None,
+        maintenance_window: MaintenanceWindow = None,
+    ):
         # 集群是否绑定EIP，用于公网访问API Server。 true | false
-        self.api_server_eip = api_server_eip  # type: bool
+        self.api_server_eip = api_server_eip
         # 集群API Server 公网连接端点。
-        self.api_server_eip_id = api_server_eip_id  # type: str
+        self.api_server_eip_id = api_server_eip_id
         # 集群是否开启删除保护。默认值false。
-        self.deletion_protection = deletion_protection  # type: bool
+        self.deletion_protection = deletion_protection
         # 实例删除保护，防止通过控制台或API误删除释放节点。
-        self.instance_deletion_protection = instance_deletion_protection  # type: bool
+        self.instance_deletion_protection = instance_deletion_protection
         # 域名是否重新绑定到Ingress的SLB地址。
-        self.ingress_domain_rebinding = ingress_domain_rebinding  # type: str
+        self.ingress_domain_rebinding = ingress_domain_rebinding
         # 集群的Ingress SLB的ID。
-        self.ingress_loadbalancer_id = ingress_loadbalancer_id  # type: str
+        self.ingress_loadbalancer_id = ingress_loadbalancer_id
         # 集群资源组ID。
-        self.resource_group_id = resource_group_id  # type: str
-        self.maintenance_window = maintenance_window  # type: MaintenanceWindow
+        self.resource_group_id = resource_group_id
+        self.maintenance_window = maintenance_window
 
     def validate(self):
         if self.maintenance_window:
             self.maintenance_window.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.api_server_eip is not None:
             result['api_server_eip'] = self.api_server_eip
         if self.api_server_eip_id is not None:
@@ -553,41 +480,47 @@ class ModifyClusterRequest(TeaModel):
             result['maintenance_window'] = self.maintenance_window.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('api_server_eip') is not None:
-            self.api_server_eip = map.get('api_server_eip')
-        if map.get('api_server_eip_id') is not None:
-            self.api_server_eip_id = map.get('api_server_eip_id')
-        if map.get('deletion_protection') is not None:
-            self.deletion_protection = map.get('deletion_protection')
-        if map.get('instance_deletion_protection') is not None:
-            self.instance_deletion_protection = map.get('instance_deletion_protection')
-        if map.get('ingress_domain_rebinding') is not None:
-            self.ingress_domain_rebinding = map.get('ingress_domain_rebinding')
-        if map.get('ingress_loadbalancer_id') is not None:
-            self.ingress_loadbalancer_id = map.get('ingress_loadbalancer_id')
-        if map.get('resource_group_id') is not None:
-            self.resource_group_id = map.get('resource_group_id')
-        if map.get('maintenance_window') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('api_server_eip') is not None:
+            self.api_server_eip = m.get('api_server_eip')
+        if m.get('api_server_eip_id') is not None:
+            self.api_server_eip_id = m.get('api_server_eip_id')
+        if m.get('deletion_protection') is not None:
+            self.deletion_protection = m.get('deletion_protection')
+        if m.get('instance_deletion_protection') is not None:
+            self.instance_deletion_protection = m.get('instance_deletion_protection')
+        if m.get('ingress_domain_rebinding') is not None:
+            self.ingress_domain_rebinding = m.get('ingress_domain_rebinding')
+        if m.get('ingress_loadbalancer_id') is not None:
+            self.ingress_loadbalancer_id = m.get('ingress_loadbalancer_id')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
+        if m.get('maintenance_window') is not None:
             temp_model = MaintenanceWindow()
-            self.maintenance_window = temp_model.from_map(map['maintenance_window'])
+            self.maintenance_window = temp_model.from_map(m['maintenance_window'])
         return self
 
 
 class ModifyClusterResponseBody(TeaModel):
-    def __init__(self, cluster_id=None, request_id=None, task_id=None):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
         # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+        self.cluster_id = cluster_id
         # 请求ID。
-        self.request_id = request_id    # type: str
+        self.request_id = request_id
         # 任务ID。
-        self.task_id = task_id          # type: str
+        self.task_id = task_id
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.request_id is not None:
@@ -596,20 +529,25 @@ class ModifyClusterResponseBody(TeaModel):
             result['task_id'] = self.task_id
         return result
 
-    def from_map(self, map={}):
-        if map.get('cluster_id') is not None:
-            self.cluster_id = map.get('cluster_id')
-        if map.get('request_id') is not None:
-            self.request_id = map.get('request_id')
-        if map.get('task_id') is not None:
-            self.task_id = map.get('task_id')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
         return self
 
 
 class ModifyClusterResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: ModifyClusterResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -618,150 +556,137 @@ class ModifyClusterResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = ModifyClusterResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class DescribeClusterAttachScriptsRequest(TeaModel):
-    def __init__(self, arch=None, options=None):
-        # 节点CPU架构,支持amd64、arm、arm64。
-        self.arch = arch                # type: str
+    def __init__(
+        self,
+        nodepool_id: str = None,
+        format_disk: bool = None,
+        keep_instance_name: bool = None,
+        rds_instances: List[str] = None,
+        arch: str = None,
+        options: str = None,
+    ):
+        # 节点池ID。将节点加入指定节点池。
+        self.nodepool_id = nodepool_id
+        # 数据盘挂载
+        self.format_disk = format_disk
+        # 保留实例名称
+        self.keep_instance_name = keep_instance_name
+        # RDS白名单
+        self.rds_instances = rds_instances
+        # 节点CPU架构,支持amd64、arm、arm64。边缘托管集群专有字段。
+        self.arch = arch
         # 边缘托管版集群节点的接入配置。
-        self.options = options          # type: DescribeClusterAttachScriptsRequestOptions
-
-    def validate(self):
-        if self.options:
-            self.options.validate()
-
-    def to_map(self):
-        result = {}
-        if self.arch is not None:
-            result['arch'] = self.arch
-        if self.options is not None:
-            result['options'] = self.options.to_map()
-        return result
-
-    def from_map(self, map={}):
-        if map.get('arch') is not None:
-            self.arch = map.get('arch')
-        if map.get('options') is not None:
-            temp_model = DescribeClusterAttachScriptsRequestOptions()
-            self.options = temp_model.from_map(map['options'])
-        return self
-
-
-class DescribeClusterAttachScriptsRequestOptions(TeaModel):
-    def __init__(self, allowed_cluster_addons=None, enable_iptables=None, flannel_iface=None, gpu_version=None,
-                 manage_runtime=None, node_name_override=None, quiet=None):
-        # 需要安装的组件列表，默认为空，不安装。
-        self.allowed_cluster_addons = allowed_cluster_addons  # type: List[str]
-        # 是否开启iptables，默认值true。
-        self.enable_iptables = enable_iptables  # type: bool
-        # flannel使用的网卡名。默认使用节点默认路由的网卡名。
-        self.flannel_iface = flannel_iface  # type: str
-        # 表示要接入的节点是否为GPU节点，默认为空。当前支持的GPU版本是Nvidia_Tesla_T4、Nvidia_Tesla_P4、Nvidia_Tesla_P100。
-        self.gpu_version = gpu_version  # type: str
-        # 是否由edgeadm安装并检测Runtime，默认false。
-        self.manage_runtime = manage_runtime  # type: bool
-        # 设置节点名。  - ""（默认值，表示使用主机名。） - "*"（表示随机生成6位的字符串。） - "*.XXX"（表示随机生成6位字符串+XXX后缀。）
-        self.node_name_override = node_name_override  # type: str
-        # 是否使用静默模式安装。
-        self.quiet = quiet              # type: str
+        self.options = options
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
-        if self.allowed_cluster_addons is not None:
-            result['allowedClusterAddons'] = self.allowed_cluster_addons
-        if self.enable_iptables is not None:
-            result['enableIptables'] = self.enable_iptables
-        if self.flannel_iface is not None:
-            result['flannelIface'] = self.flannel_iface
-        if self.gpu_version is not None:
-            result['gpuVersion'] = self.gpu_version
-        if self.manage_runtime is not None:
-            result['manageRuntime'] = self.manage_runtime
-        if self.node_name_override is not None:
-            result['nodeNameOverride'] = self.node_name_override
-        if self.quiet is not None:
-            result['quiet'] = self.quiet
+        result = dict()
+        if self.nodepool_id is not None:
+            result['nodepool_id'] = self.nodepool_id
+        if self.format_disk is not None:
+            result['format_disk'] = self.format_disk
+        if self.keep_instance_name is not None:
+            result['keep_instance_name'] = self.keep_instance_name
+        if self.rds_instances is not None:
+            result['rds_instances'] = self.rds_instances
+        if self.arch is not None:
+            result['arch'] = self.arch
+        if self.options is not None:
+            result['options'] = self.options
         return result
 
-    def from_map(self, map={}):
-        if map.get('allowedClusterAddons') is not None:
-            self.allowed_cluster_addons = map.get('allowedClusterAddons')
-        if map.get('enableIptables') is not None:
-            self.enable_iptables = map.get('enableIptables')
-        if map.get('flannelIface') is not None:
-            self.flannel_iface = map.get('flannelIface')
-        if map.get('gpuVersion') is not None:
-            self.gpu_version = map.get('gpuVersion')
-        if map.get('manageRuntime') is not None:
-            self.manage_runtime = map.get('manageRuntime')
-        if map.get('nodeNameOverride') is not None:
-            self.node_name_override = map.get('nodeNameOverride')
-        if map.get('quiet') is not None:
-            self.quiet = map.get('quiet')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nodepool_id') is not None:
+            self.nodepool_id = m.get('nodepool_id')
+        if m.get('format_disk') is not None:
+            self.format_disk = m.get('format_disk')
+        if m.get('keep_instance_name') is not None:
+            self.keep_instance_name = m.get('keep_instance_name')
+        if m.get('rds_instances') is not None:
+            self.rds_instances = m.get('rds_instances')
+        if m.get('arch') is not None:
+            self.arch = m.get('arch')
+        if m.get('options') is not None:
+            self.options = m.get('options')
         return self
 
 
 class DescribeClusterAttachScriptsResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: str
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: str = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
         self.validate_required(self.body, 'body')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
-            self.body = map.get('body')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
         return self
 
 
 class DescribeKubernetesVersionMetadataRequest(TeaModel):
-    def __init__(self, region=None, cluster_type=None, multi_az=None, kubernetes_version=None, profile=None):
+    def __init__(
+        self,
+        region: str = None,
+        cluster_type: str = None,
+        multi_az: bool = None,
+        kubernetes_version: str = None,
+        profile: str = None,
+    ):
         # 地域ID。
-        self.region = region            # type: str
+        self.region = region
         # 集群类型。
-        self.cluster_type = cluster_type  # type: str
+        self.cluster_type = cluster_type
         # 是否查询多可用区。
-        self.multi_az = multi_az        # type: bool
+        self.multi_az = multi_az
         # 要查询的版本，如果为空则查所有版本。
-        self.kubernetes_version = kubernetes_version  # type: str
+        self.kubernetes_version = kubernetes_version
         # 边缘集群标识，用于区分边缘集群，取值：Default或Edge。
-        self.profile = profile          # type: str
+        self.profile = profile
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.region is not None:
             result['Region'] = self.region
         if self.cluster_type is not None:
@@ -774,77 +699,52 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
             result['Profile'] = self.profile
         return result
 
-    def from_map(self, map={}):
-        if map.get('Region') is not None:
-            self.region = map.get('Region')
-        if map.get('ClusterType') is not None:
-            self.cluster_type = map.get('ClusterType')
-        if map.get('MultiAZ') is not None:
-            self.multi_az = map.get('MultiAZ')
-        if map.get('KubernetesVersion') is not None:
-            self.kubernetes_version = map.get('KubernetesVersion')
-        if map.get('Profile') is not None:
-            self.profile = map.get('Profile')
-        return self
-
-
-class DescribeKubernetesVersionMetadataResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: List[DescribeKubernetesVersionMetadataResponseBody]
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            for k in self.body:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        if self.headers is not None:
-            result['headers'] = self.headers
-        result['body'] = []
-        if self.body is not None:
-            for k in self.body:
-                result['body'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        self.body = []
-        if map.get('body') is not None:
-            for k in map.get('body'):
-                temp_model = DescribeKubernetesVersionMetadataResponseBody()
-                self.body.append(temp_model.from_map(k))
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        if m.get('MultiAZ') is not None:
+            self.multi_az = m.get('MultiAZ')
+        if m.get('KubernetesVersion') is not None:
+            self.kubernetes_version = m.get('KubernetesVersion')
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
         return self
 
 
 class DescribeKubernetesVersionMetadataResponseBodyImages(TeaModel):
-    def __init__(self, image_id=None, image_name=None, platform=None, os_version=None, image_type=None, os_type=None,
-                 image_category=None):
+    def __init__(
+        self,
+        image_id: str = None,
+        image_name: str = None,
+        platform: str = None,
+        os_version: str = None,
+        image_type: str = None,
+        os_type: str = None,
+        image_category: str = None,
+    ):
         # 镜像ID。	
-        self.image_id = image_id        # type: str
+        self.image_id = image_id
         # 镜像名称。	
-        self.image_name = image_name    # type: str
+        self.image_name = image_name
         # 操作系统发行版。取值范围： CentOS,AliyunLinux,Windows,WindowsCore。
-        self.platform = platform        # type: str
+        self.platform = platform
         # 镜像版本。
-        self.os_version = os_version    # type: str
+        self.os_version = os_version
         # 镜像类型。	
-        self.image_type = image_type    # type: str
+        self.image_type = image_type
         # 操作系统发行版本号。
-        self.os_type = os_type          # type: str
+        self.os_type = os_type
         # 镜像分类
-        self.image_category = image_category  # type: str
+        self.image_category = image_category
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.image_id is not None:
             result['image_id'] = self.image_id
         if self.image_name is not None:
@@ -861,38 +761,47 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(TeaModel):
             result['image_category'] = self.image_category
         return result
 
-    def from_map(self, map={}):
-        if map.get('image_id') is not None:
-            self.image_id = map.get('image_id')
-        if map.get('image_name') is not None:
-            self.image_name = map.get('image_name')
-        if map.get('platform') is not None:
-            self.platform = map.get('platform')
-        if map.get('os_version') is not None:
-            self.os_version = map.get('os_version')
-        if map.get('image_type') is not None:
-            self.image_type = map.get('image_type')
-        if map.get('os_type') is not None:
-            self.os_type = map.get('os_type')
-        if map.get('image_category') is not None:
-            self.image_category = map.get('image_category')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('image_id') is not None:
+            self.image_id = m.get('image_id')
+        if m.get('image_name') is not None:
+            self.image_name = m.get('image_name')
+        if m.get('platform') is not None:
+            self.platform = m.get('platform')
+        if m.get('os_version') is not None:
+            self.os_version = m.get('os_version')
+        if m.get('image_type') is not None:
+            self.image_type = m.get('image_type')
+        if m.get('os_type') is not None:
+            self.os_type = m.get('os_type')
+        if m.get('image_category') is not None:
+            self.image_category = m.get('image_category')
         return self
 
 
 class DescribeKubernetesVersionMetadataResponseBody(TeaModel):
-    def __init__(self, capabilities=None, images=None, meta_data=None, runtimes=None, version=None, multi_az=None):
+    def __init__(
+        self,
+        capabilities: Dict[str, Any] = None,
+        images: List[DescribeKubernetesVersionMetadataResponseBodyImages] = None,
+        meta_data: Dict[str, Any] = None,
+        runtimes: List[Runtime] = None,
+        version: str = None,
+        multi_az: str = None,
+    ):
         # Kubernetes版本特性。	
-        self.capabilities = capabilities  # type: Dict[str, Any]
+        self.capabilities = capabilities
         # ECS系统镜像列表。	
-        self.images = images            # type: List[DescribeKubernetesVersionMetadataResponseBodyImages]
+        self.images = images
         # Kubernetes版本元数据信息。	
-        self.meta_data = meta_data      # type: Dict[str, Any]
+        self.meta_data = meta_data
         # 容器运行时详情。	
-        self.runtimes = runtimes        # type: List[Runtimes]
+        self.runtimes = runtimes
         # Kubernetes版本。	
-        self.version = version          # type: str
+        self.version = version
         # 是否为多可用区。
-        self.multi_az = multi_az        # type: str
+        self.multi_az = multi_az
 
     def validate(self):
         if self.images:
@@ -905,7 +814,7 @@ class DescribeKubernetesVersionMetadataResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.capabilities is not None:
             result['capabilities'] = self.capabilities
         result['images'] = []
@@ -924,32 +833,37 @@ class DescribeKubernetesVersionMetadataResponseBody(TeaModel):
             result['multi_az'] = self.multi_az
         return result
 
-    def from_map(self, map={}):
-        if map.get('capabilities') is not None:
-            self.capabilities = map.get('capabilities')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('capabilities') is not None:
+            self.capabilities = m.get('capabilities')
         self.images = []
-        if map.get('images') is not None:
-            for k in map.get('images'):
+        if m.get('images') is not None:
+            for k in m.get('images'):
                 temp_model = DescribeKubernetesVersionMetadataResponseBodyImages()
                 self.images.append(temp_model.from_map(k))
-        if map.get('meta_data') is not None:
-            self.meta_data = map.get('meta_data')
+        if m.get('meta_data') is not None:
+            self.meta_data = m.get('meta_data')
         self.runtimes = []
-        if map.get('runtimes') is not None:
-            for k in map.get('runtimes'):
-                temp_model = Runtimes()
+        if m.get('runtimes') is not None:
+            for k in m.get('runtimes'):
+                temp_model = Runtime()
                 self.runtimes.append(temp_model.from_map(k))
-        if map.get('version') is not None:
-            self.version = map.get('version')
-        if map.get('multi_az') is not None:
-            self.multi_az = map.get('multi_az')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('multi_az') is not None:
+            self.multi_az = m.get('multi_az')
         return self
 
 
-class DescribeClusterLogsResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: List[DescribeClusterLogsResponseBody]
+class DescribeKubernetesVersionMetadataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: List[DescribeKubernetesVersionMetadataResponseBody] = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -960,7 +874,7 @@ class DescribeClusterLogsResponse(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         result['body'] = []
@@ -969,153 +883,221 @@ class DescribeClusterLogsResponse(TeaModel):
                 result['body'].append(k.to_map() if k else None)
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         self.body = []
-        if map.get('body') is not None:
-            for k in map.get('body'):
-                temp_model = DescribeClusterLogsResponseBody()
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = DescribeKubernetesVersionMetadataResponseBody()
                 self.body.append(temp_model.from_map(k))
         return self
 
 
 class DescribeClusterLogsResponseBody(TeaModel):
-    def __init__(self, id=None, cluster_id=None, cluster_log=None, created=None, log_level=None, updated=None):
+    def __init__(
+        self,
+        id: int = None,
+        cluster_id: str = None,
+        cluster_log: str = None,
+        log_level: str = None,
+        created: str = None,
+        updated: str = None,
+    ):
         # 日志ID。
-        self.id = id                    # type: int
+        self.id = id
         # 集群ID。
-        self.cluster_id = cluster_id    # type: str
-        # 集群日志。
-        self.cluster_log = cluster_log  # type: str
-        # 日志创建时间。
-        self.created = created          # type: str
+        self.cluster_id = cluster_id
+        # 日志内容。
+        self.cluster_log = cluster_log
         # 日志等级。
-        self.log_level = log_level      # type: str
+        self.log_level = log_level
+        # 日志创建时间。
+        self.created = created
         # 日志更新时间。
-        self.updated = updated          # type: str
+        self.updated = updated
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.id is not None:
             result['ID'] = self.id
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.cluster_log is not None:
             result['cluster_log'] = self.cluster_log
-        if self.created is not None:
-            result['created'] = self.created
         if self.log_level is not None:
             result['log_level'] = self.log_level
+        if self.created is not None:
+            result['created'] = self.created
         if self.updated is not None:
             result['updated'] = self.updated
         return result
 
-    def from_map(self, map={}):
-        if map.get('ID') is not None:
-            self.id = map.get('ID')
-        if map.get('cluster_id') is not None:
-            self.cluster_id = map.get('cluster_id')
-        if map.get('cluster_log') is not None:
-            self.cluster_log = map.get('cluster_log')
-        if map.get('created') is not None:
-            self.created = map.get('created')
-        if map.get('log_level') is not None:
-            self.log_level = map.get('log_level')
-        if map.get('updated') is not None:
-            self.updated = map.get('updated')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ID') is not None:
+            self.id = m.get('ID')
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('cluster_log') is not None:
+            self.cluster_log = m.get('cluster_log')
+        if m.get('log_level') is not None:
+            self.log_level = m.get('log_level')
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('updated') is not None:
+            self.updated = m.get('updated')
+        return self
+
+
+class DescribeClusterLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: List[DescribeClusterLogsResponseBody] = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = DescribeClusterLogsResponseBody()
+                self.body.append(temp_model.from_map(k))
         return self
 
 
 class CreateKubernetesTriggerRequest(TeaModel):
-    def __init__(self, action=None, cluster_id=None, project_id=None, region_id=None, type=None):
-        # 触发器行为。
-        self.action = action            # type: str
+    def __init__(
+        self,
+        cluster_id: str = None,
+        project_id: str = None,
+        action: str = None,
+        type: str = None,
+    ):
         # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+        self.cluster_id = cluster_id
         # 项目名称。
-        self.project_id = project_id    # type: str
-        # 地域ID。
-        self.region_id = region_id      # type: str
-        # 触发器类型。
-        self.type = type                # type: str
+        self.project_id = project_id
+        # 触发器行为
+        self.action = action
+        # 触发器类型。默认deployment。
+        self.type = type
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
-        if self.action is not None:
-            result['Action'] = self.action
+        result = dict()
         if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
+            result['cluster_id'] = self.cluster_id
         if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
+            result['project_id'] = self.project_id
+        if self.action is not None:
+            result['action'] = self.action
         if self.type is not None:
-            result['Type'] = self.type
+            result['type'] = self.type
         return result
 
-    def from_map(self, map={}):
-        if map.get('Action') is not None:
-            self.action = map.get('Action')
-        if map.get('ClusterId') is not None:
-            self.cluster_id = map.get('ClusterId')
-        if map.get('ProjectId') is not None:
-            self.project_id = map.get('ProjectId')
-        if map.get('RegionId') is not None:
-            self.region_id = map.get('RegionId')
-        if map.get('Type') is not None:
-            self.type = map.get('Type')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('project_id') is not None:
+            self.project_id = m.get('project_id')
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         return self
 
 
 class CreateKubernetesTriggerResponseBody(TeaModel):
-    def __init__(self, action=None, cluster_id=None, id=None, project_id=None):
-        # 触发器行为。
-        self.action = action            # type: str
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(
+        self,
+        id: str = None,
+        cluster_id: str = None,
+        project_id: str = None,
+        type: str = None,
+        action: str = None,
+    ):
         # 触发器ID。
-        self.id = id                    # type: str
-        # 项目名称。
-        self.project_id = project_id    # type: str
+        self.id = id
+        # 集群ID。
+        self.cluster_id = cluster_id
+        # 触发器项目名称。
+        self.project_id = project_id
+        # 触发器类型。默认值为 deployment 。
+        self.type = type
+        # 触发器行为。
+        self.action = action
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
-        if self.action is not None:
-            result['action'] = self.action
-        if self.cluster_id is not None:
-            result['cluster_id'] = self.cluster_id
+        result = dict()
         if self.id is not None:
             result['id'] = self.id
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
         if self.project_id is not None:
             result['project_id'] = self.project_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.action is not None:
+            result['action'] = self.action
         return result
 
-    def from_map(self, map={}):
-        if map.get('action') is not None:
-            self.action = map.get('action')
-        if map.get('cluster_id') is not None:
-            self.cluster_id = map.get('cluster_id')
-        if map.get('id') is not None:
-            self.id = map.get('id')
-        if map.get('project_id') is not None:
-            self.project_id = map.get('project_id')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('project_id') is not None:
+            self.project_id = m.get('project_id')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('action') is not None:
+            self.action = m.get('action')
         return self
 
 
 class CreateKubernetesTriggerResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: CreateKubernetesTriggerResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateKubernetesTriggerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -1124,90 +1106,157 @@ class CreateKubernetesTriggerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = CreateKubernetesTriggerResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeClusterDetailResponseBodyOutputs(TeaModel):
+    def __init__(
+        self,
+        output_key: str = None,
+        output_value: str = None,
+        description: str = None,
+    ):
+        # 资源ID。
+        self.output_key = output_key
+        # 资源名称。
+        self.output_value = output_value
+        # 资源描述。
+        self.description = description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.output_key is not None:
+            result['OutputKey'] = self.output_key
+        if self.output_value is not None:
+            result['OutputValue'] = self.output_value
+        if self.description is not None:
+            result['Description'] = self.description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutputKey') is not None:
+            self.output_key = m.get('OutputKey')
+        if m.get('OutputValue') is not None:
+            self.output_value = m.get('OutputValue')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         return self
 
 
 class DescribeClusterDetailResponseBody(TeaModel):
-    def __init__(self, cluster_id=None, cluster_type=None, created=None, init_version=None, current_version=None,
-                 next_version=None, deletion_protection=None, docker_version=None, external_loadbalancer_id=None,
-                 meta_data=None, name=None, network_mode=None, region_id=None, resource_group_id=None, security_group_id=None,
-                 size=None, state=None, tags=None, updated=None, vpc_id=None, vswitch_id=None, subnet_cidr=None,
-                 zone_id=None, master_url=None, private_zone=None, profile=None, cluster_spec=None,
-                 worker_ram_role_name=None, maintenance_window=None, parameters=None, outputs=None):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_type: str = None,
+        created: str = None,
+        init_version: str = None,
+        current_version: str = None,
+        next_version: str = None,
+        deletion_protection: bool = None,
+        docker_version: str = None,
+        external_loadbalancer_id: str = None,
+        meta_data: str = None,
+        name: str = None,
+        network_mode: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        security_group_id: str = None,
+        size: int = None,
+        state: str = None,
+        tags: List[Tag] = None,
+        updated: str = None,
+        vpc_id: str = None,
+        vswitch_id: str = None,
+        subnet_cidr: str = None,
+        zone_id: str = None,
+        master_url: str = None,
+        private_zone: bool = None,
+        profile: str = None,
+        cluster_spec: str = None,
+        worker_ram_role_name: str = None,
+        maintenance_window: MaintenanceWindow = None,
+        parameters: Dict[str, Any] = None,
+        outputs: List[DescribeClusterDetailResponseBodyOutputs] = None,
+    ):
         # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+        self.cluster_id = cluster_id
         # 集群类型。
-        self.cluster_type = cluster_type  # type: str
+        self.cluster_type = cluster_type
         # 集群创建时间。
-        self.created = created          # type: str
+        self.created = created
         # 集群初始化版本。
-        self.init_version = init_version  # type: str
+        self.init_version = init_version
         # 集群当前版本。
-        self.current_version = current_version  # type: str
+        self.current_version = current_version
         # 集群可升级版本。
-        self.next_version = next_version  # type: str
+        self.next_version = next_version
         # 集群是否开启删除保护。
-        self.deletion_protection = deletion_protection  # type: bool
+        self.deletion_protection = deletion_protection
         # 集群内Docker版本。
-        self.docker_version = docker_version  # type: str
+        self.docker_version = docker_version
         # 集群Ingress LB实例ID。
-        self.external_loadbalancer_id = external_loadbalancer_id  # type: str
+        self.external_loadbalancer_id = external_loadbalancer_id
         # 集群元数据。
-        self.meta_data = meta_data      # type: str
+        self.meta_data = meta_data
         # 集群名称。
-        self.name = name                # type: str
+        self.name = name
         # 集群采用的网络类型，例如：VPC网络。
-        self.network_mode = network_mode  # type: str
+        self.network_mode = network_mode
         # 集群所在地域ID。
-        self.region_id = region_id      # type: str
+        self.region_id = region_id
         # 集群资源组ID。
-        self.resource_group_id = resource_group_id  # type: str
+        self.resource_group_id = resource_group_id
         # 集群安全组ID。
-        self.security_group_id = security_group_id  # type: str
+        self.security_group_id = security_group_id
         # 集群节点数量。
-        self.size = size                # type: int
+        self.size = size
         # 集群运行状态。
-        self.state = state              # type: str
+        self.state = state
         # 集群标签。
-        self.tags = tags                # type: List[Tags]
+        self.tags = tags
         # 集群更新时间。
-        self.updated = updated          # type: str
+        self.updated = updated
         # 集群使用的VPC ID。
-        self.vpc_id = vpc_id            # type: str
+        self.vpc_id = vpc_id
         # 集群节点使用的虚拟交换机列表。
-        self.vswitch_id = vswitch_id    # type: str
+        self.vswitch_id = vswitch_id
         # Pod网络地址段，必须是有效的私有网段，即以下网段及其子网：10.0.0.0/8，172.16-31.0.0/12-16，192.168.0.0/16。不能与 VPC 及VPC 内已有 Kubernetes 集群使用的网段重复，创建成功后不能修改。  有关集群网络规划，请参见：[VPC下 Kubernetes 的网络地址段规划](https://help.aliyun.com/document_detail/～～86500～～)。
-        self.subnet_cidr = subnet_cidr  # type: str
+        self.subnet_cidr = subnet_cidr
         # 集群所在地域内的可用区ID。
-        self.zone_id = zone_id          # type: str
+        self.zone_id = zone_id
         # 集群访问地址。
-        self.master_url = master_url    # type: str
+        self.master_url = master_url
         # 集群是否启用用PrivateZone。  true：启用 false：不启用 默认值：false。
-        self.private_zone = private_zone  # type: bool
+        self.private_zone = private_zone
         # 面向场景时的集群类型。  Default：非边缘场景集群。 Edge：边缘场景集群。
-        self.profile = profile          # type: str
+        self.profile = profile
         # 托管版集群类型，面向托管集群。  ack.pro.small：专业托管集群。 ack.standard ：标准托管集群。
-        self.cluster_spec = cluster_spec  # type: str
+        self.cluster_spec = cluster_spec
         # Worker节点RAM角色名称。
-        self.worker_ram_role_name = worker_ram_role_name  # type: str
-        self.maintenance_window = maintenance_window  # type: MaintenanceWindow
+        self.worker_ram_role_name = worker_ram_role_name
+        self.maintenance_window = maintenance_window
         # 创建集群参数。
-        self.parameters = parameters    # type: Dict[str, Any]
+        self.parameters = parameters
         # 集群创建的资源列表。
-        self.outputs = outputs          # type: List[DescribeClusterDetailResponseBodyOutputs]
+        self.outputs = outputs
 
     def validate(self):
         if self.tags:
@@ -1222,7 +1271,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.cluster_type is not None:
@@ -1291,115 +1340,88 @@ class DescribeClusterDetailResponseBody(TeaModel):
                 result['outputs'].append(k.to_map() if k else None)
         return result
 
-    def from_map(self, map={}):
-        if map.get('cluster_id') is not None:
-            self.cluster_id = map.get('cluster_id')
-        if map.get('cluster_type') is not None:
-            self.cluster_type = map.get('cluster_type')
-        if map.get('created') is not None:
-            self.created = map.get('created')
-        if map.get('init_version') is not None:
-            self.init_version = map.get('init_version')
-        if map.get('current_version') is not None:
-            self.current_version = map.get('current_version')
-        if map.get('next_version') is not None:
-            self.next_version = map.get('next_version')
-        if map.get('deletion_protection') is not None:
-            self.deletion_protection = map.get('deletion_protection')
-        if map.get('docker_version') is not None:
-            self.docker_version = map.get('docker_version')
-        if map.get('external_loadbalancer_id') is not None:
-            self.external_loadbalancer_id = map.get('external_loadbalancer_id')
-        if map.get('meta_data') is not None:
-            self.meta_data = map.get('meta_data')
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('network_mode') is not None:
-            self.network_mode = map.get('network_mode')
-        if map.get('region_id') is not None:
-            self.region_id = map.get('region_id')
-        if map.get('resource_group_id') is not None:
-            self.resource_group_id = map.get('resource_group_id')
-        if map.get('security_group_id') is not None:
-            self.security_group_id = map.get('security_group_id')
-        if map.get('size') is not None:
-            self.size = map.get('size')
-        if map.get('state') is not None:
-            self.state = map.get('state')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('cluster_type') is not None:
+            self.cluster_type = m.get('cluster_type')
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('init_version') is not None:
+            self.init_version = m.get('init_version')
+        if m.get('current_version') is not None:
+            self.current_version = m.get('current_version')
+        if m.get('next_version') is not None:
+            self.next_version = m.get('next_version')
+        if m.get('deletion_protection') is not None:
+            self.deletion_protection = m.get('deletion_protection')
+        if m.get('docker_version') is not None:
+            self.docker_version = m.get('docker_version')
+        if m.get('external_loadbalancer_id') is not None:
+            self.external_loadbalancer_id = m.get('external_loadbalancer_id')
+        if m.get('meta_data') is not None:
+            self.meta_data = m.get('meta_data')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('network_mode') is not None:
+            self.network_mode = m.get('network_mode')
+        if m.get('region_id') is not None:
+            self.region_id = m.get('region_id')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
+        if m.get('security_group_id') is not None:
+            self.security_group_id = m.get('security_group_id')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('state') is not None:
+            self.state = m.get('state')
         self.tags = []
-        if map.get('tags') is not None:
-            for k in map.get('tags'):
-                temp_model = Tags()
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
-        if map.get('updated') is not None:
-            self.updated = map.get('updated')
-        if map.get('vpc_id') is not None:
-            self.vpc_id = map.get('vpc_id')
-        if map.get('vswitch_id') is not None:
-            self.vswitch_id = map.get('vswitch_id')
-        if map.get('subnet_cidr') is not None:
-            self.subnet_cidr = map.get('subnet_cidr')
-        if map.get('zone_id') is not None:
-            self.zone_id = map.get('zone_id')
-        if map.get('master_url') is not None:
-            self.master_url = map.get('master_url')
-        if map.get('private_zone') is not None:
-            self.private_zone = map.get('private_zone')
-        if map.get('profile') is not None:
-            self.profile = map.get('profile')
-        if map.get('cluster_spec') is not None:
-            self.cluster_spec = map.get('cluster_spec')
-        if map.get('worker_ram_role_name') is not None:
-            self.worker_ram_role_name = map.get('worker_ram_role_name')
-        if map.get('maintenance_window') is not None:
+        if m.get('updated') is not None:
+            self.updated = m.get('updated')
+        if m.get('vpc_id') is not None:
+            self.vpc_id = m.get('vpc_id')
+        if m.get('vswitch_id') is not None:
+            self.vswitch_id = m.get('vswitch_id')
+        if m.get('subnet_cidr') is not None:
+            self.subnet_cidr = m.get('subnet_cidr')
+        if m.get('zone_id') is not None:
+            self.zone_id = m.get('zone_id')
+        if m.get('master_url') is not None:
+            self.master_url = m.get('master_url')
+        if m.get('private_zone') is not None:
+            self.private_zone = m.get('private_zone')
+        if m.get('profile') is not None:
+            self.profile = m.get('profile')
+        if m.get('cluster_spec') is not None:
+            self.cluster_spec = m.get('cluster_spec')
+        if m.get('worker_ram_role_name') is not None:
+            self.worker_ram_role_name = m.get('worker_ram_role_name')
+        if m.get('maintenance_window') is not None:
             temp_model = MaintenanceWindow()
-            self.maintenance_window = temp_model.from_map(map['maintenance_window'])
-        if map.get('parameters') is not None:
-            self.parameters = map.get('parameters')
+            self.maintenance_window = temp_model.from_map(m['maintenance_window'])
+        if m.get('parameters') is not None:
+            self.parameters = m.get('parameters')
         self.outputs = []
-        if map.get('outputs') is not None:
-            for k in map.get('outputs'):
+        if m.get('outputs') is not None:
+            for k in m.get('outputs'):
                 temp_model = DescribeClusterDetailResponseBodyOutputs()
                 self.outputs.append(temp_model.from_map(k))
         return self
 
 
-class DescribeClusterDetailResponseBodyOutputs(TeaModel):
-    def __init__(self, output_key=None, output_value=None, description=None):
-        # 资源ID。
-        self.output_key = output_key    # type: str
-        # 资源名称。
-        self.output_value = output_value  # type: str
-        # 资源描述。
-        self.description = description  # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.output_key is not None:
-            result['OutputKey'] = self.output_key
-        if self.output_value is not None:
-            result['OutputValue'] = self.output_value
-        if self.description is not None:
-            result['Description'] = self.description
-        return result
-
-    def from_map(self, map={}):
-        if map.get('OutputKey') is not None:
-            self.output_key = map.get('OutputKey')
-        if map.get('OutputValue') is not None:
-            self.output_value = map.get('OutputValue')
-        if map.get('Description') is not None:
-            self.description = map.get('Description')
-        return self
-
-
 class DescribeClusterDetailResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeClusterDetailResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeClusterDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -1408,192 +1430,199 @@ class DescribeClusterDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = DescribeClusterDetailResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class PauseComponentUpgradeResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
 class DescribeClustersRequest(TeaModel):
-    def __init__(self, name=None, cluster_type=None):
+    def __init__(
+        self,
+        name: str = None,
+        cluster_type: str = None,
+    ):
         # 集群名称。
-        self.name = name                # type: str
+        self.name = name
         # 集群类型。
-        self.cluster_type = cluster_type  # type: str
+        self.cluster_type = cluster_type
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.name is not None:
             result['name'] = self.name
         if self.cluster_type is not None:
             result['clusterType'] = self.cluster_type
         return result
 
-    def from_map(self, map={}):
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('clusterType') is not None:
-            self.cluster_type = map.get('clusterType')
-        return self
-
-
-class DescribeClustersResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: List[DescribeClustersResponseBody]
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            for k in self.body:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        if self.headers is not None:
-            result['headers'] = self.headers
-        result['body'] = []
-        if self.body is not None:
-            for k in self.body:
-                result['body'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        self.body = []
-        if map.get('body') is not None:
-            for k in map.get('body'):
-                temp_model = DescribeClustersResponseBody()
-                self.body.append(temp_model.from_map(k))
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('clusterType') is not None:
+            self.cluster_type = m.get('clusterType')
         return self
 
 
 class DescribeClustersResponseBodyTags(TeaModel):
-    def __init__(self, key=None, value=None):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
         # 标签名。
-        self.key = key                  # type: str
+        self.key = key
         # 标签值。
-        self.value = value              # type: str
+        self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.key is not None:
             result['key'] = self.key
         if self.value is not None:
             result['value'] = self.value
         return result
 
-    def from_map(self, map={}):
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
 class DescribeClustersResponseBody(TeaModel):
-    def __init__(self, cluster_id=None, cluster_type=None, created=None, current_version=None,
-                 data_disk_category=None, data_disk_size=None, deletion_protection=None, docker_version=None,
-                 external_loadbalancer_id=None, init_version=None, master_url=None, meta_data=None, name=None, network_mode=None,
-                 private_zone=None, profile=None, region_id=None, resource_group_id=None, security_group_id=None, size=None,
-                 state=None, subnet_cidr=None, tags=None, updated=None, vpc_id=None, vswitch_cidr=None, vswitch_id=None,
-                 worker_ram_role_name=None, zone_id=None):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_type: str = None,
+        created: str = None,
+        current_version: str = None,
+        data_disk_category: str = None,
+        data_disk_size: int = None,
+        deletion_protection: bool = None,
+        docker_version: str = None,
+        external_loadbalancer_id: str = None,
+        init_version: str = None,
+        master_url: str = None,
+        meta_data: str = None,
+        name: str = None,
+        network_mode: str = None,
+        private_zone: bool = None,
+        profile: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        security_group_id: str = None,
+        size: int = None,
+        state: str = None,
+        subnet_cidr: str = None,
+        tags: List[DescribeClustersResponseBodyTags] = None,
+        updated: str = None,
+        vpc_id: str = None,
+        vswitch_cidr: str = None,
+        vswitch_id: str = None,
+        worker_ram_role_name: str = None,
+        zone_id: str = None,
+    ):
         # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+        self.cluster_id = cluster_id
         # 集群类型。
-        self.cluster_type = cluster_type  # type: str
+        self.cluster_type = cluster_type
         # 集群创建时间。
-        self.created = created          # type: str
+        self.created = created
         # 集群当前版本。
-        self.current_version = current_version  # type: str
+        self.current_version = current_version
         # 节点系统盘类型。
-        self.data_disk_category = data_disk_category  # type: str
+        self.data_disk_category = data_disk_category
         # 节点系统盘大小。
-        self.data_disk_size = data_disk_size  # type: int
+        self.data_disk_size = data_disk_size
         # 集群是否开启删除保护。
-        self.deletion_protection = deletion_protection  # type: bool
+        self.deletion_protection = deletion_protection
         # 容器运行时版本。
-        self.docker_version = docker_version  # type: str
+        self.docker_version = docker_version
         # 集群Ingerss SLB实例的ID。
-        self.external_loadbalancer_id = external_loadbalancer_id  # type: str
+        self.external_loadbalancer_id = external_loadbalancer_id
         # 集群创建时版本。
-        self.init_version = init_version  # type: str
+        self.init_version = init_version
         # 集群的endpoint地址。
-        self.master_url = master_url    # type: str
+        self.master_url = master_url
         # 集群元数据。
-        self.meta_data = meta_data      # type: str
+        self.meta_data = meta_data
         # 集群名称。
-        self.name = name                # type: str
+        self.name = name
         # 集群使用的网络类型。
-        self.network_mode = network_mode  # type: str
+        self.network_mode = network_mode
         # 集群是否开启Private Zone，默认false。
-        self.private_zone = private_zone  # type: bool
+        self.private_zone = private_zone
         # 集群标识，区分是否为边缘托管版。
-        self.profile = profile          # type: str
+        self.profile = profile
         # 集群所在地域ID。
-        self.region_id = region_id      # type: str
+        self.region_id = region_id
         # 集群资源组ID。
-        self.resource_group_id = resource_group_id  # type: str
+        self.resource_group_id = resource_group_id
         # 集群安全组ID。
-        self.security_group_id = security_group_id  # type: str
+        self.security_group_id = security_group_id
         # 集群内实例数量。
-        self.size = size                # type: int
+        self.size = size
         # 集群运行状态。
-        self.state = state              # type: str
+        self.state = state
         # POD网络。
-        self.subnet_cidr = subnet_cidr  # type: str
+        self.subnet_cidr = subnet_cidr
         # 集群标签。
-        self.tags = tags                # type: List[DescribeClustersResponseBodyTags]
+        self.tags = tags
         # 集群更新时间。
-        self.updated = updated          # type: str
+        self.updated = updated
         # 集群使用的VPC ID。
-        self.vpc_id = vpc_id            # type: str
+        self.vpc_id = vpc_id
         # 虚拟交换机网络ID。
-        self.vswitch_cidr = vswitch_cidr  # type: str
+        self.vswitch_cidr = vswitch_cidr
         # 节点使用的Vswitch ID。
-        self.vswitch_id = vswitch_id    # type: str
+        self.vswitch_id = vswitch_id
         # 集群Worker节点RAM角色名称。
-        self.worker_ram_role_name = worker_ram_role_name  # type: str
+        self.worker_ram_role_name = worker_ram_role_name
         # 集群所在Region内的区域ID。
-        self.zone_id = zone_id          # type: str
+        self.zone_id = zone_id
 
     def validate(self):
         if self.tags:
@@ -1602,7 +1631,7 @@ class DescribeClustersResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.cluster_type is not None:
@@ -1665,168 +1694,142 @@ class DescribeClustersResponseBody(TeaModel):
             result['zone_id'] = self.zone_id
         return result
 
-    def from_map(self, map={}):
-        if map.get('cluster_id') is not None:
-            self.cluster_id = map.get('cluster_id')
-        if map.get('cluster_type') is not None:
-            self.cluster_type = map.get('cluster_type')
-        if map.get('created') is not None:
-            self.created = map.get('created')
-        if map.get('current_version') is not None:
-            self.current_version = map.get('current_version')
-        if map.get('data_disk_category') is not None:
-            self.data_disk_category = map.get('data_disk_category')
-        if map.get('data_disk_size') is not None:
-            self.data_disk_size = map.get('data_disk_size')
-        if map.get('deletion_protection') is not None:
-            self.deletion_protection = map.get('deletion_protection')
-        if map.get('docker_version') is not None:
-            self.docker_version = map.get('docker_version')
-        if map.get('external_loadbalancer_id') is not None:
-            self.external_loadbalancer_id = map.get('external_loadbalancer_id')
-        if map.get('init_version') is not None:
-            self.init_version = map.get('init_version')
-        if map.get('master_url') is not None:
-            self.master_url = map.get('master_url')
-        if map.get('meta_data') is not None:
-            self.meta_data = map.get('meta_data')
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('network_mode') is not None:
-            self.network_mode = map.get('network_mode')
-        if map.get('private_zone') is not None:
-            self.private_zone = map.get('private_zone')
-        if map.get('profile') is not None:
-            self.profile = map.get('profile')
-        if map.get('region_id') is not None:
-            self.region_id = map.get('region_id')
-        if map.get('resource_group_id') is not None:
-            self.resource_group_id = map.get('resource_group_id')
-        if map.get('security_group_id') is not None:
-            self.security_group_id = map.get('security_group_id')
-        if map.get('size') is not None:
-            self.size = map.get('size')
-        if map.get('state') is not None:
-            self.state = map.get('state')
-        if map.get('subnet_cidr') is not None:
-            self.subnet_cidr = map.get('subnet_cidr')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('cluster_type') is not None:
+            self.cluster_type = m.get('cluster_type')
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('current_version') is not None:
+            self.current_version = m.get('current_version')
+        if m.get('data_disk_category') is not None:
+            self.data_disk_category = m.get('data_disk_category')
+        if m.get('data_disk_size') is not None:
+            self.data_disk_size = m.get('data_disk_size')
+        if m.get('deletion_protection') is not None:
+            self.deletion_protection = m.get('deletion_protection')
+        if m.get('docker_version') is not None:
+            self.docker_version = m.get('docker_version')
+        if m.get('external_loadbalancer_id') is not None:
+            self.external_loadbalancer_id = m.get('external_loadbalancer_id')
+        if m.get('init_version') is not None:
+            self.init_version = m.get('init_version')
+        if m.get('master_url') is not None:
+            self.master_url = m.get('master_url')
+        if m.get('meta_data') is not None:
+            self.meta_data = m.get('meta_data')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('network_mode') is not None:
+            self.network_mode = m.get('network_mode')
+        if m.get('private_zone') is not None:
+            self.private_zone = m.get('private_zone')
+        if m.get('profile') is not None:
+            self.profile = m.get('profile')
+        if m.get('region_id') is not None:
+            self.region_id = m.get('region_id')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
+        if m.get('security_group_id') is not None:
+            self.security_group_id = m.get('security_group_id')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('subnet_cidr') is not None:
+            self.subnet_cidr = m.get('subnet_cidr')
         self.tags = []
-        if map.get('tags') is not None:
-            for k in map.get('tags'):
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
                 temp_model = DescribeClustersResponseBodyTags()
                 self.tags.append(temp_model.from_map(k))
-        if map.get('updated') is not None:
-            self.updated = map.get('updated')
-        if map.get('vpc_id') is not None:
-            self.vpc_id = map.get('vpc_id')
-        if map.get('vswitch_cidr') is not None:
-            self.vswitch_cidr = map.get('vswitch_cidr')
-        if map.get('vswitch_id') is not None:
-            self.vswitch_id = map.get('vswitch_id')
-        if map.get('worker_ram_role_name') is not None:
-            self.worker_ram_role_name = map.get('worker_ram_role_name')
-        if map.get('zone_id') is not None:
-            self.zone_id = map.get('zone_id')
+        if m.get('updated') is not None:
+            self.updated = m.get('updated')
+        if m.get('vpc_id') is not None:
+            self.vpc_id = m.get('vpc_id')
+        if m.get('vswitch_cidr') is not None:
+            self.vswitch_cidr = m.get('vswitch_cidr')
+        if m.get('vswitch_id') is not None:
+            self.vswitch_id = m.get('vswitch_id')
+        if m.get('worker_ram_role_name') is not None:
+            self.worker_ram_role_name = m.get('worker_ram_role_name')
+        if m.get('zone_id') is not None:
+            self.zone_id = m.get('zone_id')
         return self
 
 
-class ModifyClusterNodePoolRequest(TeaModel):
-    def __init__(self, auto_scaling=None, kubernetes_config=None, nodepool_info=None, scaling_group=None,
-                 tee_config=None, management=None, update_nodes=None):
-        # 自动伸缩节点池配置。
-        self.auto_scaling = auto_scaling  # type: ModifyClusterNodePoolRequestAutoScaling
-        # 集群配置。
-        self.kubernetes_config = kubernetes_config  # type: ModifyClusterNodePoolRequestKubernetesConfig
-        # 节点池配置。
-        self.nodepool_info = nodepool_info  # type: ModifyClusterNodePoolRequestNodepoolInfo
-        # 扩容组配置。
-        self.scaling_group = scaling_group  # type: ModifyClusterNodePoolRequestScalingGroup
-        # 加密计算配置。
-        self.tee_config = tee_config    # type: ModifyClusterNodePoolRequestTeeConfig
-        # 托管版节点池配置。
-        self.management = management    # type: ModifyClusterNodePoolRequestManagement
-        # 是否同步更新节点标签及污点。
-        self.update_nodes = update_nodes  # type: bool
+class DescribeClustersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: List[DescribeClustersResponseBody] = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
-        if self.auto_scaling:
-            self.auto_scaling.validate()
-        if self.kubernetes_config:
-            self.kubernetes_config.validate()
-        if self.nodepool_info:
-            self.nodepool_info.validate()
-        if self.scaling_group:
-            self.scaling_group.validate()
-        if self.tee_config:
-            self.tee_config.validate()
-        if self.management:
-            self.management.validate()
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
 
     def to_map(self):
-        result = {}
-        if self.auto_scaling is not None:
-            result['auto_scaling'] = self.auto_scaling.to_map()
-        if self.kubernetes_config is not None:
-            result['kubernetes_config'] = self.kubernetes_config.to_map()
-        if self.nodepool_info is not None:
-            result['nodepool_info'] = self.nodepool_info.to_map()
-        if self.scaling_group is not None:
-            result['scaling_group'] = self.scaling_group.to_map()
-        if self.tee_config is not None:
-            result['tee_config'] = self.tee_config.to_map()
-        if self.management is not None:
-            result['management'] = self.management.to_map()
-        if self.update_nodes is not None:
-            result['update_nodes'] = self.update_nodes
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
         return result
 
-    def from_map(self, map={}):
-        if map.get('auto_scaling') is not None:
-            temp_model = ModifyClusterNodePoolRequestAutoScaling()
-            self.auto_scaling = temp_model.from_map(map['auto_scaling'])
-        if map.get('kubernetes_config') is not None:
-            temp_model = ModifyClusterNodePoolRequestKubernetesConfig()
-            self.kubernetes_config = temp_model.from_map(map['kubernetes_config'])
-        if map.get('nodepool_info') is not None:
-            temp_model = ModifyClusterNodePoolRequestNodepoolInfo()
-            self.nodepool_info = temp_model.from_map(map['nodepool_info'])
-        if map.get('scaling_group') is not None:
-            temp_model = ModifyClusterNodePoolRequestScalingGroup()
-            self.scaling_group = temp_model.from_map(map['scaling_group'])
-        if map.get('tee_config') is not None:
-            temp_model = ModifyClusterNodePoolRequestTeeConfig()
-            self.tee_config = temp_model.from_map(map['tee_config'])
-        if map.get('management') is not None:
-            temp_model = ModifyClusterNodePoolRequestManagement()
-            self.management = temp_model.from_map(map['management'])
-        if map.get('update_nodes') is not None:
-            self.update_nodes = map.get('update_nodes')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = DescribeClustersResponseBody()
+                self.body.append(temp_model.from_map(k))
         return self
 
 
 class ModifyClusterNodePoolRequestAutoScaling(TeaModel):
-    def __init__(self, eip_bandwidth=None, eip_internet_charge_type=None, enable=None, is_bond_eip=None,
-                 max_instances=None, min_instances=None, type=None):
+    def __init__(
+        self,
+        eip_bandwidth: int = None,
+        eip_internet_charge_type: str = None,
+        enable: bool = None,
+        is_bond_eip: bool = None,
+        max_instances: int = None,
+        min_instances: int = None,
+        type: str = None,
+    ):
         # 带宽峰值。
-        self.eip_bandwidth = eip_bandwidth  # type: int
+        self.eip_bandwidth = eip_bandwidth
         # EIP计费类型。
-        self.eip_internet_charge_type = eip_internet_charge_type  # type: str
+        self.eip_internet_charge_type = eip_internet_charge_type
         # 是否开启自动伸缩。
-        self.enable = enable            # type: bool
+        self.enable = enable
         # 是否绑定EIP。
-        self.is_bond_eip = is_bond_eip  # type: bool
+        self.is_bond_eip = is_bond_eip
         # 最大实例数。
-        self.max_instances = max_instances  # type: int
+        self.max_instances = max_instances
         # 最小实例数。
-        self.min_instances = min_instances  # type: int
+        self.min_instances = min_instances
         # 自动伸缩节点类型。
-        self.type = type                # type: str
+        self.type = type
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.eip_bandwidth is not None:
             result['eip_bandwidth'] = self.eip_bandwidth
         if self.eip_internet_charge_type is not None:
@@ -1843,41 +1846,50 @@ class ModifyClusterNodePoolRequestAutoScaling(TeaModel):
             result['type'] = self.type
         return result
 
-    def from_map(self, map={}):
-        if map.get('eip_bandwidth') is not None:
-            self.eip_bandwidth = map.get('eip_bandwidth')
-        if map.get('eip_internet_charge_type') is not None:
-            self.eip_internet_charge_type = map.get('eip_internet_charge_type')
-        if map.get('enable') is not None:
-            self.enable = map.get('enable')
-        if map.get('is_bond_eip') is not None:
-            self.is_bond_eip = map.get('is_bond_eip')
-        if map.get('max_instances') is not None:
-            self.max_instances = map.get('max_instances')
-        if map.get('min_instances') is not None:
-            self.min_instances = map.get('min_instances')
-        if map.get('type') is not None:
-            self.type = map.get('type')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('eip_bandwidth') is not None:
+            self.eip_bandwidth = m.get('eip_bandwidth')
+        if m.get('eip_internet_charge_type') is not None:
+            self.eip_internet_charge_type = m.get('eip_internet_charge_type')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('is_bond_eip') is not None:
+            self.is_bond_eip = m.get('is_bond_eip')
+        if m.get('max_instances') is not None:
+            self.max_instances = m.get('max_instances')
+        if m.get('min_instances') is not None:
+            self.min_instances = m.get('min_instances')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         return self
 
 
 class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
-    def __init__(self, cms_enabled=None, cpu_policy=None, labels=None, runtime=None, runtime_version=None,
-                 taints=None, user_data=None):
+    def __init__(
+        self,
+        cms_enabled: bool = None,
+        cpu_policy: str = None,
+        labels: List[Tag] = None,
+        runtime: str = None,
+        runtime_version: str = None,
+        taints: List[Taint] = None,
+        user_data: str = None,
+    ):
         # 是否开启云监控。
-        self.cms_enabled = cms_enabled  # type: bool
+        self.cms_enabled = cms_enabled
         # CPU管理策略。
-        self.cpu_policy = cpu_policy    # type: str
+        self.cpu_policy = cpu_policy
         # 节点标签。
-        self.labels = labels            # type: List[Tags]
+        self.labels = labels
         # 容器运行时。
-        self.runtime = runtime          # type: str
+        self.runtime = runtime
         # 容器运行时版本。
-        self.runtime_version = runtime_version  # type: str
+        self.runtime_version = runtime_version
         # 污点配置。
-        self.taints = taints            # type: List[Taints]
+        self.taints = taints
         # 实例自定义数据。
-        self.user_data = user_data      # type: str
+        self.user_data = user_data
 
     def validate(self):
         if self.labels:
@@ -1890,7 +1902,7 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cms_enabled is not None:
             result['cms_enabled'] = self.cms_enabled
         if self.cpu_policy is not None:
@@ -1911,125 +1923,172 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
             result['user_data'] = self.user_data
         return result
 
-    def from_map(self, map={}):
-        if map.get('cms_enabled') is not None:
-            self.cms_enabled = map.get('cms_enabled')
-        if map.get('cpu_policy') is not None:
-            self.cpu_policy = map.get('cpu_policy')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cms_enabled') is not None:
+            self.cms_enabled = m.get('cms_enabled')
+        if m.get('cpu_policy') is not None:
+            self.cpu_policy = m.get('cpu_policy')
         self.labels = []
-        if map.get('labels') is not None:
-            for k in map.get('labels'):
-                temp_model = Tags()
+        if m.get('labels') is not None:
+            for k in m.get('labels'):
+                temp_model = Tag()
                 self.labels.append(temp_model.from_map(k))
-        if map.get('runtime') is not None:
-            self.runtime = map.get('runtime')
-        if map.get('runtime_version') is not None:
-            self.runtime_version = map.get('runtime_version')
+        if m.get('runtime') is not None:
+            self.runtime = m.get('runtime')
+        if m.get('runtime_version') is not None:
+            self.runtime_version = m.get('runtime_version')
         self.taints = []
-        if map.get('taints') is not None:
-            for k in map.get('taints'):
-                temp_model = Taints()
+        if m.get('taints') is not None:
+            for k in m.get('taints'):
+                temp_model = Taint()
                 self.taints.append(temp_model.from_map(k))
-        if map.get('user_data') is not None:
-            self.user_data = map.get('user_data')
+        if m.get('user_data') is not None:
+            self.user_data = m.get('user_data')
         return self
 
 
 class ModifyClusterNodePoolRequestNodepoolInfo(TeaModel):
-    def __init__(self, name=None, resource_group_id=None):
+    def __init__(
+        self,
+        name: str = None,
+        resource_group_id: str = None,
+    ):
         # 节点池名称。
-        self.name = name                # type: str
+        self.name = name
         # 资源组ID。
-        self.resource_group_id = resource_group_id  # type: str
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.name is not None:
             result['name'] = self.name
         if self.resource_group_id is not None:
             result['resource_group_id'] = self.resource_group_id
         return result
 
-    def from_map(self, map={}):
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('resource_group_id') is not None:
-            self.resource_group_id = map.get('resource_group_id')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
         return self
 
 
 class ModifyClusterNodePoolRequestScalingGroupSpotPriceLimit(TeaModel):
-    def __init__(self, instance_type=None, price_limit=None):
+    def __init__(
+        self,
+        instance_type: str = None,
+        price_limit: str = None,
+    ):
         # 抢占式实例规格
-        self.instance_type = instance_type  # type: str
+        self.instance_type = instance_type
         # 单台实例上限价格，单位：元/小时。
-        self.price_limit = price_limit  # type: str
+        self.price_limit = price_limit
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.instance_type is not None:
             result['instance_type'] = self.instance_type
         if self.price_limit is not None:
             result['price_limit'] = self.price_limit
         return result
 
-    def from_map(self, map={}):
-        if map.get('instance_type') is not None:
-            self.instance_type = map.get('instance_type')
-        if map.get('price_limit') is not None:
-            self.price_limit = map.get('price_limit')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instance_type') is not None:
+            self.instance_type = m.get('instance_type')
+        if m.get('price_limit') is not None:
+            self.price_limit = m.get('price_limit')
         return self
 
 
 class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
-    def __init__(self, data_disks=None, instance_charge_type=None, period=None, period_unit=None, auto_renew=None,
-                 auto_renew_period=None, platform=None, image_id=None, spot_strategy=None, spot_price_limit=None, instance_types=None,
-                 key_pair=None, login_password=None, rds_instances=None, scaling_policy=None, system_disk_category=None,
-                 system_disk_size=None, tags=None, vswitch_ids=None):
+    def __init__(
+        self,
+        data_disks: List[DataDisk] = None,
+        instance_charge_type: str = None,
+        period: int = None,
+        period_unit: str = None,
+        auto_renew: bool = None,
+        auto_renew_period: int = None,
+        platform: str = None,
+        image_id: str = None,
+        spot_strategy: str = None,
+        spot_price_limit: List[ModifyClusterNodePoolRequestScalingGroupSpotPriceLimit] = None,
+        instance_types: List[str] = None,
+        key_pair: str = None,
+        login_password: str = None,
+        rds_instances: List[str] = None,
+        scaling_policy: str = None,
+        system_disk_category: str = None,
+        system_disk_size: int = None,
+        tags: List[Tag] = None,
+        vswitch_ids: List[str] = None,
+        multi_az_policy: str = None,
+        on_demand_base_capacity: int = None,
+        on_demand_percentage_above_base_capacity: int = None,
+        spot_instance_pools: int = None,
+        spot_instance_remedy: bool = None,
+        compensate_with_on_demand: bool = None,
+    ):
         # 数据盘配置。
-        self.data_disks = data_disks    # type: List[DataDisks]
+        self.data_disks = data_disks
         # 节点付费类型。
-        self.instance_charge_type = instance_charge_type  # type: str
+        self.instance_charge_type = instance_charge_type
         # 包年包月时长
-        self.period = period            # type: int
+        self.period = period
         # 付费周期
-        self.period_unit = period_unit  # type: str
+        self.period_unit = period_unit
         # 节点池节点是启用自动续费
-        self.auto_renew = auto_renew    # type: bool
+        self.auto_renew = auto_renew
         # 节点池节点自动续费周期
-        self.auto_renew_period = auto_renew_period  # type: int
+        self.auto_renew_period = auto_renew_period
         # 操作系统发行版。
-        self.platform = platform        # type: str
+        self.platform = platform
         # 自定义镜像
-        self.image_id = image_id        # type: str
+        self.image_id = image_id
         # 抢占式实例类型
-        self.spot_strategy = spot_strategy  # type: str
+        self.spot_strategy = spot_strategy
         # 抢占实例价格上限配置
-        self.spot_price_limit = spot_price_limit  # type: List[ModifyClusterNodePoolRequestScalingGroupSpotPriceLimit]
+        self.spot_price_limit = spot_price_limit
         # 节点实例规格。
-        self.instance_types = instance_types  # type: List[str]
+        self.instance_types = instance_types
         # 密钥对名称，和login_password二选一。
-        self.key_pair = key_pair        # type: str
+        self.key_pair = key_pair
         # SSH登录密码，和key_pari二选一。
-        self.login_password = login_password  # type: str
+        self.login_password = login_password
         # RDS实例列表。
-        self.rds_instances = rds_instances  # type: List[str]
+        self.rds_instances = rds_instances
         # 扩容策略。
-        self.scaling_policy = scaling_policy  # type: str
+        self.scaling_policy = scaling_policy
         # 节点系统盘类型。
-        self.system_disk_category = system_disk_category  # type: str
+        self.system_disk_category = system_disk_category
         # 节点系统盘大小。
-        self.system_disk_size = system_disk_size  # type: int
+        self.system_disk_size = system_disk_size
         # ECS标签。
-        self.tags = tags                # type: List[Tags]
+        self.tags = tags
         # 节点使用的虚拟交换机ID。
-        self.vswitch_ids = vswitch_ids  # type: List[str]
+        self.vswitch_ids = vswitch_ids
+        # 多可用区伸缩组ECS实例扩缩容策略
+        self.multi_az_policy = multi_az_policy
+        # 伸缩组所需要按量实例个数的最小值，取值范围：0~1000。当按量实例个数少于该值时，将优先创建按量实例。
+        self.on_demand_base_capacity = on_demand_base_capacity
+        # 伸缩组满足最小按量实例数（OnDemandBaseCapacity）要求后，超出的实例中按量实例应占的比例，取值范围：0～100。
+        self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        # 指定可用实例规格的个数，伸缩组将按成本最低的多个规格均衡创建抢占式实例。取值范围：1~10。
+        self.spot_instance_pools = spot_instance_pools
+        # 是否开启补齐抢占式实例。开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。
+        self.spot_instance_remedy = spot_instance_remedy
+        # 当MultiAZPolicy取值为COST_OPTIMIZED时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值范围：true：允许。false：不允许。默认值：true
+        self.compensate_with_on_demand = compensate_with_on_demand
 
     def validate(self):
         if self.data_disks:
@@ -2046,7 +2105,7 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['data_disks'] = []
         if self.data_disks is not None:
             for k in self.data_disks:
@@ -2091,95 +2150,130 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
                 result['tags'].append(k.to_map() if k else None)
         if self.vswitch_ids is not None:
             result['vswitch_ids'] = self.vswitch_ids
+        if self.multi_az_policy is not None:
+            result['multi_az_policy'] = self.multi_az_policy
+        if self.on_demand_base_capacity is not None:
+            result['on_demand_base_capacity'] = self.on_demand_base_capacity
+        if self.on_demand_percentage_above_base_capacity is not None:
+            result['on_demand_percentage_above_base_capacity'] = self.on_demand_percentage_above_base_capacity
+        if self.spot_instance_pools is not None:
+            result['spot_instance_pools'] = self.spot_instance_pools
+        if self.spot_instance_remedy is not None:
+            result['spot_instance_remedy'] = self.spot_instance_remedy
+        if self.compensate_with_on_demand is not None:
+            result['compensate_with_on_demand'] = self.compensate_with_on_demand
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.data_disks = []
-        if map.get('data_disks') is not None:
-            for k in map.get('data_disks'):
-                temp_model = DataDisks()
+        if m.get('data_disks') is not None:
+            for k in m.get('data_disks'):
+                temp_model = DataDisk()
                 self.data_disks.append(temp_model.from_map(k))
-        if map.get('instance_charge_type') is not None:
-            self.instance_charge_type = map.get('instance_charge_type')
-        if map.get('period') is not None:
-            self.period = map.get('period')
-        if map.get('period_unit') is not None:
-            self.period_unit = map.get('period_unit')
-        if map.get('auto_renew') is not None:
-            self.auto_renew = map.get('auto_renew')
-        if map.get('auto_renew_period') is not None:
-            self.auto_renew_period = map.get('auto_renew_period')
-        if map.get('platform') is not None:
-            self.platform = map.get('platform')
-        if map.get('image_id') is not None:
-            self.image_id = map.get('image_id')
-        if map.get('spot_strategy') is not None:
-            self.spot_strategy = map.get('spot_strategy')
+        if m.get('instance_charge_type') is not None:
+            self.instance_charge_type = m.get('instance_charge_type')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        if m.get('period_unit') is not None:
+            self.period_unit = m.get('period_unit')
+        if m.get('auto_renew') is not None:
+            self.auto_renew = m.get('auto_renew')
+        if m.get('auto_renew_period') is not None:
+            self.auto_renew_period = m.get('auto_renew_period')
+        if m.get('platform') is not None:
+            self.platform = m.get('platform')
+        if m.get('image_id') is not None:
+            self.image_id = m.get('image_id')
+        if m.get('spot_strategy') is not None:
+            self.spot_strategy = m.get('spot_strategy')
         self.spot_price_limit = []
-        if map.get('spot_price_limit') is not None:
-            for k in map.get('spot_price_limit'):
+        if m.get('spot_price_limit') is not None:
+            for k in m.get('spot_price_limit'):
                 temp_model = ModifyClusterNodePoolRequestScalingGroupSpotPriceLimit()
                 self.spot_price_limit.append(temp_model.from_map(k))
-        if map.get('instance_types') is not None:
-            self.instance_types = map.get('instance_types')
-        if map.get('key_pair') is not None:
-            self.key_pair = map.get('key_pair')
-        if map.get('login_password') is not None:
-            self.login_password = map.get('login_password')
-        if map.get('rds_instances') is not None:
-            self.rds_instances = map.get('rds_instances')
-        if map.get('scaling_policy') is not None:
-            self.scaling_policy = map.get('scaling_policy')
-        if map.get('system_disk_category') is not None:
-            self.system_disk_category = map.get('system_disk_category')
-        if map.get('system_disk_size') is not None:
-            self.system_disk_size = map.get('system_disk_size')
+        if m.get('instance_types') is not None:
+            self.instance_types = m.get('instance_types')
+        if m.get('key_pair') is not None:
+            self.key_pair = m.get('key_pair')
+        if m.get('login_password') is not None:
+            self.login_password = m.get('login_password')
+        if m.get('rds_instances') is not None:
+            self.rds_instances = m.get('rds_instances')
+        if m.get('scaling_policy') is not None:
+            self.scaling_policy = m.get('scaling_policy')
+        if m.get('system_disk_category') is not None:
+            self.system_disk_category = m.get('system_disk_category')
+        if m.get('system_disk_size') is not None:
+            self.system_disk_size = m.get('system_disk_size')
         self.tags = []
-        if map.get('tags') is not None:
-            for k in map.get('tags'):
-                temp_model = Tags()
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
-        if map.get('vswitch_ids') is not None:
-            self.vswitch_ids = map.get('vswitch_ids')
+        if m.get('vswitch_ids') is not None:
+            self.vswitch_ids = m.get('vswitch_ids')
+        if m.get('multi_az_policy') is not None:
+            self.multi_az_policy = m.get('multi_az_policy')
+        if m.get('on_demand_base_capacity') is not None:
+            self.on_demand_base_capacity = m.get('on_demand_base_capacity')
+        if m.get('on_demand_percentage_above_base_capacity') is not None:
+            self.on_demand_percentage_above_base_capacity = m.get('on_demand_percentage_above_base_capacity')
+        if m.get('spot_instance_pools') is not None:
+            self.spot_instance_pools = m.get('spot_instance_pools')
+        if m.get('spot_instance_remedy') is not None:
+            self.spot_instance_remedy = m.get('spot_instance_remedy')
+        if m.get('compensate_with_on_demand') is not None:
+            self.compensate_with_on_demand = m.get('compensate_with_on_demand')
         return self
 
 
 class ModifyClusterNodePoolRequestTeeConfig(TeaModel):
-    def __init__(self, tee_enable=None):
+    def __init__(
+        self,
+        tee_enable: bool = None,
+    ):
         # 是否为加密计算节点池。
-        self.tee_enable = tee_enable    # type: bool
+        self.tee_enable = tee_enable
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.tee_enable is not None:
             result['tee_enable'] = self.tee_enable
         return result
 
-    def from_map(self, map={}):
-        if map.get('tee_enable') is not None:
-            self.tee_enable = map.get('tee_enable')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tee_enable') is not None:
+            self.tee_enable = m.get('tee_enable')
         return self
 
 
 class ModifyClusterNodePoolRequestManagementUpgradeConfig(TeaModel):
-    def __init__(self, auto_upgrade=None, surge=None, surge_percentage=None, max_unavailable=None):
+    def __init__(
+        self,
+        auto_upgrade: bool = None,
+        surge: int = None,
+        surge_percentage: int = None,
+        max_unavailable: int = None,
+    ):
         # 是否启用自动升级，自修复。
-        self.auto_upgrade = auto_upgrade  # type: bool
+        self.auto_upgrade = auto_upgrade
         # 额外节点数量。
-        self.surge = surge              # type: int
+        self.surge = surge
         # 额外节点比例， 和surge 二选一。
-        self.surge_percentage = surge_percentage  # type: int
+        self.surge_percentage = surge_percentage
         # 最大不可用节点数量。
-        self.max_unavailable = max_unavailable  # type: int
+        self.max_unavailable = max_unavailable
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.auto_upgrade is not None:
             result['auto_upgrade'] = self.auto_upgrade
         if self.surge is not None:
@@ -2190,33 +2284,39 @@ class ModifyClusterNodePoolRequestManagementUpgradeConfig(TeaModel):
             result['max_unavailable'] = self.max_unavailable
         return result
 
-    def from_map(self, map={}):
-        if map.get('auto_upgrade') is not None:
-            self.auto_upgrade = map.get('auto_upgrade')
-        if map.get('surge') is not None:
-            self.surge = map.get('surge')
-        if map.get('surge_percentage') is not None:
-            self.surge_percentage = map.get('surge_percentage')
-        if map.get('max_unavailable') is not None:
-            self.max_unavailable = map.get('max_unavailable')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_upgrade') is not None:
+            self.auto_upgrade = m.get('auto_upgrade')
+        if m.get('surge') is not None:
+            self.surge = m.get('surge')
+        if m.get('surge_percentage') is not None:
+            self.surge_percentage = m.get('surge_percentage')
+        if m.get('max_unavailable') is not None:
+            self.max_unavailable = m.get('max_unavailable')
         return self
 
 
 class ModifyClusterNodePoolRequestManagement(TeaModel):
-    def __init__(self, enable=None, auto_repair=None, upgrade_config=None):
+    def __init__(
+        self,
+        enable: bool = None,
+        auto_repair: bool = None,
+        upgrade_config: ModifyClusterNodePoolRequestManagementUpgradeConfig = None,
+    ):
         # 是否启用托管节点池。
-        self.enable = enable            # type: bool
+        self.enable = enable
         # 是否开启自动修复。
-        self.auto_repair = auto_repair  # type: bool
+        self.auto_repair = auto_repair
         # 自动升级配置。
-        self.upgrade_config = upgrade_config  # type: ModifyClusterNodePoolRequestManagementUpgradeConfig
+        self.upgrade_config = upgrade_config
 
     def validate(self):
         if self.upgrade_config:
             self.upgrade_config.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.enable is not None:
             result['enable'] = self.enable
         if self.auto_repair is not None:
@@ -2225,175 +2325,43 @@ class ModifyClusterNodePoolRequestManagement(TeaModel):
             result['upgrade_config'] = self.upgrade_config.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('enable') is not None:
-            self.enable = map.get('enable')
-        if map.get('auto_repair') is not None:
-            self.auto_repair = map.get('auto_repair')
-        if map.get('upgrade_config') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('auto_repair') is not None:
+            self.auto_repair = m.get('auto_repair')
+        if m.get('upgrade_config') is not None:
             temp_model = ModifyClusterNodePoolRequestManagementUpgradeConfig()
-            self.upgrade_config = temp_model.from_map(map['upgrade_config'])
+            self.upgrade_config = temp_model.from_map(m['upgrade_config'])
         return self
 
 
-class ModifyClusterNodePoolResponseBody(TeaModel):
-    def __init__(self, task_id=None, nodepool_id=None):
-        # 任务ID。
-        self.task_id = task_id          # type: str
-        # 节点池ID。
-        self.nodepool_id = nodepool_id  # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.task_id is not None:
-            result['task_id'] = self.task_id
-        if self.nodepool_id is not None:
-            result['nodepool_id'] = self.nodepool_id
-        return result
-
-    def from_map(self, map={}):
-        if map.get('task_id') is not None:
-            self.task_id = map.get('task_id')
-        if map.get('nodepool_id') is not None:
-            self.nodepool_id = map.get('nodepool_id')
-        return self
-
-
-class ModifyClusterNodePoolResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: ModifyClusterNodePoolResponseBody
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = {}
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
-            temp_model = ModifyClusterNodePoolResponseBody()
-            self.body = temp_model.from_map(map['body'])
-        return self
-
-
-class ResumeUpgradeClusterResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-
-    def to_map(self):
-        result = {}
-        if self.headers is not None:
-            result['headers'] = self.headers
-        return result
-
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        return self
-
-
-class ScaleClusterNodePoolRequest(TeaModel):
-    def __init__(self, count=None):
-        # 扩容节点数量
-        self.count = count              # type: int
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.count is not None:
-            result['count'] = self.count
-        return result
-
-    def from_map(self, map={}):
-        if map.get('count') is not None:
-            self.count = map.get('count')
-        return self
-
-
-class ScaleClusterNodePoolResponseBody(TeaModel):
-    def __init__(self, task_id=None):
-        # 任务ID。
-        self.task_id = task_id          # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.task_id is not None:
-            result['task_id'] = self.task_id
-        return result
-
-    def from_map(self, map={}):
-        if map.get('task_id') is not None:
-            self.task_id = map.get('task_id')
-        return self
-
-
-class ScaleClusterNodePoolResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: ScaleClusterNodePoolResponseBody
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = {}
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
-            temp_model = ScaleClusterNodePoolResponseBody()
-            self.body = temp_model.from_map(map['body'])
-        return self
-
-
-class DescribeClusterNodePoolDetailResponseBody(TeaModel):
-    def __init__(self, auto_scaling=None, kubernetes_config=None, nodepool_info=None, scaling_group=None,
-                 status=None, tee_config=None, management=None):
-        # 节点池自动伸缩信息。
-        self.auto_scaling = auto_scaling  # type: DescribeClusterNodePoolDetailResponseBodyAutoScaling
-        # 节点池所属集群配置。
-        self.kubernetes_config = kubernetes_config  # type: DescribeClusterNodePoolDetailResponseBodyKubernetesConfig
-        # 节点池详情。
-        self.nodepool_info = nodepool_info  # type: DescribeClusterNodePoolDetailResponseBodyNodepoolInfo
-        # 节点池扩容组信息。
-        self.scaling_group = scaling_group  # type: DescribeClusterNodePoolDetailResponseBodyScalingGroup
-        # 节点池状态。
-        self.status = status            # type: DescribeClusterNodePoolDetailResponseBodyStatus
-        # 加密计算节点池信息。
-        self.tee_config = tee_config    # type: DescribeClusterNodePoolDetailResponseBodyTeeConfig
+class ModifyClusterNodePoolRequest(TeaModel):
+    def __init__(
+        self,
+        auto_scaling: ModifyClusterNodePoolRequestAutoScaling = None,
+        kubernetes_config: ModifyClusterNodePoolRequestKubernetesConfig = None,
+        nodepool_info: ModifyClusterNodePoolRequestNodepoolInfo = None,
+        scaling_group: ModifyClusterNodePoolRequestScalingGroup = None,
+        tee_config: ModifyClusterNodePoolRequestTeeConfig = None,
+        management: ModifyClusterNodePoolRequestManagement = None,
+        update_nodes: bool = None,
+    ):
+        # 自动伸缩节点池配置。
+        self.auto_scaling = auto_scaling
+        # 集群配置。
+        self.kubernetes_config = kubernetes_config
+        # 节点池配置。
+        self.nodepool_info = nodepool_info
+        # 扩容组配置。
+        self.scaling_group = scaling_group
+        # 加密计算配置。
+        self.tee_config = tee_config
         # 托管版节点池配置。
-        self.management = management    # type: DescribeClusterNodePoolDetailResponseBodyManagement
+        self.management = management
+        # 是否同步更新节点标签及污点。
+        self.update_nodes = update_nodes
 
     def validate(self):
         if self.auto_scaling:
@@ -2404,15 +2372,13 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
             self.nodepool_info.validate()
         if self.scaling_group:
             self.scaling_group.validate()
-        if self.status:
-            self.status.validate()
         if self.tee_config:
             self.tee_config.validate()
         if self.management:
             self.management.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.auto_scaling is not None:
             result['auto_scaling'] = self.auto_scaling.to_map()
         if self.kubernetes_config is not None:
@@ -2421,62 +2387,238 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
             result['nodepool_info'] = self.nodepool_info.to_map()
         if self.scaling_group is not None:
             result['scaling_group'] = self.scaling_group.to_map()
-        if self.status is not None:
-            result['status'] = self.status.to_map()
         if self.tee_config is not None:
             result['tee_config'] = self.tee_config.to_map()
         if self.management is not None:
             result['management'] = self.management.to_map()
+        if self.update_nodes is not None:
+            result['update_nodes'] = self.update_nodes
         return result
 
-    def from_map(self, map={}):
-        if map.get('auto_scaling') is not None:
-            temp_model = DescribeClusterNodePoolDetailResponseBodyAutoScaling()
-            self.auto_scaling = temp_model.from_map(map['auto_scaling'])
-        if map.get('kubernetes_config') is not None:
-            temp_model = DescribeClusterNodePoolDetailResponseBodyKubernetesConfig()
-            self.kubernetes_config = temp_model.from_map(map['kubernetes_config'])
-        if map.get('nodepool_info') is not None:
-            temp_model = DescribeClusterNodePoolDetailResponseBodyNodepoolInfo()
-            self.nodepool_info = temp_model.from_map(map['nodepool_info'])
-        if map.get('scaling_group') is not None:
-            temp_model = DescribeClusterNodePoolDetailResponseBodyScalingGroup()
-            self.scaling_group = temp_model.from_map(map['scaling_group'])
-        if map.get('status') is not None:
-            temp_model = DescribeClusterNodePoolDetailResponseBodyStatus()
-            self.status = temp_model.from_map(map['status'])
-        if map.get('tee_config') is not None:
-            temp_model = DescribeClusterNodePoolDetailResponseBodyTeeConfig()
-            self.tee_config = temp_model.from_map(map['tee_config'])
-        if map.get('management') is not None:
-            temp_model = DescribeClusterNodePoolDetailResponseBodyManagement()
-            self.management = temp_model.from_map(map['management'])
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_scaling') is not None:
+            temp_model = ModifyClusterNodePoolRequestAutoScaling()
+            self.auto_scaling = temp_model.from_map(m['auto_scaling'])
+        if m.get('kubernetes_config') is not None:
+            temp_model = ModifyClusterNodePoolRequestKubernetesConfig()
+            self.kubernetes_config = temp_model.from_map(m['kubernetes_config'])
+        if m.get('nodepool_info') is not None:
+            temp_model = ModifyClusterNodePoolRequestNodepoolInfo()
+            self.nodepool_info = temp_model.from_map(m['nodepool_info'])
+        if m.get('scaling_group') is not None:
+            temp_model = ModifyClusterNodePoolRequestScalingGroup()
+            self.scaling_group = temp_model.from_map(m['scaling_group'])
+        if m.get('tee_config') is not None:
+            temp_model = ModifyClusterNodePoolRequestTeeConfig()
+            self.tee_config = temp_model.from_map(m['tee_config'])
+        if m.get('management') is not None:
+            temp_model = ModifyClusterNodePoolRequestManagement()
+            self.management = temp_model.from_map(m['management'])
+        if m.get('update_nodes') is not None:
+            self.update_nodes = m.get('update_nodes')
         return self
 
 
-class DescribeClusterNodePoolDetailResponseBodyAutoScaling(TeaModel):
-    def __init__(self, eip_bandwidth=None, eip_internet_charge_type=None, enable=None, is_bond_eip=None,
-                 max_instances=None, min_instances=None, type=None):
-        # EIP带宽峰值。
-        self.eip_bandwidth = eip_bandwidth  # type: int
-        # EIP实例付费类型。
-        self.eip_internet_charge_type = eip_internet_charge_type  # type: str
-        # 是否启用自动伸缩。
-        self.enable = enable            # type: bool
-        # 是否绑定EIP。
-        self.is_bond_eip = is_bond_eip  # type: bool
-        # 最大实例数。
-        self.max_instances = max_instances  # type: int
-        # 最小实例数。
-        self.min_instances = min_instances  # type: int
-        # 扩容组类型
-        self.type = type                # type: str
+class ModifyClusterNodePoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        nodepool_id: str = None,
+    ):
+        # 任务ID。
+        self.task_id = task_id
+        # 节点池ID。
+        self.nodepool_id = nodepool_id
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        if self.nodepool_id is not None:
+            result['nodepool_id'] = self.nodepool_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        if m.get('nodepool_id') is not None:
+            self.nodepool_id = m.get('nodepool_id')
+        return self
+
+
+class ModifyClusterNodePoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyClusterNodePoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyClusterNodePoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ResumeUpgradeClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class ScaleClusterNodePoolRequest(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+    ):
+        # 扩容节点数量
+        self.count = count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        return self
+
+
+class ScaleClusterNodePoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # 任务ID。
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class ScaleClusterNodePoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ScaleClusterNodePoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ScaleClusterNodePoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeClusterNodePoolDetailResponseBodyAutoScaling(TeaModel):
+    def __init__(
+        self,
+        eip_bandwidth: int = None,
+        eip_internet_charge_type: str = None,
+        enable: bool = None,
+        is_bond_eip: bool = None,
+        max_instances: int = None,
+        min_instances: int = None,
+        type: str = None,
+    ):
+        # EIP带宽峰值。
+        self.eip_bandwidth = eip_bandwidth
+        # EIP实例付费类型。
+        self.eip_internet_charge_type = eip_internet_charge_type
+        # 是否启用自动伸缩。
+        self.enable = enable
+        # 是否绑定EIP。
+        self.is_bond_eip = is_bond_eip
+        # 最大实例数。
+        self.max_instances = max_instances
+        # 最小实例数。
+        self.min_instances = min_instances
+        # 扩容组类型
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
         if self.eip_bandwidth is not None:
             result['eip_bandwidth'] = self.eip_bandwidth
         if self.eip_internet_charge_type is not None:
@@ -2493,41 +2635,50 @@ class DescribeClusterNodePoolDetailResponseBodyAutoScaling(TeaModel):
             result['type'] = self.type
         return result
 
-    def from_map(self, map={}):
-        if map.get('eip_bandwidth') is not None:
-            self.eip_bandwidth = map.get('eip_bandwidth')
-        if map.get('eip_internet_charge_type') is not None:
-            self.eip_internet_charge_type = map.get('eip_internet_charge_type')
-        if map.get('enable') is not None:
-            self.enable = map.get('enable')
-        if map.get('is_bond_eip') is not None:
-            self.is_bond_eip = map.get('is_bond_eip')
-        if map.get('max_instances') is not None:
-            self.max_instances = map.get('max_instances')
-        if map.get('min_instances') is not None:
-            self.min_instances = map.get('min_instances')
-        if map.get('type') is not None:
-            self.type = map.get('type')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('eip_bandwidth') is not None:
+            self.eip_bandwidth = m.get('eip_bandwidth')
+        if m.get('eip_internet_charge_type') is not None:
+            self.eip_internet_charge_type = m.get('eip_internet_charge_type')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('is_bond_eip') is not None:
+            self.is_bond_eip = m.get('is_bond_eip')
+        if m.get('max_instances') is not None:
+            self.max_instances = m.get('max_instances')
+        if m.get('min_instances') is not None:
+            self.min_instances = m.get('min_instances')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         return self
 
 
 class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
-    def __init__(self, cms_enabled=None, cpu_policy=None, labels=None, runtime=None, runtime_version=None,
-                 taints=None, user_data=None):
+    def __init__(
+        self,
+        cms_enabled: bool = None,
+        cpu_policy: str = None,
+        labels: List[Tag] = None,
+        runtime: str = None,
+        runtime_version: str = None,
+        taints: List[Taint] = None,
+        user_data: str = None,
+    ):
         # 是否开启云监控
-        self.cms_enabled = cms_enabled  # type: bool
+        self.cms_enabled = cms_enabled
         # CPU管理策略
-        self.cpu_policy = cpu_policy    # type: str
+        self.cpu_policy = cpu_policy
         # 节点标签。
-        self.labels = labels            # type: List[Tags]
+        self.labels = labels
         # 容器运行时
-        self.runtime = runtime          # type: str
+        self.runtime = runtime
         # 容器运行时版本。
-        self.runtime_version = runtime_version  # type: str
+        self.runtime_version = runtime_version
         # 污点配置。
-        self.taints = taints            # type: List[Taints]
+        self.taints = taints
         # 节点自定义数据
-        self.user_data = user_data      # type: str
+        self.user_data = user_data
 
     def validate(self):
         if self.labels:
@@ -2540,7 +2691,7 @@ class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cms_enabled is not None:
             result['cms_enabled'] = self.cms_enabled
         if self.cpu_policy is not None:
@@ -2561,55 +2712,65 @@ class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
             result['user_data'] = self.user_data
         return result
 
-    def from_map(self, map={}):
-        if map.get('cms_enabled') is not None:
-            self.cms_enabled = map.get('cms_enabled')
-        if map.get('cpu_policy') is not None:
-            self.cpu_policy = map.get('cpu_policy')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cms_enabled') is not None:
+            self.cms_enabled = m.get('cms_enabled')
+        if m.get('cpu_policy') is not None:
+            self.cpu_policy = m.get('cpu_policy')
         self.labels = []
-        if map.get('labels') is not None:
-            for k in map.get('labels'):
-                temp_model = Tags()
+        if m.get('labels') is not None:
+            for k in m.get('labels'):
+                temp_model = Tag()
                 self.labels.append(temp_model.from_map(k))
-        if map.get('runtime') is not None:
-            self.runtime = map.get('runtime')
-        if map.get('runtime_version') is not None:
-            self.runtime_version = map.get('runtime_version')
+        if m.get('runtime') is not None:
+            self.runtime = m.get('runtime')
+        if m.get('runtime_version') is not None:
+            self.runtime_version = m.get('runtime_version')
         self.taints = []
-        if map.get('taints') is not None:
-            for k in map.get('taints'):
-                temp_model = Taints()
+        if m.get('taints') is not None:
+            for k in m.get('taints'):
+                temp_model = Taint()
                 self.taints.append(temp_model.from_map(k))
-        if map.get('user_data') is not None:
-            self.user_data = map.get('user_data')
+        if m.get('user_data') is not None:
+            self.user_data = m.get('user_data')
         return self
 
 
 class DescribeClusterNodePoolDetailResponseBodyNodepoolInfo(TeaModel):
-    def __init__(self, created=None, is_default=None, name=None, nodepool_id=None, region_id=None,
-                 resource_group_id=None, type=None, updated=None):
+    def __init__(
+        self,
+        created: str = None,
+        is_default: bool = None,
+        name: str = None,
+        nodepool_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        type: str = None,
+        updated: str = None,
+    ):
         # 节点池创建时间。
-        self.created = created          # type: str
+        self.created = created
         # 是否为默认节点池。
-        self.is_default = is_default    # type: bool
+        self.is_default = is_default
         # 节点池名称。
-        self.name = name                # type: str
+        self.name = name
         # 节点池ID。
-        self.nodepool_id = nodepool_id  # type: str
+        self.nodepool_id = nodepool_id
         # 节点池所属地域ID。
-        self.region_id = region_id      # type: str
+        self.region_id = region_id
         # 节点池所属资源组ID。
-        self.resource_group_id = resource_group_id  # type: str
+        self.resource_group_id = resource_group_id
         # 节点池类型。
-        self.type = type                # type: str
+        self.type = type
         # 节点池更新时间。
-        self.updated = updated          # type: str
+        self.updated = updated
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.created is not None:
             result['created'] = self.created
         if self.is_default is not None:
@@ -2628,104 +2789,146 @@ class DescribeClusterNodePoolDetailResponseBodyNodepoolInfo(TeaModel):
             result['updated'] = self.updated
         return result
 
-    def from_map(self, map={}):
-        if map.get('created') is not None:
-            self.created = map.get('created')
-        if map.get('is_default') is not None:
-            self.is_default = map.get('is_default')
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('nodepool_id') is not None:
-            self.nodepool_id = map.get('nodepool_id')
-        if map.get('region_id') is not None:
-            self.region_id = map.get('region_id')
-        if map.get('resource_group_id') is not None:
-            self.resource_group_id = map.get('resource_group_id')
-        if map.get('type') is not None:
-            self.type = map.get('type')
-        if map.get('updated') is not None:
-            self.updated = map.get('updated')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('is_default') is not None:
+            self.is_default = m.get('is_default')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('nodepool_id') is not None:
+            self.nodepool_id = m.get('nodepool_id')
+        if m.get('region_id') is not None:
+            self.region_id = m.get('region_id')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('updated') is not None:
+            self.updated = m.get('updated')
         return self
 
 
 class DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit(TeaModel):
-    def __init__(self, instance_type=None, price_limit=None):
+    def __init__(
+        self,
+        instance_type: str = None,
+        price_limit: str = None,
+    ):
         # 抢占式实例规格。
-        self.instance_type = instance_type  # type: str
+        self.instance_type = instance_type
         # 单台实例上限价格，单位：元/小时。
-        self.price_limit = price_limit  # type: str
+        self.price_limit = price_limit
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.instance_type is not None:
             result['instance_type'] = self.instance_type
         if self.price_limit is not None:
             result['price_limit'] = self.price_limit
         return result
 
-    def from_map(self, map={}):
-        if map.get('instance_type') is not None:
-            self.instance_type = map.get('instance_type')
-        if map.get('price_limit') is not None:
-            self.price_limit = map.get('price_limit')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instance_type') is not None:
+            self.instance_type = m.get('instance_type')
+        if m.get('price_limit') is not None:
+            self.price_limit = m.get('price_limit')
         return self
 
 
 class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
-    def __init__(self, auto_renew=None, auto_renew_period=None, data_disks=None, image_id=None,
-                 instance_charge_type=None, instance_types=None, multi_az_policy=None, period=None, period_unit=None, platform=None,
-                 ram_policy=None, spot_strategy=None, spot_price_limit=None, rds_instances=None, scaling_group_id=None,
-                 scaling_policy=None, security_group_id=None, system_disk_category=None, system_disk_size=None, tags=None,
-                 vswitch_ids=None, login_password=None, key_pair=None):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        auto_renew_period: int = None,
+        data_disks: List[DataDisk] = None,
+        image_id: str = None,
+        instance_charge_type: str = None,
+        instance_types: List[str] = None,
+        multi_az_policy: str = None,
+        on_demand_base_capacity: int = None,
+        on_demand_percentage_above_base_capacity: int = None,
+        spot_instance_pools: int = None,
+        spot_instance_remedy: bool = None,
+        compensate_with_on_demand: bool = None,
+        period: int = None,
+        period_unit: str = None,
+        platform: str = None,
+        ram_policy: str = None,
+        spot_strategy: str = None,
+        spot_price_limit: List[DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit] = None,
+        rds_instances: List[str] = None,
+        scaling_group_id: str = None,
+        scaling_policy: str = None,
+        security_group_id: str = None,
+        system_disk_category: str = None,
+        system_disk_size: int = None,
+        tags: List[Tag] = None,
+        vswitch_ids: List[str] = None,
+        login_password: str = None,
+        key_pair: str = None,
+    ):
         # 节点是否开启自动续费。
-        self.auto_renew = auto_renew    # type: bool
+        self.auto_renew = auto_renew
         # 节点自动续费周期。
-        self.auto_renew_period = auto_renew_period  # type: int
+        self.auto_renew_period = auto_renew_period
         # 数据盘配置。
-        self.data_disks = data_disks    # type: List[DataDisks]
+        self.data_disks = data_disks
         # 自定义镜像ID。
-        self.image_id = image_id        # type: str
+        self.image_id = image_id
         # 节点付费类型。
-        self.instance_charge_type = instance_charge_type  # type: str
+        self.instance_charge_type = instance_charge_type
         # 节点ECS规格类型。
-        self.instance_types = instance_types  # type: List[str]
-        # 多可用区策略。
-        self.multi_az_policy = multi_az_policy  # type: str
+        self.instance_types = instance_types
+        # 多可用区伸缩组ECS实例扩缩容策略
+        self.multi_az_policy = multi_az_policy
+        # 伸缩组所需要按量实例个数的最小值，取值范围：0~1000。当按量实例个数少于该值时，将优先创建按量实例。
+        self.on_demand_base_capacity = on_demand_base_capacity
+        # 伸缩组满足最小按量实例数（OnDemandBaseCapacity）要求后，超出的实例中按量实例应占的比例，取值范围：0～100。
+        self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        # 指定可用实例规格的个数，伸缩组将按成本最低的多个规格均衡创建抢占式实例。取值范围：1~10。
+        self.spot_instance_pools = spot_instance_pools
+        # 是否开启补齐抢占式实例。开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。
+        self.spot_instance_remedy = spot_instance_remedy
+        # 当MultiAZPolicy取值为COST_OPTIMIZED时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值范围：true：允许。false：不允许。默认值：true
+        self.compensate_with_on_demand = compensate_with_on_demand
         # 节点包年包月时长。
-        self.period = period            # type: int
+        self.period = period
         # 节点付费周期。
-        self.period_unit = period_unit  # type: str
+        self.period_unit = period_unit
         # 操作系统发行版。取值： CentOS，AliyunLinux，Windows，WindowsCore。
-        self.platform = platform        # type: str
+        self.platform = platform
         # 节点RAM 角色名称。
-        self.ram_policy = ram_policy    # type: str
+        self.ram_policy = ram_policy
         # 抢占式实例类型
-        self.spot_strategy = spot_strategy  # type: str
+        self.spot_strategy = spot_strategy
         # 抢占式实例价格上限配置。
-        self.spot_price_limit = spot_price_limit  # type: List[DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit]
+        self.spot_price_limit = spot_price_limit
         # RDS实例列表。
-        self.rds_instances = rds_instances  # type: List[str]
+        self.rds_instances = rds_instances
         # 扩容组ID。
-        self.scaling_group_id = scaling_group_id  # type: str
+        self.scaling_group_id = scaling_group_id
         # 扩容策略。
-        self.scaling_policy = scaling_policy  # type: str
+        self.scaling_policy = scaling_policy
         # 节点所属安全组ID。
-        self.security_group_id = security_group_id  # type: str
+        self.security_group_id = security_group_id
         # 系统盘类型
-        self.system_disk_category = system_disk_category  # type: str
+        self.system_disk_category = system_disk_category
         # 系统盘大小
-        self.system_disk_size = system_disk_size  # type: int
+        self.system_disk_size = system_disk_size
         # ECS标签
-        self.tags = tags                # type: List[Tags]
+        self.tags = tags
         # 虚拟交换机ID。
-        self.vswitch_ids = vswitch_ids  # type: List[str]
+        self.vswitch_ids = vswitch_ids
         # 登录密码
-        self.login_password = login_password  # type: str
+        self.login_password = login_password
         # 密钥对名称
-        self.key_pair = key_pair        # type: str
+        self.key_pair = key_pair
 
     def validate(self):
         if self.data_disks:
@@ -2742,7 +2945,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.auto_renew is not None:
             result['auto_renew'] = self.auto_renew
         if self.auto_renew_period is not None:
@@ -2759,6 +2962,16 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             result['instance_types'] = self.instance_types
         if self.multi_az_policy is not None:
             result['multi_az_policy'] = self.multi_az_policy
+        if self.on_demand_base_capacity is not None:
+            result['on_demand_base_capacity'] = self.on_demand_base_capacity
+        if self.on_demand_percentage_above_base_capacity is not None:
+            result['on_demand_percentage_above_base_capacity'] = self.on_demand_percentage_above_base_capacity
+        if self.spot_instance_pools is not None:
+            result['spot_instance_pools'] = self.spot_instance_pools
+        if self.spot_instance_remedy is not None:
+            result['spot_instance_remedy'] = self.spot_instance_remedy
+        if self.compensate_with_on_demand is not None:
+            result['compensate_with_on_demand'] = self.compensate_with_on_demand
         if self.period is not None:
             result['period'] = self.period
         if self.period_unit is not None:
@@ -2797,90 +3010,110 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             result['key_pair'] = self.key_pair
         return result
 
-    def from_map(self, map={}):
-        if map.get('auto_renew') is not None:
-            self.auto_renew = map.get('auto_renew')
-        if map.get('auto_renew_period') is not None:
-            self.auto_renew_period = map.get('auto_renew_period')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_renew') is not None:
+            self.auto_renew = m.get('auto_renew')
+        if m.get('auto_renew_period') is not None:
+            self.auto_renew_period = m.get('auto_renew_period')
         self.data_disks = []
-        if map.get('data_disks') is not None:
-            for k in map.get('data_disks'):
-                temp_model = DataDisks()
+        if m.get('data_disks') is not None:
+            for k in m.get('data_disks'):
+                temp_model = DataDisk()
                 self.data_disks.append(temp_model.from_map(k))
-        if map.get('image_id') is not None:
-            self.image_id = map.get('image_id')
-        if map.get('instance_charge_type') is not None:
-            self.instance_charge_type = map.get('instance_charge_type')
-        if map.get('instance_types') is not None:
-            self.instance_types = map.get('instance_types')
-        if map.get('multi_az_policy') is not None:
-            self.multi_az_policy = map.get('multi_az_policy')
-        if map.get('period') is not None:
-            self.period = map.get('period')
-        if map.get('period_unit') is not None:
-            self.period_unit = map.get('period_unit')
-        if map.get('platform') is not None:
-            self.platform = map.get('platform')
-        if map.get('ram_policy') is not None:
-            self.ram_policy = map.get('ram_policy')
-        if map.get('spot_strategy') is not None:
-            self.spot_strategy = map.get('spot_strategy')
+        if m.get('image_id') is not None:
+            self.image_id = m.get('image_id')
+        if m.get('instance_charge_type') is not None:
+            self.instance_charge_type = m.get('instance_charge_type')
+        if m.get('instance_types') is not None:
+            self.instance_types = m.get('instance_types')
+        if m.get('multi_az_policy') is not None:
+            self.multi_az_policy = m.get('multi_az_policy')
+        if m.get('on_demand_base_capacity') is not None:
+            self.on_demand_base_capacity = m.get('on_demand_base_capacity')
+        if m.get('on_demand_percentage_above_base_capacity') is not None:
+            self.on_demand_percentage_above_base_capacity = m.get('on_demand_percentage_above_base_capacity')
+        if m.get('spot_instance_pools') is not None:
+            self.spot_instance_pools = m.get('spot_instance_pools')
+        if m.get('spot_instance_remedy') is not None:
+            self.spot_instance_remedy = m.get('spot_instance_remedy')
+        if m.get('compensate_with_on_demand') is not None:
+            self.compensate_with_on_demand = m.get('compensate_with_on_demand')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        if m.get('period_unit') is not None:
+            self.period_unit = m.get('period_unit')
+        if m.get('platform') is not None:
+            self.platform = m.get('platform')
+        if m.get('ram_policy') is not None:
+            self.ram_policy = m.get('ram_policy')
+        if m.get('spot_strategy') is not None:
+            self.spot_strategy = m.get('spot_strategy')
         self.spot_price_limit = []
-        if map.get('spot_price_limit') is not None:
-            for k in map.get('spot_price_limit'):
+        if m.get('spot_price_limit') is not None:
+            for k in m.get('spot_price_limit'):
                 temp_model = DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit()
                 self.spot_price_limit.append(temp_model.from_map(k))
-        if map.get('rds_instances') is not None:
-            self.rds_instances = map.get('rds_instances')
-        if map.get('scaling_group_id') is not None:
-            self.scaling_group_id = map.get('scaling_group_id')
-        if map.get('scaling_policy') is not None:
-            self.scaling_policy = map.get('scaling_policy')
-        if map.get('security_group_id') is not None:
-            self.security_group_id = map.get('security_group_id')
-        if map.get('system_disk_category') is not None:
-            self.system_disk_category = map.get('system_disk_category')
-        if map.get('system_disk_size') is not None:
-            self.system_disk_size = map.get('system_disk_size')
+        if m.get('rds_instances') is not None:
+            self.rds_instances = m.get('rds_instances')
+        if m.get('scaling_group_id') is not None:
+            self.scaling_group_id = m.get('scaling_group_id')
+        if m.get('scaling_policy') is not None:
+            self.scaling_policy = m.get('scaling_policy')
+        if m.get('security_group_id') is not None:
+            self.security_group_id = m.get('security_group_id')
+        if m.get('system_disk_category') is not None:
+            self.system_disk_category = m.get('system_disk_category')
+        if m.get('system_disk_size') is not None:
+            self.system_disk_size = m.get('system_disk_size')
         self.tags = []
-        if map.get('tags') is not None:
-            for k in map.get('tags'):
-                temp_model = Tags()
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
-        if map.get('vswitch_ids') is not None:
-            self.vswitch_ids = map.get('vswitch_ids')
-        if map.get('login_password') is not None:
-            self.login_password = map.get('login_password')
-        if map.get('key_pair') is not None:
-            self.key_pair = map.get('key_pair')
+        if m.get('vswitch_ids') is not None:
+            self.vswitch_ids = m.get('vswitch_ids')
+        if m.get('login_password') is not None:
+            self.login_password = m.get('login_password')
+        if m.get('key_pair') is not None:
+            self.key_pair = m.get('key_pair')
         return self
 
 
 class DescribeClusterNodePoolDetailResponseBodyStatus(TeaModel):
-    def __init__(self, failed_nodes=None, healthy_nodes=None, initial_nodes=None, offline_nodes=None,
-                 removing_nodes=None, serving_nodes=None, state=None, total_nodes=None):
+    def __init__(
+        self,
+        failed_nodes: int = None,
+        healthy_nodes: int = None,
+        initial_nodes: int = None,
+        offline_nodes: int = None,
+        removing_nodes: int = None,
+        serving_nodes: int = None,
+        state: str = None,
+        total_nodes: int = None,
+    ):
         # 失败节点数。
-        self.failed_nodes = failed_nodes  # type: int
+        self.failed_nodes = failed_nodes
         # 处于健康状态节点数。
-        self.healthy_nodes = healthy_nodes  # type: int
+        self.healthy_nodes = healthy_nodes
         # 正在初始化节点数。
-        self.initial_nodes = initial_nodes  # type: int
+        self.initial_nodes = initial_nodes
         # 离线节点数量。
-        self.offline_nodes = offline_nodes  # type: int
+        self.offline_nodes = offline_nodes
         # 正在被移除节点数。
-        self.removing_nodes = removing_nodes  # type: int
+        self.removing_nodes = removing_nodes
         # 工作节点数量。
-        self.serving_nodes = serving_nodes  # type: int
+        self.serving_nodes = serving_nodes
         # 节点池状态。
-        self.state = state              # type: str
+        self.state = state
         # 总节点数。
-        self.total_nodes = total_nodes  # type: int
+        self.total_nodes = total_nodes
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.failed_nodes is not None:
             result['failed_nodes'] = self.failed_nodes
         if self.healthy_nodes is not None:
@@ -2899,62 +3132,73 @@ class DescribeClusterNodePoolDetailResponseBodyStatus(TeaModel):
             result['total_nodes'] = self.total_nodes
         return result
 
-    def from_map(self, map={}):
-        if map.get('failed_nodes') is not None:
-            self.failed_nodes = map.get('failed_nodes')
-        if map.get('healthy_nodes') is not None:
-            self.healthy_nodes = map.get('healthy_nodes')
-        if map.get('initial_nodes') is not None:
-            self.initial_nodes = map.get('initial_nodes')
-        if map.get('offline_nodes') is not None:
-            self.offline_nodes = map.get('offline_nodes')
-        if map.get('removing_nodes') is not None:
-            self.removing_nodes = map.get('removing_nodes')
-        if map.get('serving_nodes') is not None:
-            self.serving_nodes = map.get('serving_nodes')
-        if map.get('state') is not None:
-            self.state = map.get('state')
-        if map.get('total_nodes') is not None:
-            self.total_nodes = map.get('total_nodes')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('failed_nodes') is not None:
+            self.failed_nodes = m.get('failed_nodes')
+        if m.get('healthy_nodes') is not None:
+            self.healthy_nodes = m.get('healthy_nodes')
+        if m.get('initial_nodes') is not None:
+            self.initial_nodes = m.get('initial_nodes')
+        if m.get('offline_nodes') is not None:
+            self.offline_nodes = m.get('offline_nodes')
+        if m.get('removing_nodes') is not None:
+            self.removing_nodes = m.get('removing_nodes')
+        if m.get('serving_nodes') is not None:
+            self.serving_nodes = m.get('serving_nodes')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('total_nodes') is not None:
+            self.total_nodes = m.get('total_nodes')
         return self
 
 
 class DescribeClusterNodePoolDetailResponseBodyTeeConfig(TeaModel):
-    def __init__(self, tee_enable=None):
+    def __init__(
+        self,
+        tee_enable: bool = None,
+    ):
         # 是否为加密计算节点池。
-        self.tee_enable = tee_enable    # type: bool
+        self.tee_enable = tee_enable
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.tee_enable is not None:
             result['tee_enable'] = self.tee_enable
         return result
 
-    def from_map(self, map={}):
-        if map.get('tee_enable') is not None:
-            self.tee_enable = map.get('tee_enable')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tee_enable') is not None:
+            self.tee_enable = m.get('tee_enable')
         return self
 
 
 class DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig(TeaModel):
-    def __init__(self, auto_upgrade=None, surge=None, surge_percentage=None, max_unavailable=None):
+    def __init__(
+        self,
+        auto_upgrade: bool = None,
+        surge: int = None,
+        surge_percentage: int = None,
+        max_unavailable: int = None,
+    ):
         # 是否启用自动升级，自修复。
-        self.auto_upgrade = auto_upgrade  # type: bool
+        self.auto_upgrade = auto_upgrade
         # 额外节点数量。
-        self.surge = surge              # type: int
+        self.surge = surge
         # 额外节点比例， 和surge 二选一。
-        self.surge_percentage = surge_percentage  # type: int
+        self.surge_percentage = surge_percentage
         # 最大不可用节点数量。
-        self.max_unavailable = max_unavailable  # type: int
+        self.max_unavailable = max_unavailable
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.auto_upgrade is not None:
             result['auto_upgrade'] = self.auto_upgrade
         if self.surge is not None:
@@ -2965,33 +3209,39 @@ class DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig(TeaModel)
             result['max_unavailable'] = self.max_unavailable
         return result
 
-    def from_map(self, map={}):
-        if map.get('auto_upgrade') is not None:
-            self.auto_upgrade = map.get('auto_upgrade')
-        if map.get('surge') is not None:
-            self.surge = map.get('surge')
-        if map.get('surge_percentage') is not None:
-            self.surge_percentage = map.get('surge_percentage')
-        if map.get('max_unavailable') is not None:
-            self.max_unavailable = map.get('max_unavailable')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_upgrade') is not None:
+            self.auto_upgrade = m.get('auto_upgrade')
+        if m.get('surge') is not None:
+            self.surge = m.get('surge')
+        if m.get('surge_percentage') is not None:
+            self.surge_percentage = m.get('surge_percentage')
+        if m.get('max_unavailable') is not None:
+            self.max_unavailable = m.get('max_unavailable')
         return self
 
 
 class DescribeClusterNodePoolDetailResponseBodyManagement(TeaModel):
-    def __init__(self, enable=None, auto_repair=None, upgrade_config=None):
+    def __init__(
+        self,
+        enable: bool = None,
+        auto_repair: bool = None,
+        upgrade_config: DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig = None,
+    ):
         # 是否开启托管版节点池。
-        self.enable = enable            # type: bool
+        self.enable = enable
         # 自动修复。
-        self.auto_repair = auto_repair  # type: bool
+        self.auto_repair = auto_repair
         # 自动升级配置。
-        self.upgrade_config = upgrade_config  # type: DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig
+        self.upgrade_config = upgrade_config
 
     def validate(self):
         if self.upgrade_config:
             self.upgrade_config.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.enable is not None:
             result['enable'] = self.enable
         if self.auto_repair is not None:
@@ -3000,62 +3250,43 @@ class DescribeClusterNodePoolDetailResponseBodyManagement(TeaModel):
             result['upgrade_config'] = self.upgrade_config.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('enable') is not None:
-            self.enable = map.get('enable')
-        if map.get('auto_repair') is not None:
-            self.auto_repair = map.get('auto_repair')
-        if map.get('upgrade_config') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('auto_repair') is not None:
+            self.auto_repair = m.get('auto_repair')
+        if m.get('upgrade_config') is not None:
             temp_model = DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig()
-            self.upgrade_config = temp_model.from_map(map['upgrade_config'])
+            self.upgrade_config = temp_model.from_map(m['upgrade_config'])
         return self
 
 
-class DescribeClusterNodePoolDetailResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeClusterNodePoolDetailResponseBody
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = {}
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
-            temp_model = DescribeClusterNodePoolDetailResponseBody()
-            self.body = temp_model.from_map(map['body'])
-        return self
-
-
-class CreateClusterNodePoolRequest(TeaModel):
-    def __init__(self, auto_scaling=None, kubernetes_config=None, nodepool_info=None, scaling_group=None,
-                 tee_config=None, management=None, count=None):
-        # 自动伸缩节点池配置。
-        self.auto_scaling = auto_scaling  # type: CreateClusterNodePoolRequestAutoScaling
-        # 集群配置
-        self.kubernetes_config = kubernetes_config  # type: CreateClusterNodePoolRequestKubernetesConfig
-        # 节点池配置
-        self.nodepool_info = nodepool_info  # type: CreateClusterNodePoolRequestNodepoolInfo
-        # 伸缩组配置
-        self.scaling_group = scaling_group  # type: CreateClusterNodePoolRequestScalingGroup
-        # 加密计算节点池配置。
-        self.tee_config = tee_config    # type: CreateClusterNodePoolRequestTeeConfig
-        # 托管节点池配置。
-        self.management = management    # type: CreateClusterNodePoolRequestManagement
-        # 节点数量。
-        self.count = count              # type: int
+class DescribeClusterNodePoolDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        auto_scaling: DescribeClusterNodePoolDetailResponseBodyAutoScaling = None,
+        kubernetes_config: DescribeClusterNodePoolDetailResponseBodyKubernetesConfig = None,
+        nodepool_info: DescribeClusterNodePoolDetailResponseBodyNodepoolInfo = None,
+        scaling_group: DescribeClusterNodePoolDetailResponseBodyScalingGroup = None,
+        status: DescribeClusterNodePoolDetailResponseBodyStatus = None,
+        tee_config: DescribeClusterNodePoolDetailResponseBodyTeeConfig = None,
+        management: DescribeClusterNodePoolDetailResponseBodyManagement = None,
+    ):
+        # 节点池自动伸缩信息。
+        self.auto_scaling = auto_scaling
+        # 节点池所属集群配置。
+        self.kubernetes_config = kubernetes_config
+        # 节点池详情。
+        self.nodepool_info = nodepool_info
+        # 节点池扩容组信息。
+        self.scaling_group = scaling_group
+        # 节点池状态。
+        self.status = status
+        # 加密计算节点池信息。
+        self.tee_config = tee_config
+        # 托管版节点池配置。
+        self.management = management
 
     def validate(self):
         if self.auto_scaling:
@@ -3066,13 +3297,15 @@ class CreateClusterNodePoolRequest(TeaModel):
             self.nodepool_info.validate()
         if self.scaling_group:
             self.scaling_group.validate()
+        if self.status:
+            self.status.validate()
         if self.tee_config:
             self.tee_config.validate()
         if self.management:
             self.management.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.auto_scaling is not None:
             result['auto_scaling'] = self.auto_scaling.to_map()
         if self.kubernetes_config is not None:
@@ -3081,61 +3314,104 @@ class CreateClusterNodePoolRequest(TeaModel):
             result['nodepool_info'] = self.nodepool_info.to_map()
         if self.scaling_group is not None:
             result['scaling_group'] = self.scaling_group.to_map()
+        if self.status is not None:
+            result['status'] = self.status.to_map()
         if self.tee_config is not None:
             result['tee_config'] = self.tee_config.to_map()
         if self.management is not None:
             result['management'] = self.management.to_map()
-        if self.count is not None:
-            result['count'] = self.count
         return result
 
-    def from_map(self, map={}):
-        if map.get('auto_scaling') is not None:
-            temp_model = CreateClusterNodePoolRequestAutoScaling()
-            self.auto_scaling = temp_model.from_map(map['auto_scaling'])
-        if map.get('kubernetes_config') is not None:
-            temp_model = CreateClusterNodePoolRequestKubernetesConfig()
-            self.kubernetes_config = temp_model.from_map(map['kubernetes_config'])
-        if map.get('nodepool_info') is not None:
-            temp_model = CreateClusterNodePoolRequestNodepoolInfo()
-            self.nodepool_info = temp_model.from_map(map['nodepool_info'])
-        if map.get('scaling_group') is not None:
-            temp_model = CreateClusterNodePoolRequestScalingGroup()
-            self.scaling_group = temp_model.from_map(map['scaling_group'])
-        if map.get('tee_config') is not None:
-            temp_model = CreateClusterNodePoolRequestTeeConfig()
-            self.tee_config = temp_model.from_map(map['tee_config'])
-        if map.get('management') is not None:
-            temp_model = CreateClusterNodePoolRequestManagement()
-            self.management = temp_model.from_map(map['management'])
-        if map.get('count') is not None:
-            self.count = map.get('count')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_scaling') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyAutoScaling()
+            self.auto_scaling = temp_model.from_map(m['auto_scaling'])
+        if m.get('kubernetes_config') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyKubernetesConfig()
+            self.kubernetes_config = temp_model.from_map(m['kubernetes_config'])
+        if m.get('nodepool_info') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyNodepoolInfo()
+            self.nodepool_info = temp_model.from_map(m['nodepool_info'])
+        if m.get('scaling_group') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyScalingGroup()
+            self.scaling_group = temp_model.from_map(m['scaling_group'])
+        if m.get('status') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyStatus()
+            self.status = temp_model.from_map(m['status'])
+        if m.get('tee_config') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyTeeConfig()
+            self.tee_config = temp_model.from_map(m['tee_config'])
+        if m.get('management') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyManagement()
+            self.management = temp_model.from_map(m['management'])
+        return self
+
+
+class DescribeClusterNodePoolDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeClusterNodePoolDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class CreateClusterNodePoolRequestAutoScaling(TeaModel):
-    def __init__(self, enable=None, max_instances=None, min_instances=None, type=None, is_bond_eip=None,
-                 eip_internet_charge_type=None, eip_bandwidth=None):
+    def __init__(
+        self,
+        enable: bool = None,
+        max_instances: int = None,
+        min_instances: int = None,
+        type: str = None,
+        is_bond_eip: bool = None,
+        eip_internet_charge_type: str = None,
+        eip_bandwidth: int = None,
+    ):
         # 是否开启自动伸缩。
-        self.enable = enable            # type: bool
+        self.enable = enable
         # 最大实例数。
-        self.max_instances = max_instances  # type: int
+        self.max_instances = max_instances
         # 最小实例数。
-        self.min_instances = min_instances  # type: int
+        self.min_instances = min_instances
         # 扩容节点类型。
-        self.type = type                # type: str
+        self.type = type
         # 是否绑定EIP。
-        self.is_bond_eip = is_bond_eip  # type: bool
+        self.is_bond_eip = is_bond_eip
         # EIP实例规格。
-        self.eip_internet_charge_type = eip_internet_charge_type  # type: str
+        self.eip_internet_charge_type = eip_internet_charge_type
         # 带宽峰值。
-        self.eip_bandwidth = eip_bandwidth  # type: int
+        self.eip_bandwidth = eip_bandwidth
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.enable is not None:
             result['enable'] = self.enable
         if self.max_instances is not None:
@@ -3152,41 +3428,50 @@ class CreateClusterNodePoolRequestAutoScaling(TeaModel):
             result['eip_bandwidth'] = self.eip_bandwidth
         return result
 
-    def from_map(self, map={}):
-        if map.get('enable') is not None:
-            self.enable = map.get('enable')
-        if map.get('max_instances') is not None:
-            self.max_instances = map.get('max_instances')
-        if map.get('min_instances') is not None:
-            self.min_instances = map.get('min_instances')
-        if map.get('type') is not None:
-            self.type = map.get('type')
-        if map.get('is_bond_eip') is not None:
-            self.is_bond_eip = map.get('is_bond_eip')
-        if map.get('eip_internet_charge_type') is not None:
-            self.eip_internet_charge_type = map.get('eip_internet_charge_type')
-        if map.get('eip_bandwidth') is not None:
-            self.eip_bandwidth = map.get('eip_bandwidth')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('max_instances') is not None:
+            self.max_instances = m.get('max_instances')
+        if m.get('min_instances') is not None:
+            self.min_instances = m.get('min_instances')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('is_bond_eip') is not None:
+            self.is_bond_eip = m.get('is_bond_eip')
+        if m.get('eip_internet_charge_type') is not None:
+            self.eip_internet_charge_type = m.get('eip_internet_charge_type')
+        if m.get('eip_bandwidth') is not None:
+            self.eip_bandwidth = m.get('eip_bandwidth')
         return self
 
 
 class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
-    def __init__(self, cms_enabled=None, cpu_policy=None, labels=None, runtime=None, runtime_version=None,
-                 taints=None, user_data=None):
+    def __init__(
+        self,
+        cms_enabled: bool = None,
+        cpu_policy: str = None,
+        labels: List[Tag] = None,
+        runtime: str = None,
+        runtime_version: str = None,
+        taints: List[Taint] = None,
+        user_data: str = None,
+    ):
         # 是否开启云监控。
-        self.cms_enabled = cms_enabled  # type: bool
+        self.cms_enabled = cms_enabled
         # CPU管理策略。
-        self.cpu_policy = cpu_policy    # type: str
+        self.cpu_policy = cpu_policy
         # 节点标签。
-        self.labels = labels            # type: List[Tags]
+        self.labels = labels
         # 容器运行时。
-        self.runtime = runtime          # type: str
+        self.runtime = runtime
         # 容器运行时版本。
-        self.runtime_version = runtime_version  # type: str
+        self.runtime_version = runtime_version
         # 污点信息。
-        self.taints = taints            # type: List[Taints]
+        self.taints = taints
         # 节点自定义数据。
-        self.user_data = user_data      # type: str
+        self.user_data = user_data
 
     def validate(self):
         if self.labels:
@@ -3199,7 +3484,7 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cms_enabled is not None:
             result['cms_enabled'] = self.cms_enabled
         if self.cpu_policy is not None:
@@ -3220,153 +3505,206 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
             result['user_data'] = self.user_data
         return result
 
-    def from_map(self, map={}):
-        if map.get('cms_enabled') is not None:
-            self.cms_enabled = map.get('cms_enabled')
-        if map.get('cpu_policy') is not None:
-            self.cpu_policy = map.get('cpu_policy')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cms_enabled') is not None:
+            self.cms_enabled = m.get('cms_enabled')
+        if m.get('cpu_policy') is not None:
+            self.cpu_policy = m.get('cpu_policy')
         self.labels = []
-        if map.get('labels') is not None:
-            for k in map.get('labels'):
-                temp_model = Tags()
+        if m.get('labels') is not None:
+            for k in m.get('labels'):
+                temp_model = Tag()
                 self.labels.append(temp_model.from_map(k))
-        if map.get('runtime') is not None:
-            self.runtime = map.get('runtime')
-        if map.get('runtime_version') is not None:
-            self.runtime_version = map.get('runtime_version')
+        if m.get('runtime') is not None:
+            self.runtime = m.get('runtime')
+        if m.get('runtime_version') is not None:
+            self.runtime_version = m.get('runtime_version')
         self.taints = []
-        if map.get('taints') is not None:
-            for k in map.get('taints'):
-                temp_model = Taints()
+        if m.get('taints') is not None:
+            for k in m.get('taints'):
+                temp_model = Taint()
                 self.taints.append(temp_model.from_map(k))
-        if map.get('user_data') is not None:
-            self.user_data = map.get('user_data')
+        if m.get('user_data') is not None:
+            self.user_data = m.get('user_data')
         return self
 
 
 class CreateClusterNodePoolRequestNodepoolInfo(TeaModel):
-    def __init__(self, name=None, resource_group_id=None):
+    def __init__(
+        self,
+        name: str = None,
+        resource_group_id: str = None,
+    ):
         # 节点池名称
-        self.name = name                # type: str
+        self.name = name
         # 资源组ID。
-        self.resource_group_id = resource_group_id  # type: str
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.name is not None:
             result['name'] = self.name
         if self.resource_group_id is not None:
             result['resource_group_id'] = self.resource_group_id
         return result
 
-    def from_map(self, map={}):
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('resource_group_id') is not None:
-            self.resource_group_id = map.get('resource_group_id')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
         return self
 
 
 class CreateClusterNodePoolRequestScalingGroupSpotPriceLimit(TeaModel):
-    def __init__(self, instance_type=None, price_limit=None):
+    def __init__(
+        self,
+        instance_type: str = None,
+        price_limit: str = None,
+    ):
         # 抢占实例规格。
-        self.instance_type = instance_type  # type: str
+        self.instance_type = instance_type
         # 抢占实例单价。
-        self.price_limit = price_limit  # type: str
+        self.price_limit = price_limit
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.instance_type is not None:
             result['instance_type'] = self.instance_type
         if self.price_limit is not None:
             result['price_limit'] = self.price_limit
         return result
 
-    def from_map(self, map={}):
-        if map.get('instance_type') is not None:
-            self.instance_type = map.get('instance_type')
-        if map.get('price_limit') is not None:
-            self.price_limit = map.get('price_limit')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instance_type') is not None:
+            self.instance_type = m.get('instance_type')
+        if m.get('price_limit') is not None:
+            self.price_limit = m.get('price_limit')
         return self
 
 
 class CreateClusterNodePoolRequestScalingGroupTags(TeaModel):
-    def __init__(self, key=None, value=None):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
         # key
-        self.key = key                  # type: str
+        self.key = key
         # value
-        self.value = value              # type: str
+        self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.key is not None:
             result['key'] = self.key
         if self.value is not None:
             result['value'] = self.value
         return result
 
-    def from_map(self, map={}):
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
 class CreateClusterNodePoolRequestScalingGroup(TeaModel):
-    def __init__(self, auto_renew=None, auto_renew_period=None, data_disks=None, image_id=None,
-                 instance_charge_type=None, instance_types=None, key_pair=None, login_password=None, period=None, period_unit=None,
-                 platform=None, rds_instances=None, spot_strategy=None, spot_price_limit=None, scaling_policy=None,
-                 security_group_id=None, system_disk_category=None, system_disk_size=None, tags=None, vswitch_ids=None):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        auto_renew_period: int = None,
+        data_disks: List[DataDisk] = None,
+        image_id: str = None,
+        instance_charge_type: str = None,
+        instance_types: List[str] = None,
+        key_pair: str = None,
+        login_password: str = None,
+        period: int = None,
+        period_unit: str = None,
+        platform: str = None,
+        rds_instances: List[str] = None,
+        spot_strategy: str = None,
+        spot_price_limit: List[CreateClusterNodePoolRequestScalingGroupSpotPriceLimit] = None,
+        scaling_policy: str = None,
+        security_group_id: str = None,
+        system_disk_category: str = None,
+        system_disk_size: int = None,
+        tags: List[CreateClusterNodePoolRequestScalingGroupTags] = None,
+        vswitch_ids: List[str] = None,
+        multi_az_policy: str = None,
+        on_demand_base_capacity: int = None,
+        on_demand_percentage_above_base_capacity: int = None,
+        spot_instance_pools: int = None,
+        spot_instance_remedy: bool = None,
+        compensate_with_on_demand: bool = None,
+    ):
         # 节点是否开启自动续费
-        self.auto_renew = auto_renew    # type: bool
+        self.auto_renew = auto_renew
         # 节点自动续费周期
-        self.auto_renew_period = auto_renew_period  # type: int
+        self.auto_renew_period = auto_renew_period
         # 数据盘配置。
-        self.data_disks = data_disks    # type: List[DataDisks]
+        self.data_disks = data_disks
         # 自定义镜像。
-        self.image_id = image_id        # type: str
+        self.image_id = image_id
         # 节点付费类型
-        self.instance_charge_type = instance_charge_type  # type: str
+        self.instance_charge_type = instance_charge_type
         # 实例规格。
-        self.instance_types = instance_types  # type: List[str]
+        self.instance_types = instance_types
         # 密钥对名称，和login_password二选一。
-        self.key_pair = key_pair        # type: str
+        self.key_pair = key_pair
         # SSH登录密码。
-        self.login_password = login_password  # type: str
+        self.login_password = login_password
         # 节点包年包月时长。
-        self.period = period            # type: int
+        self.period = period
         # 节点包年包月周期。
-        self.period_unit = period_unit  # type: str
+        self.period_unit = period_unit
         # 操作系统发行版
-        self.platform = platform        # type: str
+        self.platform = platform
         # RDS实例列表。
-        self.rds_instances = rds_instances  # type: List[str]
+        self.rds_instances = rds_instances
         # 抢占式实例类型
-        self.spot_strategy = spot_strategy  # type: str
+        self.spot_strategy = spot_strategy
         # 抢占实例价格上限配置。
-        self.spot_price_limit = spot_price_limit  # type: List[CreateClusterNodePoolRequestScalingGroupSpotPriceLimit]
+        self.spot_price_limit = spot_price_limit
         # 自动伸缩。
-        self.scaling_policy = scaling_policy  # type: str
+        self.scaling_policy = scaling_policy
         # 安全组ID。
-        self.security_group_id = security_group_id  # type: str
+        self.security_group_id = security_group_id
         # 节点系统盘类型。
-        self.system_disk_category = system_disk_category  # type: str
+        self.system_disk_category = system_disk_category
         # 节点系统盘大小。
-        self.system_disk_size = system_disk_size  # type: int
+        self.system_disk_size = system_disk_size
         # ECS标签
-        self.tags = tags                # type: List[CreateClusterNodePoolRequestScalingGroupTags]
+        self.tags = tags
         # 虚拟交换机ID。
-        self.vswitch_ids = vswitch_ids  # type: List[str]
+        self.vswitch_ids = vswitch_ids
+        # 多可用区伸缩组ECS实例扩缩容策略
+        self.multi_az_policy = multi_az_policy
+        # 伸缩组所需要按量实例个数的最小值，取值范围：0~1000。当按量实例个数少于该值时，将优先创建按量实例。
+        self.on_demand_base_capacity = on_demand_base_capacity
+        # 伸缩组满足最小按量实例数（OnDemandBaseCapacity）要求后，超出的实例中按量实例应占的比例，取值范围：0～100。
+        self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        # 指定可用实例规格的个数，伸缩组将按成本最低的多个规格均衡创建抢占式实例。取值范围：1~10。
+        self.spot_instance_pools = spot_instance_pools
+        # 是否开启补齐抢占式实例。开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。
+        self.spot_instance_remedy = spot_instance_remedy
+        # 当MultiAZPolicy取值为COST_OPTIMIZED时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值范围：true：允许。false：不允许。默认值：true
+        self.compensate_with_on_demand = compensate_with_on_demand
 
     def validate(self):
         if self.data_disks:
@@ -3383,7 +3721,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.auto_renew is not None:
             result['auto_renew'] = self.auto_renew
         if self.auto_renew_period is not None:
@@ -3430,97 +3768,132 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
                 result['tags'].append(k.to_map() if k else None)
         if self.vswitch_ids is not None:
             result['vswitch_ids'] = self.vswitch_ids
+        if self.multi_az_policy is not None:
+            result['multi_az_policy'] = self.multi_az_policy
+        if self.on_demand_base_capacity is not None:
+            result['on_demand_base_capacity'] = self.on_demand_base_capacity
+        if self.on_demand_percentage_above_base_capacity is not None:
+            result['on_demand_percentage_above_base_capacity'] = self.on_demand_percentage_above_base_capacity
+        if self.spot_instance_pools is not None:
+            result['spot_instance_pools'] = self.spot_instance_pools
+        if self.spot_instance_remedy is not None:
+            result['spot_instance_remedy'] = self.spot_instance_remedy
+        if self.compensate_with_on_demand is not None:
+            result['compensate_with_on_demand'] = self.compensate_with_on_demand
         return result
 
-    def from_map(self, map={}):
-        if map.get('auto_renew') is not None:
-            self.auto_renew = map.get('auto_renew')
-        if map.get('auto_renew_period') is not None:
-            self.auto_renew_period = map.get('auto_renew_period')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_renew') is not None:
+            self.auto_renew = m.get('auto_renew')
+        if m.get('auto_renew_period') is not None:
+            self.auto_renew_period = m.get('auto_renew_period')
         self.data_disks = []
-        if map.get('data_disks') is not None:
-            for k in map.get('data_disks'):
-                temp_model = DataDisks()
+        if m.get('data_disks') is not None:
+            for k in m.get('data_disks'):
+                temp_model = DataDisk()
                 self.data_disks.append(temp_model.from_map(k))
-        if map.get('image_id') is not None:
-            self.image_id = map.get('image_id')
-        if map.get('instance_charge_type') is not None:
-            self.instance_charge_type = map.get('instance_charge_type')
-        if map.get('instance_types') is not None:
-            self.instance_types = map.get('instance_types')
-        if map.get('key_pair') is not None:
-            self.key_pair = map.get('key_pair')
-        if map.get('login_password') is not None:
-            self.login_password = map.get('login_password')
-        if map.get('period') is not None:
-            self.period = map.get('period')
-        if map.get('period_unit') is not None:
-            self.period_unit = map.get('period_unit')
-        if map.get('platform') is not None:
-            self.platform = map.get('platform')
-        if map.get('rds_instances') is not None:
-            self.rds_instances = map.get('rds_instances')
-        if map.get('spot_strategy') is not None:
-            self.spot_strategy = map.get('spot_strategy')
+        if m.get('image_id') is not None:
+            self.image_id = m.get('image_id')
+        if m.get('instance_charge_type') is not None:
+            self.instance_charge_type = m.get('instance_charge_type')
+        if m.get('instance_types') is not None:
+            self.instance_types = m.get('instance_types')
+        if m.get('key_pair') is not None:
+            self.key_pair = m.get('key_pair')
+        if m.get('login_password') is not None:
+            self.login_password = m.get('login_password')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        if m.get('period_unit') is not None:
+            self.period_unit = m.get('period_unit')
+        if m.get('platform') is not None:
+            self.platform = m.get('platform')
+        if m.get('rds_instances') is not None:
+            self.rds_instances = m.get('rds_instances')
+        if m.get('spot_strategy') is not None:
+            self.spot_strategy = m.get('spot_strategy')
         self.spot_price_limit = []
-        if map.get('spot_price_limit') is not None:
-            for k in map.get('spot_price_limit'):
+        if m.get('spot_price_limit') is not None:
+            for k in m.get('spot_price_limit'):
                 temp_model = CreateClusterNodePoolRequestScalingGroupSpotPriceLimit()
                 self.spot_price_limit.append(temp_model.from_map(k))
-        if map.get('scaling_policy') is not None:
-            self.scaling_policy = map.get('scaling_policy')
-        if map.get('security_group_id') is not None:
-            self.security_group_id = map.get('security_group_id')
-        if map.get('system_disk_category') is not None:
-            self.system_disk_category = map.get('system_disk_category')
-        if map.get('system_disk_size') is not None:
-            self.system_disk_size = map.get('system_disk_size')
+        if m.get('scaling_policy') is not None:
+            self.scaling_policy = m.get('scaling_policy')
+        if m.get('security_group_id') is not None:
+            self.security_group_id = m.get('security_group_id')
+        if m.get('system_disk_category') is not None:
+            self.system_disk_category = m.get('system_disk_category')
+        if m.get('system_disk_size') is not None:
+            self.system_disk_size = m.get('system_disk_size')
         self.tags = []
-        if map.get('tags') is not None:
-            for k in map.get('tags'):
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
                 temp_model = CreateClusterNodePoolRequestScalingGroupTags()
                 self.tags.append(temp_model.from_map(k))
-        if map.get('vswitch_ids') is not None:
-            self.vswitch_ids = map.get('vswitch_ids')
+        if m.get('vswitch_ids') is not None:
+            self.vswitch_ids = m.get('vswitch_ids')
+        if m.get('multi_az_policy') is not None:
+            self.multi_az_policy = m.get('multi_az_policy')
+        if m.get('on_demand_base_capacity') is not None:
+            self.on_demand_base_capacity = m.get('on_demand_base_capacity')
+        if m.get('on_demand_percentage_above_base_capacity') is not None:
+            self.on_demand_percentage_above_base_capacity = m.get('on_demand_percentage_above_base_capacity')
+        if m.get('spot_instance_pools') is not None:
+            self.spot_instance_pools = m.get('spot_instance_pools')
+        if m.get('spot_instance_remedy') is not None:
+            self.spot_instance_remedy = m.get('spot_instance_remedy')
+        if m.get('compensate_with_on_demand') is not None:
+            self.compensate_with_on_demand = m.get('compensate_with_on_demand')
         return self
 
 
 class CreateClusterNodePoolRequestTeeConfig(TeaModel):
-    def __init__(self, tee_enable=None):
+    def __init__(
+        self,
+        tee_enable: bool = None,
+    ):
         # 是否为加密计算节点池。
-        self.tee_enable = tee_enable    # type: bool
+        self.tee_enable = tee_enable
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.tee_enable is not None:
             result['tee_enable'] = self.tee_enable
         return result
 
-    def from_map(self, map={}):
-        if map.get('tee_enable') is not None:
-            self.tee_enable = map.get('tee_enable')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tee_enable') is not None:
+            self.tee_enable = m.get('tee_enable')
         return self
 
 
 class CreateClusterNodePoolRequestManagementUpgradeConfig(TeaModel):
-    def __init__(self, auto_upgrade=None, surge=None, surge_percentage=None, max_unavailable=None):
+    def __init__(
+        self,
+        auto_upgrade: bool = None,
+        surge: int = None,
+        surge_percentage: int = None,
+        max_unavailable: int = None,
+    ):
         # 是否启用自动升级
-        self.auto_upgrade = auto_upgrade  # type: bool
+        self.auto_upgrade = auto_upgrade
         # 额外节点数量。
-        self.surge = surge              # type: int
+        self.surge = surge
         # 额外节点比例。和surge二选一。
-        self.surge_percentage = surge_percentage  # type: int
+        self.surge_percentage = surge_percentage
         # 最大不可用节点数量。
-        self.max_unavailable = max_unavailable  # type: int
+        self.max_unavailable = max_unavailable
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.auto_upgrade is not None:
             result['auto_upgrade'] = self.auto_upgrade
         if self.surge is not None:
@@ -3531,33 +3904,39 @@ class CreateClusterNodePoolRequestManagementUpgradeConfig(TeaModel):
             result['max_unavailable'] = self.max_unavailable
         return result
 
-    def from_map(self, map={}):
-        if map.get('auto_upgrade') is not None:
-            self.auto_upgrade = map.get('auto_upgrade')
-        if map.get('surge') is not None:
-            self.surge = map.get('surge')
-        if map.get('surge_percentage') is not None:
-            self.surge_percentage = map.get('surge_percentage')
-        if map.get('max_unavailable') is not None:
-            self.max_unavailable = map.get('max_unavailable')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_upgrade') is not None:
+            self.auto_upgrade = m.get('auto_upgrade')
+        if m.get('surge') is not None:
+            self.surge = m.get('surge')
+        if m.get('surge_percentage') is not None:
+            self.surge_percentage = m.get('surge_percentage')
+        if m.get('max_unavailable') is not None:
+            self.max_unavailable = m.get('max_unavailable')
         return self
 
 
 class CreateClusterNodePoolRequestManagement(TeaModel):
-    def __init__(self, enable=None, auto_repair=None, upgrade_config=None):
+    def __init__(
+        self,
+        enable: bool = None,
+        auto_repair: bool = None,
+        upgrade_config: CreateClusterNodePoolRequestManagementUpgradeConfig = None,
+    ):
         # 是否启用托管节点池。
-        self.enable = enable            # type: bool
+        self.enable = enable
         # 是否启用自动修复。
-        self.auto_repair = auto_repair  # type: bool
+        self.auto_repair = auto_repair
         # 自动升级配置。
-        self.upgrade_config = upgrade_config  # type: CreateClusterNodePoolRequestManagementUpgradeConfig
+        self.upgrade_config = upgrade_config
 
     def validate(self):
         if self.upgrade_config:
             self.upgrade_config.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.enable is not None:
             result['enable'] = self.enable
         if self.auto_repair is not None:
@@ -3566,41 +3945,133 @@ class CreateClusterNodePoolRequestManagement(TeaModel):
             result['upgrade_config'] = self.upgrade_config.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('enable') is not None:
-            self.enable = map.get('enable')
-        if map.get('auto_repair') is not None:
-            self.auto_repair = map.get('auto_repair')
-        if map.get('upgrade_config') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('auto_repair') is not None:
+            self.auto_repair = m.get('auto_repair')
+        if m.get('upgrade_config') is not None:
             temp_model = CreateClusterNodePoolRequestManagementUpgradeConfig()
-            self.upgrade_config = temp_model.from_map(map['upgrade_config'])
+            self.upgrade_config = temp_model.from_map(m['upgrade_config'])
+        return self
+
+
+class CreateClusterNodePoolRequest(TeaModel):
+    def __init__(
+        self,
+        auto_scaling: CreateClusterNodePoolRequestAutoScaling = None,
+        kubernetes_config: CreateClusterNodePoolRequestKubernetesConfig = None,
+        nodepool_info: CreateClusterNodePoolRequestNodepoolInfo = None,
+        scaling_group: CreateClusterNodePoolRequestScalingGroup = None,
+        tee_config: CreateClusterNodePoolRequestTeeConfig = None,
+        management: CreateClusterNodePoolRequestManagement = None,
+        count: int = None,
+    ):
+        # 自动伸缩节点池配置。
+        self.auto_scaling = auto_scaling
+        # 集群配置
+        self.kubernetes_config = kubernetes_config
+        # 节点池配置
+        self.nodepool_info = nodepool_info
+        # 伸缩组配置
+        self.scaling_group = scaling_group
+        # 加密计算节点池配置。
+        self.tee_config = tee_config
+        # 托管节点池配置。
+        self.management = management
+        # 节点数量。
+        self.count = count
+
+    def validate(self):
+        if self.auto_scaling:
+            self.auto_scaling.validate()
+        if self.kubernetes_config:
+            self.kubernetes_config.validate()
+        if self.nodepool_info:
+            self.nodepool_info.validate()
+        if self.scaling_group:
+            self.scaling_group.validate()
+        if self.tee_config:
+            self.tee_config.validate()
+        if self.management:
+            self.management.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.auto_scaling is not None:
+            result['auto_scaling'] = self.auto_scaling.to_map()
+        if self.kubernetes_config is not None:
+            result['kubernetes_config'] = self.kubernetes_config.to_map()
+        if self.nodepool_info is not None:
+            result['nodepool_info'] = self.nodepool_info.to_map()
+        if self.scaling_group is not None:
+            result['scaling_group'] = self.scaling_group.to_map()
+        if self.tee_config is not None:
+            result['tee_config'] = self.tee_config.to_map()
+        if self.management is not None:
+            result['management'] = self.management.to_map()
+        if self.count is not None:
+            result['count'] = self.count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_scaling') is not None:
+            temp_model = CreateClusterNodePoolRequestAutoScaling()
+            self.auto_scaling = temp_model.from_map(m['auto_scaling'])
+        if m.get('kubernetes_config') is not None:
+            temp_model = CreateClusterNodePoolRequestKubernetesConfig()
+            self.kubernetes_config = temp_model.from_map(m['kubernetes_config'])
+        if m.get('nodepool_info') is not None:
+            temp_model = CreateClusterNodePoolRequestNodepoolInfo()
+            self.nodepool_info = temp_model.from_map(m['nodepool_info'])
+        if m.get('scaling_group') is not None:
+            temp_model = CreateClusterNodePoolRequestScalingGroup()
+            self.scaling_group = temp_model.from_map(m['scaling_group'])
+        if m.get('tee_config') is not None:
+            temp_model = CreateClusterNodePoolRequestTeeConfig()
+            self.tee_config = temp_model.from_map(m['tee_config'])
+        if m.get('management') is not None:
+            temp_model = CreateClusterNodePoolRequestManagement()
+            self.management = temp_model.from_map(m['management'])
+        if m.get('count') is not None:
+            self.count = m.get('count')
         return self
 
 
 class CreateClusterNodePoolResponseBody(TeaModel):
-    def __init__(self, nodepool_id=None):
+    def __init__(
+        self,
+        nodepool_id: str = None,
+    ):
         # 节点池ID
-        self.nodepool_id = nodepool_id  # type: str
+        self.nodepool_id = nodepool_id
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.nodepool_id is not None:
             result['nodepool_id'] = self.nodepool_id
         return result
 
-    def from_map(self, map={}):
-        if map.get('nodepool_id') is not None:
-            self.nodepool_id = map.get('nodepool_id')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nodepool_id') is not None:
+            self.nodepool_id = m.get('nodepool_id')
         return self
 
 
 class CreateClusterNodePoolResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: CreateClusterNodePoolResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateClusterNodePoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -3609,66 +4080,79 @@ class CreateClusterNodePoolResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = CreateClusterNodePoolResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class DescribeClusterUserKubeconfigRequest(TeaModel):
-    def __init__(self, private_ip_address=None):
+    def __init__(
+        self,
+        private_ip_address: bool = None,
+    ):
         # ApiServer是否为内网地址。
-        self.private_ip_address = private_ip_address  # type: bool
+        self.private_ip_address = private_ip_address
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.private_ip_address is not None:
             result['PrivateIpAddress'] = self.private_ip_address
         return result
 
-    def from_map(self, map={}):
-        if map.get('PrivateIpAddress') is not None:
-            self.private_ip_address = map.get('PrivateIpAddress')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
         return self
 
 
 class DescribeClusterUserKubeconfigResponseBody(TeaModel):
-    def __init__(self, config=None):
+    def __init__(
+        self,
+        config: str = None,
+    ):
         # kubeconfig内容。
-        self.config = config            # type: str
+        self.config = config
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.config is not None:
             result['config'] = self.config
         return result
 
-    def from_map(self, map={}):
-        if map.get('config') is not None:
-            self.config = map.get('config')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
         return self
 
 
 class DescribeClusterUserKubeconfigResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeClusterUserKubeconfigResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeClusterUserKubeconfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -3677,66 +4161,184 @@ class DescribeClusterUserKubeconfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = DescribeClusterUserKubeconfigResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ScaleClusterRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+    ):
+        # 标签值。
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        return self
+
+
+class ScaleClusterRequestTaints(TeaModel):
+    def __init__(
+        self,
+        effect: str = None,
+        key: str = None,
+        value: str = None,
+    ):
+        # 污点生效策略。
+        self.effect = effect
+        # 污点键。
+        self.key = key
+        # 污点值。
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.effect is not None:
+            result['effect'] = self.effect
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('effect') is not None:
+            self.effect = m.get('effect')
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ScaleClusterRequestWorkerDataDisks(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        encrypted: str = None,
+        size: str = None,
+    ):
+        # 数据盘类型。
+        self.category = category
+        # 是否对数据盘加密。
+        self.encrypted = encrypted
+        # 数据盘大小。
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        if self.encrypted is not None:
+            result['encrypted'] = self.encrypted
+        if self.size is not None:
+            result['size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('encrypted') is not None:
+            self.encrypted = m.get('encrypted')
+        if m.get('size') is not None:
+            self.size = m.get('size')
         return self
 
 
 class ScaleClusterRequest(TeaModel):
-    def __init__(self, cloud_monitor_flags=None, count=None, cpu_policy=None, disable_rollback=None, key_pair=None,
-                 login_password=None, tags=None, taints=None, vswitch_ids=None, worker_auto_renew=None,
-                 worker_auto_renew_period=None, worker_data_disk=None, worker_data_disks=None, worker_instance_charge_type=None,
-                 worker_instance_types=None, worker_period=None, worker_period_unit=None, worker_system_disk_category=None,
-                 worker_system_disk_size=None):
+    def __init__(
+        self,
+        cloud_monitor_flags: bool = None,
+        count: int = None,
+        cpu_policy: str = None,
+        disable_rollback: bool = None,
+        key_pair: str = None,
+        login_password: str = None,
+        tags: List[ScaleClusterRequestTags] = None,
+        taints: List[ScaleClusterRequestTaints] = None,
+        vswitch_ids: List[str] = None,
+        worker_auto_renew: bool = None,
+        worker_auto_renew_period: int = None,
+        worker_data_disk: bool = None,
+        worker_data_disks: List[ScaleClusterRequestWorkerDataDisks] = None,
+        worker_instance_charge_type: str = None,
+        worker_instance_types: List[str] = None,
+        worker_period: int = None,
+        worker_period_unit: str = None,
+        worker_system_disk_category: str = None,
+        worker_system_disk_size: int = None,
+    ):
         # 节点是否安装云监控插件。
-        self.cloud_monitor_flags = cloud_monitor_flags  # type: bool
+        self.cloud_monitor_flags = cloud_monitor_flags
         # 扩容节点数。
-        self.count = count              # type: int
+        self.count = count
         # 节点CPU策略。
-        self.cpu_policy = cpu_policy    # type: str
+        self.cpu_policy = cpu_policy
         # 失败是否回滚。
-        self.disable_rollback = disable_rollback  # type: bool
+        self.disable_rollback = disable_rollback
         # keypair名称，和login_password二选一。
-        self.key_pair = key_pair        # type: str
+        self.key_pair = key_pair
         # SSH登录密码。和keypair二选一。
-        self.login_password = login_password  # type: str
+        self.login_password = login_password
         # 集群标签。
-        self.tags = tags                # type: List[ScaleClusterRequestTags]
+        self.tags = tags
         # 节点污点标记。
-        self.taints = taints            # type: List[ScaleClusterRequestTaints]
+        self.taints = taints
         # 节点交换机ID列表。
-        self.vswitch_ids = vswitch_ids  # type: List[str]
+        self.vswitch_ids = vswitch_ids
         # 节点是否开启Worker节点自动续费。
-        self.worker_auto_renew = worker_auto_renew  # type: bool
+        self.worker_auto_renew = worker_auto_renew
         # 自动续费周期。
-        self.worker_auto_renew_period = worker_auto_renew_period  # type: int
+        self.worker_auto_renew_period = worker_auto_renew_period
         # 是否挂载数据盘。
-        self.worker_data_disk = worker_data_disk  # type: bool
+        self.worker_data_disk = worker_data_disk
         # Worker数据盘类型、大小等配置的组合。
-        self.worker_data_disks = worker_data_disks  # type: List[ScaleClusterRequestWorkerDataDisks]
+        self.worker_data_disks = worker_data_disks
         # 节点付费类型。
-        self.worker_instance_charge_type = worker_instance_charge_type  # type: str
+        self.worker_instance_charge_type = worker_instance_charge_type
         # Worker节点ECS规格类型。
-        self.worker_instance_types = worker_instance_types  # type: List[str]
+        self.worker_instance_types = worker_instance_types
         # 节点包年包月时长。
-        self.worker_period = worker_period  # type: int
+        self.worker_period = worker_period
         # 当指定为PrePaid的时候需要指定周期。
-        self.worker_period_unit = worker_period_unit  # type: str
+        self.worker_period_unit = worker_period_unit
         # 节点系统盘类型。
-        self.worker_system_disk_category = worker_system_disk_category  # type: str
+        self.worker_system_disk_category = worker_system_disk_category
         # 节点系统盘大小
-        self.worker_system_disk_size = worker_system_disk_size  # type: int
+        self.worker_system_disk_size = worker_system_disk_size
 
     def validate(self):
         if self.tags:
@@ -3753,7 +4355,7 @@ class ScaleClusterRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cloud_monitor_flags is not None:
             result['cloud_monitor_flags'] = self.cloud_monitor_flags
         if self.count is not None:
@@ -3800,155 +4402,77 @@ class ScaleClusterRequest(TeaModel):
             result['worker_system_disk_size'] = self.worker_system_disk_size
         return result
 
-    def from_map(self, map={}):
-        if map.get('cloud_monitor_flags') is not None:
-            self.cloud_monitor_flags = map.get('cloud_monitor_flags')
-        if map.get('count') is not None:
-            self.count = map.get('count')
-        if map.get('cpu_policy') is not None:
-            self.cpu_policy = map.get('cpu_policy')
-        if map.get('disable_rollback') is not None:
-            self.disable_rollback = map.get('disable_rollback')
-        if map.get('key_pair') is not None:
-            self.key_pair = map.get('key_pair')
-        if map.get('login_password') is not None:
-            self.login_password = map.get('login_password')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cloud_monitor_flags') is not None:
+            self.cloud_monitor_flags = m.get('cloud_monitor_flags')
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('cpu_policy') is not None:
+            self.cpu_policy = m.get('cpu_policy')
+        if m.get('disable_rollback') is not None:
+            self.disable_rollback = m.get('disable_rollback')
+        if m.get('key_pair') is not None:
+            self.key_pair = m.get('key_pair')
+        if m.get('login_password') is not None:
+            self.login_password = m.get('login_password')
         self.tags = []
-        if map.get('tags') is not None:
-            for k in map.get('tags'):
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
                 temp_model = ScaleClusterRequestTags()
                 self.tags.append(temp_model.from_map(k))
         self.taints = []
-        if map.get('taints') is not None:
-            for k in map.get('taints'):
+        if m.get('taints') is not None:
+            for k in m.get('taints'):
                 temp_model = ScaleClusterRequestTaints()
                 self.taints.append(temp_model.from_map(k))
-        if map.get('vswitch_ids') is not None:
-            self.vswitch_ids = map.get('vswitch_ids')
-        if map.get('worker_auto_renew') is not None:
-            self.worker_auto_renew = map.get('worker_auto_renew')
-        if map.get('worker_auto_renew_period') is not None:
-            self.worker_auto_renew_period = map.get('worker_auto_renew_period')
-        if map.get('worker_data_disk') is not None:
-            self.worker_data_disk = map.get('worker_data_disk')
+        if m.get('vswitch_ids') is not None:
+            self.vswitch_ids = m.get('vswitch_ids')
+        if m.get('worker_auto_renew') is not None:
+            self.worker_auto_renew = m.get('worker_auto_renew')
+        if m.get('worker_auto_renew_period') is not None:
+            self.worker_auto_renew_period = m.get('worker_auto_renew_period')
+        if m.get('worker_data_disk') is not None:
+            self.worker_data_disk = m.get('worker_data_disk')
         self.worker_data_disks = []
-        if map.get('worker_data_disks') is not None:
-            for k in map.get('worker_data_disks'):
+        if m.get('worker_data_disks') is not None:
+            for k in m.get('worker_data_disks'):
                 temp_model = ScaleClusterRequestWorkerDataDisks()
                 self.worker_data_disks.append(temp_model.from_map(k))
-        if map.get('worker_instance_charge_type') is not None:
-            self.worker_instance_charge_type = map.get('worker_instance_charge_type')
-        if map.get('worker_instance_types') is not None:
-            self.worker_instance_types = map.get('worker_instance_types')
-        if map.get('worker_period') is not None:
-            self.worker_period = map.get('worker_period')
-        if map.get('worker_period_unit') is not None:
-            self.worker_period_unit = map.get('worker_period_unit')
-        if map.get('worker_system_disk_category') is not None:
-            self.worker_system_disk_category = map.get('worker_system_disk_category')
-        if map.get('worker_system_disk_size') is not None:
-            self.worker_system_disk_size = map.get('worker_system_disk_size')
-        return self
-
-
-class ScaleClusterRequestTags(TeaModel):
-    def __init__(self, key=None):
-        # 标签值。
-        self.key = key                  # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.key is not None:
-            result['key'] = self.key
-        return result
-
-    def from_map(self, map={}):
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        return self
-
-
-class ScaleClusterRequestTaints(TeaModel):
-    def __init__(self, effect=None, key=None, value=None):
-        # 污点生效策略。
-        self.effect = effect            # type: str
-        # 污点键。
-        self.key = key                  # type: str
-        # 污点值。
-        self.value = value              # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.effect is not None:
-            result['effect'] = self.effect
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, map={}):
-        if map.get('effect') is not None:
-            self.effect = map.get('effect')
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
-        return self
-
-
-class ScaleClusterRequestWorkerDataDisks(TeaModel):
-    def __init__(self, category=None, encrypted=None, size=None):
-        # 数据盘类型。
-        self.category = category        # type: str
-        # 是否对数据盘加密。
-        self.encrypted = encrypted      # type: str
-        # 数据盘大小。
-        self.size = size                # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.category is not None:
-            result['category'] = self.category
-        if self.encrypted is not None:
-            result['encrypted'] = self.encrypted
-        if self.size is not None:
-            result['size'] = self.size
-        return result
-
-    def from_map(self, map={}):
-        if map.get('category') is not None:
-            self.category = map.get('category')
-        if map.get('encrypted') is not None:
-            self.encrypted = map.get('encrypted')
-        if map.get('size') is not None:
-            self.size = map.get('size')
+        if m.get('worker_instance_charge_type') is not None:
+            self.worker_instance_charge_type = m.get('worker_instance_charge_type')
+        if m.get('worker_instance_types') is not None:
+            self.worker_instance_types = m.get('worker_instance_types')
+        if m.get('worker_period') is not None:
+            self.worker_period = m.get('worker_period')
+        if m.get('worker_period_unit') is not None:
+            self.worker_period_unit = m.get('worker_period_unit')
+        if m.get('worker_system_disk_category') is not None:
+            self.worker_system_disk_category = m.get('worker_system_disk_category')
+        if m.get('worker_system_disk_size') is not None:
+            self.worker_system_disk_size = m.get('worker_system_disk_size')
         return self
 
 
 class ScaleClusterResponseBody(TeaModel):
-    def __init__(self, cluster_id=None, request_id=None, task_id=None):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
         # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+        self.cluster_id = cluster_id
         # 请求ID。
-        self.request_id = request_id    # type: str
+        self.request_id = request_id
         # 任务ID。
-        self.task_id = task_id          # type: str
+        self.task_id = task_id
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.request_id is not None:
@@ -3957,20 +4481,25 @@ class ScaleClusterResponseBody(TeaModel):
             result['task_id'] = self.task_id
         return result
 
-    def from_map(self, map={}):
-        if map.get('cluster_id') is not None:
-            self.cluster_id = map.get('cluster_id')
-        if map.get('request_id') is not None:
-            self.request_id = map.get('request_id')
-        if map.get('task_id') is not None:
-            self.task_id = map.get('task_id')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
         return self
 
 
 class ScaleClusterResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: ScaleClusterResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ScaleClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -3979,160 +4508,157 @@ class ScaleClusterResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = ScaleClusterResponseBody()
-            self.body = temp_model.from_map(map['body'])
-        return self
-
-
-class DescribeClusterAddonUpgradeStatusResponseBody(TeaModel):
-    def __init__(self, addon_info=None, can_upgrade=None, template=None):
-        # 组件信息。
-        self.addon_info = addon_info    # type: DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo
-        # 是否能够升级。
-        self.can_upgrade = can_upgrade  # type: bool
-        # 模板信息，采用base64加密。
-        self.template = template        # type: str
-
-    def validate(self):
-        if self.addon_info:
-            self.addon_info.validate()
-
-    def to_map(self):
-        result = {}
-        if self.addon_info is not None:
-            result['addon_info'] = self.addon_info.to_map()
-        if self.can_upgrade is not None:
-            result['can_upgrade'] = self.can_upgrade
-        if self.template is not None:
-            result['template'] = self.template
-        return result
-
-    def from_map(self, map={}):
-        if map.get('addon_info') is not None:
-            temp_model = DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo()
-            self.addon_info = temp_model.from_map(map['addon_info'])
-        if map.get('can_upgrade') is not None:
-            self.can_upgrade = map.get('can_upgrade')
-        if map.get('template') is not None:
-            self.template = map.get('template')
-        return self
-
-
-class DescribeClusterAddonUpgradeStatusResponseBodyAddonInfo(TeaModel):
-    def __init__(self, category=None, component_name=None, message=None, version=None, yaml=None):
-        # Addon类别。
-        self.category = category        # type: str
-        # 组件名称。
-        self.component_name = component_name  # type: str
-        # 升级说明信息。
-        self.message = message          # type: str
-        # 组件版本。
-        self.version = version          # type: str
-        # 组件配置文件。
-        self.yaml = yaml                # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.category is not None:
-            result['category'] = self.category
-        if self.component_name is not None:
-            result['component_name'] = self.component_name
-        if self.message is not None:
-            result['message'] = self.message
-        if self.version is not None:
-            result['version'] = self.version
-        if self.yaml is not None:
-            result['yaml'] = self.yaml
-        return result
-
-    def from_map(self, map={}):
-        if map.get('category') is not None:
-            self.category = map.get('category')
-        if map.get('component_name') is not None:
-            self.component_name = map.get('component_name')
-        if map.get('message') is not None:
-            self.message = map.get('message')
-        if map.get('version') is not None:
-            self.version = map.get('version')
-        if map.get('yaml') is not None:
-            self.yaml = map.get('yaml')
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class DescribeClusterAddonUpgradeStatusResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeClusterAddonUpgradeStatusResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: dict = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
         self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
-            result['body'] = self.body.to_map()
+            result['body'] = self.body
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
-            temp_model = DescribeClusterAddonUpgradeStatusResponseBody()
-            self.body = temp_model.from_map(map['body'])
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
         return self
 
 
 class DescribeAddonsRequest(TeaModel):
-    def __init__(self, region=None, cluster_type=None):
-        # Region ID。
-        self.region = region            # type: str
-        # 集群类型，默认为kubernetes。
-        self.cluster_type = cluster_type  # type: str
+    def __init__(
+        self,
+        region: str = None,
+        cluster_type: str = None,
+    ):
+        # 地域ID。
+        self.region = region
+        # 集群类型。  - Kubernetes: 专有版集群。 - ManagedKubernetes：托管版集群。 - Ask：Serverless 集群。 - ExternalKubernetes：注册到ACK的外部集群。
+        self.cluster_type = cluster_type
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.region is not None:
             result['region'] = self.region
         if self.cluster_type is not None:
             result['cluster_type'] = self.cluster_type
         return result
 
-    def from_map(self, map={}):
-        if map.get('region') is not None:
-            self.region = map.get('region')
-        if map.get('cluster_type') is not None:
-            self.cluster_type = map.get('cluster_type')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('cluster_type') is not None:
+            self.cluster_type = m.get('cluster_type')
+        return self
+
+
+class DescribeAddonsResponseBodyComponentGroupsItems(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        # 组件名称。
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class DescribeAddonsResponseBodyComponentGroups(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+        items: List[DescribeAddonsResponseBodyComponentGroupsItems] = None,
+    ):
+        # 组件组名称。
+        self.group_name = group_name
+        # 组件列表
+        self.items = items
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.group_name is not None:
+            result['group_name'] = self.group_name
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('group_name') is not None:
+            self.group_name = m.get('group_name')
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = DescribeAddonsResponseBodyComponentGroupsItems()
+                self.items.append(temp_model.from_map(k))
         return self
 
 
 class DescribeAddonsResponseBody(TeaModel):
-    def __init__(self, component_groups=None, standard_components=None):
+    def __init__(
+        self,
+        component_groups: List[DescribeAddonsResponseBodyComponentGroups] = None,
+        standard_components: Dict[str, StandardComponentsValue] = None,
+    ):
         # 组件分组信息，例如：存储类组件，网络组件等。
-        self.component_groups = component_groups  # type: List[DescribeAddonsResponseBodyComponentGroups]
+        self.component_groups = component_groups
         # 标准组件信息，包含各个组件的描述信息。
-        self.standard_components = standard_components  # type: Dict[str, StandardComponentsValue]
+        self.standard_components = standard_components
 
     def validate(self):
         if self.component_groups:
@@ -4145,7 +4671,7 @@ class DescribeAddonsResponseBody(TeaModel):
                     v.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['ComponentGroups'] = []
         if self.component_groups is not None:
             for k in self.component_groups:
@@ -4156,108 +4682,29 @@ class DescribeAddonsResponseBody(TeaModel):
                 result['StandardComponents'][k] = v.to_map()
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.component_groups = []
-        if map.get('ComponentGroups') is not None:
-            for k in map.get('ComponentGroups'):
+        if m.get('ComponentGroups') is not None:
+            for k in m.get('ComponentGroups'):
                 temp_model = DescribeAddonsResponseBodyComponentGroups()
                 self.component_groups.append(temp_model.from_map(k))
         self.standard_components = {}
-        if map.get('StandardComponents') is not None:
-            for k, v in map.get('StandardComponents').items():
+        if m.get('StandardComponents') is not None:
+            for k, v in m.get('StandardComponents').items():
                 temp_model = StandardComponentsValue()
                 self.standard_components[k] = temp_model.from_map(v)
         return self
 
 
-class DescribeAddonsResponseBodyComponentGroupsItems(TeaModel):
-    def __init__(self, description=None, disabled=None, name=None, required=None, version=None):
-        # 组件描述信息。
-        self.description = description  # type: str
-        # 是否禁止默认安装。
-        self.disabled = disabled        # type: bool
-        # 组件名称。
-        self.name = name                # type: str
-        # 是否为必需组件。
-        self.required = required        # type: str
-        # 组件版本。
-        self.version = version          # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.description is not None:
-            result['description'] = self.description
-        if self.disabled is not None:
-            result['disabled'] = self.disabled
-        if self.name is not None:
-            result['name'] = self.name
-        if self.required is not None:
-            result['required'] = self.required
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, map={}):
-        if map.get('description') is not None:
-            self.description = map.get('description')
-        if map.get('disabled') is not None:
-            self.disabled = map.get('disabled')
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('required') is not None:
-            self.required = map.get('required')
-        if map.get('version') is not None:
-            self.version = map.get('version')
-        return self
-
-
-class DescribeAddonsResponseBodyComponentGroups(TeaModel):
-    def __init__(self, default=None, group_name=None, items=None):
-        # 默认组件组。
-        self.default = default          # type: List[str]
-        # 组件组名称。
-        self.group_name = group_name    # type: str
-        # 组件清单。
-        self.items = items              # type: List[DescribeAddonsResponseBodyComponentGroupsItems]
-
-    def validate(self):
-        if self.items:
-            for k in self.items:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        if self.default is not None:
-            result['default'] = self.default
-        if self.group_name is not None:
-            result['group_name'] = self.group_name
-        result['items'] = []
-        if self.items is not None:
-            for k in self.items:
-                result['items'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, map={}):
-        if map.get('default') is not None:
-            self.default = map.get('default')
-        if map.get('group_name') is not None:
-            self.group_name = map.get('group_name')
-        self.items = []
-        if map.get('items') is not None:
-            for k in map.get('items'):
-                temp_model = DescribeAddonsResponseBodyComponentGroupsItems()
-                self.items.append(temp_model.from_map(k))
-        return self
-
-
 class DescribeAddonsResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeAddonsResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeAddonsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -4266,166 +4713,249 @@ class DescribeAddonsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = DescribeAddonsResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class CreateClusterRequest(TeaModel):
-    def __init__(self, addons=None, cloud_monitor_flags=None, cluster_type=None, container_cidr=None,
-                 cpu_policy=None, deletion_protection=None, disable_rollback=None, endpoint_public_access=None,
-                 format_disk=None, image_id=None, instances=None, is_enterprise_security_group=None, keep_instance_name=None,
-                 key_pair=None, kubernetes_version=None, login_password=None, master_auto_renew=None,
-                 master_auto_renew_period=None, master_count=None, master_instance_charge_type=None, master_instance_types=None,
-                 master_period=None, master_period_unit=None, master_system_disk_category=None, master_system_disk_size=None,
-                 master_vswitch_ids=None, name=None, node_cidr_mask=None, node_port_range=None, num_of_nodes=None, os_type=None,
-                 platform=None, pod_vswitch_ids=None, private_zone=None, profile=None, proxy_mode=None, rds_instances=None,
-                 region_id=None, runtime=None, security_group_id=None, service_cidr=None, snat_entry=None, ssh_flags=None,
-                 tags=None, taints=None, timeout_mins=None, user_data=None, vpcid=None, vswitch_ids=None,
-                 worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disks=None, worker_instance_charge_type=None,
-                 worker_instance_types=None, worker_period=None, worker_period_unit=None, worker_system_disk_category=None,
-                 worker_system_disk_size=None, worker_vswitch_ids=None, zone_id=None):
-        # 组件信息。
-        self.addons = addons            # type: List[CreateClusterRequestAddons]
-        # 是否安装云监控插件。
-        self.cloud_monitor_flags = cloud_monitor_flags  # type: bool
-        # 集群类型
-        self.cluster_type = cluster_type  # type: str
-        # POD网络地址段。
-        self.container_cidr = container_cidr  # type: str
-        # CPU管理策略。
-        self.cpu_policy = cpu_policy    # type: str
-        # 集群是否开启删除保护。
-        self.deletion_protection = deletion_protection  # type: bool
-        # 集群创建失败后是否回滚。
-        self.disable_rollback = disable_rollback  # type: bool
-        # 集群是否运行公网访问。
-        self.endpoint_public_access = endpoint_public_access  # type: bool
-        # 是否进行数据盘挂载
-        self.format_disk = format_disk  # type: bool
-        # 自定义镜像ID。
-        self.image_id = image_id        # type: str
-        # 已有实例列表。
-        self.instances = instances      # type: List[str]
-        # 是否自动创建企业安全组，与security_group_id二选一。
-        self.is_enterprise_security_group = is_enterprise_security_group  # type: bool
-        # 是否保留实例名称。
-        self.keep_instance_name = keep_instance_name  # type: bool
-        # key_pair名称，和login_password二选一。
-        self.key_pair = key_pair        # type: str
-        # 集群版本好。
-        self.kubernetes_version = kubernetes_version  # type: str
-        # SSH登录密码，与key_pair二选一。
-        self.login_password = login_password  # type: str
-        # Master节点是否自动续费。
-        self.master_auto_renew = master_auto_renew  # type: bool
-        # Master节点自动续费周期。
-        self.master_auto_renew_period = master_auto_renew_period  # type: int
-        # Master节点数量。
-        self.master_count = master_count  # type: int
-        # Master节点付费类型。
-        self.master_instance_charge_type = master_instance_charge_type  # type: str
-        # Master节点ECS规格类型。
-        self.master_instance_types = master_instance_types  # type: List[str]
-        # Master节点包年包月时长，当master_instance_charge_type取值为PrePaid时才生效且为必选值。
-        self.master_period = master_period  # type: int
-        # Master节点包年包月周期。
-        self.master_period_unit = master_period_unit  # type: str
-        # Master节点系统盘类型。
-        self.master_system_disk_category = master_system_disk_category  # type: str
-        # Master节点系统盘大小。
-        self.master_system_disk_size = master_system_disk_size  # type: int
-        # Master节点交换机ID列表。
-        self.master_vswitch_ids = master_vswitch_ids  # type: List[str]
+    def __init__(
+        self,
+        name: str = None,
+        region_id: str = None,
+        cluster_type: str = None,
+        cluster_spec: str = None,
+        kubernetes_version: str = None,
+        runtime: Runtime = None,
+        vpcid: str = None,
+        pod_vswitch_ids: List[str] = None,
+        container_cidr: str = None,
+        service_cidr: str = None,
+        security_group_id: str = None,
+        is_enterprise_security_group: bool = None,
+        snat_entry: bool = None,
+        endpoint_public_access: bool = None,
+        ssh_flags: bool = None,
+        timezone: str = None,
+        node_cidr_mask: str = None,
+        user_ca: str = None,
+        user_data: str = None,
+        cluster_domain: str = None,
+        node_name_mode: str = None,
+        custom_san: str = None,
+        encryption_provider_key: str = None,
+        service_account_issuer: str = None,
+        api_audiences: str = None,
+        image_id: str = None,
+        rds_instances: List[str] = None,
+        tags: List[Tag] = None,
+        addons: List[Addon] = None,
+        taints: List[Taint] = None,
+        cloud_monitor_flags: bool = None,
+        platform: str = None,
+        os_type: str = None,
+        cpu_policy: str = None,
+        proxy_mode: str = None,
+        node_port_range: str = None,
+        key_pair: str = None,
+        login_password: str = None,
+        master_count: int = None,
+        master_vswitch_ids: List[str] = None,
+        master_instance_types: List[str] = None,
+        master_system_disk_category: str = None,
+        master_system_disk_size: int = None,
+        master_system_disk_snapshot_policy_id: str = None,
+        master_instance_charge_type: str = None,
+        master_period_unit: str = None,
+        master_period: int = None,
+        master_auto_renew: bool = None,
+        master_auto_renew_period: int = None,
+        num_of_nodes: int = None,
+        worker_vswitch_ids: List[str] = None,
+        worker_instance_types: List[str] = None,
+        worker_system_disk_category: str = None,
+        worker_system_disk_size: int = None,
+        worker_system_disk_snapshot_policy_id: str = None,
+        worker_data_disks: List[DataDisk] = None,
+        worker_instance_charge_type: str = None,
+        worker_period_unit: str = None,
+        worker_period: int = None,
+        worker_auto_renew: bool = None,
+        worker_auto_renew_period: int = None,
+        instances: List[str] = None,
+        format_disk: bool = None,
+        keep_instance_name: bool = None,
+        service_discovery_types: List[str] = None,
+        nat_gateway: bool = None,
+        zone_id: str = None,
+        profile: str = None,
+        deletion_protection: bool = None,
+        disable_rollback: bool = None,
+        timeout_mins: int = None,
+    ):
         # 集群名称。
-        self.name = name                # type: str
-        # 节点IP数量，这里通过CIDR来指定。
-        self.node_cidr_mask = node_cidr_mask  # type: str
-        # 节点服务端口范围。
-        self.node_port_range = node_port_range  # type: str
-        # Worker节点数量。
-        self.num_of_nodes = num_of_nodes  # type: int
-        # 操作系统。
-        self.os_type = os_type          # type: str
-        # 操作系统发行版。
-        self.platform = platform        # type: str
-        # Pod的虚拟交换机列表，在ENI多网卡模式下，需要传额外的VSwitch ID给addon。
-        self.pod_vswitch_ids = pod_vswitch_ids  # type: List[str]
-        # 是否开启PrivateZone用于服务发现。
-        self.private_zone = private_zone  # type: bool
-        # 边缘集群标识。
-        self.profile = profile          # type: str
-        # kube-proxy代理模式。
-        self.proxy_mode = proxy_mode    # type: str
-        # RDS列表，将该ECS加入到选择的RDS实例的白名单中。。
-        self.rds_instances = rds_instances  # type: List[str]
-        # 集群所属地域ID。
-        self.region_id = region_id      # type: str
-        # 容器运行时。
-        self.runtime = runtime          # type: CreateClusterRequestRuntime
-        # 自定义安全组ID。
-        self.security_group_id = security_group_id  # type: str
-        # Service网络地址段。
-        self.service_cidr = service_cidr  # type: str
-        # 集群是否配置SNAT。
-        self.snat_entry = snat_entry    # type: bool
-        # 集群是否开启公网SSH登录。
-        self.ssh_flags = ssh_flags      # type: bool
-        # 集群标签。
-        self.tags = tags                # type: List[CreateClusterRequestTags]
-        # 污点信息。
-        self.taints = taints            # type: List[CreateClusterRequestTaints]
-        # 集群创建超时时间。
-        self.timeout_mins = timeout_mins  # type: int
-        # 节点用户自定义数据。
-        self.user_data = user_data      # type: str
-        # 集群使用的VPC。
-        self.vpcid = vpcid              # type: str
-        # 虚拟交换机列表。List长度范围为[1，3]。当集群类型为托管版或标准serverless集群时，该参数必填。
-        self.vswitch_ids = vswitch_ids  # type: List[str]
-        # Worker节点是否自动续费。
-        self.worker_auto_renew = worker_auto_renew  # type: bool
-        # Worker节点自动续费周期。
-        self.worker_auto_renew_period = worker_auto_renew_period  # type: int
-        # Worker节点数据盘配置。
-        self.worker_data_disks = worker_data_disks  # type: List[CreateClusterRequestWorkerDataDisks]
-        # Worker节点付费类型。
-        self.worker_instance_charge_type = worker_instance_charge_type  # type: str
-        # Worker节点ECS实例类型。
-        self.worker_instance_types = worker_instance_types  # type: List[str]
-        # Worker节点包年包月时长。
-        self.worker_period = worker_period  # type: int
-        # Worker节点包年包月周期。
-        self.worker_period_unit = worker_period_unit  # type: str
-        # Worker节点系统盘类型。
-        self.worker_system_disk_category = worker_system_disk_category  # type: str
-        # Worker节点系统盘大小。
-        self.worker_system_disk_size = worker_system_disk_size  # type: int
-        # 集群使用的虚拟交换机。
-        self.worker_vswitch_ids = worker_vswitch_ids  # type: List[str]
-        # 集群所属地域内的可用区ID。
-        self.zone_id = zone_id          # type: str
+        self.name = name
+        # 地域ID
+        self.region_id = region_id
+        # 集群类型
+        self.cluster_type = cluster_type
+        # 托管版集群类型
+        self.cluster_spec = cluster_spec
+        # 集群版本
+        self.kubernetes_version = kubernetes_version
+        self.runtime = runtime
+        # 集群专有网络ID。
+        self.vpcid = vpcid
+        # 创建Terway网络类型的集群时，需要为pod指定单独的虚拟交换机
+        self.pod_vswitch_ids = pod_vswitch_ids
+        # POD网络网段
+        self.container_cidr = container_cidr
+        # 服务网络网段
+        self.service_cidr = service_cidr
+        # 安全组ID，和is_enterprise_security_group二选一
+        self.security_group_id = security_group_id
+        # 自动创建企业安全组
+        self.is_enterprise_security_group = is_enterprise_security_group
+        # 若您集群内的节点、应用等需要访问公网，勾选该项后我们将为您创建 NAT 网关并自动配置 SNAT 规则
+        self.snat_entry = snat_entry
+        # 使用EIP暴露apiServer
+        self.endpoint_public_access = endpoint_public_access
+        # 允许公网ssh登录
+        self.ssh_flags = ssh_flags
+        # 时区
+        self.timezone = timezone
+        # 节点IP数量
+        self.node_cidr_mask = node_cidr_mask
+        # 自定义集群CA
+        self.user_ca = user_ca
+        # 节点自定义数据
+        self.user_data = user_data
+        # 集群本地域名
+        self.cluster_domain = cluster_domain
+        # 自定义节点名称
+        self.node_name_mode = node_name_mode
+        # 自定义证书SAN
+        self.custom_san = custom_san
+        # Secret落盘加密
+        self.encryption_provider_key = encryption_provider_key
+        # serviceaccount token中的签发身份，即token payload中的iss字段。
+        self.service_account_issuer = service_account_issuer
+        # 合法的请求token身份，用于apiserver服务端认证请求token是否合法。
+        self.api_audiences = api_audiences
+        # 自定义镜像
+        self.image_id = image_id
+        # RDS白名单
+        self.rds_instances = rds_instances
+        # 集群标签
+        self.tags = tags
+        # 集群组件配置
+        self.addons = addons
+        # 节点污点信息
+        self.taints = taints
+        # 为ECS安装云监控
+        self.cloud_monitor_flags = cloud_monitor_flags
+        # 操作系统发行版
+        self.platform = platform
+        # 操作系统平台类型
+        self.os_type = os_type
+        # CPU策略
+        self.cpu_policy = cpu_policy
+        # Proxy代理模式，ipvs|iptables
+        self.proxy_mode = proxy_mode
+        # 节点服务端口范围
+        self.node_port_range = node_port_range
+        # 密钥对名称，和login_password二选一。
+        self.key_pair = key_pair
+        # SSH登录密码。密码规则为8~30 个字符，且至少同时包含三项（大小写字母、数字和特殊符号），和key_pair二选一。
+        self.login_password = login_password
+        # 集群Master节点数量
+        self.master_count = master_count
+        # 集群Master节点使用的虚拟交换机
+        self.master_vswitch_ids = master_vswitch_ids
+        # 集群Master节点类型
+        self.master_instance_types = master_instance_types
+        # 集群Master节点系统盘类型
+        self.master_system_disk_category = master_system_disk_category
+        # 集群Master节点系统盘大小，至少40
+        self.master_system_disk_size = master_system_disk_size
+        # 集群Master节点自动快照备份策略
+        self.master_system_disk_snapshot_policy_id = master_system_disk_snapshot_policy_id
+        # 集群Master节点付费类型
+        self.master_instance_charge_type = master_instance_charge_type
+        # 集群Master节点包年包月周期
+        self.master_period_unit = master_period_unit
+        # 集群Master节点包年包月时长
+        self.master_period = master_period
+        # 集群Master节点是否自动续费
+        self.master_auto_renew = master_auto_renew
+        # 集群Master节点自动续费时长
+        self.master_auto_renew_period = master_auto_renew_period
+        # 集群Worker节点数量
+        self.num_of_nodes = num_of_nodes
+        # 集群Worker节点所在虚拟交换机
+        self.worker_vswitch_ids = worker_vswitch_ids
+        # 集群Worker节点类型
+        self.worker_instance_types = worker_instance_types
+        # 集群Worker节点系统盘类型
+        self.worker_system_disk_category = worker_system_disk_category
+        # 集群Worker节点系统盘大小
+        self.worker_system_disk_size = worker_system_disk_size
+        # 集群Worker节点系统盘快照备份策略
+        self.worker_system_disk_snapshot_policy_id = worker_system_disk_snapshot_policy_id
+        # 集群Worker节点数据盘配置
+        self.worker_data_disks = worker_data_disks
+        # 集群Worker节点付费类型
+        self.worker_instance_charge_type = worker_instance_charge_type
+        # 集群Worker节点包年包月周期
+        self.worker_period_unit = worker_period_unit
+        # 集群Worker节点包年包月时长
+        self.worker_period = worker_period
+        # 集群Worker节点到期是否自动续费
+        self.worker_auto_renew = worker_auto_renew
+        # 集群Worker节点自动续费时长
+        self.worker_auto_renew_period = worker_auto_renew_period
+        # 使用已有节点创建集群时，已有实例列表
+        self.instances = instances
+        # 使用已有节点创建集群时，是否格式化已有实例的磁盘
+        self.format_disk = format_disk
+        # 使用已有节点创建集群时，是否保留实例名称。
+        self.keep_instance_name = keep_instance_name
+        # 创建ASK集群时，服务发现类型
+        self.service_discovery_types = service_discovery_types
+        # 使用自动创建专有网络创建ASK集群时，是否在vpc中创建Nat网关并配置SNAT规则。
+        self.nat_gateway = nat_gateway
+        # 使用自动创建专有网络创建ASK集群时，需要指定专有网络的可用区
+        self.zone_id = zone_id
+        # 面向场景时的集群类型。  Default：非边缘场景集群。 Edge：边缘场景集群。
+        self.profile = profile
+        # 集群删除保护
+        self.deletion_protection = deletion_protection
+        # 失败回滚
+        self.disable_rollback = disable_rollback
+        # 集群创建超时时间
+        self.timeout_mins = timeout_mins
 
     def validate(self):
-        if self.addons:
-            for k in self.addons:
-                if k:
-                    k.validate()
         if self.runtime:
             self.runtime.validate()
         if self.tags:
             for k in self.tags:
+                if k:
+                    k.validate()
+        if self.addons:
+            for k in self.addons:
                 if k:
                     k.validate()
         if self.taints:
@@ -4438,436 +4968,338 @@ class CreateClusterRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
-        result['addons'] = []
-        if self.addons is not None:
-            for k in self.addons:
-                result['addons'].append(k.to_map() if k else None)
-        if self.cloud_monitor_flags is not None:
-            result['cloud_monitor_flags'] = self.cloud_monitor_flags
-        if self.cluster_type is not None:
-            result['cluster_type'] = self.cluster_type
-        if self.container_cidr is not None:
-            result['container_cidr'] = self.container_cidr
-        if self.cpu_policy is not None:
-            result['cpu_policy'] = self.cpu_policy
-        if self.deletion_protection is not None:
-            result['deletion_protection'] = self.deletion_protection
-        if self.disable_rollback is not None:
-            result['disable_rollback'] = self.disable_rollback
-        if self.endpoint_public_access is not None:
-            result['endpoint_public_access'] = self.endpoint_public_access
-        if self.format_disk is not None:
-            result['format_disk'] = self.format_disk
-        if self.image_id is not None:
-            result['image_id'] = self.image_id
-        if self.instances is not None:
-            result['instances'] = self.instances
-        if self.is_enterprise_security_group is not None:
-            result['is_enterprise_security_group'] = self.is_enterprise_security_group
-        if self.keep_instance_name is not None:
-            result['keep_instance_name'] = self.keep_instance_name
-        if self.key_pair is not None:
-            result['key_pair'] = self.key_pair
-        if self.kubernetes_version is not None:
-            result['kubernetes_version'] = self.kubernetes_version
-        if self.login_password is not None:
-            result['login_password'] = self.login_password
-        if self.master_auto_renew is not None:
-            result['master_auto_renew'] = self.master_auto_renew
-        if self.master_auto_renew_period is not None:
-            result['master_auto_renew_period'] = self.master_auto_renew_period
-        if self.master_count is not None:
-            result['master_count'] = self.master_count
-        if self.master_instance_charge_type is not None:
-            result['master_instance_charge_type'] = self.master_instance_charge_type
-        if self.master_instance_types is not None:
-            result['master_instance_types'] = self.master_instance_types
-        if self.master_period is not None:
-            result['master_period'] = self.master_period
-        if self.master_period_unit is not None:
-            result['master_period_unit'] = self.master_period_unit
-        if self.master_system_disk_category is not None:
-            result['master_system_disk_category'] = self.master_system_disk_category
-        if self.master_system_disk_size is not None:
-            result['master_system_disk_size'] = self.master_system_disk_size
-        if self.master_vswitch_ids is not None:
-            result['master_vswitch_ids'] = self.master_vswitch_ids
+        result = dict()
         if self.name is not None:
             result['name'] = self.name
-        if self.node_cidr_mask is not None:
-            result['node_cidr_mask'] = self.node_cidr_mask
-        if self.node_port_range is not None:
-            result['node_port_range'] = self.node_port_range
-        if self.num_of_nodes is not None:
-            result['num_of_nodes'] = self.num_of_nodes
-        if self.os_type is not None:
-            result['os_type'] = self.os_type
-        if self.platform is not None:
-            result['platform'] = self.platform
-        if self.pod_vswitch_ids is not None:
-            result['pod_vswitch_ids'] = self.pod_vswitch_ids
-        if self.private_zone is not None:
-            result['private_zone'] = self.private_zone
-        if self.profile is not None:
-            result['profile'] = self.profile
-        if self.proxy_mode is not None:
-            result['proxy_mode'] = self.proxy_mode
-        if self.rds_instances is not None:
-            result['rds_instances'] = self.rds_instances
         if self.region_id is not None:
             result['region_id'] = self.region_id
+        if self.cluster_type is not None:
+            result['cluster_type'] = self.cluster_type
+        if self.cluster_spec is not None:
+            result['cluster_spec'] = self.cluster_spec
+        if self.kubernetes_version is not None:
+            result['kubernetes_version'] = self.kubernetes_version
         if self.runtime is not None:
             result['runtime'] = self.runtime.to_map()
-        if self.security_group_id is not None:
-            result['security_group_id'] = self.security_group_id
+        if self.vpcid is not None:
+            result['vpcid'] = self.vpcid
+        if self.pod_vswitch_ids is not None:
+            result['pod_vswitch_ids'] = self.pod_vswitch_ids
+        if self.container_cidr is not None:
+            result['container_cidr'] = self.container_cidr
         if self.service_cidr is not None:
             result['service_cidr'] = self.service_cidr
+        if self.security_group_id is not None:
+            result['security_group_id'] = self.security_group_id
+        if self.is_enterprise_security_group is not None:
+            result['is_enterprise_security_group'] = self.is_enterprise_security_group
         if self.snat_entry is not None:
             result['snat_entry'] = self.snat_entry
+        if self.endpoint_public_access is not None:
+            result['endpoint_public_access'] = self.endpoint_public_access
         if self.ssh_flags is not None:
             result['ssh_flags'] = self.ssh_flags
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
+        if self.node_cidr_mask is not None:
+            result['node_cidr_mask'] = self.node_cidr_mask
+        if self.user_ca is not None:
+            result['user_ca'] = self.user_ca
+        if self.user_data is not None:
+            result['user_data'] = self.user_data
+        if self.cluster_domain is not None:
+            result['cluster_domain'] = self.cluster_domain
+        if self.node_name_mode is not None:
+            result['node_name_mode'] = self.node_name_mode
+        if self.custom_san is not None:
+            result['custom_san'] = self.custom_san
+        if self.encryption_provider_key is not None:
+            result['encryption_provider_key'] = self.encryption_provider_key
+        if self.service_account_issuer is not None:
+            result['service_account_issuer'] = self.service_account_issuer
+        if self.api_audiences is not None:
+            result['api_audiences'] = self.api_audiences
+        if self.image_id is not None:
+            result['image_id'] = self.image_id
+        if self.rds_instances is not None:
+            result['rds_instances'] = self.rds_instances
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
                 result['tags'].append(k.to_map() if k else None)
+        result['addons'] = []
+        if self.addons is not None:
+            for k in self.addons:
+                result['addons'].append(k.to_map() if k else None)
         result['taints'] = []
         if self.taints is not None:
             for k in self.taints:
                 result['taints'].append(k.to_map() if k else None)
-        if self.timeout_mins is not None:
-            result['timeout_mins'] = self.timeout_mins
-        if self.user_data is not None:
-            result['user_data'] = self.user_data
-        if self.vpcid is not None:
-            result['vpcid'] = self.vpcid
-        if self.vswitch_ids is not None:
-            result['vswitch_ids'] = self.vswitch_ids
-        if self.worker_auto_renew is not None:
-            result['worker_auto_renew'] = self.worker_auto_renew
-        if self.worker_auto_renew_period is not None:
-            result['worker_auto_renew_period'] = self.worker_auto_renew_period
+        if self.cloud_monitor_flags is not None:
+            result['cloud_monitor_flags'] = self.cloud_monitor_flags
+        if self.platform is not None:
+            result['platform'] = self.platform
+        if self.os_type is not None:
+            result['os_type'] = self.os_type
+        if self.cpu_policy is not None:
+            result['cpu_policy'] = self.cpu_policy
+        if self.proxy_mode is not None:
+            result['proxy_mode'] = self.proxy_mode
+        if self.node_port_range is not None:
+            result['node_port_range'] = self.node_port_range
+        if self.key_pair is not None:
+            result['key_pair'] = self.key_pair
+        if self.login_password is not None:
+            result['login_password'] = self.login_password
+        if self.master_count is not None:
+            result['master_count'] = self.master_count
+        if self.master_vswitch_ids is not None:
+            result['master_vswitch_ids'] = self.master_vswitch_ids
+        if self.master_instance_types is not None:
+            result['master_instance_types'] = self.master_instance_types
+        if self.master_system_disk_category is not None:
+            result['master_system_disk_category'] = self.master_system_disk_category
+        if self.master_system_disk_size is not None:
+            result['master_system_disk_size'] = self.master_system_disk_size
+        if self.master_system_disk_snapshot_policy_id is not None:
+            result['master_system_disk_snapshot_policy_id'] = self.master_system_disk_snapshot_policy_id
+        if self.master_instance_charge_type is not None:
+            result['master_instance_charge_type'] = self.master_instance_charge_type
+        if self.master_period_unit is not None:
+            result['master_period_unit'] = self.master_period_unit
+        if self.master_period is not None:
+            result['master_period'] = self.master_period
+        if self.master_auto_renew is not None:
+            result['master_auto_renew'] = self.master_auto_renew
+        if self.master_auto_renew_period is not None:
+            result['master_auto_renew_period'] = self.master_auto_renew_period
+        if self.num_of_nodes is not None:
+            result['num_of_nodes'] = self.num_of_nodes
+        if self.worker_vswitch_ids is not None:
+            result['worker_vswitch_ids'] = self.worker_vswitch_ids
+        if self.worker_instance_types is not None:
+            result['worker_instance_types'] = self.worker_instance_types
+        if self.worker_system_disk_category is not None:
+            result['worker_system_disk_category'] = self.worker_system_disk_category
+        if self.worker_system_disk_size is not None:
+            result['worker_system_disk_size'] = self.worker_system_disk_size
+        if self.worker_system_disk_snapshot_policy_id is not None:
+            result['worker_system_disk_snapshot_policy_id'] = self.worker_system_disk_snapshot_policy_id
         result['worker_data_disks'] = []
         if self.worker_data_disks is not None:
             for k in self.worker_data_disks:
                 result['worker_data_disks'].append(k.to_map() if k else None)
         if self.worker_instance_charge_type is not None:
             result['worker_instance_charge_type'] = self.worker_instance_charge_type
-        if self.worker_instance_types is not None:
-            result['worker_instance_types'] = self.worker_instance_types
-        if self.worker_period is not None:
-            result['worker_period'] = self.worker_period
         if self.worker_period_unit is not None:
             result['worker_period_unit'] = self.worker_period_unit
-        if self.worker_system_disk_category is not None:
-            result['worker_system_disk_category'] = self.worker_system_disk_category
-        if self.worker_system_disk_size is not None:
-            result['worker_system_disk_size'] = self.worker_system_disk_size
-        if self.worker_vswitch_ids is not None:
-            result['worker_vswitch_ids'] = self.worker_vswitch_ids
+        if self.worker_period is not None:
+            result['worker_period'] = self.worker_period
+        if self.worker_auto_renew is not None:
+            result['worker_auto_renew'] = self.worker_auto_renew
+        if self.worker_auto_renew_period is not None:
+            result['worker_auto_renew_period'] = self.worker_auto_renew_period
+        if self.instances is not None:
+            result['instances'] = self.instances
+        if self.format_disk is not None:
+            result['format_disk'] = self.format_disk
+        if self.keep_instance_name is not None:
+            result['keep_instance_name'] = self.keep_instance_name
+        if self.service_discovery_types is not None:
+            result['service_discovery_types'] = self.service_discovery_types
+        if self.nat_gateway is not None:
+            result['nat_gateway'] = self.nat_gateway
         if self.zone_id is not None:
             result['zone_id'] = self.zone_id
+        if self.profile is not None:
+            result['profile'] = self.profile
+        if self.deletion_protection is not None:
+            result['deletion_protection'] = self.deletion_protection
+        if self.disable_rollback is not None:
+            result['disable_rollback'] = self.disable_rollback
+        if self.timeout_mins is not None:
+            result['timeout_mins'] = self.timeout_mins
         return result
 
-    def from_map(self, map={}):
-        self.addons = []
-        if map.get('addons') is not None:
-            for k in map.get('addons'):
-                temp_model = CreateClusterRequestAddons()
-                self.addons.append(temp_model.from_map(k))
-        if map.get('cloud_monitor_flags') is not None:
-            self.cloud_monitor_flags = map.get('cloud_monitor_flags')
-        if map.get('cluster_type') is not None:
-            self.cluster_type = map.get('cluster_type')
-        if map.get('container_cidr') is not None:
-            self.container_cidr = map.get('container_cidr')
-        if map.get('cpu_policy') is not None:
-            self.cpu_policy = map.get('cpu_policy')
-        if map.get('deletion_protection') is not None:
-            self.deletion_protection = map.get('deletion_protection')
-        if map.get('disable_rollback') is not None:
-            self.disable_rollback = map.get('disable_rollback')
-        if map.get('endpoint_public_access') is not None:
-            self.endpoint_public_access = map.get('endpoint_public_access')
-        if map.get('format_disk') is not None:
-            self.format_disk = map.get('format_disk')
-        if map.get('image_id') is not None:
-            self.image_id = map.get('image_id')
-        if map.get('instances') is not None:
-            self.instances = map.get('instances')
-        if map.get('is_enterprise_security_group') is not None:
-            self.is_enterprise_security_group = map.get('is_enterprise_security_group')
-        if map.get('keep_instance_name') is not None:
-            self.keep_instance_name = map.get('keep_instance_name')
-        if map.get('key_pair') is not None:
-            self.key_pair = map.get('key_pair')
-        if map.get('kubernetes_version') is not None:
-            self.kubernetes_version = map.get('kubernetes_version')
-        if map.get('login_password') is not None:
-            self.login_password = map.get('login_password')
-        if map.get('master_auto_renew') is not None:
-            self.master_auto_renew = map.get('master_auto_renew')
-        if map.get('master_auto_renew_period') is not None:
-            self.master_auto_renew_period = map.get('master_auto_renew_period')
-        if map.get('master_count') is not None:
-            self.master_count = map.get('master_count')
-        if map.get('master_instance_charge_type') is not None:
-            self.master_instance_charge_type = map.get('master_instance_charge_type')
-        if map.get('master_instance_types') is not None:
-            self.master_instance_types = map.get('master_instance_types')
-        if map.get('master_period') is not None:
-            self.master_period = map.get('master_period')
-        if map.get('master_period_unit') is not None:
-            self.master_period_unit = map.get('master_period_unit')
-        if map.get('master_system_disk_category') is not None:
-            self.master_system_disk_category = map.get('master_system_disk_category')
-        if map.get('master_system_disk_size') is not None:
-            self.master_system_disk_size = map.get('master_system_disk_size')
-        if map.get('master_vswitch_ids') is not None:
-            self.master_vswitch_ids = map.get('master_vswitch_ids')
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('node_cidr_mask') is not None:
-            self.node_cidr_mask = map.get('node_cidr_mask')
-        if map.get('node_port_range') is not None:
-            self.node_port_range = map.get('node_port_range')
-        if map.get('num_of_nodes') is not None:
-            self.num_of_nodes = map.get('num_of_nodes')
-        if map.get('os_type') is not None:
-            self.os_type = map.get('os_type')
-        if map.get('platform') is not None:
-            self.platform = map.get('platform')
-        if map.get('pod_vswitch_ids') is not None:
-            self.pod_vswitch_ids = map.get('pod_vswitch_ids')
-        if map.get('private_zone') is not None:
-            self.private_zone = map.get('private_zone')
-        if map.get('profile') is not None:
-            self.profile = map.get('profile')
-        if map.get('proxy_mode') is not None:
-            self.proxy_mode = map.get('proxy_mode')
-        if map.get('rds_instances') is not None:
-            self.rds_instances = map.get('rds_instances')
-        if map.get('region_id') is not None:
-            self.region_id = map.get('region_id')
-        if map.get('runtime') is not None:
-            temp_model = CreateClusterRequestRuntime()
-            self.runtime = temp_model.from_map(map['runtime'])
-        if map.get('security_group_id') is not None:
-            self.security_group_id = map.get('security_group_id')
-        if map.get('service_cidr') is not None:
-            self.service_cidr = map.get('service_cidr')
-        if map.get('snat_entry') is not None:
-            self.snat_entry = map.get('snat_entry')
-        if map.get('ssh_flags') is not None:
-            self.ssh_flags = map.get('ssh_flags')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('region_id') is not None:
+            self.region_id = m.get('region_id')
+        if m.get('cluster_type') is not None:
+            self.cluster_type = m.get('cluster_type')
+        if m.get('cluster_spec') is not None:
+            self.cluster_spec = m.get('cluster_spec')
+        if m.get('kubernetes_version') is not None:
+            self.kubernetes_version = m.get('kubernetes_version')
+        if m.get('runtime') is not None:
+            temp_model = Runtime()
+            self.runtime = temp_model.from_map(m['runtime'])
+        if m.get('vpcid') is not None:
+            self.vpcid = m.get('vpcid')
+        if m.get('pod_vswitch_ids') is not None:
+            self.pod_vswitch_ids = m.get('pod_vswitch_ids')
+        if m.get('container_cidr') is not None:
+            self.container_cidr = m.get('container_cidr')
+        if m.get('service_cidr') is not None:
+            self.service_cidr = m.get('service_cidr')
+        if m.get('security_group_id') is not None:
+            self.security_group_id = m.get('security_group_id')
+        if m.get('is_enterprise_security_group') is not None:
+            self.is_enterprise_security_group = m.get('is_enterprise_security_group')
+        if m.get('snat_entry') is not None:
+            self.snat_entry = m.get('snat_entry')
+        if m.get('endpoint_public_access') is not None:
+            self.endpoint_public_access = m.get('endpoint_public_access')
+        if m.get('ssh_flags') is not None:
+            self.ssh_flags = m.get('ssh_flags')
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
+        if m.get('node_cidr_mask') is not None:
+            self.node_cidr_mask = m.get('node_cidr_mask')
+        if m.get('user_ca') is not None:
+            self.user_ca = m.get('user_ca')
+        if m.get('user_data') is not None:
+            self.user_data = m.get('user_data')
+        if m.get('cluster_domain') is not None:
+            self.cluster_domain = m.get('cluster_domain')
+        if m.get('node_name_mode') is not None:
+            self.node_name_mode = m.get('node_name_mode')
+        if m.get('custom_san') is not None:
+            self.custom_san = m.get('custom_san')
+        if m.get('encryption_provider_key') is not None:
+            self.encryption_provider_key = m.get('encryption_provider_key')
+        if m.get('service_account_issuer') is not None:
+            self.service_account_issuer = m.get('service_account_issuer')
+        if m.get('api_audiences') is not None:
+            self.api_audiences = m.get('api_audiences')
+        if m.get('image_id') is not None:
+            self.image_id = m.get('image_id')
+        if m.get('rds_instances') is not None:
+            self.rds_instances = m.get('rds_instances')
         self.tags = []
-        if map.get('tags') is not None:
-            for k in map.get('tags'):
-                temp_model = CreateClusterRequestTags()
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
+        self.addons = []
+        if m.get('addons') is not None:
+            for k in m.get('addons'):
+                temp_model = Addon()
+                self.addons.append(temp_model.from_map(k))
         self.taints = []
-        if map.get('taints') is not None:
-            for k in map.get('taints'):
-                temp_model = CreateClusterRequestTaints()
+        if m.get('taints') is not None:
+            for k in m.get('taints'):
+                temp_model = Taint()
                 self.taints.append(temp_model.from_map(k))
-        if map.get('timeout_mins') is not None:
-            self.timeout_mins = map.get('timeout_mins')
-        if map.get('user_data') is not None:
-            self.user_data = map.get('user_data')
-        if map.get('vpcid') is not None:
-            self.vpcid = map.get('vpcid')
-        if map.get('vswitch_ids') is not None:
-            self.vswitch_ids = map.get('vswitch_ids')
-        if map.get('worker_auto_renew') is not None:
-            self.worker_auto_renew = map.get('worker_auto_renew')
-        if map.get('worker_auto_renew_period') is not None:
-            self.worker_auto_renew_period = map.get('worker_auto_renew_period')
+        if m.get('cloud_monitor_flags') is not None:
+            self.cloud_monitor_flags = m.get('cloud_monitor_flags')
+        if m.get('platform') is not None:
+            self.platform = m.get('platform')
+        if m.get('os_type') is not None:
+            self.os_type = m.get('os_type')
+        if m.get('cpu_policy') is not None:
+            self.cpu_policy = m.get('cpu_policy')
+        if m.get('proxy_mode') is not None:
+            self.proxy_mode = m.get('proxy_mode')
+        if m.get('node_port_range') is not None:
+            self.node_port_range = m.get('node_port_range')
+        if m.get('key_pair') is not None:
+            self.key_pair = m.get('key_pair')
+        if m.get('login_password') is not None:
+            self.login_password = m.get('login_password')
+        if m.get('master_count') is not None:
+            self.master_count = m.get('master_count')
+        if m.get('master_vswitch_ids') is not None:
+            self.master_vswitch_ids = m.get('master_vswitch_ids')
+        if m.get('master_instance_types') is not None:
+            self.master_instance_types = m.get('master_instance_types')
+        if m.get('master_system_disk_category') is not None:
+            self.master_system_disk_category = m.get('master_system_disk_category')
+        if m.get('master_system_disk_size') is not None:
+            self.master_system_disk_size = m.get('master_system_disk_size')
+        if m.get('master_system_disk_snapshot_policy_id') is not None:
+            self.master_system_disk_snapshot_policy_id = m.get('master_system_disk_snapshot_policy_id')
+        if m.get('master_instance_charge_type') is not None:
+            self.master_instance_charge_type = m.get('master_instance_charge_type')
+        if m.get('master_period_unit') is not None:
+            self.master_period_unit = m.get('master_period_unit')
+        if m.get('master_period') is not None:
+            self.master_period = m.get('master_period')
+        if m.get('master_auto_renew') is not None:
+            self.master_auto_renew = m.get('master_auto_renew')
+        if m.get('master_auto_renew_period') is not None:
+            self.master_auto_renew_period = m.get('master_auto_renew_period')
+        if m.get('num_of_nodes') is not None:
+            self.num_of_nodes = m.get('num_of_nodes')
+        if m.get('worker_vswitch_ids') is not None:
+            self.worker_vswitch_ids = m.get('worker_vswitch_ids')
+        if m.get('worker_instance_types') is not None:
+            self.worker_instance_types = m.get('worker_instance_types')
+        if m.get('worker_system_disk_category') is not None:
+            self.worker_system_disk_category = m.get('worker_system_disk_category')
+        if m.get('worker_system_disk_size') is not None:
+            self.worker_system_disk_size = m.get('worker_system_disk_size')
+        if m.get('worker_system_disk_snapshot_policy_id') is not None:
+            self.worker_system_disk_snapshot_policy_id = m.get('worker_system_disk_snapshot_policy_id')
         self.worker_data_disks = []
-        if map.get('worker_data_disks') is not None:
-            for k in map.get('worker_data_disks'):
-                temp_model = CreateClusterRequestWorkerDataDisks()
+        if m.get('worker_data_disks') is not None:
+            for k in m.get('worker_data_disks'):
+                temp_model = DataDisk()
                 self.worker_data_disks.append(temp_model.from_map(k))
-        if map.get('worker_instance_charge_type') is not None:
-            self.worker_instance_charge_type = map.get('worker_instance_charge_type')
-        if map.get('worker_instance_types') is not None:
-            self.worker_instance_types = map.get('worker_instance_types')
-        if map.get('worker_period') is not None:
-            self.worker_period = map.get('worker_period')
-        if map.get('worker_period_unit') is not None:
-            self.worker_period_unit = map.get('worker_period_unit')
-        if map.get('worker_system_disk_category') is not None:
-            self.worker_system_disk_category = map.get('worker_system_disk_category')
-        if map.get('worker_system_disk_size') is not None:
-            self.worker_system_disk_size = map.get('worker_system_disk_size')
-        if map.get('worker_vswitch_ids') is not None:
-            self.worker_vswitch_ids = map.get('worker_vswitch_ids')
-        if map.get('zone_id') is not None:
-            self.zone_id = map.get('zone_id')
-        return self
-
-
-class CreateClusterRequestAddons(TeaModel):
-    def __init__(self, config=None, name=None):
-        # 组件需要的配置。
-        self.config = config            # type: str
-        # 组件名称。
-        self.name = name                # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.config is not None:
-            result['config'] = self.config
-        if self.name is not None:
-            result['name'] = self.name
-        return result
-
-    def from_map(self, map={}):
-        if map.get('config') is not None:
-            self.config = map.get('config')
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        return self
-
-
-class CreateClusterRequestRuntime(TeaModel):
-    def __init__(self, name=None, version=None):
-        # 容器运行时名称。
-        self.name = name                # type: str
-        # 容器运行时版本。
-        self.version = version          # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.name is not None:
-            result['name'] = self.name
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, map={}):
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('version') is not None:
-            self.version = map.get('version')
-        return self
-
-
-class CreateClusterRequestTags(TeaModel):
-    def __init__(self, key=None, value=None):
-        # 标签key。
-        self.key = key                  # type: str
-        # 标签值。
-        self.value = value              # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, map={}):
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
-        return self
-
-
-class CreateClusterRequestTaints(TeaModel):
-    def __init__(self, effect=None, key=None, value=None):
-        # 调度策略。
-        self.effect = effect            # type: str
-        # 污点key。
-        self.key = key                  # type: str
-        # 污点值。
-        self.value = value              # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.effect is not None:
-            result['effect'] = self.effect
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, map={}):
-        if map.get('effect') is not None:
-            self.effect = map.get('effect')
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
-        return self
-
-
-class CreateClusterRequestWorkerDataDisks(TeaModel):
-    def __init__(self, auto_snapshot_policy_id=None, category=None, encrypted=None, size=None):
-        # 数据盘是否开启云盘备份。
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id  # type: str
-        # 数据盘类型。
-        self.category = category        # type: str
-        # 数据盘是否加密。
-        self.encrypted = encrypted      # type: str
-        # 数据盘大小。
-        self.size = size                # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.auto_snapshot_policy_id is not None:
-            result['auto_snapshot_policy_id'] = self.auto_snapshot_policy_id
-        if self.category is not None:
-            result['category'] = self.category
-        if self.encrypted is not None:
-            result['encrypted'] = self.encrypted
-        if self.size is not None:
-            result['size'] = self.size
-        return result
-
-    def from_map(self, map={}):
-        if map.get('auto_snapshot_policy_id') is not None:
-            self.auto_snapshot_policy_id = map.get('auto_snapshot_policy_id')
-        if map.get('category') is not None:
-            self.category = map.get('category')
-        if map.get('encrypted') is not None:
-            self.encrypted = map.get('encrypted')
-        if map.get('size') is not None:
-            self.size = map.get('size')
+        if m.get('worker_instance_charge_type') is not None:
+            self.worker_instance_charge_type = m.get('worker_instance_charge_type')
+        if m.get('worker_period_unit') is not None:
+            self.worker_period_unit = m.get('worker_period_unit')
+        if m.get('worker_period') is not None:
+            self.worker_period = m.get('worker_period')
+        if m.get('worker_auto_renew') is not None:
+            self.worker_auto_renew = m.get('worker_auto_renew')
+        if m.get('worker_auto_renew_period') is not None:
+            self.worker_auto_renew_period = m.get('worker_auto_renew_period')
+        if m.get('instances') is not None:
+            self.instances = m.get('instances')
+        if m.get('format_disk') is not None:
+            self.format_disk = m.get('format_disk')
+        if m.get('keep_instance_name') is not None:
+            self.keep_instance_name = m.get('keep_instance_name')
+        if m.get('service_discovery_types') is not None:
+            self.service_discovery_types = m.get('service_discovery_types')
+        if m.get('nat_gateway') is not None:
+            self.nat_gateway = m.get('nat_gateway')
+        if m.get('zone_id') is not None:
+            self.zone_id = m.get('zone_id')
+        if m.get('profile') is not None:
+            self.profile = m.get('profile')
+        if m.get('deletion_protection') is not None:
+            self.deletion_protection = m.get('deletion_protection')
+        if m.get('disable_rollback') is not None:
+            self.disable_rollback = m.get('disable_rollback')
+        if m.get('timeout_mins') is not None:
+            self.timeout_mins = m.get('timeout_mins')
         return self
 
 
 class CreateClusterResponseBody(TeaModel):
-    def __init__(self, cluster_id=None, request_id=None, task_id=None):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
         # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+        self.cluster_id = cluster_id
         # 请求ID。
-        self.request_id = request_id    # type: str
+        self.request_id = request_id
         # 任务ID。
-        self.task_id = task_id          # type: str
+        self.task_id = task_id
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.request_id is not None:
@@ -4876,20 +5308,25 @@ class CreateClusterResponseBody(TeaModel):
             result['task_id'] = self.task_id
         return result
 
-    def from_map(self, map={}):
-        if map.get('cluster_id') is not None:
-            self.cluster_id = map.get('cluster_id')
-        if map.get('request_id') is not None:
-            self.request_id = map.get('request_id')
-        if map.get('task_id') is not None:
-            self.task_id = map.get('task_id')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
         return self
 
 
 class CreateClusterResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: CreateClusterResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -4898,36 +5335,42 @@ class CreateClusterResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = CreateClusterResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class UpgradeClusterRequest(TeaModel):
-    def __init__(self, component_name=None, next_version=None, version=None):
+    def __init__(
+        self,
+        component_name: str = None,
+        next_version: str = None,
+        version: str = None,
+    ):
         # 组件名称，集群升级时取值"k8s"。
-        self.component_name = component_name  # type: str
+        self.component_name = component_name
         # 目标版本。
-        self.next_version = next_version  # type: str
+        self.next_version = next_version
         # 当前版本。
-        self.version = version          # type: str
+        self.version = version
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.component_name is not None:
             result['component_name'] = self.component_name
         if self.next_version is not None:
@@ -4936,65 +5379,82 @@ class UpgradeClusterRequest(TeaModel):
             result['version'] = self.version
         return result
 
-    def from_map(self, map={}):
-        if map.get('component_name') is not None:
-            self.component_name = map.get('component_name')
-        if map.get('next_version') is not None:
-            self.next_version = map.get('next_version')
-        if map.get('version') is not None:
-            self.version = map.get('version')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('component_name') is not None:
+            self.component_name = m.get('component_name')
+        if m.get('next_version') is not None:
+            self.next_version = m.get('next_version')
+        if m.get('version') is not None:
+            self.version = m.get('version')
         return self
 
 
 class UpgradeClusterResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
 class AttachInstancesRequest(TeaModel):
-    def __init__(self, cpu_policy=None, format_disk=None, image_id=None, instances=None, is_edge_worker=None,
-                 keep_instance_name=None, key_pair=None, nodepool_id=None, password=None, rds_instances=None, runtime=None, tags=None,
-                 user_data=None):
-        # CPU策略。
-        self.cpu_policy = cpu_policy    # type: str
-        # 是否格式化数据盘。
-        self.format_disk = format_disk  # type: bool
-        # 自定义镜像ID。
-        self.image_id = image_id        # type: str
-        # 待添加的实例列表。
-        self.instances = instances      # type: List[str]
-        # 是否为边缘节点。
-        self.is_edge_worker = is_edge_worker  # type: bool
-        # 是否保留实例名称。
-        self.keep_instance_name = keep_instance_name  # type: bool
+    def __init__(
+        self,
+        instances: List[str] = None,
+        key_pair: str = None,
+        password: str = None,
+        format_disk: bool = None,
+        keep_instance_name: bool = None,
+        is_edge_worker: bool = None,
+        nodepool_id: str = None,
+        image_id: str = None,
+        cpu_policy: str = None,
+        user_data: str = None,
+        rds_instances: List[str] = None,
+        runtime: Runtime = None,
+        tags: List[Tag] = None,
+    ):
+        # 实例列表。
+        self.instances = instances
         # key_pair名称，与login_password二选一
-        self.key_pair = key_pair        # type: str
-        # 节点池ID，欲将节点添加到哪个节点池中。。
-        self.nodepool_id = nodepool_id  # type: str
+        self.key_pair = key_pair
         # password，与key_pair二选一。
-        self.password = password        # type: str
+        self.password = password
+        # 是否格式化数据盘。
+        self.format_disk = format_disk
+        # 是否保留实例名称。
+        self.keep_instance_name = keep_instance_name
+        # 是否为边缘节点。
+        self.is_edge_worker = is_edge_worker
+        # 节点池ID，欲将节点添加到哪个节点池中。。
+        self.nodepool_id = nodepool_id
+        # 自定义镜像ID。
+        self.image_id = image_id
+        # CPU亲和策略。
+        self.cpu_policy = cpu_policy
+        # 节点自定义数据。
+        self.user_data = user_data
         # RDS实例列表。
-        self.rds_instances = rds_instances  # type: List[str]
-        # 容器运行时。
-        self.runtime = runtime          # type: AttachInstancesRequestRuntime
+        self.rds_instances = rds_instances
+        self.runtime = runtime
         # 节点标签。
-        self.tags = tags                # type: List[AttachInstancesRequestTags]
-        # 用户自定义数据。
-        self.user_data = user_data      # type: str
+        self.tags = tags
 
     def validate(self):
         if self.runtime:
@@ -5005,25 +5465,27 @@ class AttachInstancesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
-        if self.cpu_policy is not None:
-            result['cpu_policy'] = self.cpu_policy
-        if self.format_disk is not None:
-            result['format_disk'] = self.format_disk
-        if self.image_id is not None:
-            result['image_id'] = self.image_id
+        result = dict()
         if self.instances is not None:
             result['instances'] = self.instances
-        if self.is_edge_worker is not None:
-            result['is_edge_worker'] = self.is_edge_worker
-        if self.keep_instance_name is not None:
-            result['keep_instance_name'] = self.keep_instance_name
         if self.key_pair is not None:
             result['key_pair'] = self.key_pair
-        if self.nodepool_id is not None:
-            result['nodepool_id'] = self.nodepool_id
         if self.password is not None:
             result['password'] = self.password
+        if self.format_disk is not None:
+            result['format_disk'] = self.format_disk
+        if self.keep_instance_name is not None:
+            result['keep_instance_name'] = self.keep_instance_name
+        if self.is_edge_worker is not None:
+            result['is_edge_worker'] = self.is_edge_worker
+        if self.nodepool_id is not None:
+            result['nodepool_id'] = self.nodepool_id
+        if self.image_id is not None:
+            result['image_id'] = self.image_id
+        if self.cpu_policy is not None:
+            result['cpu_policy'] = self.cpu_policy
+        if self.user_data is not None:
+            result['user_data'] = self.user_data
         if self.rds_instances is not None:
             result['rds_instances'] = self.rds_instances
         if self.runtime is not None:
@@ -5032,144 +5494,62 @@ class AttachInstancesRequest(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['tags'].append(k.to_map() if k else None)
-        if self.user_data is not None:
-            result['user_data'] = self.user_data
         return result
 
-    def from_map(self, map={}):
-        if map.get('cpu_policy') is not None:
-            self.cpu_policy = map.get('cpu_policy')
-        if map.get('format_disk') is not None:
-            self.format_disk = map.get('format_disk')
-        if map.get('image_id') is not None:
-            self.image_id = map.get('image_id')
-        if map.get('instances') is not None:
-            self.instances = map.get('instances')
-        if map.get('is_edge_worker') is not None:
-            self.is_edge_worker = map.get('is_edge_worker')
-        if map.get('keep_instance_name') is not None:
-            self.keep_instance_name = map.get('keep_instance_name')
-        if map.get('key_pair') is not None:
-            self.key_pair = map.get('key_pair')
-        if map.get('nodepool_id') is not None:
-            self.nodepool_id = map.get('nodepool_id')
-        if map.get('password') is not None:
-            self.password = map.get('password')
-        if map.get('rds_instances') is not None:
-            self.rds_instances = map.get('rds_instances')
-        if map.get('runtime') is not None:
-            temp_model = AttachInstancesRequestRuntime()
-            self.runtime = temp_model.from_map(map['runtime'])
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instances') is not None:
+            self.instances = m.get('instances')
+        if m.get('key_pair') is not None:
+            self.key_pair = m.get('key_pair')
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        if m.get('format_disk') is not None:
+            self.format_disk = m.get('format_disk')
+        if m.get('keep_instance_name') is not None:
+            self.keep_instance_name = m.get('keep_instance_name')
+        if m.get('is_edge_worker') is not None:
+            self.is_edge_worker = m.get('is_edge_worker')
+        if m.get('nodepool_id') is not None:
+            self.nodepool_id = m.get('nodepool_id')
+        if m.get('image_id') is not None:
+            self.image_id = m.get('image_id')
+        if m.get('cpu_policy') is not None:
+            self.cpu_policy = m.get('cpu_policy')
+        if m.get('user_data') is not None:
+            self.user_data = m.get('user_data')
+        if m.get('rds_instances') is not None:
+            self.rds_instances = m.get('rds_instances')
+        if m.get('runtime') is not None:
+            temp_model = Runtime()
+            self.runtime = temp_model.from_map(m['runtime'])
         self.tags = []
-        if map.get('tags') is not None:
-            for k in map.get('tags'):
-                temp_model = AttachInstancesRequestTags()
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
-        if map.get('user_data') is not None:
-            self.user_data = map.get('user_data')
-        return self
-
-
-class AttachInstancesRequestRuntime(TeaModel):
-    def __init__(self, name=None, version=None):
-        # 容器运行时名称。
-        self.name = name                # type: str
-        # 容器运行时版本。
-        self.version = version          # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.name is not None:
-            result['name'] = self.name
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, map={}):
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('version') is not None:
-            self.version = map.get('version')
-        return self
-
-
-class AttachInstancesRequestTags(TeaModel):
-    def __init__(self, key=None, value=None):
-        # 标签名。
-        self.key = key                  # type: str
-        # 标签值。
-        self.value = value              # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, map={}):
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
-        return self
-
-
-class AttachInstancesResponseBody(TeaModel):
-    def __init__(self, list=None, task_id=None):
-        # 节点信息列表。
-        self.list = list                # type: List[AttachInstancesResponseBodyList]
-        # 任务ID。
-        self.task_id = task_id          # type: str
-
-    def validate(self):
-        if self.list:
-            for k in self.list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        result['list'] = []
-        if self.list is not None:
-            for k in self.list:
-                result['list'].append(k.to_map() if k else None)
-        if self.task_id is not None:
-            result['task_id'] = self.task_id
-        return result
-
-    def from_map(self, map={}):
-        self.list = []
-        if map.get('list') is not None:
-            for k in map.get('list'):
-                temp_model = AttachInstancesResponseBodyList()
-                self.list.append(temp_model.from_map(k))
-        if map.get('task_id') is not None:
-            self.task_id = map.get('task_id')
         return self
 
 
 class AttachInstancesResponseBodyList(TeaModel):
-    def __init__(self, code=None, instance_id=None, message=None):
+    def __init__(
+        self,
+        code: str = None,
+        instance_id: str = None,
+        message: str = None,
+    ):
         # 状态码。
-        self.code = code                # type: str
+        self.code = code
         # 实例ID。
-        self.instance_id = instance_id  # type: str
+        self.instance_id = instance_id
         # 添加结果描述。
-        self.message = message          # type: str
+        self.message = message
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.code is not None:
             result['code'] = self.code
         if self.instance_id is not None:
@@ -5178,20 +5558,64 @@ class AttachInstancesResponseBodyList(TeaModel):
             result['message'] = self.message
         return result
 
-    def from_map(self, map={}):
-        if map.get('code') is not None:
-            self.code = map.get('code')
-        if map.get('instanceId') is not None:
-            self.instance_id = map.get('instanceId')
-        if map.get('message') is not None:
-            self.message = map.get('message')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        return self
+
+
+class AttachInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        list: List[AttachInstancesResponseBodyList] = None,
+        task_id: str = None,
+    ):
+        # 节点信息列表。
+        self.list = list
+        # 任务ID。
+        self.task_id = task_id
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['list'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['list'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('list') is not None:
+            for k in m.get('list'):
+                temp_model = AttachInstancesResponseBodyList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
         return self
 
 
 class AttachInstancesResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: AttachInstancesResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AttachInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -5200,93 +5624,167 @@ class AttachInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = AttachInstancesResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class DescribeTemplatesRequest(TeaModel):
-    def __init__(self, template_type=None):
+    def __init__(
+        self,
+        template_type: str = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
         # 模板类型，部署模板类型，目前一共有2种类型，取值为：kubernetes或compose。
-        self.template_type = template_type  # type: str
+        self.template_type = template_type
+        # 对查询结果进行分页处理，指定返回第几页的数据。  默认值为 1
+        self.page_num = page_num
+        # 对查询结果进行分页处理，指定每页包含的数据条数。  默认值为 10
+        self.page_size = page_size
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.template_type is not None:
             result['template_type'] = self.template_type
+        if self.page_num is not None:
+            result['page_num'] = self.page_num
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
         return result
 
-    def from_map(self, map={}):
-        if map.get('template_type') is not None:
-            self.template_type = map.get('template_type')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('template_type') is not None:
+            self.template_type = m.get('template_type')
+        if m.get('page_num') is not None:
+            self.page_num = m.get('page_num')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
         return self
 
 
-class DescribeTemplatesResponseBody(TeaModel):
-    def __init__(self, page_info=None, templates=None):
-        # 分页信息。
-        self.page_info = page_info      # type: DescribeTemplatesResponseBodyPageInfo
-        # 模板列表。
-        self.templates = templates      # type: List[DescribeTemplatesResponseBodyTemplates]
+class DescribeTemplatesResponseBodyTemplates(TeaModel):
+    def __init__(
+        self,
+        acl: str = None,
+        id: str = None,
+        name: str = None,
+        description: str = None,
+        tags: str = None,
+        template: str = None,
+        template_type: str = None,
+        created: str = None,
+        updated: str = None,
+        template_with_hist_id: str = None,
+    ):
+        # 模板访问权限，取值为：private、pubilc或shared。。
+        self.acl = acl
+        # 模板ID。会模板随着更新而变化。
+        self.id = id
+        # 模板名称。
+        self.name = name
+        # 模板描述信息。
+        self.description = description
+        # 模板标签，如果不显式指定了，默认为模板名称。
+        self.tags = tags
+        # 模板详情。
+        self.template = template
+        # 部署模板类型。
+        self.template_type = template_type
+        # 模板创建时间。
+        self.created = created
+        # 模板修改时间。
+        self.updated = updated
+        # 模板唯一ID。
+        self.template_with_hist_id = template_with_hist_id
 
     def validate(self):
-        if self.page_info:
-            self.page_info.validate()
-        if self.templates:
-            for k in self.templates:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
-        result = {}
-        if self.page_info is not None:
-            result['page_info'] = self.page_info.to_map()
-        result['templates'] = []
-        if self.templates is not None:
-            for k in self.templates:
-                result['templates'].append(k.to_map() if k else None)
+        result = dict()
+        if self.acl is not None:
+            result['acl'] = self.acl
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.description is not None:
+            result['description'] = self.description
+        if self.tags is not None:
+            result['tags'] = self.tags
+        if self.template is not None:
+            result['template'] = self.template
+        if self.template_type is not None:
+            result['template_type'] = self.template_type
+        if self.created is not None:
+            result['created'] = self.created
+        if self.updated is not None:
+            result['updated'] = self.updated
+        if self.template_with_hist_id is not None:
+            result['template_with_hist_id'] = self.template_with_hist_id
         return result
 
-    def from_map(self, map={}):
-        if map.get('page_info') is not None:
-            temp_model = DescribeTemplatesResponseBodyPageInfo()
-            self.page_info = temp_model.from_map(map['page_info'])
-        self.templates = []
-        if map.get('templates') is not None:
-            for k in map.get('templates'):
-                temp_model = DescribeTemplatesResponseBodyTemplates()
-                self.templates.append(temp_model.from_map(k))
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('acl') is not None:
+            self.acl = m.get('acl')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
+        if m.get('template') is not None:
+            self.template = m.get('template')
+        if m.get('template_type') is not None:
+            self.template_type = m.get('template_type')
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('updated') is not None:
+            self.updated = m.get('updated')
+        if m.get('template_with_hist_id') is not None:
+            self.template_with_hist_id = m.get('template_with_hist_id')
         return self
 
 
 class DescribeTemplatesResponseBodyPageInfo(TeaModel):
-    def __init__(self, page_number=None, page_size=None, total_count=None):
-        # 分页数。
-        self.page_number = page_number  # type: int
-        # 单页大小。
-        self.page_size = page_size      # type: int
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        # 当前页数。
+        self.page_number = page_number
+        # 单页最大数据条数。
+        self.page_size = page_size
         # 结果总数。
-        self.total_count = total_count  # type: int
+        self.total_count = total_count
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.page_number is not None:
             result['page_number'] = self.page_number
         if self.page_size is not None:
@@ -5295,89 +5793,67 @@ class DescribeTemplatesResponseBodyPageInfo(TeaModel):
             result['total_count'] = self.total_count
         return result
 
-    def from_map(self, map={}):
-        if map.get('page_number') is not None:
-            self.page_number = map.get('page_number')
-        if map.get('page_size') is not None:
-            self.page_size = map.get('page_size')
-        if map.get('total_count') is not None:
-            self.total_count = map.get('total_count')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page_number') is not None:
+            self.page_number = m.get('page_number')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('total_count') is not None:
+            self.total_count = m.get('total_count')
         return self
 
 
-class DescribeTemplatesResponseBodyTemplates(TeaModel):
-    def __init__(self, acl=None, created=None, description=None, id=None, name=None, tags=None, template=None,
-                 template_type=None, updated=None):
-        # 模板访问权限，取值为：private、pubilc或shared。。
-        self.acl = acl                  # type: str
-        # 模板创建时间。
-        self.created = created          # type: str
-        # 模板描述信息。
-        self.description = description  # type: str
-        # 模板ID。
-        self.id = id                    # type: str
-        # 模板名称。
-        self.name = name                # type: str
-        # 模板标签，如果不显式指定了，默认为模板名称。
-        self.tags = tags                # type: str
-        # 模板详情。
-        self.template = template        # type: str
-        # 部署模板类型，目前只有kubernetes一种生效。
-        self.template_type = template_type  # type: str
-        # 模板修改时间。
-        self.updated = updated          # type: str
+class DescribeTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        templates: List[DescribeTemplatesResponseBodyTemplates] = None,
+        page_info: DescribeTemplatesResponseBodyPageInfo = None,
+    ):
+        # 模板列表。
+        self.templates = templates
+        # 分页信息。
+        self.page_info = page_info
 
     def validate(self):
-        pass
+        if self.templates:
+            for k in self.templates:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
 
     def to_map(self):
-        result = {}
-        if self.acl is not None:
-            result['acl'] = self.acl
-        if self.created is not None:
-            result['created'] = self.created
-        if self.description is not None:
-            result['description'] = self.description
-        if self.id is not None:
-            result['id'] = self.id
-        if self.name is not None:
-            result['name'] = self.name
-        if self.tags is not None:
-            result['tags'] = self.tags
-        if self.template is not None:
-            result['template'] = self.template
-        if self.template_type is not None:
-            result['template_type'] = self.template_type
-        if self.updated is not None:
-            result['updated'] = self.updated
+        result = dict()
+        result['templates'] = []
+        if self.templates is not None:
+            for k in self.templates:
+                result['templates'].append(k.to_map() if k else None)
+        if self.page_info is not None:
+            result['page_info'] = self.page_info.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('acl') is not None:
-            self.acl = map.get('acl')
-        if map.get('created') is not None:
-            self.created = map.get('created')
-        if map.get('description') is not None:
-            self.description = map.get('description')
-        if map.get('id') is not None:
-            self.id = map.get('id')
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('tags') is not None:
-            self.tags = map.get('tags')
-        if map.get('template') is not None:
-            self.template = map.get('template')
-        if map.get('template_type') is not None:
-            self.template_type = map.get('template_type')
-        if map.get('updated') is not None:
-            self.updated = map.get('updated')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.templates = []
+        if m.get('templates') is not None:
+            for k in m.get('templates'):
+                temp_model = DescribeTemplatesResponseBodyTemplates()
+                self.templates.append(temp_model.from_map(k))
+        if m.get('page_info') is not None:
+            temp_model = DescribeTemplatesResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['page_info'])
         return self
 
 
 class DescribeTemplatesResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeTemplatesResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -5386,45 +5862,188 @@ class DescribeTemplatesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = DescribeTemplatesResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class PauseClusterUpgradeResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class DeleteTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class DescribeTemplateAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        template_type: str = None,
+    ):
+        # 模板类型，值为创建部署模板时指定的模板类型。
+        self.template_type = template_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.template_type is not None:
+            result['template_type'] = self.template_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('template_type') is not None:
+            self.template_type = m.get('template_type')
+        return self
+
+
+class DescribeTemplateAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        acl: str = None,
+        name: str = None,
+        template: str = None,
+        template_type: str = None,
+        description: str = None,
+        tags: str = None,
+        template_with_hist_id: str = None,
+        created: str = None,
+        updated: str = None,
+    ):
+        # 编排模板ID，模板每次修改，这个ID都会改变。	
+        self.id = id
+        # 编排模板权限。取值：private，public，shared。
+        self.acl = acl
+        # 编排模板名称。	
+        self.name = name
+        # 编排模板内容。	
+        self.template = template
+        # 编排模板类型
+        self.template_type = template_type
+        # 编排模板描述。
+        self.description = description
+        # 部署模板的标签。
+        self.tags = tags
+        # 编排模板ID，该ID唯一不随更新而改变。	
+        self.template_with_hist_id = template_with_hist_id
+        # 编排模板创建时间。
+        self.created = created
+        # 编排模板修改时间。	
+        self.updated = updated
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.acl is not None:
+            result['acl'] = self.acl
+        if self.name is not None:
+            result['name'] = self.name
+        if self.template is not None:
+            result['template'] = self.template
+        if self.template_type is not None:
+            result['template_type'] = self.template_type
+        if self.description is not None:
+            result['description'] = self.description
+        if self.tags is not None:
+            result['tags'] = self.tags
+        if self.template_with_hist_id is not None:
+            result['template_with_hist_id'] = self.template_with_hist_id
+        if self.created is not None:
+            result['created'] = self.created
+        if self.updated is not None:
+            result['updated'] = self.updated
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('acl') is not None:
+            self.acl = m.get('acl')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('template') is not None:
+            self.template = m.get('template')
+        if m.get('template_type') is not None:
+            self.template_type = m.get('template_type')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
+        if m.get('template_with_hist_id') is not None:
+            self.template_with_hist_id = m.get('template_with_hist_id')
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('updated') is not None:
+            self.updated = m.get('updated')
         return self
 
 
 class DescribeTemplateAttributeResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: List[DescribeTemplateAttributeResponseBody]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: List[DescribeTemplateAttributeResponseBody] = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -5435,7 +6054,7 @@ class DescribeTemplateAttributeResponse(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         result['body'] = []
@@ -5444,149 +6063,102 @@ class DescribeTemplateAttributeResponse(TeaModel):
                 result['body'].append(k.to_map() if k else None)
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         self.body = []
-        if map.get('body') is not None:
-            for k in map.get('body'):
+        if m.get('body') is not None:
+            for k in m.get('body'):
                 temp_model = DescribeTemplateAttributeResponseBody()
                 self.body.append(temp_model.from_map(k))
         return self
 
 
-class DescribeTemplateAttributeResponseBody(TeaModel):
-    def __init__(self, acl=None, created=None, description=None, id=None, name=None, template=None,
-                 template_hash_code_version=None, template_type=None, template_with_hist_id=None, updated=None):
-        # 编排模板权限。取值：private，public，shared。	
-        self.acl = acl                  # type: str
-        # 编排模板创建时间。	
-        self.created = created          # type: str
-        # 编排模板描述。	
-        self.description = description  # type: str
-        # 编排模板ID，模板每次修改，这个ID都会改变。	
-        self.id = id                    # type: str
-        # 编排模板名称。	
-        self.name = name                # type: str
-        # 编排模板内容。	
-        self.template = template        # type: str
-        # 编排模板ID，该ID主要用于应用中心。	
-        self.template_hash_code_version = template_hash_code_version  # type: str
-        # 编排模板类型，取值：kubernetes。	
-        self.template_type = template_type  # type: str
-        # 编排模板ID，该ID唯一不随更新而改变。	
-        self.template_with_hist_id = template_with_hist_id  # type: str
-        # 编排模板修改时间。	
-        self.updated = updated          # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.acl is not None:
-            result['acl'] = self.acl
-        if self.created is not None:
-            result['created'] = self.created
-        if self.description is not None:
-            result['description'] = self.description
-        if self.id is not None:
-            result['id'] = self.id
-        if self.name is not None:
-            result['name'] = self.name
-        if self.template is not None:
-            result['template'] = self.template
-        if self.template_hash_code_version is not None:
-            result['template_hash_code_version'] = self.template_hash_code_version
-        if self.template_type is not None:
-            result['template_type'] = self.template_type
-        if self.template_with_hist_id is not None:
-            result['template_with_hist_id'] = self.template_with_hist_id
-        if self.updated is not None:
-            result['updated'] = self.updated
-        return result
-
-    def from_map(self, map={}):
-        if map.get('acl') is not None:
-            self.acl = map.get('acl')
-        if map.get('created') is not None:
-            self.created = map.get('created')
-        if map.get('description') is not None:
-            self.description = map.get('description')
-        if map.get('id') is not None:
-            self.id = map.get('id')
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('template') is not None:
-            self.template = map.get('template')
-        if map.get('template_hash_code_version') is not None:
-            self.template_hash_code_version = map.get('template_hash_code_version')
-        if map.get('template_type') is not None:
-            self.template_type = map.get('template_type')
-        if map.get('template_with_hist_id') is not None:
-            self.template_with_hist_id = map.get('template_with_hist_id')
-        if map.get('updated') is not None:
-            self.updated = map.get('updated')
-        return self
-
-
 class CreateTemplateRequest(TeaModel):
-    def __init__(self, name=None, template=None, tags=None, template_type=None):
-        self.name = name                # type: str
-        self.template = template        # type: str
-        self.tags = tags                # type: str
-        self.template_type = template_type  # type: str
+    def __init__(
+        self,
+        name: str = None,
+        template: str = None,
+        tags: str = None,
+        description: str = None,
+        template_type: str = None,
+    ):
+        # 模板名称。
+        self.name = name
+        # YAML格式的模板内容。
+        self.template = template
+        # 模板标签。
+        self.tags = tags
+        # 模板描述。
+        self.description = description
+        # 模板类型。默认值：kubernetes
+        self.template_type = template_type
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.name is not None:
             result['name'] = self.name
         if self.template is not None:
             result['template'] = self.template
         if self.tags is not None:
             result['tags'] = self.tags
+        if self.description is not None:
+            result['description'] = self.description
         if self.template_type is not None:
             result['template_type'] = self.template_type
         return result
 
-    def from_map(self, map={}):
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('template') is not None:
-            self.template = map.get('template')
-        if map.get('tags') is not None:
-            self.tags = map.get('tags')
-        if map.get('template_type') is not None:
-            self.template_type = map.get('template_type')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('template') is not None:
+            self.template = m.get('template')
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('template_type') is not None:
+            self.template_type = m.get('template_type')
         return self
 
 
 class CreateTemplateResponseBody(TeaModel):
-    def __init__(self, template_id=None):
-        self.template_id = template_id  # type: str
+    def __init__(
+        self,
+        template_id: str = None,
+    ):
+        # 模板ID。
+        self.template_id = template_id
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.template_id is not None:
             result['template_id'] = self.template_id
         return result
 
-    def from_map(self, map={}):
-        if map.get('template_id') is not None:
-            self.template_id = map.get('template_id')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('template_id') is not None:
+            self.template_id = m.get('template_id')
         return self
 
 
 class CreateTemplateResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: CreateTemplateResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -5595,146 +6167,145 @@ class CreateTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = CreateTemplateResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class DescribeClusterNodesRequest(TeaModel):
-    def __init__(self, page_size=None, page_number=None, nodepool_id=None, state=None):
-        # 每页展示结果数。
-        self.page_size = page_size      # type: str
-        # 结果只展示几页。
-        self.page_number = page_number  # type: str
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+        nodepool_id: str = None,
+        state: str = None,
+        page_size: str = None,
+        page_number: str = None,
+    ):
+        # 节点实例ID，按照实例ID进行过滤。  节点池ID不为空时会忽略此字段。
+        self.instance_ids = instance_ids
         # 节点池ID。
-        self.nodepool_id = nodepool_id  # type: str
-        # 节点状态信息。
-        self.state = state              # type: str
+        self.nodepool_id = nodepool_id
+        # 节点状态。默认值：all。
+        self.state = state
+        # 每页大小。
+        self.page_size = page_size
+        # 分页数量
+        self.page_number = page_number
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
-        if self.page_size is not None:
-            result['pageSize'] = self.page_size
-        if self.page_number is not None:
-            result['pageNumber'] = self.page_number
+        result = dict()
+        if self.instance_ids is not None:
+            result['instanceIds'] = self.instance_ids
         if self.nodepool_id is not None:
             result['nodepool_id'] = self.nodepool_id
         if self.state is not None:
             result['state'] = self.state
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
         return result
 
-    def from_map(self, map={}):
-        if map.get('pageSize') is not None:
-            self.page_size = map.get('pageSize')
-        if map.get('pageNumber') is not None:
-            self.page_number = map.get('pageNumber')
-        if map.get('nodepool_id') is not None:
-            self.nodepool_id = map.get('nodepool_id')
-        if map.get('state') is not None:
-            self.state = map.get('state')
-        return self
-
-
-class DescribeClusterNodesResponseBody(TeaModel):
-    def __init__(self, nodes=None, page=None):
-        # 节点信息列表。
-        self.nodes = nodes              # type: List[DescribeClusterNodesResponseBodyNodes]
-        # 分页信息。
-        self.page = page                # type: DescribeClusterNodesResponseBodyPage
-
-    def validate(self):
-        if self.nodes:
-            for k in self.nodes:
-                if k:
-                    k.validate()
-        if self.page:
-            self.page.validate()
-
-    def to_map(self):
-        result = {}
-        result['nodes'] = []
-        if self.nodes is not None:
-            for k in self.nodes:
-                result['nodes'].append(k.to_map() if k else None)
-        if self.page is not None:
-            result['page'] = self.page.to_map()
-        return result
-
-    def from_map(self, map={}):
-        self.nodes = []
-        if map.get('nodes') is not None:
-            for k in map.get('nodes'):
-                temp_model = DescribeClusterNodesResponseBodyNodes()
-                self.nodes.append(temp_model.from_map(k))
-        if map.get('page') is not None:
-            temp_model = DescribeClusterNodesResponseBodyPage()
-            self.page = temp_model.from_map(map['page'])
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceIds') is not None:
+            self.instance_ids = m.get('instanceIds')
+        if m.get('nodepool_id') is not None:
+            self.nodepool_id = m.get('nodepool_id')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
         return self
 
 
 class DescribeClusterNodesResponseBodyNodes(TeaModel):
-    def __init__(self, creation_time=None, error_message=None, expired_time=None, host_name=None, image_id=None,
-                 instance_charge_type=None, instance_id=None, instance_name=None, instance_role=None, instance_status=None,
-                 instance_type=None, instance_type_family=None, ip_address=None, is_aliyun_node=None, node_name=None,
-                 node_status=None, nodepool_id=None, source=None, state=None):
+    def __init__(
+        self,
+        creation_time: str = None,
+        error_message: str = None,
+        expired_time: str = None,
+        host_name: str = None,
+        image_id: str = None,
+        instance_charge_type: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_role: str = None,
+        instance_status: str = None,
+        instance_type: str = None,
+        instance_type_family: str = None,
+        ip_address: List[str] = None,
+        is_aliyun_node: bool = None,
+        node_name: str = None,
+        node_status: str = None,
+        nodepool_id: str = None,
+        source: str = None,
+        state: str = None,
+        spot_strategy: str = None,
+    ):
         # 节点创建时间。
-        self.creation_time = creation_time  # type: str
+        self.creation_time = creation_time
         # 错误信息说明。
-        self.error_message = error_message  # type: str
+        self.error_message = error_message
         # 节点过期时间。
-        self.expired_time = expired_time  # type: str
+        self.expired_time = expired_time
         # 节点主机名。
-        self.host_name = host_name      # type: str
+        self.host_name = host_name
         # 节点使用的镜像ID。
-        self.image_id = image_id        # type: str
+        self.image_id = image_id
         # 节点付费类型。
-        self.instance_charge_type = instance_charge_type  # type: str
+        self.instance_charge_type = instance_charge_type
         # 节点实例ID。
-        self.instance_id = instance_id  # type: str
-        # 节点实例名称。
-        self.instance_name = instance_name  # type: str
+        self.instance_id = instance_id
+        # 节点名称。
+        self.instance_name = instance_name
         # 节点实例角色类型，Master或Worker。
-        self.instance_role = instance_role  # type: str
+        self.instance_role = instance_role
         # 节点实例状态，
-        self.instance_status = instance_status  # type: str
+        self.instance_status = instance_status
         # 节点实例类型。
-        self.instance_type = instance_type  # type: str
+        self.instance_type = instance_type
         # 节点实例所属ECS实例簇名称。
-        self.instance_type_family = instance_type_family  # type: str
+        self.instance_type_family = instance_type_family
         # 节点IP地址。
-        self.ip_address = ip_address    # type: List[str]
+        self.ip_address = ip_address
         # 节点是否为aliyun实例。
-        self.is_aliyun_node = is_aliyun_node  # type: bool
+        self.is_aliyun_node = is_aliyun_node
         # 节点名称，该名称是k8s专用名称。
-        self.node_name = node_name      # type: str
+        self.node_name = node_name
         # 节点状态，是否Ready。
-        self.node_status = node_status  # type: str
-        # 节点所属的节点池ID。
-        self.nodepool_id = nodepool_id  # type: str
+        self.node_status = node_status
+        # 节点池ID。
+        self.nodepool_id = nodepool_id
         # 节点通过什么方式创建出来的，例如：ROS。
-        self.source = source            # type: str
-        # ECS运行状态，例如：running。
-        self.state = state              # type: str
+        self.source = source
+        # ECS运行状态，例如：Running。
+        self.state = state
+        # 抢占时实例类型
+        self.spot_strategy = spot_strategy
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.creation_time is not None:
             result['creation_time'] = self.creation_time
         if self.error_message is not None:
@@ -5773,64 +6344,74 @@ class DescribeClusterNodesResponseBodyNodes(TeaModel):
             result['source'] = self.source
         if self.state is not None:
             result['state'] = self.state
+        if self.spot_strategy is not None:
+            result['spot_strategy'] = self.spot_strategy
         return result
 
-    def from_map(self, map={}):
-        if map.get('creation_time') is not None:
-            self.creation_time = map.get('creation_time')
-        if map.get('error_message') is not None:
-            self.error_message = map.get('error_message')
-        if map.get('expired_time') is not None:
-            self.expired_time = map.get('expired_time')
-        if map.get('host_name') is not None:
-            self.host_name = map.get('host_name')
-        if map.get('image_id') is not None:
-            self.image_id = map.get('image_id')
-        if map.get('instance_charge_type') is not None:
-            self.instance_charge_type = map.get('instance_charge_type')
-        if map.get('instance_id') is not None:
-            self.instance_id = map.get('instance_id')
-        if map.get('instance_name') is not None:
-            self.instance_name = map.get('instance_name')
-        if map.get('instance_role') is not None:
-            self.instance_role = map.get('instance_role')
-        if map.get('instance_status') is not None:
-            self.instance_status = map.get('instance_status')
-        if map.get('instance_type') is not None:
-            self.instance_type = map.get('instance_type')
-        if map.get('instance_type_family') is not None:
-            self.instance_type_family = map.get('instance_type_family')
-        if map.get('ip_address') is not None:
-            self.ip_address = map.get('ip_address')
-        if map.get('is_aliyun_node') is not None:
-            self.is_aliyun_node = map.get('is_aliyun_node')
-        if map.get('node_name') is not None:
-            self.node_name = map.get('node_name')
-        if map.get('node_status') is not None:
-            self.node_status = map.get('node_status')
-        if map.get('nodepool_id') is not None:
-            self.nodepool_id = map.get('nodepool_id')
-        if map.get('source') is not None:
-            self.source = map.get('source')
-        if map.get('state') is not None:
-            self.state = map.get('state')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('creation_time') is not None:
+            self.creation_time = m.get('creation_time')
+        if m.get('error_message') is not None:
+            self.error_message = m.get('error_message')
+        if m.get('expired_time') is not None:
+            self.expired_time = m.get('expired_time')
+        if m.get('host_name') is not None:
+            self.host_name = m.get('host_name')
+        if m.get('image_id') is not None:
+            self.image_id = m.get('image_id')
+        if m.get('instance_charge_type') is not None:
+            self.instance_charge_type = m.get('instance_charge_type')
+        if m.get('instance_id') is not None:
+            self.instance_id = m.get('instance_id')
+        if m.get('instance_name') is not None:
+            self.instance_name = m.get('instance_name')
+        if m.get('instance_role') is not None:
+            self.instance_role = m.get('instance_role')
+        if m.get('instance_status') is not None:
+            self.instance_status = m.get('instance_status')
+        if m.get('instance_type') is not None:
+            self.instance_type = m.get('instance_type')
+        if m.get('instance_type_family') is not None:
+            self.instance_type_family = m.get('instance_type_family')
+        if m.get('ip_address') is not None:
+            self.ip_address = m.get('ip_address')
+        if m.get('is_aliyun_node') is not None:
+            self.is_aliyun_node = m.get('is_aliyun_node')
+        if m.get('node_name') is not None:
+            self.node_name = m.get('node_name')
+        if m.get('node_status') is not None:
+            self.node_status = m.get('node_status')
+        if m.get('nodepool_id') is not None:
+            self.nodepool_id = m.get('nodepool_id')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('spot_strategy') is not None:
+            self.spot_strategy = m.get('spot_strategy')
         return self
 
 
 class DescribeClusterNodesResponseBodyPage(TeaModel):
-    def __init__(self, page_number=None, page_size=None, total_count=None):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
         # 总页数。
-        self.page_number = page_number  # type: int
+        self.page_number = page_number
         # 单页展示结果数量。
-        self.page_size = page_size      # type: int
+        self.page_size = page_size
         # 结果总条数。
-        self.total_count = total_count  # type: int
+        self.total_count = total_count
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.page_number is not None:
             result['page_number'] = self.page_number
         if self.page_size is not None:
@@ -5839,20 +6420,67 @@ class DescribeClusterNodesResponseBodyPage(TeaModel):
             result['total_count'] = self.total_count
         return result
 
-    def from_map(self, map={}):
-        if map.get('page_number') is not None:
-            self.page_number = map.get('page_number')
-        if map.get('page_size') is not None:
-            self.page_size = map.get('page_size')
-        if map.get('total_count') is not None:
-            self.total_count = map.get('total_count')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page_number') is not None:
+            self.page_number = m.get('page_number')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('total_count') is not None:
+            self.total_count = m.get('total_count')
+        return self
+
+
+class DescribeClusterNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        nodes: List[DescribeClusterNodesResponseBodyNodes] = None,
+        page: DescribeClusterNodesResponseBodyPage = None,
+    ):
+        # 节点信息列表。
+        self.nodes = nodes
+        # 分页信息。
+        self.page = page
+
+    def validate(self):
+        if self.nodes:
+            for k in self.nodes:
+                if k:
+                    k.validate()
+        if self.page:
+            self.page.validate()
+
+    def to_map(self):
+        result = dict()
+        result['nodes'] = []
+        if self.nodes is not None:
+            for k in self.nodes:
+                result['nodes'].append(k.to_map() if k else None)
+        if self.page is not None:
+            result['page'] = self.page.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.nodes = []
+        if m.get('nodes') is not None:
+            for k in m.get('nodes'):
+                temp_model = DescribeClusterNodesResponseBodyNodes()
+                self.nodes.append(temp_model.from_map(k))
+        if m.get('page') is not None:
+            temp_model = DescribeClusterNodesResponseBodyPage()
+            self.page = temp_model.from_map(m['page'])
         return self
 
 
 class DescribeClusterNodesResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeClusterNodesResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeClusterNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -5861,36 +6489,42 @@ class DescribeClusterNodesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = DescribeClusterNodesResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class DeleteClusterRequest(TeaModel):
-    def __init__(self, retain_all_resources=None, keep_slb=None, retain_resources=None):
+    def __init__(
+        self,
+        retain_all_resources: bool = None,
+        keep_slb: bool = None,
+        retain_resources: List[str] = None,
+    ):
         # 是否保留所有资源,如果设置了该值，将会忽略retain_resources。  true：保留 false：不保留 默认值：fase。
-        self.retain_all_resources = retain_all_resources  # type: bool
+        self.retain_all_resources = retain_all_resources
         # 是否保留SLB。  true：保留 false：不保留 默认值：false。
-        self.keep_slb = keep_slb        # type: bool
+        self.keep_slb = keep_slb
         # 要保留的资源列表。
-        self.retain_resources = retain_resources  # type: List[str]
+        self.retain_resources = retain_resources
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.retain_all_resources is not None:
             result['retain_all_resources'] = self.retain_all_resources
         if self.keep_slb is not None:
@@ -5899,154 +6533,149 @@ class DeleteClusterRequest(TeaModel):
             result['retain_resources'] = self.retain_resources
         return result
 
-    def from_map(self, map={}):
-        if map.get('retain_all_resources') is not None:
-            self.retain_all_resources = map.get('retain_all_resources')
-        if map.get('keep_slb') is not None:
-            self.keep_slb = map.get('keep_slb')
-        if map.get('retain_resources') is not None:
-            self.retain_resources = map.get('retain_resources')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('retain_all_resources') is not None:
+            self.retain_all_resources = m.get('retain_all_resources')
+        if m.get('keep_slb') is not None:
+            self.keep_slb = m.get('keep_slb')
+        if m.get('retain_resources') is not None:
+            self.retain_resources = m.get('retain_resources')
         return self
 
 
 class DeleteClusterResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
 class CancelComponentUpgradeResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        return self
-
-
-class DescribeClusterAddonsVersionResponseBody(TeaModel):
-    def __init__(self, addons_version=None):
-        # 组件信息详情。
-        self.addons_version = addons_version  # type: Dict[str, AddonsVersionValue]
-
-    def validate(self):
-        if self.addons_version:
-            for v in self.addons_version.values():
-                if v:
-                    v.validate()
-
-    def to_map(self):
-        result = {}
-        result['AddonsVersion'] = {}
-        if self.addons_version is not None:
-            for k, v in self.addons_version.items():
-                result['AddonsVersion'][k] = v.to_map()
-        return result
-
-    def from_map(self, map={}):
-        self.addons_version = {}
-        if map.get('AddonsVersion') is not None:
-            for k, v in map.get('AddonsVersion').items():
-                temp_model = AddonsVersionValue()
-                self.addons_version[k] = temp_model.from_map(v)
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
 class DescribeClusterAddonsVersionResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeClusterAddonsVersionResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: dict = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
         self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
-            result['body'] = self.body.to_map()
+            result['body'] = self.body
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
-            temp_model = DescribeClusterAddonsVersionResponseBody()
-            self.body = temp_model.from_map(map['body'])
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
         return self
 
 
 class DescribeExternalAgentRequest(TeaModel):
-    def __init__(self, private_ip_address=None):
+    def __init__(
+        self,
+        private_ip_address: str = None,
+    ):
         # 是否获取内网访问凭据。  true：获取内网连接凭据 false：获取公网连接凭据 默认值：false。
-        self.private_ip_address = private_ip_address  # type: str
+        self.private_ip_address = private_ip_address
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.private_ip_address is not None:
             result['PrivateIpAddress'] = self.private_ip_address
         return result
 
-    def from_map(self, map={}):
-        if map.get('PrivateIpAddress') is not None:
-            self.private_ip_address = map.get('PrivateIpAddress')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
         return self
 
 
 class DescribeExternalAgentResponseBody(TeaModel):
-    def __init__(self, config=None):
+    def __init__(
+        self,
+        config: str = None,
+    ):
         # 代理配置。
-        self.config = config            # type: str
+        self.config = config
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.config is not None:
             result['config'] = self.config
         return result
 
-    def from_map(self, map={}):
-        if map.get('config') is not None:
-            self.config = map.get('config')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
         return self
 
 
 class DescribeExternalAgentResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeExternalAgentResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeExternalAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -6055,26 +6684,54 @@ class DescribeExternalAgentResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = DescribeExternalAgentResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnInstallClusterAddonsRequestAddons(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        # 组件名称。
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
         return self
 
 
 class UnInstallClusterAddonsRequest(TeaModel):
-    def __init__(self, addons=None):
+    def __init__(
+        self,
+        addons: List[UnInstallClusterAddonsRequestAddons] = None,
+    ):
         # 卸载组件列表。
-        self.addons = addons            # type: List[UnInstallClusterAddonsRequestAddons]
+        self.addons = addons
 
     def validate(self):
         if self.addons:
@@ -6083,96 +6740,91 @@ class UnInstallClusterAddonsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['addons'] = []
         if self.addons is not None:
             for k in self.addons:
                 result['addons'].append(k.to_map() if k else None)
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.addons = []
-        if map.get('addons') is not None:
-            for k in map.get('addons'):
+        if m.get('addons') is not None:
+            for k in m.get('addons'):
                 temp_model = UnInstallClusterAddonsRequestAddons()
                 self.addons.append(temp_model.from_map(k))
         return self
 
 
-class UnInstallClusterAddonsRequestAddons(TeaModel):
-    def __init__(self, name=None):
-        # 组件名称。
-        self.name = name                # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.name is not None:
-            result['name'] = self.name
-        return result
-
-    def from_map(self, map={}):
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        return self
-
-
 class UnInstallClusterAddonsResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
 class ResumeComponentUpgradeResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
 class DescribeClustersV1Request(TeaModel):
-    def __init__(self, name=None, cluster_type=None, page_size=None, page_number=None):
+    def __init__(
+        self,
+        name: str = None,
+        cluster_type: str = None,
+        page_size: int = None,
+        page_number: int = None,
+    ):
         # 通过集群名称进行模糊查询。
-        self.name = name                # type: str
+        self.name = name
         # 集群类型。  Kubernetes: 专有版集群。 ManagedKubernetes：托管版集群。 Ask：Serverless集群。 ExternalKubernetes：注册集群。 ServiceMesh：ASM集群。
-        self.cluster_type = cluster_type  # type: str
+        self.cluster_type = cluster_type
         # 单页大小。
-        self.page_size = page_size      # type: int
+        self.page_size = page_size
         # 分页数。
-        self.page_number = page_number  # type: int
+        self.page_number = page_number
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.name is not None:
             result['name'] = self.name
         if self.cluster_type is not None:
@@ -6183,119 +6835,109 @@ class DescribeClustersV1Request(TeaModel):
             result['page_number'] = self.page_number
         return result
 
-    def from_map(self, map={}):
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('cluster_type') is not None:
-            self.cluster_type = map.get('cluster_type')
-        if map.get('page_size') is not None:
-            self.page_size = map.get('page_size')
-        if map.get('page_number') is not None:
-            self.page_number = map.get('page_number')
-        return self
-
-
-class DescribeClustersV1ResponseBody(TeaModel):
-    def __init__(self, clusters=None, page_info=None):
-        # 集群详情列表。
-        self.clusters = clusters        # type: List[DescribeClustersV1ResponseBodyClusters]
-        # 分页信息。
-        self.page_info = page_info      # type: DescribeClustersV1ResponseBodyPageInfo
-
-    def validate(self):
-        if self.clusters:
-            for k in self.clusters:
-                if k:
-                    k.validate()
-        if self.page_info:
-            self.page_info.validate()
-
-    def to_map(self):
-        result = {}
-        result['clusters'] = []
-        if self.clusters is not None:
-            for k in self.clusters:
-                result['clusters'].append(k.to_map() if k else None)
-        if self.page_info is not None:
-            result['page_info'] = self.page_info.to_map()
-        return result
-
-    def from_map(self, map={}):
-        self.clusters = []
-        if map.get('clusters') is not None:
-            for k in map.get('clusters'):
-                temp_model = DescribeClustersV1ResponseBodyClusters()
-                self.clusters.append(temp_model.from_map(k))
-        if map.get('page_info') is not None:
-            temp_model = DescribeClustersV1ResponseBodyPageInfo()
-            self.page_info = temp_model.from_map(map['page_info'])
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('cluster_type') is not None:
+            self.cluster_type = m.get('cluster_type')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('page_number') is not None:
+            self.page_number = m.get('page_number')
         return self
 
 
 class DescribeClustersV1ResponseBodyClusters(TeaModel):
-    def __init__(self, cluster_id=None, cluster_type=None, created=None, init_version=None, current_version=None,
-                 next_version=None, deletion_protection=None, docker_version=None, external_loadbalancer_id=None,
-                 master_url=None, meta_data=None, name=None, network_mode=None, private_zone=None, profile=None, region_id=None,
-                 resource_group_id=None, security_group_id=None, size=None, state=None, subnet_cidr=None, tags=None, updated=None,
-                 vpc_id=None, vswitch_id=None, worker_ram_role_name=None, zone_id=None, cluster_spec=None,
-                 maintenance_window=None):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_type: str = None,
+        created: str = None,
+        init_version: str = None,
+        current_version: str = None,
+        next_version: str = None,
+        deletion_protection: bool = None,
+        docker_version: str = None,
+        external_loadbalancer_id: str = None,
+        master_url: str = None,
+        meta_data: str = None,
+        name: str = None,
+        network_mode: str = None,
+        private_zone: bool = None,
+        profile: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        security_group_id: str = None,
+        size: int = None,
+        state: str = None,
+        subnet_cidr: str = None,
+        tags: List[Tag] = None,
+        updated: str = None,
+        vpc_id: str = None,
+        vswitch_id: str = None,
+        worker_ram_role_name: str = None,
+        zone_id: str = None,
+        cluster_spec: str = None,
+        maintenance_window: MaintenanceWindow = None,
+    ):
         # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+        self.cluster_id = cluster_id
         # 集群类型。
-        self.cluster_type = cluster_type  # type: str
+        self.cluster_type = cluster_type
         # 集群初始化时间。
-        self.created = created          # type: str
+        self.created = created
         # 集群初始化版本。
-        self.init_version = init_version  # type: str
+        self.init_version = init_version
         # 集群当前版本。
-        self.current_version = current_version  # type: str
+        self.current_version = current_version
         # 集群可升级版本。
-        self.next_version = next_version  # type: str
+        self.next_version = next_version
         # 集群是否开启删除保护。
-        self.deletion_protection = deletion_protection  # type: bool
+        self.deletion_protection = deletion_protection
         # 集群使用的Docker版本。
-        self.docker_version = docker_version  # type: str
+        self.docker_version = docker_version
         # 集群负载均衡服务的ID。
-        self.external_loadbalancer_id = external_loadbalancer_id  # type: str
+        self.external_loadbalancer_id = external_loadbalancer_id
         # 集群访问地址列表。
-        self.master_url = master_url    # type: str
+        self.master_url = master_url
         # 集群元数据信息。
-        self.meta_data = meta_data      # type: str
+        self.meta_data = meta_data
         # 集群名称。
-        self.name = name                # type: str
+        self.name = name
         # 集群使用的网络类型，例如：VPC网络。
-        self.network_mode = network_mode  # type: str
+        self.network_mode = network_mode
         # 集群是否开启Private Zone。
-        self.private_zone = private_zone  # type: bool
+        self.private_zone = private_zone
         # 边缘集群表示，用于区分边缘托管版集群。
-        self.profile = profile          # type: str
+        self.profile = profile
         # 地域ID。
-        self.region_id = region_id      # type: str
+        self.region_id = region_id
         # 集群资源组ID。
-        self.resource_group_id = resource_group_id  # type: str
+        self.resource_group_id = resource_group_id
         # 集群安全组ID。
-        self.security_group_id = security_group_id  # type: str
+        self.security_group_id = security_group_id
         # 集群节点数。
-        self.size = size                # type: int
+        self.size = size
         # 集群运行状态。
-        self.state = state              # type: str
+        self.state = state
         # POD网段地址。
-        self.subnet_cidr = subnet_cidr  # type: str
+        self.subnet_cidr = subnet_cidr
         # 集群标签。
-        self.tags = tags                # type: List[Tags]
+        self.tags = tags
         # 集群更新时间。
-        self.updated = updated          # type: str
+        self.updated = updated
         # 集群所在的VPC ID。
-        self.vpc_id = vpc_id            # type: str
+        self.vpc_id = vpc_id
         # 集群使用的虚拟交换ID。
-        self.vswitch_id = vswitch_id    # type: str
+        self.vswitch_id = vswitch_id
         # 集群Worker RAM角色。
-        self.worker_ram_role_name = worker_ram_role_name  # type: str
+        self.worker_ram_role_name = worker_ram_role_name
         # 可用区ID。
-        self.zone_id = zone_id          # type: str
+        self.zone_id = zone_id
         # 托管版集群类型，面向托管集群。 • ack.pro.small：专业托管集群。 • ack.standard ：标准托管集群。
-        self.cluster_spec = cluster_spec  # type: str
-        self.maintenance_window = maintenance_window  # type: MaintenanceWindow
+        self.cluster_spec = cluster_spec
+        self.maintenance_window = maintenance_window
 
     def validate(self):
         if self.tags:
@@ -6306,7 +6948,7 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
             self.maintenance_window.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.cluster_type is not None:
@@ -6369,86 +7011,92 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
             result['maintenance_window'] = self.maintenance_window.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('cluster_id') is not None:
-            self.cluster_id = map.get('cluster_id')
-        if map.get('cluster_type') is not None:
-            self.cluster_type = map.get('cluster_type')
-        if map.get('created') is not None:
-            self.created = map.get('created')
-        if map.get('init_version') is not None:
-            self.init_version = map.get('init_version')
-        if map.get('current_version') is not None:
-            self.current_version = map.get('current_version')
-        if map.get('next_version') is not None:
-            self.next_version = map.get('next_version')
-        if map.get('deletion_protection') is not None:
-            self.deletion_protection = map.get('deletion_protection')
-        if map.get('docker_version') is not None:
-            self.docker_version = map.get('docker_version')
-        if map.get('external_loadbalancer_id') is not None:
-            self.external_loadbalancer_id = map.get('external_loadbalancer_id')
-        if map.get('master_url') is not None:
-            self.master_url = map.get('master_url')
-        if map.get('meta_data') is not None:
-            self.meta_data = map.get('meta_data')
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('network_mode') is not None:
-            self.network_mode = map.get('network_mode')
-        if map.get('private_zone') is not None:
-            self.private_zone = map.get('private_zone')
-        if map.get('profile') is not None:
-            self.profile = map.get('profile')
-        if map.get('region_id') is not None:
-            self.region_id = map.get('region_id')
-        if map.get('resource_group_id') is not None:
-            self.resource_group_id = map.get('resource_group_id')
-        if map.get('security_group_id') is not None:
-            self.security_group_id = map.get('security_group_id')
-        if map.get('size') is not None:
-            self.size = map.get('size')
-        if map.get('state') is not None:
-            self.state = map.get('state')
-        if map.get('subnet_cidr') is not None:
-            self.subnet_cidr = map.get('subnet_cidr')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('cluster_type') is not None:
+            self.cluster_type = m.get('cluster_type')
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('init_version') is not None:
+            self.init_version = m.get('init_version')
+        if m.get('current_version') is not None:
+            self.current_version = m.get('current_version')
+        if m.get('next_version') is not None:
+            self.next_version = m.get('next_version')
+        if m.get('deletion_protection') is not None:
+            self.deletion_protection = m.get('deletion_protection')
+        if m.get('docker_version') is not None:
+            self.docker_version = m.get('docker_version')
+        if m.get('external_loadbalancer_id') is not None:
+            self.external_loadbalancer_id = m.get('external_loadbalancer_id')
+        if m.get('master_url') is not None:
+            self.master_url = m.get('master_url')
+        if m.get('meta_data') is not None:
+            self.meta_data = m.get('meta_data')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('network_mode') is not None:
+            self.network_mode = m.get('network_mode')
+        if m.get('private_zone') is not None:
+            self.private_zone = m.get('private_zone')
+        if m.get('profile') is not None:
+            self.profile = m.get('profile')
+        if m.get('region_id') is not None:
+            self.region_id = m.get('region_id')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
+        if m.get('security_group_id') is not None:
+            self.security_group_id = m.get('security_group_id')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('subnet_cidr') is not None:
+            self.subnet_cidr = m.get('subnet_cidr')
         self.tags = []
-        if map.get('tags') is not None:
-            for k in map.get('tags'):
-                temp_model = Tags()
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
-        if map.get('updated') is not None:
-            self.updated = map.get('updated')
-        if map.get('vpc_id') is not None:
-            self.vpc_id = map.get('vpc_id')
-        if map.get('vswitch_id') is not None:
-            self.vswitch_id = map.get('vswitch_id')
-        if map.get('worker_ram_role_name') is not None:
-            self.worker_ram_role_name = map.get('worker_ram_role_name')
-        if map.get('zone_id') is not None:
-            self.zone_id = map.get('zone_id')
-        if map.get('cluster_spec') is not None:
-            self.cluster_spec = map.get('cluster_spec')
-        if map.get('maintenance_window') is not None:
+        if m.get('updated') is not None:
+            self.updated = m.get('updated')
+        if m.get('vpc_id') is not None:
+            self.vpc_id = m.get('vpc_id')
+        if m.get('vswitch_id') is not None:
+            self.vswitch_id = m.get('vswitch_id')
+        if m.get('worker_ram_role_name') is not None:
+            self.worker_ram_role_name = m.get('worker_ram_role_name')
+        if m.get('zone_id') is not None:
+            self.zone_id = m.get('zone_id')
+        if m.get('cluster_spec') is not None:
+            self.cluster_spec = m.get('cluster_spec')
+        if m.get('maintenance_window') is not None:
             temp_model = MaintenanceWindow()
-            self.maintenance_window = temp_model.from_map(map['maintenance_window'])
+            self.maintenance_window = temp_model.from_map(m['maintenance_window'])
         return self
 
 
 class DescribeClustersV1ResponseBodyPageInfo(TeaModel):
-    def __init__(self, page_number=None, page_size=None, total_count=None):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
         # 分页数。
-        self.page_number = page_number  # type: int
+        self.page_number = page_number
         # 单页大小。
-        self.page_size = page_size      # type: int
+        self.page_size = page_size
         # 结果总数。
-        self.total_count = total_count  # type: int
+        self.total_count = total_count
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.page_number is not None:
             result['page_number'] = self.page_number
         if self.page_size is not None:
@@ -6457,20 +7105,67 @@ class DescribeClustersV1ResponseBodyPageInfo(TeaModel):
             result['total_count'] = self.total_count
         return result
 
-    def from_map(self, map={}):
-        if map.get('page_number') is not None:
-            self.page_number = map.get('page_number')
-        if map.get('page_size') is not None:
-            self.page_size = map.get('page_size')
-        if map.get('total_count') is not None:
-            self.total_count = map.get('total_count')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page_number') is not None:
+            self.page_number = m.get('page_number')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('total_count') is not None:
+            self.total_count = m.get('total_count')
+        return self
+
+
+class DescribeClustersV1ResponseBody(TeaModel):
+    def __init__(
+        self,
+        clusters: List[DescribeClustersV1ResponseBodyClusters] = None,
+        page_info: DescribeClustersV1ResponseBodyPageInfo = None,
+    ):
+        # 集群详情列表。
+        self.clusters = clusters
+        # 分页信息。
+        self.page_info = page_info
+
+    def validate(self):
+        if self.clusters:
+            for k in self.clusters:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        result = dict()
+        result['clusters'] = []
+        if self.clusters is not None:
+            for k in self.clusters:
+                result['clusters'].append(k.to_map() if k else None)
+        if self.page_info is not None:
+            result['page_info'] = self.page_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clusters = []
+        if m.get('clusters') is not None:
+            for k in m.get('clusters'):
+                temp_model = DescribeClustersV1ResponseBodyClusters()
+                self.clusters.append(temp_model.from_map(k))
+        if m.get('page_info') is not None:
+            temp_model = DescribeClustersV1ResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['page_info'])
         return self
 
 
 class DescribeClustersV1Response(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeClustersV1ResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeClustersV1ResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -6479,112 +7174,204 @@ class DescribeClustersV1Response(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = DescribeClustersV1ResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
-class ModifyClusterConfigurationRequest(TeaModel):
-    def __init__(self, configs=None, name=None):
-        # 配置集合。
-        self.configs = configs          # type: ModifyClusterConfigurationRequestConfigs
-        # 配置名称。
-        self.name = name                # type: str
-
-    def validate(self):
-        if self.configs:
-            self.configs.validate()
-
-    def to_map(self):
-        result = {}
-        if self.configs is not None:
-            result['configs'] = self.configs.to_map()
-        if self.name is not None:
-            result['name'] = self.name
-        return result
-
-    def from_map(self, map={}):
-        if map.get('configs') is not None:
-            temp_model = ModifyClusterConfigurationRequestConfigs()
-            self.configs = temp_model.from_map(map['configs'])
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        return self
-
-
-class ModifyClusterConfigurationRequestConfigs(TeaModel):
-    def __init__(self, key=None, value=None):
-        # key。
-        self.key = key                  # type: str
-        # value。
-        self.value = value              # type: str
+class ModifyClusterConfigurationRequestCustomizeConfigConfigs(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # key值。
+        self.key = key
+        # value值。
+        self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.key is not None:
             result['key'] = self.key
         if self.value is not None:
             result['value'] = self.value
         return result
 
-    def from_map(self, map={}):
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ModifyClusterConfigurationRequestCustomizeConfig(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        configs: List[ModifyClusterConfigurationRequestCustomizeConfigConfigs] = None,
+    ):
+        # 组件名称。
+        self.name = name
+        # 组件配置。
+        self.configs = configs
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        result['configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['configs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        self.configs = []
+        if m.get('configs') is not None:
+            for k in m.get('configs'):
+                temp_model = ModifyClusterConfigurationRequestCustomizeConfigConfigs()
+                self.configs.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyClusterConfigurationRequest(TeaModel):
+    def __init__(
+        self,
+        customize_config: List[ModifyClusterConfigurationRequestCustomizeConfig] = None,
+    ):
+        # 自定义配置。
+        self.customize_config = customize_config
+
+    def validate(self):
+        if self.customize_config:
+            for k in self.customize_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['customize_config'] = []
+        if self.customize_config is not None:
+            for k in self.customize_config:
+                result['customize_config'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.customize_config = []
+        if m.get('customize_config') is not None:
+            for k in m.get('customize_config'):
+                temp_model = ModifyClusterConfigurationRequestCustomizeConfig()
+                self.customize_config.append(temp_model.from_map(k))
         return self
 
 
 class ModifyClusterConfigurationResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class DescribeTaskInfoResponseBodyTaskResult(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        status: str = None,
+    ):
+        # 操作的资源，例如：实例ID。
+        self.data = data
+        # 资源的状态。
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('status') is not None:
+            self.status = m.get('status')
         return self
 
 
 class DescribeTaskInfoResponseBody(TeaModel):
-    def __init__(self, cluster_id=None, task_id=None, created=None, updated=None, state=None, task_type=None,
-                 task_result=None):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        task_id: str = None,
+        created: str = None,
+        updated: str = None,
+        state: str = None,
+        task_type: str = None,
+        task_result: List[DescribeTaskInfoResponseBodyTaskResult] = None,
+    ):
         # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+        self.cluster_id = cluster_id
         # 任务ID。
-        self.task_id = task_id          # type: str
+        self.task_id = task_id
         # 任务创建时间。
-        self.created = created          # type: str
+        self.created = created
         # 任务更新时间。
-        self.updated = updated          # type: str
+        self.updated = updated
         # 任务当前状态。
-        self.state = state              # type: str
+        self.state = state
         # 当前任务类型。
-        self.task_type = task_type      # type: str
+        self.task_type = task_type
         # 任务执行详情。
-        self.task_result = task_result  # type: List[DescribeTaskInfoResponseBodyTaskResult]
+        self.task_result = task_result
 
     def validate(self):
         if self.task_result:
@@ -6593,7 +7380,7 @@ class DescribeTaskInfoResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.task_id is not None:
@@ -6612,57 +7399,36 @@ class DescribeTaskInfoResponseBody(TeaModel):
                 result['task_result'].append(k.to_map() if k else None)
         return result
 
-    def from_map(self, map={}):
-        if map.get('cluster_id') is not None:
-            self.cluster_id = map.get('cluster_id')
-        if map.get('task_id') is not None:
-            self.task_id = map.get('task_id')
-        if map.get('created') is not None:
-            self.created = map.get('created')
-        if map.get('updated') is not None:
-            self.updated = map.get('updated')
-        if map.get('state') is not None:
-            self.state = map.get('state')
-        if map.get('task_type') is not None:
-            self.task_type = map.get('task_type')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('updated') is not None:
+            self.updated = m.get('updated')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('task_type') is not None:
+            self.task_type = m.get('task_type')
         self.task_result = []
-        if map.get('task_result') is not None:
-            for k in map.get('task_result'):
+        if m.get('task_result') is not None:
+            for k in m.get('task_result'):
                 temp_model = DescribeTaskInfoResponseBodyTaskResult()
                 self.task_result.append(temp_model.from_map(k))
         return self
 
 
-class DescribeTaskInfoResponseBodyTaskResult(TeaModel):
-    def __init__(self, data=None, status=None):
-        # 操作的资源，例如：实例ID。
-        self.data = data                # type: str
-        # 资源的状态。
-        self.status = status            # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.data is not None:
-            result['data'] = self.data
-        if self.status is not None:
-            result['status'] = self.status
-        return result
-
-    def from_map(self, map={}):
-        if map.get('data') is not None:
-            self.data = map.get('data')
-        if map.get('status') is not None:
-            self.status = map.get('status')
-        return self
-
-
 class DescribeTaskInfoResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeTaskInfoResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeTaskInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -6671,59 +7437,71 @@ class DescribeTaskInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = DescribeTaskInfoResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class CancelClusterUpgradeResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
 class UpdateTemplateRequest(TeaModel):
-    def __init__(self, description=None, name=None, tags=None, template=None, template_type=None):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        tags: str = None,
+        template: str = None,
+        template_type: str = None,
+    ):
         # 部署模板描述信息。
-        self.description = description  # type: str
+        self.description = description
         # 部署模板名称。
-        self.name = name                # type: str
+        self.name = name
         # 部署模板标签
-        self.tags = tags                # type: str
+        self.tags = tags
         # 部署模板yaml。
-        self.template = template        # type: str
+        self.template = template
         # 部署模板类型。
-        self.template_type = template_type  # type: str
+        self.template_type = template_type
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.description is not None:
             result['description'] = self.description
         if self.name is not None:
@@ -6736,81 +7514,63 @@ class UpdateTemplateRequest(TeaModel):
             result['template_type'] = self.template_type
         return result
 
-    def from_map(self, map={}):
-        if map.get('description') is not None:
-            self.description = map.get('description')
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('tags') is not None:
-            self.tags = map.get('tags')
-        if map.get('template') is not None:
-            self.template = map.get('template')
-        if map.get('template_type') is not None:
-            self.template_type = map.get('template_type')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
+        if m.get('template') is not None:
+            self.template = m.get('template')
+        if m.get('template_type') is not None:
+            self.template_type = m.get('template_type')
         return self
 
 
 class UpdateTemplateResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        return self
-
-
-class UpgradeClusterAddonsRequest(TeaModel):
-    def __init__(self, body=None):
-        # Request body，类型是对象数组。
-        self.body = body                # type: List[UpgradeClusterAddonsRequestBody]
-
-    def validate(self):
-        if self.body:
-            for k in self.body:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        result['body'] = []
-        if self.body is not None:
-            for k in self.body:
-                result['body'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, map={}):
-        self.body = []
-        if map.get('body') is not None:
-            for k in map.get('body'):
-                temp_model = UpgradeClusterAddonsRequestBody()
-                self.body.append(temp_model.from_map(k))
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
 class UpgradeClusterAddonsRequestBody(TeaModel):
-    def __init__(self, component_name=None, next_version=None, version=None):
+    def __init__(
+        self,
+        component_name: str = None,
+        next_version: str = None,
+        version: str = None,
+    ):
         # 组件名称。
-        self.component_name = component_name  # type: str
+        self.component_name = component_name
         # 可升级版本。
-        self.next_version = next_version  # type: str
+        self.next_version = next_version
         # 当前版本。
-        self.version = version          # type: str
+        self.version = version
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.component_name is not None:
             result['component_name'] = self.component_name
         if self.next_version is not None:
@@ -6819,73 +7579,120 @@ class UpgradeClusterAddonsRequestBody(TeaModel):
             result['version'] = self.version
         return result
 
-    def from_map(self, map={}):
-        if map.get('component_name') is not None:
-            self.component_name = map.get('component_name')
-        if map.get('next_version') is not None:
-            self.next_version = map.get('next_version')
-        if map.get('version') is not None:
-            self.version = map.get('version')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('component_name') is not None:
+            self.component_name = m.get('component_name')
+        if m.get('next_version') is not None:
+            self.next_version = m.get('next_version')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class UpgradeClusterAddonsRequest(TeaModel):
+    def __init__(
+        self,
+        body: List[UpgradeClusterAddonsRequestBody] = None,
+    ):
+        # Request body，类型是对象数组。
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = UpgradeClusterAddonsRequestBody()
+                self.body.append(temp_model.from_map(k))
         return self
 
 
 class UpgradeClusterAddonsResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
 class DeleteKubernetesTriggerResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
 class DescribeUserQuotaResponseBody(TeaModel):
-    def __init__(self, amk_cluster_quota=None, ask_cluster_quota=None, cluster_nodepool_quota=None,
-                 cluster_quota=None, node_quota=None):
+    def __init__(
+        self,
+        amk_cluster_quota: int = None,
+        ask_cluster_quota: int = None,
+        cluster_nodepool_quota: int = None,
+        cluster_quota: int = None,
+        node_quota: int = None,
+    ):
         # 托管版集群配额。
-        self.amk_cluster_quota = amk_cluster_quota  # type: int
+        self.amk_cluster_quota = amk_cluster_quota
         # Serverless集群配额。
-        self.ask_cluster_quota = ask_cluster_quota  # type: int
+        self.ask_cluster_quota = ask_cluster_quota
         # 集群节点池配额。
-        self.cluster_nodepool_quota = cluster_nodepool_quota  # type: int
+        self.cluster_nodepool_quota = cluster_nodepool_quota
         # 专有版集群托管版集群的总配额。
-        self.cluster_quota = cluster_quota  # type: int
+        self.cluster_quota = cluster_quota
         # 单集群的节点配额。
-        self.node_quota = node_quota    # type: int
+        self.node_quota = node_quota
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.amk_cluster_quota is not None:
             result['amk_cluster_quota'] = self.amk_cluster_quota
         if self.ask_cluster_quota is not None:
@@ -6898,24 +7705,29 @@ class DescribeUserQuotaResponseBody(TeaModel):
             result['node_quota'] = self.node_quota
         return result
 
-    def from_map(self, map={}):
-        if map.get('amk_cluster_quota') is not None:
-            self.amk_cluster_quota = map.get('amk_cluster_quota')
-        if map.get('ask_cluster_quota') is not None:
-            self.ask_cluster_quota = map.get('ask_cluster_quota')
-        if map.get('cluster_nodepool_quota') is not None:
-            self.cluster_nodepool_quota = map.get('cluster_nodepool_quota')
-        if map.get('cluster_quota') is not None:
-            self.cluster_quota = map.get('cluster_quota')
-        if map.get('node_quota') is not None:
-            self.node_quota = map.get('node_quota')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('amk_cluster_quota') is not None:
+            self.amk_cluster_quota = m.get('amk_cluster_quota')
+        if m.get('ask_cluster_quota') is not None:
+            self.ask_cluster_quota = m.get('ask_cluster_quota')
+        if m.get('cluster_nodepool_quota') is not None:
+            self.cluster_nodepool_quota = m.get('cluster_nodepool_quota')
+        if m.get('cluster_quota') is not None:
+            self.cluster_quota = m.get('cluster_quota')
+        if m.get('node_quota') is not None:
+            self.node_quota = m.get('node_quota')
         return self
 
 
 class DescribeUserQuotaResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeUserQuotaResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeUserQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -6924,84 +7736,145 @@ class DescribeUserQuotaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = DescribeUserQuotaResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class DeleteClusterNodepoolResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
 class DescribeClusterAddonsUpgradeStatusRequest(TeaModel):
-    def __init__(self, component_ids=None):
-        # 组件列表。
-        self.component_ids = component_ids  # type: List[str]
+    def __init__(
+        self,
+        component_ids: List[str] = None,
+    ):
+        # 组件名称列表。
+        self.component_ids = component_ids
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.component_ids is not None:
             result['componentIds'] = self.component_ids
         return result
 
-    def from_map(self, map={}):
-        if map.get('componentIds') is not None:
-            self.component_ids = map.get('componentIds')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('componentIds') is not None:
+            self.component_ids = m.get('componentIds')
         return self
 
 
 class DescribeClusterAddonsUpgradeStatusResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: dict = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class InstallClusterAddonsRequestBody(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        version: str = None,
+        config: str = None,
+    ):
+        # 组件名称。
+        self.name = name
+        # 组件版本号。
+        self.version = version
+        # 组件配置信息。
+        self.config = config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.version is not None:
+            result['version'] = self.version
+        if self.config is not None:
+            result['config'] = self.config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('config') is not None:
+            self.config = m.get('config')
         return self
 
 
 class InstallClusterAddonsRequest(TeaModel):
-    def __init__(self, body=None):
+    def __init__(
+        self,
+        body: List[InstallClusterAddonsRequestBody] = None,
+    ):
         # Addon列表。
-        self.body = body                # type: List[InstallClusterAddonsRequestBody]
+        self.body = body
 
     def validate(self):
         if self.body:
@@ -7010,136 +7883,77 @@ class InstallClusterAddonsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['body'] = []
         if self.body is not None:
             for k in self.body:
                 result['body'].append(k.to_map() if k else None)
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.body = []
-        if map.get('body') is not None:
-            for k in map.get('body'):
+        if m.get('body') is not None:
+            for k in m.get('body'):
                 temp_model = InstallClusterAddonsRequestBody()
                 self.body.append(temp_model.from_map(k))
         return self
 
 
-class InstallClusterAddonsRequestBody(TeaModel):
-    def __init__(self, config=None, disabled=None, name=None, required=None, version=None):
-        # Addon配置信息。
-        self.config = config            # type: str
-        # 是否禁止默认安装。
-        self.disabled = disabled        # type: bool
-        # Addon名称。
-        self.name = name                # type: str
-        # 是否默认安装。
-        self.required = required        # type: str
-        # Addon版本号。
-        self.version = version          # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.config is not None:
-            result['config'] = self.config
-        if self.disabled is not None:
-            result['disabled'] = self.disabled
-        if self.name is not None:
-            result['name'] = self.name
-        if self.required is not None:
-            result['required'] = self.required
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, map={}):
-        if map.get('config') is not None:
-            self.config = map.get('config')
-        if map.get('disabled') is not None:
-            self.disabled = map.get('disabled')
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('required') is not None:
-            self.required = map.get('required')
-        if map.get('version') is not None:
-            self.version = map.get('version')
-        return self
-
-
 class InstallClusterAddonsResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        return self
-
-
-class DescribeClusterNodePoolsResponseBody(TeaModel):
-    def __init__(self, nodepools=None):
-        # 节点池列表。	
-        self.nodepools = nodepools      # type: List[DescribeClusterNodePoolsResponseBodyNodepools]
-
-    def validate(self):
-        if self.nodepools:
-            for k in self.nodepools:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        result['nodepools'] = []
-        if self.nodepools is not None:
-            for k in self.nodepools:
-                result['nodepools'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, map={}):
-        self.nodepools = []
-        if map.get('nodepools') is not None:
-            for k in map.get('nodepools'):
-                temp_model = DescribeClusterNodePoolsResponseBodyNodepools()
-                self.nodepools.append(temp_model.from_map(k))
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
 class DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling(TeaModel):
-    def __init__(self, eip_bandwidth=None, is_bond_eip=None, eip_internet_charge_type=None, enable=None,
-                 max_instances=None, min_instances=None, type=None):
+    def __init__(
+        self,
+        eip_bandwidth: int = None,
+        is_bond_eip: bool = None,
+        eip_internet_charge_type: str = None,
+        enable: bool = None,
+        max_instances: int = None,
+        min_instances: int = None,
+        type: str = None,
+    ):
         # EIP带宽峰值
-        self.eip_bandwidth = eip_bandwidth  # type: int
+        self.eip_bandwidth = eip_bandwidth
         # 是否绑定EIP
-        self.is_bond_eip = is_bond_eip  # type: bool
+        self.is_bond_eip = is_bond_eip
         # EIP实例计费方式
-        self.eip_internet_charge_type = eip_internet_charge_type  # type: str
+        self.eip_internet_charge_type = eip_internet_charge_type
         # 自动伸缩。	
-        self.enable = enable            # type: bool
+        self.enable = enable
         # 最大节点数	
-        self.max_instances = max_instances  # type: int
+        self.max_instances = max_instances
         # 最小节点数	
-        self.min_instances = min_instances  # type: int
+        self.min_instances = min_instances
         # 扩容组类型。
-        self.type = type                # type: str
+        self.type = type
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.eip_bandwidth is not None:
             result['eip_bandwidth'] = self.eip_bandwidth
         if self.is_bond_eip is not None:
@@ -7156,41 +7970,50 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling(TeaModel):
             result['type'] = self.type
         return result
 
-    def from_map(self, map={}):
-        if map.get('eip_bandwidth') is not None:
-            self.eip_bandwidth = map.get('eip_bandwidth')
-        if map.get('is_bond_eip') is not None:
-            self.is_bond_eip = map.get('is_bond_eip')
-        if map.get('eip_internet_charge_type') is not None:
-            self.eip_internet_charge_type = map.get('eip_internet_charge_type')
-        if map.get('enable') is not None:
-            self.enable = map.get('enable')
-        if map.get('max_instances') is not None:
-            self.max_instances = map.get('max_instances')
-        if map.get('min_instances') is not None:
-            self.min_instances = map.get('min_instances')
-        if map.get('type') is not None:
-            self.type = map.get('type')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('eip_bandwidth') is not None:
+            self.eip_bandwidth = m.get('eip_bandwidth')
+        if m.get('is_bond_eip') is not None:
+            self.is_bond_eip = m.get('is_bond_eip')
+        if m.get('eip_internet_charge_type') is not None:
+            self.eip_internet_charge_type = m.get('eip_internet_charge_type')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('max_instances') is not None:
+            self.max_instances = m.get('max_instances')
+        if m.get('min_instances') is not None:
+            self.min_instances = m.get('min_instances')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         return self
 
 
 class DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig(TeaModel):
-    def __init__(self, cms_enabled=None, cpu_policy=None, labels=None, runtime=None, runtime_version=None,
-                 taints=None, user_data=None):
+    def __init__(
+        self,
+        cms_enabled: bool = None,
+        cpu_policy: str = None,
+        labels: List[Tag] = None,
+        runtime: str = None,
+        runtime_version: str = None,
+        taints: List[Taint] = None,
+        user_data: str = None,
+    ):
         # 是否开启云监控	
-        self.cms_enabled = cms_enabled  # type: bool
+        self.cms_enabled = cms_enabled
         # CPU管理策略	
-        self.cpu_policy = cpu_policy    # type: str
+        self.cpu_policy = cpu_policy
         # ECS标签。	
-        self.labels = labels            # type: List[Tags]
+        self.labels = labels
         # 容器运行时	
-        self.runtime = runtime          # type: str
+        self.runtime = runtime
         # 容器运行时版本	
-        self.runtime_version = runtime_version  # type: str
+        self.runtime_version = runtime_version
         # 污点配置
-        self.taints = taints            # type: List[Taints]
+        self.taints = taints
         # 节点自定义数据
-        self.user_data = user_data      # type: str
+        self.user_data = user_data
 
     def validate(self):
         if self.labels:
@@ -7203,7 +8026,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cms_enabled is not None:
             result['cms_enabled'] = self.cms_enabled
         if self.cpu_policy is not None:
@@ -7224,55 +8047,65 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig(TeaModel):
             result['user_data'] = self.user_data
         return result
 
-    def from_map(self, map={}):
-        if map.get('cms_enabled') is not None:
-            self.cms_enabled = map.get('cms_enabled')
-        if map.get('cpu_policy') is not None:
-            self.cpu_policy = map.get('cpu_policy')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cms_enabled') is not None:
+            self.cms_enabled = m.get('cms_enabled')
+        if m.get('cpu_policy') is not None:
+            self.cpu_policy = m.get('cpu_policy')
         self.labels = []
-        if map.get('labels') is not None:
-            for k in map.get('labels'):
-                temp_model = Tags()
+        if m.get('labels') is not None:
+            for k in m.get('labels'):
+                temp_model = Tag()
                 self.labels.append(temp_model.from_map(k))
-        if map.get('runtime') is not None:
-            self.runtime = map.get('runtime')
-        if map.get('runtime_version') is not None:
-            self.runtime_version = map.get('runtime_version')
+        if m.get('runtime') is not None:
+            self.runtime = m.get('runtime')
+        if m.get('runtime_version') is not None:
+            self.runtime_version = m.get('runtime_version')
         self.taints = []
-        if map.get('taints') is not None:
-            for k in map.get('taints'):
-                temp_model = Taints()
+        if m.get('taints') is not None:
+            for k in m.get('taints'):
+                temp_model = Taint()
                 self.taints.append(temp_model.from_map(k))
-        if map.get('user_data') is not None:
-            self.user_data = map.get('user_data')
+        if m.get('user_data') is not None:
+            self.user_data = m.get('user_data')
         return self
 
 
 class DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo(TeaModel):
-    def __init__(self, created=None, is_default=None, name=None, nodepool_id=None, region_id=None,
-                 resource_group_id=None, type=None, updated=None):
+    def __init__(
+        self,
+        created: str = None,
+        is_default: bool = None,
+        name: str = None,
+        nodepool_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        type: str = None,
+        updated: str = None,
+    ):
         # 节点池创建时间
-        self.created = created          # type: str
+        self.created = created
         # 是否为默认节点池
-        self.is_default = is_default    # type: bool
+        self.is_default = is_default
         # 节点池名称
-        self.name = name                # type: str
+        self.name = name
         # 节点池ID
-        self.nodepool_id = nodepool_id  # type: str
+        self.nodepool_id = nodepool_id
         # 节点池所在地域ID。
-        self.region_id = region_id      # type: str
+        self.region_id = region_id
         # 资源组ID
-        self.resource_group_id = resource_group_id  # type: str
+        self.resource_group_id = resource_group_id
         # 节点池类型
-        self.type = type                # type: str
+        self.type = type
         # 节点池更新时间
-        self.updated = updated          # type: str
+        self.updated = updated
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.created is not None:
             result['created'] = self.created
         if self.is_default is not None:
@@ -7291,104 +8124,146 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo(TeaModel):
             result['updated'] = self.updated
         return result
 
-    def from_map(self, map={}):
-        if map.get('created') is not None:
-            self.created = map.get('created')
-        if map.get('is_default') is not None:
-            self.is_default = map.get('is_default')
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('nodepool_id') is not None:
-            self.nodepool_id = map.get('nodepool_id')
-        if map.get('region_id') is not None:
-            self.region_id = map.get('region_id')
-        if map.get('resource_group_id') is not None:
-            self.resource_group_id = map.get('resource_group_id')
-        if map.get('type') is not None:
-            self.type = map.get('type')
-        if map.get('updated') is not None:
-            self.updated = map.get('updated')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('is_default') is not None:
+            self.is_default = m.get('is_default')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('nodepool_id') is not None:
+            self.nodepool_id = m.get('nodepool_id')
+        if m.get('region_id') is not None:
+            self.region_id = m.get('region_id')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('updated') is not None:
+            self.updated = m.get('updated')
         return self
 
 
 class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupSpotPriceLimit(TeaModel):
-    def __init__(self, instance_type=None, price_limit=None):
+    def __init__(
+        self,
+        instance_type: str = None,
+        price_limit: str = None,
+    ):
         # 抢占式实例规格。
-        self.instance_type = instance_type  # type: str
+        self.instance_type = instance_type
         # 单台实例上限价格，单位：元/小时。
-        self.price_limit = price_limit  # type: str
+        self.price_limit = price_limit
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.instance_type is not None:
             result['instance_type'] = self.instance_type
         if self.price_limit is not None:
             result['price_limit'] = self.price_limit
         return result
 
-    def from_map(self, map={}):
-        if map.get('instance_type') is not None:
-            self.instance_type = map.get('instance_type')
-        if map.get('price_limit') is not None:
-            self.price_limit = map.get('price_limit')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instance_type') is not None:
+            self.instance_type = m.get('instance_type')
+        if m.get('price_limit') is not None:
+            self.price_limit = m.get('price_limit')
         return self
 
 
 class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
-    def __init__(self, auto_renew=None, auto_renew_period=None, data_disks=None, image_id=None,
-                 instance_charge_type=None, instance_types=None, multi_az_policy=None, period=None, period_unit=None, platform=None,
-                 ram_policy=None, spot_strategy=None, spot_price_limit=None, rds_instances=None, scaling_group_id=None,
-                 scaling_policy=None, security_group_id=None, system_disk_category=None, system_disk_size=None, tags=None,
-                 vswitch_ids=None, login_password=None, key_pair=None):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        auto_renew_period: int = None,
+        data_disks: List[DataDisk] = None,
+        image_id: str = None,
+        instance_charge_type: str = None,
+        instance_types: List[str] = None,
+        multi_az_policy: str = None,
+        on_demand_base_capacity: int = None,
+        on_demand_percentage_above_base_capacity: int = None,
+        spot_instance_pools: int = None,
+        spot_instance_remedy: bool = None,
+        compensate_with_on_demand: bool = None,
+        period: int = None,
+        period_unit: str = None,
+        platform: str = None,
+        ram_policy: str = None,
+        spot_strategy: str = None,
+        spot_price_limit: List[DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupSpotPriceLimit] = None,
+        rds_instances: List[str] = None,
+        scaling_group_id: str = None,
+        scaling_policy: str = None,
+        security_group_id: str = None,
+        system_disk_category: str = None,
+        system_disk_size: int = None,
+        tags: List[Tag] = None,
+        vswitch_ids: List[str] = None,
+        login_password: str = None,
+        key_pair: str = None,
+    ):
         # 自动续费	
-        self.auto_renew = auto_renew    # type: bool
+        self.auto_renew = auto_renew
         # 自动付费时长	
-        self.auto_renew_period = auto_renew_period  # type: int
+        self.auto_renew_period = auto_renew_period
         # 数据盘配置	
-        self.data_disks = data_disks    # type: List[DataDisks]
+        self.data_disks = data_disks
         # 镜像ID	
-        self.image_id = image_id        # type: str
+        self.image_id = image_id
         # 节点付费类型	
-        self.instance_charge_type = instance_charge_type  # type: str
+        self.instance_charge_type = instance_charge_type
         # 节点类型	
-        self.instance_types = instance_types  # type: List[str]
-        # 多可用去策略	
-        self.multi_az_policy = multi_az_policy  # type: str
+        self.instance_types = instance_types
+        # 多可用区伸缩组ECS实例扩缩容策略
+        self.multi_az_policy = multi_az_policy
+        # 伸缩组所需要按量实例个数的最小值，取值范围：0~1000。当按量实例个数少于该值时，将优先创建按量实例。
+        self.on_demand_base_capacity = on_demand_base_capacity
+        # 伸缩组满足最小按量实例数（OnDemandBaseCapacity）要求后，超出的实例中按量实例应占的比例，取值范围：0～100。
+        self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        # 指定可用实例规格的个数，伸缩组将按成本最低的多个规格均衡创建抢占式实例。取值范围：1~10。
+        self.spot_instance_pools = spot_instance_pools
+        # 是否开启补齐抢占式实例。开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。
+        self.spot_instance_remedy = spot_instance_remedy
+        # 当MultiAZPolicy取值为COST_OPTIMIZED时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值范围：true：允许。false：不允许。默认值：true
+        self.compensate_with_on_demand = compensate_with_on_demand
         # 包年包月时长	
-        self.period = period            # type: int
+        self.period = period
         # 自动付费周期	
-        self.period_unit = period_unit  # type: str
+        self.period_unit = period_unit
         # 操作系统发行版。取值： CentOS，AliyunLinux，Windows，WindowsCore。
-        self.platform = platform        # type: str
+        self.platform = platform
         # RAM 角色名称	
-        self.ram_policy = ram_policy    # type: str
+        self.ram_policy = ram_policy
         # 抢占式实例类型
-        self.spot_strategy = spot_strategy  # type: str
+        self.spot_strategy = spot_strategy
         # 抢占实例价格上限配置。
-        self.spot_price_limit = spot_price_limit  # type: List[DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupSpotPriceLimit]
+        self.spot_price_limit = spot_price_limit
         # RDS列表	
-        self.rds_instances = rds_instances  # type: List[str]
+        self.rds_instances = rds_instances
         # 扩容组ID	
-        self.scaling_group_id = scaling_group_id  # type: str
+        self.scaling_group_id = scaling_group_id
         # 扩容节点策略	
-        self.scaling_policy = scaling_policy  # type: str
+        self.scaling_policy = scaling_policy
         # 安全组ID。	
-        self.security_group_id = security_group_id  # type: str
+        self.security_group_id = security_group_id
         # 系统盘类型。	
-        self.system_disk_category = system_disk_category  # type: str
+        self.system_disk_category = system_disk_category
         # 系统盘大小	
-        self.system_disk_size = system_disk_size  # type: int
+        self.system_disk_size = system_disk_size
         # 节点标签	
-        self.tags = tags                # type: List[Tags]
+        self.tags = tags
         # 虚拟交换机ID。	
-        self.vswitch_ids = vswitch_ids  # type: List[str]
+        self.vswitch_ids = vswitch_ids
         # 登录密码，返回结果是加密的。
-        self.login_password = login_password  # type: str
+        self.login_password = login_password
         # 密钥对名称，和login_password二选一。
-        self.key_pair = key_pair        # type: str
+        self.key_pair = key_pair
 
     def validate(self):
         if self.data_disks:
@@ -7405,7 +8280,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.auto_renew is not None:
             result['auto_renew'] = self.auto_renew
         if self.auto_renew_period is not None:
@@ -7422,6 +8297,16 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             result['instance_types'] = self.instance_types
         if self.multi_az_policy is not None:
             result['multi_az_policy'] = self.multi_az_policy
+        if self.on_demand_base_capacity is not None:
+            result['on_demand_base_capacity'] = self.on_demand_base_capacity
+        if self.on_demand_percentage_above_base_capacity is not None:
+            result['on_demand_percentage_above_base_capacity'] = self.on_demand_percentage_above_base_capacity
+        if self.spot_instance_pools is not None:
+            result['spot_instance_pools'] = self.spot_instance_pools
+        if self.spot_instance_remedy is not None:
+            result['spot_instance_remedy'] = self.spot_instance_remedy
+        if self.compensate_with_on_demand is not None:
+            result['compensate_with_on_demand'] = self.compensate_with_on_demand
         if self.period is not None:
             result['period'] = self.period
         if self.period_unit is not None:
@@ -7460,90 +8345,110 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             result['key_pair'] = self.key_pair
         return result
 
-    def from_map(self, map={}):
-        if map.get('auto_renew') is not None:
-            self.auto_renew = map.get('auto_renew')
-        if map.get('auto_renew_period') is not None:
-            self.auto_renew_period = map.get('auto_renew_period')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_renew') is not None:
+            self.auto_renew = m.get('auto_renew')
+        if m.get('auto_renew_period') is not None:
+            self.auto_renew_period = m.get('auto_renew_period')
         self.data_disks = []
-        if map.get('data_disks') is not None:
-            for k in map.get('data_disks'):
-                temp_model = DataDisks()
+        if m.get('data_disks') is not None:
+            for k in m.get('data_disks'):
+                temp_model = DataDisk()
                 self.data_disks.append(temp_model.from_map(k))
-        if map.get('image_id') is not None:
-            self.image_id = map.get('image_id')
-        if map.get('instance_charge_type') is not None:
-            self.instance_charge_type = map.get('instance_charge_type')
-        if map.get('instance_types') is not None:
-            self.instance_types = map.get('instance_types')
-        if map.get('multi_az_policy') is not None:
-            self.multi_az_policy = map.get('multi_az_policy')
-        if map.get('period') is not None:
-            self.period = map.get('period')
-        if map.get('period_unit') is not None:
-            self.period_unit = map.get('period_unit')
-        if map.get('platform') is not None:
-            self.platform = map.get('platform')
-        if map.get('ram_policy') is not None:
-            self.ram_policy = map.get('ram_policy')
-        if map.get('spot_strategy') is not None:
-            self.spot_strategy = map.get('spot_strategy')
+        if m.get('image_id') is not None:
+            self.image_id = m.get('image_id')
+        if m.get('instance_charge_type') is not None:
+            self.instance_charge_type = m.get('instance_charge_type')
+        if m.get('instance_types') is not None:
+            self.instance_types = m.get('instance_types')
+        if m.get('multi_az_policy') is not None:
+            self.multi_az_policy = m.get('multi_az_policy')
+        if m.get('on_demand_base_capacity') is not None:
+            self.on_demand_base_capacity = m.get('on_demand_base_capacity')
+        if m.get('on_demand_percentage_above_base_capacity') is not None:
+            self.on_demand_percentage_above_base_capacity = m.get('on_demand_percentage_above_base_capacity')
+        if m.get('spot_instance_pools') is not None:
+            self.spot_instance_pools = m.get('spot_instance_pools')
+        if m.get('spot_instance_remedy') is not None:
+            self.spot_instance_remedy = m.get('spot_instance_remedy')
+        if m.get('compensate_with_on_demand') is not None:
+            self.compensate_with_on_demand = m.get('compensate_with_on_demand')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        if m.get('period_unit') is not None:
+            self.period_unit = m.get('period_unit')
+        if m.get('platform') is not None:
+            self.platform = m.get('platform')
+        if m.get('ram_policy') is not None:
+            self.ram_policy = m.get('ram_policy')
+        if m.get('spot_strategy') is not None:
+            self.spot_strategy = m.get('spot_strategy')
         self.spot_price_limit = []
-        if map.get('spot_price_limit') is not None:
-            for k in map.get('spot_price_limit'):
+        if m.get('spot_price_limit') is not None:
+            for k in m.get('spot_price_limit'):
                 temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupSpotPriceLimit()
                 self.spot_price_limit.append(temp_model.from_map(k))
-        if map.get('rds_instances') is not None:
-            self.rds_instances = map.get('rds_instances')
-        if map.get('scaling_group_id') is not None:
-            self.scaling_group_id = map.get('scaling_group_id')
-        if map.get('scaling_policy') is not None:
-            self.scaling_policy = map.get('scaling_policy')
-        if map.get('security_group_id') is not None:
-            self.security_group_id = map.get('security_group_id')
-        if map.get('system_disk_category') is not None:
-            self.system_disk_category = map.get('system_disk_category')
-        if map.get('system_disk_size') is not None:
-            self.system_disk_size = map.get('system_disk_size')
+        if m.get('rds_instances') is not None:
+            self.rds_instances = m.get('rds_instances')
+        if m.get('scaling_group_id') is not None:
+            self.scaling_group_id = m.get('scaling_group_id')
+        if m.get('scaling_policy') is not None:
+            self.scaling_policy = m.get('scaling_policy')
+        if m.get('security_group_id') is not None:
+            self.security_group_id = m.get('security_group_id')
+        if m.get('system_disk_category') is not None:
+            self.system_disk_category = m.get('system_disk_category')
+        if m.get('system_disk_size') is not None:
+            self.system_disk_size = m.get('system_disk_size')
         self.tags = []
-        if map.get('tags') is not None:
-            for k in map.get('tags'):
-                temp_model = Tags()
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
-        if map.get('vswitch_ids') is not None:
-            self.vswitch_ids = map.get('vswitch_ids')
-        if map.get('login_password') is not None:
-            self.login_password = map.get('login_password')
-        if map.get('key_pair') is not None:
-            self.key_pair = map.get('key_pair')
+        if m.get('vswitch_ids') is not None:
+            self.vswitch_ids = m.get('vswitch_ids')
+        if m.get('login_password') is not None:
+            self.login_password = m.get('login_password')
+        if m.get('key_pair') is not None:
+            self.key_pair = m.get('key_pair')
         return self
 
 
 class DescribeClusterNodePoolsResponseBodyNodepoolsStatus(TeaModel):
-    def __init__(self, failed_nodes=None, healthy_nodes=None, initial_nodes=None, offline_nodes=None,
-                 removing_nodes=None, serving_nodes=None, state=None, total_nodes=None):
+    def __init__(
+        self,
+        failed_nodes: int = None,
+        healthy_nodes: int = None,
+        initial_nodes: int = None,
+        offline_nodes: int = None,
+        removing_nodes: int = None,
+        serving_nodes: int = None,
+        state: str = None,
+        total_nodes: int = None,
+    ):
         # 失败的节点数	
-        self.failed_nodes = failed_nodes  # type: int
+        self.failed_nodes = failed_nodes
         # 处于健康状态的节点数	
-        self.healthy_nodes = healthy_nodes  # type: int
+        self.healthy_nodes = healthy_nodes
         # 正在创建的节点数	
-        self.initial_nodes = initial_nodes  # type: int
+        self.initial_nodes = initial_nodes
         # 离线节点数	
-        self.offline_nodes = offline_nodes  # type: int
+        self.offline_nodes = offline_nodes
         # 真在被移除的节点数。	
-        self.removing_nodes = removing_nodes  # type: int
+        self.removing_nodes = removing_nodes
         # 正在工作节点数	
-        self.serving_nodes = serving_nodes  # type: int
+        self.serving_nodes = serving_nodes
         # 节点池状态	
-        self.state = state              # type: str
+        self.state = state
         # 节点总数	
-        self.total_nodes = total_nodes  # type: int
+        self.total_nodes = total_nodes
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.failed_nodes is not None:
             result['failed_nodes'] = self.failed_nodes
         if self.healthy_nodes is not None:
@@ -7562,62 +8467,73 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsStatus(TeaModel):
             result['total_nodes'] = self.total_nodes
         return result
 
-    def from_map(self, map={}):
-        if map.get('failed_nodes') is not None:
-            self.failed_nodes = map.get('failed_nodes')
-        if map.get('healthy_nodes') is not None:
-            self.healthy_nodes = map.get('healthy_nodes')
-        if map.get('initial_nodes') is not None:
-            self.initial_nodes = map.get('initial_nodes')
-        if map.get('offline_nodes') is not None:
-            self.offline_nodes = map.get('offline_nodes')
-        if map.get('removing_nodes') is not None:
-            self.removing_nodes = map.get('removing_nodes')
-        if map.get('serving_nodes') is not None:
-            self.serving_nodes = map.get('serving_nodes')
-        if map.get('state') is not None:
-            self.state = map.get('state')
-        if map.get('total_nodes') is not None:
-            self.total_nodes = map.get('total_nodes')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('failed_nodes') is not None:
+            self.failed_nodes = m.get('failed_nodes')
+        if m.get('healthy_nodes') is not None:
+            self.healthy_nodes = m.get('healthy_nodes')
+        if m.get('initial_nodes') is not None:
+            self.initial_nodes = m.get('initial_nodes')
+        if m.get('offline_nodes') is not None:
+            self.offline_nodes = m.get('offline_nodes')
+        if m.get('removing_nodes') is not None:
+            self.removing_nodes = m.get('removing_nodes')
+        if m.get('serving_nodes') is not None:
+            self.serving_nodes = m.get('serving_nodes')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('total_nodes') is not None:
+            self.total_nodes = m.get('total_nodes')
         return self
 
 
 class DescribeClusterNodePoolsResponseBodyNodepoolsTeeConfig(TeaModel):
-    def __init__(self, tee_enable=None):
+    def __init__(
+        self,
+        tee_enable: bool = None,
+    ):
         # 是否为加密计算节点池	
-        self.tee_enable = tee_enable    # type: bool
+        self.tee_enable = tee_enable
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.tee_enable is not None:
             result['tee_enable'] = self.tee_enable
         return result
 
-    def from_map(self, map={}):
-        if map.get('tee_enable') is not None:
-            self.tee_enable = map.get('tee_enable')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tee_enable') is not None:
+            self.tee_enable = m.get('tee_enable')
         return self
 
 
 class DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig(TeaModel):
-    def __init__(self, auto_upgrade=None, surge=None, surge_percentage=None, max_unavailable=None):
+    def __init__(
+        self,
+        auto_upgrade: bool = None,
+        surge: int = None,
+        surge_percentage: int = None,
+        max_unavailable: int = None,
+    ):
         # 是否启用自动升级，自修复。
-        self.auto_upgrade = auto_upgrade  # type: bool
+        self.auto_upgrade = auto_upgrade
         # 额外节点数量。
-        self.surge = surge              # type: int
+        self.surge = surge
         # 额外节点比例， 和surge 二选一。
-        self.surge_percentage = surge_percentage  # type: int
+        self.surge_percentage = surge_percentage
         # 最大不可用节点数量。
-        self.max_unavailable = max_unavailable  # type: int
+        self.max_unavailable = max_unavailable
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.auto_upgrade is not None:
             result['auto_upgrade'] = self.auto_upgrade
         if self.surge is not None:
@@ -7628,33 +8544,39 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig(TeaMo
             result['max_unavailable'] = self.max_unavailable
         return result
 
-    def from_map(self, map={}):
-        if map.get('auto_upgrade') is not None:
-            self.auto_upgrade = map.get('auto_upgrade')
-        if map.get('surge') is not None:
-            self.surge = map.get('surge')
-        if map.get('surge_percentage') is not None:
-            self.surge_percentage = map.get('surge_percentage')
-        if map.get('max_unavailable') is not None:
-            self.max_unavailable = map.get('max_unavailable')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_upgrade') is not None:
+            self.auto_upgrade = m.get('auto_upgrade')
+        if m.get('surge') is not None:
+            self.surge = m.get('surge')
+        if m.get('surge_percentage') is not None:
+            self.surge_percentage = m.get('surge_percentage')
+        if m.get('max_unavailable') is not None:
+            self.max_unavailable = m.get('max_unavailable')
         return self
 
 
 class DescribeClusterNodePoolsResponseBodyNodepoolsManagement(TeaModel):
-    def __init__(self, enable=None, auto_repair=None, upgrade_config=None):
+    def __init__(
+        self,
+        enable: bool = None,
+        auto_repair: bool = None,
+        upgrade_config: DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig = None,
+    ):
         # 是否开启托管版节点池。
-        self.enable = enable            # type: bool
+        self.enable = enable
         # 是否启用自动修复。
-        self.auto_repair = auto_repair  # type: bool
+        self.auto_repair = auto_repair
         # 是否启用自动修复。
-        self.upgrade_config = upgrade_config  # type: DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig
+        self.upgrade_config = upgrade_config
 
     def validate(self):
         if self.upgrade_config:
             self.upgrade_config.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.enable is not None:
             result['enable'] = self.enable
         if self.auto_repair is not None:
@@ -7663,34 +8585,43 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsManagement(TeaModel):
             result['upgrade_config'] = self.upgrade_config.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('enable') is not None:
-            self.enable = map.get('enable')
-        if map.get('auto_repair') is not None:
-            self.auto_repair = map.get('auto_repair')
-        if map.get('upgrade_config') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('auto_repair') is not None:
+            self.auto_repair = m.get('auto_repair')
+        if m.get('upgrade_config') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig()
-            self.upgrade_config = temp_model.from_map(map['upgrade_config'])
+            self.upgrade_config = temp_model.from_map(m['upgrade_config'])
         return self
 
 
 class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
-    def __init__(self, auto_scaling=None, kubernetes_config=None, nodepool_info=None, scaling_group=None,
-                 status=None, tee_config=None, management=None):
+    def __init__(
+        self,
+        auto_scaling: DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling = None,
+        kubernetes_config: DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig = None,
+        nodepool_info: DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo = None,
+        scaling_group: DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup = None,
+        status: DescribeClusterNodePoolsResponseBodyNodepoolsStatus = None,
+        tee_config: DescribeClusterNodePoolsResponseBodyNodepoolsTeeConfig = None,
+        management: DescribeClusterNodePoolsResponseBodyNodepoolsManagement = None,
+    ):
         # 自动伸缩配置详情。
-        self.auto_scaling = auto_scaling  # type: DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling
+        self.auto_scaling = auto_scaling
         # 集群配置信息。
-        self.kubernetes_config = kubernetes_config  # type: DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig
+        self.kubernetes_config = kubernetes_config
         # 节点池配置详情。
-        self.nodepool_info = nodepool_info  # type: DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo
+        self.nodepool_info = nodepool_info
         # 扩容组配置详情。
-        self.scaling_group = scaling_group  # type: DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup
+        self.scaling_group = scaling_group
         # 节点池状态详情。
-        self.status = status            # type: DescribeClusterNodePoolsResponseBodyNodepoolsStatus
+        self.status = status
         # 加密计算配置详情。
-        self.tee_config = tee_config    # type: DescribeClusterNodePoolsResponseBodyNodepoolsTeeConfig
+        self.tee_config = tee_config
         # 托管节点池配置。
-        self.management = management    # type: DescribeClusterNodePoolsResponseBodyNodepoolsManagement
+        self.management = management
 
     def validate(self):
         if self.auto_scaling:
@@ -7709,7 +8640,7 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
             self.management.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.auto_scaling is not None:
             result['auto_scaling'] = self.auto_scaling.to_map()
         if self.kubernetes_config is not None:
@@ -7726,35 +8657,72 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
             result['management'] = self.management.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('auto_scaling') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_scaling') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling()
-            self.auto_scaling = temp_model.from_map(map['auto_scaling'])
-        if map.get('kubernetes_config') is not None:
+            self.auto_scaling = temp_model.from_map(m['auto_scaling'])
+        if m.get('kubernetes_config') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig()
-            self.kubernetes_config = temp_model.from_map(map['kubernetes_config'])
-        if map.get('nodepool_info') is not None:
+            self.kubernetes_config = temp_model.from_map(m['kubernetes_config'])
+        if m.get('nodepool_info') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo()
-            self.nodepool_info = temp_model.from_map(map['nodepool_info'])
-        if map.get('scaling_group') is not None:
+            self.nodepool_info = temp_model.from_map(m['nodepool_info'])
+        if m.get('scaling_group') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup()
-            self.scaling_group = temp_model.from_map(map['scaling_group'])
-        if map.get('status') is not None:
+            self.scaling_group = temp_model.from_map(m['scaling_group'])
+        if m.get('status') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsStatus()
-            self.status = temp_model.from_map(map['status'])
-        if map.get('tee_config') is not None:
+            self.status = temp_model.from_map(m['status'])
+        if m.get('tee_config') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsTeeConfig()
-            self.tee_config = temp_model.from_map(map['tee_config'])
-        if map.get('management') is not None:
+            self.tee_config = temp_model.from_map(m['tee_config'])
+        if m.get('management') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsManagement()
-            self.management = temp_model.from_map(map['management'])
+            self.management = temp_model.from_map(m['management'])
+        return self
+
+
+class DescribeClusterNodePoolsResponseBody(TeaModel):
+    def __init__(
+        self,
+        nodepools: List[DescribeClusterNodePoolsResponseBodyNodepools] = None,
+    ):
+        # 节点池列表。	
+        self.nodepools = nodepools
+
+    def validate(self):
+        if self.nodepools:
+            for k in self.nodepools:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['nodepools'] = []
+        if self.nodepools is not None:
+            for k in self.nodepools:
+                result['nodepools'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.nodepools = []
+        if m.get('nodepools') is not None:
+            for k in m.get('nodepools'):
+                temp_model = DescribeClusterNodePoolsResponseBodyNodepools()
+                self.nodepools.append(temp_model.from_map(k))
         return self
 
 
 class DescribeClusterNodePoolsResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeClusterNodePoolsResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeClusterNodePoolsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -7763,66 +8731,79 @@ class DescribeClusterNodePoolsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = DescribeClusterNodePoolsResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class DescribeClusterV2UserKubeconfigRequest(TeaModel):
-    def __init__(self, private_ip_address=None):
+    def __init__(
+        self,
+        private_ip_address: bool = None,
+    ):
         # 是否为内网访问。
-        self.private_ip_address = private_ip_address  # type: bool
+        self.private_ip_address = private_ip_address
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.private_ip_address is not None:
             result['PrivateIpAddress'] = self.private_ip_address
         return result
 
-    def from_map(self, map={}):
-        if map.get('PrivateIpAddress') is not None:
-            self.private_ip_address = map.get('PrivateIpAddress')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
         return self
 
 
 class DescribeClusterV2UserKubeconfigResponseBody(TeaModel):
-    def __init__(self, config=None):
+    def __init__(
+        self,
+        config: str = None,
+    ):
         # kubeconfig内容。
-        self.config = config            # type: str
+        self.config = config
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.config is not None:
             result['config'] = self.config
         return result
 
-    def from_map(self, map={}):
-        if map.get('config') is not None:
-            self.config = map.get('config')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
         return self
 
 
 class DescribeClusterV2UserKubeconfigResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DescribeClusterV2UserKubeconfigResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeClusterV2UserKubeconfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -7831,78 +8812,95 @@ class DescribeClusterV2UserKubeconfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = DescribeClusterV2UserKubeconfigResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class ScaleOutClusterRequest(TeaModel):
-    def __init__(self, cloud_monitor_flags=None, count=None, cpu_policy=None, disable_rollback=None, image_id=None,
-                 key_pair=None, login_password=None, rds_instances=None, runtime=None, tags=None, taints=None, user_data=None,
-                 vswitch_ids=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk=None,
-                 worker_data_disks=None, worker_instance_charge_type=None, worker_instance_types=None, worker_period=None,
-                 worker_period_unit=None, worker_system_disk_category=None, worker_system_disk_size=None):
-        # 是否安装云监控插件。
-        self.cloud_monitor_flags = cloud_monitor_flags  # type: bool
-        # 扩容实例数量。
-        self.count = count              # type: int
-        # CPU策略，取值static或者none。
-        self.cpu_policy = cpu_policy    # type: str
-        # 失败是否回滚。
-        self.disable_rollback = disable_rollback  # type: bool
-        # 自定义镜像ID。
-        self.image_id = image_id        # type: str
+    def __init__(
+        self,
+        count: int = None,
+        key_pair: str = None,
+        login_password: str = None,
+        vswitch_ids: List[str] = None,
+        worker_instance_charge_type: str = None,
+        worker_period: int = None,
+        worker_period_unit: str = None,
+        worker_auto_renew: bool = None,
+        worker_auto_renew_period: int = None,
+        worker_instance_types: List[str] = None,
+        worker_system_disk_category: str = None,
+        worker_system_disk_size: int = None,
+        worker_data_disks: List[DataDisk] = None,
+        cloud_monitor_flags: bool = None,
+        cpu_policy: str = None,
+        image_id: str = None,
+        user_data: str = None,
+        rds_instances: List[str] = None,
+        tags: List[Tag] = None,
+        taints: List[Taint] = None,
+        runtime: Runtime = None,
+    ):
+        # 扩容节点数
+        self.count = count
         # keypair名称，和login_password二选一。
-        self.key_pair = key_pair        # type: str
+        self.key_pair = key_pair
         # SSH登录密码，和key_pair二选一。
-        self.login_password = login_password  # type: str
-        # RDS白名单实例列表。
-        self.rds_instances = rds_instances  # type: List[str]
-        # 容器引擎。
-        self.runtime = runtime          # type: ScaleOutClusterRequestRuntime
-        # 节点标签。
-        self.tags = tags                # type: List[ScaleOutClusterRequestTags]
-        # 节点污点信息。
-        self.taints = taints            # type: List[ScaleOutClusterRequestTaints]
-        # 用户自定义数据。
-        self.user_data = user_data      # type: str
-        # 节点交换机ID列表，交换机个数取值范围为1~3。
-        self.vswitch_ids = vswitch_ids  # type: List[str]
-        # Worker节点是否开启自动续费。
-        self.worker_auto_renew = worker_auto_renew  # type: bool
-        # Worker节点自动续费周期。
-        self.worker_auto_renew_period = worker_auto_renew_period  # type: int
-        # Worker节点是否挂载数据盘。
-        self.worker_data_disk = worker_data_disk  # type: bool
-        # Worker数据盘类型、大小等配置的组合。
-        self.worker_data_disks = worker_data_disks  # type: List[ScaleOutClusterRequestWorkerDataDisks]
-        # Worker节点付费类型。
-        self.worker_instance_charge_type = worker_instance_charge_type  # type: str
-        # Worker节点ECS规格类型代码。
-        self.worker_instance_types = worker_instance_types  # type: List[str]
-        # Worker节点包年包月时长。
-        self.worker_period = worker_period  # type: int
-        # Worker节点预付费周期。
-        self.worker_period_unit = worker_period_unit  # type: str
-        # Worker节点系统盘类型。
-        self.worker_system_disk_category = worker_system_disk_category  # type: str
-        # Worker节点系统盘大小。
-        self.worker_system_disk_size = worker_system_disk_size  # type: int
+        self.login_password = login_password
+        # 虚拟交换机
+        self.vswitch_ids = vswitch_ids
+        # Worker节点付费类型
+        self.worker_instance_charge_type = worker_instance_charge_type
+        # Worker节点包年包月时长
+        self.worker_period = worker_period
+        # Worker节点包年包月周期
+        self.worker_period_unit = worker_period_unit
+        # Worker节点到期是否自动续费
+        self.worker_auto_renew = worker_auto_renew
+        # Worker节点自动续费时长
+        self.worker_auto_renew_period = worker_auto_renew_period
+        # Worker节点实例规格
+        self.worker_instance_types = worker_instance_types
+        # Worker节点系统盘类型
+        self.worker_system_disk_category = worker_system_disk_category
+        # Worker节点系统盘大小
+        self.worker_system_disk_size = worker_system_disk_size
+        # Worker节点数据盘配置
+        self.worker_data_disks = worker_data_disks
+        # 在节点上安装云监控
+        self.cloud_monitor_flags = cloud_monitor_flags
+        # CPU亲和性策略
+        self.cpu_policy = cpu_policy
+        # 自定义镜像
+        self.image_id = image_id
+        # 节点自定义数据
+        self.user_data = user_data
+        # RDS白名单
+        self.rds_instances = rds_instances
+        # 节点标签
+        self.tags = tags
+        # 节点污点信息
+        self.taints = taints
+        self.runtime = runtime
 
     def validate(self):
-        if self.runtime:
-            self.runtime.validate()
+        if self.worker_data_disks:
+            for k in self.worker_data_disks:
+                if k:
+                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -7911,31 +8909,49 @@ class ScaleOutClusterRequest(TeaModel):
             for k in self.taints:
                 if k:
                     k.validate()
-        if self.worker_data_disks:
-            for k in self.worker_data_disks:
-                if k:
-                    k.validate()
+        if self.runtime:
+            self.runtime.validate()
 
     def to_map(self):
-        result = {}
-        if self.cloud_monitor_flags is not None:
-            result['cloud_monitor_flags'] = self.cloud_monitor_flags
+        result = dict()
         if self.count is not None:
             result['count'] = self.count
-        if self.cpu_policy is not None:
-            result['cpu_policy'] = self.cpu_policy
-        if self.disable_rollback is not None:
-            result['disable_rollback'] = self.disable_rollback
-        if self.image_id is not None:
-            result['image_id'] = self.image_id
         if self.key_pair is not None:
             result['key_pair'] = self.key_pair
         if self.login_password is not None:
             result['login_password'] = self.login_password
+        if self.vswitch_ids is not None:
+            result['vswitch_ids'] = self.vswitch_ids
+        if self.worker_instance_charge_type is not None:
+            result['worker_instance_charge_type'] = self.worker_instance_charge_type
+        if self.worker_period is not None:
+            result['worker_period'] = self.worker_period
+        if self.worker_period_unit is not None:
+            result['worker_period_unit'] = self.worker_period_unit
+        if self.worker_auto_renew is not None:
+            result['worker_auto_renew'] = self.worker_auto_renew
+        if self.worker_auto_renew_period is not None:
+            result['worker_auto_renew_period'] = self.worker_auto_renew_period
+        if self.worker_instance_types is not None:
+            result['worker_instance_types'] = self.worker_instance_types
+        if self.worker_system_disk_category is not None:
+            result['worker_system_disk_category'] = self.worker_system_disk_category
+        if self.worker_system_disk_size is not None:
+            result['worker_system_disk_size'] = self.worker_system_disk_size
+        result['worker_data_disks'] = []
+        if self.worker_data_disks is not None:
+            for k in self.worker_data_disks:
+                result['worker_data_disks'].append(k.to_map() if k else None)
+        if self.cloud_monitor_flags is not None:
+            result['cloud_monitor_flags'] = self.cloud_monitor_flags
+        if self.cpu_policy is not None:
+            result['cpu_policy'] = self.cpu_policy
+        if self.image_id is not None:
+            result['image_id'] = self.image_id
+        if self.user_data is not None:
+            result['user_data'] = self.user_data
         if self.rds_instances is not None:
             result['rds_instances'] = self.rds_instances
-        if self.runtime is not None:
-            result['runtime'] = self.runtime.to_map()
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -7944,224 +8960,86 @@ class ScaleOutClusterRequest(TeaModel):
         if self.taints is not None:
             for k in self.taints:
                 result['taints'].append(k.to_map() if k else None)
-        if self.user_data is not None:
-            result['user_data'] = self.user_data
-        if self.vswitch_ids is not None:
-            result['vswitch_ids'] = self.vswitch_ids
-        if self.worker_auto_renew is not None:
-            result['worker_auto_renew'] = self.worker_auto_renew
-        if self.worker_auto_renew_period is not None:
-            result['worker_auto_renew_period'] = self.worker_auto_renew_period
-        if self.worker_data_disk is not None:
-            result['worker_data_disk'] = self.worker_data_disk
-        result['worker_data_disks'] = []
-        if self.worker_data_disks is not None:
-            for k in self.worker_data_disks:
-                result['worker_data_disks'].append(k.to_map() if k else None)
-        if self.worker_instance_charge_type is not None:
-            result['worker_instance_charge_type'] = self.worker_instance_charge_type
-        if self.worker_instance_types is not None:
-            result['worker_instance_types'] = self.worker_instance_types
-        if self.worker_period is not None:
-            result['worker_period'] = self.worker_period
-        if self.worker_period_unit is not None:
-            result['worker_period_unit'] = self.worker_period_unit
-        if self.worker_system_disk_category is not None:
-            result['worker_system_disk_category'] = self.worker_system_disk_category
-        if self.worker_system_disk_size is not None:
-            result['worker_system_disk_size'] = self.worker_system_disk_size
+        if self.runtime is not None:
+            result['runtime'] = self.runtime.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('cloud_monitor_flags') is not None:
-            self.cloud_monitor_flags = map.get('cloud_monitor_flags')
-        if map.get('count') is not None:
-            self.count = map.get('count')
-        if map.get('cpu_policy') is not None:
-            self.cpu_policy = map.get('cpu_policy')
-        if map.get('disable_rollback') is not None:
-            self.disable_rollback = map.get('disable_rollback')
-        if map.get('image_id') is not None:
-            self.image_id = map.get('image_id')
-        if map.get('key_pair') is not None:
-            self.key_pair = map.get('key_pair')
-        if map.get('login_password') is not None:
-            self.login_password = map.get('login_password')
-        if map.get('rds_instances') is not None:
-            self.rds_instances = map.get('rds_instances')
-        if map.get('runtime') is not None:
-            temp_model = ScaleOutClusterRequestRuntime()
-            self.runtime = temp_model.from_map(map['runtime'])
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('key_pair') is not None:
+            self.key_pair = m.get('key_pair')
+        if m.get('login_password') is not None:
+            self.login_password = m.get('login_password')
+        if m.get('vswitch_ids') is not None:
+            self.vswitch_ids = m.get('vswitch_ids')
+        if m.get('worker_instance_charge_type') is not None:
+            self.worker_instance_charge_type = m.get('worker_instance_charge_type')
+        if m.get('worker_period') is not None:
+            self.worker_period = m.get('worker_period')
+        if m.get('worker_period_unit') is not None:
+            self.worker_period_unit = m.get('worker_period_unit')
+        if m.get('worker_auto_renew') is not None:
+            self.worker_auto_renew = m.get('worker_auto_renew')
+        if m.get('worker_auto_renew_period') is not None:
+            self.worker_auto_renew_period = m.get('worker_auto_renew_period')
+        if m.get('worker_instance_types') is not None:
+            self.worker_instance_types = m.get('worker_instance_types')
+        if m.get('worker_system_disk_category') is not None:
+            self.worker_system_disk_category = m.get('worker_system_disk_category')
+        if m.get('worker_system_disk_size') is not None:
+            self.worker_system_disk_size = m.get('worker_system_disk_size')
+        self.worker_data_disks = []
+        if m.get('worker_data_disks') is not None:
+            for k in m.get('worker_data_disks'):
+                temp_model = DataDisk()
+                self.worker_data_disks.append(temp_model.from_map(k))
+        if m.get('cloud_monitor_flags') is not None:
+            self.cloud_monitor_flags = m.get('cloud_monitor_flags')
+        if m.get('cpu_policy') is not None:
+            self.cpu_policy = m.get('cpu_policy')
+        if m.get('image_id') is not None:
+            self.image_id = m.get('image_id')
+        if m.get('user_data') is not None:
+            self.user_data = m.get('user_data')
+        if m.get('rds_instances') is not None:
+            self.rds_instances = m.get('rds_instances')
         self.tags = []
-        if map.get('tags') is not None:
-            for k in map.get('tags'):
-                temp_model = ScaleOutClusterRequestTags()
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
         self.taints = []
-        if map.get('taints') is not None:
-            for k in map.get('taints'):
-                temp_model = ScaleOutClusterRequestTaints()
+        if m.get('taints') is not None:
+            for k in m.get('taints'):
+                temp_model = Taint()
                 self.taints.append(temp_model.from_map(k))
-        if map.get('user_data') is not None:
-            self.user_data = map.get('user_data')
-        if map.get('vswitch_ids') is not None:
-            self.vswitch_ids = map.get('vswitch_ids')
-        if map.get('worker_auto_renew') is not None:
-            self.worker_auto_renew = map.get('worker_auto_renew')
-        if map.get('worker_auto_renew_period') is not None:
-            self.worker_auto_renew_period = map.get('worker_auto_renew_period')
-        if map.get('worker_data_disk') is not None:
-            self.worker_data_disk = map.get('worker_data_disk')
-        self.worker_data_disks = []
-        if map.get('worker_data_disks') is not None:
-            for k in map.get('worker_data_disks'):
-                temp_model = ScaleOutClusterRequestWorkerDataDisks()
-                self.worker_data_disks.append(temp_model.from_map(k))
-        if map.get('worker_instance_charge_type') is not None:
-            self.worker_instance_charge_type = map.get('worker_instance_charge_type')
-        if map.get('worker_instance_types') is not None:
-            self.worker_instance_types = map.get('worker_instance_types')
-        if map.get('worker_period') is not None:
-            self.worker_period = map.get('worker_period')
-        if map.get('worker_period_unit') is not None:
-            self.worker_period_unit = map.get('worker_period_unit')
-        if map.get('worker_system_disk_category') is not None:
-            self.worker_system_disk_category = map.get('worker_system_disk_category')
-        if map.get('worker_system_disk_size') is not None:
-            self.worker_system_disk_size = map.get('worker_system_disk_size')
-        return self
-
-
-class ScaleOutClusterRequestRuntime(TeaModel):
-    def __init__(self, name=None, version=None):
-        # 容器引擎名称。
-        self.name = name                # type: str
-        # 容器引擎版本。
-        self.version = version          # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.name is not None:
-            result['name'] = self.name
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, map={}):
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('version') is not None:
-            self.version = map.get('version')
-        return self
-
-
-class ScaleOutClusterRequestTags(TeaModel):
-    def __init__(self, key=None, value=None):
-        # 标签名。
-        self.key = key                  # type: str
-        # 标签值。
-        self.value = value              # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, map={}):
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
-        return self
-
-
-class ScaleOutClusterRequestTaints(TeaModel):
-    def __init__(self, effect=None, key=None, value=None):
-        # 污点生效策略。
-        self.effect = effect            # type: str
-        # 污点名。
-        self.key = key                  # type: str
-        # 污点值。
-        self.value = value              # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.effect is not None:
-            result['effect'] = self.effect
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, map={}):
-        if map.get('effect') is not None:
-            self.effect = map.get('effect')
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
-        return self
-
-
-class ScaleOutClusterRequestWorkerDataDisks(TeaModel):
-    def __init__(self, category=None, encrypted=None, size=None):
-        # 数据盘类型。
-        self.category = category        # type: str
-        # 是否对数据盘加密。
-        self.encrypted = encrypted      # type: str
-        # 数据盘大小。
-        self.size = size                # type: int
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.category is not None:
-            result['category'] = self.category
-        if self.encrypted is not None:
-            result['encrypted'] = self.encrypted
-        if self.size is not None:
-            result['size'] = self.size
-        return result
-
-    def from_map(self, map={}):
-        if map.get('category') is not None:
-            self.category = map.get('category')
-        if map.get('encrypted') is not None:
-            self.encrypted = map.get('encrypted')
-        if map.get('size') is not None:
-            self.size = map.get('size')
+        if m.get('runtime') is not None:
+            temp_model = Runtime()
+            self.runtime = temp_model.from_map(m['runtime'])
         return self
 
 
 class ScaleOutClusterResponseBody(TeaModel):
-    def __init__(self, cluster_id=None, request_id=None, task_id=None):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
         # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+        self.cluster_id = cluster_id
         # 请求ID。
-        self.request_id = request_id    # type: str
+        self.request_id = request_id
         # 任务ID。
-        self.task_id = task_id          # type: str
+        self.task_id = task_id
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.request_id is not None:
@@ -8170,20 +9048,25 @@ class ScaleOutClusterResponseBody(TeaModel):
             result['task_id'] = self.task_id
         return result
 
-    def from_map(self, map={}):
-        if map.get('cluster_id') is not None:
-            self.cluster_id = map.get('cluster_id')
-        if map.get('request_id') is not None:
-            self.request_id = map.get('request_id')
-        if map.get('task_id') is not None:
-            self.task_id = map.get('task_id')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
         return self
 
 
 class ScaleOutClusterResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: ScaleOutClusterResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ScaleOutClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -8192,26 +9075,30 @@ class ScaleOutClusterResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = ScaleOutClusterResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class ModifyClusterTagsRequest(TeaModel):
-    def __init__(self, body=None):
-        # 标签列表。
-        self.body = body                # type: List[ModifyClusterTagsRequestBody]
+    def __init__(
+        self,
+        body: List[Tag] = None,
+    ):
+        # 集群标签列表。
+        self.body = body
 
     def validate(self):
         if self.body:
@@ -8220,219 +9107,246 @@ class ModifyClusterTagsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['body'] = []
         if self.body is not None:
             for k in self.body:
                 result['body'].append(k.to_map() if k else None)
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.body = []
-        if map.get('body') is not None:
-            for k in map.get('body'):
-                temp_model = ModifyClusterTagsRequestBody()
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = Tag()
                 self.body.append(temp_model.from_map(k))
         return self
 
 
-class ModifyClusterTagsRequestBody(TeaModel):
-    def __init__(self, key=None, value=None):
-        # 标签名。
-        self.key = key                  # type: str
-        # 标签值
-        self.value = value              # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, map={}):
-        if map.get('key') is not None:
-            self.key = map.get('key')
-        if map.get('value') is not None:
-            self.value = map.get('value')
-        return self
-
-
 class ModifyClusterTagsResponse(TeaModel):
-    def __init__(self, headers=None):
-        self.headers = headers          # type: Dict[str, str]
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
 class GetKubernetesTriggerRequest(TeaModel):
-    def __init__(self, namespace=None, type=None, name=None):
+    def __init__(
+        self,
+        namespace: str = None,
+        type: str = None,
+        name: str = None,
+        action: str = None,
+    ):
         # 应用所属命名空间。
-        self.namespace = namespace      # type: str
+        self.namespace = namespace
         # 应用类型。
-        self.type = type                # type: str
+        self.type = type
         # 应用名称。
-        self.name = name                # type: str
+        self.name = name
+        # 触发器行为。
+        self.action = action
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.type is not None:
             result['Type'] = self.type
         if self.name is not None:
             result['Name'] = self.name
+        if self.action is not None:
+            result['action'] = self.action
         return result
 
-    def from_map(self, map={}):
-        if map.get('Namespace') is not None:
-            self.namespace = map.get('Namespace')
-        if map.get('Type') is not None:
-            self.type = map.get('Type')
-        if map.get('Name') is not None:
-            self.name = map.get('Name')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('action') is not None:
+            self.action = m.get('action')
         return self
 
 
 class GetKubernetesTriggerResponseBody(TeaModel):
-    def __init__(self, triggers=None):
-        # 触发器详情。
-        self.triggers = triggers        # type: List[GetKubernetesTriggerResponseBodyTriggers]
-
-    def validate(self):
-        if self.triggers:
-            for k in self.triggers:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        result['triggers'] = []
-        if self.triggers is not None:
-            for k in self.triggers:
-                result['triggers'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, map={}):
-        self.triggers = []
-        if map.get('triggers') is not None:
-            for k in map.get('triggers'):
-                temp_model = GetKubernetesTriggerResponseBodyTriggers()
-                self.triggers.append(temp_model.from_map(k))
-        return self
-
-
-class GetKubernetesTriggerResponseBodyTriggers(TeaModel):
-    def __init__(self, action=None, cluster_id=None, id=None, project_id=None, token=None):
-        # 触发器行为。
-        self.action = action            # type: str
-        # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+        cluster_id: str = None,
+        project_id: str = None,
+        type: str = None,
+        action: str = None,
+    ):
         # 触发器ID。
-        self.id = id                    # type: str
-        # 项目ID，格式为：${namepsce}/${应用名}，
-        self.project_id = project_id    # type: str
-        # 触发器Token。
-        self.token = token              # type: str
+        self.id = id
+        # 触发器名称。
+        self.name = name
+        # 集群ID
+        self.cluster_id = cluster_id
+        # 触发器项目名称
+        self.project_id = project_id
+        # 触发器类型。
+        self.type = type
+        # 触发器行为
+        self.action = action
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
-        if self.action is not None:
-            result['action'] = self.action
-        if self.cluster_id is not None:
-            result['cluster_id'] = self.cluster_id
+        result = dict()
         if self.id is not None:
             result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
         if self.project_id is not None:
             result['project_id'] = self.project_id
-        if self.token is not None:
-            result['token'] = self.token
+        if self.type is not None:
+            result['type'] = self.type
+        if self.action is not None:
+            result['action'] = self.action
         return result
 
-    def from_map(self, map={}):
-        if map.get('action') is not None:
-            self.action = map.get('action')
-        if map.get('cluster_id') is not None:
-            self.cluster_id = map.get('cluster_id')
-        if map.get('id') is not None:
-            self.id = map.get('id')
-        if map.get('project_id') is not None:
-            self.project_id = map.get('project_id')
-        if map.get('token') is not None:
-            self.token = map.get('token')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('project_id') is not None:
+            self.project_id = m.get('project_id')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('action') is not None:
+            self.action = m.get('action')
         return self
 
 
 class GetKubernetesTriggerResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: GetKubernetesTriggerResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: List[GetKubernetesTriggerResponseBody] = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
         self.validate_required(self.body, 'body')
         if self.body:
-            self.body.validate()
+            for k in self.body:
+                if k:
+                    k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        result['body'] = []
         if self.body is not None:
-            result['body'] = self.body.to_map()
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
-            temp_model = GetKubernetesTriggerResponseBody()
-            self.body = temp_model.from_map(map['body'])
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = GetKubernetesTriggerResponseBody()
+                self.body.append(temp_model.from_map(k))
+        return self
+
+
+class GetUpgradeStatusResponseBodyUpgradeTask(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        message: str = None,
+    ):
+        # 任务状态：  emptry、running、success、failed
+        self.status = status
+        # 任务描述信息。
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.status is not None:
+            result['status'] = self.status
+        if self.message is not None:
+            result['message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('message') is not None:
+            self.message = m.get('message')
         return self
 
 
 class GetUpgradeStatusResponseBody(TeaModel):
-    def __init__(self, error_message=None, precheck_report_id=None, status=None, upgrade_step=None,
-                 upgrade_task=None):
+    def __init__(
+        self,
+        error_message: str = None,
+        precheck_report_id: str = None,
+        status: str = None,
+        upgrade_step: str = None,
+        upgrade_task: GetUpgradeStatusResponseBodyUpgradeTask = None,
+    ):
         # 错误信息描述。
-        self.error_message = error_message  # type: str
+        self.error_message = error_message
         # 预检查返回ID。
-        self.precheck_report_id = precheck_report_id  # type: str
+        self.precheck_report_id = precheck_report_id
         # 升级状态。
-        self.status = status            # type: str
+        self.status = status
         # 升级任务执行到哪一步了。
-        self.upgrade_step = upgrade_step  # type: str
+        self.upgrade_step = upgrade_step
         # 升级任务详情。
-        self.upgrade_task = upgrade_task  # type: GetUpgradeStatusResponseBodyUpgradeTask
+        self.upgrade_task = upgrade_task
 
     def validate(self):
         if self.upgrade_task:
             self.upgrade_task.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.error_message is not None:
             result['error_message'] = self.error_message
         if self.precheck_report_id is not None:
@@ -8445,51 +9359,30 @@ class GetUpgradeStatusResponseBody(TeaModel):
             result['upgrade_task'] = self.upgrade_task.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('error_message') is not None:
-            self.error_message = map.get('error_message')
-        if map.get('precheck_report_id') is not None:
-            self.precheck_report_id = map.get('precheck_report_id')
-        if map.get('status') is not None:
-            self.status = map.get('status')
-        if map.get('upgrade_step') is not None:
-            self.upgrade_step = map.get('upgrade_step')
-        if map.get('upgrade_task') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('error_message') is not None:
+            self.error_message = m.get('error_message')
+        if m.get('precheck_report_id') is not None:
+            self.precheck_report_id = m.get('precheck_report_id')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('upgrade_step') is not None:
+            self.upgrade_step = m.get('upgrade_step')
+        if m.get('upgrade_task') is not None:
             temp_model = GetUpgradeStatusResponseBodyUpgradeTask()
-            self.upgrade_task = temp_model.from_map(map['upgrade_task'])
-        return self
-
-
-class GetUpgradeStatusResponseBodyUpgradeTask(TeaModel):
-    def __init__(self, status=None, message=None):
-        # 任务状态：  emptry、running、success、failed
-        self.status = status            # type: str
-        # 任务描述信息。
-        self.message = message          # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.status is not None:
-            result['status'] = self.status
-        if self.message is not None:
-            result['message'] = self.message
-        return result
-
-    def from_map(self, map={}):
-        if map.get('status') is not None:
-            self.status = map.get('status')
-        if map.get('message') is not None:
-            self.message = map.get('message')
+            self.upgrade_task = temp_model.from_map(m['upgrade_task'])
         return self
 
 
 class GetUpgradeStatusResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: GetUpgradeStatusResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetUpgradeStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -8498,77 +9391,51 @@ class GetUpgradeStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = GetUpgradeStatusResponseBody()
-            self.body = temp_model.from_map(map['body'])
-        return self
-
-
-class DescribeClusterResourcesResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: List[DescribeClusterResourcesResponseBody]
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            for k in self.body:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        if self.headers is not None:
-            result['headers'] = self.headers
-        result['body'] = []
-        if self.body is not None:
-            for k in self.body:
-                result['body'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        self.body = []
-        if map.get('body') is not None:
-            for k in map.get('body'):
-                temp_model = DescribeClusterResourcesResponseBody()
-                self.body.append(temp_model.from_map(k))
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class DescribeClusterResourcesResponseBody(TeaModel):
-    def __init__(self, cluster_id=None, created=None, instance_id=None, resource_info=None, resource_type=None,
-                 state=None):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        created: str = None,
+        instance_id: str = None,
+        resource_info: str = None,
+        resource_type: str = None,
+        state: str = None,
+    ):
         # 集群ID。
-        self.cluster_id = cluster_id    # type: str
+        self.cluster_id = cluster_id
         # 资源创建时间。
-        self.created = created          # type: str
+        self.created = created
         # 资源实例ID。
-        self.instance_id = instance_id  # type: str
+        self.instance_id = instance_id
         # 资源元信息。
-        self.resource_info = resource_info  # type: str
+        self.resource_info = resource_info
         # 资源类型。
-        self.resource_type = resource_type  # type: str
+        self.resource_type = resource_type
         # 资源状态。
-        self.state = state              # type: str
+        self.state = state
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.created is not None:
@@ -8583,36 +9450,81 @@ class DescribeClusterResourcesResponseBody(TeaModel):
             result['state'] = self.state
         return result
 
-    def from_map(self, map={}):
-        if map.get('cluster_id') is not None:
-            self.cluster_id = map.get('cluster_id')
-        if map.get('created') is not None:
-            self.created = map.get('created')
-        if map.get('instance_id') is not None:
-            self.instance_id = map.get('instance_id')
-        if map.get('resource_info') is not None:
-            self.resource_info = map.get('resource_info')
-        if map.get('resource_type') is not None:
-            self.resource_type = map.get('resource_type')
-        if map.get('state') is not None:
-            self.state = map.get('state')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('instance_id') is not None:
+            self.instance_id = m.get('instance_id')
+        if m.get('resource_info') is not None:
+            self.resource_info = m.get('resource_info')
+        if m.get('resource_type') is not None:
+            self.resource_type = m.get('resource_type')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        return self
+
+
+class DescribeClusterResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: List[DescribeClusterResourcesResponseBody] = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = DescribeClusterResourcesResponseBody()
+                self.body.append(temp_model.from_map(k))
         return self
 
 
 class DeleteClusterNodesRequest(TeaModel):
-    def __init__(self, drain_node=None, release_node=None, nodes=None):
+    def __init__(
+        self,
+        drain_node: bool = None,
+        release_node: bool = None,
+        nodes: List[str] = None,
+    ):
         # 是否自动排空节点上的Pod。
-        self.drain_node = drain_node    # type: bool
+        self.drain_node = drain_node
         # 是否同时释放 ECS
-        self.release_node = release_node  # type: bool
+        self.release_node = release_node
         # 移除节点列表。
-        self.nodes = nodes              # type: List[str]
+        self.nodes = nodes
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.drain_node is not None:
             result['drain_node'] = self.drain_node
         if self.release_node is not None:
@@ -8621,40 +9533,49 @@ class DeleteClusterNodesRequest(TeaModel):
             result['nodes'] = self.nodes
         return result
 
-    def from_map(self, map={}):
-        if map.get('drain_node') is not None:
-            self.drain_node = map.get('drain_node')
-        if map.get('release_node') is not None:
-            self.release_node = map.get('release_node')
-        if map.get('nodes') is not None:
-            self.nodes = map.get('nodes')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drain_node') is not None:
+            self.drain_node = m.get('drain_node')
+        if m.get('release_node') is not None:
+            self.release_node = m.get('release_node')
+        if m.get('nodes') is not None:
+            self.nodes = m.get('nodes')
         return self
 
 
 class DeleteClusterNodesResponseBody(TeaModel):
-    def __init__(self, request_id=None):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
         # 请求ID。
-        self.request_id = request_id    # type: str
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
         return result
 
-    def from_map(self, map={}):
-        if map.get('requestId') is not None:
-            self.request_id = map.get('requestId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
 class DeleteClusterNodesResponse(TeaModel):
-    def __init__(self, headers=None, body=None):
-        self.headers = headers          # type: Dict[str, str]
-        self.body = body                # type: DeleteClusterNodesResponseBody
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteClusterNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
@@ -8663,130 +9584,72 @@ class DeleteClusterNodesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
 
-    def from_map(self, map={}):
-        if map.get('headers') is not None:
-            self.headers = map.get('headers')
-        if map.get('body') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
             temp_model = DeleteClusterNodesResponseBody()
-            self.body = temp_model.from_map(map['body'])
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
 class StandardComponentsValue(TeaModel):
-    def __init__(self, description=None, disabled=None, name=None, required=None, version=None):
-        # 标准组件信息，包含各个组件的描述信息。
-        self.description = description  # type: str
-        # 是否禁止默认安装。
-        self.disabled = disabled        # type: bool
+    def __init__(
+        self,
+        name: str = None,
+        version: str = None,
+        description: str = None,
+        required: str = None,
+        disabled: bool = None,
+    ):
         # 组件名称。
-        self.name = name                # type: str
-        # 是否为必需组件。
-        self.required = required        # type: str
+        self.name = name
         # 组件版本。
-        self.version = version          # type: str
+        self.version = version
+        # 组件描述信息。
+        self.description = description
+        # 是否为必需组件。
+        self.required = required
+        # 是否禁止默认安装。
+        self.disabled = disabled
 
     def validate(self):
         pass
 
     def to_map(self):
-        result = {}
-        if self.description is not None:
-            result['description'] = self.description
-        if self.disabled is not None:
-            result['disabled'] = self.disabled
+        result = dict()
         if self.name is not None:
             result['name'] = self.name
-        if self.required is not None:
-            result['required'] = self.required
         if self.version is not None:
             result['version'] = self.version
-        return result
-
-    def from_map(self, map={}):
-        if map.get('description') is not None:
-            self.description = map.get('description')
-        if map.get('disabled') is not None:
-            self.disabled = map.get('disabled')
-        if map.get('name') is not None:
-            self.name = map.get('name')
-        if map.get('required') is not None:
-            self.required = map.get('required')
-        if map.get('version') is not None:
-            self.version = map.get('version')
-        return self
-
-
-class AddonsVersionValue(TeaModel):
-    def __init__(self, can_upgrade=None, changed=None, component_name=None, description=None, message=None,
-                 next_version=None, required=None, template=None, version=None):
-        # 组件是否可升级
-        self.can_upgrade = can_upgrade  # type: bool
-        # 组件是否升级过。
-        self.changed = changed          # type: str
-        # 组件名称。
-        self.component_name = component_name  # type: str
-        # 组件说明信息。
-        self.description = description  # type: str
-        # 是否可升级的额外说明信息。
-        self.message = message          # type: str
-        # 组件下一个可升级版本。
-        self.next_version = next_version  # type: str
-        # 组件是否为必需组件
-        self.required = required        # type: bool
-        # 组件最新模板内容。
-        self.template = template        # type: str
-        # 组件当前版本。
-        self.version = version          # type: str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = {}
-        if self.can_upgrade is not None:
-            result['can_upgrade'] = self.can_upgrade
-        if self.changed is not None:
-            result['changed'] = self.changed
-        if self.component_name is not None:
-            result['component_name'] = self.component_name
         if self.description is not None:
             result['description'] = self.description
-        if self.message is not None:
-            result['message'] = self.message
-        if self.next_version is not None:
-            result['next_version'] = self.next_version
         if self.required is not None:
             result['required'] = self.required
-        if self.template is not None:
-            result['template'] = self.template
-        if self.version is not None:
-            result['version'] = self.version
+        if self.disabled is not None:
+            result['disabled'] = self.disabled
         return result
 
-    def from_map(self, map={}):
-        if map.get('can_upgrade') is not None:
-            self.can_upgrade = map.get('can_upgrade')
-        if map.get('changed') is not None:
-            self.changed = map.get('changed')
-        if map.get('component_name') is not None:
-            self.component_name = map.get('component_name')
-        if map.get('description') is not None:
-            self.description = map.get('description')
-        if map.get('message') is not None:
-            self.message = map.get('message')
-        if map.get('next_version') is not None:
-            self.next_version = map.get('next_version')
-        if map.get('required') is not None:
-            self.required = map.get('required')
-        if map.get('template') is not None:
-            self.template = map.get('template')
-        if map.get('version') is not None:
-            self.version = map.get('version')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('required') is not None:
+            self.required = m.get('required')
+        if m.get('disabled') is not None:
+            self.disabled = m.get('disabled')
         return self
+
+
