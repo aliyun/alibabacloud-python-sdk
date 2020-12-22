@@ -1,41 +1,55 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-try:
-    from typing import List
-except ImportError:
-    pass
+from typing import List
 
 
 class StopDomainRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, domain=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.domain = domain            # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        domain: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.domain = domain
 
     def validate(self):
         self.validate_required(self.version, 'version')
         self.validate_required(self.domain, 'domain')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Domain'] = self.domain
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.domain is not None:
+            result['Domain'] = self.domain
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.domain = map.get('Domain')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
         return self
 
 
 class StopDomainResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, resource_id=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        resource_id: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -43,48 +57,72 @@ class StopDomainResponse(TeaModel):
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
 class StartDomainRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, domain=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.domain = domain            # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        domain: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.domain = domain
 
     def validate(self):
         self.validate_required(self.version, 'version')
         self.validate_required(self.domain, 'domain')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Domain'] = self.domain
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.domain is not None:
+            result['Domain'] = self.domain
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.domain = map.get('Domain')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
         return self
 
 
 class StartDomainResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, resource_id=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        resource_id: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -92,48 +130,72 @@ class StartDomainResponse(TeaModel):
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
 class DeleteDomainRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, domain=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.domain = domain            # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        domain: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.domain = domain
 
     def validate(self):
         self.validate_required(self.version, 'version')
         self.validate_required(self.domain, 'domain')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Domain'] = self.domain
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.domain is not None:
+            result['Domain'] = self.domain
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.domain = map.get('Domain')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
         return self
 
 
 class DeleteDomainResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, resource_id=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        resource_id: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -141,30 +203,46 @@ class DeleteDomainResponse(TeaModel):
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
 class AddDomainRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, business_type=None, domain=None, live_format=None,
-                 slice_domain=None, region=None, demo_urls=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.business_type = business_type  # type: str
-        self.domain = domain            # type: str
-        self.live_format = live_format  # type: str
-        self.slice_domain = slice_domain  # type: str
-        self.region = region            # type: str
-        self.demo_urls = demo_urls      # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        business_type: str = None,
+        domain: str = None,
+        live_format: str = None,
+        slice_domain: str = None,
+        region: str = None,
+        demo_urls: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.business_type = business_type
+        self.domain = domain
+        self.live_format = live_format
+        self.slice_domain = slice_domain
+        self.region = region
+        self.demo_urls = demo_urls
 
     def validate(self):
         self.validate_required(self.version, 'version')
@@ -172,34 +250,56 @@ class AddDomainRequest(TeaModel):
         self.validate_required(self.domain, 'domain')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['BusinessType'] = self.business_type
-        result['Domain'] = self.domain
-        result['LiveFormat'] = self.live_format
-        result['SliceDomain'] = self.slice_domain
-        result['Region'] = self.region
-        result['DemoUrls'] = self.demo_urls
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.live_format is not None:
+            result['LiveFormat'] = self.live_format
+        if self.slice_domain is not None:
+            result['SliceDomain'] = self.slice_domain
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.demo_urls is not None:
+            result['DemoUrls'] = self.demo_urls
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.business_type = map.get('BusinessType')
-        self.domain = map.get('Domain')
-        self.live_format = map.get('LiveFormat')
-        self.slice_domain = map.get('SliceDomain')
-        self.region = map.get('Region')
-        self.demo_urls = map.get('DemoUrls')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('LiveFormat') is not None:
+            self.live_format = m.get('LiveFormat')
+        if m.get('SliceDomain') is not None:
+            self.slice_domain = m.get('SliceDomain')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('DemoUrls') is not None:
+            self.demo_urls = m.get('DemoUrls')
         return self
 
 
 class AddDomainResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, resource_id=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        resource_id: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -207,52 +307,192 @@ class AddDomainResponse(TeaModel):
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
 class GetBalanceTrafficDataRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, data_interval=None, resource_id=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.data_interval = data_interval  # type: int
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        data_interval: int = None,
+        resource_id: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.data_interval = data_interval
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.version, 'version')
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['DataInterval'] = self.data_interval
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.data_interval = map.get('DataInterval')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class GetBalanceTrafficDataResponseDataListUsageDataValues(TeaModel):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
+        # Values
+        self.values = values
+
+    def validate(self):
+        self.validate_required(self.values, 'values')
+
+    def to_map(self):
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class GetBalanceTrafficDataResponseDataListUsageData(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        values: GetBalanceTrafficDataResponseDataListUsageDataValues = None,
+    ):
+        self.date = date
+        self.values = values
+
+    def validate(self):
+        self.validate_required(self.date, 'date')
+        self.validate_required(self.values, 'values')
+        if self.values:
+            self.values.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.values is not None:
+            result['Values'] = self.values.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Values') is not None:
+            temp_model = GetBalanceTrafficDataResponseDataListUsageDataValues()
+            self.values = temp_model.from_map(m['Values'])
+        return self
+
+
+class GetBalanceTrafficDataResponseDataList(TeaModel):
+    def __init__(
+        self,
+        usage_data: List[GetBalanceTrafficDataResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
+
+    def validate(self):
+        self.validate_required(self.usage_data, 'usage_data')
+        if self.usage_data:
+            for k in self.usage_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['UsageData'] = []
+        if self.usage_data is not None:
+            for k in self.usage_data:
+                result['UsageData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.usage_data = []
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
+                temp_model = GetBalanceTrafficDataResponseDataListUsageData()
+                self.usage_data.append(temp_model.from_map(k))
+        return self
+
+
+class GetBalanceTrafficDataResponseLabels(TeaModel):
+    def __init__(
+        self,
+        label: List[str] = None,
+    ):
+        self.label = label
+
+    def validate(self):
+        self.validate_required(self.label, 'label')
+
+    def to_map(self):
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
         return self
 
 
 class GetBalanceTrafficDataResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None, labels=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetBalanceTrafficDataResponseDataList
-        self.labels = labels            # type: GetBalanceTrafficDataResponseLabels
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetBalanceTrafficDataResponseDataList = None,
+        labels: GetBalanceTrafficDataResponseLabels = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
+        self.labels = labels
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -265,144 +505,54 @@ class GetBalanceTrafficDataResponse(TeaModel):
             self.labels.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data_list is not None:
             result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
         if self.labels is not None:
             result['Labels'] = self.labels.to_map()
-        else:
-            result['Labels'] = None
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
             temp_model = GetBalanceTrafficDataResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
-        if map.get('Labels') is not None:
+            self.data_list = temp_model.from_map(m['DataList'])
+        if m.get('Labels') is not None:
             temp_model = GetBalanceTrafficDataResponseLabels()
-            self.labels = temp_model.from_map(map['Labels'])
-        else:
-            self.labels = None
-        return self
-
-
-class GetBalanceTrafficDataResponseDataListUsageDataValues(TeaModel):
-    def __init__(self, values=None):
-        # Values
-        self.values = values            # type: List[str]
-
-    def validate(self):
-        self.validate_required(self.values, 'values')
-
-    def to_map(self):
-        result = {}
-        result['Values'] = self.values
-        return result
-
-    def from_map(self, map={}):
-        self.values = map.get('Values')
-        return self
-
-
-class GetBalanceTrafficDataResponseDataListUsageData(TeaModel):
-    def __init__(self, date=None, values=None):
-        self.date = date                # type: str
-        self.values = values            # type: GetBalanceTrafficDataResponseDataListUsageDataValues
-
-    def validate(self):
-        self.validate_required(self.date, 'date')
-        self.validate_required(self.values, 'values')
-        if self.values:
-            self.values.validate()
-
-    def to_map(self):
-        result = {}
-        result['Date'] = self.date
-        if self.values is not None:
-            result['Values'] = self.values.to_map()
-        else:
-            result['Values'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.date = map.get('Date')
-        if map.get('Values') is not None:
-            temp_model = GetBalanceTrafficDataResponseDataListUsageDataValues()
-            self.values = temp_model.from_map(map['Values'])
-        else:
-            self.values = None
-        return self
-
-
-class GetBalanceTrafficDataResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetBalanceTrafficDataResponseDataListUsageData]
-
-    def validate(self):
-        self.validate_required(self.usage_data, 'usage_data')
-        if self.usage_data:
-            for k in self.usage_data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        result['UsageData'] = []
-        if self.usage_data is not None:
-            for k in self.usage_data:
-                result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
-                temp_model = GetBalanceTrafficDataResponseDataListUsageData()
-                self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
-        return self
-
-
-class GetBalanceTrafficDataResponseLabels(TeaModel):
-    def __init__(self, label=None):
-        self.label = label              # type: List[str]
-
-    def validate(self):
-        self.validate_required(self.label, 'label')
-
-    def to_map(self):
-        result = {}
-        result['Label'] = self.label
-        return result
-
-    def from_map(self, map={}):
-        self.label = map.get('Label')
+            self.labels = temp_model.from_map(m['Labels'])
         return self
 
 
 class AddPcdnControlRuleRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, name=None, region=None, isp_name=None, platform_type=None,
-                 business_type=None, market=None, app_version=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.name = name                # type: str
-        self.region = region            # type: str
-        self.isp_name = isp_name        # type: str
-        self.platform_type = platform_type  # type: str
-        self.business_type = business_type  # type: str
-        self.market = market            # type: str
-        self.app_version = app_version  # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        name: str = None,
+        region: str = None,
+        isp_name: str = None,
+        platform_type: str = None,
+        business_type: str = None,
+        market: str = None,
+        app_version: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.name = name
+        self.region = region
+        self.isp_name = isp_name
+        self.platform_type = platform_type
+        self.business_type = business_type
+        self.market = market
+        self.app_version = app_version
 
     def validate(self):
         self.validate_required(self.version, 'version')
@@ -415,36 +565,60 @@ class AddPcdnControlRuleRequest(TeaModel):
         self.validate_required(self.app_version, 'app_version')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Name'] = self.name
-        result['Region'] = self.region
-        result['IspName'] = self.isp_name
-        result['PlatformType'] = self.platform_type
-        result['BusinessType'] = self.business_type
-        result['Market'] = self.market
-        result['AppVersion'] = self.app_version
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.market is not None:
+            result['Market'] = self.market
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.name = map.get('Name')
-        self.region = map.get('Region')
-        self.isp_name = map.get('IspName')
-        self.platform_type = map.get('PlatformType')
-        self.business_type = map.get('BusinessType')
-        self.market = map.get('Market')
-        self.app_version = map.get('AppVersion')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('Market') is not None:
+            self.market = m.get('Market')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
         return self
 
 
 class AddPcdnControlRuleResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, resource_id=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        resource_id: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -452,33 +626,52 @@ class AddPcdnControlRuleResponse(TeaModel):
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
 class AddConsumerRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, business_type=None, company=None, site=None,
-                 requirement=None, mobile=None, ca=None, operator=None, email=None, bandwidth_requirement=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.business_type = business_type  # type: str
-        self.company = company          # type: str
-        self.site = site                # type: str
-        self.requirement = requirement  # type: str
-        self.mobile = mobile            # type: str
-        self.ca = ca                    # type: str
-        self.operator = operator        # type: str
-        self.email = email              # type: str
-        self.bandwidth_requirement = bandwidth_requirement  # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        business_type: str = None,
+        company: str = None,
+        site: str = None,
+        requirement: str = None,
+        mobile: str = None,
+        ca: str = None,
+        operator: str = None,
+        email: str = None,
+        bandwidth_requirement: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.business_type = business_type
+        self.company = company
+        self.site = site
+        self.requirement = requirement
+        self.mobile = mobile
+        self.ca = ca
+        self.operator = operator
+        self.email = email
+        self.bandwidth_requirement = bandwidth_requirement
 
     def validate(self):
         self.validate_required(self.version, 'version')
@@ -489,40 +682,68 @@ class AddConsumerRequest(TeaModel):
         self.validate_required(self.mobile, 'mobile')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['BusinessType'] = self.business_type
-        result['Company'] = self.company
-        result['Site'] = self.site
-        result['Requirement'] = self.requirement
-        result['Mobile'] = self.mobile
-        result['Ca'] = self.ca
-        result['Operator'] = self.operator
-        result['Email'] = self.email
-        result['BandwidthRequirement'] = self.bandwidth_requirement
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.company is not None:
+            result['Company'] = self.company
+        if self.site is not None:
+            result['Site'] = self.site
+        if self.requirement is not None:
+            result['Requirement'] = self.requirement
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.ca is not None:
+            result['Ca'] = self.ca
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.bandwidth_requirement is not None:
+            result['BandwidthRequirement'] = self.bandwidth_requirement
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.business_type = map.get('BusinessType')
-        self.company = map.get('Company')
-        self.site = map.get('Site')
-        self.requirement = map.get('Requirement')
-        self.mobile = map.get('Mobile')
-        self.ca = map.get('Ca')
-        self.operator = map.get('Operator')
-        self.email = map.get('Email')
-        self.bandwidth_requirement = map.get('BandwidthRequirement')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('Company') is not None:
+            self.company = m.get('Company')
+        if m.get('Site') is not None:
+            self.site = m.get('Site')
+        if m.get('Requirement') is not None:
+            self.requirement = m.get('Requirement')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('Ca') is not None:
+            self.ca = m.get('Ca')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('BandwidthRequirement') is not None:
+            self.bandwidth_requirement = m.get('BandwidthRequirement')
         return self
 
 
 class AddConsumerResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, resource_id=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        resource_id: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -530,31 +751,48 @@ class AddConsumerResponse(TeaModel):
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
 class GetAccessDataRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, domain=None, region=None, isp_name=None,
-                 platform_type=None, business_type=None, start_date=None, end_date=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.domain = domain            # type: str
-        self.region = region            # type: str
-        self.isp_name = isp_name        # type: str
-        self.platform_type = platform_type  # type: str
-        self.business_type = business_type  # type: str
-        self.start_date = start_date    # type: str
-        self.end_date = end_date        # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        domain: str = None,
+        region: str = None,
+        isp_name: str = None,
+        platform_type: str = None,
+        business_type: str = None,
+        start_date: str = None,
+        end_date: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.domain = domain
+        self.region = region
+        self.isp_name = isp_name
+        self.platform_type = platform_type
+        self.business_type = business_type
+        self.start_date = start_date
+        self.end_date = end_date
 
     def validate(self):
         self.validate_required(self.version, 'version')
@@ -566,37 +804,174 @@ class GetAccessDataRequest(TeaModel):
         self.validate_required(self.end_date, 'end_date')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Domain'] = self.domain
-        result['Region'] = self.region
-        result['IspName'] = self.isp_name
-        result['PlatformType'] = self.platform_type
-        result['BusinessType'] = self.business_type
-        result['StartDate'] = self.start_date
-        result['EndDate'] = self.end_date
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.domain = map.get('Domain')
-        self.region = map.get('Region')
-        self.isp_name = map.get('IspName')
-        self.platform_type = map.get('PlatformType')
-        self.business_type = map.get('BusinessType')
-        self.start_date = map.get('StartDate')
-        self.end_date = map.get('EndDate')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        return self
+
+
+class GetAccessDataResponseDataListUsageDataValues(TeaModel):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
+        # Values
+        self.values = values
+
+    def validate(self):
+        self.validate_required(self.values, 'values')
+
+    def to_map(self):
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class GetAccessDataResponseDataListUsageData(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        values: GetAccessDataResponseDataListUsageDataValues = None,
+    ):
+        self.date = date
+        self.values = values
+
+    def validate(self):
+        self.validate_required(self.date, 'date')
+        self.validate_required(self.values, 'values')
+        if self.values:
+            self.values.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.values is not None:
+            result['Values'] = self.values.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Values') is not None:
+            temp_model = GetAccessDataResponseDataListUsageDataValues()
+            self.values = temp_model.from_map(m['Values'])
+        return self
+
+
+class GetAccessDataResponseDataList(TeaModel):
+    def __init__(
+        self,
+        usage_data: List[GetAccessDataResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
+
+    def validate(self):
+        self.validate_required(self.usage_data, 'usage_data')
+        if self.usage_data:
+            for k in self.usage_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['UsageData'] = []
+        if self.usage_data is not None:
+            for k in self.usage_data:
+                result['UsageData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.usage_data = []
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
+                temp_model = GetAccessDataResponseDataListUsageData()
+                self.usage_data.append(temp_model.from_map(k))
+        return self
+
+
+class GetAccessDataResponseLabels(TeaModel):
+    def __init__(
+        self,
+        label: List[str] = None,
+    ):
+        self.label = label
+
+    def validate(self):
+        self.validate_required(self.label, 'label')
+
+    def to_map(self):
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
         return self
 
 
 class GetAccessDataResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None, labels=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetAccessDataResponseDataList
-        self.labels = labels            # type: GetAccessDataResponseLabels
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetAccessDataResponseDataList = None,
+        labels: GetAccessDataResponseLabels = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
+        self.labels = labels
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -609,161 +984,78 @@ class GetAccessDataResponse(TeaModel):
             self.labels.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data_list is not None:
             result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
         if self.labels is not None:
             result['Labels'] = self.labels.to_map()
-        else:
-            result['Labels'] = None
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
             temp_model = GetAccessDataResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
-        if map.get('Labels') is not None:
+            self.data_list = temp_model.from_map(m['DataList'])
+        if m.get('Labels') is not None:
             temp_model = GetAccessDataResponseLabels()
-            self.labels = temp_model.from_map(map['Labels'])
-        else:
-            self.labels = None
-        return self
-
-
-class GetAccessDataResponseDataListUsageDataValues(TeaModel):
-    def __init__(self, values=None):
-        # Values
-        self.values = values            # type: List[str]
-
-    def validate(self):
-        self.validate_required(self.values, 'values')
-
-    def to_map(self):
-        result = {}
-        result['Values'] = self.values
-        return result
-
-    def from_map(self, map={}):
-        self.values = map.get('Values')
-        return self
-
-
-class GetAccessDataResponseDataListUsageData(TeaModel):
-    def __init__(self, date=None, values=None):
-        self.date = date                # type: str
-        self.values = values            # type: GetAccessDataResponseDataListUsageDataValues
-
-    def validate(self):
-        self.validate_required(self.date, 'date')
-        self.validate_required(self.values, 'values')
-        if self.values:
-            self.values.validate()
-
-    def to_map(self):
-        result = {}
-        result['Date'] = self.date
-        if self.values is not None:
-            result['Values'] = self.values.to_map()
-        else:
-            result['Values'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.date = map.get('Date')
-        if map.get('Values') is not None:
-            temp_model = GetAccessDataResponseDataListUsageDataValues()
-            self.values = temp_model.from_map(map['Values'])
-        else:
-            self.values = None
-        return self
-
-
-class GetAccessDataResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetAccessDataResponseDataListUsageData]
-
-    def validate(self):
-        self.validate_required(self.usage_data, 'usage_data')
-        if self.usage_data:
-            for k in self.usage_data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        result['UsageData'] = []
-        if self.usage_data is not None:
-            for k in self.usage_data:
-                result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
-                temp_model = GetAccessDataResponseDataListUsageData()
-                self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
-        return self
-
-
-class GetAccessDataResponseLabels(TeaModel):
-    def __init__(self, label=None):
-        self.label = label              # type: List[str]
-
-    def validate(self):
-        self.validate_required(self.label, 'label')
-
-    def to_map(self):
-        result = {}
-        result['Label'] = self.label
-        return result
-
-    def from_map(self, map={}):
-        self.label = map.get('Label')
+            self.labels = temp_model.from_map(m['Labels'])
         return self
 
 
 class EnablePcdnControlRuleRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, resource_id=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        resource_id: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.version, 'version')
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
 class EnablePcdnControlRuleResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, resource_id=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        resource_id: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -771,32 +1063,50 @@ class EnablePcdnControlRuleResponse(TeaModel):
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
 class EditPcdnControlRuleRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, name=None, resource_id=None, region=None, isp_name=None,
-                 platform_type=None, business_type=None, market=None, app_version=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.name = name                # type: str
-        self.resource_id = resource_id  # type: str
-        self.region = region            # type: str
-        self.isp_name = isp_name        # type: str
-        self.platform_type = platform_type  # type: str
-        self.business_type = business_type  # type: str
-        self.market = market            # type: str
-        self.app_version = app_version  # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        name: str = None,
+        resource_id: str = None,
+        region: str = None,
+        isp_name: str = None,
+        platform_type: str = None,
+        business_type: str = None,
+        market: str = None,
+        app_version: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.name = name
+        self.resource_id = resource_id
+        self.region = region
+        self.isp_name = isp_name
+        self.platform_type = platform_type
+        self.business_type = business_type
+        self.market = market
+        self.app_version = app_version
 
     def validate(self):
         self.validate_required(self.version, 'version')
@@ -810,38 +1120,64 @@ class EditPcdnControlRuleRequest(TeaModel):
         self.validate_required(self.app_version, 'app_version')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Name'] = self.name
-        result['ResourceId'] = self.resource_id
-        result['Region'] = self.region
-        result['IspName'] = self.isp_name
-        result['PlatformType'] = self.platform_type
-        result['BusinessType'] = self.business_type
-        result['Market'] = self.market
-        result['AppVersion'] = self.app_version
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.market is not None:
+            result['Market'] = self.market
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.name = map.get('Name')
-        self.resource_id = map.get('ResourceId')
-        self.region = map.get('Region')
-        self.isp_name = map.get('IspName')
-        self.platform_type = map.get('PlatformType')
-        self.business_type = map.get('BusinessType')
-        self.market = map.get('Market')
-        self.app_version = map.get('AppVersion')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('Market') is not None:
+            self.market = m.get('Market')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
         return self
 
 
 class EditPcdnControlRuleResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, resource_id=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        resource_id: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -849,48 +1185,72 @@ class EditPcdnControlRuleResponse(TeaModel):
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
 class DisablePcdnControlRuleRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, resource_id=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        resource_id: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.version, 'version')
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
 class DisablePcdnControlRuleResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, resource_id=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        resource_id: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -898,142 +1258,157 @@ class DisablePcdnControlRuleResponse(TeaModel):
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
 class DeletePcdnControlRuleRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, resource_id=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        resource_id: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.version, 'version')
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
 class DeletePcdnControlRuleResponse(TeaModel):
-    def __init__(self, request_id=None, code=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+    ):
+        self.request_id = request_id
+        self.code = code
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
         self.validate_required(self.code, 'code')
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         return self
 
 
 class GetAllPlatformTypesRequest(TeaModel):
-    def __init__(self, security_token=None, version=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
 
     def validate(self):
         self.validate_required(self.version, 'version')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        return self
-
-
-class GetAllPlatformTypesResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetAllPlatformTypesResponseDataList
-
-    def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.data_list, 'data_list')
-        if self.data_list:
-            self.data_list.validate()
-
-    def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        if self.data_list is not None:
-            result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
-            temp_model = GetAllPlatformTypesResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
 class GetAllPlatformTypesResponseDataListUsageData(TeaModel):
-    def __init__(self, code=None, name=None):
-        self.code = code                # type: int
-        self.name = name                # type: str
+    def __init__(
+        self,
+        code: int = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.name = name
 
     def validate(self):
         self.validate_required(self.code, 'code')
         self.validate_required(self.name, 'name')
 
     def to_map(self):
-        result = {}
-        result['Code'] = self.code
-        result['Name'] = self.name
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
         return result
 
-    def from_map(self, map={}):
-        self.code = map.get('Code')
-        self.name = map.get('Name')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         return self
 
 
 class GetAllPlatformTypesResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetAllPlatformTypesResponseDataListUsageData]
+    def __init__(
+        self,
+        usage_data: List[GetAllPlatformTypesResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
 
     def validate(self):
         self.validate_required(self.usage_data, 'usage_data')
@@ -1043,51 +1418,33 @@ class GetAllPlatformTypesResponseDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['UsageData'] = []
         if self.usage_data is not None:
             for k in self.usage_data:
                 result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
                 temp_model = GetAllPlatformTypesResponseDataListUsageData()
                 self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
         return self
 
 
-class GetAllMarketsRequest(TeaModel):
-    def __init__(self, security_token=None, version=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-
-    def validate(self):
-        self.validate_required(self.version, 'version')
-
-    def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        return result
-
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        return self
-
-
-class GetAllMarketsResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetAllMarketsResponseDataList
+class GetAllPlatformTypesResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetAllPlatformTypesResponseDataList = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1097,31 +1454,66 @@ class GetAllMarketsResponse(TeaModel):
             self.data_list.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data_list is not None:
             result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
-            temp_model = GetAllMarketsResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
+            temp_model = GetAllPlatformTypesResponseDataList()
+            self.data_list = temp_model.from_map(m['DataList'])
+        return self
+
+
+class GetAllMarketsRequest(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+
+    def validate(self):
+        self.validate_required(self.version, 'version')
+
+    def to_map(self):
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
 class GetAllMarketsResponseDataListUsageData(TeaModel):
-    def __init__(self, code=None, market_code=None, market_name=None):
-        self.code = code                # type: int
-        self.market_code = market_code  # type: str
-        self.market_name = market_name  # type: str
+    def __init__(
+        self,
+        code: int = None,
+        market_code: str = None,
+        market_name: str = None,
+    ):
+        self.code = code
+        self.market_code = market_code
+        self.market_name = market_name
 
     def validate(self):
         self.validate_required(self.code, 'code')
@@ -1129,22 +1521,32 @@ class GetAllMarketsResponseDataListUsageData(TeaModel):
         self.validate_required(self.market_name, 'market_name')
 
     def to_map(self):
-        result = {}
-        result['Code'] = self.code
-        result['MarketCode'] = self.market_code
-        result['MarketName'] = self.market_name
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.market_code is not None:
+            result['MarketCode'] = self.market_code
+        if self.market_name is not None:
+            result['MarketName'] = self.market_name
         return result
 
-    def from_map(self, map={}):
-        self.code = map.get('Code')
-        self.market_code = map.get('MarketCode')
-        self.market_name = map.get('MarketName')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('MarketCode') is not None:
+            self.market_code = m.get('MarketCode')
+        if m.get('MarketName') is not None:
+            self.market_name = m.get('MarketName')
         return self
 
 
 class GetAllMarketsResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetAllMarketsResponseDataListUsageData]
+    def __init__(
+        self,
+        usage_data: List[GetAllMarketsResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
 
     def validate(self):
         self.validate_required(self.usage_data, 'usage_data')
@@ -1154,51 +1556,33 @@ class GetAllMarketsResponseDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['UsageData'] = []
         if self.usage_data is not None:
             for k in self.usage_data:
                 result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
                 temp_model = GetAllMarketsResponseDataListUsageData()
                 self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
         return self
 
 
-class GetAllIspRequest(TeaModel):
-    def __init__(self, security_token=None, version=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-
-    def validate(self):
-        self.validate_required(self.version, 'version')
-
-    def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        return result
-
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        return self
-
-
-class GetAllIspResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetAllIspResponseDataList
+class GetAllMarketsResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetAllMarketsResponseDataList = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1208,31 +1592,66 @@ class GetAllIspResponse(TeaModel):
             self.data_list.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data_list is not None:
             result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
-            temp_model = GetAllIspResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
+            temp_model = GetAllMarketsResponseDataList()
+            self.data_list = temp_model.from_map(m['DataList'])
+        return self
+
+
+class GetAllIspRequest(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+
+    def validate(self):
+        self.validate_required(self.version, 'version')
+
+    def to_map(self):
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
 class GetAllIspResponseDataListUsageData(TeaModel):
-    def __init__(self, name_cn=None, name_en=None, resource_id=None):
-        self.name_cn = name_cn          # type: str
-        self.name_en = name_en          # type: str
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        name_cn: str = None,
+        name_en: str = None,
+        resource_id: str = None,
+    ):
+        self.name_cn = name_cn
+        self.name_en = name_en
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.name_cn, 'name_cn')
@@ -1240,22 +1659,32 @@ class GetAllIspResponseDataListUsageData(TeaModel):
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['NameCn'] = self.name_cn
-        result['NameEn'] = self.name_en
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.name_cn is not None:
+            result['NameCn'] = self.name_cn
+        if self.name_en is not None:
+            result['NameEn'] = self.name_en
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.name_cn = map.get('NameCn')
-        self.name_en = map.get('NameEn')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NameCn') is not None:
+            self.name_cn = m.get('NameCn')
+        if m.get('NameEn') is not None:
+            self.name_en = m.get('NameEn')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
 class GetAllIspResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetAllIspResponseDataListUsageData]
+    def __init__(
+        self,
+        usage_data: List[GetAllIspResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
 
     def validate(self):
         self.validate_required(self.usage_data, 'usage_data')
@@ -1265,51 +1694,33 @@ class GetAllIspResponseDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['UsageData'] = []
         if self.usage_data is not None:
             for k in self.usage_data:
                 result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
                 temp_model = GetAllIspResponseDataListUsageData()
                 self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
         return self
 
 
-class GetAllAppVersionsRequest(TeaModel):
-    def __init__(self, security_token=None, version=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-
-    def validate(self):
-        self.validate_required(self.version, 'version')
-
-    def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        return result
-
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        return self
-
-
-class GetAllAppVersionsResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetAllAppVersionsResponseDataList
+class GetAllIspResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetAllIspResponseDataList = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1319,50 +1730,92 @@ class GetAllAppVersionsResponse(TeaModel):
             self.data_list.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data_list is not None:
             result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
-            temp_model = GetAllAppVersionsResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
+            temp_model = GetAllIspResponseDataList()
+            self.data_list = temp_model.from_map(m['DataList'])
+        return self
+
+
+class GetAllAppVersionsRequest(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+
+    def validate(self):
+        self.validate_required(self.version, 'version')
+
+    def to_map(self):
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
 class GetAllAppVersionsResponseDataListUsageData(TeaModel):
-    def __init__(self, code=None, value=None):
-        self.code = code                # type: int
-        self.value = value              # type: str
+    def __init__(
+        self,
+        code: int = None,
+        value: str = None,
+    ):
+        self.code = code
+        self.value = value
 
     def validate(self):
         self.validate_required(self.code, 'code')
         self.validate_required(self.value, 'value')
 
     def to_map(self):
-        result = {}
-        result['Code'] = self.code
-        result['Value'] = self.value
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
-    def from_map(self, map={}):
-        self.code = map.get('Code')
-        self.value = map.get('Value')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
 class GetAllAppVersionsResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetAllAppVersionsResponseDataListUsageData]
+    def __init__(
+        self,
+        usage_data: List[GetAllAppVersionsResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
 
     def validate(self):
         self.validate_required(self.usage_data, 'usage_data')
@@ -1372,62 +1825,120 @@ class GetAllAppVersionsResponseDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['UsageData'] = []
         if self.usage_data is not None:
             for k in self.usage_data:
                 result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
                 temp_model = GetAllAppVersionsResponseDataListUsageData()
                 self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
+        return self
+
+
+class GetAllAppVersionsResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetAllAppVersionsResponseDataList = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.data_list, 'data_list')
+        if self.data_list:
+            self.data_list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data_list is not None:
+            result['DataList'] = self.data_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
+            temp_model = GetAllAppVersionsResponseDataList()
+            self.data_list = temp_model.from_map(m['DataList'])
         return self
 
 
 class GetConsumerStatusRequest(TeaModel):
-    def __init__(self, security_token=None, version=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
 
     def validate(self):
         self.validate_required(self.version, 'version')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
 class GetConsumerStatusResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, integreated_mode=None, inservice=None, realtime_monitor=None,
-                 live_monitor=None, cdn_url_redirect_flag=None, business_type=None, audit=None, comment=None, created_at=None,
-                 updated_at=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.integreated_mode = integreated_mode  # type: int
-        self.inservice = inservice      # type: bool
-        self.realtime_monitor = realtime_monitor  # type: bool
-        self.live_monitor = live_monitor  # type: bool
-        self.cdn_url_redirect_flag = cdn_url_redirect_flag  # type: bool
-        self.business_type = business_type  # type: str
-        self.audit = audit              # type: int
-        self.comment = comment          # type: str
-        self.created_at = created_at    # type: str
-        self.updated_at = updated_at    # type: str
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        integreated_mode: int = None,
+        inservice: bool = None,
+        realtime_monitor: bool = None,
+        live_monitor: bool = None,
+        cdn_url_redirect_flag: bool = None,
+        business_type: str = None,
+        audit: int = None,
+        comment: str = None,
+        created_at: str = None,
+        updated_at: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.integreated_mode = integreated_mode
+        self.inservice = inservice
+        self.realtime_monitor = realtime_monitor
+        self.live_monitor = live_monitor
+        self.cdn_url_redirect_flag = cdn_url_redirect_flag
+        self.business_type = business_type
+        self.audit = audit
+        self.comment = comment
+        self.created_at = created_at
+        self.updated_at = updated_at
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1444,96 +1955,101 @@ class GetConsumerStatusResponse(TeaModel):
         self.validate_required(self.updated_at, 'updated_at')
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['IntegreatedMode'] = self.integreated_mode
-        result['Inservice'] = self.inservice
-        result['RealtimeMonitor'] = self.realtime_monitor
-        result['LiveMonitor'] = self.live_monitor
-        result['CdnUrlRedirectFlag'] = self.cdn_url_redirect_flag
-        result['BusinessType'] = self.business_type
-        result['Audit'] = self.audit
-        result['Comment'] = self.comment
-        result['CreatedAt'] = self.created_at
-        result['UpdatedAt'] = self.updated_at
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.integreated_mode is not None:
+            result['IntegreatedMode'] = self.integreated_mode
+        if self.inservice is not None:
+            result['Inservice'] = self.inservice
+        if self.realtime_monitor is not None:
+            result['RealtimeMonitor'] = self.realtime_monitor
+        if self.live_monitor is not None:
+            result['LiveMonitor'] = self.live_monitor
+        if self.cdn_url_redirect_flag is not None:
+            result['CdnUrlRedirectFlag'] = self.cdn_url_redirect_flag
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.audit is not None:
+            result['Audit'] = self.audit
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.created_at is not None:
+            result['CreatedAt'] = self.created_at
+        if self.updated_at is not None:
+            result['UpdatedAt'] = self.updated_at
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.integreated_mode = map.get('IntegreatedMode')
-        self.inservice = map.get('Inservice')
-        self.realtime_monitor = map.get('RealtimeMonitor')
-        self.live_monitor = map.get('LiveMonitor')
-        self.cdn_url_redirect_flag = map.get('CdnUrlRedirectFlag')
-        self.business_type = map.get('BusinessType')
-        self.audit = map.get('Audit')
-        self.comment = map.get('Comment')
-        self.created_at = map.get('CreatedAt')
-        self.updated_at = map.get('UpdatedAt')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('IntegreatedMode') is not None:
+            self.integreated_mode = m.get('IntegreatedMode')
+        if m.get('Inservice') is not None:
+            self.inservice = m.get('Inservice')
+        if m.get('RealtimeMonitor') is not None:
+            self.realtime_monitor = m.get('RealtimeMonitor')
+        if m.get('LiveMonitor') is not None:
+            self.live_monitor = m.get('LiveMonitor')
+        if m.get('CdnUrlRedirectFlag') is not None:
+            self.cdn_url_redirect_flag = m.get('CdnUrlRedirectFlag')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('Audit') is not None:
+            self.audit = m.get('Audit')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('CreatedAt') is not None:
+            self.created_at = m.get('CreatedAt')
+        if m.get('UpdatedAt') is not None:
+            self.updated_at = m.get('UpdatedAt')
         return self
 
 
 class GetClientsRatioRequest(TeaModel):
-    def __init__(self, security_token=None, version=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
 
     def validate(self):
         self.validate_required(self.version, 'version')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        return self
-
-
-class GetClientsRatioResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetClientsRatioResponseDataList
-
-    def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.data_list, 'data_list')
-        if self.data_list:
-            self.data_list.validate()
-
-    def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        if self.data_list is not None:
-            result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
-            temp_model = GetClientsRatioResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
 class GetClientsRatioResponseDataListUsageData(TeaModel):
-    def __init__(self, name=None, rate=None, value=None):
-        self.name = name                # type: str
-        self.rate = rate                # type: str
-        self.value = value              # type: str
+    def __init__(
+        self,
+        name: str = None,
+        rate: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.rate = rate
+        self.value = value
 
     def validate(self):
         self.validate_required(self.name, 'name')
@@ -1541,22 +2057,32 @@ class GetClientsRatioResponseDataListUsageData(TeaModel):
         self.validate_required(self.value, 'value')
 
     def to_map(self):
-        result = {}
-        result['Name'] = self.name
-        result['Rate'] = self.rate
-        result['Value'] = self.value
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.rate is not None:
+            result['Rate'] = self.rate
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
-    def from_map(self, map={}):
-        self.name = map.get('Name')
-        self.rate = map.get('Rate')
-        self.value = map.get('Value')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Rate') is not None:
+            self.rate = m.get('Rate')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
 class GetClientsRatioResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetClientsRatioResponseDataListUsageData]
+    def __init__(
+        self,
+        usage_data: List[GetClientsRatioResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
 
     def validate(self):
         self.validate_required(self.usage_data, 'usage_data')
@@ -1566,38 +2092,85 @@ class GetClientsRatioResponseDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['UsageData'] = []
         if self.usage_data is not None:
             for k in self.usage_data:
                 result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
                 temp_model = GetClientsRatioResponseDataListUsageData()
                 self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
+        return self
+
+
+class GetClientsRatioResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetClientsRatioResponseDataList = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.data_list, 'data_list')
+        if self.data_list:
+            self.data_list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data_list is not None:
+            result['DataList'] = self.data_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
+            temp_model = GetClientsRatioResponseDataList()
+            self.data_list = temp_model.from_map(m['DataList'])
         return self
 
 
 class GetBandwidthDataRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, domain=None, region=None, isp_name=None,
-                 platform_type=None, business_type=None, start_date=None, end_date=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.domain = domain            # type: str
-        self.region = region            # type: str
-        self.isp_name = isp_name        # type: str
-        self.platform_type = platform_type  # type: str
-        self.business_type = business_type  # type: str
-        self.start_date = start_date    # type: str
-        self.end_date = end_date        # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        domain: str = None,
+        region: str = None,
+        isp_name: str = None,
+        platform_type: str = None,
+        business_type: str = None,
+        start_date: str = None,
+        end_date: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.domain = domain
+        self.region = region
+        self.isp_name = isp_name
+        self.platform_type = platform_type
+        self.business_type = business_type
+        self.start_date = start_date
+        self.end_date = end_date
 
     def validate(self):
         self.validate_required(self.version, 'version')
@@ -1609,37 +2182,174 @@ class GetBandwidthDataRequest(TeaModel):
         self.validate_required(self.end_date, 'end_date')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Domain'] = self.domain
-        result['Region'] = self.region
-        result['IspName'] = self.isp_name
-        result['PlatformType'] = self.platform_type
-        result['BusinessType'] = self.business_type
-        result['StartDate'] = self.start_date
-        result['EndDate'] = self.end_date
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.domain = map.get('Domain')
-        self.region = map.get('Region')
-        self.isp_name = map.get('IspName')
-        self.platform_type = map.get('PlatformType')
-        self.business_type = map.get('BusinessType')
-        self.start_date = map.get('StartDate')
-        self.end_date = map.get('EndDate')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        return self
+
+
+class GetBandwidthDataResponseDataListUsageDataValues(TeaModel):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
+        # Values
+        self.values = values
+
+    def validate(self):
+        self.validate_required(self.values, 'values')
+
+    def to_map(self):
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class GetBandwidthDataResponseDataListUsageData(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        values: GetBandwidthDataResponseDataListUsageDataValues = None,
+    ):
+        self.date = date
+        self.values = values
+
+    def validate(self):
+        self.validate_required(self.date, 'date')
+        self.validate_required(self.values, 'values')
+        if self.values:
+            self.values.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.values is not None:
+            result['Values'] = self.values.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Values') is not None:
+            temp_model = GetBandwidthDataResponseDataListUsageDataValues()
+            self.values = temp_model.from_map(m['Values'])
+        return self
+
+
+class GetBandwidthDataResponseDataList(TeaModel):
+    def __init__(
+        self,
+        usage_data: List[GetBandwidthDataResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
+
+    def validate(self):
+        self.validate_required(self.usage_data, 'usage_data')
+        if self.usage_data:
+            for k in self.usage_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['UsageData'] = []
+        if self.usage_data is not None:
+            for k in self.usage_data:
+                result['UsageData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.usage_data = []
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
+                temp_model = GetBandwidthDataResponseDataListUsageData()
+                self.usage_data.append(temp_model.from_map(k))
+        return self
+
+
+class GetBandwidthDataResponseLabels(TeaModel):
+    def __init__(
+        self,
+        label: List[str] = None,
+    ):
+        self.label = label
+
+    def validate(self):
+        self.validate_required(self.label, 'label')
+
+    def to_map(self):
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
         return self
 
 
 class GetBandwidthDataResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None, labels=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetBandwidthDataResponseDataList
-        self.labels = labels            # type: GetBandwidthDataResponseLabels
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetBandwidthDataResponseDataList = None,
+        labels: GetBandwidthDataResponseLabels = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
+        self.labels = labels
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1652,165 +2362,198 @@ class GetBandwidthDataResponse(TeaModel):
             self.labels.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data_list is not None:
             result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
         if self.labels is not None:
             result['Labels'] = self.labels.to_map()
-        else:
-            result['Labels'] = None
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
             temp_model = GetBandwidthDataResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
-        if map.get('Labels') is not None:
+            self.data_list = temp_model.from_map(m['DataList'])
+        if m.get('Labels') is not None:
             temp_model = GetBandwidthDataResponseLabels()
-            self.labels = temp_model.from_map(map['Labels'])
-        else:
-            self.labels = None
-        return self
-
-
-class GetBandwidthDataResponseDataListUsageDataValues(TeaModel):
-    def __init__(self, values=None):
-        # Values
-        self.values = values            # type: List[str]
-
-    def validate(self):
-        self.validate_required(self.values, 'values')
-
-    def to_map(self):
-        result = {}
-        result['Values'] = self.values
-        return result
-
-    def from_map(self, map={}):
-        self.values = map.get('Values')
-        return self
-
-
-class GetBandwidthDataResponseDataListUsageData(TeaModel):
-    def __init__(self, date=None, values=None):
-        self.date = date                # type: str
-        self.values = values            # type: GetBandwidthDataResponseDataListUsageDataValues
-
-    def validate(self):
-        self.validate_required(self.date, 'date')
-        self.validate_required(self.values, 'values')
-        if self.values:
-            self.values.validate()
-
-    def to_map(self):
-        result = {}
-        result['Date'] = self.date
-        if self.values is not None:
-            result['Values'] = self.values.to_map()
-        else:
-            result['Values'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.date = map.get('Date')
-        if map.get('Values') is not None:
-            temp_model = GetBandwidthDataResponseDataListUsageDataValues()
-            self.values = temp_model.from_map(map['Values'])
-        else:
-            self.values = None
-        return self
-
-
-class GetBandwidthDataResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetBandwidthDataResponseDataListUsageData]
-
-    def validate(self):
-        self.validate_required(self.usage_data, 'usage_data')
-        if self.usage_data:
-            for k in self.usage_data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        result['UsageData'] = []
-        if self.usage_data is not None:
-            for k in self.usage_data:
-                result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
-                temp_model = GetBandwidthDataResponseDataListUsageData()
-                self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
-        return self
-
-
-class GetBandwidthDataResponseLabels(TeaModel):
-    def __init__(self, label=None):
-        self.label = label              # type: List[str]
-
-    def validate(self):
-        self.validate_required(self.label, 'label')
-
-    def to_map(self):
-        result = {}
-        result['Label'] = self.label
-        return result
-
-    def from_map(self, map={}):
-        self.label = map.get('Label')
+            self.labels = temp_model.from_map(m['Labels'])
         return self
 
 
 class GetBalanceBandwidthDataRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, data_interval=None, resource_id=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.data_interval = data_interval  # type: int
-        self.resource_id = resource_id  # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        data_interval: int = None,
+        resource_id: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.data_interval = data_interval
+        self.resource_id = resource_id
 
     def validate(self):
         self.validate_required(self.version, 'version')
         self.validate_required(self.resource_id, 'resource_id')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['DataInterval'] = self.data_interval
-        result['ResourceId'] = self.resource_id
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.data_interval = map.get('DataInterval')
-        self.resource_id = map.get('ResourceId')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class GetBalanceBandwidthDataResponseDataListUsageDataValues(TeaModel):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
+        # Values
+        self.values = values
+
+    def validate(self):
+        self.validate_required(self.values, 'values')
+
+    def to_map(self):
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class GetBalanceBandwidthDataResponseDataListUsageData(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        values: GetBalanceBandwidthDataResponseDataListUsageDataValues = None,
+    ):
+        self.date = date
+        self.values = values
+
+    def validate(self):
+        self.validate_required(self.date, 'date')
+        self.validate_required(self.values, 'values')
+        if self.values:
+            self.values.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.values is not None:
+            result['Values'] = self.values.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Values') is not None:
+            temp_model = GetBalanceBandwidthDataResponseDataListUsageDataValues()
+            self.values = temp_model.from_map(m['Values'])
+        return self
+
+
+class GetBalanceBandwidthDataResponseDataList(TeaModel):
+    def __init__(
+        self,
+        usage_data: List[GetBalanceBandwidthDataResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
+
+    def validate(self):
+        self.validate_required(self.usage_data, 'usage_data')
+        if self.usage_data:
+            for k in self.usage_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['UsageData'] = []
+        if self.usage_data is not None:
+            for k in self.usage_data:
+                result['UsageData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.usage_data = []
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
+                temp_model = GetBalanceBandwidthDataResponseDataListUsageData()
+                self.usage_data.append(temp_model.from_map(k))
+        return self
+
+
+class GetBalanceBandwidthDataResponseLabels(TeaModel):
+    def __init__(
+        self,
+        label: List[str] = None,
+    ):
+        self.label = label
+
+    def validate(self):
+        self.validate_required(self.label, 'label')
+
+    def to_map(self):
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
         return self
 
 
 class GetBalanceBandwidthDataResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None, labels=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetBalanceBandwidthDataResponseDataList
-        self.labels = labels            # type: GetBalanceBandwidthDataResponseLabels
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetBalanceBandwidthDataResponseDataList = None,
+        labels: GetBalanceBandwidthDataResponseLabels = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
+        self.labels = labels
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -1823,138 +2566,44 @@ class GetBalanceBandwidthDataResponse(TeaModel):
             self.labels.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data_list is not None:
             result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
         if self.labels is not None:
             result['Labels'] = self.labels.to_map()
-        else:
-            result['Labels'] = None
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
             temp_model = GetBalanceBandwidthDataResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
-        if map.get('Labels') is not None:
+            self.data_list = temp_model.from_map(m['DataList'])
+        if m.get('Labels') is not None:
             temp_model = GetBalanceBandwidthDataResponseLabels()
-            self.labels = temp_model.from_map(map['Labels'])
-        else:
-            self.labels = None
-        return self
-
-
-class GetBalanceBandwidthDataResponseDataListUsageDataValues(TeaModel):
-    def __init__(self, values=None):
-        # Values
-        self.values = values            # type: List[str]
-
-    def validate(self):
-        self.validate_required(self.values, 'values')
-
-    def to_map(self):
-        result = {}
-        result['Values'] = self.values
-        return result
-
-    def from_map(self, map={}):
-        self.values = map.get('Values')
-        return self
-
-
-class GetBalanceBandwidthDataResponseDataListUsageData(TeaModel):
-    def __init__(self, date=None, values=None):
-        self.date = date                # type: str
-        self.values = values            # type: GetBalanceBandwidthDataResponseDataListUsageDataValues
-
-    def validate(self):
-        self.validate_required(self.date, 'date')
-        self.validate_required(self.values, 'values')
-        if self.values:
-            self.values.validate()
-
-    def to_map(self):
-        result = {}
-        result['Date'] = self.date
-        if self.values is not None:
-            result['Values'] = self.values.to_map()
-        else:
-            result['Values'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.date = map.get('Date')
-        if map.get('Values') is not None:
-            temp_model = GetBalanceBandwidthDataResponseDataListUsageDataValues()
-            self.values = temp_model.from_map(map['Values'])
-        else:
-            self.values = None
-        return self
-
-
-class GetBalanceBandwidthDataResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetBalanceBandwidthDataResponseDataListUsageData]
-
-    def validate(self):
-        self.validate_required(self.usage_data, 'usage_data')
-        if self.usage_data:
-            for k in self.usage_data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        result['UsageData'] = []
-        if self.usage_data is not None:
-            for k in self.usage_data:
-                result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
-                temp_model = GetBalanceBandwidthDataResponseDataListUsageData()
-                self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
-        return self
-
-
-class GetBalanceBandwidthDataResponseLabels(TeaModel):
-    def __init__(self, label=None):
-        self.label = label              # type: List[str]
-
-    def validate(self):
-        self.validate_required(self.label, 'label')
-
-    def to_map(self):
-        result = {}
-        result['Label'] = self.label
-        return result
-
-    def from_map(self, map={}):
-        self.label = map.get('Label')
+            self.labels = temp_model.from_map(m['Labels'])
         return self
 
 
 class GetControlRulesRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, page=None, page_size=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.page = page                # type: str
-        self.page_size = page_size      # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        page: str = None,
+        page_size: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.page = page
+        self.page_size = page_size
 
     def validate(self):
         self.validate_required(self.version, 'version')
@@ -1962,85 +2611,60 @@ class GetControlRulesRequest(TeaModel):
         self.validate_required(self.page_size, 'page_size')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Page'] = self.page
-        result['PageSize'] = self.page_size
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.page = map.get('Page')
-        self.page_size = map.get('PageSize')
-        return self
-
-
-class GetControlRulesResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, setting_list=None, pager=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.setting_list = setting_list  # type: GetControlRulesResponseSettingList
-        self.pager = pager              # type: GetControlRulesResponsePager
-
-    def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.setting_list, 'setting_list')
-        if self.setting_list:
-            self.setting_list.validate()
-        self.validate_required(self.pager, 'pager')
-        if self.pager:
-            self.pager.validate()
-
-    def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        if self.setting_list is not None:
-            result['SettingList'] = self.setting_list.to_map()
-        else:
-            result['SettingList'] = None
-        if self.pager is not None:
-            result['Pager'] = self.pager.to_map()
-        else:
-            result['Pager'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('SettingList') is not None:
-            temp_model = GetControlRulesResponseSettingList()
-            self.setting_list = temp_model.from_map(map['SettingList'])
-        else:
-            self.setting_list = None
-        if map.get('Pager') is not None:
-            temp_model = GetControlRulesResponsePager()
-            self.pager = temp_model.from_map(map['Pager'])
-        else:
-            self.pager = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
 class GetControlRulesResponseSettingListSetting(TeaModel):
-    def __init__(self, platform_type=None, app_version=None, isp_name=None, business_type=None, client_id=None,
-                 created_at=None, market_type=None, name=None, onoff=None, usable=None, region=None, resource_id=None,
-                 updated_at=None):
-        self.platform_type = platform_type  # type: str
-        self.app_version = app_version  # type: str
-        self.isp_name = isp_name        # type: str
-        self.business_type = business_type  # type: str
-        self.client_id = client_id      # type: str
-        self.created_at = created_at    # type: str
-        self.market_type = market_type  # type: str
-        self.name = name                # type: str
-        self.onoff = onoff              # type: bool
-        self.usable = usable            # type: bool
-        self.region = region            # type: str
-        self.resource_id = resource_id  # type: str
-        self.updated_at = updated_at    # type: str
+    def __init__(
+        self,
+        platform_type: str = None,
+        app_version: str = None,
+        isp_name: str = None,
+        business_type: str = None,
+        client_id: str = None,
+        created_at: str = None,
+        market_type: str = None,
+        name: str = None,
+        onoff: bool = None,
+        usable: bool = None,
+        region: str = None,
+        resource_id: str = None,
+        updated_at: str = None,
+    ):
+        self.platform_type = platform_type
+        self.app_version = app_version
+        self.isp_name = isp_name
+        self.business_type = business_type
+        self.client_id = client_id
+        self.created_at = created_at
+        self.market_type = market_type
+        self.name = name
+        self.onoff = onoff
+        self.usable = usable
+        self.region = region
+        self.resource_id = resource_id
+        self.updated_at = updated_at
 
     def validate(self):
         self.validate_required(self.platform_type, 'platform_type')
@@ -2058,42 +2682,72 @@ class GetControlRulesResponseSettingListSetting(TeaModel):
         self.validate_required(self.updated_at, 'updated_at')
 
     def to_map(self):
-        result = {}
-        result['PlatformType'] = self.platform_type
-        result['AppVersion'] = self.app_version
-        result['IspName'] = self.isp_name
-        result['BusinessType'] = self.business_type
-        result['ClientId'] = self.client_id
-        result['CreatedAt'] = self.created_at
-        result['MarketType'] = self.market_type
-        result['Name'] = self.name
-        result['Onoff'] = self.onoff
-        result['Usable'] = self.usable
-        result['Region'] = self.region
-        result['ResourceId'] = self.resource_id
-        result['UpdatedAt'] = self.updated_at
+        result = dict()
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.created_at is not None:
+            result['CreatedAt'] = self.created_at
+        if self.market_type is not None:
+            result['MarketType'] = self.market_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.onoff is not None:
+            result['Onoff'] = self.onoff
+        if self.usable is not None:
+            result['Usable'] = self.usable
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.updated_at is not None:
+            result['UpdatedAt'] = self.updated_at
         return result
 
-    def from_map(self, map={}):
-        self.platform_type = map.get('PlatformType')
-        self.app_version = map.get('AppVersion')
-        self.isp_name = map.get('IspName')
-        self.business_type = map.get('BusinessType')
-        self.client_id = map.get('ClientId')
-        self.created_at = map.get('CreatedAt')
-        self.market_type = map.get('MarketType')
-        self.name = map.get('Name')
-        self.onoff = map.get('Onoff')
-        self.usable = map.get('Usable')
-        self.region = map.get('Region')
-        self.resource_id = map.get('ResourceId')
-        self.updated_at = map.get('UpdatedAt')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('CreatedAt') is not None:
+            self.created_at = m.get('CreatedAt')
+        if m.get('MarketType') is not None:
+            self.market_type = m.get('MarketType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Onoff') is not None:
+            self.onoff = m.get('Onoff')
+        if m.get('Usable') is not None:
+            self.usable = m.get('Usable')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('UpdatedAt') is not None:
+            self.updated_at = m.get('UpdatedAt')
         return self
 
 
 class GetControlRulesResponseSettingList(TeaModel):
-    def __init__(self, setting=None):
-        self.setting = setting          # type: List[GetControlRulesResponseSettingListSetting]
+    def __init__(
+        self,
+        setting: List[GetControlRulesResponseSettingListSetting] = None,
+    ):
+        self.setting = setting
 
     def validate(self):
         self.validate_required(self.setting, 'setting')
@@ -2103,31 +2757,33 @@ class GetControlRulesResponseSettingList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['Setting'] = []
         if self.setting is not None:
             for k in self.setting:
                 result['Setting'].append(k.to_map() if k else None)
-        else:
-            result['Setting'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.setting = []
-        if map.get('Setting') is not None:
-            for k in map.get('Setting'):
+        if m.get('Setting') is not None:
+            for k in m.get('Setting'):
                 temp_model = GetControlRulesResponseSettingListSetting()
                 self.setting.append(temp_model.from_map(k))
-        else:
-            self.setting = None
         return self
 
 
 class GetControlRulesResponsePager(TeaModel):
-    def __init__(self, page=None, total=None, page_size=None):
-        self.page = page                # type: int
-        self.total = total              # type: int
-        self.page_size = page_size      # type: int
+    def __init__(
+        self,
+        page: int = None,
+        total: int = None,
+        page_size: int = None,
+    ):
+        self.page = page
+        self.total = total
+        self.page_size = page_size
 
     def validate(self):
         self.validate_required(self.page, 'page')
@@ -2135,44 +2791,115 @@ class GetControlRulesResponsePager(TeaModel):
         self.validate_required(self.page_size, 'page_size')
 
     def to_map(self):
-        result = {}
-        result['Page'] = self.page
-        result['Total'] = self.total
-        result['PageSize'] = self.page_size
+        result = dict()
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
-    def from_map(self, map={}):
-        self.page = map.get('Page')
-        self.total = map.get('Total')
-        self.page_size = map.get('PageSize')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetControlRulesResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        setting_list: GetControlRulesResponseSettingList = None,
+        pager: GetControlRulesResponsePager = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.setting_list = setting_list
+        self.pager = pager
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.setting_list, 'setting_list')
+        if self.setting_list:
+            self.setting_list.validate()
+        self.validate_required(self.pager, 'pager')
+        if self.pager:
+            self.pager.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.setting_list is not None:
+            result['SettingList'] = self.setting_list.to_map()
+        if self.pager is not None:
+            result['Pager'] = self.pager.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('SettingList') is not None:
+            temp_model = GetControlRulesResponseSettingList()
+            self.setting_list = temp_model.from_map(m['SettingList'])
+        if m.get('Pager') is not None:
+            temp_model = GetControlRulesResponsePager()
+            self.pager = temp_model.from_map(m['Pager'])
         return self
 
 
 class GetDomainCountRequest(TeaModel):
-    def __init__(self, security_token=None, version=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
 
     def validate(self):
         self.validate_required(self.version, 'version')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
 class GetDomainCountResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data = data                # type: int
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data: int = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data = data
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2180,48 +2907,71 @@ class GetDomainCountResponse(TeaModel):
         self.validate_required(self.data, 'data')
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['Data'] = self.data
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.data = map.get('Data')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
         return self
 
 
 class GetCurrentModeRequest(TeaModel):
-    def __init__(self, security_token=None, version=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
 
     def validate(self):
         self.validate_required(self.version, 'version')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
 class GetCurrentModeResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, mode_code=None, padding_mode_code=None, effective_at=None,
-                 estimate_bandwidth=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.mode_code = mode_code      # type: int
-        self.padding_mode_code = padding_mode_code  # type: int
-        self.effective_at = effective_at  # type: int
-        self.estimate_bandwidth = estimate_bandwidth  # type: int
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        mode_code: int = None,
+        padding_mode_code: int = None,
+        effective_at: int = None,
+        estimate_bandwidth: int = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.mode_code = mode_code
+        self.padding_mode_code = padding_mode_code
+        self.effective_at = effective_at
+        self.estimate_bandwidth = estimate_bandwidth
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2232,37 +2982,60 @@ class GetCurrentModeResponse(TeaModel):
         self.validate_required(self.estimate_bandwidth, 'estimate_bandwidth')
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        result['ModeCode'] = self.mode_code
-        result['PaddingModeCode'] = self.padding_mode_code
-        result['EffectiveAt'] = self.effective_at
-        result['EstimateBandwidth'] = self.estimate_bandwidth
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.mode_code is not None:
+            result['ModeCode'] = self.mode_code
+        if self.padding_mode_code is not None:
+            result['PaddingModeCode'] = self.padding_mode_code
+        if self.effective_at is not None:
+            result['EffectiveAt'] = self.effective_at
+        if self.estimate_bandwidth is not None:
+            result['EstimateBandwidth'] = self.estimate_bandwidth
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        self.mode_code = map.get('ModeCode')
-        self.padding_mode_code = map.get('PaddingModeCode')
-        self.effective_at = map.get('EffectiveAt')
-        self.estimate_bandwidth = map.get('EstimateBandwidth')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ModeCode') is not None:
+            self.mode_code = m.get('ModeCode')
+        if m.get('PaddingModeCode') is not None:
+            self.padding_mode_code = m.get('PaddingModeCode')
+        if m.get('EffectiveAt') is not None:
+            self.effective_at = m.get('EffectiveAt')
+        if m.get('EstimateBandwidth') is not None:
+            self.estimate_bandwidth = m.get('EstimateBandwidth')
         return self
 
 
 class GetCoverRateDataRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, domain=None, region=None, isp_name=None,
-                 platform_type=None, business_type=None, start_date=None, end_date=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.domain = domain            # type: str
-        self.region = region            # type: str
-        self.isp_name = isp_name        # type: str
-        self.platform_type = platform_type  # type: str
-        self.business_type = business_type  # type: str
-        self.start_date = start_date    # type: str
-        self.end_date = end_date        # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        domain: str = None,
+        region: str = None,
+        isp_name: str = None,
+        platform_type: str = None,
+        business_type: str = None,
+        start_date: str = None,
+        end_date: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.domain = domain
+        self.region = region
+        self.isp_name = isp_name
+        self.platform_type = platform_type
+        self.business_type = business_type
+        self.start_date = start_date
+        self.end_date = end_date
 
     def validate(self):
         self.validate_required(self.version, 'version')
@@ -2274,37 +3047,174 @@ class GetCoverRateDataRequest(TeaModel):
         self.validate_required(self.end_date, 'end_date')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Domain'] = self.domain
-        result['Region'] = self.region
-        result['IspName'] = self.isp_name
-        result['PlatformType'] = self.platform_type
-        result['BusinessType'] = self.business_type
-        result['StartDate'] = self.start_date
-        result['EndDate'] = self.end_date
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.domain = map.get('Domain')
-        self.region = map.get('Region')
-        self.isp_name = map.get('IspName')
-        self.platform_type = map.get('PlatformType')
-        self.business_type = map.get('BusinessType')
-        self.start_date = map.get('StartDate')
-        self.end_date = map.get('EndDate')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        return self
+
+
+class GetCoverRateDataResponseDataListUsageDataValues(TeaModel):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
+        # Values
+        self.values = values
+
+    def validate(self):
+        self.validate_required(self.values, 'values')
+
+    def to_map(self):
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class GetCoverRateDataResponseDataListUsageData(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        values: GetCoverRateDataResponseDataListUsageDataValues = None,
+    ):
+        self.date = date
+        self.values = values
+
+    def validate(self):
+        self.validate_required(self.date, 'date')
+        self.validate_required(self.values, 'values')
+        if self.values:
+            self.values.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.values is not None:
+            result['Values'] = self.values.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Values') is not None:
+            temp_model = GetCoverRateDataResponseDataListUsageDataValues()
+            self.values = temp_model.from_map(m['Values'])
+        return self
+
+
+class GetCoverRateDataResponseDataList(TeaModel):
+    def __init__(
+        self,
+        usage_data: List[GetCoverRateDataResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
+
+    def validate(self):
+        self.validate_required(self.usage_data, 'usage_data')
+        if self.usage_data:
+            for k in self.usage_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['UsageData'] = []
+        if self.usage_data is not None:
+            for k in self.usage_data:
+                result['UsageData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.usage_data = []
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
+                temp_model = GetCoverRateDataResponseDataListUsageData()
+                self.usage_data.append(temp_model.from_map(k))
+        return self
+
+
+class GetCoverRateDataResponseLabels(TeaModel):
+    def __init__(
+        self,
+        label: List[str] = None,
+    ):
+        self.label = label
+
+    def validate(self):
+        self.validate_required(self.label, 'label')
+
+    def to_map(self):
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
         return self
 
 
 class GetCoverRateDataResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None, labels=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetCoverRateDataResponseDataList
-        self.labels = labels            # type: GetCoverRateDataResponseLabels
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetCoverRateDataResponseDataList = None,
+        labels: GetCoverRateDataResponseLabels = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
+        self.labels = labels
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2317,138 +3227,44 @@ class GetCoverRateDataResponse(TeaModel):
             self.labels.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data_list is not None:
             result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
         if self.labels is not None:
             result['Labels'] = self.labels.to_map()
-        else:
-            result['Labels'] = None
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
             temp_model = GetCoverRateDataResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
-        if map.get('Labels') is not None:
+            self.data_list = temp_model.from_map(m['DataList'])
+        if m.get('Labels') is not None:
             temp_model = GetCoverRateDataResponseLabels()
-            self.labels = temp_model.from_map(map['Labels'])
-        else:
-            self.labels = None
-        return self
-
-
-class GetCoverRateDataResponseDataListUsageDataValues(TeaModel):
-    def __init__(self, values=None):
-        # Values
-        self.values = values            # type: List[str]
-
-    def validate(self):
-        self.validate_required(self.values, 'values')
-
-    def to_map(self):
-        result = {}
-        result['Values'] = self.values
-        return result
-
-    def from_map(self, map={}):
-        self.values = map.get('Values')
-        return self
-
-
-class GetCoverRateDataResponseDataListUsageData(TeaModel):
-    def __init__(self, date=None, values=None):
-        self.date = date                # type: str
-        self.values = values            # type: GetCoverRateDataResponseDataListUsageDataValues
-
-    def validate(self):
-        self.validate_required(self.date, 'date')
-        self.validate_required(self.values, 'values')
-        if self.values:
-            self.values.validate()
-
-    def to_map(self):
-        result = {}
-        result['Date'] = self.date
-        if self.values is not None:
-            result['Values'] = self.values.to_map()
-        else:
-            result['Values'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.date = map.get('Date')
-        if map.get('Values') is not None:
-            temp_model = GetCoverRateDataResponseDataListUsageDataValues()
-            self.values = temp_model.from_map(map['Values'])
-        else:
-            self.values = None
-        return self
-
-
-class GetCoverRateDataResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetCoverRateDataResponseDataListUsageData]
-
-    def validate(self):
-        self.validate_required(self.usage_data, 'usage_data')
-        if self.usage_data:
-            for k in self.usage_data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        result['UsageData'] = []
-        if self.usage_data is not None:
-            for k in self.usage_data:
-                result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
-                temp_model = GetCoverRateDataResponseDataListUsageData()
-                self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
-        return self
-
-
-class GetCoverRateDataResponseLabels(TeaModel):
-    def __init__(self, label=None):
-        self.label = label              # type: List[str]
-
-    def validate(self):
-        self.validate_required(self.label, 'label')
-
-    def to_map(self):
-        result = {}
-        result['Label'] = self.label
-        return result
-
-    def from_map(self, map={}):
-        self.label = map.get('Label')
+            self.labels = temp_model.from_map(m['Labels'])
         return self
 
 
 class GetFeeHistoryRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, page=None, page_size=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.page = page                # type: str
-        self.page_size = page_size      # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        page: str = None,
+        page_size: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.page = page
+        self.page_size = page_size
 
     def validate(self):
         self.validate_required(self.version, 'version')
@@ -2456,86 +3272,62 @@ class GetFeeHistoryRequest(TeaModel):
         self.validate_required(self.page_size, 'page_size')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Page'] = self.page
-        result['PageSize'] = self.page_size
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.page = map.get('Page')
-        self.page_size = map.get('PageSize')
-        return self
-
-
-class GetFeeHistoryResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, fee_list=None, pager=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.fee_list = fee_list        # type: GetFeeHistoryResponseFeeList
-        self.pager = pager              # type: GetFeeHistoryResponsePager
-
-    def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.fee_list, 'fee_list')
-        if self.fee_list:
-            self.fee_list.validate()
-        self.validate_required(self.pager, 'pager')
-        if self.pager:
-            self.pager.validate()
-
-    def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        if self.fee_list is not None:
-            result['FeeList'] = self.fee_list.to_map()
-        else:
-            result['FeeList'] = None
-        if self.pager is not None:
-            result['Pager'] = self.pager.to_map()
-        else:
-            result['Pager'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('FeeList') is not None:
-            temp_model = GetFeeHistoryResponseFeeList()
-            self.fee_list = temp_model.from_map(map['FeeList'])
-        else:
-            self.fee_list = None
-        if map.get('Pager') is not None:
-            temp_model = GetFeeHistoryResponsePager()
-            self.pager = temp_model.from_map(map['Pager'])
-        else:
-            self.pager = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
 class GetFeeHistoryResponseFeeListFee(TeaModel):
-    def __init__(self, date=None, mode=None, total_bandwidth=None, level_two_bandwidth=None,
-                 level_three_bandwidth=None, total_traffic=None, level_two_traffic=None, level_three_traffic=None, time_span=None,
-                 business_type=None, start_date=None, end_date=None, resource_id=None, flow_out=None):
-        self.date = date                # type: str
-        self.mode = mode                # type: str
-        self.total_bandwidth = total_bandwidth  # type: int
-        self.level_two_bandwidth = level_two_bandwidth  # type: int
-        self.level_three_bandwidth = level_three_bandwidth  # type: int
-        self.total_traffic = total_traffic  # type: int
-        self.level_two_traffic = level_two_traffic  # type: int
-        self.level_three_traffic = level_three_traffic  # type: int
-        self.time_span = time_span      # type: str
-        self.business_type = business_type  # type: str
-        self.start_date = start_date    # type: str
-        self.end_date = end_date        # type: str
-        self.resource_id = resource_id  # type: str
-        self.flow_out = flow_out        # type: int
+    def __init__(
+        self,
+        date: str = None,
+        mode: str = None,
+        total_bandwidth: int = None,
+        level_two_bandwidth: int = None,
+        level_three_bandwidth: int = None,
+        total_traffic: int = None,
+        level_two_traffic: int = None,
+        level_three_traffic: int = None,
+        time_span: str = None,
+        business_type: str = None,
+        start_date: str = None,
+        end_date: str = None,
+        resource_id: str = None,
+        flow_out: int = None,
+    ):
+        self.date = date
+        self.mode = mode
+        self.total_bandwidth = total_bandwidth
+        self.level_two_bandwidth = level_two_bandwidth
+        self.level_three_bandwidth = level_three_bandwidth
+        self.total_traffic = total_traffic
+        self.level_two_traffic = level_two_traffic
+        self.level_three_traffic = level_three_traffic
+        self.time_span = time_span
+        self.business_type = business_type
+        self.start_date = start_date
+        self.end_date = end_date
+        self.resource_id = resource_id
+        self.flow_out = flow_out
 
     def validate(self):
         self.validate_required(self.date, 'date')
@@ -2554,44 +3346,76 @@ class GetFeeHistoryResponseFeeListFee(TeaModel):
         self.validate_required(self.flow_out, 'flow_out')
 
     def to_map(self):
-        result = {}
-        result['Date'] = self.date
-        result['Mode'] = self.mode
-        result['TotalBandwidth'] = self.total_bandwidth
-        result['LevelTwoBandwidth'] = self.level_two_bandwidth
-        result['LevelThreeBandwidth'] = self.level_three_bandwidth
-        result['TotalTraffic'] = self.total_traffic
-        result['LevelTwoTraffic'] = self.level_two_traffic
-        result['LevelThreeTraffic'] = self.level_three_traffic
-        result['TimeSpan'] = self.time_span
-        result['BusinessType'] = self.business_type
-        result['StartDate'] = self.start_date
-        result['EndDate'] = self.end_date
-        result['ResourceId'] = self.resource_id
-        result['FlowOut'] = self.flow_out
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.total_bandwidth is not None:
+            result['TotalBandwidth'] = self.total_bandwidth
+        if self.level_two_bandwidth is not None:
+            result['LevelTwoBandwidth'] = self.level_two_bandwidth
+        if self.level_three_bandwidth is not None:
+            result['LevelThreeBandwidth'] = self.level_three_bandwidth
+        if self.total_traffic is not None:
+            result['TotalTraffic'] = self.total_traffic
+        if self.level_two_traffic is not None:
+            result['LevelTwoTraffic'] = self.level_two_traffic
+        if self.level_three_traffic is not None:
+            result['LevelThreeTraffic'] = self.level_three_traffic
+        if self.time_span is not None:
+            result['TimeSpan'] = self.time_span
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.flow_out is not None:
+            result['FlowOut'] = self.flow_out
         return result
 
-    def from_map(self, map={}):
-        self.date = map.get('Date')
-        self.mode = map.get('Mode')
-        self.total_bandwidth = map.get('TotalBandwidth')
-        self.level_two_bandwidth = map.get('LevelTwoBandwidth')
-        self.level_three_bandwidth = map.get('LevelThreeBandwidth')
-        self.total_traffic = map.get('TotalTraffic')
-        self.level_two_traffic = map.get('LevelTwoTraffic')
-        self.level_three_traffic = map.get('LevelThreeTraffic')
-        self.time_span = map.get('TimeSpan')
-        self.business_type = map.get('BusinessType')
-        self.start_date = map.get('StartDate')
-        self.end_date = map.get('EndDate')
-        self.resource_id = map.get('ResourceId')
-        self.flow_out = map.get('FlowOut')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('TotalBandwidth') is not None:
+            self.total_bandwidth = m.get('TotalBandwidth')
+        if m.get('LevelTwoBandwidth') is not None:
+            self.level_two_bandwidth = m.get('LevelTwoBandwidth')
+        if m.get('LevelThreeBandwidth') is not None:
+            self.level_three_bandwidth = m.get('LevelThreeBandwidth')
+        if m.get('TotalTraffic') is not None:
+            self.total_traffic = m.get('TotalTraffic')
+        if m.get('LevelTwoTraffic') is not None:
+            self.level_two_traffic = m.get('LevelTwoTraffic')
+        if m.get('LevelThreeTraffic') is not None:
+            self.level_three_traffic = m.get('LevelThreeTraffic')
+        if m.get('TimeSpan') is not None:
+            self.time_span = m.get('TimeSpan')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('FlowOut') is not None:
+            self.flow_out = m.get('FlowOut')
         return self
 
 
 class GetFeeHistoryResponseFeeList(TeaModel):
-    def __init__(self, fee=None):
-        self.fee = fee                  # type: List[GetFeeHistoryResponseFeeListFee]
+    def __init__(
+        self,
+        fee: List[GetFeeHistoryResponseFeeListFee] = None,
+    ):
+        self.fee = fee
 
     def validate(self):
         self.validate_required(self.fee, 'fee')
@@ -2601,31 +3425,33 @@ class GetFeeHistoryResponseFeeList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['Fee'] = []
         if self.fee is not None:
             for k in self.fee:
                 result['Fee'].append(k.to_map() if k else None)
-        else:
-            result['Fee'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.fee = []
-        if map.get('Fee') is not None:
-            for k in map.get('Fee'):
+        if m.get('Fee') is not None:
+            for k in m.get('Fee'):
                 temp_model = GetFeeHistoryResponseFeeListFee()
                 self.fee.append(temp_model.from_map(k))
-        else:
-            self.fee = None
         return self
 
 
 class GetFeeHistoryResponsePager(TeaModel):
-    def __init__(self, page=None, total=None, page_size=None):
-        self.page = page                # type: int
-        self.total = total              # type: int
-        self.page_size = page_size      # type: int
+    def __init__(
+        self,
+        page: int = None,
+        total: int = None,
+        page_size: int = None,
+    ):
+        self.page = page
+        self.total = total
+        self.page_size = page_size
 
     def validate(self):
         self.validate_required(self.page, 'page')
@@ -2633,104 +3459,163 @@ class GetFeeHistoryResponsePager(TeaModel):
         self.validate_required(self.page_size, 'page_size')
 
     def to_map(self):
-        result = {}
-        result['Page'] = self.page
-        result['Total'] = self.total
-        result['PageSize'] = self.page_size
+        result = dict()
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
-    def from_map(self, map={}):
-        self.page = map.get('Page')
-        self.total = map.get('Total')
-        self.page_size = map.get('PageSize')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetFeeHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        fee_list: GetFeeHistoryResponseFeeList = None,
+        pager: GetFeeHistoryResponsePager = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.fee_list = fee_list
+        self.pager = pager
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.fee_list, 'fee_list')
+        if self.fee_list:
+            self.fee_list.validate()
+        self.validate_required(self.pager, 'pager')
+        if self.pager:
+            self.pager.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.fee_list is not None:
+            result['FeeList'] = self.fee_list.to_map()
+        if self.pager is not None:
+            result['Pager'] = self.pager.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('FeeList') is not None:
+            temp_model = GetFeeHistoryResponseFeeList()
+            self.fee_list = temp_model.from_map(m['FeeList'])
+        if m.get('Pager') is not None:
+            temp_model = GetFeeHistoryResponsePager()
+            self.pager = temp_model.from_map(m['Pager'])
         return self
 
 
 class GetExpenseSummaryRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, start_date=None, end_date=None, domain=None, region=None,
-                 isp_name=None, platform_type=None, business_type=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.start_date = start_date    # type: str
-        self.end_date = end_date        # type: str
-        self.domain = domain            # type: str
-        self.region = region            # type: str
-        self.isp_name = isp_name        # type: str
-        self.platform_type = platform_type  # type: str
-        self.business_type = business_type  # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        start_date: str = None,
+        end_date: str = None,
+        domain: str = None,
+        region: str = None,
+        isp_name: str = None,
+        platform_type: str = None,
+        business_type: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.start_date = start_date
+        self.end_date = end_date
+        self.domain = domain
+        self.region = region
+        self.isp_name = isp_name
+        self.platform_type = platform_type
+        self.business_type = business_type
 
     def validate(self):
         self.validate_required(self.version, 'version')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['StartDate'] = self.start_date
-        result['EndDate'] = self.end_date
-        result['Domain'] = self.domain
-        result['Region'] = self.region
-        result['IspName'] = self.isp_name
-        result['PlatformType'] = self.platform_type
-        result['BusinessType'] = self.business_type
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.start_date = map.get('StartDate')
-        self.end_date = map.get('EndDate')
-        self.domain = map.get('Domain')
-        self.region = map.get('Region')
-        self.isp_name = map.get('IspName')
-        self.platform_type = map.get('PlatformType')
-        self.business_type = map.get('BusinessType')
-        return self
-
-
-class GetExpenseSummaryResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data = data                # type: GetExpenseSummaryResponseData
-
-    def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.data, 'data')
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        else:
-            result['Data'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('Data') is not None:
-            temp_model = GetExpenseSummaryResponseData()
-            self.data = temp_model.from_map(map['Data'])
-        else:
-            self.data = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
         return self
 
 
 class GetExpenseSummaryResponseData(TeaModel):
-    def __init__(self, total_traffic=None, total_uv=None, share_rate=None, cover_rate=None, forecast_fluency=None,
-                 top_bandwidth=None):
-        self.total_traffic = total_traffic  # type: int
-        self.total_uv = total_uv        # type: int
-        self.share_rate = share_rate    # type: float
-        self.cover_rate = cover_rate    # type: float
-        self.forecast_fluency = forecast_fluency  # type: float
-        self.top_bandwidth = top_bandwidth  # type: int
+    def __init__(
+        self,
+        total_traffic: int = None,
+        total_uv: int = None,
+        share_rate: float = None,
+        cover_rate: float = None,
+        forecast_fluency: float = None,
+        top_bandwidth: int = None,
+    ):
+        self.total_traffic = total_traffic
+        self.total_uv = total_uv
+        self.share_rate = share_rate
+        self.cover_rate = cover_rate
+        self.forecast_fluency = forecast_fluency
+        self.top_bandwidth = top_bandwidth
 
     def validate(self):
         self.validate_required(self.total_traffic, 'total_traffic')
@@ -2741,32 +3626,92 @@ class GetExpenseSummaryResponseData(TeaModel):
         self.validate_required(self.top_bandwidth, 'top_bandwidth')
 
     def to_map(self):
-        result = {}
-        result['TotalTraffic'] = self.total_traffic
-        result['TotalUV'] = self.total_uv
-        result['ShareRate'] = self.share_rate
-        result['CoverRate'] = self.cover_rate
-        result['ForecastFluency'] = self.forecast_fluency
-        result['TopBandwidth'] = self.top_bandwidth
+        result = dict()
+        if self.total_traffic is not None:
+            result['TotalTraffic'] = self.total_traffic
+        if self.total_uv is not None:
+            result['TotalUV'] = self.total_uv
+        if self.share_rate is not None:
+            result['ShareRate'] = self.share_rate
+        if self.cover_rate is not None:
+            result['CoverRate'] = self.cover_rate
+        if self.forecast_fluency is not None:
+            result['ForecastFluency'] = self.forecast_fluency
+        if self.top_bandwidth is not None:
+            result['TopBandwidth'] = self.top_bandwidth
         return result
 
-    def from_map(self, map={}):
-        self.total_traffic = map.get('TotalTraffic')
-        self.total_uv = map.get('TotalUV')
-        self.share_rate = map.get('ShareRate')
-        self.cover_rate = map.get('CoverRate')
-        self.forecast_fluency = map.get('ForecastFluency')
-        self.top_bandwidth = map.get('TopBandwidth')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalTraffic') is not None:
+            self.total_traffic = m.get('TotalTraffic')
+        if m.get('TotalUV') is not None:
+            self.total_uv = m.get('TotalUV')
+        if m.get('ShareRate') is not None:
+            self.share_rate = m.get('ShareRate')
+        if m.get('CoverRate') is not None:
+            self.cover_rate = m.get('CoverRate')
+        if m.get('ForecastFluency') is not None:
+            self.forecast_fluency = m.get('ForecastFluency')
+        if m.get('TopBandwidth') is not None:
+            self.top_bandwidth = m.get('TopBandwidth')
+        return self
+
+
+class GetExpenseSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data: GetExpenseSummaryResponseData = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data = data
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.data, 'data')
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetExpenseSummaryResponseData()
+            self.data = temp_model.from_map(m['Data'])
         return self
 
 
 class GetDomainsRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, page=None, page_size=None, domain=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.page = page                # type: str
-        self.page_size = page_size      # type: str
-        self.domain = domain            # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        page: str = None,
+        page_size: str = None,
+        domain: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.page = page
+        self.page_size = page_size
+        self.domain = domain
 
     def validate(self):
         self.validate_required(self.version, 'version')
@@ -2774,29 +3719,180 @@ class GetDomainsRequest(TeaModel):
         self.validate_required(self.page_size, 'page_size')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Page'] = self.page
-        result['PageSize'] = self.page_size
-        result['Domain'] = self.domain
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.domain is not None:
+            result['Domain'] = self.domain
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.page = map.get('Page')
-        self.page_size = map.get('PageSize')
-        self.domain = map.get('Domain')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        return self
+
+
+class GetDomainsResponseDataListUsageData(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        domain: str = None,
+        business_type: str = None,
+        status: bool = None,
+        created_at: str = None,
+        updated_at: str = None,
+        slice_format: str = None,
+    ):
+        self.resource_id = resource_id
+        self.domain = domain
+        self.business_type = business_type
+        self.status = status
+        self.created_at = created_at
+        self.updated_at = updated_at
+        self.slice_format = slice_format
+
+    def validate(self):
+        self.validate_required(self.resource_id, 'resource_id')
+        self.validate_required(self.domain, 'domain')
+        self.validate_required(self.business_type, 'business_type')
+        self.validate_required(self.status, 'status')
+        self.validate_required(self.created_at, 'created_at')
+        self.validate_required(self.updated_at, 'updated_at')
+        self.validate_required(self.slice_format, 'slice_format')
+
+    def to_map(self):
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.created_at is not None:
+            result['CreatedAt'] = self.created_at
+        if self.updated_at is not None:
+            result['UpdatedAt'] = self.updated_at
+        if self.slice_format is not None:
+            result['SliceFormat'] = self.slice_format
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('CreatedAt') is not None:
+            self.created_at = m.get('CreatedAt')
+        if m.get('UpdatedAt') is not None:
+            self.updated_at = m.get('UpdatedAt')
+        if m.get('SliceFormat') is not None:
+            self.slice_format = m.get('SliceFormat')
+        return self
+
+
+class GetDomainsResponseDataList(TeaModel):
+    def __init__(
+        self,
+        usage_data: List[GetDomainsResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
+
+    def validate(self):
+        self.validate_required(self.usage_data, 'usage_data')
+        if self.usage_data:
+            for k in self.usage_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['UsageData'] = []
+        if self.usage_data is not None:
+            for k in self.usage_data:
+                result['UsageData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.usage_data = []
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
+                temp_model = GetDomainsResponseDataListUsageData()
+                self.usage_data.append(temp_model.from_map(k))
+        return self
+
+
+class GetDomainsResponsePager(TeaModel):
+    def __init__(
+        self,
+        page: int = None,
+        total: int = None,
+        page_size: int = None,
+    ):
+        self.page = page
+        self.total = total
+        self.page_size = page_size
+
+    def validate(self):
+        self.validate_required(self.page, 'page')
+        self.validate_required(self.total, 'total')
+        self.validate_required(self.page_size, 'page_size')
+
+    def to_map(self):
+        result = dict()
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
 class GetDomainsResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None, pager=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetDomainsResponseDataList
-        self.pager = pager              # type: GetDomainsResponsePager
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetDomainsResponseDataList = None,
+        pager: GetDomainsResponsePager = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
+        self.pager = pager
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -2809,206 +3905,97 @@ class GetDomainsResponse(TeaModel):
             self.pager.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data_list is not None:
             result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
         if self.pager is not None:
             result['Pager'] = self.pager.to_map()
-        else:
-            result['Pager'] = None
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
             temp_model = GetDomainsResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
-        if map.get('Pager') is not None:
+            self.data_list = temp_model.from_map(m['DataList'])
+        if m.get('Pager') is not None:
             temp_model = GetDomainsResponsePager()
-            self.pager = temp_model.from_map(map['Pager'])
-        else:
-            self.pager = None
-        return self
-
-
-class GetDomainsResponseDataListUsageData(TeaModel):
-    def __init__(self, resource_id=None, domain=None, business_type=None, status=None, created_at=None,
-                 updated_at=None, slice_format=None):
-        self.resource_id = resource_id  # type: str
-        self.domain = domain            # type: str
-        self.business_type = business_type  # type: str
-        self.status = status            # type: bool
-        self.created_at = created_at    # type: str
-        self.updated_at = updated_at    # type: str
-        self.slice_format = slice_format  # type: str
-
-    def validate(self):
-        self.validate_required(self.resource_id, 'resource_id')
-        self.validate_required(self.domain, 'domain')
-        self.validate_required(self.business_type, 'business_type')
-        self.validate_required(self.status, 'status')
-        self.validate_required(self.created_at, 'created_at')
-        self.validate_required(self.updated_at, 'updated_at')
-        self.validate_required(self.slice_format, 'slice_format')
-
-    def to_map(self):
-        result = {}
-        result['ResourceId'] = self.resource_id
-        result['Domain'] = self.domain
-        result['BusinessType'] = self.business_type
-        result['Status'] = self.status
-        result['CreatedAt'] = self.created_at
-        result['UpdatedAt'] = self.updated_at
-        result['SliceFormat'] = self.slice_format
-        return result
-
-    def from_map(self, map={}):
-        self.resource_id = map.get('ResourceId')
-        self.domain = map.get('Domain')
-        self.business_type = map.get('BusinessType')
-        self.status = map.get('Status')
-        self.created_at = map.get('CreatedAt')
-        self.updated_at = map.get('UpdatedAt')
-        self.slice_format = map.get('SliceFormat')
-        return self
-
-
-class GetDomainsResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetDomainsResponseDataListUsageData]
-
-    def validate(self):
-        self.validate_required(self.usage_data, 'usage_data')
-        if self.usage_data:
-            for k in self.usage_data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = {}
-        result['UsageData'] = []
-        if self.usage_data is not None:
-            for k in self.usage_data:
-                result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
-                temp_model = GetDomainsResponseDataListUsageData()
-                self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
-        return self
-
-
-class GetDomainsResponsePager(TeaModel):
-    def __init__(self, page=None, total=None, page_size=None):
-        self.page = page                # type: int
-        self.total = total              # type: int
-        self.page_size = page_size      # type: int
-
-    def validate(self):
-        self.validate_required(self.page, 'page')
-        self.validate_required(self.total, 'total')
-        self.validate_required(self.page_size, 'page_size')
-
-    def to_map(self):
-        result = {}
-        result['Page'] = self.page
-        result['Total'] = self.total
-        result['PageSize'] = self.page_size
-        return result
-
-    def from_map(self, map={}):
-        self.page = map.get('Page')
-        self.total = map.get('Total')
-        self.page_size = map.get('PageSize')
+            self.pager = temp_model.from_map(m['Pager'])
         return self
 
 
 class GetLogsListRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, domain=None, date=None, start_time=None, end_time=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.domain = domain            # type: str
-        self.date = date                # type: str
-        self.start_time = start_time    # type: str
-        self.end_time = end_time        # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        domain: str = None,
+        date: str = None,
+        start_time: str = None,
+        end_time: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.domain = domain
+        self.date = date
+        self.start_time = start_time
+        self.end_time = end_time
 
     def validate(self):
         self.validate_required(self.version, 'version')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Domain'] = self.domain
-        result['Date'] = self.date
-        result['StartTime'] = self.start_time
-        result['EndTime'] = self.end_time
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.domain = map.get('Domain')
-        self.date = map.get('Date')
-        self.start_time = map.get('StartTime')
-        self.end_time = map.get('EndTime')
-        return self
-
-
-class GetLogsListResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, log_list=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.log_list = log_list        # type: GetLogsListResponseLogList
-
-    def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.log_list, 'log_list')
-        if self.log_list:
-            self.log_list.validate()
-
-    def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        if self.log_list is not None:
-            result['LogList'] = self.log_list.to_map()
-        else:
-            result['LogList'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('LogList') is not None:
-            temp_model = GetLogsListResponseLogList()
-            self.log_list = temp_model.from_map(map['LogList'])
-        else:
-            self.log_list = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         return self
 
 
 class GetLogsListResponseLogListLog(TeaModel):
-    def __init__(self, url=None, file_name=None, start_date=None, end_date=None):
-        self.url = url                  # type: str
-        self.file_name = file_name      # type: str
-        self.start_date = start_date    # type: str
-        self.end_date = end_date        # type: str
+    def __init__(
+        self,
+        url: str = None,
+        file_name: str = None,
+        start_date: str = None,
+        end_date: str = None,
+    ):
+        self.url = url
+        self.file_name = file_name
+        self.start_date = start_date
+        self.end_date = end_date
 
     def validate(self):
         self.validate_required(self.url, 'url')
@@ -3017,24 +4004,36 @@ class GetLogsListResponseLogListLog(TeaModel):
         self.validate_required(self.end_date, 'end_date')
 
     def to_map(self):
-        result = {}
-        result['Url'] = self.url
-        result['FileName'] = self.file_name
-        result['StartDate'] = self.start_date
-        result['EndDate'] = self.end_date
+        result = dict()
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
         return result
 
-    def from_map(self, map={}):
-        self.url = map.get('Url')
-        self.file_name = map.get('FileName')
-        self.start_date = map.get('StartDate')
-        self.end_date = map.get('EndDate')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
         return self
 
 
 class GetLogsListResponseLogList(TeaModel):
-    def __init__(self, log=None):
-        self.log = log                  # type: List[GetLogsListResponseLogListLog]
+    def __init__(
+        self,
+        log: List[GetLogsListResponseLogListLog] = None,
+    ):
+        self.log = log
 
     def validate(self):
         self.validate_required(self.log, 'log')
@@ -3044,38 +4043,85 @@ class GetLogsListResponseLogList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['Log'] = []
         if self.log is not None:
             for k in self.log:
                 result['Log'].append(k.to_map() if k else None)
-        else:
-            result['Log'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.log = []
-        if map.get('Log') is not None:
-            for k in map.get('Log'):
+        if m.get('Log') is not None:
+            for k in m.get('Log'):
                 temp_model = GetLogsListResponseLogListLog()
                 self.log.append(temp_model.from_map(k))
-        else:
-            self.log = None
+        return self
+
+
+class GetLogsListResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        log_list: GetLogsListResponseLogList = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.log_list = log_list
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.log_list, 'log_list')
+        if self.log_list:
+            self.log_list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.log_list is not None:
+            result['LogList'] = self.log_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('LogList') is not None:
+            temp_model = GetLogsListResponseLogList()
+            self.log_list = temp_model.from_map(m['LogList'])
         return self
 
 
 class GetFluencyDataRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, domain=None, region=None, isp_name=None,
-                 platform_type=None, business_type=None, start_date=None, end_date=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.domain = domain            # type: str
-        self.region = region            # type: str
-        self.isp_name = isp_name        # type: str
-        self.platform_type = platform_type  # type: str
-        self.business_type = business_type  # type: str
-        self.start_date = start_date    # type: str
-        self.end_date = end_date        # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        domain: str = None,
+        region: str = None,
+        isp_name: str = None,
+        platform_type: str = None,
+        business_type: str = None,
+        start_date: str = None,
+        end_date: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.domain = domain
+        self.region = region
+        self.isp_name = isp_name
+        self.platform_type = platform_type
+        self.business_type = business_type
+        self.start_date = start_date
+        self.end_date = end_date
 
     def validate(self):
         self.validate_required(self.version, 'version')
@@ -3087,100 +4133,82 @@ class GetFluencyDataRequest(TeaModel):
         self.validate_required(self.end_date, 'end_date')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Domain'] = self.domain
-        result['Region'] = self.region
-        result['IspName'] = self.isp_name
-        result['PlatformType'] = self.platform_type
-        result['BusinessType'] = self.business_type
-        result['StartDate'] = self.start_date
-        result['EndDate'] = self.end_date
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.domain = map.get('Domain')
-        self.region = map.get('Region')
-        self.isp_name = map.get('IspName')
-        self.platform_type = map.get('PlatformType')
-        self.business_type = map.get('BusinessType')
-        self.start_date = map.get('StartDate')
-        self.end_date = map.get('EndDate')
-        return self
-
-
-class GetFluencyDataResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None, labels=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetFluencyDataResponseDataList
-        self.labels = labels            # type: GetFluencyDataResponseLabels
-
-    def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.data_list, 'data_list')
-        if self.data_list:
-            self.data_list.validate()
-        self.validate_required(self.labels, 'labels')
-        if self.labels:
-            self.labels.validate()
-
-    def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        if self.data_list is not None:
-            result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
-        if self.labels is not None:
-            result['Labels'] = self.labels.to_map()
-        else:
-            result['Labels'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
-            temp_model = GetFluencyDataResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
-        if map.get('Labels') is not None:
-            temp_model = GetFluencyDataResponseLabels()
-            self.labels = temp_model.from_map(map['Labels'])
-        else:
-            self.labels = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
         return self
 
 
 class GetFluencyDataResponseDataListUsageDataValues(TeaModel):
-    def __init__(self, values=None):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
         # Values
-        self.values = values            # type: List[str]
+        self.values = values
 
     def validate(self):
         self.validate_required(self.values, 'values')
 
     def to_map(self):
-        result = {}
-        result['Values'] = self.values
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
         return result
 
-    def from_map(self, map={}):
-        self.values = map.get('Values')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
         return self
 
 
 class GetFluencyDataResponseDataListUsageData(TeaModel):
-    def __init__(self, date=None, values=None):
-        self.date = date                # type: str
-        self.values = values            # type: GetFluencyDataResponseDataListUsageDataValues
+    def __init__(
+        self,
+        date: str = None,
+        values: GetFluencyDataResponseDataListUsageDataValues = None,
+    ):
+        self.date = date
+        self.values = values
 
     def validate(self):
         self.validate_required(self.date, 'date')
@@ -3189,27 +4217,29 @@ class GetFluencyDataResponseDataListUsageData(TeaModel):
             self.values.validate()
 
     def to_map(self):
-        result = {}
-        result['Date'] = self.date
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
         if self.values is not None:
             result['Values'] = self.values.to_map()
-        else:
-            result['Values'] = None
         return result
 
-    def from_map(self, map={}):
-        self.date = map.get('Date')
-        if map.get('Values') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Values') is not None:
             temp_model = GetFluencyDataResponseDataListUsageDataValues()
-            self.values = temp_model.from_map(map['Values'])
-        else:
-            self.values = None
+            self.values = temp_model.from_map(m['Values'])
         return self
 
 
 class GetFluencyDataResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetFluencyDataResponseDataListUsageData]
+    def __init__(
+        self,
+        usage_data: List[GetFluencyDataResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
 
     def validate(self):
         self.validate_required(self.usage_data, 'usage_data')
@@ -3219,97 +4249,58 @@ class GetFluencyDataResponseDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['UsageData'] = []
         if self.usage_data is not None:
             for k in self.usage_data:
                 result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
                 temp_model = GetFluencyDataResponseDataListUsageData()
                 self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
         return self
 
 
 class GetFluencyDataResponseLabels(TeaModel):
-    def __init__(self, label=None):
-        self.label = label              # type: List[str]
+    def __init__(
+        self,
+        label: List[str] = None,
+    ):
+        self.label = label
 
     def validate(self):
         self.validate_required(self.label, 'label')
 
     def to_map(self):
-        result = {}
-        result['Label'] = self.label
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
         return result
 
-    def from_map(self, map={}):
-        self.label = map.get('Label')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
         return self
 
 
-class GetFirstFrameDelayDataRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, domain=None, region=None, isp_name=None,
-                 platform_type=None, business_type=None, start_date=None, end_date=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.domain = domain            # type: str
-        self.region = region            # type: str
-        self.isp_name = isp_name        # type: str
-        self.platform_type = platform_type  # type: str
-        self.business_type = business_type  # type: str
-        self.start_date = start_date    # type: str
-        self.end_date = end_date        # type: str
-
-    def validate(self):
-        self.validate_required(self.version, 'version')
-        self.validate_required(self.region, 'region')
-        self.validate_required(self.isp_name, 'isp_name')
-        self.validate_required(self.platform_type, 'platform_type')
-        self.validate_required(self.business_type, 'business_type')
-        self.validate_required(self.start_date, 'start_date')
-        self.validate_required(self.end_date, 'end_date')
-
-    def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Domain'] = self.domain
-        result['Region'] = self.region
-        result['IspName'] = self.isp_name
-        result['PlatformType'] = self.platform_type
-        result['BusinessType'] = self.business_type
-        result['StartDate'] = self.start_date
-        result['EndDate'] = self.end_date
-        return result
-
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.domain = map.get('Domain')
-        self.region = map.get('Region')
-        self.isp_name = map.get('IspName')
-        self.platform_type = map.get('PlatformType')
-        self.business_type = map.get('BusinessType')
-        self.start_date = map.get('StartDate')
-        self.end_date = map.get('EndDate')
-        return self
-
-
-class GetFirstFrameDelayDataResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None, labels=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetFirstFrameDelayDataResponseDataList
-        self.labels = labels            # type: GetFirstFrameDelayDataResponseLabels
+class GetFluencyDataResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetFluencyDataResponseDataList = None,
+        labels: GetFluencyDataResponseLabels = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
+        self.labels = labels
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3322,57 +4313,141 @@ class GetFirstFrameDelayDataResponse(TeaModel):
             self.labels.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data_list is not None:
             result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
         if self.labels is not None:
             result['Labels'] = self.labels.to_map()
-        else:
-            result['Labels'] = None
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
-            temp_model = GetFirstFrameDelayDataResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
-        if map.get('Labels') is not None:
-            temp_model = GetFirstFrameDelayDataResponseLabels()
-            self.labels = temp_model.from_map(map['Labels'])
-        else:
-            self.labels = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
+            temp_model = GetFluencyDataResponseDataList()
+            self.data_list = temp_model.from_map(m['DataList'])
+        if m.get('Labels') is not None:
+            temp_model = GetFluencyDataResponseLabels()
+            self.labels = temp_model.from_map(m['Labels'])
+        return self
+
+
+class GetFirstFrameDelayDataRequest(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        domain: str = None,
+        region: str = None,
+        isp_name: str = None,
+        platform_type: str = None,
+        business_type: str = None,
+        start_date: str = None,
+        end_date: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.domain = domain
+        self.region = region
+        self.isp_name = isp_name
+        self.platform_type = platform_type
+        self.business_type = business_type
+        self.start_date = start_date
+        self.end_date = end_date
+
+    def validate(self):
+        self.validate_required(self.version, 'version')
+        self.validate_required(self.region, 'region')
+        self.validate_required(self.isp_name, 'isp_name')
+        self.validate_required(self.platform_type, 'platform_type')
+        self.validate_required(self.business_type, 'business_type')
+        self.validate_required(self.start_date, 'start_date')
+        self.validate_required(self.end_date, 'end_date')
+
+    def to_map(self):
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
         return self
 
 
 class GetFirstFrameDelayDataResponseDataListUsageDataValues(TeaModel):
-    def __init__(self, values=None):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
         # Values
-        self.values = values            # type: List[str]
+        self.values = values
 
     def validate(self):
         self.validate_required(self.values, 'values')
 
     def to_map(self):
-        result = {}
-        result['Values'] = self.values
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
         return result
 
-    def from_map(self, map={}):
-        self.values = map.get('Values')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
         return self
 
 
 class GetFirstFrameDelayDataResponseDataListUsageData(TeaModel):
-    def __init__(self, date=None, values=None):
-        self.date = date                # type: str
-        self.values = values            # type: GetFirstFrameDelayDataResponseDataListUsageDataValues
+    def __init__(
+        self,
+        date: str = None,
+        values: GetFirstFrameDelayDataResponseDataListUsageDataValues = None,
+    ):
+        self.date = date
+        self.values = values
 
     def validate(self):
         self.validate_required(self.date, 'date')
@@ -3381,27 +4456,29 @@ class GetFirstFrameDelayDataResponseDataListUsageData(TeaModel):
             self.values.validate()
 
     def to_map(self):
-        result = {}
-        result['Date'] = self.date
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
         if self.values is not None:
             result['Values'] = self.values.to_map()
-        else:
-            result['Values'] = None
         return result
 
-    def from_map(self, map={}):
-        self.date = map.get('Date')
-        if map.get('Values') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Values') is not None:
             temp_model = GetFirstFrameDelayDataResponseDataListUsageDataValues()
-            self.values = temp_model.from_map(map['Values'])
-        else:
-            self.values = None
+            self.values = temp_model.from_map(m['Values'])
         return self
 
 
 class GetFirstFrameDelayDataResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetFirstFrameDelayDataResponseDataListUsageData]
+    def __init__(
+        self,
+        usage_data: List[GetFirstFrameDelayDataResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
 
     def validate(self):
         self.validate_required(self.usage_data, 'usage_data')
@@ -3411,107 +4488,143 @@ class GetFirstFrameDelayDataResponseDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['UsageData'] = []
         if self.usage_data is not None:
             for k in self.usage_data:
                 result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
                 temp_model = GetFirstFrameDelayDataResponseDataListUsageData()
                 self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
         return self
 
 
 class GetFirstFrameDelayDataResponseLabels(TeaModel):
-    def __init__(self, label=None):
-        self.label = label              # type: List[str]
+    def __init__(
+        self,
+        label: List[str] = None,
+    ):
+        self.label = label
 
     def validate(self):
         self.validate_required(self.label, 'label')
 
     def to_map(self):
-        result = {}
-        result['Label'] = self.label
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
         return result
 
-    def from_map(self, map={}):
-        self.label = map.get('Label')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
+class GetFirstFrameDelayDataResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetFirstFrameDelayDataResponseDataList = None,
+        labels: GetFirstFrameDelayDataResponseLabels = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
+        self.labels = labels
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.data_list, 'data_list')
+        if self.data_list:
+            self.data_list.validate()
+        self.validate_required(self.labels, 'labels')
+        if self.labels:
+            self.labels.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data_list is not None:
+            result['DataList'] = self.data_list.to_map()
+        if self.labels is not None:
+            result['Labels'] = self.labels.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
+            temp_model = GetFirstFrameDelayDataResponseDataList()
+            self.data_list = temp_model.from_map(m['DataList'])
+        if m.get('Labels') is not None:
+            temp_model = GetFirstFrameDelayDataResponseLabels()
+            self.labels = temp_model.from_map(m['Labels'])
         return self
 
 
 class GetTokenListRequest(TeaModel):
-    def __init__(self, security_token=None, version=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
 
     def validate(self):
         self.validate_required(self.version, 'version')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        return self
-
-
-class GetTokenListResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, token_list=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.token_list = token_list    # type: GetTokenListResponseTokenList
-
-    def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.token_list, 'token_list')
-        if self.token_list:
-            self.token_list.validate()
-
-    def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        if self.token_list is not None:
-            result['TokenList'] = self.token_list.to_map()
-        else:
-            result['TokenList'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('TokenList') is not None:
-            temp_model = GetTokenListResponseTokenList()
-            self.token_list = temp_model.from_map(map['TokenList'])
-        else:
-            self.token_list = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
 class GetTokenListResponseTokenListToken(TeaModel):
-    def __init__(self, client_id=None, resource_id=None, platform_name=None, platform_type=None, token=None,
-                 created_at=None, updated_at=None):
-        self.client_id = client_id      # type: str
-        self.resource_id = resource_id  # type: str
-        self.platform_name = platform_name  # type: str
-        self.platform_type = platform_type  # type: str
-        self.token = token              # type: str
-        self.created_at = created_at    # type: str
-        self.updated_at = updated_at    # type: str
+    def __init__(
+        self,
+        client_id: str = None,
+        resource_id: str = None,
+        platform_name: str = None,
+        platform_type: str = None,
+        token: str = None,
+        created_at: str = None,
+        updated_at: str = None,
+    ):
+        self.client_id = client_id
+        self.resource_id = resource_id
+        self.platform_name = platform_name
+        self.platform_type = platform_type
+        self.token = token
+        self.created_at = created_at
+        self.updated_at = updated_at
 
     def validate(self):
         self.validate_required(self.client_id, 'client_id')
@@ -3523,30 +4636,48 @@ class GetTokenListResponseTokenListToken(TeaModel):
         self.validate_required(self.updated_at, 'updated_at')
 
     def to_map(self):
-        result = {}
-        result['ClientId'] = self.client_id
-        result['ResourceId'] = self.resource_id
-        result['PlatformName'] = self.platform_name
-        result['PlatformType'] = self.platform_type
-        result['Token'] = self.token
-        result['CreatedAt'] = self.created_at
-        result['UpdatedAt'] = self.updated_at
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.platform_name is not None:
+            result['PlatformName'] = self.platform_name
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.created_at is not None:
+            result['CreatedAt'] = self.created_at
+        if self.updated_at is not None:
+            result['UpdatedAt'] = self.updated_at
         return result
 
-    def from_map(self, map={}):
-        self.client_id = map.get('ClientId')
-        self.resource_id = map.get('ResourceId')
-        self.platform_name = map.get('PlatformName')
-        self.platform_type = map.get('PlatformType')
-        self.token = map.get('Token')
-        self.created_at = map.get('CreatedAt')
-        self.updated_at = map.get('UpdatedAt')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('PlatformName') is not None:
+            self.platform_name = m.get('PlatformName')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('CreatedAt') is not None:
+            self.created_at = m.get('CreatedAt')
+        if m.get('UpdatedAt') is not None:
+            self.updated_at = m.get('UpdatedAt')
         return self
 
 
 class GetTokenListResponseTokenList(TeaModel):
-    def __init__(self, token=None):
-        self.token = token              # type: List[GetTokenListResponseTokenListToken]
+    def __init__(
+        self,
+        token: List[GetTokenListResponseTokenListToken] = None,
+    ):
+        self.token = token
 
     def validate(self):
         self.validate_required(self.token, 'token')
@@ -3556,38 +4687,85 @@ class GetTokenListResponseTokenList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['Token'] = []
         if self.token is not None:
             for k in self.token:
                 result['Token'].append(k.to_map() if k else None)
-        else:
-            result['Token'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.token = []
-        if map.get('Token') is not None:
-            for k in map.get('Token'):
+        if m.get('Token') is not None:
+            for k in m.get('Token'):
                 temp_model = GetTokenListResponseTokenListToken()
                 self.token.append(temp_model.from_map(k))
-        else:
-            self.token = None
+        return self
+
+
+class GetTokenListResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        token_list: GetTokenListResponseTokenList = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.token_list = token_list
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.token_list, 'token_list')
+        if self.token_list:
+            self.token_list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.token_list is not None:
+            result['TokenList'] = self.token_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('TokenList') is not None:
+            temp_model = GetTokenListResponseTokenList()
+            self.token_list = temp_model.from_map(m['TokenList'])
         return self
 
 
 class GetShareRateDataRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, domain=None, region=None, isp_name=None,
-                 platform_type=None, business_type=None, start_date=None, end_date=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.domain = domain            # type: str
-        self.region = region            # type: str
-        self.isp_name = isp_name        # type: str
-        self.platform_type = platform_type  # type: str
-        self.business_type = business_type  # type: str
-        self.start_date = start_date    # type: str
-        self.end_date = end_date        # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        domain: str = None,
+        region: str = None,
+        isp_name: str = None,
+        platform_type: str = None,
+        business_type: str = None,
+        start_date: str = None,
+        end_date: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.domain = domain
+        self.region = region
+        self.isp_name = isp_name
+        self.platform_type = platform_type
+        self.business_type = business_type
+        self.start_date = start_date
+        self.end_date = end_date
 
     def validate(self):
         self.validate_required(self.version, 'version')
@@ -3599,100 +4777,82 @@ class GetShareRateDataRequest(TeaModel):
         self.validate_required(self.end_date, 'end_date')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Domain'] = self.domain
-        result['Region'] = self.region
-        result['IspName'] = self.isp_name
-        result['PlatformType'] = self.platform_type
-        result['BusinessType'] = self.business_type
-        result['StartDate'] = self.start_date
-        result['EndDate'] = self.end_date
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.domain = map.get('Domain')
-        self.region = map.get('Region')
-        self.isp_name = map.get('IspName')
-        self.platform_type = map.get('PlatformType')
-        self.business_type = map.get('BusinessType')
-        self.start_date = map.get('StartDate')
-        self.end_date = map.get('EndDate')
-        return self
-
-
-class GetShareRateDataResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None, labels=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetShareRateDataResponseDataList
-        self.labels = labels            # type: GetShareRateDataResponseLabels
-
-    def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.data_list, 'data_list')
-        if self.data_list:
-            self.data_list.validate()
-        self.validate_required(self.labels, 'labels')
-        if self.labels:
-            self.labels.validate()
-
-    def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        if self.data_list is not None:
-            result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
-        if self.labels is not None:
-            result['Labels'] = self.labels.to_map()
-        else:
-            result['Labels'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
-            temp_model = GetShareRateDataResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
-        if map.get('Labels') is not None:
-            temp_model = GetShareRateDataResponseLabels()
-            self.labels = temp_model.from_map(map['Labels'])
-        else:
-            self.labels = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
         return self
 
 
 class GetShareRateDataResponseDataListUsageDataValues(TeaModel):
-    def __init__(self, values=None):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
         # Values
-        self.values = values            # type: List[str]
+        self.values = values
 
     def validate(self):
         self.validate_required(self.values, 'values')
 
     def to_map(self):
-        result = {}
-        result['Values'] = self.values
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
         return result
 
-    def from_map(self, map={}):
-        self.values = map.get('Values')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
         return self
 
 
 class GetShareRateDataResponseDataListUsageData(TeaModel):
-    def __init__(self, date=None, values=None):
-        self.date = date                # type: str
-        self.values = values            # type: GetShareRateDataResponseDataListUsageDataValues
+    def __init__(
+        self,
+        date: str = None,
+        values: GetShareRateDataResponseDataListUsageDataValues = None,
+    ):
+        self.date = date
+        self.values = values
 
     def validate(self):
         self.validate_required(self.date, 'date')
@@ -3701,27 +4861,29 @@ class GetShareRateDataResponseDataListUsageData(TeaModel):
             self.values.validate()
 
     def to_map(self):
-        result = {}
-        result['Date'] = self.date
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
         if self.values is not None:
             result['Values'] = self.values.to_map()
-        else:
-            result['Values'] = None
         return result
 
-    def from_map(self, map={}):
-        self.date = map.get('Date')
-        if map.get('Values') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Values') is not None:
             temp_model = GetShareRateDataResponseDataListUsageDataValues()
-            self.values = temp_model.from_map(map['Values'])
-        else:
-            self.values = None
+            self.values = temp_model.from_map(m['Values'])
         return self
 
 
 class GetShareRateDataResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetShareRateDataResponseDataListUsageData]
+    def __init__(
+        self,
+        usage_data: List[GetShareRateDataResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
 
     def validate(self):
         self.validate_required(self.usage_data, 'usage_data')
@@ -3731,97 +4893,58 @@ class GetShareRateDataResponseDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['UsageData'] = []
         if self.usage_data is not None:
             for k in self.usage_data:
                 result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
                 temp_model = GetShareRateDataResponseDataListUsageData()
                 self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
         return self
 
 
 class GetShareRateDataResponseLabels(TeaModel):
-    def __init__(self, label=None):
-        self.label = label              # type: List[str]
+    def __init__(
+        self,
+        label: List[str] = None,
+    ):
+        self.label = label
 
     def validate(self):
         self.validate_required(self.label, 'label')
 
     def to_map(self):
-        result = {}
-        result['Label'] = self.label
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
         return result
 
-    def from_map(self, map={}):
-        self.label = map.get('Label')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
         return self
 
 
-class GetTrafficDataRequest(TeaModel):
-    def __init__(self, security_token=None, version=None, domain=None, region=None, isp_name=None,
-                 platform_type=None, business_type=None, start_date=None, end_date=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
-        self.domain = domain            # type: str
-        self.region = region            # type: str
-        self.isp_name = isp_name        # type: str
-        self.platform_type = platform_type  # type: str
-        self.business_type = business_type  # type: str
-        self.start_date = start_date    # type: str
-        self.end_date = end_date        # type: str
-
-    def validate(self):
-        self.validate_required(self.version, 'version')
-        self.validate_required(self.region, 'region')
-        self.validate_required(self.isp_name, 'isp_name')
-        self.validate_required(self.platform_type, 'platform_type')
-        self.validate_required(self.business_type, 'business_type')
-        self.validate_required(self.start_date, 'start_date')
-        self.validate_required(self.end_date, 'end_date')
-
-    def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
-        result['Domain'] = self.domain
-        result['Region'] = self.region
-        result['IspName'] = self.isp_name
-        result['PlatformType'] = self.platform_type
-        result['BusinessType'] = self.business_type
-        result['StartDate'] = self.start_date
-        result['EndDate'] = self.end_date
-        return result
-
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        self.domain = map.get('Domain')
-        self.region = map.get('Region')
-        self.isp_name = map.get('IspName')
-        self.platform_type = map.get('PlatformType')
-        self.business_type = map.get('BusinessType')
-        self.start_date = map.get('StartDate')
-        self.end_date = map.get('EndDate')
-        return self
-
-
-class GetTrafficDataResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None, labels=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetTrafficDataResponseDataList
-        self.labels = labels            # type: GetTrafficDataResponseLabels
+class GetShareRateDataResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetShareRateDataResponseDataList = None,
+        labels: GetShareRateDataResponseLabels = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
+        self.labels = labels
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
@@ -3834,57 +4957,141 @@ class GetTrafficDataResponse(TeaModel):
             self.labels.validate()
 
     def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data_list is not None:
             result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
         if self.labels is not None:
             result['Labels'] = self.labels.to_map()
-        else:
-            result['Labels'] = None
         return result
 
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
-            temp_model = GetTrafficDataResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
-        if map.get('Labels') is not None:
-            temp_model = GetTrafficDataResponseLabels()
-            self.labels = temp_model.from_map(map['Labels'])
-        else:
-            self.labels = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
+            temp_model = GetShareRateDataResponseDataList()
+            self.data_list = temp_model.from_map(m['DataList'])
+        if m.get('Labels') is not None:
+            temp_model = GetShareRateDataResponseLabels()
+            self.labels = temp_model.from_map(m['Labels'])
+        return self
+
+
+class GetTrafficDataRequest(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+        domain: str = None,
+        region: str = None,
+        isp_name: str = None,
+        platform_type: str = None,
+        business_type: str = None,
+        start_date: str = None,
+        end_date: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
+        self.domain = domain
+        self.region = region
+        self.isp_name = isp_name
+        self.platform_type = platform_type
+        self.business_type = business_type
+        self.start_date = start_date
+        self.end_date = end_date
+
+    def validate(self):
+        self.validate_required(self.version, 'version')
+        self.validate_required(self.region, 'region')
+        self.validate_required(self.isp_name, 'isp_name')
+        self.validate_required(self.platform_type, 'platform_type')
+        self.validate_required(self.business_type, 'business_type')
+        self.validate_required(self.start_date, 'start_date')
+        self.validate_required(self.end_date, 'end_date')
+
+    def to_map(self):
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
         return self
 
 
 class GetTrafficDataResponseDataListUsageDataValues(TeaModel):
-    def __init__(self, values=None):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
         # Values
-        self.values = values            # type: List[str]
+        self.values = values
 
     def validate(self):
         self.validate_required(self.values, 'values')
 
     def to_map(self):
-        result = {}
-        result['Values'] = self.values
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
         return result
 
-    def from_map(self, map={}):
-        self.values = map.get('Values')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
         return self
 
 
 class GetTrafficDataResponseDataListUsageData(TeaModel):
-    def __init__(self, date=None, values=None):
-        self.date = date                # type: str
-        self.values = values            # type: GetTrafficDataResponseDataListUsageDataValues
+    def __init__(
+        self,
+        date: str = None,
+        values: GetTrafficDataResponseDataListUsageDataValues = None,
+    ):
+        self.date = date
+        self.values = values
 
     def validate(self):
         self.validate_required(self.date, 'date')
@@ -3893,27 +5100,29 @@ class GetTrafficDataResponseDataListUsageData(TeaModel):
             self.values.validate()
 
     def to_map(self):
-        result = {}
-        result['Date'] = self.date
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
         if self.values is not None:
             result['Values'] = self.values.to_map()
-        else:
-            result['Values'] = None
         return result
 
-    def from_map(self, map={}):
-        self.date = map.get('Date')
-        if map.get('Values') is not None:
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Values') is not None:
             temp_model = GetTrafficDataResponseDataListUsageDataValues()
-            self.values = temp_model.from_map(map['Values'])
-        else:
-            self.values = None
+            self.values = temp_model.from_map(m['Values'])
         return self
 
 
 class GetTrafficDataResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetTrafficDataResponseDataListUsageData]
+    def __init__(
+        self,
+        usage_data: List[GetTrafficDataResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
 
     def validate(self):
         self.validate_required(self.usage_data, 'usage_data')
@@ -3923,121 +5132,161 @@ class GetTrafficDataResponseDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['UsageData'] = []
         if self.usage_data is not None:
             for k in self.usage_data:
                 result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
                 temp_model = GetTrafficDataResponseDataListUsageData()
                 self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
         return self
 
 
 class GetTrafficDataResponseLabels(TeaModel):
-    def __init__(self, label=None):
-        self.label = label              # type: List[str]
+    def __init__(
+        self,
+        label: List[str] = None,
+    ):
+        self.label = label
 
     def validate(self):
         self.validate_required(self.label, 'label')
 
     def to_map(self):
-        result = {}
-        result['Label'] = self.label
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
         return result
 
-    def from_map(self, map={}):
-        self.label = map.get('Label')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
+class GetTrafficDataResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetTrafficDataResponseDataList = None,
+        labels: GetTrafficDataResponseLabels = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
+        self.labels = labels
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.data_list, 'data_list')
+        if self.data_list:
+            self.data_list.validate()
+        self.validate_required(self.labels, 'labels')
+        if self.labels:
+            self.labels.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data_list is not None:
+            result['DataList'] = self.data_list.to_map()
+        if self.labels is not None:
+            result['Labels'] = self.labels.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
+            temp_model = GetTrafficDataResponseDataList()
+            self.data_list = temp_model.from_map(m['DataList'])
+        if m.get('Labels') is not None:
+            temp_model = GetTrafficDataResponseLabels()
+            self.labels = temp_model.from_map(m['Labels'])
         return self
 
 
 class GetTrafficByRegionRequest(TeaModel):
-    def __init__(self, security_token=None, version=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
 
     def validate(self):
         self.validate_required(self.version, 'version')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        return self
-
-
-class GetTrafficByRegionResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, traffic_data_list=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.traffic_data_list = traffic_data_list  # type: GetTrafficByRegionResponseTrafficDataList
-
-    def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.traffic_data_list, 'traffic_data_list')
-        if self.traffic_data_list:
-            self.traffic_data_list.validate()
-
-    def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        if self.traffic_data_list is not None:
-            result['TrafficDataList'] = self.traffic_data_list.to_map()
-        else:
-            result['TrafficDataList'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('TrafficDataList') is not None:
-            temp_model = GetTrafficByRegionResponseTrafficDataList()
-            self.traffic_data_list = temp_model.from_map(map['TrafficDataList'])
-        else:
-            self.traffic_data_list = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
 class GetTrafficByRegionResponseTrafficDataListTrafficData(TeaModel):
-    def __init__(self, name=None, traffic=None):
-        self.name = name                # type: str
-        self.traffic = traffic          # type: int
+    def __init__(
+        self,
+        name: str = None,
+        traffic: int = None,
+    ):
+        self.name = name
+        self.traffic = traffic
 
     def validate(self):
         self.validate_required(self.name, 'name')
         self.validate_required(self.traffic, 'traffic')
 
     def to_map(self):
-        result = {}
-        result['Name'] = self.name
-        result['Traffic'] = self.traffic
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.traffic is not None:
+            result['Traffic'] = self.traffic
         return result
 
-    def from_map(self, map={}):
-        self.name = map.get('Name')
-        self.traffic = map.get('Traffic')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Traffic') is not None:
+            self.traffic = m.get('Traffic')
         return self
 
 
 class GetTrafficByRegionResponseTrafficDataList(TeaModel):
-    def __init__(self, traffic_data=None):
-        self.traffic_data = traffic_data  # type: List[GetTrafficByRegionResponseTrafficDataListTrafficData]
+    def __init__(
+        self,
+        traffic_data: List[GetTrafficByRegionResponseTrafficDataListTrafficData] = None,
+    ):
+        self.traffic_data = traffic_data
 
     def validate(self):
         self.validate_required(self.traffic_data, 'traffic_data')
@@ -4047,104 +5296,128 @@ class GetTrafficByRegionResponseTrafficDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['TrafficData'] = []
         if self.traffic_data is not None:
             for k in self.traffic_data:
                 result['TrafficData'].append(k.to_map() if k else None)
-        else:
-            result['TrafficData'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.traffic_data = []
-        if map.get('TrafficData') is not None:
-            for k in map.get('TrafficData'):
+        if m.get('TrafficData') is not None:
+            for k in m.get('TrafficData'):
                 temp_model = GetTrafficByRegionResponseTrafficDataListTrafficData()
                 self.traffic_data.append(temp_model.from_map(k))
-        else:
-            self.traffic_data = None
+        return self
+
+
+class GetTrafficByRegionResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        traffic_data_list: GetTrafficByRegionResponseTrafficDataList = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.traffic_data_list = traffic_data_list
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.traffic_data_list, 'traffic_data_list')
+        if self.traffic_data_list:
+            self.traffic_data_list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.traffic_data_list is not None:
+            result['TrafficDataList'] = self.traffic_data_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('TrafficDataList') is not None:
+            temp_model = GetTrafficByRegionResponseTrafficDataList()
+            self.traffic_data_list = temp_model.from_map(m['TrafficDataList'])
         return self
 
 
 class GetAllRegionsRequest(TeaModel):
-    def __init__(self, security_token=None, version=None):
-        self.security_token = security_token  # type: str
-        self.version = version          # type: str
+    def __init__(
+        self,
+        security_token: str = None,
+        version: str = None,
+    ):
+        self.security_token = security_token
+        self.version = version
 
     def validate(self):
         self.validate_required(self.version, 'version')
 
     def to_map(self):
-        result = {}
-        result['SecurityToken'] = self.security_token
-        result['Version'] = self.version
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
-    def from_map(self, map={}):
-        self.security_token = map.get('SecurityToken')
-        self.version = map.get('Version')
-        return self
-
-
-class GetAllRegionsResponse(TeaModel):
-    def __init__(self, request_id=None, code=None, data_list=None):
-        self.request_id = request_id    # type: str
-        self.code = code                # type: int
-        self.data_list = data_list      # type: GetAllRegionsResponseDataList
-
-    def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.data_list, 'data_list')
-        if self.data_list:
-            self.data_list.validate()
-
-    def to_map(self):
-        result = {}
-        result['RequestId'] = self.request_id
-        result['Code'] = self.code
-        if self.data_list is not None:
-            result['DataList'] = self.data_list.to_map()
-        else:
-            result['DataList'] = None
-        return result
-
-    def from_map(self, map={}):
-        self.request_id = map.get('RequestId')
-        self.code = map.get('Code')
-        if map.get('DataList') is not None:
-            temp_model = GetAllRegionsResponseDataList()
-            self.data_list = temp_model.from_map(map['DataList'])
-        else:
-            self.data_list = None
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
 class GetAllRegionsResponseDataListUsageData(TeaModel):
-    def __init__(self, code=None, name=None):
-        self.code = code                # type: str
-        self.name = name                # type: str
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.name = name
 
     def validate(self):
         self.validate_required(self.code, 'code')
         self.validate_required(self.name, 'name')
 
     def to_map(self):
-        result = {}
-        result['Code'] = self.code
-        result['Name'] = self.name
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
         return result
 
-    def from_map(self, map={}):
-        self.code = map.get('Code')
-        self.name = map.get('Name')
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         return self
 
 
 class GetAllRegionsResponseDataList(TeaModel):
-    def __init__(self, usage_data=None):
-        self.usage_data = usage_data    # type: List[GetAllRegionsResponseDataListUsageData]
+    def __init__(
+        self,
+        usage_data: List[GetAllRegionsResponseDataListUsageData] = None,
+    ):
+        self.usage_data = usage_data
 
     def validate(self):
         self.validate_required(self.usage_data, 'usage_data')
@@ -4154,23 +5427,60 @@ class GetAllRegionsResponseDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
-        result = {}
+        result = dict()
         result['UsageData'] = []
         if self.usage_data is not None:
             for k in self.usage_data:
                 result['UsageData'].append(k.to_map() if k else None)
-        else:
-            result['UsageData'] = None
         return result
 
-    def from_map(self, map={}):
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.usage_data = []
-        if map.get('UsageData') is not None:
-            for k in map.get('UsageData'):
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
                 temp_model = GetAllRegionsResponseDataListUsageData()
                 self.usage_data.append(temp_model.from_map(k))
-        else:
-            self.usage_data = None
+        return self
+
+
+class GetAllRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        data_list: GetAllRegionsResponseDataList = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.data_list = data_list
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.data_list, 'data_list')
+        if self.data_list:
+            self.data_list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data_list is not None:
+            result['DataList'] = self.data_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataList') is not None:
+            temp_model = GetAllRegionsResponseDataList()
+            self.data_list = temp_model.from_map(m['DataList'])
         return self
 
 
