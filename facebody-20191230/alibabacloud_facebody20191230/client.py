@@ -3827,8 +3827,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = facebody_20191230_models.DetectPedestrianIntrusionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.region):
-            request.region_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region, 'Region', 'json')
+        if not UtilClient.is_unset(tmp_req.detect_region):
+            request.detect_region_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.detect_region, 'DetectRegion', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -3844,8 +3844,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = facebody_20191230_models.DetectPedestrianIntrusionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.region):
-            request.region_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region, 'Region', 'json')
+        if not UtilClient.is_unset(tmp_req.detect_region):
+            request.detect_region_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.detect_region, 'DetectRegion', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )

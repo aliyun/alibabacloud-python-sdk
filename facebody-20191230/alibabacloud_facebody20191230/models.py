@@ -6429,7 +6429,7 @@ class DeleteBodyDbResponse(TeaModel):
         return self
 
 
-class DetectPedestrianIntrusionRequestRegionRect(TeaModel):
+class DetectPedestrianIntrusionRequestDetectRegionRect(TeaModel):
     def __init__(
         self,
         left: int = None,
@@ -6470,7 +6470,7 @@ class DetectPedestrianIntrusionRequestRegionRect(TeaModel):
         return self
 
 
-class DetectPedestrianIntrusionRequestRegionLine(TeaModel):
+class DetectPedestrianIntrusionRequestDetectRegionLine(TeaModel):
     def __init__(
         self,
         x_1: int = None,
@@ -6511,11 +6511,11 @@ class DetectPedestrianIntrusionRequestRegionLine(TeaModel):
         return self
 
 
-class DetectPedestrianIntrusionRequestRegion(TeaModel):
+class DetectPedestrianIntrusionRequestDetectRegion(TeaModel):
     def __init__(
         self,
-        rect: DetectPedestrianIntrusionRequestRegionRect = None,
-        line: DetectPedestrianIntrusionRequestRegionLine = None,
+        rect: DetectPedestrianIntrusionRequestDetectRegionRect = None,
+        line: DetectPedestrianIntrusionRequestDetectRegionLine = None,
     ):
         self.rect = rect
         self.line = line
@@ -6537,10 +6537,10 @@ class DetectPedestrianIntrusionRequestRegion(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Rect') is not None:
-            temp_model = DetectPedestrianIntrusionRequestRegionRect()
+            temp_model = DetectPedestrianIntrusionRequestDetectRegionRect()
             self.rect = temp_model.from_map(m['Rect'])
         if m.get('Line') is not None:
-            temp_model = DetectPedestrianIntrusionRequestRegionLine()
+            temp_model = DetectPedestrianIntrusionRequestDetectRegionLine()
             self.line = temp_model.from_map(m['Line'])
         return self
 
@@ -6549,16 +6549,16 @@ class DetectPedestrianIntrusionRequest(TeaModel):
     def __init__(
         self,
         image_url: str = None,
-        region: List[DetectPedestrianIntrusionRequestRegion] = None,
+        detect_region: List[DetectPedestrianIntrusionRequestDetectRegion] = None,
         region_type: str = None,
     ):
         self.image_url = image_url
-        self.region = region
+        self.detect_region = detect_region
         self.region_type = region_type
 
     def validate(self):
-        if self.region:
-            for k in self.region:
+        if self.detect_region:
+            for k in self.detect_region:
                 if k:
                     k.validate()
 
@@ -6566,10 +6566,10 @@ class DetectPedestrianIntrusionRequest(TeaModel):
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
-        result['Region'] = []
-        if self.region is not None:
-            for k in self.region:
-                result['Region'].append(k.to_map() if k else None)
+        result['DetectRegion'] = []
+        if self.detect_region is not None:
+            for k in self.detect_region:
+                result['DetectRegion'].append(k.to_map() if k else None)
         if self.region_type is not None:
             result['RegionType'] = self.region_type
         return result
@@ -6578,17 +6578,17 @@ class DetectPedestrianIntrusionRequest(TeaModel):
         m = m or dict()
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
-        self.region = []
-        if m.get('Region') is not None:
-            for k in m.get('Region'):
-                temp_model = DetectPedestrianIntrusionRequestRegion()
-                self.region.append(temp_model.from_map(k))
+        self.detect_region = []
+        if m.get('DetectRegion') is not None:
+            for k in m.get('DetectRegion'):
+                temp_model = DetectPedestrianIntrusionRequestDetectRegion()
+                self.detect_region.append(temp_model.from_map(k))
         if m.get('RegionType') is not None:
             self.region_type = m.get('RegionType')
         return self
 
 
-class DetectPedestrianIntrusionAdvanceRequestRegionRect(TeaModel):
+class DetectPedestrianIntrusionAdvanceRequestDetectRegionRect(TeaModel):
     def __init__(
         self,
         left: int = None,
@@ -6629,7 +6629,7 @@ class DetectPedestrianIntrusionAdvanceRequestRegionRect(TeaModel):
         return self
 
 
-class DetectPedestrianIntrusionAdvanceRequestRegionLine(TeaModel):
+class DetectPedestrianIntrusionAdvanceRequestDetectRegionLine(TeaModel):
     def __init__(
         self,
         x_1: int = None,
@@ -6670,11 +6670,11 @@ class DetectPedestrianIntrusionAdvanceRequestRegionLine(TeaModel):
         return self
 
 
-class DetectPedestrianIntrusionAdvanceRequestRegion(TeaModel):
+class DetectPedestrianIntrusionAdvanceRequestDetectRegion(TeaModel):
     def __init__(
         self,
-        rect: DetectPedestrianIntrusionAdvanceRequestRegionRect = None,
-        line: DetectPedestrianIntrusionAdvanceRequestRegionLine = None,
+        rect: DetectPedestrianIntrusionAdvanceRequestDetectRegionRect = None,
+        line: DetectPedestrianIntrusionAdvanceRequestDetectRegionLine = None,
     ):
         self.rect = rect
         self.line = line
@@ -6696,10 +6696,10 @@ class DetectPedestrianIntrusionAdvanceRequestRegion(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Rect') is not None:
-            temp_model = DetectPedestrianIntrusionAdvanceRequestRegionRect()
+            temp_model = DetectPedestrianIntrusionAdvanceRequestDetectRegionRect()
             self.rect = temp_model.from_map(m['Rect'])
         if m.get('Line') is not None:
-            temp_model = DetectPedestrianIntrusionAdvanceRequestRegionLine()
+            temp_model = DetectPedestrianIntrusionAdvanceRequestDetectRegionLine()
             self.line = temp_model.from_map(m['Line'])
         return self
 
@@ -6708,17 +6708,17 @@ class DetectPedestrianIntrusionAdvanceRequest(TeaModel):
     def __init__(
         self,
         image_urlobject: BinaryIO = None,
-        region: List[DetectPedestrianIntrusionAdvanceRequestRegion] = None,
+        detect_region: List[DetectPedestrianIntrusionAdvanceRequestDetectRegion] = None,
         region_type: str = None,
     ):
         self.image_urlobject = image_urlobject
-        self.region = region
+        self.detect_region = detect_region
         self.region_type = region_type
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
-        if self.region:
-            for k in self.region:
+        if self.detect_region:
+            for k in self.detect_region:
                 if k:
                     k.validate()
 
@@ -6726,10 +6726,10 @@ class DetectPedestrianIntrusionAdvanceRequest(TeaModel):
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
-        result['Region'] = []
-        if self.region is not None:
-            for k in self.region:
-                result['Region'].append(k.to_map() if k else None)
+        result['DetectRegion'] = []
+        if self.detect_region is not None:
+            for k in self.detect_region:
+                result['DetectRegion'].append(k.to_map() if k else None)
         if self.region_type is not None:
             result['RegionType'] = self.region_type
         return result
@@ -6738,11 +6738,11 @@ class DetectPedestrianIntrusionAdvanceRequest(TeaModel):
         m = m or dict()
         if m.get('ImageURLObject') is not None:
             self.image_urlobject = m.get('ImageURLObject')
-        self.region = []
-        if m.get('Region') is not None:
-            for k in m.get('Region'):
-                temp_model = DetectPedestrianIntrusionAdvanceRequestRegion()
-                self.region.append(temp_model.from_map(k))
+        self.detect_region = []
+        if m.get('DetectRegion') is not None:
+            for k in m.get('DetectRegion'):
+                temp_model = DetectPedestrianIntrusionAdvanceRequestDetectRegion()
+                self.detect_region.append(temp_model.from_map(k))
         if m.get('RegionType') is not None:
             self.region_type = m.get('RegionType')
         return self
@@ -6752,11 +6752,11 @@ class DetectPedestrianIntrusionShrinkRequest(TeaModel):
     def __init__(
         self,
         image_url: str = None,
-        region_shrink: str = None,
+        detect_region_shrink: str = None,
         region_type: str = None,
     ):
         self.image_url = image_url
-        self.region_shrink = region_shrink
+        self.detect_region_shrink = detect_region_shrink
         self.region_type = region_type
 
     def validate(self):
@@ -6766,8 +6766,8 @@ class DetectPedestrianIntrusionShrinkRequest(TeaModel):
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
-        if self.region_shrink is not None:
-            result['Region'] = self.region_shrink
+        if self.detect_region_shrink is not None:
+            result['DetectRegion'] = self.detect_region_shrink
         if self.region_type is not None:
             result['RegionType'] = self.region_type
         return result
@@ -6776,8 +6776,8 @@ class DetectPedestrianIntrusionShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
-        if m.get('Region') is not None:
-            self.region_shrink = m.get('Region')
+        if m.get('DetectRegion') is not None:
+            self.detect_region_shrink = m.get('DetectRegion')
         if m.get('RegionType') is not None:
             self.region_type = m.get('RegionType')
         return self
@@ -6919,13 +6919,9 @@ class DetectPedestrianIntrusionResponseBodyData(TeaModel):
 class DetectPedestrianIntrusionResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        message: str = None,
         request_id: str = None,
         data: DetectPedestrianIntrusionResponseBodyData = None,
     ):
-        self.code = code
-        self.message = message
         self.request_id = request_id
         self.data = data
 
@@ -6935,10 +6931,6 @@ class DetectPedestrianIntrusionResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.data is not None:
@@ -6947,10 +6939,6 @@ class DetectPedestrianIntrusionResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
