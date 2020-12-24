@@ -1,3 +1,6 @@
+2020-12-24 Version: 2.0.1
+- Release CreateBodyDb ListBodyDbs DeleteBodyDb CreateBodyPerson GetBodyPerson ListBodyPerson DeleteBodyPerson AddBodyTrace SearchBodyTrace.
+
 2020-12-23 Version: 2.0.0
 - Release DetectPedestrianIntrusion.
 
