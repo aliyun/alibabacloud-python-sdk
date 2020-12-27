@@ -1,3 +1,6 @@
+2020-12-27 Version: 3.0.0
+- AMP Version Change.
+
 2020-12-01 Version: 2.0.1
 - Generated python 2018-07-13 for Ft.
 
