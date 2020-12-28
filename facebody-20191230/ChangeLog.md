@@ -1,3 +1,6 @@
+2020-12-28 Version: 2.0.2
+- Release GenRealPersonVerificationToken GetRealPersonVerificationResult.
+
 2020-12-24 Version: 2.0.1
 - Release CreateBodyDb ListBodyDbs DeleteBodyDb CreateBodyPerson GetBodyPerson ListBodyPerson DeleteBodyPerson AddBodyTrace SearchBodyTrace.
 

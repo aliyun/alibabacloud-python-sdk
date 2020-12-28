@@ -1971,6 +1971,46 @@ class Client(OpenApiClient):
         detect_mask_resp = await self.detect_mask_with_options_async(detect_mask_req, runtime)
         return detect_mask_resp
 
+    def gen_real_person_verification_token_with_options(
+        self,
+        request: facebody_20191230_models.GenRealPersonVerificationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.GenRealPersonVerificationTokenResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return facebody_20191230_models.GenRealPersonVerificationTokenResponse().from_map(
+            self.do_rpcrequest('GenRealPersonVerificationToken', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def gen_real_person_verification_token_with_options_async(
+        self,
+        request: facebody_20191230_models.GenRealPersonVerificationTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.GenRealPersonVerificationTokenResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return facebody_20191230_models.GenRealPersonVerificationTokenResponse().from_map(
+            await self.do_rpcrequest_async('GenRealPersonVerificationToken', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def gen_real_person_verification_token(
+        self,
+        request: facebody_20191230_models.GenRealPersonVerificationTokenRequest,
+    ) -> facebody_20191230_models.GenRealPersonVerificationTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.gen_real_person_verification_token_with_options(request, runtime)
+
+    async def gen_real_person_verification_token_async(
+        self,
+        request: facebody_20191230_models.GenRealPersonVerificationTokenRequest,
+    ) -> facebody_20191230_models.GenRealPersonVerificationTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.gen_real_person_verification_token_with_options_async(request, runtime)
+
     def list_face_dbs_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -2405,6 +2445,46 @@ class Client(OpenApiClient):
         detect_celebrity_resp = await self.detect_celebrity_with_options_async(detect_celebrity_req, runtime)
         return detect_celebrity_resp
 
+    def get_real_person_verification_result_with_options(
+        self,
+        request: facebody_20191230_models.GetRealPersonVerificationResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.GetRealPersonVerificationResultResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return facebody_20191230_models.GetRealPersonVerificationResultResponse().from_map(
+            self.do_rpcrequest('GetRealPersonVerificationResult', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_real_person_verification_result_with_options_async(
+        self,
+        request: facebody_20191230_models.GetRealPersonVerificationResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.GetRealPersonVerificationResultResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return facebody_20191230_models.GetRealPersonVerificationResultResponse().from_map(
+            await self.do_rpcrequest_async('GetRealPersonVerificationResult', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_real_person_verification_result(
+        self,
+        request: facebody_20191230_models.GetRealPersonVerificationResultRequest,
+    ) -> facebody_20191230_models.GetRealPersonVerificationResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_real_person_verification_result_with_options(request, runtime)
+
+    async def get_real_person_verification_result_async(
+        self,
+        request: facebody_20191230_models.GetRealPersonVerificationResultRequest,
+    ) -> facebody_20191230_models.GetRealPersonVerificationResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_real_person_verification_result_with_options_async(request, runtime)
+
     def delete_face_with_options(
         self,
         request: facebody_20191230_models.DeleteFaceRequest,
@@ -2444,32 +2524,6 @@ class Client(OpenApiClient):
     ) -> facebody_20191230_models.DeleteFaceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_face_with_options_async(request, runtime)
-
-    def create_body_instance_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> facebody_20191230_models.CreateBodyInstanceResponse:
-        req = open_api_models.OpenApiRequest()
-        return facebody_20191230_models.CreateBodyInstanceResponse().from_map(
-            self.do_rpcrequest('CreateBodyInstance', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_body_instance_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> facebody_20191230_models.CreateBodyInstanceResponse:
-        req = open_api_models.OpenApiRequest()
-        return facebody_20191230_models.CreateBodyInstanceResponse().from_map(
-            await self.do_rpcrequest_async('CreateBodyInstance', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_body_instance(self) -> facebody_20191230_models.CreateBodyInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_body_instance_with_options(runtime)
-
-    async def create_body_instance_async(self) -> facebody_20191230_models.CreateBodyInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_body_instance_with_options_async(runtime)
 
     def extract_pedestrian_feature_attribute_with_options(
         self,
@@ -4400,6 +4454,48 @@ class Client(OpenApiClient):
     ) -> facebody_20191230_models.DeleteFaceDbResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_face_db_with_options_async(request, runtime)
+
+    def list_body_person_with_options(
+        self,
+        request: facebody_20191230_models.ListBodyPersonRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.ListBodyPersonResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return facebody_20191230_models.ListBodyPersonResponse().from_map(
+            self.do_rpcrequest('ListBodyPerson', '2019-12-30', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def list_body_person_with_options_async(
+        self,
+        request: facebody_20191230_models.ListBodyPersonRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.ListBodyPersonResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return facebody_20191230_models.ListBodyPersonResponse().from_map(
+            await self.do_rpcrequest_async('ListBodyPerson', '2019-12-30', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def list_body_person(
+        self,
+        request: facebody_20191230_models.ListBodyPersonRequest,
+    ) -> facebody_20191230_models.ListBodyPersonResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_body_person_with_options(request, runtime)
+
+    async def list_body_person_async(
+        self,
+        request: facebody_20191230_models.ListBodyPersonRequest,
+    ) -> facebody_20191230_models.ListBodyPersonResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_body_person_with_options_async(request, runtime)
 
     def list_body_dbs_with_options(
         self,

@@ -3113,6 +3113,146 @@ class DetectMaskResponse(TeaModel):
         return self
 
 
+class GenRealPersonVerificationTokenRequest(TeaModel):
+    def __init__(
+        self,
+        certificate_name: str = None,
+        certificate_number: str = None,
+        meta_info: str = None,
+    ):
+        self.certificate_name = certificate_name
+        self.certificate_number = certificate_number
+        self.meta_info = meta_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.certificate_name is not None:
+            result['CertificateName'] = self.certificate_name
+        if self.certificate_number is not None:
+            result['CertificateNumber'] = self.certificate_number
+        if self.meta_info is not None:
+            result['MetaInfo'] = self.meta_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertificateName') is not None:
+            self.certificate_name = m.get('CertificateName')
+        if m.get('CertificateNumber') is not None:
+            self.certificate_number = m.get('CertificateNumber')
+        if m.get('MetaInfo') is not None:
+            self.meta_info = m.get('MetaInfo')
+        return self
+
+
+class GenRealPersonVerificationTokenResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        verification_token: str = None,
+    ):
+        self.verification_token = verification_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.verification_token is not None:
+            result['VerificationToken'] = self.verification_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VerificationToken') is not None:
+            self.verification_token = m.get('VerificationToken')
+        return self
+
+
+class GenRealPersonVerificationTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: GenRealPersonVerificationTokenResponseBodyData = None,
+        error_message: str = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+        self.error_message = error_message
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = GenRealPersonVerificationTokenResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GenRealPersonVerificationTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GenRealPersonVerificationTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GenRealPersonVerificationTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListFaceDbsResponseBodyDataDbList(TeaModel):
     def __init__(
         self,
@@ -4092,6 +4232,152 @@ class DetectCelebrityResponse(TeaModel):
         return self
 
 
+class GetRealPersonVerificationResultRequest(TeaModel):
+    def __init__(
+        self,
+        verification_token: str = None,
+        material_hash: str = None,
+    ):
+        self.verification_token = verification_token
+        self.material_hash = material_hash
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.verification_token is not None:
+            result['VerificationToken'] = self.verification_token
+        if self.material_hash is not None:
+            result['MaterialHash'] = self.material_hash
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VerificationToken') is not None:
+            self.verification_token = m.get('VerificationToken')
+        if m.get('MaterialHash') is not None:
+            self.material_hash = m.get('MaterialHash')
+        return self
+
+
+class GetRealPersonVerificationResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        pass_: bool = None,
+        identity_info: str = None,
+        material_match: str = None,
+    ):
+        self.pass_ = pass_
+        self.identity_info = identity_info
+        self.material_match = material_match
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.pass_ is not None:
+            result['Pass'] = self.pass_
+        if self.identity_info is not None:
+            result['IdentityInfo'] = self.identity_info
+        if self.material_match is not None:
+            result['MaterialMatch'] = self.material_match
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pass') is not None:
+            self.pass_ = m.get('Pass')
+        if m.get('IdentityInfo') is not None:
+            self.identity_info = m.get('IdentityInfo')
+        if m.get('MaterialMatch') is not None:
+            self.material_match = m.get('MaterialMatch')
+        return self
+
+
+class GetRealPersonVerificationResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: GetRealPersonVerificationResultResponseBodyData = None,
+        error_message: str = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+        self.error_message = error_message
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = GetRealPersonVerificationResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetRealPersonVerificationResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetRealPersonVerificationResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetRealPersonVerificationResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteFaceRequest(TeaModel):
     def __init__(
         self,
@@ -4173,108 +4459,6 @@ class DeleteFaceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteFaceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateBodyInstanceResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        id: int = None,
-    ):
-        # 实例ID
-        self.id = id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        return self
-
-
-class CreateBodyInstanceResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: CreateBodyInstanceResponseBodyData = None,
-        code: str = None,
-        message: str = None,
-    ):
-        # RequestId
-        self.request_id = request_id
-        # 实例id
-        self.data = data
-        self.code = code
-        self.message = message
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = CreateBodyInstanceResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        return self
-
-
-class CreateBodyInstanceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: CreateBodyInstanceResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = CreateBodyInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4927,13 +5111,9 @@ class DeleteBodyPersonResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        code: str = None,
-        message: str = None,
     ):
         # RequestId
         self.request_id = request_id
-        self.code = code
-        self.message = message
 
     def validate(self):
         pass
@@ -4942,20 +5122,12 @@ class DeleteBodyPersonResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         return self
 
 
@@ -6095,14 +6267,10 @@ class CreateBodyPersonResponseBody(TeaModel):
         self,
         request_id: str = None,
         data: CreateBodyPersonResponseBodyData = None,
-        code: str = None,
-        message: str = None,
     ):
         # RequestId
         self.request_id = request_id
         self.data = data
-        self.code = code
-        self.message = message
 
     def validate(self):
         if self.data:
@@ -6114,10 +6282,6 @@ class CreateBodyPersonResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
         return result
 
     def from_map(self, m: dict = None):
@@ -6127,10 +6291,6 @@ class CreateBodyPersonResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = CreateBodyPersonResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         return self
 
 
@@ -6364,13 +6524,9 @@ class DeleteBodyDbResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        code: str = None,
-        message: str = None,
     ):
         # RequestId
         self.request_id = request_id
-        self.code = code
-        self.message = message
 
     def validate(self):
         pass
@@ -6379,20 +6535,12 @@ class DeleteBodyDbResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         return self
 
 
@@ -7654,14 +7802,10 @@ class GetBodyPersonResponseBody(TeaModel):
         self,
         request_id: str = None,
         data: GetBodyPersonResponseBodyData = None,
-        code: str = None,
-        message: str = None,
     ):
         # RequestId
         self.request_id = request_id
         self.data = data
-        self.code = code
-        self.message = message
 
     def validate(self):
         if self.data:
@@ -7673,10 +7817,6 @@ class GetBodyPersonResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
         return result
 
     def from_map(self, m: dict = None):
@@ -7686,10 +7826,6 @@ class GetBodyPersonResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = GetBodyPersonResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         return self
 
 
@@ -7805,6 +7941,199 @@ class DeleteFaceDbResponse(TeaModel):
         return self
 
 
+class ListBodyPersonRequest(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        offset: int = None,
+        limit: int = None,
+    ):
+        # 数据库ID
+        self.db_id = db_id
+        # 起始位置(不含)
+        self.offset = offset
+        # 分页数量
+        self.limit = limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        return self
+
+
+class ListBodyPersonResponseBodyDataPersonList(TeaModel):
+    def __init__(
+        self,
+        instance_id: int = None,
+        db_id: int = None,
+        name: str = None,
+        trace_count: int = None,
+        id: int = None,
+    ):
+        # 搜索引擎实例Id
+        self.instance_id = instance_id
+        # 数据库ID
+        self.db_id = db_id
+        # 人员名称
+        self.name = name
+        # Trace数量
+        self.trace_count = trace_count
+        # 人员ID
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.trace_count is not None:
+            result['TraceCount'] = self.trace_count
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TraceCount') is not None:
+            self.trace_count = m.get('TraceCount')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class ListBodyPersonResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        total: int = None,
+        person_list: List[ListBodyPersonResponseBodyDataPersonList] = None,
+    ):
+        # 数据总量
+        self.total = total
+        self.person_list = person_list
+
+    def validate(self):
+        if self.person_list:
+            for k in self.person_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.total is not None:
+            result['Total'] = self.total
+        result['PersonList'] = []
+        if self.person_list is not None:
+            for k in self.person_list:
+                result['PersonList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        self.person_list = []
+        if m.get('PersonList') is not None:
+            for k in m.get('PersonList'):
+                temp_model = ListBodyPersonResponseBodyDataPersonList()
+                self.person_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListBodyPersonResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: ListBodyPersonResponseBodyData = None,
+    ):
+        # RequestId
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = ListBodyPersonResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class ListBodyPersonResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListBodyPersonResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListBodyPersonResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListBodyDbsRequest(TeaModel):
     def __init__(
         self,
@@ -7910,14 +8239,10 @@ class ListBodyDbsResponseBody(TeaModel):
         self,
         request_id: str = None,
         data: ListBodyDbsResponseBodyData = None,
-        code: str = None,
-        message: str = None,
     ):
         # RequestId
         self.request_id = request_id
         self.data = data
-        self.code = code
-        self.message = message
 
     def validate(self):
         if self.data:
@@ -7929,10 +8254,6 @@ class ListBodyDbsResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
         return result
 
     def from_map(self, m: dict = None):
@@ -7942,10 +8263,6 @@ class ListBodyDbsResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = ListBodyDbsResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         return self
 
 
@@ -9045,14 +9362,10 @@ class SearchBodyTraceResponseBody(TeaModel):
         self,
         request_id: str = None,
         data: SearchBodyTraceResponseBodyData = None,
-        code: str = None,
-        message: str = None,
     ):
         # RequestId
         self.request_id = request_id
         self.data = data
-        self.code = code
-        self.message = message
 
     def validate(self):
         if self.data:
@@ -9064,10 +9377,6 @@ class SearchBodyTraceResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
         return result
 
     def from_map(self, m: dict = None):
@@ -9077,10 +9386,6 @@ class SearchBodyTraceResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = SearchBodyTraceResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         return self
 
 
@@ -9967,14 +10272,10 @@ class CreateBodyDbResponseBody(TeaModel):
         self,
         request_id: str = None,
         data: CreateBodyDbResponseBodyData = None,
-        code: str = None,
-        message: str = None,
     ):
         # RequestId
         self.request_id = request_id
         self.data = data
-        self.code = code
-        self.message = message
 
     def validate(self):
         if self.data:
@@ -9986,10 +10287,6 @@ class CreateBodyDbResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
         return result
 
     def from_map(self, m: dict = None):
@@ -9999,10 +10296,6 @@ class CreateBodyDbResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = CreateBodyDbResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         return self
 
 
