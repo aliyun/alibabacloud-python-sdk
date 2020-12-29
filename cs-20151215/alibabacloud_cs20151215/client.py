@@ -325,8 +325,6 @@ class Client(OpenApiClient):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.cluster_type):
             query['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.multi_az):
-            query['MultiAZ'] = request.multi_az
         if not UtilClient.is_unset(request.kubernetes_version):
             query['KubernetesVersion'] = request.kubernetes_version
         if not UtilClient.is_unset(request.profile):
@@ -351,8 +349,6 @@ class Client(OpenApiClient):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.cluster_type):
             query['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.multi_az):
-            query['MultiAZ'] = request.multi_az
         if not UtilClient.is_unset(request.kubernetes_version):
             query['KubernetesVersion'] = request.kubernetes_version
         if not UtilClient.is_unset(request.profile):
@@ -3389,7 +3385,7 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return cs20151215_models.DeleteClusterNodesResponse().from_map(
-            self.do_roarequest('DeleteClusterNodes', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodes', 'json', req, runtime)
+            self.do_roarequest('DeleteClusterNodes', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodes', 'none', req, runtime)
         )
 
     async def delete_cluster_nodes_with_options_async(
@@ -3412,5 +3408,5 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return cs20151215_models.DeleteClusterNodesResponse().from_map(
-            await self.do_roarequest_async('DeleteClusterNodes', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodes', 'json', req, runtime)
+            await self.do_roarequest_async('DeleteClusterNodes', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodes', 'none', req, runtime)
         )

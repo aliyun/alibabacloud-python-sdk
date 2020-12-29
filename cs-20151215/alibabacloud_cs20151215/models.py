@@ -667,7 +667,6 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
         self,
         region: str = None,
         cluster_type: str = None,
-        multi_az: bool = None,
         kubernetes_version: str = None,
         profile: str = None,
     ):
@@ -675,8 +674,6 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
         self.region = region
         # 集群类型。
         self.cluster_type = cluster_type
-        # 是否查询多可用区。
-        self.multi_az = multi_az
         # 要查询的版本，如果为空则查所有版本。
         self.kubernetes_version = kubernetes_version
         # 边缘集群标识，用于区分边缘集群，取值：Default或Edge。
@@ -691,8 +688,6 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
             result['Region'] = self.region
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
-        if self.multi_az is not None:
-            result['MultiAZ'] = self.multi_az
         if self.kubernetes_version is not None:
             result['KubernetesVersion'] = self.kubernetes_version
         if self.profile is not None:
@@ -705,8 +700,6 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
             self.region = m.get('Region')
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
-        if m.get('MultiAZ') is not None:
-            self.multi_az = m.get('MultiAZ')
         if m.get('KubernetesVersion') is not None:
             self.kubernetes_version = m.get('KubernetesVersion')
         if m.get('Profile') is not None:
@@ -1123,44 +1116,6 @@ class CreateKubernetesTriggerResponse(TeaModel):
         return self
 
 
-class DescribeClusterDetailResponseBodyOutputs(TeaModel):
-    def __init__(
-        self,
-        output_key: str = None,
-        output_value: str = None,
-        description: str = None,
-    ):
-        # 资源ID。
-        self.output_key = output_key
-        # 资源名称。
-        self.output_value = output_value
-        # 资源描述。
-        self.description = description
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.output_key is not None:
-            result['OutputKey'] = self.output_key
-        if self.output_value is not None:
-            result['OutputValue'] = self.output_value
-        if self.description is not None:
-            result['Description'] = self.description
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OutputKey') is not None:
-            self.output_key = m.get('OutputKey')
-        if m.get('OutputValue') is not None:
-            self.output_value = m.get('OutputValue')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        return self
-
-
 class DescribeClusterDetailResponseBody(TeaModel):
     def __init__(
         self,
@@ -1193,8 +1148,6 @@ class DescribeClusterDetailResponseBody(TeaModel):
         cluster_spec: str = None,
         worker_ram_role_name: str = None,
         maintenance_window: MaintenanceWindow = None,
-        parameters: Dict[str, Any] = None,
-        outputs: List[DescribeClusterDetailResponseBodyOutputs] = None,
     ):
         # 集群ID。
         self.cluster_id = cluster_id
@@ -1253,10 +1206,6 @@ class DescribeClusterDetailResponseBody(TeaModel):
         # Worker节点RAM角色名称。
         self.worker_ram_role_name = worker_ram_role_name
         self.maintenance_window = maintenance_window
-        # 创建集群参数。
-        self.parameters = parameters
-        # 集群创建的资源列表。
-        self.outputs = outputs
 
     def validate(self):
         if self.tags:
@@ -1265,10 +1214,6 @@ class DescribeClusterDetailResponseBody(TeaModel):
                     k.validate()
         if self.maintenance_window:
             self.maintenance_window.validate()
-        if self.outputs:
-            for k in self.outputs:
-                if k:
-                    k.validate()
 
     def to_map(self):
         result = dict()
@@ -1332,12 +1277,6 @@ class DescribeClusterDetailResponseBody(TeaModel):
             result['worker_ram_role_name'] = self.worker_ram_role_name
         if self.maintenance_window is not None:
             result['maintenance_window'] = self.maintenance_window.to_map()
-        if self.parameters is not None:
-            result['parameters'] = self.parameters
-        result['outputs'] = []
-        if self.outputs is not None:
-            for k in self.outputs:
-                result['outputs'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1404,13 +1343,6 @@ class DescribeClusterDetailResponseBody(TeaModel):
         if m.get('maintenance_window') is not None:
             temp_model = MaintenanceWindow()
             self.maintenance_window = temp_model.from_map(m['maintenance_window'])
-        if m.get('parameters') is not None:
-            self.parameters = m.get('parameters')
-        self.outputs = []
-        if m.get('outputs') is not None:
-            for k in m.get('outputs'):
-                temp_model = DescribeClusterDetailResponseBodyOutputs()
-                self.outputs.append(temp_model.from_map(k))
         return self
 
 
@@ -9596,60 +9528,26 @@ class DeleteClusterNodesRequest(TeaModel):
         return self
 
 
-class DeleteClusterNodesResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # 请求ID。
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        return self
-
-
 class DeleteClusterNodesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: DeleteClusterNodesResponseBody = None,
     ):
         self.headers = headers
-        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
 
     def to_map(self):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DeleteClusterNodesResponseBody()
-            self.body = temp_model.from_map(m['body'])
         return self
 
 
