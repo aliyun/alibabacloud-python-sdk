@@ -1,3 +1,6 @@
+2020-12-29 Version: 1.0.2
+ - Fix Required Fields.
+
 2020-12-24 Version: 1.0.1
 - Supported ContrastSmartVerify.
 

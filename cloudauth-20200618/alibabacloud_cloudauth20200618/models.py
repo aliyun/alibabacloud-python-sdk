@@ -34,12 +34,7 @@ class ContrastSmartVerifyRequest(TeaModel):
         self.face_pic_string = face_pic_string
 
     def validate(self):
-        self.validate_required(self.scene_id, 'scene_id')
-        self.validate_required(self.outer_order_no, 'outer_order_no')
-        self.validate_required(self.mode, 'mode')
-        self.validate_required(self.cert_type, 'cert_type')
-        self.validate_required(self.cert_name, 'cert_name')
-        self.validate_required(self.cert_no, 'cert_no')
+        pass
 
     def to_map(self):
         result = dict()
@@ -227,12 +222,6 @@ class ContrastSmartVerifyAdvanceRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.face_pic_file_object, 'face_pic_file_object')
-        self.validate_required(self.scene_id, 'scene_id')
-        self.validate_required(self.outer_order_no, 'outer_order_no')
-        self.validate_required(self.mode, 'mode')
-        self.validate_required(self.cert_type, 'cert_type')
-        self.validate_required(self.cert_name, 'cert_name')
-        self.validate_required(self.cert_no, 'cert_no')
 
     def to_map(self):
         result = dict()
