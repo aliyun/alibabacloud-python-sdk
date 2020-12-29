@@ -1,3 +1,6 @@
+2020-12-29 Version: 2.0.1
+- Release InterpolateVideoFrame ToneSdrVideo ConvertHdrVideo.
+
 2020-12-25 Version: 2.0.0
 - Release InterpolateVideoFrame ToneSdrVideo ConvertHdrVideo.
 
