@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_pcdn20170411.
 
-Created on 22/12/2020
+Created on 30/12/2020
 
 @author: Alibaba Cloud SDK
 """
@@ -34,11 +34,12 @@ NAME = "alibabacloud_pcdn20170411" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud P2P CDN (20170411) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
-URL = "https://github.com/aliyun/alibabacloud-sdk"
+URL = "https://github.com/aliyun/alibabacloud-python-sdk"
 VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
     "alibabacloud_tea_util>=0.3.1, <1.0.0",
-    "alibabacloud_tea_rpc>=0.1.0, <1.0.0",
+    "alibabacloud_tea_openapi>=0.1.0, <1.0.0",
+    "alibabacloud_openapi_util>=0.0.3, <1.0.0",
     "alibabacloud_endpoint_util>=0.0.3, <1.0.0"
 ]
 
