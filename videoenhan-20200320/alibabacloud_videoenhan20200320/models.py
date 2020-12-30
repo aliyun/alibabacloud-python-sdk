@@ -4,618 +4,23 @@ from Tea.model import TeaModel
 from typing import BinaryIO, Dict, List
 
 
-class ToneSdrVideoRequest(TeaModel):
+class AbstractEcommerceVideoRequest(TeaModel):
     def __init__(
         self,
         video_url: str = None,
         async_: bool = None,
-        bitrate: int = None,
-        recolor_model: str = None,
+        duration: float = None,
+        width: int = None,
+        height: int = None,
     ):
         self.video_url = video_url
         self.async_ = async_
-        self.bitrate = bitrate
-        self.recolor_model = recolor_model
+        self.duration = duration
+        self.width = width
+        self.height = height
 
     def validate(self):
         pass
-
-    def to_map(self):
-        result = dict()
-        if self.video_url is not None:
-            result['VideoURL'] = self.video_url
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.recolor_model is not None:
-            result['RecolorModel'] = self.recolor_model
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoURL') is not None:
-            self.video_url = m.get('VideoURL')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('RecolorModel') is not None:
-            self.recolor_model = m.get('RecolorModel')
-        return self
-
-
-class ToneSdrVideoAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        video_urlobject: BinaryIO = None,
-        async_: bool = None,
-        bitrate: int = None,
-        recolor_model: str = None,
-    ):
-        self.video_urlobject = video_urlobject
-        self.async_ = async_
-        self.bitrate = bitrate
-        self.recolor_model = recolor_model
-
-    def validate(self):
-        self.validate_required(self.video_urlobject, 'video_urlobject')
-
-    def to_map(self):
-        result = dict()
-        if self.video_urlobject is not None:
-            result['VideoURLObject'] = self.video_urlobject
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.recolor_model is not None:
-            result['RecolorModel'] = self.recolor_model
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoURLObject') is not None:
-            self.video_urlobject = m.get('VideoURLObject')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('RecolorModel') is not None:
-            self.recolor_model = m.get('RecolorModel')
-        return self
-
-
-class ToneSdrVideoResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        video_url: str = None,
-    ):
-        self.video_url = video_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.video_url is not None:
-            result['VideoURL'] = self.video_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoURL') is not None:
-            self.video_url = m.get('VideoURL')
-        return self
-
-
-class ToneSdrVideoResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: ToneSdrVideoResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = ToneSdrVideoResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class ToneSdrVideoResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ToneSdrVideoResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ToneSdrVideoResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class EnhanceVideoQualityRequest(TeaModel):
-    def __init__(
-        self,
-        video_url: str = None,
-        async_: bool = None,
-        out_put_width: int = None,
-        out_put_height: int = None,
-        frame_rate: int = None,
-        hdrformat: str = None,
-        max_illuminance: int = None,
-        bitrate: int = None,
-    ):
-        self.video_url = video_url
-        self.async_ = async_
-        self.out_put_width = out_put_width
-        self.out_put_height = out_put_height
-        self.frame_rate = frame_rate
-        self.hdrformat = hdrformat
-        self.max_illuminance = max_illuminance
-        self.bitrate = bitrate
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.video_url is not None:
-            result['VideoURL'] = self.video_url
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.out_put_width is not None:
-            result['OutPutWidth'] = self.out_put_width
-        if self.out_put_height is not None:
-            result['OutPutHeight'] = self.out_put_height
-        if self.frame_rate is not None:
-            result['FrameRate'] = self.frame_rate
-        if self.hdrformat is not None:
-            result['HDRFormat'] = self.hdrformat
-        if self.max_illuminance is not None:
-            result['MaxIlluminance'] = self.max_illuminance
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoURL') is not None:
-            self.video_url = m.get('VideoURL')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('OutPutWidth') is not None:
-            self.out_put_width = m.get('OutPutWidth')
-        if m.get('OutPutHeight') is not None:
-            self.out_put_height = m.get('OutPutHeight')
-        if m.get('FrameRate') is not None:
-            self.frame_rate = m.get('FrameRate')
-        if m.get('HDRFormat') is not None:
-            self.hdrformat = m.get('HDRFormat')
-        if m.get('MaxIlluminance') is not None:
-            self.max_illuminance = m.get('MaxIlluminance')
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        return self
-
-
-class EnhanceVideoQualityAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        video_urlobject: BinaryIO = None,
-        async_: bool = None,
-        out_put_width: int = None,
-        out_put_height: int = None,
-        frame_rate: int = None,
-        hdrformat: str = None,
-        max_illuminance: int = None,
-        bitrate: int = None,
-    ):
-        self.video_urlobject = video_urlobject
-        self.async_ = async_
-        self.out_put_width = out_put_width
-        self.out_put_height = out_put_height
-        self.frame_rate = frame_rate
-        self.hdrformat = hdrformat
-        self.max_illuminance = max_illuminance
-        self.bitrate = bitrate
-
-    def validate(self):
-        self.validate_required(self.video_urlobject, 'video_urlobject')
-
-    def to_map(self):
-        result = dict()
-        if self.video_urlobject is not None:
-            result['VideoURLObject'] = self.video_urlobject
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.out_put_width is not None:
-            result['OutPutWidth'] = self.out_put_width
-        if self.out_put_height is not None:
-            result['OutPutHeight'] = self.out_put_height
-        if self.frame_rate is not None:
-            result['FrameRate'] = self.frame_rate
-        if self.hdrformat is not None:
-            result['HDRFormat'] = self.hdrformat
-        if self.max_illuminance is not None:
-            result['MaxIlluminance'] = self.max_illuminance
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoURLObject') is not None:
-            self.video_urlobject = m.get('VideoURLObject')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('OutPutWidth') is not None:
-            self.out_put_width = m.get('OutPutWidth')
-        if m.get('OutPutHeight') is not None:
-            self.out_put_height = m.get('OutPutHeight')
-        if m.get('FrameRate') is not None:
-            self.frame_rate = m.get('FrameRate')
-        if m.get('HDRFormat') is not None:
-            self.hdrformat = m.get('HDRFormat')
-        if m.get('MaxIlluminance') is not None:
-            self.max_illuminance = m.get('MaxIlluminance')
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        return self
-
-
-class EnhanceVideoQualityResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        video_url: str = None,
-    ):
-        self.video_url = video_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.video_url is not None:
-            result['VideoURL'] = self.video_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoURL') is not None:
-            self.video_url = m.get('VideoURL')
-        return self
-
-
-class EnhanceVideoQualityResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: EnhanceVideoQualityResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = EnhanceVideoQualityResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class EnhanceVideoQualityResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: EnhanceVideoQualityResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = EnhanceVideoQualityResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class InterpolateVideoFrameRequest(TeaModel):
-    def __init__(
-        self,
-        video_url: str = None,
-        async_: bool = None,
-        frame_rate: int = None,
-        bitrate: int = None,
-    ):
-        self.video_url = video_url
-        self.async_ = async_
-        self.frame_rate = frame_rate
-        self.bitrate = bitrate
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.video_url is not None:
-            result['VideoURL'] = self.video_url
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.frame_rate is not None:
-            result['FrameRate'] = self.frame_rate
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoURL') is not None:
-            self.video_url = m.get('VideoURL')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('FrameRate') is not None:
-            self.frame_rate = m.get('FrameRate')
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        return self
-
-
-class InterpolateVideoFrameAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        video_urlobject: BinaryIO = None,
-        async_: bool = None,
-        frame_rate: int = None,
-        bitrate: int = None,
-    ):
-        self.video_urlobject = video_urlobject
-        self.async_ = async_
-        self.frame_rate = frame_rate
-        self.bitrate = bitrate
-
-    def validate(self):
-        self.validate_required(self.video_urlobject, 'video_urlobject')
-
-    def to_map(self):
-        result = dict()
-        if self.video_urlobject is not None:
-            result['VideoURLObject'] = self.video_urlobject
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.frame_rate is not None:
-            result['FrameRate'] = self.frame_rate
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoURLObject') is not None:
-            self.video_urlobject = m.get('VideoURLObject')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('FrameRate') is not None:
-            self.frame_rate = m.get('FrameRate')
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        return self
-
-
-class InterpolateVideoFrameResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        video_url: str = None,
-    ):
-        self.video_url = video_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.video_url is not None:
-            result['VideoURL'] = self.video_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoURL') is not None:
-            self.video_url = m.get('VideoURL')
-        return self
-
-
-class InterpolateVideoFrameResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: InterpolateVideoFrameResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = InterpolateVideoFrameResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class InterpolateVideoFrameResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: InterpolateVideoFrameResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = InterpolateVideoFrameResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class EraseVideoLogoRequestBoxes(TeaModel):
-    def __init__(
-        self,
-        w: float = None,
-        h: float = None,
-        y: float = None,
-        x: float = None,
-    ):
-        self.w = w
-        self.h = h
-        self.y = y
-        self.x = x
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.w is not None:
-            result['W'] = self.w
-        if self.h is not None:
-            result['H'] = self.h
-        if self.y is not None:
-            result['Y'] = self.y
-        if self.x is not None:
-            result['X'] = self.x
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('W') is not None:
-            self.w = m.get('W')
-        if m.get('H') is not None:
-            self.h = m.get('H')
-        if m.get('Y') is not None:
-            self.y = m.get('Y')
-        if m.get('X') is not None:
-            self.x = m.get('X')
-        return self
-
-
-class EraseVideoLogoRequest(TeaModel):
-    def __init__(
-        self,
-        video_url: str = None,
-        async_: bool = None,
-        boxes: List[EraseVideoLogoRequestBoxes] = None,
-    ):
-        self.video_url = video_url
-        self.async_ = async_
-        self.boxes = boxes
-
-    def validate(self):
-        if self.boxes:
-            for k in self.boxes:
-                if k:
-                    k.validate()
 
     def to_map(self):
         result = dict()
@@ -623,10 +28,12 @@ class EraseVideoLogoRequest(TeaModel):
             result['VideoUrl'] = self.video_url
         if self.async_ is not None:
             result['Async'] = self.async_
-        result['Boxes'] = []
-        if self.boxes is not None:
-            for k in self.boxes:
-                result['Boxes'].append(k.to_map() if k else None)
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
         return result
 
     def from_map(self, m: dict = None):
@@ -635,72 +42,32 @@ class EraseVideoLogoRequest(TeaModel):
             self.video_url = m.get('VideoUrl')
         if m.get('Async') is not None:
             self.async_ = m.get('Async')
-        self.boxes = []
-        if m.get('Boxes') is not None:
-            for k in m.get('Boxes'):
-                temp_model = EraseVideoLogoRequestBoxes()
-                self.boxes.append(temp_model.from_map(k))
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
         return self
 
 
-class EraseVideoLogoAdvanceRequestBoxes(TeaModel):
-    def __init__(
-        self,
-        w: float = None,
-        h: float = None,
-        y: float = None,
-        x: float = None,
-    ):
-        self.w = w
-        self.h = h
-        self.y = y
-        self.x = x
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.w is not None:
-            result['W'] = self.w
-        if self.h is not None:
-            result['H'] = self.h
-        if self.y is not None:
-            result['Y'] = self.y
-        if self.x is not None:
-            result['X'] = self.x
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('W') is not None:
-            self.w = m.get('W')
-        if m.get('H') is not None:
-            self.h = m.get('H')
-        if m.get('Y') is not None:
-            self.y = m.get('Y')
-        if m.get('X') is not None:
-            self.x = m.get('X')
-        return self
-
-
-class EraseVideoLogoAdvanceRequest(TeaModel):
+class AbstractEcommerceVideoAdvanceRequest(TeaModel):
     def __init__(
         self,
         video_url_object: BinaryIO = None,
         async_: bool = None,
-        boxes: List[EraseVideoLogoAdvanceRequestBoxes] = None,
+        duration: float = None,
+        width: int = None,
+        height: int = None,
     ):
         self.video_url_object = video_url_object
         self.async_ = async_
-        self.boxes = boxes
+        self.duration = duration
+        self.width = width
+        self.height = height
 
     def validate(self):
         self.validate_required(self.video_url_object, 'video_url_object')
-        if self.boxes:
-            for k in self.boxes:
-                if k:
-                    k.validate()
 
     def to_map(self):
         result = dict()
@@ -708,10 +75,12 @@ class EraseVideoLogoAdvanceRequest(TeaModel):
             result['VideoUrlObject'] = self.video_url_object
         if self.async_ is not None:
             result['Async'] = self.async_
-        result['Boxes'] = []
-        if self.boxes is not None:
-            for k in self.boxes:
-                result['Boxes'].append(k.to_map() if k else None)
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
         return result
 
     def from_map(self, m: dict = None):
@@ -720,15 +89,179 @@ class EraseVideoLogoAdvanceRequest(TeaModel):
             self.video_url_object = m.get('VideoUrlObject')
         if m.get('Async') is not None:
             self.async_ = m.get('Async')
-        self.boxes = []
-        if m.get('Boxes') is not None:
-            for k in m.get('Boxes'):
-                temp_model = EraseVideoLogoAdvanceRequestBoxes()
-                self.boxes.append(temp_model.from_map(k))
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
         return self
 
 
-class EraseVideoLogoResponseBodyData(TeaModel):
+class AbstractEcommerceVideoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        video_cover_url: str = None,
+        video_url: str = None,
+    ):
+        self.video_cover_url = video_cover_url
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_cover_url is not None:
+            result['VideoCoverUrl'] = self.video_cover_url
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoCoverUrl') is not None:
+            self.video_cover_url = m.get('VideoCoverUrl')
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
+class AbstractEcommerceVideoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: AbstractEcommerceVideoResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = AbstractEcommerceVideoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class AbstractEcommerceVideoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AbstractEcommerceVideoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AbstractEcommerceVideoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AbstractFilmVideoRequest(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+        async_: bool = None,
+        length: int = None,
+    ):
+        self.video_url = video_url
+        self.async_ = async_
+        self.length = length
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        if self.length is not None:
+            result['Length'] = self.length
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        if m.get('Length') is not None:
+            self.length = m.get('Length')
+        return self
+
+
+class AbstractFilmVideoAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        video_url_object: BinaryIO = None,
+        async_: bool = None,
+        length: int = None,
+    ):
+        self.video_url_object = video_url_object
+        self.async_ = async_
+        self.length = length
+
+    def validate(self):
+        self.validate_required(self.video_url_object, 'video_url_object')
+
+    def to_map(self):
+        result = dict()
+        if self.video_url_object is not None:
+            result['VideoUrlObject'] = self.video_url_object
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        if self.length is not None:
+            result['Length'] = self.length
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoUrlObject') is not None:
+            self.video_url_object = m.get('VideoUrlObject')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        if m.get('Length') is not None:
+            self.length = m.get('Length')
+        return self
+
+
+class AbstractFilmVideoResponseBodyData(TeaModel):
     def __init__(
         self,
         video_url: str = None,
@@ -751,11 +284,11 @@ class EraseVideoLogoResponseBodyData(TeaModel):
         return self
 
 
-class EraseVideoLogoResponseBody(TeaModel):
+class AbstractFilmVideoResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: EraseVideoLogoResponseBodyData = None,
+        data: AbstractFilmVideoResponseBodyData = None,
     ):
         self.request_id = request_id
         self.data = data
@@ -777,16 +310,16 @@ class EraseVideoLogoResponseBody(TeaModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
-            temp_model = EraseVideoLogoResponseBodyData()
+            temp_model = AbstractFilmVideoResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
         return self
 
 
-class EraseVideoLogoResponse(TeaModel):
+class AbstractFilmVideoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: EraseVideoLogoResponseBody = None,
+        body: AbstractFilmVideoResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -810,188 +343,7 @@ class EraseVideoLogoResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = EraseVideoLogoResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ConvertHdrVideoRequest(TeaModel):
-    def __init__(
-        self,
-        video_url: str = None,
-        async_: bool = None,
-        hdrformat: str = None,
-        max_illuminance: int = None,
-        bitrate: int = None,
-    ):
-        self.video_url = video_url
-        self.async_ = async_
-        self.hdrformat = hdrformat
-        self.max_illuminance = max_illuminance
-        self.bitrate = bitrate
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.video_url is not None:
-            result['VideoURL'] = self.video_url
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.hdrformat is not None:
-            result['HDRFormat'] = self.hdrformat
-        if self.max_illuminance is not None:
-            result['MaxIlluminance'] = self.max_illuminance
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoURL') is not None:
-            self.video_url = m.get('VideoURL')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('HDRFormat') is not None:
-            self.hdrformat = m.get('HDRFormat')
-        if m.get('MaxIlluminance') is not None:
-            self.max_illuminance = m.get('MaxIlluminance')
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        return self
-
-
-class ConvertHdrVideoAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        video_urlobject: BinaryIO = None,
-        async_: bool = None,
-        hdrformat: str = None,
-        max_illuminance: int = None,
-        bitrate: int = None,
-    ):
-        self.video_urlobject = video_urlobject
-        self.async_ = async_
-        self.hdrformat = hdrformat
-        self.max_illuminance = max_illuminance
-        self.bitrate = bitrate
-
-    def validate(self):
-        self.validate_required(self.video_urlobject, 'video_urlobject')
-
-    def to_map(self):
-        result = dict()
-        if self.video_urlobject is not None:
-            result['VideoURLObject'] = self.video_urlobject
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.hdrformat is not None:
-            result['HDRFormat'] = self.hdrformat
-        if self.max_illuminance is not None:
-            result['MaxIlluminance'] = self.max_illuminance
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoURLObject') is not None:
-            self.video_urlobject = m.get('VideoURLObject')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('HDRFormat') is not None:
-            self.hdrformat = m.get('HDRFormat')
-        if m.get('MaxIlluminance') is not None:
-            self.max_illuminance = m.get('MaxIlluminance')
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        return self
-
-
-class ConvertHdrVideoResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        video_url: str = None,
-    ):
-        self.video_url = video_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.video_url is not None:
-            result['VideoURL'] = self.video_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoURL') is not None:
-            self.video_url = m.get('VideoURL')
-        return self
-
-
-class ConvertHdrVideoResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: ConvertHdrVideoResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = ConvertHdrVideoResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class ConvertHdrVideoResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ConvertHdrVideoResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ConvertHdrVideoResponseBody()
+            temp_model = AbstractFilmVideoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1436,16 +788,676 @@ class ChangeVideoSizeResponse(TeaModel):
         return self
 
 
-class SuperResolveVideoRequest(TeaModel):
+class ConvertHdrVideoRequest(TeaModel):
     def __init__(
         self,
         video_url: str = None,
         async_: bool = None,
-        bit_rate: int = None,
+        hdrformat: str = None,
+        max_illuminance: int = None,
+        bitrate: int = None,
     ):
         self.video_url = video_url
         self.async_ = async_
-        self.bit_rate = bit_rate
+        self.hdrformat = hdrformat
+        self.max_illuminance = max_illuminance
+        self.bitrate = bitrate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_url is not None:
+            result['VideoURL'] = self.video_url
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        if self.hdrformat is not None:
+            result['HDRFormat'] = self.hdrformat
+        if self.max_illuminance is not None:
+            result['MaxIlluminance'] = self.max_illuminance
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoURL') is not None:
+            self.video_url = m.get('VideoURL')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        if m.get('HDRFormat') is not None:
+            self.hdrformat = m.get('HDRFormat')
+        if m.get('MaxIlluminance') is not None:
+            self.max_illuminance = m.get('MaxIlluminance')
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        return self
+
+
+class ConvertHdrVideoAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        video_urlobject: BinaryIO = None,
+        async_: bool = None,
+        hdrformat: str = None,
+        max_illuminance: int = None,
+        bitrate: int = None,
+    ):
+        self.video_urlobject = video_urlobject
+        self.async_ = async_
+        self.hdrformat = hdrformat
+        self.max_illuminance = max_illuminance
+        self.bitrate = bitrate
+
+    def validate(self):
+        self.validate_required(self.video_urlobject, 'video_urlobject')
+
+    def to_map(self):
+        result = dict()
+        if self.video_urlobject is not None:
+            result['VideoURLObject'] = self.video_urlobject
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        if self.hdrformat is not None:
+            result['HDRFormat'] = self.hdrformat
+        if self.max_illuminance is not None:
+            result['MaxIlluminance'] = self.max_illuminance
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoURLObject') is not None:
+            self.video_urlobject = m.get('VideoURLObject')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        if m.get('HDRFormat') is not None:
+            self.hdrformat = m.get('HDRFormat')
+        if m.get('MaxIlluminance') is not None:
+            self.max_illuminance = m.get('MaxIlluminance')
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        return self
+
+
+class ConvertHdrVideoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+    ):
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_url is not None:
+            result['VideoURL'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoURL') is not None:
+            self.video_url = m.get('VideoURL')
+        return self
+
+
+class ConvertHdrVideoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: ConvertHdrVideoResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = ConvertHdrVideoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class ConvertHdrVideoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ConvertHdrVideoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ConvertHdrVideoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnhanceVideoQualityRequest(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+        async_: bool = None,
+        out_put_width: int = None,
+        out_put_height: int = None,
+        frame_rate: int = None,
+        hdrformat: str = None,
+        max_illuminance: int = None,
+        bitrate: int = None,
+    ):
+        self.video_url = video_url
+        self.async_ = async_
+        self.out_put_width = out_put_width
+        self.out_put_height = out_put_height
+        self.frame_rate = frame_rate
+        self.hdrformat = hdrformat
+        self.max_illuminance = max_illuminance
+        self.bitrate = bitrate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_url is not None:
+            result['VideoURL'] = self.video_url
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        if self.out_put_width is not None:
+            result['OutPutWidth'] = self.out_put_width
+        if self.out_put_height is not None:
+            result['OutPutHeight'] = self.out_put_height
+        if self.frame_rate is not None:
+            result['FrameRate'] = self.frame_rate
+        if self.hdrformat is not None:
+            result['HDRFormat'] = self.hdrformat
+        if self.max_illuminance is not None:
+            result['MaxIlluminance'] = self.max_illuminance
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoURL') is not None:
+            self.video_url = m.get('VideoURL')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        if m.get('OutPutWidth') is not None:
+            self.out_put_width = m.get('OutPutWidth')
+        if m.get('OutPutHeight') is not None:
+            self.out_put_height = m.get('OutPutHeight')
+        if m.get('FrameRate') is not None:
+            self.frame_rate = m.get('FrameRate')
+        if m.get('HDRFormat') is not None:
+            self.hdrformat = m.get('HDRFormat')
+        if m.get('MaxIlluminance') is not None:
+            self.max_illuminance = m.get('MaxIlluminance')
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        return self
+
+
+class EnhanceVideoQualityAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        video_urlobject: BinaryIO = None,
+        async_: bool = None,
+        out_put_width: int = None,
+        out_put_height: int = None,
+        frame_rate: int = None,
+        hdrformat: str = None,
+        max_illuminance: int = None,
+        bitrate: int = None,
+    ):
+        self.video_urlobject = video_urlobject
+        self.async_ = async_
+        self.out_put_width = out_put_width
+        self.out_put_height = out_put_height
+        self.frame_rate = frame_rate
+        self.hdrformat = hdrformat
+        self.max_illuminance = max_illuminance
+        self.bitrate = bitrate
+
+    def validate(self):
+        self.validate_required(self.video_urlobject, 'video_urlobject')
+
+    def to_map(self):
+        result = dict()
+        if self.video_urlobject is not None:
+            result['VideoURLObject'] = self.video_urlobject
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        if self.out_put_width is not None:
+            result['OutPutWidth'] = self.out_put_width
+        if self.out_put_height is not None:
+            result['OutPutHeight'] = self.out_put_height
+        if self.frame_rate is not None:
+            result['FrameRate'] = self.frame_rate
+        if self.hdrformat is not None:
+            result['HDRFormat'] = self.hdrformat
+        if self.max_illuminance is not None:
+            result['MaxIlluminance'] = self.max_illuminance
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoURLObject') is not None:
+            self.video_urlobject = m.get('VideoURLObject')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        if m.get('OutPutWidth') is not None:
+            self.out_put_width = m.get('OutPutWidth')
+        if m.get('OutPutHeight') is not None:
+            self.out_put_height = m.get('OutPutHeight')
+        if m.get('FrameRate') is not None:
+            self.frame_rate = m.get('FrameRate')
+        if m.get('HDRFormat') is not None:
+            self.hdrformat = m.get('HDRFormat')
+        if m.get('MaxIlluminance') is not None:
+            self.max_illuminance = m.get('MaxIlluminance')
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        return self
+
+
+class EnhanceVideoQualityResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+    ):
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_url is not None:
+            result['VideoURL'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoURL') is not None:
+            self.video_url = m.get('VideoURL')
+        return self
+
+
+class EnhanceVideoQualityResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: EnhanceVideoQualityResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = EnhanceVideoQualityResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class EnhanceVideoQualityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: EnhanceVideoQualityResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = EnhanceVideoQualityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EraseVideoLogoRequestBoxes(TeaModel):
+    def __init__(
+        self,
+        w: float = None,
+        h: float = None,
+        y: float = None,
+        x: float = None,
+    ):
+        self.w = w
+        self.h = h
+        self.y = y
+        self.x = x
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.w is not None:
+            result['W'] = self.w
+        if self.h is not None:
+            result['H'] = self.h
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.x is not None:
+            result['X'] = self.x
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('W') is not None:
+            self.w = m.get('W')
+        if m.get('H') is not None:
+            self.h = m.get('H')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        return self
+
+
+class EraseVideoLogoRequest(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+        async_: bool = None,
+        boxes: List[EraseVideoLogoRequestBoxes] = None,
+    ):
+        self.video_url = video_url
+        self.async_ = async_
+        self.boxes = boxes
+
+    def validate(self):
+        if self.boxes:
+            for k in self.boxes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        result['Boxes'] = []
+        if self.boxes is not None:
+            for k in self.boxes:
+                result['Boxes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        self.boxes = []
+        if m.get('Boxes') is not None:
+            for k in m.get('Boxes'):
+                temp_model = EraseVideoLogoRequestBoxes()
+                self.boxes.append(temp_model.from_map(k))
+        return self
+
+
+class EraseVideoLogoAdvanceRequestBoxes(TeaModel):
+    def __init__(
+        self,
+        w: float = None,
+        h: float = None,
+        y: float = None,
+        x: float = None,
+    ):
+        self.w = w
+        self.h = h
+        self.y = y
+        self.x = x
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.w is not None:
+            result['W'] = self.w
+        if self.h is not None:
+            result['H'] = self.h
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.x is not None:
+            result['X'] = self.x
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('W') is not None:
+            self.w = m.get('W')
+        if m.get('H') is not None:
+            self.h = m.get('H')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        return self
+
+
+class EraseVideoLogoAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        video_url_object: BinaryIO = None,
+        async_: bool = None,
+        boxes: List[EraseVideoLogoAdvanceRequestBoxes] = None,
+    ):
+        self.video_url_object = video_url_object
+        self.async_ = async_
+        self.boxes = boxes
+
+    def validate(self):
+        self.validate_required(self.video_url_object, 'video_url_object')
+        if self.boxes:
+            for k in self.boxes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.video_url_object is not None:
+            result['VideoUrlObject'] = self.video_url_object
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        result['Boxes'] = []
+        if self.boxes is not None:
+            for k in self.boxes:
+                result['Boxes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoUrlObject') is not None:
+            self.video_url_object = m.get('VideoUrlObject')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        self.boxes = []
+        if m.get('Boxes') is not None:
+            for k in m.get('Boxes'):
+                temp_model = EraseVideoLogoAdvanceRequestBoxes()
+                self.boxes.append(temp_model.from_map(k))
+        return self
+
+
+class EraseVideoLogoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+    ):
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
+class EraseVideoLogoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: EraseVideoLogoResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = EraseVideoLogoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class EraseVideoLogoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: EraseVideoLogoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = EraseVideoLogoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EraseVideoSubtitlesRequest(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+        async_: bool = None,
+        bx: float = None,
+        by: float = None,
+        bw: float = None,
+        bh: float = None,
+    ):
+        self.video_url = video_url
+        self.async_ = async_
+        self.bx = bx
+        self.by = by
+        self.bw = bw
+        self.bh = bh
 
     def validate(self):
         pass
@@ -1456,8 +1468,14 @@ class SuperResolveVideoRequest(TeaModel):
             result['VideoUrl'] = self.video_url
         if self.async_ is not None:
             result['Async'] = self.async_
-        if self.bit_rate is not None:
-            result['BitRate'] = self.bit_rate
+        if self.bx is not None:
+            result['BX'] = self.bx
+        if self.by is not None:
+            result['BY'] = self.by
+        if self.bw is not None:
+            result['BW'] = self.bw
+        if self.bh is not None:
+            result['BH'] = self.bh
         return result
 
     def from_map(self, m: dict = None):
@@ -1466,21 +1484,33 @@ class SuperResolveVideoRequest(TeaModel):
             self.video_url = m.get('VideoUrl')
         if m.get('Async') is not None:
             self.async_ = m.get('Async')
-        if m.get('BitRate') is not None:
-            self.bit_rate = m.get('BitRate')
+        if m.get('BX') is not None:
+            self.bx = m.get('BX')
+        if m.get('BY') is not None:
+            self.by = m.get('BY')
+        if m.get('BW') is not None:
+            self.bw = m.get('BW')
+        if m.get('BH') is not None:
+            self.bh = m.get('BH')
         return self
 
 
-class SuperResolveVideoAdvanceRequest(TeaModel):
+class EraseVideoSubtitlesAdvanceRequest(TeaModel):
     def __init__(
         self,
         video_url_object: BinaryIO = None,
         async_: bool = None,
-        bit_rate: int = None,
+        bx: float = None,
+        by: float = None,
+        bw: float = None,
+        bh: float = None,
     ):
         self.video_url_object = video_url_object
         self.async_ = async_
-        self.bit_rate = bit_rate
+        self.bx = bx
+        self.by = by
+        self.bw = bw
+        self.bh = bh
 
     def validate(self):
         self.validate_required(self.video_url_object, 'video_url_object')
@@ -1491,8 +1521,14 @@ class SuperResolveVideoAdvanceRequest(TeaModel):
             result['VideoUrlObject'] = self.video_url_object
         if self.async_ is not None:
             result['Async'] = self.async_
-        if self.bit_rate is not None:
-            result['BitRate'] = self.bit_rate
+        if self.bx is not None:
+            result['BX'] = self.bx
+        if self.by is not None:
+            result['BY'] = self.by
+        if self.bw is not None:
+            result['BW'] = self.bw
+        if self.bh is not None:
+            result['BH'] = self.bh
         return result
 
     def from_map(self, m: dict = None):
@@ -1501,12 +1537,18 @@ class SuperResolveVideoAdvanceRequest(TeaModel):
             self.video_url_object = m.get('VideoUrlObject')
         if m.get('Async') is not None:
             self.async_ = m.get('Async')
-        if m.get('BitRate') is not None:
-            self.bit_rate = m.get('BitRate')
+        if m.get('BX') is not None:
+            self.bx = m.get('BX')
+        if m.get('BY') is not None:
+            self.by = m.get('BY')
+        if m.get('BW') is not None:
+            self.bw = m.get('BW')
+        if m.get('BH') is not None:
+            self.bh = m.get('BH')
         return self
 
 
-class SuperResolveVideoResponseBodyData(TeaModel):
+class EraseVideoSubtitlesResponseBodyData(TeaModel):
     def __init__(
         self,
         video_url: str = None,
@@ -1529,11 +1571,11 @@ class SuperResolveVideoResponseBodyData(TeaModel):
         return self
 
 
-class SuperResolveVideoResponseBody(TeaModel):
+class EraseVideoSubtitlesResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: SuperResolveVideoResponseBodyData = None,
+        data: EraseVideoSubtitlesResponseBodyData = None,
     ):
         self.request_id = request_id
         self.data = data
@@ -1555,16 +1597,16 @@ class SuperResolveVideoResponseBody(TeaModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
-            temp_model = SuperResolveVideoResponseBodyData()
+            temp_model = EraseVideoSubtitlesResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
         return self
 
 
-class SuperResolveVideoResponse(TeaModel):
+class EraseVideoSubtitlesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: SuperResolveVideoResponseBody = None,
+        body: EraseVideoSubtitlesResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -1588,147 +1630,7 @@ class SuperResolveVideoResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = SuperResolveVideoResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetAsyncJobResultRequest(TeaModel):
-    def __init__(
-        self,
-        async_: bool = None,
-        job_id: str = None,
-    ):
-        self.async_ = async_
-        self.job_id = job_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        return self
-
-
-class GetAsyncJobResultResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        status: str = None,
-        error_message: str = None,
-        result: str = None,
-        error_code: str = None,
-        job_id: str = None,
-    ):
-        self.status = status
-        self.error_message = error_message
-        self.result = result
-        self.error_code = error_code
-        self.job_id = job_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.result is not None:
-            result['Result'] = self.result
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('Result') is not None:
-            self.result = m.get('Result')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        return self
-
-
-class GetAsyncJobResultResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: GetAsyncJobResultResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = GetAsyncJobResultResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class GetAsyncJobResultResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetAsyncJobResultResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetAsyncJobResultResponseBody()
+            temp_model = EraseVideoSubtitlesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1958,134 +1860,87 @@ class GenerateVideoResponse(TeaModel):
         return self
 
 
-class AbstractEcommerceVideoRequest(TeaModel):
+class GetAsyncJobResultRequest(TeaModel):
     def __init__(
         self,
-        video_url: str = None,
         async_: bool = None,
-        duration: float = None,
-        width: int = None,
-        height: int = None,
+        job_id: str = None,
     ):
-        self.video_url = video_url
         self.async_ = async_
-        self.duration = duration
-        self.width = width
-        self.height = height
+        self.job_id = job_id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.video_url is not None:
-            result['VideoUrl'] = self.video_url
         if self.async_ is not None:
             result['Async'] = self.async_
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.width is not None:
-            result['Width'] = self.width
-        if self.height is not None:
-            result['Height'] = self.height
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VideoUrl') is not None:
-            self.video_url = m.get('VideoUrl')
         if m.get('Async') is not None:
             self.async_ = m.get('Async')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         return self
 
 
-class AbstractEcommerceVideoAdvanceRequest(TeaModel):
+class GetAsyncJobResultResponseBodyData(TeaModel):
     def __init__(
         self,
-        video_url_object: BinaryIO = None,
-        async_: bool = None,
-        duration: float = None,
-        width: int = None,
-        height: int = None,
+        status: str = None,
+        error_message: str = None,
+        result: str = None,
+        error_code: str = None,
+        job_id: str = None,
     ):
-        self.video_url_object = video_url_object
-        self.async_ = async_
-        self.duration = duration
-        self.width = width
-        self.height = height
-
-    def validate(self):
-        self.validate_required(self.video_url_object, 'video_url_object')
-
-    def to_map(self):
-        result = dict()
-        if self.video_url_object is not None:
-            result['VideoUrlObject'] = self.video_url_object
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.width is not None:
-            result['Width'] = self.width
-        if self.height is not None:
-            result['Height'] = self.height
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoUrlObject') is not None:
-            self.video_url_object = m.get('VideoUrlObject')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        return self
-
-
-class AbstractEcommerceVideoResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        video_cover_url: str = None,
-        video_url: str = None,
-    ):
-        self.video_cover_url = video_cover_url
-        self.video_url = video_url
+        self.status = status
+        self.error_message = error_message
+        self.result = result
+        self.error_code = error_code
+        self.job_id = job_id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.video_cover_url is not None:
-            result['VideoCoverUrl'] = self.video_cover_url
-        if self.video_url is not None:
-            result['VideoUrl'] = self.video_url
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VideoCoverUrl') is not None:
-            self.video_cover_url = m.get('VideoCoverUrl')
-        if m.get('VideoUrl') is not None:
-            self.video_url = m.get('VideoUrl')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         return self
 
 
-class AbstractEcommerceVideoResponseBody(TeaModel):
+class GetAsyncJobResultResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: AbstractEcommerceVideoResponseBodyData = None,
+        data: GetAsyncJobResultResponseBodyData = None,
     ):
         self.request_id = request_id
         self.data = data
@@ -2107,16 +1962,16 @@ class AbstractEcommerceVideoResponseBody(TeaModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
-            temp_model = AbstractEcommerceVideoResponseBodyData()
+            temp_model = GetAsyncJobResultResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
         return self
 
 
-class AbstractEcommerceVideoResponse(TeaModel):
+class GetAsyncJobResultResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: AbstractEcommerceVideoResponseBody = None,
+        body: GetAsyncJobResultResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -2140,357 +1995,7 @@ class AbstractEcommerceVideoResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = AbstractEcommerceVideoResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class AbstractFilmVideoRequest(TeaModel):
-    def __init__(
-        self,
-        video_url: str = None,
-        async_: bool = None,
-        length: int = None,
-    ):
-        self.video_url = video_url
-        self.async_ = async_
-        self.length = length
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.video_url is not None:
-            result['VideoUrl'] = self.video_url
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.length is not None:
-            result['Length'] = self.length
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoUrl') is not None:
-            self.video_url = m.get('VideoUrl')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('Length') is not None:
-            self.length = m.get('Length')
-        return self
-
-
-class AbstractFilmVideoAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        video_url_object: BinaryIO = None,
-        async_: bool = None,
-        length: int = None,
-    ):
-        self.video_url_object = video_url_object
-        self.async_ = async_
-        self.length = length
-
-    def validate(self):
-        self.validate_required(self.video_url_object, 'video_url_object')
-
-    def to_map(self):
-        result = dict()
-        if self.video_url_object is not None:
-            result['VideoUrlObject'] = self.video_url_object
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.length is not None:
-            result['Length'] = self.length
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoUrlObject') is not None:
-            self.video_url_object = m.get('VideoUrlObject')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('Length') is not None:
-            self.length = m.get('Length')
-        return self
-
-
-class AbstractFilmVideoResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        video_url: str = None,
-    ):
-        self.video_url = video_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.video_url is not None:
-            result['VideoUrl'] = self.video_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoUrl') is not None:
-            self.video_url = m.get('VideoUrl')
-        return self
-
-
-class AbstractFilmVideoResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: AbstractFilmVideoResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = AbstractFilmVideoResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class AbstractFilmVideoResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: AbstractFilmVideoResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = AbstractFilmVideoResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class EraseVideoSubtitlesRequest(TeaModel):
-    def __init__(
-        self,
-        video_url: str = None,
-        async_: bool = None,
-        bx: float = None,
-        by: float = None,
-        bw: float = None,
-        bh: float = None,
-    ):
-        self.video_url = video_url
-        self.async_ = async_
-        self.bx = bx
-        self.by = by
-        self.bw = bw
-        self.bh = bh
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.video_url is not None:
-            result['VideoUrl'] = self.video_url
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.bx is not None:
-            result['BX'] = self.bx
-        if self.by is not None:
-            result['BY'] = self.by
-        if self.bw is not None:
-            result['BW'] = self.bw
-        if self.bh is not None:
-            result['BH'] = self.bh
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoUrl') is not None:
-            self.video_url = m.get('VideoUrl')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('BX') is not None:
-            self.bx = m.get('BX')
-        if m.get('BY') is not None:
-            self.by = m.get('BY')
-        if m.get('BW') is not None:
-            self.bw = m.get('BW')
-        if m.get('BH') is not None:
-            self.bh = m.get('BH')
-        return self
-
-
-class EraseVideoSubtitlesAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        video_url_object: BinaryIO = None,
-        async_: bool = None,
-        bx: float = None,
-        by: float = None,
-        bw: float = None,
-        bh: float = None,
-    ):
-        self.video_url_object = video_url_object
-        self.async_ = async_
-        self.bx = bx
-        self.by = by
-        self.bw = bw
-        self.bh = bh
-
-    def validate(self):
-        self.validate_required(self.video_url_object, 'video_url_object')
-
-    def to_map(self):
-        result = dict()
-        if self.video_url_object is not None:
-            result['VideoUrlObject'] = self.video_url_object
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.bx is not None:
-            result['BX'] = self.bx
-        if self.by is not None:
-            result['BY'] = self.by
-        if self.bw is not None:
-            result['BW'] = self.bw
-        if self.bh is not None:
-            result['BH'] = self.bh
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoUrlObject') is not None:
-            self.video_url_object = m.get('VideoUrlObject')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('BX') is not None:
-            self.bx = m.get('BX')
-        if m.get('BY') is not None:
-            self.by = m.get('BY')
-        if m.get('BW') is not None:
-            self.bw = m.get('BW')
-        if m.get('BH') is not None:
-            self.bh = m.get('BH')
-        return self
-
-
-class EraseVideoSubtitlesResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        video_url: str = None,
-    ):
-        self.video_url = video_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.video_url is not None:
-            result['VideoUrl'] = self.video_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VideoUrl') is not None:
-            self.video_url = m.get('VideoUrl')
-        return self
-
-
-class EraseVideoSubtitlesResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: EraseVideoSubtitlesResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = EraseVideoSubtitlesResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class EraseVideoSubtitlesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: EraseVideoSubtitlesResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = EraseVideoSubtitlesResponseBody()
+            temp_model = GetAsyncJobResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2660,6 +2165,332 @@ class MergeVideoFaceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = MergeVideoFaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SuperResolveVideoRequest(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+        async_: bool = None,
+        bit_rate: int = None,
+    ):
+        self.video_url = video_url
+        self.async_ = async_
+        self.bit_rate = bit_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        if self.bit_rate is not None:
+            result['BitRate'] = self.bit_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        if m.get('BitRate') is not None:
+            self.bit_rate = m.get('BitRate')
+        return self
+
+
+class SuperResolveVideoAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        video_url_object: BinaryIO = None,
+        async_: bool = None,
+        bit_rate: int = None,
+    ):
+        self.video_url_object = video_url_object
+        self.async_ = async_
+        self.bit_rate = bit_rate
+
+    def validate(self):
+        self.validate_required(self.video_url_object, 'video_url_object')
+
+    def to_map(self):
+        result = dict()
+        if self.video_url_object is not None:
+            result['VideoUrlObject'] = self.video_url_object
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        if self.bit_rate is not None:
+            result['BitRate'] = self.bit_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoUrlObject') is not None:
+            self.video_url_object = m.get('VideoUrlObject')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        if m.get('BitRate') is not None:
+            self.bit_rate = m.get('BitRate')
+        return self
+
+
+class SuperResolveVideoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+    ):
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
+class SuperResolveVideoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: SuperResolveVideoResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = SuperResolveVideoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class SuperResolveVideoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SuperResolveVideoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SuperResolveVideoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ToneSdrVideoRequest(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+        async_: bool = None,
+        bitrate: int = None,
+        recolor_model: str = None,
+    ):
+        self.video_url = video_url
+        self.async_ = async_
+        self.bitrate = bitrate
+        self.recolor_model = recolor_model
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_url is not None:
+            result['VideoURL'] = self.video_url
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.recolor_model is not None:
+            result['RecolorModel'] = self.recolor_model
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoURL') is not None:
+            self.video_url = m.get('VideoURL')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('RecolorModel') is not None:
+            self.recolor_model = m.get('RecolorModel')
+        return self
+
+
+class ToneSdrVideoAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        video_urlobject: BinaryIO = None,
+        async_: bool = None,
+        bitrate: int = None,
+        recolor_model: str = None,
+    ):
+        self.video_urlobject = video_urlobject
+        self.async_ = async_
+        self.bitrate = bitrate
+        self.recolor_model = recolor_model
+
+    def validate(self):
+        self.validate_required(self.video_urlobject, 'video_urlobject')
+
+    def to_map(self):
+        result = dict()
+        if self.video_urlobject is not None:
+            result['VideoURLObject'] = self.video_urlobject
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.recolor_model is not None:
+            result['RecolorModel'] = self.recolor_model
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoURLObject') is not None:
+            self.video_urlobject = m.get('VideoURLObject')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('RecolorModel') is not None:
+            self.recolor_model = m.get('RecolorModel')
+        return self
+
+
+class ToneSdrVideoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+    ):
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_url is not None:
+            result['VideoURL'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoURL') is not None:
+            self.video_url = m.get('VideoURL')
+        return self
+
+
+class ToneSdrVideoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: ToneSdrVideoResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = ToneSdrVideoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class ToneSdrVideoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ToneSdrVideoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ToneSdrVideoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

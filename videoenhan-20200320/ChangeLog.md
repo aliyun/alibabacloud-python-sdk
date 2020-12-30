@@ -1,3 +1,6 @@
+2020-12-30 Version: 3.0.0
+- AMP Version Change.
+
 2020-12-29 Version: 2.0.1
 - Release InterpolateVideoFrame ToneSdrVideo ConvertHdrVideo.
 
