@@ -1,3 +1,6 @@
+2020-12-31 Version: 1.0.4
+- Add updateserviceends.
+
 2020-12-30 Version: 1.0.3
 - Add updateserviceends.
 

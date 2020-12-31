@@ -1560,9 +1560,6 @@ class Client(OpenApiClient):
         self,
         request: microgw_20200810_models.CreateAuthTicketRequest,
     ) -> microgw_20200810_models.CreateAuthTicketResponse:
-        """
-        createAuthTicket
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_auth_ticket_with_options(request, headers, runtime)
@@ -1571,9 +1568,6 @@ class Client(OpenApiClient):
         self,
         request: microgw_20200810_models.CreateAuthTicketRequest,
     ) -> microgw_20200810_models.CreateAuthTicketResponse:
-        """
-        createAuthTicket
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_auth_ticket_with_options_async(request, headers, runtime)
@@ -1594,8 +1588,10 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not UtilClient.is_unset(request.ticket_type):
             body['ticketType'] = request.ticket_type
-        if not UtilClient.is_unset(request.valid_duration):
-            body['validDuration'] = request.valid_duration
+        if not UtilClient.is_unset(request.duration):
+            body['duration'] = request.duration
+        if not UtilClient.is_unset(request.jwt_signature_type_enum):
+            body['jwtSignatureTypeEnum'] = request.jwt_signature_type_enum
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1620,8 +1616,10 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not UtilClient.is_unset(request.ticket_type):
             body['ticketType'] = request.ticket_type
-        if not UtilClient.is_unset(request.valid_duration):
-            body['validDuration'] = request.valid_duration
+        if not UtilClient.is_unset(request.duration):
+            body['duration'] = request.duration
+        if not UtilClient.is_unset(request.jwt_signature_type_enum):
+            body['jwtSignatureTypeEnum'] = request.jwt_signature_type_enum
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

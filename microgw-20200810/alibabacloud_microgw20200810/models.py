@@ -4145,7 +4145,8 @@ class CreateAuthTicketRequest(TeaModel):
         gateway_id: int = None,
         name: str = None,
         ticket_type: str = None,
-        valid_duration: int = None,
+        duration: int = None,
+        jwt_signature_type_enum: str = None,
     ):
         # comment
         self.comment = comment
@@ -4155,7 +4156,8 @@ class CreateAuthTicketRequest(TeaModel):
         self.name = name
         # ticketType
         self.ticket_type = ticket_type
-        self.valid_duration = valid_duration
+        self.duration = duration
+        self.jwt_signature_type_enum = jwt_signature_type_enum
 
     def validate(self):
         pass
@@ -4170,8 +4172,10 @@ class CreateAuthTicketRequest(TeaModel):
             result['name'] = self.name
         if self.ticket_type is not None:
             result['ticketType'] = self.ticket_type
-        if self.valid_duration is not None:
-            result['validDuration'] = self.valid_duration
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.jwt_signature_type_enum is not None:
+            result['jwtSignatureTypeEnum'] = self.jwt_signature_type_enum
         return result
 
     def from_map(self, m: dict = None):
@@ -4184,8 +4188,10 @@ class CreateAuthTicketRequest(TeaModel):
             self.name = m.get('name')
         if m.get('ticketType') is not None:
             self.ticket_type = m.get('ticketType')
-        if m.get('validDuration') is not None:
-            self.valid_duration = m.get('validDuration')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('jwtSignatureTypeEnum') is not None:
+            self.jwt_signature_type_enum = m.get('jwtSignatureTypeEnum')
         return self
 
 
