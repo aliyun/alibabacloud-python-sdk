@@ -509,52 +509,6 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('DescribeClusterDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}', 'json', req, runtime)
         )
 
-    def pause_component_upgrade(
-        self,
-        clusterid: str,
-        componentid: str,
-    ) -> cs20151215_models.PauseComponentUpgradeResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.pause_component_upgrade_with_options(clusterid, componentid, headers, runtime)
-
-    async def pause_component_upgrade_async(
-        self,
-        clusterid: str,
-        componentid: str,
-    ) -> cs20151215_models.PauseComponentUpgradeResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.pause_component_upgrade_with_options_async(clusterid, componentid, headers, runtime)
-
-    def pause_component_upgrade_with_options(
-        self,
-        clusterid: str,
-        componentid: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.PauseComponentUpgradeResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        return cs20151215_models.PauseComponentUpgradeResponse().from_map(
-            self.do_roarequest('PauseComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{clusterid}/components/{{componentid}}/pause', 'none', req, runtime)
-        )
-
-    async def pause_component_upgrade_with_options_async(
-        self,
-        clusterid: str,
-        componentid: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.PauseComponentUpgradeResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        return cs20151215_models.PauseComponentUpgradeResponse().from_map(
-            await self.do_roarequest_async('PauseComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{clusterid}/components/{{componentid}}/pause', 'none', req, runtime)
-        )
-
     def describe_clusters(
         self,
         request: cs20151215_models.DescribeClustersRequest,
@@ -1333,6 +1287,8 @@ class Client(OpenApiClient):
             body['master_auto_renew_period'] = request.master_auto_renew_period
         if not UtilClient.is_unset(request.num_of_nodes):
             body['num_of_nodes'] = request.num_of_nodes
+        if not UtilClient.is_unset(request.vswitch_ids):
+            body['vswitch_ids'] = request.vswitch_ids
         if not UtilClient.is_unset(request.worker_vswitch_ids):
             body['worker_vswitch_ids'] = request.worker_vswitch_ids
         if not UtilClient.is_unset(request.worker_instance_types):
@@ -1491,6 +1447,8 @@ class Client(OpenApiClient):
             body['master_auto_renew_period'] = request.master_auto_renew_period
         if not UtilClient.is_unset(request.num_of_nodes):
             body['num_of_nodes'] = request.num_of_nodes
+        if not UtilClient.is_unset(request.vswitch_ids):
+            body['vswitch_ids'] = request.vswitch_ids
         if not UtilClient.is_unset(request.worker_vswitch_ids):
             body['worker_vswitch_ids'] = request.worker_vswitch_ids
         if not UtilClient.is_unset(request.worker_instance_types):
@@ -2117,52 +2075,6 @@ class Client(OpenApiClient):
             await self.do_roarequest_with_form_async('DeleteCluster', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}', 'none', req, runtime)
         )
 
-    def cancel_component_upgrade(
-        self,
-        cluster_id: str,
-        component_id: str,
-    ) -> cs20151215_models.CancelComponentUpgradeResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.cancel_component_upgrade_with_options(cluster_id, component_id, headers, runtime)
-
-    async def cancel_component_upgrade_async(
-        self,
-        cluster_id: str,
-        component_id: str,
-    ) -> cs20151215_models.CancelComponentUpgradeResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.cancel_component_upgrade_with_options_async(cluster_id, component_id, headers, runtime)
-
-    def cancel_component_upgrade_with_options(
-        self,
-        cluster_id: str,
-        component_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.CancelComponentUpgradeResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        return cs20151215_models.CancelComponentUpgradeResponse().from_map(
-            self.do_roarequest('CancelComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/{{componentId}}/cancel', 'none', req, runtime)
-        )
-
-    async def cancel_component_upgrade_with_options_async(
-        self,
-        cluster_id: str,
-        component_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.CancelComponentUpgradeResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        return cs20151215_models.CancelComponentUpgradeResponse().from_map(
-            await self.do_roarequest_async('CancelComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/{{componentId}}/cancel', 'none', req, runtime)
-        )
-
     def describe_cluster_addons_version(
         self,
         cluster_id: str,
@@ -2309,52 +2221,6 @@ class Client(OpenApiClient):
         )
         return cs20151215_models.UnInstallClusterAddonsResponse().from_map(
             await self.do_roarequest_async('UnInstallClusterAddons', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/uninstall', 'none', req, runtime)
-        )
-
-    def resume_component_upgrade(
-        self,
-        clusterid: str,
-        componentid: str,
-    ) -> cs20151215_models.ResumeComponentUpgradeResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.resume_component_upgrade_with_options(clusterid, componentid, headers, runtime)
-
-    async def resume_component_upgrade_async(
-        self,
-        clusterid: str,
-        componentid: str,
-    ) -> cs20151215_models.ResumeComponentUpgradeResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.resume_component_upgrade_with_options_async(clusterid, componentid, headers, runtime)
-
-    def resume_component_upgrade_with_options(
-        self,
-        clusterid: str,
-        componentid: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.ResumeComponentUpgradeResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        return cs20151215_models.ResumeComponentUpgradeResponse().from_map(
-            self.do_roarequest('ResumeComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{clusterid}/components/{{componentid}}/resume', 'none', req, runtime)
-        )
-
-    async def resume_component_upgrade_with_options_async(
-        self,
-        clusterid: str,
-        componentid: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.ResumeComponentUpgradeResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        return cs20151215_models.ResumeComponentUpgradeResponse().from_map(
-            await self.do_roarequest_async('ResumeComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{clusterid}/components/{{componentid}}/resume', 'none', req, runtime)
         )
 
     def describe_clusters_v1(

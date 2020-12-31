@@ -1379,29 +1379,6 @@ class DescribeClusterDetailResponse(TeaModel):
         return self
 
 
-class PauseComponentUpgradeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-    ):
-        self.headers = headers
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        return self
-
-
 class DescribeClustersRequest(TeaModel):
     def __init__(
         self,
@@ -4518,58 +4495,6 @@ class DescribeAddonsRequest(TeaModel):
         return self
 
 
-class StandardComponentsValue(TeaModel):
-    def __init__(
-        self,
-        name: str = None,
-        version: str = None,
-        description: str = None,
-        required: str = None,
-        disabled: bool = None,
-    ):
-        # 组件名称。
-        self.name = name
-        # 组件版本。
-        self.version = version
-        # 组件描述信息。
-        self.description = description
-        # 是否为必需组件。
-        self.required = required
-        # 是否禁止默认安装。
-        self.disabled = disabled
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.name is not None:
-            result['name'] = self.name
-        if self.version is not None:
-            result['version'] = self.version
-        if self.description is not None:
-            result['description'] = self.description
-        if self.required is not None:
-            result['required'] = self.required
-        if self.disabled is not None:
-            result['disabled'] = self.disabled
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('version') is not None:
-            self.version = m.get('version')
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('required') is not None:
-            self.required = m.get('required')
-        if m.get('disabled') is not None:
-            self.disabled = m.get('disabled')
-        return self
-
-
 class DescribeAddonsResponseBodyComponentGroupsItems(TeaModel):
     def __init__(
         self,
@@ -4630,6 +4555,58 @@ class DescribeAddonsResponseBodyComponentGroups(TeaModel):
             for k in m.get('items'):
                 temp_model = DescribeAddonsResponseBodyComponentGroupsItems()
                 self.items.append(temp_model.from_map(k))
+        return self
+
+
+class StandardComponentsValue(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        version: str = None,
+        description: str = None,
+        required: str = None,
+        disabled: bool = None,
+    ):
+        # 组件名称。
+        self.name = name
+        # 组件版本。
+        self.version = version
+        # 组件描述信息。
+        self.description = description
+        # 是否为必需组件。
+        self.required = required
+        # 是否禁止默认安装。
+        self.disabled = disabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.version is not None:
+            result['version'] = self.version
+        if self.description is not None:
+            result['description'] = self.description
+        if self.required is not None:
+            result['required'] = self.required
+        if self.disabled is not None:
+            result['disabled'] = self.disabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('required') is not None:
+            self.required = m.get('required')
+        if m.get('disabled') is not None:
+            self.disabled = m.get('disabled')
         return self
 
 
@@ -4767,6 +4744,7 @@ class CreateClusterRequest(TeaModel):
         master_auto_renew: bool = None,
         master_auto_renew_period: int = None,
         num_of_nodes: int = None,
+        vswitch_ids: List[str] = None,
         worker_vswitch_ids: List[str] = None,
         worker_instance_types: List[str] = None,
         worker_system_disk_category: str = None,
@@ -4888,6 +4866,8 @@ class CreateClusterRequest(TeaModel):
         self.master_auto_renew_period = master_auto_renew_period
         # 集群Worker节点数量
         self.num_of_nodes = num_of_nodes
+        # 集群节点所在虚拟交换机。
+        self.vswitch_ids = vswitch_ids
         # 集群Worker节点所在虚拟交换机
         self.worker_vswitch_ids = worker_vswitch_ids
         # 集群Worker节点类型
@@ -5059,6 +5039,8 @@ class CreateClusterRequest(TeaModel):
             result['master_auto_renew_period'] = self.master_auto_renew_period
         if self.num_of_nodes is not None:
             result['num_of_nodes'] = self.num_of_nodes
+        if self.vswitch_ids is not None:
+            result['vswitch_ids'] = self.vswitch_ids
         if self.worker_vswitch_ids is not None:
             result['worker_vswitch_ids'] = self.worker_vswitch_ids
         if self.worker_instance_types is not None:
@@ -5217,6 +5199,8 @@ class CreateClusterRequest(TeaModel):
             self.master_auto_renew_period = m.get('master_auto_renew_period')
         if m.get('num_of_nodes') is not None:
             self.num_of_nodes = m.get('num_of_nodes')
+        if m.get('vswitch_ids') is not None:
+            self.vswitch_ids = m.get('vswitch_ids')
         if m.get('worker_vswitch_ids') is not None:
             self.worker_vswitch_ids = m.get('worker_vswitch_ids')
         if m.get('worker_instance_types') is not None:
@@ -6551,29 +6535,6 @@ class DeleteClusterResponse(TeaModel):
         return self
 
 
-class CancelComponentUpgradeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-    ):
-        self.headers = headers
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        return self
-
-
 class DescribeClusterAddonsVersionResponse(TeaModel):
     def __init__(
         self,
@@ -6742,29 +6703,6 @@ class UnInstallClusterAddonsRequest(TeaModel):
 
 
 class UnInstallClusterAddonsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-    ):
-        self.headers = headers
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        return self
-
-
-class ResumeComponentUpgradeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
