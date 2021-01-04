@@ -1354,7 +1354,7 @@ class QuerySendDetailsRequest(TeaModel):
         return self
 
 
-class QuerySendDetailsResponseBodySmsSendDetailDTOs(TeaModel):
+class QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO(TeaModel):
     def __init__(
         self,
         err_code: str = None,
@@ -1419,6 +1419,37 @@ class QuerySendDetailsResponseBodySmsSendDetailDTOs(TeaModel):
         return self
 
 
+class QuerySendDetailsResponseBodySmsSendDetailDTOs(TeaModel):
+    def __init__(
+        self,
+        sms_send_detail_dto: List[QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO] = None,
+    ):
+        self.sms_send_detail_dto = sms_send_detail_dto
+
+    def validate(self):
+        if self.sms_send_detail_dto:
+            for k in self.sms_send_detail_dto:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['SmsSendDetailDTO'] = []
+        if self.sms_send_detail_dto is not None:
+            for k in self.sms_send_detail_dto:
+                result['SmsSendDetailDTO'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.sms_send_detail_dto = []
+        if m.get('SmsSendDetailDTO') is not None:
+            for k in m.get('SmsSendDetailDTO'):
+                temp_model = QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO()
+                self.sms_send_detail_dto.append(temp_model.from_map(k))
+        return self
+
+
 class QuerySendDetailsResponseBody(TeaModel):
     def __init__(
         self,
@@ -1426,7 +1457,7 @@ class QuerySendDetailsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
         code: str = None,
-        sms_send_detail_dtos: List[QuerySendDetailsResponseBodySmsSendDetailDTOs] = None,
+        sms_send_detail_dtos: QuerySendDetailsResponseBodySmsSendDetailDTOs = None,
     ):
         self.total_count = total_count
         self.message = message
@@ -1436,9 +1467,7 @@ class QuerySendDetailsResponseBody(TeaModel):
 
     def validate(self):
         if self.sms_send_detail_dtos:
-            for k in self.sms_send_detail_dtos:
-                if k:
-                    k.validate()
+            self.sms_send_detail_dtos.validate()
 
     def to_map(self):
         result = dict()
@@ -1450,10 +1479,8 @@ class QuerySendDetailsResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.code is not None:
             result['Code'] = self.code
-        result['SmsSendDetailDTOs'] = []
         if self.sms_send_detail_dtos is not None:
-            for k in self.sms_send_detail_dtos:
-                result['SmsSendDetailDTOs'].append(k.to_map() if k else None)
+            result['SmsSendDetailDTOs'] = self.sms_send_detail_dtos.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1466,11 +1493,9 @@ class QuerySendDetailsResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        self.sms_send_detail_dtos = []
         if m.get('SmsSendDetailDTOs') is not None:
-            for k in m.get('SmsSendDetailDTOs'):
-                temp_model = QuerySendDetailsResponseBodySmsSendDetailDTOs()
-                self.sms_send_detail_dtos.append(temp_model.from_map(k))
+            temp_model = QuerySendDetailsResponseBodySmsSendDetailDTOs()
+            self.sms_send_detail_dtos = temp_model.from_map(m['SmsSendDetailDTOs'])
         return self
 
 
