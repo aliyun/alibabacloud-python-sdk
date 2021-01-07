@@ -4265,7 +4265,7 @@ class ListAccessKeysRequest(TeaModel):
         return self
 
 
-class ListAccessKeysResponseBodyAccessKeys(TeaModel):
+class ListAccessKeysResponseBodyAccessKeysAccessKey(TeaModel):
     def __init__(
         self,
         status: str = None,
@@ -4300,10 +4300,41 @@ class ListAccessKeysResponseBodyAccessKeys(TeaModel):
         return self
 
 
+class ListAccessKeysResponseBodyAccessKeys(TeaModel):
+    def __init__(
+        self,
+        access_key: List[ListAccessKeysResponseBodyAccessKeysAccessKey] = None,
+    ):
+        self.access_key = access_key
+
+    def validate(self):
+        if self.access_key:
+            for k in self.access_key:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['AccessKey'] = []
+        if self.access_key is not None:
+            for k in self.access_key:
+                result['AccessKey'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.access_key = []
+        if m.get('AccessKey') is not None:
+            for k in m.get('AccessKey'):
+                temp_model = ListAccessKeysResponseBodyAccessKeysAccessKey()
+                self.access_key.append(temp_model.from_map(k))
+        return self
+
+
 class ListAccessKeysResponseBody(TeaModel):
     def __init__(
         self,
-        access_keys: List[ListAccessKeysResponseBodyAccessKeys] = None,
+        access_keys: ListAccessKeysResponseBodyAccessKeys = None,
         request_id: str = None,
     ):
         self.access_keys = access_keys
@@ -4311,27 +4342,21 @@ class ListAccessKeysResponseBody(TeaModel):
 
     def validate(self):
         if self.access_keys:
-            for k in self.access_keys:
-                if k:
-                    k.validate()
+            self.access_keys.validate()
 
     def to_map(self):
         result = dict()
-        result['AccessKeys'] = []
         if self.access_keys is not None:
-            for k in self.access_keys:
-                result['AccessKeys'].append(k.to_map() if k else None)
+            result['AccessKeys'] = self.access_keys.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.access_keys = []
         if m.get('AccessKeys') is not None:
-            for k in m.get('AccessKeys'):
-                temp_model = ListAccessKeysResponseBodyAccessKeys()
-                self.access_keys.append(temp_model.from_map(k))
+            temp_model = ListAccessKeysResponseBodyAccessKeys()
+            self.access_keys = temp_model.from_map(m['AccessKeys'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -4399,7 +4424,7 @@ class ListEntitiesForPolicyRequest(TeaModel):
         return self
 
 
-class ListEntitiesForPolicyResponseBodyGroups(TeaModel):
+class ListEntitiesForPolicyResponseBodyGroupsGroup(TeaModel):
     def __init__(
         self,
         group_name: str = None,
@@ -4434,7 +4459,38 @@ class ListEntitiesForPolicyResponseBodyGroups(TeaModel):
         return self
 
 
-class ListEntitiesForPolicyResponseBodyRoles(TeaModel):
+class ListEntitiesForPolicyResponseBodyGroups(TeaModel):
+    def __init__(
+        self,
+        group: List[ListEntitiesForPolicyResponseBodyGroupsGroup] = None,
+    ):
+        self.group = group
+
+    def validate(self):
+        if self.group:
+            for k in self.group:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Group'] = []
+        if self.group is not None:
+            for k in self.group:
+                result['Group'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.group = []
+        if m.get('Group') is not None:
+            for k in m.get('Group'):
+                temp_model = ListEntitiesForPolicyResponseBodyGroupsGroup()
+                self.group.append(temp_model.from_map(k))
+        return self
+
+
+class ListEntitiesForPolicyResponseBodyRolesRole(TeaModel):
     def __init__(
         self,
         description: str = None,
@@ -4481,7 +4537,38 @@ class ListEntitiesForPolicyResponseBodyRoles(TeaModel):
         return self
 
 
-class ListEntitiesForPolicyResponseBodyUsers(TeaModel):
+class ListEntitiesForPolicyResponseBodyRoles(TeaModel):
+    def __init__(
+        self,
+        role: List[ListEntitiesForPolicyResponseBodyRolesRole] = None,
+    ):
+        self.role = role
+
+    def validate(self):
+        if self.role:
+            for k in self.role:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Role'] = []
+        if self.role is not None:
+            for k in self.role:
+                result['Role'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.role = []
+        if m.get('Role') is not None:
+            for k in m.get('Role'):
+                temp_model = ListEntitiesForPolicyResponseBodyRolesRole()
+                self.role.append(temp_model.from_map(k))
+        return self
+
+
+class ListEntitiesForPolicyResponseBodyUsersUser(TeaModel):
     def __init__(
         self,
         display_name: str = None,
@@ -4522,13 +4609,44 @@ class ListEntitiesForPolicyResponseBodyUsers(TeaModel):
         return self
 
 
+class ListEntitiesForPolicyResponseBodyUsers(TeaModel):
+    def __init__(
+        self,
+        user: List[ListEntitiesForPolicyResponseBodyUsersUser] = None,
+    ):
+        self.user = user
+
+    def validate(self):
+        if self.user:
+            for k in self.user:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['User'] = []
+        if self.user is not None:
+            for k in self.user:
+                result['User'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.user = []
+        if m.get('User') is not None:
+            for k in m.get('User'):
+                temp_model = ListEntitiesForPolicyResponseBodyUsersUser()
+                self.user.append(temp_model.from_map(k))
+        return self
+
+
 class ListEntitiesForPolicyResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        groups: List[ListEntitiesForPolicyResponseBodyGroups] = None,
-        roles: List[ListEntitiesForPolicyResponseBodyRoles] = None,
-        users: List[ListEntitiesForPolicyResponseBodyUsers] = None,
+        groups: ListEntitiesForPolicyResponseBodyGroups = None,
+        roles: ListEntitiesForPolicyResponseBodyRoles = None,
+        users: ListEntitiesForPolicyResponseBodyUsers = None,
     ):
         self.request_id = request_id
         self.groups = groups
@@ -4537,55 +4655,37 @@ class ListEntitiesForPolicyResponseBody(TeaModel):
 
     def validate(self):
         if self.groups:
-            for k in self.groups:
-                if k:
-                    k.validate()
+            self.groups.validate()
         if self.roles:
-            for k in self.roles:
-                if k:
-                    k.validate()
+            self.roles.validate()
         if self.users:
-            for k in self.users:
-                if k:
-                    k.validate()
+            self.users.validate()
 
     def to_map(self):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['Groups'] = []
         if self.groups is not None:
-            for k in self.groups:
-                result['Groups'].append(k.to_map() if k else None)
-        result['Roles'] = []
+            result['Groups'] = self.groups.to_map()
         if self.roles is not None:
-            for k in self.roles:
-                result['Roles'].append(k.to_map() if k else None)
-        result['Users'] = []
+            result['Roles'] = self.roles.to_map()
         if self.users is not None:
-            for k in self.users:
-                result['Users'].append(k.to_map() if k else None)
+            result['Users'] = self.users.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.groups = []
         if m.get('Groups') is not None:
-            for k in m.get('Groups'):
-                temp_model = ListEntitiesForPolicyResponseBodyGroups()
-                self.groups.append(temp_model.from_map(k))
-        self.roles = []
+            temp_model = ListEntitiesForPolicyResponseBodyGroups()
+            self.groups = temp_model.from_map(m['Groups'])
         if m.get('Roles') is not None:
-            for k in m.get('Roles'):
-                temp_model = ListEntitiesForPolicyResponseBodyRoles()
-                self.roles.append(temp_model.from_map(k))
-        self.users = []
+            temp_model = ListEntitiesForPolicyResponseBodyRoles()
+            self.roles = temp_model.from_map(m['Roles'])
         if m.get('Users') is not None:
-            for k in m.get('Users'):
-                temp_model = ListEntitiesForPolicyResponseBodyUsers()
-                self.users.append(temp_model.from_map(k))
+            temp_model = ListEntitiesForPolicyResponseBodyUsers()
+            self.users = temp_model.from_map(m['Users'])
         return self
 
 
@@ -4651,7 +4751,7 @@ class ListGroupsRequest(TeaModel):
         return self
 
 
-class ListGroupsResponseBodyGroups(TeaModel):
+class ListGroupsResponseBodyGroupsGroup(TeaModel):
     def __init__(
         self,
         group_id: str = None,
@@ -4698,11 +4798,42 @@ class ListGroupsResponseBodyGroups(TeaModel):
         return self
 
 
+class ListGroupsResponseBodyGroups(TeaModel):
+    def __init__(
+        self,
+        group: List[ListGroupsResponseBodyGroupsGroup] = None,
+    ):
+        self.group = group
+
+    def validate(self):
+        if self.group:
+            for k in self.group:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Group'] = []
+        if self.group is not None:
+            for k in self.group:
+                result['Group'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.group = []
+        if m.get('Group') is not None:
+            for k in m.get('Group'):
+                temp_model = ListGroupsResponseBodyGroupsGroup()
+                self.group.append(temp_model.from_map(k))
+        return self
+
+
 class ListGroupsResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        groups: List[ListGroupsResponseBodyGroups] = None,
+        groups: ListGroupsResponseBodyGroups = None,
         is_truncated: bool = None,
         marker: str = None,
     ):
@@ -4713,18 +4844,14 @@ class ListGroupsResponseBody(TeaModel):
 
     def validate(self):
         if self.groups:
-            for k in self.groups:
-                if k:
-                    k.validate()
+            self.groups.validate()
 
     def to_map(self):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['Groups'] = []
         if self.groups is not None:
-            for k in self.groups:
-                result['Groups'].append(k.to_map() if k else None)
+            result['Groups'] = self.groups.to_map()
         if self.is_truncated is not None:
             result['IsTruncated'] = self.is_truncated
         if self.marker is not None:
@@ -4735,11 +4862,9 @@ class ListGroupsResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.groups = []
         if m.get('Groups') is not None:
-            for k in m.get('Groups'):
-                temp_model = ListGroupsResponseBodyGroups()
-                self.groups.append(temp_model.from_map(k))
+            temp_model = ListGroupsResponseBodyGroups()
+            self.groups = temp_model.from_map(m['Groups'])
         if m.get('IsTruncated') is not None:
             self.is_truncated = m.get('IsTruncated')
         if m.get('Marker') is not None:
@@ -4803,7 +4928,7 @@ class ListGroupsForUserRequest(TeaModel):
         return self
 
 
-class ListGroupsForUserResponseBodyGroups(TeaModel):
+class ListGroupsForUserResponseBodyGroupsGroup(TeaModel):
     def __init__(
         self,
         group_id: str = None,
@@ -4844,40 +4969,65 @@ class ListGroupsForUserResponseBodyGroups(TeaModel):
         return self
 
 
+class ListGroupsForUserResponseBodyGroups(TeaModel):
+    def __init__(
+        self,
+        group: List[ListGroupsForUserResponseBodyGroupsGroup] = None,
+    ):
+        self.group = group
+
+    def validate(self):
+        if self.group:
+            for k in self.group:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Group'] = []
+        if self.group is not None:
+            for k in self.group:
+                result['Group'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.group = []
+        if m.get('Group') is not None:
+            for k in m.get('Group'):
+                temp_model = ListGroupsForUserResponseBodyGroupsGroup()
+                self.group.append(temp_model.from_map(k))
+        return self
+
+
 class ListGroupsForUserResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        groups: List[ListGroupsForUserResponseBodyGroups] = None,
+        groups: ListGroupsForUserResponseBodyGroups = None,
     ):
         self.request_id = request_id
         self.groups = groups
 
     def validate(self):
         if self.groups:
-            for k in self.groups:
-                if k:
-                    k.validate()
+            self.groups.validate()
 
     def to_map(self):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['Groups'] = []
         if self.groups is not None:
-            for k in self.groups:
-                result['Groups'].append(k.to_map() if k else None)
+            result['Groups'] = self.groups.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.groups = []
         if m.get('Groups') is not None:
-            for k in m.get('Groups'):
-                temp_model = ListGroupsForUserResponseBodyGroups()
-                self.groups.append(temp_model.from_map(k))
+            temp_model = ListGroupsForUserResponseBodyGroups()
+            self.groups = temp_model.from_map(m['Groups'])
         return self
 
 
@@ -4949,7 +5099,7 @@ class ListPoliciesRequest(TeaModel):
         return self
 
 
-class ListPoliciesResponseBodyPolicies(TeaModel):
+class ListPoliciesResponseBodyPoliciesPolicy(TeaModel):
     def __init__(
         self,
         default_version: str = None,
@@ -5008,10 +5158,41 @@ class ListPoliciesResponseBodyPolicies(TeaModel):
         return self
 
 
+class ListPoliciesResponseBodyPolicies(TeaModel):
+    def __init__(
+        self,
+        policy: List[ListPoliciesResponseBodyPoliciesPolicy] = None,
+    ):
+        self.policy = policy
+
+    def validate(self):
+        if self.policy:
+            for k in self.policy:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Policy'] = []
+        if self.policy is not None:
+            for k in self.policy:
+                result['Policy'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.policy = []
+        if m.get('Policy') is not None:
+            for k in m.get('Policy'):
+                temp_model = ListPoliciesResponseBodyPoliciesPolicy()
+                self.policy.append(temp_model.from_map(k))
+        return self
+
+
 class ListPoliciesResponseBody(TeaModel):
     def __init__(
         self,
-        policies: List[ListPoliciesResponseBodyPolicies] = None,
+        policies: ListPoliciesResponseBodyPolicies = None,
         request_id: str = None,
         is_truncated: bool = None,
         marker: str = None,
@@ -5023,16 +5204,12 @@ class ListPoliciesResponseBody(TeaModel):
 
     def validate(self):
         if self.policies:
-            for k in self.policies:
-                if k:
-                    k.validate()
+            self.policies.validate()
 
     def to_map(self):
         result = dict()
-        result['Policies'] = []
         if self.policies is not None:
-            for k in self.policies:
-                result['Policies'].append(k.to_map() if k else None)
+            result['Policies'] = self.policies.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.is_truncated is not None:
@@ -5043,11 +5220,9 @@ class ListPoliciesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.policies = []
         if m.get('Policies') is not None:
-            for k in m.get('Policies'):
-                temp_model = ListPoliciesResponseBodyPolicies()
-                self.policies.append(temp_model.from_map(k))
+            temp_model = ListPoliciesResponseBodyPolicies()
+            self.policies = temp_model.from_map(m['Policies'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('IsTruncated') is not None:
@@ -5113,7 +5288,7 @@ class ListPoliciesForGroupRequest(TeaModel):
         return self
 
 
-class ListPoliciesForGroupResponseBodyPolicies(TeaModel):
+class ListPoliciesForGroupResponseBodyPoliciesPolicy(TeaModel):
     def __init__(
         self,
         default_version: str = None,
@@ -5160,10 +5335,41 @@ class ListPoliciesForGroupResponseBodyPolicies(TeaModel):
         return self
 
 
+class ListPoliciesForGroupResponseBodyPolicies(TeaModel):
+    def __init__(
+        self,
+        policy: List[ListPoliciesForGroupResponseBodyPoliciesPolicy] = None,
+    ):
+        self.policy = policy
+
+    def validate(self):
+        if self.policy:
+            for k in self.policy:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Policy'] = []
+        if self.policy is not None:
+            for k in self.policy:
+                result['Policy'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.policy = []
+        if m.get('Policy') is not None:
+            for k in m.get('Policy'):
+                temp_model = ListPoliciesForGroupResponseBodyPoliciesPolicy()
+                self.policy.append(temp_model.from_map(k))
+        return self
+
+
 class ListPoliciesForGroupResponseBody(TeaModel):
     def __init__(
         self,
-        policies: List[ListPoliciesForGroupResponseBodyPolicies] = None,
+        policies: ListPoliciesForGroupResponseBodyPolicies = None,
         request_id: str = None,
     ):
         self.policies = policies
@@ -5171,27 +5377,21 @@ class ListPoliciesForGroupResponseBody(TeaModel):
 
     def validate(self):
         if self.policies:
-            for k in self.policies:
-                if k:
-                    k.validate()
+            self.policies.validate()
 
     def to_map(self):
         result = dict()
-        result['Policies'] = []
         if self.policies is not None:
-            for k in self.policies:
-                result['Policies'].append(k.to_map() if k else None)
+            result['Policies'] = self.policies.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.policies = []
         if m.get('Policies') is not None:
-            for k in m.get('Policies'):
-                temp_model = ListPoliciesForGroupResponseBodyPolicies()
-                self.policies.append(temp_model.from_map(k))
+            temp_model = ListPoliciesForGroupResponseBodyPolicies()
+            self.policies = temp_model.from_map(m['Policies'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -5253,7 +5453,7 @@ class ListPoliciesForRoleRequest(TeaModel):
         return self
 
 
-class ListPoliciesForRoleResponseBodyPolicies(TeaModel):
+class ListPoliciesForRoleResponseBodyPoliciesPolicy(TeaModel):
     def __init__(
         self,
         default_version: str = None,
@@ -5300,10 +5500,41 @@ class ListPoliciesForRoleResponseBodyPolicies(TeaModel):
         return self
 
 
+class ListPoliciesForRoleResponseBodyPolicies(TeaModel):
+    def __init__(
+        self,
+        policy: List[ListPoliciesForRoleResponseBodyPoliciesPolicy] = None,
+    ):
+        self.policy = policy
+
+    def validate(self):
+        if self.policy:
+            for k in self.policy:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Policy'] = []
+        if self.policy is not None:
+            for k in self.policy:
+                result['Policy'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.policy = []
+        if m.get('Policy') is not None:
+            for k in m.get('Policy'):
+                temp_model = ListPoliciesForRoleResponseBodyPoliciesPolicy()
+                self.policy.append(temp_model.from_map(k))
+        return self
+
+
 class ListPoliciesForRoleResponseBody(TeaModel):
     def __init__(
         self,
-        policies: List[ListPoliciesForRoleResponseBodyPolicies] = None,
+        policies: ListPoliciesForRoleResponseBodyPolicies = None,
         request_id: str = None,
     ):
         self.policies = policies
@@ -5311,27 +5542,21 @@ class ListPoliciesForRoleResponseBody(TeaModel):
 
     def validate(self):
         if self.policies:
-            for k in self.policies:
-                if k:
-                    k.validate()
+            self.policies.validate()
 
     def to_map(self):
         result = dict()
-        result['Policies'] = []
         if self.policies is not None:
-            for k in self.policies:
-                result['Policies'].append(k.to_map() if k else None)
+            result['Policies'] = self.policies.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.policies = []
         if m.get('Policies') is not None:
-            for k in m.get('Policies'):
-                temp_model = ListPoliciesForRoleResponseBodyPolicies()
-                self.policies.append(temp_model.from_map(k))
+            temp_model = ListPoliciesForRoleResponseBodyPolicies()
+            self.policies = temp_model.from_map(m['Policies'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -5393,7 +5618,7 @@ class ListPoliciesForUserRequest(TeaModel):
         return self
 
 
-class ListPoliciesForUserResponseBodyPolicies(TeaModel):
+class ListPoliciesForUserResponseBodyPoliciesPolicy(TeaModel):
     def __init__(
         self,
         default_version: str = None,
@@ -5440,10 +5665,41 @@ class ListPoliciesForUserResponseBodyPolicies(TeaModel):
         return self
 
 
+class ListPoliciesForUserResponseBodyPolicies(TeaModel):
+    def __init__(
+        self,
+        policy: List[ListPoliciesForUserResponseBodyPoliciesPolicy] = None,
+    ):
+        self.policy = policy
+
+    def validate(self):
+        if self.policy:
+            for k in self.policy:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Policy'] = []
+        if self.policy is not None:
+            for k in self.policy:
+                result['Policy'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.policy = []
+        if m.get('Policy') is not None:
+            for k in m.get('Policy'):
+                temp_model = ListPoliciesForUserResponseBodyPoliciesPolicy()
+                self.policy.append(temp_model.from_map(k))
+        return self
+
+
 class ListPoliciesForUserResponseBody(TeaModel):
     def __init__(
         self,
-        policies: List[ListPoliciesForUserResponseBodyPolicies] = None,
+        policies: ListPoliciesForUserResponseBodyPolicies = None,
         request_id: str = None,
     ):
         self.policies = policies
@@ -5451,27 +5707,21 @@ class ListPoliciesForUserResponseBody(TeaModel):
 
     def validate(self):
         if self.policies:
-            for k in self.policies:
-                if k:
-                    k.validate()
+            self.policies.validate()
 
     def to_map(self):
         result = dict()
-        result['Policies'] = []
         if self.policies is not None:
-            for k in self.policies:
-                result['Policies'].append(k.to_map() if k else None)
+            result['Policies'] = self.policies.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.policies = []
         if m.get('Policies') is not None:
-            for k in m.get('Policies'):
-                temp_model = ListPoliciesForUserResponseBodyPolicies()
-                self.policies.append(temp_model.from_map(k))
+            temp_model = ListPoliciesForUserResponseBodyPolicies()
+            self.policies = temp_model.from_map(m['Policies'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -5539,7 +5789,7 @@ class ListPolicyVersionsRequest(TeaModel):
         return self
 
 
-class ListPolicyVersionsResponseBodyPolicyVersions(TeaModel):
+class ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion(TeaModel):
     def __init__(
         self,
         is_default_version: bool = None,
@@ -5580,40 +5830,65 @@ class ListPolicyVersionsResponseBodyPolicyVersions(TeaModel):
         return self
 
 
+class ListPolicyVersionsResponseBodyPolicyVersions(TeaModel):
+    def __init__(
+        self,
+        policy_version: List[ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion] = None,
+    ):
+        self.policy_version = policy_version
+
+    def validate(self):
+        if self.policy_version:
+            for k in self.policy_version:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['PolicyVersion'] = []
+        if self.policy_version is not None:
+            for k in self.policy_version:
+                result['PolicyVersion'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.policy_version = []
+        if m.get('PolicyVersion') is not None:
+            for k in m.get('PolicyVersion'):
+                temp_model = ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion()
+                self.policy_version.append(temp_model.from_map(k))
+        return self
+
+
 class ListPolicyVersionsResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        policy_versions: List[ListPolicyVersionsResponseBodyPolicyVersions] = None,
+        policy_versions: ListPolicyVersionsResponseBodyPolicyVersions = None,
     ):
         self.request_id = request_id
         self.policy_versions = policy_versions
 
     def validate(self):
         if self.policy_versions:
-            for k in self.policy_versions:
-                if k:
-                    k.validate()
+            self.policy_versions.validate()
 
     def to_map(self):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['PolicyVersions'] = []
         if self.policy_versions is not None:
-            for k in self.policy_versions:
-                result['PolicyVersions'].append(k.to_map() if k else None)
+            result['PolicyVersions'] = self.policy_versions.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.policy_versions = []
         if m.get('PolicyVersions') is not None:
-            for k in m.get('PolicyVersions'):
-                temp_model = ListPolicyVersionsResponseBodyPolicyVersions()
-                self.policy_versions.append(temp_model.from_map(k))
+            temp_model = ListPolicyVersionsResponseBodyPolicyVersions()
+            self.policy_versions = temp_model.from_map(m['PolicyVersions'])
         return self
 
 
@@ -5679,7 +5954,7 @@ class ListRolesRequest(TeaModel):
         return self
 
 
-class ListRolesResponseBodyRoles(TeaModel):
+class ListRolesResponseBodyRolesRole(TeaModel):
     def __init__(
         self,
         description: str = None,
@@ -5738,12 +6013,43 @@ class ListRolesResponseBodyRoles(TeaModel):
         return self
 
 
+class ListRolesResponseBodyRoles(TeaModel):
+    def __init__(
+        self,
+        role: List[ListRolesResponseBodyRolesRole] = None,
+    ):
+        self.role = role
+
+    def validate(self):
+        if self.role:
+            for k in self.role:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Role'] = []
+        if self.role is not None:
+            for k in self.role:
+                result['Role'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.role = []
+        if m.get('Role') is not None:
+            for k in m.get('Role'):
+                temp_model = ListRolesResponseBodyRolesRole()
+                self.role.append(temp_model.from_map(k))
+        return self
+
+
 class ListRolesResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         is_truncated: bool = None,
-        roles: List[ListRolesResponseBodyRoles] = None,
+        roles: ListRolesResponseBodyRoles = None,
         marker: str = None,
     ):
         self.request_id = request_id
@@ -5753,9 +6059,7 @@ class ListRolesResponseBody(TeaModel):
 
     def validate(self):
         if self.roles:
-            for k in self.roles:
-                if k:
-                    k.validate()
+            self.roles.validate()
 
     def to_map(self):
         result = dict()
@@ -5763,10 +6067,8 @@ class ListRolesResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.is_truncated is not None:
             result['IsTruncated'] = self.is_truncated
-        result['Roles'] = []
         if self.roles is not None:
-            for k in self.roles:
-                result['Roles'].append(k.to_map() if k else None)
+            result['Roles'] = self.roles.to_map()
         if self.marker is not None:
             result['Marker'] = self.marker
         return result
@@ -5777,11 +6079,9 @@ class ListRolesResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('IsTruncated') is not None:
             self.is_truncated = m.get('IsTruncated')
-        self.roles = []
         if m.get('Roles') is not None:
-            for k in m.get('Roles'):
-                temp_model = ListRolesResponseBodyRoles()
-                self.roles.append(temp_model.from_map(k))
+            temp_model = ListRolesResponseBodyRoles()
+            self.roles = temp_model.from_map(m['Roles'])
         if m.get('Marker') is not None:
             self.marker = m.get('Marker')
         return self
@@ -5849,7 +6149,7 @@ class ListUsersRequest(TeaModel):
         return self
 
 
-class ListUsersResponseBodyUsers(TeaModel):
+class ListUsersResponseBodyUsersUser(TeaModel):
     def __init__(
         self,
         display_name: str = None,
@@ -5914,13 +6214,44 @@ class ListUsersResponseBodyUsers(TeaModel):
         return self
 
 
+class ListUsersResponseBodyUsers(TeaModel):
+    def __init__(
+        self,
+        user: List[ListUsersResponseBodyUsersUser] = None,
+    ):
+        self.user = user
+
+    def validate(self):
+        if self.user:
+            for k in self.user:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['User'] = []
+        if self.user is not None:
+            for k in self.user:
+                result['User'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.user = []
+        if m.get('User') is not None:
+            for k in m.get('User'):
+                temp_model = ListUsersResponseBodyUsersUser()
+                self.user.append(temp_model.from_map(k))
+        return self
+
+
 class ListUsersResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         is_truncated: bool = None,
         marker: str = None,
-        users: List[ListUsersResponseBodyUsers] = None,
+        users: ListUsersResponseBodyUsers = None,
     ):
         self.request_id = request_id
         self.is_truncated = is_truncated
@@ -5929,9 +6260,7 @@ class ListUsersResponseBody(TeaModel):
 
     def validate(self):
         if self.users:
-            for k in self.users:
-                if k:
-                    k.validate()
+            self.users.validate()
 
     def to_map(self):
         result = dict()
@@ -5941,10 +6270,8 @@ class ListUsersResponseBody(TeaModel):
             result['IsTruncated'] = self.is_truncated
         if self.marker is not None:
             result['Marker'] = self.marker
-        result['Users'] = []
         if self.users is not None:
-            for k in self.users:
-                result['Users'].append(k.to_map() if k else None)
+            result['Users'] = self.users.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -5955,11 +6282,9 @@ class ListUsersResponseBody(TeaModel):
             self.is_truncated = m.get('IsTruncated')
         if m.get('Marker') is not None:
             self.marker = m.get('Marker')
-        self.users = []
         if m.get('Users') is not None:
-            for k in m.get('Users'):
-                temp_model = ListUsersResponseBodyUsers()
-                self.users.append(temp_model.from_map(k))
+            temp_model = ListUsersResponseBodyUsers()
+            self.users = temp_model.from_map(m['Users'])
         return self
 
 
@@ -6031,7 +6356,7 @@ class ListUsersForGroupRequest(TeaModel):
         return self
 
 
-class ListUsersForGroupResponseBodyUsers(TeaModel):
+class ListUsersForGroupResponseBodyUsersUser(TeaModel):
     def __init__(
         self,
         display_name: str = None,
@@ -6066,13 +6391,44 @@ class ListUsersForGroupResponseBodyUsers(TeaModel):
         return self
 
 
+class ListUsersForGroupResponseBodyUsers(TeaModel):
+    def __init__(
+        self,
+        user: List[ListUsersForGroupResponseBodyUsersUser] = None,
+    ):
+        self.user = user
+
+    def validate(self):
+        if self.user:
+            for k in self.user:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['User'] = []
+        if self.user is not None:
+            for k in self.user:
+                result['User'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.user = []
+        if m.get('User') is not None:
+            for k in m.get('User'):
+                temp_model = ListUsersForGroupResponseBodyUsersUser()
+                self.user.append(temp_model.from_map(k))
+        return self
+
+
 class ListUsersForGroupResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         is_truncated: bool = None,
         marker: str = None,
-        users: List[ListUsersForGroupResponseBodyUsers] = None,
+        users: ListUsersForGroupResponseBodyUsers = None,
     ):
         self.request_id = request_id
         self.is_truncated = is_truncated
@@ -6081,9 +6437,7 @@ class ListUsersForGroupResponseBody(TeaModel):
 
     def validate(self):
         if self.users:
-            for k in self.users:
-                if k:
-                    k.validate()
+            self.users.validate()
 
     def to_map(self):
         result = dict()
@@ -6093,10 +6447,8 @@ class ListUsersForGroupResponseBody(TeaModel):
             result['IsTruncated'] = self.is_truncated
         if self.marker is not None:
             result['Marker'] = self.marker
-        result['Users'] = []
         if self.users is not None:
-            for k in self.users:
-                result['Users'].append(k.to_map() if k else None)
+            result['Users'] = self.users.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -6107,11 +6459,9 @@ class ListUsersForGroupResponseBody(TeaModel):
             self.is_truncated = m.get('IsTruncated')
         if m.get('Marker') is not None:
             self.marker = m.get('Marker')
-        self.users = []
         if m.get('Users') is not None:
-            for k in m.get('Users'):
-                temp_model = ListUsersForGroupResponseBodyUsers()
-                self.users.append(temp_model.from_map(k))
+            temp_model = ListUsersForGroupResponseBodyUsers()
+            self.users = temp_model.from_map(m['Users'])
         return self
 
 
@@ -6148,7 +6498,7 @@ class ListUsersForGroupResponse(TeaModel):
         return self
 
 
-class ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser(TeaModel):
+class ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser(TeaModel):
     def __init__(
         self,
         display_name: str = None,
@@ -6183,11 +6533,11 @@ class ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser(TeaModel):
         return self
 
 
-class ListVirtualMFADevicesResponseBodyVirtualMFADevices(TeaModel):
+class ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice(TeaModel):
     def __init__(
         self,
         serial_number: str = None,
-        user: ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser = None,
+        user: ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser = None,
         activate_date: str = None,
     ):
         self.serial_number = serial_number
@@ -6213,17 +6563,48 @@ class ListVirtualMFADevicesResponseBodyVirtualMFADevices(TeaModel):
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
         if m.get('User') is not None:
-            temp_model = ListVirtualMFADevicesResponseBodyVirtualMFADevicesUser()
+            temp_model = ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser()
             self.user = temp_model.from_map(m['User'])
         if m.get('ActivateDate') is not None:
             self.activate_date = m.get('ActivateDate')
         return self
 
 
+class ListVirtualMFADevicesResponseBodyVirtualMFADevices(TeaModel):
+    def __init__(
+        self,
+        virtual_mfadevice: List[ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice] = None,
+    ):
+        self.virtual_mfadevice = virtual_mfadevice
+
+    def validate(self):
+        if self.virtual_mfadevice:
+            for k in self.virtual_mfadevice:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['VirtualMFADevice'] = []
+        if self.virtual_mfadevice is not None:
+            for k in self.virtual_mfadevice:
+                result['VirtualMFADevice'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.virtual_mfadevice = []
+        if m.get('VirtualMFADevice') is not None:
+            for k in m.get('VirtualMFADevice'):
+                temp_model = ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice()
+                self.virtual_mfadevice.append(temp_model.from_map(k))
+        return self
+
+
 class ListVirtualMFADevicesResponseBody(TeaModel):
     def __init__(
         self,
-        virtual_mfadevices: List[ListVirtualMFADevicesResponseBodyVirtualMFADevices] = None,
+        virtual_mfadevices: ListVirtualMFADevicesResponseBodyVirtualMFADevices = None,
         request_id: str = None,
     ):
         self.virtual_mfadevices = virtual_mfadevices
@@ -6231,27 +6612,21 @@ class ListVirtualMFADevicesResponseBody(TeaModel):
 
     def validate(self):
         if self.virtual_mfadevices:
-            for k in self.virtual_mfadevices:
-                if k:
-                    k.validate()
+            self.virtual_mfadevices.validate()
 
     def to_map(self):
         result = dict()
-        result['VirtualMFADevices'] = []
         if self.virtual_mfadevices is not None:
-            for k in self.virtual_mfadevices:
-                result['VirtualMFADevices'].append(k.to_map() if k else None)
+            result['VirtualMFADevices'] = self.virtual_mfadevices.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.virtual_mfadevices = []
         if m.get('VirtualMFADevices') is not None:
-            for k in m.get('VirtualMFADevices'):
-                temp_model = ListVirtualMFADevicesResponseBodyVirtualMFADevices()
-                self.virtual_mfadevices.append(temp_model.from_map(k))
+            temp_model = ListVirtualMFADevicesResponseBodyVirtualMFADevices()
+            self.virtual_mfadevices = temp_model.from_map(m['VirtualMFADevices'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
