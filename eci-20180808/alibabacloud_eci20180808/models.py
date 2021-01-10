@@ -1850,6 +1850,10 @@ class CreateContainerGroupRequest(TeaModel):
         host_name: str = None,
         ingress_bandwidth: int = None,
         egress_bandwidth: int = None,
+        cpu_options_core: int = None,
+        cpu_options_threads_per_core: int = None,
+        cpu_options_numa: str = None,
+        ephemeral_storage: int = None,
         tag: List[CreateContainerGroupRequestTag] = None,
         image_registry_credential: List[CreateContainerGroupRequestImageRegistryCredential] = None,
         container: List[CreateContainerGroupRequestContainer] = None,
@@ -1903,6 +1907,10 @@ class CreateContainerGroupRequest(TeaModel):
         self.host_name = host_name
         self.ingress_bandwidth = ingress_bandwidth
         self.egress_bandwidth = egress_bandwidth
+        self.cpu_options_core = cpu_options_core
+        self.cpu_options_threads_per_core = cpu_options_threads_per_core
+        self.cpu_options_numa = cpu_options_numa
+        self.ephemeral_storage = ephemeral_storage
         self.tag = tag
         self.image_registry_credential = image_registry_credential
         self.container = container
@@ -2039,6 +2047,14 @@ class CreateContainerGroupRequest(TeaModel):
             result['IngressBandwidth'] = self.ingress_bandwidth
         if self.egress_bandwidth is not None:
             result['EgressBandwidth'] = self.egress_bandwidth
+        if self.cpu_options_core is not None:
+            result['CpuOptionsCore'] = self.cpu_options_core
+        if self.cpu_options_threads_per_core is not None:
+            result['CpuOptionsThreadsPerCore'] = self.cpu_options_threads_per_core
+        if self.cpu_options_numa is not None:
+            result['CpuOptionsNuma'] = self.cpu_options_numa
+        if self.ephemeral_storage is not None:
+            result['EphemeralStorage'] = self.ephemeral_storage
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -2165,6 +2181,14 @@ class CreateContainerGroupRequest(TeaModel):
             self.ingress_bandwidth = m.get('IngressBandwidth')
         if m.get('EgressBandwidth') is not None:
             self.egress_bandwidth = m.get('EgressBandwidth')
+        if m.get('CpuOptionsCore') is not None:
+            self.cpu_options_core = m.get('CpuOptionsCore')
+        if m.get('CpuOptionsThreadsPerCore') is not None:
+            self.cpu_options_threads_per_core = m.get('CpuOptionsThreadsPerCore')
+        if m.get('CpuOptionsNuma') is not None:
+            self.cpu_options_numa = m.get('CpuOptionsNuma')
+        if m.get('EphemeralStorage') is not None:
+            self.ephemeral_storage = m.get('EphemeralStorage')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -5639,6 +5663,7 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         events: List[DescribeContainerGroupsResponseBodyContainerGroupsEvents] = None,
         succeeded_time: str = None,
         spot_strategy: str = None,
+        ephemeral_storage: int = None,
         tenant_eni_instance_id: str = None,
         discount: int = None,
         restart_policy: str = None,
@@ -5675,6 +5700,7 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         self.events = events
         self.succeeded_time = succeeded_time
         self.spot_strategy = spot_strategy
+        self.ephemeral_storage = ephemeral_storage
         self.tenant_eni_instance_id = tenant_eni_instance_id
         self.discount = discount
         self.restart_policy = restart_policy
@@ -5760,6 +5786,8 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
             result['SucceededTime'] = self.succeeded_time
         if self.spot_strategy is not None:
             result['SpotStrategy'] = self.spot_strategy
+        if self.ephemeral_storage is not None:
+            result['EphemeralStorage'] = self.ephemeral_storage
         if self.tenant_eni_instance_id is not None:
             result['TenantEniInstanceId'] = self.tenant_eni_instance_id
         if self.discount is not None:
@@ -5849,6 +5877,8 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
             self.succeeded_time = m.get('SucceededTime')
         if m.get('SpotStrategy') is not None:
             self.spot_strategy = m.get('SpotStrategy')
+        if m.get('EphemeralStorage') is not None:
+            self.ephemeral_storage = m.get('EphemeralStorage')
         if m.get('TenantEniInstanceId') is not None:
             self.tenant_eni_instance_id = m.get('TenantEniInstanceId')
         if m.get('Discount') is not None:
@@ -7720,18 +7750,24 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
     def __init__(
         self,
         model: str = None,
+        minor: int = None,
+        temperature: int = None,
+        power_usage: int = None,
         memory_total: int = None,
         make: str = None,
         duty_cycle: int = None,
-        id: str = None,
         memory_used: int = None,
+        id: str = None,
     ):
         self.model = model
+        self.minor = minor
+        self.temperature = temperature
+        self.power_usage = power_usage
         self.memory_total = memory_total
         self.make = make
         self.duty_cycle = duty_cycle
-        self.id = id
         self.memory_used = memory_used
+        self.id = id
 
     def validate(self):
         pass
@@ -7740,32 +7776,44 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         result = dict()
         if self.model is not None:
             result['Model'] = self.model
+        if self.minor is not None:
+            result['Minor'] = self.minor
+        if self.temperature is not None:
+            result['Temperature'] = self.temperature
+        if self.power_usage is not None:
+            result['PowerUsage'] = self.power_usage
         if self.memory_total is not None:
             result['MemoryTotal'] = self.memory_total
         if self.make is not None:
             result['Make'] = self.make
         if self.duty_cycle is not None:
             result['DutyCycle'] = self.duty_cycle
-        if self.id is not None:
-            result['Id'] = self.id
         if self.memory_used is not None:
             result['MemoryUsed'] = self.memory_used
+        if self.id is not None:
+            result['Id'] = self.id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Model') is not None:
             self.model = m.get('Model')
+        if m.get('Minor') is not None:
+            self.minor = m.get('Minor')
+        if m.get('Temperature') is not None:
+            self.temperature = m.get('Temperature')
+        if m.get('PowerUsage') is not None:
+            self.power_usage = m.get('PowerUsage')
         if m.get('MemoryTotal') is not None:
             self.memory_total = m.get('MemoryTotal')
         if m.get('Make') is not None:
             self.make = m.get('Make')
         if m.get('DutyCycle') is not None:
             self.duty_cycle = m.get('DutyCycle')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         if m.get('MemoryUsed') is not None:
             self.memory_used = m.get('MemoryUsed')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         return self
 
 
@@ -8148,14 +8196,272 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         return self
 
 
+class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes(TeaModel):
+    def __init__(
+        self,
+        stats: str = None,
+        minor: int = None,
+        major: int = None,
+        device: str = None,
+    ):
+        self.stats = stats
+        self.minor = minor
+        self.major = major
+        self.device = device
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.stats is not None:
+            result['Stats'] = self.stats
+        if self.minor is not None:
+            result['Minor'] = self.minor
+        if self.major is not None:
+            result['Major'] = self.major
+        if self.device is not None:
+            result['Device'] = self.device
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Stats') is not None:
+            self.stats = m.get('Stats')
+        if m.get('Minor') is not None:
+            self.minor = m.get('Minor')
+        if m.get('Major') is not None:
+            self.major = m.get('Major')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        return self
+
+
+class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged(TeaModel):
+    def __init__(
+        self,
+        stats: str = None,
+        minor: int = None,
+        major: int = None,
+        device: str = None,
+    ):
+        self.stats = stats
+        self.minor = minor
+        self.major = major
+        self.device = device
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.stats is not None:
+            result['Stats'] = self.stats
+        if self.minor is not None:
+            result['Minor'] = self.minor
+        if self.major is not None:
+            result['Major'] = self.major
+        if self.device is not None:
+            result['Device'] = self.device
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Stats') is not None:
+            self.stats = m.get('Stats')
+        if m.get('Minor') is not None:
+            self.minor = m.get('Minor')
+        if m.get('Major') is not None:
+            self.major = m.get('Major')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        return self
+
+
+class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors(TeaModel):
+    def __init__(
+        self,
+        stats: str = None,
+        minor: int = None,
+        major: int = None,
+        device: str = None,
+    ):
+        self.stats = stats
+        self.minor = minor
+        self.major = major
+        self.device = device
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.stats is not None:
+            result['Stats'] = self.stats
+        if self.minor is not None:
+            result['Minor'] = self.minor
+        if self.major is not None:
+            result['Major'] = self.major
+        if self.device is not None:
+            result['Device'] = self.device
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Stats') is not None:
+            self.stats = m.get('Stats')
+        if m.get('Minor') is not None:
+            self.minor = m.get('Minor')
+        if m.get('Major') is not None:
+            self.major = m.get('Major')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        return self
+
+
+class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued(TeaModel):
+    def __init__(
+        self,
+        stats: str = None,
+        minor: int = None,
+        major: int = None,
+        device: str = None,
+    ):
+        self.stats = stats
+        self.minor = minor
+        self.major = major
+        self.device = device
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.stats is not None:
+            result['Stats'] = self.stats
+        if self.minor is not None:
+            result['Minor'] = self.minor
+        if self.major is not None:
+            result['Major'] = self.major
+        if self.device is not None:
+            result['Device'] = self.device
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Stats') is not None:
+            self.stats = m.get('Stats')
+        if m.get('Minor') is not None:
+            self.minor = m.get('Minor')
+        if m.get('Major') is not None:
+            self.major = m.get('Major')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        return self
+
+
+class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime(TeaModel):
+    def __init__(
+        self,
+        stats: str = None,
+        minor: int = None,
+        major: int = None,
+        device: str = None,
+    ):
+        self.stats = stats
+        self.minor = minor
+        self.major = major
+        self.device = device
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.stats is not None:
+            result['Stats'] = self.stats
+        if self.minor is not None:
+            result['Minor'] = self.minor
+        if self.major is not None:
+            result['Major'] = self.major
+        if self.device is not None:
+            result['Device'] = self.device
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Stats') is not None:
+            self.stats = m.get('Stats')
+        if m.get('Minor') is not None:
+            self.minor = m.get('Minor')
+        if m.get('Major') is not None:
+            self.major = m.get('Major')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        return self
+
+
+class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime(TeaModel):
+    def __init__(
+        self,
+        stats: str = None,
+        minor: int = None,
+        major: int = None,
+        device: str = None,
+    ):
+        self.stats = stats
+        self.minor = minor
+        self.major = major
+        self.device = device
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.stats is not None:
+            result['Stats'] = self.stats
+        if self.minor is not None:
+            result['Minor'] = self.minor
+        if self.major is not None:
+            result['Major'] = self.major
+        if self.device is not None:
+            result['Device'] = self.device
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Stats') is not None:
+            self.stats = m.get('Stats')
+        if m.get('Minor') is not None:
+            self.minor = m.get('Minor')
+        if m.get('Major') is not None:
+            self.major = m.get('Major')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        return self
+
+
 class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStats(TeaModel):
     def __init__(
         self,
         io_serviced: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiced] = None,
         io_service_time: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceTime] = None,
+        io_service_bytes: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes] = None,
+        io_merged: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged] = None,
+        sectors: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors] = None,
+        io_queued: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued] = None,
+        io_time: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime] = None,
+        io_wait_time: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime] = None,
     ):
         self.io_serviced = io_serviced
         self.io_service_time = io_service_time
+        self.io_service_bytes = io_service_bytes
+        self.io_merged = io_merged
+        self.sectors = sectors
+        self.io_queued = io_queued
+        self.io_time = io_time
+        self.io_wait_time = io_wait_time
 
     def validate(self):
         if self.io_serviced:
@@ -8164,6 +8470,30 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
                     k.validate()
         if self.io_service_time:
             for k in self.io_service_time:
+                if k:
+                    k.validate()
+        if self.io_service_bytes:
+            for k in self.io_service_bytes:
+                if k:
+                    k.validate()
+        if self.io_merged:
+            for k in self.io_merged:
+                if k:
+                    k.validate()
+        if self.sectors:
+            for k in self.sectors:
+                if k:
+                    k.validate()
+        if self.io_queued:
+            for k in self.io_queued:
+                if k:
+                    k.validate()
+        if self.io_time:
+            for k in self.io_time:
+                if k:
+                    k.validate()
+        if self.io_wait_time:
+            for k in self.io_wait_time:
                 if k:
                     k.validate()
 
@@ -8177,6 +8507,30 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         if self.io_service_time is not None:
             for k in self.io_service_time:
                 result['IoServiceTime'].append(k.to_map() if k else None)
+        result['IoServiceBytes'] = []
+        if self.io_service_bytes is not None:
+            for k in self.io_service_bytes:
+                result['IoServiceBytes'].append(k.to_map() if k else None)
+        result['IoMerged'] = []
+        if self.io_merged is not None:
+            for k in self.io_merged:
+                result['IoMerged'].append(k.to_map() if k else None)
+        result['Sectors'] = []
+        if self.sectors is not None:
+            for k in self.sectors:
+                result['Sectors'].append(k.to_map() if k else None)
+        result['IoQueued'] = []
+        if self.io_queued is not None:
+            for k in self.io_queued:
+                result['IoQueued'].append(k.to_map() if k else None)
+        result['IoTime'] = []
+        if self.io_time is not None:
+            for k in self.io_time:
+                result['IoTime'].append(k.to_map() if k else None)
+        result['IoWaitTime'] = []
+        if self.io_wait_time is not None:
+            for k in self.io_wait_time:
+                result['IoWaitTime'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -8191,6 +8545,36 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
             for k in m.get('IoServiceTime'):
                 temp_model = DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceTime()
                 self.io_service_time.append(temp_model.from_map(k))
+        self.io_service_bytes = []
+        if m.get('IoServiceBytes') is not None:
+            for k in m.get('IoServiceBytes'):
+                temp_model = DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoServiceBytes()
+                self.io_service_bytes.append(temp_model.from_map(k))
+        self.io_merged = []
+        if m.get('IoMerged') is not None:
+            for k in m.get('IoMerged'):
+                temp_model = DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoMerged()
+                self.io_merged.append(temp_model.from_map(k))
+        self.sectors = []
+        if m.get('Sectors') is not None:
+            for k in m.get('Sectors'):
+                temp_model = DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsSectors()
+                self.sectors.append(temp_model.from_map(k))
+        self.io_queued = []
+        if m.get('IoQueued') is not None:
+            for k in m.get('IoQueued'):
+                temp_model = DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoQueued()
+                self.io_queued.append(temp_model.from_map(k))
+        self.io_time = []
+        if m.get('IoTime') is not None:
+            for k in m.get('IoTime'):
+                temp_model = DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoTime()
+                self.io_time.append(temp_model.from_map(k))
+        self.io_wait_time = []
+        if m.get('IoWaitTime') is not None:
+            for k in m.get('IoWaitTime'):
+                temp_model = DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStatsDiskIoStatsIoWaitTime()
+                self.io_wait_time.append(temp_model.from_map(k))
         return self
 
 
@@ -8297,10 +8681,18 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos(Te
         aliases: List[str] = None,
         container_spec: DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerSpec = None,
         container_stats: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStats] = None,
+        labels: str = None,
+        namespace: str = None,
+        name: str = None,
+        id: str = None,
     ):
         self.aliases = aliases
         self.container_spec = container_spec
         self.container_stats = container_stats
+        self.labels = labels
+        self.namespace = namespace
+        self.name = name
+        self.id = id
 
     def validate(self):
         if self.container_spec:
@@ -8320,6 +8712,14 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos(Te
         if self.container_stats is not None:
             for k in self.container_stats:
                 result['ContainerStats'].append(k.to_map() if k else None)
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.id is not None:
+            result['Id'] = self.id
         return result
 
     def from_map(self, m: dict = None):
@@ -8334,6 +8734,14 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos(Te
             for k in m.get('ContainerStats'):
                 temp_model = DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosContainerStats()
                 self.container_stats.append(temp_model.from_map(k))
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         return self
 
 
@@ -8342,9 +8750,11 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatas(TeaModel):
         self,
         records: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords] = None,
         container_infos: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos] = None,
+        container_group_id: str = None,
     ):
         self.records = records
         self.container_infos = container_infos
+        self.container_group_id = container_group_id
 
     def validate(self):
         if self.records:
@@ -8366,6 +8776,8 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatas(TeaModel):
         if self.container_infos is not None:
             for k in self.container_infos:
                 result['ContainerInfos'].append(k.to_map() if k else None)
+        if self.container_group_id is not None:
+            result['ContainerGroupId'] = self.container_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8380,6 +8792,8 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatas(TeaModel):
             for k in m.get('ContainerInfos'):
                 temp_model = DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos()
                 self.container_infos.append(temp_model.from_map(k))
+        if m.get('ContainerGroupId') is not None:
+            self.container_group_id = m.get('ContainerGroupId')
         return self
 
 
@@ -10482,6 +10896,7 @@ class UpdateContainerGroupRequest(TeaModel):
         client_token: str = None,
         cpu: float = None,
         memory: float = None,
+        resource_group_id: str = None,
         tag: List[UpdateContainerGroupRequestTag] = None,
         volume: List[UpdateContainerGroupRequestVolume] = None,
         container: List[UpdateContainerGroupRequestContainer] = None,
@@ -10499,6 +10914,7 @@ class UpdateContainerGroupRequest(TeaModel):
         self.client_token = client_token
         self.cpu = cpu
         self.memory = memory
+        self.resource_group_id = resource_group_id
         self.tag = tag
         self.volume = volume
         self.container = container
@@ -10553,6 +10969,8 @@ class UpdateContainerGroupRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -10600,6 +11018,8 @@ class UpdateContainerGroupRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
