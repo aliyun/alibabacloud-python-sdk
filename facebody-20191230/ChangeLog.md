@@ -1,3 +1,6 @@
+2021-01-12 Version: 2.0.3
+- Update ExtractPedestrianFeatureAttr.
+
 2020-12-28 Version: 2.0.2
 - Release GenRealPersonVerificationToken GetRealPersonVerificationResult.
 
