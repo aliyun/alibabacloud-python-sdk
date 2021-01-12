@@ -1,3 +1,6 @@
+2021-01-12 Version: 1.1.1
+- Batch task interfaces problem fixed.
+
 2021-01-08 Version: 1.1.0
 - Support batch task interfaces.
 

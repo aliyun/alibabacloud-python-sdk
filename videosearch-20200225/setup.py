@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_videosearch20200225.
 
-Created on 08/01/2021
+Created on 12/01/2021
 
 @author: Alibaba Cloud SDK
 """

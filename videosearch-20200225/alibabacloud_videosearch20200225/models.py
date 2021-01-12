@@ -366,7 +366,7 @@ class ListBatchTaskResponseDataList(TeaModel):
         bucket_name: str = None,
         data_path: str = None,
         meta_file: str = None,
-        modified_time: str = None,
+        modified_time: int = None,
         process_message: str = None,
     ):
         self.task_id = task_id
