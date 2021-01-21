@@ -1,3 +1,6 @@
+2021-01-21 Version: 1.2.1
+- The creation and update APIs of the stack supports specifing tags, and the query and list APIs supports obtaining tags.
+
 2021-01-20 Version: 2.0.2
 - AMP Version Change.
 
