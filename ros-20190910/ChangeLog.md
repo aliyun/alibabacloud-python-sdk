@@ -1,3 +1,6 @@
+2021-01-21 Version: 1.2.2
+- Generated python 2019-09-10 for ROS.
+
 2021-01-21 Version: 1.2.1
 - The creation and update APIs of the stack supports specifing tags, and the query and list APIs supports obtaining tags.
 
