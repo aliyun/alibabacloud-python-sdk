@@ -39,86 +39,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def check_service_linked_role_for_deleting_with_options(
-        self,
-        request: xtrace_20190808_models.CheckServiceLinkedRoleForDeletingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtrace_20190808_models.CheckServiceLinkedRoleForDeletingResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return xtrace_20190808_models.CheckServiceLinkedRoleForDeletingResponse().from_map(
-            self.do_rpcrequest('CheckServiceLinkedRoleForDeleting', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def check_service_linked_role_for_deleting_with_options_async(
-        self,
-        request: xtrace_20190808_models.CheckServiceLinkedRoleForDeletingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtrace_20190808_models.CheckServiceLinkedRoleForDeletingResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return xtrace_20190808_models.CheckServiceLinkedRoleForDeletingResponse().from_map(
-            await self.do_rpcrequest_async('CheckServiceLinkedRoleForDeleting', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def check_service_linked_role_for_deleting(
-        self,
-        request: xtrace_20190808_models.CheckServiceLinkedRoleForDeletingRequest,
-    ) -> xtrace_20190808_models.CheckServiceLinkedRoleForDeletingResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.check_service_linked_role_for_deleting_with_options(request, runtime)
-
-    async def check_service_linked_role_for_deleting_async(
-        self,
-        request: xtrace_20190808_models.CheckServiceLinkedRoleForDeletingRequest,
-    ) -> xtrace_20190808_models.CheckServiceLinkedRoleForDeletingResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.check_service_linked_role_for_deleting_with_options_async(request, runtime)
-
-    def get_sampling_with_options(
-        self,
-        request: xtrace_20190808_models.GetSamplingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtrace_20190808_models.GetSamplingResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return xtrace_20190808_models.GetSamplingResponse().from_map(
-            self.do_rpcrequest('GetSampling', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_sampling_with_options_async(
-        self,
-        request: xtrace_20190808_models.GetSamplingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtrace_20190808_models.GetSamplingResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return xtrace_20190808_models.GetSamplingResponse().from_map(
-            await self.do_rpcrequest_async('GetSampling', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_sampling(
-        self,
-        request: xtrace_20190808_models.GetSamplingRequest,
-    ) -> xtrace_20190808_models.GetSamplingResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_sampling_with_options(request, runtime)
-
-    async def get_sampling_async(
-        self,
-        request: xtrace_20190808_models.GetSamplingRequest,
-    ) -> xtrace_20190808_models.GetSamplingResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_sampling_with_options_async(request, runtime)
-
     def get_tag_key_with_options(
         self,
         request: xtrace_20190808_models.GetTagKeyRequest,
@@ -439,32 +359,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_span_names_with_options_async(request, runtime)
 
-    def open_xtrace_service_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtrace_20190808_models.OpenXtraceServiceResponse:
-        req = open_api_models.OpenApiRequest()
-        return xtrace_20190808_models.OpenXtraceServiceResponse().from_map(
-            self.do_rpcrequest('OpenXtraceService', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def open_xtrace_service_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtrace_20190808_models.OpenXtraceServiceResponse:
-        req = open_api_models.OpenApiRequest()
-        return xtrace_20190808_models.OpenXtraceServiceResponse().from_map(
-            await self.do_rpcrequest_async('OpenXtraceService', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def open_xtrace_service(self) -> xtrace_20190808_models.OpenXtraceServiceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.open_xtrace_service_with_options(runtime)
-
-    async def open_xtrace_service_async(self) -> xtrace_20190808_models.OpenXtraceServiceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.open_xtrace_service_with_options_async(runtime)
-
     def query_metric_with_options(
         self,
         request: xtrace_20190808_models.QueryMetricRequest,
@@ -544,43 +438,3 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.SearchTracesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.search_traces_with_options_async(request, runtime)
-
-    def update_sampling_with_options(
-        self,
-        request: xtrace_20190808_models.UpdateSamplingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtrace_20190808_models.UpdateSamplingResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return xtrace_20190808_models.UpdateSamplingResponse().from_map(
-            self.do_rpcrequest('UpdateSampling', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_sampling_with_options_async(
-        self,
-        request: xtrace_20190808_models.UpdateSamplingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtrace_20190808_models.UpdateSamplingResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return xtrace_20190808_models.UpdateSamplingResponse().from_map(
-            await self.do_rpcrequest_async('UpdateSampling', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_sampling(
-        self,
-        request: xtrace_20190808_models.UpdateSamplingRequest,
-    ) -> xtrace_20190808_models.UpdateSamplingResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_sampling_with_options(request, runtime)
-
-    async def update_sampling_async(
-        self,
-        request: xtrace_20190808_models.UpdateSamplingRequest,
-    ) -> xtrace_20190808_models.UpdateSamplingResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_sampling_with_options_async(request, runtime)
