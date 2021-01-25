@@ -8,6 +8,7 @@ from alibabacloud_tea_rpc import models as rpc_models
 from alibabacloud_servicemesh20200111 import models as servicemesh_20200111_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_tea_util.client import Client as UtilClient
+from alibabacloud_rpc_util.client import Client as RPCUtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 
 
@@ -20,6 +21,82 @@ class Client(RPCClient):
         self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('servicemesh', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
+
+    def get_service_registry_source_with_options(
+        self,
+        request: servicemesh_20200111_models.GetServiceRegistrySourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.GetServiceRegistrySourceResponse:
+        UtilClient.validate_model(request)
+        return servicemesh_20200111_models.GetServiceRegistrySourceResponse().from_map(
+            self.do_request('GetServiceRegistrySource', 'HTTPS', 'POST', '2020-01-11', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def get_service_registry_source_with_options_async(
+        self,
+        request: servicemesh_20200111_models.GetServiceRegistrySourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.GetServiceRegistrySourceResponse:
+        UtilClient.validate_model(request)
+        return servicemesh_20200111_models.GetServiceRegistrySourceResponse().from_map(
+            await self.do_request_async('GetServiceRegistrySource', 'HTTPS', 'POST', '2020-01-11', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def get_service_registry_source(
+        self,
+        request: servicemesh_20200111_models.GetServiceRegistrySourceRequest,
+    ) -> servicemesh_20200111_models.GetServiceRegistrySourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_service_registry_source_with_options(request, runtime)
+
+    async def get_service_registry_source_async(
+        self,
+        request: servicemesh_20200111_models.GetServiceRegistrySourceRequest,
+    ) -> servicemesh_20200111_models.GetServiceRegistrySourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_service_registry_source_with_options_async(request, runtime)
+
+    def set_service_registry_source_with_options(
+        self,
+        tmp: servicemesh_20200111_models.SetServiceRegistrySourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.SetServiceRegistrySourceResponse:
+        UtilClient.validate_model(tmp)
+        request = servicemesh_20200111_models.SetServiceRegistrySourceShrinkRequest()
+        RPCUtilClient.convert(tmp, request)
+        if not UtilClient.is_unset(tmp.config):
+            request.config_shrink = UtilClient.to_jsonstring(tmp.config)
+        return servicemesh_20200111_models.SetServiceRegistrySourceResponse().from_map(
+            self.do_request('SetServiceRegistrySource', 'HTTPS', 'POST', '2020-01-11', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def set_service_registry_source_with_options_async(
+        self,
+        tmp: servicemesh_20200111_models.SetServiceRegistrySourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.SetServiceRegistrySourceResponse:
+        UtilClient.validate_model(tmp)
+        request = servicemesh_20200111_models.SetServiceRegistrySourceShrinkRequest()
+        RPCUtilClient.convert(tmp, request)
+        if not UtilClient.is_unset(tmp.config):
+            request.config_shrink = UtilClient.to_jsonstring(tmp.config)
+        return servicemesh_20200111_models.SetServiceRegistrySourceResponse().from_map(
+            await self.do_request_async('SetServiceRegistrySource', 'HTTPS', 'POST', '2020-01-11', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def set_service_registry_source(
+        self,
+        request: servicemesh_20200111_models.SetServiceRegistrySourceRequest,
+    ) -> servicemesh_20200111_models.SetServiceRegistrySourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_service_registry_source_with_options(request, runtime)
+
+    async def set_service_registry_source_async(
+        self,
+        request: servicemesh_20200111_models.SetServiceRegistrySourceRequest,
+    ) -> servicemesh_20200111_models.SetServiceRegistrySourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_service_registry_source_with_options_async(request, runtime)
 
     def get_auto_injection_label_sync_status_with_options(
         self,

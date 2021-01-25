@@ -1,7 +1,157 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+from typing import Dict, Any, List
+
+
+class GetServiceRegistrySourceRequest(TeaModel):
+    def __init__(
+        self,
+        service_mesh_id: str = None,
+    ):
+        self.service_mesh_id = service_mesh_id
+
+    def validate(self):
+        self.validate_required(self.service_mesh_id, 'service_mesh_id')
+
+    def to_map(self):
+        result = dict()
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        return self
+
+
+class GetServiceRegistrySourceResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: str = None,
+        status: str = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.status = status
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.result, 'result')
+        self.validate_required(self.status, 'status')
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class SetServiceRegistrySourceRequest(TeaModel):
+    def __init__(
+        self,
+        service_mesh_id: str = None,
+        config: Dict[str, Any] = None,
+    ):
+        self.service_mesh_id = service_mesh_id
+        self.config = config
+
+    def validate(self):
+        self.validate_required(self.service_mesh_id, 'service_mesh_id')
+        self.validate_required(self.config, 'config')
+
+    def to_map(self):
+        result = dict()
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.config is not None:
+            result['Config'] = self.config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        return self
+
+
+class SetServiceRegistrySourceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        service_mesh_id: str = None,
+        config_shrink: str = None,
+    ):
+        self.service_mesh_id = service_mesh_id
+        self.config_shrink = config_shrink
+
+    def validate(self):
+        self.validate_required(self.service_mesh_id, 'service_mesh_id')
+        self.validate_required(self.config_shrink, 'config_shrink')
+
+    def to_map(self):
+        result = dict()
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.config_shrink is not None:
+            result['Config'] = self.config_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        if m.get('Config') is not None:
+            self.config_shrink = m.get('Config')
+        return self
+
+
+class SetServiceRegistrySourceResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: str = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.result, 'result')
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
 
 
 class GetAutoInjectionLabelSyncStatusRequest(TeaModel):
@@ -751,15 +901,18 @@ class GetDiagnosisResponse(TeaModel):
         request_id: str = None,
         result: str = None,
         run_at: str = None,
+        status: str = None,
     ):
         self.request_id = request_id
         self.result = result
         self.run_at = run_at
+        self.status = status
 
     def validate(self):
         self.validate_required(self.request_id, 'request_id')
         self.validate_required(self.result, 'result')
         self.validate_required(self.run_at, 'run_at')
+        self.validate_required(self.status, 'status')
 
     def to_map(self):
         result = dict()
@@ -769,6 +922,8 @@ class GetDiagnosisResponse(TeaModel):
             result['Result'] = self.result
         if self.run_at is not None:
             result['RunAt'] = self.run_at
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -779,6 +934,8 @@ class GetDiagnosisResponse(TeaModel):
             self.result = m.get('Result')
         if m.get('RunAt') is not None:
             self.run_at = m.get('RunAt')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -3044,22 +3201,29 @@ class DescribeServiceMeshDetailResponseServiceMeshSpecMeshConfigKiali(TeaModel):
     def __init__(
         self,
         enabled: bool = None,
+        url: str = None,
     ):
         self.enabled = enabled
+        self.url = url
 
     def validate(self):
         self.validate_required(self.enabled, 'enabled')
+        self.validate_required(self.url, 'url')
 
     def to_map(self):
         result = dict()
         if self.enabled is not None:
             result['Enabled'] = self.enabled
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Enabled') is not None:
             self.enabled = m.get('Enabled')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
         return self
 
 
