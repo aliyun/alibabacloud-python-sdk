@@ -31,7 +31,7 @@ class Client(OpenApiClient):
             'cn-fujian': 'cs.aliyuncs.com',
             'cn-haidian-cm12-c01': 'cs.aliyuncs.com',
             'cn-hangzhou-bj-b01': 'cs.aliyuncs.com',
-            'cn-hangzhou-finance': 'cs.aliyuncs.com',
+            'cn-hangzhou-finance': 'cs-vpc.cn-hangzhou-finance.aliyuncs.com',
             'cn-hangzhou-internal-prod-1': 'cs.aliyuncs.com',
             'cn-hangzhou-internal-test-1': 'cs.aliyuncs.com',
             'cn-hangzhou-internal-test-2': 'cs.aliyuncs.com',
@@ -42,16 +42,16 @@ class Client(OpenApiClient):
             'cn-qingdao-nebula': 'cs.aliyuncs.com',
             'cn-shanghai-et15-b01': 'cs.aliyuncs.com',
             'cn-shanghai-et2-b01': 'cs.aliyuncs.com',
-            'cn-shanghai-finance-1': 'cs.aliyuncs.com',
+            'cn-shanghai-finance-1': 'cs-vpc.cn-shanghai-finance-1.aliyuncs.com',
             'cn-shanghai-inner': 'cs.aliyuncs.com',
             'cn-shanghai-internal-test-1': 'cs.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'cs.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'cs-vpc.cn-shenzhen-finance-1.aliyuncs.com',
             'cn-shenzhen-inner': 'cs.aliyuncs.com',
             'cn-shenzhen-st4-d01': 'cs.aliyuncs.com',
             'cn-shenzhen-su18-b01': 'cs.aliyuncs.com',
             'cn-wuhan': 'cs.aliyuncs.com',
-            'cn-wulanchabu': 'cs.aliyuncs.com',
             'cn-yushanfang': 'cs.aliyuncs.com',
+            'cn-zhangbei': 'cs.aliyuncs.com',
             'cn-zhangbei-na61-b01': 'cs.aliyuncs.com',
             'cn-zhangjiakou-na62-a01': 'cs.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'cs.aliyuncs.com',
@@ -135,6 +135,70 @@ class Client(OpenApiClient):
         )
         return cs20151215_models.ListTagResourcesResponse().from_map(
             await self.do_roarequest_async('ListTagResources', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/tags', 'json', req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: cs20151215_models.UntagResourcesRequest,
+    ) -> cs20151215_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.untag_resources_with_options(request, headers, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: cs20151215_models.UntagResourcesRequest,
+    ) -> cs20151215_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.untag_resources_with_options_async(request, headers, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: cs20151215_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['region_id'] = request.region_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['resource_ids'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['resource_type'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_keys):
+            query['tag_keys'] = request.tag_keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return cs20151215_models.UntagResourcesResponse().from_map(
+            self.do_roarequest('UntagResources', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/tags', 'none', req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: cs20151215_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['region_id'] = request.region_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['resource_ids'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['resource_type'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_keys):
+            query['tag_keys'] = request.tag_keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return cs20151215_models.UntagResourcesResponse().from_map(
+            await self.do_roarequest_async('UntagResources', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/tags', 'none', req, runtime)
         )
 
     def modify_cluster(
@@ -509,62 +573,6 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('DescribeClusterDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}', 'json', req, runtime)
         )
 
-    def describe_clusters(
-        self,
-        request: cs20151215_models.DescribeClustersRequest,
-    ) -> cs20151215_models.DescribeClustersResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.describe_clusters_with_options(request, headers, runtime)
-
-    async def describe_clusters_async(
-        self,
-        request: cs20151215_models.DescribeClustersRequest,
-    ) -> cs20151215_models.DescribeClustersResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.describe_clusters_with_options_async(request, headers, runtime)
-
-    def describe_clusters_with_options(
-        self,
-        request: cs20151215_models.DescribeClustersRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.DescribeClustersResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.name):
-            query['name'] = request.name
-        if not UtilClient.is_unset(request.cluster_type):
-            query['clusterType'] = request.cluster_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return cs20151215_models.DescribeClustersResponse().from_map(
-            self.do_roarequest('DescribeClusters', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters', 'array', req, runtime)
-        )
-
-    async def describe_clusters_with_options_async(
-        self,
-        request: cs20151215_models.DescribeClustersRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.DescribeClustersResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.name):
-            query['name'] = request.name
-        if not UtilClient.is_unset(request.cluster_type):
-            query['clusterType'] = request.cluster_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return cs20151215_models.DescribeClustersResponse().from_map(
-            await self.do_roarequest_async('DescribeClusters', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters', 'array', req, runtime)
-        )
-
     def modify_cluster_node_pool(
         self,
         cluster_id: str,
@@ -614,7 +622,7 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return cs20151215_models.ModifyClusterNodePoolResponse().from_map(
-            self.do_roarequest('ModifyClusterNodePool', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}', 'json', req, runtime)
+            self.do_roarequest('ModifyClusterNodePool', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
         )
 
     async def modify_cluster_node_pool_with_options_async(
@@ -646,7 +654,7 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return cs20151215_models.ModifyClusterNodePoolResponse().from_map(
-            await self.do_roarequest_async('ModifyClusterNodePool', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}', 'json', req, runtime)
+            await self.do_roarequest_async('ModifyClusterNodePool', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
         )
 
     def resume_upgrade_cluster(
@@ -691,6 +699,58 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('ResumeUpgradeCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}/upgrade/resume', 'none', req, runtime)
         )
 
+    def open_ack_service(
+        self,
+        request: cs20151215_models.OpenAckServiceRequest,
+    ) -> cs20151215_models.OpenAckServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.open_ack_service_with_options(request, headers, runtime)
+
+    async def open_ack_service_async(
+        self,
+        request: cs20151215_models.OpenAckServiceRequest,
+    ) -> cs20151215_models.OpenAckServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.open_ack_service_with_options_async(request, headers, runtime)
+
+    def open_ack_service_with_options(
+        self,
+        request: cs20151215_models.OpenAckServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.OpenAckServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return cs20151215_models.OpenAckServiceResponse().from_map(
+            self.do_roarequest('OpenAckService', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/service/open', 'json', req, runtime)
+        )
+
+    async def open_ack_service_with_options_async(
+        self,
+        request: cs20151215_models.OpenAckServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.OpenAckServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return cs20151215_models.OpenAckServiceResponse().from_map(
+            await self.do_roarequest_async('OpenAckService', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/service/open', 'json', req, runtime)
+        )
+
     def scale_cluster_node_pool(
         self,
         cluster_id: str,
@@ -728,7 +788,7 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return cs20151215_models.ScaleClusterNodePoolResponse().from_map(
-            self.do_roarequest('ScaleClusterNodePool', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}', 'json', req, runtime)
+            self.do_roarequest('ScaleClusterNodePool', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
         )
 
     async def scale_cluster_node_pool_with_options_async(
@@ -748,7 +808,7 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return cs20151215_models.ScaleClusterNodePoolResponse().from_map(
-            await self.do_roarequest_async('ScaleClusterNodePool', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}', 'json', req, runtime)
+            await self.do_roarequest_async('ScaleClusterNodePool', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
         )
 
     def describe_cluster_node_pool_detail(
@@ -780,7 +840,7 @@ class Client(OpenApiClient):
             headers=headers
         )
         return cs20151215_models.DescribeClusterNodePoolDetailResponse().from_map(
-            self.do_roarequest('DescribeClusterNodePoolDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}', 'json', req, runtime)
+            self.do_roarequest('DescribeClusterNodePoolDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
         )
 
     async def describe_cluster_node_pool_detail_with_options_async(
@@ -794,7 +854,7 @@ class Client(OpenApiClient):
             headers=headers
         )
         return cs20151215_models.DescribeClusterNodePoolDetailResponse().from_map(
-            await self.do_roarequest_async('DescribeClusterNodePoolDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}', 'json', req, runtime)
+            await self.do_roarequest_async('DescribeClusterNodePoolDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
         )
 
     def create_cluster_node_pool(
@@ -931,180 +991,6 @@ class Client(OpenApiClient):
         )
         return cs20151215_models.DescribeClusterUserKubeconfigResponse().from_map(
             await self.do_roarequest_async('DescribeClusterUserKubeconfig', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/k8s/{cluster_id}/user_config', 'json', req, runtime)
-        )
-
-    def scale_cluster(
-        self,
-        cluster_id: str,
-        request: cs20151215_models.ScaleClusterRequest,
-    ) -> cs20151215_models.ScaleClusterResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.scale_cluster_with_options(cluster_id, request, headers, runtime)
-
-    async def scale_cluster_async(
-        self,
-        cluster_id: str,
-        request: cs20151215_models.ScaleClusterRequest,
-    ) -> cs20151215_models.ScaleClusterResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.scale_cluster_with_options_async(cluster_id, request, headers, runtime)
-
-    def scale_cluster_with_options(
-        self,
-        cluster_id: str,
-        request: cs20151215_models.ScaleClusterRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.ScaleClusterResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.cloud_monitor_flags):
-            body['cloud_monitor_flags'] = request.cloud_monitor_flags
-        if not UtilClient.is_unset(request.count):
-            body['count'] = request.count
-        if not UtilClient.is_unset(request.cpu_policy):
-            body['cpu_policy'] = request.cpu_policy
-        if not UtilClient.is_unset(request.disable_rollback):
-            body['disable_rollback'] = request.disable_rollback
-        if not UtilClient.is_unset(request.key_pair):
-            body['key_pair'] = request.key_pair
-        if not UtilClient.is_unset(request.login_password):
-            body['login_password'] = request.login_password
-        if not UtilClient.is_unset(request.tags):
-            body['tags'] = request.tags
-        if not UtilClient.is_unset(request.taints):
-            body['taints'] = request.taints
-        if not UtilClient.is_unset(request.vswitch_ids):
-            body['vswitch_ids'] = request.vswitch_ids
-        if not UtilClient.is_unset(request.worker_auto_renew):
-            body['worker_auto_renew'] = request.worker_auto_renew
-        if not UtilClient.is_unset(request.worker_auto_renew_period):
-            body['worker_auto_renew_period'] = request.worker_auto_renew_period
-        if not UtilClient.is_unset(request.worker_data_disk):
-            body['worker_data_disk'] = request.worker_data_disk
-        if not UtilClient.is_unset(request.worker_data_disks):
-            body['worker_data_disks'] = request.worker_data_disks
-        if not UtilClient.is_unset(request.worker_instance_charge_type):
-            body['worker_instance_charge_type'] = request.worker_instance_charge_type
-        if not UtilClient.is_unset(request.worker_instance_types):
-            body['worker_instance_types'] = request.worker_instance_types
-        if not UtilClient.is_unset(request.worker_period):
-            body['worker_period'] = request.worker_period
-        if not UtilClient.is_unset(request.worker_period_unit):
-            body['worker_period_unit'] = request.worker_period_unit
-        if not UtilClient.is_unset(request.worker_system_disk_category):
-            body['worker_system_disk_category'] = request.worker_system_disk_category
-        if not UtilClient.is_unset(request.worker_system_disk_size):
-            body['worker_system_disk_size'] = request.worker_system_disk_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        return cs20151215_models.ScaleClusterResponse().from_map(
-            self.do_roarequest('ScaleCluster', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}', 'json', req, runtime)
-        )
-
-    async def scale_cluster_with_options_async(
-        self,
-        cluster_id: str,
-        request: cs20151215_models.ScaleClusterRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.ScaleClusterResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.cloud_monitor_flags):
-            body['cloud_monitor_flags'] = request.cloud_monitor_flags
-        if not UtilClient.is_unset(request.count):
-            body['count'] = request.count
-        if not UtilClient.is_unset(request.cpu_policy):
-            body['cpu_policy'] = request.cpu_policy
-        if not UtilClient.is_unset(request.disable_rollback):
-            body['disable_rollback'] = request.disable_rollback
-        if not UtilClient.is_unset(request.key_pair):
-            body['key_pair'] = request.key_pair
-        if not UtilClient.is_unset(request.login_password):
-            body['login_password'] = request.login_password
-        if not UtilClient.is_unset(request.tags):
-            body['tags'] = request.tags
-        if not UtilClient.is_unset(request.taints):
-            body['taints'] = request.taints
-        if not UtilClient.is_unset(request.vswitch_ids):
-            body['vswitch_ids'] = request.vswitch_ids
-        if not UtilClient.is_unset(request.worker_auto_renew):
-            body['worker_auto_renew'] = request.worker_auto_renew
-        if not UtilClient.is_unset(request.worker_auto_renew_period):
-            body['worker_auto_renew_period'] = request.worker_auto_renew_period
-        if not UtilClient.is_unset(request.worker_data_disk):
-            body['worker_data_disk'] = request.worker_data_disk
-        if not UtilClient.is_unset(request.worker_data_disks):
-            body['worker_data_disks'] = request.worker_data_disks
-        if not UtilClient.is_unset(request.worker_instance_charge_type):
-            body['worker_instance_charge_type'] = request.worker_instance_charge_type
-        if not UtilClient.is_unset(request.worker_instance_types):
-            body['worker_instance_types'] = request.worker_instance_types
-        if not UtilClient.is_unset(request.worker_period):
-            body['worker_period'] = request.worker_period
-        if not UtilClient.is_unset(request.worker_period_unit):
-            body['worker_period_unit'] = request.worker_period_unit
-        if not UtilClient.is_unset(request.worker_system_disk_category):
-            body['worker_system_disk_category'] = request.worker_system_disk_category
-        if not UtilClient.is_unset(request.worker_system_disk_size):
-            body['worker_system_disk_size'] = request.worker_system_disk_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        return cs20151215_models.ScaleClusterResponse().from_map(
-            await self.do_roarequest_async('ScaleCluster', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}', 'json', req, runtime)
-        )
-
-    def describe_cluster_addon_upgrade_status(
-        self,
-        cluster_id: str,
-        component_id: str,
-    ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.describe_cluster_addon_upgrade_status_with_options(cluster_id, component_id, headers, runtime)
-
-    async def describe_cluster_addon_upgrade_status_async(
-        self,
-        cluster_id: str,
-        component_id: str,
-    ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.describe_cluster_addon_upgrade_status_with_options_async(cluster_id, component_id, headers, runtime)
-
-    def describe_cluster_addon_upgrade_status_with_options(
-        self,
-        cluster_id: str,
-        component_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        return cs20151215_models.DescribeClusterAddonUpgradeStatusResponse().from_map(
-            self.do_roarequest('DescribeClusterAddonUpgradeStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/components/{{ComponentId}}/upgradestatus', 'json', req, runtime)
-        )
-
-    async def describe_cluster_addon_upgrade_status_with_options_async(
-        self,
-        cluster_id: str,
-        component_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        return cs20151215_models.DescribeClusterAddonUpgradeStatusResponse().from_map(
-            await self.do_roarequest_async('DescribeClusterAddonUpgradeStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/components/{{ComponentId}}/upgradestatus', 'json', req, runtime)
         )
 
     def describe_addons(
@@ -2654,7 +2540,7 @@ class Client(OpenApiClient):
             headers=headers
         )
         return cs20151215_models.DeleteClusterNodepoolResponse().from_map(
-            self.do_roarequest('DeleteClusterNodepool', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}', 'none', req, runtime)
+            self.do_roarequest('DeleteClusterNodepool', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'none', req, runtime)
         )
 
     async def delete_cluster_nodepool_with_options_async(
@@ -2668,7 +2554,7 @@ class Client(OpenApiClient):
             headers=headers
         )
         return cs20151215_models.DeleteClusterNodepoolResponse().from_map(
-            await self.do_roarequest_async('DeleteClusterNodepool', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}', 'none', req, runtime)
+            await self.do_roarequest_async('DeleteClusterNodepool', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'none', req, runtime)
         )
 
     def describe_cluster_addons_upgrade_status(
@@ -2819,62 +2705,6 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('DescribeClusterNodePools', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/nodepools', 'json', req, runtime)
         )
 
-    def describe_cluster_v2user_kubeconfig(
-        self,
-        cluster_id: str,
-        request: cs20151215_models.DescribeClusterV2UserKubeconfigRequest,
-    ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.describe_cluster_v2user_kubeconfig_with_options(cluster_id, request, headers, runtime)
-
-    async def describe_cluster_v2user_kubeconfig_async(
-        self,
-        cluster_id: str,
-        request: cs20151215_models.DescribeClusterV2UserKubeconfigRequest,
-    ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.describe_cluster_v2user_kubeconfig_with_options_async(cluster_id, request, headers, runtime)
-
-    def describe_cluster_v2user_kubeconfig_with_options(
-        self,
-        cluster_id: str,
-        request: cs20151215_models.DescribeClusterV2UserKubeconfigRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.private_ip_address):
-            query['PrivateIpAddress'] = request.private_ip_address
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return cs20151215_models.DescribeClusterV2UserKubeconfigResponse().from_map(
-            self.do_roarequest('DescribeClusterV2UserKubeconfig', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/api/v2/k8s/{cluster_id}/user_config', 'json', req, runtime)
-        )
-
-    async def describe_cluster_v2user_kubeconfig_with_options_async(
-        self,
-        cluster_id: str,
-        request: cs20151215_models.DescribeClusterV2UserKubeconfigRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.private_ip_address):
-            query['PrivateIpAddress'] = request.private_ip_address
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return cs20151215_models.DescribeClusterV2UserKubeconfigResponse().from_map(
-            await self.do_roarequest_async('DescribeClusterV2UserKubeconfig', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/api/v2/k8s/{cluster_id}/user_config', 'json', req, runtime)
-        )
-
     def scale_out_cluster(
         self,
         cluster_id: str,
@@ -3009,6 +2839,70 @@ class Client(OpenApiClient):
         )
         return cs20151215_models.ScaleOutClusterResponse().from_map(
             await self.do_roarequest_async('ScaleOutCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}', 'json', req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: cs20151215_models.TagResourcesRequest,
+    ) -> cs20151215_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.tag_resources_with_options(request, headers, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: cs20151215_models.TagResourcesRequest,
+    ) -> cs20151215_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.tag_resources_with_options_async(request, headers, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: cs20151215_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_ids):
+            body['resource_ids'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['resource_type'] = request.resource_type
+        if not UtilClient.is_unset(request.region_id):
+            body['region_id'] = request.region_id
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return cs20151215_models.TagResourcesResponse().from_map(
+            self.do_roarequest('TagResources', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/tags', 'none', req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: cs20151215_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_ids):
+            body['resource_ids'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['resource_type'] = request.resource_type
+        if not UtilClient.is_unset(request.region_id):
+            body['region_id'] = request.region_id
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return cs20151215_models.TagResourcesResponse().from_map(
+            await self.do_roarequest_async('TagResources', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/tags', 'none', req, runtime)
         )
 
     def modify_cluster_tags(
