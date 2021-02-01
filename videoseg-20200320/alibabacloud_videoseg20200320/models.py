@@ -434,3 +434,150 @@ class SegmentVideoBodyResponse(TeaModel):
         return self
 
 
+class SegmentGreenScreenVideoRequest(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+        async_: bool = None,
+    ):
+        # A short description of struct
+        self.video_url = video_url
+        self.async_ = async_
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_url is not None:
+            result['VideoURL'] = self.video_url
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoURL') is not None:
+            self.video_url = m.get('VideoURL')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        return self
+
+
+class SegmentGreenScreenVideoAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        video_urlobject: BinaryIO = None,
+        async_: bool = None,
+    ):
+        self.video_urlobject = video_urlobject
+        self.async_ = async_
+
+    def validate(self):
+        self.validate_required(self.video_urlobject, 'video_urlobject')
+
+    def to_map(self):
+        result = dict()
+        if self.video_urlobject is not None:
+            result['VideoURLObject'] = self.video_urlobject
+        if self.async_ is not None:
+            result['Async'] = self.async_
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoURLObject') is not None:
+            self.video_urlobject = m.get('VideoURLObject')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
+        return self
+
+
+class SegmentGreenScreenVideoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+    ):
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_url is not None:
+            result['VideoURL'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoURL') is not None:
+            self.video_url = m.get('VideoURL')
+        return self
+
+
+class SegmentGreenScreenVideoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: SegmentGreenScreenVideoResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = SegmentGreenScreenVideoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class SegmentGreenScreenVideoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SegmentGreenScreenVideoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SegmentGreenScreenVideoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
