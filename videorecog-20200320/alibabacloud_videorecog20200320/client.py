@@ -47,6 +47,46 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def get_async_job_result_with_options(
+        self,
+        request: videorecog_20200320_models.GetAsyncJobResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> videorecog_20200320_models.GetAsyncJobResultResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return videorecog_20200320_models.GetAsyncJobResultResponse().from_map(
+            self.do_rpcrequest('GetAsyncJobResult', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_async_job_result_with_options_async(
+        self,
+        request: videorecog_20200320_models.GetAsyncJobResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> videorecog_20200320_models.GetAsyncJobResultResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return videorecog_20200320_models.GetAsyncJobResultResponse().from_map(
+            await self.do_rpcrequest_async('GetAsyncJobResult', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_async_job_result(
+        self,
+        request: videorecog_20200320_models.GetAsyncJobResultRequest,
+    ) -> videorecog_20200320_models.GetAsyncJobResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_async_job_result_with_options(request, runtime)
+
+    async def get_async_job_result_async(
+        self,
+        request: videorecog_20200320_models.GetAsyncJobResultRequest,
+    ) -> videorecog_20200320_models.GetAsyncJobResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_async_job_result_with_options_async(request, runtime)
+
     def detect_video_shot_with_options(
         self,
         request: videorecog_20200320_models.DetectVideoShotRequest,
@@ -375,42 +415,166 @@ class Client(OpenApiClient):
         generate_video_cover_resp = await self.generate_video_cover_with_options_async(generate_video_cover_req, runtime)
         return generate_video_cover_resp
 
-    def get_async_job_result_with_options(
+    def understand_video_content_with_options(
         self,
-        request: videorecog_20200320_models.GetAsyncJobResultRequest,
+        request: videorecog_20200320_models.UnderstandVideoContentRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> videorecog_20200320_models.GetAsyncJobResultResponse:
+    ) -> videorecog_20200320_models.UnderstandVideoContentResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return videorecog_20200320_models.GetAsyncJobResultResponse().from_map(
-            self.do_rpcrequest('GetAsyncJobResult', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return videorecog_20200320_models.UnderstandVideoContentResponse().from_map(
+            self.do_rpcrequest('UnderstandVideoContent', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def get_async_job_result_with_options_async(
+    async def understand_video_content_with_options_async(
         self,
-        request: videorecog_20200320_models.GetAsyncJobResultRequest,
+        request: videorecog_20200320_models.UnderstandVideoContentRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> videorecog_20200320_models.GetAsyncJobResultResponse:
+    ) -> videorecog_20200320_models.UnderstandVideoContentResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return videorecog_20200320_models.GetAsyncJobResultResponse().from_map(
-            await self.do_rpcrequest_async('GetAsyncJobResult', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return videorecog_20200320_models.UnderstandVideoContentResponse().from_map(
+            await self.do_rpcrequest_async('UnderstandVideoContent', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def get_async_job_result(
+    def understand_video_content(
         self,
-        request: videorecog_20200320_models.GetAsyncJobResultRequest,
-    ) -> videorecog_20200320_models.GetAsyncJobResultResponse:
+        request: videorecog_20200320_models.UnderstandVideoContentRequest,
+    ) -> videorecog_20200320_models.UnderstandVideoContentResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_async_job_result_with_options(request, runtime)
+        return self.understand_video_content_with_options(request, runtime)
 
-    async def get_async_job_result_async(
+    async def understand_video_content_async(
         self,
-        request: videorecog_20200320_models.GetAsyncJobResultRequest,
-    ) -> videorecog_20200320_models.GetAsyncJobResultResponse:
+        request: videorecog_20200320_models.UnderstandVideoContentRequest,
+    ) -> videorecog_20200320_models.UnderstandVideoContentResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_async_job_result_with_options_async(request, runtime)
+        return await self.understand_video_content_with_options_async(request, runtime)
+
+    def understand_video_content_advance(
+        self,
+        request: videorecog_20200320_models.UnderstandVideoContentAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> videorecog_20200320_models.UnderstandVideoContentResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            endpoint='openplatform.aliyuncs.com',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='videorecog',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        understand_video_content_req = videorecog_20200320_models.UnderstandVideoContentRequest()
+        OpenApiUtilClient.convert(request, understand_video_content_req)
+        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.video_urlobject,
+            content_type=''
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status='201'
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        oss_client.post_object(upload_request, oss_runtime)
+        understand_video_content_req.video_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        understand_video_content_resp = self.understand_video_content_with_options(understand_video_content_req, runtime)
+        return understand_video_content_resp
+
+    async def understand_video_content_advance_async(
+        self,
+        request: videorecog_20200320_models.UnderstandVideoContentAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> videorecog_20200320_models.UnderstandVideoContentResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            endpoint='openplatform.aliyuncs.com',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='videorecog',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        understand_video_content_req = videorecog_20200320_models.UnderstandVideoContentRequest()
+        OpenApiUtilClient.convert(request, understand_video_content_req)
+        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.video_urlobject,
+            content_type=''
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status='201'
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        await oss_client.post_object_async(upload_request, oss_runtime)
+        understand_video_content_req.video_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        understand_video_content_resp = await self.understand_video_content_with_options_async(understand_video_content_req, runtime)
+        return understand_video_content_resp
