@@ -1,3 +1,6 @@
+2021-02-01 Version: 3.0.1
+- Update some content.
+
 2020-12-30 Version: 3.0.0
 - AMP Version Change.
 
