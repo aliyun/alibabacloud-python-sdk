@@ -531,6 +531,56 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('CreateKubernetesTrigger', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/triggers', 'json', req, runtime)
         )
 
+    def grant_permissions(
+        self,
+        uid: str,
+        request: cs20151215_models.GrantPermissionsRequest,
+    ) -> cs20151215_models.GrantPermissionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.grant_permissions_with_options(uid, request, headers, runtime)
+
+    async def grant_permissions_async(
+        self,
+        uid: str,
+        request: cs20151215_models.GrantPermissionsRequest,
+    ) -> cs20151215_models.GrantPermissionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.grant_permissions_with_options_async(uid, request, headers, runtime)
+
+    def grant_permissions_with_options(
+        self,
+        uid: str,
+        request: cs20151215_models.GrantPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.GrantPermissionsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=UtilClient.to_array(request.body)
+        )
+        return cs20151215_models.GrantPermissionsResponse().from_map(
+            self.do_roarequest('GrantPermissions', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/permissions/users/{uid}', 'none', req, runtime)
+        )
+
+    async def grant_permissions_with_options_async(
+        self,
+        uid: str,
+        request: cs20151215_models.GrantPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.GrantPermissionsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=UtilClient.to_array(request.body)
+        )
+        return cs20151215_models.GrantPermissionsResponse().from_map(
+            await self.do_roarequest_async('GrantPermissions', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/permissions/users/{uid}', 'none', req, runtime)
+        )
+
     def describe_cluster_detail(
         self,
         cluster_id: str,
@@ -571,6 +621,48 @@ class Client(OpenApiClient):
         )
         return cs20151215_models.DescribeClusterDetailResponse().from_map(
             await self.do_roarequest_async('DescribeClusterDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}', 'json', req, runtime)
+        )
+
+    def describe_user_permission(
+        self,
+        uid: str,
+    ) -> cs20151215_models.DescribeUserPermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_user_permission_with_options(uid, headers, runtime)
+
+    async def describe_user_permission_async(
+        self,
+        uid: str,
+    ) -> cs20151215_models.DescribeUserPermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_user_permission_with_options_async(uid, headers, runtime)
+
+    def describe_user_permission_with_options(
+        self,
+        uid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeUserPermissionResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.DescribeUserPermissionResponse().from_map(
+            self.do_roarequest('DescribeUserPermission', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/permissions/users/{uid}', 'array', req, runtime)
+        )
+
+    async def describe_user_permission_with_options_async(
+        self,
+        uid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeUserPermissionResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.DescribeUserPermissionResponse().from_map(
+            await self.do_roarequest_async('DescribeUserPermission', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/permissions/users/{uid}', 'array', req, runtime)
         )
 
     def modify_cluster_node_pool(

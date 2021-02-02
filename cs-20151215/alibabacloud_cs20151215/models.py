@@ -1184,6 +1184,120 @@ class CreateKubernetesTriggerResponse(TeaModel):
         return self
 
 
+class GrantPermissionsRequestBody(TeaModel):
+    def __init__(
+        self,
+        cluster: str = None,
+        is_custom: bool = None,
+        role_name: str = None,
+        role_type: str = None,
+        namespace: str = None,
+        is_ram_role: bool = None,
+    ):
+        # 授权目标集群id
+        self.cluster = cluster
+        # 该授权是否是自定义授权
+        self.is_custom = is_custom
+        # 预置的角色名称
+        self.role_name = role_name
+        # 授权类型
+        self.role_type = role_type
+        # 命名空间名称
+        self.namespace = namespace
+        # 是否是 RAM 角色授权
+        self.is_ram_role = is_ram_role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.cluster is not None:
+            result['cluster'] = self.cluster
+        if self.is_custom is not None:
+            result['is_custom'] = self.is_custom
+        if self.role_name is not None:
+            result['role_name'] = self.role_name
+        if self.role_type is not None:
+            result['role_type'] = self.role_type
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.is_ram_role is not None:
+            result['is_ram_role'] = self.is_ram_role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster') is not None:
+            self.cluster = m.get('cluster')
+        if m.get('is_custom') is not None:
+            self.is_custom = m.get('is_custom')
+        if m.get('role_name') is not None:
+            self.role_name = m.get('role_name')
+        if m.get('role_type') is not None:
+            self.role_type = m.get('role_type')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('is_ram_role') is not None:
+            self.is_ram_role = m.get('is_ram_role')
+        return self
+
+
+class GrantPermissionsRequest(TeaModel):
+    def __init__(
+        self,
+        body: List[GrantPermissionsRequestBody] = None,
+    ):
+        # 请求体参数
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = GrantPermissionsRequestBody()
+                self.body.append(temp_model.from_map(k))
+        return self
+
+
+class GrantPermissionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
 class DescribeClusterDetailResponseBody(TeaModel):
     def __init__(
         self,
@@ -1444,6 +1558,104 @@ class DescribeClusterDetailResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribeClusterDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeUserPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        role_name: str = None,
+        role_type: str = None,
+        is_owner: int = None,
+        is_ram_role: int = None,
+    ):
+        # 集群访问配置
+        self.resource_id = resource_id
+        # 授权类型
+        self.resource_type = resource_type
+        # 自定义角色名称
+        self.role_name = role_name
+        # 预置的角色类型
+        self.role_type = role_type
+        # 是否为集群 owner 的授权
+        self.is_owner = is_owner
+        # 是否为ram 角色授权
+        self.is_ram_role = is_ram_role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.resource_id is not None:
+            result['resource_id'] = self.resource_id
+        if self.resource_type is not None:
+            result['resource_type'] = self.resource_type
+        if self.role_name is not None:
+            result['role_name'] = self.role_name
+        if self.role_type is not None:
+            result['role_type'] = self.role_type
+        if self.is_owner is not None:
+            result['is_owner'] = self.is_owner
+        if self.is_ram_role is not None:
+            result['is_ram_role'] = self.is_ram_role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('resource_id') is not None:
+            self.resource_id = m.get('resource_id')
+        if m.get('resource_type') is not None:
+            self.resource_type = m.get('resource_type')
+        if m.get('role_name') is not None:
+            self.role_name = m.get('role_name')
+        if m.get('role_type') is not None:
+            self.role_type = m.get('role_type')
+        if m.get('is_owner') is not None:
+            self.is_owner = m.get('is_owner')
+        if m.get('is_ram_role') is not None:
+            self.is_ram_role = m.get('is_ram_role')
+        return self
+
+
+class DescribeUserPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: List[DescribeUserPermissionResponseBody] = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = DescribeUserPermissionResponseBody()
+                self.body.append(temp_model.from_map(k))
         return self
 
 
