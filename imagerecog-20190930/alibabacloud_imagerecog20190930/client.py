@@ -8,13 +8,13 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_imagerecog20190930 import models as imagerecog_20190930_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_tea_rpc import models as rpc_models
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_oss_util import models as ossutil_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_oss_sdk.client import Client as OSSClient
 
 
@@ -46,6 +46,48 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def get_async_job_result_with_options(
+        self,
+        request: imagerecog_20190930_models.GetAsyncJobResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imagerecog_20190930_models.GetAsyncJobResultResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return imagerecog_20190930_models.GetAsyncJobResultResponse().from_map(
+            self.do_rpcrequest('GetAsyncJobResult', '2019-09-30', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def get_async_job_result_with_options_async(
+        self,
+        request: imagerecog_20190930_models.GetAsyncJobResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imagerecog_20190930_models.GetAsyncJobResultResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return imagerecog_20190930_models.GetAsyncJobResultResponse().from_map(
+            await self.do_rpcrequest_async('GetAsyncJobResult', '2019-09-30', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def get_async_job_result(
+        self,
+        request: imagerecog_20190930_models.GetAsyncJobResultRequest,
+    ) -> imagerecog_20190930_models.GetAsyncJobResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_async_job_result_with_options(request, runtime)
+
+    async def get_async_job_result_async(
+        self,
+        request: imagerecog_20190930_models.GetAsyncJobResultRequest,
+    ) -> imagerecog_20190930_models.GetAsyncJobResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_async_job_result_with_options_async(request, runtime)
 
     def detect_image_elements_with_options(
         self,
