@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_objectdet20191230.
 
-Created on 01/02/2021
+Created on 04/02/2021
 
 @author: Alibaba Cloud SDK
 """

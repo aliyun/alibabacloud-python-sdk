@@ -898,8 +898,12 @@ class DetectIPCObjectResponseBodyData(TeaModel):
     def __init__(
         self,
         elements: List[DetectIPCObjectResponseBodyDataElements] = None,
+        width: int = None,
+        height: int = None,
     ):
         self.elements = elements
+        self.width = width
+        self.height = height
 
     def validate(self):
         if self.elements:
@@ -913,6 +917,10 @@ class DetectIPCObjectResponseBodyData(TeaModel):
         if self.elements is not None:
             for k in self.elements:
                 result['Elements'].append(k.to_map() if k else None)
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
         return result
 
     def from_map(self, m: dict = None):
@@ -922,6 +930,10 @@ class DetectIPCObjectResponseBodyData(TeaModel):
             for k in m.get('Elements'):
                 temp_model = DetectIPCObjectResponseBodyDataElements()
                 self.elements.append(temp_model.from_map(k))
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
         return self
 
 
