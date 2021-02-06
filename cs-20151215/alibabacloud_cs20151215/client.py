@@ -623,6 +623,62 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('DescribeClusterDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}', 'json', req, runtime)
         )
 
+    def describe_clusters(
+        self,
+        request: cs20151215_models.DescribeClustersRequest,
+    ) -> cs20151215_models.DescribeClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_clusters_with_options(request, headers, runtime)
+
+    async def describe_clusters_async(
+        self,
+        request: cs20151215_models.DescribeClustersRequest,
+    ) -> cs20151215_models.DescribeClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_clusters_with_options_async(request, headers, runtime)
+
+    def describe_clusters_with_options(
+        self,
+        request: cs20151215_models.DescribeClustersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeClustersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.cluster_type):
+            query['clusterType'] = request.cluster_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return cs20151215_models.DescribeClustersResponse().from_map(
+            self.do_roarequest('DescribeClusters', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters', 'array', req, runtime)
+        )
+
+    async def describe_clusters_with_options_async(
+        self,
+        request: cs20151215_models.DescribeClustersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeClustersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.cluster_type):
+            query['clusterType'] = request.cluster_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return cs20151215_models.DescribeClustersResponse().from_map(
+            await self.do_roarequest_async('DescribeClusters', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters', 'array', req, runtime)
+        )
+
     def describe_user_permission(
         self,
         uid: str,
