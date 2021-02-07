@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_threedvision20210131.
 
-Created on 01/02/2021
+Created on 07/02/2021
 
 @author: Alibaba Cloud SDK
 """
