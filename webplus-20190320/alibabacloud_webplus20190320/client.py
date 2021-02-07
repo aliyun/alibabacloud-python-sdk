@@ -88,11 +88,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.AbortChangeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.change_id):
             body['ChangeId'] = request.change_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.AbortChangeResponse().from_map(
@@ -106,11 +110,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.AbortChangeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.change_id):
             body['ChangeId'] = request.change_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.AbortChangeResponse().from_map(
@@ -140,6 +148,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.CreateAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_name):
             body['EnvName'] = request.env_name
@@ -165,6 +176,7 @@ class Client(OpenApiClient):
             body['ExtraProperties'] = request.extra_properties
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.CreateAppEnvResponse().from_map(
@@ -178,6 +190,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.CreateAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_name):
             body['EnvName'] = request.env_name
@@ -203,6 +218,7 @@ class Client(OpenApiClient):
             body['ExtraProperties'] = request.extra_properties
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.CreateAppEnvResponse().from_map(
@@ -232,6 +248,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.CreateApplicationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.app_name):
             body['AppName'] = request.app_name
@@ -243,6 +262,7 @@ class Client(OpenApiClient):
             body['UsingSharedStorage'] = request.using_shared_storage
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.CreateApplicationResponse().from_map(
@@ -256,6 +276,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.CreateApplicationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.app_name):
             body['AppName'] = request.app_name
@@ -267,6 +290,7 @@ class Client(OpenApiClient):
             body['UsingSharedStorage'] = request.using_shared_storage
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.CreateApplicationResponse().from_map(
@@ -296,6 +320,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.CreateConfigTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.template_name):
             body['TemplateName'] = request.template_name
@@ -317,6 +344,7 @@ class Client(OpenApiClient):
             body['OptionSettings'] = request.option_settings
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.CreateConfigTemplateResponse().from_map(
@@ -330,6 +358,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.CreateConfigTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.template_name):
             body['TemplateName'] = request.template_name
@@ -351,6 +382,7 @@ class Client(OpenApiClient):
             body['OptionSettings'] = request.option_settings
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.CreateConfigTemplateResponse().from_map(
@@ -380,11 +412,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.CreateOrderResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.product_name):
             body['ProductName'] = request.product_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.CreateOrderResponse().from_map(
@@ -398,11 +434,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.CreateOrderResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.product_name):
             body['ProductName'] = request.product_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.CreateOrderResponse().from_map(
@@ -432,6 +472,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.CreatePkgVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.pkg_version_label):
             body['PkgVersionLabel'] = request.pkg_version_label
@@ -443,6 +486,7 @@ class Client(OpenApiClient):
             body['PackageSource'] = request.package_source
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.CreatePkgVersionResponse().from_map(
@@ -456,6 +500,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.CreatePkgVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.pkg_version_label):
             body['PkgVersionLabel'] = request.pkg_version_label
@@ -467,29 +514,42 @@ class Client(OpenApiClient):
             body['PackageSource'] = request.package_source
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.CreatePkgVersionResponse().from_map(
             await self.do_roarequest_with_form_async('CreatePkgVersion', '2019-03-20', 'HTTPS', 'POST', 'AK', f'/pop/v1/wam/pkgVersion', 'json', req, runtime)
         )
 
-    def create_storage(self) -> web_plus_20190320_models.CreateStorageResponse:
+    def create_storage(
+        self,
+        request: web_plus_20190320_models.CreateStorageRequest,
+    ) -> web_plus_20190320_models.CreateStorageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_storage_with_options(headers, runtime)
+        return self.create_storage_with_options(request, headers, runtime)
 
-    async def create_storage_async(self) -> web_plus_20190320_models.CreateStorageResponse:
+    async def create_storage_async(
+        self,
+        request: web_plus_20190320_models.CreateStorageRequest,
+    ) -> web_plus_20190320_models.CreateStorageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_storage_with_options_async(headers, runtime)
+        return await self.create_storage_with_options_async(request, headers, runtime)
 
     def create_storage_with_options(
         self,
+        request: web_plus_20190320_models.CreateStorageRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.CreateStorageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         return web_plus_20190320_models.CreateStorageResponse().from_map(
             self.do_roarequest('CreateStorage', '2019-03-20', 'HTTPS', 'POST', 'AK', f'/pop/v1/wam/storage', 'json', req, runtime)
@@ -497,11 +557,17 @@ class Client(OpenApiClient):
 
     async def create_storage_with_options_async(
         self,
+        request: web_plus_20190320_models.CreateStorageRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.CreateStorageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         return web_plus_20190320_models.CreateStorageResponse().from_map(
             await self.do_roarequest_async('CreateStorage', '2019-03-20', 'HTTPS', 'POST', 'AK', f'/pop/v1/wam/storage', 'json', req, runtime)
@@ -533,6 +599,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.env_id):
             query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -551,6 +619,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.env_id):
             query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -585,6 +655,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -603,6 +675,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -637,6 +711,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.change_id):
             query['ChangeId'] = request.change_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -655,6 +731,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.change_id):
             query['ChangeId'] = request.change_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -689,6 +767,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -707,6 +787,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -741,6 +823,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.pkg_version_id):
             query['PkgVersionId'] = request.pkg_version_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -759,6 +843,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.pkg_version_id):
             query['PkgVersionId'] = request.pkg_version_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -790,6 +876,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.DeployAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -805,6 +894,7 @@ class Client(OpenApiClient):
             body['PkgVersionId'] = request.pkg_version_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.DeployAppEnvResponse().from_map(
@@ -818,6 +908,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.DeployAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -833,6 +926,7 @@ class Client(OpenApiClient):
             body['PkgVersionId'] = request.pkg_version_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.DeployAppEnvResponse().from_map(
@@ -865,6 +959,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.env_id):
             query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -883,6 +979,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.env_id):
             query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -933,6 +1031,8 @@ class Client(OpenApiClient):
             query['RecentUpdated'] = request.recent_updated
         if not UtilClient.is_unset(request.stack_search):
             query['StackSearch'] = request.stack_search
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -967,6 +1067,8 @@ class Client(OpenApiClient):
             query['RecentUpdated'] = request.recent_updated
         if not UtilClient.is_unset(request.stack_search):
             query['StackSearch'] = request.stack_search
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1001,6 +1103,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.env_id):
             query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1019,6 +1123,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.env_id):
             query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1067,6 +1173,8 @@ class Client(OpenApiClient):
             query['StackSearch'] = request.stack_search
         if not UtilClient.is_unset(request.category_search):
             query['CategorySearch'] = request.category_search
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1099,6 +1207,8 @@ class Client(OpenApiClient):
             query['StackSearch'] = request.stack_search
         if not UtilClient.is_unset(request.category_search):
             query['CategorySearch'] = request.category_search
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1107,23 +1217,35 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('DescribeApplications', '2019-03-20', 'HTTPS', 'GET', 'AK', f'/pop/v1/wam/application', 'json', req, runtime)
         )
 
-    def describe_categories(self) -> web_plus_20190320_models.DescribeCategoriesResponse:
+    def describe_categories(
+        self,
+        request: web_plus_20190320_models.DescribeCategoriesRequest,
+    ) -> web_plus_20190320_models.DescribeCategoriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_categories_with_options(headers, runtime)
+        return self.describe_categories_with_options(request, headers, runtime)
 
-    async def describe_categories_async(self) -> web_plus_20190320_models.DescribeCategoriesResponse:
+    async def describe_categories_async(
+        self,
+        request: web_plus_20190320_models.DescribeCategoriesRequest,
+    ) -> web_plus_20190320_models.DescribeCategoriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_categories_with_options_async(headers, runtime)
+        return await self.describe_categories_with_options_async(request, headers, runtime)
 
     def describe_categories_with_options(
         self,
+        request: web_plus_20190320_models.DescribeCategoriesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.DescribeCategoriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         return web_plus_20190320_models.DescribeCategoriesResponse().from_map(
             self.do_roarequest('DescribeCategories', '2019-03-20', 'HTTPS', 'GET', 'AK', f'/pop/v1/wam/category', 'json', req, runtime)
@@ -1131,11 +1253,17 @@ class Client(OpenApiClient):
 
     async def describe_categories_with_options_async(
         self,
+        request: web_plus_20190320_models.DescribeCategoriesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.DescribeCategoriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         return web_plus_20190320_models.DescribeCategoriesResponse().from_map(
             await self.do_roarequest_async('DescribeCategories', '2019-03-20', 'HTTPS', 'GET', 'AK', f'/pop/v1/wam/category', 'json', req, runtime)
@@ -1169,6 +1297,8 @@ class Client(OpenApiClient):
             query['EnvId'] = request.env_id
         if not UtilClient.is_unset(request.change_id):
             query['ChangeId'] = request.change_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1189,6 +1319,8 @@ class Client(OpenApiClient):
             query['EnvId'] = request.env_id
         if not UtilClient.is_unset(request.change_id):
             query['ChangeId'] = request.change_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1229,6 +1361,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1253,6 +1387,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1293,6 +1429,8 @@ class Client(OpenApiClient):
             query['ProfileName'] = request.profile_name
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1317,6 +1455,8 @@ class Client(OpenApiClient):
             query['ProfileName'] = request.profile_name
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1355,6 +1495,8 @@ class Client(OpenApiClient):
             query['EnvId'] = request.env_id
         if not UtilClient.is_unset(request.profile_name):
             query['ProfileName'] = request.profile_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1377,6 +1519,8 @@ class Client(OpenApiClient):
             query['EnvId'] = request.env_id
         if not UtilClient.is_unset(request.profile_name):
             query['ProfileName'] = request.profile_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1417,6 +1561,8 @@ class Client(OpenApiClient):
             query['PathName'] = request.path_name
         if not UtilClient.is_unset(request.option_name):
             query['OptionName'] = request.option_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1441,6 +1587,8 @@ class Client(OpenApiClient):
             query['PathName'] = request.path_name
         if not UtilClient.is_unset(request.option_name):
             query['OptionName'] = request.option_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1483,6 +1631,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1509,6 +1659,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1543,6 +1695,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.env_id):
             query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1561,6 +1715,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.env_id):
             query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1609,6 +1765,8 @@ class Client(OpenApiClient):
             query['LastChangeEvents'] = request.last_change_events
         if not UtilClient.is_unset(request.reverse_by_timestamp):
             query['ReverseByTimestamp'] = request.reverse_by_timestamp
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1641,6 +1799,8 @@ class Client(OpenApiClient):
             query['LastChangeEvents'] = request.last_change_events
         if not UtilClient.is_unset(request.reverse_by_timestamp):
             query['ReverseByTimestamp'] = request.reverse_by_timestamp
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1675,6 +1835,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.change_id):
             query['ChangeId'] = request.change_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1693,6 +1855,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.change_id):
             query['ChangeId'] = request.change_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1727,6 +1891,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.change_id):
             query['ChangeId'] = request.change_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1745,6 +1911,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.change_id):
             query['ChangeId'] = request.change_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1779,6 +1947,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1797,6 +1967,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1839,6 +2011,8 @@ class Client(OpenApiClient):
             query['PkgVersionLabel'] = request.pkg_version_label
         if not UtilClient.is_unset(request.pkg_version_search):
             query['PkgVersionSearch'] = request.pkg_version_search
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1865,6 +2039,8 @@ class Client(OpenApiClient):
             query['PkgVersionLabel'] = request.pkg_version_label
         if not UtilClient.is_unset(request.pkg_version_search):
             query['PkgVersionSearch'] = request.pkg_version_search
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1903,6 +2079,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1925,6 +2103,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1965,6 +2145,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1989,6 +2171,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2023,6 +2207,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.using_shared_storage):
             query['UsingSharedStorage'] = request.using_shared_storage
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2041,6 +2227,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.using_shared_storage):
             query['UsingSharedStorage'] = request.using_shared_storage
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2072,6 +2260,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.GatherAppEnvLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -2081,6 +2272,7 @@ class Client(OpenApiClient):
             body['LogPath'] = request.log_path
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.GatherAppEnvLogResponse().from_map(
@@ -2094,6 +2286,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.GatherAppEnvLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -2103,6 +2298,7 @@ class Client(OpenApiClient):
             body['LogPath'] = request.log_path
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.GatherAppEnvLogResponse().from_map(
@@ -2132,6 +2328,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.GatherAppEnvStatsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -2139,6 +2338,7 @@ class Client(OpenApiClient):
             body['TargetInstances'] = request.target_instances
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.GatherAppEnvStatsResponse().from_map(
@@ -2152,6 +2352,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.GatherAppEnvStatsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -2159,6 +2362,7 @@ class Client(OpenApiClient):
             body['TargetInstances'] = request.target_instances
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.GatherAppEnvStatsResponse().from_map(
@@ -2188,11 +2392,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.PauseChangeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.change_id):
             body['ChangeId'] = request.change_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.PauseChangeResponse().from_map(
@@ -2206,11 +2414,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.PauseChangeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.change_id):
             body['ChangeId'] = request.change_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.PauseChangeResponse().from_map(
@@ -2240,6 +2452,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.RebuildAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -2247,6 +2462,7 @@ class Client(OpenApiClient):
             body['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.RebuildAppEnvResponse().from_map(
@@ -2260,6 +2476,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.RebuildAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -2267,6 +2486,7 @@ class Client(OpenApiClient):
             body['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.RebuildAppEnvResponse().from_map(
@@ -2296,6 +2516,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.RestartAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -2309,6 +2532,7 @@ class Client(OpenApiClient):
             body['PauseBetweenBatches'] = request.pause_between_batches
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.RestartAppEnvResponse().from_map(
@@ -2322,6 +2546,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.RestartAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -2335,6 +2562,7 @@ class Client(OpenApiClient):
             body['PauseBetweenBatches'] = request.pause_between_batches
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.RestartAppEnvResponse().from_map(
@@ -2364,11 +2592,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.ResumeChangeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.change_id):
             body['ChangeId'] = request.change_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.ResumeChangeResponse().from_map(
@@ -2382,11 +2614,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.ResumeChangeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.change_id):
             body['ChangeId'] = request.change_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.ResumeChangeResponse().from_map(
@@ -2416,11 +2652,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.StartAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.StartAppEnvResponse().from_map(
@@ -2434,11 +2674,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.StartAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.StartAppEnvResponse().from_map(
@@ -2468,11 +2712,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.StopAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.StopAppEnvResponse().from_map(
@@ -2486,11 +2734,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.StopAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.StopAppEnvResponse().from_map(
@@ -2520,6 +2772,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.TerminateAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -2527,6 +2782,7 @@ class Client(OpenApiClient):
             body['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.TerminateAppEnvResponse().from_map(
@@ -2540,6 +2796,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.TerminateAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -2547,6 +2806,7 @@ class Client(OpenApiClient):
             body['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.TerminateAppEnvResponse().from_map(
@@ -2576,6 +2836,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.UpdateAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_description):
             body['EnvDescription'] = request.env_description
@@ -2601,6 +2864,7 @@ class Client(OpenApiClient):
             body['PauseBetweenBatches'] = request.pause_between_batches
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.UpdateAppEnvResponse().from_map(
@@ -2614,6 +2878,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.UpdateAppEnvResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_description):
             body['EnvDescription'] = request.env_description
@@ -2639,6 +2906,7 @@ class Client(OpenApiClient):
             body['PauseBetweenBatches'] = request.pause_between_batches
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.UpdateAppEnvResponse().from_map(
@@ -2668,6 +2936,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.UpdateApplicationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
@@ -2675,6 +2946,7 @@ class Client(OpenApiClient):
             body['AppDescription'] = request.app_description
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.UpdateApplicationResponse().from_map(
@@ -2688,6 +2960,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.UpdateApplicationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
@@ -2695,6 +2970,7 @@ class Client(OpenApiClient):
             body['AppDescription'] = request.app_description
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.UpdateApplicationResponse().from_map(
@@ -2724,6 +3000,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.UpdateConfigTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.template_description):
             body['TemplateDescription'] = request.template_description
@@ -2733,6 +3012,7 @@ class Client(OpenApiClient):
             body['OptionSettings'] = request.option_settings
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.UpdateConfigTemplateResponse().from_map(
@@ -2746,6 +3026,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.UpdateConfigTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.template_description):
             body['TemplateDescription'] = request.template_description
@@ -2755,6 +3038,7 @@ class Client(OpenApiClient):
             body['OptionSettings'] = request.option_settings
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.UpdateConfigTemplateResponse().from_map(
@@ -2784,6 +3068,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.ValidateConfigSettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -2795,6 +3082,7 @@ class Client(OpenApiClient):
             body['OptionSettings'] = request.option_settings
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.ValidateConfigSettingResponse().from_map(
@@ -2808,6 +3096,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> web_plus_20190320_models.ValidateConfigSettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.env_id):
             body['EnvId'] = request.env_id
@@ -2819,6 +3110,7 @@ class Client(OpenApiClient):
             body['OptionSettings'] = request.option_settings
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return web_plus_20190320_models.ValidateConfigSettingResponse().from_map(

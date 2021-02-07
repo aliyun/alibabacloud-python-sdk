@@ -8,8 +8,10 @@ class AbortChangeRequest(TeaModel):
     def __init__(
         self,
         change_id: str = None,
+        region_id: str = None,
     ):
         self.change_id = change_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -18,12 +20,16 @@ class AbortChangeRequest(TeaModel):
         result = dict()
         if self.change_id is not None:
             result['ChangeId'] = self.change_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ChangeId') is not None:
             self.change_id = m.get('ChangeId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -152,6 +158,7 @@ class CreateAppEnvRequest(TeaModel):
         template_id: str = None,
         dry_run: bool = None,
         extra_properties: str = None,
+        region_id: str = None,
     ):
         self.env_name = env_name
         self.env_description = env_description
@@ -164,6 +171,7 @@ class CreateAppEnvRequest(TeaModel):
         self.template_id = template_id
         self.dry_run = dry_run
         self.extra_properties = extra_properties
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -192,6 +200,8 @@ class CreateAppEnvRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.extra_properties is not None:
             result['ExtraProperties'] = self.extra_properties
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -218,6 +228,8 @@ class CreateAppEnvRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('ExtraProperties') is not None:
             self.extra_properties = m.get('ExtraProperties')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -407,11 +419,13 @@ class CreateApplicationRequest(TeaModel):
         app_description: str = None,
         category_name: str = None,
         using_shared_storage: bool = None,
+        region_id: str = None,
     ):
         self.app_name = app_name
         self.app_description = app_description
         self.category_name = category_name
         self.using_shared_storage = using_shared_storage
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -426,6 +440,8 @@ class CreateApplicationRequest(TeaModel):
             result['CategoryName'] = self.category_name
         if self.using_shared_storage is not None:
             result['UsingSharedStorage'] = self.using_shared_storage
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -438,6 +454,8 @@ class CreateApplicationRequest(TeaModel):
             self.category_name = m.get('CategoryName')
         if m.get('UsingSharedStorage') is not None:
             self.using_shared_storage = m.get('UsingSharedStorage')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -600,6 +618,7 @@ class CreateConfigTemplateRequest(TeaModel):
         profile_name: str = None,
         pkg_version_id: str = None,
         option_settings: str = None,
+        region_id: str = None,
     ):
         self.template_name = template_name
         self.template_description = template_description
@@ -610,6 +629,7 @@ class CreateConfigTemplateRequest(TeaModel):
         self.profile_name = profile_name
         self.pkg_version_id = pkg_version_id
         self.option_settings = option_settings
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -634,6 +654,8 @@ class CreateConfigTemplateRequest(TeaModel):
             result['PkgVersionId'] = self.pkg_version_id
         if self.option_settings is not None:
             result['OptionSettings'] = self.option_settings
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -656,6 +678,8 @@ class CreateConfigTemplateRequest(TeaModel):
             self.pkg_version_id = m.get('PkgVersionId')
         if m.get('OptionSettings') is not None:
             self.option_settings = m.get('OptionSettings')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -828,8 +852,10 @@ class CreateOrderRequest(TeaModel):
     def __init__(
         self,
         product_name: str = None,
+        region_id: str = None,
     ):
         self.product_name = product_name
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -838,12 +864,16 @@ class CreateOrderRequest(TeaModel):
         result = dict()
         if self.product_name is not None:
             result['ProductName'] = self.product_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ProductName') is not None:
             self.product_name = m.get('ProductName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -977,11 +1007,13 @@ class CreatePkgVersionRequest(TeaModel):
         pkg_version_description: str = None,
         app_id: str = None,
         package_source: str = None,
+        region_id: str = None,
     ):
         self.pkg_version_label = pkg_version_label
         self.pkg_version_description = pkg_version_description
         self.app_id = app_id
         self.package_source = package_source
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -996,6 +1028,8 @@ class CreatePkgVersionRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.package_source is not None:
             result['PackageSource'] = self.package_source
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1008,6 +1042,8 @@ class CreatePkgVersionRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('PackageSource') is not None:
             self.package_source = m.get('PackageSource')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1152,6 +1188,29 @@ class CreatePkgVersionResponse(TeaModel):
         return self
 
 
+class CreateStorageRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
 class CreateStorageResponseBodyStorage(TeaModel):
     def __init__(
         self,
@@ -1267,8 +1326,10 @@ class DeleteAppEnvRequest(TeaModel):
     def __init__(
         self,
         env_id: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1277,12 +1338,16 @@ class DeleteAppEnvRequest(TeaModel):
         result = dict()
         if self.env_id is not None:
             result['EnvId'] = self.env_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('EnvId') is not None:
             self.env_id = m.get('EnvId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1358,8 +1423,10 @@ class DeleteApplicationRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        region_id: str = None,
     ):
         self.app_id = app_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1368,12 +1435,16 @@ class DeleteApplicationRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1449,8 +1520,10 @@ class DeleteChangeRequest(TeaModel):
     def __init__(
         self,
         change_id: str = None,
+        region_id: str = None,
     ):
         self.change_id = change_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1459,12 +1532,16 @@ class DeleteChangeRequest(TeaModel):
         result = dict()
         if self.change_id is not None:
             result['ChangeId'] = self.change_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ChangeId') is not None:
             self.change_id = m.get('ChangeId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1540,8 +1617,10 @@ class DeleteConfigTemplateRequest(TeaModel):
     def __init__(
         self,
         template_id: str = None,
+        region_id: str = None,
     ):
         self.template_id = template_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1550,12 +1629,16 @@ class DeleteConfigTemplateRequest(TeaModel):
         result = dict()
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1631,8 +1714,10 @@ class DeletePkgVersionRequest(TeaModel):
     def __init__(
         self,
         pkg_version_id: str = None,
+        region_id: str = None,
     ):
         self.pkg_version_id = pkg_version_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1641,12 +1726,16 @@ class DeletePkgVersionRequest(TeaModel):
         result = dict()
         if self.pkg_version_id is not None:
             result['PkgVersionId'] = self.pkg_version_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('PkgVersionId') is not None:
             self.pkg_version_id = m.get('PkgVersionId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1727,6 +1816,7 @@ class DeployAppEnvRequest(TeaModel):
         batch_interval: int = None,
         pause_between_batches: bool = None,
         pkg_version_id: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
         self.batch_size = batch_size
@@ -1734,6 +1824,7 @@ class DeployAppEnvRequest(TeaModel):
         self.batch_interval = batch_interval
         self.pause_between_batches = pause_between_batches
         self.pkg_version_id = pkg_version_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1752,6 +1843,8 @@ class DeployAppEnvRequest(TeaModel):
             result['PauseBetweenBatches'] = self.pause_between_batches
         if self.pkg_version_id is not None:
             result['PkgVersionId'] = self.pkg_version_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1768,6 +1861,8 @@ class DeployAppEnvRequest(TeaModel):
             self.pause_between_batches = m.get('PauseBetweenBatches')
         if m.get('PkgVersionId') is not None:
             self.pkg_version_id = m.get('PkgVersionId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1886,8 +1981,10 @@ class DescribeAppEnvInstanceHealthRequest(TeaModel):
     def __init__(
         self,
         env_id: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1896,12 +1993,16 @@ class DescribeAppEnvInstanceHealthRequest(TeaModel):
         result = dict()
         if self.env_id is not None:
             result['EnvId'] = self.env_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('EnvId') is not None:
             self.env_id = m.get('EnvId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2108,6 +2209,7 @@ class DescribeAppEnvsRequest(TeaModel):
         env_search: str = None,
         recent_updated: bool = None,
         stack_search: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
         self.app_id = app_id
@@ -2118,6 +2220,7 @@ class DescribeAppEnvsRequest(TeaModel):
         self.env_search = env_search
         self.recent_updated = recent_updated
         self.stack_search = stack_search
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -2142,6 +2245,8 @@ class DescribeAppEnvsRequest(TeaModel):
             result['RecentUpdated'] = self.recent_updated
         if self.stack_search is not None:
             result['StackSearch'] = self.stack_search
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2164,6 +2269,8 @@ class DescribeAppEnvsRequest(TeaModel):
             self.recent_updated = m.get('RecentUpdated')
         if m.get('StackSearch') is not None:
             self.stack_search = m.get('StackSearch')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2475,8 +2582,10 @@ class DescribeAppEnvStatusRequest(TeaModel):
     def __init__(
         self,
         env_id: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -2485,12 +2594,16 @@ class DescribeAppEnvStatusRequest(TeaModel):
         result = dict()
         if self.env_id is not None:
             result['EnvId'] = self.env_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('EnvId') is not None:
             self.env_id = m.get('EnvId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2733,6 +2846,7 @@ class DescribeApplicationsRequest(TeaModel):
         env_search: str = None,
         stack_search: str = None,
         category_search: str = None,
+        region_id: str = None,
     ):
         self.app_id = app_id
         self.page_size = page_size
@@ -2742,6 +2856,7 @@ class DescribeApplicationsRequest(TeaModel):
         self.env_search = env_search
         self.stack_search = stack_search
         self.category_search = category_search
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -2764,6 +2879,8 @@ class DescribeApplicationsRequest(TeaModel):
             result['StackSearch'] = self.stack_search
         if self.category_search is not None:
             result['CategorySearch'] = self.category_search
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2784,6 +2901,8 @@ class DescribeApplicationsRequest(TeaModel):
             self.stack_search = m.get('StackSearch')
         if m.get('CategorySearch') is not None:
             self.category_search = m.get('CategorySearch')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2998,6 +3117,29 @@ class DescribeApplicationsResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribeApplicationsResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCategoriesRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -3246,9 +3388,11 @@ class DescribeChangeRequest(TeaModel):
         self,
         env_id: str = None,
         change_id: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
         self.change_id = change_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -3259,6 +3403,8 @@ class DescribeChangeRequest(TeaModel):
             result['EnvId'] = self.env_id
         if self.change_id is not None:
             result['ChangeId'] = self.change_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3267,6 +3413,8 @@ class DescribeChangeRequest(TeaModel):
             self.env_id = m.get('EnvId')
         if m.get('ChangeId') is not None:
             self.change_id = m.get('ChangeId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -3460,11 +3608,13 @@ class DescribeChangesRequest(TeaModel):
         action_name: str = None,
         page_size: int = None,
         page_number: int = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
         self.action_name = action_name
         self.page_size = page_size
         self.page_number = page_number
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -3479,6 +3629,8 @@ class DescribeChangesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3491,6 +3643,8 @@ class DescribeChangesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -3733,11 +3887,13 @@ class DescribeConfigIndexRequest(TeaModel):
         env_id: str = None,
         profile_name: str = None,
         template_id: str = None,
+        region_id: str = None,
     ):
         self.stack_id = stack_id
         self.env_id = env_id
         self.profile_name = profile_name
         self.template_id = template_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -3752,6 +3908,8 @@ class DescribeConfigIndexRequest(TeaModel):
             result['ProfileName'] = self.profile_name
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3764,6 +3922,8 @@ class DescribeConfigIndexRequest(TeaModel):
             self.profile_name = m.get('ProfileName')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -4153,10 +4313,12 @@ class DescribeConfigOptionsRequest(TeaModel):
         stack_id: str = None,
         env_id: str = None,
         profile_name: str = None,
+        region_id: str = None,
     ):
         self.stack_id = stack_id
         self.env_id = env_id
         self.profile_name = profile_name
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -4169,6 +4331,8 @@ class DescribeConfigOptionsRequest(TeaModel):
             result['EnvId'] = self.env_id
         if self.profile_name is not None:
             result['ProfileName'] = self.profile_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4179,6 +4343,8 @@ class DescribeConfigOptionsRequest(TeaModel):
             self.env_id = m.get('EnvId')
         if m.get('ProfileName') is not None:
             self.profile_name = m.get('ProfileName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -4452,11 +4618,13 @@ class DescribeConfigSettingsRequest(TeaModel):
         template_id: str = None,
         path_name: str = None,
         option_name: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
         self.template_id = template_id
         self.path_name = path_name
         self.option_name = option_name
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -4471,6 +4639,8 @@ class DescribeConfigSettingsRequest(TeaModel):
             result['PathName'] = self.path_name
         if self.option_name is not None:
             result['OptionName'] = self.option_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4483,6 +4653,8 @@ class DescribeConfigSettingsRequest(TeaModel):
             self.path_name = m.get('PathName')
         if m.get('OptionName') is not None:
             self.option_name = m.get('OptionName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -4636,12 +4808,14 @@ class DescribeConfigTemplatesRequest(TeaModel):
         template_search: str = None,
         page_size: int = None,
         page_number: int = None,
+        region_id: str = None,
     ):
         self.app_id = app_id
         self.template_name = template_name
         self.template_search = template_search
         self.page_size = page_size
         self.page_number = page_number
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -4658,6 +4832,8 @@ class DescribeConfigTemplatesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4672,6 +4848,8 @@ class DescribeConfigTemplatesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -4887,8 +5065,10 @@ class DescribeEnvResourceRequest(TeaModel):
     def __init__(
         self,
         env_id: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -4897,12 +5077,16 @@ class DescribeEnvResourceRequest(TeaModel):
         result = dict()
         if self.env_id is not None:
             result['EnvId'] = self.env_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('EnvId') is not None:
             self.env_id = m.get('EnvId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5647,6 +5831,7 @@ class DescribeEventsRequest(TeaModel):
         change_id: str = None,
         last_change_events: bool = None,
         reverse_by_timestamp: bool = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
         self.start_time = start_time
@@ -5656,6 +5841,7 @@ class DescribeEventsRequest(TeaModel):
         self.change_id = change_id
         self.last_change_events = last_change_events
         self.reverse_by_timestamp = reverse_by_timestamp
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5678,6 +5864,8 @@ class DescribeEventsRequest(TeaModel):
             result['LastChangeEvents'] = self.last_change_events
         if self.reverse_by_timestamp is not None:
             result['ReverseByTimestamp'] = self.reverse_by_timestamp
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5698,6 +5886,8 @@ class DescribeEventsRequest(TeaModel):
             self.last_change_events = m.get('LastChangeEvents')
         if m.get('ReverseByTimestamp') is not None:
             self.reverse_by_timestamp = m.get('ReverseByTimestamp')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -6043,8 +6233,10 @@ class DescribeGatherLogResultRequest(TeaModel):
     def __init__(
         self,
         change_id: str = None,
+        region_id: str = None,
     ):
         self.change_id = change_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6053,12 +6245,16 @@ class DescribeGatherLogResultRequest(TeaModel):
         result = dict()
         if self.change_id is not None:
             result['ChangeId'] = self.change_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ChangeId') is not None:
             self.change_id = m.get('ChangeId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -6361,8 +6557,10 @@ class DescribeGatherStatsResultRequest(TeaModel):
     def __init__(
         self,
         change_id: str = None,
+        region_id: str = None,
     ):
         self.change_id = change_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6371,12 +6569,16 @@ class DescribeGatherStatsResultRequest(TeaModel):
         result = dict()
         if self.change_id is not None:
             result['ChangeId'] = self.change_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ChangeId') is not None:
             self.change_id = m.get('ChangeId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -6673,8 +6875,10 @@ class DescribeInstanceHealthRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        region_id: str = None,
     ):
         self.instance_id = instance_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6683,12 +6887,16 @@ class DescribeInstanceHealthRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -6817,12 +7025,14 @@ class DescribePkgVersionsRequest(TeaModel):
         page_number: int = None,
         pkg_version_label: str = None,
         pkg_version_search: str = None,
+        region_id: str = None,
     ):
         self.app_id = app_id
         self.page_size = page_size
         self.page_number = page_number
         self.pkg_version_label = pkg_version_label
         self.pkg_version_search = pkg_version_search
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6839,6 +7049,8 @@ class DescribePkgVersionsRequest(TeaModel):
             result['PkgVersionLabel'] = self.pkg_version_label
         if self.pkg_version_search is not None:
             result['PkgVersionSearch'] = self.pkg_version_search
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6853,6 +7065,8 @@ class DescribePkgVersionsRequest(TeaModel):
             self.pkg_version_label = m.get('PkgVersionLabel')
         if m.get('PkgVersionSearch') is not None:
             self.pkg_version_search = m.get('PkgVersionSearch')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -7064,10 +7278,12 @@ class DescribePublicConfigTemplatesRequest(TeaModel):
         category_name: str = None,
         page_size: int = None,
         page_number: int = None,
+        region_id: str = None,
     ):
         self.category_name = category_name
         self.page_size = page_size
         self.page_number = page_number
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -7080,6 +7296,8 @@ class DescribePublicConfigTemplatesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7090,6 +7308,8 @@ class DescribePublicConfigTemplatesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -7302,11 +7522,13 @@ class DescribeStacksRequest(TeaModel):
         category_name: str = None,
         page_size: int = None,
         page_number: int = None,
+        region_id: str = None,
     ):
         self.recommended_only = recommended_only
         self.category_name = category_name
         self.page_size = page_size
         self.page_number = page_number
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -7321,6 +7543,8 @@ class DescribeStacksRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7333,6 +7557,8 @@ class DescribeStacksRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -7530,8 +7756,10 @@ class DescribeStorageRequest(TeaModel):
     def __init__(
         self,
         using_shared_storage: bool = None,
+        region_id: str = None,
     ):
         self.using_shared_storage = using_shared_storage
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -7540,12 +7768,16 @@ class DescribeStorageRequest(TeaModel):
         result = dict()
         if self.using_shared_storage is not None:
             result['UsingSharedStorage'] = self.using_shared_storage
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('UsingSharedStorage') is not None:
             self.using_shared_storage = m.get('UsingSharedStorage')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -7678,10 +7910,12 @@ class GatherAppEnvLogRequest(TeaModel):
         env_id: str = None,
         target_instances: str = None,
         log_path: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
         self.target_instances = target_instances
         self.log_path = log_path
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -7694,6 +7928,8 @@ class GatherAppEnvLogRequest(TeaModel):
             result['TargetInstances'] = self.target_instances
         if self.log_path is not None:
             result['LogPath'] = self.log_path
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7704,6 +7940,8 @@ class GatherAppEnvLogRequest(TeaModel):
             self.target_instances = m.get('TargetInstances')
         if m.get('LogPath') is not None:
             self.log_path = m.get('LogPath')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -7823,9 +8061,11 @@ class GatherAppEnvStatsRequest(TeaModel):
         self,
         env_id: str = None,
         target_instances: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
         self.target_instances = target_instances
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -7836,6 +8076,8 @@ class GatherAppEnvStatsRequest(TeaModel):
             result['EnvId'] = self.env_id
         if self.target_instances is not None:
             result['TargetInstances'] = self.target_instances
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7844,6 +8086,8 @@ class GatherAppEnvStatsRequest(TeaModel):
             self.env_id = m.get('EnvId')
         if m.get('TargetInstances') is not None:
             self.target_instances = m.get('TargetInstances')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -7962,8 +8206,10 @@ class PauseChangeRequest(TeaModel):
     def __init__(
         self,
         change_id: str = None,
+        region_id: str = None,
     ):
         self.change_id = change_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -7972,12 +8218,16 @@ class PauseChangeRequest(TeaModel):
         result = dict()
         if self.change_id is not None:
             result['ChangeId'] = self.change_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ChangeId') is not None:
             self.change_id = m.get('ChangeId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -8097,9 +8347,11 @@ class RebuildAppEnvRequest(TeaModel):
         self,
         env_id: str = None,
         dry_run: bool = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
         self.dry_run = dry_run
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -8110,6 +8362,8 @@ class RebuildAppEnvRequest(TeaModel):
             result['EnvId'] = self.env_id
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8118,6 +8372,8 @@ class RebuildAppEnvRequest(TeaModel):
             self.env_id = m.get('EnvId')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -8308,12 +8564,14 @@ class RestartAppEnvRequest(TeaModel):
         batch_percent: int = None,
         batch_interval: int = None,
         pause_between_batches: bool = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
         self.batch_size = batch_size
         self.batch_percent = batch_percent
         self.batch_interval = batch_interval
         self.pause_between_batches = pause_between_batches
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -8330,6 +8588,8 @@ class RestartAppEnvRequest(TeaModel):
             result['BatchInterval'] = self.batch_interval
         if self.pause_between_batches is not None:
             result['PauseBetweenBatches'] = self.pause_between_batches
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8344,6 +8604,8 @@ class RestartAppEnvRequest(TeaModel):
             self.batch_interval = m.get('BatchInterval')
         if m.get('PauseBetweenBatches') is not None:
             self.pause_between_batches = m.get('PauseBetweenBatches')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -8462,8 +8724,10 @@ class ResumeChangeRequest(TeaModel):
     def __init__(
         self,
         change_id: str = None,
+        region_id: str = None,
     ):
         self.change_id = change_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -8472,12 +8736,16 @@ class ResumeChangeRequest(TeaModel):
         result = dict()
         if self.change_id is not None:
             result['ChangeId'] = self.change_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ChangeId') is not None:
             self.change_id = m.get('ChangeId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -8596,8 +8864,10 @@ class StartAppEnvRequest(TeaModel):
     def __init__(
         self,
         env_id: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -8606,12 +8876,16 @@ class StartAppEnvRequest(TeaModel):
         result = dict()
         if self.env_id is not None:
             result['EnvId'] = self.env_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('EnvId') is not None:
             self.env_id = m.get('EnvId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -8730,8 +9004,10 @@ class StopAppEnvRequest(TeaModel):
     def __init__(
         self,
         env_id: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -8740,12 +9016,16 @@ class StopAppEnvRequest(TeaModel):
         result = dict()
         if self.env_id is not None:
             result['EnvId'] = self.env_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('EnvId') is not None:
             self.env_id = m.get('EnvId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -8865,9 +9145,11 @@ class TerminateAppEnvRequest(TeaModel):
         self,
         env_id: str = None,
         dry_run: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
         self.dry_run = dry_run
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -8878,6 +9160,8 @@ class TerminateAppEnvRequest(TeaModel):
             result['EnvId'] = self.env_id
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8886,6 +9170,8 @@ class TerminateAppEnvRequest(TeaModel):
             self.env_id = m.get('EnvId')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -9082,6 +9368,7 @@ class UpdateAppEnvRequest(TeaModel):
         batch_percent: str = None,
         batch_interval: str = None,
         pause_between_batches: bool = None,
+        region_id: str = None,
     ):
         self.env_description = env_description
         self.env_id = env_id
@@ -9094,6 +9381,7 @@ class UpdateAppEnvRequest(TeaModel):
         self.batch_percent = batch_percent
         self.batch_interval = batch_interval
         self.pause_between_batches = pause_between_batches
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -9122,6 +9410,8 @@ class UpdateAppEnvRequest(TeaModel):
             result['BatchInterval'] = self.batch_interval
         if self.pause_between_batches is not None:
             result['PauseBetweenBatches'] = self.pause_between_batches
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9148,6 +9438,8 @@ class UpdateAppEnvRequest(TeaModel):
             self.batch_interval = m.get('BatchInterval')
         if m.get('PauseBetweenBatches') is not None:
             self.pause_between_batches = m.get('PauseBetweenBatches')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -9335,9 +9627,11 @@ class UpdateApplicationRequest(TeaModel):
         self,
         app_id: str = None,
         app_description: str = None,
+        region_id: str = None,
     ):
         self.app_id = app_id
         self.app_description = app_description
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -9348,6 +9642,8 @@ class UpdateApplicationRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.app_description is not None:
             result['AppDescription'] = self.app_description
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9356,6 +9652,8 @@ class UpdateApplicationRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppDescription') is not None:
             self.app_description = m.get('AppDescription')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -9506,10 +9804,12 @@ class UpdateConfigTemplateRequest(TeaModel):
         template_description: str = None,
         template_id: str = None,
         option_settings: str = None,
+        region_id: str = None,
     ):
         self.template_description = template_description
         self.template_id = template_id
         self.option_settings = option_settings
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -9522,6 +9822,8 @@ class UpdateConfigTemplateRequest(TeaModel):
             result['TemplateId'] = self.template_id
         if self.option_settings is not None:
             result['OptionSettings'] = self.option_settings
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9532,6 +9834,8 @@ class UpdateConfigTemplateRequest(TeaModel):
             self.template_id = m.get('TemplateId')
         if m.get('OptionSettings') is not None:
             self.option_settings = m.get('OptionSettings')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -9683,11 +9987,13 @@ class ValidateConfigSettingRequest(TeaModel):
         template_id: str = None,
         stack_id: str = None,
         option_settings: str = None,
+        region_id: str = None,
     ):
         self.env_id = env_id
         self.template_id = template_id
         self.stack_id = stack_id
         self.option_settings = option_settings
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -9702,6 +10008,8 @@ class ValidateConfigSettingRequest(TeaModel):
             result['StackId'] = self.stack_id
         if self.option_settings is not None:
             result['OptionSettings'] = self.option_settings
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9714,6 +10022,8 @@ class ValidateConfigSettingRequest(TeaModel):
             self.stack_id = m.get('StackId')
         if m.get('OptionSettings') is not None:
             self.option_settings = m.get('OptionSettings')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
