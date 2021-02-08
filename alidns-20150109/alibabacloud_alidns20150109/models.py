@@ -156,6 +156,176 @@ class AddCustomLineResponse(TeaModel):
         return self
 
 
+class AddDnsCacheDomainRequestSourceDnsServer(TeaModel):
+    def __init__(
+        self,
+        host: str = None,
+        port: str = None,
+    ):
+        self.host = host
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class AddDnsCacheDomainRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        user_client_ip: str = None,
+        domain_name: str = None,
+        instance_id: str = None,
+        cache_ttl_min: int = None,
+        cache_ttl_max: int = None,
+        source_protocol: str = None,
+        source_edns: str = None,
+        remark: str = None,
+        source_dns_server: List[AddDnsCacheDomainRequestSourceDnsServer] = None,
+    ):
+        self.lang = lang
+        self.user_client_ip = user_client_ip
+        self.domain_name = domain_name
+        self.instance_id = instance_id
+        self.cache_ttl_min = cache_ttl_min
+        self.cache_ttl_max = cache_ttl_max
+        self.source_protocol = source_protocol
+        self.source_edns = source_edns
+        self.remark = remark
+        self.source_dns_server = source_dns_server
+
+    def validate(self):
+        if self.source_dns_server:
+            for k in self.source_dns_server:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.cache_ttl_min is not None:
+            result['CacheTtlMin'] = self.cache_ttl_min
+        if self.cache_ttl_max is not None:
+            result['CacheTtlMax'] = self.cache_ttl_max
+        if self.source_protocol is not None:
+            result['SourceProtocol'] = self.source_protocol
+        if self.source_edns is not None:
+            result['SourceEdns'] = self.source_edns
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        result['SourceDnsServer'] = []
+        if self.source_dns_server is not None:
+            for k in self.source_dns_server:
+                result['SourceDnsServer'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('CacheTtlMin') is not None:
+            self.cache_ttl_min = m.get('CacheTtlMin')
+        if m.get('CacheTtlMax') is not None:
+            self.cache_ttl_max = m.get('CacheTtlMax')
+        if m.get('SourceProtocol') is not None:
+            self.source_protocol = m.get('SourceProtocol')
+        if m.get('SourceEdns') is not None:
+            self.source_edns = m.get('SourceEdns')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        self.source_dns_server = []
+        if m.get('SourceDnsServer') is not None:
+            for k in m.get('SourceDnsServer'):
+                temp_model = AddDnsCacheDomainRequestSourceDnsServer()
+                self.source_dns_server.append(temp_model.from_map(k))
+        return self
+
+
+class AddDnsCacheDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddDnsCacheDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AddDnsCacheDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AddDnsCacheDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddDnsGtmAccessStrategyRequestDefaultAddrPool(TeaModel):
     def __init__(
         self,
@@ -2530,6 +2700,97 @@ class DeleteCustomLinesResponse(TeaModel):
         return self
 
 
+class DeleteDnsCacheDomainRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        user_client_ip: str = None,
+        domain_name: str = None,
+    ):
+        self.lang = lang
+        self.user_client_ip = user_client_ip
+        self.domain_name = domain_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        return self
+
+
+class DeleteDnsCacheDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDnsCacheDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteDnsCacheDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteDnsCacheDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDnsGtmAccessStrategyRequest(TeaModel):
     def __init__(
         self,
@@ -4149,6 +4410,291 @@ class DescribeCustomLinesResponse(TeaModel):
         return self
 
 
+class DescribeDnsCacheDomainsRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        user_client_ip: str = None,
+        keyword: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.lang = lang
+        self.user_client_ip = user_client_ip
+        self.keyword = keyword
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers(TeaModel):
+    def __init__(
+        self,
+        host: str = None,
+        port: str = None,
+    ):
+        self.host = host
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class DescribeDnsCacheDomainsResponseBodyDomains(TeaModel):
+    def __init__(
+        self,
+        source_protocol: str = None,
+        update_time: str = None,
+        remark: str = None,
+        expire_time: str = None,
+        create_time: str = None,
+        instance_id: str = None,
+        source_edns: str = None,
+        domain_name: str = None,
+        domain_id: str = None,
+        update_timestamp: int = None,
+        expire_timestamp: int = None,
+        cache_ttl_max: int = None,
+        cache_ttl_min: int = None,
+        version_code: str = None,
+        source_dns_servers: List[DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers] = None,
+        create_timestamp: int = None,
+    ):
+        self.source_protocol = source_protocol
+        self.update_time = update_time
+        self.remark = remark
+        self.expire_time = expire_time
+        self.create_time = create_time
+        self.instance_id = instance_id
+        self.source_edns = source_edns
+        self.domain_name = domain_name
+        self.domain_id = domain_id
+        self.update_timestamp = update_timestamp
+        self.expire_timestamp = expire_timestamp
+        self.cache_ttl_max = cache_ttl_max
+        self.cache_ttl_min = cache_ttl_min
+        self.version_code = version_code
+        self.source_dns_servers = source_dns_servers
+        self.create_timestamp = create_timestamp
+
+    def validate(self):
+        if self.source_dns_servers:
+            for k in self.source_dns_servers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.source_protocol is not None:
+            result['SourceProtocol'] = self.source_protocol
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.source_edns is not None:
+            result['SourceEdns'] = self.source_edns
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.expire_timestamp is not None:
+            result['ExpireTimestamp'] = self.expire_timestamp
+        if self.cache_ttl_max is not None:
+            result['CacheTtlMax'] = self.cache_ttl_max
+        if self.cache_ttl_min is not None:
+            result['CacheTtlMin'] = self.cache_ttl_min
+        if self.version_code is not None:
+            result['VersionCode'] = self.version_code
+        result['SourceDnsServers'] = []
+        if self.source_dns_servers is not None:
+            for k in self.source_dns_servers:
+                result['SourceDnsServers'].append(k.to_map() if k else None)
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceProtocol') is not None:
+            self.source_protocol = m.get('SourceProtocol')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SourceEdns') is not None:
+            self.source_edns = m.get('SourceEdns')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('ExpireTimestamp') is not None:
+            self.expire_timestamp = m.get('ExpireTimestamp')
+        if m.get('CacheTtlMax') is not None:
+            self.cache_ttl_max = m.get('CacheTtlMax')
+        if m.get('CacheTtlMin') is not None:
+            self.cache_ttl_min = m.get('CacheTtlMin')
+        if m.get('VersionCode') is not None:
+            self.version_code = m.get('VersionCode')
+        self.source_dns_servers = []
+        if m.get('SourceDnsServers') is not None:
+            for k in m.get('SourceDnsServers'):
+                temp_model = DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers()
+                self.source_dns_servers.append(temp_model.from_map(k))
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        return self
+
+
+class DescribeDnsCacheDomainsResponseBody(TeaModel):
+    def __init__(
+        self,
+        domains: List[DescribeDnsCacheDomainsResponseBodyDomains] = None,
+        total_count: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        page_number: int = None,
+    ):
+        self.domains = domains
+        self.total_count = total_count
+        self.page_size = page_size
+        self.request_id = request_id
+        self.page_number = page_number
+
+    def validate(self):
+        if self.domains:
+            for k in self.domains:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Domains'] = []
+        if self.domains is not None:
+            for k in self.domains:
+                result['Domains'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domains = []
+        if m.get('Domains') is not None:
+            for k in m.get('Domains'):
+                temp_model = DescribeDnsCacheDomainsResponseBodyDomains()
+                self.domains.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        return self
+
+
+class DescribeDnsCacheDomainsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeDnsCacheDomainsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeDnsCacheDomainsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDnsGtmAccessStrategiesRequest(TeaModel):
     def __init__(
         self,
@@ -5047,6 +5593,29 @@ class DescribeDnsGtmAccessStrategyAvailableConfigRequest(TeaModel):
         return self
 
 
+class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines(TeaModel):
+    def __init__(
+        self,
+        selected_domain_line: List[str] = None,
+    ):
+        self.selected_domain_line = selected_domain_line
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.selected_domain_line is not None:
+            result['SelectedDomainLine'] = self.selected_domain_line
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SelectedDomainLine') is not None:
+            self.selected_domain_line = m.get('SelectedDomainLine')
+        return self
+
+
 class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPoolsDomainAddrPool(TeaModel):
     def __init__(
         self,
@@ -5179,6 +5748,29 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools(TeaMo
         return self
 
 
+class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines(TeaModel):
+    def __init__(
+        self,
+        selected_ipv_4line: List[str] = None,
+    ):
+        self.selected_ipv_4line = selected_ipv_4line
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.selected_ipv_4line is not None:
+            result['SelectedIpv4Line'] = self.selected_ipv_4line
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SelectedIpv4Line') is not None:
+            self.selected_ipv_4line = m.get('SelectedIpv4Line')
+        return self
+
+
 class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPoolsIpv6AddrPool(TeaModel):
     def __init__(
         self,
@@ -5242,6 +5834,29 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools(TeaMo
             for k in m.get('Ipv6AddrPool'):
                 temp_model = DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPoolsIpv6AddrPool()
                 self.ipv_6addr_pool.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines(TeaModel):
+    def __init__(
+        self,
+        selected_ipv_6line: List[str] = None,
+    ):
+        self.selected_ipv_6line = selected_ipv_6line
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.selected_ipv_6line is not None:
+            result['SelectedIpv6Line'] = self.selected_ipv_6line
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SelectedIpv6Line') is not None:
+            self.selected_ipv_6line = m.get('SelectedIpv6Line')
         return self
 
 
@@ -5326,48 +5941,69 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines(TeaModel):
 class DescribeDnsGtmAccessStrategyAvailableConfigResponseBody(TeaModel):
     def __init__(
         self,
+        selected_domain_lines: DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines = None,
         domain_addr_pools: DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools = None,
         ipv_4addr_pools: DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools = None,
         request_id: str = None,
+        selected_ipv_4lines: DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines = None,
         ipv_6addr_pools: DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools = None,
         suggest_set_default_line: bool = None,
+        selected_ipv_6lines: DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines = None,
         lines: DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines = None,
     ):
+        self.selected_domain_lines = selected_domain_lines
         self.domain_addr_pools = domain_addr_pools
         self.ipv_4addr_pools = ipv_4addr_pools
         self.request_id = request_id
+        self.selected_ipv_4lines = selected_ipv_4lines
         self.ipv_6addr_pools = ipv_6addr_pools
         self.suggest_set_default_line = suggest_set_default_line
+        self.selected_ipv_6lines = selected_ipv_6lines
         self.lines = lines
 
     def validate(self):
+        if self.selected_domain_lines:
+            self.selected_domain_lines.validate()
         if self.domain_addr_pools:
             self.domain_addr_pools.validate()
         if self.ipv_4addr_pools:
             self.ipv_4addr_pools.validate()
+        if self.selected_ipv_4lines:
+            self.selected_ipv_4lines.validate()
         if self.ipv_6addr_pools:
             self.ipv_6addr_pools.validate()
+        if self.selected_ipv_6lines:
+            self.selected_ipv_6lines.validate()
         if self.lines:
             self.lines.validate()
 
     def to_map(self):
         result = dict()
+        if self.selected_domain_lines is not None:
+            result['SelectedDomainLines'] = self.selected_domain_lines.to_map()
         if self.domain_addr_pools is not None:
             result['DomainAddrPools'] = self.domain_addr_pools.to_map()
         if self.ipv_4addr_pools is not None:
             result['Ipv4AddrPools'] = self.ipv_4addr_pools.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.selected_ipv_4lines is not None:
+            result['SelectedIpv4Lines'] = self.selected_ipv_4lines.to_map()
         if self.ipv_6addr_pools is not None:
             result['Ipv6AddrPools'] = self.ipv_6addr_pools.to_map()
         if self.suggest_set_default_line is not None:
             result['SuggestSetDefaultLine'] = self.suggest_set_default_line
+        if self.selected_ipv_6lines is not None:
+            result['SelectedIpv6Lines'] = self.selected_ipv_6lines.to_map()
         if self.lines is not None:
             result['Lines'] = self.lines.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SelectedDomainLines') is not None:
+            temp_model = DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines()
+            self.selected_domain_lines = temp_model.from_map(m['SelectedDomainLines'])
         if m.get('DomainAddrPools') is not None:
             temp_model = DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools()
             self.domain_addr_pools = temp_model.from_map(m['DomainAddrPools'])
@@ -5376,11 +6012,17 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBody(TeaModel):
             self.ipv_4addr_pools = temp_model.from_map(m['Ipv4AddrPools'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SelectedIpv4Lines') is not None:
+            temp_model = DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines()
+            self.selected_ipv_4lines = temp_model.from_map(m['SelectedIpv4Lines'])
         if m.get('Ipv6AddrPools') is not None:
             temp_model = DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools()
             self.ipv_6addr_pools = temp_model.from_map(m['Ipv6AddrPools'])
         if m.get('SuggestSetDefaultLine') is not None:
             self.suggest_set_default_line = m.get('SuggestSetDefaultLine')
+        if m.get('SelectedIpv6Lines') is not None:
+            temp_model = DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines()
+            self.selected_ipv_6lines = temp_model.from_map(m['SelectedIpv6Lines'])
         if m.get('Lines') is not None:
             temp_model = DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines()
             self.lines = temp_model.from_map(m['Lines'])
@@ -9055,12 +9697,14 @@ class DescribeDNSSLBSubDomainsRequest(TeaModel):
         domain_name: str = None,
         page_number: int = None,
         page_size: int = None,
+        rr: str = None,
     ):
         self.lang = lang
         self.user_client_ip = user_client_ip
         self.domain_name = domain_name
         self.page_number = page_number
         self.page_size = page_size
+        self.rr = rr
 
     def validate(self):
         pass
@@ -9077,6 +9721,8 @@ class DescribeDNSSLBSubDomainsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.rr is not None:
+            result['Rr'] = self.rr
         return result
 
     def from_map(self, m: dict = None):
@@ -9091,6 +9737,68 @@ class DescribeDNSSLBSubDomainsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Rr') is not None:
+            self.rr = m.get('Rr')
+        return self
+
+
+class DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm(TeaModel):
+    def __init__(
+        self,
+        line: str = None,
+        open: bool = None,
+    ):
+        self.line = line
+        self.open = open
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.line is not None:
+            result['Line'] = self.line
+        if self.open is not None:
+            result['Open'] = self.open
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Line') is not None:
+            self.line = m.get('Line')
+        if m.get('Open') is not None:
+            self.open = m.get('Open')
+        return self
+
+
+class DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms(TeaModel):
+    def __init__(
+        self,
+        line_algorithm: List[DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm] = None,
+    ):
+        self.line_algorithm = line_algorithm
+
+    def validate(self):
+        if self.line_algorithm:
+            for k in self.line_algorithm:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['LineAlgorithm'] = []
+        if self.line_algorithm is not None:
+            for k in self.line_algorithm:
+                result['LineAlgorithm'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.line_algorithm = []
+        if m.get('LineAlgorithm') is not None:
+            for k in m.get('LineAlgorithm'):
+                temp_model = DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm()
+                self.line_algorithm.append(temp_model.from_map(k))
         return self
 
 
@@ -9101,14 +9809,17 @@ class DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain(TeaModel):
         record_count: int = None,
         open: bool = None,
         sub_domain: str = None,
+        line_algorithms: DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms = None,
     ):
         self.type = type
         self.record_count = record_count
         self.open = open
         self.sub_domain = sub_domain
+        self.line_algorithms = line_algorithms
 
     def validate(self):
-        pass
+        if self.line_algorithms:
+            self.line_algorithms.validate()
 
     def to_map(self):
         result = dict()
@@ -9120,6 +9831,8 @@ class DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain(TeaModel):
             result['Open'] = self.open
         if self.sub_domain is not None:
             result['SubDomain'] = self.sub_domain
+        if self.line_algorithms is not None:
+            result['LineAlgorithms'] = self.line_algorithms.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -9132,6 +9845,9 @@ class DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain(TeaModel):
             self.open = m.get('Open')
         if m.get('SubDomain') is not None:
             self.sub_domain = m.get('SubDomain')
+        if m.get('LineAlgorithms') is not None:
+            temp_model = DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms()
+            self.line_algorithms = temp_model.from_map(m['LineAlgorithms'])
         return self
 
 
@@ -19825,6 +20541,7 @@ class SetDNSSLBStatusRequest(TeaModel):
         open: bool = None,
         domain_name: str = None,
         type: str = None,
+        line: str = None,
     ):
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -19832,6 +20549,7 @@ class SetDNSSLBStatusRequest(TeaModel):
         self.open = open
         self.domain_name = domain_name
         self.type = type
+        self.line = line
 
     def validate(self):
         pass
@@ -19850,6 +20568,8 @@ class SetDNSSLBStatusRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.type is not None:
             result['Type'] = self.type
+        if self.line is not None:
+            result['Line'] = self.line
         return result
 
     def from_map(self, m: dict = None):
@@ -19866,6 +20586,8 @@ class SetDNSSLBStatusRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('Line') is not None:
+            self.line = m.get('Line')
         return self
 
 
@@ -21043,6 +21765,267 @@ class UpdateCustomLineResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateCustomLineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDnsCacheDomainRequestSourceDnsServer(TeaModel):
+    def __init__(
+        self,
+        host: str = None,
+        port: str = None,
+    ):
+        self.host = host
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class UpdateDnsCacheDomainRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        user_client_ip: str = None,
+        domain_name: str = None,
+        instance_id: str = None,
+        cache_ttl_min: int = None,
+        cache_ttl_max: int = None,
+        source_protocol: str = None,
+        source_edns: str = None,
+        source_dns_server: List[UpdateDnsCacheDomainRequestSourceDnsServer] = None,
+    ):
+        self.lang = lang
+        self.user_client_ip = user_client_ip
+        self.domain_name = domain_name
+        self.instance_id = instance_id
+        self.cache_ttl_min = cache_ttl_min
+        self.cache_ttl_max = cache_ttl_max
+        self.source_protocol = source_protocol
+        self.source_edns = source_edns
+        self.source_dns_server = source_dns_server
+
+    def validate(self):
+        if self.source_dns_server:
+            for k in self.source_dns_server:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.cache_ttl_min is not None:
+            result['CacheTtlMin'] = self.cache_ttl_min
+        if self.cache_ttl_max is not None:
+            result['CacheTtlMax'] = self.cache_ttl_max
+        if self.source_protocol is not None:
+            result['SourceProtocol'] = self.source_protocol
+        if self.source_edns is not None:
+            result['SourceEdns'] = self.source_edns
+        result['SourceDnsServer'] = []
+        if self.source_dns_server is not None:
+            for k in self.source_dns_server:
+                result['SourceDnsServer'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('CacheTtlMin') is not None:
+            self.cache_ttl_min = m.get('CacheTtlMin')
+        if m.get('CacheTtlMax') is not None:
+            self.cache_ttl_max = m.get('CacheTtlMax')
+        if m.get('SourceProtocol') is not None:
+            self.source_protocol = m.get('SourceProtocol')
+        if m.get('SourceEdns') is not None:
+            self.source_edns = m.get('SourceEdns')
+        self.source_dns_server = []
+        if m.get('SourceDnsServer') is not None:
+            for k in m.get('SourceDnsServer'):
+                temp_model = UpdateDnsCacheDomainRequestSourceDnsServer()
+                self.source_dns_server.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateDnsCacheDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateDnsCacheDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateDnsCacheDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateDnsCacheDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDnsCacheDomainRemarkRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        user_client_ip: str = None,
+        domain_name: str = None,
+        remark: str = None,
+    ):
+        self.lang = lang
+        self.user_client_ip = user_client_ip
+        self.domain_name = domain_name
+        self.remark = remark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        return self
+
+
+class UpdateDnsCacheDomainRemarkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateDnsCacheDomainRemarkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateDnsCacheDomainRemarkResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateDnsCacheDomainRemarkResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

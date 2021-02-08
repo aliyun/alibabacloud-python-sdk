@@ -138,6 +138,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_custom_line_with_options_async(request, runtime)
 
+    def add_dns_cache_domain_with_options(
+        self,
+        request: alidns_20150109_models.AddDnsCacheDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.AddDnsCacheDomainResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alidns_20150109_models.AddDnsCacheDomainResponse().from_map(
+            self.do_rpcrequest('AddDnsCacheDomain', '2015-01-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_dns_cache_domain_with_options_async(
+        self,
+        request: alidns_20150109_models.AddDnsCacheDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.AddDnsCacheDomainResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alidns_20150109_models.AddDnsCacheDomainResponse().from_map(
+            await self.do_rpcrequest_async('AddDnsCacheDomain', '2015-01-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_dns_cache_domain(
+        self,
+        request: alidns_20150109_models.AddDnsCacheDomainRequest,
+    ) -> alidns_20150109_models.AddDnsCacheDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_dns_cache_domain_with_options(request, runtime)
+
+    async def add_dns_cache_domain_async(
+        self,
+        request: alidns_20150109_models.AddDnsCacheDomainRequest,
+    ) -> alidns_20150109_models.AddDnsCacheDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_dns_cache_domain_with_options_async(request, runtime)
+
     def add_dns_gtm_access_strategy_with_options(
         self,
         request: alidns_20150109_models.AddDnsGtmAccessStrategyRequest,
@@ -778,6 +818,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_custom_lines_with_options_async(request, runtime)
 
+    def delete_dns_cache_domain_with_options(
+        self,
+        request: alidns_20150109_models.DeleteDnsCacheDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteDnsCacheDomainResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alidns_20150109_models.DeleteDnsCacheDomainResponse().from_map(
+            self.do_rpcrequest('DeleteDnsCacheDomain', '2015-01-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_dns_cache_domain_with_options_async(
+        self,
+        request: alidns_20150109_models.DeleteDnsCacheDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteDnsCacheDomainResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alidns_20150109_models.DeleteDnsCacheDomainResponse().from_map(
+            await self.do_rpcrequest_async('DeleteDnsCacheDomain', '2015-01-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_dns_cache_domain(
+        self,
+        request: alidns_20150109_models.DeleteDnsCacheDomainRequest,
+    ) -> alidns_20150109_models.DeleteDnsCacheDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dns_cache_domain_with_options(request, runtime)
+
+    async def delete_dns_cache_domain_async(
+        self,
+        request: alidns_20150109_models.DeleteDnsCacheDomainRequest,
+    ) -> alidns_20150109_models.DeleteDnsCacheDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dns_cache_domain_with_options_async(request, runtime)
+
     def delete_dns_gtm_access_strategy_with_options(
         self,
         request: alidns_20150109_models.DeleteDnsGtmAccessStrategyRequest,
@@ -1297,6 +1377,46 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeCustomLinesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_custom_lines_with_options_async(request, runtime)
+
+    def describe_dns_cache_domains_with_options(
+        self,
+        request: alidns_20150109_models.DescribeDnsCacheDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alidns_20150109_models.DescribeDnsCacheDomainsResponse().from_map(
+            self.do_rpcrequest('DescribeDnsCacheDomains', '2015-01-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dns_cache_domains_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeDnsCacheDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alidns_20150109_models.DescribeDnsCacheDomainsResponse().from_map(
+            await self.do_rpcrequest_async('DescribeDnsCacheDomains', '2015-01-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dns_cache_domains(
+        self,
+        request: alidns_20150109_models.DescribeDnsCacheDomainsRequest,
+    ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dns_cache_domains_with_options(request, runtime)
+
+    async def describe_dns_cache_domains_async(
+        self,
+        request: alidns_20150109_models.DescribeDnsCacheDomainsRequest,
+    ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dns_cache_domains_with_options_async(request, runtime)
 
     def describe_dns_gtm_access_strategies_with_options(
         self,
@@ -4577,6 +4697,86 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateCustomLineResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_custom_line_with_options_async(request, runtime)
+
+    def update_dns_cache_domain_with_options(
+        self,
+        request: alidns_20150109_models.UpdateDnsCacheDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateDnsCacheDomainResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alidns_20150109_models.UpdateDnsCacheDomainResponse().from_map(
+            self.do_rpcrequest('UpdateDnsCacheDomain', '2015-01-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_dns_cache_domain_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateDnsCacheDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateDnsCacheDomainResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alidns_20150109_models.UpdateDnsCacheDomainResponse().from_map(
+            await self.do_rpcrequest_async('UpdateDnsCacheDomain', '2015-01-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_dns_cache_domain(
+        self,
+        request: alidns_20150109_models.UpdateDnsCacheDomainRequest,
+    ) -> alidns_20150109_models.UpdateDnsCacheDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_dns_cache_domain_with_options(request, runtime)
+
+    async def update_dns_cache_domain_async(
+        self,
+        request: alidns_20150109_models.UpdateDnsCacheDomainRequest,
+    ) -> alidns_20150109_models.UpdateDnsCacheDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dns_cache_domain_with_options_async(request, runtime)
+
+    def update_dns_cache_domain_remark_with_options(
+        self,
+        request: alidns_20150109_models.UpdateDnsCacheDomainRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateDnsCacheDomainRemarkResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alidns_20150109_models.UpdateDnsCacheDomainRemarkResponse().from_map(
+            self.do_rpcrequest('UpdateDnsCacheDomainRemark', '2015-01-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_dns_cache_domain_remark_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateDnsCacheDomainRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateDnsCacheDomainRemarkResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alidns_20150109_models.UpdateDnsCacheDomainRemarkResponse().from_map(
+            await self.do_rpcrequest_async('UpdateDnsCacheDomainRemark', '2015-01-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_dns_cache_domain_remark(
+        self,
+        request: alidns_20150109_models.UpdateDnsCacheDomainRemarkRequest,
+    ) -> alidns_20150109_models.UpdateDnsCacheDomainRemarkResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_dns_cache_domain_remark_with_options(request, runtime)
+
+    async def update_dns_cache_domain_remark_async(
+        self,
+        request: alidns_20150109_models.UpdateDnsCacheDomainRemarkRequest,
+    ) -> alidns_20150109_models.UpdateDnsCacheDomainRemarkResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dns_cache_domain_remark_with_options_async(request, runtime)
 
     def update_dns_gtm_access_strategy_with_options(
         self,
