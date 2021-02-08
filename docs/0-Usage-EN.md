@@ -13,7 +13,7 @@
 If you use `pip` to install your dependence
 
 ```sh
-$ pip install alibabacloud-imagesearch20200212
+$ pip install alibabacloud-ecs20140526
 ```
 
 ## Quick Examples
@@ -21,7 +21,57 @@ $ pip install alibabacloud-imagesearch20200212
 Before you begin, you need to sign up for an Alibaba Cloud account and retrieve your [Credentials](https://usercenter.console.aliyun.com/#/manage/ak).
 
 ## Demo
+1.Sync usage
+```python
+from alibabacloud_ecs20140526.models import DescribeImagesRequest
+from alibabacloud_ecs20140526.client import Client
+from alibabacloud_tea_openapi.models import Config
 
+'''ECS Example'''
+# init Config
+config = Config(
+    access_key_id='<ACCESS-KEY-ID>',
+    access_key_secret='<ACCESS-KEY-SECRET>',
+    region_id='cn-hangzhou'
+)
+client = Client(config)
+# init Request
+request = DescribeImagesRequest(image_id='<image-id>')
+# call api
+response = client.describe_images(request)
+
+for image in response.images.image:
+    print(image.image_id)
+    print(image.image_name)
+```
+
+2.Async usage
+```python
+import asyncio
+
+from alibabacloud_ecs20140526.models import DescribeImagesRequest
+from alibabacloud_ecs20140526.client import Client
+from alibabacloud_tea_openapi.models import Config
+
+'''ECS Example'''
+
+async def main():
+    config = Config(
+        access_key_id='<ACCESS-KEY-ID>',
+        access_key_secret='<ACCESS-KEY-SECRET>',
+        region_id='cn-hangzhou'
+    )
+    client = Client(config)
+    request = DescribeImagesRequest(image_id='<image-id>')
+    
+    response = await client.describe_images_async(request)
+    print(response)
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
+```
+
+3.Stream
 ```python
 from alibabacloud_imagesearch20200212.client import Client
 from alibabacloud_imagesearch20200212.models import SearchImageByPicAdvanceRequest
@@ -34,7 +84,7 @@ with open('pic.jpg', 'rb') as f:
     # init Request
     request = SearchImageByPicAdvanceRequest(
         instance_name='name',
-        pic_content_object=f
+        pic_content_object=f  # File stream or BytesIO
     )
 
     # init Config
