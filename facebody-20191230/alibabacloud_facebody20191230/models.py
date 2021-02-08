@@ -2151,10 +2151,14 @@ class PedestrianDetectAttributeResponseBodyData(TeaModel):
         attributes: List[PedestrianDetectAttributeResponseBodyDataAttributes] = None,
         boxes: List[PedestrianDetectAttributeResponseBodyDataBoxes] = None,
         person_number: int = None,
+        width: int = None,
+        height: int = None,
     ):
         self.attributes = attributes
         self.boxes = boxes
         self.person_number = person_number
+        self.width = width
+        self.height = height
 
     def validate(self):
         if self.attributes:
@@ -2178,6 +2182,10 @@ class PedestrianDetectAttributeResponseBodyData(TeaModel):
                 result['Boxes'].append(k.to_map() if k else None)
         if self.person_number is not None:
             result['PersonNumber'] = self.person_number
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
         return result
 
     def from_map(self, m: dict = None):
@@ -2194,6 +2202,10 @@ class PedestrianDetectAttributeResponseBodyData(TeaModel):
                 self.boxes.append(temp_model.from_map(k))
         if m.get('PersonNumber') is not None:
             self.person_number = m.get('PersonNumber')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
         return self
 
 
