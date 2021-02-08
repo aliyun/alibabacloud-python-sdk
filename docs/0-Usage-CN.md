@@ -13,7 +13,7 @@
 你可以使用 `pip` 来安装你的依赖。
 
 ```sh
-$ pip install alibabacloud-imagesearch20200212
+$ pip install alibabacloud-ecs20140526
 ```
 
 ## 快速使用
@@ -22,21 +22,70 @@ $ pip install alibabacloud-imagesearch20200212
 SDK 使用 [credentials](https://github.com/aliyun/credentials-python/blob/master/README-CN.md) 来管理凭证。
 
 ## 使用示例
+1.同步使用
+```python
+from alibabacloud_ecs20140526.models import DescribeImagesRequest
+from alibabacloud_ecs20140526.client import Client
+from alibabacloud_tea_openapi.models import Config
 
+'''云服务器示例'''
+# 初始化Config
+config = Config(
+    access_key_id='<ACCESS-KEY-ID>',
+    access_key_secret='<ACCESS-KEY-SECRET>',
+    region_id='cn-hangzhou'
+)
+client = Client(config)
+# 初始化Request
+request = DescribeImagesRequest(image_id='<image-id>')
+# 调用api
+response = client.describe_images(request)
+
+for image in response.images.image:
+    print(image.image_id)
+    print(image.image_name)
+```
+
+2.异步使用
+```python
+import asyncio
+
+from alibabacloud_ecs20140526.models import DescribeImagesRequest
+from alibabacloud_ecs20140526.client import Client
+from alibabacloud_tea_openapi.models import Config
+
+'''云服务器示例'''
+
+async def main():
+    config = Config(
+        access_key_id='<ACCESS-KEY-ID>',
+        access_key_secret='<ACCESS-KEY-SECRET>',
+        region_id='cn-hangzhou'
+    )
+    client = Client(config)
+    request = DescribeImagesRequest(image_id='<image-id>')
+    
+    response = await client.describe_images_async(request)
+    print(response)
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
+```
+
+3.数据流
 ```python
 from alibabacloud_imagesearch20200212.client import Client
 from alibabacloud_imagesearch20200212.models import SearchImageByPicAdvanceRequest
 from alibabacloud_oss_util.models import RuntimeOptions
-from alibabacloud_tea_rpc.models import Config
+from alibabacloud_tea_openapi.models import Config
 
 '''图像搜索示例'''
-
 
 with open('pic.jpg', 'rb') as f:
     # 初始化Request
     request = SearchImageByPicAdvanceRequest(
         instance_name='name',
-        pic_content_object=f
+        pic_content_object=f  # 文件流或BytesIO
     )
     
     # 初始化Config
@@ -76,7 +125,6 @@ print('all categories:', response.pic_info.all_categories)
 for aut in response.auctions:
     print('category id:', aut.category_id)
     print('product id:', aut.product_id)
-
 ```
 
 ## 参数说明
