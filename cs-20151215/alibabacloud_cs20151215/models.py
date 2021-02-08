@@ -730,6 +730,67 @@ class DescribeClusterAttachScriptsResponse(TeaModel):
         return self
 
 
+class RemoveClusterNodesRequest(TeaModel):
+    def __init__(
+        self,
+        drain_node: bool = None,
+        nodes: List[str] = None,
+        release_node: bool = None,
+    ):
+        # 是否排空节点上的Pod。
+        self.drain_node = drain_node
+        # 要移除的Node列表。
+        self.nodes = nodes
+        # 是否同时释放ECS。
+        self.release_node = release_node
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.drain_node is not None:
+            result['drain_node'] = self.drain_node
+        if self.nodes is not None:
+            result['nodes'] = self.nodes
+        if self.release_node is not None:
+            result['release_node'] = self.release_node
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drain_node') is not None:
+            self.drain_node = m.get('drain_node')
+        if m.get('nodes') is not None:
+            self.nodes = m.get('nodes')
+        if m.get('release_node') is not None:
+            self.release_node = m.get('release_node')
+        return self
+
+
+class RemoveClusterNodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
 class DescribeKubernetesVersionMetadataRequest(TeaModel):
     def __init__(
         self,
@@ -4455,6 +4516,383 @@ class DescribeClusterUserKubeconfigResponse(TeaModel):
         return self
 
 
+class ScaleClusterRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+    ):
+        # 标签值。
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        return self
+
+
+class ScaleClusterRequestTaints(TeaModel):
+    def __init__(
+        self,
+        effect: str = None,
+        key: str = None,
+        value: str = None,
+    ):
+        # 污点生效策略。
+        self.effect = effect
+        # 污点键。
+        self.key = key
+        # 污点值。
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.effect is not None:
+            result['effect'] = self.effect
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('effect') is not None:
+            self.effect = m.get('effect')
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ScaleClusterRequestWorkerDataDisks(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        encrypted: str = None,
+        size: str = None,
+    ):
+        # 数据盘类型。
+        self.category = category
+        # 是否对数据盘加密。
+        self.encrypted = encrypted
+        # 数据盘大小。
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        if self.encrypted is not None:
+            result['encrypted'] = self.encrypted
+        if self.size is not None:
+            result['size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('encrypted') is not None:
+            self.encrypted = m.get('encrypted')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        return self
+
+
+class ScaleClusterRequest(TeaModel):
+    def __init__(
+        self,
+        cloud_monitor_flags: bool = None,
+        count: int = None,
+        cpu_policy: str = None,
+        disable_rollback: bool = None,
+        key_pair: str = None,
+        login_password: str = None,
+        tags: List[ScaleClusterRequestTags] = None,
+        taints: List[ScaleClusterRequestTaints] = None,
+        vswitch_ids: List[str] = None,
+        worker_auto_renew: bool = None,
+        worker_auto_renew_period: int = None,
+        worker_data_disk: bool = None,
+        worker_data_disks: List[ScaleClusterRequestWorkerDataDisks] = None,
+        worker_instance_charge_type: str = None,
+        worker_instance_types: List[str] = None,
+        worker_period: int = None,
+        worker_period_unit: str = None,
+        worker_system_disk_category: str = None,
+        worker_system_disk_size: int = None,
+    ):
+        # 节点是否安装云监控插件。
+        self.cloud_monitor_flags = cloud_monitor_flags
+        # 扩容节点数。
+        self.count = count
+        # 节点CPU策略。
+        self.cpu_policy = cpu_policy
+        # 失败是否回滚。
+        self.disable_rollback = disable_rollback
+        # keypair名称，和login_password二选一。
+        self.key_pair = key_pair
+        # SSH登录密码。和keypair二选一。
+        self.login_password = login_password
+        # 集群标签。
+        self.tags = tags
+        # 节点污点标记。
+        self.taints = taints
+        # 节点交换机ID列表。
+        self.vswitch_ids = vswitch_ids
+        # 节点是否开启Worker节点自动续费。
+        self.worker_auto_renew = worker_auto_renew
+        # 自动续费周期。
+        self.worker_auto_renew_period = worker_auto_renew_period
+        # 是否挂载数据盘。
+        self.worker_data_disk = worker_data_disk
+        # Worker数据盘类型、大小等配置的组合。
+        self.worker_data_disks = worker_data_disks
+        # 节点付费类型。
+        self.worker_instance_charge_type = worker_instance_charge_type
+        # Worker节点ECS规格类型。
+        self.worker_instance_types = worker_instance_types
+        # 节点包年包月时长。
+        self.worker_period = worker_period
+        # 当指定为PrePaid的时候需要指定周期。
+        self.worker_period_unit = worker_period_unit
+        # 节点系统盘类型。
+        self.worker_system_disk_category = worker_system_disk_category
+        # 节点系统盘大小
+        self.worker_system_disk_size = worker_system_disk_size
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+        if self.taints:
+            for k in self.taints:
+                if k:
+                    k.validate()
+        if self.worker_data_disks:
+            for k in self.worker_data_disks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.cloud_monitor_flags is not None:
+            result['cloud_monitor_flags'] = self.cloud_monitor_flags
+        if self.count is not None:
+            result['count'] = self.count
+        if self.cpu_policy is not None:
+            result['cpu_policy'] = self.cpu_policy
+        if self.disable_rollback is not None:
+            result['disable_rollback'] = self.disable_rollback
+        if self.key_pair is not None:
+            result['key_pair'] = self.key_pair
+        if self.login_password is not None:
+            result['login_password'] = self.login_password
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        result['taints'] = []
+        if self.taints is not None:
+            for k in self.taints:
+                result['taints'].append(k.to_map() if k else None)
+        if self.vswitch_ids is not None:
+            result['vswitch_ids'] = self.vswitch_ids
+        if self.worker_auto_renew is not None:
+            result['worker_auto_renew'] = self.worker_auto_renew
+        if self.worker_auto_renew_period is not None:
+            result['worker_auto_renew_period'] = self.worker_auto_renew_period
+        if self.worker_data_disk is not None:
+            result['worker_data_disk'] = self.worker_data_disk
+        result['worker_data_disks'] = []
+        if self.worker_data_disks is not None:
+            for k in self.worker_data_disks:
+                result['worker_data_disks'].append(k.to_map() if k else None)
+        if self.worker_instance_charge_type is not None:
+            result['worker_instance_charge_type'] = self.worker_instance_charge_type
+        if self.worker_instance_types is not None:
+            result['worker_instance_types'] = self.worker_instance_types
+        if self.worker_period is not None:
+            result['worker_period'] = self.worker_period
+        if self.worker_period_unit is not None:
+            result['worker_period_unit'] = self.worker_period_unit
+        if self.worker_system_disk_category is not None:
+            result['worker_system_disk_category'] = self.worker_system_disk_category
+        if self.worker_system_disk_size is not None:
+            result['worker_system_disk_size'] = self.worker_system_disk_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cloud_monitor_flags') is not None:
+            self.cloud_monitor_flags = m.get('cloud_monitor_flags')
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('cpu_policy') is not None:
+            self.cpu_policy = m.get('cpu_policy')
+        if m.get('disable_rollback') is not None:
+            self.disable_rollback = m.get('disable_rollback')
+        if m.get('key_pair') is not None:
+            self.key_pair = m.get('key_pair')
+        if m.get('login_password') is not None:
+            self.login_password = m.get('login_password')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = ScaleClusterRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        self.taints = []
+        if m.get('taints') is not None:
+            for k in m.get('taints'):
+                temp_model = ScaleClusterRequestTaints()
+                self.taints.append(temp_model.from_map(k))
+        if m.get('vswitch_ids') is not None:
+            self.vswitch_ids = m.get('vswitch_ids')
+        if m.get('worker_auto_renew') is not None:
+            self.worker_auto_renew = m.get('worker_auto_renew')
+        if m.get('worker_auto_renew_period') is not None:
+            self.worker_auto_renew_period = m.get('worker_auto_renew_period')
+        if m.get('worker_data_disk') is not None:
+            self.worker_data_disk = m.get('worker_data_disk')
+        self.worker_data_disks = []
+        if m.get('worker_data_disks') is not None:
+            for k in m.get('worker_data_disks'):
+                temp_model = ScaleClusterRequestWorkerDataDisks()
+                self.worker_data_disks.append(temp_model.from_map(k))
+        if m.get('worker_instance_charge_type') is not None:
+            self.worker_instance_charge_type = m.get('worker_instance_charge_type')
+        if m.get('worker_instance_types') is not None:
+            self.worker_instance_types = m.get('worker_instance_types')
+        if m.get('worker_period') is not None:
+            self.worker_period = m.get('worker_period')
+        if m.get('worker_period_unit') is not None:
+            self.worker_period_unit = m.get('worker_period_unit')
+        if m.get('worker_system_disk_category') is not None:
+            self.worker_system_disk_category = m.get('worker_system_disk_category')
+        if m.get('worker_system_disk_size') is not None:
+            self.worker_system_disk_size = m.get('worker_system_disk_size')
+        return self
+
+
+class ScaleClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # 集群ID。
+        self.cluster_id = cluster_id
+        # 请求ID。
+        self.request_id = request_id
+        # 任务ID。
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class ScaleClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ScaleClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ScaleClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeClusterAddonUpgradeStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: dict = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
 class DescribeAddonsRequest(TeaModel):
     def __init__(
         self,
@@ -6576,6 +7014,29 @@ class DeleteClusterResponse(TeaModel):
         return self
 
 
+class MigrateClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
 class DescribeClusterAddonsVersionResponse(TeaModel):
     def __init__(
         self,
@@ -7611,6 +8072,29 @@ class UpgradeClusterAddonsRequest(TeaModel):
 
 
 class UpgradeClusterAddonsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class DescribeClusterNamespacesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -8736,6 +9220,87 @@ class DescribeClusterNodePoolsResponse(TeaModel):
         return self
 
 
+class DescribeClusterV2UserKubeconfigRequest(TeaModel):
+    def __init__(
+        self,
+        private_ip_address: bool = None,
+    ):
+        # 是否为内网访问。
+        self.private_ip_address = private_ip_address
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.private_ip_address is not None:
+            result['PrivateIpAddress'] = self.private_ip_address
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
+        return self
+
+
+class DescribeClusterV2UserKubeconfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+    ):
+        # kubeconfig内容。
+        self.config = config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        return self
+
+
+class DescribeClusterV2UserKubeconfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeClusterV2UserKubeconfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeClusterV2UserKubeconfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ScaleOutClusterRequest(TeaModel):
     def __init__(
         self,
@@ -8996,6 +9561,29 @@ class ScaleOutClusterResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = ScaleOutClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateK8sClusterUserConfigExpireResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
