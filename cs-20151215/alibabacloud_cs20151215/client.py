@@ -687,6 +687,52 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('DescribeClusterDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}', 'json', req, runtime)
         )
 
+    def pause_component_upgrade(
+        self,
+        clusterid: str,
+        componentid: str,
+    ) -> cs20151215_models.PauseComponentUpgradeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.pause_component_upgrade_with_options(clusterid, componentid, headers, runtime)
+
+    async def pause_component_upgrade_async(
+        self,
+        clusterid: str,
+        componentid: str,
+    ) -> cs20151215_models.PauseComponentUpgradeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.pause_component_upgrade_with_options_async(clusterid, componentid, headers, runtime)
+
+    def pause_component_upgrade_with_options(
+        self,
+        clusterid: str,
+        componentid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.PauseComponentUpgradeResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.PauseComponentUpgradeResponse().from_map(
+            self.do_roarequest('PauseComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{clusterid}/components/{componentid}/pause', 'none', req, runtime)
+        )
+
+    async def pause_component_upgrade_with_options_async(
+        self,
+        clusterid: str,
+        componentid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.PauseComponentUpgradeResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.PauseComponentUpgradeResponse().from_map(
+            await self.do_roarequest_async('PauseComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{clusterid}/components/{componentid}/pause', 'none', req, runtime)
+        )
+
     def describe_clusters(
         self,
         request: cs20151215_models.DescribeClustersRequest,
@@ -1835,6 +1881,62 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('UpgradeCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}/upgrade', 'none', req, runtime)
         )
 
+    def cancel_workflow(
+        self,
+        workflow_name: str,
+        request: cs20151215_models.CancelWorkflowRequest,
+    ) -> cs20151215_models.CancelWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.cancel_workflow_with_options(workflow_name, request, headers, runtime)
+
+    async def cancel_workflow_async(
+        self,
+        workflow_name: str,
+        request: cs20151215_models.CancelWorkflowRequest,
+    ) -> cs20151215_models.CancelWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.cancel_workflow_with_options_async(workflow_name, request, headers, runtime)
+
+    def cancel_workflow_with_options(
+        self,
+        workflow_name: str,
+        request: cs20151215_models.CancelWorkflowRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CancelWorkflowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.action):
+            body['action'] = request.action
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return cs20151215_models.CancelWorkflowResponse().from_map(
+            self.do_roarequest('CancelWorkflow', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/gs/workflow/{workflow_name}', 'none', req, runtime)
+        )
+
+    async def cancel_workflow_with_options_async(
+        self,
+        workflow_name: str,
+        request: cs20151215_models.CancelWorkflowRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CancelWorkflowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.action):
+            body['action'] = request.action
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return cs20151215_models.CancelWorkflowResponse().from_map(
+            await self.do_roarequest_async('CancelWorkflow', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/gs/workflow/{workflow_name}', 'none', req, runtime)
+        )
+
     def attach_instances(
         self,
         cluster_id: str,
@@ -2347,6 +2449,52 @@ class Client(OpenApiClient):
             await self.do_roarequest_with_form_async('DeleteCluster', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}', 'none', req, runtime)
         )
 
+    def cancel_component_upgrade(
+        self,
+        cluster_id: str,
+        component_id: str,
+    ) -> cs20151215_models.CancelComponentUpgradeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.cancel_component_upgrade_with_options(cluster_id, component_id, headers, runtime)
+
+    async def cancel_component_upgrade_async(
+        self,
+        cluster_id: str,
+        component_id: str,
+    ) -> cs20151215_models.CancelComponentUpgradeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.cancel_component_upgrade_with_options_async(cluster_id, component_id, headers, runtime)
+
+    def cancel_component_upgrade_with_options(
+        self,
+        cluster_id: str,
+        component_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CancelComponentUpgradeResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.CancelComponentUpgradeResponse().from_map(
+            self.do_roarequest('CancelComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/{component_id}/cancel', 'none', req, runtime)
+        )
+
+    async def cancel_component_upgrade_with_options_async(
+        self,
+        cluster_id: str,
+        component_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CancelComponentUpgradeResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.CancelComponentUpgradeResponse().from_map(
+            await self.do_roarequest_async('CancelComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/{component_id}/cancel', 'none', req, runtime)
+        )
+
     def migrate_cluster(
         self,
         cluster_id: str,
@@ -2537,6 +2685,52 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('UnInstallClusterAddons', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/uninstall', 'none', req, runtime)
         )
 
+    def resume_component_upgrade(
+        self,
+        clusterid: str,
+        componentid: str,
+    ) -> cs20151215_models.ResumeComponentUpgradeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.resume_component_upgrade_with_options(clusterid, componentid, headers, runtime)
+
+    async def resume_component_upgrade_async(
+        self,
+        clusterid: str,
+        componentid: str,
+    ) -> cs20151215_models.ResumeComponentUpgradeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.resume_component_upgrade_with_options_async(clusterid, componentid, headers, runtime)
+
+    def resume_component_upgrade_with_options(
+        self,
+        clusterid: str,
+        componentid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ResumeComponentUpgradeResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.ResumeComponentUpgradeResponse().from_map(
+            self.do_roarequest('ResumeComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{clusterid}/components/{componentid}/resume', 'none', req, runtime)
+        )
+
+    async def resume_component_upgrade_with_options_async(
+        self,
+        clusterid: str,
+        componentid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ResumeComponentUpgradeResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.ResumeComponentUpgradeResponse().from_map(
+            await self.do_roarequest_async('ResumeComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{clusterid}/components/{componentid}/resume', 'none', req, runtime)
+        )
+
     def describe_clusters_v1(
         self,
         request: cs20151215_models.DescribeClustersV1Request,
@@ -2699,6 +2893,48 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('DescribeTaskInfo', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/tasks/{task_id}', 'json', req, runtime)
         )
 
+    def descirbe_workflow(
+        self,
+        workflow_name: str,
+    ) -> cs20151215_models.DescirbeWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.descirbe_workflow_with_options(workflow_name, headers, runtime)
+
+    async def descirbe_workflow_async(
+        self,
+        workflow_name: str,
+    ) -> cs20151215_models.DescirbeWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.descirbe_workflow_with_options_async(workflow_name, headers, runtime)
+
+    def descirbe_workflow_with_options(
+        self,
+        workflow_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescirbeWorkflowResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.DescirbeWorkflowResponse().from_map(
+            self.do_roarequest('DescirbeWorkflow', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/gs/workflow/{workflow_name}', 'json', req, runtime)
+        )
+
+    async def descirbe_workflow_with_options_async(
+        self,
+        workflow_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescirbeWorkflowResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.DescirbeWorkflowResponse().from_map(
+            await self.do_roarequest_async('DescirbeWorkflow', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/gs/workflow/{workflow_name}', 'json', req, runtime)
+        )
+
     def cancel_cluster_upgrade(
         self,
         cluster_id: str,
@@ -2739,6 +2975,48 @@ class Client(OpenApiClient):
         )
         return cs20151215_models.CancelClusterUpgradeResponse().from_map(
             await self.do_roarequest_async('CancelClusterUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}/upgrade/cancel', 'none', req, runtime)
+        )
+
+    def remove_workflow(
+        self,
+        workflow_name: str,
+    ) -> cs20151215_models.RemoveWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.remove_workflow_with_options(workflow_name, headers, runtime)
+
+    async def remove_workflow_async(
+        self,
+        workflow_name: str,
+    ) -> cs20151215_models.RemoveWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.remove_workflow_with_options_async(workflow_name, headers, runtime)
+
+    def remove_workflow_with_options(
+        self,
+        workflow_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.RemoveWorkflowResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.RemoveWorkflowResponse().from_map(
+            self.do_roarequest('RemoveWorkflow', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/gs/workflow/{workflow_name}', 'none', req, runtime)
+        )
+
+    async def remove_workflow_with_options_async(
+        self,
+        workflow_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.RemoveWorkflowResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.RemoveWorkflowResponse().from_map(
+            await self.do_roarequest_async('RemoveWorkflow', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/gs/workflow/{workflow_name}', 'none', req, runtime)
         )
 
     def update_template(
@@ -3083,6 +3361,40 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('DescribeClusterAddonsUpgradeStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/[ClusterId]/components/upgradestatus', 'json', req, runtime)
         )
 
+    def describe_workflows(self) -> cs20151215_models.DescribeWorkflowsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_workflows_with_options(headers, runtime)
+
+    async def describe_workflows_async(self) -> cs20151215_models.DescribeWorkflowsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_workflows_with_options_async(headers, runtime)
+
+    def describe_workflows_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeWorkflowsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.DescribeWorkflowsResponse().from_map(
+            self.do_roarequest('DescribeWorkflows', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/gs/workflows', 'json', req, runtime)
+        )
+
+    async def describe_workflows_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeWorkflowsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return cs20151215_models.DescribeWorkflowsResponse().from_map(
+            await self.do_roarequest_async('DescribeWorkflows', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/gs/workflows', 'json', req, runtime)
+        )
+
     def install_cluster_addons(
         self,
         cluster_id: str,
@@ -3229,6 +3541,130 @@ class Client(OpenApiClient):
         )
         return cs20151215_models.DescribeClusterV2UserKubeconfigResponse().from_map(
             await self.do_roarequest_async('DescribeClusterV2UserKubeconfig', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/api/v2/k8s/{cluster_id}/user_config', 'json', req, runtime)
+        )
+
+    def start_workflow(
+        self,
+        request: cs20151215_models.StartWorkflowRequest,
+    ) -> cs20151215_models.StartWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_workflow_with_options(request, headers, runtime)
+
+    async def start_workflow_async(
+        self,
+        request: cs20151215_models.StartWorkflowRequest,
+    ) -> cs20151215_models.StartWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_workflow_with_options_async(request, headers, runtime)
+
+    def start_workflow_with_options(
+        self,
+        request: cs20151215_models.StartWorkflowRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.StartWorkflowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workflow_type):
+            body['workflow_type'] = request.workflow_type
+        if not UtilClient.is_unset(request.service):
+            body['service'] = request.service
+        if not UtilClient.is_unset(request.mapping_oss_region):
+            body['mapping_oss_region'] = request.mapping_oss_region
+        if not UtilClient.is_unset(request.mapping_fastq_first_filename):
+            body['mapping_fastq_first_filename'] = request.mapping_fastq_first_filename
+        if not UtilClient.is_unset(request.mapping_fastq_second_filename):
+            body['mapping_fastq_second_filename'] = request.mapping_fastq_second_filename
+        if not UtilClient.is_unset(request.mapping_bucket_name):
+            body['mapping_bucket_name'] = request.mapping_bucket_name
+        if not UtilClient.is_unset(request.mapping_fastq_path):
+            body['mapping_fastq_path'] = request.mapping_fastq_path
+        if not UtilClient.is_unset(request.mapping_reference_path):
+            body['mapping_reference_path'] = request.mapping_reference_path
+        if not UtilClient.is_unset(request.mapping_is_mark_dup):
+            body['mapping_is_mark_dup'] = request.mapping_is_mark_dup
+        if not UtilClient.is_unset(request.mapping_bam_out_path):
+            body['mapping_bam_out_path'] = request.mapping_bam_out_path
+        if not UtilClient.is_unset(request.mapping_bam_out_filename):
+            body['mapping_bam_out_filename'] = request.mapping_bam_out_filename
+        if not UtilClient.is_unset(request.wgs_oss_region):
+            body['wgs_oss_region'] = request.wgs_oss_region
+        if not UtilClient.is_unset(request.wgs_fastq_first_filename):
+            body['wgs_fastq_first_filename'] = request.wgs_fastq_first_filename
+        if not UtilClient.is_unset(request.wgs_fastq_second_filename):
+            body['wgs_fastq_second_filename'] = request.wgs_fastq_second_filename
+        if not UtilClient.is_unset(request.wgs_bucket_name):
+            body['wgs_bucket_name'] = request.wgs_bucket_name
+        if not UtilClient.is_unset(request.wgs_fastq_path):
+            body['wgs_fastq_path'] = request.wgs_fastq_path
+        if not UtilClient.is_unset(request.wgs_reference_path):
+            body['wgs_reference_path'] = request.wgs_reference_path
+        if not UtilClient.is_unset(request.wgs_vcf_out_path):
+            body['wgs_vcf_out_path'] = request.wgs_vcf_out_path
+        if not UtilClient.is_unset(request.wgs_vcf_out_filename):
+            body['wgs_vcf_out_filename'] = request.wgs_vcf_out_filename
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return cs20151215_models.StartWorkflowResponse().from_map(
+            self.do_roarequest('StartWorkflow', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/gs/workflow', 'json', req, runtime)
+        )
+
+    async def start_workflow_with_options_async(
+        self,
+        request: cs20151215_models.StartWorkflowRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.StartWorkflowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workflow_type):
+            body['workflow_type'] = request.workflow_type
+        if not UtilClient.is_unset(request.service):
+            body['service'] = request.service
+        if not UtilClient.is_unset(request.mapping_oss_region):
+            body['mapping_oss_region'] = request.mapping_oss_region
+        if not UtilClient.is_unset(request.mapping_fastq_first_filename):
+            body['mapping_fastq_first_filename'] = request.mapping_fastq_first_filename
+        if not UtilClient.is_unset(request.mapping_fastq_second_filename):
+            body['mapping_fastq_second_filename'] = request.mapping_fastq_second_filename
+        if not UtilClient.is_unset(request.mapping_bucket_name):
+            body['mapping_bucket_name'] = request.mapping_bucket_name
+        if not UtilClient.is_unset(request.mapping_fastq_path):
+            body['mapping_fastq_path'] = request.mapping_fastq_path
+        if not UtilClient.is_unset(request.mapping_reference_path):
+            body['mapping_reference_path'] = request.mapping_reference_path
+        if not UtilClient.is_unset(request.mapping_is_mark_dup):
+            body['mapping_is_mark_dup'] = request.mapping_is_mark_dup
+        if not UtilClient.is_unset(request.mapping_bam_out_path):
+            body['mapping_bam_out_path'] = request.mapping_bam_out_path
+        if not UtilClient.is_unset(request.mapping_bam_out_filename):
+            body['mapping_bam_out_filename'] = request.mapping_bam_out_filename
+        if not UtilClient.is_unset(request.wgs_oss_region):
+            body['wgs_oss_region'] = request.wgs_oss_region
+        if not UtilClient.is_unset(request.wgs_fastq_first_filename):
+            body['wgs_fastq_first_filename'] = request.wgs_fastq_first_filename
+        if not UtilClient.is_unset(request.wgs_fastq_second_filename):
+            body['wgs_fastq_second_filename'] = request.wgs_fastq_second_filename
+        if not UtilClient.is_unset(request.wgs_bucket_name):
+            body['wgs_bucket_name'] = request.wgs_bucket_name
+        if not UtilClient.is_unset(request.wgs_fastq_path):
+            body['wgs_fastq_path'] = request.wgs_fastq_path
+        if not UtilClient.is_unset(request.wgs_reference_path):
+            body['wgs_reference_path'] = request.wgs_reference_path
+        if not UtilClient.is_unset(request.wgs_vcf_out_path):
+            body['wgs_vcf_out_path'] = request.wgs_vcf_out_path
+        if not UtilClient.is_unset(request.wgs_vcf_out_filename):
+            body['wgs_vcf_out_filename'] = request.wgs_vcf_out_filename
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return cs20151215_models.StartWorkflowResponse().from_map(
+            await self.do_roarequest_async('StartWorkflow', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/gs/workflow', 'json', req, runtime)
         )
 
     def scale_out_cluster(

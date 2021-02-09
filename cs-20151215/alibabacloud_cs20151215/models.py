@@ -1622,6 +1622,29 @@ class DescribeClusterDetailResponse(TeaModel):
         return self
 
 
+class PauseComponentUpgradeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
 class DescribeClustersRequest(TeaModel):
     def __init__(
         self,
@@ -5810,6 +5833,53 @@ class UpgradeClusterResponse(TeaModel):
         return self
 
 
+class CancelWorkflowRequest(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+    ):
+        # 执行的操作，目前只支持cancel。
+        self.action = action
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.action is not None:
+            result['action'] = self.action
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        return self
+
+
+class CancelWorkflowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
 class AttachInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -7014,6 +7084,29 @@ class DeleteClusterResponse(TeaModel):
         return self
 
 
+class CancelComponentUpgradeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
 class MigrateClusterResponse(TeaModel):
     def __init__(
         self,
@@ -7205,6 +7298,29 @@ class UnInstallClusterAddonsRequest(TeaModel):
 
 
 class UnInstallClusterAddonsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class ResumeComponentUpgradeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -7903,7 +8019,157 @@ class DescribeTaskInfoResponse(TeaModel):
         return self
 
 
+class DescirbeWorkflowResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        duration: str = None,
+        finish_time: str = None,
+        input_data_size: str = None,
+        job_name: str = None,
+        job_namespace: str = None,
+        output_data_size: str = None,
+        status: str = None,
+        total_bases: str = None,
+        total_reads: str = None,
+        user_input_data: str = None,
+    ):
+        # 工作流创建时间。
+        self.create_time = create_time
+        # 工作流经过时长。
+        self.duration = duration
+        # 任务结束时间。
+        self.finish_time = finish_time
+        # 输入数据大小。
+        self.input_data_size = input_data_size
+        # 工作流名称。
+        self.job_name = job_name
+        # 工作流所在命名空间。
+        self.job_namespace = job_namespace
+        # 输出数据大小。
+        self.output_data_size = output_data_size
+        # 工作流当前状态。
+        self.status = status
+        # 碱基对个数。
+        self.total_bases = total_bases
+        # Reads个数。
+        self.total_reads = total_reads
+        # 用户输入参数。
+        self.user_input_data = user_input_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.create_time is not None:
+            result['create_time'] = self.create_time
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.finish_time is not None:
+            result['finish_time'] = self.finish_time
+        if self.input_data_size is not None:
+            result['input_data_size'] = self.input_data_size
+        if self.job_name is not None:
+            result['job_name'] = self.job_name
+        if self.job_namespace is not None:
+            result['job_namespace'] = self.job_namespace
+        if self.output_data_size is not None:
+            result['output_data_size'] = self.output_data_size
+        if self.status is not None:
+            result['status'] = self.status
+        if self.total_bases is not None:
+            result['total_bases'] = self.total_bases
+        if self.total_reads is not None:
+            result['total_reads'] = self.total_reads
+        if self.user_input_data is not None:
+            result['user_input_data'] = self.user_input_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('create_time') is not None:
+            self.create_time = m.get('create_time')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('finish_time') is not None:
+            self.finish_time = m.get('finish_time')
+        if m.get('input_data_size') is not None:
+            self.input_data_size = m.get('input_data_size')
+        if m.get('job_name') is not None:
+            self.job_name = m.get('job_name')
+        if m.get('job_namespace') is not None:
+            self.job_namespace = m.get('job_namespace')
+        if m.get('output_data_size') is not None:
+            self.output_data_size = m.get('output_data_size')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('total_bases') is not None:
+            self.total_bases = m.get('total_bases')
+        if m.get('total_reads') is not None:
+            self.total_reads = m.get('total_reads')
+        if m.get('user_input_data') is not None:
+            self.user_input_data = m.get('user_input_data')
+        return self
+
+
+class DescirbeWorkflowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescirbeWorkflowResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescirbeWorkflowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelClusterUpgradeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class RemoveWorkflowResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -8299,6 +8565,109 @@ class DescribeClusterAddonsUpgradeStatusResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             self.body = m.get('body')
+        return self
+
+
+class DescribeWorkflowsResponseBodyJobs(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        job_name: str = None,
+        create_time: str = None,
+    ):
+        # 集群ID。
+        self.cluster_id = cluster_id
+        # 工作流名称。
+        self.job_name = job_name
+        # 工作流创建时间。
+        self.create_time = create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.job_name is not None:
+            result['job_name'] = self.job_name
+        if self.create_time is not None:
+            result['create_time'] = self.create_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('job_name') is not None:
+            self.job_name = m.get('job_name')
+        if m.get('create_time') is not None:
+            self.create_time = m.get('create_time')
+        return self
+
+
+class DescribeWorkflowsResponseBody(TeaModel):
+    def __init__(
+        self,
+        jobs: List[DescribeWorkflowsResponseBodyJobs] = None,
+    ):
+        # job信息
+        self.jobs = jobs
+
+    def validate(self):
+        if self.jobs:
+            for k in self.jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['jobs'] = []
+        if self.jobs is not None:
+            for k in self.jobs:
+                result['jobs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.jobs = []
+        if m.get('jobs') is not None:
+            for k in m.get('jobs'):
+                temp_model = DescribeWorkflowsResponseBodyJobs()
+                self.jobs.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeWorkflowsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeWorkflowsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeWorkflowsResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -9297,6 +9666,213 @@ class DescribeClusterV2UserKubeconfigResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeClusterV2UserKubeconfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartWorkflowRequest(TeaModel):
+    def __init__(
+        self,
+        workflow_type: str = None,
+        service: str = None,
+        mapping_oss_region: str = None,
+        mapping_fastq_first_filename: str = None,
+        mapping_fastq_second_filename: str = None,
+        mapping_bucket_name: str = None,
+        mapping_fastq_path: str = None,
+        mapping_reference_path: str = None,
+        mapping_is_mark_dup: str = None,
+        mapping_bam_out_path: str = None,
+        mapping_bam_out_filename: str = None,
+        wgs_oss_region: str = None,
+        wgs_fastq_first_filename: str = None,
+        wgs_fastq_second_filename: str = None,
+        wgs_bucket_name: str = None,
+        wgs_fastq_path: str = None,
+        wgs_reference_path: str = None,
+        wgs_vcf_out_path: str = None,
+        wgs_vcf_out_filename: str = None,
+    ):
+        # 工作流类型，可选值：wgs或mapping。
+        self.workflow_type = workflow_type
+        # SLA类型，可选值：s、g、p。 白银级（s）：超过90 Gbp的部分，按1.5 Gbp/min计算增加的时间。 黄金级（g）：超过90 Gbp的部分，按2 Gbp/min计算增加的时间。 铂金级（p）：超过90 Gbp的部分，按3 Gbp/min计算增加的时间。
+        self.service = service
+        # mapping oss数据的存放region。
+        self.mapping_oss_region = mapping_oss_region
+        # mapping的第一个fastq文件名。
+        self.mapping_fastq_first_filename = mapping_fastq_first_filename
+        # mapping的第二个fastq文件名。
+        self.mapping_fastq_second_filename = mapping_fastq_second_filename
+        # 存放mapping的bucket名称。
+        self.mapping_bucket_name = mapping_bucket_name
+        # mapping的fastq文件路径。
+        self.mapping_fastq_path = mapping_fastq_path
+        # mapping的reference文件位置。
+        self.mapping_reference_path = mapping_reference_path
+        # 是否进行dup。
+        self.mapping_is_mark_dup = mapping_is_mark_dup
+        # bam文件输出路径。
+        self.mapping_bam_out_path = mapping_bam_out_path
+        # bam文件输出名称。
+        self.mapping_bam_out_filename = mapping_bam_out_filename
+        # wgs oss数据的存放region。
+        self.wgs_oss_region = wgs_oss_region
+        # wgs的第一个fastq文件名。
+        self.wgs_fastq_first_filename = wgs_fastq_first_filename
+        # wgs的第二个fastq文件名。
+        self.wgs_fastq_second_filename = wgs_fastq_second_filename
+        # 存放wgs的bucket名称。
+        self.wgs_bucket_name = wgs_bucket_name
+        # wgs的fastq文件路径。
+        self.wgs_fastq_path = wgs_fastq_path
+        # wgs的reference文件路径。
+        self.wgs_reference_path = wgs_reference_path
+        # wgs的vcf输出路径。
+        self.wgs_vcf_out_path = wgs_vcf_out_path
+        # wgs的vcf输出文件名称。
+        self.wgs_vcf_out_filename = wgs_vcf_out_filename
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.workflow_type is not None:
+            result['workflow_type'] = self.workflow_type
+        if self.service is not None:
+            result['service'] = self.service
+        if self.mapping_oss_region is not None:
+            result['mapping_oss_region'] = self.mapping_oss_region
+        if self.mapping_fastq_first_filename is not None:
+            result['mapping_fastq_first_filename'] = self.mapping_fastq_first_filename
+        if self.mapping_fastq_second_filename is not None:
+            result['mapping_fastq_second_filename'] = self.mapping_fastq_second_filename
+        if self.mapping_bucket_name is not None:
+            result['mapping_bucket_name'] = self.mapping_bucket_name
+        if self.mapping_fastq_path is not None:
+            result['mapping_fastq_path'] = self.mapping_fastq_path
+        if self.mapping_reference_path is not None:
+            result['mapping_reference_path'] = self.mapping_reference_path
+        if self.mapping_is_mark_dup is not None:
+            result['mapping_is_mark_dup'] = self.mapping_is_mark_dup
+        if self.mapping_bam_out_path is not None:
+            result['mapping_bam_out_path'] = self.mapping_bam_out_path
+        if self.mapping_bam_out_filename is not None:
+            result['mapping_bam_out_filename'] = self.mapping_bam_out_filename
+        if self.wgs_oss_region is not None:
+            result['wgs_oss_region'] = self.wgs_oss_region
+        if self.wgs_fastq_first_filename is not None:
+            result['wgs_fastq_first_filename'] = self.wgs_fastq_first_filename
+        if self.wgs_fastq_second_filename is not None:
+            result['wgs_fastq_second_filename'] = self.wgs_fastq_second_filename
+        if self.wgs_bucket_name is not None:
+            result['wgs_bucket_name'] = self.wgs_bucket_name
+        if self.wgs_fastq_path is not None:
+            result['wgs_fastq_path'] = self.wgs_fastq_path
+        if self.wgs_reference_path is not None:
+            result['wgs_reference_path'] = self.wgs_reference_path
+        if self.wgs_vcf_out_path is not None:
+            result['wgs_vcf_out_path'] = self.wgs_vcf_out_path
+        if self.wgs_vcf_out_filename is not None:
+            result['wgs_vcf_out_filename'] = self.wgs_vcf_out_filename
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('workflow_type') is not None:
+            self.workflow_type = m.get('workflow_type')
+        if m.get('service') is not None:
+            self.service = m.get('service')
+        if m.get('mapping_oss_region') is not None:
+            self.mapping_oss_region = m.get('mapping_oss_region')
+        if m.get('mapping_fastq_first_filename') is not None:
+            self.mapping_fastq_first_filename = m.get('mapping_fastq_first_filename')
+        if m.get('mapping_fastq_second_filename') is not None:
+            self.mapping_fastq_second_filename = m.get('mapping_fastq_second_filename')
+        if m.get('mapping_bucket_name') is not None:
+            self.mapping_bucket_name = m.get('mapping_bucket_name')
+        if m.get('mapping_fastq_path') is not None:
+            self.mapping_fastq_path = m.get('mapping_fastq_path')
+        if m.get('mapping_reference_path') is not None:
+            self.mapping_reference_path = m.get('mapping_reference_path')
+        if m.get('mapping_is_mark_dup') is not None:
+            self.mapping_is_mark_dup = m.get('mapping_is_mark_dup')
+        if m.get('mapping_bam_out_path') is not None:
+            self.mapping_bam_out_path = m.get('mapping_bam_out_path')
+        if m.get('mapping_bam_out_filename') is not None:
+            self.mapping_bam_out_filename = m.get('mapping_bam_out_filename')
+        if m.get('wgs_oss_region') is not None:
+            self.wgs_oss_region = m.get('wgs_oss_region')
+        if m.get('wgs_fastq_first_filename') is not None:
+            self.wgs_fastq_first_filename = m.get('wgs_fastq_first_filename')
+        if m.get('wgs_fastq_second_filename') is not None:
+            self.wgs_fastq_second_filename = m.get('wgs_fastq_second_filename')
+        if m.get('wgs_bucket_name') is not None:
+            self.wgs_bucket_name = m.get('wgs_bucket_name')
+        if m.get('wgs_fastq_path') is not None:
+            self.wgs_fastq_path = m.get('wgs_fastq_path')
+        if m.get('wgs_reference_path') is not None:
+            self.wgs_reference_path = m.get('wgs_reference_path')
+        if m.get('wgs_vcf_out_path') is not None:
+            self.wgs_vcf_out_path = m.get('wgs_vcf_out_path')
+        if m.get('wgs_vcf_out_filename') is not None:
+            self.wgs_vcf_out_filename = m.get('wgs_vcf_out_filename')
+        return self
+
+
+class StartWorkflowResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_name: str = None,
+    ):
+        # 工作流名称
+        self.job_name = job_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        return self
+
+
+class StartWorkflowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: StartWorkflowResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = StartWorkflowResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
