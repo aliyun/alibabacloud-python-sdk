@@ -3357,6 +3357,7 @@ class DescribeFileSystemsRequest(TeaModel):
         file_system_ids: str = None,
         order_by_field: str = None,
         sort_order: str = None,
+        charge_type: str = None,
         tag: List[DescribeFileSystemsRequestTag] = None,
     ):
         self.file_system_id = file_system_id
@@ -3371,6 +3372,7 @@ class DescribeFileSystemsRequest(TeaModel):
         self.file_system_ids = file_system_ids
         self.order_by_field = order_by_field
         self.sort_order = sort_order
+        self.charge_type = charge_type
         self.tag = tag
 
     def validate(self):
@@ -3405,6 +3407,8 @@ class DescribeFileSystemsRequest(TeaModel):
             result['OrderByField'] = self.order_by_field
         if self.sort_order is not None:
             result['SortOrder'] = self.sort_order
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -3437,6 +3441,8 @@ class DescribeFileSystemsRequest(TeaModel):
             self.order_by_field = m.get('OrderByField')
         if m.get('SortOrder') is not None:
             self.sort_order = m.get('SortOrder')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -4185,6 +4191,218 @@ class DescribeFileSystemStatisticsRequest(TeaModel):
         return self
 
 
+class DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage(TeaModel):
+    def __init__(
+        self,
+        start_time: str = None,
+        expired_time: str = None,
+        size: int = None,
+        package_id: str = None,
+    ):
+        self.start_time = start_time
+        self.expired_time = expired_time
+        self.size = size
+        self.package_id = package_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.expired_time is not None:
+            result['ExpiredTime'] = self.expired_time
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.package_id is not None:
+            result['PackageId'] = self.package_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('ExpiredTime') is not None:
+            self.expired_time = m.get('ExpiredTime')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('PackageId') is not None:
+            self.package_id = m.get('PackageId')
+        return self
+
+
+class DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages(TeaModel):
+    def __init__(
+        self,
+        package: List[DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage] = None,
+    ):
+        self.package = package
+
+    def validate(self):
+        if self.package:
+            for k in self.package:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Package'] = []
+        if self.package is not None:
+            for k in self.package:
+                result['Package'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.package = []
+        if m.get('Package') is not None:
+            for k in m.get('Package'):
+                temp_model = DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage()
+                self.package.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        capacity: int = None,
+        metered_iasize: int = None,
+        create_time: str = None,
+        charge_type: str = None,
+        storage_type: str = None,
+        region_id: str = None,
+        file_system_type: str = None,
+        file_system_id: str = None,
+        metered_size: int = None,
+        description: str = None,
+        expired_time: str = None,
+        zone_id: str = None,
+        packages: DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages = None,
+        protocol_type: str = None,
+    ):
+        self.status = status
+        self.capacity = capacity
+        self.metered_iasize = metered_iasize
+        self.create_time = create_time
+        self.charge_type = charge_type
+        self.storage_type = storage_type
+        self.region_id = region_id
+        self.file_system_type = file_system_type
+        self.file_system_id = file_system_id
+        self.metered_size = metered_size
+        self.description = description
+        self.expired_time = expired_time
+        self.zone_id = zone_id
+        self.packages = packages
+        self.protocol_type = protocol_type
+
+    def validate(self):
+        if self.packages:
+            self.packages.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+        if self.metered_iasize is not None:
+            result['MeteredIASize'] = self.metered_iasize
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.file_system_type is not None:
+            result['FileSystemType'] = self.file_system_type
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.metered_size is not None:
+            result['MeteredSize'] = self.metered_size
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.expired_time is not None:
+            result['ExpiredTime'] = self.expired_time
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        if self.packages is not None:
+            result['Packages'] = self.packages.to_map()
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+        if m.get('MeteredIASize') is not None:
+            self.metered_iasize = m.get('MeteredIASize')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('FileSystemType') is not None:
+            self.file_system_type = m.get('FileSystemType')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('MeteredSize') is not None:
+            self.metered_size = m.get('MeteredSize')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExpiredTime') is not None:
+            self.expired_time = m.get('ExpiredTime')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        if m.get('Packages') is not None:
+            temp_model = DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages()
+            self.packages = temp_model.from_map(m['Packages'])
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
+        return self
+
+
+class DescribeFileSystemStatisticsResponseBodyFileSystems(TeaModel):
+    def __init__(
+        self,
+        file_system: List[DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem] = None,
+    ):
+        self.file_system = file_system
+
+    def validate(self):
+        if self.file_system:
+            for k in self.file_system:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['FileSystem'] = []
+        if self.file_system is not None:
+            for k in self.file_system:
+                result['FileSystem'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.file_system = []
+        if m.get('FileSystem') is not None:
+            for k in m.get('FileSystem'):
+                temp_model = DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem()
+                self.file_system.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic(TeaModel):
     def __init__(
         self,
@@ -4266,12 +4484,14 @@ class DescribeFileSystemStatisticsResponseBodyFileSystemStatistics(TeaModel):
 class DescribeFileSystemStatisticsResponseBody(TeaModel):
     def __init__(
         self,
+        file_systems: DescribeFileSystemStatisticsResponseBodyFileSystems = None,
         total_count: int = None,
         request_id: str = None,
         page_size: int = None,
         page_number: int = None,
         file_system_statistics: DescribeFileSystemStatisticsResponseBodyFileSystemStatistics = None,
     ):
+        self.file_systems = file_systems
         self.total_count = total_count
         self.request_id = request_id
         self.page_size = page_size
@@ -4279,11 +4499,15 @@ class DescribeFileSystemStatisticsResponseBody(TeaModel):
         self.file_system_statistics = file_system_statistics
 
     def validate(self):
+        if self.file_systems:
+            self.file_systems.validate()
         if self.file_system_statistics:
             self.file_system_statistics.validate()
 
     def to_map(self):
         result = dict()
+        if self.file_systems is not None:
+            result['FileSystems'] = self.file_systems.to_map()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         if self.request_id is not None:
@@ -4298,6 +4522,9 @@ class DescribeFileSystemStatisticsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FileSystems') is not None:
+            temp_model = DescribeFileSystemStatisticsResponseBodyFileSystems()
+            self.file_systems = temp_model.from_map(m['FileSystems'])
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         if m.get('RequestId') is not None:
