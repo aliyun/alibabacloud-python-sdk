@@ -1682,48 +1682,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_alert_history_list_with_options_async(request, runtime)
 
-    def describe_alerting_metric_rule_resources_with_options(
-        self,
-        request: cms_20190101_models.DescribeAlertingMetricRuleResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cms_20190101_models.DescribeAlertingMetricRuleResourcesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return cms_20190101_models.DescribeAlertingMetricRuleResourcesResponse().from_map(
-            self.do_rpcrequest('DescribeAlertingMetricRuleResources', '2019-01-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_alerting_metric_rule_resources_with_options_async(
-        self,
-        request: cms_20190101_models.DescribeAlertingMetricRuleResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cms_20190101_models.DescribeAlertingMetricRuleResourcesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return cms_20190101_models.DescribeAlertingMetricRuleResourcesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAlertingMetricRuleResources', '2019-01-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def describe_alerting_metric_rule_resources(
-        self,
-        request: cms_20190101_models.DescribeAlertingMetricRuleResourcesRequest,
-    ) -> cms_20190101_models.DescribeAlertingMetricRuleResourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_alerting_metric_rule_resources_with_options(request, runtime)
-
-    async def describe_alerting_metric_rule_resources_async(
-        self,
-        request: cms_20190101_models.DescribeAlertingMetricRuleResourcesRequest,
-    ) -> cms_20190101_models.DescribeAlertingMetricRuleResourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_alerting_metric_rule_resources_with_options_async(request, runtime)
-
     def describe_alert_log_count_with_options(
         self,
         request: cms_20190101_models.DescribeAlertLogCountRequest,
