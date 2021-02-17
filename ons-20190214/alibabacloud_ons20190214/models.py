@@ -246,7 +246,7 @@ class OnsConsumerAccumulateRequest(TeaModel):
         return self
 
 
-class OnsConsumerAccumulateResponseBodyDataDetailInTopicList(TeaModel):
+class OnsConsumerAccumulateResponseBodyDataDetailInTopicListDetailInTopicDo(TeaModel):
     def __init__(
         self,
         delay_time: int = None,
@@ -287,6 +287,37 @@ class OnsConsumerAccumulateResponseBodyDataDetailInTopicList(TeaModel):
         return self
 
 
+class OnsConsumerAccumulateResponseBodyDataDetailInTopicList(TeaModel):
+    def __init__(
+        self,
+        detail_in_topic_do: List[OnsConsumerAccumulateResponseBodyDataDetailInTopicListDetailInTopicDo] = None,
+    ):
+        self.detail_in_topic_do = detail_in_topic_do
+
+    def validate(self):
+        if self.detail_in_topic_do:
+            for k in self.detail_in_topic_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['DetailInTopicDo'] = []
+        if self.detail_in_topic_do is not None:
+            for k in self.detail_in_topic_do:
+                result['DetailInTopicDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detail_in_topic_do = []
+        if m.get('DetailInTopicDo') is not None:
+            for k in m.get('DetailInTopicDo'):
+                temp_model = OnsConsumerAccumulateResponseBodyDataDetailInTopicListDetailInTopicDo()
+                self.detail_in_topic_do.append(temp_model.from_map(k))
+        return self
+
+
 class OnsConsumerAccumulateResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -295,7 +326,7 @@ class OnsConsumerAccumulateResponseBodyData(TeaModel):
         last_timestamp: int = None,
         total_diff: int = None,
         online: bool = None,
-        detail_in_topic_list: List[OnsConsumerAccumulateResponseBodyDataDetailInTopicList] = None,
+        detail_in_topic_list: OnsConsumerAccumulateResponseBodyDataDetailInTopicList = None,
     ):
         self.consume_tps = consume_tps
         self.delay_time = delay_time
@@ -306,9 +337,7 @@ class OnsConsumerAccumulateResponseBodyData(TeaModel):
 
     def validate(self):
         if self.detail_in_topic_list:
-            for k in self.detail_in_topic_list:
-                if k:
-                    k.validate()
+            self.detail_in_topic_list.validate()
 
     def to_map(self):
         result = dict()
@@ -322,10 +351,8 @@ class OnsConsumerAccumulateResponseBodyData(TeaModel):
             result['TotalDiff'] = self.total_diff
         if self.online is not None:
             result['Online'] = self.online
-        result['DetailInTopicList'] = []
         if self.detail_in_topic_list is not None:
-            for k in self.detail_in_topic_list:
-                result['DetailInTopicList'].append(k.to_map() if k else None)
+            result['DetailInTopicList'] = self.detail_in_topic_list.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -340,11 +367,9 @@ class OnsConsumerAccumulateResponseBodyData(TeaModel):
             self.total_diff = m.get('TotalDiff')
         if m.get('Online') is not None:
             self.online = m.get('Online')
-        self.detail_in_topic_list = []
         if m.get('DetailInTopicList') is not None:
-            for k in m.get('DetailInTopicList'):
-                temp_model = OnsConsumerAccumulateResponseBodyDataDetailInTopicList()
-                self.detail_in_topic_list.append(temp_model.from_map(k))
+            temp_model = OnsConsumerAccumulateResponseBodyDataDetailInTopicList()
+            self.detail_in_topic_list = temp_model.from_map(m['DetailInTopicList'])
         return self
 
 
@@ -441,7 +466,7 @@ class OnsConsumerGetConnectionRequest(TeaModel):
         return self
 
 
-class OnsConsumerGetConnectionResponseBodyDataConnectionList(TeaModel):
+class OnsConsumerGetConnectionResponseBodyDataConnectionListConnectionDo(TeaModel):
     def __init__(
         self,
         version: str = None,
@@ -482,34 +507,59 @@ class OnsConsumerGetConnectionResponseBodyDataConnectionList(TeaModel):
         return self
 
 
-class OnsConsumerGetConnectionResponseBodyData(TeaModel):
+class OnsConsumerGetConnectionResponseBodyDataConnectionList(TeaModel):
     def __init__(
         self,
-        connection_list: List[OnsConsumerGetConnectionResponseBodyDataConnectionList] = None,
+        connection_do: List[OnsConsumerGetConnectionResponseBodyDataConnectionListConnectionDo] = None,
     ):
-        self.connection_list = connection_list
+        self.connection_do = connection_do
 
     def validate(self):
-        if self.connection_list:
-            for k in self.connection_list:
+        if self.connection_do:
+            for k in self.connection_do:
                 if k:
                     k.validate()
 
     def to_map(self):
         result = dict()
-        result['ConnectionList'] = []
-        if self.connection_list is not None:
-            for k in self.connection_list:
-                result['ConnectionList'].append(k.to_map() if k else None)
+        result['ConnectionDo'] = []
+        if self.connection_do is not None:
+            for k in self.connection_do:
+                result['ConnectionDo'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.connection_list = []
+        self.connection_do = []
+        if m.get('ConnectionDo') is not None:
+            for k in m.get('ConnectionDo'):
+                temp_model = OnsConsumerGetConnectionResponseBodyDataConnectionListConnectionDo()
+                self.connection_do.append(temp_model.from_map(k))
+        return self
+
+
+class OnsConsumerGetConnectionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        connection_list: OnsConsumerGetConnectionResponseBodyDataConnectionList = None,
+    ):
+        self.connection_list = connection_list
+
+    def validate(self):
+        if self.connection_list:
+            self.connection_list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.connection_list is not None:
+            result['ConnectionList'] = self.connection_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
         if m.get('ConnectionList') is not None:
-            for k in m.get('ConnectionList'):
-                temp_model = OnsConsumerGetConnectionResponseBodyDataConnectionList()
-                self.connection_list.append(temp_model.from_map(k))
+            temp_model = OnsConsumerGetConnectionResponseBodyDataConnectionList()
+            self.connection_list = temp_model.from_map(m['ConnectionList'])
         return self
 
 
@@ -721,7 +771,7 @@ class OnsConsumerStatusRequest(TeaModel):
         return self
 
 
-class OnsConsumerStatusResponseBodyDataConnectionSet(TeaModel):
+class OnsConsumerStatusResponseBodyDataConnectionSetConnectionDo(TeaModel):
     def __init__(
         self,
         remote_ip: str = None,
@@ -768,7 +818,38 @@ class OnsConsumerStatusResponseBodyDataConnectionSet(TeaModel):
         return self
 
 
-class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListRunningDataList(TeaModel):
+class OnsConsumerStatusResponseBodyDataConnectionSet(TeaModel):
+    def __init__(
+        self,
+        connection_do: List[OnsConsumerStatusResponseBodyDataConnectionSetConnectionDo] = None,
+    ):
+        self.connection_do = connection_do
+
+    def validate(self):
+        if self.connection_do:
+            for k in self.connection_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['ConnectionDo'] = []
+        if self.connection_do is not None:
+            for k in self.connection_do:
+                result['ConnectionDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.connection_do = []
+        if m.get('ConnectionDo') is not None:
+            for k in m.get('ConnectionDo'):
+                temp_model = OnsConsumerStatusResponseBodyDataConnectionSetConnectionDo()
+                self.connection_do.append(temp_model.from_map(k))
+        return self
+
+
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataListConsumerRunningDataDo(TeaModel):
     def __init__(
         self,
         group_id: str = None,
@@ -821,13 +902,67 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListRunningDataList
         return self
 
 
-class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListSubscriptionSet(TeaModel):
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataList(TeaModel):
+    def __init__(
+        self,
+        consumer_running_data_do: List[OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataListConsumerRunningDataDo] = None,
+    ):
+        self.consumer_running_data_do = consumer_running_data_do
+
+    def validate(self):
+        if self.consumer_running_data_do:
+            for k in self.consumer_running_data_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['ConsumerRunningDataDo'] = []
+        if self.consumer_running_data_do is not None:
+            for k in self.consumer_running_data_do:
+                result['ConsumerRunningDataDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.consumer_running_data_do = []
+        if m.get('ConsumerRunningDataDo') is not None:
+            for k in m.get('ConsumerRunningDataDo'):
+                temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataListConsumerRunningDataDo()
+                self.consumer_running_data_do.append(temp_model.from_map(k))
+        return self
+
+
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSetSubscriptionDataTagsSet(TeaModel):
+    def __init__(
+        self,
+        tag: List[str] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSetSubscriptionData(TeaModel):
     def __init__(
         self,
         sub_string: str = None,
         sub_version: int = None,
         topic: str = None,
-        tags_set: List[str] = None,
+        tags_set: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSetSubscriptionDataTagsSet = None,
     ):
         self.sub_string = sub_string
         self.sub_version = sub_version
@@ -835,7 +970,8 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListSubscriptionSet
         self.tags_set = tags_set
 
     def validate(self):
-        pass
+        if self.tags_set:
+            self.tags_set.validate()
 
     def to_map(self):
         result = dict()
@@ -846,7 +982,7 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListSubscriptionSet
         if self.topic is not None:
             result['Topic'] = self.topic
         if self.tags_set is not None:
-            result['TagsSet'] = self.tags_set
+            result['TagsSet'] = self.tags_set.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -858,26 +994,82 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListSubscriptionSet
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
         if m.get('TagsSet') is not None:
-            self.tags_set = m.get('TagsSet')
+            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSetSubscriptionDataTagsSet()
+            self.tags_set = temp_model.from_map(m['TagsSet'])
         return self
 
 
-class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListJstack(TeaModel):
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSet(TeaModel):
     def __init__(
         self,
-        track_list: List[str] = None,
-        thread: str = None,
+        subscription_data: List[OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSetSubscriptionData] = None,
     ):
-        self.track_list = track_list
-        self.thread = thread
+        self.subscription_data = subscription_data
+
+    def validate(self):
+        if self.subscription_data:
+            for k in self.subscription_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['SubscriptionData'] = []
+        if self.subscription_data is not None:
+            for k in self.subscription_data:
+                result['SubscriptionData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.subscription_data = []
+        if m.get('SubscriptionData') is not None:
+            for k in m.get('SubscriptionData'):
+                temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSetSubscriptionData()
+                self.subscription_data.append(temp_model.from_map(k))
+        return self
+
+
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDoTrackList(TeaModel):
+    def __init__(
+        self,
+        track: List[str] = None,
+    ):
+        self.track = track
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
+        if self.track is not None:
+            result['Track'] = self.track
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Track') is not None:
+            self.track = m.get('Track')
+        return self
+
+
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDo(TeaModel):
+    def __init__(
+        self,
+        track_list: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDoTrackList = None,
+        thread: str = None,
+    ):
+        self.track_list = track_list
+        self.thread = thread
+
+    def validate(self):
+        if self.track_list:
+            self.track_list.validate()
+
+    def to_map(self):
+        result = dict()
         if self.track_list is not None:
-            result['TrackList'] = self.track_list
+            result['TrackList'] = self.track_list.to_map()
         if self.thread is not None:
             result['Thread'] = self.thread
         return result
@@ -885,19 +1077,51 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListJstack(TeaModel
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('TrackList') is not None:
-            self.track_list = m.get('TrackList')
+            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDoTrackList()
+            self.track_list = temp_model.from_map(m['TrackList'])
         if m.get('Thread') is not None:
             self.thread = m.get('Thread')
         return self
 
 
-class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList(TeaModel):
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstack(TeaModel):
+    def __init__(
+        self,
+        thread_track_do: List[OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDo] = None,
+    ):
+        self.thread_track_do = thread_track_do
+
+    def validate(self):
+        if self.thread_track_do:
+            for k in self.thread_track_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['ThreadTrackDo'] = []
+        if self.thread_track_do is not None:
+            for k in self.thread_track_do:
+                result['ThreadTrackDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.thread_track_do = []
+        if m.get('ThreadTrackDo') is not None:
+            for k in m.get('ThreadTrackDo'):
+                temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDo()
+                self.thread_track_do.append(temp_model.from_map(k))
+        return self
+
+
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDo(TeaModel):
     def __init__(
         self,
         consume_model: str = None,
-        running_data_list: List[OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListRunningDataList] = None,
-        subscription_set: List[OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListSubscriptionSet] = None,
-        jstack: List[OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListJstack] = None,
+        running_data_list: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataList = None,
+        subscription_set: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSet = None,
+        jstack: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstack = None,
         last_time_stamp: int = None,
         start_time_stamp: int = None,
         language: str = None,
@@ -922,34 +1146,22 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList(TeaModel):
 
     def validate(self):
         if self.running_data_list:
-            for k in self.running_data_list:
-                if k:
-                    k.validate()
+            self.running_data_list.validate()
         if self.subscription_set:
-            for k in self.subscription_set:
-                if k:
-                    k.validate()
+            self.subscription_set.validate()
         if self.jstack:
-            for k in self.jstack:
-                if k:
-                    k.validate()
+            self.jstack.validate()
 
     def to_map(self):
         result = dict()
         if self.consume_model is not None:
             result['ConsumeModel'] = self.consume_model
-        result['RunningDataList'] = []
         if self.running_data_list is not None:
-            for k in self.running_data_list:
-                result['RunningDataList'].append(k.to_map() if k else None)
-        result['SubscriptionSet'] = []
+            result['RunningDataList'] = self.running_data_list.to_map()
         if self.subscription_set is not None:
-            for k in self.subscription_set:
-                result['SubscriptionSet'].append(k.to_map() if k else None)
-        result['Jstack'] = []
+            result['SubscriptionSet'] = self.subscription_set.to_map()
         if self.jstack is not None:
-            for k in self.jstack:
-                result['Jstack'].append(k.to_map() if k else None)
+            result['Jstack'] = self.jstack.to_map()
         if self.last_time_stamp is not None:
             result['LastTimeStamp'] = self.last_time_stamp
         if self.start_time_stamp is not None:
@@ -972,21 +1184,15 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList(TeaModel):
         m = m or dict()
         if m.get('ConsumeModel') is not None:
             self.consume_model = m.get('ConsumeModel')
-        self.running_data_list = []
         if m.get('RunningDataList') is not None:
-            for k in m.get('RunningDataList'):
-                temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListRunningDataList()
-                self.running_data_list.append(temp_model.from_map(k))
-        self.subscription_set = []
+            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataList()
+            self.running_data_list = temp_model.from_map(m['RunningDataList'])
         if m.get('SubscriptionSet') is not None:
-            for k in m.get('SubscriptionSet'):
-                temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListSubscriptionSet()
-                self.subscription_set.append(temp_model.from_map(k))
-        self.jstack = []
+            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSet()
+            self.subscription_set = temp_model.from_map(m['SubscriptionSet'])
         if m.get('Jstack') is not None:
-            for k in m.get('Jstack'):
-                temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListJstack()
-                self.jstack.append(temp_model.from_map(k))
+            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstack()
+            self.jstack = temp_model.from_map(m['Jstack'])
         if m.get('LastTimeStamp') is not None:
             self.last_time_stamp = m.get('LastTimeStamp')
         if m.get('StartTimeStamp') is not None:
@@ -1006,7 +1212,38 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList(TeaModel):
         return self
 
 
-class OnsConsumerStatusResponseBodyDataDetailInTopicList(TeaModel):
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList(TeaModel):
+    def __init__(
+        self,
+        consumer_connection_info_do: List[OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDo] = None,
+    ):
+        self.consumer_connection_info_do = consumer_connection_info_do
+
+    def validate(self):
+        if self.consumer_connection_info_do:
+            for k in self.consumer_connection_info_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['ConsumerConnectionInfoDo'] = []
+        if self.consumer_connection_info_do is not None:
+            for k in self.consumer_connection_info_do:
+                result['ConsumerConnectionInfoDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.consumer_connection_info_do = []
+        if m.get('ConsumerConnectionInfoDo') is not None:
+            for k in m.get('ConsumerConnectionInfoDo'):
+                temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDo()
+                self.consumer_connection_info_do.append(temp_model.from_map(k))
+        return self
+
+
+class OnsConsumerStatusResponseBodyDataDetailInTopicListDetailInTopicDo(TeaModel):
     def __init__(
         self,
         delay_time: int = None,
@@ -1047,16 +1284,47 @@ class OnsConsumerStatusResponseBodyDataDetailInTopicList(TeaModel):
         return self
 
 
+class OnsConsumerStatusResponseBodyDataDetailInTopicList(TeaModel):
+    def __init__(
+        self,
+        detail_in_topic_do: List[OnsConsumerStatusResponseBodyDataDetailInTopicListDetailInTopicDo] = None,
+    ):
+        self.detail_in_topic_do = detail_in_topic_do
+
+    def validate(self):
+        if self.detail_in_topic_do:
+            for k in self.detail_in_topic_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['DetailInTopicDo'] = []
+        if self.detail_in_topic_do is not None:
+            for k in self.detail_in_topic_do:
+                result['DetailInTopicDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detail_in_topic_do = []
+        if m.get('DetailInTopicDo') is not None:
+            for k in m.get('DetailInTopicDo'):
+                temp_model = OnsConsumerStatusResponseBodyDataDetailInTopicListDetailInTopicDo()
+                self.detail_in_topic_do.append(temp_model.from_map(k))
+        return self
+
+
 class OnsConsumerStatusResponseBodyData(TeaModel):
     def __init__(
         self,
         consume_tps: float = None,
         consume_model: str = None,
-        connection_set: List[OnsConsumerStatusResponseBodyDataConnectionSet] = None,
+        connection_set: OnsConsumerStatusResponseBodyDataConnectionSet = None,
         total_diff: int = None,
-        consumer_connection_info_list: List[OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList] = None,
+        consumer_connection_info_list: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList = None,
         instance_id: str = None,
-        detail_in_topic_list: List[OnsConsumerStatusResponseBodyDataDetailInTopicList] = None,
+        detail_in_topic_list: OnsConsumerStatusResponseBodyDataDetailInTopicList = None,
         subscription_same: bool = None,
         delay_time: int = None,
         last_timestamp: int = None,
@@ -1078,17 +1346,11 @@ class OnsConsumerStatusResponseBodyData(TeaModel):
 
     def validate(self):
         if self.connection_set:
-            for k in self.connection_set:
-                if k:
-                    k.validate()
+            self.connection_set.validate()
         if self.consumer_connection_info_list:
-            for k in self.consumer_connection_info_list:
-                if k:
-                    k.validate()
+            self.consumer_connection_info_list.validate()
         if self.detail_in_topic_list:
-            for k in self.detail_in_topic_list:
-                if k:
-                    k.validate()
+            self.detail_in_topic_list.validate()
 
     def to_map(self):
         result = dict()
@@ -1096,22 +1358,16 @@ class OnsConsumerStatusResponseBodyData(TeaModel):
             result['ConsumeTps'] = self.consume_tps
         if self.consume_model is not None:
             result['ConsumeModel'] = self.consume_model
-        result['ConnectionSet'] = []
         if self.connection_set is not None:
-            for k in self.connection_set:
-                result['ConnectionSet'].append(k.to_map() if k else None)
+            result['ConnectionSet'] = self.connection_set.to_map()
         if self.total_diff is not None:
             result['TotalDiff'] = self.total_diff
-        result['ConsumerConnectionInfoList'] = []
         if self.consumer_connection_info_list is not None:
-            for k in self.consumer_connection_info_list:
-                result['ConsumerConnectionInfoList'].append(k.to_map() if k else None)
+            result['ConsumerConnectionInfoList'] = self.consumer_connection_info_list.to_map()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        result['DetailInTopicList'] = []
         if self.detail_in_topic_list is not None:
-            for k in self.detail_in_topic_list:
-                result['DetailInTopicList'].append(k.to_map() if k else None)
+            result['DetailInTopicList'] = self.detail_in_topic_list.to_map()
         if self.subscription_same is not None:
             result['SubscriptionSame'] = self.subscription_same
         if self.delay_time is not None:
@@ -1130,25 +1386,19 @@ class OnsConsumerStatusResponseBodyData(TeaModel):
             self.consume_tps = m.get('ConsumeTps')
         if m.get('ConsumeModel') is not None:
             self.consume_model = m.get('ConsumeModel')
-        self.connection_set = []
         if m.get('ConnectionSet') is not None:
-            for k in m.get('ConnectionSet'):
-                temp_model = OnsConsumerStatusResponseBodyDataConnectionSet()
-                self.connection_set.append(temp_model.from_map(k))
+            temp_model = OnsConsumerStatusResponseBodyDataConnectionSet()
+            self.connection_set = temp_model.from_map(m['ConnectionSet'])
         if m.get('TotalDiff') is not None:
             self.total_diff = m.get('TotalDiff')
-        self.consumer_connection_info_list = []
         if m.get('ConsumerConnectionInfoList') is not None:
-            for k in m.get('ConsumerConnectionInfoList'):
-                temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList()
-                self.consumer_connection_info_list.append(temp_model.from_map(k))
+            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList()
+            self.consumer_connection_info_list = temp_model.from_map(m['ConsumerConnectionInfoList'])
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        self.detail_in_topic_list = []
         if m.get('DetailInTopicList') is not None:
-            for k in m.get('DetailInTopicList'):
-                temp_model = OnsConsumerStatusResponseBodyDataDetailInTopicList()
-                self.detail_in_topic_list.append(temp_model.from_map(k))
+            temp_model = OnsConsumerStatusResponseBodyDataDetailInTopicList()
+            self.detail_in_topic_list = temp_model.from_map(m['DetailInTopicList'])
         if m.get('SubscriptionSame') is not None:
             self.subscription_same = m.get('SubscriptionSame')
         if m.get('DelayTime') is not None:
@@ -1407,7 +1657,7 @@ class OnsDLQMessageGetByIdRequest(TeaModel):
         return self
 
 
-class OnsDLQMessageGetByIdResponseBodyDataPropertyList(TeaModel):
+class OnsDLQMessageGetByIdResponseBodyDataPropertyListMessageProperty(TeaModel):
     def __init__(
         self,
         value: str = None,
@@ -1436,6 +1686,37 @@ class OnsDLQMessageGetByIdResponseBodyDataPropertyList(TeaModel):
         return self
 
 
+class OnsDLQMessageGetByIdResponseBodyDataPropertyList(TeaModel):
+    def __init__(
+        self,
+        message_property: List[OnsDLQMessageGetByIdResponseBodyDataPropertyListMessageProperty] = None,
+    ):
+        self.message_property = message_property
+
+    def validate(self):
+        if self.message_property:
+            for k in self.message_property:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['MessageProperty'] = []
+        if self.message_property is not None:
+            for k in self.message_property:
+                result['MessageProperty'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.message_property = []
+        if m.get('MessageProperty') is not None:
+            for k in m.get('MessageProperty'):
+                temp_model = OnsDLQMessageGetByIdResponseBodyDataPropertyListMessageProperty()
+                self.message_property.append(temp_model.from_map(k))
+        return self
+
+
 class OnsDLQMessageGetByIdResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -1446,7 +1727,7 @@ class OnsDLQMessageGetByIdResponseBodyData(TeaModel):
         msg_id: str = None,
         store_host: str = None,
         topic: str = None,
-        property_list: List[OnsDLQMessageGetByIdResponseBodyDataPropertyList] = None,
+        property_list: OnsDLQMessageGetByIdResponseBodyDataPropertyList = None,
         born_timestamp: int = None,
         body_crc: int = None,
         born_host: str = None,
@@ -1465,9 +1746,7 @@ class OnsDLQMessageGetByIdResponseBodyData(TeaModel):
 
     def validate(self):
         if self.property_list:
-            for k in self.property_list:
-                if k:
-                    k.validate()
+            self.property_list.validate()
 
     def to_map(self):
         result = dict()
@@ -1485,10 +1764,8 @@ class OnsDLQMessageGetByIdResponseBodyData(TeaModel):
             result['StoreHost'] = self.store_host
         if self.topic is not None:
             result['Topic'] = self.topic
-        result['PropertyList'] = []
         if self.property_list is not None:
-            for k in self.property_list:
-                result['PropertyList'].append(k.to_map() if k else None)
+            result['PropertyList'] = self.property_list.to_map()
         if self.born_timestamp is not None:
             result['BornTimestamp'] = self.born_timestamp
         if self.body_crc is not None:
@@ -1513,11 +1790,9 @@ class OnsDLQMessageGetByIdResponseBodyData(TeaModel):
             self.store_host = m.get('StoreHost')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
-        self.property_list = []
         if m.get('PropertyList') is not None:
-            for k in m.get('PropertyList'):
-                temp_model = OnsDLQMessageGetByIdResponseBodyDataPropertyList()
-                self.property_list.append(temp_model.from_map(k))
+            temp_model = OnsDLQMessageGetByIdResponseBodyDataPropertyList()
+            self.property_list = temp_model.from_map(m['PropertyList'])
         if m.get('BornTimestamp') is not None:
             self.born_timestamp = m.get('BornTimestamp')
         if m.get('BodyCRC') is not None:
@@ -1650,7 +1925,7 @@ class OnsDLQMessagePageQueryByGroupIdRequest(TeaModel):
         return self
 
 
-class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListPropertyList(TeaModel):
+class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyListMessageProperty(TeaModel):
     def __init__(
         self,
         value: str = None,
@@ -1679,7 +1954,38 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListPropertyL
         return self
 
 
-class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList(TeaModel):
+class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList(TeaModel):
+    def __init__(
+        self,
+        message_property: List[OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyListMessageProperty] = None,
+    ):
+        self.message_property = message_property
+
+    def validate(self):
+        if self.message_property:
+            for k in self.message_property:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['MessageProperty'] = []
+        if self.message_property is not None:
+            for k in self.message_property:
+                result['MessageProperty'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.message_property = []
+        if m.get('MessageProperty') is not None:
+            for k in m.get('MessageProperty'):
+                temp_model = OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyListMessageProperty()
+                self.message_property.append(temp_model.from_map(k))
+        return self
+
+
+class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDo(TeaModel):
     def __init__(
         self,
         store_size: int = None,
@@ -1689,7 +1995,7 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList(TeaModel
         msg_id: str = None,
         store_host: str = None,
         topic: str = None,
-        property_list: List[OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListPropertyList] = None,
+        property_list: OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList = None,
         born_timestamp: int = None,
         body_crc: int = None,
         born_host: str = None,
@@ -1708,9 +2014,7 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList(TeaModel
 
     def validate(self):
         if self.property_list:
-            for k in self.property_list:
-                if k:
-                    k.validate()
+            self.property_list.validate()
 
     def to_map(self):
         result = dict()
@@ -1728,10 +2032,8 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList(TeaModel
             result['StoreHost'] = self.store_host
         if self.topic is not None:
             result['Topic'] = self.topic
-        result['PropertyList'] = []
         if self.property_list is not None:
-            for k in self.property_list:
-                result['PropertyList'].append(k.to_map() if k else None)
+            result['PropertyList'] = self.property_list.to_map()
         if self.born_timestamp is not None:
             result['BornTimestamp'] = self.born_timestamp
         if self.body_crc is not None:
@@ -1756,11 +2058,9 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList(TeaModel
             self.store_host = m.get('StoreHost')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
-        self.property_list = []
         if m.get('PropertyList') is not None:
-            for k in m.get('PropertyList'):
-                temp_model = OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListPropertyList()
-                self.property_list.append(temp_model.from_map(k))
+            temp_model = OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList()
+            self.property_list = temp_model.from_map(m['PropertyList'])
         if m.get('BornTimestamp') is not None:
             self.born_timestamp = m.get('BornTimestamp')
         if m.get('BodyCRC') is not None:
@@ -1770,11 +2070,42 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList(TeaModel
         return self
 
 
+class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList(TeaModel):
+    def __init__(
+        self,
+        ons_rest_message_do: List[OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDo] = None,
+    ):
+        self.ons_rest_message_do = ons_rest_message_do
+
+    def validate(self):
+        if self.ons_rest_message_do:
+            for k in self.ons_rest_message_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['OnsRestMessageDo'] = []
+        if self.ons_rest_message_do is not None:
+            for k in self.ons_rest_message_do:
+                result['OnsRestMessageDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ons_rest_message_do = []
+        if m.get('OnsRestMessageDo') is not None:
+            for k in m.get('OnsRestMessageDo'):
+                temp_model = OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDo()
+                self.ons_rest_message_do.append(temp_model.from_map(k))
+        return self
+
+
 class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDo(TeaModel):
     def __init__(
         self,
         current_page: int = None,
-        msg_found_list: List[OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList] = None,
+        msg_found_list: OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList = None,
         max_page_count: int = None,
         task_id: str = None,
     ):
@@ -1785,18 +2116,14 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDo(TeaModel):
 
     def validate(self):
         if self.msg_found_list:
-            for k in self.msg_found_list:
-                if k:
-                    k.validate()
+            self.msg_found_list.validate()
 
     def to_map(self):
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
-        result['MsgFoundList'] = []
         if self.msg_found_list is not None:
-            for k in self.msg_found_list:
-                result['MsgFoundList'].append(k.to_map() if k else None)
+            result['MsgFoundList'] = self.msg_found_list.to_map()
         if self.max_page_count is not None:
             result['MaxPageCount'] = self.max_page_count
         if self.task_id is not None:
@@ -1807,11 +2134,9 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDo(TeaModel):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
-        self.msg_found_list = []
         if m.get('MsgFoundList') is not None:
-            for k in m.get('MsgFoundList'):
-                temp_model = OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList()
-                self.msg_found_list.append(temp_model.from_map(k))
+            temp_model = OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList()
+            self.msg_found_list = temp_model.from_map(m['MsgFoundList'])
         if m.get('MaxPageCount') is not None:
             self.max_page_count = m.get('MaxPageCount')
         if m.get('TaskId') is not None:
@@ -1918,24 +2243,48 @@ class OnsDLQMessageResendByIdRequest(TeaModel):
         return self
 
 
-class OnsDLQMessageResendByIdResponseBody(TeaModel):
+class OnsDLQMessageResendByIdResponseBodyData(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        data: List[str] = None,
+        msg_id: List[str] = None,
     ):
-        self.request_id = request_id
-        self.data = data
+        self.msg_id = msg_id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        return self
+
+
+class OnsDLQMessageResendByIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: OnsDLQMessageResendByIdResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.data is not None:
-            result['Data'] = self.data
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1943,7 +2292,8 @@ class OnsDLQMessageResendByIdResponseBody(TeaModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            temp_model = OnsDLQMessageResendByIdResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         return self
 
 
@@ -2331,7 +2681,7 @@ class OnsGroupListRequest(TeaModel):
         return self
 
 
-class OnsGroupListResponseBodyDataTags(TeaModel):
+class OnsGroupListResponseBodyDataSubscribeInfoDoTagsTag(TeaModel):
     def __init__(
         self,
         key: str = None,
@@ -2360,7 +2710,38 @@ class OnsGroupListResponseBodyDataTags(TeaModel):
         return self
 
 
-class OnsGroupListResponseBodyData(TeaModel):
+class OnsGroupListResponseBodyDataSubscribeInfoDoTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[OnsGroupListResponseBodyDataSubscribeInfoDoTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = OnsGroupListResponseBodyDataSubscribeInfoDoTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class OnsGroupListResponseBodyDataSubscribeInfoDo(TeaModel):
     def __init__(
         self,
         owner: str = None,
@@ -2369,7 +2750,7 @@ class OnsGroupListResponseBodyData(TeaModel):
         group_id: str = None,
         remark: str = None,
         create_time: int = None,
-        tags: List[OnsGroupListResponseBodyDataTags] = None,
+        tags: OnsGroupListResponseBodyDataSubscribeInfoDoTags = None,
         instance_id: str = None,
         group_type: str = None,
     ):
@@ -2385,9 +2766,7 @@ class OnsGroupListResponseBodyData(TeaModel):
 
     def validate(self):
         if self.tags:
-            for k in self.tags:
-                if k:
-                    k.validate()
+            self.tags.validate()
 
     def to_map(self):
         result = dict()
@@ -2403,10 +2782,8 @@ class OnsGroupListResponseBodyData(TeaModel):
             result['Remark'] = self.remark
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
-        result['Tags'] = []
         if self.tags is not None:
-            for k in self.tags:
-                result['Tags'].append(k.to_map() if k else None)
+            result['Tags'] = self.tags.to_map()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.group_type is not None:
@@ -2427,11 +2804,9 @@ class OnsGroupListResponseBodyData(TeaModel):
             self.remark = m.get('Remark')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
-        self.tags = []
         if m.get('Tags') is not None:
-            for k in m.get('Tags'):
-                temp_model = OnsGroupListResponseBodyDataTags()
-                self.tags.append(temp_model.from_map(k))
+            temp_model = OnsGroupListResponseBodyDataSubscribeInfoDoTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('GroupType') is not None:
@@ -2439,46 +2814,65 @@ class OnsGroupListResponseBodyData(TeaModel):
         return self
 
 
-class OnsGroupListResponseBody(TeaModel):
+class OnsGroupListResponseBodyData(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        data: List[OnsGroupListResponseBodyData] = None,
-        help_url: str = None,
+        subscribe_info_do: List[OnsGroupListResponseBodyDataSubscribeInfoDo] = None,
     ):
-        self.request_id = request_id
-        self.data = data
-        self.help_url = help_url
+        self.subscribe_info_do = subscribe_info_do
 
     def validate(self):
-        if self.data:
-            for k in self.data:
+        if self.subscribe_info_do:
+            for k in self.subscribe_info_do:
                 if k:
                     k.validate()
 
     def to_map(self):
         result = dict()
+        result['SubscribeInfoDo'] = []
+        if self.subscribe_info_do is not None:
+            for k in self.subscribe_info_do:
+                result['SubscribeInfoDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.subscribe_info_do = []
+        if m.get('SubscribeInfoDo') is not None:
+            for k in m.get('SubscribeInfoDo'):
+                temp_model = OnsGroupListResponseBodyDataSubscribeInfoDo()
+                self.subscribe_info_do.append(temp_model.from_map(k))
+        return self
+
+
+class OnsGroupListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: OnsGroupListResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
-        if self.help_url is not None:
-            result['HelpUrl'] = self.help_url
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = OnsGroupListResponseBodyData()
-                self.data.append(temp_model.from_map(k))
-        if m.get('HelpUrl') is not None:
-            self.help_url = m.get('HelpUrl')
+            temp_model = OnsGroupListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         return self
 
 
@@ -2544,7 +2938,7 @@ class OnsGroupSubDetailRequest(TeaModel):
         return self
 
 
-class OnsGroupSubDetailResponseBodyDataSubscriptionDataList(TeaModel):
+class OnsGroupSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList(TeaModel):
     def __init__(
         self,
         sub_string: str = None,
@@ -2573,18 +2967,12 @@ class OnsGroupSubDetailResponseBodyDataSubscriptionDataList(TeaModel):
         return self
 
 
-class OnsGroupSubDetailResponseBodyData(TeaModel):
+class OnsGroupSubDetailResponseBodyDataSubscriptionDataList(TeaModel):
     def __init__(
         self,
-        subscription_data_list: List[OnsGroupSubDetailResponseBodyDataSubscriptionDataList] = None,
-        group_id: str = None,
-        message_model: str = None,
-        online: bool = None,
+        subscription_data_list: List[OnsGroupSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList] = None,
     ):
         self.subscription_data_list = subscription_data_list
-        self.group_id = group_id
-        self.message_model = message_model
-        self.online = online
 
     def validate(self):
         if self.subscription_data_list:
@@ -2598,6 +2986,39 @@ class OnsGroupSubDetailResponseBodyData(TeaModel):
         if self.subscription_data_list is not None:
             for k in self.subscription_data_list:
                 result['SubscriptionDataList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.subscription_data_list = []
+        if m.get('SubscriptionDataList') is not None:
+            for k in m.get('SubscriptionDataList'):
+                temp_model = OnsGroupSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList()
+                self.subscription_data_list.append(temp_model.from_map(k))
+        return self
+
+
+class OnsGroupSubDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        subscription_data_list: OnsGroupSubDetailResponseBodyDataSubscriptionDataList = None,
+        group_id: str = None,
+        message_model: str = None,
+        online: bool = None,
+    ):
+        self.subscription_data_list = subscription_data_list
+        self.group_id = group_id
+        self.message_model = message_model
+        self.online = online
+
+    def validate(self):
+        if self.subscription_data_list:
+            self.subscription_data_list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.subscription_data_list is not None:
+            result['SubscriptionDataList'] = self.subscription_data_list.to_map()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.message_model is not None:
@@ -2608,11 +3029,9 @@ class OnsGroupSubDetailResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.subscription_data_list = []
         if m.get('SubscriptionDataList') is not None:
-            for k in m.get('SubscriptionDataList'):
-                temp_model = OnsGroupSubDetailResponseBodyDataSubscriptionDataList()
-                self.subscription_data_list.append(temp_model.from_map(k))
+            temp_model = OnsGroupSubDetailResponseBodyDataSubscriptionDataList()
+            self.subscription_data_list = temp_model.from_map(m['SubscriptionDataList'])
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('MessageModel') is not None:
@@ -3154,7 +3573,7 @@ class OnsInstanceInServiceListRequest(TeaModel):
         return self
 
 
-class OnsInstanceInServiceListResponseBodyDataTags(TeaModel):
+class OnsInstanceInServiceListResponseBodyDataInstanceVOTagsTag(TeaModel):
     def __init__(
         self,
         key: str = None,
@@ -3183,14 +3602,45 @@ class OnsInstanceInServiceListResponseBodyDataTags(TeaModel):
         return self
 
 
-class OnsInstanceInServiceListResponseBodyData(TeaModel):
+class OnsInstanceInServiceListResponseBodyDataInstanceVOTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[OnsInstanceInServiceListResponseBodyDataInstanceVOTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = OnsInstanceInServiceListResponseBodyDataInstanceVOTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class OnsInstanceInServiceListResponseBodyDataInstanceVO(TeaModel):
     def __init__(
         self,
         independent_naming: bool = None,
         instance_name: str = None,
         release_time: int = None,
         instance_status: int = None,
-        tags: List[OnsInstanceInServiceListResponseBodyDataTags] = None,
+        tags: OnsInstanceInServiceListResponseBodyDataInstanceVOTags = None,
         instance_id: str = None,
         instance_type: int = None,
     ):
@@ -3204,9 +3654,7 @@ class OnsInstanceInServiceListResponseBodyData(TeaModel):
 
     def validate(self):
         if self.tags:
-            for k in self.tags:
-                if k:
-                    k.validate()
+            self.tags.validate()
 
     def to_map(self):
         result = dict()
@@ -3218,10 +3666,8 @@ class OnsInstanceInServiceListResponseBodyData(TeaModel):
             result['ReleaseTime'] = self.release_time
         if self.instance_status is not None:
             result['InstanceStatus'] = self.instance_status
-        result['Tags'] = []
         if self.tags is not None:
-            for k in self.tags:
-                result['Tags'].append(k.to_map() if k else None)
+            result['Tags'] = self.tags.to_map()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_type is not None:
@@ -3238,11 +3684,9 @@ class OnsInstanceInServiceListResponseBodyData(TeaModel):
             self.release_time = m.get('ReleaseTime')
         if m.get('InstanceStatus') is not None:
             self.instance_status = m.get('InstanceStatus')
-        self.tags = []
         if m.get('Tags') is not None:
-            for k in m.get('Tags'):
-                temp_model = OnsInstanceInServiceListResponseBodyDataTags()
-                self.tags.append(temp_model.from_map(k))
+            temp_model = OnsInstanceInServiceListResponseBodyDataInstanceVOTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceType') is not None:
@@ -3250,40 +3694,65 @@ class OnsInstanceInServiceListResponseBodyData(TeaModel):
         return self
 
 
+class OnsInstanceInServiceListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_vo: List[OnsInstanceInServiceListResponseBodyDataInstanceVO] = None,
+    ):
+        self.instance_vo = instance_vo
+
+    def validate(self):
+        if self.instance_vo:
+            for k in self.instance_vo:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['InstanceVO'] = []
+        if self.instance_vo is not None:
+            for k in self.instance_vo:
+                result['InstanceVO'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_vo = []
+        if m.get('InstanceVO') is not None:
+            for k in m.get('InstanceVO'):
+                temp_model = OnsInstanceInServiceListResponseBodyDataInstanceVO()
+                self.instance_vo.append(temp_model.from_map(k))
+        return self
+
+
 class OnsInstanceInServiceListResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: List[OnsInstanceInServiceListResponseBodyData] = None,
+        data: OnsInstanceInServiceListResponseBodyData = None,
     ):
         self.request_id = request_id
         self.data = data
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = OnsInstanceInServiceListResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = OnsInstanceInServiceListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         return self
 
 
@@ -3446,7 +3915,7 @@ class OnsMessageGetByKeyRequest(TeaModel):
         return self
 
 
-class OnsMessageGetByKeyResponseBodyDataPropertyList(TeaModel):
+class OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyListMessageProperty(TeaModel):
     def __init__(
         self,
         value: str = None,
@@ -3475,7 +3944,38 @@ class OnsMessageGetByKeyResponseBodyDataPropertyList(TeaModel):
         return self
 
 
-class OnsMessageGetByKeyResponseBodyData(TeaModel):
+class OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyList(TeaModel):
+    def __init__(
+        self,
+        message_property: List[OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyListMessageProperty] = None,
+    ):
+        self.message_property = message_property
+
+    def validate(self):
+        if self.message_property:
+            for k in self.message_property:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['MessageProperty'] = []
+        if self.message_property is not None:
+            for k in self.message_property:
+                result['MessageProperty'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.message_property = []
+        if m.get('MessageProperty') is not None:
+            for k in m.get('MessageProperty'):
+                temp_model = OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyListMessageProperty()
+                self.message_property.append(temp_model.from_map(k))
+        return self
+
+
+class OnsMessageGetByKeyResponseBodyDataOnsRestMessageDo(TeaModel):
     def __init__(
         self,
         store_size: int = None,
@@ -3485,7 +3985,7 @@ class OnsMessageGetByKeyResponseBodyData(TeaModel):
         msg_id: str = None,
         store_host: str = None,
         topic: str = None,
-        property_list: List[OnsMessageGetByKeyResponseBodyDataPropertyList] = None,
+        property_list: OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyList = None,
         born_timestamp: int = None,
         body_crc: int = None,
         born_host: str = None,
@@ -3504,9 +4004,7 @@ class OnsMessageGetByKeyResponseBodyData(TeaModel):
 
     def validate(self):
         if self.property_list:
-            for k in self.property_list:
-                if k:
-                    k.validate()
+            self.property_list.validate()
 
     def to_map(self):
         result = dict()
@@ -3524,10 +4022,8 @@ class OnsMessageGetByKeyResponseBodyData(TeaModel):
             result['StoreHost'] = self.store_host
         if self.topic is not None:
             result['Topic'] = self.topic
-        result['PropertyList'] = []
         if self.property_list is not None:
-            for k in self.property_list:
-                result['PropertyList'].append(k.to_map() if k else None)
+            result['PropertyList'] = self.property_list.to_map()
         if self.born_timestamp is not None:
             result['BornTimestamp'] = self.born_timestamp
         if self.body_crc is not None:
@@ -3552,11 +4048,9 @@ class OnsMessageGetByKeyResponseBodyData(TeaModel):
             self.store_host = m.get('StoreHost')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
-        self.property_list = []
         if m.get('PropertyList') is not None:
-            for k in m.get('PropertyList'):
-                temp_model = OnsMessageGetByKeyResponseBodyDataPropertyList()
-                self.property_list.append(temp_model.from_map(k))
+            temp_model = OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyList()
+            self.property_list = temp_model.from_map(m['PropertyList'])
         if m.get('BornTimestamp') is not None:
             self.born_timestamp = m.get('BornTimestamp')
         if m.get('BodyCRC') is not None:
@@ -3566,40 +4060,65 @@ class OnsMessageGetByKeyResponseBodyData(TeaModel):
         return self
 
 
+class OnsMessageGetByKeyResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        ons_rest_message_do: List[OnsMessageGetByKeyResponseBodyDataOnsRestMessageDo] = None,
+    ):
+        self.ons_rest_message_do = ons_rest_message_do
+
+    def validate(self):
+        if self.ons_rest_message_do:
+            for k in self.ons_rest_message_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['OnsRestMessageDo'] = []
+        if self.ons_rest_message_do is not None:
+            for k in self.ons_rest_message_do:
+                result['OnsRestMessageDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ons_rest_message_do = []
+        if m.get('OnsRestMessageDo') is not None:
+            for k in m.get('OnsRestMessageDo'):
+                temp_model = OnsMessageGetByKeyResponseBodyDataOnsRestMessageDo()
+                self.ons_rest_message_do.append(temp_model.from_map(k))
+        return self
+
+
 class OnsMessageGetByKeyResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: List[OnsMessageGetByKeyResponseBodyData] = None,
+        data: OnsMessageGetByKeyResponseBodyData = None,
     ):
         self.request_id = request_id
         self.data = data
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = OnsMessageGetByKeyResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = OnsMessageGetByKeyResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         return self
 
 
@@ -3671,7 +4190,7 @@ class OnsMessageGetByMsgIdRequest(TeaModel):
         return self
 
 
-class OnsMessageGetByMsgIdResponseBodyDataPropertyList(TeaModel):
+class OnsMessageGetByMsgIdResponseBodyDataPropertyListMessageProperty(TeaModel):
     def __init__(
         self,
         value: str = None,
@@ -3700,6 +4219,37 @@ class OnsMessageGetByMsgIdResponseBodyDataPropertyList(TeaModel):
         return self
 
 
+class OnsMessageGetByMsgIdResponseBodyDataPropertyList(TeaModel):
+    def __init__(
+        self,
+        message_property: List[OnsMessageGetByMsgIdResponseBodyDataPropertyListMessageProperty] = None,
+    ):
+        self.message_property = message_property
+
+    def validate(self):
+        if self.message_property:
+            for k in self.message_property:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['MessageProperty'] = []
+        if self.message_property is not None:
+            for k in self.message_property:
+                result['MessageProperty'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.message_property = []
+        if m.get('MessageProperty') is not None:
+            for k in m.get('MessageProperty'):
+                temp_model = OnsMessageGetByMsgIdResponseBodyDataPropertyListMessageProperty()
+                self.message_property.append(temp_model.from_map(k))
+        return self
+
+
 class OnsMessageGetByMsgIdResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -3710,7 +4260,7 @@ class OnsMessageGetByMsgIdResponseBodyData(TeaModel):
         msg_id: str = None,
         store_host: str = None,
         topic: str = None,
-        property_list: List[OnsMessageGetByMsgIdResponseBodyDataPropertyList] = None,
+        property_list: OnsMessageGetByMsgIdResponseBodyDataPropertyList = None,
         born_timestamp: int = None,
         body_crc: int = None,
         born_host: str = None,
@@ -3729,9 +4279,7 @@ class OnsMessageGetByMsgIdResponseBodyData(TeaModel):
 
     def validate(self):
         if self.property_list:
-            for k in self.property_list:
-                if k:
-                    k.validate()
+            self.property_list.validate()
 
     def to_map(self):
         result = dict()
@@ -3749,10 +4297,8 @@ class OnsMessageGetByMsgIdResponseBodyData(TeaModel):
             result['StoreHost'] = self.store_host
         if self.topic is not None:
             result['Topic'] = self.topic
-        result['PropertyList'] = []
         if self.property_list is not None:
-            for k in self.property_list:
-                result['PropertyList'].append(k.to_map() if k else None)
+            result['PropertyList'] = self.property_list.to_map()
         if self.born_timestamp is not None:
             result['BornTimestamp'] = self.born_timestamp
         if self.body_crc is not None:
@@ -3777,11 +4323,9 @@ class OnsMessageGetByMsgIdResponseBodyData(TeaModel):
             self.store_host = m.get('StoreHost')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
-        self.property_list = []
         if m.get('PropertyList') is not None:
-            for k in m.get('PropertyList'):
-                temp_model = OnsMessageGetByMsgIdResponseBodyDataPropertyList()
-                self.property_list.append(temp_model.from_map(k))
+            temp_model = OnsMessageGetByMsgIdResponseBodyDataPropertyList()
+            self.property_list = temp_model.from_map(m['PropertyList'])
         if m.get('BornTimestamp') is not None:
             self.born_timestamp = m.get('BornTimestamp')
         if m.get('BodyCRC') is not None:
@@ -3914,7 +4458,7 @@ class OnsMessagePageQueryByTopicRequest(TeaModel):
         return self
 
 
-class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListPropertyList(TeaModel):
+class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyListMessageProperty(TeaModel):
     def __init__(
         self,
         value: str = None,
@@ -3943,7 +4487,38 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListPropertyList(T
         return self
 
 
-class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList(TeaModel):
+class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList(TeaModel):
+    def __init__(
+        self,
+        message_property: List[OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyListMessageProperty] = None,
+    ):
+        self.message_property = message_property
+
+    def validate(self):
+        if self.message_property:
+            for k in self.message_property:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['MessageProperty'] = []
+        if self.message_property is not None:
+            for k in self.message_property:
+                result['MessageProperty'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.message_property = []
+        if m.get('MessageProperty') is not None:
+            for k in m.get('MessageProperty'):
+                temp_model = OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyListMessageProperty()
+                self.message_property.append(temp_model.from_map(k))
+        return self
+
+
+class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDo(TeaModel):
     def __init__(
         self,
         store_size: int = None,
@@ -3953,7 +4528,7 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList(TeaModel):
         msg_id: str = None,
         store_host: str = None,
         topic: str = None,
-        property_list: List[OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListPropertyList] = None,
+        property_list: OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList = None,
         born_timestamp: int = None,
         body_crc: int = None,
         born_host: str = None,
@@ -3972,9 +4547,7 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList(TeaModel):
 
     def validate(self):
         if self.property_list:
-            for k in self.property_list:
-                if k:
-                    k.validate()
+            self.property_list.validate()
 
     def to_map(self):
         result = dict()
@@ -3992,10 +4565,8 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList(TeaModel):
             result['StoreHost'] = self.store_host
         if self.topic is not None:
             result['Topic'] = self.topic
-        result['PropertyList'] = []
         if self.property_list is not None:
-            for k in self.property_list:
-                result['PropertyList'].append(k.to_map() if k else None)
+            result['PropertyList'] = self.property_list.to_map()
         if self.born_timestamp is not None:
             result['BornTimestamp'] = self.born_timestamp
         if self.body_crc is not None:
@@ -4020,11 +4591,9 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList(TeaModel):
             self.store_host = m.get('StoreHost')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
-        self.property_list = []
         if m.get('PropertyList') is not None:
-            for k in m.get('PropertyList'):
-                temp_model = OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListPropertyList()
-                self.property_list.append(temp_model.from_map(k))
+            temp_model = OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList()
+            self.property_list = temp_model.from_map(m['PropertyList'])
         if m.get('BornTimestamp') is not None:
             self.born_timestamp = m.get('BornTimestamp')
         if m.get('BodyCRC') is not None:
@@ -4034,11 +4603,42 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList(TeaModel):
         return self
 
 
+class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList(TeaModel):
+    def __init__(
+        self,
+        ons_rest_message_do: List[OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDo] = None,
+    ):
+        self.ons_rest_message_do = ons_rest_message_do
+
+    def validate(self):
+        if self.ons_rest_message_do:
+            for k in self.ons_rest_message_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['OnsRestMessageDo'] = []
+        if self.ons_rest_message_do is not None:
+            for k in self.ons_rest_message_do:
+                result['OnsRestMessageDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ons_rest_message_do = []
+        if m.get('OnsRestMessageDo') is not None:
+            for k in m.get('OnsRestMessageDo'):
+                temp_model = OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDo()
+                self.ons_rest_message_do.append(temp_model.from_map(k))
+        return self
+
+
 class OnsMessagePageQueryByTopicResponseBodyMsgFoundDo(TeaModel):
     def __init__(
         self,
         current_page: int = None,
-        msg_found_list: List[OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList] = None,
+        msg_found_list: OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList = None,
         max_page_count: int = None,
         task_id: str = None,
     ):
@@ -4049,18 +4649,14 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDo(TeaModel):
 
     def validate(self):
         if self.msg_found_list:
-            for k in self.msg_found_list:
-                if k:
-                    k.validate()
+            self.msg_found_list.validate()
 
     def to_map(self):
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
-        result['MsgFoundList'] = []
         if self.msg_found_list is not None:
-            for k in self.msg_found_list:
-                result['MsgFoundList'].append(k.to_map() if k else None)
+            result['MsgFoundList'] = self.msg_found_list.to_map()
         if self.max_page_count is not None:
             result['MaxPageCount'] = self.max_page_count
         if self.task_id is not None:
@@ -4071,11 +4667,9 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDo(TeaModel):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
-        self.msg_found_list = []
         if m.get('MsgFoundList') is not None:
-            for k in m.get('MsgFoundList'):
-                temp_model = OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList()
-                self.msg_found_list.append(temp_model.from_map(k))
+            temp_model = OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList()
+            self.msg_found_list = temp_model.from_map(m['MsgFoundList'])
         if m.get('MaxPageCount') is not None:
             self.max_page_count = m.get('MaxPageCount')
         if m.get('TaskId') is not None:
@@ -4394,7 +4988,7 @@ class OnsMessageTraceRequest(TeaModel):
         return self
 
 
-class OnsMessageTraceResponseBodyData(TeaModel):
+class OnsMessageTraceResponseBodyDataMessageTrack(TeaModel):
     def __init__(
         self,
         track_type: str = None,
@@ -4429,40 +5023,65 @@ class OnsMessageTraceResponseBodyData(TeaModel):
         return self
 
 
+class OnsMessageTraceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        message_track: List[OnsMessageTraceResponseBodyDataMessageTrack] = None,
+    ):
+        self.message_track = message_track
+
+    def validate(self):
+        if self.message_track:
+            for k in self.message_track:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['MessageTrack'] = []
+        if self.message_track is not None:
+            for k in self.message_track:
+                result['MessageTrack'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.message_track = []
+        if m.get('MessageTrack') is not None:
+            for k in m.get('MessageTrack'):
+                temp_model = OnsMessageTraceResponseBodyDataMessageTrack()
+                self.message_track.append(temp_model.from_map(k))
+        return self
+
+
 class OnsMessageTraceResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: List[OnsMessageTraceResponseBodyData] = None,
+        data: OnsMessageTraceResponseBodyData = None,
     ):
         self.request_id = request_id
         self.data = data
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = OnsMessageTraceResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = OnsMessageTraceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         return self
 
 
@@ -4698,7 +5317,7 @@ class OnsMqttGroupIdListRequest(TeaModel):
         return self
 
 
-class OnsMqttGroupIdListResponseBodyData(TeaModel):
+class OnsMqttGroupIdListResponseBodyDataMqttGroupIdDo(TeaModel):
     def __init__(
         self,
         update_time: int = None,
@@ -4745,40 +5364,65 @@ class OnsMqttGroupIdListResponseBodyData(TeaModel):
         return self
 
 
+class OnsMqttGroupIdListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        mqtt_group_id_do: List[OnsMqttGroupIdListResponseBodyDataMqttGroupIdDo] = None,
+    ):
+        self.mqtt_group_id_do = mqtt_group_id_do
+
+    def validate(self):
+        if self.mqtt_group_id_do:
+            for k in self.mqtt_group_id_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['MqttGroupIdDo'] = []
+        if self.mqtt_group_id_do is not None:
+            for k in self.mqtt_group_id_do:
+                result['MqttGroupIdDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.mqtt_group_id_do = []
+        if m.get('MqttGroupIdDo') is not None:
+            for k in m.get('MqttGroupIdDo'):
+                temp_model = OnsMqttGroupIdListResponseBodyDataMqttGroupIdDo()
+                self.mqtt_group_id_do.append(temp_model.from_map(k))
+        return self
+
+
 class OnsMqttGroupIdListResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: List[OnsMqttGroupIdListResponseBodyData] = None,
+        data: OnsMqttGroupIdListResponseBodyData = None,
     ):
         self.request_id = request_id
         self.data = data
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = OnsMqttGroupIdListResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = OnsMqttGroupIdListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         return self
 
 
@@ -4844,7 +5488,7 @@ class OnsMqttQueryClientByClientIdRequest(TeaModel):
         return self
 
 
-class OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonData(TeaModel):
+class OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonDataSubscriptionDo(TeaModel):
     def __init__(
         self,
         sub_topic: str = None,
@@ -4879,6 +5523,37 @@ class OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonData(Te
         return self
 
 
+class OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonData(TeaModel):
+    def __init__(
+        self,
+        subscription_do: List[OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonDataSubscriptionDo] = None,
+    ):
+        self.subscription_do = subscription_do
+
+    def validate(self):
+        if self.subscription_do:
+            for k in self.subscription_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['SubscriptionDo'] = []
+        if self.subscription_do is not None:
+            for k in self.subscription_do:
+                result['SubscriptionDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.subscription_do = []
+        if m.get('SubscriptionDo') is not None:
+            for k in m.get('SubscriptionDo'):
+                temp_model = OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonDataSubscriptionDo()
+                self.subscription_do.append(temp_model.from_map(k))
+        return self
+
+
 class OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDo(TeaModel):
     def __init__(
         self,
@@ -4886,7 +5561,7 @@ class OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDo(TeaModel):
         last_touch: int = None,
         socket_channel: str = None,
         client_id: str = None,
-        sub_scripton_data: List[OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonData] = None,
+        sub_scripton_data: OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonData = None,
     ):
         self.online = online
         self.last_touch = last_touch
@@ -4896,9 +5571,7 @@ class OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDo(TeaModel):
 
     def validate(self):
         if self.sub_scripton_data:
-            for k in self.sub_scripton_data:
-                if k:
-                    k.validate()
+            self.sub_scripton_data.validate()
 
     def to_map(self):
         result = dict()
@@ -4910,10 +5583,8 @@ class OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDo(TeaModel):
             result['SocketChannel'] = self.socket_channel
         if self.client_id is not None:
             result['ClientId'] = self.client_id
-        result['SubScriptonData'] = []
         if self.sub_scripton_data is not None:
-            for k in self.sub_scripton_data:
-                result['SubScriptonData'].append(k.to_map() if k else None)
+            result['SubScriptonData'] = self.sub_scripton_data.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -4926,11 +5597,9 @@ class OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDo(TeaModel):
             self.socket_channel = m.get('SocketChannel')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
-        self.sub_scripton_data = []
         if m.get('SubScriptonData') is not None:
-            for k in m.get('SubScriptonData'):
-                temp_model = OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonData()
-                self.sub_scripton_data.append(temp_model.from_map(k))
+            temp_model = OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonData()
+            self.sub_scripton_data = temp_model.from_map(m['SubScriptonData'])
         return self
 
 
@@ -5277,7 +5946,7 @@ class OnsMqttQueryHistoryOnlineRequest(TeaModel):
         return self
 
 
-class OnsMqttQueryHistoryOnlineResponseBodyDataRecords(TeaModel):
+class OnsMqttQueryHistoryOnlineResponseBodyDataRecordsStatsDataDo(TeaModel):
     def __init__(
         self,
         y: float = None,
@@ -5306,10 +5975,41 @@ class OnsMqttQueryHistoryOnlineResponseBodyDataRecords(TeaModel):
         return self
 
 
+class OnsMqttQueryHistoryOnlineResponseBodyDataRecords(TeaModel):
+    def __init__(
+        self,
+        stats_data_do: List[OnsMqttQueryHistoryOnlineResponseBodyDataRecordsStatsDataDo] = None,
+    ):
+        self.stats_data_do = stats_data_do
+
+    def validate(self):
+        if self.stats_data_do:
+            for k in self.stats_data_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['StatsDataDo'] = []
+        if self.stats_data_do is not None:
+            for k in self.stats_data_do:
+                result['StatsDataDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.stats_data_do = []
+        if m.get('StatsDataDo') is not None:
+            for k in m.get('StatsDataDo'):
+                temp_model = OnsMqttQueryHistoryOnlineResponseBodyDataRecordsStatsDataDo()
+                self.stats_data_do.append(temp_model.from_map(k))
+        return self
+
+
 class OnsMqttQueryHistoryOnlineResponseBodyData(TeaModel):
     def __init__(
         self,
-        records: List[OnsMqttQueryHistoryOnlineResponseBodyDataRecords] = None,
+        records: OnsMqttQueryHistoryOnlineResponseBodyDataRecords = None,
         xunit: str = None,
         yunit: str = None,
         title: str = None,
@@ -5321,16 +6021,12 @@ class OnsMqttQueryHistoryOnlineResponseBodyData(TeaModel):
 
     def validate(self):
         if self.records:
-            for k in self.records:
-                if k:
-                    k.validate()
+            self.records.validate()
 
     def to_map(self):
         result = dict()
-        result['Records'] = []
         if self.records is not None:
-            for k in self.records:
-                result['Records'].append(k.to_map() if k else None)
+            result['Records'] = self.records.to_map()
         if self.xunit is not None:
             result['XUnit'] = self.xunit
         if self.yunit is not None:
@@ -5341,11 +6037,9 @@ class OnsMqttQueryHistoryOnlineResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.records = []
         if m.get('Records') is not None:
-            for k in m.get('Records'):
-                temp_model = OnsMqttQueryHistoryOnlineResponseBodyDataRecords()
-                self.records.append(temp_model.from_map(k))
+            temp_model = OnsMqttQueryHistoryOnlineResponseBodyDataRecords()
+            self.records = temp_model.from_map(m['Records'])
         if m.get('XUnit') is not None:
             self.xunit = m.get('XUnit')
         if m.get('YUnit') is not None:
@@ -5490,7 +6184,7 @@ class OnsMqttQueryMsgTransTrendRequest(TeaModel):
         return self
 
 
-class OnsMqttQueryMsgTransTrendResponseBodyDataRecords(TeaModel):
+class OnsMqttQueryMsgTransTrendResponseBodyDataRecordsStatsDataDo(TeaModel):
     def __init__(
         self,
         y: float = None,
@@ -5519,10 +6213,41 @@ class OnsMqttQueryMsgTransTrendResponseBodyDataRecords(TeaModel):
         return self
 
 
+class OnsMqttQueryMsgTransTrendResponseBodyDataRecords(TeaModel):
+    def __init__(
+        self,
+        stats_data_do: List[OnsMqttQueryMsgTransTrendResponseBodyDataRecordsStatsDataDo] = None,
+    ):
+        self.stats_data_do = stats_data_do
+
+    def validate(self):
+        if self.stats_data_do:
+            for k in self.stats_data_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['StatsDataDo'] = []
+        if self.stats_data_do is not None:
+            for k in self.stats_data_do:
+                result['StatsDataDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.stats_data_do = []
+        if m.get('StatsDataDo') is not None:
+            for k in m.get('StatsDataDo'):
+                temp_model = OnsMqttQueryMsgTransTrendResponseBodyDataRecordsStatsDataDo()
+                self.stats_data_do.append(temp_model.from_map(k))
+        return self
+
+
 class OnsMqttQueryMsgTransTrendResponseBodyData(TeaModel):
     def __init__(
         self,
-        records: List[OnsMqttQueryMsgTransTrendResponseBodyDataRecords] = None,
+        records: OnsMqttQueryMsgTransTrendResponseBodyDataRecords = None,
         xunit: str = None,
         yunit: str = None,
         title: str = None,
@@ -5534,16 +6259,12 @@ class OnsMqttQueryMsgTransTrendResponseBodyData(TeaModel):
 
     def validate(self):
         if self.records:
-            for k in self.records:
-                if k:
-                    k.validate()
+            self.records.validate()
 
     def to_map(self):
         result = dict()
-        result['Records'] = []
         if self.records is not None:
-            for k in self.records:
-                result['Records'].append(k.to_map() if k else None)
+            result['Records'] = self.records.to_map()
         if self.xunit is not None:
             result['XUnit'] = self.xunit
         if self.yunit is not None:
@@ -5554,11 +6275,9 @@ class OnsMqttQueryMsgTransTrendResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.records = []
         if m.get('Records') is not None:
-            for k in m.get('Records'):
-                temp_model = OnsMqttQueryMsgTransTrendResponseBodyDataRecords()
-                self.records.append(temp_model.from_map(k))
+            temp_model = OnsMqttQueryMsgTransTrendResponseBodyDataRecords()
+            self.records = temp_model.from_map(m['Records'])
         if m.get('XUnit') is not None:
             self.xunit = m.get('XUnit')
         if m.get('YUnit') is not None:
@@ -5632,7 +6351,7 @@ class OnsMqttQueryMsgTransTrendResponse(TeaModel):
         return self
 
 
-class OnsRegionListResponseBodyData(TeaModel):
+class OnsRegionListResponseBodyDataRegionDo(TeaModel):
     def __init__(
         self,
         region_name: str = None,
@@ -5661,40 +6380,65 @@ class OnsRegionListResponseBodyData(TeaModel):
         return self
 
 
+class OnsRegionListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        region_do: List[OnsRegionListResponseBodyDataRegionDo] = None,
+    ):
+        self.region_do = region_do
+
+    def validate(self):
+        if self.region_do:
+            for k in self.region_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['RegionDo'] = []
+        if self.region_do is not None:
+            for k in self.region_do:
+                result['RegionDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.region_do = []
+        if m.get('RegionDo') is not None:
+            for k in m.get('RegionDo'):
+                temp_model = OnsRegionListResponseBodyDataRegionDo()
+                self.region_do.append(temp_model.from_map(k))
+        return self
+
+
 class OnsRegionListResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: List[OnsRegionListResponseBodyData] = None,
+        data: OnsRegionListResponseBodyData = None,
     ):
         self.request_id = request_id
         self.data = data
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = OnsRegionListResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = OnsRegionListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         return self
 
 
@@ -5985,7 +6729,7 @@ class OnsTopicListRequest(TeaModel):
         return self
 
 
-class OnsTopicListResponseBodyDataTags(TeaModel):
+class OnsTopicListResponseBodyDataPublishInfoDoTagsTag(TeaModel):
     def __init__(
         self,
         key: str = None,
@@ -6014,7 +6758,38 @@ class OnsTopicListResponseBodyDataTags(TeaModel):
         return self
 
 
-class OnsTopicListResponseBodyData(TeaModel):
+class OnsTopicListResponseBodyDataPublishInfoDoTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[OnsTopicListResponseBodyDataPublishInfoDoTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = OnsTopicListResponseBodyDataPublishInfoDoTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class OnsTopicListResponseBodyDataPublishInfoDo(TeaModel):
     def __init__(
         self,
         message_type: int = None,
@@ -6025,7 +6800,7 @@ class OnsTopicListResponseBodyData(TeaModel):
         relation: int = None,
         create_time: int = None,
         topic: str = None,
-        tags: List[OnsTopicListResponseBodyDataTags] = None,
+        tags: OnsTopicListResponseBodyDataPublishInfoDoTags = None,
         instance_id: str = None,
     ):
         self.message_type = message_type
@@ -6041,9 +6816,7 @@ class OnsTopicListResponseBodyData(TeaModel):
 
     def validate(self):
         if self.tags:
-            for k in self.tags:
-                if k:
-                    k.validate()
+            self.tags.validate()
 
     def to_map(self):
         result = dict()
@@ -6063,10 +6836,8 @@ class OnsTopicListResponseBodyData(TeaModel):
             result['CreateTime'] = self.create_time
         if self.topic is not None:
             result['Topic'] = self.topic
-        result['Tags'] = []
         if self.tags is not None:
-            for k in self.tags:
-                result['Tags'].append(k.to_map() if k else None)
+            result['Tags'] = self.tags.to_map()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
@@ -6089,13 +6860,42 @@ class OnsTopicListResponseBodyData(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
-        self.tags = []
         if m.get('Tags') is not None:
-            for k in m.get('Tags'):
-                temp_model = OnsTopicListResponseBodyDataTags()
-                self.tags.append(temp_model.from_map(k))
+            temp_model = OnsTopicListResponseBodyDataPublishInfoDoTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        return self
+
+
+class OnsTopicListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        publish_info_do: List[OnsTopicListResponseBodyDataPublishInfoDo] = None,
+    ):
+        self.publish_info_do = publish_info_do
+
+    def validate(self):
+        if self.publish_info_do:
+            for k in self.publish_info_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['PublishInfoDo'] = []
+        if self.publish_info_do is not None:
+            for k in self.publish_info_do:
+                result['PublishInfoDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.publish_info_do = []
+        if m.get('PublishInfoDo') is not None:
+            for k in m.get('PublishInfoDo'):
+                temp_model = OnsTopicListResponseBodyDataPublishInfoDo()
+                self.publish_info_do.append(temp_model.from_map(k))
         return self
 
 
@@ -6103,42 +6903,30 @@ class OnsTopicListResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: List[OnsTopicListResponseBodyData] = None,
-        help_url: str = None,
+        data: OnsTopicListResponseBodyData = None,
     ):
         self.request_id = request_id
         self.data = data
-        self.help_url = help_url
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
-        if self.help_url is not None:
-            result['HelpUrl'] = self.help_url
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = OnsTopicListResponseBodyData()
-                self.data.append(temp_model.from_map(k))
-        if m.get('HelpUrl') is not None:
-            self.help_url = m.get('HelpUrl')
+            temp_model = OnsTopicListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         return self
 
 
@@ -6332,7 +7120,7 @@ class OnsTopicSubDetailRequest(TeaModel):
         return self
 
 
-class OnsTopicSubDetailResponseBodyDataSubscriptionDataList(TeaModel):
+class OnsTopicSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList(TeaModel):
     def __init__(
         self,
         group_id: str = None,
@@ -6367,14 +7155,12 @@ class OnsTopicSubDetailResponseBodyDataSubscriptionDataList(TeaModel):
         return self
 
 
-class OnsTopicSubDetailResponseBodyData(TeaModel):
+class OnsTopicSubDetailResponseBodyDataSubscriptionDataList(TeaModel):
     def __init__(
         self,
-        subscription_data_list: List[OnsTopicSubDetailResponseBodyDataSubscriptionDataList] = None,
-        topic: str = None,
+        subscription_data_list: List[OnsTopicSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList] = None,
     ):
         self.subscription_data_list = subscription_data_list
-        self.topic = topic
 
     def validate(self):
         if self.subscription_data_list:
@@ -6388,8 +7174,6 @@ class OnsTopicSubDetailResponseBodyData(TeaModel):
         if self.subscription_data_list is not None:
             for k in self.subscription_data_list:
                 result['SubscriptionDataList'].append(k.to_map() if k else None)
-        if self.topic is not None:
-            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
@@ -6397,8 +7181,37 @@ class OnsTopicSubDetailResponseBodyData(TeaModel):
         self.subscription_data_list = []
         if m.get('SubscriptionDataList') is not None:
             for k in m.get('SubscriptionDataList'):
-                temp_model = OnsTopicSubDetailResponseBodyDataSubscriptionDataList()
+                temp_model = OnsTopicSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList()
                 self.subscription_data_list.append(temp_model.from_map(k))
+        return self
+
+
+class OnsTopicSubDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        subscription_data_list: OnsTopicSubDetailResponseBodyDataSubscriptionDataList = None,
+        topic: str = None,
+    ):
+        self.subscription_data_list = subscription_data_list
+        self.topic = topic
+
+    def validate(self):
+        if self.subscription_data_list:
+            self.subscription_data_list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.subscription_data_list is not None:
+            result['SubscriptionDataList'] = self.subscription_data_list.to_map()
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SubscriptionDataList') is not None:
+            temp_model = OnsTopicSubDetailResponseBodyDataSubscriptionDataList()
+            self.subscription_data_list = temp_model.from_map(m['SubscriptionDataList'])
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
         return self
@@ -6582,7 +7395,7 @@ class OnsTraceGetResultRequest(TeaModel):
         return self
 
 
-class OnsTraceGetResultResponseBodyTraceDataTraceListSubListClientList(TeaModel):
+class OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDoClientListSubClientInfoDo(TeaModel):
     def __init__(
         self,
         status: str = None,
@@ -6635,10 +7448,41 @@ class OnsTraceGetResultResponseBodyTraceDataTraceListSubListClientList(TeaModel)
         return self
 
 
-class OnsTraceGetResultResponseBodyTraceDataTraceListSubList(TeaModel):
+class OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDoClientList(TeaModel):
     def __init__(
         self,
-        client_list: List[OnsTraceGetResultResponseBodyTraceDataTraceListSubListClientList] = None,
+        sub_client_info_do: List[OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDoClientListSubClientInfoDo] = None,
+    ):
+        self.sub_client_info_do = sub_client_info_do
+
+    def validate(self):
+        if self.sub_client_info_do:
+            for k in self.sub_client_info_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['SubClientInfoDo'] = []
+        if self.sub_client_info_do is not None:
+            for k in self.sub_client_info_do:
+                result['SubClientInfoDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.sub_client_info_do = []
+        if m.get('SubClientInfoDo') is not None:
+            for k in m.get('SubClientInfoDo'):
+                temp_model = OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDoClientListSubClientInfoDo()
+                self.sub_client_info_do.append(temp_model.from_map(k))
+        return self
+
+
+class OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDo(TeaModel):
+    def __init__(
+        self,
+        client_list: OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDoClientList = None,
         fail_count: int = None,
         sub_group_name: str = None,
         success_count: int = None,
@@ -6650,16 +7494,12 @@ class OnsTraceGetResultResponseBodyTraceDataTraceListSubList(TeaModel):
 
     def validate(self):
         if self.client_list:
-            for k in self.client_list:
-                if k:
-                    k.validate()
+            self.client_list.validate()
 
     def to_map(self):
         result = dict()
-        result['ClientList'] = []
         if self.client_list is not None:
-            for k in self.client_list:
-                result['ClientList'].append(k.to_map() if k else None)
+            result['ClientList'] = self.client_list.to_map()
         if self.fail_count is not None:
             result['FailCount'] = self.fail_count
         if self.sub_group_name is not None:
@@ -6670,11 +7510,9 @@ class OnsTraceGetResultResponseBodyTraceDataTraceListSubList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.client_list = []
         if m.get('ClientList') is not None:
-            for k in m.get('ClientList'):
-                temp_model = OnsTraceGetResultResponseBodyTraceDataTraceListSubListClientList()
-                self.client_list.append(temp_model.from_map(k))
+            temp_model = OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDoClientList()
+            self.client_list = temp_model.from_map(m['ClientList'])
         if m.get('FailCount') is not None:
             self.fail_count = m.get('FailCount')
         if m.get('SubGroupName') is not None:
@@ -6684,13 +7522,44 @@ class OnsTraceGetResultResponseBodyTraceDataTraceListSubList(TeaModel):
         return self
 
 
-class OnsTraceGetResultResponseBodyTraceDataTraceList(TeaModel):
+class OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubList(TeaModel):
+    def __init__(
+        self,
+        sub_map_do: List[OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDo] = None,
+    ):
+        self.sub_map_do = sub_map_do
+
+    def validate(self):
+        if self.sub_map_do:
+            for k in self.sub_map_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['SubMapDo'] = []
+        if self.sub_map_do is not None:
+            for k in self.sub_map_do:
+                result['SubMapDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.sub_map_do = []
+        if m.get('SubMapDo') is not None:
+            for k in m.get('SubMapDo'):
+                temp_model = OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDo()
+                self.sub_map_do.append(temp_model.from_map(k))
+        return self
+
+
+class OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDo(TeaModel):
     def __init__(
         self,
         status: str = None,
         msg_key: str = None,
         pub_time: int = None,
-        sub_list: List[OnsTraceGetResultResponseBodyTraceDataTraceListSubList] = None,
+        sub_list: OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubList = None,
         topic: str = None,
         cost_time: int = None,
         tag: str = None,
@@ -6711,9 +7580,7 @@ class OnsTraceGetResultResponseBodyTraceDataTraceList(TeaModel):
 
     def validate(self):
         if self.sub_list:
-            for k in self.sub_list:
-                if k:
-                    k.validate()
+            self.sub_list.validate()
 
     def to_map(self):
         result = dict()
@@ -6723,10 +7590,8 @@ class OnsTraceGetResultResponseBodyTraceDataTraceList(TeaModel):
             result['MsgKey'] = self.msg_key
         if self.pub_time is not None:
             result['PubTime'] = self.pub_time
-        result['SubList'] = []
         if self.sub_list is not None:
-            for k in self.sub_list:
-                result['SubList'].append(k.to_map() if k else None)
+            result['SubList'] = self.sub_list.to_map()
         if self.topic is not None:
             result['Topic'] = self.topic
         if self.cost_time is not None:
@@ -6749,11 +7614,9 @@ class OnsTraceGetResultResponseBodyTraceDataTraceList(TeaModel):
             self.msg_key = m.get('MsgKey')
         if m.get('PubTime') is not None:
             self.pub_time = m.get('PubTime')
-        self.sub_list = []
         if m.get('SubList') is not None:
-            for k in m.get('SubList'):
-                temp_model = OnsTraceGetResultResponseBodyTraceDataTraceListSubList()
-                self.sub_list.append(temp_model.from_map(k))
+            temp_model = OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubList()
+            self.sub_list = temp_model.from_map(m['SubList'])
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
         if m.get('CostTime') is not None:
@@ -6769,6 +7632,37 @@ class OnsTraceGetResultResponseBodyTraceDataTraceList(TeaModel):
         return self
 
 
+class OnsTraceGetResultResponseBodyTraceDataTraceList(TeaModel):
+    def __init__(
+        self,
+        trace_map_do: List[OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDo] = None,
+    ):
+        self.trace_map_do = trace_map_do
+
+    def validate(self):
+        if self.trace_map_do:
+            for k in self.trace_map_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['TraceMapDo'] = []
+        if self.trace_map_do is not None:
+            for k in self.trace_map_do:
+                result['TraceMapDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.trace_map_do = []
+        if m.get('TraceMapDo') is not None:
+            for k in m.get('TraceMapDo'):
+                temp_model = OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDo()
+                self.trace_map_do.append(temp_model.from_map(k))
+        return self
+
+
 class OnsTraceGetResultResponseBodyTraceData(TeaModel):
     def __init__(
         self,
@@ -6780,7 +7674,7 @@ class OnsTraceGetResultResponseBodyTraceData(TeaModel):
         user_id: str = None,
         instance_id: str = None,
         msg_id: str = None,
-        trace_list: List[OnsTraceGetResultResponseBodyTraceDataTraceList] = None,
+        trace_list: OnsTraceGetResultResponseBodyTraceDataTraceList = None,
         query_id: str = None,
     ):
         self.status = status
@@ -6796,9 +7690,7 @@ class OnsTraceGetResultResponseBodyTraceData(TeaModel):
 
     def validate(self):
         if self.trace_list:
-            for k in self.trace_list:
-                if k:
-                    k.validate()
+            self.trace_list.validate()
 
     def to_map(self):
         result = dict()
@@ -6818,10 +7710,8 @@ class OnsTraceGetResultResponseBodyTraceData(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.msg_id is not None:
             result['MsgId'] = self.msg_id
-        result['TraceList'] = []
         if self.trace_list is not None:
-            for k in self.trace_list:
-                result['TraceList'].append(k.to_map() if k else None)
+            result['TraceList'] = self.trace_list.to_map()
         if self.query_id is not None:
             result['QueryId'] = self.query_id
         return result
@@ -6844,11 +7734,9 @@ class OnsTraceGetResultResponseBodyTraceData(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('MsgId') is not None:
             self.msg_id = m.get('MsgId')
-        self.trace_list = []
         if m.get('TraceList') is not None:
-            for k in m.get('TraceList'):
-                temp_model = OnsTraceGetResultResponseBodyTraceDataTraceList()
-                self.trace_list.append(temp_model.from_map(k))
+            temp_model = OnsTraceGetResultResponseBodyTraceDataTraceList()
+            self.trace_list = temp_model.from_map(m['TraceList'])
         if m.get('QueryId') is not None:
             self.query_id = m.get('QueryId')
         return self
@@ -7195,7 +8083,7 @@ class OnsTrendGroupOutputTpsRequest(TeaModel):
         return self
 
 
-class OnsTrendGroupOutputTpsResponseBodyDataRecords(TeaModel):
+class OnsTrendGroupOutputTpsResponseBodyDataRecordsStatsDataDo(TeaModel):
     def __init__(
         self,
         y: float = None,
@@ -7224,10 +8112,41 @@ class OnsTrendGroupOutputTpsResponseBodyDataRecords(TeaModel):
         return self
 
 
+class OnsTrendGroupOutputTpsResponseBodyDataRecords(TeaModel):
+    def __init__(
+        self,
+        stats_data_do: List[OnsTrendGroupOutputTpsResponseBodyDataRecordsStatsDataDo] = None,
+    ):
+        self.stats_data_do = stats_data_do
+
+    def validate(self):
+        if self.stats_data_do:
+            for k in self.stats_data_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['StatsDataDo'] = []
+        if self.stats_data_do is not None:
+            for k in self.stats_data_do:
+                result['StatsDataDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.stats_data_do = []
+        if m.get('StatsDataDo') is not None:
+            for k in m.get('StatsDataDo'):
+                temp_model = OnsTrendGroupOutputTpsResponseBodyDataRecordsStatsDataDo()
+                self.stats_data_do.append(temp_model.from_map(k))
+        return self
+
+
 class OnsTrendGroupOutputTpsResponseBodyData(TeaModel):
     def __init__(
         self,
-        records: List[OnsTrendGroupOutputTpsResponseBodyDataRecords] = None,
+        records: OnsTrendGroupOutputTpsResponseBodyDataRecords = None,
         xunit: str = None,
         yunit: str = None,
         title: str = None,
@@ -7239,16 +8158,12 @@ class OnsTrendGroupOutputTpsResponseBodyData(TeaModel):
 
     def validate(self):
         if self.records:
-            for k in self.records:
-                if k:
-                    k.validate()
+            self.records.validate()
 
     def to_map(self):
         result = dict()
-        result['Records'] = []
         if self.records is not None:
-            for k in self.records:
-                result['Records'].append(k.to_map() if k else None)
+            result['Records'] = self.records.to_map()
         if self.xunit is not None:
             result['XUnit'] = self.xunit
         if self.yunit is not None:
@@ -7259,11 +8174,9 @@ class OnsTrendGroupOutputTpsResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.records = []
         if m.get('Records') is not None:
-            for k in m.get('Records'):
-                temp_model = OnsTrendGroupOutputTpsResponseBodyDataRecords()
-                self.records.append(temp_model.from_map(k))
+            temp_model = OnsTrendGroupOutputTpsResponseBodyDataRecords()
+            self.records = temp_model.from_map(m['Records'])
         if m.get('XUnit') is not None:
             self.xunit = m.get('XUnit')
         if m.get('YUnit') is not None:
@@ -7390,7 +8303,7 @@ class OnsTrendTopicInputTpsRequest(TeaModel):
         return self
 
 
-class OnsTrendTopicInputTpsResponseBodyDataRecords(TeaModel):
+class OnsTrendTopicInputTpsResponseBodyDataRecordsStatsDataDo(TeaModel):
     def __init__(
         self,
         y: float = None,
@@ -7419,10 +8332,41 @@ class OnsTrendTopicInputTpsResponseBodyDataRecords(TeaModel):
         return self
 
 
+class OnsTrendTopicInputTpsResponseBodyDataRecords(TeaModel):
+    def __init__(
+        self,
+        stats_data_do: List[OnsTrendTopicInputTpsResponseBodyDataRecordsStatsDataDo] = None,
+    ):
+        self.stats_data_do = stats_data_do
+
+    def validate(self):
+        if self.stats_data_do:
+            for k in self.stats_data_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['StatsDataDo'] = []
+        if self.stats_data_do is not None:
+            for k in self.stats_data_do:
+                result['StatsDataDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.stats_data_do = []
+        if m.get('StatsDataDo') is not None:
+            for k in m.get('StatsDataDo'):
+                temp_model = OnsTrendTopicInputTpsResponseBodyDataRecordsStatsDataDo()
+                self.stats_data_do.append(temp_model.from_map(k))
+        return self
+
+
 class OnsTrendTopicInputTpsResponseBodyData(TeaModel):
     def __init__(
         self,
-        records: List[OnsTrendTopicInputTpsResponseBodyDataRecords] = None,
+        records: OnsTrendTopicInputTpsResponseBodyDataRecords = None,
         xunit: str = None,
         yunit: str = None,
         title: str = None,
@@ -7434,16 +8378,12 @@ class OnsTrendTopicInputTpsResponseBodyData(TeaModel):
 
     def validate(self):
         if self.records:
-            for k in self.records:
-                if k:
-                    k.validate()
+            self.records.validate()
 
     def to_map(self):
         result = dict()
-        result['Records'] = []
         if self.records is not None:
-            for k in self.records:
-                result['Records'].append(k.to_map() if k else None)
+            result['Records'] = self.records.to_map()
         if self.xunit is not None:
             result['XUnit'] = self.xunit
         if self.yunit is not None:
@@ -7454,11 +8394,9 @@ class OnsTrendTopicInputTpsResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.records = []
         if m.get('Records') is not None:
-            for k in m.get('Records'):
-                temp_model = OnsTrendTopicInputTpsResponseBodyDataRecords()
-                self.records.append(temp_model.from_map(k))
+            temp_model = OnsTrendTopicInputTpsResponseBodyDataRecords()
+            self.records = temp_model.from_map(m['Records'])
         if m.get('XUnit') is not None:
             self.xunit = m.get('XUnit')
         if m.get('YUnit') is not None:
