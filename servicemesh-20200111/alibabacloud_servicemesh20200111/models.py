@@ -1948,6 +1948,12 @@ class UpdateMeshFeatureRequest(TeaModel):
         customized_prometheus: bool = None,
         prometheus_url: str = None,
         access_log_enabled: bool = None,
+        mseenabled: bool = None,
+        redis_filter_enabled: bool = None,
+        mysql_filter_enabled: bool = None,
+        thrift_filter_enabled: bool = None,
+        web_assembly_filter_enabled: bool = None,
+        dnsproxying_enabled: bool = None,
     ):
         self.service_mesh_id = service_mesh_id
         self.tracing = tracing
@@ -1985,6 +1991,12 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.customized_prometheus = customized_prometheus
         self.prometheus_url = prometheus_url
         self.access_log_enabled = access_log_enabled
+        self.mseenabled = mseenabled
+        self.redis_filter_enabled = redis_filter_enabled
+        self.mysql_filter_enabled = mysql_filter_enabled
+        self.thrift_filter_enabled = thrift_filter_enabled
+        self.web_assembly_filter_enabled = web_assembly_filter_enabled
+        self.dnsproxying_enabled = dnsproxying_enabled
 
     def validate(self):
         self.validate_required(self.service_mesh_id, 'service_mesh_id')
@@ -2063,6 +2075,18 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['PrometheusUrl'] = self.prometheus_url
         if self.access_log_enabled is not None:
             result['AccessLogEnabled'] = self.access_log_enabled
+        if self.mseenabled is not None:
+            result['MSEEnabled'] = self.mseenabled
+        if self.redis_filter_enabled is not None:
+            result['RedisFilterEnabled'] = self.redis_filter_enabled
+        if self.mysql_filter_enabled is not None:
+            result['MysqlFilterEnabled'] = self.mysql_filter_enabled
+        if self.thrift_filter_enabled is not None:
+            result['ThriftFilterEnabled'] = self.thrift_filter_enabled
+        if self.web_assembly_filter_enabled is not None:
+            result['WebAssemblyFilterEnabled'] = self.web_assembly_filter_enabled
+        if self.dnsproxying_enabled is not None:
+            result['DNSProxyingEnabled'] = self.dnsproxying_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -2139,6 +2163,18 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.prometheus_url = m.get('PrometheusUrl')
         if m.get('AccessLogEnabled') is not None:
             self.access_log_enabled = m.get('AccessLogEnabled')
+        if m.get('MSEEnabled') is not None:
+            self.mseenabled = m.get('MSEEnabled')
+        if m.get('RedisFilterEnabled') is not None:
+            self.redis_filter_enabled = m.get('RedisFilterEnabled')
+        if m.get('MysqlFilterEnabled') is not None:
+            self.mysql_filter_enabled = m.get('MysqlFilterEnabled')
+        if m.get('ThriftFilterEnabled') is not None:
+            self.thrift_filter_enabled = m.get('ThriftFilterEnabled')
+        if m.get('WebAssemblyFilterEnabled') is not None:
+            self.web_assembly_filter_enabled = m.get('WebAssemblyFilterEnabled')
+        if m.get('DNSProxyingEnabled') is not None:
+            self.dnsproxying_enabled = m.get('DNSProxyingEnabled')
         return self
 
 
@@ -3688,6 +3724,12 @@ class CreateServiceMeshRequest(TeaModel):
         access_log_enabled: bool = None,
         customized_prometheus: bool = None,
         prometheus_url: str = None,
+        redis_filter_enabled: bool = None,
+        mysql_filter_enabled: bool = None,
+        thrift_filter_enabled: bool = None,
+        web_assembly_filter_enabled: bool = None,
+        mseenabled: bool = None,
+        dnsproxying_enabled: bool = None,
     ):
         self.region_id = region_id
         self.istio_version = istio_version
@@ -3721,6 +3763,12 @@ class CreateServiceMeshRequest(TeaModel):
         self.access_log_enabled = access_log_enabled
         self.customized_prometheus = customized_prometheus
         self.prometheus_url = prometheus_url
+        self.redis_filter_enabled = redis_filter_enabled
+        self.mysql_filter_enabled = mysql_filter_enabled
+        self.thrift_filter_enabled = thrift_filter_enabled
+        self.web_assembly_filter_enabled = web_assembly_filter_enabled
+        self.mseenabled = mseenabled
+        self.dnsproxying_enabled = dnsproxying_enabled
 
     def validate(self):
         self.validate_required(self.region_id, 'region_id')
@@ -3793,6 +3841,18 @@ class CreateServiceMeshRequest(TeaModel):
             result['CustomizedPrometheus'] = self.customized_prometheus
         if self.prometheus_url is not None:
             result['PrometheusUrl'] = self.prometheus_url
+        if self.redis_filter_enabled is not None:
+            result['RedisFilterEnabled'] = self.redis_filter_enabled
+        if self.mysql_filter_enabled is not None:
+            result['MysqlFilterEnabled'] = self.mysql_filter_enabled
+        if self.thrift_filter_enabled is not None:
+            result['ThriftFilterEnabled'] = self.thrift_filter_enabled
+        if self.web_assembly_filter_enabled is not None:
+            result['WebAssemblyFilterEnabled'] = self.web_assembly_filter_enabled
+        if self.mseenabled is not None:
+            result['MSEEnabled'] = self.mseenabled
+        if self.dnsproxying_enabled is not None:
+            result['DNSProxyingEnabled'] = self.dnsproxying_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -3861,6 +3921,18 @@ class CreateServiceMeshRequest(TeaModel):
             self.customized_prometheus = m.get('CustomizedPrometheus')
         if m.get('PrometheusUrl') is not None:
             self.prometheus_url = m.get('PrometheusUrl')
+        if m.get('RedisFilterEnabled') is not None:
+            self.redis_filter_enabled = m.get('RedisFilterEnabled')
+        if m.get('MysqlFilterEnabled') is not None:
+            self.mysql_filter_enabled = m.get('MysqlFilterEnabled')
+        if m.get('ThriftFilterEnabled') is not None:
+            self.thrift_filter_enabled = m.get('ThriftFilterEnabled')
+        if m.get('WebAssemblyFilterEnabled') is not None:
+            self.web_assembly_filter_enabled = m.get('WebAssemblyFilterEnabled')
+        if m.get('MSEEnabled') is not None:
+            self.mseenabled = m.get('MSEEnabled')
+        if m.get('DNSProxyingEnabled') is not None:
+            self.dnsproxying_enabled = m.get('DNSProxyingEnabled')
         return self
 
 

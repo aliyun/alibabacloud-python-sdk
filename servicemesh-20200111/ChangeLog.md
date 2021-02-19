@@ -1,3 +1,6 @@
+2021-02-19 Version: 1.0.12
+- Generated python 2020-01-11 for servicemesh.
+
 2021-01-25 Version: 1.0.11
 - Generated python 2020-01-11 for servicemesh.
 
