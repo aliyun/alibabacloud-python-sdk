@@ -1,3 +1,6 @@
+2021-02-22 Version: 2.0.0
+- Generated python 2019-12-30 for imageseg.
+
 2020-12-22 Version: 1.0.15
 - Update SegmentAnimal SegmentCommonImage.
 
