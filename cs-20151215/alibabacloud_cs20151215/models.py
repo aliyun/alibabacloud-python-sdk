@@ -6146,7 +6146,7 @@ class DescribeTemplatesRequest(TeaModel):
         return self
 
 
-class DescribeTemplatesResponseBodyTemplatesTemplate(TeaModel):
+class DescribeTemplatesResponseBodyTemplates(TeaModel):
     def __init__(
         self,
         acl: str = None,
@@ -6233,37 +6233,6 @@ class DescribeTemplatesResponseBodyTemplatesTemplate(TeaModel):
         return self
 
 
-class DescribeTemplatesResponseBodyTemplates(TeaModel):
-    def __init__(
-        self,
-        template: List[DescribeTemplatesResponseBodyTemplatesTemplate] = None,
-    ):
-        self.template = template
-
-    def validate(self):
-        if self.template:
-            for k in self.template:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        result['template'] = []
-        if self.template is not None:
-            for k in self.template:
-                result['template'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.template = []
-        if m.get('template') is not None:
-            for k in m.get('template'):
-                temp_model = DescribeTemplatesResponseBodyTemplatesTemplate()
-                self.template.append(temp_model.from_map(k))
-        return self
-
-
 class DescribeTemplatesResponseBodyPageInfo(TeaModel):
     def __init__(
         self,
@@ -6305,7 +6274,7 @@ class DescribeTemplatesResponseBodyPageInfo(TeaModel):
 class DescribeTemplatesResponseBody(TeaModel):
     def __init__(
         self,
-        templates: DescribeTemplatesResponseBodyTemplates = None,
+        templates: List[DescribeTemplatesResponseBodyTemplates] = None,
         page_info: DescribeTemplatesResponseBodyPageInfo = None,
     ):
         # 模板列表。
@@ -6315,23 +6284,29 @@ class DescribeTemplatesResponseBody(TeaModel):
 
     def validate(self):
         if self.templates:
-            self.templates.validate()
+            for k in self.templates:
+                if k:
+                    k.validate()
         if self.page_info:
             self.page_info.validate()
 
     def to_map(self):
         result = dict()
+        result['templates'] = []
         if self.templates is not None:
-            result['templates'] = self.templates.to_map()
+            for k in self.templates:
+                result['templates'].append(k.to_map() if k else None)
         if self.page_info is not None:
             result['page_info'] = self.page_info.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.templates = []
         if m.get('templates') is not None:
-            temp_model = DescribeTemplatesResponseBodyTemplates()
-            self.templates = temp_model.from_map(m['templates'])
+            for k in m.get('templates'):
+                temp_model = DescribeTemplatesResponseBodyTemplates()
+                self.templates.append(temp_model.from_map(k))
         if m.get('page_info') is not None:
             temp_model = DescribeTemplatesResponseBodyPageInfo()
             self.page_info = temp_model.from_map(m['page_info'])
@@ -6441,7 +6416,7 @@ class DescribeTemplateAttributeRequest(TeaModel):
         return self
 
 
-class DescribeTemplateAttributeResponseBodyTemplateInfo(TeaModel):
+class DescribeTemplateAttributeResponseBody(TeaModel):
     def __init__(
         self,
         id: str = None,
@@ -6528,42 +6503,11 @@ class DescribeTemplateAttributeResponseBodyTemplateInfo(TeaModel):
         return self
 
 
-class DescribeTemplateAttributeResponseBody(TeaModel):
-    def __init__(
-        self,
-        template_info: List[DescribeTemplateAttributeResponseBodyTemplateInfo] = None,
-    ):
-        self.template_info = template_info
-
-    def validate(self):
-        if self.template_info:
-            for k in self.template_info:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        result['template_info'] = []
-        if self.template_info is not None:
-            for k in self.template_info:
-                result['template_info'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.template_info = []
-        if m.get('template_info') is not None:
-            for k in m.get('template_info'):
-                temp_model = DescribeTemplateAttributeResponseBodyTemplateInfo()
-                self.template_info.append(temp_model.from_map(k))
-        return self
-
-
 class DescribeTemplateAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: DescribeTemplateAttributeResponseBody = None,
+        body: List[DescribeTemplateAttributeResponseBody] = None,
     ):
         self.headers = headers
         self.body = body
@@ -6572,23 +6516,29 @@ class DescribeTemplateAttributeResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
         self.validate_required(self.body, 'body')
         if self.body:
-            self.body.validate()
+            for k in self.body:
+                if k:
+                    k.validate()
 
     def to_map(self):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        result['body'] = []
         if self.body is not None:
-            result['body'] = self.body.to_map()
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        self.body = []
         if m.get('body') is not None:
-            temp_model = DescribeTemplateAttributeResponseBody()
-            self.body = temp_model.from_map(m['body'])
+            for k in m.get('body'):
+                temp_model = DescribeTemplateAttributeResponseBody()
+                self.body.append(temp_model.from_map(k))
         return self
 
 
@@ -7856,7 +7806,7 @@ class ModifyClusterConfigurationResponse(TeaModel):
         return self
 
 
-class DescribeTaskInfoResponseBodyTaskResultTask(TeaModel):
+class DescribeTaskInfoResponseBodyTaskResult(TeaModel):
     def __init__(
         self,
         data: str = None,
@@ -7887,37 +7837,6 @@ class DescribeTaskInfoResponseBodyTaskResultTask(TeaModel):
         return self
 
 
-class DescribeTaskInfoResponseBodyTaskResult(TeaModel):
-    def __init__(
-        self,
-        task: List[DescribeTaskInfoResponseBodyTaskResultTask] = None,
-    ):
-        self.task = task
-
-    def validate(self):
-        if self.task:
-            for k in self.task:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        result['task'] = []
-        if self.task is not None:
-            for k in self.task:
-                result['task'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.task = []
-        if m.get('task') is not None:
-            for k in m.get('task'):
-                temp_model = DescribeTaskInfoResponseBodyTaskResultTask()
-                self.task.append(temp_model.from_map(k))
-        return self
-
-
 class DescribeTaskInfoResponseBody(TeaModel):
     def __init__(
         self,
@@ -7927,7 +7846,7 @@ class DescribeTaskInfoResponseBody(TeaModel):
         updated: str = None,
         state: str = None,
         task_type: str = None,
-        task_result: DescribeTaskInfoResponseBodyTaskResult = None,
+        task_result: List[DescribeTaskInfoResponseBodyTaskResult] = None,
     ):
         # 集群ID。
         self.cluster_id = cluster_id
@@ -7946,7 +7865,9 @@ class DescribeTaskInfoResponseBody(TeaModel):
 
     def validate(self):
         if self.task_result:
-            self.task_result.validate()
+            for k in self.task_result:
+                if k:
+                    k.validate()
 
     def to_map(self):
         result = dict()
@@ -7962,8 +7883,10 @@ class DescribeTaskInfoResponseBody(TeaModel):
             result['state'] = self.state
         if self.task_type is not None:
             result['task_type'] = self.task_type
+        result['task_result'] = []
         if self.task_result is not None:
-            result['task_result'] = self.task_result.to_map()
+            for k in self.task_result:
+                result['task_result'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -7980,9 +7903,11 @@ class DescribeTaskInfoResponseBody(TeaModel):
             self.state = m.get('state')
         if m.get('task_type') is not None:
             self.task_type = m.get('task_type')
+        self.task_result = []
         if m.get('task_result') is not None:
-            temp_model = DescribeTaskInfoResponseBodyTaskResult()
-            self.task_result = temp_model.from_map(m['task_result'])
+            for k in m.get('task_result'):
+                temp_model = DescribeTaskInfoResponseBodyTaskResult()
+                self.task_result.append(temp_model.from_map(k))
         return self
 
 
@@ -10348,6 +10273,7 @@ class GetKubernetesTriggerResponseBody(TeaModel):
         project_id: str = None,
         type: str = None,
         action: str = None,
+        token: str = None,
     ):
         # 触发器ID。
         self.id = id
@@ -10361,6 +10287,8 @@ class GetKubernetesTriggerResponseBody(TeaModel):
         self.type = type
         # 触发器行为
         self.action = action
+        # Token
+        self.token = token
 
     def validate(self):
         pass
@@ -10379,6 +10307,8 @@ class GetKubernetesTriggerResponseBody(TeaModel):
             result['type'] = self.type
         if self.action is not None:
             result['action'] = self.action
+        if self.token is not None:
+            result['token'] = self.token
         return result
 
     def from_map(self, m: dict = None):
@@ -10395,6 +10325,8 @@ class GetKubernetesTriggerResponseBody(TeaModel):
             self.type = m.get('type')
         if m.get('action') is not None:
             self.action = m.get('action')
+        if m.get('token') is not None:
+            self.token = m.get('token')
         return self
 
 
