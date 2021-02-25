@@ -353,7 +353,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         return yuqing_20210126_models.AggregateSearchYuqingResponse().from_map(
-            self.do_roarequest('AggregateSearchYuqing', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/aggSearch.json', 'json', req, runtime)
+            self.do_roarequest('AggregateSearchYuqing', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/aggSearch.json', 'json', req, runtime)
         )
 
     async def aggregate_search_yuqing_with_options_async(
@@ -381,7 +381,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         return yuqing_20210126_models.AggregateSearchYuqingResponse().from_map(
-            await self.do_roarequest_async('AggregateSearchYuqing', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/aggSearch.json', 'json', req, runtime)
+            await self.do_roarequest_async('AggregateSearchYuqing', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/aggSearch.json', 'json', req, runtime)
         )
 
     def get_analysis_component_result(
@@ -481,7 +481,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         return yuqing_20210126_models.QueryAnalysisComponentResponse().from_map(
-            self.do_roarequest('QueryAnalysisComponent', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryAnalysisComponent.json', 'json', req, runtime)
+            self.do_roarequest('QueryAnalysisComponent', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/queryAnalysisComponent.json', 'json', req, runtime)
         )
 
     async def query_analysis_component_with_options_async(
@@ -505,7 +505,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         return yuqing_20210126_models.QueryAnalysisComponentResponse().from_map(
-            await self.do_roarequest_async('QueryAnalysisComponent', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryAnalysisComponent.json', 'json', req, runtime)
+            await self.do_roarequest_async('QueryAnalysisComponent', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/queryAnalysisComponent.json', 'json', req, runtime)
         )
 
     def update_propagation(
@@ -663,7 +663,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         return yuqing_20210126_models.ListYuqingMessagesResponse().from_map(
-            self.do_roarequest('ListYuqingMessages', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/searchMessages.json', 'json', req, runtime)
+            self.do_roarequest('ListYuqingMessages', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchMessages.json', 'json', req, runtime)
         )
 
     async def list_yuqing_messages_with_options_async(
@@ -685,7 +685,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         return yuqing_20210126_models.ListYuqingMessagesResponse().from_map(
-            await self.do_roarequest_async('ListYuqingMessages', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/searchMessages.json', 'json', req, runtime)
+            await self.do_roarequest_async('ListYuqingMessages', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchMessages.json', 'json', req, runtime)
         )
 
     def query_project_list(
