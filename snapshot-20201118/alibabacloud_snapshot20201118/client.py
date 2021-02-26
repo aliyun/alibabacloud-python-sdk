@@ -40,6 +40,62 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def get_snapshot_info(
+        self,
+        request: snapshot_20201118_models.GetSnapshotInfoRequest,
+    ) -> snapshot_20201118_models.GetSnapshotInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_snapshot_info_with_options(request, headers, runtime)
+
+    async def get_snapshot_info_async(
+        self,
+        request: snapshot_20201118_models.GetSnapshotInfoRequest,
+    ) -> snapshot_20201118_models.GetSnapshotInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_snapshot_info_with_options_async(request, headers, runtime)
+
+    def get_snapshot_info_with_options(
+        self,
+        request: snapshot_20201118_models.GetSnapshotInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> snapshot_20201118_models.GetSnapshotInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return snapshot_20201118_models.GetSnapshotInfoResponse().from_map(
+            self.do_roarequest('GetSnapshotInfo', '2020-11-18', 'HTTPS', 'GET', 'AK', f'/snapshots/info', 'json', req, runtime)
+        )
+
+    async def get_snapshot_info_with_options_async(
+        self,
+        request: snapshot_20201118_models.GetSnapshotInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> snapshot_20201118_models.GetSnapshotInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return snapshot_20201118_models.GetSnapshotInfoResponse().from_map(
+            await self.do_roarequest_async('GetSnapshotInfo', '2020-11-18', 'HTTPS', 'GET', 'AK', f'/snapshots/info', 'json', req, runtime)
+        )
+
     def get_snapshot_block(
         self,
         request: snapshot_20201118_models.GetSnapshotBlockRequest,
