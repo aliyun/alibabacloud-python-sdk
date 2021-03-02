@@ -2055,6 +2055,473 @@ class QueryAlarmDataListResponse(TeaModel):
         return self
 
 
+class GetAnalysisComponentResultRequest(TeaModel):
+    def __init__(
+        self,
+        analysis_id: int = None,
+        team_hash_id: str = None,
+        request_id: str = None,
+    ):
+        # 分析任务Id
+        self.analysis_id = analysis_id
+        # 舆情团队HashId
+        self.team_hash_id = team_hash_id
+        # 请求id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.analysis_id is not None:
+            result['analysisId'] = self.analysis_id
+        if self.team_hash_id is not None:
+            result['teamHashId'] = self.team_hash_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysisId') is not None:
+            self.analysis_id = m.get('analysisId')
+        if m.get('teamHashId') is not None:
+            self.team_hash_id = m.get('teamHashId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetAnalysisComponentResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_json: str = None,
+        analysis_id: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 任务结果json。参考opinion.analysis.component.query的result_json
+        self.result_json = result_json
+        # 任务Id
+        self.analysis_id = analysis_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result_json is not None:
+            result['resultJson'] = self.result_json
+        if self.analysis_id is not None:
+            result['analysisId'] = self.analysis_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('resultJson') is not None:
+            self.result_json = m.get('resultJson')
+        if m.get('analysisId') is not None:
+            self.analysis_id = m.get('analysisId')
+        return self
+
+
+class GetAnalysisComponentResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetAnalysisComponentResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetAnalysisComponentResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMessageDetailRequest(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        team_hash_id: str = None,
+        request_id: str = None,
+    ):
+        # 舆情文章Id
+        self.doc_id = doc_id
+        # 舆情团队HashId
+        self.team_hash_id = team_hash_id
+        # 请求id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.team_hash_id is not None:
+            result['teamHashId'] = self.team_hash_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('teamHashId') is not None:
+            self.team_hash_id = m.get('teamHashId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetMessageDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 舆情消息体
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.data is not None:
+            result['data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        return self
+
+
+class GetMessageDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetMessageDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetMessageDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateProjectRequest(TeaModel):
+    def __init__(
+        self,
+        create_user_id: str = None,
+        create_user_name: str = None,
+        project: Project = None,
+        team_hash_id: str = None,
+        request_id: str = None,
+    ):
+        # 创建者uid
+        self.create_user_id = create_user_id
+        # 创建者名称
+        self.create_user_name = create_user_name
+        # 舆情项目对象
+        self.project = project
+        # 舆情团队HashId
+        self.team_hash_id = team_hash_id
+        # 请求id
+        self.request_id = request_id
+
+    def validate(self):
+        if self.project:
+            self.project.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.create_user_id is not None:
+            result['createUserId'] = self.create_user_id
+        if self.create_user_name is not None:
+            result['createUserName'] = self.create_user_name
+        if self.project is not None:
+            result['project'] = self.project.to_map()
+        if self.team_hash_id is not None:
+            result['teamHashId'] = self.team_hash_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createUserId') is not None:
+            self.create_user_id = m.get('createUserId')
+        if m.get('createUserName') is not None:
+            self.create_user_name = m.get('createUserName')
+        if m.get('project') is not None:
+            temp_model = Project()
+            self.project = temp_model.from_map(m['project'])
+        if m.get('teamHashId') is not None:
+            self.team_hash_id = m.get('teamHashId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        # 舆情项目id
+        self.id = id
+        # 请求id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryProjectListRequest(TeaModel):
+    def __init__(
+        self,
+        page_now: int = None,
+        page_size: int = None,
+        project_group_id: int = None,
+        project_id: int = None,
+        team_hash_id: str = None,
+        request_id: str = None,
+    ):
+        # 当前页数，从1开始
+        self.page_now = page_now
+        # 分页大小
+        self.page_size = page_size
+        # 所属项目分组id
+        self.project_group_id = project_group_id
+        # 指定舆情项目id
+        self.project_id = project_id
+        # 舆情团队HashId
+        self.team_hash_id = team_hash_id
+        # 请求id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.page_now is not None:
+            result['pageNow'] = self.page_now
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.project_group_id is not None:
+            result['projectGroupId'] = self.project_group_id
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.team_hash_id is not None:
+            result['teamHashId'] = self.team_hash_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pageNow') is not None:
+            self.page_now = m.get('pageNow')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('projectGroupId') is not None:
+            self.project_group_id = m.get('projectGroupId')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('teamHashId') is not None:
+            self.team_hash_id = m.get('teamHashId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class QueryProjectListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        project_list: List[Project] = None,
+        total_count: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 舆情项目列表,参考Project对象
+        self.project_list = project_list
+        # 总记录数
+        self.total_count = total_count
+
+    def validate(self):
+        if self.project_list:
+            for k in self.project_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['projectList'] = []
+        if self.project_list is not None:
+            for k in self.project_list:
+                result['projectList'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.project_list = []
+        if m.get('projectList') is not None:
+            for k in m.get('projectList'):
+                temp_model = Project()
+                self.project_list.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class QueryProjectListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryProjectListResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryProjectListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryTagNodesRequest(TeaModel):
     def __init__(
         self,
@@ -2313,6 +2780,122 @@ class QueryReportNotifiesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = QueryReportNotifiesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteProjectRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        modified_user_id: str = None,
+        modified_user_name: str = None,
+        team_hash_id: str = None,
+        request_id: str = None,
+    ):
+        # 舆情项目id
+        self.id = id
+        # 修改人uid
+        self.modified_user_id = modified_user_id
+        # 修改人名称
+        self.modified_user_name = modified_user_name
+        # 舆情团队HashId
+        self.team_hash_id = team_hash_id
+        # 请求id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.modified_user_id is not None:
+            result['modifiedUserId'] = self.modified_user_id
+        if self.modified_user_name is not None:
+            result['modifiedUserName'] = self.modified_user_name
+        if self.team_hash_id is not None:
+            result['teamHashId'] = self.team_hash_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('modifiedUserId') is not None:
+            self.modified_user_id = m.get('modifiedUserId')
+        if m.get('modifiedUserName') is not None:
+            self.modified_user_name = m.get('modifiedUserName')
+        if m.get('teamHashId') is not None:
+            self.team_hash_id = m.get('teamHashId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        # 被删除的项目id
+        self.id = id
+        # 请求id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteProjectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2581,115 +3164,6 @@ class AggregateSearchYuqingResponse(TeaModel):
         return self
 
 
-class GetAnalysisComponentResultRequest(TeaModel):
-    def __init__(
-        self,
-        analysis_id: int = None,
-        team_hash_id: str = None,
-        request_id: str = None,
-    ):
-        # 分析任务Id
-        self.analysis_id = analysis_id
-        # 舆情团队HashId
-        self.team_hash_id = team_hash_id
-        # 请求id
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.analysis_id is not None:
-            result['analysisId'] = self.analysis_id
-        if self.team_hash_id is not None:
-            result['teamHashId'] = self.team_hash_id
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('analysisId') is not None:
-            self.analysis_id = m.get('analysisId')
-        if m.get('teamHashId') is not None:
-            self.team_hash_id = m.get('teamHashId')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        return self
-
-
-class GetAnalysisComponentResultResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_json: str = None,
-        analysis_id: int = None,
-    ):
-        # Id of the request
-        self.request_id = request_id
-        # 任务结果json。参考opinion.analysis.component.query的result_json
-        self.result_json = result_json
-        # 任务Id
-        self.analysis_id = analysis_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result_json is not None:
-            result['resultJson'] = self.result_json
-        if self.analysis_id is not None:
-            result['analysisId'] = self.analysis_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('resultJson') is not None:
-            self.result_json = m.get('resultJson')
-        if m.get('analysisId') is not None:
-            self.analysis_id = m.get('analysisId')
-        return self
-
-
-class GetAnalysisComponentResultResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetAnalysisComponentResultResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetAnalysisComponentResultResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class QueryAnalysisComponentRequest(TeaModel):
     def __init__(
         self,
@@ -2903,108 +3377,6 @@ class UpdatePropagationResponse(TeaModel):
         return self
 
 
-class GetMessageDetailRequest(TeaModel):
-    def __init__(
-        self,
-        doc_id: str = None,
-        team_hash_id: str = None,
-        request_id: str = None,
-    ):
-        # 舆情文章Id
-        self.doc_id = doc_id
-        # 舆情团队HashId
-        self.team_hash_id = team_hash_id
-        # 请求id
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.doc_id is not None:
-            result['docId'] = self.doc_id
-        if self.team_hash_id is not None:
-            result['teamHashId'] = self.team_hash_id
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('docId') is not None:
-            self.doc_id = m.get('docId')
-        if m.get('teamHashId') is not None:
-            self.team_hash_id = m.get('teamHashId')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        return self
-
-
-class GetMessageDetailResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        # Id of the request
-        self.request_id = request_id
-        # 舆情消息体
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.data is not None:
-            result['data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('data') is not None:
-            self.data = m.get('data')
-        return self
-
-
-class GetMessageDetailResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetMessageDetailResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetMessageDetailResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListYuqingMessagesRequest(TeaModel):
     def __init__(
         self,
@@ -3120,144 +3492,6 @@ class ListYuqingMessagesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListYuqingMessagesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class QueryProjectListRequest(TeaModel):
-    def __init__(
-        self,
-        page_now: int = None,
-        page_size: int = None,
-        project_group_id: int = None,
-        project_id: int = None,
-        team_hash_id: str = None,
-        request_id: str = None,
-    ):
-        # 当前页数，从1开始
-        self.page_now = page_now
-        # 分页大小
-        self.page_size = page_size
-        # 所属项目分组id
-        self.project_group_id = project_group_id
-        # 指定舆情项目id
-        self.project_id = project_id
-        # 舆情团队HashId
-        self.team_hash_id = team_hash_id
-        # 请求id
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page_now is not None:
-            result['pageNow'] = self.page_now
-        if self.page_size is not None:
-            result['pageSize'] = self.page_size
-        if self.project_group_id is not None:
-            result['projectGroupId'] = self.project_group_id
-        if self.project_id is not None:
-            result['projectId'] = self.project_id
-        if self.team_hash_id is not None:
-            result['teamHashId'] = self.team_hash_id
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('pageNow') is not None:
-            self.page_now = m.get('pageNow')
-        if m.get('pageSize') is not None:
-            self.page_size = m.get('pageSize')
-        if m.get('projectGroupId') is not None:
-            self.project_group_id = m.get('projectGroupId')
-        if m.get('projectId') is not None:
-            self.project_id = m.get('projectId')
-        if m.get('teamHashId') is not None:
-            self.team_hash_id = m.get('teamHashId')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        return self
-
-
-class QueryProjectListResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        project_list: List[Project] = None,
-        total_count: int = None,
-    ):
-        # Id of the request
-        self.request_id = request_id
-        # 舆情项目列表,参考Project对象
-        self.project_list = project_list
-        # 总记录数
-        self.total_count = total_count
-
-    def validate(self):
-        if self.project_list:
-            for k in self.project_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        result['projectList'] = []
-        if self.project_list is not None:
-            for k in self.project_list:
-                result['projectList'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['totalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        self.project_list = []
-        if m.get('projectList') is not None:
-            for k in m.get('projectList'):
-                temp_model = Project()
-                self.project_list.append(temp_model.from_map(k))
-        if m.get('totalCount') is not None:
-            self.total_count = m.get('totalCount')
-        return self
-
-
-class QueryProjectListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: QueryProjectListResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = QueryProjectListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

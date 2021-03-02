@@ -104,6 +104,270 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('QueryAlarmDataList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryAlarmDataList.json', 'json', req, runtime)
         )
 
+    def get_analysis_component_result(
+        self,
+        request: yuqing_20210126_models.GetAnalysisComponentResultRequest,
+    ) -> yuqing_20210126_models.GetAnalysisComponentResultResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_analysis_component_result_with_options(request, headers, runtime)
+
+    async def get_analysis_component_result_async(
+        self,
+        request: yuqing_20210126_models.GetAnalysisComponentResultRequest,
+    ) -> yuqing_20210126_models.GetAnalysisComponentResultResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_analysis_component_result_with_options_async(request, headers, runtime)
+
+    def get_analysis_component_result_with_options(
+        self,
+        request: yuqing_20210126_models.GetAnalysisComponentResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.GetAnalysisComponentResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.analysis_id):
+            query['analysisId'] = request.analysis_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return yuqing_20210126_models.GetAnalysisComponentResultResponse().from_map(
+            self.do_roarequest('GetAnalysisComponentResult', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/getAnalysisComponentResult.json', 'json', req, runtime)
+        )
+
+    async def get_analysis_component_result_with_options_async(
+        self,
+        request: yuqing_20210126_models.GetAnalysisComponentResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.GetAnalysisComponentResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.analysis_id):
+            query['analysisId'] = request.analysis_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return yuqing_20210126_models.GetAnalysisComponentResultResponse().from_map(
+            await self.do_roarequest_async('GetAnalysisComponentResult', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/getAnalysisComponentResult.json', 'json', req, runtime)
+        )
+
+    def get_message_detail(
+        self,
+        request: yuqing_20210126_models.GetMessageDetailRequest,
+    ) -> yuqing_20210126_models.GetMessageDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_message_detail_with_options(request, headers, runtime)
+
+    async def get_message_detail_async(
+        self,
+        request: yuqing_20210126_models.GetMessageDetailRequest,
+    ) -> yuqing_20210126_models.GetMessageDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_message_detail_with_options_async(request, headers, runtime)
+
+    def get_message_detail_with_options(
+        self,
+        request: yuqing_20210126_models.GetMessageDetailRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.GetMessageDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.doc_id):
+            query['docId'] = request.doc_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return yuqing_20210126_models.GetMessageDetailResponse().from_map(
+            self.do_roarequest('GetMessageDetail', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/getMessageFromHbase.json', 'json', req, runtime)
+        )
+
+    async def get_message_detail_with_options_async(
+        self,
+        request: yuqing_20210126_models.GetMessageDetailRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.GetMessageDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.doc_id):
+            query['docId'] = request.doc_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return yuqing_20210126_models.GetMessageDetailResponse().from_map(
+            await self.do_roarequest_async('GetMessageDetail', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/getMessageFromHbase.json', 'json', req, runtime)
+        )
+
+    def create_project(
+        self,
+        request: yuqing_20210126_models.CreateProjectRequest,
+    ) -> yuqing_20210126_models.CreateProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_project_with_options(request, headers, runtime)
+
+    async def create_project_async(
+        self,
+        request: yuqing_20210126_models.CreateProjectRequest,
+    ) -> yuqing_20210126_models.CreateProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_project_with_options_async(request, headers, runtime)
+
+    def create_project_with_options(
+        self,
+        request: yuqing_20210126_models.CreateProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.CreateProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
+        if not UtilClient.is_unset(request.create_user_id):
+            body['createUserId'] = request.create_user_id
+        if not UtilClient.is_unset(request.create_user_name):
+            body['createUserName'] = request.create_user_name
+        if not UtilClient.is_unset(request.project):
+            body['project'] = request.project
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return yuqing_20210126_models.CreateProjectResponse().from_map(
+            self.do_roarequest_with_form('CreateProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/createProject.json', 'json', req, runtime)
+        )
+
+    async def create_project_with_options_async(
+        self,
+        request: yuqing_20210126_models.CreateProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.CreateProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
+        if not UtilClient.is_unset(request.create_user_id):
+            body['createUserId'] = request.create_user_id
+        if not UtilClient.is_unset(request.create_user_name):
+            body['createUserName'] = request.create_user_name
+        if not UtilClient.is_unset(request.project):
+            body['project'] = request.project
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return yuqing_20210126_models.CreateProjectResponse().from_map(
+            await self.do_roarequest_with_form_async('CreateProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/createProject.json', 'json', req, runtime)
+        )
+
+    def query_project_list(
+        self,
+        request: yuqing_20210126_models.QueryProjectListRequest,
+    ) -> yuqing_20210126_models.QueryProjectListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_project_list_with_options(request, headers, runtime)
+
+    async def query_project_list_async(
+        self,
+        request: yuqing_20210126_models.QueryProjectListRequest,
+    ) -> yuqing_20210126_models.QueryProjectListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_project_list_with_options_async(request, headers, runtime)
+
+    def query_project_list_with_options(
+        self,
+        request: yuqing_20210126_models.QueryProjectListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.QueryProjectListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_now):
+            query['pageNow'] = request.page_now
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_group_id):
+            query['projectGroupId'] = request.project_group_id
+        if not UtilClient.is_unset(request.project_id):
+            query['projectId'] = request.project_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return yuqing_20210126_models.QueryProjectListResponse().from_map(
+            self.do_roarequest('QueryProjectList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryProjectList.json', 'json', req, runtime)
+        )
+
+    async def query_project_list_with_options_async(
+        self,
+        request: yuqing_20210126_models.QueryProjectListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.QueryProjectListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_now):
+            query['pageNow'] = request.page_now
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_group_id):
+            query['projectGroupId'] = request.project_group_id
+        if not UtilClient.is_unset(request.project_id):
+            query['projectId'] = request.project_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return yuqing_20210126_models.QueryProjectListResponse().from_map(
+            await self.do_roarequest_async('QueryProjectList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryProjectList.json', 'json', req, runtime)
+        )
+
     def query_tag_nodes(
         self,
         request: yuqing_20210126_models.QueryTagNodesRequest,
@@ -242,6 +506,78 @@ class Client(OpenApiClient):
         )
         return yuqing_20210126_models.QueryReportNotifiesResponse().from_map(
             await self.do_roarequest_async('QueryReportNotifies', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryReportNotifies.json', 'json', req, runtime)
+        )
+
+    def delete_project(
+        self,
+        request: yuqing_20210126_models.DeleteProjectRequest,
+    ) -> yuqing_20210126_models.DeleteProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_project_with_options(request, headers, runtime)
+
+    async def delete_project_async(
+        self,
+        request: yuqing_20210126_models.DeleteProjectRequest,
+    ) -> yuqing_20210126_models.DeleteProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_project_with_options_async(request, headers, runtime)
+
+    def delete_project_with_options(
+        self,
+        request: yuqing_20210126_models.DeleteProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.DeleteProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.modified_user_id):
+            body['modifiedUserId'] = request.modified_user_id
+        if not UtilClient.is_unset(request.modified_user_name):
+            body['modifiedUserName'] = request.modified_user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return yuqing_20210126_models.DeleteProjectResponse().from_map(
+            self.do_roarequest_with_form('DeleteProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/deleteProject.json', 'json', req, runtime)
+        )
+
+    async def delete_project_with_options_async(
+        self,
+        request: yuqing_20210126_models.DeleteProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.DeleteProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.modified_user_id):
+            body['modifiedUserId'] = request.modified_user_id
+        if not UtilClient.is_unset(request.modified_user_name):
+            body['modifiedUserName'] = request.modified_user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return yuqing_20210126_models.DeleteProjectResponse().from_map(
+            await self.do_roarequest_with_form_async('DeleteProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/deleteProject.json', 'json', req, runtime)
         )
 
     def query_filter_list(
@@ -388,66 +724,6 @@ class Client(OpenApiClient):
             await self.do_roarequest_with_form_async('AggregateSearchYuqing', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/aggSearch.json', 'json', req, runtime)
         )
 
-    def get_analysis_component_result(
-        self,
-        request: yuqing_20210126_models.GetAnalysisComponentResultRequest,
-    ) -> yuqing_20210126_models.GetAnalysisComponentResultResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_analysis_component_result_with_options(request, headers, runtime)
-
-    async def get_analysis_component_result_async(
-        self,
-        request: yuqing_20210126_models.GetAnalysisComponentResultRequest,
-    ) -> yuqing_20210126_models.GetAnalysisComponentResultResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_analysis_component_result_with_options_async(request, headers, runtime)
-
-    def get_analysis_component_result_with_options(
-        self,
-        request: yuqing_20210126_models.GetAnalysisComponentResultRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.GetAnalysisComponentResultResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.analysis_id):
-            query['analysisId'] = request.analysis_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return yuqing_20210126_models.GetAnalysisComponentResultResponse().from_map(
-            self.do_roarequest('GetAnalysisComponentResult', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/getAnalysisComponentResult.json', 'json', req, runtime)
-        )
-
-    async def get_analysis_component_result_with_options_async(
-        self,
-        request: yuqing_20210126_models.GetAnalysisComponentResultRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.GetAnalysisComponentResultResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.analysis_id):
-            query['analysisId'] = request.analysis_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return yuqing_20210126_models.GetAnalysisComponentResultResponse().from_map(
-            await self.do_roarequest_async('GetAnalysisComponentResult', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/getAnalysisComponentResult.json', 'json', req, runtime)
-        )
-
     def query_analysis_component(
         self,
         request: yuqing_20210126_models.QueryAnalysisComponentRequest,
@@ -580,66 +856,6 @@ class Client(OpenApiClient):
             await self.do_roarequest_with_form_async('UpdatePropagation', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/updatePropagation.json', 'json', req, runtime)
         )
 
-    def get_message_detail(
-        self,
-        request: yuqing_20210126_models.GetMessageDetailRequest,
-    ) -> yuqing_20210126_models.GetMessageDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_message_detail_with_options(request, headers, runtime)
-
-    async def get_message_detail_async(
-        self,
-        request: yuqing_20210126_models.GetMessageDetailRequest,
-    ) -> yuqing_20210126_models.GetMessageDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_message_detail_with_options_async(request, headers, runtime)
-
-    def get_message_detail_with_options(
-        self,
-        request: yuqing_20210126_models.GetMessageDetailRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.GetMessageDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.doc_id):
-            query['docId'] = request.doc_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return yuqing_20210126_models.GetMessageDetailResponse().from_map(
-            self.do_roarequest('GetMessageDetail', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/getMessageFromHbase.json', 'json', req, runtime)
-        )
-
-    async def get_message_detail_with_options_async(
-        self,
-        request: yuqing_20210126_models.GetMessageDetailRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.GetMessageDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.doc_id):
-            query['docId'] = request.doc_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return yuqing_20210126_models.GetMessageDetailResponse().from_map(
-            await self.do_roarequest_async('GetMessageDetail', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/getMessageFromHbase.json', 'json', req, runtime)
-        )
-
     def list_yuqing_messages(
         self,
         request: yuqing_20210126_models.ListYuqingMessagesRequest,
@@ -702,76 +918,4 @@ class Client(OpenApiClient):
         )
         return yuqing_20210126_models.ListYuqingMessagesResponse().from_map(
             await self.do_roarequest_with_form_async('ListYuqingMessages', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchMessages.json', 'json', req, runtime)
-        )
-
-    def query_project_list(
-        self,
-        request: yuqing_20210126_models.QueryProjectListRequest,
-    ) -> yuqing_20210126_models.QueryProjectListResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.query_project_list_with_options(request, headers, runtime)
-
-    async def query_project_list_async(
-        self,
-        request: yuqing_20210126_models.QueryProjectListRequest,
-    ) -> yuqing_20210126_models.QueryProjectListResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.query_project_list_with_options_async(request, headers, runtime)
-
-    def query_project_list_with_options(
-        self,
-        request: yuqing_20210126_models.QueryProjectListRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.QueryProjectListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.page_now):
-            query['pageNow'] = request.page_now
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.project_group_id):
-            query['projectGroupId'] = request.project_group_id
-        if not UtilClient.is_unset(request.project_id):
-            query['projectId'] = request.project_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return yuqing_20210126_models.QueryProjectListResponse().from_map(
-            self.do_roarequest('QueryProjectList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryProjectList.json', 'json', req, runtime)
-        )
-
-    async def query_project_list_with_options_async(
-        self,
-        request: yuqing_20210126_models.QueryProjectListRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.QueryProjectListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.page_now):
-            query['pageNow'] = request.page_now
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.project_group_id):
-            query['projectGroupId'] = request.project_group_id
-        if not UtilClient.is_unset(request.project_id):
-            query['projectId'] = request.project_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return yuqing_20210126_models.QueryProjectListResponse().from_map(
-            await self.do_roarequest_async('QueryProjectList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryProjectList.json', 'json', req, runtime)
         )
