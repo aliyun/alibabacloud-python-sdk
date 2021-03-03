@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class CreateCertificateRequest(TeaModel):
@@ -1198,11 +1198,13 @@ class DescribeDomainResponseBodyDomainCloudNativeInstances(TeaModel):
     def __init__(
         self,
         protocol_port_configs: List[DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs] = None,
+        redirection_type_name: str = None,
         cloud_native_product_name: str = None,
         instance_id: str = None,
         ipaddress_list: str = None,
     ):
         self.protocol_port_configs = protocol_port_configs
+        self.redirection_type_name = redirection_type_name
         self.cloud_native_product_name = cloud_native_product_name
         self.instance_id = instance_id
         self.ipaddress_list = ipaddress_list
@@ -1219,6 +1221,8 @@ class DescribeDomainResponseBodyDomainCloudNativeInstances(TeaModel):
         if self.protocol_port_configs is not None:
             for k in self.protocol_port_configs:
                 result['ProtocolPortConfigs'].append(k.to_map() if k else None)
+        if self.redirection_type_name is not None:
+            result['RedirectionTypeName'] = self.redirection_type_name
         if self.cloud_native_product_name is not None:
             result['CloudNativeProductName'] = self.cloud_native_product_name
         if self.instance_id is not None:
@@ -1234,6 +1238,8 @@ class DescribeDomainResponseBodyDomainCloudNativeInstances(TeaModel):
             for k in m.get('ProtocolPortConfigs'):
                 temp_model = DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs()
                 self.protocol_port_configs.append(temp_model.from_map(k))
+        if m.get('RedirectionTypeName') is not None:
+            self.redirection_type_name = m.get('RedirectionTypeName')
         if m.get('CloudNativeProductName') is not None:
             self.cloud_native_product_name = m.get('CloudNativeProductName')
         if m.get('InstanceId') is not None:
@@ -1941,6 +1947,139 @@ class DescribeDomainBasicConfigsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeDomainBasicConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDomainListRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        resource_group_id: str = None,
+        instance_id: str = None,
+        domain_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        is_sub: int = None,
+        domain_names: List[str] = None,
+    ):
+        self.source_ip = source_ip
+        self.resource_group_id = resource_group_id
+        self.instance_id = instance_id
+        self.domain_name = domain_name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.is_sub = is_sub
+        self.domain_names = domain_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.is_sub is not None:
+            result['IsSub'] = self.is_sub
+        if self.domain_names is not None:
+            result['DomainNames'] = self.domain_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('IsSub') is not None:
+            self.is_sub = m.get('IsSub')
+        if m.get('DomainNames') is not None:
+            self.domain_names = m.get('DomainNames')
+        return self
+
+
+class DescribeDomainListResponseBody(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        request_id: str = None,
+        domain_names: List[str] = None,
+    ):
+        self.total_count = total_count
+        self.request_id = request_id
+        self.domain_names = domain_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.domain_names is not None:
+            result['DomainNames'] = self.domain_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('DomainNames') is not None:
+            self.domain_names = m.get('DomainNames')
+        return self
+
+
+class DescribeDomainListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeDomainListResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeDomainListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2691,6 +2830,285 @@ class DescribeInstanceSpecInfoResponse(TeaModel):
         return self
 
 
+class DescribeLogServiceStatusRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        instance_id: str = None,
+        region: str = None,
+        resource_group_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        domain_names: List[str] = None,
+    ):
+        self.source_ip = source_ip
+        self.instance_id = instance_id
+        self.region = region
+        self.resource_group_id = resource_group_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.domain_names = domain_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.domain_names is not None:
+            result['DomainNames'] = self.domain_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('DomainNames') is not None:
+            self.domain_names = m.get('DomainNames')
+        return self
+
+
+class DescribeLogServiceStatusResponseBodyDomainStatus(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        sls_log_active: int = None,
+    ):
+        self.domain = domain
+        self.sls_log_active = sls_log_active
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.sls_log_active is not None:
+            result['SlsLogActive'] = self.sls_log_active
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('SlsLogActive') is not None:
+            self.sls_log_active = m.get('SlsLogActive')
+        return self
+
+
+class DescribeLogServiceStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        request_id: str = None,
+        domain_status: List[DescribeLogServiceStatusResponseBodyDomainStatus] = None,
+    ):
+        self.total_count = total_count
+        self.request_id = request_id
+        self.domain_status = domain_status
+
+    def validate(self):
+        if self.domain_status:
+            for k in self.domain_status:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['DomainStatus'] = []
+        if self.domain_status is not None:
+            for k in self.domain_status:
+                result['DomainStatus'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.domain_status = []
+        if m.get('DomainStatus') is not None:
+            for k in m.get('DomainStatus'):
+                temp_model = DescribeLogServiceStatusResponseBodyDomainStatus()
+                self.domain_status.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeLogServiceStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeLogServiceStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeLogServiceStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeProtectionModuleCodeConfigRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        lang: str = None,
+        code_type: int = None,
+        code_value: int = None,
+        instance_id: str = None,
+        resource_group_id: str = None,
+    ):
+        self.source_ip = source_ip
+        self.lang = lang
+        self.code_type = code_type
+        self.code_value = code_value
+        self.instance_id = instance_id
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.code_type is not None:
+            result['CodeType'] = self.code_type
+        if self.code_value is not None:
+            result['CodeValue'] = self.code_value
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('CodeType') is not None:
+            self.code_type = m.get('CodeType')
+        if m.get('CodeValue') is not None:
+            self.code_value = m.get('CodeValue')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class DescribeProtectionModuleCodeConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code_configs: str = None,
+    ):
+        self.request_id = request_id
+        self.code_configs = code_configs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code_configs is not None:
+            result['CodeConfigs'] = self.code_configs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('CodeConfigs') is not None:
+            self.code_configs = m.get('CodeConfigs')
+        return self
+
+
+class DescribeProtectionModuleCodeConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeProtectionModuleCodeConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeProtectionModuleCodeConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeProtectionModuleModeRequest(TeaModel):
     def __init__(
         self,
@@ -2889,7 +3307,7 @@ class DescribeProtectionModuleRulesResponseBodyRules(TeaModel):
         status: int = None,
         time: int = None,
         version: int = None,
-        content: str = None,
+        content: Dict[str, Any] = None,
         rule_id: int = None,
     ):
         self.status = status
@@ -3121,13 +3539,11 @@ class DescribeWafSourceIpSegmentRequest(TeaModel):
         source_ip: str = None,
         lang: str = None,
         instance_id: str = None,
-        region: str = None,
         resource_group_id: str = None,
     ):
         self.source_ip = source_ip
         self.lang = lang
         self.instance_id = instance_id
-        self.region = region
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3141,8 +3557,6 @@ class DescribeWafSourceIpSegmentRequest(TeaModel):
             result['Lang'] = self.lang
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region is not None:
-            result['Region'] = self.region
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
@@ -3155,8 +3569,6 @@ class DescribeWafSourceIpSegmentRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -3230,18 +3642,56 @@ class DescribeWafSourceIpSegmentResponse(TeaModel):
         return self
 
 
-class ModifyDomainClusterTypeRequest(TeaModel):
+class ModifyDomainRequest(TeaModel):
     def __init__(
         self,
         source_ip: str = None,
+        lang: str = None,
         instance_id: str = None,
         domain: str = None,
+        source_ips: str = None,
+        load_balancing: int = None,
+        http_port: str = None,
+        https_port: str = None,
+        http_2port: str = None,
+        https_redirect: int = None,
+        http_to_user_ip: int = None,
+        is_access_product: int = None,
+        xff_header_mode: int = None,
+        xff_headers: str = None,
+        log_headers: str = None,
+        binding_ipv_6: int = None,
         cluster_type: int = None,
+        connection_time: int = None,
+        read_time: int = None,
+        write_time: int = None,
+        access_type: str = None,
+        cloud_native_instances: str = None,
+        ip_follow_status: int = None,
     ):
         self.source_ip = source_ip
+        self.lang = lang
         self.instance_id = instance_id
         self.domain = domain
+        self.source_ips = source_ips
+        self.load_balancing = load_balancing
+        self.http_port = http_port
+        self.https_port = https_port
+        self.http_2port = http_2port
+        self.https_redirect = https_redirect
+        self.http_to_user_ip = http_to_user_ip
+        self.is_access_product = is_access_product
+        self.xff_header_mode = xff_header_mode
+        self.xff_headers = xff_headers
+        self.log_headers = log_headers
+        self.binding_ipv_6 = binding_ipv_6
         self.cluster_type = cluster_type
+        self.connection_time = connection_time
+        self.read_time = read_time
+        self.write_time = write_time
+        self.access_type = access_type
+        self.cloud_native_instances = cloud_native_instances
+        self.ip_follow_status = ip_follow_status
 
     def validate(self):
         pass
@@ -3250,28 +3700,104 @@ class ModifyDomainClusterTypeRequest(TeaModel):
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.domain is not None:
             result['Domain'] = self.domain
+        if self.source_ips is not None:
+            result['SourceIps'] = self.source_ips
+        if self.load_balancing is not None:
+            result['LoadBalancing'] = self.load_balancing
+        if self.http_port is not None:
+            result['HttpPort'] = self.http_port
+        if self.https_port is not None:
+            result['HttpsPort'] = self.https_port
+        if self.http_2port is not None:
+            result['Http2Port'] = self.http_2port
+        if self.https_redirect is not None:
+            result['HttpsRedirect'] = self.https_redirect
+        if self.http_to_user_ip is not None:
+            result['HttpToUserIp'] = self.http_to_user_ip
+        if self.is_access_product is not None:
+            result['IsAccessProduct'] = self.is_access_product
+        if self.xff_header_mode is not None:
+            result['XffHeaderMode'] = self.xff_header_mode
+        if self.xff_headers is not None:
+            result['XffHeaders'] = self.xff_headers
+        if self.log_headers is not None:
+            result['LogHeaders'] = self.log_headers
+        if self.binding_ipv_6 is not None:
+            result['BindingIpv6'] = self.binding_ipv_6
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
+        if self.connection_time is not None:
+            result['ConnectionTime'] = self.connection_time
+        if self.read_time is not None:
+            result['ReadTime'] = self.read_time
+        if self.write_time is not None:
+            result['WriteTime'] = self.write_time
+        if self.access_type is not None:
+            result['AccessType'] = self.access_type
+        if self.cloud_native_instances is not None:
+            result['CloudNativeInstances'] = self.cloud_native_instances
+        if self.ip_follow_status is not None:
+            result['IpFollowStatus'] = self.ip_follow_status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('SourceIp') is not None:
             self.source_ip = m.get('SourceIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+        if m.get('SourceIps') is not None:
+            self.source_ips = m.get('SourceIps')
+        if m.get('LoadBalancing') is not None:
+            self.load_balancing = m.get('LoadBalancing')
+        if m.get('HttpPort') is not None:
+            self.http_port = m.get('HttpPort')
+        if m.get('HttpsPort') is not None:
+            self.https_port = m.get('HttpsPort')
+        if m.get('Http2Port') is not None:
+            self.http_2port = m.get('Http2Port')
+        if m.get('HttpsRedirect') is not None:
+            self.https_redirect = m.get('HttpsRedirect')
+        if m.get('HttpToUserIp') is not None:
+            self.http_to_user_ip = m.get('HttpToUserIp')
+        if m.get('IsAccessProduct') is not None:
+            self.is_access_product = m.get('IsAccessProduct')
+        if m.get('XffHeaderMode') is not None:
+            self.xff_header_mode = m.get('XffHeaderMode')
+        if m.get('XffHeaders') is not None:
+            self.xff_headers = m.get('XffHeaders')
+        if m.get('LogHeaders') is not None:
+            self.log_headers = m.get('LogHeaders')
+        if m.get('BindingIpv6') is not None:
+            self.binding_ipv_6 = m.get('BindingIpv6')
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
+        if m.get('ConnectionTime') is not None:
+            self.connection_time = m.get('ConnectionTime')
+        if m.get('ReadTime') is not None:
+            self.read_time = m.get('ReadTime')
+        if m.get('WriteTime') is not None:
+            self.write_time = m.get('WriteTime')
+        if m.get('AccessType') is not None:
+            self.access_type = m.get('AccessType')
+        if m.get('CloudNativeInstances') is not None:
+            self.cloud_native_instances = m.get('CloudNativeInstances')
+        if m.get('IpFollowStatus') is not None:
+            self.ip_follow_status = m.get('IpFollowStatus')
         return self
 
 
-class ModifyDomainClusterTypeResponseBody(TeaModel):
+class ModifyDomainResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
@@ -3294,11 +3820,11 @@ class ModifyDomainClusterTypeResponseBody(TeaModel):
         return self
 
 
-class ModifyDomainClusterTypeResponse(TeaModel):
+class ModifyDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: ModifyDomainClusterTypeResponseBody = None,
+        body: ModifyDomainResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -3322,7 +3848,7 @@ class ModifyDomainClusterTypeResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = ModifyDomainClusterTypeResponseBody()
+            temp_model = ModifyDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

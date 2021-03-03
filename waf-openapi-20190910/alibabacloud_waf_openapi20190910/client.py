@@ -545,6 +545,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_basic_configs_with_options_async(request, runtime)
 
+    def describe_domain_list_with_options(
+        self,
+        request: waf_openapi_20190910_models.DescribeDomainListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20190910_models.DescribeDomainListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return waf_openapi_20190910_models.DescribeDomainListResponse().from_map(
+            self.do_rpcrequest('DescribeDomainList', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_domain_list_with_options_async(
+        self,
+        request: waf_openapi_20190910_models.DescribeDomainListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20190910_models.DescribeDomainListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return waf_openapi_20190910_models.DescribeDomainListResponse().from_map(
+            await self.do_rpcrequest_async('DescribeDomainList', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_domain_list(
+        self,
+        request: waf_openapi_20190910_models.DescribeDomainListRequest,
+    ) -> waf_openapi_20190910_models.DescribeDomainListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_list_with_options(request, runtime)
+
+    async def describe_domain_list_async(
+        self,
+        request: waf_openapi_20190910_models.DescribeDomainListRequest,
+    ) -> waf_openapi_20190910_models.DescribeDomainListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_list_with_options_async(request, runtime)
+
     def describe_domain_names_with_options(
         self,
         request: waf_openapi_20190910_models.DescribeDomainNamesRequest,
@@ -745,6 +785,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_spec_info_with_options_async(request, runtime)
 
+    def describe_log_service_status_with_options(
+        self,
+        request: waf_openapi_20190910_models.DescribeLogServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20190910_models.DescribeLogServiceStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return waf_openapi_20190910_models.DescribeLogServiceStatusResponse().from_map(
+            self.do_rpcrequest('DescribeLogServiceStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_log_service_status_with_options_async(
+        self,
+        request: waf_openapi_20190910_models.DescribeLogServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20190910_models.DescribeLogServiceStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return waf_openapi_20190910_models.DescribeLogServiceStatusResponse().from_map(
+            await self.do_rpcrequest_async('DescribeLogServiceStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_log_service_status(
+        self,
+        request: waf_openapi_20190910_models.DescribeLogServiceStatusRequest,
+    ) -> waf_openapi_20190910_models.DescribeLogServiceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_log_service_status_with_options(request, runtime)
+
+    async def describe_log_service_status_async(
+        self,
+        request: waf_openapi_20190910_models.DescribeLogServiceStatusRequest,
+    ) -> waf_openapi_20190910_models.DescribeLogServiceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_log_service_status_with_options_async(request, runtime)
+
+    def describe_protection_module_code_config_with_options(
+        self,
+        request: waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigResponse().from_map(
+            self.do_rpcrequest('DescribeProtectionModuleCodeConfig', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_protection_module_code_config_with_options_async(
+        self,
+        request: waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigResponse().from_map(
+            await self.do_rpcrequest_async('DescribeProtectionModuleCodeConfig', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_protection_module_code_config(
+        self,
+        request: waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigRequest,
+    ) -> waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_protection_module_code_config_with_options(request, runtime)
+
+    async def describe_protection_module_code_config_async(
+        self,
+        request: waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigRequest,
+    ) -> waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_protection_module_code_config_with_options_async(request, runtime)
+
     def describe_protection_module_mode_with_options(
         self,
         request: waf_openapi_20190910_models.DescribeProtectionModuleModeRequest,
@@ -905,45 +1025,45 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_waf_source_ip_segment_with_options_async(request, runtime)
 
-    def modify_domain_cluster_type_with_options(
+    def modify_domain_with_options(
         self,
-        request: waf_openapi_20190910_models.ModifyDomainClusterTypeRequest,
+        request: waf_openapi_20190910_models.ModifyDomainRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> waf_openapi_20190910_models.ModifyDomainClusterTypeResponse:
+    ) -> waf_openapi_20190910_models.ModifyDomainResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return waf_openapi_20190910_models.ModifyDomainClusterTypeResponse().from_map(
-            self.do_rpcrequest('ModifyDomainClusterType', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return waf_openapi_20190910_models.ModifyDomainResponse().from_map(
+            self.do_rpcrequest('ModifyDomain', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def modify_domain_cluster_type_with_options_async(
+    async def modify_domain_with_options_async(
         self,
-        request: waf_openapi_20190910_models.ModifyDomainClusterTypeRequest,
+        request: waf_openapi_20190910_models.ModifyDomainRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> waf_openapi_20190910_models.ModifyDomainClusterTypeResponse:
+    ) -> waf_openapi_20190910_models.ModifyDomainResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return waf_openapi_20190910_models.ModifyDomainClusterTypeResponse().from_map(
-            await self.do_rpcrequest_async('ModifyDomainClusterType', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return waf_openapi_20190910_models.ModifyDomainResponse().from_map(
+            await self.do_rpcrequest_async('ModifyDomain', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def modify_domain_cluster_type(
+    def modify_domain(
         self,
-        request: waf_openapi_20190910_models.ModifyDomainClusterTypeRequest,
-    ) -> waf_openapi_20190910_models.ModifyDomainClusterTypeResponse:
+        request: waf_openapi_20190910_models.ModifyDomainRequest,
+    ) -> waf_openapi_20190910_models.ModifyDomainResponse:
         runtime = util_models.RuntimeOptions()
-        return self.modify_domain_cluster_type_with_options(request, runtime)
+        return self.modify_domain_with_options(request, runtime)
 
-    async def modify_domain_cluster_type_async(
+    async def modify_domain_async(
         self,
-        request: waf_openapi_20190910_models.ModifyDomainClusterTypeRequest,
-    ) -> waf_openapi_20190910_models.ModifyDomainClusterTypeResponse:
+        request: waf_openapi_20190910_models.ModifyDomainRequest,
+    ) -> waf_openapi_20190910_models.ModifyDomainResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.modify_domain_cluster_type_with_options_async(request, runtime)
+        return await self.modify_domain_with_options_async(request, runtime)
 
     def modify_domain_ipv_6status_with_options(
         self,
