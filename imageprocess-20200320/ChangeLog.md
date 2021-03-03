@@ -1,3 +1,6 @@
+2021-03-03 Version: 2.0.1
+- Update ScreenChestCT.
+
 2021-01-06 Version: 2.0.0
 - Update DetectLungNodule.
 

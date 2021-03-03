@@ -2906,101 +2906,101 @@ class ScreenChestCTRequest(TeaModel):
 class ScreenChestCTResponseBodyDataLungNoduleSeriesElements(TeaModel):
     def __init__(
         self,
-        z: float = None,
         lobe: str = None,
         mean_value: float = None,
-        image_z: float = None,
         lung: str = None,
         confidence: float = None,
         sopinstance_uid: str = None,
-        image_x: float = None,
-        y: float = None,
         category: str = None,
         volume: float = None,
-        image_y: float = None,
         diameter: float = None,
         x: float = None,
+        y: float = None,
+        z: float = None,
+        image_x: float = None,
+        image_y: float = None,
+        image_z: float = None,
     ):
-        self.z = z
         self.lobe = lobe
         self.mean_value = mean_value
-        self.image_z = image_z
         self.lung = lung
         self.confidence = confidence
         self.sopinstance_uid = sopinstance_uid
-        self.image_x = image_x
-        self.y = y
         self.category = category
         self.volume = volume
-        self.image_y = image_y
         self.diameter = diameter
         self.x = x
+        self.y = y
+        self.z = z
+        self.image_x = image_x
+        self.image_y = image_y
+        self.image_z = image_z
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.z is not None:
-            result['Z'] = self.z
         if self.lobe is not None:
             result['Lobe'] = self.lobe
         if self.mean_value is not None:
             result['MeanValue'] = self.mean_value
-        if self.image_z is not None:
-            result['ImageZ'] = self.image_z
         if self.lung is not None:
             result['Lung'] = self.lung
         if self.confidence is not None:
             result['Confidence'] = self.confidence
         if self.sopinstance_uid is not None:
             result['SOPInstanceUID'] = self.sopinstance_uid
-        if self.image_x is not None:
-            result['ImageX'] = self.image_x
-        if self.y is not None:
-            result['Y'] = self.y
         if self.category is not None:
             result['Category'] = self.category
         if self.volume is not None:
             result['Volume'] = self.volume
-        if self.image_y is not None:
-            result['ImageY'] = self.image_y
         if self.diameter is not None:
             result['Diameter'] = self.diameter
         if self.x is not None:
             result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.z is not None:
+            result['Z'] = self.z
+        if self.image_x is not None:
+            result['ImageX'] = self.image_x
+        if self.image_y is not None:
+            result['ImageY'] = self.image_y
+        if self.image_z is not None:
+            result['ImageZ'] = self.image_z
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Z') is not None:
-            self.z = m.get('Z')
         if m.get('Lobe') is not None:
             self.lobe = m.get('Lobe')
         if m.get('MeanValue') is not None:
             self.mean_value = m.get('MeanValue')
-        if m.get('ImageZ') is not None:
-            self.image_z = m.get('ImageZ')
         if m.get('Lung') is not None:
             self.lung = m.get('Lung')
         if m.get('Confidence') is not None:
             self.confidence = m.get('Confidence')
         if m.get('SOPInstanceUID') is not None:
             self.sopinstance_uid = m.get('SOPInstanceUID')
-        if m.get('ImageX') is not None:
-            self.image_x = m.get('ImageX')
-        if m.get('Y') is not None:
-            self.y = m.get('Y')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('Volume') is not None:
             self.volume = m.get('Volume')
-        if m.get('ImageY') is not None:
-            self.image_y = m.get('ImageY')
         if m.get('Diameter') is not None:
             self.diameter = m.get('Diameter')
         if m.get('X') is not None:
             self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Z') is not None:
+            self.z = m.get('Z')
+        if m.get('ImageX') is not None:
+            self.image_x = m.get('ImageX')
+        if m.get('ImageY') is not None:
+            self.image_y = m.get('ImageY')
+        if m.get('ImageZ') is not None:
+            self.image_z = m.get('ImageZ')
         return self
 
 
@@ -3166,16 +3166,114 @@ class ScreenChestCTResponseBodyDataCovid(TeaModel):
         return self
 
 
+class ScreenChestCTResponseBodyDataDetectRibFractureDetections(TeaModel):
+    def __init__(
+        self,
+        fracture_id: int = None,
+        fracture_confidence: float = None,
+        fracture_category: int = None,
+        coordinates: List[int] = None,
+        coordinate_image: List[int] = None,
+    ):
+        self.fracture_id = fracture_id
+        self.fracture_confidence = fracture_confidence
+        self.fracture_category = fracture_category
+        self.coordinates = coordinates
+        self.coordinate_image = coordinate_image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.fracture_id is not None:
+            result['FractureId'] = self.fracture_id
+        if self.fracture_confidence is not None:
+            result['FractureConfidence'] = self.fracture_confidence
+        if self.fracture_category is not None:
+            result['FractureCategory'] = self.fracture_category
+        if self.coordinates is not None:
+            result['Coordinates'] = self.coordinates
+        if self.coordinate_image is not None:
+            result['CoordinateImage'] = self.coordinate_image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FractureId') is not None:
+            self.fracture_id = m.get('FractureId')
+        if m.get('FractureConfidence') is not None:
+            self.fracture_confidence = m.get('FractureConfidence')
+        if m.get('FractureCategory') is not None:
+            self.fracture_category = m.get('FractureCategory')
+        if m.get('Coordinates') is not None:
+            self.coordinates = m.get('Coordinates')
+        if m.get('CoordinateImage') is not None:
+            self.coordinate_image = m.get('CoordinateImage')
+        return self
+
+
+class ScreenChestCTResponseBodyDataDetectRibFracture(TeaModel):
+    def __init__(
+        self,
+        result_url: str = None,
+        spacing: List[float] = None,
+        origin: List[float] = None,
+        detections: List[ScreenChestCTResponseBodyDataDetectRibFractureDetections] = None,
+    ):
+        self.result_url = result_url
+        self.spacing = spacing
+        self.origin = origin
+        self.detections = detections
+
+    def validate(self):
+        if self.detections:
+            for k in self.detections:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.result_url is not None:
+            result['ResultURL'] = self.result_url
+        if self.spacing is not None:
+            result['Spacing'] = self.spacing
+        if self.origin is not None:
+            result['Origin'] = self.origin
+        result['Detections'] = []
+        if self.detections is not None:
+            for k in self.detections:
+                result['Detections'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResultURL') is not None:
+            self.result_url = m.get('ResultURL')
+        if m.get('Spacing') is not None:
+            self.spacing = m.get('Spacing')
+        if m.get('Origin') is not None:
+            self.origin = m.get('Origin')
+        self.detections = []
+        if m.get('Detections') is not None:
+            for k in m.get('Detections'):
+                temp_model = ScreenChestCTResponseBodyDataDetectRibFractureDetections()
+                self.detections.append(temp_model.from_map(k))
+        return self
+
+
 class ScreenChestCTResponseBodyData(TeaModel):
     def __init__(
         self,
         lung_nodule: ScreenChestCTResponseBodyDataLungNodule = None,
         cacs: ScreenChestCTResponseBodyDataCACS = None,
         covid: ScreenChestCTResponseBodyDataCovid = None,
+        detect_rib_fracture: ScreenChestCTResponseBodyDataDetectRibFracture = None,
     ):
         self.lung_nodule = lung_nodule
         self.cacs = cacs
         self.covid = covid
+        self.detect_rib_fracture = detect_rib_fracture
 
     def validate(self):
         if self.lung_nodule:
@@ -3184,6 +3282,8 @@ class ScreenChestCTResponseBodyData(TeaModel):
             self.cacs.validate()
         if self.covid:
             self.covid.validate()
+        if self.detect_rib_fracture:
+            self.detect_rib_fracture.validate()
 
     def to_map(self):
         result = dict()
@@ -3193,6 +3293,8 @@ class ScreenChestCTResponseBodyData(TeaModel):
             result['CACS'] = self.cacs.to_map()
         if self.covid is not None:
             result['Covid'] = self.covid.to_map()
+        if self.detect_rib_fracture is not None:
+            result['DetectRibFracture'] = self.detect_rib_fracture.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -3206,6 +3308,9 @@ class ScreenChestCTResponseBodyData(TeaModel):
         if m.get('Covid') is not None:
             temp_model = ScreenChestCTResponseBodyDataCovid()
             self.covid = temp_model.from_map(m['Covid'])
+        if m.get('DetectRibFracture') is not None:
+            temp_model = ScreenChestCTResponseBodyDataDetectRibFracture()
+            self.detect_rib_fracture = temp_model.from_map(m['DetectRibFracture'])
         return self
 
 
