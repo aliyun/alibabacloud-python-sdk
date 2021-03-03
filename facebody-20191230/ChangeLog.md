@@ -1,3 +1,6 @@
+2021-03-03 Version: 2.0.6
+- Update Compareface.
+
 2021-02-08 Version: 2.0.5
 - Update PedestrianDetectAttribute.
 

@@ -1443,35 +1443,42 @@ class GetFaceEntityResponse(TeaModel):
 class CompareFaceRequest(TeaModel):
     def __init__(
         self,
-        image_type: int = None,
+        quality_score_threshold: float = None,
         image_urla: str = None,
         image_urlb: str = None,
+        image_type: int = None,
     ):
-        self.image_type = image_type
+        # 质量分阈值，取值范围 [0.0, 100.0],   0.0或空  表示不做质量分判断逻辑。
+        self.quality_score_threshold = quality_score_threshold
         self.image_urla = image_urla
         self.image_urlb = image_urlb
+        self.image_type = image_type
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.image_type is not None:
-            result['ImageType'] = self.image_type
+        if self.quality_score_threshold is not None:
+            result['QualityScoreThreshold'] = self.quality_score_threshold
         if self.image_urla is not None:
             result['ImageURLA'] = self.image_urla
         if self.image_urlb is not None:
             result['ImageURLB'] = self.image_urlb
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageType') is not None:
-            self.image_type = m.get('ImageType')
+        if m.get('QualityScoreThreshold') is not None:
+            self.quality_score_threshold = m.get('QualityScoreThreshold')
         if m.get('ImageURLA') is not None:
             self.image_urla = m.get('ImageURLA')
         if m.get('ImageURLB') is not None:
             self.image_urlb = m.get('ImageURLB')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
         return self
 
 
@@ -1482,11 +1489,20 @@ class CompareFaceResponseBodyData(TeaModel):
         rect_blist: List[int] = None,
         confidence: float = None,
         rect_alist: List[int] = None,
+        quality_score_a: float = None,
+        quality_score_b: float = None,
+        message_tips: str = None,
     ):
         self.thresholds = thresholds
         self.rect_blist = rect_blist
         self.confidence = confidence
         self.rect_alist = rect_alist
+        # 输入图像A的质量分
+        self.quality_score_a = quality_score_a
+        # 输入图像A的质量分
+        self.quality_score_b = quality_score_b
+        # 信息提示信息，纯文字描述，目前支持质量分的提示信息
+        self.message_tips = message_tips
 
     def validate(self):
         pass
@@ -1501,6 +1517,12 @@ class CompareFaceResponseBodyData(TeaModel):
             result['Confidence'] = self.confidence
         if self.rect_alist is not None:
             result['RectAList'] = self.rect_alist
+        if self.quality_score_a is not None:
+            result['QualityScoreA'] = self.quality_score_a
+        if self.quality_score_b is not None:
+            result['QualityScoreB'] = self.quality_score_b
+        if self.message_tips is not None:
+            result['MessageTips'] = self.message_tips
         return result
 
     def from_map(self, m: dict = None):
@@ -1513,6 +1535,12 @@ class CompareFaceResponseBodyData(TeaModel):
             self.confidence = m.get('Confidence')
         if m.get('RectAList') is not None:
             self.rect_alist = m.get('RectAList')
+        if m.get('QualityScoreA') is not None:
+            self.quality_score_a = m.get('QualityScoreA')
+        if m.get('QualityScoreB') is not None:
+            self.quality_score_b = m.get('QualityScoreB')
+        if m.get('MessageTips') is not None:
+            self.message_tips = m.get('MessageTips')
         return self
 
 
@@ -1521,9 +1549,11 @@ class CompareFaceResponseBody(TeaModel):
         self,
         request_id: str = None,
         data: CompareFaceResponseBodyData = None,
+        code: str = None,
     ):
         self.request_id = request_id
         self.data = data
+        self.code = code
 
     def validate(self):
         if self.data:
@@ -1535,6 +1565,8 @@ class CompareFaceResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
         return result
 
     def from_map(self, m: dict = None):
@@ -1544,6 +1576,8 @@ class CompareFaceResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = CompareFaceResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         return self
 
 
