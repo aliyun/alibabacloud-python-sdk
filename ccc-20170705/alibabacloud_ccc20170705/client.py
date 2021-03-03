@@ -743,6 +743,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_media_with_options_async(request, runtime)
 
+    def create_predictive_job_group_with_options(
+        self,
+        request: ccc20170705_models.CreatePredictiveJobGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.CreatePredictiveJobGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.CreatePredictiveJobGroupResponse().from_map(
+            self.do_rpcrequest('CreatePredictiveJobGroup', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_predictive_job_group_with_options_async(
+        self,
+        request: ccc20170705_models.CreatePredictiveJobGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.CreatePredictiveJobGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.CreatePredictiveJobGroupResponse().from_map(
+            await self.do_rpcrequest_async('CreatePredictiveJobGroup', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_predictive_job_group(
+        self,
+        request: ccc20170705_models.CreatePredictiveJobGroupRequest,
+    ) -> ccc20170705_models.CreatePredictiveJobGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_predictive_job_group_with_options(request, runtime)
+
+    async def create_predictive_job_group_async(
+        self,
+        request: ccc20170705_models.CreatePredictiveJobGroupRequest,
+    ) -> ccc20170705_models.CreatePredictiveJobGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_predictive_job_group_with_options_async(request, runtime)
+
     def create_scenario_with_options(
         self,
         request: ccc20170705_models.CreateScenarioRequest,
@@ -1583,6 +1623,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.find_users_with_options_async(request, runtime)
 
+    def generate_agent_statistic_report_with_options(
+        self,
+        request: ccc20170705_models.GenerateAgentStatisticReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.GenerateAgentStatisticReportResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.GenerateAgentStatisticReportResponse().from_map(
+            self.do_rpcrequest('GenerateAgentStatisticReport', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def generate_agent_statistic_report_with_options_async(
+        self,
+        request: ccc20170705_models.GenerateAgentStatisticReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.GenerateAgentStatisticReportResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.GenerateAgentStatisticReportResponse().from_map(
+            await self.do_rpcrequest_async('GenerateAgentStatisticReport', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def generate_agent_statistic_report(
+        self,
+        request: ccc20170705_models.GenerateAgentStatisticReportRequest,
+    ) -> ccc20170705_models.GenerateAgentStatisticReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.generate_agent_statistic_report_with_options(request, runtime)
+
+    async def generate_agent_statistic_report_async(
+        self,
+        request: ccc20170705_models.GenerateAgentStatisticReportRequest,
+    ) -> ccc20170705_models.GenerateAgentStatisticReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_agent_statistic_report_with_options_async(request, runtime)
+
+    def get_agent_data_with_options(
+        self,
+        request: ccc20170705_models.GetAgentDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.GetAgentDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.GetAgentDataResponse().from_map(
+            self.do_rpcrequest('GetAgentData', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_agent_data_with_options_async(
+        self,
+        request: ccc20170705_models.GetAgentDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.GetAgentDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.GetAgentDataResponse().from_map(
+            await self.do_rpcrequest_async('GetAgentData', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_agent_data(
+        self,
+        request: ccc20170705_models.GetAgentDataRequest,
+    ) -> ccc20170705_models.GetAgentDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_agent_data_with_options(request, runtime)
+
+    async def get_agent_data_async(
+        self,
+        request: ccc20170705_models.GetAgentDataRequest,
+    ) -> ccc20170705_models.GetAgentDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_agent_data_with_options_async(request, runtime)
+
     def get_call_measure_summary_report_with_options(
         self,
         request: ccc20170705_models.GetCallMeasureSummaryReportRequest,
@@ -2022,6 +2142,46 @@ class Client(OpenApiClient):
     ) -> ccc20170705_models.GetJobDataUploadParamsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_job_data_upload_params_with_options_async(request, runtime)
+
+    def get_job_file_upload_url_with_options(
+        self,
+        request: ccc20170705_models.GetJobFileUploadUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.GetJobFileUploadUrlResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.GetJobFileUploadUrlResponse().from_map(
+            self.do_rpcrequest('GetJobFileUploadUrl', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_job_file_upload_url_with_options_async(
+        self,
+        request: ccc20170705_models.GetJobFileUploadUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.GetJobFileUploadUrlResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.GetJobFileUploadUrlResponse().from_map(
+            await self.do_rpcrequest_async('GetJobFileUploadUrl', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_job_file_upload_url(
+        self,
+        request: ccc20170705_models.GetJobFileUploadUrlRequest,
+    ) -> ccc20170705_models.GetJobFileUploadUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_job_file_upload_url_with_options(request, runtime)
+
+    async def get_job_file_upload_url_async(
+        self,
+        request: ccc20170705_models.GetJobFileUploadUrlRequest,
+    ) -> ccc20170705_models.GetJobFileUploadUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_job_file_upload_url_with_options_async(request, runtime)
 
     def get_job_group_with_options(
         self,
@@ -3689,6 +3849,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_real_time_agent_with_options_async(request, runtime)
 
+    def list_recent_call_records_with_options(
+        self,
+        request: ccc20170705_models.ListRecentCallRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.ListRecentCallRecordsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.ListRecentCallRecordsResponse().from_map(
+            self.do_rpcrequest('ListRecentCallRecords', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_recent_call_records_with_options_async(
+        self,
+        request: ccc20170705_models.ListRecentCallRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.ListRecentCallRecordsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.ListRecentCallRecordsResponse().from_map(
+            await self.do_rpcrequest_async('ListRecentCallRecords', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_recent_call_records(
+        self,
+        request: ccc20170705_models.ListRecentCallRecordsRequest,
+    ) -> ccc20170705_models.ListRecentCallRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_recent_call_records_with_options(request, runtime)
+
+    async def list_recent_call_records_async(
+        self,
+        request: ccc20170705_models.ListRecentCallRecordsRequest,
+    ) -> ccc20170705_models.ListRecentCallRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_recent_call_records_with_options_async(request, runtime)
+
     def list_recording_of_dual_track_with_options(
         self,
         request: ccc20170705_models.ListRecordingOfDualTrackRequest,
@@ -5101,6 +5301,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.publish_contact_flow_version_with_options_async(request, runtime)
 
+    def publish_predictive_job_group_with_options(
+        self,
+        request: ccc20170705_models.PublishPredictiveJobGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.PublishPredictiveJobGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.PublishPredictiveJobGroupResponse().from_map(
+            self.do_rpcrequest('PublishPredictiveJobGroup', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def publish_predictive_job_group_with_options_async(
+        self,
+        request: ccc20170705_models.PublishPredictiveJobGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.PublishPredictiveJobGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.PublishPredictiveJobGroupResponse().from_map(
+            await self.do_rpcrequest_async('PublishPredictiveJobGroup', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def publish_predictive_job_group(
+        self,
+        request: ccc20170705_models.PublishPredictiveJobGroupRequest,
+    ) -> ccc20170705_models.PublishPredictiveJobGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.publish_predictive_job_group_with_options(request, runtime)
+
+    async def publish_predictive_job_group_async(
+        self,
+        request: ccc20170705_models.PublishPredictiveJobGroupRequest,
+    ) -> ccc20170705_models.PublishPredictiveJobGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.publish_predictive_job_group_with_options_async(request, runtime)
+
     def publish_survey_with_options(
         self,
         request: ccc20170705_models.PublishSurveyRequest,
@@ -5421,6 +5661,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.resume_jobs_with_options_async(request, runtime)
 
+    def resume_predictive_jobs_with_options(
+        self,
+        request: ccc20170705_models.ResumePredictiveJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.ResumePredictiveJobsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.ResumePredictiveJobsResponse().from_map(
+            self.do_rpcrequest('ResumePredictiveJobs', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def resume_predictive_jobs_with_options_async(
+        self,
+        request: ccc20170705_models.ResumePredictiveJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.ResumePredictiveJobsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.ResumePredictiveJobsResponse().from_map(
+            await self.do_rpcrequest_async('ResumePredictiveJobs', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def resume_predictive_jobs(
+        self,
+        request: ccc20170705_models.ResumePredictiveJobsRequest,
+    ) -> ccc20170705_models.ResumePredictiveJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.resume_predictive_jobs_with_options(request, runtime)
+
+    async def resume_predictive_jobs_async(
+        self,
+        request: ccc20170705_models.ResumePredictiveJobsRequest,
+    ) -> ccc20170705_models.ResumePredictiveJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.resume_predictive_jobs_with_options_async(request, runtime)
+
     def save_stats_with_options(
         self,
         request: ccc20170705_models.SaveStatsRequest,
@@ -5740,6 +6020,46 @@ class Client(OpenApiClient):
     ) -> ccc20170705_models.SuspendJobsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.suspend_jobs_with_options_async(request, runtime)
+
+    def suspend_predictive_jobs_with_options(
+        self,
+        request: ccc20170705_models.SuspendPredictiveJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.SuspendPredictiveJobsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.SuspendPredictiveJobsResponse().from_map(
+            self.do_rpcrequest('SuspendPredictiveJobs', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def suspend_predictive_jobs_with_options_async(
+        self,
+        request: ccc20170705_models.SuspendPredictiveJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20170705_models.SuspendPredictiveJobsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ccc20170705_models.SuspendPredictiveJobsResponse().from_map(
+            await self.do_rpcrequest_async('SuspendPredictiveJobs', '2017-07-05', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def suspend_predictive_jobs(
+        self,
+        request: ccc20170705_models.SuspendPredictiveJobsRequest,
+    ) -> ccc20170705_models.SuspendPredictiveJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.suspend_predictive_jobs_with_options(request, runtime)
+
+    async def suspend_predictive_jobs_async(
+        self,
+        request: ccc20170705_models.SuspendPredictiveJobsRequest,
+    ) -> ccc20170705_models.SuspendPredictiveJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.suspend_predictive_jobs_with_options_async(request, runtime)
 
     def task_preparing_with_options(
         self,

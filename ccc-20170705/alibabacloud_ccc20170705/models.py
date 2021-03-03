@@ -4341,6 +4341,163 @@ class CreateMediaResponse(TeaModel):
         return self
 
 
+class CreatePredictiveJobGroupRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        skill_group_id: str = None,
+        strategy_json: str = None,
+        name: str = None,
+        description: str = None,
+        timing_schedule: bool = None,
+        job_file_path: str = None,
+        is_draft: bool = None,
+        jobs_json: List[str] = None,
+    ):
+        self.instance_id = instance_id
+        self.skill_group_id = skill_group_id
+        self.strategy_json = strategy_json
+        self.name = name
+        self.description = description
+        self.timing_schedule = timing_schedule
+        self.job_file_path = job_file_path
+        self.is_draft = is_draft
+        self.jobs_json = jobs_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.skill_group_id is not None:
+            result['SkillGroupId'] = self.skill_group_id
+        if self.strategy_json is not None:
+            result['StrategyJson'] = self.strategy_json
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.timing_schedule is not None:
+            result['TimingSchedule'] = self.timing_schedule
+        if self.job_file_path is not None:
+            result['JobFilePath'] = self.job_file_path
+        if self.is_draft is not None:
+            result['IsDraft'] = self.is_draft
+        if self.jobs_json is not None:
+            result['JobsJson'] = self.jobs_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SkillGroupId') is not None:
+            self.skill_group_id = m.get('SkillGroupId')
+        if m.get('StrategyJson') is not None:
+            self.strategy_json = m.get('StrategyJson')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('TimingSchedule') is not None:
+            self.timing_schedule = m.get('TimingSchedule')
+        if m.get('JobFilePath') is not None:
+            self.job_file_path = m.get('JobFilePath')
+        if m.get('IsDraft') is not None:
+            self.is_draft = m.get('IsDraft')
+        if m.get('JobsJson') is not None:
+            self.jobs_json = m.get('JobsJson')
+        return self
+
+
+class CreatePredictiveJobGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_group_id: str = None,
+        request_id: str = None,
+        message: str = None,
+        http_status_code: int = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.job_group_id = job_group_id
+        self.request_id = request_id
+        self.message = message
+        self.http_status_code = http_status_code
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.job_group_id is not None:
+            result['JobGroupId'] = self.job_group_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobGroupId') is not None:
+            self.job_group_id = m.get('JobGroupId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreatePredictiveJobGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreatePredictiveJobGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreatePredictiveJobGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateScenarioRequest(TeaModel):
     def __init__(
         self,
@@ -8452,6 +8609,1343 @@ class FindUsersResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = FindUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateAgentStatisticReportRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        agent_id: str = None,
+        start_date: str = None,
+        end_date: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.instance_id = instance_id
+        self.agent_id = agent_id
+        self.start_date = start_date
+        self.end_date = end_date
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GenerateAgentStatisticReportResponseBodyDataListListGenerateAgentStatisticInbound(TeaModel):
+    def __init__(
+        self,
+        total_talk_time: int = None,
+        max_talk_time: int = None,
+        average_talk_time: int = None,
+        total_hold_time: int = None,
+        max_hold_time: int = None,
+        average_hold_time: int = None,
+        total_work_time: int = None,
+        max_work_time: int = None,
+        average_work_time: int = None,
+        satisfaction_surveys_offered: int = None,
+        satisfaction_surveys_responded: int = None,
+        satisfaction_index: float = None,
+        calls_offered: int = None,
+        calls_handled: int = None,
+        handle_rate: float = None,
+        total_ring_time: int = None,
+        max_ring_time: int = None,
+        average_ring_time: int = None,
+    ):
+        self.total_talk_time = total_talk_time
+        self.max_talk_time = max_talk_time
+        self.average_talk_time = average_talk_time
+        self.total_hold_time = total_hold_time
+        self.max_hold_time = max_hold_time
+        self.average_hold_time = average_hold_time
+        self.total_work_time = total_work_time
+        self.max_work_time = max_work_time
+        self.average_work_time = average_work_time
+        self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        self.satisfaction_index = satisfaction_index
+        self.calls_offered = calls_offered
+        self.calls_handled = calls_handled
+        self.handle_rate = handle_rate
+        self.total_ring_time = total_ring_time
+        self.max_ring_time = max_ring_time
+        self.average_ring_time = average_ring_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_talk_time is not None:
+            result['TotalTalkTime'] = self.total_talk_time
+        if self.max_talk_time is not None:
+            result['MaxTalkTime'] = self.max_talk_time
+        if self.average_talk_time is not None:
+            result['AverageTalkTime'] = self.average_talk_time
+        if self.total_hold_time is not None:
+            result['TotalHoldTime'] = self.total_hold_time
+        if self.max_hold_time is not None:
+            result['MaxHoldTime'] = self.max_hold_time
+        if self.average_hold_time is not None:
+            result['AverageHoldTime'] = self.average_hold_time
+        if self.total_work_time is not None:
+            result['TotalWorkTime'] = self.total_work_time
+        if self.max_work_time is not None:
+            result['MaxWorkTime'] = self.max_work_time
+        if self.average_work_time is not None:
+            result['AverageWorkTime'] = self.average_work_time
+        if self.satisfaction_surveys_offered is not None:
+            result['SatisfactionSurveysOffered'] = self.satisfaction_surveys_offered
+        if self.satisfaction_surveys_responded is not None:
+            result['SatisfactionSurveysResponded'] = self.satisfaction_surveys_responded
+        if self.satisfaction_index is not None:
+            result['SatisfactionIndex'] = self.satisfaction_index
+        if self.calls_offered is not None:
+            result['CallsOffered'] = self.calls_offered
+        if self.calls_handled is not None:
+            result['CallsHandled'] = self.calls_handled
+        if self.handle_rate is not None:
+            result['HandleRate'] = self.handle_rate
+        if self.total_ring_time is not None:
+            result['TotalRingTime'] = self.total_ring_time
+        if self.max_ring_time is not None:
+            result['MaxRingTime'] = self.max_ring_time
+        if self.average_ring_time is not None:
+            result['AverageRingTime'] = self.average_ring_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalTalkTime') is not None:
+            self.total_talk_time = m.get('TotalTalkTime')
+        if m.get('MaxTalkTime') is not None:
+            self.max_talk_time = m.get('MaxTalkTime')
+        if m.get('AverageTalkTime') is not None:
+            self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('TotalHoldTime') is not None:
+            self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('MaxHoldTime') is not None:
+            self.max_hold_time = m.get('MaxHoldTime')
+        if m.get('AverageHoldTime') is not None:
+            self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('TotalWorkTime') is not None:
+            self.total_work_time = m.get('TotalWorkTime')
+        if m.get('MaxWorkTime') is not None:
+            self.max_work_time = m.get('MaxWorkTime')
+        if m.get('AverageWorkTime') is not None:
+            self.average_work_time = m.get('AverageWorkTime')
+        if m.get('SatisfactionSurveysOffered') is not None:
+            self.satisfaction_surveys_offered = m.get('SatisfactionSurveysOffered')
+        if m.get('SatisfactionSurveysResponded') is not None:
+            self.satisfaction_surveys_responded = m.get('SatisfactionSurveysResponded')
+        if m.get('SatisfactionIndex') is not None:
+            self.satisfaction_index = m.get('SatisfactionIndex')
+        if m.get('CallsOffered') is not None:
+            self.calls_offered = m.get('CallsOffered')
+        if m.get('CallsHandled') is not None:
+            self.calls_handled = m.get('CallsHandled')
+        if m.get('HandleRate') is not None:
+            self.handle_rate = m.get('HandleRate')
+        if m.get('TotalRingTime') is not None:
+            self.total_ring_time = m.get('TotalRingTime')
+        if m.get('MaxRingTime') is not None:
+            self.max_ring_time = m.get('MaxRingTime')
+        if m.get('AverageRingTime') is not None:
+            self.average_ring_time = m.get('AverageRingTime')
+        return self
+
+
+class GenerateAgentStatisticReportResponseBodyDataListListGenerateAgentStatisticOutbound(TeaModel):
+    def __init__(
+        self,
+        total_talk_time: int = None,
+        max_talk_time: int = None,
+        average_talk_time: int = None,
+        total_hold_time: int = None,
+        max_hold_time: int = None,
+        average_hold_time: int = None,
+        total_work_time: int = None,
+        max_work_time: int = None,
+        average_work_time: int = None,
+        satisfaction_surveys_offered: int = None,
+        satisfaction_surveys_responded: int = None,
+        satisfaction_index: float = None,
+        calls_dialed: int = None,
+        calls_answered: int = None,
+        answer_rate: float = None,
+        total_dialing_time: int = None,
+        max_dialing_time: int = None,
+        average_dialing_time: int = None,
+    ):
+        self.total_talk_time = total_talk_time
+        self.max_talk_time = max_talk_time
+        self.average_talk_time = average_talk_time
+        self.total_hold_time = total_hold_time
+        self.max_hold_time = max_hold_time
+        self.average_hold_time = average_hold_time
+        self.total_work_time = total_work_time
+        self.max_work_time = max_work_time
+        self.average_work_time = average_work_time
+        self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        self.satisfaction_index = satisfaction_index
+        self.calls_dialed = calls_dialed
+        self.calls_answered = calls_answered
+        self.answer_rate = answer_rate
+        self.total_dialing_time = total_dialing_time
+        self.max_dialing_time = max_dialing_time
+        self.average_dialing_time = average_dialing_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_talk_time is not None:
+            result['TotalTalkTime'] = self.total_talk_time
+        if self.max_talk_time is not None:
+            result['MaxTalkTime'] = self.max_talk_time
+        if self.average_talk_time is not None:
+            result['AverageTalkTime'] = self.average_talk_time
+        if self.total_hold_time is not None:
+            result['TotalHoldTime'] = self.total_hold_time
+        if self.max_hold_time is not None:
+            result['MaxHoldTime'] = self.max_hold_time
+        if self.average_hold_time is not None:
+            result['AverageHoldTime'] = self.average_hold_time
+        if self.total_work_time is not None:
+            result['TotalWorkTime'] = self.total_work_time
+        if self.max_work_time is not None:
+            result['MaxWorkTime'] = self.max_work_time
+        if self.average_work_time is not None:
+            result['AverageWorkTime'] = self.average_work_time
+        if self.satisfaction_surveys_offered is not None:
+            result['SatisfactionSurveysOffered'] = self.satisfaction_surveys_offered
+        if self.satisfaction_surveys_responded is not None:
+            result['SatisfactionSurveysResponded'] = self.satisfaction_surveys_responded
+        if self.satisfaction_index is not None:
+            result['SatisfactionIndex'] = self.satisfaction_index
+        if self.calls_dialed is not None:
+            result['CallsDialed'] = self.calls_dialed
+        if self.calls_answered is not None:
+            result['CallsAnswered'] = self.calls_answered
+        if self.answer_rate is not None:
+            result['AnswerRate'] = self.answer_rate
+        if self.total_dialing_time is not None:
+            result['TotalDialingTime'] = self.total_dialing_time
+        if self.max_dialing_time is not None:
+            result['MaxDialingTime'] = self.max_dialing_time
+        if self.average_dialing_time is not None:
+            result['AverageDialingTime'] = self.average_dialing_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalTalkTime') is not None:
+            self.total_talk_time = m.get('TotalTalkTime')
+        if m.get('MaxTalkTime') is not None:
+            self.max_talk_time = m.get('MaxTalkTime')
+        if m.get('AverageTalkTime') is not None:
+            self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('TotalHoldTime') is not None:
+            self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('MaxHoldTime') is not None:
+            self.max_hold_time = m.get('MaxHoldTime')
+        if m.get('AverageHoldTime') is not None:
+            self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('TotalWorkTime') is not None:
+            self.total_work_time = m.get('TotalWorkTime')
+        if m.get('MaxWorkTime') is not None:
+            self.max_work_time = m.get('MaxWorkTime')
+        if m.get('AverageWorkTime') is not None:
+            self.average_work_time = m.get('AverageWorkTime')
+        if m.get('SatisfactionSurveysOffered') is not None:
+            self.satisfaction_surveys_offered = m.get('SatisfactionSurveysOffered')
+        if m.get('SatisfactionSurveysResponded') is not None:
+            self.satisfaction_surveys_responded = m.get('SatisfactionSurveysResponded')
+        if m.get('SatisfactionIndex') is not None:
+            self.satisfaction_index = m.get('SatisfactionIndex')
+        if m.get('CallsDialed') is not None:
+            self.calls_dialed = m.get('CallsDialed')
+        if m.get('CallsAnswered') is not None:
+            self.calls_answered = m.get('CallsAnswered')
+        if m.get('AnswerRate') is not None:
+            self.answer_rate = m.get('AnswerRate')
+        if m.get('TotalDialingTime') is not None:
+            self.total_dialing_time = m.get('TotalDialingTime')
+        if m.get('MaxDialingTime') is not None:
+            self.max_dialing_time = m.get('MaxDialingTime')
+        if m.get('AverageDialingTime') is not None:
+            self.average_dialing_time = m.get('AverageDialingTime')
+        return self
+
+
+class GenerateAgentStatisticReportResponseBodyDataListListGenerateAgentStatisticOverall(TeaModel):
+    def __init__(
+        self,
+        total_talk_time: int = None,
+        max_talk_time: int = None,
+        average_talk_time: int = None,
+        total_hold_time: int = None,
+        max_hold_time: int = None,
+        average_hold_time: int = None,
+        total_work_time: int = None,
+        max_work_time: int = None,
+        average_work_time: int = None,
+        satisfaction_surveys_offered: int = None,
+        satisfaction_surveys_responded: int = None,
+        satisfaction_index: float = None,
+        total_calls: int = None,
+    ):
+        self.total_talk_time = total_talk_time
+        self.max_talk_time = max_talk_time
+        self.average_talk_time = average_talk_time
+        self.total_hold_time = total_hold_time
+        self.max_hold_time = max_hold_time
+        self.average_hold_time = average_hold_time
+        self.total_work_time = total_work_time
+        self.max_work_time = max_work_time
+        self.average_work_time = average_work_time
+        self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        self.satisfaction_index = satisfaction_index
+        self.total_calls = total_calls
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_talk_time is not None:
+            result['TotalTalkTime'] = self.total_talk_time
+        if self.max_talk_time is not None:
+            result['MaxTalkTime'] = self.max_talk_time
+        if self.average_talk_time is not None:
+            result['AverageTalkTime'] = self.average_talk_time
+        if self.total_hold_time is not None:
+            result['TotalHoldTime'] = self.total_hold_time
+        if self.max_hold_time is not None:
+            result['MaxHoldTime'] = self.max_hold_time
+        if self.average_hold_time is not None:
+            result['AverageHoldTime'] = self.average_hold_time
+        if self.total_work_time is not None:
+            result['TotalWorkTime'] = self.total_work_time
+        if self.max_work_time is not None:
+            result['MaxWorkTime'] = self.max_work_time
+        if self.average_work_time is not None:
+            result['AverageWorkTime'] = self.average_work_time
+        if self.satisfaction_surveys_offered is not None:
+            result['SatisfactionSurveysOffered'] = self.satisfaction_surveys_offered
+        if self.satisfaction_surveys_responded is not None:
+            result['SatisfactionSurveysResponded'] = self.satisfaction_surveys_responded
+        if self.satisfaction_index is not None:
+            result['SatisfactionIndex'] = self.satisfaction_index
+        if self.total_calls is not None:
+            result['TotalCalls'] = self.total_calls
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalTalkTime') is not None:
+            self.total_talk_time = m.get('TotalTalkTime')
+        if m.get('MaxTalkTime') is not None:
+            self.max_talk_time = m.get('MaxTalkTime')
+        if m.get('AverageTalkTime') is not None:
+            self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('TotalHoldTime') is not None:
+            self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('MaxHoldTime') is not None:
+            self.max_hold_time = m.get('MaxHoldTime')
+        if m.get('AverageHoldTime') is not None:
+            self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('TotalWorkTime') is not None:
+            self.total_work_time = m.get('TotalWorkTime')
+        if m.get('MaxWorkTime') is not None:
+            self.max_work_time = m.get('MaxWorkTime')
+        if m.get('AverageWorkTime') is not None:
+            self.average_work_time = m.get('AverageWorkTime')
+        if m.get('SatisfactionSurveysOffered') is not None:
+            self.satisfaction_surveys_offered = m.get('SatisfactionSurveysOffered')
+        if m.get('SatisfactionSurveysResponded') is not None:
+            self.satisfaction_surveys_responded = m.get('SatisfactionSurveysResponded')
+        if m.get('SatisfactionIndex') is not None:
+            self.satisfaction_index = m.get('SatisfactionIndex')
+        if m.get('TotalCalls') is not None:
+            self.total_calls = m.get('TotalCalls')
+        return self
+
+
+class GenerateAgentStatisticReportResponseBodyDataListListGenerateAgentStatistic(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        login_name: str = None,
+        agent_name: str = None,
+        skill_group_ids: str = None,
+        skill_group_names: str = None,
+        instance_id: str = None,
+        record_date: str = None,
+        total_logged_in_time: int = None,
+        total_break_time: int = None,
+        occupancy_rate: float = None,
+        total_ready_time: int = None,
+        max_ready_time: int = None,
+        average_ready_time: int = None,
+        inbound: GenerateAgentStatisticReportResponseBodyDataListListGenerateAgentStatisticInbound = None,
+        outbound: GenerateAgentStatisticReportResponseBodyDataListListGenerateAgentStatisticOutbound = None,
+        overall: GenerateAgentStatisticReportResponseBodyDataListListGenerateAgentStatisticOverall = None,
+    ):
+        self.agent_id = agent_id
+        self.login_name = login_name
+        self.agent_name = agent_name
+        self.skill_group_ids = skill_group_ids
+        self.skill_group_names = skill_group_names
+        self.instance_id = instance_id
+        self.record_date = record_date
+        self.total_logged_in_time = total_logged_in_time
+        self.total_break_time = total_break_time
+        self.occupancy_rate = occupancy_rate
+        self.total_ready_time = total_ready_time
+        self.max_ready_time = max_ready_time
+        self.average_ready_time = average_ready_time
+        self.inbound = inbound
+        self.outbound = outbound
+        self.overall = overall
+
+    def validate(self):
+        if self.inbound:
+            self.inbound.validate()
+        if self.outbound:
+            self.outbound.validate()
+        if self.overall:
+            self.overall.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.login_name is not None:
+            result['LoginName'] = self.login_name
+        if self.agent_name is not None:
+            result['AgentName'] = self.agent_name
+        if self.skill_group_ids is not None:
+            result['SkillGroupIds'] = self.skill_group_ids
+        if self.skill_group_names is not None:
+            result['SkillGroupNames'] = self.skill_group_names
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.record_date is not None:
+            result['RecordDate'] = self.record_date
+        if self.total_logged_in_time is not None:
+            result['TotalLoggedInTime'] = self.total_logged_in_time
+        if self.total_break_time is not None:
+            result['TotalBreakTime'] = self.total_break_time
+        if self.occupancy_rate is not None:
+            result['OccupancyRate'] = self.occupancy_rate
+        if self.total_ready_time is not None:
+            result['TotalReadyTime'] = self.total_ready_time
+        if self.max_ready_time is not None:
+            result['MaxReadyTime'] = self.max_ready_time
+        if self.average_ready_time is not None:
+            result['AverageReadyTime'] = self.average_ready_time
+        if self.inbound is not None:
+            result['Inbound'] = self.inbound.to_map()
+        if self.outbound is not None:
+            result['Outbound'] = self.outbound.to_map()
+        if self.overall is not None:
+            result['Overall'] = self.overall.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('LoginName') is not None:
+            self.login_name = m.get('LoginName')
+        if m.get('AgentName') is not None:
+            self.agent_name = m.get('AgentName')
+        if m.get('SkillGroupIds') is not None:
+            self.skill_group_ids = m.get('SkillGroupIds')
+        if m.get('SkillGroupNames') is not None:
+            self.skill_group_names = m.get('SkillGroupNames')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RecordDate') is not None:
+            self.record_date = m.get('RecordDate')
+        if m.get('TotalLoggedInTime') is not None:
+            self.total_logged_in_time = m.get('TotalLoggedInTime')
+        if m.get('TotalBreakTime') is not None:
+            self.total_break_time = m.get('TotalBreakTime')
+        if m.get('OccupancyRate') is not None:
+            self.occupancy_rate = m.get('OccupancyRate')
+        if m.get('TotalReadyTime') is not None:
+            self.total_ready_time = m.get('TotalReadyTime')
+        if m.get('MaxReadyTime') is not None:
+            self.max_ready_time = m.get('MaxReadyTime')
+        if m.get('AverageReadyTime') is not None:
+            self.average_ready_time = m.get('AverageReadyTime')
+        if m.get('Inbound') is not None:
+            temp_model = GenerateAgentStatisticReportResponseBodyDataListListGenerateAgentStatisticInbound()
+            self.inbound = temp_model.from_map(m['Inbound'])
+        if m.get('Outbound') is not None:
+            temp_model = GenerateAgentStatisticReportResponseBodyDataListListGenerateAgentStatisticOutbound()
+            self.outbound = temp_model.from_map(m['Outbound'])
+        if m.get('Overall') is not None:
+            temp_model = GenerateAgentStatisticReportResponseBodyDataListListGenerateAgentStatisticOverall()
+            self.overall = temp_model.from_map(m['Overall'])
+        return self
+
+
+class GenerateAgentStatisticReportResponseBodyDataListList(TeaModel):
+    def __init__(
+        self,
+        generate_agent_statistic: List[GenerateAgentStatisticReportResponseBodyDataListListGenerateAgentStatistic] = None,
+    ):
+        self.generate_agent_statistic = generate_agent_statistic
+
+    def validate(self):
+        if self.generate_agent_statistic:
+            for k in self.generate_agent_statistic:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['GenerateAgentStatistic'] = []
+        if self.generate_agent_statistic is not None:
+            for k in self.generate_agent_statistic:
+                result['GenerateAgentStatistic'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.generate_agent_statistic = []
+        if m.get('GenerateAgentStatistic') is not None:
+            for k in m.get('GenerateAgentStatistic'):
+                temp_model = GenerateAgentStatisticReportResponseBodyDataListListGenerateAgentStatistic()
+                self.generate_agent_statistic.append(temp_model.from_map(k))
+        return self
+
+
+class GenerateAgentStatisticReportResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        list: GenerateAgentStatisticReportResponseBodyDataListList = None,
+    ):
+        self.total_count = total_count
+        self.page_number = page_number
+        self.page_size = page_size
+        self.list = list
+
+    def validate(self):
+        if self.list:
+            self.list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.list is not None:
+            result['List'] = self.list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('List') is not None:
+            temp_model = GenerateAgentStatisticReportResponseBodyDataListList()
+            self.list = temp_model.from_map(m['List'])
+        return self
+
+
+class GenerateAgentStatisticReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        code: str = None,
+        message: str = None,
+        http_status_code: int = None,
+        data_list: GenerateAgentStatisticReportResponseBodyDataList = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+        self.code = code
+        self.message = message
+        self.http_status_code = http_status_code
+        self.data_list = data_list
+
+    def validate(self):
+        if self.data_list:
+            self.data_list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.data_list is not None:
+            result['DataList'] = self.data_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('DataList') is not None:
+            temp_model = GenerateAgentStatisticReportResponseBodyDataList()
+            self.data_list = temp_model.from_map(m['DataList'])
+        return self
+
+
+class GenerateAgentStatisticReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GenerateAgentStatisticReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GenerateAgentStatisticReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAgentDataRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        start_day: str = None,
+        end_day: str = None,
+        user_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.instance_id = instance_id
+        self.start_day = start_day
+        self.end_day = end_day
+        self.user_id = user_id
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.start_day is not None:
+            result['StartDay'] = self.start_day
+        if self.end_day is not None:
+            result['EndDay'] = self.end_day
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('StartDay') is not None:
+            self.start_day = m.get('StartDay')
+        if m.get('EndDay') is not None:
+            self.end_day = m.get('EndDay')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetAgentDataResponseBodyDataListListInbound(TeaModel):
+    def __init__(
+        self,
+        total_talk_time: int = None,
+        max_talk_time: int = None,
+        average_talk_time: int = None,
+        total_hold_time: int = None,
+        max_hold_time: int = None,
+        average_hold_time: int = None,
+        total_work_time: int = None,
+        max_work_time: int = None,
+        average_work_time: int = None,
+        satisfaction_surveys_offered: int = None,
+        satisfaction_surveys_responded: int = None,
+        satisfaction_index: float = None,
+        calls_offered: int = None,
+        calls_handled: int = None,
+        handle_rate: float = None,
+        total_ring_time: int = None,
+        max_ring_time: int = None,
+        average_ring_time: int = None,
+    ):
+        self.total_talk_time = total_talk_time
+        self.max_talk_time = max_talk_time
+        self.average_talk_time = average_talk_time
+        self.total_hold_time = total_hold_time
+        self.max_hold_time = max_hold_time
+        self.average_hold_time = average_hold_time
+        self.total_work_time = total_work_time
+        self.max_work_time = max_work_time
+        self.average_work_time = average_work_time
+        self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        self.satisfaction_index = satisfaction_index
+        self.calls_offered = calls_offered
+        self.calls_handled = calls_handled
+        self.handle_rate = handle_rate
+        self.total_ring_time = total_ring_time
+        self.max_ring_time = max_ring_time
+        self.average_ring_time = average_ring_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_talk_time is not None:
+            result['TotalTalkTime'] = self.total_talk_time
+        if self.max_talk_time is not None:
+            result['MaxTalkTime'] = self.max_talk_time
+        if self.average_talk_time is not None:
+            result['AverageTalkTime'] = self.average_talk_time
+        if self.total_hold_time is not None:
+            result['TotalHoldTime'] = self.total_hold_time
+        if self.max_hold_time is not None:
+            result['MaxHoldTime'] = self.max_hold_time
+        if self.average_hold_time is not None:
+            result['AverageHoldTime'] = self.average_hold_time
+        if self.total_work_time is not None:
+            result['TotalWorkTime'] = self.total_work_time
+        if self.max_work_time is not None:
+            result['MaxWorkTime'] = self.max_work_time
+        if self.average_work_time is not None:
+            result['AverageWorkTime'] = self.average_work_time
+        if self.satisfaction_surveys_offered is not None:
+            result['SatisfactionSurveysOffered'] = self.satisfaction_surveys_offered
+        if self.satisfaction_surveys_responded is not None:
+            result['SatisfactionSurveysResponded'] = self.satisfaction_surveys_responded
+        if self.satisfaction_index is not None:
+            result['SatisfactionIndex'] = self.satisfaction_index
+        if self.calls_offered is not None:
+            result['CallsOffered'] = self.calls_offered
+        if self.calls_handled is not None:
+            result['CallsHandled'] = self.calls_handled
+        if self.handle_rate is not None:
+            result['HandleRate'] = self.handle_rate
+        if self.total_ring_time is not None:
+            result['TotalRingTime'] = self.total_ring_time
+        if self.max_ring_time is not None:
+            result['MaxRingTime'] = self.max_ring_time
+        if self.average_ring_time is not None:
+            result['AverageRingTime'] = self.average_ring_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalTalkTime') is not None:
+            self.total_talk_time = m.get('TotalTalkTime')
+        if m.get('MaxTalkTime') is not None:
+            self.max_talk_time = m.get('MaxTalkTime')
+        if m.get('AverageTalkTime') is not None:
+            self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('TotalHoldTime') is not None:
+            self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('MaxHoldTime') is not None:
+            self.max_hold_time = m.get('MaxHoldTime')
+        if m.get('AverageHoldTime') is not None:
+            self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('TotalWorkTime') is not None:
+            self.total_work_time = m.get('TotalWorkTime')
+        if m.get('MaxWorkTime') is not None:
+            self.max_work_time = m.get('MaxWorkTime')
+        if m.get('AverageWorkTime') is not None:
+            self.average_work_time = m.get('AverageWorkTime')
+        if m.get('SatisfactionSurveysOffered') is not None:
+            self.satisfaction_surveys_offered = m.get('SatisfactionSurveysOffered')
+        if m.get('SatisfactionSurveysResponded') is not None:
+            self.satisfaction_surveys_responded = m.get('SatisfactionSurveysResponded')
+        if m.get('SatisfactionIndex') is not None:
+            self.satisfaction_index = m.get('SatisfactionIndex')
+        if m.get('CallsOffered') is not None:
+            self.calls_offered = m.get('CallsOffered')
+        if m.get('CallsHandled') is not None:
+            self.calls_handled = m.get('CallsHandled')
+        if m.get('HandleRate') is not None:
+            self.handle_rate = m.get('HandleRate')
+        if m.get('TotalRingTime') is not None:
+            self.total_ring_time = m.get('TotalRingTime')
+        if m.get('MaxRingTime') is not None:
+            self.max_ring_time = m.get('MaxRingTime')
+        if m.get('AverageRingTime') is not None:
+            self.average_ring_time = m.get('AverageRingTime')
+        return self
+
+
+class GetAgentDataResponseBodyDataListListOutbound(TeaModel):
+    def __init__(
+        self,
+        total_talk_time: int = None,
+        max_talk_time: int = None,
+        average_talk_time: int = None,
+        total_hold_time: int = None,
+        max_hold_time: int = None,
+        average_hold_time: int = None,
+        total_work_time: int = None,
+        max_work_time: int = None,
+        average_work_time: int = None,
+        satisfaction_surveys_offered: int = None,
+        satisfaction_surveys_responded: int = None,
+        satisfaction_index: float = None,
+        calls_dialed: int = None,
+        calls_answered: int = None,
+        answer_rate: float = None,
+        total_dialing_time: int = None,
+        max_dialing_time: int = None,
+        average_dialing_time: int = None,
+    ):
+        self.total_talk_time = total_talk_time
+        self.max_talk_time = max_talk_time
+        self.average_talk_time = average_talk_time
+        self.total_hold_time = total_hold_time
+        self.max_hold_time = max_hold_time
+        self.average_hold_time = average_hold_time
+        self.total_work_time = total_work_time
+        self.max_work_time = max_work_time
+        self.average_work_time = average_work_time
+        self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        self.satisfaction_index = satisfaction_index
+        self.calls_dialed = calls_dialed
+        self.calls_answered = calls_answered
+        self.answer_rate = answer_rate
+        self.total_dialing_time = total_dialing_time
+        self.max_dialing_time = max_dialing_time
+        self.average_dialing_time = average_dialing_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_talk_time is not None:
+            result['TotalTalkTime'] = self.total_talk_time
+        if self.max_talk_time is not None:
+            result['MaxTalkTime'] = self.max_talk_time
+        if self.average_talk_time is not None:
+            result['AverageTalkTime'] = self.average_talk_time
+        if self.total_hold_time is not None:
+            result['TotalHoldTime'] = self.total_hold_time
+        if self.max_hold_time is not None:
+            result['MaxHoldTime'] = self.max_hold_time
+        if self.average_hold_time is not None:
+            result['AverageHoldTime'] = self.average_hold_time
+        if self.total_work_time is not None:
+            result['TotalWorkTime'] = self.total_work_time
+        if self.max_work_time is not None:
+            result['MaxWorkTime'] = self.max_work_time
+        if self.average_work_time is not None:
+            result['AverageWorkTime'] = self.average_work_time
+        if self.satisfaction_surveys_offered is not None:
+            result['SatisfactionSurveysOffered'] = self.satisfaction_surveys_offered
+        if self.satisfaction_surveys_responded is not None:
+            result['SatisfactionSurveysResponded'] = self.satisfaction_surveys_responded
+        if self.satisfaction_index is not None:
+            result['SatisfactionIndex'] = self.satisfaction_index
+        if self.calls_dialed is not None:
+            result['CallsDialed'] = self.calls_dialed
+        if self.calls_answered is not None:
+            result['CallsAnswered'] = self.calls_answered
+        if self.answer_rate is not None:
+            result['AnswerRate'] = self.answer_rate
+        if self.total_dialing_time is not None:
+            result['TotalDialingTime'] = self.total_dialing_time
+        if self.max_dialing_time is not None:
+            result['MaxDialingTime'] = self.max_dialing_time
+        if self.average_dialing_time is not None:
+            result['AverageDialingTime'] = self.average_dialing_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalTalkTime') is not None:
+            self.total_talk_time = m.get('TotalTalkTime')
+        if m.get('MaxTalkTime') is not None:
+            self.max_talk_time = m.get('MaxTalkTime')
+        if m.get('AverageTalkTime') is not None:
+            self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('TotalHoldTime') is not None:
+            self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('MaxHoldTime') is not None:
+            self.max_hold_time = m.get('MaxHoldTime')
+        if m.get('AverageHoldTime') is not None:
+            self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('TotalWorkTime') is not None:
+            self.total_work_time = m.get('TotalWorkTime')
+        if m.get('MaxWorkTime') is not None:
+            self.max_work_time = m.get('MaxWorkTime')
+        if m.get('AverageWorkTime') is not None:
+            self.average_work_time = m.get('AverageWorkTime')
+        if m.get('SatisfactionSurveysOffered') is not None:
+            self.satisfaction_surveys_offered = m.get('SatisfactionSurveysOffered')
+        if m.get('SatisfactionSurveysResponded') is not None:
+            self.satisfaction_surveys_responded = m.get('SatisfactionSurveysResponded')
+        if m.get('SatisfactionIndex') is not None:
+            self.satisfaction_index = m.get('SatisfactionIndex')
+        if m.get('CallsDialed') is not None:
+            self.calls_dialed = m.get('CallsDialed')
+        if m.get('CallsAnswered') is not None:
+            self.calls_answered = m.get('CallsAnswered')
+        if m.get('AnswerRate') is not None:
+            self.answer_rate = m.get('AnswerRate')
+        if m.get('TotalDialingTime') is not None:
+            self.total_dialing_time = m.get('TotalDialingTime')
+        if m.get('MaxDialingTime') is not None:
+            self.max_dialing_time = m.get('MaxDialingTime')
+        if m.get('AverageDialingTime') is not None:
+            self.average_dialing_time = m.get('AverageDialingTime')
+        return self
+
+
+class GetAgentDataResponseBodyDataListListOverall(TeaModel):
+    def __init__(
+        self,
+        total_talk_time: int = None,
+        max_talk_time: int = None,
+        average_talk_time: int = None,
+        total_hold_time: int = None,
+        max_hold_time: int = None,
+        average_hold_time: int = None,
+        total_work_time: int = None,
+        max_work_time: int = None,
+        average_work_time: int = None,
+        satisfaction_surveys_offered: int = None,
+        satisfaction_surveys_responded: int = None,
+        satisfaction_index: float = None,
+        total_calls: int = None,
+    ):
+        self.total_talk_time = total_talk_time
+        self.max_talk_time = max_talk_time
+        self.average_talk_time = average_talk_time
+        self.total_hold_time = total_hold_time
+        self.max_hold_time = max_hold_time
+        self.average_hold_time = average_hold_time
+        self.total_work_time = total_work_time
+        self.max_work_time = max_work_time
+        self.average_work_time = average_work_time
+        self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        self.satisfaction_index = satisfaction_index
+        self.total_calls = total_calls
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_talk_time is not None:
+            result['TotalTalkTime'] = self.total_talk_time
+        if self.max_talk_time is not None:
+            result['MaxTalkTime'] = self.max_talk_time
+        if self.average_talk_time is not None:
+            result['AverageTalkTime'] = self.average_talk_time
+        if self.total_hold_time is not None:
+            result['TotalHoldTime'] = self.total_hold_time
+        if self.max_hold_time is not None:
+            result['MaxHoldTime'] = self.max_hold_time
+        if self.average_hold_time is not None:
+            result['AverageHoldTime'] = self.average_hold_time
+        if self.total_work_time is not None:
+            result['TotalWorkTime'] = self.total_work_time
+        if self.max_work_time is not None:
+            result['MaxWorkTime'] = self.max_work_time
+        if self.average_work_time is not None:
+            result['AverageWorkTime'] = self.average_work_time
+        if self.satisfaction_surveys_offered is not None:
+            result['SatisfactionSurveysOffered'] = self.satisfaction_surveys_offered
+        if self.satisfaction_surveys_responded is not None:
+            result['SatisfactionSurveysResponded'] = self.satisfaction_surveys_responded
+        if self.satisfaction_index is not None:
+            result['SatisfactionIndex'] = self.satisfaction_index
+        if self.total_calls is not None:
+            result['TotalCalls'] = self.total_calls
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalTalkTime') is not None:
+            self.total_talk_time = m.get('TotalTalkTime')
+        if m.get('MaxTalkTime') is not None:
+            self.max_talk_time = m.get('MaxTalkTime')
+        if m.get('AverageTalkTime') is not None:
+            self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('TotalHoldTime') is not None:
+            self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('MaxHoldTime') is not None:
+            self.max_hold_time = m.get('MaxHoldTime')
+        if m.get('AverageHoldTime') is not None:
+            self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('TotalWorkTime') is not None:
+            self.total_work_time = m.get('TotalWorkTime')
+        if m.get('MaxWorkTime') is not None:
+            self.max_work_time = m.get('MaxWorkTime')
+        if m.get('AverageWorkTime') is not None:
+            self.average_work_time = m.get('AverageWorkTime')
+        if m.get('SatisfactionSurveysOffered') is not None:
+            self.satisfaction_surveys_offered = m.get('SatisfactionSurveysOffered')
+        if m.get('SatisfactionSurveysResponded') is not None:
+            self.satisfaction_surveys_responded = m.get('SatisfactionSurveysResponded')
+        if m.get('SatisfactionIndex') is not None:
+            self.satisfaction_index = m.get('SatisfactionIndex')
+        if m.get('TotalCalls') is not None:
+            self.total_calls = m.get('TotalCalls')
+        return self
+
+
+class GetAgentDataResponseBodyDataListList(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        login_name: str = None,
+        agent_name: str = None,
+        skill_group_ids: str = None,
+        skill_group_names: str = None,
+        instance_id: str = None,
+        record_date: str = None,
+        total_logged_in_time: int = None,
+        total_break_time: int = None,
+        occupancy_rate: float = None,
+        total_ready_time: int = None,
+        max_ready_time: int = None,
+        average_ready_time: int = None,
+        inbound: GetAgentDataResponseBodyDataListListInbound = None,
+        outbound: GetAgentDataResponseBodyDataListListOutbound = None,
+        overall: GetAgentDataResponseBodyDataListListOverall = None,
+    ):
+        self.agent_id = agent_id
+        self.login_name = login_name
+        self.agent_name = agent_name
+        self.skill_group_ids = skill_group_ids
+        self.skill_group_names = skill_group_names
+        self.instance_id = instance_id
+        self.record_date = record_date
+        self.total_logged_in_time = total_logged_in_time
+        self.total_break_time = total_break_time
+        self.occupancy_rate = occupancy_rate
+        self.total_ready_time = total_ready_time
+        self.max_ready_time = max_ready_time
+        self.average_ready_time = average_ready_time
+        self.inbound = inbound
+        self.outbound = outbound
+        self.overall = overall
+
+    def validate(self):
+        if self.inbound:
+            self.inbound.validate()
+        if self.outbound:
+            self.outbound.validate()
+        if self.overall:
+            self.overall.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.login_name is not None:
+            result['LoginName'] = self.login_name
+        if self.agent_name is not None:
+            result['AgentName'] = self.agent_name
+        if self.skill_group_ids is not None:
+            result['SkillGroupIds'] = self.skill_group_ids
+        if self.skill_group_names is not None:
+            result['SkillGroupNames'] = self.skill_group_names
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.record_date is not None:
+            result['RecordDate'] = self.record_date
+        if self.total_logged_in_time is not None:
+            result['TotalLoggedInTime'] = self.total_logged_in_time
+        if self.total_break_time is not None:
+            result['TotalBreakTime'] = self.total_break_time
+        if self.occupancy_rate is not None:
+            result['OccupancyRate'] = self.occupancy_rate
+        if self.total_ready_time is not None:
+            result['TotalReadyTime'] = self.total_ready_time
+        if self.max_ready_time is not None:
+            result['MaxReadyTime'] = self.max_ready_time
+        if self.average_ready_time is not None:
+            result['AverageReadyTime'] = self.average_ready_time
+        if self.inbound is not None:
+            result['Inbound'] = self.inbound.to_map()
+        if self.outbound is not None:
+            result['Outbound'] = self.outbound.to_map()
+        if self.overall is not None:
+            result['Overall'] = self.overall.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('LoginName') is not None:
+            self.login_name = m.get('LoginName')
+        if m.get('AgentName') is not None:
+            self.agent_name = m.get('AgentName')
+        if m.get('SkillGroupIds') is not None:
+            self.skill_group_ids = m.get('SkillGroupIds')
+        if m.get('SkillGroupNames') is not None:
+            self.skill_group_names = m.get('SkillGroupNames')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RecordDate') is not None:
+            self.record_date = m.get('RecordDate')
+        if m.get('TotalLoggedInTime') is not None:
+            self.total_logged_in_time = m.get('TotalLoggedInTime')
+        if m.get('TotalBreakTime') is not None:
+            self.total_break_time = m.get('TotalBreakTime')
+        if m.get('OccupancyRate') is not None:
+            self.occupancy_rate = m.get('OccupancyRate')
+        if m.get('TotalReadyTime') is not None:
+            self.total_ready_time = m.get('TotalReadyTime')
+        if m.get('MaxReadyTime') is not None:
+            self.max_ready_time = m.get('MaxReadyTime')
+        if m.get('AverageReadyTime') is not None:
+            self.average_ready_time = m.get('AverageReadyTime')
+        if m.get('Inbound') is not None:
+            temp_model = GetAgentDataResponseBodyDataListListInbound()
+            self.inbound = temp_model.from_map(m['Inbound'])
+        if m.get('Outbound') is not None:
+            temp_model = GetAgentDataResponseBodyDataListListOutbound()
+            self.outbound = temp_model.from_map(m['Outbound'])
+        if m.get('Overall') is not None:
+            temp_model = GetAgentDataResponseBodyDataListListOverall()
+            self.overall = temp_model.from_map(m['Overall'])
+        return self
+
+
+class GetAgentDataResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        list: List[GetAgentDataResponseBodyDataListList] = None,
+    ):
+        self.total_count = total_count
+        self.page_number = page_number
+        self.page_size = page_size
+        self.list = list
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = GetAgentDataResponseBodyDataListList()
+                self.list.append(temp_model.from_map(k))
+        return self
+
+
+class GetAgentDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        code: str = None,
+        message: str = None,
+        http_status_code: int = None,
+        data_list: GetAgentDataResponseBodyDataList = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+        self.code = code
+        self.message = message
+        self.http_status_code = http_status_code
+        self.data_list = data_list
+
+    def validate(self):
+        if self.data_list:
+            self.data_list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.data_list is not None:
+            result['DataList'] = self.data_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('DataList') is not None:
+            temp_model = GetAgentDataResponseBodyDataList()
+            self.data_list = temp_model.from_map(m['DataList'])
+        return self
+
+
+class GetAgentDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetAgentDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetAgentDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12627,6 +14121,127 @@ class GetJobDataUploadParamsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetJobDataUploadParamsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetJobFileUploadUrlRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        file_name: str = None,
+    ):
+        self.instance_id = instance_id
+        self.file_name = file_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        return self
+
+
+class GetJobFileUploadUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        file_path: str = None,
+        upload_url: str = None,
+        request_id: str = None,
+        message: str = None,
+        http_status_code: int = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.file_path = file_path
+        self.upload_url = upload_url
+        self.request_id = request_id
+        self.message = message
+        self.http_status_code = http_status_code
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.upload_url is not None:
+            result['UploadUrl'] = self.upload_url
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('UploadUrl') is not None:
+            self.upload_url = m.get('UploadUrl')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetJobFileUploadUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetJobFileUploadUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetJobFileUploadUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -26725,6 +28340,585 @@ class ListRealTimeAgentResponse(TeaModel):
         return self
 
 
+class ListRecentCallRecordsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        start_time: int = None,
+        stop_time: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        criteria: str = None,
+    ):
+        self.instance_id = instance_id
+        self.start_time = start_time
+        self.stop_time = stop_time
+        self.page_number = page_number
+        self.page_size = page_size
+        self.criteria = criteria
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.stop_time is not None:
+            result['StopTime'] = self.stop_time
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.criteria is not None:
+            result['Criteria'] = self.criteria
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StopTime') is not None:
+            self.stop_time = m.get('StopTime')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Criteria') is not None:
+            self.criteria = m.get('Criteria')
+        return self
+
+
+class ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecordAgentsCallDetailAgent(TeaModel):
+    def __init__(
+        self,
+        contact_id: str = None,
+        agent_id: str = None,
+        agent_name: str = None,
+        skill_group_name: str = None,
+        queue_time: int = None,
+        ring_time: int = None,
+        start_time: int = None,
+        talk_time: int = None,
+        hold_time: int = None,
+        work_time: int = None,
+        satisfaction: str = None,
+        feedback: str = None,
+    ):
+        self.contact_id = contact_id
+        self.agent_id = agent_id
+        self.agent_name = agent_name
+        self.skill_group_name = skill_group_name
+        self.queue_time = queue_time
+        self.ring_time = ring_time
+        self.start_time = start_time
+        self.talk_time = talk_time
+        self.hold_time = hold_time
+        self.work_time = work_time
+        self.satisfaction = satisfaction
+        self.feedback = feedback
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.contact_id is not None:
+            result['ContactId'] = self.contact_id
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.agent_name is not None:
+            result['AgentName'] = self.agent_name
+        if self.skill_group_name is not None:
+            result['SkillGroupName'] = self.skill_group_name
+        if self.queue_time is not None:
+            result['QueueTime'] = self.queue_time
+        if self.ring_time is not None:
+            result['RingTime'] = self.ring_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.talk_time is not None:
+            result['TalkTime'] = self.talk_time
+        if self.hold_time is not None:
+            result['HoldTime'] = self.hold_time
+        if self.work_time is not None:
+            result['WorkTime'] = self.work_time
+        if self.satisfaction is not None:
+            result['Satisfaction'] = self.satisfaction
+        if self.feedback is not None:
+            result['Feedback'] = self.feedback
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContactId') is not None:
+            self.contact_id = m.get('ContactId')
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AgentName') is not None:
+            self.agent_name = m.get('AgentName')
+        if m.get('SkillGroupName') is not None:
+            self.skill_group_name = m.get('SkillGroupName')
+        if m.get('QueueTime') is not None:
+            self.queue_time = m.get('QueueTime')
+        if m.get('RingTime') is not None:
+            self.ring_time = m.get('RingTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TalkTime') is not None:
+            self.talk_time = m.get('TalkTime')
+        if m.get('HoldTime') is not None:
+            self.hold_time = m.get('HoldTime')
+        if m.get('WorkTime') is not None:
+            self.work_time = m.get('WorkTime')
+        if m.get('Satisfaction') is not None:
+            self.satisfaction = m.get('Satisfaction')
+        if m.get('Feedback') is not None:
+            self.feedback = m.get('Feedback')
+        return self
+
+
+class ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecordAgents(TeaModel):
+    def __init__(
+        self,
+        call_detail_agent: List[ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecordAgentsCallDetailAgent] = None,
+    ):
+        self.call_detail_agent = call_detail_agent
+
+    def validate(self):
+        if self.call_detail_agent:
+            for k in self.call_detail_agent:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['CallDetailAgent'] = []
+        if self.call_detail_agent is not None:
+            for k in self.call_detail_agent:
+                result['CallDetailAgent'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.call_detail_agent = []
+        if m.get('CallDetailAgent') is not None:
+            for k in m.get('CallDetailAgent'):
+                temp_model = ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecordAgentsCallDetailAgent()
+                self.call_detail_agent.append(temp_model.from_map(k))
+        return self
+
+
+class ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecordRecordingsRecording(TeaModel):
+    def __init__(
+        self,
+        contact_id: str = None,
+        contact_type: str = None,
+        agent_id: str = None,
+        agent_name: str = None,
+        calling_number: str = None,
+        called_number: str = None,
+        start_time: int = None,
+        duration: int = None,
+        file_name: str = None,
+        file_path: str = None,
+        file_description: str = None,
+        channel: str = None,
+        instance_id: str = None,
+    ):
+        self.contact_id = contact_id
+        self.contact_type = contact_type
+        self.agent_id = agent_id
+        self.agent_name = agent_name
+        self.calling_number = calling_number
+        self.called_number = called_number
+        self.start_time = start_time
+        self.duration = duration
+        self.file_name = file_name
+        self.file_path = file_path
+        self.file_description = file_description
+        self.channel = channel
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.contact_id is not None:
+            result['ContactId'] = self.contact_id
+        if self.contact_type is not None:
+            result['ContactType'] = self.contact_type
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.agent_name is not None:
+            result['AgentName'] = self.agent_name
+        if self.calling_number is not None:
+            result['CallingNumber'] = self.calling_number
+        if self.called_number is not None:
+            result['CalledNumber'] = self.called_number
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.file_description is not None:
+            result['FileDescription'] = self.file_description
+        if self.channel is not None:
+            result['Channel'] = self.channel
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContactId') is not None:
+            self.contact_id = m.get('ContactId')
+        if m.get('ContactType') is not None:
+            self.contact_type = m.get('ContactType')
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AgentName') is not None:
+            self.agent_name = m.get('AgentName')
+        if m.get('CallingNumber') is not None:
+            self.calling_number = m.get('CallingNumber')
+        if m.get('CalledNumber') is not None:
+            self.called_number = m.get('CalledNumber')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('FileDescription') is not None:
+            self.file_description = m.get('FileDescription')
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecordRecordings(TeaModel):
+    def __init__(
+        self,
+        recording: List[ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecordRecordingsRecording] = None,
+    ):
+        self.recording = recording
+
+    def validate(self):
+        if self.recording:
+            for k in self.recording:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Recording'] = []
+        if self.recording is not None:
+            for k in self.recording:
+                result['Recording'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.recording = []
+        if m.get('Recording') is not None:
+            for k in m.get('Recording'):
+                temp_model = ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecordRecordingsRecording()
+                self.recording.append(temp_model.from_map(k))
+        return self
+
+
+class ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecord(TeaModel):
+    def __init__(
+        self,
+        contact_id: str = None,
+        start_time: int = None,
+        duration: int = None,
+        satisfaction: int = None,
+        contact_type: str = None,
+        contact_disposition: str = None,
+        calling_number: str = None,
+        called_number: str = None,
+        agent_names: str = None,
+        skill_group_names: str = None,
+        instance_id: str = None,
+        extra_attr: str = None,
+        satisfaction_desc: str = None,
+        feedback: str = None,
+        agents: ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecordAgents = None,
+        recordings: ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecordRecordings = None,
+    ):
+        self.contact_id = contact_id
+        self.start_time = start_time
+        self.duration = duration
+        self.satisfaction = satisfaction
+        self.contact_type = contact_type
+        self.contact_disposition = contact_disposition
+        self.calling_number = calling_number
+        self.called_number = called_number
+        self.agent_names = agent_names
+        self.skill_group_names = skill_group_names
+        self.instance_id = instance_id
+        self.extra_attr = extra_attr
+        self.satisfaction_desc = satisfaction_desc
+        self.feedback = feedback
+        self.agents = agents
+        self.recordings = recordings
+
+    def validate(self):
+        if self.agents:
+            self.agents.validate()
+        if self.recordings:
+            self.recordings.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.contact_id is not None:
+            result['ContactId'] = self.contact_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.satisfaction is not None:
+            result['Satisfaction'] = self.satisfaction
+        if self.contact_type is not None:
+            result['ContactType'] = self.contact_type
+        if self.contact_disposition is not None:
+            result['ContactDisposition'] = self.contact_disposition
+        if self.calling_number is not None:
+            result['CallingNumber'] = self.calling_number
+        if self.called_number is not None:
+            result['CalledNumber'] = self.called_number
+        if self.agent_names is not None:
+            result['AgentNames'] = self.agent_names
+        if self.skill_group_names is not None:
+            result['SkillGroupNames'] = self.skill_group_names
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.extra_attr is not None:
+            result['ExtraAttr'] = self.extra_attr
+        if self.satisfaction_desc is not None:
+            result['SatisfactionDesc'] = self.satisfaction_desc
+        if self.feedback is not None:
+            result['Feedback'] = self.feedback
+        if self.agents is not None:
+            result['Agents'] = self.agents.to_map()
+        if self.recordings is not None:
+            result['Recordings'] = self.recordings.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContactId') is not None:
+            self.contact_id = m.get('ContactId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Satisfaction') is not None:
+            self.satisfaction = m.get('Satisfaction')
+        if m.get('ContactType') is not None:
+            self.contact_type = m.get('ContactType')
+        if m.get('ContactDisposition') is not None:
+            self.contact_disposition = m.get('ContactDisposition')
+        if m.get('CallingNumber') is not None:
+            self.calling_number = m.get('CallingNumber')
+        if m.get('CalledNumber') is not None:
+            self.called_number = m.get('CalledNumber')
+        if m.get('AgentNames') is not None:
+            self.agent_names = m.get('AgentNames')
+        if m.get('SkillGroupNames') is not None:
+            self.skill_group_names = m.get('SkillGroupNames')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ExtraAttr') is not None:
+            self.extra_attr = m.get('ExtraAttr')
+        if m.get('SatisfactionDesc') is not None:
+            self.satisfaction_desc = m.get('SatisfactionDesc')
+        if m.get('Feedback') is not None:
+            self.feedback = m.get('Feedback')
+        if m.get('Agents') is not None:
+            temp_model = ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecordAgents()
+            self.agents = temp_model.from_map(m['Agents'])
+        if m.get('Recordings') is not None:
+            temp_model = ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecordRecordings()
+            self.recordings = temp_model.from_map(m['Recordings'])
+        return self
+
+
+class ListRecentCallRecordsResponseBodyCallDetailRecordsList(TeaModel):
+    def __init__(
+        self,
+        call_detail_record: List[ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecord] = None,
+    ):
+        self.call_detail_record = call_detail_record
+
+    def validate(self):
+        if self.call_detail_record:
+            for k in self.call_detail_record:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['CallDetailRecord'] = []
+        if self.call_detail_record is not None:
+            for k in self.call_detail_record:
+                result['CallDetailRecord'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.call_detail_record = []
+        if m.get('CallDetailRecord') is not None:
+            for k in m.get('CallDetailRecord'):
+                temp_model = ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecord()
+                self.call_detail_record.append(temp_model.from_map(k))
+        return self
+
+
+class ListRecentCallRecordsResponseBodyCallDetailRecords(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        list: ListRecentCallRecordsResponseBodyCallDetailRecordsList = None,
+    ):
+        self.total_count = total_count
+        self.page_number = page_number
+        self.page_size = page_size
+        self.list = list
+
+    def validate(self):
+        if self.list:
+            self.list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.list is not None:
+            result['List'] = self.list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('List') is not None:
+            temp_model = ListRecentCallRecordsResponseBodyCallDetailRecordsList()
+            self.list = temp_model.from_map(m['List'])
+        return self
+
+
+class ListRecentCallRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        code: str = None,
+        message: str = None,
+        http_status_code: int = None,
+        call_detail_records: ListRecentCallRecordsResponseBodyCallDetailRecords = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+        self.code = code
+        self.message = message
+        self.http_status_code = http_status_code
+        self.call_detail_records = call_detail_records
+
+    def validate(self):
+        if self.call_detail_records:
+            self.call_detail_records.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.call_detail_records is not None:
+            result['CallDetailRecords'] = self.call_detail_records.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('CallDetailRecords') is not None:
+            temp_model = ListRecentCallRecordsResponseBodyCallDetailRecords()
+            self.call_detail_records = temp_model.from_map(m['CallDetailRecords'])
+        return self
+
+
+class ListRecentCallRecordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListRecentCallRecordsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListRecentCallRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListRecordingOfDualTrackRequest(TeaModel):
     def __init__(
         self,
@@ -37296,6 +39490,121 @@ class PublishContactFlowVersionResponse(TeaModel):
         return self
 
 
+class PublishPredictiveJobGroupRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        job_group_id: str = None,
+        skill_group_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.job_group_id = job_group_id
+        self.skill_group_id = skill_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_group_id is not None:
+            result['JobGroupId'] = self.job_group_id
+        if self.skill_group_id is not None:
+            result['SkillGroupId'] = self.skill_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobGroupId') is not None:
+            self.job_group_id = m.get('JobGroupId')
+        if m.get('SkillGroupId') is not None:
+            self.skill_group_id = m.get('SkillGroupId')
+        return self
+
+
+class PublishPredictiveJobGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        http_status_code: int = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.http_status_code = http_status_code
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PublishPredictiveJobGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: PublishPredictiveJobGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = PublishPredictiveJobGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PublishSurveyRequest(TeaModel):
     def __init__(
         self,
@@ -38396,6 +40705,133 @@ class ResumeJobsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ResumeJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ResumePredictiveJobsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        skill_group_id: str = None,
+        all: bool = None,
+        job_group_id: str = None,
+        job_id: List[str] = None,
+    ):
+        self.instance_id = instance_id
+        self.skill_group_id = skill_group_id
+        self.all = all
+        self.job_group_id = job_group_id
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.skill_group_id is not None:
+            result['SkillGroupId'] = self.skill_group_id
+        if self.all is not None:
+            result['All'] = self.all
+        if self.job_group_id is not None:
+            result['JobGroupId'] = self.job_group_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SkillGroupId') is not None:
+            self.skill_group_id = m.get('SkillGroupId')
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('JobGroupId') is not None:
+            self.job_group_id = m.get('JobGroupId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class ResumePredictiveJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        http_status_code: int = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.http_status_code = http_status_code
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ResumePredictiveJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ResumePredictiveJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ResumePredictiveJobsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -39533,6 +41969,133 @@ class SuspendJobsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = SuspendJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SuspendPredictiveJobsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        skill_group_id: str = None,
+        all: bool = None,
+        job_group_id: str = None,
+        job_id: List[str] = None,
+    ):
+        self.instance_id = instance_id
+        self.skill_group_id = skill_group_id
+        self.all = all
+        self.job_group_id = job_group_id
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.skill_group_id is not None:
+            result['SkillGroupId'] = self.skill_group_id
+        if self.all is not None:
+            result['All'] = self.all
+        if self.job_group_id is not None:
+            result['JobGroupId'] = self.job_group_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SkillGroupId') is not None:
+            self.skill_group_id = m.get('SkillGroupId')
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('JobGroupId') is not None:
+            self.job_group_id = m.get('JobGroupId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class SuspendPredictiveJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        http_status_code: int = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.http_status_code = http_status_code
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SuspendPredictiveJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SuspendPredictiveJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SuspendPredictiveJobsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
