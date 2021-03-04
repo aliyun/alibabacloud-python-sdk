@@ -1,3 +1,6 @@
+2021-03-04 Version: 1.0.1
+- AMP Version Change.
+
 2021-02-04 Version: 0.1.3
 - Add FinancialRelationApi to support for multie enterprise financial account query.
 
