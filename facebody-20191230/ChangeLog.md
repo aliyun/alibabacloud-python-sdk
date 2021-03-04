@@ -1,3 +1,6 @@
+2021-03-04 Version: 2.0.7
+- Release RecognizeHandGesture.
+
 2021-03-03 Version: 2.0.6
 - Update Compareface.
 

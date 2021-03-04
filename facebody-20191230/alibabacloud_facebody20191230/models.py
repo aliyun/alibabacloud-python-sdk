@@ -8382,6 +8382,196 @@ class GetBodyPersonResponse(TeaModel):
         return self
 
 
+class RecognizeHandGestureRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        image_url: str = None,
+        gesture_type: str = None,
+    ):
+        # A short description of struct
+        self.app_id = app_id
+        self.image_url = image_url
+        self.gesture_type = gesture_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.gesture_type is not None:
+            result['GestureType'] = self.gesture_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        if m.get('GestureType') is not None:
+            self.gesture_type = m.get('GestureType')
+        return self
+
+
+class RecognizeHandGestureAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+        app_id: str = None,
+        gesture_type: str = None,
+    ):
+        self.image_urlobject = image_urlobject
+        # A short description of struct
+        self.app_id = app_id
+        self.gesture_type = gesture_type
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.gesture_type is not None:
+            result['GestureType'] = self.gesture_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('GestureType') is not None:
+            self.gesture_type = m.get('GestureType')
+        return self
+
+
+class RecognizeHandGestureResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        x: int = None,
+        y: int = None,
+        width: int = None,
+        height: int = None,
+        score: float = None,
+    ):
+        self.type = type
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.score = score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.score is not None:
+            result['Score'] = self.score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        return self
+
+
+class RecognizeHandGestureResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: RecognizeHandGestureResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = RecognizeHandGestureResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class RecognizeHandGestureResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeHandGestureResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeHandGestureResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteFaceDbRequest(TeaModel):
     def __init__(
         self,

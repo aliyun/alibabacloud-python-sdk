@@ -4785,6 +4785,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_body_person_with_options_async(request, runtime)
 
+    def recognize_hand_gesture_with_options(
+        self,
+        request: facebody_20191230_models.RecognizeHandGestureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.RecognizeHandGestureResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return facebody_20191230_models.RecognizeHandGestureResponse().from_map(
+            self.do_rpcrequest('RecognizeHandGesture', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def recognize_hand_gesture_with_options_async(
+        self,
+        request: facebody_20191230_models.RecognizeHandGestureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.RecognizeHandGestureResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return facebody_20191230_models.RecognizeHandGestureResponse().from_map(
+            await self.do_rpcrequest_async('RecognizeHandGesture', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def recognize_hand_gesture(
+        self,
+        request: facebody_20191230_models.RecognizeHandGestureRequest,
+    ) -> facebody_20191230_models.RecognizeHandGestureResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_hand_gesture_with_options(request, runtime)
+
+    async def recognize_hand_gesture_async(
+        self,
+        request: facebody_20191230_models.RecognizeHandGestureRequest,
+    ) -> facebody_20191230_models.RecognizeHandGestureResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_hand_gesture_with_options_async(request, runtime)
+
+    def recognize_hand_gesture_advance(
+        self,
+        request: facebody_20191230_models.RecognizeHandGestureAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.RecognizeHandGestureResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            endpoint='openplatform.aliyuncs.com',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='facebody',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_hand_gesture_req = facebody_20191230_models.RecognizeHandGestureRequest()
+        OpenApiUtilClient.convert(request, recognize_hand_gesture_req)
+        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.image_urlobject,
+            content_type=''
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status='201'
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        oss_client.post_object(upload_request, oss_runtime)
+        recognize_hand_gesture_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_hand_gesture_resp = self.recognize_hand_gesture_with_options(recognize_hand_gesture_req, runtime)
+        return recognize_hand_gesture_resp
+
+    async def recognize_hand_gesture_advance_async(
+        self,
+        request: facebody_20191230_models.RecognizeHandGestureAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.RecognizeHandGestureResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            endpoint='openplatform.aliyuncs.com',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='facebody',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_hand_gesture_req = facebody_20191230_models.RecognizeHandGestureRequest()
+        OpenApiUtilClient.convert(request, recognize_hand_gesture_req)
+        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.image_urlobject,
+            content_type=''
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status='201'
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        await oss_client.post_object_async(upload_request, oss_runtime)
+        recognize_hand_gesture_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_hand_gesture_resp = await self.recognize_hand_gesture_with_options_async(recognize_hand_gesture_req, runtime)
+        return recognize_hand_gesture_resp
+
     def delete_face_db_with_options(
         self,
         request: facebody_20191230_models.DeleteFaceDbRequest,
