@@ -9,11 +9,14 @@ class GetSnapshotInfoRequest(TeaModel):
         self,
         client_token: str = None,
         snapshot_id: str = None,
+        show_detail: bool = None,
     ):
         # 幂等参数
         self.client_token = client_token
         # 待读取数据的快照名称
         self.snapshot_id = snapshot_id
+        # 是否返回详细信息，详细信息需要更多查询时间
+        self.show_detail = show_detail
 
     def validate(self):
         pass
@@ -24,6 +27,8 @@ class GetSnapshotInfoRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
+        if self.show_detail is not None:
+            result['ShowDetail'] = self.show_detail
         return result
 
     def from_map(self, m: dict = None):
@@ -32,6 +37,8 @@ class GetSnapshotInfoRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
+        if m.get('ShowDetail') is not None:
+            self.show_detail = m.get('ShowDetail')
         return self
 
 
@@ -50,9 +57,9 @@ class GetSnapshotInfoResponseBody(TeaModel):
         self.volume_size = volume_size
         # 快照数据快大小，单位 Bytes
         self.block_size = block_size
-        # 快照数据块总数量
+        # 快照数据块总数量，包含空数据块
         self.block_count = block_count
-        # 快照中非空数据块总数量
+        # 快照中非空数据块总数量，仅在 ShowDetail 为 True 时返回
         self.valid_block_count = valid_block_count
         # 快照状态
         self.status = status
