@@ -133,7 +133,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         res = snapshot_20201118_models.GetSnapshotBlockResponse()
-        tmp = self.do_roarequest('GetSnapshotBlock', '2020-11-18', 'HTTPS', 'GET', 'AK', f'/snapshots/block', 'binary', req, runtime)
+        tmp = UtilClient.assert_as_map(self.do_roarequest('GetSnapshotBlock', '2020-11-18', 'HTTPS', 'GET', 'AK', f'/snapshots/block', 'binary', req, runtime))
         if not UtilClient.is_unset(tmp.get('body')):
             resp_body = UtilClient.assert_as_readable(tmp.get('body'))
             res.body = resp_body
@@ -163,7 +163,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         res = snapshot_20201118_models.GetSnapshotBlockResponse()
-        tmp = await self.do_roarequest_async('GetSnapshotBlock', '2020-11-18', 'HTTPS', 'GET', 'AK', f'/snapshots/block', 'binary', req, runtime)
+        tmp = UtilClient.assert_as_map(await self.do_roarequest_async('GetSnapshotBlock', '2020-11-18', 'HTTPS', 'GET', 'AK', f'/snapshots/block', 'binary', req, runtime))
         if not UtilClient.is_unset(tmp.get('body')):
             resp_body = UtilClient.assert_as_readable(tmp.get('body'))
             res.body = resp_body

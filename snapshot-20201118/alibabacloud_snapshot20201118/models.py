@@ -39,24 +39,27 @@ class GetSnapshotInfoResponseBody(TeaModel):
     def __init__(
         self,
         volume_size: int = None,
-        volume_used_size: int = None,
         block_size: int = None,
         block_count: int = None,
+        valid_block_count: int = None,
         status: str = None,
         create_time: int = None,
+        encrypted: bool = None,
     ):
         # 快照大小，单位 GB，最小 1GB
         self.volume_size = volume_size
-        # 快照非空数据大小，单位 Bytes
-        self.volume_used_size = volume_used_size
         # 快照数据快大小，单位 Bytes
         self.block_size = block_size
         # 快照数据块总数量
         self.block_count = block_count
+        # 快照中非空数据块总数量
+        self.valid_block_count = valid_block_count
         # 快照状态
         self.status = status
         # 快照创建UTC时间，单位微妙
         self.create_time = create_time
+        # 快照是否为加密快照
+        self.encrypted = encrypted
 
     def validate(self):
         pass
@@ -65,32 +68,36 @@ class GetSnapshotInfoResponseBody(TeaModel):
         result = dict()
         if self.volume_size is not None:
             result['VolumeSize'] = self.volume_size
-        if self.volume_used_size is not None:
-            result['VolumeUsedSize'] = self.volume_used_size
         if self.block_size is not None:
             result['BlockSize'] = self.block_size
         if self.block_count is not None:
             result['BlockCount'] = self.block_count
+        if self.valid_block_count is not None:
+            result['ValidBlockCount'] = self.valid_block_count
         if self.status is not None:
             result['Status'] = self.status
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('VolumeSize') is not None:
             self.volume_size = m.get('VolumeSize')
-        if m.get('VolumeUsedSize') is not None:
-            self.volume_used_size = m.get('VolumeUsedSize')
         if m.get('BlockSize') is not None:
             self.block_size = m.get('BlockSize')
         if m.get('BlockCount') is not None:
             self.block_count = m.get('BlockCount')
+        if m.get('ValidBlockCount') is not None:
+            self.valid_block_count = m.get('ValidBlockCount')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
         return self
 
 
@@ -308,6 +315,7 @@ class ListChangedBlocksResponseBody(TeaModel):
         volume_size: int = None,
         block_size: int = None,
         block_count: int = None,
+        total_block_count: int = None,
     ):
         # 下一页结果的 token，为空时代表无新增页，最大长度 256 字节
         self.next_token = next_token
@@ -315,12 +323,14 @@ class ListChangedBlocksResponseBody(TeaModel):
         self.changed_blocks = changed_blocks
         # 差异数据块 token 过期时间戳
         self.expiry_time = expiry_time
-        # 快照大小，单位 GB，最小 1GB
+        # 第二个快照大小，单位 GB，最小 1GB
         self.volume_size = volume_size
         # 数据块大小，单位 Byte
         self.block_size = block_size
-        # 变化数据块数量
+        # 本次查询中变化数据块数量
         self.block_count = block_count
+        # 两个快照差异数据块总数量
+        self.total_block_count = total_block_count
 
     def validate(self):
         if self.changed_blocks:
@@ -344,6 +354,8 @@ class ListChangedBlocksResponseBody(TeaModel):
             result['BlockSize'] = self.block_size
         if self.block_count is not None:
             result['BlockCount'] = self.block_count
+        if self.total_block_count is not None:
+            result['TotalBlockCount'] = self.total_block_count
         return result
 
     def from_map(self, m: dict = None):
@@ -363,6 +375,8 @@ class ListChangedBlocksResponseBody(TeaModel):
             self.block_size = m.get('BlockSize')
         if m.get('BlockCount') is not None:
             self.block_count = m.get('BlockCount')
+        if m.get('TotalBlockCount') is not None:
+            self.total_block_count = m.get('TotalBlockCount')
         return self
 
 
@@ -491,10 +505,11 @@ class ListSnapshotBlocksResponseBody(TeaModel):
         volume_size: int = None,
         block_size: int = None,
         block_count: int = None,
+        total_block_count: int = None,
     ):
         # 下一页结果的 token，为空时代表无新增页，最大  256 字节
         self.next_token = next_token
-        # 快照数据块信息列表
+        # 快照有效数据块信息列表，不包含空数据块
         self.blocks = blocks
         # BlockToken 过期时间戳
         self.expiry_time = expiry_time
@@ -502,8 +517,10 @@ class ListSnapshotBlocksResponseBody(TeaModel):
         self.volume_size = volume_size
         # 数据块大小，单位 Byte
         self.block_size = block_size
-        # 快照总数据块数量
+        # 本次查询中快照有效数据块数量
         self.block_count = block_count
+        # 快照有效数据块总数量
+        self.total_block_count = total_block_count
 
     def validate(self):
         if self.blocks:
@@ -527,6 +544,8 @@ class ListSnapshotBlocksResponseBody(TeaModel):
             result['BlockSize'] = self.block_size
         if self.block_count is not None:
             result['BlockCount'] = self.block_count
+        if self.total_block_count is not None:
+            result['TotalBlockCount'] = self.total_block_count
         return result
 
     def from_map(self, m: dict = None):
@@ -546,6 +565,8 @@ class ListSnapshotBlocksResponseBody(TeaModel):
             self.block_size = m.get('BlockSize')
         if m.get('BlockCount') is not None:
             self.block_count = m.get('BlockCount')
+        if m.get('TotalBlockCount') is not None:
+            self.total_block_count = m.get('TotalBlockCount')
         return self
 
 

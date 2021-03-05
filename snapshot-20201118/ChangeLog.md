@@ -1,3 +1,6 @@
+2021-03-05 Version: 2.0.3
+- Ebs Snapshot Data Open API.
+
 2021-02-26 Version: 2.0.2
 - Ebs Snapshot Data Open API.
 
