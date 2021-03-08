@@ -1,3 +1,6 @@
+2021-03-08 Version: 3.0.1
+- Generated python 2020-03-20 for videoseg.
+
 2021-02-01 Version: 3.0.0
 - Release SegmentGreenScreenVideo.
 
