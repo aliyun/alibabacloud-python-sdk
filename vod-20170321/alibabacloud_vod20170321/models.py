@@ -259,6 +259,8 @@ class AddEditingProjectRequest(TeaModel):
         timeline: str = None,
         cover_url: str = None,
         division: str = None,
+        feextend: str = None,
+        duration: float = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_id = resource_owner_id
@@ -269,6 +271,8 @@ class AddEditingProjectRequest(TeaModel):
         self.timeline = timeline
         self.cover_url = cover_url
         self.division = division
+        self.feextend = feextend
+        self.duration = duration
 
     def validate(self):
         pass
@@ -293,6 +297,10 @@ class AddEditingProjectRequest(TeaModel):
             result['CoverURL'] = self.cover_url
         if self.division is not None:
             result['Division'] = self.division
+        if self.feextend is not None:
+            result['FEExtend'] = self.feextend
+        if self.duration is not None:
+            result['Duration'] = self.duration
         return result
 
     def from_map(self, m: dict = None):
@@ -315,6 +323,10 @@ class AddEditingProjectRequest(TeaModel):
             self.cover_url = m.get('CoverURL')
         if m.get('Division') is not None:
             self.division = m.get('Division')
+        if m.get('FEExtend') is not None:
+            self.feextend = m.get('FEExtend')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         return self
 
 
@@ -8405,6 +8417,170 @@ class DetachAppPolicyFromIdentityResponse(TeaModel):
         return self
 
 
+class GetAICaptionExtractionJobsRequest(TeaModel):
+    def __init__(
+        self,
+        job_ids: str = None,
+    ):
+        self.job_ids = job_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.job_ids is not None:
+            result['JobIds'] = self.job_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobIds') is not None:
+            self.job_ids = m.get('JobIds')
+        return self
+
+
+class GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        creation_time: str = None,
+        video_id: str = None,
+        job_id: str = None,
+        user_data: str = None,
+        code: str = None,
+        aicaption_extraction_result: str = None,
+        message: str = None,
+        template_config: str = None,
+    ):
+        self.status = status
+        self.creation_time = creation_time
+        self.video_id = video_id
+        self.job_id = job_id
+        self.user_data = user_data
+        self.code = code
+        self.aicaption_extraction_result = aicaption_extraction_result
+        self.message = message
+        self.template_config = template_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.video_id is not None:
+            result['VideoId'] = self.video_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.aicaption_extraction_result is not None:
+            result['AICaptionExtractionResult'] = self.aicaption_extraction_result
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.template_config is not None:
+            result['TemplateConfig'] = self.template_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('VideoId') is not None:
+            self.video_id = m.get('VideoId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('AICaptionExtractionResult') is not None:
+            self.aicaption_extraction_result = m.get('AICaptionExtractionResult')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('TemplateConfig') is not None:
+            self.template_config = m.get('TemplateConfig')
+        return self
+
+
+class GetAICaptionExtractionJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        aicaption_extraction_job_list: List[GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList] = None,
+    ):
+        self.request_id = request_id
+        self.aicaption_extraction_job_list = aicaption_extraction_job_list
+
+    def validate(self):
+        if self.aicaption_extraction_job_list:
+            for k in self.aicaption_extraction_job_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['AICaptionExtractionJobList'] = []
+        if self.aicaption_extraction_job_list is not None:
+            for k in self.aicaption_extraction_job_list:
+                result['AICaptionExtractionJobList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.aicaption_extraction_job_list = []
+        if m.get('AICaptionExtractionJobList') is not None:
+            for k in m.get('AICaptionExtractionJobList'):
+                temp_model = GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList()
+                self.aicaption_extraction_job_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetAICaptionExtractionJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetAICaptionExtractionJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetAICaptionExtractionJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAIImageJobsRequest(TeaModel):
     def __init__(
         self,
@@ -8602,14 +8778,8 @@ class GetAIImageJobsResponse(TeaModel):
 class GetAIMediaAuditJobRequest(TeaModel):
     def __init__(
         self,
-        owner_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
         job_id: str = None,
     ):
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
         self.job_id = job_id
 
     def validate(self):
@@ -8617,24 +8787,12 @@ class GetAIMediaAuditJobRequest(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.job_id is not None:
             result['JobId'] = self.job_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         return self
@@ -8733,6 +8891,47 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult(TeaModel):
             self.url = m.get('Url')
         if m.get('Label') is not None:
             self.label = m.get('Label')
+        return self
+
+
+class GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult(TeaModel):
+    def __init__(
+        self,
+        suggestion: str = None,
+        score: str = None,
+        label: str = None,
+        scene: str = None,
+    ):
+        self.suggestion = suggestion
+        self.score = score
+        self.label = label
+        self.scene = scene
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.suggestion is not None:
+            result['Suggestion'] = self.suggestion
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.scene is not None:
+            result['Scene'] = self.scene
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Suggestion') is not None:
+            self.suggestion = m.get('Suggestion')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
         return self
 
 
@@ -9567,6 +9766,7 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobData(TeaModel):
         self,
         suggestion: str = None,
         image_result: List[GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult] = None,
+        audio_result: List[GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult] = None,
         video_result: GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult = None,
         abnormal_modules: str = None,
         label: str = None,
@@ -9574,6 +9774,7 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobData(TeaModel):
     ):
         self.suggestion = suggestion
         self.image_result = image_result
+        self.audio_result = audio_result
         self.video_result = video_result
         self.abnormal_modules = abnormal_modules
         self.label = label
@@ -9582,6 +9783,10 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobData(TeaModel):
     def validate(self):
         if self.image_result:
             for k in self.image_result:
+                if k:
+                    k.validate()
+        if self.audio_result:
+            for k in self.audio_result:
                 if k:
                     k.validate()
         if self.video_result:
@@ -9599,6 +9804,10 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobData(TeaModel):
         if self.image_result is not None:
             for k in self.image_result:
                 result['ImageResult'].append(k.to_map() if k else None)
+        result['AudioResult'] = []
+        if self.audio_result is not None:
+            for k in self.audio_result:
+                result['AudioResult'].append(k.to_map() if k else None)
         if self.video_result is not None:
             result['VideoResult'] = self.video_result.to_map()
         if self.abnormal_modules is not None:
@@ -9620,6 +9829,11 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobData(TeaModel):
             for k in m.get('ImageResult'):
                 temp_model = GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult()
                 self.image_result.append(temp_model.from_map(k))
+        self.audio_result = []
+        if m.get('AudioResult') is not None:
+            for k in m.get('AudioResult'):
+                temp_model = GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult()
+                self.audio_result.append(temp_model.from_map(k))
         if m.get('VideoResult') is not None:
             temp_model = GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult()
             self.video_result = temp_model.from_map(m['VideoResult'])
@@ -11277,12 +11491,14 @@ class GetEditingProjectRequest(TeaModel):
         resource_owner_account: str = None,
         owner_account: str = None,
         project_id: str = None,
+        feextend_flag: int = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_id = resource_owner_id
         self.resource_owner_account = resource_owner_account
         self.owner_account = owner_account
         self.project_id = project_id
+        self.feextend_flag = feextend_flag
 
     def validate(self):
         pass
@@ -11299,6 +11515,8 @@ class GetEditingProjectRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.feextend_flag is not None:
+            result['FEExtendFlag'] = self.feextend_flag
         return result
 
     def from_map(self, m: dict = None):
@@ -11313,6 +11531,8 @@ class GetEditingProjectRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('FEExtendFlag') is not None:
+            self.feextend_flag = m.get('FEExtendFlag')
         return self
 
 
@@ -11570,6 +11790,7 @@ class GetEditingProjectMaterialsResponseBodyMaterialListMaterial(TeaModel):
         sprites: GetEditingProjectMaterialsResponseBodyMaterialListMaterialSprites = None,
         cate_id: int = None,
         tags: str = None,
+        material_type: str = None,
         sprite_config: str = None,
         source: str = None,
         snapshots: GetEditingProjectMaterialsResponseBodyMaterialListMaterialSnapshots = None,
@@ -11587,6 +11808,7 @@ class GetEditingProjectMaterialsResponseBodyMaterialListMaterial(TeaModel):
         self.sprites = sprites
         self.cate_id = cate_id
         self.tags = tags
+        self.material_type = material_type
         self.sprite_config = sprite_config
         self.source = source
         self.snapshots = snapshots
@@ -11617,6 +11839,8 @@ class GetEditingProjectMaterialsResponseBodyMaterialListMaterial(TeaModel):
             result['CateId'] = self.cate_id
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.material_type is not None:
+            result['MaterialType'] = self.material_type
         if self.sprite_config is not None:
             result['SpriteConfig'] = self.sprite_config
         if self.source is not None:
@@ -11654,6 +11878,8 @@ class GetEditingProjectMaterialsResponseBodyMaterialListMaterial(TeaModel):
             self.cate_id = m.get('CateId')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('MaterialType') is not None:
+            self.material_type = m.get('MaterialType')
         if m.get('SpriteConfig') is not None:
             self.sprite_config = m.get('SpriteConfig')
         if m.get('Source') is not None:
@@ -12222,47 +12448,23 @@ class GetMediaAuditAudioResultDetailResponse(TeaModel):
 class GetMediaAuditResultRequest(TeaModel):
     def __init__(
         self,
-        owner_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
         media_id: str = None,
-        resource_real_owner_id: int = None,
     ):
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
         self.media_id = media_id
-        self.resource_real_owner_id = resource_real_owner_id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.media_id is not None:
             result['MediaId'] = self.media_id
-        if self.resource_real_owner_id is not None:
-            result['ResourceRealOwnerId'] = self.resource_real_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('MediaId') is not None:
             self.media_id = m.get('MediaId')
-        if m.get('ResourceRealOwnerId') is not None:
-            self.resource_real_owner_id = m.get('ResourceRealOwnerId')
         return self
 
 
@@ -13384,15 +13586,9 @@ class GetMediaAuditResultResponse(TeaModel):
 class GetMediaAuditResultDetailRequest(TeaModel):
     def __init__(
         self,
-        owner_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
         media_id: str = None,
         page_no: int = None,
     ):
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
         self.media_id = media_id
         self.page_no = page_no
 
@@ -13401,12 +13597,6 @@ class GetMediaAuditResultDetailRequest(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.media_id is not None:
             result['MediaId'] = self.media_id
         if self.page_no is not None:
@@ -13415,12 +13605,6 @@ class GetMediaAuditResultDetailRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('MediaId') is not None:
             self.media_id = m.get('MediaId')
         if m.get('PageNo') is not None:
@@ -13621,14 +13805,8 @@ class GetMediaAuditResultDetailResponse(TeaModel):
 class GetMediaAuditResultTimelineRequest(TeaModel):
     def __init__(
         self,
-        owner_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
         media_id: str = None,
     ):
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
         self.media_id = media_id
 
     def validate(self):
@@ -13636,24 +13814,12 @@ class GetMediaAuditResultTimelineRequest(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.media_id is not None:
             result['MediaId'] = self.media_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('MediaId') is not None:
             self.media_id = m.get('MediaId')
         return self
@@ -15319,14 +15485,8 @@ class GetPlayInfoResponse(TeaModel):
 class GetTranscodeSummaryRequest(TeaModel):
     def __init__(
         self,
-        owner_id: int = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
         video_ids: str = None,
     ):
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
         self.video_ids = video_ids
 
     def validate(self):
@@ -15334,24 +15494,12 @@ class GetTranscodeSummaryRequest(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.video_ids is not None:
             result['VideoIds'] = self.video_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('VideoIds') is not None:
             self.video_ids = m.get('VideoIds')
         return self
@@ -15604,14 +15752,8 @@ class GetTranscodeSummaryResponse(TeaModel):
 class GetTranscodeTaskRequest(TeaModel):
     def __init__(
         self,
-        owner_id: int = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
         transcode_task_id: str = None,
     ):
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
         self.transcode_task_id = transcode_task_id
 
     def validate(self):
@@ -15619,24 +15761,12 @@ class GetTranscodeTaskRequest(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.transcode_task_id is not None:
             result['TranscodeTaskId'] = self.transcode_task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('TranscodeTaskId') is not None:
             self.transcode_task_id = m.get('TranscodeTaskId')
         return self
@@ -22965,6 +23095,109 @@ class SetVodDomainCertificateResponse(TeaModel):
         return self
 
 
+class SubmitAICaptionExtractionJobRequest(TeaModel):
+    def __init__(
+        self,
+        video_id: str = None,
+        job_config: str = None,
+        aipipeline_id: str = None,
+        user_data: str = None,
+    ):
+        self.video_id = video_id
+        self.job_config = job_config
+        self.aipipeline_id = aipipeline_id
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.video_id is not None:
+            result['VideoId'] = self.video_id
+        if self.job_config is not None:
+            result['JobConfig'] = self.job_config
+        if self.aipipeline_id is not None:
+            result['AIPipelineId'] = self.aipipeline_id
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoId') is not None:
+            self.video_id = m.get('VideoId')
+        if m.get('JobConfig') is not None:
+            self.job_config = m.get('JobConfig')
+        if m.get('AIPipelineId') is not None:
+            self.aipipeline_id = m.get('AIPipelineId')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitAICaptionExtractionJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        job_id: str = None,
+    ):
+        self.request_id = request_id
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class SubmitAICaptionExtractionJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SubmitAICaptionExtractionJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SubmitAICaptionExtractionJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SubmitAIImageAuditJobRequest(TeaModel):
     def __init__(
         self,
@@ -24988,6 +25221,8 @@ class UpdateEditingProjectRequest(TeaModel):
         timeline: str = None,
         description: str = None,
         cover_url: str = None,
+        feextend: str = None,
+        duration: float = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_id = resource_owner_id
@@ -24998,6 +25233,8 @@ class UpdateEditingProjectRequest(TeaModel):
         self.timeline = timeline
         self.description = description
         self.cover_url = cover_url
+        self.feextend = feextend
+        self.duration = duration
 
     def validate(self):
         pass
@@ -25022,6 +25259,10 @@ class UpdateEditingProjectRequest(TeaModel):
             result['Description'] = self.description
         if self.cover_url is not None:
             result['CoverURL'] = self.cover_url
+        if self.feextend is not None:
+            result['FEExtend'] = self.feextend
+        if self.duration is not None:
+            result['Duration'] = self.duration
         return result
 
     def from_map(self, m: dict = None):
@@ -25044,6 +25285,10 @@ class UpdateEditingProjectRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('CoverURL') is not None:
             self.cover_url = m.get('CoverURL')
+        if m.get('FEExtend') is not None:
+            self.feextend = m.get('FEExtend')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         return self
 
 

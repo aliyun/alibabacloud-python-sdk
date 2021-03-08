@@ -2324,6 +2324,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_app_policy_from_identity_with_options_async(request, runtime)
 
+    def get_aicaption_extraction_jobs_with_options(
+        self,
+        request: vod_20170321_models.GetAICaptionExtractionJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.GetAICaptionExtractionJobsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return vod_20170321_models.GetAICaptionExtractionJobsResponse().from_map(
+            self.do_rpcrequest('GetAICaptionExtractionJobs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_aicaption_extraction_jobs_with_options_async(
+        self,
+        request: vod_20170321_models.GetAICaptionExtractionJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.GetAICaptionExtractionJobsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return vod_20170321_models.GetAICaptionExtractionJobsResponse().from_map(
+            await self.do_rpcrequest_async('GetAICaptionExtractionJobs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_aicaption_extraction_jobs(
+        self,
+        request: vod_20170321_models.GetAICaptionExtractionJobsRequest,
+    ) -> vod_20170321_models.GetAICaptionExtractionJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_aicaption_extraction_jobs_with_options(request, runtime)
+
+    async def get_aicaption_extraction_jobs_async(
+        self,
+        request: vod_20170321_models.GetAICaptionExtractionJobsRequest,
+    ) -> vod_20170321_models.GetAICaptionExtractionJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_aicaption_extraction_jobs_with_options_async(request, runtime)
+
     def get_aiimage_jobs_with_options(
         self,
         request: vod_20170321_models.GetAIImageJobsRequest,
@@ -4723,6 +4763,46 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetVodDomainCertificateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.set_vod_domain_certificate_with_options_async(request, runtime)
+
+    def submit_aicaption_extraction_job_with_options(
+        self,
+        request: vod_20170321_models.SubmitAICaptionExtractionJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.SubmitAICaptionExtractionJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return vod_20170321_models.SubmitAICaptionExtractionJobResponse().from_map(
+            self.do_rpcrequest('SubmitAICaptionExtractionJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_aicaption_extraction_job_with_options_async(
+        self,
+        request: vod_20170321_models.SubmitAICaptionExtractionJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.SubmitAICaptionExtractionJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return vod_20170321_models.SubmitAICaptionExtractionJobResponse().from_map(
+            await self.do_rpcrequest_async('SubmitAICaptionExtractionJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_aicaption_extraction_job(
+        self,
+        request: vod_20170321_models.SubmitAICaptionExtractionJobRequest,
+    ) -> vod_20170321_models.SubmitAICaptionExtractionJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_aicaption_extraction_job_with_options(request, runtime)
+
+    async def submit_aicaption_extraction_job_async(
+        self,
+        request: vod_20170321_models.SubmitAICaptionExtractionJobRequest,
+    ) -> vod_20170321_models.SubmitAICaptionExtractionJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_aicaption_extraction_job_with_options_async(request, runtime)
 
     def submit_aiimage_audit_job_with_options(
         self,
