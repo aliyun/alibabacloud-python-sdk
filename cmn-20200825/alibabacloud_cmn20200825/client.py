@@ -988,6 +988,32 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_dedicated_line_with_options_async(request, runtime)
 
+    def list_instances_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.ListInstancesResponse:
+        req = open_api_models.OpenApiRequest()
+        return cmn_20200825_models.ListInstancesResponse().from_map(
+            self.do_rpcrequest('ListInstances', '2020-08-25', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def list_instances_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.ListInstancesResponse:
+        req = open_api_models.OpenApiRequest()
+        return cmn_20200825_models.ListInstancesResponse().from_map(
+            await self.do_rpcrequest_async('ListInstances', '2020-08-25', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def list_instances(self) -> cmn_20200825_models.ListInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_instances_with_options(runtime)
+
+    async def list_instances_async(self) -> cmn_20200825_models.ListInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instances_with_options_async(runtime)
+
     def delete_inspection_task_with_options(
         self,
         request: cmn_20200825_models.DeleteInspectionTaskRequest,
@@ -1613,6 +1639,32 @@ class Client(OpenApiClient):
     ) -> cmn_20200825_models.UpdateDevicesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_devices_with_options_async(request, runtime)
+
+    def list_regions_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.ListRegionsResponse:
+        req = open_api_models.OpenApiRequest()
+        return cmn_20200825_models.ListRegionsResponse().from_map(
+            self.do_rpcrequest('ListRegions', '2020-08-25', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def list_regions_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.ListRegionsResponse:
+        req = open_api_models.OpenApiRequest()
+        return cmn_20200825_models.ListRegionsResponse().from_map(
+            await self.do_rpcrequest_async('ListRegions', '2020-08-25', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def list_regions(self) -> cmn_20200825_models.ListRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_regions_with_options(runtime)
+
+    async def list_regions_async(self) -> cmn_20200825_models.ListRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_regions_with_options_async(runtime)
 
     def disable_notification_with_options(
         self,
