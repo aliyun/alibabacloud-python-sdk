@@ -439,7 +439,7 @@ class DescribeHiTSDBInstanceResponseBodySecurityIpList(TeaModel):
 class DescribeHiTSDBInstanceResponseBody(TeaModel):
     def __init__(
         self,
-        auto_renew: bool = None,
+        auto_renew: str = None,
         gmt_created: str = None,
         cpu_number: str = None,
         mem_size: str = None,
@@ -1000,6 +1000,518 @@ class DescribeHiTSDBInstanceListResponse(TeaModel):
         return self
 
 
+class DescribeHiTSDBInstanceSecurityIpListRequest(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        owner_account: str = None,
+        instance_id: str = None,
+        group_name: str = None,
+    ):
+        self.security_token = security_token
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.owner_account = owner_account
+        self.instance_id = instance_id
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class DescribeHiTSDBInstanceSecurityIpListResponseBodySecurityIpList(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+    ):
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        return self
+
+
+class DescribeHiTSDBInstanceSecurityIpListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        security_ip_list: List[DescribeHiTSDBInstanceSecurityIpListResponseBodySecurityIpList] = None,
+    ):
+        self.request_id = request_id
+        self.security_ip_list = security_ip_list
+
+    def validate(self):
+        if self.security_ip_list:
+            for k in self.security_ip_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SecurityIpList'] = []
+        if self.security_ip_list is not None:
+            for k in self.security_ip_list:
+                result['SecurityIpList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.security_ip_list = []
+        if m.get('SecurityIpList') is not None:
+            for k in m.get('SecurityIpList'):
+                temp_model = DescribeHiTSDBInstanceSecurityIpListResponseBodySecurityIpList()
+                self.security_ip_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeHiTSDBInstanceSecurityIpListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeHiTSDBInstanceSecurityIpListResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeHiTSDBInstanceSecurityIpListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        owner_account: str = None,
+        accept_language: str = None,
+    ):
+        self.security_token = security_token
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.owner_account = owner_account
+        self.accept_language = accept_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        return self
+
+
+class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
+    def __init__(
+        self,
+        local_name: str = None,
+        region_endpoint: str = None,
+        region_id: str = None,
+    ):
+        self.local_name = local_name
+        self.region_endpoint = region_endpoint
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
+        if self.region_endpoint is not None:
+            result['RegionEndpoint'] = self.region_endpoint
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
+        if m.get('RegionEndpoint') is not None:
+            self.region_endpoint = m.get('RegionEndpoint')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeRegionsResponseBodyRegions(TeaModel):
+    def __init__(
+        self,
+        region: List[DescribeRegionsResponseBodyRegionsRegion] = None,
+    ):
+        self.region = region
+
+    def validate(self):
+        if self.region:
+            for k in self.region:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['Region'] = []
+        if self.region is not None:
+            for k in self.region:
+                result['Region'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.region = []
+        if m.get('Region') is not None:
+            for k in m.get('Region'):
+                temp_model = DescribeRegionsResponseBodyRegionsRegion()
+                self.region.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRegionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        regions: DescribeRegionsResponseBodyRegions = None,
+    ):
+        self.request_id = request_id
+        self.regions = regions
+
+    def validate(self):
+        if self.regions:
+            self.regions.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.regions is not None:
+            result['Regions'] = self.regions.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Regions') is not None:
+            temp_model = DescribeRegionsResponseBodyRegions()
+            self.regions = temp_model.from_map(m['Regions'])
+        return self
+
+
+class DescribeRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeRegionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeZonesRequest(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        owner_account: str = None,
+        language: str = None,
+    ):
+        self.security_token = security_token
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.owner_account = owner_account
+        self.language = language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.language is not None:
+            result['Language'] = self.language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        return self
+
+
+class DescribeZonesResponseBodyZoneListZoneModel(TeaModel):
+    def __init__(
+        self,
+        local_name: str = None,
+        zone_id: str = None,
+    ):
+        self.local_name = local_name
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeZonesResponseBodyZoneList(TeaModel):
+    def __init__(
+        self,
+        zone_model: List[DescribeZonesResponseBodyZoneListZoneModel] = None,
+    ):
+        self.zone_model = zone_model
+
+    def validate(self):
+        if self.zone_model:
+            for k in self.zone_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['ZoneModel'] = []
+        if self.zone_model is not None:
+            for k in self.zone_model:
+                result['ZoneModel'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.zone_model = []
+        if m.get('ZoneModel') is not None:
+            for k in m.get('ZoneModel'):
+                temp_model = DescribeZonesResponseBodyZoneListZoneModel()
+                self.zone_model.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeZonesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        zone_list: DescribeZonesResponseBodyZoneList = None,
+    ):
+        self.request_id = request_id
+        self.zone_list = zone_list
+
+    def validate(self):
+        if self.zone_list:
+            self.zone_list.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.zone_list is not None:
+            result['ZoneList'] = self.zone_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ZoneList') is not None:
+            temp_model = DescribeZonesResponseBodyZoneList()
+            self.zone_list = temp_model.from_map(m['ZoneList'])
+        return self
+
+
+class DescribeZonesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeZonesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeZonesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyHiTSDBInstanceClassRequest(TeaModel):
     def __init__(
         self,
@@ -1127,6 +1639,127 @@ class ModifyHiTSDBInstanceClassResponse(TeaModel):
         return self
 
 
+class ModifyHiTSDBInstanceSecurityIpListRequest(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        owner_account: str = None,
+        instance_id: str = None,
+        security_ip_list: str = None,
+        group_name: str = None,
+    ):
+        self.security_token = security_token
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.owner_account = owner_account
+        self.instance_id = instance_id
+        self.security_ip_list = security_ip_list
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.security_ip_list is not None:
+            result['SecurityIpList'] = self.security_ip_list
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SecurityIpList') is not None:
+            self.security_ip_list = m.get('SecurityIpList')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class ModifyHiTSDBInstanceSecurityIpListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyHiTSDBInstanceSecurityIpListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyHiTSDBInstanceSecurityIpListResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyHiTSDBInstanceSecurityIpListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RenameHiTSDBInstanceAliasRequest(TeaModel):
     def __init__(
         self,
@@ -1244,6 +1877,363 @@ class RenameHiTSDBInstanceAliasResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RenameHiTSDBInstanceAliasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RenewTSDBInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        owner_account: str = None,
+        region_id: str = None,
+        instance_id: str = None,
+        pricing_cycle: str = None,
+        duration: int = None,
+    ):
+        self.security_token = security_token
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.owner_account = owner_account
+        self.region_id = region_id
+        self.instance_id = instance_id
+        self.pricing_cycle = pricing_cycle
+        self.duration = duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.pricing_cycle is not None:
+            result['PricingCycle'] = self.pricing_cycle
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PricingCycle') is not None:
+            self.pricing_cycle = m.get('PricingCycle')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        return self
+
+
+class RenewTSDBInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        order_id: int = None,
+    ):
+        self.request_id = request_id
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class RenewTSDBInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RenewTSDBInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RenewTSDBInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RestartHiTSDBInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        owner_account: str = None,
+        instance_id: str = None,
+    ):
+        self.security_token = security_token
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.owner_account = owner_account
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class RestartHiTSDBInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RestartHiTSDBInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RestartHiTSDBInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RestartHiTSDBInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SwitchHiTSDBInstancePublicNetRequest(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        owner_account: str = None,
+        instance_id: str = None,
+        switch_action: int = None,
+    ):
+        self.security_token = security_token
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.owner_account = owner_account
+        self.instance_id = instance_id
+        self.switch_action = switch_action
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.switch_action is not None:
+            result['SwitchAction'] = self.switch_action
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SwitchAction') is not None:
+            self.switch_action = m.get('SwitchAction')
+        return self
+
+
+class SwitchHiTSDBInstancePublicNetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SwitchHiTSDBInstancePublicNetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SwitchHiTSDBInstancePublicNetResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SwitchHiTSDBInstancePublicNetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

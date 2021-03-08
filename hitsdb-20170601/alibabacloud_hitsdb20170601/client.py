@@ -248,6 +248,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_hi_tsdbinstance_list_with_options_async(request, runtime)
 
+    def describe_hi_tsdbinstance_security_ip_list_with_options(
+        self,
+        request: hitsdb_20170601_models.DescribeHiTSDBInstanceSecurityIpListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.DescribeHiTSDBInstanceSecurityIpListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.DescribeHiTSDBInstanceSecurityIpListResponse().from_map(
+            self.do_rpcrequest('DescribeHiTSDBInstanceSecurityIpList', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_hi_tsdbinstance_security_ip_list_with_options_async(
+        self,
+        request: hitsdb_20170601_models.DescribeHiTSDBInstanceSecurityIpListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.DescribeHiTSDBInstanceSecurityIpListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.DescribeHiTSDBInstanceSecurityIpListResponse().from_map(
+            await self.do_rpcrequest_async('DescribeHiTSDBInstanceSecurityIpList', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_hi_tsdbinstance_security_ip_list(
+        self,
+        request: hitsdb_20170601_models.DescribeHiTSDBInstanceSecurityIpListRequest,
+    ) -> hitsdb_20170601_models.DescribeHiTSDBInstanceSecurityIpListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hi_tsdbinstance_security_ip_list_with_options(request, runtime)
+
+    async def describe_hi_tsdbinstance_security_ip_list_async(
+        self,
+        request: hitsdb_20170601_models.DescribeHiTSDBInstanceSecurityIpListRequest,
+    ) -> hitsdb_20170601_models.DescribeHiTSDBInstanceSecurityIpListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hi_tsdbinstance_security_ip_list_with_options_async(request, runtime)
+
+    def describe_regions_with_options(
+        self,
+        request: hitsdb_20170601_models.DescribeRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.DescribeRegionsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.DescribeRegionsResponse().from_map(
+            self.do_rpcrequest('DescribeRegions', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_regions_with_options_async(
+        self,
+        request: hitsdb_20170601_models.DescribeRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.DescribeRegionsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.DescribeRegionsResponse().from_map(
+            await self.do_rpcrequest_async('DescribeRegions', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_regions(
+        self,
+        request: hitsdb_20170601_models.DescribeRegionsRequest,
+    ) -> hitsdb_20170601_models.DescribeRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_regions_with_options(request, runtime)
+
+    async def describe_regions_async(
+        self,
+        request: hitsdb_20170601_models.DescribeRegionsRequest,
+    ) -> hitsdb_20170601_models.DescribeRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_regions_with_options_async(request, runtime)
+
+    def describe_zones_with_options(
+        self,
+        request: hitsdb_20170601_models.DescribeZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.DescribeZonesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.DescribeZonesResponse().from_map(
+            self.do_rpcrequest('DescribeZones', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_zones_with_options_async(
+        self,
+        request: hitsdb_20170601_models.DescribeZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.DescribeZonesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.DescribeZonesResponse().from_map(
+            await self.do_rpcrequest_async('DescribeZones', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_zones(
+        self,
+        request: hitsdb_20170601_models.DescribeZonesRequest,
+    ) -> hitsdb_20170601_models.DescribeZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_zones_with_options(request, runtime)
+
+    async def describe_zones_async(
+        self,
+        request: hitsdb_20170601_models.DescribeZonesRequest,
+    ) -> hitsdb_20170601_models.DescribeZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_zones_with_options_async(request, runtime)
+
     def modify_hi_tsdbinstance_class_with_options(
         self,
         request: hitsdb_20170601_models.ModifyHiTSDBInstanceClassRequest,
@@ -288,6 +408,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_hi_tsdbinstance_class_with_options_async(request, runtime)
 
+    def modify_hi_tsdbinstance_security_ip_list_with_options(
+        self,
+        request: hitsdb_20170601_models.ModifyHiTSDBInstanceSecurityIpListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.ModifyHiTSDBInstanceSecurityIpListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.ModifyHiTSDBInstanceSecurityIpListResponse().from_map(
+            self.do_rpcrequest('ModifyHiTSDBInstanceSecurityIpList', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_hi_tsdbinstance_security_ip_list_with_options_async(
+        self,
+        request: hitsdb_20170601_models.ModifyHiTSDBInstanceSecurityIpListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.ModifyHiTSDBInstanceSecurityIpListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.ModifyHiTSDBInstanceSecurityIpListResponse().from_map(
+            await self.do_rpcrequest_async('ModifyHiTSDBInstanceSecurityIpList', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_hi_tsdbinstance_security_ip_list(
+        self,
+        request: hitsdb_20170601_models.ModifyHiTSDBInstanceSecurityIpListRequest,
+    ) -> hitsdb_20170601_models.ModifyHiTSDBInstanceSecurityIpListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_hi_tsdbinstance_security_ip_list_with_options(request, runtime)
+
+    async def modify_hi_tsdbinstance_security_ip_list_async(
+        self,
+        request: hitsdb_20170601_models.ModifyHiTSDBInstanceSecurityIpListRequest,
+    ) -> hitsdb_20170601_models.ModifyHiTSDBInstanceSecurityIpListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_hi_tsdbinstance_security_ip_list_with_options_async(request, runtime)
+
     def rename_hi_tsdbinstance_alias_with_options(
         self,
         request: hitsdb_20170601_models.RenameHiTSDBInstanceAliasRequest,
@@ -327,3 +487,123 @@ class Client(OpenApiClient):
     ) -> hitsdb_20170601_models.RenameHiTSDBInstanceAliasResponse:
         runtime = util_models.RuntimeOptions()
         return await self.rename_hi_tsdbinstance_alias_with_options_async(request, runtime)
+
+    def renew_tsdbinstance_with_options(
+        self,
+        request: hitsdb_20170601_models.RenewTSDBInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.RenewTSDBInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.RenewTSDBInstanceResponse().from_map(
+            self.do_rpcrequest('RenewTSDBInstance', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def renew_tsdbinstance_with_options_async(
+        self,
+        request: hitsdb_20170601_models.RenewTSDBInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.RenewTSDBInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.RenewTSDBInstanceResponse().from_map(
+            await self.do_rpcrequest_async('RenewTSDBInstance', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def renew_tsdbinstance(
+        self,
+        request: hitsdb_20170601_models.RenewTSDBInstanceRequest,
+    ) -> hitsdb_20170601_models.RenewTSDBInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.renew_tsdbinstance_with_options(request, runtime)
+
+    async def renew_tsdbinstance_async(
+        self,
+        request: hitsdb_20170601_models.RenewTSDBInstanceRequest,
+    ) -> hitsdb_20170601_models.RenewTSDBInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.renew_tsdbinstance_with_options_async(request, runtime)
+
+    def restart_hi_tsdbinstance_with_options(
+        self,
+        request: hitsdb_20170601_models.RestartHiTSDBInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.RestartHiTSDBInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.RestartHiTSDBInstanceResponse().from_map(
+            self.do_rpcrequest('RestartHiTSDBInstance', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def restart_hi_tsdbinstance_with_options_async(
+        self,
+        request: hitsdb_20170601_models.RestartHiTSDBInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.RestartHiTSDBInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.RestartHiTSDBInstanceResponse().from_map(
+            await self.do_rpcrequest_async('RestartHiTSDBInstance', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def restart_hi_tsdbinstance(
+        self,
+        request: hitsdb_20170601_models.RestartHiTSDBInstanceRequest,
+    ) -> hitsdb_20170601_models.RestartHiTSDBInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.restart_hi_tsdbinstance_with_options(request, runtime)
+
+    async def restart_hi_tsdbinstance_async(
+        self,
+        request: hitsdb_20170601_models.RestartHiTSDBInstanceRequest,
+    ) -> hitsdb_20170601_models.RestartHiTSDBInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.restart_hi_tsdbinstance_with_options_async(request, runtime)
+
+    def switch_hi_tsdbinstance_public_net_with_options(
+        self,
+        request: hitsdb_20170601_models.SwitchHiTSDBInstancePublicNetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.SwitchHiTSDBInstancePublicNetResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.SwitchHiTSDBInstancePublicNetResponse().from_map(
+            self.do_rpcrequest('SwitchHiTSDBInstancePublicNet', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def switch_hi_tsdbinstance_public_net_with_options_async(
+        self,
+        request: hitsdb_20170601_models.SwitchHiTSDBInstancePublicNetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20170601_models.SwitchHiTSDBInstancePublicNetResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return hitsdb_20170601_models.SwitchHiTSDBInstancePublicNetResponse().from_map(
+            await self.do_rpcrequest_async('SwitchHiTSDBInstancePublicNet', '2017-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def switch_hi_tsdbinstance_public_net(
+        self,
+        request: hitsdb_20170601_models.SwitchHiTSDBInstancePublicNetRequest,
+    ) -> hitsdb_20170601_models.SwitchHiTSDBInstancePublicNetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.switch_hi_tsdbinstance_public_net_with_options(request, runtime)
+
+    async def switch_hi_tsdbinstance_public_net_async(
+        self,
+        request: hitsdb_20170601_models.SwitchHiTSDBInstancePublicNetRequest,
+    ) -> hitsdb_20170601_models.SwitchHiTSDBInstancePublicNetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.switch_hi_tsdbinstance_public_net_with_options_async(request, runtime)
