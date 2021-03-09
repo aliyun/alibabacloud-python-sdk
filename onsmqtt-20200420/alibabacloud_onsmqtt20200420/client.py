@@ -199,6 +199,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_group_id_with_options_async(request, runtime)
 
+    def get_device_credential_with_options(
+        self,
+        request: ons_mqtt_20200420_models.GetDeviceCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.GetDeviceCredentialResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ons_mqtt_20200420_models.GetDeviceCredentialResponse().from_map(
+            self.do_rpcrequest('GetDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_device_credential_with_options_async(
+        self,
+        request: ons_mqtt_20200420_models.GetDeviceCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.GetDeviceCredentialResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ons_mqtt_20200420_models.GetDeviceCredentialResponse().from_map(
+            await self.do_rpcrequest_async('GetDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_device_credential(
+        self,
+        request: ons_mqtt_20200420_models.GetDeviceCredentialRequest,
+    ) -> ons_mqtt_20200420_models.GetDeviceCredentialResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_device_credential_with_options(request, runtime)
+
+    async def get_device_credential_async(
+        self,
+        request: ons_mqtt_20200420_models.GetDeviceCredentialRequest,
+    ) -> ons_mqtt_20200420_models.GetDeviceCredentialResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_device_credential_with_options_async(request, runtime)
+
     def list_group_id_with_options(
         self,
         request: ons_mqtt_20200420_models.ListGroupIdRequest,
@@ -319,6 +359,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_token_with_options_async(request, runtime)
 
+    def refresh_device_credential_with_options(
+        self,
+        request: ons_mqtt_20200420_models.RefreshDeviceCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.RefreshDeviceCredentialResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ons_mqtt_20200420_models.RefreshDeviceCredentialResponse().from_map(
+            self.do_rpcrequest('RefreshDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def refresh_device_credential_with_options_async(
+        self,
+        request: ons_mqtt_20200420_models.RefreshDeviceCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.RefreshDeviceCredentialResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ons_mqtt_20200420_models.RefreshDeviceCredentialResponse().from_map(
+            await self.do_rpcrequest_async('RefreshDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def refresh_device_credential(
+        self,
+        request: ons_mqtt_20200420_models.RefreshDeviceCredentialRequest,
+    ) -> ons_mqtt_20200420_models.RefreshDeviceCredentialResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.refresh_device_credential_with_options(request, runtime)
+
+    async def refresh_device_credential_async(
+        self,
+        request: ons_mqtt_20200420_models.RefreshDeviceCredentialRequest,
+    ) -> ons_mqtt_20200420_models.RefreshDeviceCredentialResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.refresh_device_credential_with_options_async(request, runtime)
+
+    def register_device_credential_with_options(
+        self,
+        request: ons_mqtt_20200420_models.RegisterDeviceCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.RegisterDeviceCredentialResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ons_mqtt_20200420_models.RegisterDeviceCredentialResponse().from_map(
+            self.do_rpcrequest('RegisterDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def register_device_credential_with_options_async(
+        self,
+        request: ons_mqtt_20200420_models.RegisterDeviceCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.RegisterDeviceCredentialResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ons_mqtt_20200420_models.RegisterDeviceCredentialResponse().from_map(
+            await self.do_rpcrequest_async('RegisterDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def register_device_credential(
+        self,
+        request: ons_mqtt_20200420_models.RegisterDeviceCredentialRequest,
+    ) -> ons_mqtt_20200420_models.RegisterDeviceCredentialResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.register_device_credential_with_options(request, runtime)
+
+    async def register_device_credential_async(
+        self,
+        request: ons_mqtt_20200420_models.RegisterDeviceCredentialRequest,
+    ) -> ons_mqtt_20200420_models.RegisterDeviceCredentialResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.register_device_credential_with_options_async(request, runtime)
+
     def revoke_token_with_options(
         self,
         request: ons_mqtt_20200420_models.RevokeTokenRequest,
@@ -398,3 +518,43 @@ class Client(OpenApiClient):
     ) -> ons_mqtt_20200420_models.SendMessageResponse:
         runtime = util_models.RuntimeOptions()
         return await self.send_message_with_options_async(request, runtime)
+
+    def un_register_device_credential_with_options(
+        self,
+        request: ons_mqtt_20200420_models.UnRegisterDeviceCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse().from_map(
+            self.do_rpcrequest('UnRegisterDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def un_register_device_credential_with_options_async(
+        self,
+        request: ons_mqtt_20200420_models.UnRegisterDeviceCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse().from_map(
+            await self.do_rpcrequest_async('UnRegisterDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def un_register_device_credential(
+        self,
+        request: ons_mqtt_20200420_models.UnRegisterDeviceCredentialRequest,
+    ) -> ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.un_register_device_credential_with_options(request, runtime)
+
+    async def un_register_device_credential_async(
+        self,
+        request: ons_mqtt_20200420_models.UnRegisterDeviceCredentialRequest,
+    ) -> ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.un_register_device_credential_with_options_async(request, runtime)

@@ -405,6 +405,152 @@ class DeleteGroupIdResponse(TeaModel):
         return self
 
 
+class GetDeviceCredentialRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        instance_id: str = None,
+    ):
+        self.client_id = client_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetDeviceCredentialResponseBodyDeviceCredential(TeaModel):
+    def __init__(
+        self,
+        update_time: int = None,
+        device_access_key_id: str = None,
+        create_time: int = None,
+        instance_id: str = None,
+        device_access_key_secret: str = None,
+        client_id: str = None,
+    ):
+        self.update_time = update_time
+        self.device_access_key_id = device_access_key_id
+        self.create_time = create_time
+        self.instance_id = instance_id
+        self.device_access_key_secret = device_access_key_secret
+        self.client_id = client_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.device_access_key_id is not None:
+            result['DeviceAccessKeyId'] = self.device_access_key_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.device_access_key_secret is not None:
+            result['DeviceAccessKeySecret'] = self.device_access_key_secret
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('DeviceAccessKeyId') is not None:
+            self.device_access_key_id = m.get('DeviceAccessKeyId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('DeviceAccessKeySecret') is not None:
+            self.device_access_key_secret = m.get('DeviceAccessKeySecret')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        return self
+
+
+class GetDeviceCredentialResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        device_credential: GetDeviceCredentialResponseBodyDeviceCredential = None,
+    ):
+        self.request_id = request_id
+        self.device_credential = device_credential
+
+    def validate(self):
+        if self.device_credential:
+            self.device_credential.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.device_credential is not None:
+            result['DeviceCredential'] = self.device_credential.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('DeviceCredential') is not None:
+            temp_model = GetDeviceCredentialResponseBodyDeviceCredential()
+            self.device_credential = temp_model.from_map(m['DeviceCredential'])
+        return self
+
+
+class GetDeviceCredentialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDeviceCredentialResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDeviceCredentialResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListGroupIdRequest(TeaModel):
     def __init__(
         self,
@@ -727,6 +873,298 @@ class QueryTokenResponse(TeaModel):
         return self
 
 
+class RefreshDeviceCredentialRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        instance_id: str = None,
+    ):
+        self.client_id = client_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class RefreshDeviceCredentialResponseBodyDeviceCredential(TeaModel):
+    def __init__(
+        self,
+        update_time: int = None,
+        device_access_key_id: str = None,
+        create_time: int = None,
+        instance_id: str = None,
+        device_access_key_secret: str = None,
+        client_id: str = None,
+    ):
+        self.update_time = update_time
+        self.device_access_key_id = device_access_key_id
+        self.create_time = create_time
+        self.instance_id = instance_id
+        self.device_access_key_secret = device_access_key_secret
+        self.client_id = client_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.device_access_key_id is not None:
+            result['DeviceAccessKeyId'] = self.device_access_key_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.device_access_key_secret is not None:
+            result['DeviceAccessKeySecret'] = self.device_access_key_secret
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('DeviceAccessKeyId') is not None:
+            self.device_access_key_id = m.get('DeviceAccessKeyId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('DeviceAccessKeySecret') is not None:
+            self.device_access_key_secret = m.get('DeviceAccessKeySecret')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        return self
+
+
+class RefreshDeviceCredentialResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        device_credential: RefreshDeviceCredentialResponseBodyDeviceCredential = None,
+    ):
+        self.request_id = request_id
+        self.device_credential = device_credential
+
+    def validate(self):
+        if self.device_credential:
+            self.device_credential.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.device_credential is not None:
+            result['DeviceCredential'] = self.device_credential.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('DeviceCredential') is not None:
+            temp_model = RefreshDeviceCredentialResponseBodyDeviceCredential()
+            self.device_credential = temp_model.from_map(m['DeviceCredential'])
+        return self
+
+
+class RefreshDeviceCredentialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RefreshDeviceCredentialResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RefreshDeviceCredentialResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RegisterDeviceCredentialRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        instance_id: str = None,
+    ):
+        self.client_id = client_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class RegisterDeviceCredentialResponseBodyDeviceCredential(TeaModel):
+    def __init__(
+        self,
+        update_time: int = None,
+        device_access_key_id: str = None,
+        create_time: int = None,
+        instance_id: str = None,
+        device_access_key_secret: str = None,
+        client_id: str = None,
+    ):
+        self.update_time = update_time
+        self.device_access_key_id = device_access_key_id
+        self.create_time = create_time
+        self.instance_id = instance_id
+        self.device_access_key_secret = device_access_key_secret
+        self.client_id = client_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.device_access_key_id is not None:
+            result['DeviceAccessKeyId'] = self.device_access_key_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.device_access_key_secret is not None:
+            result['DeviceAccessKeySecret'] = self.device_access_key_secret
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('DeviceAccessKeyId') is not None:
+            self.device_access_key_id = m.get('DeviceAccessKeyId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('DeviceAccessKeySecret') is not None:
+            self.device_access_key_secret = m.get('DeviceAccessKeySecret')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        return self
+
+
+class RegisterDeviceCredentialResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        device_credential: RegisterDeviceCredentialResponseBodyDeviceCredential = None,
+    ):
+        self.request_id = request_id
+        self.device_credential = device_credential
+
+    def validate(self):
+        if self.device_credential:
+            self.device_credential.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.device_credential is not None:
+            result['DeviceCredential'] = self.device_credential.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('DeviceCredential') is not None:
+            temp_model = RegisterDeviceCredentialResponseBodyDeviceCredential()
+            self.device_credential = temp_model.from_map(m['DeviceCredential'])
+        return self
+
+
+class RegisterDeviceCredentialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RegisterDeviceCredentialResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RegisterDeviceCredentialResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RevokeTokenRequest(TeaModel):
     def __init__(
         self,
@@ -905,6 +1343,91 @@ class SendMessageResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = SendMessageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnRegisterDeviceCredentialRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        instance_id: str = None,
+    ):
+        self.client_id = client_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UnRegisterDeviceCredentialResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UnRegisterDeviceCredentialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UnRegisterDeviceCredentialResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UnRegisterDeviceCredentialResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
