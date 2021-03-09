@@ -1,3 +1,6 @@
+2021-03-09 Version: 2.1.0
+- Generated python 2018-01-20 for Iot.
+
 2021-02-03 Version: 2.0.0
 - Support TeaDSL.
 - Fix dotnet SDK concurrency issue.
