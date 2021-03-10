@@ -8,8 +8,10 @@ class SubmitStructSyncOrderApprovalRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        tid: int = None,
     ):
         self.order_id = order_id
+        self.tid = tid
 
     def validate(self):
         pass
@@ -18,12 +20,16 @@ class SubmitStructSyncOrderApprovalRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -1562,9 +1568,11 @@ class GetDataCorrectSQLFileRequest(TeaModel):
         self,
         order_id: int = None,
         order_action_name: str = None,
+        tid: int = None,
     ):
         self.order_id = order_id
         self.order_action_name = order_action_name
+        self.tid = tid
 
     def validate(self):
         pass
@@ -1575,6 +1583,8 @@ class GetDataCorrectSQLFileRequest(TeaModel):
             result['OrderId'] = self.order_id
         if self.order_action_name is not None:
             result['OrderActionName'] = self.order_action_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -1583,6 +1593,8 @@ class GetDataCorrectSQLFileRequest(TeaModel):
             self.order_id = m.get('OrderId')
         if m.get('OrderActionName') is not None:
             self.order_action_name = m.get('OrderActionName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -1667,6 +1679,285 @@ class GetDataCorrectSQLFileResponse(TeaModel):
         return self
 
 
+class CreateFreeLockCorrectOrderRequestParamDbItemList(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        logic: bool = None,
+    ):
+        self.db_id = db_id
+        self.logic = logic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        return self
+
+
+class CreateFreeLockCorrectOrderRequestParam(TeaModel):
+    def __init__(
+        self,
+        classify: str = None,
+        exec_sql: str = None,
+        sql_type: str = None,
+        attachment_name: str = None,
+        rollback_sql: str = None,
+        rollback_attachment_name: str = None,
+        rollback_sql_type: str = None,
+        db_item_list: List[CreateFreeLockCorrectOrderRequestParamDbItemList] = None,
+    ):
+        self.classify = classify
+        self.exec_sql = exec_sql
+        self.sql_type = sql_type
+        self.attachment_name = attachment_name
+        self.rollback_sql = rollback_sql
+        self.rollback_attachment_name = rollback_attachment_name
+        self.rollback_sql_type = rollback_sql_type
+        self.db_item_list = db_item_list
+
+    def validate(self):
+        if self.db_item_list:
+            for k in self.db_item_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.classify is not None:
+            result['Classify'] = self.classify
+        if self.exec_sql is not None:
+            result['ExecSQL'] = self.exec_sql
+        if self.sql_type is not None:
+            result['SqlType'] = self.sql_type
+        if self.attachment_name is not None:
+            result['AttachmentName'] = self.attachment_name
+        if self.rollback_sql is not None:
+            result['RollbackSQL'] = self.rollback_sql
+        if self.rollback_attachment_name is not None:
+            result['RollbackAttachmentName'] = self.rollback_attachment_name
+        if self.rollback_sql_type is not None:
+            result['RollbackSqlType'] = self.rollback_sql_type
+        result['DbItemList'] = []
+        if self.db_item_list is not None:
+            for k in self.db_item_list:
+                result['DbItemList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Classify') is not None:
+            self.classify = m.get('Classify')
+        if m.get('ExecSQL') is not None:
+            self.exec_sql = m.get('ExecSQL')
+        if m.get('SqlType') is not None:
+            self.sql_type = m.get('SqlType')
+        if m.get('AttachmentName') is not None:
+            self.attachment_name = m.get('AttachmentName')
+        if m.get('RollbackSQL') is not None:
+            self.rollback_sql = m.get('RollbackSQL')
+        if m.get('RollbackAttachmentName') is not None:
+            self.rollback_attachment_name = m.get('RollbackAttachmentName')
+        if m.get('RollbackSqlType') is not None:
+            self.rollback_sql_type = m.get('RollbackSqlType')
+        self.db_item_list = []
+        if m.get('DbItemList') is not None:
+            for k in m.get('DbItemList'):
+                temp_model = CreateFreeLockCorrectOrderRequestParamDbItemList()
+                self.db_item_list.append(temp_model.from_map(k))
+        return self
+
+
+class CreateFreeLockCorrectOrderRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        related_user_list: List[int] = None,
+        param: CreateFreeLockCorrectOrderRequestParam = None,
+        attachment_key: str = None,
+        tid: int = None,
+    ):
+        self.comment = comment
+        self.related_user_list = related_user_list
+        self.param = param
+        self.attachment_key = attachment_key
+        self.tid = tid
+
+    def validate(self):
+        if self.param:
+            self.param.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.related_user_list is not None:
+            result['RelatedUserList'] = self.related_user_list
+        if self.param is not None:
+            result['Param'] = self.param.to_map()
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list = m.get('RelatedUserList')
+        if m.get('Param') is not None:
+            temp_model = CreateFreeLockCorrectOrderRequestParam()
+            self.param = temp_model.from_map(m['Param'])
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateFreeLockCorrectOrderShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        related_user_list_shrink: str = None,
+        param_shrink: str = None,
+        attachment_key: str = None,
+        tid: int = None,
+    ):
+        self.comment = comment
+        self.related_user_list_shrink = related_user_list_shrink
+        self.param_shrink = param_shrink
+        self.attachment_key = attachment_key
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.related_user_list_shrink is not None:
+            result['RelatedUserList'] = self.related_user_list_shrink
+        if self.param_shrink is not None:
+            result['Param'] = self.param_shrink
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list_shrink = m.get('RelatedUserList')
+        if m.get('Param') is not None:
+            self.param_shrink = m.get('Param')
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateFreeLockCorrectOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        create_order_result: List[int] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.create_order_result = create_order_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.create_order_result is not None:
+            result['CreateOrderResult'] = self.create_order_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('CreateOrderResult') is not None:
+            self.create_order_result = m.get('CreateOrderResult')
+        return self
+
+
+class CreateFreeLockCorrectOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateFreeLockCorrectOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateFreeLockCorrectOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateOrderRequest(TeaModel):
     def __init__(
         self,
@@ -1675,12 +1966,14 @@ class CreateOrderRequest(TeaModel):
         plugin_param: Dict[str, Any] = None,
         related_user_list: str = None,
         plugin_type: str = None,
+        attachment_key: str = None,
     ):
         self.tid = tid
         self.comment = comment
         self.plugin_param = plugin_param
         self.related_user_list = related_user_list
         self.plugin_type = plugin_type
+        self.attachment_key = attachment_key
 
     def validate(self):
         pass
@@ -1697,6 +1990,8 @@ class CreateOrderRequest(TeaModel):
             result['RelatedUserList'] = self.related_user_list
         if self.plugin_type is not None:
             result['PluginType'] = self.plugin_type
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
         return result
 
     def from_map(self, m: dict = None):
@@ -1711,6 +2006,8 @@ class CreateOrderRequest(TeaModel):
             self.related_user_list = m.get('RelatedUserList')
         if m.get('PluginType') is not None:
             self.plugin_type = m.get('PluginType')
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
         return self
 
 
@@ -1722,12 +2019,14 @@ class CreateOrderShrinkRequest(TeaModel):
         plugin_param_shrink: str = None,
         related_user_list: str = None,
         plugin_type: str = None,
+        attachment_key: str = None,
     ):
         self.tid = tid
         self.comment = comment
         self.plugin_param_shrink = plugin_param_shrink
         self.related_user_list = related_user_list
         self.plugin_type = plugin_type
+        self.attachment_key = attachment_key
 
     def validate(self):
         pass
@@ -1744,6 +2043,8 @@ class CreateOrderShrinkRequest(TeaModel):
             result['RelatedUserList'] = self.related_user_list
         if self.plugin_type is not None:
             result['PluginType'] = self.plugin_type
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
         return result
 
     def from_map(self, m: dict = None):
@@ -1758,6 +2059,8 @@ class CreateOrderShrinkRequest(TeaModel):
             self.related_user_list = m.get('RelatedUserList')
         if m.get('PluginType') is not None:
             self.plugin_type = m.get('PluginType')
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
         return self
 
 
@@ -3517,8 +3820,10 @@ class GetUserUploadFileJobRequest(TeaModel):
     def __init__(
         self,
         job_key: str = None,
+        tid: int = None,
     ):
         self.job_key = job_key
+        self.tid = tid
 
     def validate(self):
         pass
@@ -3527,12 +3832,16 @@ class GetUserUploadFileJobRequest(TeaModel):
         result = dict()
         if self.job_key is not None:
             result['JobKey'] = self.job_key
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('JobKey') is not None:
             self.job_key = m.get('JobKey')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -3743,8 +4052,10 @@ class GetStructSyncJobDetailRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        tid: int = None,
     ):
         self.order_id = order_id
+        self.tid = tid
 
     def validate(self):
         pass
@@ -3753,12 +4064,16 @@ class GetStructSyncJobDetailRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -3772,6 +4087,7 @@ class GetStructSyncJobDetailResponseBodyStructSyncJobDetail(TeaModel):
         sql_count: int = None,
         execute_count: int = None,
         security_rule: str = None,
+        dbtask_group_id: int = None,
     ):
         self.job_status = job_status
         self.message = message
@@ -3780,6 +4096,7 @@ class GetStructSyncJobDetailResponseBodyStructSyncJobDetail(TeaModel):
         self.sql_count = sql_count
         self.execute_count = execute_count
         self.security_rule = security_rule
+        self.dbtask_group_id = dbtask_group_id
 
     def validate(self):
         pass
@@ -3800,6 +4117,8 @@ class GetStructSyncJobDetailResponseBodyStructSyncJobDetail(TeaModel):
             result['ExecuteCount'] = self.execute_count
         if self.security_rule is not None:
             result['SecurityRule'] = self.security_rule
+        if self.dbtask_group_id is not None:
+            result['DBTaskGroupId'] = self.dbtask_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3818,6 +4137,8 @@ class GetStructSyncJobDetailResponseBodyStructSyncJobDetail(TeaModel):
             self.execute_count = m.get('ExecuteCount')
         if m.get('SecurityRule') is not None:
             self.security_rule = m.get('SecurityRule')
+        if m.get('DBTaskGroupId') is not None:
+            self.dbtask_group_id = m.get('DBTaskGroupId')
         return self
 
 
@@ -3946,11 +4267,13 @@ class CreateUploadOSSFileJobRequest(TeaModel):
         file_name: str = None,
         upload_type: str = None,
         upload_target: CreateUploadOSSFileJobRequestUploadTarget = None,
+        tid: int = None,
     ):
         self.file_source = file_source
         self.file_name = file_name
         self.upload_type = upload_type
         self.upload_target = upload_target
+        self.tid = tid
 
     def validate(self):
         if self.upload_target:
@@ -3966,6 +4289,8 @@ class CreateUploadOSSFileJobRequest(TeaModel):
             result['UploadType'] = self.upload_type
         if self.upload_target is not None:
             result['UploadTarget'] = self.upload_target.to_map()
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -3979,6 +4304,8 @@ class CreateUploadOSSFileJobRequest(TeaModel):
         if m.get('UploadTarget') is not None:
             temp_model = CreateUploadOSSFileJobRequestUploadTarget()
             self.upload_target = temp_model.from_map(m['UploadTarget'])
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -3989,11 +4316,13 @@ class CreateUploadOSSFileJobShrinkRequest(TeaModel):
         file_name: str = None,
         upload_type: str = None,
         upload_target_shrink: str = None,
+        tid: int = None,
     ):
         self.file_source = file_source
         self.file_name = file_name
         self.upload_type = upload_type
         self.upload_target_shrink = upload_target_shrink
+        self.tid = tid
 
     def validate(self):
         pass
@@ -4008,6 +4337,8 @@ class CreateUploadOSSFileJobShrinkRequest(TeaModel):
             result['UploadType'] = self.upload_type
         if self.upload_target_shrink is not None:
             result['UploadTarget'] = self.upload_target_shrink
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -4020,6 +4351,8 @@ class CreateUploadOSSFileJobShrinkRequest(TeaModel):
             self.upload_type = m.get('UploadType')
         if m.get('UploadTarget') is not None:
             self.upload_target_shrink = m.get('UploadTarget')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -4822,8 +5155,10 @@ class ExecuteStructSyncRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        tid: int = None,
     ):
         self.order_id = order_id
+        self.tid = tid
 
     def validate(self):
         pass
@@ -4832,12 +5167,16 @@ class ExecuteStructSyncRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -5178,10 +5517,12 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail(TeaModel):
         pre_check_detail: GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetail = None,
         order_detail: GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailOrderDetail = None,
         database_list: GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList = None,
+        status: str = None,
     ):
         self.pre_check_detail = pre_check_detail
         self.order_detail = order_detail
         self.database_list = database_list
+        self.status = status
 
     def validate(self):
         if self.pre_check_detail:
@@ -5199,6 +5540,8 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail(TeaModel):
             result['OrderDetail'] = self.order_detail.to_map()
         if self.database_list is not None:
             result['DatabaseList'] = self.database_list.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -5212,6 +5555,8 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail(TeaModel):
         if m.get('DatabaseList') is not None:
             temp_model = GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList()
             self.database_list = temp_model.from_map(m['DatabaseList'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -6399,10 +6744,12 @@ class ListDBTaskSQLJobDetailRequest(TeaModel):
         job_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        tid: int = None,
     ):
         self.job_id = job_id
         self.page_number = page_number
         self.page_size = page_size
+        self.tid = tid
 
     def validate(self):
         pass
@@ -6415,6 +6762,8 @@ class ListDBTaskSQLJobDetailRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -6425,6 +6774,8 @@ class ListDBTaskSQLJobDetailRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -7079,6 +7430,29 @@ class GetApprovalDetailResponse(TeaModel):
         return self
 
 
+class GetUserActiveTenantRequest(TeaModel):
+    def __init__(
+        self,
+        tid: int = None,
+    ):
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
 class GetUserActiveTenantResponseBodyTenant(TeaModel):
     def __init__(
         self,
@@ -7656,8 +8030,10 @@ class GetPermApplyOrderDetailRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        tid: int = None,
     ):
         self.order_id = order_id
+        self.tid = tid
 
     def validate(self):
         pass
@@ -7666,12 +8042,16 @@ class GetPermApplyOrderDetailRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -8542,6 +8922,250 @@ class ListLogicTablesResponse(TeaModel):
         return self
 
 
+class GetTableTopologyRequest(TeaModel):
+    def __init__(
+        self,
+        table_guid: str = None,
+        tid: int = None,
+    ):
+        self.table_guid = table_guid
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList(TeaModel):
+    def __init__(
+        self,
+        table_name_list: str = None,
+        table_name_expr: str = None,
+        table_count: int = None,
+        db_id: int = None,
+        db_search_name: str = None,
+        instance_id: int = None,
+        region_id: str = None,
+        instance_resource_id: str = None,
+        instance_source: str = None,
+        db_name: str = None,
+        db_type: str = None,
+    ):
+        self.table_name_list = table_name_list
+        self.table_name_expr = table_name_expr
+        self.table_count = table_count
+        self.db_id = db_id
+        self.db_search_name = db_search_name
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.instance_resource_id = instance_resource_id
+        self.instance_source = instance_source
+        self.db_name = db_name
+        self.db_type = db_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.table_name_list is not None:
+            result['TableNameList'] = self.table_name_list
+        if self.table_name_expr is not None:
+            result['TableNameExpr'] = self.table_name_expr
+        if self.table_count is not None:
+            result['TableCount'] = self.table_count
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.db_search_name is not None:
+            result['DbSearchName'] = self.db_search_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.instance_resource_id is not None:
+            result['InstanceResourceId'] = self.instance_resource_id
+        if self.instance_source is not None:
+            result['InstanceSource'] = self.instance_source
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TableNameList') is not None:
+            self.table_name_list = m.get('TableNameList')
+        if m.get('TableNameExpr') is not None:
+            self.table_name_expr = m.get('TableNameExpr')
+        if m.get('TableCount') is not None:
+            self.table_count = m.get('TableCount')
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('DbSearchName') is not None:
+            self.db_search_name = m.get('DbSearchName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('InstanceResourceId') is not None:
+            self.instance_resource_id = m.get('InstanceResourceId')
+        if m.get('InstanceSource') is not None:
+            self.instance_source = m.get('InstanceSource')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        return self
+
+
+class GetTableTopologyResponseBodyTableTopology(TeaModel):
+    def __init__(
+        self,
+        table_guid: str = None,
+        table_name: str = None,
+        table_topology_info_list: List[GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList] = None,
+        logic: bool = None,
+    ):
+        self.table_guid = table_guid
+        self.table_name = table_name
+        self.table_topology_info_list = table_topology_info_list
+        self.logic = logic
+
+    def validate(self):
+        if self.table_topology_info_list:
+            for k in self.table_topology_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        result['TableTopologyInfoList'] = []
+        if self.table_topology_info_list is not None:
+            for k in self.table_topology_info_list:
+                result['TableTopologyInfoList'].append(k.to_map() if k else None)
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        self.table_topology_info_list = []
+        if m.get('TableTopologyInfoList') is not None:
+            for k in m.get('TableTopologyInfoList'):
+                temp_model = GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList()
+                self.table_topology_info_list.append(temp_model.from_map(k))
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        return self
+
+
+class GetTableTopologyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        table_topology: GetTableTopologyResponseBodyTableTopology = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.table_topology = table_topology
+
+    def validate(self):
+        if self.table_topology:
+            self.table_topology.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.table_topology is not None:
+            result['TableTopology'] = self.table_topology.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('TableTopology') is not None:
+            temp_model = GetTableTopologyResponseBodyTableTopology()
+            self.table_topology = temp_model.from_map(m['TableTopology'])
+        return self
+
+
+class GetTableTopologyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetTableTopologyResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetTableTopologyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDataExportDownloadURLRequest(TeaModel):
     def __init__(
         self,
@@ -8690,6 +9314,329 @@ class GetDataExportDownloadURLResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetDataExportDownloadURLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDataCronClearOrderRequestParamDbItemList(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        logic: bool = None,
+    ):
+        self.db_id = db_id
+        self.logic = logic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        return self
+
+
+class CreateDataCronClearOrderRequestParamCronClearItemList(TeaModel):
+    def __init__(
+        self,
+        table_name: str = None,
+        column_name: str = None,
+        remain_days: int = None,
+        time_unit: str = None,
+        filter_sql: str = None,
+    ):
+        self.table_name = table_name
+        self.column_name = column_name
+        self.remain_days = remain_days
+        self.time_unit = time_unit
+        self.filter_sql = filter_sql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.remain_days is not None:
+            result['RemainDays'] = self.remain_days
+        if self.time_unit is not None:
+            result['TimeUnit'] = self.time_unit
+        if self.filter_sql is not None:
+            result['FilterSQL'] = self.filter_sql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('RemainDays') is not None:
+            self.remain_days = m.get('RemainDays')
+        if m.get('TimeUnit') is not None:
+            self.time_unit = m.get('TimeUnit')
+        if m.get('FilterSQL') is not None:
+            self.filter_sql = m.get('FilterSQL')
+        return self
+
+
+class CreateDataCronClearOrderRequestParam(TeaModel):
+    def __init__(
+        self,
+        classify: str = None,
+        db_item_list: List[CreateDataCronClearOrderRequestParamDbItemList] = None,
+        cron_format: str = None,
+        cron_clear_item_list: List[CreateDataCronClearOrderRequestParamCronClearItemList] = None,
+        specify_duration: bool = None,
+        duration_hour: int = None,
+    ):
+        self.classify = classify
+        self.db_item_list = db_item_list
+        self.cron_format = cron_format
+        self.cron_clear_item_list = cron_clear_item_list
+        self.specify_duration = specify_duration
+        self.duration_hour = duration_hour
+
+    def validate(self):
+        if self.db_item_list:
+            for k in self.db_item_list:
+                if k:
+                    k.validate()
+        if self.cron_clear_item_list:
+            for k in self.cron_clear_item_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.classify is not None:
+            result['Classify'] = self.classify
+        result['DbItemList'] = []
+        if self.db_item_list is not None:
+            for k in self.db_item_list:
+                result['DbItemList'].append(k.to_map() if k else None)
+        if self.cron_format is not None:
+            result['CronFormat'] = self.cron_format
+        result['CronClearItemList'] = []
+        if self.cron_clear_item_list is not None:
+            for k in self.cron_clear_item_list:
+                result['CronClearItemList'].append(k.to_map() if k else None)
+        if self.specify_duration is not None:
+            result['specifyDuration'] = self.specify_duration
+        if self.duration_hour is not None:
+            result['DurationHour'] = self.duration_hour
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Classify') is not None:
+            self.classify = m.get('Classify')
+        self.db_item_list = []
+        if m.get('DbItemList') is not None:
+            for k in m.get('DbItemList'):
+                temp_model = CreateDataCronClearOrderRequestParamDbItemList()
+                self.db_item_list.append(temp_model.from_map(k))
+        if m.get('CronFormat') is not None:
+            self.cron_format = m.get('CronFormat')
+        self.cron_clear_item_list = []
+        if m.get('CronClearItemList') is not None:
+            for k in m.get('CronClearItemList'):
+                temp_model = CreateDataCronClearOrderRequestParamCronClearItemList()
+                self.cron_clear_item_list.append(temp_model.from_map(k))
+        if m.get('specifyDuration') is not None:
+            self.specify_duration = m.get('specifyDuration')
+        if m.get('DurationHour') is not None:
+            self.duration_hour = m.get('DurationHour')
+        return self
+
+
+class CreateDataCronClearOrderRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        related_user_list: List[int] = None,
+        param: CreateDataCronClearOrderRequestParam = None,
+        attachment_key: str = None,
+        tid: int = None,
+    ):
+        self.comment = comment
+        self.related_user_list = related_user_list
+        self.param = param
+        self.attachment_key = attachment_key
+        self.tid = tid
+
+    def validate(self):
+        if self.param:
+            self.param.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.related_user_list is not None:
+            result['RelatedUserList'] = self.related_user_list
+        if self.param is not None:
+            result['Param'] = self.param.to_map()
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list = m.get('RelatedUserList')
+        if m.get('Param') is not None:
+            temp_model = CreateDataCronClearOrderRequestParam()
+            self.param = temp_model.from_map(m['Param'])
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataCronClearOrderShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        related_user_list_shrink: str = None,
+        param_shrink: str = None,
+        attachment_key: str = None,
+        tid: int = None,
+    ):
+        self.comment = comment
+        self.related_user_list_shrink = related_user_list_shrink
+        self.param_shrink = param_shrink
+        self.attachment_key = attachment_key
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.related_user_list_shrink is not None:
+            result['RelatedUserList'] = self.related_user_list_shrink
+        if self.param_shrink is not None:
+            result['Param'] = self.param_shrink
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list_shrink = m.get('RelatedUserList')
+        if m.get('Param') is not None:
+            self.param_shrink = m.get('Param')
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataCronClearOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        create_order_result: List[int] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.create_order_result = create_order_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.create_order_result is not None:
+            result['CreateOrderResult'] = self.create_order_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('CreateOrderResult') is not None:
+            self.create_order_result = m.get('CreateOrderResult')
+        return self
+
+
+class CreateDataCronClearOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateDataCronClearOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateDataCronClearOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9124,8 +10071,10 @@ class GetOwnerApplyOrderDetailRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        tid: int = None,
     ):
         self.order_id = order_id
+        self.tid = tid
 
     def validate(self):
         pass
@@ -9134,12 +10083,16 @@ class GetOwnerApplyOrderDetailRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -9938,10 +10891,12 @@ class ListDBTaskSQLJobRequest(TeaModel):
         dbtask_group_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        tid: int = None,
     ):
         self.dbtask_group_id = dbtask_group_id
         self.page_number = page_number
         self.page_size = page_size
+        self.tid = tid
 
     def validate(self):
         pass
@@ -9954,6 +10909,8 @@ class ListDBTaskSQLJobRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -9964,6 +10921,8 @@ class ListDBTaskSQLJobRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -10248,6 +11207,183 @@ class DeleteUserResponse(TeaModel):
         return self
 
 
+class GetDataCronClearTaskDetailListRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList(TeaModel):
+    def __init__(
+        self,
+        dbtask_group_id: int = None,
+        job_status: str = None,
+        actual_affect_rows: int = None,
+        create_time: str = None,
+    ):
+        self.dbtask_group_id = dbtask_group_id
+        self.job_status = job_status
+        self.actual_affect_rows = actual_affect_rows
+        self.create_time = create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.dbtask_group_id is not None:
+            result['DBTaskGroupId'] = self.dbtask_group_id
+        if self.job_status is not None:
+            result['jobStatus'] = self.job_status
+        if self.actual_affect_rows is not None:
+            result['ActualAffectRows'] = self.actual_affect_rows
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBTaskGroupId') is not None:
+            self.dbtask_group_id = m.get('DBTaskGroupId')
+        if m.get('jobStatus') is not None:
+            self.job_status = m.get('jobStatus')
+        if m.get('ActualAffectRows') is not None:
+            self.actual_affect_rows = m.get('ActualAffectRows')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        return self
+
+
+class GetDataCronClearTaskDetailListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        data_cron_clear_task_detail_list: List[GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList] = None,
+        total_count: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.data_cron_clear_task_detail_list = data_cron_clear_task_detail_list
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data_cron_clear_task_detail_list:
+            for k in self.data_cron_clear_task_detail_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        result['DataCronClearTaskDetailList'] = []
+        if self.data_cron_clear_task_detail_list is not None:
+            for k in self.data_cron_clear_task_detail_list:
+                result['DataCronClearTaskDetailList'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        self.data_cron_clear_task_detail_list = []
+        if m.get('DataCronClearTaskDetailList') is not None:
+            for k in m.get('DataCronClearTaskDetailList'):
+                temp_model = GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList()
+                self.data_cron_clear_task_detail_list.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetDataCronClearTaskDetailListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDataCronClearTaskDetailListResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDataCronClearTaskDetailListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetStructSyncJobAnalyzeResultRequest(TeaModel):
     def __init__(
         self,
@@ -10255,11 +11391,13 @@ class GetStructSyncJobAnalyzeResultRequest(TeaModel):
         compare_type: str = None,
         page_number: int = None,
         page_size: int = None,
+        tid: int = None,
     ):
         self.order_id = order_id
         self.compare_type = compare_type
         self.page_number = page_number
         self.page_size = page_size
+        self.tid = tid
 
     def validate(self):
         pass
@@ -10274,6 +11412,8 @@ class GetStructSyncJobAnalyzeResultRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -10286,6 +11426,8 @@ class GetStructSyncJobAnalyzeResultRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -10597,6 +11739,159 @@ class ApproveOrderResponse(TeaModel):
         return self
 
 
+class GetDataCorrectTaskDetailRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail(TeaModel):
+    def __init__(
+        self,
+        dbtask_group_id: int = None,
+        job_status: str = None,
+        actual_affect_rows: int = None,
+        create_time: str = None,
+    ):
+        self.dbtask_group_id = dbtask_group_id
+        self.job_status = job_status
+        self.actual_affect_rows = actual_affect_rows
+        self.create_time = create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.dbtask_group_id is not None:
+            result['DBTaskGroupId'] = self.dbtask_group_id
+        if self.job_status is not None:
+            result['jobStatus'] = self.job_status
+        if self.actual_affect_rows is not None:
+            result['ActualAffectRows'] = self.actual_affect_rows
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBTaskGroupId') is not None:
+            self.dbtask_group_id = m.get('DBTaskGroupId')
+        if m.get('jobStatus') is not None:
+            self.job_status = m.get('jobStatus')
+        if m.get('ActualAffectRows') is not None:
+            self.actual_affect_rows = m.get('ActualAffectRows')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        return self
+
+
+class GetDataCorrectTaskDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        data_correct_task_detail: GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.data_correct_task_detail = data_correct_task_detail
+
+    def validate(self):
+        if self.data_correct_task_detail:
+            self.data_correct_task_detail.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.data_correct_task_detail is not None:
+            result['DataCorrectTaskDetail'] = self.data_correct_task_detail.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('DataCorrectTaskDetail') is not None:
+            temp_model = GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail()
+            self.data_correct_task_detail = temp_model.from_map(m['DataCorrectTaskDetail'])
+        return self
+
+
+class GetDataCorrectTaskDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDataCorrectTaskDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDataCorrectTaskDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateUploadFileJobRequest(TeaModel):
     def __init__(
         self,
@@ -10604,11 +11899,13 @@ class CreateUploadFileJobRequest(TeaModel):
         file_name: str = None,
         upload_type: str = None,
         upload_url: str = None,
+        tid: int = None,
     ):
         self.file_source = file_source
         self.file_name = file_name
         self.upload_type = upload_type
         self.upload_url = upload_url
+        self.tid = tid
 
     def validate(self):
         pass
@@ -10623,6 +11920,8 @@ class CreateUploadFileJobRequest(TeaModel):
             result['UploadType'] = self.upload_type
         if self.upload_url is not None:
             result['UploadURL'] = self.upload_url
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -10635,6 +11934,8 @@ class CreateUploadFileJobRequest(TeaModel):
             self.upload_type = m.get('UploadType')
         if m.get('UploadURL') is not None:
             self.upload_url = m.get('UploadURL')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -10985,6 +12286,315 @@ class ListLogicDatabasesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListLogicDatabasesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDataImportOrderRequestParamDbItemList(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        logic: bool = None,
+    ):
+        self.db_id = db_id
+        self.logic = logic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        return self
+
+
+class CreateDataImportOrderRequestParam(TeaModel):
+    def __init__(
+        self,
+        classify: str = None,
+        attachment_name: str = None,
+        db_item_list: List[CreateDataImportOrderRequestParamDbItemList] = None,
+        file_type: str = None,
+        file_encoding: str = None,
+        table_name: str = None,
+        insert_type: str = None,
+        csv_first_row_is_column_def: bool = None,
+        ignore_error: bool = None,
+        import_mode: str = None,
+        rollback_sql: str = None,
+        rollback_attachment_name: str = None,
+        rollback_sql_type: str = None,
+    ):
+        self.classify = classify
+        self.attachment_name = attachment_name
+        self.db_item_list = db_item_list
+        self.file_type = file_type
+        self.file_encoding = file_encoding
+        self.table_name = table_name
+        self.insert_type = insert_type
+        self.csv_first_row_is_column_def = csv_first_row_is_column_def
+        self.ignore_error = ignore_error
+        self.import_mode = import_mode
+        self.rollback_sql = rollback_sql
+        self.rollback_attachment_name = rollback_attachment_name
+        self.rollback_sql_type = rollback_sql_type
+
+    def validate(self):
+        if self.db_item_list:
+            for k in self.db_item_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.classify is not None:
+            result['Classify'] = self.classify
+        if self.attachment_name is not None:
+            result['AttachmentName'] = self.attachment_name
+        result['DbItemList'] = []
+        if self.db_item_list is not None:
+            for k in self.db_item_list:
+                result['DbItemList'].append(k.to_map() if k else None)
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.file_encoding is not None:
+            result['FileEncoding'] = self.file_encoding
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.insert_type is not None:
+            result['InsertType'] = self.insert_type
+        if self.csv_first_row_is_column_def is not None:
+            result['CsvFirstRowIsColumnDef'] = self.csv_first_row_is_column_def
+        if self.ignore_error is not None:
+            result['IgnoreError'] = self.ignore_error
+        if self.import_mode is not None:
+            result['ImportMode'] = self.import_mode
+        if self.rollback_sql is not None:
+            result['RollbackSQL'] = self.rollback_sql
+        if self.rollback_attachment_name is not None:
+            result['RollbackAttachmentName'] = self.rollback_attachment_name
+        if self.rollback_sql_type is not None:
+            result['RollbackSqlType'] = self.rollback_sql_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Classify') is not None:
+            self.classify = m.get('Classify')
+        if m.get('AttachmentName') is not None:
+            self.attachment_name = m.get('AttachmentName')
+        self.db_item_list = []
+        if m.get('DbItemList') is not None:
+            for k in m.get('DbItemList'):
+                temp_model = CreateDataImportOrderRequestParamDbItemList()
+                self.db_item_list.append(temp_model.from_map(k))
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('FileEncoding') is not None:
+            self.file_encoding = m.get('FileEncoding')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('InsertType') is not None:
+            self.insert_type = m.get('InsertType')
+        if m.get('CsvFirstRowIsColumnDef') is not None:
+            self.csv_first_row_is_column_def = m.get('CsvFirstRowIsColumnDef')
+        if m.get('IgnoreError') is not None:
+            self.ignore_error = m.get('IgnoreError')
+        if m.get('ImportMode') is not None:
+            self.import_mode = m.get('ImportMode')
+        if m.get('RollbackSQL') is not None:
+            self.rollback_sql = m.get('RollbackSQL')
+        if m.get('RollbackAttachmentName') is not None:
+            self.rollback_attachment_name = m.get('RollbackAttachmentName')
+        if m.get('RollbackSqlType') is not None:
+            self.rollback_sql_type = m.get('RollbackSqlType')
+        return self
+
+
+class CreateDataImportOrderRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        related_user_list: List[int] = None,
+        param: CreateDataImportOrderRequestParam = None,
+        attachment_key: str = None,
+        tid: int = None,
+    ):
+        self.comment = comment
+        self.related_user_list = related_user_list
+        self.param = param
+        self.attachment_key = attachment_key
+        self.tid = tid
+
+    def validate(self):
+        if self.param:
+            self.param.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.related_user_list is not None:
+            result['RelatedUserList'] = self.related_user_list
+        if self.param is not None:
+            result['Param'] = self.param.to_map()
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list = m.get('RelatedUserList')
+        if m.get('Param') is not None:
+            temp_model = CreateDataImportOrderRequestParam()
+            self.param = temp_model.from_map(m['Param'])
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataImportOrderShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        related_user_list_shrink: str = None,
+        param_shrink: str = None,
+        attachment_key: str = None,
+        tid: int = None,
+    ):
+        self.comment = comment
+        self.related_user_list_shrink = related_user_list_shrink
+        self.param_shrink = param_shrink
+        self.attachment_key = attachment_key
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.related_user_list_shrink is not None:
+            result['RelatedUserList'] = self.related_user_list_shrink
+        if self.param_shrink is not None:
+            result['Param'] = self.param_shrink
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list_shrink = m.get('RelatedUserList')
+        if m.get('Param') is not None:
+            self.param_shrink = m.get('Param')
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataImportOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        create_order_result: List[int] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.create_order_result = create_order_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.create_order_result is not None:
+            result['CreateOrderResult'] = self.create_order_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('CreateOrderResult') is not None:
+            self.create_order_result = m.get('CreateOrderResult')
+        return self
+
+
+class CreateDataImportOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateDataImportOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateDataImportOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11731,6 +13341,29 @@ class GetOrderBaseInfoResponse(TeaModel):
         return self
 
 
+class ListUserTenantsRequest(TeaModel):
+    def __init__(
+        self,
+        tid: int = None,
+    ):
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
 class ListUserTenantsResponseBodyTenantList(TeaModel):
     def __init__(
         self,
@@ -11965,6 +13598,291 @@ class SetOwnersResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = SetOwnersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDataCorrectOrderRequestParamDbItemList(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        logic: bool = None,
+    ):
+        self.db_id = db_id
+        self.logic = logic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        return self
+
+
+class CreateDataCorrectOrderRequestParam(TeaModel):
+    def __init__(
+        self,
+        classify: str = None,
+        estimate_affect_rows: int = None,
+        exec_sql: str = None,
+        sql_type: str = None,
+        attachment_name: str = None,
+        rollback_sql: str = None,
+        rollback_attachment_name: str = None,
+        rollback_sql_type: str = None,
+        db_item_list: List[CreateDataCorrectOrderRequestParamDbItemList] = None,
+    ):
+        self.classify = classify
+        self.estimate_affect_rows = estimate_affect_rows
+        self.exec_sql = exec_sql
+        self.sql_type = sql_type
+        self.attachment_name = attachment_name
+        self.rollback_sql = rollback_sql
+        self.rollback_attachment_name = rollback_attachment_name
+        self.rollback_sql_type = rollback_sql_type
+        self.db_item_list = db_item_list
+
+    def validate(self):
+        if self.db_item_list:
+            for k in self.db_item_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.classify is not None:
+            result['Classify'] = self.classify
+        if self.estimate_affect_rows is not None:
+            result['EstimateAffectRows'] = self.estimate_affect_rows
+        if self.exec_sql is not None:
+            result['ExecSQL'] = self.exec_sql
+        if self.sql_type is not None:
+            result['SqlType'] = self.sql_type
+        if self.attachment_name is not None:
+            result['AttachmentName'] = self.attachment_name
+        if self.rollback_sql is not None:
+            result['RollbackSQL'] = self.rollback_sql
+        if self.rollback_attachment_name is not None:
+            result['RollbackAttachmentName'] = self.rollback_attachment_name
+        if self.rollback_sql_type is not None:
+            result['RollbackSqlType'] = self.rollback_sql_type
+        result['DbItemList'] = []
+        if self.db_item_list is not None:
+            for k in self.db_item_list:
+                result['DbItemList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Classify') is not None:
+            self.classify = m.get('Classify')
+        if m.get('EstimateAffectRows') is not None:
+            self.estimate_affect_rows = m.get('EstimateAffectRows')
+        if m.get('ExecSQL') is not None:
+            self.exec_sql = m.get('ExecSQL')
+        if m.get('SqlType') is not None:
+            self.sql_type = m.get('SqlType')
+        if m.get('AttachmentName') is not None:
+            self.attachment_name = m.get('AttachmentName')
+        if m.get('RollbackSQL') is not None:
+            self.rollback_sql = m.get('RollbackSQL')
+        if m.get('RollbackAttachmentName') is not None:
+            self.rollback_attachment_name = m.get('RollbackAttachmentName')
+        if m.get('RollbackSqlType') is not None:
+            self.rollback_sql_type = m.get('RollbackSqlType')
+        self.db_item_list = []
+        if m.get('DbItemList') is not None:
+            for k in m.get('DbItemList'):
+                temp_model = CreateDataCorrectOrderRequestParamDbItemList()
+                self.db_item_list.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDataCorrectOrderRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        related_user_list: List[int] = None,
+        param: CreateDataCorrectOrderRequestParam = None,
+        attachment_key: str = None,
+        tid: int = None,
+    ):
+        self.comment = comment
+        self.related_user_list = related_user_list
+        self.param = param
+        self.attachment_key = attachment_key
+        self.tid = tid
+
+    def validate(self):
+        if self.param:
+            self.param.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.related_user_list is not None:
+            result['RelatedUserList'] = self.related_user_list
+        if self.param is not None:
+            result['Param'] = self.param.to_map()
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list = m.get('RelatedUserList')
+        if m.get('Param') is not None:
+            temp_model = CreateDataCorrectOrderRequestParam()
+            self.param = temp_model.from_map(m['Param'])
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataCorrectOrderShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        related_user_list_shrink: str = None,
+        param_shrink: str = None,
+        attachment_key: str = None,
+        tid: int = None,
+    ):
+        self.comment = comment
+        self.related_user_list_shrink = related_user_list_shrink
+        self.param_shrink = param_shrink
+        self.attachment_key = attachment_key
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.related_user_list_shrink is not None:
+            result['RelatedUserList'] = self.related_user_list_shrink
+        if self.param_shrink is not None:
+            result['Param'] = self.param_shrink
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list_shrink = m.get('RelatedUserList')
+        if m.get('Param') is not None:
+            self.param_shrink = m.get('Param')
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataCorrectOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        create_order_result: List[int] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.create_order_result = create_order_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.create_order_result is not None:
+            result['CreateOrderResult'] = self.create_order_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('CreateOrderResult') is not None:
+            self.create_order_result = m.get('CreateOrderResult')
+        return self
+
+
+class CreateDataCorrectOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateDataCorrectOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateDataCorrectOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12778,10 +14696,14 @@ class CreateStructSyncOrderRequest(TeaModel):
         comment: str = None,
         related_user_list: List[int] = None,
         param: CreateStructSyncOrderRequestParam = None,
+        attachment_key: str = None,
+        tid: int = None,
     ):
         self.comment = comment
         self.related_user_list = related_user_list
         self.param = param
+        self.attachment_key = attachment_key
+        self.tid = tid
 
     def validate(self):
         if self.param:
@@ -12795,6 +14717,10 @@ class CreateStructSyncOrderRequest(TeaModel):
             result['RelatedUserList'] = self.related_user_list
         if self.param is not None:
             result['Param'] = self.param.to_map()
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -12806,6 +14732,10 @@ class CreateStructSyncOrderRequest(TeaModel):
         if m.get('Param') is not None:
             temp_model = CreateStructSyncOrderRequestParam()
             self.param = temp_model.from_map(m['Param'])
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -12815,10 +14745,14 @@ class CreateStructSyncOrderShrinkRequest(TeaModel):
         comment: str = None,
         related_user_list_shrink: str = None,
         param_shrink: str = None,
+        attachment_key: str = None,
+        tid: int = None,
     ):
         self.comment = comment
         self.related_user_list_shrink = related_user_list_shrink
         self.param_shrink = param_shrink
+        self.attachment_key = attachment_key
+        self.tid = tid
 
     def validate(self):
         pass
@@ -12831,6 +14765,10 @@ class CreateStructSyncOrderShrinkRequest(TeaModel):
             result['RelatedUserList'] = self.related_user_list_shrink
         if self.param_shrink is not None:
             result['Param'] = self.param_shrink
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -12841,6 +14779,10 @@ class CreateStructSyncOrderShrinkRequest(TeaModel):
             self.related_user_list_shrink = m.get('RelatedUserList')
         if m.get('Param') is not None:
             self.param_shrink = m.get('Param')
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -13828,8 +15770,10 @@ class GetStructSyncOrderDetailRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        tid: int = None,
     ):
         self.order_id = order_id
+        self.tid = tid
 
     def validate(self):
         pass
@@ -13838,12 +15782,16 @@ class GetStructSyncOrderDetailRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -14554,10 +16502,12 @@ class GetStructSyncExecSqlDetailRequest(TeaModel):
         order_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        tid: int = None,
     ):
         self.order_id = order_id
         self.page_number = page_number
         self.page_size = page_size
+        self.tid = tid
 
     def validate(self):
         pass
@@ -14570,6 +16520,8 @@ class GetStructSyncExecSqlDetailRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -14580,6 +16532,8 @@ class GetStructSyncExecSqlDetailRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 

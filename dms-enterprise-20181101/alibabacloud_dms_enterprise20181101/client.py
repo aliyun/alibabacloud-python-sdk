@@ -361,6 +361,58 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_data_correct_sqlfile_with_options_async(request, runtime)
 
+    def create_free_lock_correct_order_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateFreeLockCorrectOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateFreeLockCorrectOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse().from_map(
+            self.do_rpcrequest('CreateFreeLockCorrectOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_free_lock_correct_order_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateFreeLockCorrectOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateFreeLockCorrectOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse().from_map(
+            await self.do_rpcrequest_async('CreateFreeLockCorrectOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_free_lock_correct_order(
+        self,
+        request: dms_enterprise_20181101_models.CreateFreeLockCorrectOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_free_lock_correct_order_with_options(request, runtime)
+
+    async def create_free_lock_correct_order_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateFreeLockCorrectOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_free_lock_correct_order_with_options_async(request, runtime)
+
     def create_order_with_options(
         self,
         tmp_req: dms_enterprise_20181101_models.CreateOrderRequest,
@@ -1299,29 +1351,43 @@ class Client(OpenApiClient):
 
     def get_user_active_tenant_with_options(
         self,
+        request: dms_enterprise_20181101_models.GetUserActiveTenantRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return dms_enterprise_20181101_models.GetUserActiveTenantResponse().from_map(
             self.do_rpcrequest('GetUserActiveTenant', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_user_active_tenant_with_options_async(
         self,
+        request: dms_enterprise_20181101_models.GetUserActiveTenantRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return dms_enterprise_20181101_models.GetUserActiveTenantResponse().from_map(
             await self.do_rpcrequest_async('GetUserActiveTenant', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def get_user_active_tenant(self) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
+    def get_user_active_tenant(
+        self,
+        request: dms_enterprise_20181101_models.GetUserActiveTenantRequest,
+    ) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_user_active_tenant_with_options(runtime)
+        return self.get_user_active_tenant_with_options(request, runtime)
 
-    async def get_user_active_tenant_async(self) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
+    async def get_user_active_tenant_async(
+        self,
+        request: dms_enterprise_20181101_models.GetUserActiveTenantRequest,
+    ) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_user_active_tenant_with_options_async(runtime)
+        return await self.get_user_active_tenant_with_options_async(request, runtime)
 
     def register_user_with_options(
         self,
@@ -1523,6 +1589,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_logic_tables_with_options_async(request, runtime)
 
+    def get_table_topology_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetTableTopologyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetTableTopologyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.GetTableTopologyResponse().from_map(
+            self.do_rpcrequest('GetTableTopology', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_table_topology_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetTableTopologyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetTableTopologyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.GetTableTopologyResponse().from_map(
+            await self.do_rpcrequest_async('GetTableTopology', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_table_topology(
+        self,
+        request: dms_enterprise_20181101_models.GetTableTopologyRequest,
+    ) -> dms_enterprise_20181101_models.GetTableTopologyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_table_topology_with_options(request, runtime)
+
+    async def get_table_topology_async(
+        self,
+        request: dms_enterprise_20181101_models.GetTableTopologyRequest,
+    ) -> dms_enterprise_20181101_models.GetTableTopologyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_table_topology_with_options_async(request, runtime)
+
     def get_data_export_download_urlwith_options(
         self,
         request: dms_enterprise_20181101_models.GetDataExportDownloadURLRequest,
@@ -1562,6 +1668,58 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataExportDownloadURLResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_data_export_download_urlwith_options_async(request, runtime)
+
+    def create_data_cron_clear_order_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataCronClearOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataCronClearOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataCronClearOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.CreateDataCronClearOrderResponse().from_map(
+            self.do_rpcrequest('CreateDataCronClearOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_data_cron_clear_order_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataCronClearOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataCronClearOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataCronClearOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.CreateDataCronClearOrderResponse().from_map(
+            await self.do_rpcrequest_async('CreateDataCronClearOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_data_cron_clear_order(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataCronClearOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataCronClearOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_cron_clear_order_with_options(request, runtime)
+
+    async def create_data_cron_clear_order_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataCronClearOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataCronClearOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_cron_clear_order_with_options_async(request, runtime)
 
     def create_publish_group_task_with_options(
         self,
@@ -1843,6 +2001,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_with_options_async(request, runtime)
 
+    def get_data_cron_clear_task_detail_list_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCronClearTaskDetailListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse().from_map(
+            self.do_rpcrequest('GetDataCronClearTaskDetailList', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_data_cron_clear_task_detail_list_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCronClearTaskDetailListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse().from_map(
+            await self.do_rpcrequest_async('GetDataCronClearTaskDetailList', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_data_cron_clear_task_detail_list(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCronClearTaskDetailListRequest,
+    ) -> dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_cron_clear_task_detail_list_with_options(request, runtime)
+
+    async def get_data_cron_clear_task_detail_list_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCronClearTaskDetailListRequest,
+    ) -> dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_cron_clear_task_detail_list_with_options_async(request, runtime)
+
     def get_struct_sync_job_analyze_result_with_options(
         self,
         request: dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultRequest,
@@ -1923,6 +2121,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.approve_order_with_options_async(request, runtime)
 
+    def get_data_correct_task_detail_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCorrectTaskDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse().from_map(
+            self.do_rpcrequest('GetDataCorrectTaskDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_data_correct_task_detail_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCorrectTaskDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse().from_map(
+            await self.do_rpcrequest_async('GetDataCorrectTaskDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_data_correct_task_detail(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCorrectTaskDetailRequest,
+    ) -> dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_correct_task_detail_with_options(request, runtime)
+
+    async def get_data_correct_task_detail_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCorrectTaskDetailRequest,
+    ) -> dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_correct_task_detail_with_options_async(request, runtime)
+
     def create_upload_file_job_with_options(
         self,
         request: dms_enterprise_20181101_models.CreateUploadFileJobRequest,
@@ -2002,6 +2240,58 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListLogicDatabasesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_logic_databases_with_options_async(request, runtime)
+
+    def create_data_import_order_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataImportOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataImportOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataImportOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.CreateDataImportOrderResponse().from_map(
+            self.do_rpcrequest('CreateDataImportOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_data_import_order_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataImportOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataImportOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataImportOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.CreateDataImportOrderResponse().from_map(
+            await self.do_rpcrequest_async('CreateDataImportOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_data_import_order(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataImportOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataImportOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_import_order_with_options(request, runtime)
+
+    async def create_data_import_order_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataImportOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataImportOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_import_order_with_options_async(request, runtime)
 
     def close_order_with_options(
         self,
@@ -2165,29 +2455,43 @@ class Client(OpenApiClient):
 
     def list_user_tenants_with_options(
         self,
+        request: dms_enterprise_20181101_models.ListUserTenantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return dms_enterprise_20181101_models.ListUserTenantsResponse().from_map(
             self.do_rpcrequest('ListUserTenants', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_user_tenants_with_options_async(
         self,
+        request: dms_enterprise_20181101_models.ListUserTenantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return dms_enterprise_20181101_models.ListUserTenantsResponse().from_map(
             await self.do_rpcrequest_async('ListUserTenants', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def list_user_tenants(self) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
+    def list_user_tenants(
+        self,
+        request: dms_enterprise_20181101_models.ListUserTenantsRequest,
+    ) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
         runtime = util_models.RuntimeOptions()
-        return self.list_user_tenants_with_options(runtime)
+        return self.list_user_tenants_with_options(request, runtime)
 
-    async def list_user_tenants_async(self) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
+    async def list_user_tenants_async(
+        self,
+        request: dms_enterprise_20181101_models.ListUserTenantsRequest,
+    ) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.list_user_tenants_with_options_async(runtime)
+        return await self.list_user_tenants_with_options_async(request, runtime)
 
     def set_owners_with_options(
         self,
@@ -2228,6 +2532,58 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SetOwnersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.set_owners_with_options_async(request, runtime)
+
+    def create_data_correct_order_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataCorrectOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataCorrectOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataCorrectOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.CreateDataCorrectOrderResponse().from_map(
+            self.do_rpcrequest('CreateDataCorrectOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_data_correct_order_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataCorrectOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataCorrectOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataCorrectOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return dms_enterprise_20181101_models.CreateDataCorrectOrderResponse().from_map(
+            await self.do_rpcrequest_async('CreateDataCorrectOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_data_correct_order(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataCorrectOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataCorrectOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_correct_order_with_options(request, runtime)
+
+    async def create_data_correct_order_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataCorrectOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataCorrectOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_correct_order_with_options_async(request, runtime)
 
     def get_logic_database_with_options(
         self,
