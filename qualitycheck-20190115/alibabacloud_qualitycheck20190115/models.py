@@ -5539,14 +5539,16 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
     def __init__(
         self,
         status: int = None,
+        assignment_time: str = None,
+        last_data_id: str = None,
         error_message: str = None,
-        reviewer: str = None,
-        create_time: str = None,
         review_status: int = None,
+        create_time: str = None,
+        reviewer: str = None,
         task_name: str = None,
         review_time_long: str = None,
-        review_result: int = None,
         score: int = None,
+        review_result: int = None,
         agent: GetResultResponseBodyDataResultInfoAgent = None,
         create_time_long: str = None,
         asr_result: GetResultResponseBodyDataResultInfoAsrResult = None,
@@ -5556,17 +5558,20 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
         hit_result: GetResultResponseBodyDataResultInfoHitResult = None,
         recording: GetResultResponseBodyDataResultInfoRecording = None,
         task_id: str = None,
+        review_type: int = None,
         resolver: str = None,
     ):
         self.status = status
+        self.assignment_time = assignment_time
+        self.last_data_id = last_data_id
         self.error_message = error_message
-        self.reviewer = reviewer
-        self.create_time = create_time
         self.review_status = review_status
+        self.create_time = create_time
+        self.reviewer = reviewer
         self.task_name = task_name
         self.review_time_long = review_time_long
-        self.review_result = review_result
         self.score = score
+        self.review_result = review_result
         self.agent = agent
         self.create_time_long = create_time_long
         self.asr_result = asr_result
@@ -5576,6 +5581,7 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
         self.hit_result = hit_result
         self.recording = recording
         self.task_id = task_id
+        self.review_type = review_type
         self.resolver = resolver
 
     def validate(self):
@@ -5594,22 +5600,26 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
+        if self.assignment_time is not None:
+            result['AssignmentTime'] = self.assignment_time
+        if self.last_data_id is not None:
+            result['LastDataId'] = self.last_data_id
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
-        if self.reviewer is not None:
-            result['Reviewer'] = self.reviewer
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
         if self.review_status is not None:
             result['ReviewStatus'] = self.review_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.reviewer is not None:
+            result['Reviewer'] = self.reviewer
         if self.task_name is not None:
             result['TaskName'] = self.task_name
         if self.review_time_long is not None:
             result['ReviewTimeLong'] = self.review_time_long
-        if self.review_result is not None:
-            result['ReviewResult'] = self.review_result
         if self.score is not None:
             result['Score'] = self.score
+        if self.review_result is not None:
+            result['ReviewResult'] = self.review_result
         if self.agent is not None:
             result['Agent'] = self.agent.to_map()
         if self.create_time_long is not None:
@@ -5628,6 +5638,8 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
             result['Recording'] = self.recording.to_map()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.review_type is not None:
+            result['ReviewType'] = self.review_type
         if self.resolver is not None:
             result['Resolver'] = self.resolver
         return result
@@ -5636,22 +5648,26 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('AssignmentTime') is not None:
+            self.assignment_time = m.get('AssignmentTime')
+        if m.get('LastDataId') is not None:
+            self.last_data_id = m.get('LastDataId')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
-        if m.get('Reviewer') is not None:
-            self.reviewer = m.get('Reviewer')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
         if m.get('ReviewStatus') is not None:
             self.review_status = m.get('ReviewStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Reviewer') is not None:
+            self.reviewer = m.get('Reviewer')
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
         if m.get('ReviewTimeLong') is not None:
             self.review_time_long = m.get('ReviewTimeLong')
-        if m.get('ReviewResult') is not None:
-            self.review_result = m.get('ReviewResult')
         if m.get('Score') is not None:
             self.score = m.get('Score')
+        if m.get('ReviewResult') is not None:
+            self.review_result = m.get('ReviewResult')
         if m.get('Agent') is not None:
             temp_model = GetResultResponseBodyDataResultInfoAgent()
             self.agent = temp_model.from_map(m['Agent'])
@@ -5675,6 +5691,8 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
             self.recording = temp_model.from_map(m['Recording'])
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('ReviewType') is not None:
+            self.review_type = m.get('ReviewType')
         if m.get('Resolver') is not None:
             self.resolver = m.get('Resolver')
         return self
@@ -5849,41 +5867,41 @@ class GetResultCallbackRequest(TeaModel):
 class GetResultCallbackResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        success: bool = None,
-        code: str = None,
         message: str = None,
+        request_id: str = None,
+        code: str = None,
+        success: bool = None,
     ):
-        self.request_id = request_id
-        self.success = success
-        self.code = code
         self.message = message
+        self.request_id = request_id
+        self.code = code
+        self.success = success
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        if self.code is not None:
-            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -13930,6 +13948,78 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleList(TeaModel):
         return self
 
 
+class ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen(TeaModel):
+    def __init__(
+        self,
+        value: str = None,
+        data_type: int = None,
+        symbol: int = None,
+        name: str = None,
+    ):
+        self.value = value
+        self.data_type = data_type
+        self.symbol = symbol
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.symbol is not None:
+            result['Symbol'] = self.symbol
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Symbol') is not None:
+            self.symbol = m.get('Symbol')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens(TeaModel):
+    def __init__(
+        self,
+        skill_group_screen: List[ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen] = None,
+    ):
+        self.skill_group_screen = skill_group_screen
+
+    def validate(self):
+        if self.skill_group_screen:
+            for k in self.skill_group_screen:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        result['SkillGroupScreen'] = []
+        if self.skill_group_screen is not None:
+            for k in self.skill_group_screen:
+                result['SkillGroupScreen'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.skill_group_screen = []
+        if m.get('SkillGroupScreen') is not None:
+            for k in m.get('SkillGroupScreen'):
+                temp_model = ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkillGroupScreen()
+                self.skill_group_screen.append(temp_model.from_map(k))
+        return self
+
+
 class ListSkillGroupConfigResponseBodyDataSkillGroupConfig(TeaModel):
     def __init__(
         self,
@@ -13940,6 +14030,7 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfig(TeaModel):
         all_content_quality_check: int = None,
         create_time: str = None,
         skill_group_id: str = None,
+        screen_switch: bool = None,
         instance_id: str = None,
         vocab_id: int = None,
         skill_group_from: int = None,
@@ -13951,6 +14042,7 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfig(TeaModel):
         name: str = None,
         model_id: int = None,
         id: int = None,
+        skill_group_screens: ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens = None,
         quality_check_type: int = None,
         vocab_name: str = None,
     ):
@@ -13961,6 +14053,7 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfig(TeaModel):
         self.all_content_quality_check = all_content_quality_check
         self.create_time = create_time
         self.skill_group_id = skill_group_id
+        self.screen_switch = screen_switch
         self.instance_id = instance_id
         self.vocab_id = vocab_id
         self.skill_group_from = skill_group_from
@@ -13972,6 +14065,7 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfig(TeaModel):
         self.name = name
         self.model_id = model_id
         self.id = id
+        self.skill_group_screens = skill_group_screens
         self.quality_check_type = quality_check_type
         self.vocab_name = vocab_name
 
@@ -13980,6 +14074,8 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfig(TeaModel):
             self.all_rule_list.validate()
         if self.rule_list:
             self.rule_list.validate()
+        if self.skill_group_screens:
+            self.skill_group_screens.validate()
 
     def to_map(self):
         result = dict()
@@ -13997,6 +14093,8 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfig(TeaModel):
             result['CreateTime'] = self.create_time
         if self.skill_group_id is not None:
             result['SkillGroupId'] = self.skill_group_id
+        if self.screen_switch is not None:
+            result['ScreenSwitch'] = self.screen_switch
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.vocab_id is not None:
@@ -14019,6 +14117,8 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfig(TeaModel):
             result['ModelId'] = self.model_id
         if self.id is not None:
             result['Id'] = self.id
+        if self.skill_group_screens is not None:
+            result['SkillGroupScreens'] = self.skill_group_screens.to_map()
         if self.quality_check_type is not None:
             result['QualityCheckType'] = self.quality_check_type
         if self.vocab_name is not None:
@@ -14042,6 +14142,8 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfig(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('SkillGroupId') is not None:
             self.skill_group_id = m.get('SkillGroupId')
+        if m.get('ScreenSwitch') is not None:
+            self.screen_switch = m.get('ScreenSwitch')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('VocabId') is not None:
@@ -14065,6 +14167,9 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfig(TeaModel):
             self.model_id = m.get('ModelId')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('SkillGroupScreens') is not None:
+            temp_model = ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens()
+            self.skill_group_screens = temp_model.from_map(m['SkillGroupScreens'])
         if m.get('QualityCheckType') is not None:
             self.quality_check_type = m.get('QualityCheckType')
         if m.get('VocabName') is not None:
@@ -18285,140 +18390,6 @@ class UpdateRuleResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateRuleResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateRuleForAntRequest(TeaModel):
-    def __init__(
-        self,
-        resource_owner_id: int = None,
-        json_str: str = None,
-    ):
-        self.resource_owner_id = resource_owner_id
-        self.json_str = json_str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.json_str is not None:
-            result['JsonStr'] = self.json_str
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('JsonStr') is not None:
-            self.json_str = m.get('JsonStr')
-        return self
-
-
-class UpdateRuleForAntResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        rid_info: List[str] = None,
-    ):
-        self.rid_info = rid_info
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.rid_info is not None:
-            result['RidInfo'] = self.rid_info
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RidInfo') is not None:
-            self.rid_info = m.get('RidInfo')
-        return self
-
-
-class UpdateRuleForAntResponseBody(TeaModel):
-    def __init__(
-        self,
-        message: str = None,
-        request_id: str = None,
-        data: UpdateRuleForAntResponseBodyData = None,
-        code: str = None,
-        success: bool = None,
-    ):
-        self.message = message
-        self.request_id = request_id
-        self.data = data
-        self.code = code
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = UpdateRuleForAntResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class UpdateRuleForAntResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: UpdateRuleForAntResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = UpdateRuleForAntResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
