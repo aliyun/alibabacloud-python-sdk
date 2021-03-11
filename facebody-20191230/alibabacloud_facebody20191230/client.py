@@ -743,130 +743,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.verify_face_mask_with_options_async(request, runtime)
 
-    def verify_face_mask_advance(
-        self,
-        request: facebody_20191230_models.VerifyFaceMaskAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> facebody_20191230_models.VerifyFaceMaskResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint='openplatform.aliyuncs.com',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='facebody',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        verify_face_mask_req = facebody_20191230_models.VerifyFaceMaskRequest()
-        OpenApiUtilClient.convert(request, verify_face_mask_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        verify_face_mask_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        verify_face_mask_resp = self.verify_face_mask_with_options(verify_face_mask_req, runtime)
-        return verify_face_mask_resp
-
-    async def verify_face_mask_advance_async(
-        self,
-        request: facebody_20191230_models.VerifyFaceMaskAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> facebody_20191230_models.VerifyFaceMaskResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint='openplatform.aliyuncs.com',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='facebody',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        verify_face_mask_req = facebody_20191230_models.VerifyFaceMaskRequest()
-        OpenApiUtilClient.convert(request, verify_face_mask_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        verify_face_mask_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        verify_face_mask_resp = await self.verify_face_mask_with_options_async(verify_face_mask_req, runtime)
-        return verify_face_mask_resp
-
     def detect_ipcpedestrian_with_options(
         self,
         request: facebody_20191230_models.DetectIPCPedestrianRequest,
@@ -906,6 +782,130 @@ class Client(OpenApiClient):
     ) -> facebody_20191230_models.DetectIPCPedestrianResponse:
         runtime = util_models.RuntimeOptions()
         return await self.detect_ipcpedestrian_with_options_async(request, runtime)
+
+    def detect_ipcpedestrian_advance(
+        self,
+        request: facebody_20191230_models.DetectIPCPedestrianAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.DetectIPCPedestrianResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            endpoint='openplatform.aliyuncs.com',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='facebody',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        detect_ipcpedestrian_req = facebody_20191230_models.DetectIPCPedestrianRequest()
+        OpenApiUtilClient.convert(request, detect_ipcpedestrian_req)
+        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.image_urlobject,
+            content_type=''
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status='201'
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        oss_client.post_object(upload_request, oss_runtime)
+        detect_ipcpedestrian_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        detect_ipcpedestrian_resp = self.detect_ipcpedestrian_with_options(detect_ipcpedestrian_req, runtime)
+        return detect_ipcpedestrian_resp
+
+    async def detect_ipcpedestrian_advance_async(
+        self,
+        request: facebody_20191230_models.DetectIPCPedestrianAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.DetectIPCPedestrianResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            endpoint='openplatform.aliyuncs.com',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='facebody',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        detect_ipcpedestrian_req = facebody_20191230_models.DetectIPCPedestrianRequest()
+        OpenApiUtilClient.convert(request, detect_ipcpedestrian_req)
+        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.image_urlobject,
+            content_type=''
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status='201'
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        await oss_client.post_object_async(upload_request, oss_runtime)
+        detect_ipcpedestrian_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        detect_ipcpedestrian_resp = await self.detect_ipcpedestrian_with_options_async(detect_ipcpedestrian_req, runtime)
+        return detect_ipcpedestrian_resp
 
     def get_face_entity_with_options(
         self,
@@ -3178,130 +3178,6 @@ class Client(OpenApiClient):
     ) -> facebody_20191230_models.SwapFacialFeaturesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.swap_facial_features_with_options_async(request, runtime)
-
-    def swap_facial_features_advance(
-        self,
-        request: facebody_20191230_models.SwapFacialFeaturesAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> facebody_20191230_models.SwapFacialFeaturesResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint='openplatform.aliyuncs.com',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='facebody',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        swap_facial_features_req = facebody_20191230_models.SwapFacialFeaturesRequest()
-        OpenApiUtilClient.convert(request, swap_facial_features_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.source_image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        swap_facial_features_req.source_image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        swap_facial_features_resp = self.swap_facial_features_with_options(swap_facial_features_req, runtime)
-        return swap_facial_features_resp
-
-    async def swap_facial_features_advance_async(
-        self,
-        request: facebody_20191230_models.SwapFacialFeaturesAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> facebody_20191230_models.SwapFacialFeaturesResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint='openplatform.aliyuncs.com',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='facebody',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        swap_facial_features_req = facebody_20191230_models.SwapFacialFeaturesRequest()
-        OpenApiUtilClient.convert(request, swap_facial_features_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.source_image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        swap_facial_features_req.source_image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        swap_facial_features_resp = await self.swap_facial_features_with_options_async(swap_facial_features_req, runtime)
-        return swap_facial_features_resp
 
     def search_face_with_options(
         self,

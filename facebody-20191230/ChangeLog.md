@@ -1,3 +1,6 @@
+2021-03-11 Version: 2.0.8
+- Update DetectIPCPedestrian.
+
 2021-03-04 Version: 2.0.7
 - Release RecognizeHandGesture.
 

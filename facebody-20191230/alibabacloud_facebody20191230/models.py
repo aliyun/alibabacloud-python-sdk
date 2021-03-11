@@ -879,9 +879,13 @@ class VerifyFaceMaskRequest(TeaModel):
         self,
         image_url: str = None,
         ref_url: str = None,
+        image_data: bytes = None,
+        ref_data: bytes = None,
     ):
         self.image_url = image_url
         self.ref_url = ref_url
+        self.image_data = image_data
+        self.ref_data = ref_data
 
     def validate(self):
         pass
@@ -892,6 +896,10 @@ class VerifyFaceMaskRequest(TeaModel):
             result['ImageURL'] = self.image_url
         if self.ref_url is not None:
             result['RefUrl'] = self.ref_url
+        if self.image_data is not None:
+            result['ImageData'] = self.image_data
+        if self.ref_data is not None:
+            result['RefData'] = self.ref_data
         return result
 
     def from_map(self, m: dict = None):
@@ -900,35 +908,10 @@ class VerifyFaceMaskRequest(TeaModel):
             self.image_url = m.get('ImageURL')
         if m.get('RefUrl') is not None:
             self.ref_url = m.get('RefUrl')
-        return self
-
-
-class VerifyFaceMaskAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-        ref_url: str = None,
-    ):
-        self.image_urlobject = image_urlobject
-        self.ref_url = ref_url
-
-    def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
-
-    def to_map(self):
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
-        if self.ref_url is not None:
-            result['RefUrl'] = self.ref_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
-        if m.get('RefUrl') is not None:
-            self.ref_url = m.get('RefUrl')
+        if m.get('ImageData') is not None:
+            self.image_data = m.get('ImageData')
+        if m.get('RefData') is not None:
+            self.ref_data = m.get('RefData')
         return self
 
 
@@ -1049,22 +1032,6 @@ class VerifyFaceMaskResponse(TeaModel):
         return self
 
 
-class DetectIPCPedestrianRequestURLList(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        return self
-
-
 class DetectIPCPedestrianRequest(TeaModel):
     def __init__(
         self,
@@ -1072,19 +1039,18 @@ class DetectIPCPedestrianRequest(TeaModel):
         image_data: str = None,
         width: int = None,
         height: int = None,
-        urllist: List[DetectIPCPedestrianRequestURLList] = None,
+        image_url: str = None,
+        data_id: str = None,
     ):
         self.continue_on_error = continue_on_error
         self.image_data = image_data
         self.width = width
         self.height = height
-        self.urllist = urllist
+        self.image_url = image_url
+        self.data_id = data_id
 
     def validate(self):
-        if self.urllist:
-            for k in self.urllist:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -1096,10 +1062,10 @@ class DetectIPCPedestrianRequest(TeaModel):
             result['Width'] = self.width
         if self.height is not None:
             result['Height'] = self.height
-        result['URLList'] = []
-        if self.urllist is not None:
-            for k in self.urllist:
-                result['URLList'].append(k.to_map() if k else None)
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1112,11 +1078,63 @@ class DetectIPCPedestrianRequest(TeaModel):
             self.width = m.get('Width')
         if m.get('Height') is not None:
             self.height = m.get('Height')
-        self.urllist = []
-        if m.get('URLList') is not None:
-            for k in m.get('URLList'):
-                temp_model = DetectIPCPedestrianRequestURLList()
-                self.urllist.append(temp_model.from_map(k))
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        return self
+
+
+class DetectIPCPedestrianAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+        continue_on_error: bool = None,
+        image_data: str = None,
+        width: int = None,
+        height: int = None,
+        data_id: str = None,
+    ):
+        self.image_urlobject = image_urlobject
+        self.continue_on_error = continue_on_error
+        self.image_data = image_data
+        self.width = width
+        self.height = height
+        self.data_id = data_id
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        if self.continue_on_error is not None:
+            result['ContinueOnError'] = self.continue_on_error
+        if self.image_data is not None:
+            result['ImageData'] = self.image_data
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ContinueOnError') is not None:
+            self.continue_on_error = m.get('ContinueOnError')
+        if m.get('ImageData') is not None:
+            self.image_data = m.get('ImageData')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
         return self
 
 
@@ -1444,15 +1462,19 @@ class CompareFaceRequest(TeaModel):
     def __init__(
         self,
         quality_score_threshold: float = None,
+        image_type: int = None,
         image_urla: str = None,
         image_urlb: str = None,
-        image_type: int = None,
+        image_data_a: bytes = None,
+        image_data_b: bytes = None,
     ):
         # 质量分阈值，取值范围 [0.0, 100.0],   0.0或空  表示不做质量分判断逻辑。
         self.quality_score_threshold = quality_score_threshold
+        self.image_type = image_type
         self.image_urla = image_urla
         self.image_urlb = image_urlb
-        self.image_type = image_type
+        self.image_data_a = image_data_a
+        self.image_data_b = image_data_b
 
     def validate(self):
         pass
@@ -1461,24 +1483,32 @@ class CompareFaceRequest(TeaModel):
         result = dict()
         if self.quality_score_threshold is not None:
             result['QualityScoreThreshold'] = self.quality_score_threshold
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
         if self.image_urla is not None:
             result['ImageURLA'] = self.image_urla
         if self.image_urlb is not None:
             result['ImageURLB'] = self.image_urlb
-        if self.image_type is not None:
-            result['ImageType'] = self.image_type
+        if self.image_data_a is not None:
+            result['ImageDataA'] = self.image_data_a
+        if self.image_data_b is not None:
+            result['ImageDataB'] = self.image_data_b
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('QualityScoreThreshold') is not None:
             self.quality_score_threshold = m.get('QualityScoreThreshold')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
         if m.get('ImageURLA') is not None:
             self.image_urla = m.get('ImageURLA')
         if m.get('ImageURLB') is not None:
             self.image_urlb = m.get('ImageURLB')
-        if m.get('ImageType') is not None:
-            self.image_type = m.get('ImageType')
+        if m.get('ImageDataA') is not None:
+            self.image_data_a = m.get('ImageDataA')
+        if m.get('ImageDataB') is not None:
+            self.image_data_b = m.get('ImageDataB')
         return self
 
 
@@ -3606,8 +3636,10 @@ class RecognizeActionRequestURLList(TeaModel):
     def __init__(
         self,
         url: str = None,
+        image_data: bytes = None,
     ):
         self.url = url
+        self.image_data = image_data
 
     def validate(self):
         pass
@@ -3616,12 +3648,16 @@ class RecognizeActionRequestURLList(TeaModel):
         result = dict()
         if self.url is not None:
             result['URL'] = self.url
+        if self.image_data is not None:
+            result['imageData'] = self.image_data
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('URL') is not None:
             self.url = m.get('URL')
+        if m.get('imageData') is not None:
+            self.image_data = m.get('imageData')
         return self
 
 
@@ -3631,10 +3667,12 @@ class RecognizeActionRequest(TeaModel):
         type: int = None,
         video_url: str = None,
         urllist: List[RecognizeActionRequestURLList] = None,
+        video_data: bytes = None,
     ):
         self.type = type
         self.video_url = video_url
         self.urllist = urllist
+        self.video_data = video_data
 
     def validate(self):
         if self.urllist:
@@ -3652,6 +3690,8 @@ class RecognizeActionRequest(TeaModel):
         if self.urllist is not None:
             for k in self.urllist:
                 result['URLList'].append(k.to_map() if k else None)
+        if self.video_data is not None:
+            result['VideoData'] = self.video_data
         return result
 
     def from_map(self, m: dict = None):
@@ -3665,6 +3705,8 @@ class RecognizeActionRequest(TeaModel):
             for k in m.get('URLList'):
                 temp_model = RecognizeActionRequestURLList()
                 self.urllist.append(temp_model.from_map(k))
+        if m.get('VideoData') is not None:
+            self.video_data = m.get('VideoData')
         return self
 
 
@@ -5746,70 +5788,47 @@ class DetectPedestrianResponse(TeaModel):
 class SwapFacialFeaturesRequest(TeaModel):
     def __init__(
         self,
-        source_image_url: str = None,
         edit_part: str = None,
+        source_image_url: str = None,
         target_image_url: str = None,
+        source_image_data: bytes = None,
+        target_image_data: bytes = None,
     ):
-        self.source_image_url = source_image_url
         self.edit_part = edit_part
+        self.source_image_url = source_image_url
         self.target_image_url = target_image_url
+        self.source_image_data = source_image_data
+        self.target_image_data = target_image_data
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
+        if self.edit_part is not None:
+            result['EditPart'] = self.edit_part
         if self.source_image_url is not None:
             result['SourceImageURL'] = self.source_image_url
-        if self.edit_part is not None:
-            result['EditPart'] = self.edit_part
         if self.target_image_url is not None:
             result['TargetImageURL'] = self.target_image_url
+        if self.source_image_data is not None:
+            result['SourceImageData'] = self.source_image_data
+        if self.target_image_data is not None:
+            result['TargetImageData'] = self.target_image_data
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EditPart') is not None:
+            self.edit_part = m.get('EditPart')
         if m.get('SourceImageURL') is not None:
             self.source_image_url = m.get('SourceImageURL')
-        if m.get('EditPart') is not None:
-            self.edit_part = m.get('EditPart')
         if m.get('TargetImageURL') is not None:
             self.target_image_url = m.get('TargetImageURL')
-        return self
-
-
-class SwapFacialFeaturesAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        source_image_urlobject: BinaryIO = None,
-        edit_part: str = None,
-        target_image_url: str = None,
-    ):
-        self.source_image_urlobject = source_image_urlobject
-        self.edit_part = edit_part
-        self.target_image_url = target_image_url
-
-    def validate(self):
-        self.validate_required(self.source_image_urlobject, 'source_image_urlobject')
-
-    def to_map(self):
-        result = dict()
-        if self.source_image_urlobject is not None:
-            result['SourceImageURLObject'] = self.source_image_urlobject
-        if self.edit_part is not None:
-            result['EditPart'] = self.edit_part
-        if self.target_image_url is not None:
-            result['TargetImageURL'] = self.target_image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('SourceImageURLObject') is not None:
-            self.source_image_urlobject = m.get('SourceImageURLObject')
-        if m.get('EditPart') is not None:
-            self.edit_part = m.get('EditPart')
-        if m.get('TargetImageURL') is not None:
-            self.target_image_url = m.get('TargetImageURL')
+        if m.get('SourceImageData') is not None:
+            self.source_image_data = m.get('SourceImageData')
+        if m.get('TargetImageData') is not None:
+            self.target_image_data = m.get('TargetImageData')
         return self
 
 
