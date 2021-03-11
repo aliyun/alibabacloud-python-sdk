@@ -406,6 +406,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
+    def create_tair_instance_with_options(
+        self,
+        request: r_kvstore_20150101_models.CreateTairInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return r_kvstore_20150101_models.CreateTairInstanceResponse().from_map(
+            self.do_rpcrequest('CreateTairInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_tair_instance_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.CreateTairInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return r_kvstore_20150101_models.CreateTairInstanceResponse().from_map(
+            await self.do_rpcrequest_async('CreateTairInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_tair_instance(
+        self,
+        request: r_kvstore_20150101_models.CreateTairInstanceRequest,
+    ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_tair_instance_with_options(request, runtime)
+
+    async def create_tair_instance_async(
+        self,
+        request: r_kvstore_20150101_models.CreateTairInstanceRequest,
+    ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_tair_instance_with_options_async(request, runtime)
+
     def create_user_cluster_host_with_options(
         self,
         request: r_kvstore_20150101_models.CreateUserClusterHostRequest,
@@ -725,46 +765,6 @@ class Client(OpenApiClient):
     ) -> r_kvstore_20150101_models.DescribeAuditRecordsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_audit_records_with_options_async(request, runtime)
-
-    def describe_available_resource_with_options(
-        self,
-        request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return r_kvstore_20150101_models.DescribeAvailableResourceResponse().from_map(
-            self.do_rpcrequest('DescribeAvailableResource', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_available_resource_with_options_async(
-        self,
-        request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return r_kvstore_20150101_models.DescribeAvailableResourceResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAvailableResource', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_available_resource(
-        self,
-        request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
-    ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_available_resource_with_options(request, runtime)
-
-    async def describe_available_resource_async(
-        self,
-        request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
-    ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_available_resource_with_options_async(request, runtime)
 
     def describe_backup_policy_with_options(
         self,
@@ -2046,6 +2046,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
+    def enable_additional_bandwidth_with_options(
+        self,
+        request: r_kvstore_20150101_models.EnableAdditionalBandwidthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return r_kvstore_20150101_models.EnableAdditionalBandwidthResponse().from_map(
+            self.do_rpcrequest('EnableAdditionalBandwidth', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def enable_additional_bandwidth_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.EnableAdditionalBandwidthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return r_kvstore_20150101_models.EnableAdditionalBandwidthResponse().from_map(
+            await self.do_rpcrequest_async('EnableAdditionalBandwidth', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def enable_additional_bandwidth(
+        self,
+        request: r_kvstore_20150101_models.EnableAdditionalBandwidthRequest,
+    ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_additional_bandwidth_with_options(request, runtime)
+
+    async def enable_additional_bandwidth_async(
+        self,
+        request: r_kvstore_20150101_models.EnableAdditionalBandwidthRequest,
+    ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_additional_bandwidth_with_options_async(request, runtime)
+
     def flush_expire_keys_with_options(
         self,
         request: r_kvstore_20150101_models.FlushExpireKeysRequest,
@@ -2405,6 +2445,46 @@ class Client(OpenApiClient):
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_active_operation_task_with_options_async(request, runtime)
+
+    def modify_audit_log_config_with_options(
+        self,
+        request: r_kvstore_20150101_models.ModifyAuditLogConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyAuditLogConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return r_kvstore_20150101_models.ModifyAuditLogConfigResponse().from_map(
+            self.do_rpcrequest('ModifyAuditLogConfig', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_audit_log_config_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyAuditLogConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyAuditLogConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return r_kvstore_20150101_models.ModifyAuditLogConfigResponse().from_map(
+            await self.do_rpcrequest_async('ModifyAuditLogConfig', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_audit_log_config(
+        self,
+        request: r_kvstore_20150101_models.ModifyAuditLogConfigRequest,
+    ) -> r_kvstore_20150101_models.ModifyAuditLogConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_audit_log_config_with_options(request, runtime)
+
+    async def modify_audit_log_config_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyAuditLogConfigRequest,
+    ) -> r_kvstore_20150101_models.ModifyAuditLogConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_audit_log_config_with_options_async(request, runtime)
 
     def modify_backup_policy_with_options(
         self,
