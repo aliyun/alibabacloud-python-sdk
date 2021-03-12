@@ -236,11 +236,17 @@ class ListTagResourcesRequest(TeaModel):
     def __init__(
         self,
         resource_ids: List[str] = None,
+        resource_type: str = None,
+        region_id: str = None,
         tags: List[Tag] = None,
         next_token: str = None,
     ):
         # 集群ID列表。
         self.resource_ids = resource_ids
+        # 资源类型，只支持Cluster
+        self.resource_type = resource_type
+        # 地域ID
+        self.region_id = region_id
         # 按标签查找。
         self.tags = tags
         # 下一次查询Token。
@@ -256,6 +262,10 @@ class ListTagResourcesRequest(TeaModel):
         result = dict()
         if self.resource_ids is not None:
             result['resource_ids'] = self.resource_ids
+        if self.resource_type is not None:
+            result['resource_type'] = self.resource_type
+        if self.region_id is not None:
+            result['region_id'] = self.region_id
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -268,11 +278,67 @@ class ListTagResourcesRequest(TeaModel):
         m = m or dict()
         if m.get('resource_ids') is not None:
             self.resource_ids = m.get('resource_ids')
+        if m.get('resource_type') is not None:
+            self.resource_type = m.get('resource_type')
+        if m.get('region_id') is not None:
+            self.region_id = m.get('region_id')
         self.tags = []
         if m.get('tags') is not None:
             for k in m.get('tags'):
                 temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('next_token') is not None:
+            self.next_token = m.get('next_token')
+        return self
+
+
+class ListTagResourcesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        resource_ids_shrink: str = None,
+        resource_type: str = None,
+        region_id: str = None,
+        tags_shrink: str = None,
+        next_token: str = None,
+    ):
+        # 集群ID列表。
+        self.resource_ids_shrink = resource_ids_shrink
+        # 资源类型，只支持Cluster
+        self.resource_type = resource_type
+        # 地域ID
+        self.region_id = region_id
+        # 按标签查找。
+        self.tags_shrink = tags_shrink
+        # 下一次查询Token。
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.resource_ids_shrink is not None:
+            result['resource_ids'] = self.resource_ids_shrink
+        if self.resource_type is not None:
+            result['resource_type'] = self.resource_type
+        if self.region_id is not None:
+            result['region_id'] = self.region_id
+        if self.tags_shrink is not None:
+            result['tags'] = self.tags_shrink
+        if self.next_token is not None:
+            result['next_token'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('resource_ids') is not None:
+            self.resource_ids_shrink = m.get('resource_ids')
+        if m.get('resource_type') is not None:
+            self.resource_type = m.get('resource_type')
+        if m.get('region_id') is not None:
+            self.region_id = m.get('region_id')
+        if m.get('tags') is not None:
+            self.tags_shrink = m.get('tags')
         if m.get('next_token') is not None:
             self.next_token = m.get('next_token')
         return self
@@ -6654,13 +6720,13 @@ class CreateTemplateResponse(TeaModel):
 class DescribeClusterNodesRequest(TeaModel):
     def __init__(
         self,
-        instance_ids: List[str] = None,
+        instance_ids: str = None,
         nodepool_id: str = None,
         state: str = None,
         page_size: str = None,
         page_number: str = None,
     ):
-        # 节点实例ID，按照实例ID进行过滤。  节点池ID不为空时会忽略此字段。
+        # 节点实例ID，按照实例ID进行过滤。  节点池ID不为空时会忽略此字段。多节点用逗号分割
         self.instance_ids = instance_ids
         # 节点池ID。
         self.nodepool_id = nodepool_id
@@ -7008,6 +7074,44 @@ class DeleteClusterRequest(TeaModel):
             self.keep_slb = m.get('keep_slb')
         if m.get('retain_resources') is not None:
             self.retain_resources = m.get('retain_resources')
+        return self
+
+
+class DeleteClusterShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        retain_all_resources: bool = None,
+        keep_slb: bool = None,
+        retain_resources_shrink: str = None,
+    ):
+        # 是否保留所有资源,如果设置了该值，将会忽略retain_resources。  true：保留 false：不保留 默认值：fase。
+        self.retain_all_resources = retain_all_resources
+        # 是否保留SLB。  true：保留 false：不保留 默认值：false。
+        self.keep_slb = keep_slb
+        # 要保留的资源列表。
+        self.retain_resources_shrink = retain_resources_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.retain_all_resources is not None:
+            result['retain_all_resources'] = self.retain_all_resources
+        if self.keep_slb is not None:
+            result['keep_slb'] = self.keep_slb
+        if self.retain_resources_shrink is not None:
+            result['retain_resources'] = self.retain_resources_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('retain_all_resources') is not None:
+            self.retain_all_resources = m.get('retain_all_resources')
+        if m.get('keep_slb') is not None:
+            self.keep_slb = m.get('keep_slb')
+        if m.get('retain_resources') is not None:
+            self.retain_resources_shrink = m.get('retain_resources')
         return self
 
 
@@ -8460,6 +8564,30 @@ class DescribeClusterAddonsUpgradeStatusRequest(TeaModel):
         m = m or dict()
         if m.get('componentIds') is not None:
             self.component_ids = m.get('componentIds')
+        return self
+
+
+class DescribeClusterAddonsUpgradeStatusShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        component_ids_shrink: str = None,
+    ):
+        # 组件名称列表。
+        self.component_ids_shrink = component_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.component_ids_shrink is not None:
+            result['componentIds'] = self.component_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('componentIds') is not None:
+            self.component_ids_shrink = m.get('componentIds')
         return self
 
 
@@ -10061,6 +10189,268 @@ class ScaleOutClusterResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ScaleOutClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeEventsRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        type: str = None,
+        page_size: int = None,
+        page_number: int = None,
+    ):
+        # 集群ID
+        self.cluster_id = cluster_id
+        # 事件类型
+        self.type = type
+        # 页数
+        self.page_size = page_size
+        # 没页记录数量
+        self.page_number = page_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
+        if self.page_number is not None:
+            result['page_number'] = self.page_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('page_number') is not None:
+            self.page_number = m.get('page_number')
+        return self
+
+
+class DescribeEventsResponseBodyEventsData(TeaModel):
+    def __init__(
+        self,
+        level: str = None,
+        reason: str = None,
+        message: str = None,
+    ):
+        # 事件级别
+        self.level = level
+        # 事件状态
+        self.reason = reason
+        # 事件详情
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.level is not None:
+            result['level'] = self.level
+        if self.reason is not None:
+            result['reason'] = self.reason
+        if self.message is not None:
+            result['message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        return self
+
+
+class DescribeEventsResponseBodyEvents(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        type: str = None,
+        source: str = None,
+        subject: str = None,
+        time: str = None,
+        cluster_id: str = None,
+        data: DescribeEventsResponseBodyEventsData = None,
+    ):
+        # 事件ID
+        self.event_id = event_id
+        # 事件类型
+        self.type = type
+        # 事件源
+        self.source = source
+        # 事件
+        self.subject = subject
+        # 事件开始事件
+        self.time = time
+        # 集群ID
+        self.cluster_id = cluster_id
+        # 事件描述
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.event_id is not None:
+            result['event_id'] = self.event_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.source is not None:
+            result['source'] = self.source
+        if self.subject is not None:
+            result['subject'] = self.subject
+        if self.time is not None:
+            result['time'] = self.time
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('event_id') is not None:
+            self.event_id = m.get('event_id')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('data') is not None:
+            temp_model = DescribeEventsResponseBodyEventsData()
+            self.data = temp_model.from_map(m['data'])
+        return self
+
+
+class DescribeEventsResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        page_size: int = None,
+        page_number: int = None,
+        total_count: int = None,
+    ):
+        # 页数
+        self.page_size = page_size
+        # 每页记录数量
+        self.page_number = page_number
+        # 结果总数
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
+        if self.page_number is not None:
+            result['page_number'] = self.page_number
+        if self.total_count is not None:
+            result['total_count'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('page_number') is not None:
+            self.page_number = m.get('page_number')
+        if m.get('total_count') is not None:
+            self.total_count = m.get('total_count')
+        return self
+
+
+class DescribeEventsResponseBody(TeaModel):
+    def __init__(
+        self,
+        events: List[DescribeEventsResponseBodyEvents] = None,
+        page_info: DescribeEventsResponseBodyPageInfo = None,
+    ):
+        self.events = events
+        self.page_info = page_info
+
+    def validate(self):
+        if self.events:
+            for k in self.events:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        result = dict()
+        result['events'] = []
+        if self.events is not None:
+            for k in self.events:
+                result['events'].append(k.to_map() if k else None)
+        if self.page_info is not None:
+            result['page_info'] = self.page_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.events = []
+        if m.get('events') is not None:
+            for k in m.get('events'):
+                temp_model = DescribeEventsResponseBodyEvents()
+                self.events.append(temp_model.from_map(k))
+        if m.get('page_info') is not None:
+            temp_model = DescribeEventsResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['page_info'])
+        return self
+
+
+class DescribeEventsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeEventsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeEventsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

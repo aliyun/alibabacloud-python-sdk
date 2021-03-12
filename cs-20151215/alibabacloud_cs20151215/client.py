@@ -95,16 +95,26 @@ class Client(OpenApiClient):
 
     def list_tag_resources_with_options(
         self,
-        request: cs20151215_models.ListTagResourcesRequest,
+        tmp_req: cs20151215_models.ListTagResourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListTagResourcesResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.ListTagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_ids):
+            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'resource_ids', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
-        if not UtilClient.is_unset(request.resource_ids):
-            query['resource_ids'] = request.resource_ids
-        if not UtilClient.is_unset(request.tags):
-            query['tags'] = request.tags
+        if not UtilClient.is_unset(request.resource_ids_shrink):
+            query['resource_ids'] = request.resource_ids_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['resource_type'] = request.resource_type
+        if not UtilClient.is_unset(request.region_id):
+            query['region_id'] = request.region_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.next_token):
             query['next_token'] = request.next_token
         req = open_api_models.OpenApiRequest(
@@ -117,16 +127,26 @@ class Client(OpenApiClient):
 
     async def list_tag_resources_with_options_async(
         self,
-        request: cs20151215_models.ListTagResourcesRequest,
+        tmp_req: cs20151215_models.ListTagResourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListTagResourcesResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.ListTagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_ids):
+            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'resource_ids', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
-        if not UtilClient.is_unset(request.resource_ids):
-            query['resource_ids'] = request.resource_ids
-        if not UtilClient.is_unset(request.tags):
-            query['tags'] = request.tags
+        if not UtilClient.is_unset(request.resource_ids_shrink):
+            query['resource_ids'] = request.resource_ids_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['resource_type'] = request.resource_type
+        if not UtilClient.is_unset(request.region_id):
+            query['region_id'] = request.region_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.next_token):
             query['next_token'] = request.next_token
         req = open_api_models.OpenApiRequest(
@@ -2402,51 +2422,55 @@ class Client(OpenApiClient):
     def delete_cluster_with_options(
         self,
         cluster_id: str,
-        request: cs20151215_models.DeleteClusterRequest,
+        tmp_req: cs20151215_models.DeleteClusterRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.DeleteClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.retain_resources):
+            request.retain_resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retain_resources, 'retain_resources', 'json')
         query = {}
-        if not UtilClient.is_unset(request.retain_resources):
-            query['retain_resources'] = request.retain_resources
-        body = {}
         if not UtilClient.is_unset(request.retain_all_resources):
-            body['retain_all_resources'] = request.retain_all_resources
+            query['retain_all_resources'] = request.retain_all_resources
         if not UtilClient.is_unset(request.keep_slb):
-            body['keep_slb'] = request.keep_slb
+            query['keep_slb'] = request.keep_slb
+        if not UtilClient.is_unset(request.retain_resources_shrink):
+            query['retain_resources'] = request.retain_resources_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         return cs20151215_models.DeleteClusterResponse().from_map(
-            self.do_roarequest_with_form('DeleteCluster', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}', 'none', req, runtime)
+            self.do_roarequest('DeleteCluster', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}', 'none', req, runtime)
         )
 
     async def delete_cluster_with_options_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.DeleteClusterRequest,
+        tmp_req: cs20151215_models.DeleteClusterRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.DeleteClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.retain_resources):
+            request.retain_resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retain_resources, 'retain_resources', 'json')
         query = {}
-        if not UtilClient.is_unset(request.retain_resources):
-            query['retain_resources'] = request.retain_resources
-        body = {}
         if not UtilClient.is_unset(request.retain_all_resources):
-            body['retain_all_resources'] = request.retain_all_resources
+            query['retain_all_resources'] = request.retain_all_resources
         if not UtilClient.is_unset(request.keep_slb):
-            body['keep_slb'] = request.keep_slb
+            query['keep_slb'] = request.keep_slb
+        if not UtilClient.is_unset(request.retain_resources_shrink):
+            query['retain_resources'] = request.retain_resources_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         return cs20151215_models.DeleteClusterResponse().from_map(
-            await self.do_roarequest_with_form_async('DeleteCluster', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}', 'none', req, runtime)
+            await self.do_roarequest_async('DeleteCluster', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}', 'none', req, runtime)
         )
 
     def cancel_component_upgrade(
@@ -3326,39 +3350,47 @@ class Client(OpenApiClient):
     def describe_cluster_addons_upgrade_status_with_options(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterAddonsUpgradeStatusRequest,
+        tmp_req: cs20151215_models.DescribeClusterAddonsUpgradeStatusRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.DescribeClusterAddonsUpgradeStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.component_ids):
+            request.component_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_ids, 'componentIds', 'json')
         query = {}
-        if not UtilClient.is_unset(request.component_ids):
-            query['componentIds'] = request.component_ids
+        if not UtilClient.is_unset(request.component_ids_shrink):
+            query['componentIds'] = request.component_ids_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         return cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse().from_map(
-            self.do_roarequest('DescribeClusterAddonsUpgradeStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/[ClusterId]/components/upgradestatus', 'json', req, runtime)
+            self.do_roarequest('DescribeClusterAddonsUpgradeStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/components/upgradestatus', 'json', req, runtime)
         )
 
     async def describe_cluster_addons_upgrade_status_with_options_async(
         self,
         cluster_id: str,
-        request: cs20151215_models.DescribeClusterAddonsUpgradeStatusRequest,
+        tmp_req: cs20151215_models.DescribeClusterAddonsUpgradeStatusRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.DescribeClusterAddonsUpgradeStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.component_ids):
+            request.component_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_ids, 'componentIds', 'json')
         query = {}
-        if not UtilClient.is_unset(request.component_ids):
-            query['componentIds'] = request.component_ids
+        if not UtilClient.is_unset(request.component_ids_shrink):
+            query['componentIds'] = request.component_ids_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         return cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse().from_map(
-            await self.do_roarequest_async('DescribeClusterAddonsUpgradeStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/[ClusterId]/components/upgradestatus', 'json', req, runtime)
+            await self.do_roarequest_async('DescribeClusterAddonsUpgradeStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/components/upgradestatus', 'json', req, runtime)
         )
 
     def describe_workflows(self) -> cs20151215_models.DescribeWorkflowsResponse:
@@ -3801,6 +3833,70 @@ class Client(OpenApiClient):
         )
         return cs20151215_models.ScaleOutClusterResponse().from_map(
             await self.do_roarequest_async('ScaleOutCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}', 'json', req, runtime)
+        )
+
+    def describe_events(
+        self,
+        request: cs20151215_models.DescribeEventsRequest,
+    ) -> cs20151215_models.DescribeEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_events_with_options(request, headers, runtime)
+
+    async def describe_events_async(
+        self,
+        request: cs20151215_models.DescribeEventsRequest,
+    ) -> cs20151215_models.DescribeEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_events_with_options_async(request, headers, runtime)
+
+    def describe_events_with_options(
+        self,
+        request: cs20151215_models.DescribeEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.page_number):
+            query['page_number'] = request.page_number
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return cs20151215_models.DescribeEventsResponse().from_map(
+            self.do_roarequest('DescribeEvents', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/events', 'json', req, runtime)
+        )
+
+    async def describe_events_with_options_async(
+        self,
+        request: cs20151215_models.DescribeEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.page_number):
+            query['page_number'] = request.page_number
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return cs20151215_models.DescribeEventsResponse().from_map(
+            await self.do_roarequest_async('DescribeEvents', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/events', 'json', req, runtime)
         )
 
     def update_k8s_cluster_user_config_expire(
