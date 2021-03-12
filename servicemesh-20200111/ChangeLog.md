@@ -1,3 +1,7 @@
+2021-03-12 Version: 1.1.0
+- New build from amp.
+
+
 2021-02-19 Version: 1.0.12
 - Generated python 2020-01-11 for servicemesh.
 
