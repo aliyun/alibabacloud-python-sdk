@@ -1,3 +1,6 @@
+2021-03-15 Version: 2.0.6
+- Generated python 2020-11-18 for Snapshot.
+
 2021-03-15 Version: 2.0.5
 - Generated python 2020-11-18 for Snapshot.
 
