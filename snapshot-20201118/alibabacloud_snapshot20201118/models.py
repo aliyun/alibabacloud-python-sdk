@@ -4,6 +4,81 @@ from Tea.model import TeaModel
 from typing import Dict, BinaryIO, List
 
 
+class GetSnapshotBlockRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        block_index: int = None,
+        block_token: str = None,
+        snapshot_id: str = None,
+    ):
+        # 幂等参数
+        self.client_token = client_token
+        # 待读取的数据块索引，从零开始。从 ListChangedBlocks 或者 ListSnapshotBlocks 返回
+        self.block_index = block_index
+        # 待读取的数据块Token，从零开始。从 ListChangedBlocks 或者 ListSnapshotBlocks 返回
+        self.block_token = block_token
+        # 待读取数据的快照名称
+        self.snapshot_id = snapshot_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.block_index is not None:
+            result['BlockIndex'] = self.block_index
+        if self.block_token is not None:
+            result['BlockToken'] = self.block_token
+        if self.snapshot_id is not None:
+            result['SnapshotId'] = self.snapshot_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('BlockIndex') is not None:
+            self.block_index = m.get('BlockIndex')
+        if m.get('BlockToken') is not None:
+            self.block_token = m.get('BlockToken')
+        if m.get('SnapshotId') is not None:
+            self.snapshot_id = m.get('SnapshotId')
+        return self
+
+
+class GetSnapshotBlockResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: BinaryIO = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
 class GetSnapshotInfoRequest(TeaModel):
     def __init__(
         self,
@@ -138,81 +213,6 @@ class GetSnapshotInfoResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = GetSnapshotInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetSnapshotBlockRequest(TeaModel):
-    def __init__(
-        self,
-        client_token: str = None,
-        block_index: int = None,
-        block_token: str = None,
-        snapshot_id: str = None,
-    ):
-        # 幂等参数
-        self.client_token = client_token
-        # 待读取的数据块索引，从零开始。从 ListChangedBlocks 或者 ListSnapshotBlocks 返回
-        self.block_index = block_index
-        # 待读取的数据块Token，从零开始。从 ListChangedBlocks 或者 ListSnapshotBlocks 返回
-        self.block_token = block_token
-        # 待读取数据的快照名称
-        self.snapshot_id = snapshot_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.block_index is not None:
-            result['BlockIndex'] = self.block_index
-        if self.block_token is not None:
-            result['BlockToken'] = self.block_token
-        if self.snapshot_id is not None:
-            result['SnapshotId'] = self.snapshot_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('BlockIndex') is not None:
-            self.block_index = m.get('BlockIndex')
-        if m.get('BlockToken') is not None:
-            self.block_token = m.get('BlockToken')
-        if m.get('SnapshotId') is not None:
-            self.snapshot_id = m.get('SnapshotId')
-        return self
-
-
-class GetSnapshotBlockResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: BinaryIO = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            self.body = m.get('body')
         return self
 
 
