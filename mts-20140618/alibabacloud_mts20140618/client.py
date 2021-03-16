@@ -1921,6 +1921,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_fp_shot_dbwith_options_async(request, runtime)
 
+    def list_fp_shot_files_with_options(
+        self,
+        request: mts_20140618_models.ListFpShotFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.ListFpShotFilesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.ListFpShotFilesResponse().from_map(
+            self.do_rpcrequest('ListFpShotFiles', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_fp_shot_files_with_options_async(
+        self,
+        request: mts_20140618_models.ListFpShotFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.ListFpShotFilesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.ListFpShotFilesResponse().from_map(
+            await self.do_rpcrequest_async('ListFpShotFiles', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_fp_shot_files(
+        self,
+        request: mts_20140618_models.ListFpShotFilesRequest,
+    ) -> mts_20140618_models.ListFpShotFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_fp_shot_files_with_options(request, runtime)
+
+    async def list_fp_shot_files_async(
+        self,
+        request: mts_20140618_models.ListFpShotFilesRequest,
+    ) -> mts_20140618_models.ListFpShotFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_fp_shot_files_with_options_async(request, runtime)
+
     def list_fp_shot_notary_with_options(
         self,
         request: mts_20140618_models.ListFpShotNotaryRequest,
@@ -2841,6 +2881,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_fp_compare_job_list_with_options_async(request, runtime)
 
+    def query_fp_dbdelete_job_list_with_options(
+        self,
+        request: mts_20140618_models.QueryFpDBDeleteJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryFpDBDeleteJobListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.QueryFpDBDeleteJobListResponse().from_map(
+            self.do_rpcrequest('QueryFpDBDeleteJobList', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_fp_dbdelete_job_list_with_options_async(
+        self,
+        request: mts_20140618_models.QueryFpDBDeleteJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryFpDBDeleteJobListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.QueryFpDBDeleteJobListResponse().from_map(
+            await self.do_rpcrequest_async('QueryFpDBDeleteJobList', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_fp_dbdelete_job_list(
+        self,
+        request: mts_20140618_models.QueryFpDBDeleteJobListRequest,
+    ) -> mts_20140618_models.QueryFpDBDeleteJobListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_fp_dbdelete_job_list_with_options(request, runtime)
+
+    async def query_fp_dbdelete_job_list_async(
+        self,
+        request: mts_20140618_models.QueryFpDBDeleteJobListRequest,
+    ) -> mts_20140618_models.QueryFpDBDeleteJobListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_fp_dbdelete_job_list_with_options_async(request, runtime)
+
+    def query_fp_file_delete_job_list_with_options(
+        self,
+        request: mts_20140618_models.QueryFpFileDeleteJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryFpFileDeleteJobListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.QueryFpFileDeleteJobListResponse().from_map(
+            self.do_rpcrequest('QueryFpFileDeleteJobList', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_fp_file_delete_job_list_with_options_async(
+        self,
+        request: mts_20140618_models.QueryFpFileDeleteJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryFpFileDeleteJobListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.QueryFpFileDeleteJobListResponse().from_map(
+            await self.do_rpcrequest_async('QueryFpFileDeleteJobList', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_fp_file_delete_job_list(
+        self,
+        request: mts_20140618_models.QueryFpFileDeleteJobListRequest,
+    ) -> mts_20140618_models.QueryFpFileDeleteJobListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_fp_file_delete_job_list_with_options(request, runtime)
+
+    async def query_fp_file_delete_job_list_async(
+        self,
+        request: mts_20140618_models.QueryFpFileDeleteJobListRequest,
+    ) -> mts_20140618_models.QueryFpFileDeleteJobListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_fp_file_delete_job_list_with_options_async(request, runtime)
+
     def query_fp_import_result_with_options(
         self,
         request: mts_20140618_models.QueryFpImportResultRequest,
@@ -2960,6 +3080,46 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryImageSearchJobListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_image_search_job_list_with_options_async(request, runtime)
+
+    def query_inner_job_with_options(
+        self,
+        request: mts_20140618_models.QueryInnerJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryInnerJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.QueryInnerJobResponse().from_map(
+            self.do_rpcrequest('QueryInnerJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_inner_job_with_options_async(
+        self,
+        request: mts_20140618_models.QueryInnerJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryInnerJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.QueryInnerJobResponse().from_map(
+            await self.do_rpcrequest_async('QueryInnerJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_inner_job(
+        self,
+        request: mts_20140618_models.QueryInnerJobRequest,
+    ) -> mts_20140618_models.QueryInnerJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_inner_job_with_options(request, runtime)
+
+    async def query_inner_job_async(
+        self,
+        request: mts_20140618_models.QueryInnerJobRequest,
+    ) -> mts_20140618_models.QueryInnerJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_inner_job_with_options_async(request, runtime)
 
     def query_iproduction_job_with_options(
         self,
@@ -4120,6 +4280,46 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryVideoPoseJobListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_video_pose_job_list_with_options_async(request, runtime)
+
+    def query_video_quality_job_with_options(
+        self,
+        request: mts_20140618_models.QueryVideoQualityJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryVideoQualityJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.QueryVideoQualityJobResponse().from_map(
+            self.do_rpcrequest('QueryVideoQualityJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_video_quality_job_with_options_async(
+        self,
+        request: mts_20140618_models.QueryVideoQualityJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryVideoQualityJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.QueryVideoQualityJobResponse().from_map(
+            await self.do_rpcrequest_async('QueryVideoQualityJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_video_quality_job(
+        self,
+        request: mts_20140618_models.QueryVideoQualityJobRequest,
+    ) -> mts_20140618_models.QueryVideoQualityJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_video_quality_job_with_options(request, runtime)
+
+    async def query_video_quality_job_async(
+        self,
+        request: mts_20140618_models.QueryVideoQualityJobRequest,
+    ) -> mts_20140618_models.QueryVideoQualityJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_video_quality_job_with_options_async(request, runtime)
 
     def query_video_split_job_list_with_options(
         self,
@@ -5441,6 +5641,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_fp_compare_job_with_options_async(request, runtime)
 
+    def submit_fp_dbdelete_job_with_options(
+        self,
+        request: mts_20140618_models.SubmitFpDBDeleteJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitFpDBDeleteJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.SubmitFpDBDeleteJobResponse().from_map(
+            self.do_rpcrequest('SubmitFpDBDeleteJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_fp_dbdelete_job_with_options_async(
+        self,
+        request: mts_20140618_models.SubmitFpDBDeleteJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitFpDBDeleteJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.SubmitFpDBDeleteJobResponse().from_map(
+            await self.do_rpcrequest_async('SubmitFpDBDeleteJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_fp_dbdelete_job(
+        self,
+        request: mts_20140618_models.SubmitFpDBDeleteJobRequest,
+    ) -> mts_20140618_models.SubmitFpDBDeleteJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_fp_dbdelete_job_with_options(request, runtime)
+
+    async def submit_fp_dbdelete_job_async(
+        self,
+        request: mts_20140618_models.SubmitFpDBDeleteJobRequest,
+    ) -> mts_20140618_models.SubmitFpDBDeleteJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_fp_dbdelete_job_with_options_async(request, runtime)
+
+    def submit_fp_file_delete_job_with_options(
+        self,
+        request: mts_20140618_models.SubmitFpFileDeleteJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitFpFileDeleteJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.SubmitFpFileDeleteJobResponse().from_map(
+            self.do_rpcrequest('SubmitFpFileDeleteJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_fp_file_delete_job_with_options_async(
+        self,
+        request: mts_20140618_models.SubmitFpFileDeleteJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitFpFileDeleteJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.SubmitFpFileDeleteJobResponse().from_map(
+            await self.do_rpcrequest_async('SubmitFpFileDeleteJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_fp_file_delete_job(
+        self,
+        request: mts_20140618_models.SubmitFpFileDeleteJobRequest,
+    ) -> mts_20140618_models.SubmitFpFileDeleteJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_fp_file_delete_job_with_options(request, runtime)
+
+    async def submit_fp_file_delete_job_async(
+        self,
+        request: mts_20140618_models.SubmitFpFileDeleteJobRequest,
+    ) -> mts_20140618_models.SubmitFpFileDeleteJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_fp_file_delete_job_with_options_async(request, runtime)
+
     def submit_fp_shot_job_with_options(
         self,
         request: mts_20140618_models.SubmitFpShotJobRequest,
@@ -5560,6 +5840,46 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitImageSearchJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_image_search_job_with_options_async(request, runtime)
+
+    def submit_inner_job_with_options(
+        self,
+        request: mts_20140618_models.SubmitInnerJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitInnerJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.SubmitInnerJobResponse().from_map(
+            self.do_rpcrequest('SubmitInnerJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_inner_job_with_options_async(
+        self,
+        request: mts_20140618_models.SubmitInnerJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitInnerJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.SubmitInnerJobResponse().from_map(
+            await self.do_rpcrequest_async('SubmitInnerJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_inner_job(
+        self,
+        request: mts_20140618_models.SubmitInnerJobRequest,
+    ) -> mts_20140618_models.SubmitInnerJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_inner_job_with_options(request, runtime)
+
+    async def submit_inner_job_async(
+        self,
+        request: mts_20140618_models.SubmitInnerJobRequest,
+    ) -> mts_20140618_models.SubmitInnerJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_inner_job_with_options_async(request, runtime)
 
     def submit_iproduction_job_with_options(
         self,
@@ -6200,6 +6520,46 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitVideoPoseJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_video_pose_job_with_options_async(request, runtime)
+
+    def submit_video_quality_job_with_options(
+        self,
+        request: mts_20140618_models.SubmitVideoQualityJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitVideoQualityJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.SubmitVideoQualityJobResponse().from_map(
+            self.do_rpcrequest('SubmitVideoQualityJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_video_quality_job_with_options_async(
+        self,
+        request: mts_20140618_models.SubmitVideoQualityJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitVideoQualityJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return mts_20140618_models.SubmitVideoQualityJobResponse().from_map(
+            await self.do_rpcrequest_async('SubmitVideoQualityJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_video_quality_job(
+        self,
+        request: mts_20140618_models.SubmitVideoQualityJobRequest,
+    ) -> mts_20140618_models.SubmitVideoQualityJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_video_quality_job_with_options(request, runtime)
+
+    async def submit_video_quality_job_async(
+        self,
+        request: mts_20140618_models.SubmitVideoQualityJobRequest,
+    ) -> mts_20140618_models.SubmitVideoQualityJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_video_quality_job_with_options_async(request, runtime)
 
     def submit_video_split_job_with_options(
         self,
