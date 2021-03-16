@@ -3191,7 +3191,7 @@ class Client(OpenApiClient):
             headers=headers
         )
         return cs20151215_models.DescribeClusterNamespacesResponse().from_map(
-            self.do_roarequest('DescribeClusterNamespaces', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/k8s/{cluster_id}/namespaces', 'none', req, runtime)
+            self.do_roarequest('DescribeClusterNamespaces', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/k8s/{cluster_id}/namespaces', 'array', req, runtime)
         )
 
     async def describe_cluster_namespaces_with_options_async(
@@ -3204,7 +3204,7 @@ class Client(OpenApiClient):
             headers=headers
         )
         return cs20151215_models.DescribeClusterNamespacesResponse().from_map(
-            await self.do_roarequest_async('DescribeClusterNamespaces', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/k8s/{cluster_id}/namespaces', 'none', req, runtime)
+            await self.do_roarequest_async('DescribeClusterNamespaces', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/k8s/{cluster_id}/namespaces', 'array', req, runtime)
         )
 
     def delete_kubernetes_trigger(
