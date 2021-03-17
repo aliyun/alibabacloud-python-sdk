@@ -1316,6 +1316,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_allowed_ip_with_options_async(request, runtime)
 
+    def update_instance_config_with_options(
+        self,
+        request: alikafka_20190916_models.UpdateInstanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.UpdateInstanceConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alikafka_20190916_models.UpdateInstanceConfigResponse().from_map(
+            self.do_rpcrequest('UpdateInstanceConfig', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_instance_config_with_options_async(
+        self,
+        request: alikafka_20190916_models.UpdateInstanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.UpdateInstanceConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alikafka_20190916_models.UpdateInstanceConfigResponse().from_map(
+            await self.do_rpcrequest_async('UpdateInstanceConfig', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_instance_config(
+        self,
+        request: alikafka_20190916_models.UpdateInstanceConfigRequest,
+    ) -> alikafka_20190916_models.UpdateInstanceConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_instance_config_with_options(request, runtime)
+
+    async def update_instance_config_async(
+        self,
+        request: alikafka_20190916_models.UpdateInstanceConfigRequest,
+    ) -> alikafka_20190916_models.UpdateInstanceConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_instance_config_with_options_async(request, runtime)
+
+    def upgrade_instance_version_with_options(
+        self,
+        request: alikafka_20190916_models.UpgradeInstanceVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.UpgradeInstanceVersionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alikafka_20190916_models.UpgradeInstanceVersionResponse().from_map(
+            self.do_rpcrequest('UpgradeInstanceVersion', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def upgrade_instance_version_with_options_async(
+        self,
+        request: alikafka_20190916_models.UpgradeInstanceVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.UpgradeInstanceVersionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return alikafka_20190916_models.UpgradeInstanceVersionResponse().from_map(
+            await self.do_rpcrequest_async('UpgradeInstanceVersion', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def upgrade_instance_version(
+        self,
+        request: alikafka_20190916_models.UpgradeInstanceVersionRequest,
+    ) -> alikafka_20190916_models.UpgradeInstanceVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upgrade_instance_version_with_options(request, runtime)
+
+    async def upgrade_instance_version_async(
+        self,
+        request: alikafka_20190916_models.UpgradeInstanceVersionRequest,
+    ) -> alikafka_20190916_models.UpgradeInstanceVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upgrade_instance_version_with_options_async(request, runtime)
+
     def upgrade_post_pay_order_with_options(
         self,
         request: alikafka_20190916_models.UpgradePostPayOrderRequest,
