@@ -924,6 +924,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_copy_image_with_options_async(request, runtime)
 
+    def cancel_image_pipeline_execution_with_options(
+        self,
+        request: ecs_20140526_models.CancelImagePipelineExecutionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CancelImagePipelineExecutionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.CancelImagePipelineExecutionResponse().from_map(
+            self.do_rpcrequest('CancelImagePipelineExecution', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def cancel_image_pipeline_execution_with_options_async(
+        self,
+        request: ecs_20140526_models.CancelImagePipelineExecutionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CancelImagePipelineExecutionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.CancelImagePipelineExecutionResponse().from_map(
+            await self.do_rpcrequest_async('CancelImagePipelineExecution', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def cancel_image_pipeline_execution(
+        self,
+        request: ecs_20140526_models.CancelImagePipelineExecutionRequest,
+    ) -> ecs_20140526_models.CancelImagePipelineExecutionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_image_pipeline_execution_with_options(request, runtime)
+
+    async def cancel_image_pipeline_execution_async(
+        self,
+        request: ecs_20140526_models.CancelImagePipelineExecutionRequest,
+    ) -> ecs_20140526_models.CancelImagePipelineExecutionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_image_pipeline_execution_with_options_async(request, runtime)
+
     def cancel_physical_connection_with_options(
         self,
         request: ecs_20140526_models.CancelPhysicalConnectionRequest,
@@ -1203,6 +1243,46 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.CopySnapshotResponse:
         runtime = util_models.RuntimeOptions()
         return await self.copy_snapshot_with_options_async(request, runtime)
+
+    def create_activation_with_options(
+        self,
+        request: ecs_20140526_models.CreateActivationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateActivationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.CreateActivationResponse().from_map(
+            self.do_rpcrequest('CreateActivation', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_activation_with_options_async(
+        self,
+        request: ecs_20140526_models.CreateActivationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateActivationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.CreateActivationResponse().from_map(
+            await self.do_rpcrequest_async('CreateActivation', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_activation(
+        self,
+        request: ecs_20140526_models.CreateActivationRequest,
+    ) -> ecs_20140526_models.CreateActivationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_activation_with_options(request, runtime)
+
+    async def create_activation_async(
+        self,
+        request: ecs_20140526_models.CreateActivationRequest,
+    ) -> ecs_20140526_models.CreateActivationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_activation_with_options_async(request, runtime)
 
     def create_auto_provisioning_group_with_options(
         self,
@@ -1723,6 +1803,86 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.CreateImageResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_image_with_options_async(request, runtime)
+
+    def create_image_component_with_options(
+        self,
+        request: ecs_20140526_models.CreateImageComponentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateImageComponentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.CreateImageComponentResponse().from_map(
+            self.do_rpcrequest('CreateImageComponent', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_image_component_with_options_async(
+        self,
+        request: ecs_20140526_models.CreateImageComponentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateImageComponentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.CreateImageComponentResponse().from_map(
+            await self.do_rpcrequest_async('CreateImageComponent', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_image_component(
+        self,
+        request: ecs_20140526_models.CreateImageComponentRequest,
+    ) -> ecs_20140526_models.CreateImageComponentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_image_component_with_options(request, runtime)
+
+    async def create_image_component_async(
+        self,
+        request: ecs_20140526_models.CreateImageComponentRequest,
+    ) -> ecs_20140526_models.CreateImageComponentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_image_component_with_options_async(request, runtime)
+
+    def create_image_pipeline_with_options(
+        self,
+        request: ecs_20140526_models.CreateImagePipelineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateImagePipelineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.CreateImagePipelineResponse().from_map(
+            self.do_rpcrequest('CreateImagePipeline', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_image_pipeline_with_options_async(
+        self,
+        request: ecs_20140526_models.CreateImagePipelineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateImagePipelineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.CreateImagePipelineResponse().from_map(
+            await self.do_rpcrequest_async('CreateImagePipeline', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_image_pipeline(
+        self,
+        request: ecs_20140526_models.CreateImagePipelineRequest,
+    ) -> ecs_20140526_models.CreateImagePipelineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_image_pipeline_with_options(request, runtime)
+
+    async def create_image_pipeline_async(
+        self,
+        request: ecs_20140526_models.CreateImagePipelineRequest,
+    ) -> ecs_20140526_models.CreateImagePipelineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_image_pipeline_with_options_async(request, runtime)
 
     def create_instance_with_options(
         self,
@@ -2284,6 +2444,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_snapshot_with_options_async(request, runtime)
 
+    def create_snapshot_group_with_options(
+        self,
+        request: ecs_20140526_models.CreateSnapshotGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateSnapshotGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.CreateSnapshotGroupResponse().from_map(
+            self.do_rpcrequest('CreateSnapshotGroup', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_snapshot_group_with_options_async(
+        self,
+        request: ecs_20140526_models.CreateSnapshotGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateSnapshotGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.CreateSnapshotGroupResponse().from_map(
+            await self.do_rpcrequest_async('CreateSnapshotGroup', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_snapshot_group(
+        self,
+        request: ecs_20140526_models.CreateSnapshotGroupRequest,
+    ) -> ecs_20140526_models.CreateSnapshotGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_snapshot_group_with_options(request, runtime)
+
+    async def create_snapshot_group_async(
+        self,
+        request: ecs_20140526_models.CreateSnapshotGroupRequest,
+    ) -> ecs_20140526_models.CreateSnapshotGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_snapshot_group_with_options_async(request, runtime)
+
     def create_storage_set_with_options(
         self,
         request: ecs_20140526_models.CreateStorageSetRequest,
@@ -2483,6 +2683,46 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DeactivateRouterInterfaceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.deactivate_router_interface_with_options_async(request, runtime)
+
+    def delete_activation_with_options(
+        self,
+        request: ecs_20140526_models.DeleteActivationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeleteActivationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DeleteActivationResponse().from_map(
+            self.do_rpcrequest('DeleteActivation', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_activation_with_options_async(
+        self,
+        request: ecs_20140526_models.DeleteActivationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeleteActivationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DeleteActivationResponse().from_map(
+            await self.do_rpcrequest_async('DeleteActivation', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_activation(
+        self,
+        request: ecs_20140526_models.DeleteActivationRequest,
+    ) -> ecs_20140526_models.DeleteActivationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_activation_with_options(request, runtime)
+
+    async def delete_activation_async(
+        self,
+        request: ecs_20140526_models.DeleteActivationRequest,
+    ) -> ecs_20140526_models.DeleteActivationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_activation_with_options_async(request, runtime)
 
     def delete_auto_provisioning_group_with_options(
         self,
@@ -2963,6 +3203,86 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DeleteImageResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_image_with_options_async(request, runtime)
+
+    def delete_image_component_with_options(
+        self,
+        request: ecs_20140526_models.DeleteImageComponentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeleteImageComponentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DeleteImageComponentResponse().from_map(
+            self.do_rpcrequest('DeleteImageComponent', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_image_component_with_options_async(
+        self,
+        request: ecs_20140526_models.DeleteImageComponentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeleteImageComponentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DeleteImageComponentResponse().from_map(
+            await self.do_rpcrequest_async('DeleteImageComponent', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_image_component(
+        self,
+        request: ecs_20140526_models.DeleteImageComponentRequest,
+    ) -> ecs_20140526_models.DeleteImageComponentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_image_component_with_options(request, runtime)
+
+    async def delete_image_component_async(
+        self,
+        request: ecs_20140526_models.DeleteImageComponentRequest,
+    ) -> ecs_20140526_models.DeleteImageComponentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_image_component_with_options_async(request, runtime)
+
+    def delete_image_pipeline_with_options(
+        self,
+        request: ecs_20140526_models.DeleteImagePipelineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeleteImagePipelineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DeleteImagePipelineResponse().from_map(
+            self.do_rpcrequest('DeleteImagePipeline', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_image_pipeline_with_options_async(
+        self,
+        request: ecs_20140526_models.DeleteImagePipelineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeleteImagePipelineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DeleteImagePipelineResponse().from_map(
+            await self.do_rpcrequest_async('DeleteImagePipeline', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_image_pipeline(
+        self,
+        request: ecs_20140526_models.DeleteImagePipelineRequest,
+    ) -> ecs_20140526_models.DeleteImagePipelineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_image_pipeline_with_options(request, runtime)
+
+    async def delete_image_pipeline_async(
+        self,
+        request: ecs_20140526_models.DeleteImagePipelineRequest,
+    ) -> ecs_20140526_models.DeleteImagePipelineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_image_pipeline_with_options_async(request, runtime)
 
     def delete_instance_with_options(
         self,
@@ -3484,6 +3804,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_snapshot_with_options_async(request, runtime)
 
+    def delete_snapshot_group_with_options(
+        self,
+        request: ecs_20140526_models.DeleteSnapshotGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeleteSnapshotGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DeleteSnapshotGroupResponse().from_map(
+            self.do_rpcrequest('DeleteSnapshotGroup', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_snapshot_group_with_options_async(
+        self,
+        request: ecs_20140526_models.DeleteSnapshotGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeleteSnapshotGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DeleteSnapshotGroupResponse().from_map(
+            await self.do_rpcrequest_async('DeleteSnapshotGroup', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_snapshot_group(
+        self,
+        request: ecs_20140526_models.DeleteSnapshotGroupRequest,
+    ) -> ecs_20140526_models.DeleteSnapshotGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_snapshot_group_with_options(request, runtime)
+
+    async def delete_snapshot_group_async(
+        self,
+        request: ecs_20140526_models.DeleteSnapshotGroupRequest,
+    ) -> ecs_20140526_models.DeleteSnapshotGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_snapshot_group_with_options_async(request, runtime)
+
     def delete_storage_set_with_options(
         self,
         request: ecs_20140526_models.DeleteStorageSetRequest,
@@ -3644,6 +4004,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_vswitch_with_options_async(request, runtime)
 
+    def deregister_managed_instance_with_options(
+        self,
+        request: ecs_20140526_models.DeregisterManagedInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeregisterManagedInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DeregisterManagedInstanceResponse().from_map(
+            self.do_rpcrequest('DeregisterManagedInstance', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def deregister_managed_instance_with_options_async(
+        self,
+        request: ecs_20140526_models.DeregisterManagedInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeregisterManagedInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DeregisterManagedInstanceResponse().from_map(
+            await self.do_rpcrequest_async('DeregisterManagedInstance', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def deregister_managed_instance(
+        self,
+        request: ecs_20140526_models.DeregisterManagedInstanceRequest,
+    ) -> ecs_20140526_models.DeregisterManagedInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.deregister_managed_instance_with_options(request, runtime)
+
+    async def deregister_managed_instance_async(
+        self,
+        request: ecs_20140526_models.DeregisterManagedInstanceRequest,
+    ) -> ecs_20140526_models.DeregisterManagedInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.deregister_managed_instance_with_options_async(request, runtime)
+
     def describe_access_points_with_options(
         self,
         request: ecs_20140526_models.DescribeAccessPointsRequest,
@@ -3723,6 +4123,46 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_account_attributes_with_options_async(request, runtime)
+
+    def describe_activations_with_options(
+        self,
+        request: ecs_20140526_models.DescribeActivationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeActivationsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeActivationsResponse().from_map(
+            self.do_rpcrequest('DescribeActivations', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_activations_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeActivationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeActivationsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeActivationsResponse().from_map(
+            await self.do_rpcrequest_async('DescribeActivations', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_activations(
+        self,
+        request: ecs_20140526_models.DescribeActivationsRequest,
+    ) -> ecs_20140526_models.DescribeActivationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_activations_with_options(request, runtime)
+
+    async def describe_activations_async(
+        self,
+        request: ecs_20140526_models.DescribeActivationsRequest,
+    ) -> ecs_20140526_models.DescribeActivationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_activations_with_options_async(request, runtime)
 
     def describe_auto_provisioning_group_history_with_options(
         self,
@@ -4964,6 +5404,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_hpc_clusters_with_options_async(request, runtime)
 
+    def describe_image_components_with_options(
+        self,
+        request: ecs_20140526_models.DescribeImageComponentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeImageComponentsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeImageComponentsResponse().from_map(
+            self.do_rpcrequest('DescribeImageComponents', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_image_components_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeImageComponentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeImageComponentsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeImageComponentsResponse().from_map(
+            await self.do_rpcrequest_async('DescribeImageComponents', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_image_components(
+        self,
+        request: ecs_20140526_models.DescribeImageComponentsRequest,
+    ) -> ecs_20140526_models.DescribeImageComponentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_components_with_options(request, runtime)
+
+    async def describe_image_components_async(
+        self,
+        request: ecs_20140526_models.DescribeImageComponentsRequest,
+    ) -> ecs_20140526_models.DescribeImageComponentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_components_with_options_async(request, runtime)
+
     def describe_image_from_family_with_options(
         self,
         request: ecs_20140526_models.DescribeImageFromFamilyRequest,
@@ -5003,6 +5483,86 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeImageFromFamilyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_from_family_with_options_async(request, runtime)
+
+    def describe_image_pipeline_executions_with_options(
+        self,
+        request: ecs_20140526_models.DescribeImagePipelineExecutionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeImagePipelineExecutionsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeImagePipelineExecutionsResponse().from_map(
+            self.do_rpcrequest('DescribeImagePipelineExecutions', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_image_pipeline_executions_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeImagePipelineExecutionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeImagePipelineExecutionsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeImagePipelineExecutionsResponse().from_map(
+            await self.do_rpcrequest_async('DescribeImagePipelineExecutions', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_image_pipeline_executions(
+        self,
+        request: ecs_20140526_models.DescribeImagePipelineExecutionsRequest,
+    ) -> ecs_20140526_models.DescribeImagePipelineExecutionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_pipeline_executions_with_options(request, runtime)
+
+    async def describe_image_pipeline_executions_async(
+        self,
+        request: ecs_20140526_models.DescribeImagePipelineExecutionsRequest,
+    ) -> ecs_20140526_models.DescribeImagePipelineExecutionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_pipeline_executions_with_options_async(request, runtime)
+
+    def describe_image_pipelines_with_options(
+        self,
+        request: ecs_20140526_models.DescribeImagePipelinesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeImagePipelinesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeImagePipelinesResponse().from_map(
+            self.do_rpcrequest('DescribeImagePipelines', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_image_pipelines_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeImagePipelinesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeImagePipelinesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeImagePipelinesResponse().from_map(
+            await self.do_rpcrequest_async('DescribeImagePipelines', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_image_pipelines(
+        self,
+        request: ecs_20140526_models.DescribeImagePipelinesRequest,
+    ) -> ecs_20140526_models.DescribeImagePipelinesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_pipelines_with_options(request, runtime)
+
+    async def describe_image_pipelines_async(
+        self,
+        request: ecs_20140526_models.DescribeImagePipelinesRequest,
+    ) -> ecs_20140526_models.DescribeImagePipelinesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_pipelines_with_options_async(request, runtime)
 
     def describe_images_with_options(
         self,
@@ -5323,6 +5883,46 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeInstanceMaintenanceAttributesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_maintenance_attributes_with_options_async(request, runtime)
+
+    def describe_instance_modification_price_with_options(
+        self,
+        request: ecs_20140526_models.DescribeInstanceModificationPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeInstanceModificationPriceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeInstanceModificationPriceResponse().from_map(
+            self.do_rpcrequest('DescribeInstanceModificationPrice', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_instance_modification_price_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeInstanceModificationPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeInstanceModificationPriceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeInstanceModificationPriceResponse().from_map(
+            await self.do_rpcrequest_async('DescribeInstanceModificationPrice', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_instance_modification_price(
+        self,
+        request: ecs_20140526_models.DescribeInstanceModificationPriceRequest,
+    ) -> ecs_20140526_models.DescribeInstanceModificationPriceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_modification_price_with_options(request, runtime)
+
+    async def describe_instance_modification_price_async(
+        self,
+        request: ecs_20140526_models.DescribeInstanceModificationPriceRequest,
+    ) -> ecs_20140526_models.DescribeInstanceModificationPriceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_modification_price_with_options_async(request, runtime)
 
     def describe_instance_monitor_data_with_options(
         self,
@@ -5963,6 +6563,46 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeLimitationResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_limitation_with_options_async(request, runtime)
+
+    def describe_managed_instances_with_options(
+        self,
+        request: ecs_20140526_models.DescribeManagedInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeManagedInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeManagedInstancesResponse().from_map(
+            self.do_rpcrequest('DescribeManagedInstances', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_managed_instances_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeManagedInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeManagedInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeManagedInstancesResponse().from_map(
+            await self.do_rpcrequest_async('DescribeManagedInstances', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_managed_instances(
+        self,
+        request: ecs_20140526_models.DescribeManagedInstancesRequest,
+    ) -> ecs_20140526_models.DescribeManagedInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_managed_instances_with_options(request, runtime)
+
+    async def describe_managed_instances_async(
+        self,
+        request: ecs_20140526_models.DescribeManagedInstancesRequest,
+    ) -> ecs_20140526_models.DescribeManagedInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_managed_instances_with_options_async(request, runtime)
 
     def describe_nat_gateways_with_options(
         self,
@@ -6723,6 +7363,46 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeSendFileResultsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_send_file_results_with_options_async(request, runtime)
+
+    def describe_snapshot_groups_with_options(
+        self,
+        request: ecs_20140526_models.DescribeSnapshotGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeSnapshotGroupsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeSnapshotGroupsResponse().from_map(
+            self.do_rpcrequest('DescribeSnapshotGroups', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_snapshot_groups_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeSnapshotGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeSnapshotGroupsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DescribeSnapshotGroupsResponse().from_map(
+            await self.do_rpcrequest_async('DescribeSnapshotGroups', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_snapshot_groups(
+        self,
+        request: ecs_20140526_models.DescribeSnapshotGroupsRequest,
+    ) -> ecs_20140526_models.DescribeSnapshotGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_snapshot_groups_with_options(request, runtime)
+
+    async def describe_snapshot_groups_async(
+        self,
+        request: ecs_20140526_models.DescribeSnapshotGroupsRequest,
+    ) -> ecs_20140526_models.DescribeSnapshotGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_snapshot_groups_with_options_async(request, runtime)
 
     def describe_snapshot_links_with_options(
         self,
@@ -7764,6 +8444,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_network_interface_with_options_async(request, runtime)
 
+    def disable_activation_with_options(
+        self,
+        request: ecs_20140526_models.DisableActivationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DisableActivationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DisableActivationResponse().from_map(
+            self.do_rpcrequest('DisableActivation', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def disable_activation_with_options_async(
+        self,
+        request: ecs_20140526_models.DisableActivationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DisableActivationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.DisableActivationResponse().from_map(
+            await self.do_rpcrequest_async('DisableActivation', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def disable_activation(
+        self,
+        request: ecs_20140526_models.DisableActivationRequest,
+    ) -> ecs_20140526_models.DisableActivationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disable_activation_with_options(request, runtime)
+
+    async def disable_activation_async(
+        self,
+        request: ecs_20140526_models.DisableActivationRequest,
+    ) -> ecs_20140526_models.DisableActivationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_activation_with_options_async(request, runtime)
+
     def eip_fill_params_with_options(
         self,
         request: ecs_20140526_models.EipFillParamsRequest,
@@ -8612,6 +9332,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_bandwidth_package_spec_with_options_async(request, runtime)
 
+    def modify_capacity_reservation_with_options(
+        self,
+        request: ecs_20140526_models.ModifyCapacityReservationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyCapacityReservationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.ModifyCapacityReservationResponse().from_map(
+            self.do_rpcrequest('ModifyCapacityReservation', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_capacity_reservation_with_options_async(
+        self,
+        request: ecs_20140526_models.ModifyCapacityReservationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyCapacityReservationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.ModifyCapacityReservationResponse().from_map(
+            await self.do_rpcrequest_async('ModifyCapacityReservation', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_capacity_reservation(
+        self,
+        request: ecs_20140526_models.ModifyCapacityReservationRequest,
+    ) -> ecs_20140526_models.ModifyCapacityReservationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_capacity_reservation_with_options(request, runtime)
+
+    async def modify_capacity_reservation_async(
+        self,
+        request: ecs_20140526_models.ModifyCapacityReservationRequest,
+    ) -> ecs_20140526_models.ModifyCapacityReservationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_capacity_reservation_with_options_async(request, runtime)
+
     def modify_command_with_options(
         self,
         request: ecs_20140526_models.ModifyCommandRequest,
@@ -9091,6 +9851,46 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyEipAddressAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_eip_address_attribute_with_options_async(request, runtime)
+
+    def modify_elasticity_assurance_with_options(
+        self,
+        request: ecs_20140526_models.ModifyElasticityAssuranceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyElasticityAssuranceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.ModifyElasticityAssuranceResponse().from_map(
+            self.do_rpcrequest('ModifyElasticityAssurance', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_elasticity_assurance_with_options_async(
+        self,
+        request: ecs_20140526_models.ModifyElasticityAssuranceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyElasticityAssuranceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.ModifyElasticityAssuranceResponse().from_map(
+            await self.do_rpcrequest_async('ModifyElasticityAssurance', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_elasticity_assurance(
+        self,
+        request: ecs_20140526_models.ModifyElasticityAssuranceRequest,
+    ) -> ecs_20140526_models.ModifyElasticityAssuranceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_elasticity_assurance_with_options(request, runtime)
+
+    async def modify_elasticity_assurance_async(
+        self,
+        request: ecs_20140526_models.ModifyElasticityAssuranceRequest,
+    ) -> ecs_20140526_models.ModifyElasticityAssuranceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_elasticity_assurance_with_options_async(request, runtime)
 
     def modify_forward_entry_with_options(
         self,
@@ -9852,6 +10652,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_launch_template_default_version_with_options_async(request, runtime)
 
+    def modify_managed_instance_with_options(
+        self,
+        request: ecs_20140526_models.ModifyManagedInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyManagedInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.ModifyManagedInstanceResponse().from_map(
+            self.do_rpcrequest('ModifyManagedInstance', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_managed_instance_with_options_async(
+        self,
+        request: ecs_20140526_models.ModifyManagedInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyManagedInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.ModifyManagedInstanceResponse().from_map(
+            await self.do_rpcrequest_async('ModifyManagedInstance', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_managed_instance(
+        self,
+        request: ecs_20140526_models.ModifyManagedInstanceRequest,
+    ) -> ecs_20140526_models.ModifyManagedInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_managed_instance_with_options(request, runtime)
+
+    async def modify_managed_instance_async(
+        self,
+        request: ecs_20140526_models.ModifyManagedInstanceRequest,
+    ) -> ecs_20140526_models.ModifyManagedInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_managed_instance_with_options_async(request, runtime)
+
     def modify_network_interface_attribute_with_options(
         self,
         request: ecs_20140526_models.ModifyNetworkInterfaceAttributeRequest,
@@ -9891,6 +10731,46 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyNetworkInterfaceAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_network_interface_attribute_with_options_async(request, runtime)
+
+    def modify_physical_connection_attribute_with_options(
+        self,
+        request: ecs_20140526_models.ModifyPhysicalConnectionAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse().from_map(
+            self.do_rpcrequest('ModifyPhysicalConnectionAttribute', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_physical_connection_attribute_with_options_async(
+        self,
+        request: ecs_20140526_models.ModifyPhysicalConnectionAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse().from_map(
+            await self.do_rpcrequest_async('ModifyPhysicalConnectionAttribute', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_physical_connection_attribute(
+        self,
+        request: ecs_20140526_models.ModifyPhysicalConnectionAttributeRequest,
+    ) -> ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_physical_connection_attribute_with_options(request, runtime)
+
+    async def modify_physical_connection_attribute_async(
+        self,
+        request: ecs_20140526_models.ModifyPhysicalConnectionAttributeRequest,
+    ) -> ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_physical_connection_attribute_with_options_async(request, runtime)
 
     def modify_prepay_instance_spec_with_options(
         self,
@@ -10291,6 +11171,46 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifySnapshotAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_snapshot_attribute_with_options_async(request, runtime)
+
+    def modify_snapshot_group_with_options(
+        self,
+        request: ecs_20140526_models.ModifySnapshotGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifySnapshotGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.ModifySnapshotGroupResponse().from_map(
+            self.do_rpcrequest('ModifySnapshotGroup', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_snapshot_group_with_options_async(
+        self,
+        request: ecs_20140526_models.ModifySnapshotGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifySnapshotGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.ModifySnapshotGroupResponse().from_map(
+            await self.do_rpcrequest_async('ModifySnapshotGroup', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_snapshot_group(
+        self,
+        request: ecs_20140526_models.ModifySnapshotGroupRequest,
+    ) -> ecs_20140526_models.ModifySnapshotGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_snapshot_group_with_options(request, runtime)
+
+    async def modify_snapshot_group_async(
+        self,
+        request: ecs_20140526_models.ModifySnapshotGroupRequest,
+    ) -> ecs_20140526_models.ModifySnapshotGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_snapshot_group_with_options_async(request, runtime)
 
     def modify_storage_capacity_unit_attribute_with_options(
         self,
@@ -11372,6 +12292,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reset_disk_with_options_async(request, runtime)
 
+    def reset_disks_with_options(
+        self,
+        request: ecs_20140526_models.ResetDisksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ResetDisksResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.ResetDisksResponse().from_map(
+            self.do_rpcrequest('ResetDisks', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def reset_disks_with_options_async(
+        self,
+        request: ecs_20140526_models.ResetDisksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ResetDisksResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.ResetDisksResponse().from_map(
+            await self.do_rpcrequest_async('ResetDisks', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def reset_disks(
+        self,
+        request: ecs_20140526_models.ResetDisksRequest,
+    ) -> ecs_20140526_models.ResetDisksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reset_disks_with_options(request, runtime)
+
+    async def reset_disks_async(
+        self,
+        request: ecs_20140526_models.ResetDisksRequest,
+    ) -> ecs_20140526_models.ResetDisksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reset_disks_with_options_async(request, runtime)
+
     def resize_disk_with_options(
         self,
         request: ecs_20140526_models.ResizeDiskRequest,
@@ -11540,6 +12500,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.run_command_with_options_async(request, runtime)
 
+    def run_instances_with_options(
+        self,
+        request: ecs_20140526_models.RunInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.RunInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.RunInstancesResponse().from_map(
+            self.do_rpcrequest('RunInstances', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def run_instances_with_options_async(
+        self,
+        request: ecs_20140526_models.RunInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.RunInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.RunInstancesResponse().from_map(
+            await self.do_rpcrequest_async('RunInstances', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def run_instances(
+        self,
+        request: ecs_20140526_models.RunInstancesRequest,
+    ) -> ecs_20140526_models.RunInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.run_instances_with_options(request, runtime)
+
+    async def run_instances_async(
+        self,
+        request: ecs_20140526_models.RunInstancesRequest,
+    ) -> ecs_20140526_models.RunInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.run_instances_with_options_async(request, runtime)
+
     def send_file_with_options(
         self,
         request: ecs_20140526_models.SendFileRequest,
@@ -11619,6 +12619,46 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.StartElasticityAssuranceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.start_elasticity_assurance_with_options_async(request, runtime)
+
+    def start_image_pipeline_execution_with_options(
+        self,
+        request: ecs_20140526_models.StartImagePipelineExecutionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.StartImagePipelineExecutionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.StartImagePipelineExecutionResponse().from_map(
+            self.do_rpcrequest('StartImagePipelineExecution', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def start_image_pipeline_execution_with_options_async(
+        self,
+        request: ecs_20140526_models.StartImagePipelineExecutionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.StartImagePipelineExecutionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return ecs_20140526_models.StartImagePipelineExecutionResponse().from_map(
+            await self.do_rpcrequest_async('StartImagePipelineExecution', '2014-05-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def start_image_pipeline_execution(
+        self,
+        request: ecs_20140526_models.StartImagePipelineExecutionRequest,
+    ) -> ecs_20140526_models.StartImagePipelineExecutionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_image_pipeline_execution_with_options(request, runtime)
+
+    async def start_image_pipeline_execution_async(
+        self,
+        request: ecs_20140526_models.StartImagePipelineExecutionRequest,
+    ) -> ecs_20140526_models.StartImagePipelineExecutionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_image_pipeline_execution_with_options_async(request, runtime)
 
     def start_instance_with_options(
         self,
