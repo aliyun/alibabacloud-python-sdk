@@ -1,3 +1,6 @@
+2021-03-22 Version: 1.0.2
+- Update Threedvision.
+
 2021-02-07 Version: 1.0.1
 - Update Threedvision.
 
