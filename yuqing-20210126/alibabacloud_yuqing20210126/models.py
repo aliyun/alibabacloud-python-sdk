@@ -1131,6 +1131,9 @@ class YuqingMessage(TeaModel):
         weibo_mid: str = None,
         ue_emotion_score: str = None,
         finance_events: List[FinanceEvent] = None,
+        app_store_app_score: str = None,
+        app_store_app_name: str = None,
+        app_store_name: str = None,
     ):
         # 舆情文章唯一ID
         self.doc_id = doc_id
@@ -1266,6 +1269,12 @@ class YuqingMessage(TeaModel):
         self.ue_emotion_score = ue_emotion_score
         # 舆情文章提取出来的金融事件列表
         self.finance_events = finance_events
+        # appstore应用评分
+        self.app_store_app_score = app_store_app_score
+        # 应用名称
+        self.app_store_app_name = app_store_app_name
+        # 应用市场名称
+        self.app_store_name = app_store_name
 
     def validate(self):
         if self.finance_events:
@@ -1411,6 +1420,12 @@ class YuqingMessage(TeaModel):
         if self.finance_events is not None:
             for k in self.finance_events:
                 result['financeEvents'].append(k.to_map() if k else None)
+        if self.app_store_app_score is not None:
+            result['appStoreAppScore'] = self.app_store_app_score
+        if self.app_store_app_name is not None:
+            result['appStoreAppName'] = self.app_store_app_name
+        if self.app_store_name is not None:
+            result['appStoreName'] = self.app_store_name
         return result
 
     def from_map(self, m: dict = None):
@@ -1552,6 +1567,12 @@ class YuqingMessage(TeaModel):
             for k in m.get('financeEvents'):
                 temp_model = FinanceEvent()
                 self.finance_events.append(temp_model.from_map(k))
+        if m.get('appStoreAppScore') is not None:
+            self.app_store_app_score = m.get('appStoreAppScore')
+        if m.get('appStoreAppName') is not None:
+            self.app_store_app_name = m.get('appStoreAppName')
+        if m.get('appStoreName') is not None:
+            self.app_store_name = m.get('appStoreName')
         return self
 
 
