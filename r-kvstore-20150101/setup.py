@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_r-kvstore20150101.
 
-Created on 11/03/2021
+Created on 23/03/2021
 
 @author: Alibaba Cloud SDK
 """

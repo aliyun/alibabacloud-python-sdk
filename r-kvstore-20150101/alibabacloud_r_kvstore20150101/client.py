@@ -766,6 +766,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_audit_records_with_options_async(request, runtime)
 
+    def describe_available_resource_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return r_kvstore_20150101_models.DescribeAvailableResourceResponse().from_map(
+            self.do_rpcrequest('DescribeAvailableResource', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_available_resource_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return r_kvstore_20150101_models.DescribeAvailableResourceResponse().from_map(
+            await self.do_rpcrequest_async('DescribeAvailableResource', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_available_resource(
+        self,
+        request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
+    ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_available_resource_with_options(request, runtime)
+
+    async def describe_available_resource_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
+    ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_available_resource_with_options_async(request, runtime)
+
     def describe_backup_policy_with_options(
         self,
         request: r_kvstore_20150101_models.DescribeBackupPolicyRequest,
