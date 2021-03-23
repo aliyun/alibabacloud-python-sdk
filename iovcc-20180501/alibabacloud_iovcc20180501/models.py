@@ -616,6 +616,219 @@ class ConnectAssistDeviceResponse(TeaModel):
         return self
 
 
+class CountActivatedOrNewRegistrationDeviceRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: str = None,
+        device_type: str = None,
+        device_brand_id: str = None,
+        device_brand: str = None,
+        device_model_id: str = None,
+        device_model: str = None,
+        device_count_stat_type: str = None,
+        is_query_new_registration_device: str = None,
+        start_time: str = None,
+        end_time: str = None,
+        is_query_yearly_activate: str = None,
+    ):
+        self.project_id = project_id
+        self.device_type = device_type
+        self.device_brand_id = device_brand_id
+        self.device_brand = device_brand
+        self.device_model_id = device_model_id
+        self.device_model = device_model
+        self.device_count_stat_type = device_count_stat_type
+        self.is_query_new_registration_device = is_query_new_registration_device
+        self.start_time = start_time
+        self.end_time = end_time
+        self.is_query_yearly_activate = is_query_yearly_activate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.device_brand_id is not None:
+            result['DeviceBrandId'] = self.device_brand_id
+        if self.device_brand is not None:
+            result['DeviceBrand'] = self.device_brand
+        if self.device_model_id is not None:
+            result['DeviceModelId'] = self.device_model_id
+        if self.device_model is not None:
+            result['DeviceModel'] = self.device_model
+        if self.device_count_stat_type is not None:
+            result['DeviceCountStatType'] = self.device_count_stat_type
+        if self.is_query_new_registration_device is not None:
+            result['IsQueryNewRegistrationDevice'] = self.is_query_new_registration_device
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.is_query_yearly_activate is not None:
+            result['IsQueryYearlyActivate'] = self.is_query_yearly_activate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('DeviceBrandId') is not None:
+            self.device_brand_id = m.get('DeviceBrandId')
+        if m.get('DeviceBrand') is not None:
+            self.device_brand = m.get('DeviceBrand')
+        if m.get('DeviceModelId') is not None:
+            self.device_model_id = m.get('DeviceModelId')
+        if m.get('DeviceModel') is not None:
+            self.device_model = m.get('DeviceModel')
+        if m.get('DeviceCountStatType') is not None:
+            self.device_count_stat_type = m.get('DeviceCountStatType')
+        if m.get('IsQueryNewRegistrationDevice') is not None:
+            self.is_query_new_registration_device = m.get('IsQueryNewRegistrationDevice')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IsQueryYearlyActivate') is not None:
+            self.is_query_yearly_activate = m.get('IsQueryYearlyActivate')
+        return self
+
+
+class CountActivatedOrNewRegistrationDeviceResponseBodyStatisticsSeries(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        data: List[str] = None,
+    ):
+        self.name = name
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.data is not None:
+            result['Data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        return self
+
+
+class CountActivatedOrNewRegistrationDeviceResponseBodyStatistics(TeaModel):
+    def __init__(
+        self,
+        categories: List[str] = None,
+        series: List[CountActivatedOrNewRegistrationDeviceResponseBodyStatisticsSeries] = None,
+    ):
+        self.categories = categories
+        self.series = series
+
+    def validate(self):
+        if self.series:
+            for k in self.series:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.categories is not None:
+            result['Categories'] = self.categories
+        result['Series'] = []
+        if self.series is not None:
+            for k in self.series:
+                result['Series'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Categories') is not None:
+            self.categories = m.get('Categories')
+        self.series = []
+        if m.get('Series') is not None:
+            for k in m.get('Series'):
+                temp_model = CountActivatedOrNewRegistrationDeviceResponseBodyStatisticsSeries()
+                self.series.append(temp_model.from_map(k))
+        return self
+
+
+class CountActivatedOrNewRegistrationDeviceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        statistics: CountActivatedOrNewRegistrationDeviceResponseBodyStatistics = None,
+    ):
+        self.request_id = request_id
+        self.statistics = statistics
+
+    def validate(self):
+        if self.statistics:
+            self.statistics.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.statistics is not None:
+            result['Statistics'] = self.statistics.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Statistics') is not None:
+            temp_model = CountActivatedOrNewRegistrationDeviceResponseBodyStatistics()
+            self.statistics = temp_model.from_map(m['Statistics'])
+        return self
+
+
+class CountActivatedOrNewRegistrationDeviceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CountActivatedOrNewRegistrationDeviceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CountActivatedOrNewRegistrationDeviceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CountDeviceBrandsRequest(TeaModel):
     def __init__(
         self,
@@ -979,12 +1192,12 @@ class CountYunIdInfoResponseBodyYunIdInfo(TeaModel):
     def __init__(
         self,
         total_brand_count: int = None,
-        total_device_count: int = None,
         total_device_model_count: int = None,
+        total_device_count: int = None,
     ):
         self.total_brand_count = total_brand_count
-        self.total_device_count = total_device_count
         self.total_device_model_count = total_device_model_count
+        self.total_device_count = total_device_count
 
     def validate(self):
         pass
@@ -993,20 +1206,20 @@ class CountYunIdInfoResponseBodyYunIdInfo(TeaModel):
         result = dict()
         if self.total_brand_count is not None:
             result['TotalBrandCount'] = self.total_brand_count
-        if self.total_device_count is not None:
-            result['TotalDeviceCount'] = self.total_device_count
         if self.total_device_model_count is not None:
             result['TotalDeviceModelCount'] = self.total_device_model_count
+        if self.total_device_count is not None:
+            result['TotalDeviceCount'] = self.total_device_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('TotalBrandCount') is not None:
             self.total_brand_count = m.get('TotalBrandCount')
-        if m.get('TotalDeviceCount') is not None:
-            self.total_device_count = m.get('TotalDeviceCount')
         if m.get('TotalDeviceModelCount') is not None:
             self.total_device_model_count = m.get('TotalDeviceModelCount')
+        if m.get('TotalDeviceCount') is not None:
+            self.total_device_count = m.get('TotalDeviceCount')
         return self
 
 
@@ -1214,29 +1427,29 @@ class CreateAppVersionRequest(TeaModel):
 class CreateAppVersionResponseBody(TeaModel):
     def __init__(
         self,
-        version_id: str = None,
         request_id: str = None,
+        version_id: str = None,
     ):
-        self.version_id = version_id
         self.request_id = request_id
+        self.version_id = version_id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
         return self
 
 
@@ -1341,29 +1554,29 @@ class CreateCustomizedFilterRequest(TeaModel):
 class CreateCustomizedFilterResponseBody(TeaModel):
     def __init__(
         self,
-        customized_filter_id: str = None,
         request_id: str = None,
+        customized_filter_id: str = None,
     ):
-        self.customized_filter_id = customized_filter_id
         self.request_id = request_id
+        self.customized_filter_id = customized_filter_id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.customized_filter_id is not None:
-            result['CustomizedFilterId'] = self.customized_filter_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.customized_filter_id is not None:
+            result['CustomizedFilterId'] = self.customized_filter_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CustomizedFilterId') is not None:
-            self.customized_filter_id = m.get('CustomizedFilterId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('CustomizedFilterId') is not None:
+            self.customized_filter_id = m.get('CustomizedFilterId')
         return self
 
 
@@ -2194,29 +2407,29 @@ class CreateOsVersionRequest(TeaModel):
 class CreateOsVersionResponseBody(TeaModel):
     def __init__(
         self,
-        version_id: str = None,
         request_id: str = None,
+        version_id: str = None,
     ):
-        self.version_id = version_id
         self.request_id = request_id
+        self.version_id = version_id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
         return self
 
 
@@ -3442,29 +3655,29 @@ class CreateVersionTestRequest(TeaModel):
 class CreateVersionTestResponseBody(TeaModel):
     def __init__(
         self,
-        test_id: str = None,
         request_id: str = None,
+        test_id: str = None,
     ):
-        self.test_id = test_id
         self.request_id = request_id
+        self.test_id = test_id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.test_id is not None:
-            result['TestId'] = self.test_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.test_id is not None:
+            result['TestId'] = self.test_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TestId') is not None:
-            self.test_id = m.get('TestId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TestId') is not None:
+            self.test_id = m.get('TestId')
         return self
 
 
@@ -6069,15 +6282,15 @@ class DescribeApiGatewayAppSecurityRequest(TeaModel):
 class DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity(TeaModel):
     def __init__(
         self,
+        gateway_app_id: str = None,
         gateway_app_key: str = None,
         gateway_app_secret: str = None,
-        gateway_app_id: str = None,
         gmt_create: int = None,
         gmt_modified: int = None,
     ):
+        self.gateway_app_id = gateway_app_id
         self.gateway_app_key = gateway_app_key
         self.gateway_app_secret = gateway_app_secret
-        self.gateway_app_id = gateway_app_id
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
 
@@ -6086,12 +6299,12 @@ class DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.gateway_app_id is not None:
+            result['GatewayAppId'] = self.gateway_app_id
         if self.gateway_app_key is not None:
             result['GatewayAppKey'] = self.gateway_app_key
         if self.gateway_app_secret is not None:
             result['GatewayAppSecret'] = self.gateway_app_secret
-        if self.gateway_app_id is not None:
-            result['GatewayAppId'] = self.gateway_app_id
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
@@ -6100,12 +6313,12 @@ class DescribeApiGatewayAppSecurityResponseBodyApiGatewayAppSecurity(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GatewayAppId') is not None:
+            self.gateway_app_id = m.get('GatewayAppId')
         if m.get('GatewayAppKey') is not None:
             self.gateway_app_key = m.get('GatewayAppKey')
         if m.get('GatewayAppSecret') is not None:
             self.gateway_app_secret = m.get('GatewayAppSecret')
-        if m.get('GatewayAppId') is not None:
-            self.gateway_app_id = m.get('GatewayAppId')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
@@ -6209,18 +6422,18 @@ class DescribeAppVersionRequest(TeaModel):
 class DescribeAppVersionResponseBodyAppVersionAdapters(TeaModel):
     def __init__(
         self,
-        device_model_id: str = None,
-        max_os_version: str = None,
-        min_os_version: str = None,
-        version_id: int = None,
         id: int = None,
+        version_id: int = None,
+        device_model_id: str = None,
+        min_os_version: str = None,
+        max_os_version: str = None,
         device_model_name: str = None,
     ):
-        self.device_model_id = device_model_id
-        self.max_os_version = max_os_version
-        self.min_os_version = min_os_version
-        self.version_id = version_id
         self.id = id
+        self.version_id = version_id
+        self.device_model_id = device_model_id
+        self.min_os_version = min_os_version
+        self.max_os_version = max_os_version
         self.device_model_name = device_model_name
 
     def validate(self):
@@ -6228,32 +6441,32 @@ class DescribeAppVersionResponseBodyAppVersionAdapters(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.device_model_id is not None:
-            result['DeviceModelId'] = self.device_model_id
-        if self.max_os_version is not None:
-            result['MaxOsVersion'] = self.max_os_version
-        if self.min_os_version is not None:
-            result['MinOsVersion'] = self.min_os_version
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
         if self.id is not None:
             result['Id'] = self.id
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        if self.device_model_id is not None:
+            result['DeviceModelId'] = self.device_model_id
+        if self.min_os_version is not None:
+            result['MinOsVersion'] = self.min_os_version
+        if self.max_os_version is not None:
+            result['MaxOsVersion'] = self.max_os_version
         if self.device_model_name is not None:
             result['DeviceModelName'] = self.device_model_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DeviceModelId') is not None:
-            self.device_model_id = m.get('DeviceModelId')
-        if m.get('MaxOsVersion') is not None:
-            self.max_os_version = m.get('MaxOsVersion')
-        if m.get('MinOsVersion') is not None:
-            self.min_os_version = m.get('MinOsVersion')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        if m.get('DeviceModelId') is not None:
+            self.device_model_id = m.get('DeviceModelId')
+        if m.get('MinOsVersion') is not None:
+            self.min_os_version = m.get('MinOsVersion')
+        if m.get('MaxOsVersion') is not None:
+            self.max_os_version = m.get('MaxOsVersion')
         if m.get('DeviceModelName') is not None:
             self.device_model_name = m.get('DeviceModelName')
         return self
@@ -6262,63 +6475,63 @@ class DescribeAppVersionResponseBodyAppVersionAdapters(TeaModel):
 class DescribeAppVersionResponseBodyAppVersion(TeaModel):
     def __init__(
         self,
-        status: str = None,
-        is_allow_new_install: str = None,
+        id: int = None,
+        app_id: str = None,
+        version_code: int = None,
         release_note: str = None,
-        package_name: str = None,
         remark: str = None,
-        status_name: str = None,
+        status: str = None,
+        app_version: str = None,
+        download_url: str = None,
+        original_url: str = None,
+        is_force_upgrade: str = None,
+        is_silent_upgrade: str = None,
+        md_5: str = None,
         apk_md_5: str = None,
+        size: str = None,
+        gmt_create: str = None,
+        gmt_modify: str = None,
+        is_need_restart: str = None,
+        is_allow_new_install: str = None,
+        restart_type: str = None,
+        restart_app_type: str = None,
         restart_app_param: str = None,
+        install_type: str = None,
+        black_version_list: str = None,
         white_version_list: str = None,
         app_name: str = None,
-        app_id: str = None,
-        restart_app_type: str = None,
-        version_code: int = None,
-        black_version_list: str = None,
-        gmt_modify: str = None,
-        download_url: str = None,
+        status_name: str = None,
+        package_name: str = None,
         adapters: List[DescribeAppVersionResponseBodyAppVersionAdapters] = None,
-        is_silent_upgrade: str = None,
-        install_type: str = None,
-        is_need_restart: str = None,
-        size: str = None,
-        restart_type: str = None,
-        gmt_create: str = None,
-        md_5: str = None,
-        app_version: str = None,
-        is_force_upgrade: str = None,
-        id: int = None,
-        original_url: str = None,
     ):
-        self.status = status
-        self.is_allow_new_install = is_allow_new_install
+        self.id = id
+        self.app_id = app_id
+        self.version_code = version_code
         self.release_note = release_note
-        self.package_name = package_name
         self.remark = remark
-        self.status_name = status_name
+        self.status = status
+        self.app_version = app_version
+        self.download_url = download_url
+        self.original_url = original_url
+        self.is_force_upgrade = is_force_upgrade
+        self.is_silent_upgrade = is_silent_upgrade
+        self.md_5 = md_5
         self.apk_md_5 = apk_md_5
+        self.size = size
+        self.gmt_create = gmt_create
+        self.gmt_modify = gmt_modify
+        self.is_need_restart = is_need_restart
+        self.is_allow_new_install = is_allow_new_install
+        self.restart_type = restart_type
+        self.restart_app_type = restart_app_type
         self.restart_app_param = restart_app_param
+        self.install_type = install_type
+        self.black_version_list = black_version_list
         self.white_version_list = white_version_list
         self.app_name = app_name
-        self.app_id = app_id
-        self.restart_app_type = restart_app_type
-        self.version_code = version_code
-        self.black_version_list = black_version_list
-        self.gmt_modify = gmt_modify
-        self.download_url = download_url
+        self.status_name = status_name
+        self.package_name = package_name
         self.adapters = adapters
-        self.is_silent_upgrade = is_silent_upgrade
-        self.install_type = install_type
-        self.is_need_restart = is_need_restart
-        self.size = size
-        self.restart_type = restart_type
-        self.gmt_create = gmt_create
-        self.md_5 = md_5
-        self.app_version = app_version
-        self.is_force_upgrade = is_force_upgrade
-        self.id = id
-        self.original_url = original_url
 
     def validate(self):
         if self.adapters:
@@ -6328,138 +6541,138 @@ class DescribeAppVersionResponseBodyAppVersion(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.is_allow_new_install is not None:
-            result['IsAllowNewInstall'] = self.is_allow_new_install
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.version_code is not None:
+            result['VersionCode'] = self.version_code
         if self.release_note is not None:
             result['ReleaseNote'] = self.release_note
-        if self.package_name is not None:
-            result['PackageName'] = self.package_name
         if self.remark is not None:
             result['Remark'] = self.remark
-        if self.status_name is not None:
-            result['StatusName'] = self.status_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+        if self.original_url is not None:
+            result['OriginalUrl'] = self.original_url
+        if self.is_force_upgrade is not None:
+            result['IsForceUpgrade'] = self.is_force_upgrade
+        if self.is_silent_upgrade is not None:
+            result['IsSilentUpgrade'] = self.is_silent_upgrade
+        if self.md_5 is not None:
+            result['Md5'] = self.md_5
         if self.apk_md_5 is not None:
             result['ApkMd5'] = self.apk_md_5
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
+        if self.is_need_restart is not None:
+            result['IsNeedRestart'] = self.is_need_restart
+        if self.is_allow_new_install is not None:
+            result['IsAllowNewInstall'] = self.is_allow_new_install
+        if self.restart_type is not None:
+            result['RestartType'] = self.restart_type
+        if self.restart_app_type is not None:
+            result['RestartAppType'] = self.restart_app_type
         if self.restart_app_param is not None:
             result['RestartAppParam'] = self.restart_app_param
+        if self.install_type is not None:
+            result['InstallType'] = self.install_type
+        if self.black_version_list is not None:
+            result['BlackVersionList'] = self.black_version_list
         if self.white_version_list is not None:
             result['WhiteVersionList'] = self.white_version_list
         if self.app_name is not None:
             result['AppName'] = self.app_name
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.restart_app_type is not None:
-            result['RestartAppType'] = self.restart_app_type
-        if self.version_code is not None:
-            result['VersionCode'] = self.version_code
-        if self.black_version_list is not None:
-            result['BlackVersionList'] = self.black_version_list
-        if self.gmt_modify is not None:
-            result['GmtModify'] = self.gmt_modify
-        if self.download_url is not None:
-            result['DownloadUrl'] = self.download_url
+        if self.status_name is not None:
+            result['StatusName'] = self.status_name
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
         result['Adapters'] = []
         if self.adapters is not None:
             for k in self.adapters:
                 result['Adapters'].append(k.to_map() if k else None)
-        if self.is_silent_upgrade is not None:
-            result['IsSilentUpgrade'] = self.is_silent_upgrade
-        if self.install_type is not None:
-            result['InstallType'] = self.install_type
-        if self.is_need_restart is not None:
-            result['IsNeedRestart'] = self.is_need_restart
-        if self.size is not None:
-            result['Size'] = self.size
-        if self.restart_type is not None:
-            result['RestartType'] = self.restart_type
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.md_5 is not None:
-            result['Md5'] = self.md_5
-        if self.app_version is not None:
-            result['AppVersion'] = self.app_version
-        if self.is_force_upgrade is not None:
-            result['IsForceUpgrade'] = self.is_force_upgrade
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.original_url is not None:
-            result['OriginalUrl'] = self.original_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('IsAllowNewInstall') is not None:
-            self.is_allow_new_install = m.get('IsAllowNewInstall')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('VersionCode') is not None:
+            self.version_code = m.get('VersionCode')
         if m.get('ReleaseNote') is not None:
             self.release_note = m.get('ReleaseNote')
-        if m.get('PackageName') is not None:
-            self.package_name = m.get('PackageName')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
-        if m.get('StatusName') is not None:
-            self.status_name = m.get('StatusName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+        if m.get('OriginalUrl') is not None:
+            self.original_url = m.get('OriginalUrl')
+        if m.get('IsForceUpgrade') is not None:
+            self.is_force_upgrade = m.get('IsForceUpgrade')
+        if m.get('IsSilentUpgrade') is not None:
+            self.is_silent_upgrade = m.get('IsSilentUpgrade')
+        if m.get('Md5') is not None:
+            self.md_5 = m.get('Md5')
         if m.get('ApkMd5') is not None:
             self.apk_md_5 = m.get('ApkMd5')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
+        if m.get('IsNeedRestart') is not None:
+            self.is_need_restart = m.get('IsNeedRestart')
+        if m.get('IsAllowNewInstall') is not None:
+            self.is_allow_new_install = m.get('IsAllowNewInstall')
+        if m.get('RestartType') is not None:
+            self.restart_type = m.get('RestartType')
+        if m.get('RestartAppType') is not None:
+            self.restart_app_type = m.get('RestartAppType')
         if m.get('RestartAppParam') is not None:
             self.restart_app_param = m.get('RestartAppParam')
+        if m.get('InstallType') is not None:
+            self.install_type = m.get('InstallType')
+        if m.get('BlackVersionList') is not None:
+            self.black_version_list = m.get('BlackVersionList')
         if m.get('WhiteVersionList') is not None:
             self.white_version_list = m.get('WhiteVersionList')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('RestartAppType') is not None:
-            self.restart_app_type = m.get('RestartAppType')
-        if m.get('VersionCode') is not None:
-            self.version_code = m.get('VersionCode')
-        if m.get('BlackVersionList') is not None:
-            self.black_version_list = m.get('BlackVersionList')
-        if m.get('GmtModify') is not None:
-            self.gmt_modify = m.get('GmtModify')
-        if m.get('DownloadUrl') is not None:
-            self.download_url = m.get('DownloadUrl')
+        if m.get('StatusName') is not None:
+            self.status_name = m.get('StatusName')
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
         self.adapters = []
         if m.get('Adapters') is not None:
             for k in m.get('Adapters'):
                 temp_model = DescribeAppVersionResponseBodyAppVersionAdapters()
                 self.adapters.append(temp_model.from_map(k))
-        if m.get('IsSilentUpgrade') is not None:
-            self.is_silent_upgrade = m.get('IsSilentUpgrade')
-        if m.get('InstallType') is not None:
-            self.install_type = m.get('InstallType')
-        if m.get('IsNeedRestart') is not None:
-            self.is_need_restart = m.get('IsNeedRestart')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
-        if m.get('RestartType') is not None:
-            self.restart_type = m.get('RestartType')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('Md5') is not None:
-            self.md_5 = m.get('Md5')
-        if m.get('AppVersion') is not None:
-            self.app_version = m.get('AppVersion')
-        if m.get('IsForceUpgrade') is not None:
-            self.is_force_upgrade = m.get('IsForceUpgrade')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('OriginalUrl') is not None:
-            self.original_url = m.get('OriginalUrl')
         return self
 
 
 class DescribeAppVersionResponseBody(TeaModel):
     def __init__(
         self,
-        app_version: DescribeAppVersionResponseBodyAppVersion = None,
         request_id: str = None,
+        app_version: DescribeAppVersionResponseBodyAppVersion = None,
     ):
-        self.app_version = app_version
         self.request_id = request_id
+        self.app_version = app_version
 
     def validate(self):
         if self.app_version:
@@ -6467,19 +6680,19 @@ class DescribeAppVersionResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.app_version is not None:
-            result['AppVersion'] = self.app_version.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('AppVersion') is not None:
             temp_model = DescribeAppVersionResponseBodyAppVersion()
             self.app_version = temp_model.from_map(m['AppVersion'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -6549,17 +6762,17 @@ class DescribeAssistReportResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        assist_result: str = None,
-        assist_reason: str = None,
         assist_id: str = None,
         assist_description: str = None,
+        assist_result: str = None,
+        assist_reason: str = None,
         assist_tag: str = None,
     ):
         self.request_id = request_id
-        self.assist_result = assist_result
-        self.assist_reason = assist_reason
         self.assist_id = assist_id
         self.assist_description = assist_description
+        self.assist_result = assist_result
+        self.assist_reason = assist_reason
         self.assist_tag = assist_tag
 
     def validate(self):
@@ -6569,14 +6782,14 @@ class DescribeAssistReportResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.assist_result is not None:
-            result['AssistResult'] = self.assist_result
-        if self.assist_reason is not None:
-            result['AssistReason'] = self.assist_reason
         if self.assist_id is not None:
             result['AssistId'] = self.assist_id
         if self.assist_description is not None:
             result['AssistDescription'] = self.assist_description
+        if self.assist_result is not None:
+            result['AssistResult'] = self.assist_result
+        if self.assist_reason is not None:
+            result['AssistReason'] = self.assist_reason
         if self.assist_tag is not None:
             result['AssistTag'] = self.assist_tag
         return result
@@ -6585,14 +6798,14 @@ class DescribeAssistReportResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('AssistResult') is not None:
-            self.assist_result = m.get('AssistResult')
-        if m.get('AssistReason') is not None:
-            self.assist_reason = m.get('AssistReason')
         if m.get('AssistId') is not None:
             self.assist_id = m.get('AssistId')
         if m.get('AssistDescription') is not None:
             self.assist_description = m.get('AssistDescription')
+        if m.get('AssistResult') is not None:
+            self.assist_result = m.get('AssistResult')
+        if m.get('AssistReason') is not None:
+            self.assist_reason = m.get('AssistReason')
         if m.get('AssistTag') is not None:
             self.assist_tag = m.get('AssistTag')
         return self
@@ -6857,100 +7070,100 @@ class DescribeCustomizedFilterRequest(TeaModel):
 class DescribeCustomizedFilterResponseBodyCustomizedFilter(TeaModel):
     def __init__(
         self,
-        gmt_create_timestamp: int = None,
-        gmt_modify: str = None,
-        value_compare_type: str = None,
-        version_id: int = None,
-        gmt_modify_timestamp: int = None,
-        value: str = None,
-        value_type: str = None,
-        gmt_create: str = None,
-        black_white_type: str = None,
-        name: str = None,
-        version_type: str = None,
         id: int = None,
+        version_type: str = None,
+        version_id: int = None,
+        name: str = None,
+        value: str = None,
+        value_compare_type: str = None,
+        black_white_type: str = None,
+        gmt_create: str = None,
+        gmt_modify: str = None,
+        value_type: str = None,
+        gmt_create_timestamp: int = None,
+        gmt_modify_timestamp: int = None,
     ):
-        self.gmt_create_timestamp = gmt_create_timestamp
-        self.gmt_modify = gmt_modify
-        self.value_compare_type = value_compare_type
-        self.version_id = version_id
-        self.gmt_modify_timestamp = gmt_modify_timestamp
-        self.value = value
-        self.value_type = value_type
-        self.gmt_create = gmt_create
-        self.black_white_type = black_white_type
-        self.name = name
-        self.version_type = version_type
         self.id = id
+        self.version_type = version_type
+        self.version_id = version_id
+        self.name = name
+        self.value = value
+        self.value_compare_type = value_compare_type
+        self.black_white_type = black_white_type
+        self.gmt_create = gmt_create
+        self.gmt_modify = gmt_modify
+        self.value_type = value_type
+        self.gmt_create_timestamp = gmt_create_timestamp
+        self.gmt_modify_timestamp = gmt_modify_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
-        if self.gmt_modify is not None:
-            result['GmtModify'] = self.gmt_modify
-        if self.value_compare_type is not None:
-            result['ValueCompareType'] = self.value_compare_type
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
-        if self.gmt_modify_timestamp is not None:
-            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
-        if self.value is not None:
-            result['Value'] = self.value
-        if self.value_type is not None:
-            result['ValueType'] = self.value_type
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.black_white_type is not None:
-            result['BlackWhiteType'] = self.black_white_type
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.version_type is not None:
-            result['VersionType'] = self.version_type
         if self.id is not None:
             result['Id'] = self.id
+        if self.version_type is not None:
+            result['VersionType'] = self.version_type
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.value_compare_type is not None:
+            result['ValueCompareType'] = self.value_compare_type
+        if self.black_white_type is not None:
+            result['BlackWhiteType'] = self.black_white_type
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
+        if self.value_type is not None:
+            result['ValueType'] = self.value_type
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.gmt_modify_timestamp is not None:
+            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
-        if m.get('GmtModify') is not None:
-            self.gmt_modify = m.get('GmtModify')
-        if m.get('ValueCompareType') is not None:
-            self.value_compare_type = m.get('ValueCompareType')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
-        if m.get('GmtModifyTimestamp') is not None:
-            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        if m.get('ValueType') is not None:
-            self.value_type = m.get('ValueType')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('BlackWhiteType') is not None:
-            self.black_white_type = m.get('BlackWhiteType')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('VersionType') is not None:
-            self.version_type = m.get('VersionType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('VersionType') is not None:
+            self.version_type = m.get('VersionType')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('ValueCompareType') is not None:
+            self.value_compare_type = m.get('ValueCompareType')
+        if m.get('BlackWhiteType') is not None:
+            self.black_white_type = m.get('BlackWhiteType')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
+        if m.get('ValueType') is not None:
+            self.value_type = m.get('ValueType')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
+        if m.get('GmtModifyTimestamp') is not None:
+            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
         return self
 
 
 class DescribeCustomizedFilterResponseBody(TeaModel):
     def __init__(
         self,
-        customized_filter: DescribeCustomizedFilterResponseBodyCustomizedFilter = None,
         request_id: str = None,
+        customized_filter: DescribeCustomizedFilterResponseBodyCustomizedFilter = None,
     ):
-        self.customized_filter = customized_filter
         self.request_id = request_id
+        self.customized_filter = customized_filter
 
     def validate(self):
         if self.customized_filter:
@@ -6958,19 +7171,19 @@ class DescribeCustomizedFilterResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.customized_filter is not None:
-            result['CustomizedFilter'] = self.customized_filter.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.customized_filter is not None:
+            result['CustomizedFilter'] = self.customized_filter.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('CustomizedFilter') is not None:
             temp_model = DescribeCustomizedFilterResponseBodyCustomizedFilter()
             self.customized_filter = temp_model.from_map(m['CustomizedFilter'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -7130,143 +7343,143 @@ class DescribeDeviceRequest(TeaModel):
 class DescribeDeviceResponseBodyDeviceInfo(TeaModel):
     def __init__(
         self,
-        serial_number: str = None,
-        status: str = None,
-        device_model_id: int = None,
-        mac_address: str = None,
         device_id: str = None,
         device_type: str = None,
+        usage_type: int = None,
+        usage_type_desc: str = None,
+        device_model: str = None,
+        device_model_id: int = None,
+        device_product: str = None,
+        device_brand_id: int = None,
+        device_brand: str = None,
+        uuid: str = None,
+        vin: str = None,
+        serial_number: str = None,
+        mac_address: str = None,
+        hardware_id: str = None,
+        software_id: str = None,
+        region: str = None,
+        name: str = None,
+        attributes: str = None,
         project_id: str = None,
         os_platform: str = None,
-        device_model: str = None,
-        usage_type: int = None,
-        vin: str = None,
-        usage_type_desc: str = None,
-        uuid: str = None,
-        hardware_id: str = None,
-        device_brand_id: int = None,
-        region: str = None,
-        attributes: str = None,
-        software_id: str = None,
-        name: str = None,
-        device_brand: str = None,
-        device_product: str = None,
+        status: str = None,
     ):
-        self.serial_number = serial_number
-        self.status = status
-        self.device_model_id = device_model_id
-        self.mac_address = mac_address
         self.device_id = device_id
         self.device_type = device_type
+        self.usage_type = usage_type
+        self.usage_type_desc = usage_type_desc
+        self.device_model = device_model
+        self.device_model_id = device_model_id
+        self.device_product = device_product
+        self.device_brand_id = device_brand_id
+        self.device_brand = device_brand
+        self.uuid = uuid
+        self.vin = vin
+        self.serial_number = serial_number
+        self.mac_address = mac_address
+        self.hardware_id = hardware_id
+        self.software_id = software_id
+        self.region = region
+        self.name = name
+        self.attributes = attributes
         self.project_id = project_id
         self.os_platform = os_platform
-        self.device_model = device_model
-        self.usage_type = usage_type
-        self.vin = vin
-        self.usage_type_desc = usage_type_desc
-        self.uuid = uuid
-        self.hardware_id = hardware_id
-        self.device_brand_id = device_brand_id
-        self.region = region
-        self.attributes = attributes
-        self.software_id = software_id
-        self.name = name
-        self.device_brand = device_brand
-        self.device_product = device_product
+        self.status = status
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.serial_number is not None:
-            result['SerialNumber'] = self.serial_number
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.device_model_id is not None:
-            result['DeviceModelId'] = self.device_model_id
-        if self.mac_address is not None:
-            result['MacAddress'] = self.mac_address
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
+        if self.usage_type is not None:
+            result['UsageType'] = self.usage_type
+        if self.usage_type_desc is not None:
+            result['UsageTypeDesc'] = self.usage_type_desc
+        if self.device_model is not None:
+            result['DeviceModel'] = self.device_model
+        if self.device_model_id is not None:
+            result['DeviceModelId'] = self.device_model_id
+        if self.device_product is not None:
+            result['DeviceProduct'] = self.device_product
+        if self.device_brand_id is not None:
+            result['DeviceBrandId'] = self.device_brand_id
+        if self.device_brand is not None:
+            result['DeviceBrand'] = self.device_brand
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.vin is not None:
+            result['Vin'] = self.vin
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.mac_address is not None:
+            result['MacAddress'] = self.mac_address
+        if self.hardware_id is not None:
+            result['HardwareId'] = self.hardware_id
+        if self.software_id is not None:
+            result['SoftwareId'] = self.software_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.os_platform is not None:
             result['OsPlatform'] = self.os_platform
-        if self.device_model is not None:
-            result['DeviceModel'] = self.device_model
-        if self.usage_type is not None:
-            result['UsageType'] = self.usage_type
-        if self.vin is not None:
-            result['Vin'] = self.vin
-        if self.usage_type_desc is not None:
-            result['UsageTypeDesc'] = self.usage_type_desc
-        if self.uuid is not None:
-            result['Uuid'] = self.uuid
-        if self.hardware_id is not None:
-            result['HardwareId'] = self.hardware_id
-        if self.device_brand_id is not None:
-            result['DeviceBrandId'] = self.device_brand_id
-        if self.region is not None:
-            result['Region'] = self.region
-        if self.attributes is not None:
-            result['Attributes'] = self.attributes
-        if self.software_id is not None:
-            result['SoftwareId'] = self.software_id
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.device_brand is not None:
-            result['DeviceBrand'] = self.device_brand
-        if self.device_product is not None:
-            result['DeviceProduct'] = self.device_product
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SerialNumber') is not None:
-            self.serial_number = m.get('SerialNumber')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('DeviceModelId') is not None:
-            self.device_model_id = m.get('DeviceModelId')
-        if m.get('MacAddress') is not None:
-            self.mac_address = m.get('MacAddress')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
+        if m.get('UsageType') is not None:
+            self.usage_type = m.get('UsageType')
+        if m.get('UsageTypeDesc') is not None:
+            self.usage_type_desc = m.get('UsageTypeDesc')
+        if m.get('DeviceModel') is not None:
+            self.device_model = m.get('DeviceModel')
+        if m.get('DeviceModelId') is not None:
+            self.device_model_id = m.get('DeviceModelId')
+        if m.get('DeviceProduct') is not None:
+            self.device_product = m.get('DeviceProduct')
+        if m.get('DeviceBrandId') is not None:
+            self.device_brand_id = m.get('DeviceBrandId')
+        if m.get('DeviceBrand') is not None:
+            self.device_brand = m.get('DeviceBrand')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('Vin') is not None:
+            self.vin = m.get('Vin')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('MacAddress') is not None:
+            self.mac_address = m.get('MacAddress')
+        if m.get('HardwareId') is not None:
+            self.hardware_id = m.get('HardwareId')
+        if m.get('SoftwareId') is not None:
+            self.software_id = m.get('SoftwareId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('OsPlatform') is not None:
             self.os_platform = m.get('OsPlatform')
-        if m.get('DeviceModel') is not None:
-            self.device_model = m.get('DeviceModel')
-        if m.get('UsageType') is not None:
-            self.usage_type = m.get('UsageType')
-        if m.get('Vin') is not None:
-            self.vin = m.get('Vin')
-        if m.get('UsageTypeDesc') is not None:
-            self.usage_type_desc = m.get('UsageTypeDesc')
-        if m.get('Uuid') is not None:
-            self.uuid = m.get('Uuid')
-        if m.get('HardwareId') is not None:
-            self.hardware_id = m.get('HardwareId')
-        if m.get('DeviceBrandId') is not None:
-            self.device_brand_id = m.get('DeviceBrandId')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-        if m.get('Attributes') is not None:
-            self.attributes = m.get('Attributes')
-        if m.get('SoftwareId') is not None:
-            self.software_id = m.get('SoftwareId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('DeviceBrand') is not None:
-            self.device_brand = m.get('DeviceBrand')
-        if m.get('DeviceProduct') is not None:
-            self.device_product = m.get('DeviceProduct')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -7385,16 +7598,16 @@ class DescribeDeviceBrandResponseBodyDeviceBrand(TeaModel):
     def __init__(
         self,
         device_brand_id: int = None,
-        description: str = None,
+        device_brand: str = None,
         project_id: str = None,
         manufacture: str = None,
-        device_brand: str = None,
+        description: str = None,
     ):
         self.device_brand_id = device_brand_id
-        self.description = description
+        self.device_brand = device_brand
         self.project_id = project_id
         self.manufacture = manufacture
-        self.device_brand = device_brand
+        self.description = description
 
     def validate(self):
         pass
@@ -7403,28 +7616,28 @@ class DescribeDeviceBrandResponseBodyDeviceBrand(TeaModel):
         result = dict()
         if self.device_brand_id is not None:
             result['DeviceBrandId'] = self.device_brand_id
-        if self.description is not None:
-            result['Description'] = self.description
+        if self.device_brand is not None:
+            result['DeviceBrand'] = self.device_brand
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.manufacture is not None:
             result['Manufacture'] = self.manufacture
-        if self.device_brand is not None:
-            result['DeviceBrand'] = self.device_brand
+        if self.description is not None:
+            result['Description'] = self.description
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DeviceBrandId') is not None:
             self.device_brand_id = m.get('DeviceBrandId')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
+        if m.get('DeviceBrand') is not None:
+            self.device_brand = m.get('DeviceBrand')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('Manufacture') is not None:
             self.manufacture = m.get('Manufacture')
-        if m.get('DeviceBrand') is not None:
-            self.device_brand = m.get('DeviceBrand')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         return self
 
 
@@ -7627,119 +7840,119 @@ class DescribeDeviceInfoRequest(TeaModel):
 class DescribeDeviceInfoResponseBodyDeviceInfo(TeaModel):
     def __init__(
         self,
-        serial_number: str = None,
-        status: str = None,
-        device_model_id: int = None,
-        mac_address: str = None,
         device_id: str = None,
         device_type: str = None,
-        project_id: str = None,
-        device_model: str = None,
         usage_type: int = None,
-        vin: str = None,
         usage_type_desc: str = None,
-        uuid: str = None,
-        hardware_id: str = None,
-        region: str = None,
-        software_id: str = None,
-        name: str = None,
+        device_model: str = None,
+        device_model_id: int = None,
         device_brand: str = None,
+        uuid: str = None,
+        vin: str = None,
+        serial_number: str = None,
+        mac_address: str = None,
+        hardware_id: str = None,
+        software_id: str = None,
+        region: str = None,
+        name: str = None,
+        project_id: str = None,
+        status: str = None,
     ):
-        self.serial_number = serial_number
-        self.status = status
-        self.device_model_id = device_model_id
-        self.mac_address = mac_address
         self.device_id = device_id
         self.device_type = device_type
-        self.project_id = project_id
-        self.device_model = device_model
         self.usage_type = usage_type
-        self.vin = vin
         self.usage_type_desc = usage_type_desc
-        self.uuid = uuid
-        self.hardware_id = hardware_id
-        self.region = region
-        self.software_id = software_id
-        self.name = name
+        self.device_model = device_model
+        self.device_model_id = device_model_id
         self.device_brand = device_brand
+        self.uuid = uuid
+        self.vin = vin
+        self.serial_number = serial_number
+        self.mac_address = mac_address
+        self.hardware_id = hardware_id
+        self.software_id = software_id
+        self.region = region
+        self.name = name
+        self.project_id = project_id
+        self.status = status
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.serial_number is not None:
-            result['SerialNumber'] = self.serial_number
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.device_model_id is not None:
-            result['DeviceModelId'] = self.device_model_id
-        if self.mac_address is not None:
-            result['MacAddress'] = self.mac_address
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.device_model is not None:
-            result['DeviceModel'] = self.device_model
         if self.usage_type is not None:
             result['UsageType'] = self.usage_type
-        if self.vin is not None:
-            result['Vin'] = self.vin
         if self.usage_type_desc is not None:
             result['UsageTypeDesc'] = self.usage_type_desc
-        if self.uuid is not None:
-            result['Uuid'] = self.uuid
-        if self.hardware_id is not None:
-            result['HardwareId'] = self.hardware_id
-        if self.region is not None:
-            result['Region'] = self.region
-        if self.software_id is not None:
-            result['SoftwareId'] = self.software_id
-        if self.name is not None:
-            result['Name'] = self.name
+        if self.device_model is not None:
+            result['DeviceModel'] = self.device_model
+        if self.device_model_id is not None:
+            result['DeviceModelId'] = self.device_model_id
         if self.device_brand is not None:
             result['DeviceBrand'] = self.device_brand
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.vin is not None:
+            result['Vin'] = self.vin
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.mac_address is not None:
+            result['MacAddress'] = self.mac_address
+        if self.hardware_id is not None:
+            result['HardwareId'] = self.hardware_id
+        if self.software_id is not None:
+            result['SoftwareId'] = self.software_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SerialNumber') is not None:
-            self.serial_number = m.get('SerialNumber')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('DeviceModelId') is not None:
-            self.device_model_id = m.get('DeviceModelId')
-        if m.get('MacAddress') is not None:
-            self.mac_address = m.get('MacAddress')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('DeviceModel') is not None:
-            self.device_model = m.get('DeviceModel')
         if m.get('UsageType') is not None:
             self.usage_type = m.get('UsageType')
-        if m.get('Vin') is not None:
-            self.vin = m.get('Vin')
         if m.get('UsageTypeDesc') is not None:
             self.usage_type_desc = m.get('UsageTypeDesc')
-        if m.get('Uuid') is not None:
-            self.uuid = m.get('Uuid')
-        if m.get('HardwareId') is not None:
-            self.hardware_id = m.get('HardwareId')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-        if m.get('SoftwareId') is not None:
-            self.software_id = m.get('SoftwareId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
+        if m.get('DeviceModel') is not None:
+            self.device_model = m.get('DeviceModel')
+        if m.get('DeviceModelId') is not None:
+            self.device_model_id = m.get('DeviceModelId')
         if m.get('DeviceBrand') is not None:
             self.device_brand = m.get('DeviceBrand')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('Vin') is not None:
+            self.vin = m.get('Vin')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('MacAddress') is not None:
+            self.mac_address = m.get('MacAddress')
+        if m.get('HardwareId') is not None:
+            self.hardware_id = m.get('HardwareId')
+        if m.get('SoftwareId') is not None:
+            self.software_id = m.get('SoftwareId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -7846,36 +8059,36 @@ class DescribeDeviceModelResponseBodyDeviceModel(TeaModel):
     def __init__(
         self,
         device_model_id: int = None,
-        hardware_type: str = None,
-        device_name: str = None,
         device_type: str = None,
-        can_create_device_id: int = None,
-        project_id: str = None,
-        os_platform: str = None,
+        hardware_type: str = None,
         device_model: str = None,
-        security_chip: str = None,
-        device_logo_url: str = None,
-        description: str = None,
-        object_key: str = None,
-        init_usage_type_desc: str = None,
-        init_usage_type: int = None,
         device_brand: str = None,
+        can_create_device_id: int = None,
+        init_usage_type: int = None,
+        init_usage_type_desc: str = None,
+        description: str = None,
+        project_id: str = None,
+        security_chip: str = None,
+        os_platform: str = None,
+        object_key: str = None,
+        device_logo_url: str = None,
+        device_name: str = None,
     ):
         self.device_model_id = device_model_id
-        self.hardware_type = hardware_type
-        self.device_name = device_name
         self.device_type = device_type
-        self.can_create_device_id = can_create_device_id
-        self.project_id = project_id
-        self.os_platform = os_platform
+        self.hardware_type = hardware_type
         self.device_model = device_model
-        self.security_chip = security_chip
-        self.device_logo_url = device_logo_url
-        self.description = description
-        self.object_key = object_key
-        self.init_usage_type_desc = init_usage_type_desc
-        self.init_usage_type = init_usage_type
         self.device_brand = device_brand
+        self.can_create_device_id = can_create_device_id
+        self.init_usage_type = init_usage_type
+        self.init_usage_type_desc = init_usage_type_desc
+        self.description = description
+        self.project_id = project_id
+        self.security_chip = security_chip
+        self.os_platform = os_platform
+        self.object_key = object_key
+        self.device_logo_url = device_logo_url
+        self.device_name = device_name
 
     def validate(self):
         pass
@@ -7884,79 +8097,79 @@ class DescribeDeviceModelResponseBodyDeviceModel(TeaModel):
         result = dict()
         if self.device_model_id is not None:
             result['DeviceModelId'] = self.device_model_id
-        if self.hardware_type is not None:
-            result['HardwareType'] = self.hardware_type
-        if self.device_name is not None:
-            result['DeviceName'] = self.device_name
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
-        if self.can_create_device_id is not None:
-            result['CanCreateDeviceId'] = self.can_create_device_id
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.os_platform is not None:
-            result['OsPlatform'] = self.os_platform
+        if self.hardware_type is not None:
+            result['HardwareType'] = self.hardware_type
         if self.device_model is not None:
             result['DeviceModel'] = self.device_model
-        if self.security_chip is not None:
-            result['SecurityChip'] = self.security_chip
-        if self.device_logo_url is not None:
-            result['DeviceLogoUrl'] = self.device_logo_url
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.object_key is not None:
-            result['ObjectKey'] = self.object_key
-        if self.init_usage_type_desc is not None:
-            result['InitUsageTypeDesc'] = self.init_usage_type_desc
-        if self.init_usage_type is not None:
-            result['InitUsageType'] = self.init_usage_type
         if self.device_brand is not None:
             result['DeviceBrand'] = self.device_brand
+        if self.can_create_device_id is not None:
+            result['CanCreateDeviceId'] = self.can_create_device_id
+        if self.init_usage_type is not None:
+            result['InitUsageType'] = self.init_usage_type
+        if self.init_usage_type_desc is not None:
+            result['InitUsageTypeDesc'] = self.init_usage_type_desc
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.security_chip is not None:
+            result['SecurityChip'] = self.security_chip
+        if self.os_platform is not None:
+            result['OsPlatform'] = self.os_platform
+        if self.object_key is not None:
+            result['ObjectKey'] = self.object_key
+        if self.device_logo_url is not None:
+            result['DeviceLogoUrl'] = self.device_logo_url
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DeviceModelId') is not None:
             self.device_model_id = m.get('DeviceModelId')
-        if m.get('HardwareType') is not None:
-            self.hardware_type = m.get('HardwareType')
-        if m.get('DeviceName') is not None:
-            self.device_name = m.get('DeviceName')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
-        if m.get('CanCreateDeviceId') is not None:
-            self.can_create_device_id = m.get('CanCreateDeviceId')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('OsPlatform') is not None:
-            self.os_platform = m.get('OsPlatform')
+        if m.get('HardwareType') is not None:
+            self.hardware_type = m.get('HardwareType')
         if m.get('DeviceModel') is not None:
             self.device_model = m.get('DeviceModel')
-        if m.get('SecurityChip') is not None:
-            self.security_chip = m.get('SecurityChip')
-        if m.get('DeviceLogoUrl') is not None:
-            self.device_logo_url = m.get('DeviceLogoUrl')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('ObjectKey') is not None:
-            self.object_key = m.get('ObjectKey')
-        if m.get('InitUsageTypeDesc') is not None:
-            self.init_usage_type_desc = m.get('InitUsageTypeDesc')
-        if m.get('InitUsageType') is not None:
-            self.init_usage_type = m.get('InitUsageType')
         if m.get('DeviceBrand') is not None:
             self.device_brand = m.get('DeviceBrand')
+        if m.get('CanCreateDeviceId') is not None:
+            self.can_create_device_id = m.get('CanCreateDeviceId')
+        if m.get('InitUsageType') is not None:
+            self.init_usage_type = m.get('InitUsageType')
+        if m.get('InitUsageTypeDesc') is not None:
+            self.init_usage_type_desc = m.get('InitUsageTypeDesc')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SecurityChip') is not None:
+            self.security_chip = m.get('SecurityChip')
+        if m.get('OsPlatform') is not None:
+            self.os_platform = m.get('OsPlatform')
+        if m.get('ObjectKey') is not None:
+            self.object_key = m.get('ObjectKey')
+        if m.get('DeviceLogoUrl') is not None:
+            self.device_logo_url = m.get('DeviceLogoUrl')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
         return self
 
 
 class DescribeDeviceModelResponseBody(TeaModel):
     def __init__(
         self,
-        device_model: DescribeDeviceModelResponseBodyDeviceModel = None,
         request_id: str = None,
+        device_model: DescribeDeviceModelResponseBodyDeviceModel = None,
     ):
-        self.device_model = device_model
         self.request_id = request_id
+        self.device_model = device_model
 
     def validate(self):
         if self.device_model:
@@ -7964,19 +8177,19 @@ class DescribeDeviceModelResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.device_model is not None:
-            result['DeviceModel'] = self.device_model.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.device_model is not None:
+            result['DeviceModel'] = self.device_model.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('DeviceModel') is not None:
             temp_model = DescribeDeviceModelResponseBodyDeviceModel()
             self.device_model = temp_model.from_map(m['DeviceModel'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -8051,65 +8264,65 @@ class DescribeDeviceOnlineInfoRequest(TeaModel):
 class DescribeDeviceOnlineInfoResponseBodyDevices(TeaModel):
     def __init__(
         self,
-        login_time: int = None,
-        device_id: str = None,
-        online: int = None,
         project_id: str = None,
-        ias_id: str = None,
-        system_version: str = None,
         terminal: str = None,
+        ias_id: str = None,
+        device_id: str = None,
         client_version: str = None,
+        system_version: str = None,
+        online: int = None,
+        login_time: int = None,
     ):
-        self.login_time = login_time
-        self.device_id = device_id
-        self.online = online
         self.project_id = project_id
-        self.ias_id = ias_id
-        self.system_version = system_version
         self.terminal = terminal
+        self.ias_id = ias_id
+        self.device_id = device_id
         self.client_version = client_version
+        self.system_version = system_version
+        self.online = online
+        self.login_time = login_time
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.login_time is not None:
-            result['LoginTime'] = self.login_time
-        if self.device_id is not None:
-            result['DeviceId'] = self.device_id
-        if self.online is not None:
-            result['Online'] = self.online
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
-        if self.ias_id is not None:
-            result['IasId'] = self.ias_id
-        if self.system_version is not None:
-            result['SystemVersion'] = self.system_version
         if self.terminal is not None:
             result['Terminal'] = self.terminal
+        if self.ias_id is not None:
+            result['IasId'] = self.ias_id
+        if self.device_id is not None:
+            result['DeviceId'] = self.device_id
         if self.client_version is not None:
             result['ClientVersion'] = self.client_version
+        if self.system_version is not None:
+            result['SystemVersion'] = self.system_version
+        if self.online is not None:
+            result['Online'] = self.online
+        if self.login_time is not None:
+            result['LoginTime'] = self.login_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LoginTime') is not None:
-            self.login_time = m.get('LoginTime')
-        if m.get('DeviceId') is not None:
-            self.device_id = m.get('DeviceId')
-        if m.get('Online') is not None:
-            self.online = m.get('Online')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
-        if m.get('IasId') is not None:
-            self.ias_id = m.get('IasId')
-        if m.get('SystemVersion') is not None:
-            self.system_version = m.get('SystemVersion')
         if m.get('Terminal') is not None:
             self.terminal = m.get('Terminal')
+        if m.get('IasId') is not None:
+            self.ias_id = m.get('IasId')
+        if m.get('DeviceId') is not None:
+            self.device_id = m.get('DeviceId')
         if m.get('ClientVersion') is not None:
             self.client_version = m.get('ClientVersion')
+        if m.get('SystemVersion') is not None:
+            self.system_version = m.get('SystemVersion')
+        if m.get('Online') is not None:
+            self.online = m.get('Online')
+        if m.get('LoginTime') is not None:
+            self.login_time = m.get('LoginTime')
         return self
 
 
@@ -8233,29 +8446,29 @@ class DescribeDeviceShadowRequest(TeaModel):
 class DescribeDeviceShadowResponseBodyDeviceShadow(TeaModel):
     def __init__(
         self,
-        device_shadow: str = None,
         device_info: str = None,
+        device_shadow: str = None,
     ):
-        self.device_shadow = device_shadow
         self.device_info = device_info
+        self.device_shadow = device_shadow
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.device_shadow is not None:
-            result['DeviceShadow'] = self.device_shadow
         if self.device_info is not None:
             result['DeviceInfo'] = self.device_info
+        if self.device_shadow is not None:
+            result['DeviceShadow'] = self.device_shadow
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DeviceShadow') is not None:
-            self.device_shadow = m.get('DeviceShadow')
         if m.get('DeviceInfo') is not None:
             self.device_info = m.get('DeviceInfo')
+        if m.get('DeviceShadow') is not None:
+            self.device_shadow = m.get('DeviceShadow')
         return self
 
 
@@ -8361,30 +8574,30 @@ class DescribeDeviceValiditySchemaRequest(TeaModel):
 class DescribeDeviceValiditySchemaResponseBodyItemList(TeaModel):
     def __init__(
         self,
-        minimum: float = None,
-        type: str = None,
-        maximum: float = None,
-        item_type: str = None,
-        enum_list_str: str = None,
-        exclusive_minimum: bool = None,
-        max_length: int = None,
-        required: str = None,
-        description: str = None,
-        exclusive_maximum: bool = None,
         path: str = None,
+        type: str = None,
+        item_type: str = None,
+        description: str = None,
+        required: str = None,
+        maximum: float = None,
+        minimum: float = None,
+        exclusive_maximum: bool = None,
+        exclusive_minimum: bool = None,
+        enum_list_str: str = None,
+        max_length: int = None,
         min_length: int = None,
     ):
-        self.minimum = minimum
-        self.type = type
-        self.maximum = maximum
-        self.item_type = item_type
-        self.enum_list_str = enum_list_str
-        self.exclusive_minimum = exclusive_minimum
-        self.max_length = max_length
-        self.required = required
-        self.description = description
-        self.exclusive_maximum = exclusive_maximum
         self.path = path
+        self.type = type
+        self.item_type = item_type
+        self.description = description
+        self.required = required
+        self.maximum = maximum
+        self.minimum = minimum
+        self.exclusive_maximum = exclusive_maximum
+        self.exclusive_minimum = exclusive_minimum
+        self.enum_list_str = enum_list_str
+        self.max_length = max_length
         self.min_length = min_length
 
     def validate(self):
@@ -8392,56 +8605,56 @@ class DescribeDeviceValiditySchemaResponseBodyItemList(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.minimum is not None:
-            result['Minimum'] = self.minimum
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.maximum is not None:
-            result['Maximum'] = self.maximum
-        if self.item_type is not None:
-            result['ItemType'] = self.item_type
-        if self.enum_list_str is not None:
-            result['EnumListStr'] = self.enum_list_str
-        if self.exclusive_minimum is not None:
-            result['ExclusiveMinimum'] = self.exclusive_minimum
-        if self.max_length is not None:
-            result['MaxLength'] = self.max_length
-        if self.required is not None:
-            result['Required'] = self.required
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.exclusive_maximum is not None:
-            result['ExclusiveMaximum'] = self.exclusive_maximum
         if self.path is not None:
             result['Path'] = self.path
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.item_type is not None:
+            result['ItemType'] = self.item_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.required is not None:
+            result['Required'] = self.required
+        if self.maximum is not None:
+            result['Maximum'] = self.maximum
+        if self.minimum is not None:
+            result['Minimum'] = self.minimum
+        if self.exclusive_maximum is not None:
+            result['ExclusiveMaximum'] = self.exclusive_maximum
+        if self.exclusive_minimum is not None:
+            result['ExclusiveMinimum'] = self.exclusive_minimum
+        if self.enum_list_str is not None:
+            result['EnumListStr'] = self.enum_list_str
+        if self.max_length is not None:
+            result['MaxLength'] = self.max_length
         if self.min_length is not None:
             result['MinLength'] = self.min_length
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Minimum') is not None:
-            self.minimum = m.get('Minimum')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('Maximum') is not None:
-            self.maximum = m.get('Maximum')
-        if m.get('ItemType') is not None:
-            self.item_type = m.get('ItemType')
-        if m.get('EnumListStr') is not None:
-            self.enum_list_str = m.get('EnumListStr')
-        if m.get('ExclusiveMinimum') is not None:
-            self.exclusive_minimum = m.get('ExclusiveMinimum')
-        if m.get('MaxLength') is not None:
-            self.max_length = m.get('MaxLength')
-        if m.get('Required') is not None:
-            self.required = m.get('Required')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('ExclusiveMaximum') is not None:
-            self.exclusive_maximum = m.get('ExclusiveMaximum')
         if m.get('Path') is not None:
             self.path = m.get('Path')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('ItemType') is not None:
+            self.item_type = m.get('ItemType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
+        if m.get('Maximum') is not None:
+            self.maximum = m.get('Maximum')
+        if m.get('Minimum') is not None:
+            self.minimum = m.get('Minimum')
+        if m.get('ExclusiveMaximum') is not None:
+            self.exclusive_maximum = m.get('ExclusiveMaximum')
+        if m.get('ExclusiveMinimum') is not None:
+            self.exclusive_minimum = m.get('ExclusiveMinimum')
+        if m.get('EnumListStr') is not None:
+            self.enum_list_str = m.get('EnumListStr')
+        if m.get('MaxLength') is not None:
+            self.max_length = m.get('MaxLength')
         if m.get('MinLength') is not None:
             self.min_length = m.get('MinLength')
         return self
@@ -8549,119 +8762,119 @@ class DescribeMessageRequest(TeaModel):
 class DescribeMessageResponseBodyMessage(TeaModel):
     def __init__(
         self,
-        type: int = None,
-        action: str = None,
+        id: int = None,
         project_id: str = None,
-        predict_send_cnt: int = None,
-        uri: str = None,
-        desc: str = None,
-        audit_msg: str = None,
         app_name: str = None,
         app_key: str = None,
+        type: int = None,
+        send_status: int = None,
+        title: str = None,
+        desc: str = None,
+        action: str = None,
+        uri: str = None,
+        parameter: str = None,
+        predict_send_cnt: int = None,
+        ack_cnt: int = None,
         gmt_create_time: int = None,
         exipired_time: int = None,
-        ack_cnt: int = None,
-        title: str = None,
-        parameter: str = None,
         audit: int = None,
-        id: int = None,
-        send_status: int = None,
+        audit_msg: str = None,
     ):
-        self.type = type
-        self.action = action
+        self.id = id
         self.project_id = project_id
-        self.predict_send_cnt = predict_send_cnt
-        self.uri = uri
-        self.desc = desc
-        self.audit_msg = audit_msg
         self.app_name = app_name
         self.app_key = app_key
+        self.type = type
+        self.send_status = send_status
+        self.title = title
+        self.desc = desc
+        self.action = action
+        self.uri = uri
+        self.parameter = parameter
+        self.predict_send_cnt = predict_send_cnt
+        self.ack_cnt = ack_cnt
         self.gmt_create_time = gmt_create_time
         self.exipired_time = exipired_time
-        self.ack_cnt = ack_cnt
-        self.title = title
-        self.parameter = parameter
         self.audit = audit
-        self.id = id
-        self.send_status = send_status
+        self.audit_msg = audit_msg
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.action is not None:
-            result['Action'] = self.action
+        if self.id is not None:
+            result['Id'] = self.id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
-        if self.predict_send_cnt is not None:
-            result['PredictSendCnt'] = self.predict_send_cnt
-        if self.uri is not None:
-            result['Uri'] = self.uri
-        if self.desc is not None:
-            result['Desc'] = self.desc
-        if self.audit_msg is not None:
-            result['AuditMsg'] = self.audit_msg
         if self.app_name is not None:
             result['AppName'] = self.app_name
         if self.app_key is not None:
             result['AppKey'] = self.app_key
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.send_status is not None:
+            result['SendStatus'] = self.send_status
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        if self.parameter is not None:
+            result['Parameter'] = self.parameter
+        if self.predict_send_cnt is not None:
+            result['PredictSendCnt'] = self.predict_send_cnt
+        if self.ack_cnt is not None:
+            result['AckCnt'] = self.ack_cnt
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.exipired_time is not None:
             result['ExipiredTime'] = self.exipired_time
-        if self.ack_cnt is not None:
-            result['AckCnt'] = self.ack_cnt
-        if self.title is not None:
-            result['Title'] = self.title
-        if self.parameter is not None:
-            result['Parameter'] = self.parameter
         if self.audit is not None:
             result['Audit'] = self.audit
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.send_status is not None:
-            result['SendStatus'] = self.send_status
+        if self.audit_msg is not None:
+            result['AuditMsg'] = self.audit_msg
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('Action') is not None:
-            self.action = m.get('Action')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
-        if m.get('PredictSendCnt') is not None:
-            self.predict_send_cnt = m.get('PredictSendCnt')
-        if m.get('Uri') is not None:
-            self.uri = m.get('Uri')
-        if m.get('Desc') is not None:
-            self.desc = m.get('Desc')
-        if m.get('AuditMsg') is not None:
-            self.audit_msg = m.get('AuditMsg')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('SendStatus') is not None:
+            self.send_status = m.get('SendStatus')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        if m.get('Parameter') is not None:
+            self.parameter = m.get('Parameter')
+        if m.get('PredictSendCnt') is not None:
+            self.predict_send_cnt = m.get('PredictSendCnt')
+        if m.get('AckCnt') is not None:
+            self.ack_cnt = m.get('AckCnt')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('ExipiredTime') is not None:
             self.exipired_time = m.get('ExipiredTime')
-        if m.get('AckCnt') is not None:
-            self.ack_cnt = m.get('AckCnt')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        if m.get('Parameter') is not None:
-            self.parameter = m.get('Parameter')
         if m.get('Audit') is not None:
             self.audit = m.get('Audit')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('SendStatus') is not None:
-            self.send_status = m.get('SendStatus')
+        if m.get('AuditMsg') is not None:
+            self.audit_msg = m.get('AuditMsg')
         return self
 
 
@@ -8768,12 +8981,12 @@ class DescribeMqttClientStatusResponseBodyClientStatus(TeaModel):
     def __init__(
         self,
         status: int = None,
-        clean_session: str = None,
         last_update: int = None,
+        clean_session: str = None,
     ):
         self.status = status
-        self.clean_session = clean_session
         self.last_update = last_update
+        self.clean_session = clean_session
 
     def validate(self):
         pass
@@ -8782,31 +8995,31 @@ class DescribeMqttClientStatusResponseBodyClientStatus(TeaModel):
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
-        if self.clean_session is not None:
-            result['CleanSession'] = self.clean_session
         if self.last_update is not None:
             result['LastUpdate'] = self.last_update
+        if self.clean_session is not None:
+            result['CleanSession'] = self.clean_session
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('CleanSession') is not None:
-            self.clean_session = m.get('CleanSession')
         if m.get('LastUpdate') is not None:
             self.last_update = m.get('LastUpdate')
+        if m.get('CleanSession') is not None:
+            self.clean_session = m.get('CleanSession')
         return self
 
 
 class DescribeMqttClientStatusResponseBody(TeaModel):
     def __init__(
         self,
-        client_status: DescribeMqttClientStatusResponseBodyClientStatus = None,
         request_id: str = None,
+        client_status: DescribeMqttClientStatusResponseBodyClientStatus = None,
     ):
-        self.client_status = client_status
         self.request_id = request_id
+        self.client_status = client_status
 
     def validate(self):
         if self.client_status:
@@ -8814,19 +9027,19 @@ class DescribeMqttClientStatusResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.client_status is not None:
-            result['ClientStatus'] = self.client_status.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.client_status is not None:
+            result['ClientStatus'] = self.client_status.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('ClientStatus') is not None:
             temp_model = DescribeMqttClientStatusResponseBodyClientStatus()
             self.client_status = temp_model.from_map(m['ClientStatus'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -8901,53 +9114,53 @@ class DescribeMqttMessageRequest(TeaModel):
 class DescribeMqttMessageResponseBodyMessage(TeaModel):
     def __init__(
         self,
-        time: int = None,
-        app_key: str = None,
         mid: str = None,
+        app_key: str = None,
         topic: str = None,
-        payload: str = None,
         qo_s: int = None,
+        payload: str = None,
+        time: int = None,
     ):
-        self.time = time
-        self.app_key = app_key
         self.mid = mid
+        self.app_key = app_key
         self.topic = topic
-        self.payload = payload
         self.qo_s = qo_s
+        self.payload = payload
+        self.time = time
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.time is not None:
-            result['Time'] = self.time
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
         if self.mid is not None:
             result['Mid'] = self.mid
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
         if self.topic is not None:
             result['Topic'] = self.topic
-        if self.payload is not None:
-            result['Payload'] = self.payload
         if self.qo_s is not None:
             result['QoS'] = self.qo_s
+        if self.payload is not None:
+            result['Payload'] = self.payload
+        if self.time is not None:
+            result['Time'] = self.time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Time') is not None:
-            self.time = m.get('Time')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
         if m.get('Mid') is not None:
             self.mid = m.get('Mid')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
-        if m.get('Payload') is not None:
-            self.payload = m.get('Payload')
         if m.get('QoS') is not None:
             self.qo_s = m.get('QoS')
+        if m.get('Payload') is not None:
+            self.payload = m.get('Payload')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
         return self
 
 
@@ -9193,94 +9406,94 @@ class DescribeOpenAccountRequest(TeaModel):
 class DescribeOpenAccountResponseBodyOpenAccount(TeaModel):
     def __init__(
         self,
-        status: int = None,
-        type: int = None,
-        display_name: str = None,
-        create_access_key: str = None,
-        open_id: str = None,
-        mobile: str = None,
-        region: str = None,
         identity_id: str = None,
+        aliyun_id: str = None,
+        display_name: str = None,
         login_id: str = None,
         idp: str = None,
-        aliyun_id: str = None,
+        open_id: str = None,
+        mobile: str = None,
+        type: int = None,
+        status: int = None,
+        region: str = None,
+        create_access_key: str = None,
     ):
-        self.status = status
-        self.type = type
-        self.display_name = display_name
-        self.create_access_key = create_access_key
-        self.open_id = open_id
-        self.mobile = mobile
-        self.region = region
         self.identity_id = identity_id
+        self.aliyun_id = aliyun_id
+        self.display_name = display_name
         self.login_id = login_id
         self.idp = idp
-        self.aliyun_id = aliyun_id
+        self.open_id = open_id
+        self.mobile = mobile
+        self.type = type
+        self.status = status
+        self.region = region
+        self.create_access_key = create_access_key
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.display_name is not None:
-            result['DisplayName'] = self.display_name
-        if self.create_access_key is not None:
-            result['CreateAccessKey'] = self.create_access_key
-        if self.open_id is not None:
-            result['OpenId'] = self.open_id
-        if self.mobile is not None:
-            result['Mobile'] = self.mobile
-        if self.region is not None:
-            result['Region'] = self.region
         if self.identity_id is not None:
             result['IdentityId'] = self.identity_id
+        if self.aliyun_id is not None:
+            result['AliyunId'] = self.aliyun_id
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
         if self.login_id is not None:
             result['LoginId'] = self.login_id
         if self.idp is not None:
             result['Idp'] = self.idp
-        if self.aliyun_id is not None:
-            result['AliyunId'] = self.aliyun_id
+        if self.open_id is not None:
+            result['OpenId'] = self.open_id
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.create_access_key is not None:
+            result['CreateAccessKey'] = self.create_access_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('DisplayName') is not None:
-            self.display_name = m.get('DisplayName')
-        if m.get('CreateAccessKey') is not None:
-            self.create_access_key = m.get('CreateAccessKey')
-        if m.get('OpenId') is not None:
-            self.open_id = m.get('OpenId')
-        if m.get('Mobile') is not None:
-            self.mobile = m.get('Mobile')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
         if m.get('IdentityId') is not None:
             self.identity_id = m.get('IdentityId')
+        if m.get('AliyunId') is not None:
+            self.aliyun_id = m.get('AliyunId')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
         if m.get('LoginId') is not None:
             self.login_id = m.get('LoginId')
         if m.get('Idp') is not None:
             self.idp = m.get('Idp')
-        if m.get('AliyunId') is not None:
-            self.aliyun_id = m.get('AliyunId')
+        if m.get('OpenId') is not None:
+            self.open_id = m.get('OpenId')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('CreateAccessKey') is not None:
+            self.create_access_key = m.get('CreateAccessKey')
         return self
 
 
 class DescribeOpenAccountResponseBody(TeaModel):
     def __init__(
         self,
-        open_account: DescribeOpenAccountResponseBodyOpenAccount = None,
         request_id: str = None,
+        open_account: DescribeOpenAccountResponseBodyOpenAccount = None,
     ):
-        self.open_account = open_account
         self.request_id = request_id
+        self.open_account = open_account
 
     def validate(self):
         if self.open_account:
@@ -9288,19 +9501,19 @@ class DescribeOpenAccountResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.open_account is not None:
-            result['OpenAccount'] = self.open_account.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.open_account is not None:
+            result['OpenAccount'] = self.open_account.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('OpenAccount') is not None:
             temp_model = DescribeOpenAccountResponseBodyOpenAccount()
             self.open_account = temp_model.from_map(m['OpenAccount'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -9369,77 +9582,77 @@ class DescribeOsVersionRequest(TeaModel):
 class DescribeOsVersionResponseBodyOsVersionRomList(TeaModel):
     def __init__(
         self,
-        gmt_modify: str = None,
-        split_num: str = None,
-        download_url: str = None,
-        size: str = None,
-        gmt_create: str = None,
-        version_id: int = None,
-        md_5: str = None,
-        base_version: str = None,
         id: int = None,
+        version_id: int = None,
+        base_version: str = None,
+        download_url: str = None,
         original_url: str = None,
+        md_5: str = None,
+        size: str = None,
+        split_num: str = None,
+        gmt_create: str = None,
+        gmt_modify: str = None,
     ):
-        self.gmt_modify = gmt_modify
-        self.split_num = split_num
-        self.download_url = download_url
-        self.size = size
-        self.gmt_create = gmt_create
-        self.version_id = version_id
-        self.md_5 = md_5
-        self.base_version = base_version
         self.id = id
+        self.version_id = version_id
+        self.base_version = base_version
+        self.download_url = download_url
         self.original_url = original_url
+        self.md_5 = md_5
+        self.size = size
+        self.split_num = split_num
+        self.gmt_create = gmt_create
+        self.gmt_modify = gmt_modify
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_modify is not None:
-            result['GmtModify'] = self.gmt_modify
-        if self.split_num is not None:
-            result['SplitNum'] = self.split_num
-        if self.download_url is not None:
-            result['DownloadUrl'] = self.download_url
-        if self.size is not None:
-            result['Size'] = self.size
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
-        if self.md_5 is not None:
-            result['Md5'] = self.md_5
-        if self.base_version is not None:
-            result['BaseVersion'] = self.base_version
         if self.id is not None:
             result['Id'] = self.id
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        if self.base_version is not None:
+            result['BaseVersion'] = self.base_version
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
         if self.original_url is not None:
             result['OriginalUrl'] = self.original_url
+        if self.md_5 is not None:
+            result['Md5'] = self.md_5
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.split_num is not None:
+            result['SplitNum'] = self.split_num
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtModify') is not None:
-            self.gmt_modify = m.get('GmtModify')
-        if m.get('SplitNum') is not None:
-            self.split_num = m.get('SplitNum')
-        if m.get('DownloadUrl') is not None:
-            self.download_url = m.get('DownloadUrl')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
-        if m.get('Md5') is not None:
-            self.md_5 = m.get('Md5')
-        if m.get('BaseVersion') is not None:
-            self.base_version = m.get('BaseVersion')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        if m.get('BaseVersion') is not None:
+            self.base_version = m.get('BaseVersion')
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
         if m.get('OriginalUrl') is not None:
             self.original_url = m.get('OriginalUrl')
+        if m.get('Md5') is not None:
+            self.md_5 = m.get('Md5')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('SplitNum') is not None:
+            self.split_num = m.get('SplitNum')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
         return self
 
 
@@ -9447,12 +9660,12 @@ class DescribeOsVersionResponseBodyOsVersionNightUpgradeOption(TeaModel):
     def __init__(
         self,
         download_type: str = None,
-        is_allowed_cancel: str = None,
         is_show_tip: str = None,
+        is_allowed_cancel: str = None,
     ):
         self.download_type = download_type
-        self.is_allowed_cancel = is_allowed_cancel
         self.is_show_tip = is_show_tip
+        self.is_allowed_cancel = is_allowed_cancel
 
     def validate(self):
         pass
@@ -9461,69 +9674,69 @@ class DescribeOsVersionResponseBodyOsVersionNightUpgradeOption(TeaModel):
         result = dict()
         if self.download_type is not None:
             result['DownloadType'] = self.download_type
-        if self.is_allowed_cancel is not None:
-            result['IsAllowedCancel'] = self.is_allowed_cancel
         if self.is_show_tip is not None:
             result['IsShowTip'] = self.is_show_tip
+        if self.is_allowed_cancel is not None:
+            result['IsAllowedCancel'] = self.is_allowed_cancel
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DownloadType') is not None:
             self.download_type = m.get('DownloadType')
-        if m.get('IsAllowedCancel') is not None:
-            self.is_allowed_cancel = m.get('IsAllowedCancel')
         if m.get('IsShowTip') is not None:
             self.is_show_tip = m.get('IsShowTip')
+        if m.get('IsAllowedCancel') is not None:
+            self.is_allowed_cancel = m.get('IsAllowedCancel')
         return self
 
 
 class DescribeOsVersionResponseBodyOsVersion(TeaModel):
     def __init__(
         self,
-        status: str = None,
+        id: int = None,
         device_model_id: str = None,
-        black_version_list: str = None,
-        is_milestone: str = None,
-        gmt_modify: str = None,
+        system_version: str = None,
         release_note: str = None,
         remark: str = None,
-        system_version: str = None,
+        status: str = None,
+        black_version_list: str = None,
+        white_version_list: str = None,
+        min_client_version: str = None,
+        max_client_version: str = None,
+        is_milestone: str = None,
+        is_force_upgrade: str = None,
+        is_force_night_upgrade: str = None,
+        gmt_create: str = None,
+        gmt_modify: str = None,
         status_name: str = None,
         device_model_name: str = None,
-        white_version_list: str = None,
-        max_client_version: str = None,
-        rom_list: List[DescribeOsVersionResponseBodyOsVersionRomList] = None,
-        min_client_version: str = None,
-        night_upgrade_option: DescribeOsVersionResponseBodyOsVersionNightUpgradeOption = None,
-        gmt_create: str = None,
-        is_force_night_upgrade: str = None,
-        mobile_download_max_size: str = None,
         enable_mobile_download: str = None,
-        is_force_upgrade: str = None,
-        id: int = None,
+        mobile_download_max_size: str = None,
+        rom_list: List[DescribeOsVersionResponseBodyOsVersionRomList] = None,
+        night_upgrade_option: DescribeOsVersionResponseBodyOsVersionNightUpgradeOption = None,
     ):
-        self.status = status
+        self.id = id
         self.device_model_id = device_model_id
-        self.black_version_list = black_version_list
-        self.is_milestone = is_milestone
-        self.gmt_modify = gmt_modify
+        self.system_version = system_version
         self.release_note = release_note
         self.remark = remark
-        self.system_version = system_version
+        self.status = status
+        self.black_version_list = black_version_list
+        self.white_version_list = white_version_list
+        self.min_client_version = min_client_version
+        self.max_client_version = max_client_version
+        self.is_milestone = is_milestone
+        self.is_force_upgrade = is_force_upgrade
+        self.is_force_night_upgrade = is_force_night_upgrade
+        self.gmt_create = gmt_create
+        self.gmt_modify = gmt_modify
         self.status_name = status_name
         self.device_model_name = device_model_name
-        self.white_version_list = white_version_list
-        self.max_client_version = max_client_version
-        self.rom_list = rom_list
-        self.min_client_version = min_client_version
-        self.night_upgrade_option = night_upgrade_option
-        self.gmt_create = gmt_create
-        self.is_force_night_upgrade = is_force_night_upgrade
-        self.mobile_download_max_size = mobile_download_max_size
         self.enable_mobile_download = enable_mobile_download
-        self.is_force_upgrade = is_force_upgrade
-        self.id = id
+        self.mobile_download_max_size = mobile_download_max_size
+        self.rom_list = rom_list
+        self.night_upgrade_option = night_upgrade_option
 
     def validate(self):
         if self.rom_list:
@@ -9535,100 +9748,100 @@ class DescribeOsVersionResponseBodyOsVersion(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
+        if self.id is not None:
+            result['Id'] = self.id
         if self.device_model_id is not None:
             result['DeviceModelId'] = self.device_model_id
-        if self.black_version_list is not None:
-            result['BlackVersionList'] = self.black_version_list
-        if self.is_milestone is not None:
-            result['IsMilestone'] = self.is_milestone
-        if self.gmt_modify is not None:
-            result['GmtModify'] = self.gmt_modify
+        if self.system_version is not None:
+            result['SystemVersion'] = self.system_version
         if self.release_note is not None:
             result['ReleaseNote'] = self.release_note
         if self.remark is not None:
             result['Remark'] = self.remark
-        if self.system_version is not None:
-            result['SystemVersion'] = self.system_version
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.black_version_list is not None:
+            result['BlackVersionList'] = self.black_version_list
+        if self.white_version_list is not None:
+            result['WhiteVersionList'] = self.white_version_list
+        if self.min_client_version is not None:
+            result['MinClientVersion'] = self.min_client_version
+        if self.max_client_version is not None:
+            result['MaxClientVersion'] = self.max_client_version
+        if self.is_milestone is not None:
+            result['IsMilestone'] = self.is_milestone
+        if self.is_force_upgrade is not None:
+            result['IsForceUpgrade'] = self.is_force_upgrade
+        if self.is_force_night_upgrade is not None:
+            result['IsForceNightUpgrade'] = self.is_force_night_upgrade
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
         if self.status_name is not None:
             result['StatusName'] = self.status_name
         if self.device_model_name is not None:
             result['DeviceModelName'] = self.device_model_name
-        if self.white_version_list is not None:
-            result['WhiteVersionList'] = self.white_version_list
-        if self.max_client_version is not None:
-            result['MaxClientVersion'] = self.max_client_version
+        if self.enable_mobile_download is not None:
+            result['EnableMobileDownload'] = self.enable_mobile_download
+        if self.mobile_download_max_size is not None:
+            result['MobileDownloadMaxSize'] = self.mobile_download_max_size
         result['RomList'] = []
         if self.rom_list is not None:
             for k in self.rom_list:
                 result['RomList'].append(k.to_map() if k else None)
-        if self.min_client_version is not None:
-            result['MinClientVersion'] = self.min_client_version
         if self.night_upgrade_option is not None:
             result['NightUpgradeOption'] = self.night_upgrade_option.to_map()
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.is_force_night_upgrade is not None:
-            result['IsForceNightUpgrade'] = self.is_force_night_upgrade
-        if self.mobile_download_max_size is not None:
-            result['MobileDownloadMaxSize'] = self.mobile_download_max_size
-        if self.enable_mobile_download is not None:
-            result['EnableMobileDownload'] = self.enable_mobile_download
-        if self.is_force_upgrade is not None:
-            result['IsForceUpgrade'] = self.is_force_upgrade
-        if self.id is not None:
-            result['Id'] = self.id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('DeviceModelId') is not None:
             self.device_model_id = m.get('DeviceModelId')
-        if m.get('BlackVersionList') is not None:
-            self.black_version_list = m.get('BlackVersionList')
-        if m.get('IsMilestone') is not None:
-            self.is_milestone = m.get('IsMilestone')
-        if m.get('GmtModify') is not None:
-            self.gmt_modify = m.get('GmtModify')
+        if m.get('SystemVersion') is not None:
+            self.system_version = m.get('SystemVersion')
         if m.get('ReleaseNote') is not None:
             self.release_note = m.get('ReleaseNote')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
-        if m.get('SystemVersion') is not None:
-            self.system_version = m.get('SystemVersion')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('BlackVersionList') is not None:
+            self.black_version_list = m.get('BlackVersionList')
+        if m.get('WhiteVersionList') is not None:
+            self.white_version_list = m.get('WhiteVersionList')
+        if m.get('MinClientVersion') is not None:
+            self.min_client_version = m.get('MinClientVersion')
+        if m.get('MaxClientVersion') is not None:
+            self.max_client_version = m.get('MaxClientVersion')
+        if m.get('IsMilestone') is not None:
+            self.is_milestone = m.get('IsMilestone')
+        if m.get('IsForceUpgrade') is not None:
+            self.is_force_upgrade = m.get('IsForceUpgrade')
+        if m.get('IsForceNightUpgrade') is not None:
+            self.is_force_night_upgrade = m.get('IsForceNightUpgrade')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
         if m.get('StatusName') is not None:
             self.status_name = m.get('StatusName')
         if m.get('DeviceModelName') is not None:
             self.device_model_name = m.get('DeviceModelName')
-        if m.get('WhiteVersionList') is not None:
-            self.white_version_list = m.get('WhiteVersionList')
-        if m.get('MaxClientVersion') is not None:
-            self.max_client_version = m.get('MaxClientVersion')
+        if m.get('EnableMobileDownload') is not None:
+            self.enable_mobile_download = m.get('EnableMobileDownload')
+        if m.get('MobileDownloadMaxSize') is not None:
+            self.mobile_download_max_size = m.get('MobileDownloadMaxSize')
         self.rom_list = []
         if m.get('RomList') is not None:
             for k in m.get('RomList'):
                 temp_model = DescribeOsVersionResponseBodyOsVersionRomList()
                 self.rom_list.append(temp_model.from_map(k))
-        if m.get('MinClientVersion') is not None:
-            self.min_client_version = m.get('MinClientVersion')
         if m.get('NightUpgradeOption') is not None:
             temp_model = DescribeOsVersionResponseBodyOsVersionNightUpgradeOption()
             self.night_upgrade_option = temp_model.from_map(m['NightUpgradeOption'])
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('IsForceNightUpgrade') is not None:
-            self.is_force_night_upgrade = m.get('IsForceNightUpgrade')
-        if m.get('MobileDownloadMaxSize') is not None:
-            self.mobile_download_max_size = m.get('MobileDownloadMaxSize')
-        if m.get('EnableMobileDownload') is not None:
-            self.enable_mobile_download = m.get('EnableMobileDownload')
-        if m.get('IsForceUpgrade') is not None:
-            self.is_force_upgrade = m.get('IsForceUpgrade')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         return self
 
 
@@ -9722,24 +9935,24 @@ class DescribeProjectRequest(TeaModel):
 class DescribeProjectResponseBodyProject(TeaModel):
     def __init__(
         self,
+        id: int = None,
+        project_id: str = None,
+        user_id: str = None,
+        name: str = None,
         status: int = None,
         description: str = None,
-        user_id: str = None,
-        project_id: str = None,
         gmt_create: int = None,
         gmt_modified: int = None,
-        name: str = None,
-        id: int = None,
         creator: str = None,
     ):
+        self.id = id
+        self.project_id = project_id
+        self.user_id = user_id
+        self.name = name
         self.status = status
         self.description = description
-        self.user_id = user_id
-        self.project_id = project_id
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
-        self.name = name
-        self.id = id
         self.creator = creator
 
     def validate(self):
@@ -9747,44 +9960,44 @@ class DescribeProjectResponseBodyProject(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.name is not None:
+            result['Name'] = self.name
         if self.status is not None:
             result['Status'] = self.status
         if self.description is not None:
             result['Description'] = self.description
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.id is not None:
-            result['Id'] = self.id
         if self.creator is not None:
             result['Creator'] = self.creator
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
         return self
@@ -9793,11 +10006,11 @@ class DescribeProjectResponseBodyProject(TeaModel):
 class DescribeProjectResponseBody(TeaModel):
     def __init__(
         self,
-        project: DescribeProjectResponseBodyProject = None,
         request_id: str = None,
+        project: DescribeProjectResponseBodyProject = None,
     ):
-        self.project = project
         self.request_id = request_id
+        self.project = project
 
     def validate(self):
         if self.project:
@@ -9805,19 +10018,19 @@ class DescribeProjectResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.project is not None:
-            result['Project'] = self.project.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.project is not None:
+            result['Project'] = self.project.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Project') is not None:
             temp_model = DescribeProjectResponseBodyProject()
             self.project = temp_model.from_map(m['Project'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -9886,53 +10099,53 @@ class DescribeProjectAppSecurityRequest(TeaModel):
 class DescribeProjectAppSecurityResponseBodyProjectAppSecurity(TeaModel):
     def __init__(
         self,
-        app_secret: str = None,
-        app_key: str = None,
+        id: int = None,
         app_id: str = None,
+        app_key: str = None,
+        app_secret: str = None,
         gmt_create: int = None,
         gmt_modified: int = None,
-        id: int = None,
     ):
-        self.app_secret = app_secret
-        self.app_key = app_key
+        self.id = id
         self.app_id = app_id
+        self.app_key = app_key
+        self.app_secret = app_secret
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
-        self.id = id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.app_secret is not None:
-            result['AppSecret'] = self.app_secret
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
+        if self.id is not None:
+            result['Id'] = self.id
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.app_secret is not None:
+            result['AppSecret'] = self.app_secret
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
-        if self.id is not None:
-            result['Id'] = self.id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AppSecret') is not None:
-            self.app_secret = m.get('AppSecret')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('AppSecret') is not None:
+            self.app_secret = m.get('AppSecret')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         return self
 
 
@@ -10129,18 +10342,18 @@ class DescribeVersionDeviceGroupRequest(TeaModel):
 class DescribeVersionDeviceGroupResponseBodyDeviceGroup(TeaModel):
     def __init__(
         self,
-        gmt_modify: str = None,
+        id: int = None,
+        name: str = None,
         description: str = None,
         gmt_create: str = None,
-        name: str = None,
-        id: int = None,
+        gmt_modify: str = None,
         max_count: str = None,
     ):
-        self.gmt_modify = gmt_modify
+        self.id = id
+        self.name = name
         self.description = description
         self.gmt_create = gmt_create
-        self.name = name
-        self.id = id
+        self.gmt_modify = gmt_modify
         self.max_count = max_count
 
     def validate(self):
@@ -10148,32 +10361,32 @@ class DescribeVersionDeviceGroupResponseBodyDeviceGroup(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.gmt_modify is not None:
-            result['GmtModify'] = self.gmt_modify
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
         if self.description is not None:
             result['Description'] = self.description
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
         if self.max_count is not None:
             result['MaxCount'] = self.max_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtModify') is not None:
-            self.gmt_modify = m.get('GmtModify')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
         if m.get('MaxCount') is not None:
             self.max_count = m.get('MaxCount')
         return self
@@ -10438,148 +10651,148 @@ class FindAppVersionsRequest(TeaModel):
 class FindAppVersionsResponseBodyAppVersionListItems(TeaModel):
     def __init__(
         self,
-        status: str = None,
-        gmt_create_timestamp: int = None,
-        gmt_modify: str = None,
-        is_allow_new_install: str = None,
-        status_name: str = None,
-        restart_app_param: str = None,
-        is_silent_upgrade: str = None,
-        app_package_name: str = None,
-        gmt_modify_timestamp: int = None,
-        app_name: str = None,
-        install_type: str = None,
-        is_need_restart: str = None,
-        restart_app_type: str = None,
-        app_id: str = None,
-        restart_type: str = None,
-        gmt_create: str = None,
-        app_version: str = None,
-        version_code: str = None,
-        is_force_upgrade: str = None,
         id: int = None,
+        app_id: str = None,
+        version_code: str = None,
+        status: str = None,
+        gmt_create: str = None,
+        gmt_modify: str = None,
+        app_version: str = None,
+        is_need_restart: str = None,
+        is_force_upgrade: str = None,
+        is_silent_upgrade: str = None,
+        is_allow_new_install: str = None,
+        restart_type: str = None,
+        restart_app_type: str = None,
+        restart_app_param: str = None,
+        install_type: str = None,
+        app_name: str = None,
+        app_package_name: str = None,
+        status_name: str = None,
+        gmt_create_timestamp: int = None,
+        gmt_modify_timestamp: int = None,
     ):
-        self.status = status
-        self.gmt_create_timestamp = gmt_create_timestamp
-        self.gmt_modify = gmt_modify
-        self.is_allow_new_install = is_allow_new_install
-        self.status_name = status_name
-        self.restart_app_param = restart_app_param
-        self.is_silent_upgrade = is_silent_upgrade
-        self.app_package_name = app_package_name
-        self.gmt_modify_timestamp = gmt_modify_timestamp
-        self.app_name = app_name
-        self.install_type = install_type
-        self.is_need_restart = is_need_restart
-        self.restart_app_type = restart_app_type
-        self.app_id = app_id
-        self.restart_type = restart_type
-        self.gmt_create = gmt_create
-        self.app_version = app_version
-        self.version_code = version_code
-        self.is_force_upgrade = is_force_upgrade
         self.id = id
+        self.app_id = app_id
+        self.version_code = version_code
+        self.status = status
+        self.gmt_create = gmt_create
+        self.gmt_modify = gmt_modify
+        self.app_version = app_version
+        self.is_need_restart = is_need_restart
+        self.is_force_upgrade = is_force_upgrade
+        self.is_silent_upgrade = is_silent_upgrade
+        self.is_allow_new_install = is_allow_new_install
+        self.restart_type = restart_type
+        self.restart_app_type = restart_app_type
+        self.restart_app_param = restart_app_param
+        self.install_type = install_type
+        self.app_name = app_name
+        self.app_package_name = app_package_name
+        self.status_name = status_name
+        self.gmt_create_timestamp = gmt_create_timestamp
+        self.gmt_modify_timestamp = gmt_modify_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
-        if self.gmt_modify is not None:
-            result['GmtModify'] = self.gmt_modify
-        if self.is_allow_new_install is not None:
-            result['IsAllowNewInstall'] = self.is_allow_new_install
-        if self.status_name is not None:
-            result['StatusName'] = self.status_name
-        if self.restart_app_param is not None:
-            result['RestartAppParam'] = self.restart_app_param
-        if self.is_silent_upgrade is not None:
-            result['IsSilentUpgrade'] = self.is_silent_upgrade
-        if self.app_package_name is not None:
-            result['AppPackageName'] = self.app_package_name
-        if self.gmt_modify_timestamp is not None:
-            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
-        if self.app_name is not None:
-            result['AppName'] = self.app_name
-        if self.install_type is not None:
-            result['InstallType'] = self.install_type
-        if self.is_need_restart is not None:
-            result['IsNeedRestart'] = self.is_need_restart
-        if self.restart_app_type is not None:
-            result['RestartAppType'] = self.restart_app_type
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.restart_type is not None:
-            result['RestartType'] = self.restart_type
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.app_version is not None:
-            result['AppVersion'] = self.app_version
-        if self.version_code is not None:
-            result['VersionCode'] = self.version_code
-        if self.is_force_upgrade is not None:
-            result['IsForceUpgrade'] = self.is_force_upgrade
         if self.id is not None:
             result['Id'] = self.id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.version_code is not None:
+            result['VersionCode'] = self.version_code
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        if self.is_need_restart is not None:
+            result['IsNeedRestart'] = self.is_need_restart
+        if self.is_force_upgrade is not None:
+            result['IsForceUpgrade'] = self.is_force_upgrade
+        if self.is_silent_upgrade is not None:
+            result['IsSilentUpgrade'] = self.is_silent_upgrade
+        if self.is_allow_new_install is not None:
+            result['IsAllowNewInstall'] = self.is_allow_new_install
+        if self.restart_type is not None:
+            result['RestartType'] = self.restart_type
+        if self.restart_app_type is not None:
+            result['RestartAppType'] = self.restart_app_type
+        if self.restart_app_param is not None:
+            result['RestartAppParam'] = self.restart_app_param
+        if self.install_type is not None:
+            result['InstallType'] = self.install_type
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.app_package_name is not None:
+            result['AppPackageName'] = self.app_package_name
+        if self.status_name is not None:
+            result['StatusName'] = self.status_name
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.gmt_modify_timestamp is not None:
+            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
-        if m.get('GmtModify') is not None:
-            self.gmt_modify = m.get('GmtModify')
-        if m.get('IsAllowNewInstall') is not None:
-            self.is_allow_new_install = m.get('IsAllowNewInstall')
-        if m.get('StatusName') is not None:
-            self.status_name = m.get('StatusName')
-        if m.get('RestartAppParam') is not None:
-            self.restart_app_param = m.get('RestartAppParam')
-        if m.get('IsSilentUpgrade') is not None:
-            self.is_silent_upgrade = m.get('IsSilentUpgrade')
-        if m.get('AppPackageName') is not None:
-            self.app_package_name = m.get('AppPackageName')
-        if m.get('GmtModifyTimestamp') is not None:
-            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
-        if m.get('AppName') is not None:
-            self.app_name = m.get('AppName')
-        if m.get('InstallType') is not None:
-            self.install_type = m.get('InstallType')
-        if m.get('IsNeedRestart') is not None:
-            self.is_need_restart = m.get('IsNeedRestart')
-        if m.get('RestartAppType') is not None:
-            self.restart_app_type = m.get('RestartAppType')
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('RestartType') is not None:
-            self.restart_type = m.get('RestartType')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('AppVersion') is not None:
-            self.app_version = m.get('AppVersion')
-        if m.get('VersionCode') is not None:
-            self.version_code = m.get('VersionCode')
-        if m.get('IsForceUpgrade') is not None:
-            self.is_force_upgrade = m.get('IsForceUpgrade')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('VersionCode') is not None:
+            self.version_code = m.get('VersionCode')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        if m.get('IsNeedRestart') is not None:
+            self.is_need_restart = m.get('IsNeedRestart')
+        if m.get('IsForceUpgrade') is not None:
+            self.is_force_upgrade = m.get('IsForceUpgrade')
+        if m.get('IsSilentUpgrade') is not None:
+            self.is_silent_upgrade = m.get('IsSilentUpgrade')
+        if m.get('IsAllowNewInstall') is not None:
+            self.is_allow_new_install = m.get('IsAllowNewInstall')
+        if m.get('RestartType') is not None:
+            self.restart_type = m.get('RestartType')
+        if m.get('RestartAppType') is not None:
+            self.restart_app_type = m.get('RestartAppType')
+        if m.get('RestartAppParam') is not None:
+            self.restart_app_param = m.get('RestartAppParam')
+        if m.get('InstallType') is not None:
+            self.install_type = m.get('InstallType')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('AppPackageName') is not None:
+            self.app_package_name = m.get('AppPackageName')
+        if m.get('StatusName') is not None:
+            self.status_name = m.get('StatusName')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
+        if m.get('GmtModifyTimestamp') is not None:
+            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
         return self
 
 
 class FindAppVersionsResponseBodyAppVersionList(TeaModel):
     def __init__(
         self,
-        items: List[FindAppVersionsResponseBodyAppVersionListItems] = None,
         total_count: int = None,
+        items: List[FindAppVersionsResponseBodyAppVersionListItems] = None,
     ):
-        self.items = items
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -10589,34 +10802,34 @@ class FindAppVersionsResponseBodyAppVersionList(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = FindAppVersionsResponseBodyAppVersionListItems()
                 self.items.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
 class FindAppVersionsResponseBody(TeaModel):
     def __init__(
         self,
-        app_version_list: FindAppVersionsResponseBodyAppVersionList = None,
         request_id: str = None,
+        app_version_list: FindAppVersionsResponseBodyAppVersionList = None,
     ):
-        self.app_version_list = app_version_list
         self.request_id = request_id
+        self.app_version_list = app_version_list
 
     def validate(self):
         if self.app_version_list:
@@ -10624,19 +10837,19 @@ class FindAppVersionsResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.app_version_list is not None:
-            result['AppVersionList'] = self.app_version_list.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.app_version_list is not None:
+            result['AppVersionList'] = self.app_version_list.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('AppVersionList') is not None:
             temp_model = FindAppVersionsResponseBodyAppVersionList()
             self.app_version_list = temp_model.from_map(m['AppVersionList'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -10729,82 +10942,82 @@ class FindCustomizedFiltersRequest(TeaModel):
 class FindCustomizedFiltersResponseBodyCustomizedFilterListItems(TeaModel):
     def __init__(
         self,
-        gmt_modify_timestamp: int = None,
-        gmt_create_timestamp: int = None,
-        value: str = None,
-        gmt_modify: str = None,
-        value_compare_type: str = None,
-        gmt_create: str = None,
-        black_white_type: str = None,
-        name: str = None,
         id: int = None,
+        name: str = None,
+        value: str = None,
+        value_compare_type: str = None,
+        black_white_type: str = None,
+        gmt_create: str = None,
+        gmt_modify: str = None,
+        gmt_create_timestamp: int = None,
+        gmt_modify_timestamp: int = None,
     ):
-        self.gmt_modify_timestamp = gmt_modify_timestamp
-        self.gmt_create_timestamp = gmt_create_timestamp
-        self.value = value
-        self.gmt_modify = gmt_modify
-        self.value_compare_type = value_compare_type
-        self.gmt_create = gmt_create
-        self.black_white_type = black_white_type
-        self.name = name
         self.id = id
+        self.name = name
+        self.value = value
+        self.value_compare_type = value_compare_type
+        self.black_white_type = black_white_type
+        self.gmt_create = gmt_create
+        self.gmt_modify = gmt_modify
+        self.gmt_create_timestamp = gmt_create_timestamp
+        self.gmt_modify_timestamp = gmt_modify_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_modify_timestamp is not None:
-            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
-        if self.value is not None:
-            result['Value'] = self.value
-        if self.gmt_modify is not None:
-            result['GmtModify'] = self.gmt_modify
-        if self.value_compare_type is not None:
-            result['ValueCompareType'] = self.value_compare_type
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.black_white_type is not None:
-            result['BlackWhiteType'] = self.black_white_type
-        if self.name is not None:
-            result['Name'] = self.name
         if self.id is not None:
             result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.value_compare_type is not None:
+            result['ValueCompareType'] = self.value_compare_type
+        if self.black_white_type is not None:
+            result['BlackWhiteType'] = self.black_white_type
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.gmt_modify_timestamp is not None:
+            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtModifyTimestamp') is not None:
-            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        if m.get('GmtModify') is not None:
-            self.gmt_modify = m.get('GmtModify')
-        if m.get('ValueCompareType') is not None:
-            self.value_compare_type = m.get('ValueCompareType')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('BlackWhiteType') is not None:
-            self.black_white_type = m.get('BlackWhiteType')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('ValueCompareType') is not None:
+            self.value_compare_type = m.get('ValueCompareType')
+        if m.get('BlackWhiteType') is not None:
+            self.black_white_type = m.get('BlackWhiteType')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
+        if m.get('GmtModifyTimestamp') is not None:
+            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
         return self
 
 
 class FindCustomizedFiltersResponseBodyCustomizedFilterList(TeaModel):
     def __init__(
         self,
-        items: List[FindCustomizedFiltersResponseBodyCustomizedFilterListItems] = None,
         total_count: int = None,
+        items: List[FindCustomizedFiltersResponseBodyCustomizedFilterListItems] = None,
     ):
-        self.items = items
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -10814,34 +11027,34 @@ class FindCustomizedFiltersResponseBodyCustomizedFilterList(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = FindCustomizedFiltersResponseBodyCustomizedFilterListItems()
                 self.items.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
 class FindCustomizedFiltersResponseBody(TeaModel):
     def __init__(
         self,
-        customized_filter_list: FindCustomizedFiltersResponseBodyCustomizedFilterList = None,
         request_id: str = None,
+        customized_filter_list: FindCustomizedFiltersResponseBodyCustomizedFilterList = None,
     ):
-        self.customized_filter_list = customized_filter_list
         self.request_id = request_id
+        self.customized_filter_list = customized_filter_list
 
     def validate(self):
         if self.customized_filter_list:
@@ -10849,19 +11062,19 @@ class FindCustomizedFiltersResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.customized_filter_list is not None:
-            result['CustomizedFilterList'] = self.customized_filter_list.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.customized_filter_list is not None:
+            result['CustomizedFilterList'] = self.customized_filter_list.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('CustomizedFilterList') is not None:
             temp_model = FindCustomizedFiltersResponseBodyCustomizedFilterList()
             self.customized_filter_list = temp_model.from_map(m['CustomizedFilterList'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -10954,58 +11167,58 @@ class FindCustomizedPropertiesRequest(TeaModel):
 class FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems(TeaModel):
     def __init__(
         self,
-        gmt_create_timestamp: int = None,
+        id: int = None,
+        name: str = None,
         value: str = None,
         gmt_create: str = None,
-        name: str = None,
-        id: int = None,
+        gmt_create_timestamp: int = None,
     ):
-        self.gmt_create_timestamp = gmt_create_timestamp
+        self.id = id
+        self.name = name
         self.value = value
         self.gmt_create = gmt_create
-        self.name = name
-        self.id = id
+        self.gmt_create_timestamp = gmt_create_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
         if self.value is not None:
             result['Value'] = self.value
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
         return self
 
 
 class FindCustomizedPropertiesResponseBodyCustomizedPropertyList(TeaModel):
     def __init__(
         self,
-        items: List[FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems] = None,
         total_count: int = None,
+        items: List[FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems] = None,
     ):
-        self.items = items
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -11015,23 +11228,23 @@ class FindCustomizedPropertiesResponseBodyCustomizedPropertyList(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = FindCustomizedPropertiesResponseBodyCustomizedPropertyListItems()
                 self.items.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -11173,124 +11386,124 @@ class FindOsVersionsRequest(TeaModel):
 class FindOsVersionsResponseBodyOsVersionListItems(TeaModel):
     def __init__(
         self,
-        status: str = None,
-        gmt_create_timestamp: int = None,
+        id: int = None,
         device_model_id: str = None,
-        gmt_modify: str = None,
-        is_milestone: str = None,
-        remark: str = None,
         system_version: str = None,
-        status_name: str = None,
-        is_force_reboot: str = None,
-        device_model_name: str = None,
+        status: str = None,
+        is_milestone: str = None,
+        is_force_upgrade: str = None,
         is_silent_upgrade: str = None,
-        gmt_modify_timestamp: int = None,
+        is_force_reboot: str = None,
         is_force_night_upgrade: str = None,
         gmt_create: str = None,
-        is_force_upgrade: str = None,
-        id: int = None,
+        gmt_modify: str = None,
+        remark: str = None,
+        status_name: str = None,
+        device_model_name: str = None,
+        gmt_create_timestamp: int = None,
+        gmt_modify_timestamp: int = None,
     ):
-        self.status = status
-        self.gmt_create_timestamp = gmt_create_timestamp
+        self.id = id
         self.device_model_id = device_model_id
-        self.gmt_modify = gmt_modify
-        self.is_milestone = is_milestone
-        self.remark = remark
         self.system_version = system_version
-        self.status_name = status_name
-        self.is_force_reboot = is_force_reboot
-        self.device_model_name = device_model_name
+        self.status = status
+        self.is_milestone = is_milestone
+        self.is_force_upgrade = is_force_upgrade
         self.is_silent_upgrade = is_silent_upgrade
-        self.gmt_modify_timestamp = gmt_modify_timestamp
+        self.is_force_reboot = is_force_reboot
         self.is_force_night_upgrade = is_force_night_upgrade
         self.gmt_create = gmt_create
-        self.is_force_upgrade = is_force_upgrade
-        self.id = id
+        self.gmt_modify = gmt_modify
+        self.remark = remark
+        self.status_name = status_name
+        self.device_model_name = device_model_name
+        self.gmt_create_timestamp = gmt_create_timestamp
+        self.gmt_modify_timestamp = gmt_modify_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.id is not None:
+            result['Id'] = self.id
         if self.device_model_id is not None:
             result['DeviceModelId'] = self.device_model_id
-        if self.gmt_modify is not None:
-            result['GmtModify'] = self.gmt_modify
-        if self.is_milestone is not None:
-            result['IsMilestone'] = self.is_milestone
-        if self.remark is not None:
-            result['Remark'] = self.remark
         if self.system_version is not None:
             result['SystemVersion'] = self.system_version
-        if self.status_name is not None:
-            result['StatusName'] = self.status_name
-        if self.is_force_reboot is not None:
-            result['IsForceReboot'] = self.is_force_reboot
-        if self.device_model_name is not None:
-            result['DeviceModelName'] = self.device_model_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.is_milestone is not None:
+            result['IsMilestone'] = self.is_milestone
+        if self.is_force_upgrade is not None:
+            result['IsForceUpgrade'] = self.is_force_upgrade
         if self.is_silent_upgrade is not None:
             result['IsSilentUpgrade'] = self.is_silent_upgrade
-        if self.gmt_modify_timestamp is not None:
-            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
+        if self.is_force_reboot is not None:
+            result['IsForceReboot'] = self.is_force_reboot
         if self.is_force_night_upgrade is not None:
             result['IsForceNightUpgrade'] = self.is_force_night_upgrade
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
-        if self.is_force_upgrade is not None:
-            result['IsForceUpgrade'] = self.is_force_upgrade
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.status_name is not None:
+            result['StatusName'] = self.status_name
+        if self.device_model_name is not None:
+            result['DeviceModelName'] = self.device_model_name
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.gmt_modify_timestamp is not None:
+            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('DeviceModelId') is not None:
             self.device_model_id = m.get('DeviceModelId')
-        if m.get('GmtModify') is not None:
-            self.gmt_modify = m.get('GmtModify')
-        if m.get('IsMilestone') is not None:
-            self.is_milestone = m.get('IsMilestone')
-        if m.get('Remark') is not None:
-            self.remark = m.get('Remark')
         if m.get('SystemVersion') is not None:
             self.system_version = m.get('SystemVersion')
-        if m.get('StatusName') is not None:
-            self.status_name = m.get('StatusName')
-        if m.get('IsForceReboot') is not None:
-            self.is_force_reboot = m.get('IsForceReboot')
-        if m.get('DeviceModelName') is not None:
-            self.device_model_name = m.get('DeviceModelName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('IsMilestone') is not None:
+            self.is_milestone = m.get('IsMilestone')
+        if m.get('IsForceUpgrade') is not None:
+            self.is_force_upgrade = m.get('IsForceUpgrade')
         if m.get('IsSilentUpgrade') is not None:
             self.is_silent_upgrade = m.get('IsSilentUpgrade')
-        if m.get('GmtModifyTimestamp') is not None:
-            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
+        if m.get('IsForceReboot') is not None:
+            self.is_force_reboot = m.get('IsForceReboot')
         if m.get('IsForceNightUpgrade') is not None:
             self.is_force_night_upgrade = m.get('IsForceNightUpgrade')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
-        if m.get('IsForceUpgrade') is not None:
-            self.is_force_upgrade = m.get('IsForceUpgrade')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('StatusName') is not None:
+            self.status_name = m.get('StatusName')
+        if m.get('DeviceModelName') is not None:
+            self.device_model_name = m.get('DeviceModelName')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
+        if m.get('GmtModifyTimestamp') is not None:
+            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
         return self
 
 
 class FindOsVersionsResponseBodyOsVersionList(TeaModel):
     def __init__(
         self,
-        items: List[FindOsVersionsResponseBodyOsVersionListItems] = None,
         total_count: int = None,
+        items: List[FindOsVersionsResponseBodyOsVersionListItems] = None,
     ):
-        self.items = items
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -11300,23 +11513,23 @@ class FindOsVersionsResponseBodyOsVersionList(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = FindOsVersionsResponseBodyOsVersionListItems()
                 self.items.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -11416,106 +11629,106 @@ class FindPrepublishesByParentIdRequest(TeaModel):
 class FindPrepublishesByParentIdResponseBodyPrepublishListItems(TeaModel):
     def __init__(
         self,
-        gmt_create_timestamp: int = None,
-        device_model_id: str = None,
-        gmt_modify: str = None,
-        is_active: str = None,
+        id: int = None,
+        name: str = None,
+        version_type: str = None,
         version_id: str = None,
         barrier_count: str = None,
-        is_total_prepublish: str = None,
-        gmt_modify_timestamp: int = None,
+        device_model_id: str = None,
         parent_id: str = None,
+        is_active: str = None,
+        is_total_prepublish: str = None,
         gmt_create: str = None,
-        name: str = None,
-        id: int = None,
-        version_type: str = None,
+        gmt_modify: str = None,
+        gmt_create_timestamp: int = None,
+        gmt_modify_timestamp: int = None,
     ):
-        self.gmt_create_timestamp = gmt_create_timestamp
-        self.device_model_id = device_model_id
-        self.gmt_modify = gmt_modify
-        self.is_active = is_active
+        self.id = id
+        self.name = name
+        self.version_type = version_type
         self.version_id = version_id
         self.barrier_count = barrier_count
-        self.is_total_prepublish = is_total_prepublish
-        self.gmt_modify_timestamp = gmt_modify_timestamp
+        self.device_model_id = device_model_id
         self.parent_id = parent_id
+        self.is_active = is_active
+        self.is_total_prepublish = is_total_prepublish
         self.gmt_create = gmt_create
-        self.name = name
-        self.id = id
-        self.version_type = version_type
+        self.gmt_modify = gmt_modify
+        self.gmt_create_timestamp = gmt_create_timestamp
+        self.gmt_modify_timestamp = gmt_modify_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
-        if self.device_model_id is not None:
-            result['DeviceModelId'] = self.device_model_id
-        if self.gmt_modify is not None:
-            result['GmtModify'] = self.gmt_modify
-        if self.is_active is not None:
-            result['IsActive'] = self.is_active
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.version_type is not None:
+            result['VersionType'] = self.version_type
         if self.version_id is not None:
             result['VersionId'] = self.version_id
         if self.barrier_count is not None:
             result['BarrierCount'] = self.barrier_count
-        if self.is_total_prepublish is not None:
-            result['IsTotalPrepublish'] = self.is_total_prepublish
-        if self.gmt_modify_timestamp is not None:
-            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
+        if self.device_model_id is not None:
+            result['DeviceModelId'] = self.device_model_id
         if self.parent_id is not None:
             result['ParentId'] = self.parent_id
+        if self.is_active is not None:
+            result['IsActive'] = self.is_active
+        if self.is_total_prepublish is not None:
+            result['IsTotalPrepublish'] = self.is_total_prepublish
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.version_type is not None:
-            result['VersionType'] = self.version_type
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.gmt_modify_timestamp is not None:
+            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
-        if m.get('DeviceModelId') is not None:
-            self.device_model_id = m.get('DeviceModelId')
-        if m.get('GmtModify') is not None:
-            self.gmt_modify = m.get('GmtModify')
-        if m.get('IsActive') is not None:
-            self.is_active = m.get('IsActive')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('VersionType') is not None:
+            self.version_type = m.get('VersionType')
         if m.get('VersionId') is not None:
             self.version_id = m.get('VersionId')
         if m.get('BarrierCount') is not None:
             self.barrier_count = m.get('BarrierCount')
-        if m.get('IsTotalPrepublish') is not None:
-            self.is_total_prepublish = m.get('IsTotalPrepublish')
-        if m.get('GmtModifyTimestamp') is not None:
-            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
+        if m.get('DeviceModelId') is not None:
+            self.device_model_id = m.get('DeviceModelId')
         if m.get('ParentId') is not None:
             self.parent_id = m.get('ParentId')
+        if m.get('IsActive') is not None:
+            self.is_active = m.get('IsActive')
+        if m.get('IsTotalPrepublish') is not None:
+            self.is_total_prepublish = m.get('IsTotalPrepublish')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('VersionType') is not None:
-            self.version_type = m.get('VersionType')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
+        if m.get('GmtModifyTimestamp') is not None:
+            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
         return self
 
 
 class FindPrepublishesByParentIdResponseBodyPrepublishList(TeaModel):
     def __init__(
         self,
-        items: List[FindPrepublishesByParentIdResponseBodyPrepublishListItems] = None,
         total_count: int = None,
+        items: List[FindPrepublishesByParentIdResponseBodyPrepublishListItems] = None,
     ):
-        self.items = items
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -11525,23 +11738,23 @@ class FindPrepublishesByParentIdResponseBodyPrepublishList(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = FindPrepublishesByParentIdResponseBodyPrepublishListItems()
                 self.items.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -11647,107 +11860,107 @@ class FindPrepublishesByVersionIdRequest(TeaModel):
 class FindPrepublishesByVersionIdResponseBodyPrepublishList(TeaModel):
     def __init__(
         self,
-        gmt_create_timestamp: int = None,
-        device_model_id: str = None,
-        gmt_modify: str = None,
-        is_active: str = None,
+        id: str = None,
+        name: str = None,
+        version_type: str = None,
         version_id: str = None,
         barrier_count: str = None,
-        device_model_name: str = None,
-        is_total_prepublish: str = None,
-        gmt_modify_timestamp: int = None,
+        device_model_id: str = None,
         parent_id: str = None,
+        is_active: str = None,
+        is_total_prepublish: str = None,
         gmt_create: str = None,
-        name: str = None,
-        id: str = None,
-        version_type: str = None,
+        gmt_modify: str = None,
+        device_model_name: str = None,
         passed_count: str = None,
+        gmt_create_timestamp: int = None,
+        gmt_modify_timestamp: int = None,
     ):
-        self.gmt_create_timestamp = gmt_create_timestamp
-        self.device_model_id = device_model_id
-        self.gmt_modify = gmt_modify
-        self.is_active = is_active
+        self.id = id
+        self.name = name
+        self.version_type = version_type
         self.version_id = version_id
         self.barrier_count = barrier_count
-        self.device_model_name = device_model_name
-        self.is_total_prepublish = is_total_prepublish
-        self.gmt_modify_timestamp = gmt_modify_timestamp
+        self.device_model_id = device_model_id
         self.parent_id = parent_id
+        self.is_active = is_active
+        self.is_total_prepublish = is_total_prepublish
         self.gmt_create = gmt_create
-        self.name = name
-        self.id = id
-        self.version_type = version_type
+        self.gmt_modify = gmt_modify
+        self.device_model_name = device_model_name
         self.passed_count = passed_count
+        self.gmt_create_timestamp = gmt_create_timestamp
+        self.gmt_modify_timestamp = gmt_modify_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
-        if self.device_model_id is not None:
-            result['DeviceModelId'] = self.device_model_id
-        if self.gmt_modify is not None:
-            result['GmtModify'] = self.gmt_modify
-        if self.is_active is not None:
-            result['IsActive'] = self.is_active
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.version_type is not None:
+            result['VersionType'] = self.version_type
         if self.version_id is not None:
             result['VersionId'] = self.version_id
         if self.barrier_count is not None:
             result['BarrierCount'] = self.barrier_count
-        if self.device_model_name is not None:
-            result['DeviceModelName'] = self.device_model_name
-        if self.is_total_prepublish is not None:
-            result['IsTotalPrepublish'] = self.is_total_prepublish
-        if self.gmt_modify_timestamp is not None:
-            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
+        if self.device_model_id is not None:
+            result['DeviceModelId'] = self.device_model_id
         if self.parent_id is not None:
             result['ParentId'] = self.parent_id
+        if self.is_active is not None:
+            result['IsActive'] = self.is_active
+        if self.is_total_prepublish is not None:
+            result['IsTotalPrepublish'] = self.is_total_prepublish
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.version_type is not None:
-            result['VersionType'] = self.version_type
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
+        if self.device_model_name is not None:
+            result['DeviceModelName'] = self.device_model_name
         if self.passed_count is not None:
             result['PassedCount'] = self.passed_count
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.gmt_modify_timestamp is not None:
+            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
-        if m.get('DeviceModelId') is not None:
-            self.device_model_id = m.get('DeviceModelId')
-        if m.get('GmtModify') is not None:
-            self.gmt_modify = m.get('GmtModify')
-        if m.get('IsActive') is not None:
-            self.is_active = m.get('IsActive')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('VersionType') is not None:
+            self.version_type = m.get('VersionType')
         if m.get('VersionId') is not None:
             self.version_id = m.get('VersionId')
         if m.get('BarrierCount') is not None:
             self.barrier_count = m.get('BarrierCount')
-        if m.get('DeviceModelName') is not None:
-            self.device_model_name = m.get('DeviceModelName')
-        if m.get('IsTotalPrepublish') is not None:
-            self.is_total_prepublish = m.get('IsTotalPrepublish')
-        if m.get('GmtModifyTimestamp') is not None:
-            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
+        if m.get('DeviceModelId') is not None:
+            self.device_model_id = m.get('DeviceModelId')
         if m.get('ParentId') is not None:
             self.parent_id = m.get('ParentId')
+        if m.get('IsActive') is not None:
+            self.is_active = m.get('IsActive')
+        if m.get('IsTotalPrepublish') is not None:
+            self.is_total_prepublish = m.get('IsTotalPrepublish')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('VersionType') is not None:
-            self.version_type = m.get('VersionType')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
+        if m.get('DeviceModelName') is not None:
+            self.device_model_name = m.get('DeviceModelName')
         if m.get('PassedCount') is not None:
             self.passed_count = m.get('PassedCount')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
+        if m.get('GmtModifyTimestamp') is not None:
+            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
         return self
 
 
@@ -11871,46 +12084,46 @@ class FindPrepublishPassedDevicesRequest(TeaModel):
 class FindPrepublishPassedDevicesResponseBodyDeviceListItems(TeaModel):
     def __init__(
         self,
-        gmt_create_timestamp: int = None,
         device_id: str = None,
         gmt_create: str = None,
+        gmt_create_timestamp: int = None,
     ):
-        self.gmt_create_timestamp = gmt_create_timestamp
         self.device_id = device_id
         self.gmt_create = gmt_create
+        self.gmt_create_timestamp = gmt_create_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
         return self
 
 
 class FindPrepublishPassedDevicesResponseBodyDeviceList(TeaModel):
     def __init__(
         self,
-        items: List[FindPrepublishPassedDevicesResponseBodyDeviceListItems] = None,
         total_count: int = None,
+        items: List[FindPrepublishPassedDevicesResponseBodyDeviceListItems] = None,
     ):
-        self.items = items
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -11920,23 +12133,23 @@ class FindPrepublishPassedDevicesResponseBodyDeviceList(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = FindPrepublishPassedDevicesResponseBodyDeviceListItems()
                 self.items.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -12066,64 +12279,64 @@ class FindVersionBlackDevicesRequest(TeaModel):
 class FindVersionBlackDevicesResponseBodyDeviceListItems(TeaModel):
     def __init__(
         self,
-        gmt_create_timestamp: int = None,
-        original_id: str = None,
+        id: int = None,
         device_id: str = None,
+        original_id: str = None,
         id_type: str = None,
         gmt_create: str = None,
-        id: int = None,
+        gmt_create_timestamp: int = None,
     ):
-        self.gmt_create_timestamp = gmt_create_timestamp
-        self.original_id = original_id
+        self.id = id
         self.device_id = device_id
+        self.original_id = original_id
         self.id_type = id_type
         self.gmt_create = gmt_create
-        self.id = id
+        self.gmt_create_timestamp = gmt_create_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
-        if self.original_id is not None:
-            result['OriginalId'] = self.original_id
+        if self.id is not None:
+            result['Id'] = self.id
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
+        if self.original_id is not None:
+            result['OriginalId'] = self.original_id
         if self.id_type is not None:
             result['IdType'] = self.id_type
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
-        if m.get('OriginalId') is not None:
-            self.original_id = m.get('OriginalId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
+        if m.get('OriginalId') is not None:
+            self.original_id = m.get('OriginalId')
         if m.get('IdType') is not None:
             self.id_type = m.get('IdType')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
         return self
 
 
 class FindVersionBlackDevicesResponseBodyDeviceList(TeaModel):
     def __init__(
         self,
-        items: List[FindVersionBlackDevicesResponseBodyDeviceListItems] = None,
         total_count: int = None,
+        items: List[FindVersionBlackDevicesResponseBodyDeviceListItems] = None,
     ):
-        self.items = items
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -12133,23 +12346,23 @@ class FindVersionBlackDevicesResponseBodyDeviceList(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = FindVersionBlackDevicesResponseBodyDeviceListItems()
                 self.items.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -12273,76 +12486,76 @@ class FindVersionDeviceGroupsRequest(TeaModel):
 class FindVersionDeviceGroupsResponseBodyDeviceGroupListItems(TeaModel):
     def __init__(
         self,
-        gmt_modify_timestamp: int = None,
-        gmt_create_timestamp: int = None,
+        id: int = None,
+        name: str = None,
+        gmt_create: str = None,
         gmt_modify: str = None,
         description: str = None,
-        gmt_create: str = None,
-        name: str = None,
-        id: int = None,
         max_count: str = None,
+        gmt_create_timestamp: int = None,
+        gmt_modify_timestamp: int = None,
     ):
-        self.gmt_modify_timestamp = gmt_modify_timestamp
-        self.gmt_create_timestamp = gmt_create_timestamp
+        self.id = id
+        self.name = name
+        self.gmt_create = gmt_create
         self.gmt_modify = gmt_modify
         self.description = description
-        self.gmt_create = gmt_create
-        self.name = name
-        self.id = id
         self.max_count = max_count
+        self.gmt_create_timestamp = gmt_create_timestamp
+        self.gmt_modify_timestamp = gmt_modify_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_modify_timestamp is not None:
-            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
         if self.gmt_modify is not None:
             result['GmtModify'] = self.gmt_modify
         if self.description is not None:
             result['Description'] = self.description
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.id is not None:
-            result['Id'] = self.id
         if self.max_count is not None:
             result['MaxCount'] = self.max_count
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.gmt_modify_timestamp is not None:
+            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtModifyTimestamp') is not None:
-            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModify') is not None:
             self.gmt_modify = m.get('GmtModify')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         if m.get('MaxCount') is not None:
             self.max_count = m.get('MaxCount')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
+        if m.get('GmtModifyTimestamp') is not None:
+            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
         return self
 
 
 class FindVersionDeviceGroupsResponseBodyDeviceGroupList(TeaModel):
     def __init__(
         self,
-        items: List[FindVersionDeviceGroupsResponseBodyDeviceGroupListItems] = None,
         total_count: int = None,
+        items: List[FindVersionDeviceGroupsResponseBodyDeviceGroupListItems] = None,
     ):
-        self.items = items
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -12352,23 +12565,23 @@ class FindVersionDeviceGroupsResponseBodyDeviceGroupList(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = FindVersionDeviceGroupsResponseBodyDeviceGroupListItems()
                 self.items.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -12492,64 +12705,64 @@ class FindVersionGroupDevicesRequest(TeaModel):
 class FindVersionGroupDevicesResponseBodyGroupDeviceListItems(TeaModel):
     def __init__(
         self,
-        gmt_create_timestamp: int = None,
-        original_id: str = None,
+        id: str = None,
         device_id: str = None,
         id_type: str = None,
+        original_id: str = None,
         gmt_create: str = None,
-        id: str = None,
+        gmt_create_timestamp: int = None,
     ):
-        self.gmt_create_timestamp = gmt_create_timestamp
-        self.original_id = original_id
+        self.id = id
         self.device_id = device_id
         self.id_type = id_type
+        self.original_id = original_id
         self.gmt_create = gmt_create
-        self.id = id
+        self.gmt_create_timestamp = gmt_create_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
-        if self.original_id is not None:
-            result['OriginalId'] = self.original_id
+        if self.id is not None:
+            result['Id'] = self.id
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
         if self.id_type is not None:
             result['IdType'] = self.id_type
+        if self.original_id is not None:
+            result['OriginalId'] = self.original_id
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
-        if m.get('OriginalId') is not None:
-            self.original_id = m.get('OriginalId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
         if m.get('IdType') is not None:
             self.id_type = m.get('IdType')
+        if m.get('OriginalId') is not None:
+            self.original_id = m.get('OriginalId')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
         return self
 
 
 class FindVersionGroupDevicesResponseBodyGroupDeviceList(TeaModel):
     def __init__(
         self,
-        items: List[FindVersionGroupDevicesResponseBodyGroupDeviceListItems] = None,
         total_count: int = None,
+        items: List[FindVersionGroupDevicesResponseBodyGroupDeviceListItems] = None,
     ):
-        self.items = items
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -12559,23 +12772,23 @@ class FindVersionGroupDevicesResponseBodyGroupDeviceList(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = FindVersionGroupDevicesResponseBodyGroupDeviceListItems()
                 self.items.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -12717,94 +12930,94 @@ class FindVersionMessagesRequest(TeaModel):
 class FindVersionMessagesResponseBodyMessageListItems(TeaModel):
     def __init__(
         self,
-        gmt_modify_timestamp: int = None,
-        gmt_create_timestamp: int = None,
-        status: str = None,
-        gmt_modify: str = None,
+        id: int = None,
         message_id: str = None,
+        version_id: str = None,
+        test_id: str = None,
+        status: str = None,
+        status_desc: str = None,
         device_id: str = None,
         gmt_create: str = None,
-        version_id: str = None,
-        status_desc: str = None,
-        test_id: str = None,
-        id: int = None,
+        gmt_modify: str = None,
+        gmt_create_timestamp: int = None,
+        gmt_modify_timestamp: int = None,
     ):
-        self.gmt_modify_timestamp = gmt_modify_timestamp
-        self.gmt_create_timestamp = gmt_create_timestamp
-        self.status = status
-        self.gmt_modify = gmt_modify
+        self.id = id
         self.message_id = message_id
+        self.version_id = version_id
+        self.test_id = test_id
+        self.status = status
+        self.status_desc = status_desc
         self.device_id = device_id
         self.gmt_create = gmt_create
-        self.version_id = version_id
-        self.status_desc = status_desc
-        self.test_id = test_id
-        self.id = id
+        self.gmt_modify = gmt_modify
+        self.gmt_create_timestamp = gmt_create_timestamp
+        self.gmt_modify_timestamp = gmt_modify_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_modify_timestamp is not None:
-            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.gmt_modify is not None:
-            result['GmtModify'] = self.gmt_modify
+        if self.id is not None:
+            result['Id'] = self.id
         if self.message_id is not None:
             result['MessageId'] = self.message_id
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        if self.test_id is not None:
+            result['TestId'] = self.test_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_desc is not None:
+            result['StatusDesc'] = self.status_desc
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
-        if self.status_desc is not None:
-            result['StatusDesc'] = self.status_desc
-        if self.test_id is not None:
-            result['TestId'] = self.test_id
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.gmt_modify_timestamp is not None:
+            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtModifyTimestamp') is not None:
-            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('GmtModify') is not None:
-            self.gmt_modify = m.get('GmtModify')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('MessageId') is not None:
             self.message_id = m.get('MessageId')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        if m.get('TestId') is not None:
+            self.test_id = m.get('TestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusDesc') is not None:
+            self.status_desc = m.get('StatusDesc')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
-        if m.get('StatusDesc') is not None:
-            self.status_desc = m.get('StatusDesc')
-        if m.get('TestId') is not None:
-            self.test_id = m.get('TestId')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
+        if m.get('GmtModifyTimestamp') is not None:
+            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
         return self
 
 
 class FindVersionMessagesResponseBodyMessageList(TeaModel):
     def __init__(
         self,
-        items: List[FindVersionMessagesResponseBodyMessageListItems] = None,
         total_count: int = None,
+        items: List[FindVersionMessagesResponseBodyMessageListItems] = None,
     ):
-        self.items = items
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -12814,23 +13027,23 @@ class FindVersionMessagesResponseBodyMessageList(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = FindVersionMessagesResponseBodyMessageListItems()
                 self.items.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -12954,94 +13167,94 @@ class FindVersionMessageSendRecordsRequest(TeaModel):
 class FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems(TeaModel):
     def __init__(
         self,
-        gmt_create_timestamp: int = None,
+        id: int = None,
         message_type: str = None,
+        version_id: str = None,
+        target_id: str = None,
+        result: str = None,
+        result_desc: str = None,
+        succeeded_count: str = None,
         failed_count: str = None,
         skipped_count: str = None,
-        result: str = None,
-        succeeded_count: str = None,
         gmt_create: str = None,
-        version_id: str = None,
-        result_desc: str = None,
-        target_id: str = None,
-        id: int = None,
+        gmt_create_timestamp: int = None,
     ):
-        self.gmt_create_timestamp = gmt_create_timestamp
+        self.id = id
         self.message_type = message_type
+        self.version_id = version_id
+        self.target_id = target_id
+        self.result = result
+        self.result_desc = result_desc
+        self.succeeded_count = succeeded_count
         self.failed_count = failed_count
         self.skipped_count = skipped_count
-        self.result = result
-        self.succeeded_count = succeeded_count
         self.gmt_create = gmt_create
-        self.version_id = version_id
-        self.result_desc = result_desc
-        self.target_id = target_id
-        self.id = id
+        self.gmt_create_timestamp = gmt_create_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.id is not None:
+            result['Id'] = self.id
         if self.message_type is not None:
             result['MessageType'] = self.message_type
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        if self.target_id is not None:
+            result['TargetId'] = self.target_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.result_desc is not None:
+            result['ResultDesc'] = self.result_desc
+        if self.succeeded_count is not None:
+            result['SucceededCount'] = self.succeeded_count
         if self.failed_count is not None:
             result['FailedCount'] = self.failed_count
         if self.skipped_count is not None:
             result['SkippedCount'] = self.skipped_count
-        if self.result is not None:
-            result['Result'] = self.result
-        if self.succeeded_count is not None:
-            result['SucceededCount'] = self.succeeded_count
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
-        if self.result_desc is not None:
-            result['ResultDesc'] = self.result_desc
-        if self.target_id is not None:
-            result['TargetId'] = self.target_id
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('MessageType') is not None:
             self.message_type = m.get('MessageType')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        if m.get('TargetId') is not None:
+            self.target_id = m.get('TargetId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('ResultDesc') is not None:
+            self.result_desc = m.get('ResultDesc')
+        if m.get('SucceededCount') is not None:
+            self.succeeded_count = m.get('SucceededCount')
         if m.get('FailedCount') is not None:
             self.failed_count = m.get('FailedCount')
         if m.get('SkippedCount') is not None:
             self.skipped_count = m.get('SkippedCount')
-        if m.get('Result') is not None:
-            self.result = m.get('Result')
-        if m.get('SucceededCount') is not None:
-            self.succeeded_count = m.get('SucceededCount')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
-        if m.get('ResultDesc') is not None:
-            self.result_desc = m.get('ResultDesc')
-        if m.get('TargetId') is not None:
-            self.target_id = m.get('TargetId')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
         return self
 
 
 class FindVersionMessageSendRecordsResponseBodyMessageSendRecordList(TeaModel):
     def __init__(
         self,
-        items: List[FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems] = None,
         total_count: int = None,
+        items: List[FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems] = None,
     ):
-        self.items = items
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -13051,34 +13264,34 @@ class FindVersionMessageSendRecordsResponseBodyMessageSendRecordList(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = FindVersionMessageSendRecordsResponseBodyMessageSendRecordListItems()
                 self.items.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
 class FindVersionMessageSendRecordsResponseBody(TeaModel):
     def __init__(
         self,
-        message_send_record_list: FindVersionMessageSendRecordsResponseBodyMessageSendRecordList = None,
         request_id: str = None,
+        message_send_record_list: FindVersionMessageSendRecordsResponseBodyMessageSendRecordList = None,
     ):
-        self.message_send_record_list = message_send_record_list
         self.request_id = request_id
+        self.message_send_record_list = message_send_record_list
 
     def validate(self):
         if self.message_send_record_list:
@@ -13086,19 +13299,19 @@ class FindVersionMessageSendRecordsResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.message_send_record_list is not None:
-            result['MessageSendRecordList'] = self.message_send_record_list.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.message_send_record_list is not None:
+            result['MessageSendRecordList'] = self.message_send_record_list.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('MessageSendRecordList') is not None:
             temp_model = FindVersionMessageSendRecordsResponseBodyMessageSendRecordList()
             self.message_send_record_list = temp_model.from_map(m['MessageSendRecordList'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -13185,112 +13398,112 @@ class FindVersionTestsRequest(TeaModel):
 class FindVersionTestsResponseBodyVersionTestListItems(TeaModel):
     def __init__(
         self,
-        gmt_create_timestamp: int = None,
-        gmt_modify: str = None,
-        version_id: str = None,
-        gmt_modify_timestamp: int = None,
-        failed_count: str = None,
-        device_group_id: str = None,
-        skipped_count: str = None,
-        description: str = None,
-        succeeded_count: str = None,
-        device_group_name: str = None,
-        gmt_create: str = None,
-        name: str = None,
         id: int = None,
+        version_id: str = None,
         version_type: str = None,
+        name: str = None,
+        description: str = None,
+        gmt_create: str = None,
+        gmt_modify: str = None,
+        device_group_id: str = None,
+        device_group_name: str = None,
+        succeeded_count: str = None,
+        failed_count: str = None,
+        skipped_count: str = None,
+        gmt_create_timestamp: int = None,
+        gmt_modify_timestamp: int = None,
     ):
-        self.gmt_create_timestamp = gmt_create_timestamp
-        self.gmt_modify = gmt_modify
-        self.version_id = version_id
-        self.gmt_modify_timestamp = gmt_modify_timestamp
-        self.failed_count = failed_count
-        self.device_group_id = device_group_id
-        self.skipped_count = skipped_count
-        self.description = description
-        self.succeeded_count = succeeded_count
-        self.device_group_name = device_group_name
-        self.gmt_create = gmt_create
-        self.name = name
         self.id = id
+        self.version_id = version_id
         self.version_type = version_type
+        self.name = name
+        self.description = description
+        self.gmt_create = gmt_create
+        self.gmt_modify = gmt_modify
+        self.device_group_id = device_group_id
+        self.device_group_name = device_group_name
+        self.succeeded_count = succeeded_count
+        self.failed_count = failed_count
+        self.skipped_count = skipped_count
+        self.gmt_create_timestamp = gmt_create_timestamp
+        self.gmt_modify_timestamp = gmt_modify_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
-        if self.gmt_modify is not None:
-            result['GmtModify'] = self.gmt_modify
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
-        if self.gmt_modify_timestamp is not None:
-            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
-        if self.failed_count is not None:
-            result['FailedCount'] = self.failed_count
-        if self.device_group_id is not None:
-            result['DeviceGroupId'] = self.device_group_id
-        if self.skipped_count is not None:
-            result['SkippedCount'] = self.skipped_count
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.succeeded_count is not None:
-            result['SucceededCount'] = self.succeeded_count
-        if self.device_group_name is not None:
-            result['DeviceGroupName'] = self.device_group_name
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.name is not None:
-            result['Name'] = self.name
         if self.id is not None:
             result['Id'] = self.id
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
         if self.version_type is not None:
             result['VersionType'] = self.version_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
+        if self.device_group_id is not None:
+            result['DeviceGroupId'] = self.device_group_id
+        if self.device_group_name is not None:
+            result['DeviceGroupName'] = self.device_group_name
+        if self.succeeded_count is not None:
+            result['SucceededCount'] = self.succeeded_count
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+        if self.skipped_count is not None:
+            result['SkippedCount'] = self.skipped_count
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.gmt_modify_timestamp is not None:
+            result['GmtModifyTimestamp'] = self.gmt_modify_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
-        if m.get('GmtModify') is not None:
-            self.gmt_modify = m.get('GmtModify')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
-        if m.get('GmtModifyTimestamp') is not None:
-            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
-        if m.get('FailedCount') is not None:
-            self.failed_count = m.get('FailedCount')
-        if m.get('DeviceGroupId') is not None:
-            self.device_group_id = m.get('DeviceGroupId')
-        if m.get('SkippedCount') is not None:
-            self.skipped_count = m.get('SkippedCount')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('SucceededCount') is not None:
-            self.succeeded_count = m.get('SucceededCount')
-        if m.get('DeviceGroupName') is not None:
-            self.device_group_name = m.get('DeviceGroupName')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
         if m.get('VersionType') is not None:
             self.version_type = m.get('VersionType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
+        if m.get('DeviceGroupId') is not None:
+            self.device_group_id = m.get('DeviceGroupId')
+        if m.get('DeviceGroupName') is not None:
+            self.device_group_name = m.get('DeviceGroupName')
+        if m.get('SucceededCount') is not None:
+            self.succeeded_count = m.get('SucceededCount')
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+        if m.get('SkippedCount') is not None:
+            self.skipped_count = m.get('SkippedCount')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
+        if m.get('GmtModifyTimestamp') is not None:
+            self.gmt_modify_timestamp = m.get('GmtModifyTimestamp')
         return self
 
 
 class FindVersionTestsResponseBodyVersionTestList(TeaModel):
     def __init__(
         self,
-        items: List[FindVersionTestsResponseBodyVersionTestListItems] = None,
         total_count: int = None,
+        items: List[FindVersionTestsResponseBodyVersionTestListItems] = None,
     ):
-        self.items = items
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -13300,23 +13513,23 @@ class FindVersionTestsResponseBodyVersionTestList(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = FindVersionTestsResponseBodyVersionTestListItems()
                 self.items.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -13446,64 +13659,64 @@ class FindVersionWhiteDevicesRequest(TeaModel):
 class FindVersionWhiteDevicesResponseBodyDeviceListItems(TeaModel):
     def __init__(
         self,
-        gmt_create_timestamp: int = None,
-        original_id: str = None,
+        id: int = None,
         device_id: str = None,
+        original_id: str = None,
         id_type: str = None,
         gmt_create: str = None,
-        id: int = None,
+        gmt_create_timestamp: int = None,
     ):
-        self.gmt_create_timestamp = gmt_create_timestamp
-        self.original_id = original_id
+        self.id = id
         self.device_id = device_id
+        self.original_id = original_id
         self.id_type = id_type
         self.gmt_create = gmt_create
-        self.id = id
+        self.gmt_create_timestamp = gmt_create_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_create_timestamp is not None:
-            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
-        if self.original_id is not None:
-            result['OriginalId'] = self.original_id
+        if self.id is not None:
+            result['Id'] = self.id
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
+        if self.original_id is not None:
+            result['OriginalId'] = self.original_id
         if self.id_type is not None:
             result['IdType'] = self.id_type
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.gmt_create_timestamp is not None:
+            result['GmtCreateTimestamp'] = self.gmt_create_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
-        if m.get('OriginalId') is not None:
-            self.original_id = m.get('OriginalId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
+        if m.get('OriginalId') is not None:
+            self.original_id = m.get('OriginalId')
         if m.get('IdType') is not None:
             self.id_type = m.get('IdType')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('GmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('GmtCreateTimestamp')
         return self
 
 
 class FindVersionWhiteDevicesResponseBodyDeviceList(TeaModel):
     def __init__(
         self,
-        items: List[FindVersionWhiteDevicesResponseBodyDeviceListItems] = None,
         total_count: int = None,
+        items: List[FindVersionWhiteDevicesResponseBodyDeviceListItems] = None,
     ):
-        self.items = items
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -13513,23 +13726,23 @@ class FindVersionWhiteDevicesResponseBodyDeviceList(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = FindVersionWhiteDevicesResponseBodyDeviceListItems()
                 self.items.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -13635,35 +13848,35 @@ class GenerateAssistFileUploadUrlRequest(TeaModel):
 class GenerateAssistFileUploadUrlResponseBody(TeaModel):
     def __init__(
         self,
+        request_id: str = None,
         file_key: str = None,
         upload_url: str = None,
-        request_id: str = None,
     ):
+        self.request_id = request_id
         self.file_key = file_key
         self.upload_url = upload_url
-        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.file_key is not None:
             result['FileKey'] = self.file_key
         if self.upload_url is not None:
             result['UploadUrl'] = self.upload_url
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('FileKey') is not None:
             self.file_key = m.get('FileKey')
         if m.get('UploadUrl') is not None:
             self.upload_url = m.get('UploadUrl')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -13732,60 +13945,60 @@ class GenerateFunctionFileUploadMetaRequest(TeaModel):
 class GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy(TeaModel):
     def __init__(
         self,
+        access_id: str = None,
+        expire: str = None,
+        policy: str = None,
         signature: str = None,
         host: str = None,
-        policy: str = None,
-        expire: str = None,
-        access_id: str = None,
     ):
+        self.access_id = access_id
+        self.expire = expire
+        self.policy = policy
         self.signature = signature
         self.host = host
-        self.policy = policy
-        self.expire = expire
-        self.access_id = access_id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.policy is not None:
+            result['Policy'] = self.policy
         if self.signature is not None:
             result['Signature'] = self.signature
         if self.host is not None:
             result['Host'] = self.host
-        if self.policy is not None:
-            result['Policy'] = self.policy
-        if self.expire is not None:
-            result['Expire'] = self.expire
-        if self.access_id is not None:
-            result['AccessId'] = self.access_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
         if m.get('Signature') is not None:
             self.signature = m.get('Signature')
         if m.get('Host') is not None:
             self.host = m.get('Host')
-        if m.get('Policy') is not None:
-            self.policy = m.get('Policy')
-        if m.get('Expire') is not None:
-            self.expire = m.get('Expire')
-        if m.get('AccessId') is not None:
-            self.access_id = m.get('AccessId')
         return self
 
 
 class GenerateFunctionFileUploadMetaResponseBodyUploadMeta(TeaModel):
     def __init__(
         self,
-        post_object_policy: GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy = None,
         security_token: str = None,
         object_key: str = None,
+        post_object_policy: GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy = None,
     ):
-        self.post_object_policy = post_object_policy
         self.security_token = security_token
         self.object_key = object_key
+        self.post_object_policy = post_object_policy
 
     def validate(self):
         if self.post_object_policy:
@@ -13793,23 +14006,23 @@ class GenerateFunctionFileUploadMetaResponseBodyUploadMeta(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.post_object_policy is not None:
-            result['PostObjectPolicy'] = self.post_object_policy.to_map()
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         if self.object_key is not None:
             result['ObjectKey'] = self.object_key
+        if self.post_object_policy is not None:
+            result['PostObjectPolicy'] = self.post_object_policy.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PostObjectPolicy') is not None:
-            temp_model = GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy()
-            self.post_object_policy = temp_model.from_map(m['PostObjectPolicy'])
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         if m.get('ObjectKey') is not None:
             self.object_key = m.get('ObjectKey')
+        if m.get('PostObjectPolicy') is not None:
+            temp_model = GenerateFunctionFileUploadMetaResponseBodyUploadMetaPostObjectPolicy()
+            self.post_object_policy = temp_model.from_map(m['PostObjectPolicy'])
         return self
 
 
@@ -13921,47 +14134,47 @@ class GenerateOssPostPolicyRequest(TeaModel):
 class GenerateOssPostPolicyResponseBodyOssPostPolicy(TeaModel):
     def __init__(
         self,
+        access_id: str = None,
+        policy: str = None,
         signature: str = None,
         host: str = None,
-        policy: str = None,
         expire: str = None,
-        access_id: str = None,
     ):
+        self.access_id = access_id
+        self.policy = policy
         self.signature = signature
         self.host = host
-        self.policy = policy
         self.expire = expire
-        self.access_id = access_id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.policy is not None:
+            result['Policy'] = self.policy
         if self.signature is not None:
             result['Signature'] = self.signature
         if self.host is not None:
             result['Host'] = self.host
-        if self.policy is not None:
-            result['Policy'] = self.policy
         if self.expire is not None:
             result['Expire'] = self.expire
-        if self.access_id is not None:
-            result['AccessId'] = self.access_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
         if m.get('Signature') is not None:
             self.signature = m.get('Signature')
         if m.get('Host') is not None:
             self.host = m.get('Host')
-        if m.get('Policy') is not None:
-            self.policy = m.get('Policy')
         if m.get('Expire') is not None:
             self.expire = m.get('Expire')
-        if m.get('AccessId') is not None:
-            self.access_id = m.get('AccessId')
         return self
 
 
@@ -14061,47 +14274,47 @@ class GenerateOssUploadMetaRequest(TeaModel):
 class GenerateOssUploadMetaResponseBodyOssUploadMeta(TeaModel):
     def __init__(
         self,
-        security_token: str = None,
-        object_key: str = None,
-        access_key_secret: str = None,
         access_key_id: str = None,
+        access_key_secret: str = None,
+        security_token: str = None,
         bucket: str = None,
+        object_key: str = None,
     ):
-        self.security_token = security_token
-        self.object_key = object_key
-        self.access_key_secret = access_key_secret
         self.access_key_id = access_key_id
+        self.access_key_secret = access_key_secret
+        self.security_token = security_token
         self.bucket = bucket
+        self.object_key = object_key
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
-        if self.object_key is not None:
-            result['ObjectKey'] = self.object_key
-        if self.access_key_secret is not None:
-            result['AccessKeySecret'] = self.access_key_secret
         if self.access_key_id is not None:
             result['AccessKeyId'] = self.access_key_id
+        if self.access_key_secret is not None:
+            result['AccessKeySecret'] = self.access_key_secret
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
         if self.bucket is not None:
             result['Bucket'] = self.bucket
+        if self.object_key is not None:
+            result['ObjectKey'] = self.object_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
-        if m.get('ObjectKey') is not None:
-            self.object_key = m.get('ObjectKey')
-        if m.get('AccessKeySecret') is not None:
-            self.access_key_secret = m.get('AccessKeySecret')
         if m.get('AccessKeyId') is not None:
             self.access_key_id = m.get('AccessKeyId')
+        if m.get('AccessKeySecret') is not None:
+            self.access_key_secret = m.get('AccessKeySecret')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
         if m.get('Bucket') is not None:
             self.bucket = m.get('Bucket')
+        if m.get('ObjectKey') is not None:
+            self.object_key = m.get('ObjectKey')
         return self
 
 
@@ -14499,59 +14712,59 @@ class GetDeviceAppUpdateFunnelEventsRequest(TeaModel):
 class GetDeviceAppUpdateFunnelEventsResponseBodyEventList(TeaModel):
     def __init__(
         self,
-        package_name: str = None,
+        tenant_id: str = None,
         device_id: str = None,
         target_version_code: str = None,
         event: str = None,
-        report_timestamp: int = None,
         report_time: str = None,
-        tenant_id: str = None,
+        package_name: str = None,
+        report_timestamp: int = None,
     ):
-        self.package_name = package_name
+        self.tenant_id = tenant_id
         self.device_id = device_id
         self.target_version_code = target_version_code
         self.event = event
-        self.report_timestamp = report_timestamp
         self.report_time = report_time
-        self.tenant_id = tenant_id
+        self.package_name = package_name
+        self.report_timestamp = report_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.package_name is not None:
-            result['PackageName'] = self.package_name
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
         if self.target_version_code is not None:
             result['TargetVersionCode'] = self.target_version_code
         if self.event is not None:
             result['Event'] = self.event
-        if self.report_timestamp is not None:
-            result['ReportTimestamp'] = self.report_timestamp
         if self.report_time is not None:
             result['ReportTime'] = self.report_time
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
+        if self.report_timestamp is not None:
+            result['ReportTimestamp'] = self.report_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PackageName') is not None:
-            self.package_name = m.get('PackageName')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
         if m.get('TargetVersionCode') is not None:
             self.target_version_code = m.get('TargetVersionCode')
         if m.get('Event') is not None:
             self.event = m.get('Event')
-        if m.get('ReportTimestamp') is not None:
-            self.report_timestamp = m.get('ReportTimestamp')
         if m.get('ReportTime') is not None:
             self.report_time = m.get('ReportTime')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
+        if m.get('ReportTimestamp') is not None:
+            self.report_timestamp = m.get('ReportTimestamp')
         return self
 
 
@@ -14669,53 +14882,53 @@ class GetDeviceSystemUpdateFunnelEventsRequest(TeaModel):
 class GetDeviceSystemUpdateFunnelEventsResponseBodyEventList(TeaModel):
     def __init__(
         self,
+        tenant_id: str = None,
         device_id: str = None,
         target_version: str = None,
         event: str = None,
-        report_timestamp: int = None,
         report_time: str = None,
-        tenant_id: str = None,
+        report_timestamp: int = None,
     ):
+        self.tenant_id = tenant_id
         self.device_id = device_id
         self.target_version = target_version
         self.event = event
-        self.report_timestamp = report_timestamp
         self.report_time = report_time
-        self.tenant_id = tenant_id
+        self.report_timestamp = report_timestamp
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
         if self.target_version is not None:
             result['TargetVersion'] = self.target_version
         if self.event is not None:
             result['Event'] = self.event
-        if self.report_timestamp is not None:
-            result['ReportTimestamp'] = self.report_timestamp
         if self.report_time is not None:
             result['ReportTime'] = self.report_time
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
+        if self.report_timestamp is not None:
+            result['ReportTimestamp'] = self.report_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
         if m.get('TargetVersion') is not None:
             self.target_version = m.get('TargetVersion')
         if m.get('Event') is not None:
             self.event = m.get('Event')
-        if m.get('ReportTimestamp') is not None:
-            self.report_timestamp = m.get('ReportTimestamp')
         if m.get('ReportTime') is not None:
             self.report_time = m.get('ReportTime')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
+        if m.get('ReportTimestamp') is not None:
+            self.report_timestamp = m.get('ReportTimestamp')
         return self
 
 
@@ -14910,6 +15123,183 @@ class GetNamespaceDataResponse(TeaModel):
         return self
 
 
+class GetNamespaceStatisticsDataRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: str = None,
+        namespace: str = None,
+        dimension_type: str = None,
+        start_time: str = None,
+        end_time: str = None,
+    ):
+        self.project_id = project_id
+        self.namespace = namespace
+        self.dimension_type = dimension_type
+        self.start_time = start_time
+        self.end_time = end_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.dimension_type is not None:
+            result['DimensionType'] = self.dimension_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('DimensionType') is not None:
+            self.dimension_type = m.get('DimensionType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        return self
+
+
+class GetNamespaceStatisticsDataResponseBodyStatisticsSeries(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        data: List[str] = None,
+    ):
+        self.name = name
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.data is not None:
+            result['Data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        return self
+
+
+class GetNamespaceStatisticsDataResponseBodyStatistics(TeaModel):
+    def __init__(
+        self,
+        categories: List[str] = None,
+        series: List[GetNamespaceStatisticsDataResponseBodyStatisticsSeries] = None,
+    ):
+        self.categories = categories
+        self.series = series
+
+    def validate(self):
+        if self.series:
+            for k in self.series:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.categories is not None:
+            result['Categories'] = self.categories
+        result['Series'] = []
+        if self.series is not None:
+            for k in self.series:
+                result['Series'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Categories') is not None:
+            self.categories = m.get('Categories')
+        self.series = []
+        if m.get('Series') is not None:
+            for k in m.get('Series'):
+                temp_model = GetNamespaceStatisticsDataResponseBodyStatisticsSeries()
+                self.series.append(temp_model.from_map(k))
+        return self
+
+
+class GetNamespaceStatisticsDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        statistics: GetNamespaceStatisticsDataResponseBodyStatistics = None,
+    ):
+        self.request_id = request_id
+        self.statistics = statistics
+
+    def validate(self):
+        if self.statistics:
+            self.statistics.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.statistics is not None:
+            result['Statistics'] = self.statistics.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Statistics') is not None:
+            temp_model = GetNamespaceStatisticsDataResponseBodyStatistics()
+            self.statistics = temp_model.from_map(m['Statistics'])
+        return self
+
+
+class GetNamespaceStatisticsDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetNamespaceStatisticsDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetNamespaceStatisticsDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetOssUploadMetaRequest(TeaModel):
     def __init__(
         self,
@@ -14942,53 +15332,53 @@ class GetOssUploadMetaRequest(TeaModel):
 class GetOssUploadMetaResponseBodyOssUploadMeta(TeaModel):
     def __init__(
         self,
-        access_key: str = None,
-        signature: str = None,
-        host: str = None,
-        policy: str = None,
-        security_token: str = None,
         object_key: str = None,
+        access_key: str = None,
+        policy: str = None,
+        signature: str = None,
+        security_token: str = None,
+        host: str = None,
     ):
-        self.access_key = access_key
-        self.signature = signature
-        self.host = host
-        self.policy = policy
-        self.security_token = security_token
         self.object_key = object_key
+        self.access_key = access_key
+        self.policy = policy
+        self.signature = signature
+        self.security_token = security_token
+        self.host = host
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.access_key is not None:
-            result['AccessKey'] = self.access_key
-        if self.signature is not None:
-            result['Signature'] = self.signature
-        if self.host is not None:
-            result['Host'] = self.host
-        if self.policy is not None:
-            result['Policy'] = self.policy
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.object_key is not None:
             result['ObjectKey'] = self.object_key
+        if self.access_key is not None:
+            result['AccessKey'] = self.access_key
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.host is not None:
+            result['Host'] = self.host
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessKey') is not None:
-            self.access_key = m.get('AccessKey')
-        if m.get('Signature') is not None:
-            self.signature = m.get('Signature')
-        if m.get('Host') is not None:
-            self.host = m.get('Host')
-        if m.get('Policy') is not None:
-            self.policy = m.get('Policy')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('ObjectKey') is not None:
             self.object_key = m.get('ObjectKey')
+        if m.get('AccessKey') is not None:
+            self.access_key = m.get('AccessKey')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
         return self
 
 
@@ -15106,29 +15496,29 @@ class InvokeFunctionRequest(TeaModel):
 class InvokeFunctionResponseBodyResult(TeaModel):
     def __init__(
         self,
-        output: str = None,
         back_end_request_id: str = None,
+        output: str = None,
     ):
-        self.output = output
         self.back_end_request_id = back_end_request_id
+        self.output = output
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.output is not None:
-            result['Output'] = self.output
         if self.back_end_request_id is not None:
             result['BackEndRequestId'] = self.back_end_request_id
+        if self.output is not None:
+            result['Output'] = self.output
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Output') is not None:
-            self.output = m.get('Output')
         if m.get('BackEndRequestId') is not None:
             self.back_end_request_id = m.get('BackEndRequestId')
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
         return self
 
 
@@ -15222,82 +15612,82 @@ class ListApiGatewayAppsRequest(TeaModel):
 class ListApiGatewayAppsResponseBodyApiGatewayApps(TeaModel):
     def __init__(
         self,
-        gateway_app_key: str = None,
-        status: int = None,
-        gateway_app_secret: str = None,
-        gateway_app_id: str = None,
-        user_id: str = None,
+        id: int = None,
         project_id: str = None,
+        user_id: str = None,
+        status: int = None,
         gmt_create: int = None,
         gmt_modified: int = None,
-        id: int = None,
+        gateway_app_key: str = None,
+        gateway_app_secret: str = None,
+        gateway_app_id: str = None,
     ):
-        self.gateway_app_key = gateway_app_key
-        self.status = status
-        self.gateway_app_secret = gateway_app_secret
-        self.gateway_app_id = gateway_app_id
-        self.user_id = user_id
+        self.id = id
         self.project_id = project_id
+        self.user_id = user_id
+        self.status = status
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
-        self.id = id
+        self.gateway_app_key = gateway_app_key
+        self.gateway_app_secret = gateway_app_secret
+        self.gateway_app_id = gateway_app_id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gateway_app_key is not None:
-            result['GatewayAppKey'] = self.gateway_app_key
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.gateway_app_secret is not None:
-            result['GatewayAppSecret'] = self.gateway_app_secret
-        if self.gateway_app_id is not None:
-            result['GatewayAppId'] = self.gateway_app_id
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
+        if self.id is not None:
+            result['Id'] = self.id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.status is not None:
+            result['Status'] = self.status
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.gateway_app_key is not None:
+            result['GatewayAppKey'] = self.gateway_app_key
+        if self.gateway_app_secret is not None:
+            result['GatewayAppSecret'] = self.gateway_app_secret
+        if self.gateway_app_id is not None:
+            result['GatewayAppId'] = self.gateway_app_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GatewayAppKey') is not None:
-            self.gateway_app_key = m.get('GatewayAppKey')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('GatewayAppSecret') is not None:
-            self.gateway_app_secret = m.get('GatewayAppSecret')
-        if m.get('GatewayAppId') is not None:
-            self.gateway_app_id = m.get('GatewayAppId')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('GatewayAppKey') is not None:
+            self.gateway_app_key = m.get('GatewayAppKey')
+        if m.get('GatewayAppSecret') is not None:
+            self.gateway_app_secret = m.get('GatewayAppSecret')
+        if m.get('GatewayAppId') is not None:
+            self.gateway_app_id = m.get('GatewayAppId')
         return self
 
 
 class ListApiGatewayAppsResponseBody(TeaModel):
     def __init__(
         self,
-        api_gateway_apps: List[ListApiGatewayAppsResponseBodyApiGatewayApps] = None,
         request_id: str = None,
+        api_gateway_apps: List[ListApiGatewayAppsResponseBodyApiGatewayApps] = None,
     ):
-        self.api_gateway_apps = api_gateway_apps
         self.request_id = request_id
+        self.api_gateway_apps = api_gateway_apps
 
     def validate(self):
         if self.api_gateway_apps:
@@ -15307,23 +15697,23 @@ class ListApiGatewayAppsResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         result['ApiGatewayApps'] = []
         if self.api_gateway_apps is not None:
             for k in self.api_gateway_apps:
                 result['ApiGatewayApps'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         self.api_gateway_apps = []
         if m.get('ApiGatewayApps') is not None:
             for k in m.get('ApiGatewayApps'):
                 temp_model = ListApiGatewayAppsResponseBodyApiGatewayApps()
                 self.api_gateway_apps.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -15386,41 +15776,41 @@ class ListAppsRequest(TeaModel):
 class ListAppsResponseBodyApps(TeaModel):
     def __init__(
         self,
-        app_name: str = None,
         app_key: str = None,
-        os_type: int = None,
+        app_name: str = None,
         app_package: str = None,
+        os_type: int = None,
     ):
-        self.app_name = app_name
         self.app_key = app_key
-        self.os_type = os_type
+        self.app_name = app_name
         self.app_package = app_package
+        self.os_type = os_type
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.app_name is not None:
-            result['AppName'] = self.app_name
         if self.app_key is not None:
             result['AppKey'] = self.app_key
-        if self.os_type is not None:
-            result['OsType'] = self.os_type
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
         if self.app_package is not None:
             result['AppPackage'] = self.app_package
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AppName') is not None:
-            self.app_name = m.get('AppName')
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
-        if m.get('OsType') is not None:
-            self.os_type = m.get('OsType')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
         if m.get('AppPackage') is not None:
             self.app_package = m.get('AppPackage')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
         return self
 
 
@@ -15526,65 +15916,65 @@ class ListAssistActionDetailsRequest(TeaModel):
 class ListAssistActionDetailsResponseBodyResults(TeaModel):
     def __init__(
         self,
-        type: str = None,
-        action: str = None,
-        data: str = None,
         device_id: str = None,
+        action: str = None,
+        timestamp: str = None,
+        type: str = None,
+        data: str = None,
+        id: str = None,
         created_at: int = None,
         updated_at: int = None,
-        timestamp: str = None,
-        id: str = None,
     ):
-        self.type = type
-        self.action = action
-        self.data = data
         self.device_id = device_id
+        self.action = action
+        self.timestamp = timestamp
+        self.type = type
+        self.data = data
+        self.id = id
         self.created_at = created_at
         self.updated_at = updated_at
-        self.timestamp = timestamp
-        self.id = id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.action is not None:
-            result['Action'] = self.action
-        if self.data is not None:
-            result['Data'] = self.data
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.id is not None:
+            result['ID'] = self.id
         if self.created_at is not None:
             result['CreatedAt'] = self.created_at
         if self.updated_at is not None:
             result['UpdatedAt'] = self.updated_at
-        if self.timestamp is not None:
-            result['Timestamp'] = self.timestamp
-        if self.id is not None:
-            result['ID'] = self.id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('Action') is not None:
-            self.action = m.get('Action')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ID') is not None:
+            self.id = m.get('ID')
         if m.get('CreatedAt') is not None:
             self.created_at = m.get('CreatedAt')
         if m.get('UpdatedAt') is not None:
             self.updated_at = m.get('UpdatedAt')
-        if m.get('Timestamp') is not None:
-            self.timestamp = m.get('Timestamp')
-        if m.get('ID') is not None:
-            self.id = m.get('ID')
         return self
 
 
@@ -15702,75 +16092,75 @@ class ListAssistDevicesRequest(TeaModel):
 class ListAssistDevicesResponseBodyDevices(TeaModel):
     def __init__(
         self,
+        device_id: str = None,
+        device_name: str = None,
         serial_number: str = None,
         hardware_id: str = None,
-        device_name: str = None,
-        access_time: int = None,
-        device_id: str = None,
         uuid: str = None,
         vin: str = None,
+        access_time: int = None,
     ):
+        self.device_id = device_id
+        self.device_name = device_name
         self.serial_number = serial_number
         self.hardware_id = hardware_id
-        self.device_name = device_name
-        self.access_time = access_time
-        self.device_id = device_id
         self.uuid = uuid
         self.vin = vin
+        self.access_time = access_time
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
+        if self.device_id is not None:
+            result['DeviceId'] = self.device_id
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
         if self.hardware_id is not None:
             result['HardwareId'] = self.hardware_id
-        if self.device_name is not None:
-            result['DeviceName'] = self.device_name
-        if self.access_time is not None:
-            result['AccessTime'] = self.access_time
-        if self.device_id is not None:
-            result['DeviceId'] = self.device_id
         if self.uuid is not None:
             result['UUID'] = self.uuid
         if self.vin is not None:
             result['VIN'] = self.vin
+        if self.access_time is not None:
+            result['AccessTime'] = self.access_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DeviceId') is not None:
+            self.device_id = m.get('DeviceId')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
         if m.get('HardwareId') is not None:
             self.hardware_id = m.get('HardwareId')
-        if m.get('DeviceName') is not None:
-            self.device_name = m.get('DeviceName')
-        if m.get('AccessTime') is not None:
-            self.access_time = m.get('AccessTime')
-        if m.get('DeviceId') is not None:
-            self.device_id = m.get('DeviceId')
         if m.get('UUID') is not None:
             self.uuid = m.get('UUID')
         if m.get('VIN') is not None:
             self.vin = m.get('VIN')
+        if m.get('AccessTime') is not None:
+            self.access_time = m.get('AccessTime')
         return self
 
 
 class ListAssistDevicesResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         request_id: str = None,
-        per_page: int = None,
         page_index: int = None,
+        per_page: int = None,
+        total_count: int = None,
         devices: List[ListAssistDevicesResponseBodyDevices] = None,
     ):
-        self.total_count = total_count
         self.request_id = request_id
-        self.per_page = per_page
         self.page_index = page_index
+        self.per_page = per_page
+        self.total_count = total_count
         self.devices = devices
 
     def validate(self):
@@ -15781,14 +16171,14 @@ class ListAssistDevicesResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.per_page is not None:
-            result['PerPage'] = self.per_page
         if self.page_index is not None:
             result['PageIndex'] = self.page_index
+        if self.per_page is not None:
+            result['PerPage'] = self.per_page
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Devices'] = []
         if self.devices is not None:
             for k in self.devices:
@@ -15797,14 +16187,14 @@ class ListAssistDevicesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('PerPage') is not None:
-            self.per_page = m.get('PerPage')
         if m.get('PageIndex') is not None:
             self.page_index = m.get('PageIndex')
+        if m.get('PerPage') is not None:
+            self.per_page = m.get('PerPage')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.devices = []
         if m.get('Devices') is not None:
             for k in m.get('Devices'):
@@ -15890,100 +16280,100 @@ class ListAssistHistoriesRequest(TeaModel):
 class ListAssistHistoriesResponseBodyHistories(TeaModel):
     def __init__(
         self,
-        serial_number: str = None,
-        end_time: int = None,
-        start_time: int = None,
-        uname: str = None,
-        hardware_id: str = None,
+        id: str = None,
         device_name: str = None,
-        uuid: str = None,
+        start_time: int = None,
+        end_time: int = None,
         device_id: str = None,
+        serial_number: str = None,
+        hardware_id: str = None,
+        uuid: str = None,
         vin: str = None,
         uid: str = None,
-        id: str = None,
+        uname: str = None,
     ):
-        self.serial_number = serial_number
-        self.end_time = end_time
-        self.start_time = start_time
-        self.uname = uname
-        self.hardware_id = hardware_id
+        self.id = id
         self.device_name = device_name
-        self.uuid = uuid
+        self.start_time = start_time
+        self.end_time = end_time
         self.device_id = device_id
+        self.serial_number = serial_number
+        self.hardware_id = hardware_id
+        self.uuid = uuid
         self.vin = vin
         self.uid = uid
-        self.id = id
+        self.uname = uname
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.serial_number is not None:
-            result['SerialNumber'] = self.serial_number
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.uname is not None:
-            result['UNAME'] = self.uname
-        if self.hardware_id is not None:
-            result['HardwareId'] = self.hardware_id
+        if self.id is not None:
+            result['ID'] = self.id
         if self.device_name is not None:
             result['DeviceName'] = self.device_name
-        if self.uuid is not None:
-            result['UUID'] = self.uuid
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.hardware_id is not None:
+            result['HardwareId'] = self.hardware_id
+        if self.uuid is not None:
+            result['UUID'] = self.uuid
         if self.vin is not None:
             result['VIN'] = self.vin
         if self.uid is not None:
             result['UID'] = self.uid
-        if self.id is not None:
-            result['ID'] = self.id
+        if self.uname is not None:
+            result['UNAME'] = self.uname
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SerialNumber') is not None:
-            self.serial_number = m.get('SerialNumber')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('UNAME') is not None:
-            self.uname = m.get('UNAME')
-        if m.get('HardwareId') is not None:
-            self.hardware_id = m.get('HardwareId')
+        if m.get('ID') is not None:
+            self.id = m.get('ID')
         if m.get('DeviceName') is not None:
             self.device_name = m.get('DeviceName')
-        if m.get('UUID') is not None:
-            self.uuid = m.get('UUID')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('HardwareId') is not None:
+            self.hardware_id = m.get('HardwareId')
+        if m.get('UUID') is not None:
+            self.uuid = m.get('UUID')
         if m.get('VIN') is not None:
             self.vin = m.get('VIN')
         if m.get('UID') is not None:
             self.uid = m.get('UID')
-        if m.get('ID') is not None:
-            self.id = m.get('ID')
+        if m.get('UNAME') is not None:
+            self.uname = m.get('UNAME')
         return self
 
 
 class ListAssistHistoriesResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         request_id: str = None,
-        per_page: int = None,
-        histories: List[ListAssistHistoriesResponseBodyHistories] = None,
         page_index: int = None,
+        per_page: int = None,
+        total_count: int = None,
+        histories: List[ListAssistHistoriesResponseBodyHistories] = None,
     ):
-        self.total_count = total_count
         self.request_id = request_id
-        self.per_page = per_page
-        self.histories = histories
         self.page_index = page_index
+        self.per_page = per_page
+        self.total_count = total_count
+        self.histories = histories
 
     def validate(self):
         if self.histories:
@@ -15993,35 +16383,35 @@ class ListAssistHistoriesResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
         if self.per_page is not None:
             result['PerPage'] = self.per_page
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Histories'] = []
         if self.histories is not None:
             for k in self.histories:
                 result['Histories'].append(k.to_map() if k else None)
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
         if m.get('PerPage') is not None:
             self.per_page = m.get('PerPage')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.histories = []
         if m.get('Histories') is not None:
             for k in m.get('Histories'):
                 temp_model = ListAssistHistoriesResponseBodyHistories()
                 self.histories.append(temp_model.from_map(k))
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
         return self
 
 
@@ -16090,18 +16480,18 @@ class ListAssistHistoryDetailsRequest(TeaModel):
 class ListAssistHistoryDetailsResponseBodyActions(TeaModel):
     def __init__(
         self,
-        action: str = None,
-        created_at: int = None,
-        timestamp: str = None,
-        updated_at: int = None,
         assist_id: str = None,
+        action: str = None,
+        timestamp: str = None,
+        created_at: int = None,
+        updated_at: int = None,
         id: str = None,
     ):
-        self.action = action
-        self.created_at = created_at
-        self.timestamp = timestamp
-        self.updated_at = updated_at
         self.assist_id = assist_id
+        self.action = action
+        self.timestamp = timestamp
+        self.created_at = created_at
+        self.updated_at = updated_at
         self.id = id
 
     def validate(self):
@@ -16109,32 +16499,32 @@ class ListAssistHistoryDetailsResponseBodyActions(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.action is not None:
-            result['Action'] = self.action
-        if self.created_at is not None:
-            result['CreatedAt'] = self.created_at
-        if self.timestamp is not None:
-            result['Timestamp'] = self.timestamp
-        if self.updated_at is not None:
-            result['UpdatedAt'] = self.updated_at
         if self.assist_id is not None:
             result['AssistId'] = self.assist_id
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.created_at is not None:
+            result['CreatedAt'] = self.created_at
+        if self.updated_at is not None:
+            result['UpdatedAt'] = self.updated_at
         if self.id is not None:
             result['ID'] = self.id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Action') is not None:
-            self.action = m.get('Action')
-        if m.get('CreatedAt') is not None:
-            self.created_at = m.get('CreatedAt')
-        if m.get('Timestamp') is not None:
-            self.timestamp = m.get('Timestamp')
-        if m.get('UpdatedAt') is not None:
-            self.updated_at = m.get('UpdatedAt')
         if m.get('AssistId') is not None:
             self.assist_id = m.get('AssistId')
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('CreatedAt') is not None:
+            self.created_at = m.get('CreatedAt')
+        if m.get('UpdatedAt') is not None:
+            self.updated_at = m.get('UpdatedAt')
         if m.get('ID') is not None:
             self.id = m.get('ID')
         return self
@@ -16236,29 +16626,29 @@ class ListClientPluginsRequest(TeaModel):
 class ListClientPluginsResponseBodyClientPlugins(TeaModel):
     def __init__(
         self,
-        pkg_name: str = None,
         name: str = None,
+        pkg_name: str = None,
     ):
-        self.pkg_name = pkg_name
         self.name = name
+        self.pkg_name = pkg_name
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.pkg_name is not None:
-            result['PkgName'] = self.pkg_name
         if self.name is not None:
             result['Name'] = self.name
+        if self.pkg_name is not None:
+            result['PkgName'] = self.pkg_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PkgName') is not None:
-            self.pkg_name = m.get('PkgName')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PkgName') is not None:
+            self.pkg_name = m.get('PkgName')
         return self
 
 
@@ -16364,64 +16754,64 @@ class ListClientPluginVersionsRequest(TeaModel):
 class ListClientPluginVersionsResponseBodyClientPluginVersions(TeaModel):
     def __init__(
         self,
-        version: str = None,
-        download_url: str = None,
-        size: int = None,
         pkg_name: str = None,
         version_code: int = None,
+        version: str = None,
+        size: int = None,
         id: int = None,
+        download_url: str = None,
     ):
-        self.version = version
-        self.download_url = download_url
-        self.size = size
         self.pkg_name = pkg_name
         self.version_code = version_code
+        self.version = version
+        self.size = size
         self.id = id
+        self.download_url = download_url
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.version is not None:
-            result['Version'] = self.version
-        if self.download_url is not None:
-            result['DownloadUrl'] = self.download_url
-        if self.size is not None:
-            result['Size'] = self.size
         if self.pkg_name is not None:
             result['PkgName'] = self.pkg_name
         if self.version_code is not None:
             result['VersionCode'] = self.version_code
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.size is not None:
+            result['Size'] = self.size
         if self.id is not None:
             result['Id'] = self.id
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
-        if m.get('DownloadUrl') is not None:
-            self.download_url = m.get('DownloadUrl')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
         if m.get('PkgName') is not None:
             self.pkg_name = m.get('PkgName')
         if m.get('VersionCode') is not None:
             self.version_code = m.get('VersionCode')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
         return self
 
 
 class ListClientPluginVersionsResponseBody(TeaModel):
     def __init__(
         self,
-        client_plugin_versions: List[ListClientPluginVersionsResponseBodyClientPluginVersions] = None,
         request_id: str = None,
+        client_plugin_versions: List[ListClientPluginVersionsResponseBodyClientPluginVersions] = None,
     ):
-        self.client_plugin_versions = client_plugin_versions
         self.request_id = request_id
+        self.client_plugin_versions = client_plugin_versions
 
     def validate(self):
         if self.client_plugin_versions:
@@ -16431,23 +16821,23 @@ class ListClientPluginVersionsResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         result['ClientPluginVersions'] = []
         if self.client_plugin_versions is not None:
             for k in self.client_plugin_versions:
                 result['ClientPluginVersions'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         self.client_plugin_versions = []
         if m.get('ClientPluginVersions') is not None:
             for k in m.get('ClientPluginVersions'):
                 temp_model = ListClientPluginVersionsResponseBodyClientPluginVersions()
                 self.client_plugin_versions.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -16510,29 +16900,29 @@ class ListClientSdksRequest(TeaModel):
 class ListClientSdksResponseBodyClientSdks(TeaModel):
     def __init__(
         self,
-        os_type: int = None,
+        id: int = None,
         gmt_create: int = None,
         gmt_modified: int = None,
         name: str = None,
         pkg_name: str = None,
         pkg_type: int = None,
-        id: int = None,
+        os_type: int = None,
     ):
-        self.os_type = os_type
+        self.id = id
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.name = name
         self.pkg_name = pkg_name
         self.pkg_type = pkg_type
-        self.id = id
+        self.os_type = os_type
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.os_type is not None:
-            result['OsType'] = self.os_type
+        if self.id is not None:
+            result['Id'] = self.id
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
@@ -16543,14 +16933,14 @@ class ListClientSdksResponseBodyClientSdks(TeaModel):
             result['PkgName'] = self.pkg_name
         if self.pkg_type is not None:
             result['PkgType'] = self.pkg_type
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OsType') is not None:
-            self.os_type = m.get('OsType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
@@ -16561,19 +16951,19 @@ class ListClientSdksResponseBodyClientSdks(TeaModel):
             self.pkg_name = m.get('PkgName')
         if m.get('PkgType') is not None:
             self.pkg_type = m.get('PkgType')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
         return self
 
 
 class ListClientSdksResponseBody(TeaModel):
     def __init__(
         self,
-        client_sdks: List[ListClientSdksResponseBodyClientSdks] = None,
         request_id: str = None,
+        client_sdks: List[ListClientSdksResponseBodyClientSdks] = None,
     ):
-        self.client_sdks = client_sdks
         self.request_id = request_id
+        self.client_sdks = client_sdks
 
     def validate(self):
         if self.client_sdks:
@@ -16583,23 +16973,23 @@ class ListClientSdksResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         result['ClientSdks'] = []
         if self.client_sdks is not None:
             for k in self.client_sdks:
                 result['ClientSdks'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         self.client_sdks = []
         if m.get('ClientSdks') is not None:
             for k in m.get('ClientSdks'):
                 temp_model = ListClientSdksResponseBodyClientSdks()
                 self.client_sdks.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -16689,149 +17079,149 @@ class ListConnectLogsRequest(TeaModel):
         return self
 
 
-class ListConnectLogsResponseBodyLogsPagination(TeaModel):
-    def __init__(
-        self,
-        page_index: int = None,
-        total_page_count: int = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        self.page_index = page_index
-        self.total_page_count = total_page_count
-        self.page_size = page_size
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
 class ListConnectLogsResponseBodyLogsList(TeaModel):
     def __init__(
         self,
-        sid: str = None,
-        status: str = None,
-        time: int = None,
         device_id: str = None,
         system_version: str = None,
+        terminal: str = None,
         ip: str = None,
         net_working: str = None,
-        terminal: str = None,
+        time: int = None,
+        status: str = None,
+        sid: str = None,
     ):
-        self.sid = sid
-        self.status = status
-        self.time = time
         self.device_id = device_id
         self.system_version = system_version
+        self.terminal = terminal
         self.ip = ip
         self.net_working = net_working
-        self.terminal = terminal
+        self.time = time
+        self.status = status
+        self.sid = sid
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.sid is not None:
-            result['Sid'] = self.sid
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.time is not None:
-            result['Time'] = self.time
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
         if self.system_version is not None:
             result['SystemVersion'] = self.system_version
+        if self.terminal is not None:
+            result['Terminal'] = self.terminal
         if self.ip is not None:
             result['Ip'] = self.ip
         if self.net_working is not None:
             result['NetWorking'] = self.net_working
-        if self.terminal is not None:
-            result['Terminal'] = self.terminal
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sid is not None:
+            result['Sid'] = self.sid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Sid') is not None:
-            self.sid = m.get('Sid')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Time') is not None:
-            self.time = m.get('Time')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
         if m.get('SystemVersion') is not None:
             self.system_version = m.get('SystemVersion')
+        if m.get('Terminal') is not None:
+            self.terminal = m.get('Terminal')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
         if m.get('NetWorking') is not None:
             self.net_working = m.get('NetWorking')
-        if m.get('Terminal') is not None:
-            self.terminal = m.get('Terminal')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Sid') is not None:
+            self.sid = m.get('Sid')
+        return self
+
+
+class ListConnectLogsResponseBodyLogsPagination(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        total_page_count: int = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.total_count = total_count
+        self.total_page_count = total_page_count
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
 class ListConnectLogsResponseBodyLogs(TeaModel):
     def __init__(
         self,
-        pagination: ListConnectLogsResponseBodyLogsPagination = None,
         list: List[ListConnectLogsResponseBodyLogsList] = None,
+        pagination: ListConnectLogsResponseBodyLogsPagination = None,
     ):
-        self.pagination = pagination
         self.list = list
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.list:
             for k in self.list:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListConnectLogsResponseBodyLogsPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = ListConnectLogsResponseBodyLogsList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListConnectLogsResponseBodyLogsPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
@@ -16931,53 +17321,53 @@ class ListDeployedFunctionsRequest(TeaModel):
 class ListDeployedFunctionsResponseBodyFunctions(TeaModel):
     def __init__(
         self,
-        project_id: str = None,
-        gmt_create: int = None,
-        name: str = None,
-        gmt_modified: int = None,
         id: int = None,
+        project_id: str = None,
+        name: str = None,
         file_id: int = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
     ):
-        self.project_id = project_id
-        self.gmt_create = gmt_create
-        self.name = name
-        self.gmt_modified = gmt_modified
         self.id = id
+        self.project_id = project_id
+        self.name = name
         self.file_id = file_id
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
         if self.id is not None:
             result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.name is not None:
+            result['Name'] = self.name
         if self.file_id is not None:
             result['FileId'] = self.file_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
         return self
 
 
@@ -17102,16 +17492,16 @@ class ListDeviceBrandsResponseBodyDeviceBrands(TeaModel):
     def __init__(
         self,
         device_brand_id: int = None,
-        description: str = None,
+        device_brand: str = None,
         project_id: str = None,
         manufacture: str = None,
-        device_brand: str = None,
+        description: str = None,
     ):
         self.device_brand_id = device_brand_id
-        self.description = description
+        self.device_brand = device_brand
         self.project_id = project_id
         self.manufacture = manufacture
-        self.device_brand = device_brand
+        self.description = description
 
     def validate(self):
         pass
@@ -17120,39 +17510,39 @@ class ListDeviceBrandsResponseBodyDeviceBrands(TeaModel):
         result = dict()
         if self.device_brand_id is not None:
             result['DeviceBrandId'] = self.device_brand_id
-        if self.description is not None:
-            result['Description'] = self.description
+        if self.device_brand is not None:
+            result['DeviceBrand'] = self.device_brand
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.manufacture is not None:
             result['Manufacture'] = self.manufacture
-        if self.device_brand is not None:
-            result['DeviceBrand'] = self.device_brand
+        if self.description is not None:
+            result['Description'] = self.description
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DeviceBrandId') is not None:
             self.device_brand_id = m.get('DeviceBrandId')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
+        if m.get('DeviceBrand') is not None:
+            self.device_brand = m.get('DeviceBrand')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('Manufacture') is not None:
             self.manufacture = m.get('Manufacture')
-        if m.get('DeviceBrand') is not None:
-            self.device_brand = m.get('DeviceBrand')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         return self
 
 
 class ListDeviceBrandsResponseBody(TeaModel):
     def __init__(
         self,
-        device_brands: List[ListDeviceBrandsResponseBodyDeviceBrands] = None,
         request_id: str = None,
+        device_brands: List[ListDeviceBrandsResponseBodyDeviceBrands] = None,
     ):
-        self.device_brands = device_brands
         self.request_id = request_id
+        self.device_brands = device_brands
 
     def validate(self):
         if self.device_brands:
@@ -17162,23 +17552,23 @@ class ListDeviceBrandsResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         result['DeviceBrands'] = []
         if self.device_brands is not None:
             for k in self.device_brands:
                 result['DeviceBrands'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         self.device_brands = []
         if m.get('DeviceBrands') is not None:
             for k in m.get('DeviceBrands'):
                 temp_model = ListDeviceBrandsResponseBodyDeviceBrands()
                 self.device_brands.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -17242,30 +17632,30 @@ class ListDeviceModelResponseBodyModelList(TeaModel):
     def __init__(
         self,
         device_model_id: int = None,
-        hardware_type: str = None,
         device_type: str = None,
-        can_create_device_id: int = None,
-        project_id: str = None,
-        os_platform: str = None,
+        hardware_type: str = None,
         device_model: str = None,
-        security_chip: str = None,
-        description: str = None,
-        init_usage_type_desc: str = None,
-        init_usage_type: int = None,
         device_brand: str = None,
+        can_create_device_id: int = None,
+        init_usage_type: int = None,
+        init_usage_type_desc: str = None,
+        description: str = None,
+        project_id: str = None,
+        security_chip: str = None,
+        os_platform: str = None,
     ):
         self.device_model_id = device_model_id
-        self.hardware_type = hardware_type
         self.device_type = device_type
-        self.can_create_device_id = can_create_device_id
-        self.project_id = project_id
-        self.os_platform = os_platform
+        self.hardware_type = hardware_type
         self.device_model = device_model
-        self.security_chip = security_chip
-        self.description = description
-        self.init_usage_type_desc = init_usage_type_desc
-        self.init_usage_type = init_usage_type
         self.device_brand = device_brand
+        self.can_create_device_id = can_create_device_id
+        self.init_usage_type = init_usage_type
+        self.init_usage_type_desc = init_usage_type_desc
+        self.description = description
+        self.project_id = project_id
+        self.security_chip = security_chip
+        self.os_platform = os_platform
 
     def validate(self):
         pass
@@ -17274,67 +17664,67 @@ class ListDeviceModelResponseBodyModelList(TeaModel):
         result = dict()
         if self.device_model_id is not None:
             result['DeviceModelId'] = self.device_model_id
-        if self.hardware_type is not None:
-            result['HardwareType'] = self.hardware_type
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
-        if self.can_create_device_id is not None:
-            result['CanCreateDeviceId'] = self.can_create_device_id
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.os_platform is not None:
-            result['OsPlatform'] = self.os_platform
+        if self.hardware_type is not None:
+            result['HardwareType'] = self.hardware_type
         if self.device_model is not None:
             result['DeviceModel'] = self.device_model
-        if self.security_chip is not None:
-            result['SecurityChip'] = self.security_chip
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.init_usage_type_desc is not None:
-            result['InitUsageTypeDesc'] = self.init_usage_type_desc
-        if self.init_usage_type is not None:
-            result['InitUsageType'] = self.init_usage_type
         if self.device_brand is not None:
             result['DeviceBrand'] = self.device_brand
+        if self.can_create_device_id is not None:
+            result['CanCreateDeviceId'] = self.can_create_device_id
+        if self.init_usage_type is not None:
+            result['InitUsageType'] = self.init_usage_type
+        if self.init_usage_type_desc is not None:
+            result['InitUsageTypeDesc'] = self.init_usage_type_desc
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.security_chip is not None:
+            result['SecurityChip'] = self.security_chip
+        if self.os_platform is not None:
+            result['OsPlatform'] = self.os_platform
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DeviceModelId') is not None:
             self.device_model_id = m.get('DeviceModelId')
-        if m.get('HardwareType') is not None:
-            self.hardware_type = m.get('HardwareType')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
-        if m.get('CanCreateDeviceId') is not None:
-            self.can_create_device_id = m.get('CanCreateDeviceId')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('OsPlatform') is not None:
-            self.os_platform = m.get('OsPlatform')
+        if m.get('HardwareType') is not None:
+            self.hardware_type = m.get('HardwareType')
         if m.get('DeviceModel') is not None:
             self.device_model = m.get('DeviceModel')
-        if m.get('SecurityChip') is not None:
-            self.security_chip = m.get('SecurityChip')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('InitUsageTypeDesc') is not None:
-            self.init_usage_type_desc = m.get('InitUsageTypeDesc')
-        if m.get('InitUsageType') is not None:
-            self.init_usage_type = m.get('InitUsageType')
         if m.get('DeviceBrand') is not None:
             self.device_brand = m.get('DeviceBrand')
+        if m.get('CanCreateDeviceId') is not None:
+            self.can_create_device_id = m.get('CanCreateDeviceId')
+        if m.get('InitUsageType') is not None:
+            self.init_usage_type = m.get('InitUsageType')
+        if m.get('InitUsageTypeDesc') is not None:
+            self.init_usage_type_desc = m.get('InitUsageTypeDesc')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SecurityChip') is not None:
+            self.security_chip = m.get('SecurityChip')
+        if m.get('OsPlatform') is not None:
+            self.os_platform = m.get('OsPlatform')
         return self
 
 
 class ListDeviceModelResponseBody(TeaModel):
     def __init__(
         self,
-        model_list: List[ListDeviceModelResponseBodyModelList] = None,
         request_id: str = None,
+        model_list: List[ListDeviceModelResponseBodyModelList] = None,
     ):
-        self.model_list = model_list
         self.request_id = request_id
+        self.model_list = model_list
 
     def validate(self):
         if self.model_list:
@@ -17344,23 +17734,23 @@ class ListDeviceModelResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         result['ModelList'] = []
         if self.model_list is not None:
             for k in self.model_list:
                 result['ModelList'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         self.model_list = []
         if m.get('ModelList') is not None:
             for k in m.get('ModelList'):
                 temp_model = ListDeviceModelResponseBodyModelList()
                 self.model_list.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -17460,36 +17850,36 @@ class ListDeviceModelsResponseBodyDeviceModels(TeaModel):
     def __init__(
         self,
         device_model_id: int = None,
-        hardware_type: str = None,
-        device_name: str = None,
         device_type: str = None,
-        can_create_device_id: int = None,
-        project_id: str = None,
-        os_platform: str = None,
+        hardware_type: str = None,
         device_model: str = None,
-        security_chip: str = None,
-        device_logo_url: str = None,
-        description: str = None,
-        object_key: str = None,
-        init_usage_type_desc: str = None,
-        init_usage_type: int = None,
         device_brand: str = None,
+        can_create_device_id: int = None,
+        init_usage_type: int = None,
+        init_usage_type_desc: str = None,
+        description: str = None,
+        project_id: str = None,
+        security_chip: str = None,
+        os_platform: str = None,
+        object_key: str = None,
+        device_logo_url: str = None,
+        device_name: str = None,
     ):
         self.device_model_id = device_model_id
-        self.hardware_type = hardware_type
-        self.device_name = device_name
         self.device_type = device_type
-        self.can_create_device_id = can_create_device_id
-        self.project_id = project_id
-        self.os_platform = os_platform
+        self.hardware_type = hardware_type
         self.device_model = device_model
-        self.security_chip = security_chip
-        self.device_logo_url = device_logo_url
-        self.description = description
-        self.object_key = object_key
-        self.init_usage_type_desc = init_usage_type_desc
-        self.init_usage_type = init_usage_type
         self.device_brand = device_brand
+        self.can_create_device_id = can_create_device_id
+        self.init_usage_type = init_usage_type
+        self.init_usage_type_desc = init_usage_type_desc
+        self.description = description
+        self.project_id = project_id
+        self.security_chip = security_chip
+        self.os_platform = os_platform
+        self.object_key = object_key
+        self.device_logo_url = device_logo_url
+        self.device_name = device_name
 
     def validate(self):
         pass
@@ -17498,79 +17888,79 @@ class ListDeviceModelsResponseBodyDeviceModels(TeaModel):
         result = dict()
         if self.device_model_id is not None:
             result['DeviceModelId'] = self.device_model_id
-        if self.hardware_type is not None:
-            result['HardwareType'] = self.hardware_type
-        if self.device_name is not None:
-            result['DeviceName'] = self.device_name
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
-        if self.can_create_device_id is not None:
-            result['CanCreateDeviceId'] = self.can_create_device_id
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.os_platform is not None:
-            result['OsPlatform'] = self.os_platform
+        if self.hardware_type is not None:
+            result['HardwareType'] = self.hardware_type
         if self.device_model is not None:
             result['DeviceModel'] = self.device_model
-        if self.security_chip is not None:
-            result['SecurityChip'] = self.security_chip
-        if self.device_logo_url is not None:
-            result['DeviceLogoUrl'] = self.device_logo_url
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.object_key is not None:
-            result['ObjectKey'] = self.object_key
-        if self.init_usage_type_desc is not None:
-            result['InitUsageTypeDesc'] = self.init_usage_type_desc
-        if self.init_usage_type is not None:
-            result['InitUsageType'] = self.init_usage_type
         if self.device_brand is not None:
             result['DeviceBrand'] = self.device_brand
+        if self.can_create_device_id is not None:
+            result['CanCreateDeviceId'] = self.can_create_device_id
+        if self.init_usage_type is not None:
+            result['InitUsageType'] = self.init_usage_type
+        if self.init_usage_type_desc is not None:
+            result['InitUsageTypeDesc'] = self.init_usage_type_desc
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.security_chip is not None:
+            result['SecurityChip'] = self.security_chip
+        if self.os_platform is not None:
+            result['OsPlatform'] = self.os_platform
+        if self.object_key is not None:
+            result['ObjectKey'] = self.object_key
+        if self.device_logo_url is not None:
+            result['DeviceLogoUrl'] = self.device_logo_url
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DeviceModelId') is not None:
             self.device_model_id = m.get('DeviceModelId')
-        if m.get('HardwareType') is not None:
-            self.hardware_type = m.get('HardwareType')
-        if m.get('DeviceName') is not None:
-            self.device_name = m.get('DeviceName')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
-        if m.get('CanCreateDeviceId') is not None:
-            self.can_create_device_id = m.get('CanCreateDeviceId')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('OsPlatform') is not None:
-            self.os_platform = m.get('OsPlatform')
+        if m.get('HardwareType') is not None:
+            self.hardware_type = m.get('HardwareType')
         if m.get('DeviceModel') is not None:
             self.device_model = m.get('DeviceModel')
-        if m.get('SecurityChip') is not None:
-            self.security_chip = m.get('SecurityChip')
-        if m.get('DeviceLogoUrl') is not None:
-            self.device_logo_url = m.get('DeviceLogoUrl')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('ObjectKey') is not None:
-            self.object_key = m.get('ObjectKey')
-        if m.get('InitUsageTypeDesc') is not None:
-            self.init_usage_type_desc = m.get('InitUsageTypeDesc')
-        if m.get('InitUsageType') is not None:
-            self.init_usage_type = m.get('InitUsageType')
         if m.get('DeviceBrand') is not None:
             self.device_brand = m.get('DeviceBrand')
+        if m.get('CanCreateDeviceId') is not None:
+            self.can_create_device_id = m.get('CanCreateDeviceId')
+        if m.get('InitUsageType') is not None:
+            self.init_usage_type = m.get('InitUsageType')
+        if m.get('InitUsageTypeDesc') is not None:
+            self.init_usage_type_desc = m.get('InitUsageTypeDesc')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SecurityChip') is not None:
+            self.security_chip = m.get('SecurityChip')
+        if m.get('OsPlatform') is not None:
+            self.os_platform = m.get('OsPlatform')
+        if m.get('ObjectKey') is not None:
+            self.object_key = m.get('ObjectKey')
+        if m.get('DeviceLogoUrl') is not None:
+            self.device_logo_url = m.get('DeviceLogoUrl')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
         return self
 
 
 class ListDeviceModelsResponseBody(TeaModel):
     def __init__(
         self,
-        device_models: List[ListDeviceModelsResponseBodyDeviceModels] = None,
         request_id: str = None,
+        device_models: List[ListDeviceModelsResponseBodyDeviceModels] = None,
     ):
-        self.device_models = device_models
         self.request_id = request_id
+        self.device_models = device_models
 
     def validate(self):
         if self.device_models:
@@ -17580,23 +17970,23 @@ class ListDeviceModelsResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         result['DeviceModels'] = []
         if self.device_models is not None:
             for k in self.device_models:
                 result['DeviceModels'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         self.device_models = []
         if m.get('DeviceModels') is not None:
             for k in m.get('DeviceModels'):
                 temp_model = ListDeviceModelsResponseBodyDeviceModels()
                 self.device_models.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -17683,119 +18073,119 @@ class ListDevicesRequest(TeaModel):
 class ListDevicesResponseBodyDevices(TeaModel):
     def __init__(
         self,
-        serial_number: str = None,
-        status: str = None,
-        device_model_id: int = None,
-        mac_address: str = None,
         device_id: str = None,
         device_type: str = None,
-        project_id: str = None,
-        device_model: str = None,
         usage_type: int = None,
-        vin: str = None,
         usage_type_desc: str = None,
-        uuid: str = None,
-        hardware_id: str = None,
-        region: str = None,
-        software_id: str = None,
-        name: str = None,
+        device_model: str = None,
+        device_model_id: int = None,
         device_brand: str = None,
+        uuid: str = None,
+        vin: str = None,
+        serial_number: str = None,
+        mac_address: str = None,
+        hardware_id: str = None,
+        software_id: str = None,
+        region: str = None,
+        name: str = None,
+        project_id: str = None,
+        status: str = None,
     ):
-        self.serial_number = serial_number
-        self.status = status
-        self.device_model_id = device_model_id
-        self.mac_address = mac_address
         self.device_id = device_id
         self.device_type = device_type
-        self.project_id = project_id
-        self.device_model = device_model
         self.usage_type = usage_type
-        self.vin = vin
         self.usage_type_desc = usage_type_desc
-        self.uuid = uuid
-        self.hardware_id = hardware_id
-        self.region = region
-        self.software_id = software_id
-        self.name = name
+        self.device_model = device_model
+        self.device_model_id = device_model_id
         self.device_brand = device_brand
+        self.uuid = uuid
+        self.vin = vin
+        self.serial_number = serial_number
+        self.mac_address = mac_address
+        self.hardware_id = hardware_id
+        self.software_id = software_id
+        self.region = region
+        self.name = name
+        self.project_id = project_id
+        self.status = status
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.serial_number is not None:
-            result['SerialNumber'] = self.serial_number
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.device_model_id is not None:
-            result['DeviceModelId'] = self.device_model_id
-        if self.mac_address is not None:
-            result['MacAddress'] = self.mac_address
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.device_model is not None:
-            result['DeviceModel'] = self.device_model
         if self.usage_type is not None:
             result['UsageType'] = self.usage_type
-        if self.vin is not None:
-            result['Vin'] = self.vin
         if self.usage_type_desc is not None:
             result['UsageTypeDesc'] = self.usage_type_desc
-        if self.uuid is not None:
-            result['Uuid'] = self.uuid
-        if self.hardware_id is not None:
-            result['HardwareId'] = self.hardware_id
-        if self.region is not None:
-            result['Region'] = self.region
-        if self.software_id is not None:
-            result['SoftwareId'] = self.software_id
-        if self.name is not None:
-            result['Name'] = self.name
+        if self.device_model is not None:
+            result['DeviceModel'] = self.device_model
+        if self.device_model_id is not None:
+            result['DeviceModelId'] = self.device_model_id
         if self.device_brand is not None:
             result['DeviceBrand'] = self.device_brand
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.vin is not None:
+            result['Vin'] = self.vin
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.mac_address is not None:
+            result['MacAddress'] = self.mac_address
+        if self.hardware_id is not None:
+            result['HardwareId'] = self.hardware_id
+        if self.software_id is not None:
+            result['SoftwareId'] = self.software_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SerialNumber') is not None:
-            self.serial_number = m.get('SerialNumber')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('DeviceModelId') is not None:
-            self.device_model_id = m.get('DeviceModelId')
-        if m.get('MacAddress') is not None:
-            self.mac_address = m.get('MacAddress')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('DeviceModel') is not None:
-            self.device_model = m.get('DeviceModel')
         if m.get('UsageType') is not None:
             self.usage_type = m.get('UsageType')
-        if m.get('Vin') is not None:
-            self.vin = m.get('Vin')
         if m.get('UsageTypeDesc') is not None:
             self.usage_type_desc = m.get('UsageTypeDesc')
-        if m.get('Uuid') is not None:
-            self.uuid = m.get('Uuid')
-        if m.get('HardwareId') is not None:
-            self.hardware_id = m.get('HardwareId')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-        if m.get('SoftwareId') is not None:
-            self.software_id = m.get('SoftwareId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
+        if m.get('DeviceModel') is not None:
+            self.device_model = m.get('DeviceModel')
+        if m.get('DeviceModelId') is not None:
+            self.device_model_id = m.get('DeviceModelId')
         if m.get('DeviceBrand') is not None:
             self.device_brand = m.get('DeviceBrand')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('Vin') is not None:
+            self.vin = m.get('Vin')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('MacAddress') is not None:
+            self.mac_address = m.get('MacAddress')
+        if m.get('HardwareId') is not None:
+            self.hardware_id = m.get('HardwareId')
+        if m.get('SoftwareId') is not None:
+            self.software_id = m.get('SoftwareId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -18044,6 +18434,35 @@ class ListFunctionExecuteLogRequest(TeaModel):
         return self
 
 
+class ListFunctionExecuteLogResponseBodyLogListLogs(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        back_end_request_id: str = None,
+    ):
+        self.message = message
+        self.back_end_request_id = back_end_request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.back_end_request_id is not None:
+            result['BackEndRequestId'] = self.back_end_request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('BackEndRequestId') is not None:
+            self.back_end_request_id = m.get('BackEndRequestId')
+        return self
+
+
 class ListFunctionExecuteLogResponseBodyLogListPagination(TeaModel):
     def __init__(
         self,
@@ -18079,83 +18498,54 @@ class ListFunctionExecuteLogResponseBodyLogListPagination(TeaModel):
         return self
 
 
-class ListFunctionExecuteLogResponseBodyLogListLogs(TeaModel):
-    def __init__(
-        self,
-        message: str = None,
-        back_end_request_id: str = None,
-    ):
-        self.message = message
-        self.back_end_request_id = back_end_request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.back_end_request_id is not None:
-            result['BackEndRequestId'] = self.back_end_request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('BackEndRequestId') is not None:
-            self.back_end_request_id = m.get('BackEndRequestId')
-        return self
-
-
 class ListFunctionExecuteLogResponseBodyLogList(TeaModel):
     def __init__(
         self,
-        pagination: ListFunctionExecuteLogResponseBodyLogListPagination = None,
         logs: List[ListFunctionExecuteLogResponseBodyLogListLogs] = None,
+        pagination: ListFunctionExecuteLogResponseBodyLogListPagination = None,
     ):
-        self.pagination = pagination
         self.logs = logs
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.logs:
             for k in self.logs:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['Logs'] = []
         if self.logs is not None:
             for k in self.logs:
                 result['Logs'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListFunctionExecuteLogResponseBodyLogListPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.logs = []
         if m.get('Logs') is not None:
             for k in m.get('Logs'):
                 temp_model = ListFunctionExecuteLogResponseBodyLogListLogs()
                 self.logs.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListFunctionExecuteLogResponseBodyLogListPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
 class ListFunctionExecuteLogResponseBody(TeaModel):
     def __init__(
         self,
-        log_list: ListFunctionExecuteLogResponseBodyLogList = None,
         request_id: str = None,
+        log_list: ListFunctionExecuteLogResponseBodyLogList = None,
     ):
-        self.log_list = log_list
         self.request_id = request_id
+        self.log_list = log_list
 
     def validate(self):
         if self.log_list:
@@ -18163,19 +18553,19 @@ class ListFunctionExecuteLogResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.log_list is not None:
-            result['LogList'] = self.log_list.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.log_list is not None:
+            result['LogList'] = self.log_list.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('LogList') is not None:
             temp_model = ListFunctionExecuteLogResponseBodyLogList()
             self.log_list = temp_model.from_map(m['LogList'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -18253,18 +18643,101 @@ class ListFunctionFilesRequest(TeaModel):
         return self
 
 
+class ListFunctionFilesResponseBodyFileListFiles(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+        content_id: int = None,
+        status: int = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        description: str = None,
+        sandbox_deploy_time: int = None,
+        production_deploy_time: int = None,
+        sandbox_deploy_status: int = None,
+        production_deploy_status: int = None,
+    ):
+        self.id = id
+        self.name = name
+        self.content_id = content_id
+        self.status = status
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.description = description
+        self.sandbox_deploy_time = sandbox_deploy_time
+        self.production_deploy_time = production_deploy_time
+        self.sandbox_deploy_status = sandbox_deploy_status
+        self.production_deploy_status = production_deploy_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.content_id is not None:
+            result['ContentId'] = self.content_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.sandbox_deploy_time is not None:
+            result['SandboxDeployTime'] = self.sandbox_deploy_time
+        if self.production_deploy_time is not None:
+            result['ProductionDeployTime'] = self.production_deploy_time
+        if self.sandbox_deploy_status is not None:
+            result['SandboxDeployStatus'] = self.sandbox_deploy_status
+        if self.production_deploy_status is not None:
+            result['ProductionDeployStatus'] = self.production_deploy_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ContentId') is not None:
+            self.content_id = m.get('ContentId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('SandboxDeployTime') is not None:
+            self.sandbox_deploy_time = m.get('SandboxDeployTime')
+        if m.get('ProductionDeployTime') is not None:
+            self.production_deploy_time = m.get('ProductionDeployTime')
+        if m.get('SandboxDeployStatus') is not None:
+            self.sandbox_deploy_status = m.get('SandboxDeployStatus')
+        if m.get('ProductionDeployStatus') is not None:
+            self.production_deploy_status = m.get('ProductionDeployStatus')
+        return self
+
+
 class ListFunctionFilesResponseBodyFileListPagination(TeaModel):
     def __init__(
         self,
         page_index: int = None,
-        total_page_count: int = None,
         page_size: int = None,
         total_count: int = None,
+        total_page_count: int = None,
     ):
         self.page_index = page_index
-        self.total_page_count = total_page_count
         self.page_size = page_size
         self.total_count = total_count
+        self.total_page_count = total_page_count
 
     def validate(self):
         pass
@@ -18273,147 +18746,64 @@ class ListFunctionFilesResponseBodyFileListPagination(TeaModel):
         result = dict()
         if self.page_index is not None:
             result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('PageIndex') is not None:
             self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListFunctionFilesResponseBodyFileListFiles(TeaModel):
-    def __init__(
-        self,
-        status: int = None,
-        production_deploy_time: int = None,
-        production_deploy_status: int = None,
-        description: str = None,
-        sandbox_deploy_time: int = None,
-        gmt_create: int = None,
-        sandbox_deploy_status: int = None,
-        gmt_modified: int = None,
-        name: str = None,
-        content_id: int = None,
-        id: int = None,
-    ):
-        self.status = status
-        self.production_deploy_time = production_deploy_time
-        self.production_deploy_status = production_deploy_status
-        self.description = description
-        self.sandbox_deploy_time = sandbox_deploy_time
-        self.gmt_create = gmt_create
-        self.sandbox_deploy_status = sandbox_deploy_status
-        self.gmt_modified = gmt_modified
-        self.name = name
-        self.content_id = content_id
-        self.id = id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.production_deploy_time is not None:
-            result['ProductionDeployTime'] = self.production_deploy_time
-        if self.production_deploy_status is not None:
-            result['ProductionDeployStatus'] = self.production_deploy_status
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.sandbox_deploy_time is not None:
-            result['SandboxDeployTime'] = self.sandbox_deploy_time
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.sandbox_deploy_status is not None:
-            result['SandboxDeployStatus'] = self.sandbox_deploy_status
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.content_id is not None:
-            result['ContentId'] = self.content_id
-        if self.id is not None:
-            result['Id'] = self.id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('ProductionDeployTime') is not None:
-            self.production_deploy_time = m.get('ProductionDeployTime')
-        if m.get('ProductionDeployStatus') is not None:
-            self.production_deploy_status = m.get('ProductionDeployStatus')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('SandboxDeployTime') is not None:
-            self.sandbox_deploy_time = m.get('SandboxDeployTime')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('SandboxDeployStatus') is not None:
-            self.sandbox_deploy_status = m.get('SandboxDeployStatus')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('ContentId') is not None:
-            self.content_id = m.get('ContentId')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
         return self
 
 
 class ListFunctionFilesResponseBodyFileList(TeaModel):
     def __init__(
         self,
-        pagination: ListFunctionFilesResponseBodyFileListPagination = None,
         files: List[ListFunctionFilesResponseBodyFileListFiles] = None,
+        pagination: ListFunctionFilesResponseBodyFileListPagination = None,
     ):
-        self.pagination = pagination
         self.files = files
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.files:
             for k in self.files:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['Files'] = []
         if self.files is not None:
             for k in self.files:
                 result['Files'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListFunctionFilesResponseBodyFileListPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.files = []
         if m.get('Files') is not None:
             for k in m.get('Files'):
                 temp_model = ListFunctionFilesResponseBodyFileListFiles()
                 self.files.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListFunctionFilesResponseBodyFileListPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
@@ -18519,59 +18909,59 @@ class ListFunctionFilesByProjectIdRequest(TeaModel):
 class ListFunctionFilesByProjectIdResponseBodyFiles(TeaModel):
     def __init__(
         self,
+        id: int = None,
+        name: str = None,
         type: int = None,
+        content_id: int = None,
         status: int = None,
         gmt_create: int = None,
         gmt_modified: int = None,
-        name: str = None,
-        id: int = None,
-        content_id: int = None,
     ):
+        self.id = id
+        self.name = name
         self.type = type
+        self.content_id = content_id
         self.status = status
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
-        self.name = name
-        self.id = id
-        self.content_id = content_id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
         if self.type is not None:
             result['Type'] = self.type
+        if self.content_id is not None:
+            result['ContentId'] = self.content_id
         if self.status is not None:
             result['Status'] = self.status
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.content_id is not None:
-            result['ContentId'] = self.content_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('ContentId') is not None:
+            self.content_id = m.get('ContentId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('ContentId') is not None:
-            self.content_id = m.get('ContentId')
         return self
 
 
@@ -18692,119 +19082,119 @@ class ListMessageAcksRequest(TeaModel):
         return self
 
 
-class ListMessageAcksResponseBodyMessageAcksPagination(TeaModel):
-    def __init__(
-        self,
-        page_index: int = None,
-        total_page_count: int = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        self.page_index = page_index
-        self.total_page_count = total_page_count
-        self.page_size = page_size
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
 class ListMessageAcksResponseBodyMessageAcksList(TeaModel):
     def __init__(
         self,
+        mid: int = None,
         device_id: str = None,
         ack_time: int = None,
-        mid: int = None,
     ):
+        self.mid = mid
         self.device_id = device_id
         self.ack_time = ack_time
-        self.mid = mid
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
+        if self.mid is not None:
+            result['Mid'] = self.mid
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
         if self.ack_time is not None:
             result['AckTime'] = self.ack_time
-        if self.mid is not None:
-            result['Mid'] = self.mid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Mid') is not None:
+            self.mid = m.get('Mid')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
         if m.get('AckTime') is not None:
             self.ack_time = m.get('AckTime')
-        if m.get('Mid') is not None:
-            self.mid = m.get('Mid')
+        return self
+
+
+class ListMessageAcksResponseBodyMessageAcksPagination(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        total_page_count: int = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.total_count = total_count
+        self.total_page_count = total_page_count
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
 class ListMessageAcksResponseBodyMessageAcks(TeaModel):
     def __init__(
         self,
-        pagination: ListMessageAcksResponseBodyMessageAcksPagination = None,
         list: List[ListMessageAcksResponseBodyMessageAcksList] = None,
+        pagination: ListMessageAcksResponseBodyMessageAcksPagination = None,
     ):
-        self.pagination = pagination
         self.list = list
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.list:
             for k in self.list:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListMessageAcksResponseBodyMessageAcksPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = ListMessageAcksResponseBodyMessageAcksList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListMessageAcksResponseBodyMessageAcksPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
@@ -18913,130 +19303,130 @@ class ListMessageReceiversRequest(TeaModel):
         return self
 
 
-class ListMessageReceiversResponseBodyMessageReceiversPagination(TeaModel):
-    def __init__(
-        self,
-        page_index: int = None,
-        total_page_count: int = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        self.page_index = page_index
-        self.total_page_count = total_page_count
-        self.page_size = page_size
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
 class ListMessageReceiversResponseBodyMessageReceiversList(TeaModel):
     def __init__(
         self,
+        mid: int = None,
         type: str = None,
         value: str = None,
-        mid: int = None,
     ):
+        self.mid = mid
         self.type = type
         self.value = value
-        self.mid = mid
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
+        if self.mid is not None:
+            result['Mid'] = self.mid
         if self.type is not None:
             result['Type'] = self.type
         if self.value is not None:
             result['Value'] = self.value
-        if self.mid is not None:
-            result['Mid'] = self.mid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Mid') is not None:
+            self.mid = m.get('Mid')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
-        if m.get('Mid') is not None:
-            self.mid = m.get('Mid')
+        return self
+
+
+class ListMessageReceiversResponseBodyMessageReceiversPagination(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        total_page_count: int = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.total_count = total_count
+        self.total_page_count = total_page_count
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
 class ListMessageReceiversResponseBodyMessageReceivers(TeaModel):
     def __init__(
         self,
-        pagination: ListMessageReceiversResponseBodyMessageReceiversPagination = None,
         list: List[ListMessageReceiversResponseBodyMessageReceiversList] = None,
+        pagination: ListMessageReceiversResponseBodyMessageReceiversPagination = None,
     ):
-        self.pagination = pagination
         self.list = list
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.list:
             for k in self.list:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListMessageReceiversResponseBodyMessageReceiversPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = ListMessageReceiversResponseBodyMessageReceiversList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListMessageReceiversResponseBodyMessageReceiversPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
 class ListMessageReceiversResponseBody(TeaModel):
     def __init__(
         self,
-        message_receivers: ListMessageReceiversResponseBodyMessageReceivers = None,
         request_id: str = None,
+        message_receivers: ListMessageReceiversResponseBodyMessageReceivers = None,
     ):
-        self.message_receivers = message_receivers
         self.request_id = request_id
+        self.message_receivers = message_receivers
 
     def validate(self):
         if self.message_receivers:
@@ -19044,19 +19434,19 @@ class ListMessageReceiversResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.message_receivers is not None:
-            result['MessageReceivers'] = self.message_receivers.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.message_receivers is not None:
+            result['MessageReceivers'] = self.message_receivers.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('MessageReceivers') is not None:
             temp_model = ListMessageReceiversResponseBodyMessageReceivers()
             self.message_receivers = temp_model.from_map(m['MessageReceivers'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -19128,47 +19518,6 @@ class ListMqttClientSubscriptionsRequest(TeaModel):
         return self
 
 
-class ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination(TeaModel):
-    def __init__(
-        self,
-        page_index: int = None,
-        total_page_count: int = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        self.page_index = page_index
-        self.total_page_count = total_page_count
-        self.page_size = page_size
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
 class ListMqttClientSubscriptionsResponseBodyClientSubscriptionsList(TeaModel):
     def __init__(
         self,
@@ -19198,43 +19547,84 @@ class ListMqttClientSubscriptionsResponseBodyClientSubscriptionsList(TeaModel):
         return self
 
 
-class ListMqttClientSubscriptionsResponseBodyClientSubscriptions(TeaModel):
+class ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination(TeaModel):
     def __init__(
         self,
-        pagination: ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination = None,
-        list: List[ListMqttClientSubscriptionsResponseBodyClientSubscriptionsList] = None,
+        total_count: int = None,
+        total_page_count: int = None,
+        page_index: int = None,
+        page_size: int = None,
     ):
-        self.pagination = pagination
-        self.list = list
+        self.total_count = total_count
+        self.total_page_count = total_page_count
+        self.page_index = page_index
+        self.page_size = page_size
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
-        if self.list:
-            for k in self.list:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
-        result['List'] = []
-        if self.list is not None:
-            for k in self.list:
-                result['List'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListMqttClientSubscriptionsResponseBodyClientSubscriptions(TeaModel):
+    def __init__(
+        self,
+        list: List[ListMqttClientSubscriptionsResponseBodyClientSubscriptionsList] = None,
+        pagination: ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination = None,
+    ):
+        self.list = list
+        self.pagination = pagination
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+        if self.pagination:
+            self.pagination.validate()
+
+    def to_map(self):
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = ListMqttClientSubscriptionsResponseBodyClientSubscriptionsList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListMqttClientSubscriptionsResponseBodyClientSubscriptionsPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
@@ -19367,143 +19757,143 @@ class ListMqttMessageLogsRequest(TeaModel):
         return self
 
 
-class ListMqttMessageLogsResponseBodyTracesPagination(TeaModel):
-    def __init__(
-        self,
-        page_index: int = None,
-        total_page_count: int = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        self.page_index = page_index
-        self.total_page_count = total_page_count
-        self.page_size = page_size
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
 class ListMqttMessageLogsResponseBodyTracesList(TeaModel):
     def __init__(
         self,
-        type: str = None,
         time: int = None,
-        action: str = None,
         topic: str = None,
+        type: str = None,
+        action: str = None,
         mid: str = None,
-        client_mid: str = None,
         client_id: str = None,
+        client_mid: str = None,
     ):
-        self.type = type
         self.time = time
-        self.action = action
         self.topic = topic
+        self.type = type
+        self.action = action
         self.mid = mid
-        self.client_mid = client_mid
         self.client_id = client_id
+        self.client_mid = client_mid
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
         if self.time is not None:
             result['Time'] = self.time
-        if self.action is not None:
-            result['Action'] = self.action
         if self.topic is not None:
             result['Topic'] = self.topic
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.action is not None:
+            result['Action'] = self.action
         if self.mid is not None:
             result['Mid'] = self.mid
-        if self.client_mid is not None:
-            result['ClientMid'] = self.client_mid
         if self.client_id is not None:
             result['ClientId'] = self.client_id
+        if self.client_mid is not None:
+            result['ClientMid'] = self.client_mid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         if m.get('Time') is not None:
             self.time = m.get('Time')
-        if m.get('Action') is not None:
-            self.action = m.get('Action')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
         if m.get('Mid') is not None:
             self.mid = m.get('Mid')
-        if m.get('ClientMid') is not None:
-            self.client_mid = m.get('ClientMid')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
+        if m.get('ClientMid') is not None:
+            self.client_mid = m.get('ClientMid')
+        return self
+
+
+class ListMqttMessageLogsResponseBodyTracesPagination(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        total_page_count: int = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.total_count = total_count
+        self.total_page_count = total_page_count
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
 class ListMqttMessageLogsResponseBodyTraces(TeaModel):
     def __init__(
         self,
-        pagination: ListMqttMessageLogsResponseBodyTracesPagination = None,
         list: List[ListMqttMessageLogsResponseBodyTracesList] = None,
+        pagination: ListMqttMessageLogsResponseBodyTracesPagination = None,
     ):
-        self.pagination = pagination
         self.list = list
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.list:
             for k in self.list:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListMqttMessageLogsResponseBodyTracesPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = ListMqttMessageLogsResponseBodyTracesList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListMqttMessageLogsResponseBodyTracesPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
@@ -19600,131 +19990,131 @@ class ListMqttRootTopicsRequest(TeaModel):
         return self
 
 
-class ListMqttRootTopicsResponseBodyRootTopicsPagination(TeaModel):
-    def __init__(
-        self,
-        page_index: int = None,
-        total_page_count: int = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        self.page_index = page_index
-        self.total_page_count = total_page_count
-        self.page_size = page_size
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
 class ListMqttRootTopicsResponseBodyRootTopicsList(TeaModel):
     def __init__(
         self,
-        type: str = None,
-        app_key: str = None,
-        queue_name: str = None,
         create_time: int = None,
         root_topic: str = None,
+        type: str = None,
+        queue_name: str = None,
+        app_key: str = None,
     ):
-        self.type = type
-        self.app_key = app_key
-        self.queue_name = queue_name
         self.create_time = create_time
         self.root_topic = root_topic
+        self.type = type
+        self.queue_name = queue_name
+        self.app_key = app_key
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        if self.queue_name is not None:
-            result['QueueName'] = self.queue_name
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.root_topic is not None:
             result['RootTopic'] = self.root_topic
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.queue_name is not None:
+            result['QueueName'] = self.queue_name
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        if m.get('QueueName') is not None:
-            self.queue_name = m.get('QueueName')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('RootTopic') is not None:
             self.root_topic = m.get('RootTopic')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('QueueName') is not None:
+            self.queue_name = m.get('QueueName')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        return self
+
+
+class ListMqttRootTopicsResponseBodyRootTopicsPagination(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        total_page_count: int = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.total_count = total_count
+        self.total_page_count = total_page_count
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
 class ListMqttRootTopicsResponseBodyRootTopics(TeaModel):
     def __init__(
         self,
-        pagination: ListMqttRootTopicsResponseBodyRootTopicsPagination = None,
         list: List[ListMqttRootTopicsResponseBodyRootTopicsList] = None,
+        pagination: ListMqttRootTopicsResponseBodyRootTopicsPagination = None,
     ):
-        self.pagination = pagination
         self.list = list
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.list:
             for k in self.list:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListMqttRootTopicsResponseBodyRootTopicsPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = ListMqttRootTopicsResponseBodyRootTopicsList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListMqttRootTopicsResponseBodyRootTopicsPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
@@ -19824,76 +20214,76 @@ class ListNamespacesRequest(TeaModel):
 class ListNamespacesResponseBodyNamespaces(TeaModel):
     def __init__(
         self,
-        auth_type: int = None,
-        description: str = None,
+        namespace: str = None,
+        name: str = None,
         user_id: str = None,
         project_id: str = None,
+        description: str = None,
         gmt_create: int = None,
-        namespace: str = None,
         gmt_modified: int = None,
-        name: str = None,
+        auth_type: int = None,
     ):
-        self.auth_type = auth_type
-        self.description = description
+        self.namespace = namespace
+        self.name = name
         self.user_id = user_id
         self.project_id = project_id
+        self.description = description
         self.gmt_create = gmt_create
-        self.namespace = namespace
         self.gmt_modified = gmt_modified
-        self.name = name
+        self.auth_type = auth_type
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.auth_type is not None:
-            result['AuthType'] = self.auth_type
-        if self.description is not None:
-            result['Description'] = self.description
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.name is not None:
+            result['Name'] = self.name
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.description is not None:
+            result['Description'] = self.description
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
-        if self.namespace is not None:
-            result['Namespace'] = self.namespace
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
-        if self.name is not None:
-            result['Name'] = self.name
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AuthType') is not None:
-            self.auth_type = m.get('AuthType')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
-        if m.get('Namespace') is not None:
-            self.namespace = m.get('Namespace')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
         return self
 
 
 class ListNamespacesResponseBody(TeaModel):
     def __init__(
         self,
-        namespaces: List[ListNamespacesResponseBodyNamespaces] = None,
         request_id: str = None,
+        namespaces: List[ListNamespacesResponseBodyNamespaces] = None,
     ):
-        self.namespaces = namespaces
         self.request_id = request_id
+        self.namespaces = namespaces
 
     def validate(self):
         if self.namespaces:
@@ -19903,23 +20293,23 @@ class ListNamespacesResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         result['Namespaces'] = []
         if self.namespaces is not None:
             for k in self.namespaces:
                 result['Namespaces'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         self.namespaces = []
         if m.get('Namespaces') is not None:
             for k in m.get('Namespaces'):
                 temp_model = ListNamespacesResponseBodyNamespaces()
                 self.namespaces.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -20003,119 +20393,119 @@ class ListOfflineMessagesRequest(TeaModel):
         return self
 
 
-class ListOfflineMessagesResponseBodyOfflineMessagesPagination(TeaModel):
-    def __init__(
-        self,
-        page_index: int = None,
-        total_page_count: int = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        self.page_index = page_index
-        self.total_page_count = total_page_count
-        self.page_size = page_size
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
 class ListOfflineMessagesResponseBodyOfflineMessagesList(TeaModel):
     def __init__(
         self,
-        expired_time: int = None,
         mid: int = None,
         gmt_create: int = None,
+        expired_time: int = None,
     ):
-        self.expired_time = expired_time
         self.mid = mid
         self.gmt_create = gmt_create
+        self.expired_time = expired_time
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.expired_time is not None:
-            result['ExpiredTime'] = self.expired_time
         if self.mid is not None:
             result['Mid'] = self.mid
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
+        if self.expired_time is not None:
+            result['ExpiredTime'] = self.expired_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ExpiredTime') is not None:
-            self.expired_time = m.get('ExpiredTime')
         if m.get('Mid') is not None:
             self.mid = m.get('Mid')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
+        if m.get('ExpiredTime') is not None:
+            self.expired_time = m.get('ExpiredTime')
+        return self
+
+
+class ListOfflineMessagesResponseBodyOfflineMessagesPagination(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        total_page_count: int = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.total_count = total_count
+        self.total_page_count = total_page_count
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
 class ListOfflineMessagesResponseBodyOfflineMessages(TeaModel):
     def __init__(
         self,
-        pagination: ListOfflineMessagesResponseBodyOfflineMessagesPagination = None,
         list: List[ListOfflineMessagesResponseBodyOfflineMessagesList] = None,
+        pagination: ListOfflineMessagesResponseBodyOfflineMessagesPagination = None,
     ):
-        self.pagination = pagination
         self.list = list
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.list:
             for k in self.list:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListOfflineMessagesResponseBodyOfflineMessagesPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = ListOfflineMessagesResponseBodyOfflineMessagesList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListOfflineMessagesResponseBodyOfflineMessagesPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
@@ -20227,83 +20617,83 @@ class ListOpenAccountLinksRequest(TeaModel):
 class ListOpenAccountLinksResponseBodyOpenAccounts(TeaModel):
     def __init__(
         self,
-        status: int = None,
-        type: int = None,
-        display_name: str = None,
-        create_access_key: str = None,
-        open_id: str = None,
-        mobile: str = None,
-        region: str = None,
         identity_id: str = None,
+        aliyun_id: str = None,
+        display_name: str = None,
         login_id: str = None,
         idp: str = None,
-        aliyun_id: str = None,
+        open_id: str = None,
+        mobile: str = None,
+        type: int = None,
+        status: int = None,
+        region: str = None,
+        create_access_key: str = None,
     ):
-        self.status = status
-        self.type = type
-        self.display_name = display_name
-        self.create_access_key = create_access_key
-        self.open_id = open_id
-        self.mobile = mobile
-        self.region = region
         self.identity_id = identity_id
+        self.aliyun_id = aliyun_id
+        self.display_name = display_name
         self.login_id = login_id
         self.idp = idp
-        self.aliyun_id = aliyun_id
+        self.open_id = open_id
+        self.mobile = mobile
+        self.type = type
+        self.status = status
+        self.region = region
+        self.create_access_key = create_access_key
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.display_name is not None:
-            result['DisplayName'] = self.display_name
-        if self.create_access_key is not None:
-            result['CreateAccessKey'] = self.create_access_key
-        if self.open_id is not None:
-            result['OpenId'] = self.open_id
-        if self.mobile is not None:
-            result['Mobile'] = self.mobile
-        if self.region is not None:
-            result['Region'] = self.region
         if self.identity_id is not None:
             result['IdentityId'] = self.identity_id
+        if self.aliyun_id is not None:
+            result['AliyunId'] = self.aliyun_id
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
         if self.login_id is not None:
             result['LoginId'] = self.login_id
         if self.idp is not None:
             result['Idp'] = self.idp
-        if self.aliyun_id is not None:
-            result['AliyunId'] = self.aliyun_id
+        if self.open_id is not None:
+            result['OpenId'] = self.open_id
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.create_access_key is not None:
+            result['CreateAccessKey'] = self.create_access_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('DisplayName') is not None:
-            self.display_name = m.get('DisplayName')
-        if m.get('CreateAccessKey') is not None:
-            self.create_access_key = m.get('CreateAccessKey')
-        if m.get('OpenId') is not None:
-            self.open_id = m.get('OpenId')
-        if m.get('Mobile') is not None:
-            self.mobile = m.get('Mobile')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
         if m.get('IdentityId') is not None:
             self.identity_id = m.get('IdentityId')
+        if m.get('AliyunId') is not None:
+            self.aliyun_id = m.get('AliyunId')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
         if m.get('LoginId') is not None:
             self.login_id = m.get('LoginId')
         if m.get('Idp') is not None:
             self.idp = m.get('Idp')
-        if m.get('AliyunId') is not None:
-            self.aliyun_id = m.get('AliyunId')
+        if m.get('OpenId') is not None:
+            self.open_id = m.get('OpenId')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('CreateAccessKey') is not None:
+            self.create_access_key = m.get('CreateAccessKey')
         return self
 
 
@@ -20433,83 +20823,83 @@ class ListOpenAccountsRequest(TeaModel):
 class ListOpenAccountsResponseBodyOpenAccounts(TeaModel):
     def __init__(
         self,
-        status: int = None,
-        type: int = None,
-        display_name: str = None,
-        create_access_key: str = None,
-        open_id: str = None,
-        mobile: str = None,
-        region: str = None,
         identity_id: str = None,
+        aliyun_id: str = None,
+        display_name: str = None,
         login_id: str = None,
         idp: str = None,
-        aliyun_id: str = None,
+        open_id: str = None,
+        mobile: str = None,
+        type: int = None,
+        status: int = None,
+        region: str = None,
+        create_access_key: str = None,
     ):
-        self.status = status
-        self.type = type
-        self.display_name = display_name
-        self.create_access_key = create_access_key
-        self.open_id = open_id
-        self.mobile = mobile
-        self.region = region
         self.identity_id = identity_id
+        self.aliyun_id = aliyun_id
+        self.display_name = display_name
         self.login_id = login_id
         self.idp = idp
-        self.aliyun_id = aliyun_id
+        self.open_id = open_id
+        self.mobile = mobile
+        self.type = type
+        self.status = status
+        self.region = region
+        self.create_access_key = create_access_key
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.display_name is not None:
-            result['DisplayName'] = self.display_name
-        if self.create_access_key is not None:
-            result['CreateAccessKey'] = self.create_access_key
-        if self.open_id is not None:
-            result['OpenId'] = self.open_id
-        if self.mobile is not None:
-            result['Mobile'] = self.mobile
-        if self.region is not None:
-            result['Region'] = self.region
         if self.identity_id is not None:
             result['IdentityId'] = self.identity_id
+        if self.aliyun_id is not None:
+            result['AliyunId'] = self.aliyun_id
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
         if self.login_id is not None:
             result['LoginId'] = self.login_id
         if self.idp is not None:
             result['Idp'] = self.idp
-        if self.aliyun_id is not None:
-            result['AliyunId'] = self.aliyun_id
+        if self.open_id is not None:
+            result['OpenId'] = self.open_id
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.create_access_key is not None:
+            result['CreateAccessKey'] = self.create_access_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('DisplayName') is not None:
-            self.display_name = m.get('DisplayName')
-        if m.get('CreateAccessKey') is not None:
-            self.create_access_key = m.get('CreateAccessKey')
-        if m.get('OpenId') is not None:
-            self.open_id = m.get('OpenId')
-        if m.get('Mobile') is not None:
-            self.mobile = m.get('Mobile')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
         if m.get('IdentityId') is not None:
             self.identity_id = m.get('IdentityId')
+        if m.get('AliyunId') is not None:
+            self.aliyun_id = m.get('AliyunId')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
         if m.get('LoginId') is not None:
             self.login_id = m.get('LoginId')
         if m.get('Idp') is not None:
             self.idp = m.get('Idp')
-        if m.get('AliyunId') is not None:
-            self.aliyun_id = m.get('AliyunId')
+        if m.get('OpenId') is not None:
+            self.open_id = m.get('OpenId')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('CreateAccessKey') is not None:
+            self.create_access_key = m.get('CreateAccessKey')
         return self
 
 
@@ -20738,102 +21128,102 @@ class ListProjectAppsRequest(TeaModel):
 class ListProjectAppsResponseBodyResultProjectApps(TeaModel):
     def __init__(
         self,
-        status: int = None,
-        project_id: str = None,
+        id: int = None,
+        app_id: str = None,
         user_id: str = None,
+        project_id: str = None,
+        app_name: str = None,
+        app_key: str = None,
+        app_secret: str = None,
+        status: int = None,
+        gmt_create: int = None,
         gmt_modified: int = None,
         app_pkg_name: str = None,
-        app_name: str = None,
-        app_secret: str = None,
-        app_key: str = None,
-        app_id: str = None,
         os_type: int = None,
-        gmt_create: int = None,
-        id: int = None,
     ):
-        self.status = status
-        self.project_id = project_id
+        self.id = id
+        self.app_id = app_id
         self.user_id = user_id
+        self.project_id = project_id
+        self.app_name = app_name
+        self.app_key = app_key
+        self.app_secret = app_secret
+        self.status = status
+        self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.app_pkg_name = app_pkg_name
-        self.app_name = app_name
-        self.app_secret = app_secret
-        self.app_key = app_key
-        self.app_id = app_id
         self.os_type = os_type
-        self.gmt_create = gmt_create
-        self.id = id
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.app_secret is not None:
+            result['AppSecret'] = self.app_secret
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
         if self.app_pkg_name is not None:
             result['AppPkgName'] = self.app_pkg_name
-        if self.app_name is not None:
-            result['AppName'] = self.app_name
-        if self.app_secret is not None:
-            result['AppSecret'] = self.app_secret
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
         if self.os_type is not None:
             result['OsType'] = self.os_type
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.id is not None:
-            result['Id'] = self.id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('AppSecret') is not None:
+            self.app_secret = m.get('AppSecret')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
         if m.get('AppPkgName') is not None:
             self.app_pkg_name = m.get('AppPkgName')
-        if m.get('AppName') is not None:
-            self.app_name = m.get('AppName')
-        if m.get('AppSecret') is not None:
-            self.app_secret = m.get('AppSecret')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         return self
 
 
 class ListProjectAppsResponseBodyResult(TeaModel):
     def __init__(
         self,
-        project_apps: List[ListProjectAppsResponseBodyResultProjectApps] = None,
-        total_page: int = None,
         total_count: int = None,
+        total_page: int = None,
+        project_apps: List[ListProjectAppsResponseBodyResultProjectApps] = None,
     ):
-        self.project_apps = project_apps
-        self.total_page = total_page
         self.total_count = total_count
+        self.total_page = total_page
+        self.project_apps = project_apps
 
     def validate(self):
         if self.project_apps:
@@ -20843,27 +21233,27 @@ class ListProjectAppsResponseBodyResult(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
         result['ProjectApps'] = []
         if self.project_apps is not None:
             for k in self.project_apps:
                 result['ProjectApps'].append(k.to_map() if k else None)
-        if self.total_page is not None:
-            result['TotalPage'] = self.total_page
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
         self.project_apps = []
         if m.get('ProjectApps') is not None:
             for k in m.get('ProjectApps'):
                 temp_model = ListProjectAppsResponseBodyResultProjectApps()
                 self.project_apps.append(temp_model.from_map(k))
-        if m.get('TotalPage') is not None:
-            self.total_page = m.get('TotalPage')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -20934,24 +21324,24 @@ class ListProjectAppsResponse(TeaModel):
 class ListProjectsResponseBodyProjects(TeaModel):
     def __init__(
         self,
+        id: int = None,
+        project_id: str = None,
+        user_id: str = None,
+        name: str = None,
         status: int = None,
         description: str = None,
-        user_id: str = None,
-        project_id: str = None,
         gmt_create: int = None,
         gmt_modified: int = None,
-        name: str = None,
-        id: int = None,
         creator: str = None,
     ):
+        self.id = id
+        self.project_id = project_id
+        self.user_id = user_id
+        self.name = name
         self.status = status
         self.description = description
-        self.user_id = user_id
-        self.project_id = project_id
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
-        self.name = name
-        self.id = id
         self.creator = creator
 
     def validate(self):
@@ -20959,44 +21349,44 @@ class ListProjectsResponseBodyProjects(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.name is not None:
+            result['Name'] = self.name
         if self.status is not None:
             result['Status'] = self.status
         if self.description is not None:
             result['Description'] = self.description
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.id is not None:
-            result['Id'] = self.id
         if self.creator is not None:
             result['Creator'] = self.creator
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
         return self
@@ -21107,167 +21497,167 @@ class ListRpcServicesRequest(TeaModel):
         return self
 
 
-class ListRpcServicesResponseBodyRpcServicesPagination(TeaModel):
-    def __init__(
-        self,
-        page_index: int = None,
-        total_page_count: int = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        self.page_index = page_index
-        self.total_page_count = total_page_count
-        self.page_size = page_size
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
 class ListRpcServicesResponseBodyRpcServicesList(TeaModel):
     def __init__(
         self,
-        method_name: str = None,
-        type: str = None,
-        interface_name: str = None,
-        params: str = None,
-        app_key: str = None,
-        group_name: str = None,
-        gmt_create: int = None,
-        is_delete: str = None,
-        version_code: str = None,
-        gmt_modified: int = None,
         id: int = None,
+        app_key: str = None,
+        interface_name: str = None,
+        group_name: str = None,
+        type: str = None,
+        params: str = None,
+        is_delete: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        method_name: str = None,
+        version_code: str = None,
     ):
-        self.method_name = method_name
-        self.type = type
-        self.interface_name = interface_name
-        self.params = params
-        self.app_key = app_key
-        self.group_name = group_name
-        self.gmt_create = gmt_create
-        self.is_delete = is_delete
-        self.version_code = version_code
-        self.gmt_modified = gmt_modified
         self.id = id
+        self.app_key = app_key
+        self.interface_name = interface_name
+        self.group_name = group_name
+        self.type = type
+        self.params = params
+        self.is_delete = is_delete
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.method_name = method_name
+        self.version_code = version_code
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.method_name is not None:
-            result['MethodName'] = self.method_name
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.interface_name is not None:
-            result['InterfaceName'] = self.interface_name
-        if self.params is not None:
-            result['Params'] = self.params
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        if self.group_name is not None:
-            result['GroupName'] = self.group_name
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.is_delete is not None:
-            result['IsDelete'] = self.is_delete
-        if self.version_code is not None:
-            result['VersionCode'] = self.version_code
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
         if self.id is not None:
             result['Id'] = self.id
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.interface_name is not None:
+            result['InterfaceName'] = self.interface_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.is_delete is not None:
+            result['IsDelete'] = self.is_delete
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.method_name is not None:
+            result['MethodName'] = self.method_name
+        if self.version_code is not None:
+            result['VersionCode'] = self.version_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MethodName') is not None:
-            self.method_name = m.get('MethodName')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('InterfaceName') is not None:
-            self.interface_name = m.get('InterfaceName')
-        if m.get('Params') is not None:
-            self.params = m.get('Params')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        if m.get('GroupName') is not None:
-            self.group_name = m.get('GroupName')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('IsDelete') is not None:
-            self.is_delete = m.get('IsDelete')
-        if m.get('VersionCode') is not None:
-            self.version_code = m.get('VersionCode')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('InterfaceName') is not None:
+            self.interface_name = m.get('InterfaceName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('IsDelete') is not None:
+            self.is_delete = m.get('IsDelete')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('MethodName') is not None:
+            self.method_name = m.get('MethodName')
+        if m.get('VersionCode') is not None:
+            self.version_code = m.get('VersionCode')
+        return self
+
+
+class ListRpcServicesResponseBodyRpcServicesPagination(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        total_page_count: int = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.total_count = total_count
+        self.total_page_count = total_page_count
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
 class ListRpcServicesResponseBodyRpcServices(TeaModel):
     def __init__(
         self,
-        pagination: ListRpcServicesResponseBodyRpcServicesPagination = None,
         list: List[ListRpcServicesResponseBodyRpcServicesList] = None,
+        pagination: ListRpcServicesResponseBodyRpcServicesPagination = None,
     ):
-        self.pagination = pagination
         self.list = list
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.list:
             for k in self.list:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListRpcServicesResponseBodyRpcServicesPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = ListRpcServicesResponseBodyRpcServicesList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListRpcServicesResponseBodyRpcServicesPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
@@ -21376,20 +21766,91 @@ class ListSchemaSubscribesRequest(TeaModel):
         return self
 
 
+class ListSchemaSubscribesResponseBodyPageListList(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        version: str = None,
+        validity_schema: str = None,
+        namespace: str = None,
+        project_id: str = None,
+        device_model_id: int = None,
+        device_model: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+    ):
+        self.id = id
+        self.version = version
+        self.validity_schema = validity_schema
+        self.namespace = namespace
+        self.project_id = project_id
+        self.device_model_id = device_model_id
+        self.device_model = device_model
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.validity_schema is not None:
+            result['ValiditySchema'] = self.validity_schema
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.device_model_id is not None:
+            result['DeviceModelId'] = self.device_model_id
+        if self.device_model is not None:
+            result['DeviceModel'] = self.device_model
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('ValiditySchema') is not None:
+            self.validity_schema = m.get('ValiditySchema')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('DeviceModelId') is not None:
+            self.device_model_id = m.get('DeviceModelId')
+        if m.get('DeviceModel') is not None:
+            self.device_model = m.get('DeviceModel')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        return self
+
+
 class ListSchemaSubscribesResponseBodyPageListPagination(TeaModel):
     def __init__(
         self,
-        page_index: int = None,
-        total_page_count: int = None,
-        page_size: int = None,
         total_count: int = None,
+        total_page_count: int = None,
+        page_index: int = None,
+        page_size: int = None,
         simple_sign: bool = None,
         has_next_page: bool = None,
     ):
-        self.page_index = page_index
-        self.total_page_count = total_page_count
-        self.page_size = page_size
         self.total_count = total_count
+        self.total_page_count = total_page_count
+        self.page_index = page_index
+        self.page_size = page_size
         self.simple_sign = simple_sign
         self.has_next_page = has_next_page
 
@@ -21398,14 +21859,14 @@ class ListSchemaSubscribesResponseBodyPageListPagination(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.simple_sign is not None:
             result['SimpleSign'] = self.simple_sign
         if self.has_next_page is not None:
@@ -21414,14 +21875,14 @@ class ListSchemaSubscribesResponseBodyPageListPagination(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('SimpleSign') is not None:
             self.simple_sign = m.get('SimpleSign')
         if m.get('HasNextPage') is not None:
@@ -21429,114 +21890,43 @@ class ListSchemaSubscribesResponseBodyPageListPagination(TeaModel):
         return self
 
 
-class ListSchemaSubscribesResponseBodyPageListList(TeaModel):
-    def __init__(
-        self,
-        device_model_id: int = None,
-        version: str = None,
-        project_id: str = None,
-        gmt_create: int = None,
-        namespace: str = None,
-        validity_schema: str = None,
-        device_model: str = None,
-        gmt_modified: int = None,
-        id: int = None,
-    ):
-        self.device_model_id = device_model_id
-        self.version = version
-        self.project_id = project_id
-        self.gmt_create = gmt_create
-        self.namespace = namespace
-        self.validity_schema = validity_schema
-        self.device_model = device_model
-        self.gmt_modified = gmt_modified
-        self.id = id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.device_model_id is not None:
-            result['DeviceModelId'] = self.device_model_id
-        if self.version is not None:
-            result['Version'] = self.version
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.namespace is not None:
-            result['Namespace'] = self.namespace
-        if self.validity_schema is not None:
-            result['ValiditySchema'] = self.validity_schema
-        if self.device_model is not None:
-            result['DeviceModel'] = self.device_model
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
-        if self.id is not None:
-            result['Id'] = self.id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DeviceModelId') is not None:
-            self.device_model_id = m.get('DeviceModelId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('Namespace') is not None:
-            self.namespace = m.get('Namespace')
-        if m.get('ValiditySchema') is not None:
-            self.validity_schema = m.get('ValiditySchema')
-        if m.get('DeviceModel') is not None:
-            self.device_model = m.get('DeviceModel')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        return self
-
-
 class ListSchemaSubscribesResponseBodyPageList(TeaModel):
     def __init__(
         self,
-        pagination: ListSchemaSubscribesResponseBodyPageListPagination = None,
         list: List[ListSchemaSubscribesResponseBodyPageListList] = None,
+        pagination: ListSchemaSubscribesResponseBodyPageListPagination = None,
     ):
-        self.pagination = pagination
         self.list = list
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.list:
             for k in self.list:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListSchemaSubscribesResponseBodyPageListPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = ListSchemaSubscribesResponseBodyPageListList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListSchemaSubscribesResponseBodyPageListPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
@@ -21699,30 +22089,30 @@ class ListShadowSchemaDeviceModelsResponseBodyModelList(TeaModel):
     def __init__(
         self,
         device_model_id: int = None,
-        hardware_type: str = None,
         device_type: str = None,
-        can_create_device_id: int = None,
-        project_id: str = None,
-        os_platform: str = None,
+        hardware_type: str = None,
         device_model: str = None,
-        security_chip: int = None,
-        description: str = None,
-        init_usage_type_desc: str = None,
-        init_usage_type: int = None,
         device_brand: str = None,
+        can_create_device_id: int = None,
+        init_usage_type: int = None,
+        init_usage_type_desc: str = None,
+        description: str = None,
+        project_id: str = None,
+        security_chip: int = None,
+        os_platform: str = None,
     ):
         self.device_model_id = device_model_id
-        self.hardware_type = hardware_type
         self.device_type = device_type
-        self.can_create_device_id = can_create_device_id
-        self.project_id = project_id
-        self.os_platform = os_platform
+        self.hardware_type = hardware_type
         self.device_model = device_model
-        self.security_chip = security_chip
-        self.description = description
-        self.init_usage_type_desc = init_usage_type_desc
-        self.init_usage_type = init_usage_type
         self.device_brand = device_brand
+        self.can_create_device_id = can_create_device_id
+        self.init_usage_type = init_usage_type
+        self.init_usage_type_desc = init_usage_type_desc
+        self.description = description
+        self.project_id = project_id
+        self.security_chip = security_chip
+        self.os_platform = os_platform
 
     def validate(self):
         pass
@@ -21731,67 +22121,67 @@ class ListShadowSchemaDeviceModelsResponseBodyModelList(TeaModel):
         result = dict()
         if self.device_model_id is not None:
             result['DeviceModelId'] = self.device_model_id
-        if self.hardware_type is not None:
-            result['HardwareType'] = self.hardware_type
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
-        if self.can_create_device_id is not None:
-            result['CanCreateDeviceId'] = self.can_create_device_id
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.os_platform is not None:
-            result['OsPlatform'] = self.os_platform
+        if self.hardware_type is not None:
+            result['HardwareType'] = self.hardware_type
         if self.device_model is not None:
             result['DeviceModel'] = self.device_model
-        if self.security_chip is not None:
-            result['SecurityChip'] = self.security_chip
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.init_usage_type_desc is not None:
-            result['InitUsageTypeDesc'] = self.init_usage_type_desc
-        if self.init_usage_type is not None:
-            result['InitUsageType'] = self.init_usage_type
         if self.device_brand is not None:
             result['DeviceBrand'] = self.device_brand
+        if self.can_create_device_id is not None:
+            result['CanCreateDeviceId'] = self.can_create_device_id
+        if self.init_usage_type is not None:
+            result['InitUsageType'] = self.init_usage_type
+        if self.init_usage_type_desc is not None:
+            result['InitUsageTypeDesc'] = self.init_usage_type_desc
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.security_chip is not None:
+            result['SecurityChip'] = self.security_chip
+        if self.os_platform is not None:
+            result['OsPlatform'] = self.os_platform
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DeviceModelId') is not None:
             self.device_model_id = m.get('DeviceModelId')
-        if m.get('HardwareType') is not None:
-            self.hardware_type = m.get('HardwareType')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
-        if m.get('CanCreateDeviceId') is not None:
-            self.can_create_device_id = m.get('CanCreateDeviceId')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('OsPlatform') is not None:
-            self.os_platform = m.get('OsPlatform')
+        if m.get('HardwareType') is not None:
+            self.hardware_type = m.get('HardwareType')
         if m.get('DeviceModel') is not None:
             self.device_model = m.get('DeviceModel')
-        if m.get('SecurityChip') is not None:
-            self.security_chip = m.get('SecurityChip')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('InitUsageTypeDesc') is not None:
-            self.init_usage_type_desc = m.get('InitUsageTypeDesc')
-        if m.get('InitUsageType') is not None:
-            self.init_usage_type = m.get('InitUsageType')
         if m.get('DeviceBrand') is not None:
             self.device_brand = m.get('DeviceBrand')
+        if m.get('CanCreateDeviceId') is not None:
+            self.can_create_device_id = m.get('CanCreateDeviceId')
+        if m.get('InitUsageType') is not None:
+            self.init_usage_type = m.get('InitUsageType')
+        if m.get('InitUsageTypeDesc') is not None:
+            self.init_usage_type_desc = m.get('InitUsageTypeDesc')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SecurityChip') is not None:
+            self.security_chip = m.get('SecurityChip')
+        if m.get('OsPlatform') is not None:
+            self.os_platform = m.get('OsPlatform')
         return self
 
 
 class ListShadowSchemaDeviceModelsResponseBody(TeaModel):
     def __init__(
         self,
-        model_list: List[ListShadowSchemaDeviceModelsResponseBodyModelList] = None,
         request_id: str = None,
+        model_list: List[ListShadowSchemaDeviceModelsResponseBodyModelList] = None,
     ):
-        self.model_list = model_list
         self.request_id = request_id
+        self.model_list = model_list
 
     def validate(self):
         if self.model_list:
@@ -21801,23 +22191,23 @@ class ListShadowSchemaDeviceModelsResponseBody(TeaModel):
 
     def to_map(self):
         result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         result['ModelList'] = []
         if self.model_list is not None:
             for k in self.model_list:
                 result['ModelList'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         self.model_list = []
         if m.get('ModelList') is not None:
             for k in m.get('ModelList'):
                 temp_model = ListShadowSchemaDeviceModelsResponseBodyModelList()
                 self.model_list.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -21901,83 +22291,30 @@ class ListShadowSchemasRequest(TeaModel):
         return self
 
 
-class ListShadowSchemasResponseBodyPageListPagination(TeaModel):
-    def __init__(
-        self,
-        page_index: int = None,
-        total_page_count: int = None,
-        page_size: int = None,
-        total_count: int = None,
-        simple_sign: bool = None,
-        has_next_page: bool = None,
-    ):
-        self.page_index = page_index
-        self.total_page_count = total_page_count
-        self.page_size = page_size
-        self.total_count = total_count
-        self.simple_sign = simple_sign
-        self.has_next_page = has_next_page
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        if self.simple_sign is not None:
-            result['SimpleSign'] = self.simple_sign
-        if self.has_next_page is not None:
-            result['HasNextPage'] = self.has_next_page
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        if m.get('SimpleSign') is not None:
-            self.simple_sign = m.get('SimpleSign')
-        if m.get('HasNextPage') is not None:
-            self.has_next_page = m.get('HasNextPage')
-        return self
-
-
 class ListShadowSchemasResponseBodyPageListList(TeaModel):
     def __init__(
         self,
         auth_type_desc: str = None,
-        device_model_id: int = None,
-        auth_type: int = None,
-        project_id: str = None,
-        gmt_create: int = None,
-        namespace: str = None,
-        device_model: str = None,
-        gmt_modified: int = None,
-        module_schema: str = None,
         id: int = None,
+        project_id: str = None,
+        device_model_id: int = None,
+        device_model: str = None,
+        module_schema: str = None,
+        namespace: str = None,
+        auth_type: int = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
     ):
         self.auth_type_desc = auth_type_desc
-        self.device_model_id = device_model_id
-        self.auth_type = auth_type
-        self.project_id = project_id
-        self.gmt_create = gmt_create
-        self.namespace = namespace
-        self.device_model = device_model
-        self.gmt_modified = gmt_modified
-        self.module_schema = module_schema
         self.id = id
+        self.project_id = project_id
+        self.device_model_id = device_model_id
+        self.device_model = device_model
+        self.module_schema = module_schema
+        self.namespace = namespace
+        self.auth_type = auth_type
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
 
     def validate(self):
         pass
@@ -21986,88 +22323,141 @@ class ListShadowSchemasResponseBodyPageListList(TeaModel):
         result = dict()
         if self.auth_type_desc is not None:
             result['AuthTypeDesc'] = self.auth_type_desc
-        if self.device_model_id is not None:
-            result['DeviceModelId'] = self.device_model_id
-        if self.auth_type is not None:
-            result['AuthType'] = self.auth_type
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.namespace is not None:
-            result['Namespace'] = self.namespace
-        if self.device_model is not None:
-            result['DeviceModel'] = self.device_model
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
-        if self.module_schema is not None:
-            result['ModuleSchema'] = self.module_schema
         if self.id is not None:
             result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.device_model_id is not None:
+            result['DeviceModelId'] = self.device_model_id
+        if self.device_model is not None:
+            result['DeviceModel'] = self.device_model
+        if self.module_schema is not None:
+            result['ModuleSchema'] = self.module_schema
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AuthTypeDesc') is not None:
             self.auth_type_desc = m.get('AuthTypeDesc')
-        if m.get('DeviceModelId') is not None:
-            self.device_model_id = m.get('DeviceModelId')
-        if m.get('AuthType') is not None:
-            self.auth_type = m.get('AuthType')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('Namespace') is not None:
-            self.namespace = m.get('Namespace')
-        if m.get('DeviceModel') is not None:
-            self.device_model = m.get('DeviceModel')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
-        if m.get('ModuleSchema') is not None:
-            self.module_schema = m.get('ModuleSchema')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('DeviceModelId') is not None:
+            self.device_model_id = m.get('DeviceModelId')
+        if m.get('DeviceModel') is not None:
+            self.device_model = m.get('DeviceModel')
+        if m.get('ModuleSchema') is not None:
+            self.module_schema = m.get('ModuleSchema')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        return self
+
+
+class ListShadowSchemasResponseBodyPageListPagination(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        total_page_count: int = None,
+        page_index: int = None,
+        page_size: int = None,
+        simple_sign: bool = None,
+        has_next_page: bool = None,
+    ):
+        self.total_count = total_count
+        self.total_page_count = total_page_count
+        self.page_index = page_index
+        self.page_size = page_size
+        self.simple_sign = simple_sign
+        self.has_next_page = has_next_page
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.simple_sign is not None:
+            result['SimpleSign'] = self.simple_sign
+        if self.has_next_page is not None:
+            result['HasNextPage'] = self.has_next_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SimpleSign') is not None:
+            self.simple_sign = m.get('SimpleSign')
+        if m.get('HasNextPage') is not None:
+            self.has_next_page = m.get('HasNextPage')
         return self
 
 
 class ListShadowSchemasResponseBodyPageList(TeaModel):
     def __init__(
         self,
-        pagination: ListShadowSchemasResponseBodyPageListPagination = None,
         list: List[ListShadowSchemasResponseBodyPageListList] = None,
+        pagination: ListShadowSchemasResponseBodyPageListPagination = None,
     ):
-        self.pagination = pagination
         self.list = list
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.list:
             for k in self.list:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListShadowSchemasResponseBodyPageListPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = ListShadowSchemasResponseBodyPageListList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListShadowSchemasResponseBodyPageListPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
@@ -22269,128 +22659,87 @@ class ListTriggersRequest(TeaModel):
         return self
 
 
-class ListTriggersResponseBodyTriggerListPagination(TeaModel):
-    def __init__(
-        self,
-        page_index: int = None,
-        total_page_count: int = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        self.page_index = page_index
-        self.total_page_count = total_page_count
-        self.page_size = page_size
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
 class ListTriggersResponseBodyTriggerListTriggersFunctions(TeaModel):
     def __init__(
         self,
-        gmt_create: int = None,
-        file_name: str = None,
-        name: str = None,
-        gmt_modified: int = None,
         id: int = None,
+        name: str = None,
         file_id: int = None,
+        file_name: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
     ):
-        self.gmt_create = gmt_create
-        self.file_name = file_name
-        self.name = name
-        self.gmt_modified = gmt_modified
         self.id = id
+        self.name = name
         self.file_id = file_id
+        self.file_name = file_name
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.file_name is not None:
-            result['FileName'] = self.file_name
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
         if self.id is not None:
             result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
         if self.file_id is not None:
             result['FileId'] = self.file_id
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('FileName') is not None:
-            self.file_name = m.get('FileName')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
         return self
 
 
 class ListTriggersResponseBodyTriggerListTriggers(TeaModel):
     def __init__(
         self,
-        status: int = None,
+        id: int = None,
+        namespace: str = None,
+        source: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        chained_function_ids: str = None,
         type: int = None,
+        status: int = None,
+        invocation_mode: int = None,
+        sandbox: int = None,
         production: int = None,
         functions: List[ListTriggersResponseBodyTriggerListTriggersFunctions] = None,
-        sandbox: int = None,
-        namespace: str = None,
-        gmt_modified: int = None,
-        source: str = None,
-        chained_function_ids: str = None,
-        gmt_create: int = None,
-        invocation_mode: int = None,
-        id: int = None,
     ):
-        self.status = status
+        self.id = id
+        self.namespace = namespace
+        self.source = source
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.chained_function_ids = chained_function_ids
         self.type = type
+        self.status = status
+        self.invocation_mode = invocation_mode
+        self.sandbox = sandbox
         self.production = production
         self.functions = functions
-        self.sandbox = sandbox
-        self.namespace = namespace
-        self.gmt_modified = gmt_modified
-        self.source = source
-        self.chained_function_ids = chained_function_ids
-        self.gmt_create = gmt_create
-        self.invocation_mode = invocation_mode
-        self.id = id
 
     def validate(self):
         if self.functions:
@@ -22400,40 +22749,56 @@ class ListTriggersResponseBodyTriggerListTriggers(TeaModel):
 
     def to_map(self):
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.chained_function_ids is not None:
+            result['ChainedFunctionIds'] = self.chained_function_ids
         if self.type is not None:
             result['Type'] = self.type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.invocation_mode is not None:
+            result['InvocationMode'] = self.invocation_mode
+        if self.sandbox is not None:
+            result['Sandbox'] = self.sandbox
         if self.production is not None:
             result['Production'] = self.production
         result['Functions'] = []
         if self.functions is not None:
             for k in self.functions:
                 result['Functions'].append(k.to_map() if k else None)
-        if self.sandbox is not None:
-            result['Sandbox'] = self.sandbox
-        if self.namespace is not None:
-            result['Namespace'] = self.namespace
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
-        if self.source is not None:
-            result['Source'] = self.source
-        if self.chained_function_ids is not None:
-            result['ChainedFunctionIds'] = self.chained_function_ids
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.invocation_mode is not None:
-            result['InvocationMode'] = self.invocation_mode
-        if self.id is not None:
-            result['Id'] = self.id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('ChainedFunctionIds') is not None:
+            self.chained_function_ids = m.get('ChainedFunctionIds')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('InvocationMode') is not None:
+            self.invocation_mode = m.get('InvocationMode')
+        if m.get('Sandbox') is not None:
+            self.sandbox = m.get('Sandbox')
         if m.get('Production') is not None:
             self.production = m.get('Production')
         self.functions = []
@@ -22441,62 +22806,87 @@ class ListTriggersResponseBodyTriggerListTriggers(TeaModel):
             for k in m.get('Functions'):
                 temp_model = ListTriggersResponseBodyTriggerListTriggersFunctions()
                 self.functions.append(temp_model.from_map(k))
-        if m.get('Sandbox') is not None:
-            self.sandbox = m.get('Sandbox')
-        if m.get('Namespace') is not None:
-            self.namespace = m.get('Namespace')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
-        if m.get('Source') is not None:
-            self.source = m.get('Source')
-        if m.get('ChainedFunctionIds') is not None:
-            self.chained_function_ids = m.get('ChainedFunctionIds')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('InvocationMode') is not None:
-            self.invocation_mode = m.get('InvocationMode')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        return self
+
+
+class ListTriggersResponseBodyTriggerListPagination(TeaModel):
+    def __init__(
+        self,
+        page_index: int = None,
+        page_size: int = None,
+        total_count: int = None,
+        total_page_count: int = None,
+    ):
+        self.page_index = page_index
+        self.page_size = page_size
+        self.total_count = total_count
+        self.total_page_count = total_page_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
         return self
 
 
 class ListTriggersResponseBodyTriggerList(TeaModel):
     def __init__(
         self,
-        pagination: ListTriggersResponseBodyTriggerListPagination = None,
         triggers: List[ListTriggersResponseBodyTriggerListTriggers] = None,
+        pagination: ListTriggersResponseBodyTriggerListPagination = None,
     ):
-        self.pagination = pagination
         self.triggers = triggers
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.triggers:
             for k in self.triggers:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['Triggers'] = []
         if self.triggers is not None:
             for k in self.triggers:
                 result['Triggers'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListTriggersResponseBodyTriggerListPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.triggers = []
         if m.get('Triggers') is not None:
             for k in m.get('Triggers'):
                 temp_model = ListTriggersResponseBodyTriggerListTriggers()
                 self.triggers.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListTriggersResponseBodyTriggerListPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
@@ -22605,143 +22995,143 @@ class ListUpstreamAppKeyRelationsRequest(TeaModel):
         return self
 
 
-class ListUpstreamAppKeyRelationsResponseBodyRelationListPagination(TeaModel):
-    def __init__(
-        self,
-        page_index: int = None,
-        total_page_count: int = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        self.page_index = page_index
-        self.total_page_count = total_page_count
-        self.page_size = page_size
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
 class ListUpstreamAppKeyRelationsResponseBodyRelationListList(TeaModel):
     def __init__(
         self,
-        app_name: str = None,
+        id: int = None,
         app_key: str = None,
-        app_package: str = None,
+        papp_key: str = None,
         project_id: str = None,
         gmt_create: int = None,
-        papp_key: str = None,
-        id: int = None,
+        app_name: str = None,
+        app_package: str = None,
     ):
-        self.app_name = app_name
+        self.id = id
         self.app_key = app_key
-        self.app_package = app_package
+        self.papp_key = papp_key
         self.project_id = project_id
         self.gmt_create = gmt_create
-        self.papp_key = papp_key
-        self.id = id
+        self.app_name = app_name
+        self.app_package = app_package
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.app_name is not None:
-            result['AppName'] = self.app_name
+        if self.id is not None:
+            result['Id'] = self.id
         if self.app_key is not None:
             result['AppKey'] = self.app_key
-        if self.app_package is not None:
-            result['AppPackage'] = self.app_package
+        if self.papp_key is not None:
+            result['PAppKey'] = self.papp_key
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
-        if self.papp_key is not None:
-            result['PAppKey'] = self.papp_key
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.app_package is not None:
+            result['AppPackage'] = self.app_package
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AppName') is not None:
-            self.app_name = m.get('AppName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
-        if m.get('AppPackage') is not None:
-            self.app_package = m.get('AppPackage')
+        if m.get('PAppKey') is not None:
+            self.papp_key = m.get('PAppKey')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
-        if m.get('PAppKey') is not None:
-            self.papp_key = m.get('PAppKey')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('AppPackage') is not None:
+            self.app_package = m.get('AppPackage')
+        return self
+
+
+class ListUpstreamAppKeyRelationsResponseBodyRelationListPagination(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        total_page_count: int = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.total_count = total_count
+        self.total_page_count = total_page_count
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
 class ListUpstreamAppKeyRelationsResponseBodyRelationList(TeaModel):
     def __init__(
         self,
-        pagination: ListUpstreamAppKeyRelationsResponseBodyRelationListPagination = None,
         list: List[ListUpstreamAppKeyRelationsResponseBodyRelationListList] = None,
+        pagination: ListUpstreamAppKeyRelationsResponseBodyRelationListPagination = None,
     ):
-        self.pagination = pagination
         self.list = list
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.list:
             for k in self.list:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListUpstreamAppKeyRelationsResponseBodyRelationListPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = ListUpstreamAppKeyRelationsResponseBodyRelationListList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListUpstreamAppKeyRelationsResponseBodyRelationListPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
@@ -22844,149 +23234,149 @@ class ListUpstreamAppServersRequest(TeaModel):
         return self
 
 
-class ListUpstreamAppServersResponseBodyAppServersPagination(TeaModel):
-    def __init__(
-        self,
-        page_index: int = None,
-        total_page_count: int = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        self.page_index = page_index
-        self.total_page_count = total_page_count
-        self.page_size = page_size
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.total_page_count is not None:
-            result['TotalPageCount'] = self.total_page_count
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('TotalPageCount') is not None:
-            self.total_page_count = m.get('TotalPageCount')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
 class ListUpstreamAppServersResponseBodyAppServersList(TeaModel):
     def __init__(
         self,
-        project_id: str = None,
-        gmt_create: int = None,
-        tags: str = None,
-        queue_name_list: str = None,
-        papp_key: str = None,
-        gmt_modified: int = None,
-        name: str = None,
         id: int = None,
+        papp_key: str = None,
+        project_id: str = None,
+        name: str = None,
+        tags: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        queue_name_list: str = None,
     ):
-        self.project_id = project_id
-        self.gmt_create = gmt_create
-        self.tags = tags
-        self.queue_name_list = queue_name_list
-        self.papp_key = papp_key
-        self.gmt_modified = gmt_modified
-        self.name = name
         self.id = id
+        self.papp_key = papp_key
+        self.project_id = project_id
+        self.name = name
+        self.tags = tags
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.queue_name_list = queue_name_list
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.tags is not None:
-            result['Tags'] = self.tags
-        if self.queue_name_list is not None:
-            result['QueueNameList'] = self.queue_name_list
-        if self.papp_key is not None:
-            result['PAppKey'] = self.papp_key
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
-        if self.name is not None:
-            result['Name'] = self.name
         if self.id is not None:
             result['Id'] = self.id
+        if self.papp_key is not None:
+            result['PAppKey'] = self.papp_key
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.queue_name_list is not None:
+            result['QueueNameList'] = self.queue_name_list
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
-        if m.get('QueueNameList') is not None:
-            self.queue_name_list = m.get('QueueNameList')
-        if m.get('PAppKey') is not None:
-            self.papp_key = m.get('PAppKey')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('PAppKey') is not None:
+            self.papp_key = m.get('PAppKey')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('QueueNameList') is not None:
+            self.queue_name_list = m.get('QueueNameList')
+        return self
+
+
+class ListUpstreamAppServersResponseBodyAppServersPagination(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        total_page_count: int = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.total_count = total_count
+        self.total_page_count = total_page_count
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_count is not None:
+            result['TotalPageCount'] = self.total_page_count
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageCount') is not None:
+            self.total_page_count = m.get('TotalPageCount')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
 class ListUpstreamAppServersResponseBodyAppServers(TeaModel):
     def __init__(
         self,
-        pagination: ListUpstreamAppServersResponseBodyAppServersPagination = None,
         list: List[ListUpstreamAppServersResponseBodyAppServersList] = None,
+        pagination: ListUpstreamAppServersResponseBodyAppServersPagination = None,
     ):
-        self.pagination = pagination
         self.list = list
+        self.pagination = pagination
 
     def validate(self):
-        if self.pagination:
-            self.pagination.validate()
         if self.list:
             for k in self.list:
                 if k:
                     k.validate()
+        if self.pagination:
+            self.pagination.validate()
 
     def to_map(self):
         result = dict()
-        if self.pagination is not None:
-            result['Pagination'] = self.pagination.to_map()
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.pagination is not None:
+            result['Pagination'] = self.pagination.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pagination') is not None:
-            temp_model = ListUpstreamAppServersResponseBodyAppServersPagination()
-            self.pagination = temp_model.from_map(m['Pagination'])
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = ListUpstreamAppServersResponseBodyAppServersList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('Pagination') is not None:
+            temp_model = ListUpstreamAppServersResponseBodyAppServersPagination()
+            self.pagination = temp_model.from_map(m['Pagination'])
         return self
 
 
@@ -23080,47 +23470,47 @@ class ListVersionDeviceGroupsRequest(TeaModel):
 class ListVersionDeviceGroupsResponseBodyDeviceGroupList(TeaModel):
     def __init__(
         self,
-        gmt_modify: str = None,
+        id: str = None,
+        name: str = None,
         description: str = None,
         gmt_create: str = None,
-        name: str = None,
-        id: str = None,
+        gmt_modify: str = None,
     ):
-        self.gmt_modify = gmt_modify
+        self.id = id
+        self.name = name
         self.description = description
         self.gmt_create = gmt_create
-        self.name = name
-        self.id = id
+        self.gmt_modify = gmt_modify
 
     def validate(self):
         pass
 
     def to_map(self):
         result = dict()
-        if self.gmt_modify is not None:
-            result['GmtModify'] = self.gmt_modify
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
         if self.description is not None:
             result['Description'] = self.description
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GmtModify') is not None:
-            self.gmt_modify = m.get('GmtModify')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
         return self
 
 

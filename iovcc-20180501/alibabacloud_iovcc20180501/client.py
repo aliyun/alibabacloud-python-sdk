@@ -280,6 +280,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.connect_assist_device_with_options_async(request, runtime)
 
+    def count_activated_or_new_registration_device_with_options(
+        self,
+        request: iovcc_20180501_models.CountActivatedOrNewRegistrationDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iovcc_20180501_models.CountActivatedOrNewRegistrationDeviceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return iovcc_20180501_models.CountActivatedOrNewRegistrationDeviceResponse().from_map(
+            self.do_rpcrequest('CountActivatedOrNewRegistrationDevice', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def count_activated_or_new_registration_device_with_options_async(
+        self,
+        request: iovcc_20180501_models.CountActivatedOrNewRegistrationDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iovcc_20180501_models.CountActivatedOrNewRegistrationDeviceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return iovcc_20180501_models.CountActivatedOrNewRegistrationDeviceResponse().from_map(
+            await self.do_rpcrequest_async('CountActivatedOrNewRegistrationDevice', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def count_activated_or_new_registration_device(
+        self,
+        request: iovcc_20180501_models.CountActivatedOrNewRegistrationDeviceRequest,
+    ) -> iovcc_20180501_models.CountActivatedOrNewRegistrationDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.count_activated_or_new_registration_device_with_options(request, runtime)
+
+    async def count_activated_or_new_registration_device_async(
+        self,
+        request: iovcc_20180501_models.CountActivatedOrNewRegistrationDeviceRequest,
+    ) -> iovcc_20180501_models.CountActivatedOrNewRegistrationDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.count_activated_or_new_registration_device_with_options_async(request, runtime)
+
     def count_device_brands_with_options(
         self,
         request: iovcc_20180501_models.CountDeviceBrandsRequest,
@@ -4395,6 +4435,46 @@ class Client(OpenApiClient):
     ) -> iovcc_20180501_models.GetNamespaceDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_namespace_data_with_options_async(request, runtime)
+
+    def get_namespace_statistics_data_with_options(
+        self,
+        request: iovcc_20180501_models.GetNamespaceStatisticsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iovcc_20180501_models.GetNamespaceStatisticsDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return iovcc_20180501_models.GetNamespaceStatisticsDataResponse().from_map(
+            self.do_rpcrequest('GetNamespaceStatisticsData', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_namespace_statistics_data_with_options_async(
+        self,
+        request: iovcc_20180501_models.GetNamespaceStatisticsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iovcc_20180501_models.GetNamespaceStatisticsDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return iovcc_20180501_models.GetNamespaceStatisticsDataResponse().from_map(
+            await self.do_rpcrequest_async('GetNamespaceStatisticsData', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_namespace_statistics_data(
+        self,
+        request: iovcc_20180501_models.GetNamespaceStatisticsDataRequest,
+    ) -> iovcc_20180501_models.GetNamespaceStatisticsDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_namespace_statistics_data_with_options(request, runtime)
+
+    async def get_namespace_statistics_data_async(
+        self,
+        request: iovcc_20180501_models.GetNamespaceStatisticsDataRequest,
+    ) -> iovcc_20180501_models.GetNamespaceStatisticsDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_namespace_statistics_data_with_options_async(request, runtime)
 
     def get_oss_upload_meta_with_options(
         self,
