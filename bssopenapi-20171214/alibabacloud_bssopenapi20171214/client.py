@@ -536,6 +536,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_cost_unit_with_options_async(request, runtime)
 
+    def describe_pricing_module_with_options(
+        self,
+        request: bss_open_api_20171214_models.DescribePricingModuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return bss_open_api_20171214_models.DescribePricingModuleResponse().from_map(
+            self.do_rpcrequest('DescribePricingModule', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_pricing_module_with_options_async(
+        self,
+        request: bss_open_api_20171214_models.DescribePricingModuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return bss_open_api_20171214_models.DescribePricingModuleResponse().from_map(
+            await self.do_rpcrequest_async('DescribePricingModule', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_pricing_module(
+        self,
+        request: bss_open_api_20171214_models.DescribePricingModuleRequest,
+    ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pricing_module_with_options(request, runtime)
+
+    async def describe_pricing_module_async(
+        self,
+        request: bss_open_api_20171214_models.DescribePricingModuleRequest,
+    ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pricing_module_with_options_async(request, runtime)
+
     def describe_resource_package_product_with_options(
         self,
         request: bss_open_api_20171214_models.DescribeResourcePackageProductRequest,
@@ -2015,6 +2055,46 @@ class Client(OpenApiClient):
     ) -> bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_reseller_available_quota_with_options_async(request, runtime)
+
+    def query_resource_package_instances_with_options(
+        self,
+        request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return bss_open_api_20171214_models.QueryResourcePackageInstancesResponse().from_map(
+            self.do_rpcrequest('QueryResourcePackageInstances', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_resource_package_instances_with_options_async(
+        self,
+        request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return bss_open_api_20171214_models.QueryResourcePackageInstancesResponse().from_map(
+            await self.do_rpcrequest_async('QueryResourcePackageInstances', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_resource_package_instances(
+        self,
+        request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
+    ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_resource_package_instances_with_options(request, runtime)
+
+    async def query_resource_package_instances_async(
+        self,
+        request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
+    ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_resource_package_instances_with_options_async(request, runtime)
 
     def query_riutilization_detail_with_options(
         self,
