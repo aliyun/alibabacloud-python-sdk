@@ -1421,6 +1421,91 @@ class ConfirmTransferInEmailResponse(TeaModel):
         return self
 
 
+class DeleteContactTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        user_client_ip: str = None,
+        registrant_profile_ids: str = None,
+    ):
+        self.user_client_ip = user_client_ip
+        self.registrant_profile_ids = registrant_profile_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        if self.registrant_profile_ids is not None:
+            result['RegistrantProfileIds'] = self.registrant_profile_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        if m.get('RegistrantProfileIds') is not None:
+            self.registrant_profile_ids = m.get('RegistrantProfileIds')
+        return self
+
+
+class DeleteContactTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteContactTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteContactTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteContactTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDomainGroupRequest(TeaModel):
     def __init__(
         self,
@@ -12292,6 +12377,128 @@ class SaveBatchTaskForModifyingDomainDnsResponse(TeaModel):
         return self
 
 
+class SaveBatchTaskForReserveDropListDomainRequestDomains(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+    ):
+        self.domain_name = domain_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        return self
+
+
+class SaveBatchTaskForReserveDropListDomainRequest(TeaModel):
+    def __init__(
+        self,
+        contact_template_id: str = None,
+        domains: List[SaveBatchTaskForReserveDropListDomainRequestDomains] = None,
+    ):
+        self.contact_template_id = contact_template_id
+        self.domains = domains
+
+    def validate(self):
+        if self.domains:
+            for k in self.domains:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.contact_template_id is not None:
+            result['ContactTemplateId'] = self.contact_template_id
+        result['Domains'] = []
+        if self.domains is not None:
+            for k in self.domains:
+                result['Domains'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContactTemplateId') is not None:
+            self.contact_template_id = m.get('ContactTemplateId')
+        self.domains = []
+        if m.get('Domains') is not None:
+            for k in m.get('Domains'):
+                temp_model = SaveBatchTaskForReserveDropListDomainRequestDomains()
+                self.domains.append(temp_model.from_map(k))
+        return self
+
+
+class SaveBatchTaskForReserveDropListDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_no: str = None,
+    ):
+        self.request_id = request_id
+        self.task_no = task_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_no is not None:
+            result['TaskNo'] = self.task_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskNo') is not None:
+            self.task_no = m.get('TaskNo')
+        return self
+
+
+class SaveBatchTaskForReserveDropListDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SaveBatchTaskForReserveDropListDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SaveBatchTaskForReserveDropListDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SaveBatchTaskForTransferProhibitionLockRequest(TeaModel):
     def __init__(
         self,
@@ -13170,6 +13377,229 @@ class SaveRegistrantProfileResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = SaveRegistrantProfileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SaveRegistrantProfileRealNameVerificationRequest(TeaModel):
+    def __init__(
+        self,
+        country: str = None,
+        user_client_ip: str = None,
+        lang: str = None,
+        registrant_profile_id: int = None,
+        city: str = None,
+        registrant_organization: str = None,
+        registrant_name: str = None,
+        province: str = None,
+        address: str = None,
+        email: str = None,
+        postal_code: str = None,
+        tel_area: str = None,
+        telephone: str = None,
+        tel_ext: str = None,
+        zh_registrant_organization: str = None,
+        zh_registrant_name: str = None,
+        zh_province: str = None,
+        zh_address: str = None,
+        zh_city: str = None,
+        registrant_type: str = None,
+        registrant_profile_type: str = None,
+        identity_credential: str = None,
+        identity_credential_no: str = None,
+        identity_credential_type: str = None,
+    ):
+        self.country = country
+        self.user_client_ip = user_client_ip
+        self.lang = lang
+        self.registrant_profile_id = registrant_profile_id
+        self.city = city
+        self.registrant_organization = registrant_organization
+        self.registrant_name = registrant_name
+        self.province = province
+        self.address = address
+        self.email = email
+        self.postal_code = postal_code
+        self.tel_area = tel_area
+        self.telephone = telephone
+        self.tel_ext = tel_ext
+        self.zh_registrant_organization = zh_registrant_organization
+        self.zh_registrant_name = zh_registrant_name
+        self.zh_province = zh_province
+        self.zh_address = zh_address
+        self.zh_city = zh_city
+        self.registrant_type = registrant_type
+        self.registrant_profile_type = registrant_profile_type
+        self.identity_credential = identity_credential
+        self.identity_credential_no = identity_credential_no
+        self.identity_credential_type = identity_credential_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.country is not None:
+            result['Country'] = self.country
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.registrant_profile_id is not None:
+            result['RegistrantProfileId'] = self.registrant_profile_id
+        if self.city is not None:
+            result['City'] = self.city
+        if self.registrant_organization is not None:
+            result['RegistrantOrganization'] = self.registrant_organization
+        if self.registrant_name is not None:
+            result['RegistrantName'] = self.registrant_name
+        if self.province is not None:
+            result['Province'] = self.province
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.postal_code is not None:
+            result['PostalCode'] = self.postal_code
+        if self.tel_area is not None:
+            result['TelArea'] = self.tel_area
+        if self.telephone is not None:
+            result['Telephone'] = self.telephone
+        if self.tel_ext is not None:
+            result['TelExt'] = self.tel_ext
+        if self.zh_registrant_organization is not None:
+            result['ZhRegistrantOrganization'] = self.zh_registrant_organization
+        if self.zh_registrant_name is not None:
+            result['ZhRegistrantName'] = self.zh_registrant_name
+        if self.zh_province is not None:
+            result['ZhProvince'] = self.zh_province
+        if self.zh_address is not None:
+            result['ZhAddress'] = self.zh_address
+        if self.zh_city is not None:
+            result['ZhCity'] = self.zh_city
+        if self.registrant_type is not None:
+            result['RegistrantType'] = self.registrant_type
+        if self.registrant_profile_type is not None:
+            result['RegistrantProfileType'] = self.registrant_profile_type
+        if self.identity_credential is not None:
+            result['IdentityCredential'] = self.identity_credential
+        if self.identity_credential_no is not None:
+            result['IdentityCredentialNo'] = self.identity_credential_no
+        if self.identity_credential_type is not None:
+            result['IdentityCredentialType'] = self.identity_credential_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Country') is not None:
+            self.country = m.get('Country')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('RegistrantProfileId') is not None:
+            self.registrant_profile_id = m.get('RegistrantProfileId')
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('RegistrantOrganization') is not None:
+            self.registrant_organization = m.get('RegistrantOrganization')
+        if m.get('RegistrantName') is not None:
+            self.registrant_name = m.get('RegistrantName')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('PostalCode') is not None:
+            self.postal_code = m.get('PostalCode')
+        if m.get('TelArea') is not None:
+            self.tel_area = m.get('TelArea')
+        if m.get('Telephone') is not None:
+            self.telephone = m.get('Telephone')
+        if m.get('TelExt') is not None:
+            self.tel_ext = m.get('TelExt')
+        if m.get('ZhRegistrantOrganization') is not None:
+            self.zh_registrant_organization = m.get('ZhRegistrantOrganization')
+        if m.get('ZhRegistrantName') is not None:
+            self.zh_registrant_name = m.get('ZhRegistrantName')
+        if m.get('ZhProvince') is not None:
+            self.zh_province = m.get('ZhProvince')
+        if m.get('ZhAddress') is not None:
+            self.zh_address = m.get('ZhAddress')
+        if m.get('ZhCity') is not None:
+            self.zh_city = m.get('ZhCity')
+        if m.get('RegistrantType') is not None:
+            self.registrant_type = m.get('RegistrantType')
+        if m.get('RegistrantProfileType') is not None:
+            self.registrant_profile_type = m.get('RegistrantProfileType')
+        if m.get('IdentityCredential') is not None:
+            self.identity_credential = m.get('IdentityCredential')
+        if m.get('IdentityCredentialNo') is not None:
+            self.identity_credential_no = m.get('IdentityCredentialNo')
+        if m.get('IdentityCredentialType') is not None:
+            self.identity_credential_type = m.get('IdentityCredentialType')
+        return self
+
+
+class SaveRegistrantProfileRealNameVerificationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        registrant_profile_id: int = None,
+    ):
+        self.request_id = request_id
+        self.registrant_profile_id = registrant_profile_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.registrant_profile_id is not None:
+            result['RegistrantProfileId'] = self.registrant_profile_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RegistrantProfileId') is not None:
+            self.registrant_profile_id = m.get('RegistrantProfileId')
+        return self
+
+
+class SaveRegistrantProfileRealNameVerificationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SaveRegistrantProfileRealNameVerificationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SaveRegistrantProfileRealNameVerificationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16952,6 +17382,91 @@ class ScrollDomainListResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ScrollDomainListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetDefaultRegistrantProfileRequest(TeaModel):
+    def __init__(
+        self,
+        user_client_ip: str = None,
+        registrant_profile_id: int = None,
+    ):
+        self.user_client_ip = user_client_ip
+        self.registrant_profile_id = registrant_profile_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        if self.registrant_profile_id is not None:
+            result['RegistrantProfileId'] = self.registrant_profile_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        if m.get('RegistrantProfileId') is not None:
+            self.registrant_profile_id = m.get('RegistrantProfileId')
+        return self
+
+
+class SetDefaultRegistrantProfileResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetDefaultRegistrantProfileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SetDefaultRegistrantProfileResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SetDefaultRegistrantProfileResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

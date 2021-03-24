@@ -519,6 +519,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.confirm_transfer_in_email_with_options_async(request, runtime)
 
+    def delete_contact_templates_with_options(
+        self,
+        request: domain_20180129_models.DeleteContactTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.DeleteContactTemplatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return domain_20180129_models.DeleteContactTemplatesResponse().from_map(
+            self.do_rpcrequest('DeleteContactTemplates', '2018-01-29', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_contact_templates_with_options_async(
+        self,
+        request: domain_20180129_models.DeleteContactTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.DeleteContactTemplatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return domain_20180129_models.DeleteContactTemplatesResponse().from_map(
+            await self.do_rpcrequest_async('DeleteContactTemplates', '2018-01-29', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_contact_templates(
+        self,
+        request: domain_20180129_models.DeleteContactTemplatesRequest,
+    ) -> domain_20180129_models.DeleteContactTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_contact_templates_with_options(request, runtime)
+
+    async def delete_contact_templates_async(
+        self,
+        request: domain_20180129_models.DeleteContactTemplatesRequest,
+    ) -> domain_20180129_models.DeleteContactTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_contact_templates_with_options_async(request, runtime)
+
     def delete_domain_group_with_options(
         self,
         request: domain_20180129_models.DeleteDomainGroupRequest,
@@ -2639,6 +2679,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.save_batch_task_for_modifying_domain_dns_with_options_async(request, runtime)
 
+    def save_batch_task_for_reserve_drop_list_domain_with_options(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForReserveDropListDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveBatchTaskForReserveDropListDomainResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return domain_20180129_models.SaveBatchTaskForReserveDropListDomainResponse().from_map(
+            self.do_rpcrequest('SaveBatchTaskForReserveDropListDomain', '2018-01-29', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def save_batch_task_for_reserve_drop_list_domain_with_options_async(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForReserveDropListDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveBatchTaskForReserveDropListDomainResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return domain_20180129_models.SaveBatchTaskForReserveDropListDomainResponse().from_map(
+            await self.do_rpcrequest_async('SaveBatchTaskForReserveDropListDomain', '2018-01-29', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def save_batch_task_for_reserve_drop_list_domain(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForReserveDropListDomainRequest,
+    ) -> domain_20180129_models.SaveBatchTaskForReserveDropListDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.save_batch_task_for_reserve_drop_list_domain_with_options(request, runtime)
+
+    async def save_batch_task_for_reserve_drop_list_domain_async(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForReserveDropListDomainRequest,
+    ) -> domain_20180129_models.SaveBatchTaskForReserveDropListDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.save_batch_task_for_reserve_drop_list_domain_with_options_async(request, runtime)
+
     def save_batch_task_for_transfer_prohibition_lock_with_options(
         self,
         request: domain_20180129_models.SaveBatchTaskForTransferProhibitionLockRequest,
@@ -2878,6 +2958,46 @@ class Client(OpenApiClient):
     ) -> domain_20180129_models.SaveRegistrantProfileResponse:
         runtime = util_models.RuntimeOptions()
         return await self.save_registrant_profile_with_options_async(request, runtime)
+
+    def save_registrant_profile_real_name_verification_with_options(
+        self,
+        request: domain_20180129_models.SaveRegistrantProfileRealNameVerificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveRegistrantProfileRealNameVerificationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return domain_20180129_models.SaveRegistrantProfileRealNameVerificationResponse().from_map(
+            self.do_rpcrequest('SaveRegistrantProfileRealNameVerification', '2018-01-29', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def save_registrant_profile_real_name_verification_with_options_async(
+        self,
+        request: domain_20180129_models.SaveRegistrantProfileRealNameVerificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveRegistrantProfileRealNameVerificationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return domain_20180129_models.SaveRegistrantProfileRealNameVerificationResponse().from_map(
+            await self.do_rpcrequest_async('SaveRegistrantProfileRealNameVerification', '2018-01-29', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def save_registrant_profile_real_name_verification(
+        self,
+        request: domain_20180129_models.SaveRegistrantProfileRealNameVerificationRequest,
+    ) -> domain_20180129_models.SaveRegistrantProfileRealNameVerificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.save_registrant_profile_real_name_verification_with_options(request, runtime)
+
+    async def save_registrant_profile_real_name_verification_async(
+        self,
+        request: domain_20180129_models.SaveRegistrantProfileRealNameVerificationRequest,
+    ) -> domain_20180129_models.SaveRegistrantProfileRealNameVerificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.save_registrant_profile_real_name_verification_with_options_async(request, runtime)
 
     def save_single_task_for_adding_dsrecord_with_options(
         self,
@@ -4038,6 +4158,46 @@ class Client(OpenApiClient):
     ) -> domain_20180129_models.ScrollDomainListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.scroll_domain_list_with_options_async(request, runtime)
+
+    def set_default_registrant_profile_with_options(
+        self,
+        request: domain_20180129_models.SetDefaultRegistrantProfileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SetDefaultRegistrantProfileResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return domain_20180129_models.SetDefaultRegistrantProfileResponse().from_map(
+            self.do_rpcrequest('SetDefaultRegistrantProfile', '2018-01-29', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def set_default_registrant_profile_with_options_async(
+        self,
+        request: domain_20180129_models.SetDefaultRegistrantProfileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SetDefaultRegistrantProfileResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return domain_20180129_models.SetDefaultRegistrantProfileResponse().from_map(
+            await self.do_rpcrequest_async('SetDefaultRegistrantProfile', '2018-01-29', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def set_default_registrant_profile(
+        self,
+        request: domain_20180129_models.SetDefaultRegistrantProfileRequest,
+    ) -> domain_20180129_models.SetDefaultRegistrantProfileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_default_registrant_profile_with_options(request, runtime)
+
+    async def set_default_registrant_profile_async(
+        self,
+        request: domain_20180129_models.SetDefaultRegistrantProfileRequest,
+    ) -> domain_20180129_models.SetDefaultRegistrantProfileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_default_registrant_profile_with_options_async(request, runtime)
 
     def submit_email_verification_with_options(
         self,
