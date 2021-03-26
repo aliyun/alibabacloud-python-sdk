@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -105,7 +106,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.AllocateCostUnitResourceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.AllocateCostUnitResourceResponse(),
             self.do_rpcrequest('AllocateCostUnitResource', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -118,7 +120,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.AllocateCostUnitResourceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.AllocateCostUnitResourceResponse(),
             await self.do_rpcrequest_async('AllocateCostUnitResource', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -145,7 +148,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.ApplyInvoiceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.ApplyInvoiceResponse(),
             self.do_rpcrequest('ApplyInvoice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -158,7 +162,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.ApplyInvoiceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.ApplyInvoiceResponse(),
             await self.do_rpcrequest_async('ApplyInvoice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -185,7 +190,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.CancelOrderResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.CancelOrderResponse(),
             self.do_rpcrequest('CancelOrder', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -198,7 +204,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.CancelOrderResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.CancelOrderResponse(),
             await self.do_rpcrequest_async('CancelOrder', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -225,7 +232,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.ChangeResellerConsumeAmountResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.ChangeResellerConsumeAmountResponse(),
             self.do_rpcrequest('ChangeResellerConsumeAmount', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -238,7 +246,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.ChangeResellerConsumeAmountResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.ChangeResellerConsumeAmountResponse(),
             await self.do_rpcrequest_async('ChangeResellerConsumeAmount', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -265,7 +274,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.ConvertChargeTypeResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.ConvertChargeTypeResponse(),
             self.do_rpcrequest('ConvertChargeType', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -278,7 +288,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.ConvertChargeTypeResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.ConvertChargeTypeResponse(),
             await self.do_rpcrequest_async('ConvertChargeType', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -305,7 +316,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.CreateAgAccountResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.CreateAgAccountResponse(),
             self.do_rpcrequest('CreateAgAccount', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -318,7 +330,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.CreateAgAccountResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.CreateAgAccountResponse(),
             await self.do_rpcrequest_async('CreateAgAccount', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -345,7 +358,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.CreateCostUnitResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.CreateCostUnitResponse(),
             self.do_rpcrequest('CreateCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -358,7 +372,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.CreateCostUnitResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.CreateCostUnitResponse(),
             await self.do_rpcrequest_async('CreateCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -385,7 +400,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.CreateInstanceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.CreateInstanceResponse(),
             self.do_rpcrequest('CreateInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -398,7 +414,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.CreateInstanceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.CreateInstanceResponse(),
             await self.do_rpcrequest_async('CreateInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -425,7 +442,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.CreateResellerUserQuotaResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.CreateResellerUserQuotaResponse(),
             self.do_rpcrequest('CreateResellerUserQuota', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -438,7 +456,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.CreateResellerUserQuotaResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.CreateResellerUserQuotaResponse(),
             await self.do_rpcrequest_async('CreateResellerUserQuota', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -465,7 +484,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.CreateResourcePackageResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.CreateResourcePackageResponse(),
             self.do_rpcrequest('CreateResourcePackage', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -478,7 +498,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.CreateResourcePackageResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.CreateResourcePackageResponse(),
             await self.do_rpcrequest_async('CreateResourcePackage', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -505,7 +526,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.DeleteCostUnitResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DeleteCostUnitResponse(),
             self.do_rpcrequest('DeleteCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -518,7 +540,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.DeleteCostUnitResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DeleteCostUnitResponse(),
             await self.do_rpcrequest_async('DeleteCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -536,45 +559,47 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_cost_unit_with_options_async(request, runtime)
 
-    def describe_pricing_module_with_options(
+    def describe_instance_bill_with_options(
         self,
-        request: bss_open_api_20171214_models.DescribePricingModuleRequest,
+        request: bss_open_api_20171214_models.DescribeInstanceBillRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+    ) -> bss_open_api_20171214_models.DescribeInstanceBillResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.DescribePricingModuleResponse().from_map(
-            self.do_rpcrequest('DescribePricingModule', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeInstanceBillResponse(),
+            self.do_rpcrequest('DescribeInstanceBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def describe_pricing_module_with_options_async(
+    async def describe_instance_bill_with_options_async(
         self,
-        request: bss_open_api_20171214_models.DescribePricingModuleRequest,
+        request: bss_open_api_20171214_models.DescribeInstanceBillRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+    ) -> bss_open_api_20171214_models.DescribeInstanceBillResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.DescribePricingModuleResponse().from_map(
-            await self.do_rpcrequest_async('DescribePricingModule', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeInstanceBillResponse(),
+            await self.do_rpcrequest_async('DescribeInstanceBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_pricing_module(
+    def describe_instance_bill(
         self,
-        request: bss_open_api_20171214_models.DescribePricingModuleRequest,
-    ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        request: bss_open_api_20171214_models.DescribeInstanceBillRequest,
+    ) -> bss_open_api_20171214_models.DescribeInstanceBillResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_pricing_module_with_options(request, runtime)
+        return self.describe_instance_bill_with_options(request, runtime)
 
-    async def describe_pricing_module_async(
+    async def describe_instance_bill_async(
         self,
-        request: bss_open_api_20171214_models.DescribePricingModuleRequest,
-    ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        request: bss_open_api_20171214_models.DescribeInstanceBillRequest,
+    ) -> bss_open_api_20171214_models.DescribeInstanceBillResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_pricing_module_with_options_async(request, runtime)
+        return await self.describe_instance_bill_with_options_async(request, runtime)
 
     def describe_resource_package_product_with_options(
         self,
@@ -585,7 +610,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.DescribeResourcePackageProductResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeResourcePackageProductResponse(),
             self.do_rpcrequest('DescribeResourcePackageProduct', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -598,7 +624,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.DescribeResourcePackageProductResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeResourcePackageProductResponse(),
             await self.do_rpcrequest_async('DescribeResourcePackageProduct', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -625,7 +652,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.DescribeSplitItemBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeSplitItemBillResponse(),
             self.do_rpcrequest('DescribeSplitItemBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -638,7 +666,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.DescribeSplitItemBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeSplitItemBillResponse(),
             await self.do_rpcrequest_async('DescribeSplitItemBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -665,7 +694,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.EnableBillGenerationResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.EnableBillGenerationResponse(),
             self.do_rpcrequest('EnableBillGeneration', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -678,7 +708,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.EnableBillGenerationResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.EnableBillGenerationResponse(),
             await self.do_rpcrequest_async('EnableBillGeneration', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -705,7 +736,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.GetCustomerAccountInfoResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.GetCustomerAccountInfoResponse(),
             self.do_rpcrequest('GetCustomerAccountInfo', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -718,7 +750,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.GetCustomerAccountInfoResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.GetCustomerAccountInfoResponse(),
             await self.do_rpcrequest_async('GetCustomerAccountInfo', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -741,7 +774,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerListResponse:
         req = open_api_models.OpenApiRequest()
-        return bss_open_api_20171214_models.GetCustomerListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.GetCustomerListResponse(),
             self.do_rpcrequest('GetCustomerList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -750,7 +784,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerListResponse:
         req = open_api_models.OpenApiRequest()
-        return bss_open_api_20171214_models.GetCustomerListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.GetCustomerListResponse(),
             await self.do_rpcrequest_async('GetCustomerList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -771,7 +806,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.GetOrderDetailResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.GetOrderDetailResponse(),
             self.do_rpcrequest('GetOrderDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -784,7 +820,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.GetOrderDetailResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.GetOrderDetailResponse(),
             await self.do_rpcrequest_async('GetOrderDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -811,7 +848,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.GetPayAsYouGoPriceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.GetPayAsYouGoPriceResponse(),
             self.do_rpcrequest('GetPayAsYouGoPrice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -824,7 +862,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.GetPayAsYouGoPriceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.GetPayAsYouGoPriceResponse(),
             await self.do_rpcrequest_async('GetPayAsYouGoPrice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -851,7 +890,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.GetResourcePackagePriceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.GetResourcePackagePriceResponse(),
             self.do_rpcrequest('GetResourcePackagePrice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -864,7 +904,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.GetResourcePackagePriceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.GetResourcePackagePriceResponse(),
             await self.do_rpcrequest_async('GetResourcePackagePrice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -891,7 +932,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.GetSubscriptionPriceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.GetSubscriptionPriceResponse(),
             self.do_rpcrequest('GetSubscriptionPrice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -904,7 +946,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.GetSubscriptionPriceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.GetSubscriptionPriceResponse(),
             await self.do_rpcrequest_async('GetSubscriptionPrice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -931,7 +974,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.ModifyCostUnitResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.ModifyCostUnitResponse(),
             self.do_rpcrequest('ModifyCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -944,7 +988,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.ModifyCostUnitResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.ModifyCostUnitResponse(),
             await self.do_rpcrequest_async('ModifyCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -971,7 +1016,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.ModifyInstanceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.ModifyInstanceResponse(),
             self.do_rpcrequest('ModifyInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -984,7 +1030,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.ModifyInstanceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.ModifyInstanceResponse(),
             await self.do_rpcrequest_async('ModifyInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1007,7 +1054,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountBalanceResponse:
         req = open_api_models.OpenApiRequest()
-        return bss_open_api_20171214_models.QueryAccountBalanceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryAccountBalanceResponse(),
             self.do_rpcrequest('QueryAccountBalance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1016,7 +1064,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountBalanceResponse:
         req = open_api_models.OpenApiRequest()
-        return bss_open_api_20171214_models.QueryAccountBalanceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryAccountBalanceResponse(),
             await self.do_rpcrequest_async('QueryAccountBalance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1037,7 +1086,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryAccountBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryAccountBillResponse(),
             self.do_rpcrequest('QueryAccountBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1050,7 +1100,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryAccountBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryAccountBillResponse(),
             await self.do_rpcrequest_async('QueryAccountBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1077,7 +1128,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryAccountTransactionDetailsResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryAccountTransactionDetailsResponse(),
             self.do_rpcrequest('QueryAccountTransactionDetails', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1090,7 +1142,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryAccountTransactionDetailsResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryAccountTransactionDetailsResponse(),
             await self.do_rpcrequest_async('QueryAccountTransactionDetails', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1117,7 +1170,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryAccountTransactionsResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryAccountTransactionsResponse(),
             self.do_rpcrequest('QueryAccountTransactions', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1130,7 +1184,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryAccountTransactionsResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryAccountTransactionsResponse(),
             await self.do_rpcrequest_async('QueryAccountTransactions', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1157,7 +1212,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryAvailableInstancesResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryAvailableInstancesResponse(),
             self.do_rpcrequest('QueryAvailableInstances', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1170,7 +1226,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryAvailableInstancesResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryAvailableInstancesResponse(),
             await self.do_rpcrequest_async('QueryAvailableInstances', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1197,7 +1254,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryBillResponse(),
             self.do_rpcrequest('QueryBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1210,7 +1268,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryBillResponse(),
             await self.do_rpcrequest_async('QueryBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1237,7 +1296,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryBillOverviewResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryBillOverviewResponse(),
             self.do_rpcrequest('QueryBillOverview', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1250,7 +1310,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryBillOverviewResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryBillOverviewResponse(),
             await self.do_rpcrequest_async('QueryBillOverview', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1273,7 +1334,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse:
         req = open_api_models.OpenApiRequest()
-        return bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse(),
             self.do_rpcrequest('QueryBillToOSSSubscription', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1282,7 +1344,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse:
         req = open_api_models.OpenApiRequest()
-        return bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse(),
             await self.do_rpcrequest_async('QueryBillToOSSSubscription', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1303,7 +1366,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryCashCouponsResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryCashCouponsResponse(),
             self.do_rpcrequest('QueryCashCoupons', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1316,7 +1380,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryCashCouponsResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryCashCouponsResponse(),
             await self.do_rpcrequest_async('QueryCashCoupons', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1343,7 +1408,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryCostUnitResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryCostUnitResponse(),
             self.do_rpcrequest('QueryCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1356,7 +1422,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryCostUnitResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryCostUnitResponse(),
             await self.do_rpcrequest_async('QueryCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1383,7 +1450,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryCostUnitResourceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryCostUnitResourceResponse(),
             self.do_rpcrequest('QueryCostUnitResource', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1396,7 +1464,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryCostUnitResourceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryCostUnitResourceResponse(),
             await self.do_rpcrequest_async('QueryCostUnitResource', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1423,7 +1492,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryCustomerAddressListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryCustomerAddressListResponse(),
             self.do_rpcrequest('QueryCustomerAddressList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1436,7 +1506,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryCustomerAddressListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryCustomerAddressListResponse(),
             await self.do_rpcrequest_async('QueryCustomerAddressList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1463,7 +1534,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryEvaluateListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryEvaluateListResponse(),
             self.do_rpcrequest('QueryEvaluateList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1476,7 +1548,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryEvaluateListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryEvaluateListResponse(),
             await self.do_rpcrequest_async('QueryEvaluateList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1503,7 +1576,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryFinancialAccountInfoResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryFinancialAccountInfoResponse(),
             self.do_rpcrequest('QueryFinancialAccountInfo', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1516,7 +1590,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryFinancialAccountInfoResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryFinancialAccountInfoResponse(),
             await self.do_rpcrequest_async('QueryFinancialAccountInfo', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1543,7 +1618,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryInstanceBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryInstanceBillResponse(),
             self.do_rpcrequest('QueryInstanceBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1556,7 +1632,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryInstanceBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryInstanceBillResponse(),
             await self.do_rpcrequest_async('QueryInstanceBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1583,7 +1660,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryInstanceByTagResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryInstanceByTagResponse(),
             self.do_rpcrequest('QueryInstanceByTag', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1596,7 +1674,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryInstanceByTagResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryInstanceByTagResponse(),
             await self.do_rpcrequest_async('QueryInstanceByTag', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1623,7 +1702,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryInstanceGaapCostResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryInstanceGaapCostResponse(),
             self.do_rpcrequest('QueryInstanceGaapCost', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1636,7 +1716,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryInstanceGaapCostResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryInstanceGaapCostResponse(),
             await self.do_rpcrequest_async('QueryInstanceGaapCost', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1663,7 +1744,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryInvoicingCustomerListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryInvoicingCustomerListResponse(),
             self.do_rpcrequest('QueryInvoicingCustomerList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1676,7 +1758,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryInvoicingCustomerListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryInvoicingCustomerListResponse(),
             await self.do_rpcrequest_async('QueryInvoicingCustomerList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1703,7 +1786,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryMonthlyBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryMonthlyBillResponse(),
             self.do_rpcrequest('QueryMonthlyBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1716,7 +1800,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryMonthlyBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryMonthlyBillResponse(),
             await self.do_rpcrequest_async('QueryMonthlyBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1743,7 +1828,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryMonthlyInstanceConsumptionResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryMonthlyInstanceConsumptionResponse(),
             self.do_rpcrequest('QueryMonthlyInstanceConsumption', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1756,7 +1842,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryMonthlyInstanceConsumptionResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryMonthlyInstanceConsumptionResponse(),
             await self.do_rpcrequest_async('QueryMonthlyInstanceConsumption', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1783,7 +1870,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryOrdersResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryOrdersResponse(),
             self.do_rpcrequest('QueryOrders', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1796,7 +1884,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryOrdersResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryOrdersResponse(),
             await self.do_rpcrequest_async('QueryOrders', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1823,7 +1912,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryPermissionListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryPermissionListResponse(),
             self.do_rpcrequest('QueryPermissionList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1836,7 +1926,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryPermissionListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryPermissionListResponse(),
             await self.do_rpcrequest_async('QueryPermissionList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1863,7 +1954,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryPrepaidCardsResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryPrepaidCardsResponse(),
             self.do_rpcrequest('QueryPrepaidCards', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1876,7 +1968,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryPrepaidCardsResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryPrepaidCardsResponse(),
             await self.do_rpcrequest_async('QueryPrepaidCards', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1903,7 +1996,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryProductListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryProductListResponse(),
             self.do_rpcrequest('QueryProductList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1916,7 +2010,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryProductListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryProductListResponse(),
             await self.do_rpcrequest_async('QueryProductList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1944,7 +2039,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return bss_open_api_20171214_models.QueryRedeemResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryRedeemResponse(),
             self.do_rpcrequest('QueryRedeem', '2017-12-14', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1958,7 +2054,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return bss_open_api_20171214_models.QueryRedeemResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryRedeemResponse(),
             await self.do_rpcrequest_async('QueryRedeem', '2017-12-14', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1985,7 +2082,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryRelationListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryRelationListResponse(),
             self.do_rpcrequest('QueryRelationList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1998,7 +2096,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryRelationListResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryRelationListResponse(),
             await self.do_rpcrequest_async('QueryRelationList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2025,7 +2124,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse(),
             self.do_rpcrequest('QueryResellerAvailableQuota', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2038,7 +2138,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse(),
             await self.do_rpcrequest_async('QueryResellerAvailableQuota', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2056,46 +2157,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_reseller_available_quota_with_options_async(request, runtime)
 
-    def query_resource_package_instances_with_options(
-        self,
-        request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return bss_open_api_20171214_models.QueryResourcePackageInstancesResponse().from_map(
-            self.do_rpcrequest('QueryResourcePackageInstances', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def query_resource_package_instances_with_options_async(
-        self,
-        request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return bss_open_api_20171214_models.QueryResourcePackageInstancesResponse().from_map(
-            await self.do_rpcrequest_async('QueryResourcePackageInstances', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_resource_package_instances(
-        self,
-        request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
-    ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_resource_package_instances_with_options(request, runtime)
-
-    async def query_resource_package_instances_async(
-        self,
-        request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
-    ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_resource_package_instances_with_options_async(request, runtime)
-
     def query_riutilization_detail_with_options(
         self,
         request: bss_open_api_20171214_models.QueryRIUtilizationDetailRequest,
@@ -2105,7 +2166,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryRIUtilizationDetailResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryRIUtilizationDetailResponse(),
             self.do_rpcrequest('QueryRIUtilizationDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2118,7 +2180,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryRIUtilizationDetailResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryRIUtilizationDetailResponse(),
             await self.do_rpcrequest_async('QueryRIUtilizationDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2145,7 +2208,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QuerySavingsPlansDeductLogResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QuerySavingsPlansDeductLogResponse(),
             self.do_rpcrequest('QuerySavingsPlansDeductLog', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2158,7 +2222,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QuerySavingsPlansDeductLogResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QuerySavingsPlansDeductLogResponse(),
             await self.do_rpcrequest_async('QuerySavingsPlansDeductLog', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2185,7 +2250,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QuerySavingsPlansInstanceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QuerySavingsPlansInstanceResponse(),
             self.do_rpcrequest('QuerySavingsPlansInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2198,7 +2264,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QuerySavingsPlansInstanceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QuerySavingsPlansInstanceResponse(),
             await self.do_rpcrequest_async('QuerySavingsPlansInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2225,7 +2292,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QuerySettleBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QuerySettleBillResponse(),
             self.do_rpcrequest('QuerySettleBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2238,7 +2306,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QuerySettleBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QuerySettleBillResponse(),
             await self.do_rpcrequest_async('QuerySettleBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2265,7 +2334,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QuerySettlementBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QuerySettlementBillResponse(),
             self.do_rpcrequest('QuerySettlementBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2278,7 +2348,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QuerySettlementBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QuerySettlementBillResponse(),
             await self.do_rpcrequest_async('QuerySettlementBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2305,7 +2376,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QuerySplitItemBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QuerySplitItemBillResponse(),
             self.do_rpcrequest('QuerySplitItemBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2318,7 +2390,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QuerySplitItemBillResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QuerySplitItemBillResponse(),
             await self.do_rpcrequest_async('QuerySplitItemBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2345,7 +2418,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryUserOmsDataResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryUserOmsDataResponse(),
             self.do_rpcrequest('QueryUserOmsData', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2358,7 +2432,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.QueryUserOmsDataResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryUserOmsDataResponse(),
             await self.do_rpcrequest_async('QueryUserOmsData', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2385,7 +2460,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.RenewInstanceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.RenewInstanceResponse(),
             self.do_rpcrequest('RenewInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2398,7 +2474,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.RenewInstanceResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.RenewInstanceResponse(),
             await self.do_rpcrequest_async('RenewInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2425,7 +2502,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.RenewResourcePackageResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.RenewResourcePackageResponse(),
             self.do_rpcrequest('RenewResourcePackage', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2438,7 +2516,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.RenewResourcePackageResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.RenewResourcePackageResponse(),
             await self.do_rpcrequest_async('RenewResourcePackage', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2465,7 +2544,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SaveUserCreditResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SaveUserCreditResponse(),
             self.do_rpcrequest('SaveUserCredit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2478,7 +2558,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SaveUserCreditResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SaveUserCreditResponse(),
             await self.do_rpcrequest_async('SaveUserCredit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2505,7 +2586,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SetCreditLabelActionResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SetCreditLabelActionResponse(),
             self.do_rpcrequest('SetCreditLabelAction', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2518,7 +2600,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SetCreditLabelActionResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SetCreditLabelActionResponse(),
             await self.do_rpcrequest_async('SetCreditLabelAction', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2545,7 +2628,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SetRenewalResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SetRenewalResponse(),
             self.do_rpcrequest('SetRenewal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2558,7 +2642,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SetRenewalResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SetRenewalResponse(),
             await self.do_rpcrequest_async('SetRenewal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2585,7 +2670,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SetResellerUserAlarmThresholdResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SetResellerUserAlarmThresholdResponse(),
             self.do_rpcrequest('SetResellerUserAlarmThreshold', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2598,7 +2684,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SetResellerUserAlarmThresholdResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SetResellerUserAlarmThresholdResponse(),
             await self.do_rpcrequest_async('SetResellerUserAlarmThreshold', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2625,7 +2712,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SetResellerUserQuotaResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SetResellerUserQuotaResponse(),
             self.do_rpcrequest('SetResellerUserQuota', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2638,7 +2726,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SetResellerUserQuotaResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SetResellerUserQuotaResponse(),
             await self.do_rpcrequest_async('SetResellerUserQuota', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2665,7 +2754,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SetResellerUserStatusResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SetResellerUserStatusResponse(),
             self.do_rpcrequest('SetResellerUserStatus', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2678,7 +2768,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SetResellerUserStatusResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SetResellerUserStatusResponse(),
             await self.do_rpcrequest_async('SetResellerUserStatus', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2705,7 +2796,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SubscribeBillToOSSResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SubscribeBillToOSSResponse(),
             self.do_rpcrequest('SubscribeBillToOSS', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2718,7 +2810,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.SubscribeBillToOSSResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SubscribeBillToOSSResponse(),
             await self.do_rpcrequest_async('SubscribeBillToOSS', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2745,7 +2838,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.TagResourcesResponse(),
             self.do_rpcrequest('TagResources', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2758,7 +2852,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.TagResourcesResponse(),
             await self.do_rpcrequest_async('TagResources', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2785,7 +2880,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.UnsubscribeBillToOSSResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.UnsubscribeBillToOSSResponse(),
             self.do_rpcrequest('UnsubscribeBillToOSS', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2798,7 +2894,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.UnsubscribeBillToOSSResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.UnsubscribeBillToOSSResponse(),
             await self.do_rpcrequest_async('UnsubscribeBillToOSS', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2825,7 +2922,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.UntagResourcesResponse(),
             self.do_rpcrequest('UntagResources', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2838,7 +2936,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.UntagResourcesResponse(),
             await self.do_rpcrequest_async('UntagResources', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2865,7 +2964,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.UpgradeResourcePackageResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.UpgradeResourcePackageResponse(),
             self.do_rpcrequest('UpgradeResourcePackage', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2878,7 +2978,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return bss_open_api_20171214_models.UpgradeResourcePackageResponse().from_map(
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.UpgradeResourcePackageResponse(),
             await self.do_rpcrequest_async('UpgradeResourcePackage', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
