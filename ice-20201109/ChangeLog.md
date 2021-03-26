@@ -1,3 +1,10 @@
+2021-03-26 Version: 1.0.3
+- Add a new API called AddEditingProjectMaterials, which adds one or more materials to the editing project.
+- Add a new API called GetEditingProjectMaterials, which gets all the materials in the editing project.
+- Add a new API called DeleteEditingProjectMaterials, which deletes specified materials in the editing according to mediaIds or media type .
+- Add a new API called ListPublicMediaBasicInfos, which lists the basic information of all public media with a specified media tag.
+- Add a new API called ListAllPublicMediaTags, which lists all the media tags for the public media.
+
 2021-02-03 Version: 1.0.0
 - Add a new API called RegisterMediaInfo, which registers a new media asset in ICE.
 - Add a new API called GetMediaInfo, which returns all the information of a media asset.
