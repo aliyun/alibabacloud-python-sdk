@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -57,11 +58,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.AddClusterServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Comment'] = request.comment
+        query['ClusterId'] = request.cluster_id
+        query['Service'] = request.service
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.AddClusterServiceResponse().from_map(
-            self.do_rpcrequest('AddClusterService', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddClusterService',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.AddClusterServiceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_cluster_service_with_options_async(
@@ -70,11 +90,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.AddClusterServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Comment'] = request.comment
+        query['ClusterId'] = request.cluster_id
+        query['Service'] = request.service
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.AddClusterServiceResponse().from_map(
-            await self.do_rpcrequest_async('AddClusterService', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddClusterService',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.AddClusterServiceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_cluster_service(
@@ -97,11 +136,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.AddScalingConfigItemV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ConfigItemType'] = request.config_item_type
+        query['ConfigItemInformation'] = request.config_item_information
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.AddScalingConfigItemV2Response().from_map(
-            self.do_rpcrequest('AddScalingConfigItemV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddScalingConfigItemV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.AddScalingConfigItemV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_scaling_config_item_v2with_options_async(
@@ -110,11 +169,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.AddScalingConfigItemV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ConfigItemType'] = request.config_item_type
+        query['ConfigItemInformation'] = request.config_item_information
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.AddScalingConfigItemV2Response().from_map(
-            await self.do_rpcrequest_async('AddScalingConfigItemV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddScalingConfigItemV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.AddScalingConfigItemV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_scaling_config_item_v2(
@@ -137,11 +216,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.AuthorizeSecurityGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['BizType'] = request.biz_type
+        query['BizContent'] = request.biz_content
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.AuthorizeSecurityGroupResponse().from_map(
-            self.do_rpcrequest('AuthorizeSecurityGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AuthorizeSecurityGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.AuthorizeSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def authorize_security_group_with_options_async(
@@ -150,11 +248,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.AuthorizeSecurityGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['BizType'] = request.biz_type
+        query['BizContent'] = request.biz_content
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.AuthorizeSecurityGroupResponse().from_map(
-            await self.do_rpcrequest_async('AuthorizeSecurityGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AuthorizeSecurityGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.AuthorizeSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def authorize_security_group(
@@ -177,11 +294,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CancelOrderResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CancelOrderResponse().from_map(
-            self.do_rpcrequest('CancelOrder', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CancelOrder',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CancelOrderResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_order_with_options_async(
@@ -190,11 +324,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CancelOrderResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CancelOrderResponse().from_map(
-            await self.do_rpcrequest_async('CancelOrder', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CancelOrder',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CancelOrderResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_order(
@@ -211,57 +362,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_order_with_options_async(request, runtime)
 
-    def cleanup_flow_entity_snapshot_with_options(
-        self,
-        request: emr_20160408_models.CleanupFlowEntitySnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.CleanupFlowEntitySnapshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.CleanupFlowEntitySnapshotResponse().from_map(
-            self.do_rpcrequest('CleanupFlowEntitySnapshot', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def cleanup_flow_entity_snapshot_with_options_async(
-        self,
-        request: emr_20160408_models.CleanupFlowEntitySnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.CleanupFlowEntitySnapshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.CleanupFlowEntitySnapshotResponse().from_map(
-            await self.do_rpcrequest_async('CleanupFlowEntitySnapshot', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def cleanup_flow_entity_snapshot(
-        self,
-        request: emr_20160408_models.CleanupFlowEntitySnapshotRequest,
-    ) -> emr_20160408_models.CleanupFlowEntitySnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.cleanup_flow_entity_snapshot_with_options(request, runtime)
-
-    async def cleanup_flow_entity_snapshot_async(
-        self,
-        request: emr_20160408_models.CleanupFlowEntitySnapshotRequest,
-    ) -> emr_20160408_models.CleanupFlowEntitySnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.cleanup_flow_entity_snapshot_with_options_async(request, runtime)
-
     def clone_flow_with_options(
         self,
         request: emr_20160408_models.CloneFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CloneFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CloneFlowResponse().from_map(
-            self.do_rpcrequest('CloneFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CloneFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CloneFlowResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def clone_flow_with_options_async(
@@ -270,11 +398,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CloneFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CloneFlowResponse().from_map(
-            await self.do_rpcrequest_async('CloneFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CloneFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CloneFlowResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def clone_flow(
@@ -297,11 +442,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CloneFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CloneFlowJobResponse().from_map(
-            self.do_rpcrequest('CloneFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CloneFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CloneFlowJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def clone_flow_job_with_options_async(
@@ -310,11 +473,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CloneFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CloneFlowJobResponse().from_map(
-            await self.do_rpcrequest_async('CloneFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CloneFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CloneFlowJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def clone_flow_job(
@@ -331,57 +512,35 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.clone_flow_job_with_options_async(request, runtime)
 
-    def commit_flow_entity_snapshot_with_options(
-        self,
-        request: emr_20160408_models.CommitFlowEntitySnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.CommitFlowEntitySnapshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.CommitFlowEntitySnapshotResponse().from_map(
-            self.do_rpcrequest('CommitFlowEntitySnapshot', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def commit_flow_entity_snapshot_with_options_async(
-        self,
-        request: emr_20160408_models.CommitFlowEntitySnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.CommitFlowEntitySnapshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.CommitFlowEntitySnapshotResponse().from_map(
-            await self.do_rpcrequest_async('CommitFlowEntitySnapshot', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def commit_flow_entity_snapshot(
-        self,
-        request: emr_20160408_models.CommitFlowEntitySnapshotRequest,
-    ) -> emr_20160408_models.CommitFlowEntitySnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.commit_flow_entity_snapshot_with_options(request, runtime)
-
-    async def commit_flow_entity_snapshot_async(
-        self,
-        request: emr_20160408_models.CommitFlowEntitySnapshotRequest,
-    ) -> emr_20160408_models.CommitFlowEntitySnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.commit_flow_entity_snapshot_with_options_async(request, runtime)
-
     def create_backup_with_options(
         self,
         request: emr_20160408_models.CreateBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['BackupPlanId'] = request.backup_plan_id
+        query['MetadataType'] = request.metadata_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateBackupResponse().from_map(
-            self.do_rpcrequest('CreateBackup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateBackup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateBackupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_backup_with_options_async(
@@ -390,11 +549,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['BackupPlanId'] = request.backup_plan_id
+        query['MetadataType'] = request.metadata_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateBackupResponse().from_map(
-            await self.do_rpcrequest_async('CreateBackup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateBackup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateBackupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_backup(
@@ -417,11 +594,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateBackupPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['ClusterId'] = request.cluster_id
+        query['RootPath'] = request.root_path
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateBackupPlanResponse().from_map(
-            self.do_rpcrequest('CreateBackupPlan', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateBackupPlan',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateBackupPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_backup_plan_with_options_async(
@@ -430,11 +627,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateBackupPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['ClusterId'] = request.cluster_id
+        query['RootPath'] = request.root_path
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateBackupPlanResponse().from_map(
-            await self.do_rpcrequest_async('CreateBackupPlan', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateBackupPlan',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_backup_plan(
@@ -457,11 +674,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateClusterBootstrapActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['BootstrapAction'] = request.bootstrap_action
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateClusterBootstrapActionResponse().from_map(
-            self.do_rpcrequest('CreateClusterBootstrapAction', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateClusterBootstrapAction',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateClusterBootstrapActionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_cluster_bootstrap_action_with_options_async(
@@ -470,11 +705,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateClusterBootstrapActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['BootstrapAction'] = request.bootstrap_action
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateClusterBootstrapActionResponse().from_map(
-            await self.do_rpcrequest_async('CreateClusterBootstrapAction', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateClusterBootstrapAction',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateClusterBootstrapActionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_cluster_bootstrap_action(
@@ -497,11 +750,62 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateClusterTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateName'] = request.template_name
+        query['RegionId'] = request.region_id
+        query['ZoneId'] = request.zone_id
+        query['LogPath'] = request.log_path
+        query['SecurityGroupId'] = request.security_group_id
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['SecurityGroupName'] = request.security_group_name
+        query['Period'] = request.period
+        query['AutoRenew'] = request.auto_renew
+        query['VpcId'] = request.vpc_id
+        query['VSwitchId'] = request.v_switch_id
+        query['NetType'] = request.net_type
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['EmrVer'] = request.emr_ver
+        query['ClusterType'] = request.cluster_type
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['IoOptimized'] = request.io_optimized
+        query['SshEnable'] = request.ssh_enable
+        query['InstanceGeneration'] = request.instance_generation
+        query['MasterPwd'] = request.master_pwd
+        query['KeyPairName'] = request.key_pair_name
+        query['MetaStoreType'] = request.meta_store_type
+        query['MetaStoreConf'] = request.meta_store_conf
+        query['Configurations'] = request.configurations
+        query['EasEnable'] = request.eas_enable
+        query['DepositType'] = request.deposit_type
+        query['MachineType'] = request.machine_type
+        query['UseCustomHiveMetaDb'] = request.use_custom_hive_meta_db
+        query['InitCustomHiveMetaDb'] = request.init_custom_hive_meta_db
+        query['ResourceGroupId'] = request.resource_group_id
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['HostGroup'] = request.host_group
+        query['BootstrapAction'] = request.bootstrap_action
+        query['Config'] = request.config
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateClusterTemplateResponse().from_map(
-            self.do_rpcrequest('CreateClusterTemplate', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateClusterTemplate',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateClusterTemplateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_cluster_template_with_options_async(
@@ -510,11 +814,62 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateClusterTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateName'] = request.template_name
+        query['RegionId'] = request.region_id
+        query['ZoneId'] = request.zone_id
+        query['LogPath'] = request.log_path
+        query['SecurityGroupId'] = request.security_group_id
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['SecurityGroupName'] = request.security_group_name
+        query['Period'] = request.period
+        query['AutoRenew'] = request.auto_renew
+        query['VpcId'] = request.vpc_id
+        query['VSwitchId'] = request.v_switch_id
+        query['NetType'] = request.net_type
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['EmrVer'] = request.emr_ver
+        query['ClusterType'] = request.cluster_type
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['IoOptimized'] = request.io_optimized
+        query['SshEnable'] = request.ssh_enable
+        query['InstanceGeneration'] = request.instance_generation
+        query['MasterPwd'] = request.master_pwd
+        query['KeyPairName'] = request.key_pair_name
+        query['MetaStoreType'] = request.meta_store_type
+        query['MetaStoreConf'] = request.meta_store_conf
+        query['Configurations'] = request.configurations
+        query['EasEnable'] = request.eas_enable
+        query['DepositType'] = request.deposit_type
+        query['MachineType'] = request.machine_type
+        query['UseCustomHiveMetaDb'] = request.use_custom_hive_meta_db
+        query['InitCustomHiveMetaDb'] = request.init_custom_hive_meta_db
+        query['ResourceGroupId'] = request.resource_group_id
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['HostGroup'] = request.host_group
+        query['BootstrapAction'] = request.bootstrap_action
+        query['Config'] = request.config
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateClusterTemplateResponse().from_map(
-            await self.do_rpcrequest_async('CreateClusterTemplate', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateClusterTemplate',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateClusterTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_cluster_template(
@@ -537,11 +892,73 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateClusterV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ZoneId'] = request.zone_id
+        query['LogPath'] = request.log_path
+        query['SecurityGroupId'] = request.security_group_id
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['SecurityGroupName'] = request.security_group_name
+        query['ChargeType'] = request.charge_type
+        query['Period'] = request.period
+        query['AutoRenew'] = request.auto_renew
+        query['AutoPayOrder'] = request.auto_pay_order
+        query['VpcId'] = request.vpc_id
+        query['VSwitchId'] = request.v_switch_id
+        query['NetType'] = request.net_type
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['EmrVer'] = request.emr_ver
+        query['ClusterType'] = request.cluster_type
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['IoOptimized'] = request.io_optimized
+        query['SshEnable'] = request.ssh_enable
+        query['InstanceGeneration'] = request.instance_generation
+        query['MasterPwd'] = request.master_pwd
+        query['KeyPairName'] = request.key_pair_name
+        query['MetaStoreType'] = request.meta_store_type
+        query['MetaStoreConf'] = request.meta_store_conf
+        query['ClickHouseConf'] = request.click_house_conf
+        query['ExtraAttributes'] = request.extra_attributes
+        query['DepositType'] = request.deposit_type
+        query['MachineType'] = request.machine_type
+        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
+        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
+        query['Configurations'] = request.configurations
+        query['EasEnable'] = request.eas_enable
+        query['RelatedClusterId'] = request.related_cluster_id
+        query['WhiteListType'] = request.white_list_type
+        query['AuthorizeContent'] = request.authorize_content
+        query['ResourceGroupId'] = request.resource_group_id
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['UserInfo'] = request.user_info
+        query['HostComponentInfo'] = request.host_component_info
+        query['ServiceInfo'] = request.service_info
+        query['PromotionInfo'] = request.promotion_info
+        query['HostGroup'] = request.host_group
+        query['BootstrapAction'] = request.bootstrap_action
+        query['Config'] = request.config
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateClusterV2Response().from_map(
-            self.do_rpcrequest('CreateClusterV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateClusterV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateClusterV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_cluster_v2with_options_async(
@@ -550,11 +967,73 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateClusterV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ZoneId'] = request.zone_id
+        query['LogPath'] = request.log_path
+        query['SecurityGroupId'] = request.security_group_id
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['SecurityGroupName'] = request.security_group_name
+        query['ChargeType'] = request.charge_type
+        query['Period'] = request.period
+        query['AutoRenew'] = request.auto_renew
+        query['AutoPayOrder'] = request.auto_pay_order
+        query['VpcId'] = request.vpc_id
+        query['VSwitchId'] = request.v_switch_id
+        query['NetType'] = request.net_type
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['EmrVer'] = request.emr_ver
+        query['ClusterType'] = request.cluster_type
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['IoOptimized'] = request.io_optimized
+        query['SshEnable'] = request.ssh_enable
+        query['InstanceGeneration'] = request.instance_generation
+        query['MasterPwd'] = request.master_pwd
+        query['KeyPairName'] = request.key_pair_name
+        query['MetaStoreType'] = request.meta_store_type
+        query['MetaStoreConf'] = request.meta_store_conf
+        query['ClickHouseConf'] = request.click_house_conf
+        query['ExtraAttributes'] = request.extra_attributes
+        query['DepositType'] = request.deposit_type
+        query['MachineType'] = request.machine_type
+        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
+        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
+        query['Configurations'] = request.configurations
+        query['EasEnable'] = request.eas_enable
+        query['RelatedClusterId'] = request.related_cluster_id
+        query['WhiteListType'] = request.white_list_type
+        query['AuthorizeContent'] = request.authorize_content
+        query['ResourceGroupId'] = request.resource_group_id
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['UserInfo'] = request.user_info
+        query['HostComponentInfo'] = request.host_component_info
+        query['ServiceInfo'] = request.service_info
+        query['PromotionInfo'] = request.promotion_info
+        query['HostGroup'] = request.host_group
+        query['BootstrapAction'] = request.bootstrap_action
+        query['Config'] = request.config
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateClusterV2Response().from_map(
-            await self.do_rpcrequest_async('CreateClusterV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateClusterV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateClusterV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_cluster_v2(
@@ -577,11 +1056,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateClusterWithTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateBizId'] = request.template_biz_id
+        query['UniqueTag'] = request.unique_tag
+        query['ClusterName'] = request.cluster_name
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateClusterWithTemplateResponse().from_map(
-            self.do_rpcrequest('CreateClusterWithTemplate', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateClusterWithTemplate',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateClusterWithTemplateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_cluster_with_template_with_options_async(
@@ -590,11 +1088,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateClusterWithTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateBizId'] = request.template_biz_id
+        query['UniqueTag'] = request.unique_tag
+        query['ClusterName'] = request.cluster_name
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateClusterWithTemplateResponse().from_map(
-            await self.do_rpcrequest_async('CreateClusterWithTemplate', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateClusterWithTemplate',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateClusterWithTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_cluster_with_template(
@@ -617,11 +1134,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateDataSourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['SourceType'] = request.source_type
+        query['Description'] = request.description
+        query['Conf'] = request.conf
+        query['ClusterId'] = request.cluster_id
+        query['NavParentId'] = request.nav_parent_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateDataSourceResponse().from_map(
-            self.do_rpcrequest('CreateDataSource', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDataSource',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateDataSourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_data_source_with_options_async(
@@ -630,11 +1170,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateDataSourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['SourceType'] = request.source_type
+        query['Description'] = request.description
+        query['Conf'] = request.conf
+        query['ClusterId'] = request.cluster_id
+        query['NavParentId'] = request.nav_parent_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateDataSourceResponse().from_map(
-            await self.do_rpcrequest_async('CreateDataSource', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDataSource',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_data_source(
@@ -657,11 +1220,62 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateExecutionPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['Strategy'] = request.strategy
+        query['TimeInterval'] = request.time_interval
+        query['StartTime'] = request.start_time
+        query['TimeUnit'] = request.time_unit
+        query['DayOfWeek'] = request.day_of_week
+        query['DayOfMonth'] = request.day_of_month
+        query['ClusterId'] = request.cluster_id
+        query['CreateClusterOnDemand'] = request.create_cluster_on_demand
+        query['ClusterName'] = request.cluster_name
+        query['ZoneId'] = request.zone_id
+        query['LogEnable'] = request.log_enable
+        query['LogPath'] = request.log_path
+        query['SecurityGroupId'] = request.security_group_id
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['EmrVer'] = request.emr_ver
+        query['ClusterType'] = request.cluster_type
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['VpcId'] = request.vpc_id
+        query['VSwitchId'] = request.v_switch_id
+        query['NetType'] = request.net_type
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['IoOptimized'] = request.io_optimized
+        query['InstanceGeneration'] = request.instance_generation
+        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
+        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
+        query['Configurations'] = request.configurations
+        query['EasEnable'] = request.eas_enable
+        query['WorkflowDefinition'] = request.workflow_definition
+        query['JobIdList'] = request.job_id_list
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['EcsOrder'] = request.ecs_order
+        query['BootstrapAction'] = request.bootstrap_action
+        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateExecutionPlanResponse().from_map(
-            self.do_rpcrequest('CreateExecutionPlan', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateExecutionPlan',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateExecutionPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_execution_plan_with_options_async(
@@ -670,11 +1284,62 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateExecutionPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['Strategy'] = request.strategy
+        query['TimeInterval'] = request.time_interval
+        query['StartTime'] = request.start_time
+        query['TimeUnit'] = request.time_unit
+        query['DayOfWeek'] = request.day_of_week
+        query['DayOfMonth'] = request.day_of_month
+        query['ClusterId'] = request.cluster_id
+        query['CreateClusterOnDemand'] = request.create_cluster_on_demand
+        query['ClusterName'] = request.cluster_name
+        query['ZoneId'] = request.zone_id
+        query['LogEnable'] = request.log_enable
+        query['LogPath'] = request.log_path
+        query['SecurityGroupId'] = request.security_group_id
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['EmrVer'] = request.emr_ver
+        query['ClusterType'] = request.cluster_type
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['VpcId'] = request.vpc_id
+        query['VSwitchId'] = request.v_switch_id
+        query['NetType'] = request.net_type
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['IoOptimized'] = request.io_optimized
+        query['InstanceGeneration'] = request.instance_generation
+        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
+        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
+        query['Configurations'] = request.configurations
+        query['EasEnable'] = request.eas_enable
+        query['WorkflowDefinition'] = request.workflow_definition
+        query['JobIdList'] = request.job_id_list
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['EcsOrder'] = request.ecs_order
+        query['BootstrapAction'] = request.bootstrap_action
+        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateExecutionPlanResponse().from_map(
-            await self.do_rpcrequest_async('CreateExecutionPlan', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateExecutionPlan',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateExecutionPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_execution_plan(
@@ -697,11 +1362,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['StartSchedule'] = request.start_schedule
+        query['EndSchedule'] = request.end_schedule
+        query['CronExpr'] = request.cron_expr
+        query['CreateCluster'] = request.create_cluster
+        query['ClusterId'] = request.cluster_id
+        query['HostName'] = request.host_name
+        query['Namespace'] = request.namespace
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Lifecycle'] = request.lifecycle
+        query['Application'] = request.application
+        query['AlertConf'] = request.alert_conf
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
+        query['ParentFlowList'] = request.parent_flow_list
+        query['ParentCategory'] = request.parent_category
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowResponse().from_map(
-            self.do_rpcrequest('CreateFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_flow_with_options_async(
@@ -710,11 +1408,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['StartSchedule'] = request.start_schedule
+        query['EndSchedule'] = request.end_schedule
+        query['CronExpr'] = request.cron_expr
+        query['CreateCluster'] = request.create_cluster
+        query['ClusterId'] = request.cluster_id
+        query['HostName'] = request.host_name
+        query['Namespace'] = request.namespace
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Lifecycle'] = request.lifecycle
+        query['Application'] = request.application
+        query['AlertConf'] = request.alert_conf
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
+        query['ParentFlowList'] = request.parent_flow_list
+        query['ParentCategory'] = request.parent_category
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowResponse().from_map(
-            await self.do_rpcrequest_async('CreateFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_flow(
@@ -737,11 +1468,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Name'] = request.name
+        query['Type'] = request.type
+        query['ParentId'] = request.parent_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowCategoryResponse().from_map(
-            self.do_rpcrequest('CreateFlowCategory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlowCategory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowCategoryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_flow_category_with_options_async(
@@ -750,11 +1500,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Name'] = request.name
+        query['Type'] = request.type
+        query['ParentId'] = request.parent_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowCategoryResponse().from_map(
-            await self.do_rpcrequest_async('CreateFlowCategory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlowCategory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_flow_category(
@@ -771,57 +1540,50 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_flow_category_with_options_async(request, runtime)
 
-    def create_flow_edit_lock_with_options(
-        self,
-        request: emr_20160408_models.CreateFlowEditLockRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.CreateFlowEditLockResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.CreateFlowEditLockResponse().from_map(
-            self.do_rpcrequest('CreateFlowEditLock', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_flow_edit_lock_with_options_async(
-        self,
-        request: emr_20160408_models.CreateFlowEditLockRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.CreateFlowEditLockResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.CreateFlowEditLockResponse().from_map(
-            await self.do_rpcrequest_async('CreateFlowEditLock', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_flow_edit_lock(
-        self,
-        request: emr_20160408_models.CreateFlowEditLockRequest,
-    ) -> emr_20160408_models.CreateFlowEditLockResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_flow_edit_lock_with_options(request, runtime)
-
-    async def create_flow_edit_lock_async(
-        self,
-        request: emr_20160408_models.CreateFlowEditLockRequest,
-    ) -> emr_20160408_models.CreateFlowEditLockResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_flow_edit_lock_with_options_async(request, runtime)
-
     def create_flow_for_web_with_options(
         self,
         request: emr_20160408_models.CreateFlowForWebRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowForWebResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['StartSchedule'] = request.start_schedule
+        query['EndSchedule'] = request.end_schedule
+        query['CronExpr'] = request.cron_expr
+        query['CreateCluster'] = request.create_cluster
+        query['ClusterId'] = request.cluster_id
+        query['HostName'] = request.host_name
+        query['Namespace'] = request.namespace
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Lifecycle'] = request.lifecycle
+        query['Graph'] = request.graph
+        query['AlertConf'] = request.alert_conf
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
+        query['ParentFlowList'] = request.parent_flow_list
+        query['ParentCategory'] = request.parent_category
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowForWebResponse().from_map(
-            self.do_rpcrequest('CreateFlowForWeb', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlowForWeb',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowForWebResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_flow_for_web_with_options_async(
@@ -830,11 +1592,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowForWebResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['StartSchedule'] = request.start_schedule
+        query['EndSchedule'] = request.end_schedule
+        query['CronExpr'] = request.cron_expr
+        query['CreateCluster'] = request.create_cluster
+        query['ClusterId'] = request.cluster_id
+        query['HostName'] = request.host_name
+        query['Namespace'] = request.namespace
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Lifecycle'] = request.lifecycle
+        query['Graph'] = request.graph
+        query['AlertConf'] = request.alert_conf
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
+        query['ParentFlowList'] = request.parent_flow_list
+        query['ParentCategory'] = request.parent_category
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowForWebResponse().from_map(
-            await self.do_rpcrequest_async('CreateFlowForWeb', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlowForWeb',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowForWebResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_flow_for_web(
@@ -857,11 +1652,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Name'] = request.name
+        query['Type'] = request.type
+        query['FailAct'] = request.fail_act
+        query['MaxRetry'] = request.max_retry
+        query['RetryPolicy'] = request.retry_policy
+        query['MaxRunningTimeSec'] = request.max_running_time_sec
+        query['RetryInterval'] = request.retry_interval
+        query['Mode'] = request.mode
+        query['ParentCategory'] = request.parent_category
+        query['Adhoc'] = request.adhoc
+        query['ClusterId'] = request.cluster_id
+        query['AlertConf'] = request.alert_conf
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowJobResponse().from_map(
-            self.do_rpcrequest('CreateFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_flow_job_with_options_async(
@@ -870,11 +1693,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Name'] = request.name
+        query['Type'] = request.type
+        query['FailAct'] = request.fail_act
+        query['MaxRetry'] = request.max_retry
+        query['RetryPolicy'] = request.retry_policy
+        query['MaxRunningTimeSec'] = request.max_running_time_sec
+        query['RetryInterval'] = request.retry_interval
+        query['Mode'] = request.mode
+        query['ParentCategory'] = request.parent_category
+        query['Adhoc'] = request.adhoc
+        query['ClusterId'] = request.cluster_id
+        query['AlertConf'] = request.alert_conf
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowJobResponse().from_map(
-            await self.do_rpcrequest_async('CreateFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_flow_job(
@@ -897,11 +1748,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProductType'] = request.product_type
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowProjectResponse().from_map(
-            self.do_rpcrequest('CreateFlowProject', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlowProject',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_flow_project_with_options_async(
@@ -910,11 +1780,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProductType'] = request.product_type
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowProjectResponse().from_map(
-            await self.do_rpcrequest_async('CreateFlowProject', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlowProject',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_flow_project(
@@ -937,11 +1826,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
+        query['DefaultUser'] = request.default_user
+        query['DefaultQueue'] = request.default_queue
+        query['UserList'] = request.user_list
+        query['QueueList'] = request.queue_list
+        query['HostList'] = request.host_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowProjectClusterSettingResponse().from_map(
-            self.do_rpcrequest('CreateFlowProjectClusterSetting', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlowProjectClusterSetting',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowProjectClusterSettingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_flow_project_cluster_setting_with_options_async(
@@ -950,11 +1861,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
+        query['DefaultUser'] = request.default_user
+        query['DefaultQueue'] = request.default_queue
+        query['UserList'] = request.user_list
+        query['QueueList'] = request.queue_list
+        query['HostList'] = request.host_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowProjectClusterSettingResponse().from_map(
-            await self.do_rpcrequest_async('CreateFlowProjectClusterSetting', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlowProjectClusterSetting',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowProjectClusterSettingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_flow_project_cluster_setting(
@@ -977,11 +1910,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowProjectUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['User'] = request.user
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowProjectUserResponse().from_map(
-            self.do_rpcrequest('CreateFlowProjectUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlowProjectUser',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowProjectUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_flow_project_user_with_options_async(
@@ -990,11 +1940,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateFlowProjectUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['User'] = request.user
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateFlowProjectUserResponse().from_map(
-            await self.do_rpcrequest_async('CreateFlowProjectUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFlowProjectUser',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateFlowProjectUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_flow_project_user(
@@ -1017,11 +1984,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
+        query['RunParameter'] = request.run_parameter
+        query['FailAct'] = request.fail_act
+        query['MaxRetry'] = request.max_retry
+        query['RetryInterval'] = request.retry_interval
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateJobResponse().from_map(
-            self.do_rpcrequest('CreateJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_job_with_options_async(
@@ -1030,11 +2020,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
+        query['RunParameter'] = request.run_parameter
+        query['FailAct'] = request.fail_act
+        query['MaxRetry'] = request.max_retry
+        query['RetryInterval'] = request.retry_interval
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateJobResponse().from_map(
-            await self.do_rpcrequest_async('CreateJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_job(
@@ -1057,11 +2070,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateLibraryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
+        query['Name'] = request.name
+        query['LibraryVersion'] = request.library_version
+        query['SourceType'] = request.source_type
+        query['SourceLocation'] = request.source_location
+        query['Scope'] = request.scope
+        query['Properties'] = request.properties
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateLibraryResponse().from_map(
-            self.do_rpcrequest('CreateLibrary', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateLibrary',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateLibraryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_library_with_options_async(
@@ -1070,11 +2106,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateLibraryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
+        query['Name'] = request.name
+        query['LibraryVersion'] = request.library_version
+        query['SourceType'] = request.source_type
+        query['SourceLocation'] = request.source_location
+        query['Scope'] = request.scope
+        query['Properties'] = request.properties
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateLibraryResponse().from_map(
-            await self.do_rpcrequest_async('CreateLibrary', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateLibrary',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateLibraryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_library(
@@ -1097,11 +2156,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateMetaTablePreviewTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['DatabaseId'] = request.database_id
+        query['TableId'] = request.table_id
+        query['User'] = request.user
+        query['Password'] = request.password
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateMetaTablePreviewTaskResponse().from_map(
-            self.do_rpcrequest('CreateMetaTablePreviewTask', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateMetaTablePreviewTask',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateMetaTablePreviewTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_meta_table_preview_task_with_options_async(
@@ -1110,11 +2191,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateMetaTablePreviewTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['DatabaseId'] = request.database_id
+        query['TableId'] = request.table_id
+        query['User'] = request.user
+        query['Password'] = request.password
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateMetaTablePreviewTaskResponse().from_map(
-            await self.do_rpcrequest_async('CreateMetaTablePreviewTask', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateMetaTablePreviewTask',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateMetaTablePreviewTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_meta_table_preview_task(
@@ -1131,97 +2234,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_meta_table_preview_task_with_options_async(request, runtime)
 
-    def create_note_with_options(
-        self,
-        request: emr_20160408_models.CreateNoteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.CreateNoteResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.CreateNoteResponse().from_map(
-            self.do_rpcrequest('CreateNote', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_note_with_options_async(
-        self,
-        request: emr_20160408_models.CreateNoteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.CreateNoteResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.CreateNoteResponse().from_map(
-            await self.do_rpcrequest_async('CreateNote', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_note(
-        self,
-        request: emr_20160408_models.CreateNoteRequest,
-    ) -> emr_20160408_models.CreateNoteResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_note_with_options(request, runtime)
-
-    async def create_note_async(
-        self,
-        request: emr_20160408_models.CreateNoteRequest,
-    ) -> emr_20160408_models.CreateNoteResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_note_with_options_async(request, runtime)
-
-    def create_paragraph_with_options(
-        self,
-        request: emr_20160408_models.CreateParagraphRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.CreateParagraphResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.CreateParagraphResponse().from_map(
-            self.do_rpcrequest('CreateParagraph', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_paragraph_with_options_async(
-        self,
-        request: emr_20160408_models.CreateParagraphRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.CreateParagraphResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.CreateParagraphResponse().from_map(
-            await self.do_rpcrequest_async('CreateParagraph', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_paragraph(
-        self,
-        request: emr_20160408_models.CreateParagraphRequest,
-    ) -> emr_20160408_models.CreateParagraphResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_paragraph_with_options(request, runtime)
-
-    async def create_paragraph_async(
-        self,
-        request: emr_20160408_models.CreateParagraphRequest,
-    ) -> emr_20160408_models.CreateParagraphResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_paragraph_with_options_async(request, runtime)
-
     def create_resource_pool_with_options(
         self,
         request: emr_20160408_models.CreateResourcePoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateResourcePoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['ClusterId'] = request.cluster_id
+        query['PoolType'] = request.pool_type
+        query['Active'] = request.active
+        query['Note'] = request.note
+        query['YarnSiteConfig'] = request.yarn_site_config
+        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateResourcePoolResponse().from_map(
-            self.do_rpcrequest('CreateResourcePool', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateResourcePool',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateResourcePoolResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_resource_pool_with_options_async(
@@ -1230,11 +2276,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateResourcePoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['ClusterId'] = request.cluster_id
+        query['PoolType'] = request.pool_type
+        query['Active'] = request.active
+        query['Note'] = request.note
+        query['YarnSiteConfig'] = request.yarn_site_config
+        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateResourcePoolResponse().from_map(
-            await self.do_rpcrequest_async('CreateResourcePool', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateResourcePool',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateResourcePoolResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_resource_pool(
@@ -1257,11 +2326,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateResourceQueueResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['QualifiedName'] = request.qualified_name
+        query['ClusterId'] = request.cluster_id
+        query['ParentQueueId'] = request.parent_queue_id
+        query['Leaf'] = request.leaf
+        query['ResourcePoolId'] = request.resource_pool_id
+        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateResourceQueueResponse().from_map(
-            self.do_rpcrequest('CreateResourceQueue', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateResourceQueue',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateResourceQueueResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_resource_queue_with_options_async(
@@ -1270,11 +2362,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateResourceQueueResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['QualifiedName'] = request.qualified_name
+        query['ClusterId'] = request.cluster_id
+        query['ParentQueueId'] = request.parent_queue_id
+        query['Leaf'] = request.leaf
+        query['ResourcePoolId'] = request.resource_pool_id
+        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateResourceQueueResponse().from_map(
-            await self.do_rpcrequest_async('CreateResourceQueue', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateResourceQueue',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateResourceQueueResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_resource_queue(
@@ -1297,11 +2412,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateScalingGroupV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['HostGroupId'] = request.host_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateScalingGroupV2Response().from_map(
-            self.do_rpcrequest('CreateScalingGroupV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateScalingGroupV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateScalingGroupV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_scaling_group_v2with_options_async(
@@ -1310,11 +2445,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateScalingGroupV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['HostGroupId'] = request.host_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateScalingGroupV2Response().from_map(
-            await self.do_rpcrequest_async('CreateScalingGroupV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateScalingGroupV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateScalingGroupV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_scaling_group_v2(
@@ -1337,11 +2492,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateScalingRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['RuleCategory'] = request.rule_category
+        query['RuleName'] = request.rule_name
+        query['AdjustmentType'] = request.adjustment_type
+        query['AdjustmentValue'] = request.adjustment_value
+        query['Cooldown'] = request.cooldown
+        query['LaunchTime'] = request.launch_time
+        query['LaunchExpirationTime'] = request.launch_expiration_time
+        query['RecurrenceType'] = request.recurrence_type
+        query['RecurrenceValue'] = request.recurrence_value
+        query['RecurrenceEndTime'] = request.recurrence_end_time
+        query['WithGrace'] = request.with_grace
+        query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['SchedulerTrigger'] = request.scheduler_trigger
+        query['CloudWatchTrigger'] = request.cloud_watch_trigger
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateScalingRuleResponse().from_map(
-            self.do_rpcrequest('CreateScalingRule', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateScalingRule',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateScalingRuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_scaling_rule_with_options_async(
@@ -1350,11 +2537,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateScalingRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['RuleCategory'] = request.rule_category
+        query['RuleName'] = request.rule_name
+        query['AdjustmentType'] = request.adjustment_type
+        query['AdjustmentValue'] = request.adjustment_value
+        query['Cooldown'] = request.cooldown
+        query['LaunchTime'] = request.launch_time
+        query['LaunchExpirationTime'] = request.launch_expiration_time
+        query['RecurrenceType'] = request.recurrence_type
+        query['RecurrenceValue'] = request.recurrence_value
+        query['RecurrenceEndTime'] = request.recurrence_end_time
+        query['WithGrace'] = request.with_grace
+        query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['SchedulerTrigger'] = request.scheduler_trigger
+        query['CloudWatchTrigger'] = request.cloud_watch_trigger
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateScalingRuleResponse().from_map(
-            await self.do_rpcrequest_async('CreateScalingRule', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateScalingRule',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_scaling_rule(
@@ -1377,11 +2596,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Category'] = request.category
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateTagResponse().from_map(
-            self.do_rpcrequest('CreateTag', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateTag',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateTagResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_tag_with_options_async(
@@ -1390,11 +2629,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Category'] = request.category
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateTagResponse().from_map(
-            await self.do_rpcrequest_async('CreateTag', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateTag',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateTagResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_tag(
@@ -1417,11 +2676,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['AliyunUserId'] = request.aliyun_user_id
+        query['UserName'] = request.user_name
+        query['UserType'] = request.user_type
+        query['Status'] = request.status
+        query['Description'] = request.description
+        query['RoleIdList'] = request.role_id_list
+        query['GroupIdList'] = request.group_id_list
+        query['UserAccountParamList'] = request.user_account_param_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateUserResponse().from_map(
-            self.do_rpcrequest('CreateUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateUser',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_user_with_options_async(
@@ -1430,11 +2713,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['AliyunUserId'] = request.aliyun_user_id
+        query['UserName'] = request.user_name
+        query['UserType'] = request.user_type
+        query['Status'] = request.status
+        query['Description'] = request.description
+        query['RoleIdList'] = request.role_id_list
+        query['GroupIdList'] = request.group_id_list
+        query['UserAccountParamList'] = request.user_account_param_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateUserResponse().from_map(
-            await self.do_rpcrequest_async('CreateUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateUser',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_user(
@@ -1457,11 +2764,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateUsersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['UserInfo'] = request.user_info
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateUsersResponse().from_map(
-            self.do_rpcrequest('CreateUsers', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateUsers',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateUsersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_users_with_options_async(
@@ -1470,11 +2795,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.CreateUsersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['UserInfo'] = request.user_info
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.CreateUsersResponse().from_map(
-            await self.do_rpcrequest_async('CreateUsers', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateUsers',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateUsersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_users(
@@ -1497,11 +2840,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DecommissionHostComponentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['ServiceName'] = request.service_name
+        query['ComponentName'] = request.component_name
+        query['TimeoutSeconds'] = request.timeout_seconds
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DecommissionHostComponentResponse().from_map(
-            self.do_rpcrequest('DecommissionHostComponent', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DecommissionHostComponent',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DecommissionHostComponentResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def decommission_host_component_with_options_async(
@@ -1510,11 +2874,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DecommissionHostComponentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['ServiceName'] = request.service_name
+        query['ComponentName'] = request.component_name
+        query['TimeoutSeconds'] = request.timeout_seconds
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DecommissionHostComponentResponse().from_map(
-            await self.do_rpcrequest_async('DecommissionHostComponent', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DecommissionHostComponent',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DecommissionHostComponentResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def decommission_host_component(
@@ -1537,11 +2922,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteClusterTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['BizId'] = request.biz_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteClusterTemplateResponse().from_map(
-            self.do_rpcrequest('DeleteClusterTemplate', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteClusterTemplate',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteClusterTemplateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_cluster_template_with_options_async(
@@ -1550,11 +2953,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteClusterTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['BizId'] = request.biz_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteClusterTemplateResponse().from_map(
-            await self.do_rpcrequest_async('DeleteClusterTemplate', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteClusterTemplate',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteClusterTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_cluster_template(
@@ -1577,11 +2998,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteExecutionPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteExecutionPlanResponse().from_map(
-            self.do_rpcrequest('DeleteExecutionPlan', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteExecutionPlan',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteExecutionPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_execution_plan_with_options_async(
@@ -1590,11 +3028,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteExecutionPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteExecutionPlanResponse().from_map(
-            await self.do_rpcrequest_async('DeleteExecutionPlan', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteExecutionPlan',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteExecutionPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_execution_plan(
@@ -1617,11 +3072,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteFlowResponse().from_map(
-            self.do_rpcrequest('DeleteFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteFlowResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_flow_with_options_async(
@@ -1630,11 +3102,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteFlowResponse().from_map(
-            await self.do_rpcrequest_async('DeleteFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteFlowResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_flow(
@@ -1657,11 +3146,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteFlowCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteFlowCategoryResponse().from_map(
-            self.do_rpcrequest('DeleteFlowCategory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFlowCategory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteFlowCategoryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_flow_category_with_options_async(
@@ -1670,11 +3176,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteFlowCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteFlowCategoryResponse().from_map(
-            await self.do_rpcrequest_async('DeleteFlowCategory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFlowCategory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteFlowCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_flow_category(
@@ -1691,57 +3214,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_flow_category_with_options_async(request, runtime)
 
-    def delete_flow_edit_lock_with_options(
-        self,
-        request: emr_20160408_models.DeleteFlowEditLockRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DeleteFlowEditLockResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DeleteFlowEditLockResponse().from_map(
-            self.do_rpcrequest('DeleteFlowEditLock', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_flow_edit_lock_with_options_async(
-        self,
-        request: emr_20160408_models.DeleteFlowEditLockRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DeleteFlowEditLockResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DeleteFlowEditLockResponse().from_map(
-            await self.do_rpcrequest_async('DeleteFlowEditLock', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_flow_edit_lock(
-        self,
-        request: emr_20160408_models.DeleteFlowEditLockRequest,
-    ) -> emr_20160408_models.DeleteFlowEditLockResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_flow_edit_lock_with_options(request, runtime)
-
-    async def delete_flow_edit_lock_async(
-        self,
-        request: emr_20160408_models.DeleteFlowEditLockRequest,
-    ) -> emr_20160408_models.DeleteFlowEditLockResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_flow_edit_lock_with_options_async(request, runtime)
-
     def delete_flow_job_with_options(
         self,
         request: emr_20160408_models.DeleteFlowJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteFlowJobResponse().from_map(
-            self.do_rpcrequest('DeleteFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteFlowJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_flow_job_with_options_async(
@@ -1750,11 +3250,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteFlowJobResponse().from_map(
-            await self.do_rpcrequest_async('DeleteFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteFlowJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_flow_job(
@@ -1777,11 +3294,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteFlowProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteFlowProjectResponse().from_map(
-            self.do_rpcrequest('DeleteFlowProject', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFlowProject',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteFlowProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_flow_project_with_options_async(
@@ -1790,11 +3323,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteFlowProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteFlowProjectResponse().from_map(
-            await self.do_rpcrequest_async('DeleteFlowProject', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFlowProject',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteFlowProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_flow_project(
@@ -1817,11 +3366,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteFlowProjectClusterSettingResponse().from_map(
-            self.do_rpcrequest('DeleteFlowProjectClusterSetting', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFlowProjectClusterSetting',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteFlowProjectClusterSettingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_flow_project_cluster_setting_with_options_async(
@@ -1830,11 +3396,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteFlowProjectClusterSettingResponse().from_map(
-            await self.do_rpcrequest_async('DeleteFlowProjectClusterSetting', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFlowProjectClusterSetting',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteFlowProjectClusterSettingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_flow_project_cluster_setting(
@@ -1857,11 +3440,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteFlowProjectUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteFlowProjectUserResponse().from_map(
-            self.do_rpcrequest('DeleteFlowProjectUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFlowProjectUser',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteFlowProjectUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_flow_project_user_with_options_async(
@@ -1870,11 +3470,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteFlowProjectUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteFlowProjectUserResponse().from_map(
-            await self.do_rpcrequest_async('DeleteFlowProjectUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFlowProjectUser',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteFlowProjectUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_flow_project_user(
@@ -1897,11 +3514,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteJobResponse().from_map(
-            self.do_rpcrequest('DeleteJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_job_with_options_async(
@@ -1910,11 +3545,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteJobResponse().from_map(
-            await self.do_rpcrequest_async('DeleteJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_job(
@@ -1937,11 +3590,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteLibrariesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['LibraryBizIdList'] = request.library_biz_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteLibrariesResponse().from_map(
-            self.do_rpcrequest('DeleteLibraries', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteLibraries',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteLibrariesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_libraries_with_options_async(
@@ -1950,11 +3620,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteLibrariesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['LibraryBizIdList'] = request.library_biz_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteLibrariesResponse().from_map(
-            await self.do_rpcrequest_async('DeleteLibraries', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteLibraries',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteLibrariesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_libraries(
@@ -1971,57 +3658,35 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_libraries_with_options_async(request, runtime)
 
-    def delete_note_with_options(
-        self,
-        request: emr_20160408_models.DeleteNoteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DeleteNoteResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DeleteNoteResponse().from_map(
-            self.do_rpcrequest('DeleteNote', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_note_with_options_async(
-        self,
-        request: emr_20160408_models.DeleteNoteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DeleteNoteResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DeleteNoteResponse().from_map(
-            await self.do_rpcrequest_async('DeleteNote', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_note(
-        self,
-        request: emr_20160408_models.DeleteNoteRequest,
-    ) -> emr_20160408_models.DeleteNoteResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_note_with_options(request, runtime)
-
-    async def delete_note_async(
-        self,
-        request: emr_20160408_models.DeleteNoteRequest,
-    ) -> emr_20160408_models.DeleteNoteResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_note_with_options_async(request, runtime)
-
     def delete_resource_pool_with_options(
         self,
         request: emr_20160408_models.DeleteResourcePoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteResourcePoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourcePoolId'] = request.resource_pool_id
+        query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteResourcePoolResponse().from_map(
-            self.do_rpcrequest('DeleteResourcePool', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteResourcePool',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteResourcePoolResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_resource_pool_with_options_async(
@@ -2030,11 +3695,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteResourcePoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourcePoolId'] = request.resource_pool_id
+        query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteResourcePoolResponse().from_map(
-            await self.do_rpcrequest_async('DeleteResourcePool', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteResourcePool',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteResourcePoolResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_resource_pool(
@@ -2057,11 +3740,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteResourceQueueResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceQueueId'] = request.resource_queue_id
+        query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteResourceQueueResponse().from_map(
-            self.do_rpcrequest('DeleteResourceQueue', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteResourceQueue',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteResourceQueueResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_resource_queue_with_options_async(
@@ -2070,11 +3771,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteResourceQueueResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceQueueId'] = request.resource_queue_id
+        query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteResourceQueueResponse().from_map(
-            await self.do_rpcrequest_async('DeleteResourceQueue', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteResourceQueue',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteResourceQueueResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_resource_queue(
@@ -2097,11 +3816,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteScalingRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['ScalingRuleId'] = request.scaling_rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteScalingRuleResponse().from_map(
-            self.do_rpcrequest('DeleteScalingRule', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteScalingRule',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteScalingRuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_scaling_rule_with_options_async(
@@ -2110,11 +3848,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteScalingRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['ScalingRuleId'] = request.scaling_rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteScalingRuleResponse().from_map(
-            await self.do_rpcrequest_async('DeleteScalingRule', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteScalingRule',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_scaling_rule(
@@ -2137,11 +3894,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Category'] = request.category
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteTagResponse().from_map(
-            self.do_rpcrequest('DeleteTag', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteTag',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteTagResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_tag_with_options_async(
@@ -2150,11 +3927,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Category'] = request.category
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteTagResponse().from_map(
-            await self.do_rpcrequest_async('DeleteTag', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteTag',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteTagResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_tag(
@@ -2177,11 +3974,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['UserId'] = request.user_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteUserResponse().from_map(
-            self.do_rpcrequest('DeleteUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteUser',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_user_with_options_async(
@@ -2190,11 +4006,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DeleteUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['UserId'] = request.user_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DeleteUserResponse().from_map(
-            await self.do_rpcrequest_async('DeleteUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteUser',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DeleteUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_user(
@@ -2217,11 +4052,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterBasicInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterBasicInfoResponse().from_map(
-            self.do_rpcrequest('DescribeClusterBasicInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterBasicInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterBasicInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_basic_info_with_options_async(
@@ -2230,11 +4082,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterBasicInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterBasicInfoResponse().from_map(
-            await self.do_rpcrequest_async('DescribeClusterBasicInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterBasicInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterBasicInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_basic_info(
@@ -2257,11 +4126,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterMetaCollectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterMetaCollectResponse().from_map(
-            self.do_rpcrequest('DescribeClusterMetaCollect', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterMetaCollect',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterMetaCollectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_meta_collect_with_options_async(
@@ -2270,11 +4156,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterMetaCollectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterMetaCollectResponse().from_map(
-            await self.do_rpcrequest_async('DescribeClusterMetaCollect', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterMetaCollect',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterMetaCollectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_meta_collect(
@@ -2297,11 +4200,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterOperationHostTaskLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['OperationId'] = request.operation_id
+        query['HostId'] = request.host_id
+        query['TaskId'] = request.task_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterOperationHostTaskLogResponse().from_map(
-            self.do_rpcrequest('DescribeClusterOperationHostTaskLog', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterOperationHostTaskLog',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterOperationHostTaskLogResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_operation_host_task_log_with_options_async(
@@ -2310,11 +4234,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterOperationHostTaskLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['OperationId'] = request.operation_id
+        query['HostId'] = request.host_id
+        query['TaskId'] = request.task_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterOperationHostTaskLogResponse().from_map(
-            await self.do_rpcrequest_async('DescribeClusterOperationHostTaskLog', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterOperationHostTaskLog',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterOperationHostTaskLogResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_operation_host_task_log(
@@ -2337,11 +4282,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterResourcePoolSchedulerTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterResourcePoolSchedulerTypeResponse().from_map(
-            self.do_rpcrequest('DescribeClusterResourcePoolSchedulerType', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterResourcePoolSchedulerType',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterResourcePoolSchedulerTypeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_resource_pool_scheduler_type_with_options_async(
@@ -2350,11 +4312,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterResourcePoolSchedulerTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterResourcePoolSchedulerTypeResponse().from_map(
-            await self.do_rpcrequest_async('DescribeClusterResourcePoolSchedulerType', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterResourcePoolSchedulerType',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterResourcePoolSchedulerTypeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_resource_pool_scheduler_type(
@@ -2377,11 +4356,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterServiceResponse().from_map(
-            self.do_rpcrequest('DescribeClusterService', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterService',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterServiceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_service_with_options_async(
@@ -2390,11 +4387,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterServiceResponse().from_map(
-            await self.do_rpcrequest_async('DescribeClusterService', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterService',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterServiceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_service(
@@ -2417,11 +4432,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterServiceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['ConfigVersion'] = request.config_version
+        query['GroupId'] = request.group_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['TagValue'] = request.tag_value
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterServiceConfigResponse().from_map(
-            self.do_rpcrequest('DescribeClusterServiceConfig', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterServiceConfig',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterServiceConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_service_config_with_options_async(
@@ -2430,11 +4467,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterServiceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['ConfigVersion'] = request.config_version
+        query['GroupId'] = request.group_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['TagValue'] = request.tag_value
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterServiceConfigResponse().from_map(
-            await self.do_rpcrequest_async('DescribeClusterServiceConfig', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterServiceConfig',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterServiceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_service_config(
@@ -2457,11 +4516,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterServiceConfigHistoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['ConfigVersion'] = request.config_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterServiceConfigHistoryResponse().from_map(
-            self.do_rpcrequest('DescribeClusterServiceConfigHistory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterServiceConfigHistory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterServiceConfigHistoryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_service_config_history_with_options_async(
@@ -2470,11 +4548,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterServiceConfigHistoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['ConfigVersion'] = request.config_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterServiceConfigHistoryResponse().from_map(
-            await self.do_rpcrequest_async('DescribeClusterServiceConfigHistory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterServiceConfigHistory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterServiceConfigHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_service_config_history(
@@ -2497,11 +4594,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterServiceConfigTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['ConfigTag'] = request.config_tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterServiceConfigTagResponse().from_map(
-            self.do_rpcrequest('DescribeClusterServiceConfigTag', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterServiceConfigTag',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterServiceConfigTagResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_service_config_tag_with_options_async(
@@ -2510,11 +4626,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterServiceConfigTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['ConfigTag'] = request.config_tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterServiceConfigTagResponse().from_map(
-            await self.do_rpcrequest_async('DescribeClusterServiceConfigTag', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterServiceConfigTag',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterServiceConfigTagResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_service_config_tag(
@@ -2537,11 +4672,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['BizId'] = request.biz_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterTemplateResponse().from_map(
-            self.do_rpcrequest('DescribeClusterTemplate', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterTemplate',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterTemplateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_template_with_options_async(
@@ -2550,11 +4702,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['BizId'] = request.biz_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterTemplateResponse().from_map(
-            await self.do_rpcrequest_async('DescribeClusterTemplate', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterTemplate',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_template(
@@ -2577,11 +4746,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterV2Response().from_map(
-            self.do_rpcrequest('DescribeClusterV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_v2with_options_async(
@@ -2590,11 +4776,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeClusterV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeClusterV2Response().from_map(
-            await self.do_rpcrequest_async('DescribeClusterV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeClusterV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_v2(
@@ -2617,11 +4820,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeDataSourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeDataSourceResponse().from_map(
-            self.do_rpcrequest('DescribeDataSource', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDataSource',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeDataSourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_data_source_with_options_async(
@@ -2630,11 +4851,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeDataSourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeDataSourceResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDataSource', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDataSource',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_data_source(
@@ -2657,11 +4896,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeExecutionPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeExecutionPlanResponse().from_map(
-            self.do_rpcrequest('DescribeExecutionPlan', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeExecutionPlan',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeExecutionPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_execution_plan_with_options_async(
@@ -2670,11 +4926,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeExecutionPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeExecutionPlanResponse().from_map(
-            await self.do_rpcrequest_async('DescribeExecutionPlan', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeExecutionPlan',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeExecutionPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_execution_plan(
@@ -2697,11 +4970,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowResponse().from_map(
-            self.do_rpcrequest('DescribeFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_flow_with_options_async(
@@ -2710,11 +5000,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_flow(
@@ -2731,97 +5038,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_flow_with_options_async(request, runtime)
 
-    def describe_flow_agent_token_with_options(
-        self,
-        request: emr_20160408_models.DescribeFlowAgentTokenRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DescribeFlowAgentTokenResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DescribeFlowAgentTokenResponse().from_map(
-            self.do_rpcrequest('DescribeFlowAgentToken', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_flow_agent_token_with_options_async(
-        self,
-        request: emr_20160408_models.DescribeFlowAgentTokenRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DescribeFlowAgentTokenResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DescribeFlowAgentTokenResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlowAgentToken', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_flow_agent_token(
-        self,
-        request: emr_20160408_models.DescribeFlowAgentTokenRequest,
-    ) -> emr_20160408_models.DescribeFlowAgentTokenResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_flow_agent_token_with_options(request, runtime)
-
-    async def describe_flow_agent_token_async(
-        self,
-        request: emr_20160408_models.DescribeFlowAgentTokenRequest,
-    ) -> emr_20160408_models.DescribeFlowAgentTokenResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_flow_agent_token_with_options_async(request, runtime)
-
-    def describe_flow_agent_user_with_options(
-        self,
-        request: emr_20160408_models.DescribeFlowAgentUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DescribeFlowAgentUserResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DescribeFlowAgentUserResponse().from_map(
-            self.do_rpcrequest('DescribeFlowAgentUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_flow_agent_user_with_options_async(
-        self,
-        request: emr_20160408_models.DescribeFlowAgentUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DescribeFlowAgentUserResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DescribeFlowAgentUserResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlowAgentUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_flow_agent_user(
-        self,
-        request: emr_20160408_models.DescribeFlowAgentUserRequest,
-    ) -> emr_20160408_models.DescribeFlowAgentUserResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_flow_agent_user_with_options(request, runtime)
-
-    async def describe_flow_agent_user_async(
-        self,
-        request: emr_20160408_models.DescribeFlowAgentUserRequest,
-    ) -> emr_20160408_models.DescribeFlowAgentUserResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_flow_agent_user_with_options_async(request, runtime)
-
     def describe_flow_category_with_options(
         self,
         request: emr_20160408_models.DescribeFlowCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowCategoryResponse().from_map(
-            self.do_rpcrequest('DescribeFlowCategory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowCategory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowCategoryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_flow_category_with_options_async(
@@ -2830,11 +5074,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowCategoryResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlowCategory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowCategory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_flow_category(
@@ -2857,11 +5118,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowCategoryTreeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
+        query['Mode'] = request.mode
+        query['Keyword'] = request.keyword
+        query['CategoryId'] = request.category_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowCategoryTreeResponse().from_map(
-            self.do_rpcrequest('DescribeFlowCategoryTree', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowCategoryTree',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowCategoryTreeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_flow_category_tree_with_options_async(
@@ -2870,11 +5151,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowCategoryTreeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
+        query['Mode'] = request.mode
+        query['Keyword'] = request.keyword
+        query['CategoryId'] = request.category_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowCategoryTreeResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlowCategoryTree', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowCategoryTree',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowCategoryTreeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_flow_category_tree(
@@ -2891,57 +5192,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_flow_category_tree_with_options_async(request, runtime)
 
-    def describe_flow_entity_snapshot_with_options(
-        self,
-        request: emr_20160408_models.DescribeFlowEntitySnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DescribeFlowEntitySnapshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DescribeFlowEntitySnapshotResponse().from_map(
-            self.do_rpcrequest('DescribeFlowEntitySnapshot', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_flow_entity_snapshot_with_options_async(
-        self,
-        request: emr_20160408_models.DescribeFlowEntitySnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DescribeFlowEntitySnapshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DescribeFlowEntitySnapshotResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlowEntitySnapshot', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_flow_entity_snapshot(
-        self,
-        request: emr_20160408_models.DescribeFlowEntitySnapshotRequest,
-    ) -> emr_20160408_models.DescribeFlowEntitySnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_flow_entity_snapshot_with_options(request, runtime)
-
-    async def describe_flow_entity_snapshot_async(
-        self,
-        request: emr_20160408_models.DescribeFlowEntitySnapshotRequest,
-    ) -> emr_20160408_models.DescribeFlowEntitySnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_flow_entity_snapshot_with_options_async(request, runtime)
-
     def describe_flow_instance_with_options(
         self,
         request: emr_20160408_models.DescribeFlowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowInstanceResponse().from_map(
-            self.do_rpcrequest('DescribeFlowInstance', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowInstance',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_flow_instance_with_options_async(
@@ -2950,11 +5228,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowInstanceResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlowInstance', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowInstance',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_flow_instance(
@@ -2977,11 +5272,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowJobResponse().from_map(
-            self.do_rpcrequest('DescribeFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_flow_job_with_options_async(
@@ -2990,11 +5302,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowJobResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_flow_job(
@@ -3017,11 +5346,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowNodeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowNodeInstanceResponse().from_map(
-            self.do_rpcrequest('DescribeFlowNodeInstance', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowNodeInstance',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowNodeInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_flow_node_instance_with_options_async(
@@ -3030,11 +5376,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowNodeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowNodeInstanceResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlowNodeInstance', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowNodeInstance',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowNodeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_flow_node_instance(
@@ -3057,11 +5420,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowNodeInstanceContainerLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Offset'] = request.offset
+        query['Length'] = request.length
+        query['NodeInstanceId'] = request.node_instance_id
+        query['AppId'] = request.app_id
+        query['ContainerId'] = request.container_id
+        query['LogName'] = request.log_name
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowNodeInstanceContainerLogResponse().from_map(
-            self.do_rpcrequest('DescribeFlowNodeInstanceContainerLog', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowNodeInstanceContainerLog',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowNodeInstanceContainerLogResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_flow_node_instance_container_log_with_options_async(
@@ -3070,11 +5455,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowNodeInstanceContainerLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Offset'] = request.offset
+        query['Length'] = request.length
+        query['NodeInstanceId'] = request.node_instance_id
+        query['AppId'] = request.app_id
+        query['ContainerId'] = request.container_id
+        query['LogName'] = request.log_name
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowNodeInstanceContainerLogResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlowNodeInstanceContainerLog', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowNodeInstanceContainerLog',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowNodeInstanceContainerLogResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_flow_node_instance_container_log(
@@ -3097,11 +5504,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowNodeInstanceLauncherLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Start'] = request.start
+        query['Lines'] = request.lines
+        query['Offset'] = request.offset
+        query['Length'] = request.length
+        query['Reverse'] = request.reverse
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['NodeInstanceId'] = request.node_instance_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowNodeInstanceLauncherLogResponse().from_map(
-            self.do_rpcrequest('DescribeFlowNodeInstanceLauncherLog', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowNodeInstanceLauncherLog',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowNodeInstanceLauncherLogResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_flow_node_instance_launcher_log_with_options_async(
@@ -3110,11 +5541,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowNodeInstanceLauncherLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Start'] = request.start
+        query['Lines'] = request.lines
+        query['Offset'] = request.offset
+        query['Length'] = request.length
+        query['Reverse'] = request.reverse
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['NodeInstanceId'] = request.node_instance_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowNodeInstanceLauncherLogResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlowNodeInstanceLauncherLog', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowNodeInstanceLauncherLog',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowNodeInstanceLauncherLogResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_flow_node_instance_launcher_log(
@@ -3137,11 +5592,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowProjectResponse().from_map(
-            self.do_rpcrequest('DescribeFlowProject', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowProject',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_flow_project_with_options_async(
@@ -3150,11 +5621,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowProjectResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlowProject', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowProject',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_flow_project(
@@ -3177,11 +5664,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowProjectClusterSettingResponse().from_map(
-            self.do_rpcrequest('DescribeFlowProjectClusterSetting', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowProjectClusterSetting',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowProjectClusterSettingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_flow_project_cluster_setting_with_options_async(
@@ -3190,11 +5694,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeFlowProjectClusterSettingResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlowProjectClusterSetting', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFlowProjectClusterSetting',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeFlowProjectClusterSettingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_flow_project_cluster_setting(
@@ -3217,11 +5738,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeJobResponse().from_map(
-            self.do_rpcrequest('DescribeJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_job_with_options_async(
@@ -3230,11 +5769,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeJobResponse().from_map(
-            await self.do_rpcrequest_async('DescribeJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_job(
@@ -3257,11 +5814,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeLibraryDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['LibraryBizId'] = request.library_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeLibraryDetailResponse().from_map(
-            self.do_rpcrequest('DescribeLibraryDetail', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeLibraryDetail',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeLibraryDetailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_library_detail_with_options_async(
@@ -3270,11 +5844,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeLibraryDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['LibraryBizId'] = request.library_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeLibraryDetailResponse().from_map(
-            await self.do_rpcrequest_async('DescribeLibraryDetail', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeLibraryDetail',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeLibraryDetailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_library_detail(
@@ -3297,11 +5888,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeLibraryInstallTaskDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['TaskBizId'] = request.task_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeLibraryInstallTaskDetailResponse().from_map(
-            self.do_rpcrequest('DescribeLibraryInstallTaskDetail', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeLibraryInstallTaskDetail',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeLibraryInstallTaskDetailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_library_install_task_detail_with_options_async(
@@ -3310,11 +5918,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeLibraryInstallTaskDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['TaskBizId'] = request.task_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeLibraryInstallTaskDetailResponse().from_map(
-            await self.do_rpcrequest_async('DescribeLibraryInstallTaskDetail', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeLibraryInstallTaskDetail',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeLibraryInstallTaskDetailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_library_install_task_detail(
@@ -3337,11 +5962,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeMetaTablePreviewTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['TaskId'] = request.task_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeMetaTablePreviewTaskResponse().from_map(
-            self.do_rpcrequest('DescribeMetaTablePreviewTask', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeMetaTablePreviewTask',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeMetaTablePreviewTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_meta_table_preview_task_with_options_async(
@@ -3350,11 +5993,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeMetaTablePreviewTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['TaskId'] = request.task_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeMetaTablePreviewTaskResponse().from_map(
-            await self.do_rpcrequest_async('DescribeMetaTablePreviewTask', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeMetaTablePreviewTask',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeMetaTablePreviewTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_meta_table_preview_task(
@@ -3377,11 +6038,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeScalingActivityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['ScalingActivityId'] = request.scaling_activity_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeScalingActivityResponse().from_map(
-            self.do_rpcrequest('DescribeScalingActivity', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScalingActivity',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeScalingActivityResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_scaling_activity_with_options_async(
@@ -3390,11 +6070,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeScalingActivityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['ScalingActivityId'] = request.scaling_activity_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeScalingActivityResponse().from_map(
-            await self.do_rpcrequest_async('DescribeScalingActivity', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScalingActivity',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeScalingActivityResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_scaling_activity(
@@ -3417,11 +6116,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeScalingCommonConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeScalingCommonConfigResponse().from_map(
-            self.do_rpcrequest('DescribeScalingCommonConfig', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScalingCommonConfig',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeScalingCommonConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_scaling_common_config_with_options_async(
@@ -3430,11 +6146,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeScalingCommonConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeScalingCommonConfigResponse().from_map(
-            await self.do_rpcrequest_async('DescribeScalingCommonConfig', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScalingCommonConfig',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeScalingCommonConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_scaling_common_config(
@@ -3457,11 +6190,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeScalingConfigItemV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ConfigItemType'] = request.config_item_type
+        query['ScalingConfigItemId'] = request.scaling_config_item_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeScalingConfigItemV2Response().from_map(
-            self.do_rpcrequest('DescribeScalingConfigItemV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScalingConfigItemV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeScalingConfigItemV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_scaling_config_item_v2with_options_async(
@@ -3470,11 +6223,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeScalingConfigItemV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ConfigItemType'] = request.config_item_type
+        query['ScalingConfigItemId'] = request.scaling_config_item_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeScalingConfigItemV2Response().from_map(
-            await self.do_rpcrequest_async('DescribeScalingConfigItemV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScalingConfigItemV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeScalingConfigItemV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_scaling_config_item_v2(
@@ -3497,11 +6270,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeScalingGroupInstanceV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['HostGroupBizId'] = request.host_group_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeScalingGroupInstanceV2Response().from_map(
-            self.do_rpcrequest('DescribeScalingGroupInstanceV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScalingGroupInstanceV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeScalingGroupInstanceV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_scaling_group_instance_v2with_options_async(
@@ -3510,11 +6302,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeScalingGroupInstanceV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['HostGroupBizId'] = request.host_group_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeScalingGroupInstanceV2Response().from_map(
-            await self.do_rpcrequest_async('DescribeScalingGroupInstanceV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScalingGroupInstanceV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeScalingGroupInstanceV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_scaling_group_instance_v2(
@@ -3537,11 +6348,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeScalingGroupV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['HostGroupBizId'] = request.host_group_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeScalingGroupV2Response().from_map(
-            self.do_rpcrequest('DescribeScalingGroupV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScalingGroupV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeScalingGroupV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_scaling_group_v2with_options_async(
@@ -3550,11 +6380,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeScalingGroupV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['HostGroupBizId'] = request.host_group_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeScalingGroupV2Response().from_map(
-            await self.do_rpcrequest_async('DescribeScalingGroupV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScalingGroupV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeScalingGroupV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_scaling_group_v2(
@@ -3577,11 +6426,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeScalingRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['ScalingRuleId'] = request.scaling_rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeScalingRuleResponse().from_map(
-            self.do_rpcrequest('DescribeScalingRule', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScalingRule',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeScalingRuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_scaling_rule_with_options_async(
@@ -3590,11 +6458,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeScalingRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['ScalingRuleId'] = request.scaling_rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeScalingRuleResponse().from_map(
-            await self.do_rpcrequest_async('DescribeScalingRule', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScalingRule',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_scaling_rule(
@@ -3617,11 +6504,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeSecurityGroupAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeSecurityGroupAttributeResponse().from_map(
-            self.do_rpcrequest('DescribeSecurityGroupAttribute', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSecurityGroupAttribute',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeSecurityGroupAttributeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_security_group_attribute_with_options_async(
@@ -3630,11 +6535,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DescribeSecurityGroupAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DescribeSecurityGroupAttributeResponse().from_map(
-            await self.do_rpcrequest_async('DescribeSecurityGroupAttribute', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSecurityGroupAttribute',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeSecurityGroupAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_security_group_attribute(
@@ -3657,11 +6580,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DetachAndReleaseClusterEniResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['TargetClusterId'] = request.target_cluster_id
+        query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DetachAndReleaseClusterEniResponse().from_map(
-            self.do_rpcrequest('DetachAndReleaseClusterEni', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetachAndReleaseClusterEni',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DetachAndReleaseClusterEniResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def detach_and_release_cluster_eni_with_options_async(
@@ -3670,11 +6611,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.DetachAndReleaseClusterEniResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['TargetClusterId'] = request.target_cluster_id
+        query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.DetachAndReleaseClusterEniResponse().from_map(
-            await self.do_rpcrequest_async('DetachAndReleaseClusterEni', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetachAndReleaseClusterEni',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DetachAndReleaseClusterEniResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def detach_and_release_cluster_eni(
@@ -3691,137 +6650,36 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_and_release_cluster_eni_with_options_async(request, runtime)
 
-    def diff_flow_entity_snapshot_with_options(
-        self,
-        request: emr_20160408_models.DiffFlowEntitySnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DiffFlowEntitySnapshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DiffFlowEntitySnapshotResponse().from_map(
-            self.do_rpcrequest('DiffFlowEntitySnapshot', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def diff_flow_entity_snapshot_with_options_async(
-        self,
-        request: emr_20160408_models.DiffFlowEntitySnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DiffFlowEntitySnapshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DiffFlowEntitySnapshotResponse().from_map(
-            await self.do_rpcrequest_async('DiffFlowEntitySnapshot', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def diff_flow_entity_snapshot(
-        self,
-        request: emr_20160408_models.DiffFlowEntitySnapshotRequest,
-    ) -> emr_20160408_models.DiffFlowEntitySnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.diff_flow_entity_snapshot_with_options(request, runtime)
-
-    async def diff_flow_entity_snapshot_async(
-        self,
-        request: emr_20160408_models.DiffFlowEntitySnapshotRequest,
-    ) -> emr_20160408_models.DiffFlowEntitySnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.diff_flow_entity_snapshot_with_options_async(request, runtime)
-
-    def dump_meta_data_source_for_outer_with_options(
-        self,
-        request: emr_20160408_models.DumpMetaDataSourceForOuterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DumpMetaDataSourceForOuterResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DumpMetaDataSourceForOuterResponse().from_map(
-            self.do_rpcrequest('DumpMetaDataSourceForOuter', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def dump_meta_data_source_for_outer_with_options_async(
-        self,
-        request: emr_20160408_models.DumpMetaDataSourceForOuterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.DumpMetaDataSourceForOuterResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.DumpMetaDataSourceForOuterResponse().from_map(
-            await self.do_rpcrequest_async('DumpMetaDataSourceForOuter', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def dump_meta_data_source_for_outer(
-        self,
-        request: emr_20160408_models.DumpMetaDataSourceForOuterRequest,
-    ) -> emr_20160408_models.DumpMetaDataSourceForOuterResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.dump_meta_data_source_for_outer_with_options(request, runtime)
-
-    async def dump_meta_data_source_for_outer_async(
-        self,
-        request: emr_20160408_models.DumpMetaDataSourceForOuterRequest,
-    ) -> emr_20160408_models.DumpMetaDataSourceForOuterResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.dump_meta_data_source_for_outer_with_options_async(request, runtime)
-
-    def get_flow_entity_relation_graph_with_options(
-        self,
-        request: emr_20160408_models.GetFlowEntityRelationGraphRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.GetFlowEntityRelationGraphResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.GetFlowEntityRelationGraphResponse().from_map(
-            self.do_rpcrequest('GetFlowEntityRelationGraph', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_flow_entity_relation_graph_with_options_async(
-        self,
-        request: emr_20160408_models.GetFlowEntityRelationGraphRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.GetFlowEntityRelationGraphResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.GetFlowEntityRelationGraphResponse().from_map(
-            await self.do_rpcrequest_async('GetFlowEntityRelationGraph', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_flow_entity_relation_graph(
-        self,
-        request: emr_20160408_models.GetFlowEntityRelationGraphRequest,
-    ) -> emr_20160408_models.GetFlowEntityRelationGraphResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_flow_entity_relation_graph_with_options(request, runtime)
-
-    async def get_flow_entity_relation_graph_async(
-        self,
-        request: emr_20160408_models.GetFlowEntityRelationGraphRequest,
-    ) -> emr_20160408_models.GetFlowEntityRelationGraphResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_flow_entity_relation_graph_with_options_async(request, runtime)
-
     def get_hdfs_capacity_statistic_info_with_options(
         self,
         request: emr_20160408_models.GetHdfsCapacityStatisticInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetHdfsCapacityStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetHdfsCapacityStatisticInfoResponse().from_map(
-            self.do_rpcrequest('GetHdfsCapacityStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetHdfsCapacityStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetHdfsCapacityStatisticInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_hdfs_capacity_statistic_info_with_options_async(
@@ -3830,11 +6688,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetHdfsCapacityStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetHdfsCapacityStatisticInfoResponse().from_map(
-            await self.do_rpcrequest_async('GetHdfsCapacityStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetHdfsCapacityStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetHdfsCapacityStatisticInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_hdfs_capacity_statistic_info(
@@ -3857,11 +6734,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetJobInputStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
+        query['PageSize'] = request.page_size
+        query['PageNumber'] = request.page_number
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetJobInputStatisticInfoResponse().from_map(
-            self.do_rpcrequest('GetJobInputStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetJobInputStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetJobInputStatisticInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_job_input_statistic_info_with_options_async(
@@ -3870,11 +6768,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetJobInputStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
+        query['PageSize'] = request.page_size
+        query['PageNumber'] = request.page_number
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetJobInputStatisticInfoResponse().from_map(
-            await self.do_rpcrequest_async('GetJobInputStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetJobInputStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetJobInputStatisticInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_job_input_statistic_info(
@@ -3897,11 +6816,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetJobOutputStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
+        query['PageSize'] = request.page_size
+        query['PageNumber'] = request.page_number
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetJobOutputStatisticInfoResponse().from_map(
-            self.do_rpcrequest('GetJobOutputStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetJobOutputStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetJobOutputStatisticInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_job_output_statistic_info_with_options_async(
@@ -3910,11 +6850,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetJobOutputStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
+        query['PageSize'] = request.page_size
+        query['PageNumber'] = request.page_number
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetJobOutputStatisticInfoResponse().from_map(
-            await self.do_rpcrequest_async('GetJobOutputStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetJobOutputStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetJobOutputStatisticInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_job_output_statistic_info(
@@ -3937,11 +6898,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetJobRunningTimeStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
+        query['PageSize'] = request.page_size
+        query['PageNumber'] = request.page_number
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetJobRunningTimeStatisticInfoResponse().from_map(
-            self.do_rpcrequest('GetJobRunningTimeStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetJobRunningTimeStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetJobRunningTimeStatisticInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_job_running_time_statistic_info_with_options_async(
@@ -3950,11 +6932,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetJobRunningTimeStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
+        query['PageSize'] = request.page_size
+        query['PageNumber'] = request.page_number
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetJobRunningTimeStatisticInfoResponse().from_map(
-            await self.do_rpcrequest_async('GetJobRunningTimeStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetJobRunningTimeStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetJobRunningTimeStatisticInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_job_running_time_statistic_info(
@@ -3977,11 +6980,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetQueueInputStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetQueueInputStatisticInfoResponse().from_map(
-            self.do_rpcrequest('GetQueueInputStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetQueueInputStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetQueueInputStatisticInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_queue_input_statistic_info_with_options_async(
@@ -3990,11 +7012,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetQueueInputStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetQueueInputStatisticInfoResponse().from_map(
-            await self.do_rpcrequest_async('GetQueueInputStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetQueueInputStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetQueueInputStatisticInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_queue_input_statistic_info(
@@ -4017,11 +7058,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetQueueOutputStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetQueueOutputStatisticInfoResponse().from_map(
-            self.do_rpcrequest('GetQueueOutputStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetQueueOutputStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetQueueOutputStatisticInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_queue_output_statistic_info_with_options_async(
@@ -4030,11 +7090,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetQueueOutputStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetQueueOutputStatisticInfoResponse().from_map(
-            await self.do_rpcrequest_async('GetQueueOutputStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetQueueOutputStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetQueueOutputStatisticInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_queue_output_statistic_info(
@@ -4057,11 +7136,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetQueueSubmissionStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
+        query['ApplicationType'] = request.application_type
+        query['FinalStatus'] = request.final_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetQueueSubmissionStatisticInfoResponse().from_map(
-            self.do_rpcrequest('GetQueueSubmissionStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetQueueSubmissionStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetQueueSubmissionStatisticInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_queue_submission_statistic_info_with_options_async(
@@ -4070,11 +7170,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetQueueSubmissionStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
+        query['ApplicationType'] = request.application_type
+        query['FinalStatus'] = request.final_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetQueueSubmissionStatisticInfoResponse().from_map(
-            await self.do_rpcrequest_async('GetQueueSubmissionStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetQueueSubmissionStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetQueueSubmissionStatisticInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_queue_submission_statistic_info(
@@ -4097,11 +7218,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetUserInputStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetUserInputStatisticInfoResponse().from_map(
-            self.do_rpcrequest('GetUserInputStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetUserInputStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetUserInputStatisticInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_user_input_statistic_info_with_options_async(
@@ -4110,11 +7250,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetUserInputStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetUserInputStatisticInfoResponse().from_map(
-            await self.do_rpcrequest_async('GetUserInputStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetUserInputStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetUserInputStatisticInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_user_input_statistic_info(
@@ -4137,11 +7296,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetUserOutputStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetUserOutputStatisticInfoResponse().from_map(
-            self.do_rpcrequest('GetUserOutputStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetUserOutputStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetUserOutputStatisticInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_user_output_statistic_info_with_options_async(
@@ -4150,11 +7328,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetUserOutputStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetUserOutputStatisticInfoResponse().from_map(
-            await self.do_rpcrequest_async('GetUserOutputStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetUserOutputStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetUserOutputStatisticInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_user_output_statistic_info(
@@ -4177,11 +7374,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetUserSubmissionStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
+        query['ApplicationType'] = request.application_type
+        query['FinalStatus'] = request.final_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetUserSubmissionStatisticInfoResponse().from_map(
-            self.do_rpcrequest('GetUserSubmissionStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetUserSubmissionStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetUserSubmissionStatisticInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_user_submission_statistic_info_with_options_async(
@@ -4190,11 +7408,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.GetUserSubmissionStatisticInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['FromDatetime'] = request.from_datetime
+        query['ToDatetime'] = request.to_datetime
+        query['ApplicationType'] = request.application_type
+        query['FinalStatus'] = request.final_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.GetUserSubmissionStatisticInfoResponse().from_map(
-            await self.do_rpcrequest_async('GetUserSubmissionStatisticInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetUserSubmissionStatisticInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.GetUserSubmissionStatisticInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_user_submission_statistic_info(
@@ -4217,11 +7456,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.InstallLibrariesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['LibraryBizId'] = request.library_biz_id
+        query['ClusterBizIdList'] = request.cluster_biz_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.InstallLibrariesResponse().from_map(
-            self.do_rpcrequest('InstallLibraries', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InstallLibraries',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.InstallLibrariesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def install_libraries_with_options_async(
@@ -4230,11 +7487,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.InstallLibrariesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['LibraryBizId'] = request.library_biz_id
+        query['ClusterBizIdList'] = request.cluster_biz_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.InstallLibrariesResponse().from_map(
-            await self.do_rpcrequest_async('InstallLibraries', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InstallLibraries',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.InstallLibrariesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def install_libraries(
@@ -4257,11 +7532,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.JoinResourceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['ResourceId'] = request.resource_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.JoinResourceGroupResponse().from_map(
-            self.do_rpcrequest('JoinResourceGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='JoinResourceGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.JoinResourceGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def join_resource_group_with_options_async(
@@ -4270,11 +7564,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.JoinResourceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['ResourceId'] = request.resource_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.JoinResourceGroupResponse().from_map(
-            await self.do_rpcrequest_async('JoinResourceGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='JoinResourceGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.JoinResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def join_resource_group(
@@ -4291,57 +7604,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.join_resource_group_with_options_async(request, runtime)
 
-    def kill_execution_job_instance_with_options(
-        self,
-        request: emr_20160408_models.KillExecutionJobInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.KillExecutionJobInstanceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.KillExecutionJobInstanceResponse().from_map(
-            self.do_rpcrequest('KillExecutionJobInstance', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def kill_execution_job_instance_with_options_async(
-        self,
-        request: emr_20160408_models.KillExecutionJobInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.KillExecutionJobInstanceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.KillExecutionJobInstanceResponse().from_map(
-            await self.do_rpcrequest_async('KillExecutionJobInstance', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def kill_execution_job_instance(
-        self,
-        request: emr_20160408_models.KillExecutionJobInstanceRequest,
-    ) -> emr_20160408_models.KillExecutionJobInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.kill_execution_job_instance_with_options(request, runtime)
-
-    async def kill_execution_job_instance_async(
-        self,
-        request: emr_20160408_models.KillExecutionJobInstanceRequest,
-    ) -> emr_20160408_models.KillExecutionJobInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.kill_execution_job_instance_with_options_async(request, runtime)
-
     def kill_flow_job_with_options(
         self,
         request: emr_20160408_models.KillFlowJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.KillFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['JobInstanceId'] = request.job_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.KillFlowJobResponse().from_map(
-            self.do_rpcrequest('KillFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='KillFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.KillFlowJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def kill_flow_job_with_options_async(
@@ -4350,11 +7640,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.KillFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['JobInstanceId'] = request.job_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.KillFlowJobResponse().from_map(
-            await self.do_rpcrequest_async('KillFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='KillFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.KillFlowJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def kill_flow_job(
@@ -4377,11 +7684,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListAdviceActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['Component'] = request.component
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListAdviceActionResponse().from_map(
-            self.do_rpcrequest('ListAdviceAction', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAdviceAction',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListAdviceActionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_advice_action_with_options_async(
@@ -4390,11 +7718,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListAdviceActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['Component'] = request.component
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListAdviceActionResponse().from_map(
-            await self.do_rpcrequest_async('ListAdviceAction', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAdviceAction',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListAdviceActionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_advice_action(
@@ -4417,11 +7766,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListApmApplicationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['StartTimeFrom'] = request.start_time_from
+        query['StartTimeTo'] = request.start_time_to
+        query['EndTimeFrom'] = request.end_time_from
+        query['EndTimeTo'] = request.end_time_to
+        query['ClusterId'] = request.cluster_id
+        query['AppId'] = request.app_id
+        query['State'] = request.state
+        query['FinalStatus'] = request.final_status
+        query['User'] = request.user
+        query['Queue'] = request.queue
+        query['Name'] = request.name
+        query['JobType'] = request.job_type
+        query['OrderBy'] = request.order_by
+        query['DiagnoseResult'] = request.diagnose_result
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListApmApplicationResponse().from_map(
-            self.do_rpcrequest('ListApmApplication', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListApmApplication',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListApmApplicationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_apm_application_with_options_async(
@@ -4430,11 +7811,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListApmApplicationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['StartTimeFrom'] = request.start_time_from
+        query['StartTimeTo'] = request.start_time_to
+        query['EndTimeFrom'] = request.end_time_from
+        query['EndTimeTo'] = request.end_time_to
+        query['ClusterId'] = request.cluster_id
+        query['AppId'] = request.app_id
+        query['State'] = request.state
+        query['FinalStatus'] = request.final_status
+        query['User'] = request.user
+        query['Queue'] = request.queue
+        query['Name'] = request.name
+        query['JobType'] = request.job_type
+        query['OrderBy'] = request.order_by
+        query['DiagnoseResult'] = request.diagnose_result
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListApmApplicationResponse().from_map(
-            await self.do_rpcrequest_async('ListApmApplication', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListApmApplication',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListApmApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_apm_application(
@@ -4457,11 +7870,41 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListBackupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderMode'] = request.order_mode
+        query['Id'] = request.id
+        query['BizId'] = request.biz_id
+        query['MetadataType'] = request.metadata_type
+        query['ServiceName'] = request.service_name
+        query['BackupPlanId'] = request.backup_plan_id
+        query['ClusterId'] = request.cluster_id
+        query['Status'] = request.status
+        query['BackupId'] = request.backup_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListBackupsResponse().from_map(
-            self.do_rpcrequest('ListBackups', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListBackups',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListBackupsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_backups_with_options_async(
@@ -4470,11 +7913,41 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListBackupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderMode'] = request.order_mode
+        query['Id'] = request.id
+        query['BizId'] = request.biz_id
+        query['MetadataType'] = request.metadata_type
+        query['ServiceName'] = request.service_name
+        query['BackupPlanId'] = request.backup_plan_id
+        query['ClusterId'] = request.cluster_id
+        query['Status'] = request.status
+        query['BackupId'] = request.backup_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListBackupsResponse().from_map(
-            await self.do_rpcrequest_async('ListBackups', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListBackups',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_backups(
@@ -4497,11 +7970,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterHostResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['HostGroupId'] = request.host_group_id
+        query['HostName'] = request.host_name
+        query['PrivateIp'] = request.private_ip
+        query['PublicIp'] = request.public_ip
+        query['GroupType'] = request.group_type
+        query['ComponentName'] = request.component_name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterHostResponse().from_map(
-            self.do_rpcrequest('ListClusterHost', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterHost',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterHostResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_host_with_options_async(
@@ -4510,11 +8010,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterHostResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['HostGroupId'] = request.host_group_id
+        query['HostName'] = request.host_name
+        query['PrivateIp'] = request.private_ip
+        query['PublicIp'] = request.public_ip
+        query['GroupType'] = request.group_type
+        query['ComponentName'] = request.component_name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterHostResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterHost', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterHost',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterHostResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_host(
@@ -4537,11 +8064,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterHostComponentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['HostName'] = request.host_name
+        query['ServiceName'] = request.service_name
+        query['ComponentName'] = request.component_name
+        query['ComponentStatus'] = request.component_status
+        query['HostRole'] = request.host_role
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterHostComponentResponse().from_map(
-            self.do_rpcrequest('ListClusterHostComponent', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterHostComponent',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterHostComponentResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_host_component_with_options_async(
@@ -4550,11 +8102,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterHostComponentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['HostName'] = request.host_name
+        query['ServiceName'] = request.service_name
+        query['ComponentName'] = request.component_name
+        query['ComponentStatus'] = request.component_status
+        query['HostRole'] = request.host_role
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterHostComponentResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterHostComponent', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterHostComponent',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterHostComponentResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_host_component(
@@ -4577,11 +8154,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterHostGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['HostGroupName'] = request.host_group_name
+        query['HostGroupType'] = request.host_group_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterHostGroupResponse().from_map(
-            self.do_rpcrequest('ListClusterHostGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterHostGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterHostGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_host_group_with_options_async(
@@ -4590,11 +8190,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterHostGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['HostGroupName'] = request.host_group_name
+        query['HostGroupType'] = request.host_group_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterHostGroupResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterHostGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterHostGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterHostGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_host_group(
@@ -4617,11 +8240,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterInstalledServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterInstalledServiceResponse().from_map(
-            self.do_rpcrequest('ListClusterInstalledService', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterInstalledService',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterInstalledServiceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_installed_service_with_options_async(
@@ -4630,11 +8272,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterInstalledServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterInstalledServiceResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterInstalledService', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterInstalledService',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterInstalledServiceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_installed_service(
@@ -4657,11 +8318,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterOperationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['OperationId'] = request.operation_id
+        query['ServiceName'] = request.service_name
+        query['Status'] = request.status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterOperationResponse().from_map(
-            self.do_rpcrequest('ListClusterOperation', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterOperation',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterOperationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_operation_with_options_async(
@@ -4670,11 +8353,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterOperationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['OperationId'] = request.operation_id
+        query['ServiceName'] = request.service_name
+        query['Status'] = request.status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterOperationResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterOperation', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterOperation',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterOperationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_operation(
@@ -4697,11 +8402,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterOperationHostResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['OperationId'] = request.operation_id
+        query['Status'] = request.status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterOperationHostResponse().from_map(
-            self.do_rpcrequest('ListClusterOperationHost', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterOperationHost',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterOperationHostResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_operation_host_with_options_async(
@@ -4710,11 +8436,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterOperationHostResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['OperationId'] = request.operation_id
+        query['Status'] = request.status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterOperationHostResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterOperationHost', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterOperationHost',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterOperationHostResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_operation_host(
@@ -4737,11 +8484,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterOperationHostTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['OperationId'] = request.operation_id
+        query['HostId'] = request.host_id
+        query['Status'] = request.status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterOperationHostTaskResponse().from_map(
-            self.do_rpcrequest('ListClusterOperationHostTask', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterOperationHostTask',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterOperationHostTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_operation_host_task_with_options_async(
@@ -4750,11 +8519,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterOperationHostTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['OperationId'] = request.operation_id
+        query['HostId'] = request.host_id
+        query['Status'] = request.status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterOperationHostTaskResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterOperationHostTask', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterOperationHostTask',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterOperationHostTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_operation_host_task(
@@ -4777,11 +8568,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterOperationTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['OperationId'] = request.operation_id
+        query['Status'] = request.status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterOperationTaskResponse().from_map(
-            self.do_rpcrequest('ListClusterOperationTask', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterOperationTask',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterOperationTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_operation_task_with_options_async(
@@ -4790,11 +8602,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterOperationTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['OperationId'] = request.operation_id
+        query['Status'] = request.status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterOperationTaskResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterOperationTask', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterOperationTask',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterOperationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_operation_task(
@@ -4817,11 +8650,41 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClustersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['CreateType'] = request.create_type
+        query['MachineType'] = request.machine_type
+        query['IsDesc'] = request.is_desc
+        query['DepositType'] = request.deposit_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['DefaultStatus'] = request.default_status
+        query['Name'] = request.name
+        query['VpcId'] = request.vpc_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ClusterTypeList'] = request.cluster_type_list
+        query['StatusList'] = request.status_list
+        query['Tag'] = request.tag
+        query['ExpiredTagList'] = request.expired_tag_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClustersResponse().from_map(
-            self.do_rpcrequest('ListClusters', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClustersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_clusters_with_options_async(
@@ -4830,11 +8693,41 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClustersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['CreateType'] = request.create_type
+        query['MachineType'] = request.machine_type
+        query['IsDesc'] = request.is_desc
+        query['DepositType'] = request.deposit_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['DefaultStatus'] = request.default_status
+        query['Name'] = request.name
+        query['VpcId'] = request.vpc_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ClusterTypeList'] = request.cluster_type_list
+        query['StatusList'] = request.status_list
+        query['Tag'] = request.tag
+        query['ExpiredTagList'] = request.expired_tag_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClustersResponse().from_map(
-            await self.do_rpcrequest_async('ListClusters', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClustersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_clusters(
@@ -4857,11 +8750,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterServiceResponse().from_map(
-            self.do_rpcrequest('ListClusterService', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterService',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterServiceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_service_with_options_async(
@@ -4870,11 +8782,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterServiceResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterService', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterService',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterServiceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_service(
@@ -4897,11 +8828,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterServiceComponentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['PodName'] = request.pod_name
+        query['ServiceName'] = request.service_name
+        query['ComponentName'] = request.component_name
+        query['ComponentStatus'] = request.component_status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterServiceComponentResponse().from_map(
-            self.do_rpcrequest('ListClusterServiceComponent', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterServiceComponent',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterServiceComponentResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_service_component_with_options_async(
@@ -4910,11 +8864,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterServiceComponentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['PodName'] = request.pod_name
+        query['ServiceName'] = request.service_name
+        query['ComponentName'] = request.component_name
+        query['ComponentStatus'] = request.component_status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterServiceComponentResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterServiceComponent', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterServiceComponent',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterServiceComponentResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_service_component(
@@ -4937,11 +8914,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterServiceComponentHealthInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterServiceComponentHealthInfoResponse().from_map(
-            self.do_rpcrequest('ListClusterServiceComponentHealthInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterServiceComponentHealthInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterServiceComponentHealthInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_service_component_health_info_with_options_async(
@@ -4950,11 +8945,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterServiceComponentHealthInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterServiceComponentHealthInfoResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterServiceComponentHealthInfo', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterServiceComponentHealthInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterServiceComponentHealthInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_service_component_health_info(
@@ -4977,11 +8990,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterServiceConfigHistoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['ConfigVersion'] = request.config_version
+        query['HostGroupId'] = request.host_group_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['ConfigFileName'] = request.config_file_name
+        query['ConfigItemKey'] = request.config_item_key
+        query['Author'] = request.author
+        query['Comment'] = request.comment
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterServiceConfigHistoryResponse().from_map(
-            self.do_rpcrequest('ListClusterServiceConfigHistory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterServiceConfigHistory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterServiceConfigHistoryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_service_config_history_with_options_async(
@@ -4990,11 +9030,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterServiceConfigHistoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['ConfigVersion'] = request.config_version
+        query['HostGroupId'] = request.host_group_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['ConfigFileName'] = request.config_file_name
+        query['ConfigItemKey'] = request.config_item_key
+        query['Author'] = request.author
+        query['Comment'] = request.comment
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterServiceConfigHistoryResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterServiceConfigHistory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterServiceConfigHistory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterServiceConfigHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_service_config_history(
@@ -5017,11 +9084,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterServiceQuickLinkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['DirectType'] = request.direct_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterServiceQuickLinkResponse().from_map(
-            self.do_rpcrequest('ListClusterServiceQuickLink', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterServiceQuickLink',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterServiceQuickLinkResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_service_quick_link_with_options_async(
@@ -5030,11 +9116,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterServiceQuickLinkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['DirectType'] = request.direct_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterServiceQuickLinkResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterServiceQuickLink', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterServiceQuickLink',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterServiceQuickLinkResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_service_quick_link(
@@ -5057,11 +9162,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['BizId'] = request.biz_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ProductType'] = request.product_type
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterTemplatesResponse().from_map(
-            self.do_rpcrequest('ListClusterTemplates', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterTemplates',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterTemplatesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_templates_with_options_async(
@@ -5070,11 +9196,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListClusterTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['BizId'] = request.biz_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ProductType'] = request.product_type
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListClusterTemplatesResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterTemplates', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterTemplates',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClusterTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_templates(
@@ -5097,11 +9244,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListDataSourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['PageSize'] = request.page_size
+        query['PageNumber'] = request.page_number
+        query['Id'] = request.id
+        query['ProjectId'] = request.project_id
+        query['Name'] = request.name
+        query['SourceType'] = request.source_type
+        query['CreateFrom'] = request.create_from
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListDataSourceResponse().from_map(
-            self.do_rpcrequest('ListDataSource', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDataSource',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListDataSourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_data_source_with_options_async(
@@ -5110,11 +9281,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListDataSourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['PageSize'] = request.page_size
+        query['PageNumber'] = request.page_number
+        query['Id'] = request.id
+        query['ProjectId'] = request.project_id
+        query['Name'] = request.name
+        query['SourceType'] = request.source_type
+        query['CreateFrom'] = request.create_from
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListDataSourceResponse().from_map(
-            await self.do_rpcrequest_async('ListDataSource', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDataSource',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_data_source(
@@ -5131,17 +9326,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_data_source_with_options_async(request, runtime)
 
+    def list_disk_ops_events_with_options(
+        self,
+        request: emr_20160408_models.ListDiskOpsEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.ListDiskOpsEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['UserId'] = request.user_id
+        query['ClusterId'] = request.cluster_id
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDiskOpsEvents',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListDiskOpsEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_disk_ops_events_with_options_async(
+        self,
+        request: emr_20160408_models.ListDiskOpsEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.ListDiskOpsEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['UserId'] = request.user_id
+        query['ClusterId'] = request.cluster_id
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDiskOpsEvents',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListDiskOpsEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_disk_ops_events(
+        self,
+        request: emr_20160408_models.ListDiskOpsEventsRequest,
+    ) -> emr_20160408_models.ListDiskOpsEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_disk_ops_events_with_options(request, runtime)
+
+    async def list_disk_ops_events_async(
+        self,
+        request: emr_20160408_models.ListDiskOpsEventsRequest,
+    ) -> emr_20160408_models.ListDiskOpsEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_disk_ops_events_with_options_async(request, runtime)
+
     def list_emr_available_config_with_options(
         self,
         request: emr_20160408_models.ListEmrAvailableConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListEmrAvailableConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListEmrAvailableConfigResponse().from_map(
-            self.do_rpcrequest('ListEmrAvailableConfig', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListEmrAvailableConfig',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListEmrAvailableConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_emr_available_config_with_options_async(
@@ -5150,11 +9446,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListEmrAvailableConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListEmrAvailableConfigResponse().from_map(
-            await self.do_rpcrequest_async('ListEmrAvailableConfig', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListEmrAvailableConfig',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListEmrAvailableConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_emr_available_config(
@@ -5177,11 +9490,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListEmrAvailableResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['DestinationResource'] = request.destination_resource
+        query['ClusterType'] = request.cluster_type
+        query['InstanceChargeType'] = request.instance_charge_type
+        query['SpotStrategy'] = request.spot_strategy
+        query['ZoneId'] = request.zone_id
+        query['NetType'] = request.net_type
+        query['InstanceType'] = request.instance_type
+        query['SystemDiskType'] = request.system_disk_type
+        query['DataDiskType'] = request.data_disk_type
+        query['DepositType'] = request.deposit_type
+        query['ClusterId'] = request.cluster_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListEmrAvailableResourceResponse().from_map(
-            self.do_rpcrequest('ListEmrAvailableResource', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListEmrAvailableResource',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListEmrAvailableResourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_emr_available_resource_with_options_async(
@@ -5190,11 +9531,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListEmrAvailableResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['DestinationResource'] = request.destination_resource
+        query['ClusterType'] = request.cluster_type
+        query['InstanceChargeType'] = request.instance_charge_type
+        query['SpotStrategy'] = request.spot_strategy
+        query['ZoneId'] = request.zone_id
+        query['NetType'] = request.net_type
+        query['InstanceType'] = request.instance_type
+        query['SystemDiskType'] = request.system_disk_type
+        query['DataDiskType'] = request.data_disk_type
+        query['DepositType'] = request.deposit_type
+        query['ClusterId'] = request.cluster_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListEmrAvailableResourceResponse().from_map(
-            await self.do_rpcrequest_async('ListEmrAvailableResource', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListEmrAvailableResource',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListEmrAvailableResourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_emr_available_resource(
@@ -5217,11 +9586,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListEmrMainVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['EmrVersion'] = request.emr_version
+        query['StackName'] = request.stack_name
+        query['StackVersion'] = request.stack_version
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListEmrMainVersionResponse().from_map(
-            self.do_rpcrequest('ListEmrMainVersion', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListEmrMainVersion',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListEmrMainVersionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_emr_main_version_with_options_async(
@@ -5230,11 +9620,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListEmrMainVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['EmrVersion'] = request.emr_version
+        query['StackName'] = request.stack_name
+        query['StackVersion'] = request.stack_version
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListEmrMainVersionResponse().from_map(
-            await self.do_rpcrequest_async('ListEmrMainVersion', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListEmrMainVersion',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListEmrMainVersionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_emr_main_version(
@@ -5257,11 +9668,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListExecutionPlanInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['OnlyLastInstance'] = request.only_last_instance
+        query['IsDesc'] = request.is_desc
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ExecutionPlanIdList'] = request.execution_plan_id_list
+        query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListExecutionPlanInstancesResponse().from_map(
-            self.do_rpcrequest('ListExecutionPlanInstances', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListExecutionPlanInstances',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListExecutionPlanInstancesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_execution_plan_instances_with_options_async(
@@ -5270,11 +9703,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListExecutionPlanInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['OnlyLastInstance'] = request.only_last_instance
+        query['IsDesc'] = request.is_desc
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ExecutionPlanIdList'] = request.execution_plan_id_list
+        query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListExecutionPlanInstancesResponse().from_map(
-            await self.do_rpcrequest_async('ListExecutionPlanInstances', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListExecutionPlanInstances',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListExecutionPlanInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_execution_plan_instances(
@@ -5291,57 +9746,41 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_execution_plan_instances_with_options_async(request, runtime)
 
-    def list_execution_plans_with_options(
-        self,
-        request: emr_20160408_models.ListExecutionPlansRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListExecutionPlansResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ListExecutionPlansResponse().from_map(
-            self.do_rpcrequest('ListExecutionPlans', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_execution_plans_with_options_async(
-        self,
-        request: emr_20160408_models.ListExecutionPlansRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListExecutionPlansResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ListExecutionPlansResponse().from_map(
-            await self.do_rpcrequest_async('ListExecutionPlans', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_execution_plans(
-        self,
-        request: emr_20160408_models.ListExecutionPlansRequest,
-    ) -> emr_20160408_models.ListExecutionPlansResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_execution_plans_with_options(request, runtime)
-
-    async def list_execution_plans_async(
-        self,
-        request: emr_20160408_models.ListExecutionPlansRequest,
-    ) -> emr_20160408_models.ListExecutionPlansResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_execution_plans_with_options_async(request, runtime)
-
     def list_flow_with_options(
         self,
         request: emr_20160408_models.ListFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['JobId'] = request.job_id
+        query['Name'] = request.name
+        query['Id'] = request.id
+        query['ClusterId'] = request.cluster_id
+        query['Status'] = request.status
+        query['Periodic'] = request.periodic
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowResponse().from_map(
-            self.do_rpcrequest('ListFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_with_options_async(
@@ -5350,11 +9789,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['JobId'] = request.job_id
+        query['Name'] = request.name
+        query['Id'] = request.id
+        query['ClusterId'] = request.cluster_id
+        query['Status'] = request.status
+        query['Periodic'] = request.periodic
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowResponse().from_map(
-            await self.do_rpcrequest_async('ListFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow(
@@ -5377,11 +9840,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['ParentId'] = request.parent_id
+        query['Root'] = request.root
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowCategoryResponse().from_map(
-            self.do_rpcrequest('ListFlowCategory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowCategory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowCategoryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_category_with_options_async(
@@ -5390,11 +9873,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['ParentId'] = request.parent_id
+        query['Root'] = request.root
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowCategoryResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowCategory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowCategory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_category(
@@ -5417,11 +9920,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowClusterResponse().from_map(
-            self.do_rpcrequest('ListFlowCluster', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowCluster',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_cluster_with_options_async(
@@ -5430,11 +9952,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowClusterResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowCluster', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowCluster',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_cluster(
@@ -5457,11 +9998,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowClusterAllResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProductType'] = request.product_type
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowClusterAllResponse().from_map(
-            self.do_rpcrequest('ListFlowClusterAll', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowClusterAll',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowClusterAllResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_cluster_all_with_options_async(
@@ -5470,11 +10028,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowClusterAllResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProductType'] = request.product_type
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowClusterAllResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowClusterAll', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowClusterAll',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowClusterAllResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_cluster_all(
@@ -5497,11 +10072,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowClusterAllHostsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowClusterAllHostsResponse().from_map(
-            self.do_rpcrequest('ListFlowClusterAllHosts', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowClusterAllHosts',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowClusterAllHostsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_cluster_all_hosts_with_options_async(
@@ -5510,11 +10103,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowClusterAllHostsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowClusterAllHostsResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowClusterAllHosts', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowClusterAllHosts',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowClusterAllHostsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_cluster_all_hosts(
@@ -5537,11 +10148,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowClusterHostResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowClusterHostResponse().from_map(
-            self.do_rpcrequest('ListFlowClusterHost', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowClusterHost',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowClusterHostResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_cluster_host_with_options_async(
@@ -5550,11 +10179,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowClusterHostResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowClusterHostResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowClusterHost', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowClusterHost',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowClusterHostResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_cluster_host(
@@ -5571,57 +10218,45 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_flow_cluster_host_with_options_async(request, runtime)
 
-    def list_flow_entity_snapshot_with_options(
-        self,
-        request: emr_20160408_models.ListFlowEntitySnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListFlowEntitySnapshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ListFlowEntitySnapshotResponse().from_map(
-            self.do_rpcrequest('ListFlowEntitySnapshot', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_flow_entity_snapshot_with_options_async(
-        self,
-        request: emr_20160408_models.ListFlowEntitySnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListFlowEntitySnapshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ListFlowEntitySnapshotResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowEntitySnapshot', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_flow_entity_snapshot(
-        self,
-        request: emr_20160408_models.ListFlowEntitySnapshotRequest,
-    ) -> emr_20160408_models.ListFlowEntitySnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_flow_entity_snapshot_with_options(request, runtime)
-
-    async def list_flow_entity_snapshot_async(
-        self,
-        request: emr_20160408_models.ListFlowEntitySnapshotRequest,
-    ) -> emr_20160408_models.ListFlowEntitySnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_flow_entity_snapshot_with_options_async(request, runtime)
-
     def list_flow_instance_with_options(
         self,
         request: emr_20160408_models.ListFlowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['FlowId'] = request.flow_id
+        query['FlowName'] = request.flow_name
+        query['Owner'] = request.owner
+        query['InstanceId'] = request.instance_id
+        query['NodeInstanceId'] = request.node_instance_id
+        query['TimeRange'] = request.time_range
+        query['OrderBy'] = request.order_by
+        query['OrderType'] = request.order_type
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowInstanceResponse().from_map(
-            self.do_rpcrequest('ListFlowInstance', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowInstance',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_instance_with_options_async(
@@ -5630,11 +10265,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['FlowId'] = request.flow_id
+        query['FlowName'] = request.flow_name
+        query['Owner'] = request.owner
+        query['InstanceId'] = request.instance_id
+        query['NodeInstanceId'] = request.node_instance_id
+        query['TimeRange'] = request.time_range
+        query['OrderBy'] = request.order_by
+        query['OrderType'] = request.order_type
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowInstanceResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowInstance', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowInstance',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_instance(
@@ -5657,11 +10320,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Type'] = request.type
+        query['Adhoc'] = request.adhoc
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowJobResponse().from_map(
-            self.do_rpcrequest('ListFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_job_with_options_async(
@@ -5670,11 +10355,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Type'] = request.type
+        query['Adhoc'] = request.adhoc
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowJobResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_job(
@@ -5697,11 +10404,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowJobHistoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['JobType'] = request.job_type
+        query['InstanceId'] = request.instance_id
+        query['TimeRange'] = request.time_range
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowJobHistoryResponse().from_map(
-            self.do_rpcrequest('ListFlowJobHistory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowJobHistory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowJobHistoryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_job_history_with_options_async(
@@ -5710,11 +10440,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowJobHistoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['JobType'] = request.job_type
+        query['InstanceId'] = request.instance_id
+        query['TimeRange'] = request.time_range
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowJobHistoryResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowJobHistory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowJobHistory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowJobHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_job_history(
@@ -5737,11 +10490,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowNodeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['StartTime'] = request.start_time
+        query['OrderBy'] = request.order_by
+        query['OrderType'] = request.order_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
+        query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowNodeInstanceResponse().from_map(
-            self.do_rpcrequest('ListFlowNodeInstance', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowNodeInstance',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowNodeInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_node_instance_with_options_async(
@@ -5750,11 +10526,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowNodeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['StartTime'] = request.start_time
+        query['OrderBy'] = request.order_by
+        query['OrderType'] = request.order_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
+        query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowNodeInstanceResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowNodeInstance', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowNodeInstance',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowNodeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_node_instance(
@@ -5777,11 +10576,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowNodeInstanceContainerStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['NodeInstanceId'] = request.node_instance_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowNodeInstanceContainerStatusResponse().from_map(
-            self.do_rpcrequest('ListFlowNodeInstanceContainerStatus', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowNodeInstanceContainerStatus',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowNodeInstanceContainerStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_node_instance_container_status_with_options_async(
@@ -5790,11 +10608,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowNodeInstanceContainerStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['NodeInstanceId'] = request.node_instance_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowNodeInstanceContainerStatusResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowNodeInstanceContainerStatus', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowNodeInstanceContainerStatus',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowNodeInstanceContainerStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_node_instance_container_status(
@@ -5817,11 +10654,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowNodeSqlResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['NodeInstanceId'] = request.node_instance_id
+        query['SqlIndex'] = request.sql_index
+        query['Offset'] = request.offset
+        query['Length'] = request.length
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowNodeSqlResultResponse().from_map(
-            self.do_rpcrequest('ListFlowNodeSqlResult', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowNodeSqlResult',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowNodeSqlResultResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_node_sql_result_with_options_async(
@@ -5830,11 +10687,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowNodeSqlResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['NodeInstanceId'] = request.node_instance_id
+        query['SqlIndex'] = request.sql_index
+        query['Offset'] = request.offset
+        query['Length'] = request.length
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowNodeSqlResultResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowNodeSqlResult', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowNodeSqlResult',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowNodeSqlResultResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_node_sql_result(
@@ -5857,11 +10734,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProductType'] = request.product_type
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Name'] = request.name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowProjectResponse().from_map(
-            self.do_rpcrequest('ListFlowProject', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowProject',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_project_with_options_async(
@@ -5870,11 +10768,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProductType'] = request.product_type
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Name'] = request.name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowProjectResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowProject', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowProject',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_project(
@@ -5897,11 +10816,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowProjectClusterSettingResponse().from_map(
-            self.do_rpcrequest('ListFlowProjectClusterSetting', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowProjectClusterSetting',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowProjectClusterSettingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_project_cluster_setting_with_options_async(
@@ -5910,11 +10847,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowProjectClusterSettingResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowProjectClusterSetting', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowProjectClusterSetting',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowProjectClusterSettingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_project_cluster_setting(
@@ -5937,11 +10892,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowProjectUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowProjectUserResponse().from_map(
-            self.do_rpcrequest('ListFlowProjectUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowProjectUser',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowProjectUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_flow_project_user_with_options_async(
@@ -5950,11 +10923,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListFlowProjectUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListFlowProjectUserResponse().from_map(
-            await self.do_rpcrequest_async('ListFlowProjectUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFlowProjectUser',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListFlowProjectUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flow_project_user(
@@ -5977,11 +10968,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListJobExecutionInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ExecutionPlanInstanceId'] = request.execution_plan_instance_id
+        query['IsDesc'] = request.is_desc
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListJobExecutionInstancesResponse().from_map(
-            self.do_rpcrequest('ListJobExecutionInstances', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListJobExecutionInstances',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListJobExecutionInstancesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_job_execution_instances_with_options_async(
@@ -5990,11 +11001,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListJobExecutionInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ExecutionPlanInstanceId'] = request.execution_plan_instance_id
+        query['IsDesc'] = request.is_desc
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListJobExecutionInstancesResponse().from_map(
-            await self.do_rpcrequest_async('ListJobExecutionInstances', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListJobExecutionInstances',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListJobExecutionInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_job_execution_instances(
@@ -6011,57 +11042,39 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_job_execution_instances_with_options_async(request, runtime)
 
-    def list_job_instance_workers_with_options(
-        self,
-        request: emr_20160408_models.ListJobInstanceWorkersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListJobInstanceWorkersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ListJobInstanceWorkersResponse().from_map(
-            self.do_rpcrequest('ListJobInstanceWorkers', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_job_instance_workers_with_options_async(
-        self,
-        request: emr_20160408_models.ListJobInstanceWorkersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListJobInstanceWorkersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ListJobInstanceWorkersResponse().from_map(
-            await self.do_rpcrequest_async('ListJobInstanceWorkers', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_job_instance_workers(
-        self,
-        request: emr_20160408_models.ListJobInstanceWorkersRequest,
-    ) -> emr_20160408_models.ListJobInstanceWorkersResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_job_instance_workers_with_options(request, runtime)
-
-    async def list_job_instance_workers_async(
-        self,
-        request: emr_20160408_models.ListJobInstanceWorkersRequest,
-    ) -> emr_20160408_models.ListJobInstanceWorkersResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_job_instance_workers_with_options_async(request, runtime)
-
     def list_jobs_with_options(
         self,
         request: emr_20160408_models.ListJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['IsDesc'] = request.is_desc
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['QueryType'] = request.query_type
+        query['QueryString'] = request.query_string
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListJobsResponse().from_map(
-            self.do_rpcrequest('ListJobs', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListJobs',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListJobsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_jobs_with_options_async(
@@ -6070,11 +11083,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['IsDesc'] = request.is_desc
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['QueryType'] = request.query_type
+        query['QueryString'] = request.query_string
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListJobsResponse().from_map(
-            await self.do_rpcrequest_async('ListJobs', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListJobs',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListJobsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_jobs(
@@ -6097,11 +11132,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListLibrariesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderField'] = request.order_field
+        query['OrderMode'] = request.order_mode
+        query['ClusterBizId'] = request.cluster_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListLibrariesResponse().from_map(
-            self.do_rpcrequest('ListLibraries', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListLibraries',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListLibrariesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_libraries_with_options_async(
@@ -6110,11 +11169,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListLibrariesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderField'] = request.order_field
+        query['OrderMode'] = request.order_mode
+        query['ClusterBizId'] = request.cluster_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListLibrariesResponse().from_map(
-            await self.do_rpcrequest_async('ListLibraries', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListLibraries',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListLibrariesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_libraries(
@@ -6137,11 +11220,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListLibraryInstallTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderField'] = request.order_field
+        query['OrderMode'] = request.order_mode
+        query['LibraryBizId'] = request.library_biz_id
+        query['ClusterBizId'] = request.cluster_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListLibraryInstallTasksResponse().from_map(
-            self.do_rpcrequest('ListLibraryInstallTasks', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListLibraryInstallTasks',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListLibraryInstallTasksResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_library_install_tasks_with_options_async(
@@ -6150,11 +11258,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListLibraryInstallTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderField'] = request.order_field
+        query['OrderMode'] = request.order_mode
+        query['LibraryBizId'] = request.library_biz_id
+        query['ClusterBizId'] = request.cluster_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListLibraryInstallTasksResponse().from_map(
-            await self.do_rpcrequest_async('ListLibraryInstallTasks', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListLibraryInstallTasks',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListLibraryInstallTasksResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_library_install_tasks(
@@ -6177,11 +11310,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListLibraryStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderField'] = request.order_field
+        query['OrderMode'] = request.order_mode
+        query['LibraryBizId'] = request.library_biz_id
+        query['ClusterBizId'] = request.cluster_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListLibraryStatusResponse().from_map(
-            self.do_rpcrequest('ListLibraryStatus', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListLibraryStatus',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListLibraryStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_library_status_with_options_async(
@@ -6190,11 +11348,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListLibraryStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderField'] = request.order_field
+        query['OrderMode'] = request.order_mode
+        query['LibraryBizId'] = request.library_biz_id
+        query['ClusterBizId'] = request.cluster_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListLibraryStatusResponse().from_map(
-            await self.do_rpcrequest_async('ListLibraryStatus', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListLibraryStatus',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListLibraryStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_library_status(
@@ -6211,137 +11394,37 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_library_status_with_options_async(request, runtime)
 
-    def list_meta_cluster_with_options(
-        self,
-        request: emr_20160408_models.ListMetaClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListMetaClusterResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ListMetaClusterResponse().from_map(
-            self.do_rpcrequest('ListMetaCluster', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_meta_cluster_with_options_async(
-        self,
-        request: emr_20160408_models.ListMetaClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListMetaClusterResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ListMetaClusterResponse().from_map(
-            await self.do_rpcrequest_async('ListMetaCluster', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_meta_cluster(
-        self,
-        request: emr_20160408_models.ListMetaClusterRequest,
-    ) -> emr_20160408_models.ListMetaClusterResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_meta_cluster_with_options(request, runtime)
-
-    async def list_meta_cluster_async(
-        self,
-        request: emr_20160408_models.ListMetaClusterRequest,
-    ) -> emr_20160408_models.ListMetaClusterResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_meta_cluster_with_options_async(request, runtime)
-
-    def list_meta_data_source_cluster_for_outer_with_options(
-        self,
-        request: emr_20160408_models.ListMetaDataSourceClusterForOuterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListMetaDataSourceClusterForOuterResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ListMetaDataSourceClusterForOuterResponse().from_map(
-            self.do_rpcrequest('ListMetaDataSourceClusterForOuter', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_meta_data_source_cluster_for_outer_with_options_async(
-        self,
-        request: emr_20160408_models.ListMetaDataSourceClusterForOuterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListMetaDataSourceClusterForOuterResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ListMetaDataSourceClusterForOuterResponse().from_map(
-            await self.do_rpcrequest_async('ListMetaDataSourceClusterForOuter', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_meta_data_source_cluster_for_outer(
-        self,
-        request: emr_20160408_models.ListMetaDataSourceClusterForOuterRequest,
-    ) -> emr_20160408_models.ListMetaDataSourceClusterForOuterResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_meta_data_source_cluster_for_outer_with_options(request, runtime)
-
-    async def list_meta_data_source_cluster_for_outer_async(
-        self,
-        request: emr_20160408_models.ListMetaDataSourceClusterForOuterRequest,
-    ) -> emr_20160408_models.ListMetaDataSourceClusterForOuterResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_meta_data_source_cluster_for_outer_with_options_async(request, runtime)
-
-    def list_notes_with_options(
-        self,
-        request: emr_20160408_models.ListNotesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListNotesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ListNotesResponse().from_map(
-            self.do_rpcrequest('ListNotes', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_notes_with_options_async(
-        self,
-        request: emr_20160408_models.ListNotesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListNotesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ListNotesResponse().from_map(
-            await self.do_rpcrequest_async('ListNotes', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_notes(
-        self,
-        request: emr_20160408_models.ListNotesRequest,
-    ) -> emr_20160408_models.ListNotesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_notes_with_options(request, runtime)
-
-    async def list_notes_async(
-        self,
-        request: emr_20160408_models.ListNotesRequest,
-    ) -> emr_20160408_models.ListNotesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_notes_with_options_async(request, runtime)
-
     def list_resource_pool_with_options(
         self,
         request: emr_20160408_models.ListResourcePoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListResourcePoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['PoolType'] = request.pool_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListResourcePoolResponse().from_map(
-            self.do_rpcrequest('ListResourcePool', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListResourcePool',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListResourcePoolResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_resource_pool_with_options_async(
@@ -6350,11 +11433,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListResourcePoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['PoolType'] = request.pool_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListResourcePoolResponse().from_map(
-            await self.do_rpcrequest_async('ListResourcePool', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListResourcePool',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListResourcePoolResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_resource_pool(
@@ -6377,11 +11480,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListRolesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListRolesResponse().from_map(
-            self.do_rpcrequest('ListRoles', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListRoles',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListRolesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_roles_with_options_async(
@@ -6390,11 +11510,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListRolesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListRolesResponse().from_map(
-            await self.do_rpcrequest_async('ListRoles', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListRoles',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListRolesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_roles(
@@ -6417,11 +11554,41 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListScalingActivityV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderField'] = request.order_field
+        query['OrderMode'] = request.order_mode
+        query['ClusterBizId'] = request.cluster_biz_id
+        query['HostGroupId'] = request.host_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ScalingRuleName'] = request.scaling_rule_name
+        query['HostGroupName'] = request.host_group_name
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListScalingActivityV2Response().from_map(
-            self.do_rpcrequest('ListScalingActivityV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListScalingActivityV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListScalingActivityV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_scaling_activity_v2with_options_async(
@@ -6430,11 +11597,41 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListScalingActivityV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderField'] = request.order_field
+        query['OrderMode'] = request.order_mode
+        query['ClusterBizId'] = request.cluster_biz_id
+        query['HostGroupId'] = request.host_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ScalingRuleName'] = request.scaling_rule_name
+        query['HostGroupName'] = request.host_group_name
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListScalingActivityV2Response().from_map(
-            await self.do_rpcrequest_async('ListScalingActivityV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListScalingActivityV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListScalingActivityV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_scaling_activity_v2(
@@ -6457,11 +11654,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListScalingConfigItemV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderField'] = request.order_field
+        query['OrderMode'] = request.order_mode
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ConfigItemType'] = request.config_item_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListScalingConfigItemV2Response().from_map(
-            self.do_rpcrequest('ListScalingConfigItemV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListScalingConfigItemV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListScalingConfigItemV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_scaling_config_item_v2with_options_async(
@@ -6470,11 +11693,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListScalingConfigItemV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderField'] = request.order_field
+        query['OrderMode'] = request.order_mode
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ConfigItemType'] = request.config_item_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListScalingConfigItemV2Response().from_map(
-            await self.do_rpcrequest_async('ListScalingConfigItemV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListScalingConfigItemV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListScalingConfigItemV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_scaling_config_item_v2(
@@ -6497,11 +11746,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListScalingGroupV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderField'] = request.order_field
+        query['OrderMode'] = request.order_mode
+        query['ClusterBizId'] = request.cluster_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListScalingGroupV2Response().from_map(
-            self.do_rpcrequest('ListScalingGroupV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListScalingGroupV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListScalingGroupV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_scaling_group_v2with_options_async(
@@ -6510,11 +11784,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListScalingGroupV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Limit'] = request.limit
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['CurrentSize'] = request.current_size
+        query['PageCount'] = request.page_count
+        query['OrderField'] = request.order_field
+        query['OrderMode'] = request.order_mode
+        query['ClusterBizId'] = request.cluster_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListScalingGroupV2Response().from_map(
-            await self.do_rpcrequest_async('ListScalingGroupV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListScalingGroupV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListScalingGroupV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_scaling_group_v2(
@@ -6537,11 +11836,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListSecurityGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['NetType'] = request.net_type
+        query['VpcId'] = request.vpc_id
+        query['DepositType'] = request.deposit_type
+        query['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListSecurityGroupResponse().from_map(
-            self.do_rpcrequest('ListSecurityGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSecurityGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_security_group_with_options_async(
@@ -6550,11 +11868,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListSecurityGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['NetType'] = request.net_type
+        query['VpcId'] = request.vpc_id
+        query['DepositType'] = request.deposit_type
+        query['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListSecurityGroupResponse().from_map(
-            await self.do_rpcrequest_async('ListSecurityGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSecurityGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_security_group(
@@ -6577,11 +11914,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['StackName'] = request.stack_name
+        query['StackVersion'] = request.stack_version
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListStackResponse().from_map(
-            self.do_rpcrequest('ListStack', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListStack',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListStackResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_stack_with_options_async(
@@ -6590,11 +11947,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['StackName'] = request.stack_name
+        query['StackVersion'] = request.stack_version
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListStackResponse().from_map(
-            await self.do_rpcrequest_async('ListStack', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListStack',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListStackResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_stack(
@@ -6617,11 +11994,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['NextToken'] = request.next_token
+        query['PageSize'] = request.page_size
+        query['ResourceType'] = request.resource_type
+        query['Category'] = request.category
+        query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListTagKeysResponse().from_map(
-            self.do_rpcrequest('ListTagKeys', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTagKeys',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListTagKeysResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_keys_with_options_async(
@@ -6630,11 +12028,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['NextToken'] = request.next_token
+        query['PageSize'] = request.page_size
+        query['ResourceType'] = request.resource_type
+        query['Category'] = request.category
+        query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListTagKeysResponse().from_map(
-            await self.do_rpcrequest_async('ListTagKeys', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTagKeys',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListTagKeysResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_keys(
@@ -6657,11 +12076,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['NextToken'] = request.next_token
+        query['ResourceId'] = request.resource_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListTagResourcesResponse().from_map(
-            self.do_rpcrequest('ListTagResources', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
@@ -6670,11 +12109,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['NextToken'] = request.next_token
+        query['ResourceId'] = request.resource_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListTagResourcesResponse().from_map(
-            await self.do_rpcrequest_async('ListTagResources', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
@@ -6697,11 +12156,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Key'] = request.key
+        query['NextToken'] = request.next_token
+        query['PageSize'] = request.page_size
+        query['ResourceType'] = request.resource_type
+        query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListTagValuesResponse().from_map(
-            self.do_rpcrequest('ListTagValues', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTagValues',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListTagValuesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_values_with_options_async(
@@ -6710,11 +12190,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Key'] = request.key
+        query['NextToken'] = request.next_token
+        query['PageSize'] = request.page_size
+        query['ResourceType'] = request.resource_type
+        query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListTagValuesResponse().from_map(
-            await self.do_rpcrequest_async('ListTagValues', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTagValues',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListTagValuesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_values(
@@ -6737,11 +12238,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListUsersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListUsersResponse().from_map(
-            self.do_rpcrequest('ListUsers', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListUsers',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListUsersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_users_with_options_async(
@@ -6750,11 +12269,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListUsersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListUsersResponse().from_map(
-            await self.do_rpcrequest_async('ListUsers', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListUsers',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListUsersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_users(
@@ -6777,11 +12314,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListVswitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['VpcId'] = request.vpc_id
+        query['ZoneId'] = request.zone_id
+        query['DepositType'] = request.deposit_type
+        query['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListVswitchResponse().from_map(
-            self.do_rpcrequest('ListVswitch', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVswitch',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListVswitchResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_vswitch_with_options_async(
@@ -6790,11 +12346,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ListVswitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['VpcId'] = request.vpc_id
+        query['ZoneId'] = request.zone_id
+        query['DepositType'] = request.deposit_type
+        query['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ListVswitchResponse().from_map(
-            await self.do_rpcrequest_async('ListVswitch', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVswitch',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListVswitchResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_vswitch(
@@ -6817,11 +12392,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterBootstrapActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['Id'] = request.id
+        query['BootstrapAction'] = request.bootstrap_action
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterBootstrapActionResponse().from_map(
-            self.do_rpcrequest('ModifyClusterBootstrapAction', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterBootstrapAction',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterBootstrapActionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_bootstrap_action_with_options_async(
@@ -6830,11 +12424,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterBootstrapActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['Id'] = request.id
+        query['BootstrapAction'] = request.bootstrap_action
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterBootstrapActionResponse().from_map(
-            await self.do_rpcrequest_async('ModifyClusterBootstrapAction', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterBootstrapAction',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterBootstrapActionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster_bootstrap_action(
@@ -6857,11 +12470,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterHostGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['HostGroupName'] = request.host_group_name
+        query['SecurityGroupId'] = request.security_group_id
+        query['VswitchId'] = request.vswitch_id
+        query['Comment'] = request.comment
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterHostGroupResponse().from_map(
-            self.do_rpcrequest('ModifyClusterHostGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterHostGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterHostGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_host_group_with_options_async(
@@ -6870,11 +12505,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterHostGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['HostGroupName'] = request.host_group_name
+        query['SecurityGroupId'] = request.security_group_id
+        query['VswitchId'] = request.vswitch_id
+        query['Comment'] = request.comment
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterHostGroupResponse().from_map(
-            await self.do_rpcrequest_async('ModifyClusterHostGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterHostGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterHostGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster_host_group(
@@ -6897,11 +12554,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterMetaCollectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['SwitchOn'] = request.switch_on
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterMetaCollectResponse().from_map(
-            self.do_rpcrequest('ModifyClusterMetaCollect', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterMetaCollect',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterMetaCollectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_meta_collect_with_options_async(
@@ -6910,11 +12585,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterMetaCollectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['SwitchOn'] = request.switch_on
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterMetaCollectResponse().from_map(
-            await self.do_rpcrequest_async('ModifyClusterMetaCollect', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterMetaCollect',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterMetaCollectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster_meta_collect(
@@ -6937,11 +12630,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterNameResponse().from_map(
-            self.do_rpcrequest('ModifyClusterName', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterName',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterNameResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_name_with_options_async(
@@ -6950,11 +12661,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterNameResponse().from_map(
-            await self.do_rpcrequest_async('ModifyClusterName', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterName',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterNameResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster_name(
@@ -6977,11 +12706,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterSecurityGroupRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ModifyType'] = request.modify_type
+        query['NicType'] = request.nic_type
+        query['IpProtocol'] = request.ip_protocol
+        query['PortRange'] = request.port_range
+        query['WhiteIp'] = request.white_ip
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterSecurityGroupRuleResponse().from_map(
-            self.do_rpcrequest('ModifyClusterSecurityGroupRule', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterSecurityGroupRule',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterSecurityGroupRuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_security_group_rule_with_options_async(
@@ -6990,11 +12741,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterSecurityGroupRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ModifyType'] = request.modify_type
+        query['NicType'] = request.nic_type
+        query['IpProtocol'] = request.ip_protocol
+        query['PortRange'] = request.port_range
+        query['WhiteIp'] = request.white_ip
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterSecurityGroupRuleResponse().from_map(
-            await self.do_rpcrequest_async('ModifyClusterSecurityGroupRule', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterSecurityGroupRule',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterSecurityGroupRuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster_security_group_rule(
@@ -7017,11 +12790,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterServiceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['Comment'] = request.comment
+        query['ConfigParams'] = request.config_params
+        query['CustomConfigParams'] = request.custom_config_params
+        query['GroupId'] = request.group_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['ConfigType'] = request.config_type
+        query['RefreshHostConfig'] = request.refresh_host_config
+        query['GatewayClusterIdList'] = request.gateway_cluster_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterServiceConfigResponse().from_map(
-            self.do_rpcrequest('ModifyClusterServiceConfig', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterServiceConfig',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterServiceConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_service_config_with_options_async(
@@ -7030,11 +12829,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterServiceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ServiceName'] = request.service_name
+        query['Comment'] = request.comment
+        query['ConfigParams'] = request.config_params
+        query['CustomConfigParams'] = request.custom_config_params
+        query['GroupId'] = request.group_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['ConfigType'] = request.config_type
+        query['RefreshHostConfig'] = request.refresh_host_config
+        query['GatewayClusterIdList'] = request.gateway_cluster_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterServiceConfigResponse().from_map(
-            await self.do_rpcrequest_async('ModifyClusterServiceConfig', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterServiceConfig',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterServiceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster_service_config(
@@ -7057,11 +12882,64 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['BizId'] = request.biz_id
+        query['TemplateName'] = request.template_name
+        query['RegionId'] = request.region_id
+        query['ZoneId'] = request.zone_id
+        query['LogPath'] = request.log_path
+        query['SecurityGroupId'] = request.security_group_id
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['SecurityGroupName'] = request.security_group_name
+        query['ChargeType'] = request.charge_type
+        query['Period'] = request.period
+        query['AutoRenew'] = request.auto_renew
+        query['VpcId'] = request.vpc_id
+        query['VSwitchId'] = request.v_switch_id
+        query['NetType'] = request.net_type
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['EmrVer'] = request.emr_ver
+        query['ClusterType'] = request.cluster_type
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['IoOptimized'] = request.io_optimized
+        query['SshEnable'] = request.ssh_enable
+        query['InstanceGeneration'] = request.instance_generation
+        query['MasterPwd'] = request.master_pwd
+        query['KeyPairName'] = request.key_pair_name
+        query['MetaStoreType'] = request.meta_store_type
+        query['MetaStoreConf'] = request.meta_store_conf
+        query['Configurations'] = request.configurations
+        query['EasEnable'] = request.eas_enable
+        query['DepositType'] = request.deposit_type
+        query['MachineType'] = request.machine_type
+        query['UseCustomHiveMetaDb'] = request.use_custom_hive_meta_db
+        query['InitCustomHiveMetaDb'] = request.init_custom_hive_meta_db
+        query['ResourceGroupId'] = request.resource_group_id
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['HostGroup'] = request.host_group
+        query['BootstrapAction'] = request.bootstrap_action
+        query['Config'] = request.config
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterTemplateResponse().from_map(
-            self.do_rpcrequest('ModifyClusterTemplate', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterTemplate',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterTemplateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_template_with_options_async(
@@ -7070,11 +12948,64 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyClusterTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['BizId'] = request.biz_id
+        query['TemplateName'] = request.template_name
+        query['RegionId'] = request.region_id
+        query['ZoneId'] = request.zone_id
+        query['LogPath'] = request.log_path
+        query['SecurityGroupId'] = request.security_group_id
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['SecurityGroupName'] = request.security_group_name
+        query['ChargeType'] = request.charge_type
+        query['Period'] = request.period
+        query['AutoRenew'] = request.auto_renew
+        query['VpcId'] = request.vpc_id
+        query['VSwitchId'] = request.v_switch_id
+        query['NetType'] = request.net_type
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['EmrVer'] = request.emr_ver
+        query['ClusterType'] = request.cluster_type
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['IoOptimized'] = request.io_optimized
+        query['SshEnable'] = request.ssh_enable
+        query['InstanceGeneration'] = request.instance_generation
+        query['MasterPwd'] = request.master_pwd
+        query['KeyPairName'] = request.key_pair_name
+        query['MetaStoreType'] = request.meta_store_type
+        query['MetaStoreConf'] = request.meta_store_conf
+        query['Configurations'] = request.configurations
+        query['EasEnable'] = request.eas_enable
+        query['DepositType'] = request.deposit_type
+        query['MachineType'] = request.machine_type
+        query['UseCustomHiveMetaDb'] = request.use_custom_hive_meta_db
+        query['InitCustomHiveMetaDb'] = request.init_custom_hive_meta_db
+        query['ResourceGroupId'] = request.resource_group_id
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['HostGroup'] = request.host_group
+        query['BootstrapAction'] = request.bootstrap_action
+        query['Config'] = request.config
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyClusterTemplateResponse().from_map(
-            await self.do_rpcrequest_async('ModifyClusterTemplate', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterTemplate',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyClusterTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster_template(
@@ -7097,11 +13028,64 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyExecutionPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ClusterName'] = request.cluster_name
+        query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ZoneId'] = request.zone_id
+        query['LogEnable'] = request.log_enable
+        query['LogPath'] = request.log_path
+        query['SecurityGroupId'] = request.security_group_id
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['CreateClusterOnDemand'] = request.create_cluster_on_demand
+        query['EmrVer'] = request.emr_ver
+        query['ClusterType'] = request.cluster_type
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['VpcId'] = request.vpc_id
+        query['VSwitchId'] = request.v_switch_id
+        query['NetType'] = request.net_type
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['IoOptimized'] = request.io_optimized
+        query['InstanceGeneration'] = request.instance_generation
+        query['EasEnable'] = request.eas_enable
+        query['WorkflowDefinition'] = request.workflow_definition
+        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
+        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
+        query['Configurations'] = request.configurations
+        query['Id'] = request.id
+        query['ExecutionPlanVersion'] = request.execution_plan_version
+        query['Name'] = request.name
+        query['Strategy'] = request.strategy
+        query['TimeInterval'] = request.time_interval
+        query['StartTime'] = request.start_time
+        query['TimeUnit'] = request.time_unit
+        query['DayOfWeek'] = request.day_of_week
+        query['DayOfMonth'] = request.day_of_month
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['EcsOrder'] = request.ecs_order
+        query['BootstrapAction'] = request.bootstrap_action
+        query['Config'] = request.config
+        query['JobIdList'] = request.job_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyExecutionPlanResponse().from_map(
-            self.do_rpcrequest('ModifyExecutionPlan', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyExecutionPlan',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyExecutionPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_execution_plan_with_options_async(
@@ -7110,11 +13094,64 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyExecutionPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ClusterName'] = request.cluster_name
+        query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ZoneId'] = request.zone_id
+        query['LogEnable'] = request.log_enable
+        query['LogPath'] = request.log_path
+        query['SecurityGroupId'] = request.security_group_id
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['CreateClusterOnDemand'] = request.create_cluster_on_demand
+        query['EmrVer'] = request.emr_ver
+        query['ClusterType'] = request.cluster_type
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['VpcId'] = request.vpc_id
+        query['VSwitchId'] = request.v_switch_id
+        query['NetType'] = request.net_type
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['IoOptimized'] = request.io_optimized
+        query['InstanceGeneration'] = request.instance_generation
+        query['EasEnable'] = request.eas_enable
+        query['WorkflowDefinition'] = request.workflow_definition
+        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
+        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
+        query['Configurations'] = request.configurations
+        query['Id'] = request.id
+        query['ExecutionPlanVersion'] = request.execution_plan_version
+        query['Name'] = request.name
+        query['Strategy'] = request.strategy
+        query['TimeInterval'] = request.time_interval
+        query['StartTime'] = request.start_time
+        query['TimeUnit'] = request.time_unit
+        query['DayOfWeek'] = request.day_of_week
+        query['DayOfMonth'] = request.day_of_month
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['EcsOrder'] = request.ecs_order
+        query['BootstrapAction'] = request.bootstrap_action
+        query['Config'] = request.config
+        query['JobIdList'] = request.job_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyExecutionPlanResponse().from_map(
-            await self.do_rpcrequest_async('ModifyExecutionPlan', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyExecutionPlan',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyExecutionPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_execution_plan(
@@ -7137,11 +13174,47 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Status'] = request.status
+        query['Description'] = request.description
+        query['Periodic'] = request.periodic
+        query['StartSchedule'] = request.start_schedule
+        query['EndSchedule'] = request.end_schedule
+        query['CronExpr'] = request.cron_expr
+        query['CreateCluster'] = request.create_cluster
+        query['ClusterId'] = request.cluster_id
+        query['HostName'] = request.host_name
+        query['Namespace'] = request.namespace
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Lifecycle'] = request.lifecycle
+        query['Application'] = request.application
+        query['AlertConf'] = request.alert_conf
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
+        query['ParentFlowList'] = request.parent_flow_list
+        query['ParentCategory'] = request.parent_category
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyFlowResponse().from_map(
-            self.do_rpcrequest('ModifyFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyFlowResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_flow_with_options_async(
@@ -7150,11 +13223,47 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Status'] = request.status
+        query['Description'] = request.description
+        query['Periodic'] = request.periodic
+        query['StartSchedule'] = request.start_schedule
+        query['EndSchedule'] = request.end_schedule
+        query['CronExpr'] = request.cron_expr
+        query['CreateCluster'] = request.create_cluster
+        query['ClusterId'] = request.cluster_id
+        query['HostName'] = request.host_name
+        query['Namespace'] = request.namespace
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Lifecycle'] = request.lifecycle
+        query['Application'] = request.application
+        query['AlertConf'] = request.alert_conf
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
+        query['ParentFlowList'] = request.parent_flow_list
+        query['ParentCategory'] = request.parent_category
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyFlowResponse().from_map(
-            await self.do_rpcrequest_async('ModifyFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyFlowResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_flow(
@@ -7177,11 +13286,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyFlowCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['ParentId'] = request.parent_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyFlowCategoryResponse().from_map(
-            self.do_rpcrequest('ModifyFlowCategory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyFlowCategory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyFlowCategoryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_flow_category_with_options_async(
@@ -7190,11 +13318,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyFlowCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['ParentId'] = request.parent_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyFlowCategoryResponse().from_map(
-            await self.do_rpcrequest_async('ModifyFlowCategory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyFlowCategory',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyFlowCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_flow_category(
@@ -7217,11 +13364,47 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyFlowForWebResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Status'] = request.status
+        query['Description'] = request.description
+        query['Periodic'] = request.periodic
+        query['StartSchedule'] = request.start_schedule
+        query['EndSchedule'] = request.end_schedule
+        query['CronExpr'] = request.cron_expr
+        query['CreateCluster'] = request.create_cluster
+        query['ClusterId'] = request.cluster_id
+        query['HostName'] = request.host_name
+        query['Namespace'] = request.namespace
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Lifecycle'] = request.lifecycle
+        query['Graph'] = request.graph
+        query['AlertConf'] = request.alert_conf
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
+        query['ParentFlowList'] = request.parent_flow_list
+        query['ParentCategory'] = request.parent_category
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyFlowForWebResponse().from_map(
-            self.do_rpcrequest('ModifyFlowForWeb', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyFlowForWeb',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyFlowForWebResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_flow_for_web_with_options_async(
@@ -7230,11 +13413,47 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyFlowForWebResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Status'] = request.status
+        query['Description'] = request.description
+        query['Periodic'] = request.periodic
+        query['StartSchedule'] = request.start_schedule
+        query['EndSchedule'] = request.end_schedule
+        query['CronExpr'] = request.cron_expr
+        query['CreateCluster'] = request.create_cluster
+        query['ClusterId'] = request.cluster_id
+        query['HostName'] = request.host_name
+        query['Namespace'] = request.namespace
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Lifecycle'] = request.lifecycle
+        query['Graph'] = request.graph
+        query['AlertConf'] = request.alert_conf
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
+        query['ParentFlowList'] = request.parent_flow_list
+        query['ParentCategory'] = request.parent_category
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyFlowForWebResponse().from_map(
-            await self.do_rpcrequest_async('ModifyFlowForWeb', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyFlowForWeb',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyFlowForWebResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_flow_for_web(
@@ -7257,11 +13476,45 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['FailAct'] = request.fail_act
+        query['MaxRetry'] = request.max_retry
+        query['RetryPolicy'] = request.retry_policy
+        query['MaxRunningTimeSec'] = request.max_running_time_sec
+        query['RetryInterval'] = request.retry_interval
+        query['Params'] = request.params
+        query['ParamConf'] = request.param_conf
+        query['CustomVariables'] = request.custom_variables
+        query['EnvConf'] = request.env_conf
+        query['RunConf'] = request.run_conf
+        query['MonitorConf'] = request.monitor_conf
+        query['Mode'] = request.mode
+        query['ClusterId'] = request.cluster_id
+        query['AlertConf'] = request.alert_conf
+        query['ResourceList'] = request.resource_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyFlowJobResponse().from_map(
-            self.do_rpcrequest('ModifyFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyFlowJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_flow_job_with_options_async(
@@ -7270,11 +13523,45 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['FailAct'] = request.fail_act
+        query['MaxRetry'] = request.max_retry
+        query['RetryPolicy'] = request.retry_policy
+        query['MaxRunningTimeSec'] = request.max_running_time_sec
+        query['RetryInterval'] = request.retry_interval
+        query['Params'] = request.params
+        query['ParamConf'] = request.param_conf
+        query['CustomVariables'] = request.custom_variables
+        query['EnvConf'] = request.env_conf
+        query['RunConf'] = request.run_conf
+        query['MonitorConf'] = request.monitor_conf
+        query['Mode'] = request.mode
+        query['ClusterId'] = request.cluster_id
+        query['AlertConf'] = request.alert_conf
+        query['ResourceList'] = request.resource_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyFlowJobResponse().from_map(
-            await self.do_rpcrequest_async('ModifyFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyFlowJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_flow_job(
@@ -7297,11 +13584,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyFlowProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyFlowProjectResponse().from_map(
-            self.do_rpcrequest('ModifyFlowProject', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyFlowProject',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyFlowProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_flow_project_with_options_async(
@@ -7310,11 +13615,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyFlowProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Name'] = request.name
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyFlowProjectResponse().from_map(
-            await self.do_rpcrequest_async('ModifyFlowProject', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyFlowProject',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyFlowProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_flow_project(
@@ -7337,11 +13660,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
+        query['DefaultUser'] = request.default_user
+        query['DefaultQueue'] = request.default_queue
+        query['UserList'] = request.user_list
+        query['QueueList'] = request.queue_list
+        query['HostList'] = request.host_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyFlowProjectClusterSettingResponse().from_map(
-            self.do_rpcrequest('ModifyFlowProjectClusterSetting', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyFlowProjectClusterSetting',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyFlowProjectClusterSettingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_flow_project_cluster_setting_with_options_async(
@@ -7350,11 +13695,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
+        query['DefaultUser'] = request.default_user
+        query['DefaultQueue'] = request.default_queue
+        query['UserList'] = request.user_list
+        query['QueueList'] = request.queue_list
+        query['HostList'] = request.host_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyFlowProjectClusterSettingResponse().from_map(
-            await self.do_rpcrequest_async('ModifyFlowProjectClusterSetting', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyFlowProjectClusterSetting',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyFlowProjectClusterSettingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_flow_project_cluster_setting(
@@ -7377,11 +13744,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
+        query['RunParameter'] = request.run_parameter
+        query['FailAct'] = request.fail_act
+        query['MaxRetry'] = request.max_retry
+        query['RetryInterval'] = request.retry_interval
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyJobResponse().from_map(
-            self.do_rpcrequest('ModifyJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_job_with_options_async(
@@ -7390,11 +13781,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
+        query['RunParameter'] = request.run_parameter
+        query['FailAct'] = request.fail_act
+        query['MaxRetry'] = request.max_retry
+        query['RetryInterval'] = request.retry_interval
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyJobResponse().from_map(
-            await self.do_rpcrequest_async('ModifyJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_job(
@@ -7417,11 +13832,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyResourcePoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Id'] = request.id
+        query['Active'] = request.active
+        query['Name'] = request.name
+        query['ClusterId'] = request.cluster_id
+        query['Yarnsiteconfig'] = request.yarnsiteconfig
+        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyResourcePoolResponse().from_map(
-            self.do_rpcrequest('ModifyResourcePool', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyResourcePool',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyResourcePoolResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_resource_pool_with_options_async(
@@ -7430,11 +13867,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyResourcePoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Id'] = request.id
+        query['Active'] = request.active
+        query['Name'] = request.name
+        query['ClusterId'] = request.cluster_id
+        query['Yarnsiteconfig'] = request.yarnsiteconfig
+        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyResourcePoolResponse().from_map(
-            await self.do_rpcrequest_async('ModifyResourcePool', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyResourcePool',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyResourcePoolResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_resource_pool(
@@ -7457,11 +13916,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyResourcePoolSchedulerTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['SchedulerType'] = request.scheduler_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyResourcePoolSchedulerTypeResponse().from_map(
-            self.do_rpcrequest('ModifyResourcePoolSchedulerType', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyResourcePoolSchedulerType',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyResourcePoolSchedulerTypeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_resource_pool_scheduler_type_with_options_async(
@@ -7470,11 +13947,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyResourcePoolSchedulerTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['SchedulerType'] = request.scheduler_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyResourcePoolSchedulerTypeResponse().from_map(
-            await self.do_rpcrequest_async('ModifyResourcePoolSchedulerType', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyResourcePoolSchedulerType',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyResourcePoolSchedulerTypeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_resource_pool_scheduler_type(
@@ -7497,11 +13992,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyResourceQueueResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['QualifiedName'] = request.qualified_name
+        query['ClusterId'] = request.cluster_id
+        query['ParentQueueId'] = request.parent_queue_id
+        query['Leaf'] = request.leaf
+        query['ResourcePoolId'] = request.resource_pool_id
+        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyResourceQueueResponse().from_map(
-            self.do_rpcrequest('ModifyResourceQueue', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyResourceQueue',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyResourceQueueResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_resource_queue_with_options_async(
@@ -7510,11 +14029,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyResourceQueueResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['QualifiedName'] = request.qualified_name
+        query['ClusterId'] = request.cluster_id
+        query['ParentQueueId'] = request.parent_queue_id
+        query['Leaf'] = request.leaf
+        query['ResourcePoolId'] = request.resource_pool_id
+        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyResourceQueueResponse().from_map(
-            await self.do_rpcrequest_async('ModifyResourceQueue', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyResourceQueue',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyResourceQueueResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_resource_queue(
@@ -7537,11 +14080,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyScalingConfigItemV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ConfigItemBizId'] = request.config_item_biz_id
+        query['ConfigItemType'] = request.config_item_type
+        query['ConfigItemInformation'] = request.config_item_information
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyScalingConfigItemV2Response().from_map(
-            self.do_rpcrequest('ModifyScalingConfigItemV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyScalingConfigItemV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyScalingConfigItemV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_scaling_config_item_v2with_options_async(
@@ -7550,11 +14114,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyScalingConfigItemV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ConfigItemBizId'] = request.config_item_biz_id
+        query['ConfigItemType'] = request.config_item_type
+        query['ConfigItemInformation'] = request.config_item_information
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyScalingConfigItemV2Response().from_map(
-            await self.do_rpcrequest_async('ModifyScalingConfigItemV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyScalingConfigItemV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyScalingConfigItemV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_scaling_config_item_v2(
@@ -7577,11 +14162,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyScalingGroupV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyScalingGroupV2Response().from_map(
-            self.do_rpcrequest('ModifyScalingGroupV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyScalingGroupV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyScalingGroupV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_scaling_group_v2with_options_async(
@@ -7590,11 +14195,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyScalingGroupV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyScalingGroupV2Response().from_map(
-            await self.do_rpcrequest_async('ModifyScalingGroupV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyScalingGroupV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyScalingGroupV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_scaling_group_v2(
@@ -7617,11 +14242,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyScalingRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ScalingRuleId'] = request.scaling_rule_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['RuleName'] = request.rule_name
+        query['AdjustmentType'] = request.adjustment_type
+        query['AdjustmentValue'] = request.adjustment_value
+        query['Cooldown'] = request.cooldown
+        query['LaunchTime'] = request.launch_time
+        query['LaunchExpirationTime'] = request.launch_expiration_time
+        query['RecurrenceType'] = request.recurrence_type
+        query['RecurrenceValue'] = request.recurrence_value
+        query['RecurrenceEndTime'] = request.recurrence_end_time
+        query['WithGrace'] = request.with_grace
+        query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['SchedulerTrigger'] = request.scheduler_trigger
+        query['CloudWatchTrigger'] = request.cloud_watch_trigger
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyScalingRuleResponse().from_map(
-            self.do_rpcrequest('ModifyScalingRule', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyScalingRule',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyScalingRuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_scaling_rule_with_options_async(
@@ -7630,11 +14287,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyScalingRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ScalingRuleId'] = request.scaling_rule_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['RuleName'] = request.rule_name
+        query['AdjustmentType'] = request.adjustment_type
+        query['AdjustmentValue'] = request.adjustment_value
+        query['Cooldown'] = request.cooldown
+        query['LaunchTime'] = request.launch_time
+        query['LaunchExpirationTime'] = request.launch_expiration_time
+        query['RecurrenceType'] = request.recurrence_type
+        query['RecurrenceValue'] = request.recurrence_value
+        query['RecurrenceEndTime'] = request.recurrence_end_time
+        query['WithGrace'] = request.with_grace
+        query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['SchedulerTrigger'] = request.scheduler_trigger
+        query['CloudWatchTrigger'] = request.cloud_watch_trigger
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyScalingRuleResponse().from_map(
-            await self.do_rpcrequest_async('ModifyScalingRule', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyScalingRule',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_scaling_rule(
@@ -7657,11 +14346,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyScalingTaskGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['MinSize'] = request.min_size
+        query['MaxSize'] = request.max_size
+        query['DefaultCooldown'] = request.default_cooldown
+        query['ActiveRuleCategory'] = request.active_rule_category
+        query['WithGrace'] = request.with_grace
+        query['TimeoutWithGrace'] = request.timeout_with_grace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyScalingTaskGroupResponse().from_map(
-            self.do_rpcrequest('ModifyScalingTaskGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyScalingTaskGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyScalingTaskGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_scaling_task_group_with_options_async(
@@ -7670,11 +14383,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ModifyScalingTaskGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['MinSize'] = request.min_size
+        query['MaxSize'] = request.max_size
+        query['DefaultCooldown'] = request.default_cooldown
+        query['ActiveRuleCategory'] = request.active_rule_category
+        query['WithGrace'] = request.with_grace
+        query['TimeoutWithGrace'] = request.timeout_with_grace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ModifyScalingTaskGroupResponse().from_map(
-            await self.do_rpcrequest_async('ModifyScalingTaskGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyScalingTaskGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ModifyScalingTaskGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_scaling_task_group(
@@ -7691,57 +14428,37 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_scaling_task_group_with_options_async(request, runtime)
 
-    def query_alarm_history_with_options(
-        self,
-        request: emr_20160408_models.QueryAlarmHistoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.QueryAlarmHistoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.QueryAlarmHistoryResponse().from_map(
-            self.do_rpcrequest('QueryAlarmHistory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def query_alarm_history_with_options_async(
-        self,
-        request: emr_20160408_models.QueryAlarmHistoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.QueryAlarmHistoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.QueryAlarmHistoryResponse().from_map(
-            await self.do_rpcrequest_async('QueryAlarmHistory', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_alarm_history(
-        self,
-        request: emr_20160408_models.QueryAlarmHistoryRequest,
-    ) -> emr_20160408_models.QueryAlarmHistoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_alarm_history_with_options(request, runtime)
-
-    async def query_alarm_history_async(
-        self,
-        request: emr_20160408_models.QueryAlarmHistoryRequest,
-    ) -> emr_20160408_models.QueryAlarmHistoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_alarm_history_with_options_async(request, runtime)
-
     def query_entity_with_options(
         self,
         request: emr_20160408_models.QueryEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.QueryEntityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Category'] = request.category
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.QueryEntityResponse().from_map(
-            self.do_rpcrequest('QueryEntity', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryEntity',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.QueryEntityResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_entity_with_options_async(
@@ -7750,11 +14467,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.QueryEntityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Category'] = request.category
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.QueryEntityResponse().from_map(
-            await self.do_rpcrequest_async('QueryEntity', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryEntity',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.QueryEntityResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_entity(
@@ -7771,57 +14508,36 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_entity_with_options_async(request, runtime)
 
-    def query_table_data_with_options(
-        self,
-        request: emr_20160408_models.QueryTableDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.QueryTableDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.QueryTableDataResponse().from_map(
-            self.do_rpcrequest('QueryTableData', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def query_table_data_with_options_async(
-        self,
-        request: emr_20160408_models.QueryTableDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.QueryTableDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.QueryTableDataResponse().from_map(
-            await self.do_rpcrequest_async('QueryTableData', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_table_data(
-        self,
-        request: emr_20160408_models.QueryTableDataRequest,
-    ) -> emr_20160408_models.QueryTableDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_table_data_with_options(request, runtime)
-
-    async def query_table_data_async(
-        self,
-        request: emr_20160408_models.QueryTableDataRequest,
-    ) -> emr_20160408_models.QueryTableDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_table_data_with_options_async(request, runtime)
-
     def query_tag_with_options(
         self,
         request: emr_20160408_models.QueryTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.QueryTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['EntityId'] = request.entity_id
+        query['EntityType'] = request.entity_type
+        query['TagId'] = request.tag_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.QueryTagResponse().from_map(
-            self.do_rpcrequest('QueryTag', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryTag',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.QueryTagResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_tag_with_options_async(
@@ -7830,11 +14546,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.QueryTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['EntityId'] = request.entity_id
+        query['EntityType'] = request.entity_type
+        query['TagId'] = request.tag_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.QueryTagResponse().from_map(
-            await self.do_rpcrequest_async('QueryTag', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryTag',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.QueryTagResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_tag(
@@ -7851,57 +14586,35 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_tag_with_options_async(request, runtime)
 
-    def query_trend_data_with_options(
-        self,
-        request: emr_20160408_models.QueryTrendDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.QueryTrendDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.QueryTrendDataResponse().from_map(
-            self.do_rpcrequest('QueryTrendData', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def query_trend_data_with_options_async(
-        self,
-        request: emr_20160408_models.QueryTrendDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.QueryTrendDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.QueryTrendDataResponse().from_map(
-            await self.do_rpcrequest_async('QueryTrendData', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_trend_data(
-        self,
-        request: emr_20160408_models.QueryTrendDataRequest,
-    ) -> emr_20160408_models.QueryTrendDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_trend_data_with_options(request, runtime)
-
-    async def query_trend_data_async(
-        self,
-        request: emr_20160408_models.QueryTrendDataRequest,
-    ) -> emr_20160408_models.QueryTrendDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_trend_data_with_options_async(request, runtime)
-
     def refresh_cluster_resource_pool_with_options(
         self,
         request: emr_20160408_models.RefreshClusterResourcePoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.RefreshClusterResourcePoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ResourcePoolId'] = request.resource_pool_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RefreshClusterResourcePoolResponse().from_map(
-            self.do_rpcrequest('RefreshClusterResourcePool', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RefreshClusterResourcePool',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RefreshClusterResourcePoolResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def refresh_cluster_resource_pool_with_options_async(
@@ -7910,11 +14623,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.RefreshClusterResourcePoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['ResourcePoolId'] = request.resource_pool_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RefreshClusterResourcePoolResponse().from_map(
-            await self.do_rpcrequest_async('RefreshClusterResourcePool', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RefreshClusterResourcePool',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RefreshClusterResourcePoolResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def refresh_cluster_resource_pool(
@@ -7937,11 +14668,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ReleaseClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['ForceRelease'] = request.force_release
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ReleaseClusterResponse().from_map(
-            self.do_rpcrequest('ReleaseCluster', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ReleaseCluster',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ReleaseClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def release_cluster_with_options_async(
@@ -7950,11 +14699,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ReleaseClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['ForceRelease'] = request.force_release
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ReleaseClusterResponse().from_map(
-            await self.do_rpcrequest_async('ReleaseCluster', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ReleaseCluster',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ReleaseClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def release_cluster(
@@ -7971,57 +14738,36 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.release_cluster_with_options_async(request, runtime)
 
-    def release_cluster_by_template_tag_for_internal_with_options(
-        self,
-        request: emr_20160408_models.ReleaseClusterByTemplateTagForInternalRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ReleaseClusterByTemplateTagForInternalResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ReleaseClusterByTemplateTagForInternalResponse().from_map(
-            self.do_rpcrequest('ReleaseClusterByTemplateTagForInternal', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def release_cluster_by_template_tag_for_internal_with_options_async(
-        self,
-        request: emr_20160408_models.ReleaseClusterByTemplateTagForInternalRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ReleaseClusterByTemplateTagForInternalResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.ReleaseClusterByTemplateTagForInternalResponse().from_map(
-            await self.do_rpcrequest_async('ReleaseClusterByTemplateTagForInternal', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def release_cluster_by_template_tag_for_internal(
-        self,
-        request: emr_20160408_models.ReleaseClusterByTemplateTagForInternalRequest,
-    ) -> emr_20160408_models.ReleaseClusterByTemplateTagForInternalResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.release_cluster_by_template_tag_for_internal_with_options(request, runtime)
-
-    async def release_cluster_by_template_tag_for_internal_async(
-        self,
-        request: emr_20160408_models.ReleaseClusterByTemplateTagForInternalRequest,
-    ) -> emr_20160408_models.ReleaseClusterByTemplateTagForInternalResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.release_cluster_by_template_tag_for_internal_with_options_async(request, runtime)
-
     def release_cluster_host_group_with_options(
         self,
         request: emr_20160408_models.ReleaseClusterHostGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ReleaseClusterHostGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['InstanceIdList'] = request.instance_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ReleaseClusterHostGroupResponse().from_map(
-            self.do_rpcrequest('ReleaseClusterHostGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ReleaseClusterHostGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ReleaseClusterHostGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def release_cluster_host_group_with_options_async(
@@ -8030,11 +14776,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ReleaseClusterHostGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostGroupId'] = request.host_group_id
+        query['InstanceIdList'] = request.instance_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ReleaseClusterHostGroupResponse().from_map(
-            await self.do_rpcrequest_async('ReleaseClusterHostGroup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ReleaseClusterHostGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ReleaseClusterHostGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def release_cluster_host_group(
@@ -8057,11 +14822,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.RemoveScalingConfigItemV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ConfigItemType'] = request.config_item_type
+        query['ConfigItemBizId'] = request.config_item_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RemoveScalingConfigItemV2Response().from_map(
-            self.do_rpcrequest('RemoveScalingConfigItemV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveScalingConfigItemV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RemoveScalingConfigItemV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def remove_scaling_config_item_v2with_options_async(
@@ -8070,11 +14855,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.RemoveScalingConfigItemV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ConfigItemType'] = request.config_item_type
+        query['ConfigItemBizId'] = request.config_item_biz_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RemoveScalingConfigItemV2Response().from_map(
-            await self.do_rpcrequest_async('RemoveScalingConfigItemV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveScalingConfigItemV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RemoveScalingConfigItemV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_scaling_config_item_v2(
@@ -8097,11 +14902,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.RerunFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['FlowInstanceId'] = request.flow_instance_id
+        query['ReRunFail'] = request.re_run_fail
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RerunFlowResponse().from_map(
-            self.do_rpcrequest('RerunFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RerunFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RerunFlowResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def rerun_flow_with_options_async(
@@ -8110,11 +14933,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.RerunFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['FlowInstanceId'] = request.flow_instance_id
+        query['ReRunFail'] = request.re_run_fail
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RerunFlowResponse().from_map(
-            await self.do_rpcrequest_async('RerunFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RerunFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RerunFlowResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def rerun_flow(
@@ -8137,11 +14978,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ResizeClusterV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['AutoPayOrder'] = request.auto_pay_order
+        query['VswitchId'] = request.vswitch_id
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['HostComponentInfo'] = request.host_component_info
+        query['HostGroup'] = request.host_group
+        query['PromotionInfo'] = request.promotion_info
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ResizeClusterV2Response().from_map(
-            self.do_rpcrequest('ResizeClusterV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResizeClusterV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ResizeClusterV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def resize_cluster_v2with_options_async(
@@ -8150,11 +15013,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ResizeClusterV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['AutoPayOrder'] = request.auto_pay_order
+        query['VswitchId'] = request.vswitch_id
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['HostComponentInfo'] = request.host_component_info
+        query['HostGroup'] = request.host_group
+        query['PromotionInfo'] = request.promotion_info
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ResizeClusterV2Response().from_map(
-            await self.do_rpcrequest_async('ResizeClusterV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResizeClusterV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ResizeClusterV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def resize_cluster_v2(
@@ -8171,97 +15056,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.resize_cluster_v2with_options_async(request, runtime)
 
-    def restore_backup_with_options(
-        self,
-        request: emr_20160408_models.RestoreBackupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.RestoreBackupResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.RestoreBackupResponse().from_map(
-            self.do_rpcrequest('RestoreBackup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def restore_backup_with_options_async(
-        self,
-        request: emr_20160408_models.RestoreBackupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.RestoreBackupResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.RestoreBackupResponse().from_map(
-            await self.do_rpcrequest_async('RestoreBackup', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def restore_backup(
-        self,
-        request: emr_20160408_models.RestoreBackupRequest,
-    ) -> emr_20160408_models.RestoreBackupResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.restore_backup_with_options(request, runtime)
-
-    async def restore_backup_async(
-        self,
-        request: emr_20160408_models.RestoreBackupRequest,
-    ) -> emr_20160408_models.RestoreBackupResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.restore_backup_with_options_async(request, runtime)
-
-    def restore_flow_entity_snapshot_with_options(
-        self,
-        request: emr_20160408_models.RestoreFlowEntitySnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.RestoreFlowEntitySnapshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.RestoreFlowEntitySnapshotResponse().from_map(
-            self.do_rpcrequest('RestoreFlowEntitySnapshot', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def restore_flow_entity_snapshot_with_options_async(
-        self,
-        request: emr_20160408_models.RestoreFlowEntitySnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.RestoreFlowEntitySnapshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.RestoreFlowEntitySnapshotResponse().from_map(
-            await self.do_rpcrequest_async('RestoreFlowEntitySnapshot', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def restore_flow_entity_snapshot(
-        self,
-        request: emr_20160408_models.RestoreFlowEntitySnapshotRequest,
-    ) -> emr_20160408_models.RestoreFlowEntitySnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.restore_flow_entity_snapshot_with_options(request, runtime)
-
-    async def restore_flow_entity_snapshot_async(
-        self,
-        request: emr_20160408_models.RestoreFlowEntitySnapshotRequest,
-    ) -> emr_20160408_models.RestoreFlowEntitySnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.restore_flow_entity_snapshot_with_options_async(request, runtime)
-
     def resume_execution_plan_scheduler_with_options(
         self,
         request: emr_20160408_models.ResumeExecutionPlanSchedulerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ResumeExecutionPlanSchedulerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ResumeExecutionPlanSchedulerResponse().from_map(
-            self.do_rpcrequest('ResumeExecutionPlanScheduler', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResumeExecutionPlanScheduler',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ResumeExecutionPlanSchedulerResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def resume_execution_plan_scheduler_with_options_async(
@@ -8270,11 +15092,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ResumeExecutionPlanSchedulerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ResumeExecutionPlanSchedulerResponse().from_map(
-            await self.do_rpcrequest_async('ResumeExecutionPlanScheduler', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResumeExecutionPlanScheduler',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ResumeExecutionPlanSchedulerResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def resume_execution_plan_scheduler(
@@ -8297,11 +15136,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ResumeFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['FlowInstanceId'] = request.flow_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ResumeFlowResponse().from_map(
-            self.do_rpcrequest('ResumeFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResumeFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ResumeFlowResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def resume_flow_with_options_async(
@@ -8310,11 +15166,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.ResumeFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['FlowInstanceId'] = request.flow_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.ResumeFlowResponse().from_map(
-            await self.do_rpcrequest_async('ResumeFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResumeFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ResumeFlowResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def resume_flow(
@@ -8337,11 +15210,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.RetryOperationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['OperationId'] = request.operation_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RetryOperationResponse().from_map(
-            self.do_rpcrequest('RetryOperation', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RetryOperation',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RetryOperationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def retry_operation_with_options_async(
@@ -8350,11 +15240,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.RetryOperationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['OperationId'] = request.operation_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RetryOperationResponse().from_map(
-            await self.do_rpcrequest_async('RetryOperation', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RetryOperation',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RetryOperationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def retry_operation(
@@ -8377,11 +15284,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.RunClusterServiceActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostIdList'] = request.host_id_list
+        query['ServiceName'] = request.service_name
+        query['ServiceActionName'] = request.service_action_name
+        query['CustomCommand'] = request.custom_command
+        query['ComponentNameList'] = request.component_name_list
+        query['Comment'] = request.comment
+        query['IsRolling'] = request.is_rolling
+        query['ExecuteStrategy'] = request.execute_strategy
+        query['CustomParams'] = request.custom_params
+        query['Interval'] = request.interval
+        query['NodeCountPerBatch'] = request.node_count_per_batch
+        query['TotlerateFailCount'] = request.totlerate_fail_count
+        query['OnlyRestartStaleConfigNodes'] = request.only_restart_stale_config_nodes
+        query['TurnOnMaintenanceMode'] = request.turn_on_maintenance_mode
+        query['HostGroupIdList'] = request.host_group_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RunClusterServiceActionResponse().from_map(
-            self.do_rpcrequest('RunClusterServiceAction', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RunClusterServiceAction',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RunClusterServiceActionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def run_cluster_service_action_with_options_async(
@@ -8390,11 +15329,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.RunClusterServiceActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostIdList'] = request.host_id_list
+        query['ServiceName'] = request.service_name
+        query['ServiceActionName'] = request.service_action_name
+        query['CustomCommand'] = request.custom_command
+        query['ComponentNameList'] = request.component_name_list
+        query['Comment'] = request.comment
+        query['IsRolling'] = request.is_rolling
+        query['ExecuteStrategy'] = request.execute_strategy
+        query['CustomParams'] = request.custom_params
+        query['Interval'] = request.interval
+        query['NodeCountPerBatch'] = request.node_count_per_batch
+        query['TotlerateFailCount'] = request.totlerate_fail_count
+        query['OnlyRestartStaleConfigNodes'] = request.only_restart_stale_config_nodes
+        query['TurnOnMaintenanceMode'] = request.turn_on_maintenance_mode
+        query['HostGroupIdList'] = request.host_group_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RunClusterServiceActionResponse().from_map(
-            await self.do_rpcrequest_async('RunClusterServiceAction', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RunClusterServiceAction',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RunClusterServiceActionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def run_cluster_service_action(
@@ -8421,11 +15392,29 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.arguments):
             request.arguments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.arguments, 'Arguments', 'json')
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Arguments'] = request.arguments_shrink
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RunExecutionPlanResponse().from_map(
-            self.do_rpcrequest('RunExecutionPlan', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RunExecutionPlan',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RunExecutionPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def run_execution_plan_with_options_async(
@@ -8438,11 +15427,29 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.arguments):
             request.arguments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.arguments, 'Arguments', 'json')
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Arguments'] = request.arguments_shrink
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RunExecutionPlanResponse().from_map(
-            await self.do_rpcrequest_async('RunExecutionPlan', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RunExecutionPlan',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RunExecutionPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def run_execution_plan(
@@ -8465,11 +15472,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.RunScalingActionV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingActionType'] = request.scaling_action_type
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ActionParam'] = request.action_param
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RunScalingActionV2Response().from_map(
-            self.do_rpcrequest('RunScalingActionV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RunScalingActionV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RunScalingActionV2Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def run_scaling_action_v2with_options_async(
@@ -8478,11 +15505,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.RunScalingActionV2Response:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ScalingActionType'] = request.scaling_action_type
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
+        query['ActionParam'] = request.action_param
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.RunScalingActionV2Response().from_map(
-            await self.do_rpcrequest_async('RunScalingActionV2', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RunScalingActionV2',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RunScalingActionV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def run_scaling_action_v2(
@@ -8505,11 +15552,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.SearchLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostInnerIp'] = request.host_inner_ip
+        query['HostName'] = request.host_name
+        query['LogstoreName'] = request.logstore_name
+        query['FromTimestamp'] = request.from_timestamp
+        query['ToTimestamp'] = request.to_timestamp
+        query['SlsQueryString'] = request.sls_query_string
+        query['Offset'] = request.offset
+        query['Line'] = request.line
+        query['Reverse'] = request.reverse
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.SearchLogResponse().from_map(
-            self.do_rpcrequest('SearchLog', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SearchLog',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.SearchLogResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def search_log_with_options_async(
@@ -8518,11 +15591,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.SearchLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ClusterId'] = request.cluster_id
+        query['HostInnerIp'] = request.host_inner_ip
+        query['HostName'] = request.host_name
+        query['LogstoreName'] = request.logstore_name
+        query['FromTimestamp'] = request.from_timestamp
+        query['ToTimestamp'] = request.to_timestamp
+        query['SlsQueryString'] = request.sls_query_string
+        query['Offset'] = request.offset
+        query['Line'] = request.line
+        query['Reverse'] = request.reverse
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.SearchLogResponse().from_map(
-            await self.do_rpcrequest_async('SearchLog', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SearchLog',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.SearchLogResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def search_log(
@@ -8545,11 +15644,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.StartFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['FlowInstanceId'] = request.flow_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.StartFlowResponse().from_map(
-            self.do_rpcrequest('StartFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.StartFlowResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def start_flow_with_options_async(
@@ -8558,11 +15674,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.StartFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['FlowInstanceId'] = request.flow_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.StartFlowResponse().from_map(
-            await self.do_rpcrequest_async('StartFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.StartFlowResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_flow(
@@ -8585,11 +15718,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.SubmitFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['FlowId'] = request.flow_id
+        query['Conf'] = request.conf
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.SubmitFlowResponse().from_map(
-            self.do_rpcrequest('SubmitFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.SubmitFlowResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def submit_flow_with_options_async(
@@ -8598,11 +15749,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.SubmitFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['FlowId'] = request.flow_id
+        query['Conf'] = request.conf
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.SubmitFlowResponse().from_map(
-            await self.do_rpcrequest_async('SubmitFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.SubmitFlowResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_flow(
@@ -8625,11 +15794,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.SubmitFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['JobId'] = request.job_id
+        query['JobInstanceId'] = request.job_instance_id
+        query['ClusterId'] = request.cluster_id
+        query['HostName'] = request.host_name
+        query['Namespace'] = request.namespace
+        query['Conf'] = request.conf
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.SubmitFlowJobResponse().from_map(
-            self.do_rpcrequest('SubmitFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.SubmitFlowJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def submit_flow_job_with_options_async(
@@ -8638,11 +15829,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.SubmitFlowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['JobId'] = request.job_id
+        query['JobInstanceId'] = request.job_instance_id
+        query['ClusterId'] = request.cluster_id
+        query['HostName'] = request.host_name
+        query['Namespace'] = request.namespace
+        query['Conf'] = request.conf
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.SubmitFlowJobResponse().from_map(
-            await self.do_rpcrequest_async('SubmitFlowJob', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitFlowJob',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.SubmitFlowJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_flow_job(
@@ -8665,11 +15878,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.SuspendExecutionPlanSchedulerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.SuspendExecutionPlanSchedulerResponse().from_map(
-            self.do_rpcrequest('SuspendExecutionPlanScheduler', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SuspendExecutionPlanScheduler',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.SuspendExecutionPlanSchedulerResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def suspend_execution_plan_scheduler_with_options_async(
@@ -8678,11 +15908,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.SuspendExecutionPlanSchedulerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.SuspendExecutionPlanSchedulerResponse().from_map(
-            await self.do_rpcrequest_async('SuspendExecutionPlanScheduler', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SuspendExecutionPlanScheduler',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.SuspendExecutionPlanSchedulerResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def suspend_execution_plan_scheduler(
@@ -8705,11 +15952,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.SuspendFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['FlowInstanceId'] = request.flow_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.SuspendFlowResponse().from_map(
-            self.do_rpcrequest('SuspendFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SuspendFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.SuspendFlowResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def suspend_flow_with_options_async(
@@ -8718,11 +15982,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.SuspendFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ProjectId'] = request.project_id
+        query['FlowInstanceId'] = request.flow_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.SuspendFlowResponse().from_map(
-            await self.do_rpcrequest_async('SuspendFlow', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SuspendFlow',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.SuspendFlowResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def suspend_flow(
@@ -8745,11 +16026,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['ResourceId'] = request.resource_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.TagResourcesResponse().from_map(
-            self.do_rpcrequest('TagResources', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -8758,11 +16058,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['ResourceId'] = request.resource_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.TagResourcesResponse().from_map(
-            await self.do_rpcrequest_async('TagResources', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
@@ -8779,57 +16098,35 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
-    def tag_resources_system_tags_with_options(
-        self,
-        request: emr_20160408_models.TagResourcesSystemTagsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.TagResourcesSystemTagsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.TagResourcesSystemTagsResponse().from_map(
-            self.do_rpcrequest('TagResourcesSystemTags', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def tag_resources_system_tags_with_options_async(
-        self,
-        request: emr_20160408_models.TagResourcesSystemTagsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.TagResourcesSystemTagsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.TagResourcesSystemTagsResponse().from_map(
-            await self.do_rpcrequest_async('TagResourcesSystemTags', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def tag_resources_system_tags(
-        self,
-        request: emr_20160408_models.TagResourcesSystemTagsRequest,
-    ) -> emr_20160408_models.TagResourcesSystemTagsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.tag_resources_system_tags_with_options(request, runtime)
-
-    async def tag_resources_system_tags_async(
-        self,
-        request: emr_20160408_models.TagResourcesSystemTagsRequest,
-    ) -> emr_20160408_models.TagResourcesSystemTagsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.tag_resources_system_tags_with_options_async(request, runtime)
-
     def uninstall_libraries_with_options(
         self,
         request: emr_20160408_models.UninstallLibrariesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.UninstallLibrariesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['LibraryBizId'] = request.library_biz_id
+        query['ClusterBizIdList'] = request.cluster_biz_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.UninstallLibrariesResponse().from_map(
-            self.do_rpcrequest('UninstallLibraries', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UninstallLibraries',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.UninstallLibrariesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def uninstall_libraries_with_options_async(
@@ -8838,11 +16135,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.UninstallLibrariesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['LibraryBizId'] = request.library_biz_id
+        query['ClusterBizIdList'] = request.cluster_biz_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.UninstallLibrariesResponse().from_map(
-            await self.do_rpcrequest_async('UninstallLibraries', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UninstallLibraries',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.UninstallLibrariesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def uninstall_libraries(
@@ -8865,11 +16180,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['All'] = request.all
+        query['ResourceId'] = request.resource_id
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.UntagResourcesResponse().from_map(
-            self.do_rpcrequest('UntagResources', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
@@ -8878,11 +16213,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['All'] = request.all
+        query['ResourceId'] = request.resource_id
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.UntagResourcesResponse().from_map(
-            await self.do_rpcrequest_async('UntagResources', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
@@ -8899,57 +16254,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
-    def untag_resources_system_tags_with_options(
-        self,
-        request: emr_20160408_models.UntagResourcesSystemTagsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.UntagResourcesSystemTagsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.UntagResourcesSystemTagsResponse().from_map(
-            self.do_rpcrequest('UntagResourcesSystemTags', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def untag_resources_system_tags_with_options_async(
-        self,
-        request: emr_20160408_models.UntagResourcesSystemTagsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.UntagResourcesSystemTagsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return emr_20160408_models.UntagResourcesSystemTagsResponse().from_map(
-            await self.do_rpcrequest_async('UntagResourcesSystemTags', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def untag_resources_system_tags(
-        self,
-        request: emr_20160408_models.UntagResourcesSystemTagsRequest,
-    ) -> emr_20160408_models.UntagResourcesSystemTagsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.untag_resources_system_tags_with_options(request, runtime)
-
-    async def untag_resources_system_tags_async(
-        self,
-        request: emr_20160408_models.UntagResourcesSystemTagsRequest,
-    ) -> emr_20160408_models.UntagResourcesSystemTagsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.untag_resources_system_tags_with_options_async(request, runtime)
-
     def update_data_source_with_options(
         self,
         request: emr_20160408_models.UpdateDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.UpdateDataSourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['Conf'] = request.conf
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.UpdateDataSourceResponse().from_map(
-            self.do_rpcrequest('UpdateDataSource', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateDataSource',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.UpdateDataSourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_data_source_with_options_async(
@@ -8958,11 +16294,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.UpdateDataSourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        query['Conf'] = request.conf
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.UpdateDataSourceResponse().from_map(
-            await self.do_rpcrequest_async('UpdateDataSource', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateDataSource',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.UpdateDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_data_source(
@@ -8985,11 +16342,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.UpdateLibraryInstallTaskStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['TaskBizId'] = request.task_biz_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.UpdateLibraryInstallTaskStatusResponse().from_map(
-            self.do_rpcrequest('UpdateLibraryInstallTaskStatus', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateLibraryInstallTaskStatus',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.UpdateLibraryInstallTaskStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_library_install_task_status_with_options_async(
@@ -8998,11 +16373,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.UpdateLibraryInstallTaskStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['TaskBizId'] = request.task_biz_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.UpdateLibraryInstallTaskStatusResponse().from_map(
-            await self.do_rpcrequest_async('UpdateLibraryInstallTaskStatus', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateLibraryInstallTaskStatus',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.UpdateLibraryInstallTaskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_library_install_task_status(
@@ -9025,11 +16418,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.UpdateTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Category'] = request.category
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.UpdateTagResponse().from_map(
-            self.do_rpcrequest('UpdateTag', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateTag',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.UpdateTagResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_tag_with_options_async(
@@ -9038,11 +16451,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.UpdateTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['Category'] = request.category
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.UpdateTagResponse().from_map(
-            await self.do_rpcrequest_async('UpdateTag', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateTag',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.UpdateTagResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_tag(
@@ -9065,11 +16498,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.UpdateUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['AliyunUserId'] = request.aliyun_user_id
+        query['UserName'] = request.user_name
+        query['UserType'] = request.user_type
+        query['Status'] = request.status
+        query['Description'] = request.description
+        query['RoleIdList'] = request.role_id_list
+        query['GroupIdList'] = request.group_id_list
+        query['UserAccountParamList'] = request.user_account_param_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.UpdateUserResponse().from_map(
-            self.do_rpcrequest('UpdateUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateUser',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.UpdateUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_user_with_options_async(
@@ -9078,11 +16535,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20160408_models.UpdateUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RegionId'] = request.region_id
+        query['AliyunUserId'] = request.aliyun_user_id
+        query['UserName'] = request.user_name
+        query['UserType'] = request.user_type
+        query['Status'] = request.status
+        query['Description'] = request.description
+        query['RoleIdList'] = request.role_id_list
+        query['GroupIdList'] = request.group_id_list
+        query['UserAccountParamList'] = request.user_account_param_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return emr_20160408_models.UpdateUserResponse().from_map(
-            await self.do_rpcrequest_async('UpdateUser', '2016-04-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateUser',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.UpdateUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_user(
