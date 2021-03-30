@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_teambition_aliyun20200226 import models as teambition_aliyun_20200226_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -48,8 +50,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.AddProjectMembersResponse().from_map(
-            self.do_rpcrequest('AddProjectMembers', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddProjectMembers',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.AddProjectMembersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_project_members_with_options_async(
@@ -61,8 +75,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.AddProjectMembersResponse().from_map(
-            await self.do_rpcrequest_async('AddProjectMembers', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddProjectMembers',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.AddProjectMembersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_project_members(
@@ -85,11 +111,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> teambition_aliyun_20200226_models.ApplySmallMicroResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DevelopScale'] = request.develop_scale
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.ApplySmallMicroResponse().from_map(
-            self.do_rpcrequest('ApplySmallMicro', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ApplySmallMicro',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.ApplySmallMicroResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def apply_small_micro_with_options_async(
@@ -98,11 +139,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> teambition_aliyun_20200226_models.ApplySmallMicroResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DevelopScale'] = request.develop_scale
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.ApplySmallMicroResponse().from_map(
-            await self.do_rpcrequest_async('ApplySmallMicro', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ApplySmallMicro',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.ApplySmallMicroResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def apply_small_micro(
@@ -128,8 +184,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.BactchInsertMembersResponse().from_map(
-            self.do_rpcrequest('BactchInsertMembers', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='BactchInsertMembers',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.BactchInsertMembersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def bactch_insert_members_with_options_async(
@@ -141,8 +209,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.BactchInsertMembersResponse().from_map(
-            await self.do_rpcrequest_async('BactchInsertMembers', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='BactchInsertMembers',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.BactchInsertMembersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def bactch_insert_members(
@@ -168,8 +248,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.CheckAliyunUserExistsResponse().from_map(
-            self.do_rpcrequest('CheckAliyunUserExists', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckAliyunUserExists',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.CheckAliyunUserExistsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def check_aliyun_user_exists_with_options_async(
@@ -181,8 +273,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.CheckAliyunUserExistsResponse().from_map(
-            await self.do_rpcrequest_async('CheckAliyunUserExists', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckAliyunUserExists',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.CheckAliyunUserExistsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_aliyun_user_exists(
@@ -208,8 +312,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.CreateDevopsOrgResponse().from_map(
-            self.do_rpcrequest('CreateDevopsOrg', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDevopsOrg',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.CreateDevopsOrgResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_devops_org_with_options_async(
@@ -221,8 +337,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.CreateDevopsOrgResponse().from_map(
-            await self.do_rpcrequest_async('CreateDevopsOrg', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDevopsOrg',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.CreateDevopsOrgResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_devops_org(
@@ -248,8 +376,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.CreateProjectResponse().from_map(
-            self.do_rpcrequest('CreateProject', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.CreateProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_project_with_options_async(
@@ -261,8 +401,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.CreateProjectResponse().from_map(
-            await self.do_rpcrequest_async('CreateProject', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.CreateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_project(
@@ -288,8 +440,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.CreateProjectSprintResponse().from_map(
-            self.do_rpcrequest('CreateProjectSprint', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateProjectSprint',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.CreateProjectSprintResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_project_sprint_with_options_async(
@@ -301,8 +465,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.CreateProjectSprintResponse().from_map(
-            await self.do_rpcrequest_async('CreateProjectSprint', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateProjectSprint',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.CreateProjectSprintResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_project_sprint(
@@ -328,8 +504,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.CreateProjectTaskResponse().from_map(
-            self.do_rpcrequest('CreateProjectTask', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateProjectTask',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.CreateProjectTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_project_task_with_options_async(
@@ -341,8 +529,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.CreateProjectTaskResponse().from_map(
-            await self.do_rpcrequest_async('CreateProjectTask', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateProjectTask',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.CreateProjectTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_project_task(
@@ -368,8 +568,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.DeleteMembersForOrgResponse().from_map(
-            self.do_rpcrequest('DeleteMembersForOrg', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteMembersForOrg',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.DeleteMembersForOrgResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_members_for_org_with_options_async(
@@ -381,8 +593,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.DeleteMembersForOrgResponse().from_map(
-            await self.do_rpcrequest_async('DeleteMembersForOrg', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteMembersForOrg',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.DeleteMembersForOrgResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_members_for_org(
@@ -408,8 +632,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.DeleteProjectResponse().from_map(
-            self.do_rpcrequest('DeleteProject', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.DeleteProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_project_with_options_async(
@@ -421,8 +657,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.DeleteProjectResponse().from_map(
-            await self.do_rpcrequest_async('DeleteProject', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.DeleteProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_project(
@@ -448,8 +696,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.DeleteProjectMembersResponse().from_map(
-            self.do_rpcrequest('DeleteProjectMembers', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteProjectMembers',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.DeleteProjectMembersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_project_members_with_options_async(
@@ -461,8 +721,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.DeleteProjectMembersResponse().from_map(
-            await self.do_rpcrequest_async('DeleteProjectMembers', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteProjectMembers',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.DeleteProjectMembersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_project_members(
@@ -488,8 +760,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.DeleteProjectSprintResponse().from_map(
-            self.do_rpcrequest('DeleteProjectSprint', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteProjectSprint',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.DeleteProjectSprintResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_project_sprint_with_options_async(
@@ -501,8 +785,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.DeleteProjectSprintResponse().from_map(
-            await self.do_rpcrequest_async('DeleteProjectSprint', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteProjectSprint',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.DeleteProjectSprintResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_project_sprint(
@@ -528,8 +824,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.DeleteProjectTaskResponse().from_map(
-            self.do_rpcrequest('DeleteProjectTask', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteProjectTask',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.DeleteProjectTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_project_task_with_options_async(
@@ -541,8 +849,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.DeleteProjectTaskResponse().from_map(
-            await self.do_rpcrequest_async('DeleteProjectTask', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteProjectTask',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.DeleteProjectTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_project_task(
@@ -568,8 +888,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.GetOrganizationMembersResponse().from_map(
-            self.do_rpcrequest('GetOrganizationMembers', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetOrganizationMembers',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.GetOrganizationMembersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_organization_members_with_options_async(
@@ -581,8 +913,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.GetOrganizationMembersResponse().from_map(
-            await self.do_rpcrequest_async('GetOrganizationMembers', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetOrganizationMembers',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.GetOrganizationMembersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_organization_members(
@@ -608,8 +952,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.GetProjectInfoResponse().from_map(
-            self.do_rpcrequest('GetProjectInfo', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProjectInfo',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.GetProjectInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_project_info_with_options_async(
@@ -621,8 +977,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.GetProjectInfoResponse().from_map(
-            await self.do_rpcrequest_async('GetProjectInfo', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProjectInfo',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.GetProjectInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_project_info(
@@ -648,8 +1016,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.GetProjectMembersResponse().from_map(
-            self.do_rpcrequest('GetProjectMembers', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProjectMembers',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.GetProjectMembersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_project_members_with_options_async(
@@ -661,8 +1041,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.GetProjectMembersResponse().from_map(
-            await self.do_rpcrequest_async('GetProjectMembers', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProjectMembers',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.GetProjectMembersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_project_members(
@@ -688,8 +1080,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.GetProjectSprintInfoResponse().from_map(
-            self.do_rpcrequest('GetProjectSprintInfo', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProjectSprintInfo',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.GetProjectSprintInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_project_sprint_info_with_options_async(
@@ -701,8 +1105,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.GetProjectSprintInfoResponse().from_map(
-            await self.do_rpcrequest_async('GetProjectSprintInfo', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProjectSprintInfo',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.GetProjectSprintInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_project_sprint_info(
@@ -728,8 +1144,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.GetProjectTaskInfoResponse().from_map(
-            self.do_rpcrequest('GetProjectTaskInfo', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProjectTaskInfo',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.GetProjectTaskInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_project_task_info_with_options_async(
@@ -741,8 +1169,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.GetProjectTaskInfoResponse().from_map(
-            await self.do_rpcrequest_async('GetProjectTaskInfo', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProjectTaskInfo',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.GetProjectTaskInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_project_task_info(
@@ -768,8 +1208,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.GetUserByUidResponse().from_map(
-            self.do_rpcrequest('GetUserByUid', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetUserByUid',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.GetUserByUidResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_user_by_uid_with_options_async(
@@ -781,8 +1233,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.GetUserByUidResponse().from_map(
-            await self.do_rpcrequest_async('GetUserByUid', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetUserByUid',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.GetUserByUidResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_user_by_uid(
@@ -808,8 +1272,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.InsertDevopsMemberResponse().from_map(
-            self.do_rpcrequest('InsertDevopsMember', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InsertDevopsMember',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.InsertDevopsMemberResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def insert_devops_member_with_options_async(
@@ -821,8 +1297,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.InsertDevopsMemberResponse().from_map(
-            await self.do_rpcrequest_async('InsertDevopsMember', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InsertDevopsMember',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.InsertDevopsMemberResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def insert_devops_member(
@@ -848,8 +1336,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.ListProjectSprintsResponse().from_map(
-            self.do_rpcrequest('ListProjectSprints', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProjectSprints',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.ListProjectSprintsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_project_sprints_with_options_async(
@@ -861,8 +1361,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.ListProjectSprintsResponse().from_map(
-            await self.do_rpcrequest_async('ListProjectSprints', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProjectSprints',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.ListProjectSprintsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_project_sprints(
@@ -888,8 +1400,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.ListProjectTaskFlowResponse().from_map(
-            self.do_rpcrequest('ListProjectTaskFlow', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProjectTaskFlow',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.ListProjectTaskFlowResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_project_task_flow_with_options_async(
@@ -901,8 +1425,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.ListProjectTaskFlowResponse().from_map(
-            await self.do_rpcrequest_async('ListProjectTaskFlow', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProjectTaskFlow',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.ListProjectTaskFlowResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_project_task_flow(
@@ -928,8 +1464,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.ListProjectTaskFlowStatusResponse().from_map(
-            self.do_rpcrequest('ListProjectTaskFlowStatus', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProjectTaskFlowStatus',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.ListProjectTaskFlowStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_project_task_flow_status_with_options_async(
@@ -941,8 +1489,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.ListProjectTaskFlowStatusResponse().from_map(
-            await self.do_rpcrequest_async('ListProjectTaskFlowStatus', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProjectTaskFlowStatus',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.ListProjectTaskFlowStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_project_task_flow_status(
@@ -968,8 +1528,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.ListProjectTasksResponse().from_map(
-            self.do_rpcrequest('ListProjectTasks', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProjectTasks',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.ListProjectTasksResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_project_tasks_with_options_async(
@@ -981,8 +1553,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.ListProjectTasksResponse().from_map(
-            await self.do_rpcrequest_async('ListProjectTasks', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProjectTasks',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.ListProjectTasksResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_project_tasks(
@@ -1008,8 +1592,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.ListScenarioFieldConfigResponse().from_map(
-            self.do_rpcrequest('ListScenarioFieldConfig', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListScenarioFieldConfig',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.ListScenarioFieldConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_scenario_field_config_with_options_async(
@@ -1021,8 +1617,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.ListScenarioFieldConfigResponse().from_map(
-            await self.do_rpcrequest_async('ListScenarioFieldConfig', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListScenarioFieldConfig',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.ListScenarioFieldConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_scenario_field_config(
@@ -1048,8 +1656,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.UpdateProjectResponse().from_map(
-            self.do_rpcrequest('UpdateProject', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateProject',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.UpdateProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_project_with_options_async(
@@ -1061,8 +1681,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.UpdateProjectResponse().from_map(
-            await self.do_rpcrequest_async('UpdateProject', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateProject',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.UpdateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_project(
@@ -1088,8 +1720,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.UpdateProjectSprintResponse().from_map(
-            self.do_rpcrequest('UpdateProjectSprint', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateProjectSprint',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.UpdateProjectSprintResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_project_sprint_with_options_async(
@@ -1101,8 +1745,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.UpdateProjectSprintResponse().from_map(
-            await self.do_rpcrequest_async('UpdateProjectSprint', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateProjectSprint',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.UpdateProjectSprintResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_project_sprint(
@@ -1128,8 +1784,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.UpdateProjectTaskResponse().from_map(
-            self.do_rpcrequest('UpdateProjectTask', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateProjectTask',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.UpdateProjectTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_project_task_with_options_async(
@@ -1141,8 +1809,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return teambition_aliyun_20200226_models.UpdateProjectTaskResponse().from_map(
-            await self.do_rpcrequest_async('UpdateProjectTask', '2020-02-26', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateProjectTask',
+            version='2020-02-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            teambition_aliyun_20200226_models.UpdateProjectTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_project_task(
