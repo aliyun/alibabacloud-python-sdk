@@ -17,6 +17,10 @@ class SubmitStructSyncOrderApprovalRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
@@ -53,6 +57,10 @@ class SubmitStructSyncOrderApprovalResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -97,6 +105,10 @@ class SubmitStructSyncOrderApprovalResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -137,6 +149,10 @@ class ListDatabaseUserPermssionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -194,6 +210,10 @@ class ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPermDet
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.origin_from is not None:
             result['OriginFrom'] = self.origin_from
@@ -240,6 +260,10 @@ class ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPermDet
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PermDetail'] = []
         if self.perm_detail is not None:
@@ -297,6 +321,10 @@ class ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermission(TeaMod
             self.perm_details.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -380,6 +408,10 @@ class ListDatabaseUserPermssionsResponseBodyUserPermissions(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['UserPermission'] = []
         if self.user_permission is not None:
@@ -419,6 +451,10 @@ class ListDatabaseUserPermssionsResponseBody(TeaModel):
             self.user_permissions.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -468,6 +504,10 @@ class ListDatabaseUserPermssionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -508,6 +548,10 @@ class ListSensitiveColumnsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -565,6 +609,10 @@ class ListSensitiveColumnsResponseBodySensitiveColumnListSensitiveColumn(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.column_name is not None:
             result['ColumnName'] = self.column_name
@@ -611,6 +659,10 @@ class ListSensitiveColumnsResponseBodySensitiveColumnList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SensitiveColumn'] = []
         if self.sensitive_column is not None:
@@ -650,6 +702,10 @@ class ListSensitiveColumnsResponseBody(TeaModel):
             self.sensitive_column_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -699,6 +755,10 @@ class ListSensitiveColumnsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -737,6 +797,10 @@ class ListUsersRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -780,6 +844,10 @@ class ListUsersResponseBodyUserListUserRoleIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_ids is not None:
             result['RoleIds'] = self.role_ids
@@ -803,6 +871,10 @@ class ListUsersResponseBodyUserListUserRoleNameList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_names is not None:
             result['RoleNames'] = self.role_names
@@ -853,6 +925,10 @@ class ListUsersResponseBodyUserListUser(TeaModel):
             self.role_name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -929,6 +1005,10 @@ class ListUsersResponseBodyUserList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['User'] = []
         if self.user is not None:
@@ -968,6 +1048,10 @@ class ListUsersResponseBody(TeaModel):
             self.user_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -1017,6 +1101,10 @@ class ListUsersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1047,6 +1135,10 @@ class SubmitOrderApprovalRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -1080,6 +1172,10 @@ class SubmitOrderApprovalResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1120,6 +1216,10 @@ class SubmitOrderApprovalResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1164,6 +1264,10 @@ class GrantUserPermissionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -1225,6 +1329,10 @@ class GrantUserPermissionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1265,6 +1373,10 @@ class GrantUserPermissionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1295,6 +1407,10 @@ class GetMetaTableDetailInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -1330,6 +1446,10 @@ class GetMetaTableDetailInfoResponseBodyDetailInfoIndexList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index_columns is not None:
             result['IndexColumns'] = self.index_columns
@@ -1387,6 +1507,10 @@ class GetMetaTableDetailInfoResponseBodyDetailInfoColumnList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.column_name is not None:
             result['ColumnName'] = self.column_name
@@ -1455,6 +1579,10 @@ class GetMetaTableDetailInfoResponseBodyDetailInfo(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['IndexList'] = []
         if self.index_list is not None:
@@ -1501,6 +1629,10 @@ class GetMetaTableDetailInfoResponseBody(TeaModel):
             self.detail_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1546,6 +1678,10 @@ class GetMetaTableDetailInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1567,22 +1703,22 @@ class GetDataCorrectSQLFileRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
-        order_action_name: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
-        self.order_action_name = order_action_name
         self.tid = tid
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
-        if self.order_action_name is not None:
-            result['OrderActionName'] = self.order_action_name
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -1591,8 +1727,6 @@ class GetDataCorrectSQLFileRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
-        if m.get('OrderActionName') is not None:
-            self.order_action_name = m.get('OrderActionName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -1618,6 +1752,10 @@ class GetDataCorrectSQLFileResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1662,6 +1800,10 @@ class GetDataCorrectSQLFileResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1692,6 +1834,10 @@ class CreateFreeLockCorrectOrderRequestParamDbItemList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -1736,6 +1882,10 @@ class CreateFreeLockCorrectOrderRequestParam(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.classify is not None:
             result['Classify'] = self.classify
@@ -1801,6 +1951,10 @@ class CreateFreeLockCorrectOrderRequest(TeaModel):
             self.param.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -1849,6 +2003,10 @@ class CreateFreeLockCorrectOrderShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -1897,6 +2055,10 @@ class CreateFreeLockCorrectOrderResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1941,6 +2103,10 @@ class CreateFreeLockCorrectOrderResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1979,6 +2145,10 @@ class CreateOrderRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -2032,6 +2202,10 @@ class CreateOrderShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -2075,6 +2249,10 @@ class CreateOrderResponseBodyCreateOrderResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_ids is not None:
             result['OrderIds'] = self.order_ids
@@ -2107,6 +2285,10 @@ class CreateOrderResponseBody(TeaModel):
             self.create_order_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.create_order_result is not None:
             result['CreateOrderResult'] = self.create_order_result.to_map()
@@ -2152,6 +2334,10 @@ class CreateOrderResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2186,6 +2372,10 @@ class ListDatabasesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -2221,6 +2411,10 @@ class ListDatabasesResponseBodyDatabaseListDatabaseOwnerIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_ids is not None:
             result['OwnerIds'] = self.owner_ids
@@ -2244,6 +2438,10 @@ class ListDatabasesResponseBodyDatabaseListDatabaseOwnerNameList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_names is not None:
             result['OwnerNames'] = self.owner_names
@@ -2300,6 +2498,10 @@ class ListDatabasesResponseBodyDatabaseListDatabase(TeaModel):
             self.owner_name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.database_id is not None:
             result['DatabaseId'] = self.database_id
@@ -2388,6 +2590,10 @@ class ListDatabasesResponseBodyDatabaseList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Database'] = []
         if self.database is not None:
@@ -2427,6 +2633,10 @@ class ListDatabasesResponseBody(TeaModel):
             self.database_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -2476,6 +2686,10 @@ class ListDatabasesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2520,6 +2734,10 @@ class ListUserPermissionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -2585,6 +2803,10 @@ class ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPer
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.origin_from is not None:
             result['OriginFrom'] = self.origin_from
@@ -2631,6 +2853,10 @@ class ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails(Te
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PermDetail'] = []
         if self.perm_detail is not None:
@@ -2688,6 +2914,10 @@ class ListUserPermissionsResponseBodyUserPermissionsUserPermission(TeaModel):
             self.perm_details.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -2771,6 +3001,10 @@ class ListUserPermissionsResponseBodyUserPermissions(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['UserPermission'] = []
         if self.user_permission is not None:
@@ -2810,6 +3044,10 @@ class ListUserPermissionsResponseBody(TeaModel):
             self.user_permissions.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -2859,6 +3097,10 @@ class ListUserPermissionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2889,6 +3131,10 @@ class ListWorkFlowTemplatesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -2928,6 +3174,10 @@ class ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflow
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -2978,6 +3228,10 @@ class ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflow
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WorkflowNode'] = []
         if self.workflow_node is not None:
@@ -3019,6 +3273,10 @@ class ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplate(TeaMode
             self.workflow_nodes.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_system is not None:
             result['IsSystem'] = self.is_system
@@ -3070,6 +3328,10 @@ class ListWorkFlowTemplatesResponseBodyWorkFlowTemplates(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WorkFlowTemplate'] = []
         if self.work_flow_template is not None:
@@ -3107,6 +3369,10 @@ class ListWorkFlowTemplatesResponseBody(TeaModel):
             self.work_flow_templates.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3152,6 +3418,10 @@ class ListWorkFlowTemplatesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3182,6 +3452,10 @@ class GetDataExportOrderDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -3211,6 +3485,10 @@ class GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pre_check_id is not None:
             result['PreCheckId'] = self.pre_check_id
@@ -3254,6 +3532,10 @@ class GetDataExportOrderDetailResponseBodyDataExportOrderDetailOrderDetail(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -3314,6 +3596,10 @@ class GetDataExportOrderDetailResponseBodyDataExportOrderDetail(TeaModel):
             self.order_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key_info is not None:
             result['KeyInfo'] = self.key_info.to_map()
@@ -3352,6 +3638,10 @@ class GetDataExportOrderDetailResponseBody(TeaModel):
             self.data_export_order_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3397,6 +3687,10 @@ class GetDataExportOrderDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3441,6 +3735,10 @@ class ListInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -3496,6 +3794,10 @@ class ListInstancesResponseBodyInstanceListInstanceOwnerIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_ids is not None:
             result['OwnerIds'] = self.owner_ids
@@ -3519,6 +3821,10 @@ class ListInstancesResponseBodyInstanceListInstanceOwnerNameList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_names is not None:
             result['OwnerNames'] = self.owner_names
@@ -3591,6 +3897,10 @@ class ListInstancesResponseBodyInstanceListInstance(TeaModel):
             self.owner_name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
@@ -3711,6 +4021,10 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Instance'] = []
         if self.instance is not None:
@@ -3750,6 +4064,10 @@ class ListInstancesResponseBody(TeaModel):
             self.instance_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -3799,6 +4117,10 @@ class ListInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3829,6 +4151,10 @@ class GetUserUploadFileJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job_key is not None:
             result['JobKey'] = self.job_key
@@ -3860,6 +4186,10 @@ class GetUserUploadFileJobResponseBodyUploadFileJobDetailUploadOSSParam(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint
@@ -3912,6 +4242,10 @@ class GetUserUploadFileJobResponseBodyUploadFileJobDetail(TeaModel):
             self.upload_ossparam.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job_key is not None:
             result['JobKey'] = self.job_key
@@ -3986,6 +4320,10 @@ class GetUserUploadFileJobResponseBody(TeaModel):
             self.upload_file_job_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4031,6 +4369,10 @@ class GetUserUploadFileJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4048,6 +4390,353 @@ class GetUserUploadFileJobResponse(TeaModel):
         return self
 
 
+class ListDDLPublishRecordsRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList(TeaModel):
+    def __init__(
+        self,
+        execute_count: int = None,
+        scripts: str = None,
+        table_name: str = None,
+        status_desc: str = None,
+        task_job_status: str = None,
+        dbtask_group_id: int = None,
+    ):
+        self.execute_count = execute_count
+        self.scripts = scripts
+        self.table_name = table_name
+        self.status_desc = status_desc
+        self.task_job_status = task_job_status
+        self.dbtask_group_id = dbtask_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.execute_count is not None:
+            result['ExecuteCount'] = self.execute_count
+        if self.scripts is not None:
+            result['Scripts'] = self.scripts
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.status_desc is not None:
+            result['StatusDesc'] = self.status_desc
+        if self.task_job_status is not None:
+            result['TaskJobStatus'] = self.task_job_status
+        if self.dbtask_group_id is not None:
+            result['DBTaskGroupId'] = self.dbtask_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExecuteCount') is not None:
+            self.execute_count = m.get('ExecuteCount')
+        if m.get('Scripts') is not None:
+            self.scripts = m.get('Scripts')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('StatusDesc') is not None:
+            self.status_desc = m.get('StatusDesc')
+        if m.get('TaskJobStatus') is not None:
+            self.task_job_status = m.get('TaskJobStatus')
+        if m.get('DBTaskGroupId') is not None:
+            self.dbtask_group_id = m.get('DBTaskGroupId')
+        return self
+
+
+class ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        logic: bool = None,
+        plan_time: str = None,
+        publish_strategy: str = None,
+        status_desc: str = None,
+        task_job_status: str = None,
+        publish_job_list: List[ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList] = None,
+    ):
+        self.db_id = db_id
+        self.logic = logic
+        self.plan_time = plan_time
+        self.publish_strategy = publish_strategy
+        self.status_desc = status_desc
+        self.task_job_status = task_job_status
+        self.publish_job_list = publish_job_list
+
+    def validate(self):
+        if self.publish_job_list:
+            for k in self.publish_job_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        if self.plan_time is not None:
+            result['PlanTime'] = self.plan_time
+        if self.publish_strategy is not None:
+            result['PublishStrategy'] = self.publish_strategy
+        if self.status_desc is not None:
+            result['StatusDesc'] = self.status_desc
+        if self.task_job_status is not None:
+            result['TaskJobStatus'] = self.task_job_status
+        result['PublishJobList'] = []
+        if self.publish_job_list is not None:
+            for k in self.publish_job_list:
+                result['PublishJobList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        if m.get('PlanTime') is not None:
+            self.plan_time = m.get('PlanTime')
+        if m.get('PublishStrategy') is not None:
+            self.publish_strategy = m.get('PublishStrategy')
+        if m.get('StatusDesc') is not None:
+            self.status_desc = m.get('StatusDesc')
+        if m.get('TaskJobStatus') is not None:
+            self.task_job_status = m.get('TaskJobStatus')
+        self.publish_job_list = []
+        if m.get('PublishJobList') is not None:
+            for k in m.get('PublishJobList'):
+                temp_model = ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList()
+                self.publish_job_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListDDLPublishRecordsResponseBodyDDLPublishRecordList(TeaModel):
+    def __init__(
+        self,
+        audit_status: str = None,
+        audit_expire_time: str = None,
+        creator_id: int = None,
+        finality: bool = None,
+        finality_reason: str = None,
+        publish_status: str = None,
+        risk_level: str = None,
+        status_desc: str = None,
+        workflow_instance_id: int = None,
+        publish_task_info_list: List[ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList] = None,
+    ):
+        self.audit_status = audit_status
+        self.audit_expire_time = audit_expire_time
+        self.creator_id = creator_id
+        self.finality = finality
+        self.finality_reason = finality_reason
+        self.publish_status = publish_status
+        self.risk_level = risk_level
+        self.status_desc = status_desc
+        self.workflow_instance_id = workflow_instance_id
+        self.publish_task_info_list = publish_task_info_list
+
+    def validate(self):
+        if self.publish_task_info_list:
+            for k in self.publish_task_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+        if self.audit_expire_time is not None:
+            result['AuditExpireTime'] = self.audit_expire_time
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.finality is not None:
+            result['Finality'] = self.finality
+        if self.finality_reason is not None:
+            result['FinalityReason'] = self.finality_reason
+        if self.publish_status is not None:
+            result['PublishStatus'] = self.publish_status
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.status_desc is not None:
+            result['StatusDesc'] = self.status_desc
+        if self.workflow_instance_id is not None:
+            result['WorkflowInstanceId'] = self.workflow_instance_id
+        result['PublishTaskInfoList'] = []
+        if self.publish_task_info_list is not None:
+            for k in self.publish_task_info_list:
+                result['PublishTaskInfoList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+        if m.get('AuditExpireTime') is not None:
+            self.audit_expire_time = m.get('AuditExpireTime')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('Finality') is not None:
+            self.finality = m.get('Finality')
+        if m.get('FinalityReason') is not None:
+            self.finality_reason = m.get('FinalityReason')
+        if m.get('PublishStatus') is not None:
+            self.publish_status = m.get('PublishStatus')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('StatusDesc') is not None:
+            self.status_desc = m.get('StatusDesc')
+        if m.get('WorkflowInstanceId') is not None:
+            self.workflow_instance_id = m.get('WorkflowInstanceId')
+        self.publish_task_info_list = []
+        if m.get('PublishTaskInfoList') is not None:
+            for k in m.get('PublishTaskInfoList'):
+                temp_model = ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList()
+                self.publish_task_info_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListDDLPublishRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        ddlpublish_record_list: List[ListDDLPublishRecordsResponseBodyDDLPublishRecordList] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.ddlpublish_record_list = ddlpublish_record_list
+
+    def validate(self):
+        if self.ddlpublish_record_list:
+            for k in self.ddlpublish_record_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        result['DDLPublishRecordList'] = []
+        if self.ddlpublish_record_list is not None:
+            for k in self.ddlpublish_record_list:
+                result['DDLPublishRecordList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        self.ddlpublish_record_list = []
+        if m.get('DDLPublishRecordList') is not None:
+            for k in m.get('DDLPublishRecordList'):
+                temp_model = ListDDLPublishRecordsResponseBodyDDLPublishRecordList()
+                self.ddlpublish_record_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListDDLPublishRecordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDDLPublishRecordsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDDLPublishRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetStructSyncJobDetailRequest(TeaModel):
     def __init__(
         self,
@@ -4061,6 +4750,10 @@ class GetStructSyncJobDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
@@ -4102,6 +4795,10 @@ class GetStructSyncJobDetailResponseBodyStructSyncJobDetail(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job_status is not None:
             result['JobStatus'] = self.job_status
@@ -4163,6 +4860,10 @@ class GetStructSyncJobDetailResponseBody(TeaModel):
             self.struct_sync_job_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4208,6 +4909,10 @@ class GetStructSyncJobDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4240,6 +4945,10 @@ class CreateUploadOSSFileJobRequestUploadTarget(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint
@@ -4265,13 +4974,11 @@ class CreateUploadOSSFileJobRequest(TeaModel):
         self,
         file_source: str = None,
         file_name: str = None,
-        upload_type: str = None,
         upload_target: CreateUploadOSSFileJobRequestUploadTarget = None,
         tid: int = None,
     ):
         self.file_source = file_source
         self.file_name = file_name
-        self.upload_type = upload_type
         self.upload_target = upload_target
         self.tid = tid
 
@@ -4280,13 +4987,15 @@ class CreateUploadOSSFileJobRequest(TeaModel):
             self.upload_target.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_source is not None:
             result['FileSource'] = self.file_source
         if self.file_name is not None:
             result['FileName'] = self.file_name
-        if self.upload_type is not None:
-            result['UploadType'] = self.upload_type
         if self.upload_target is not None:
             result['UploadTarget'] = self.upload_target.to_map()
         if self.tid is not None:
@@ -4299,8 +5008,6 @@ class CreateUploadOSSFileJobRequest(TeaModel):
             self.file_source = m.get('FileSource')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
-        if m.get('UploadType') is not None:
-            self.upload_type = m.get('UploadType')
         if m.get('UploadTarget') is not None:
             temp_model = CreateUploadOSSFileJobRequestUploadTarget()
             self.upload_target = temp_model.from_map(m['UploadTarget'])
@@ -4314,13 +5021,11 @@ class CreateUploadOSSFileJobShrinkRequest(TeaModel):
         self,
         file_source: str = None,
         file_name: str = None,
-        upload_type: str = None,
         upload_target_shrink: str = None,
         tid: int = None,
     ):
         self.file_source = file_source
         self.file_name = file_name
-        self.upload_type = upload_type
         self.upload_target_shrink = upload_target_shrink
         self.tid = tid
 
@@ -4328,13 +5033,15 @@ class CreateUploadOSSFileJobShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_source is not None:
             result['FileSource'] = self.file_source
         if self.file_name is not None:
             result['FileName'] = self.file_name
-        if self.upload_type is not None:
-            result['UploadType'] = self.upload_type
         if self.upload_target_shrink is not None:
             result['UploadTarget'] = self.upload_target_shrink
         if self.tid is not None:
@@ -4347,8 +5054,6 @@ class CreateUploadOSSFileJobShrinkRequest(TeaModel):
             self.file_source = m.get('FileSource')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
-        if m.get('UploadType') is not None:
-            self.upload_type = m.get('UploadType')
         if m.get('UploadTarget') is not None:
             self.upload_target_shrink = m.get('UploadTarget')
         if m.get('Tid') is not None:
@@ -4376,6 +5081,10 @@ class CreateUploadOSSFileJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4420,6 +5129,10 @@ class CreateUploadOSSFileJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4462,6 +5175,10 @@ class SearchDatabaseRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -4513,6 +5230,10 @@ class SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_ids is not None:
             result['OwnerIds'] = self.owner_ids
@@ -4536,6 +5257,10 @@ class SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_names is not None:
             result['OwnerNames'] = self.owner_names
@@ -4590,6 +5315,10 @@ class SearchDatabaseResponseBodySearchDatabaseListSearchDatabase(TeaModel):
             self.owner_name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.database_id is not None:
             result['DatabaseId'] = self.database_id
@@ -4674,6 +5403,10 @@ class SearchDatabaseResponseBodySearchDatabaseList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SearchDatabase'] = []
         if self.search_database is not None:
@@ -4713,6 +5446,10 @@ class SearchDatabaseResponseBody(TeaModel):
             self.search_database_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -4762,6 +5499,10 @@ class SearchDatabaseResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4794,6 +5535,10 @@ class SyncDatabaseMetaRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -4831,6 +5576,10 @@ class SyncDatabaseMetaResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4871,6 +5620,10 @@ class SyncDatabaseMetaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4903,6 +5656,10 @@ class GetUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -4934,6 +5691,10 @@ class GetUserResponseBodyUserRoleIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_ids is not None:
             result['RoleIds'] = self.role_ids
@@ -4957,6 +5718,10 @@ class GetUserResponseBodyUserRoleNameList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_names is not None:
             result['RoleNames'] = self.role_names
@@ -5007,6 +5772,10 @@ class GetUserResponseBodyUser(TeaModel):
             self.role_name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -5089,6 +5858,10 @@ class GetUserResponseBody(TeaModel):
             self.user.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.user is not None:
             result['User'] = self.user.to_map()
@@ -5134,6 +5907,10 @@ class GetUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5164,6 +5941,10 @@ class ExecuteStructSyncRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
@@ -5198,6 +5979,10 @@ class ExecuteStructSyncResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5238,6 +6023,10 @@ class ExecuteStructSyncResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5268,6 +6057,10 @@ class GetDataCorrectOrderDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -5299,6 +6092,10 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetailT
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.user_tip is not None:
             result['UserTip'] = self.user_tip
@@ -5333,6 +6130,10 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetail(
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TaskCheckDO'] = []
         if self.task_check_do is not None:
@@ -5381,6 +6182,10 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailOrderDetail(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rb_sql is not None:
             result['RbSQL'] = self.rb_sql
@@ -5452,6 +6257,10 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseListDat
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -5494,6 +6303,10 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList(Te
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Database'] = []
         if self.database is not None:
@@ -5533,6 +6346,10 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail(TeaModel):
             self.database_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pre_check_detail is not None:
             result['PreCheckDetail'] = self.pre_check_detail.to_map()
@@ -5580,6 +6397,10 @@ class GetDataCorrectOrderDetailResponseBody(TeaModel):
             self.data_correct_order_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5625,6 +6446,10 @@ class GetDataCorrectOrderDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5657,6 +6482,10 @@ class ListColumnsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -5712,6 +6541,10 @@ class ListColumnsResponseBodyColumnListColumn(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.column_type is not None:
             result['ColumnType'] = self.column_type
@@ -5786,6 +6619,10 @@ class ListColumnsResponseBodyColumnList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Column'] = []
         if self.column is not None:
@@ -5823,6 +6660,10 @@ class ListColumnsResponseBody(TeaModel):
             self.column_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5868,6 +6709,10 @@ class ListColumnsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5912,6 +6757,10 @@ class RevokeUserPermissionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -5973,6 +6822,10 @@ class RevokeUserPermissionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6013,6 +6866,10 @@ class RevokeUserPermissionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6043,6 +6900,10 @@ class GetMetaTableColumnRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -6092,6 +6953,10 @@ class GetMetaTableColumnResponseBodyColumnList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.column_type is not None:
             result['ColumnType'] = self.column_type
@@ -6170,6 +7035,10 @@ class GetMetaTableColumnResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6219,6 +7088,10 @@ class GetMetaTableColumnResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6249,6 +7122,10 @@ class EnableUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -6282,6 +7159,10 @@ class EnableUserResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6322,6 +7203,10 @@ class EnableUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6392,6 +7277,10 @@ class UpdateInstanceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -6505,6 +7394,10 @@ class UpdateInstanceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6545,6 +7438,10 @@ class UpdateInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6579,6 +7476,10 @@ class ExecuteScriptRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -6622,6 +7523,10 @@ class ExecuteScriptResponseBodyResults(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.column_names is not None:
             result['ColumnNames'] = self.column_names
@@ -6672,6 +7577,10 @@ class ExecuteScriptResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6721,6 +7630,10 @@ class ExecuteScriptResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6755,6 +7668,10 @@ class ListDBTaskSQLJobDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job_id is not None:
             result['JobId'] = self.job_id
@@ -6806,6 +7723,10 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job_detail_id is not None:
             result['JobDetailId'] = self.job_detail_id
@@ -6875,6 +7796,10 @@ class ListDBTaskSQLJobDetailResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6928,6 +7853,10 @@ class ListDBTaskSQLJobDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6958,6 +7887,10 @@ class DisableUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -6991,6 +7924,10 @@ class DisableUserResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7031,6 +7968,10 @@ class DisableUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7061,6 +8002,10 @@ class GetApprovalDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -7088,6 +8033,10 @@ class GetApprovalDetailResponseBodyApprovalDetailWorkflowNodesWorkflowNodeAuditU
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.audit_user_ids is not None:
             result['AuditUserIds'] = self.audit_user_ids
@@ -7122,6 +8071,10 @@ class GetApprovalDetailResponseBodyApprovalDetailWorkflowNodesWorkflowNode(TeaMo
             self.audit_user_id_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.operate_time is not None:
             result['OperateTime'] = self.operate_time
@@ -7169,6 +8122,10 @@ class GetApprovalDetailResponseBodyApprovalDetailWorkflowNodes(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WorkflowNode'] = []
         if self.workflow_node is not None:
@@ -7199,6 +8156,10 @@ class GetApprovalDetailResponseBodyApprovalDetailCurrentHandlersCurrentHandler(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.nick_name is not None:
             result['NickName'] = self.nick_name
@@ -7229,6 +8190,10 @@ class GetApprovalDetailResponseBodyApprovalDetailCurrentHandlers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CurrentHandler'] = []
         if self.current_handler is not None:
@@ -7257,6 +8222,10 @@ class GetApprovalDetailResponseBodyApprovalDetailReasonList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.reasons is not None:
             result['Reasons'] = self.reasons
@@ -7301,6 +8270,10 @@ class GetApprovalDetailResponseBodyApprovalDetail(TeaModel):
             self.reason_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.workflow_nodes is not None:
             result['WorkflowNodes'] = self.workflow_nodes.to_map()
@@ -7368,6 +8341,10 @@ class GetApprovalDetailResponseBody(TeaModel):
             self.approval_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7413,6 +8390,10 @@ class GetApprovalDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7441,6 +8422,10 @@ class GetUserActiveTenantRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -7468,6 +8453,10 @@ class GetUserActiveTenantResponseBodyTenant(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -7508,6 +8497,10 @@ class GetUserActiveTenantResponseBody(TeaModel):
             self.tenant.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tenant is not None:
             result['Tenant'] = self.tenant.to_map()
@@ -7553,6 +8546,10 @@ class GetUserActiveTenantResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7589,6 +8586,10 @@ class RegisterUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -7634,6 +8635,10 @@ class RegisterUserResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7674,6 +8679,10 @@ class RegisterUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7708,6 +8717,10 @@ class GetInstanceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -7743,6 +8756,10 @@ class GetInstanceResponseBodyInstanceOwnerIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_ids is not None:
             result['OwnerIds'] = self.owner_ids
@@ -7766,6 +8783,10 @@ class GetInstanceResponseBodyInstanceOwnerNameList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_names is not None:
             result['OwnerNames'] = self.owner_names
@@ -7838,6 +8859,10 @@ class GetInstanceResponseBodyInstance(TeaModel):
             self.owner_name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
@@ -7964,6 +8989,10 @@ class GetInstanceResponseBody(TeaModel):
             self.instance.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8009,6 +9038,10 @@ class GetInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8039,6 +9072,10 @@ class GetPermApplyOrderDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
@@ -8078,6 +9115,10 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseIn
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -8125,6 +9166,10 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table_name is not None:
             result['TableName'] = self.table_name
@@ -8150,6 +9195,10 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table_name is not None:
             result['TableName'] = self.table_name
@@ -8195,6 +9244,10 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceIn
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -8267,6 +9320,10 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources(TeaModel)
             self.instance_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.database_info is not None:
             result['DatabaseInfo'] = self.database_info.to_map()
@@ -8315,6 +9372,10 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Resources'] = []
         if self.resources is not None:
@@ -8365,6 +9426,10 @@ class GetPermApplyOrderDetailResponseBody(TeaModel):
             self.perm_apply_order_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8410,6 +9475,10 @@ class GetPermApplyOrderDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8442,6 +9511,10 @@ class ListIndexesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -8481,6 +9554,10 @@ class ListIndexesResponseBodyIndexListIndex(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index_name is not None:
             result['IndexName'] = self.index_name
@@ -8523,6 +9600,10 @@ class ListIndexesResponseBodyIndexList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Index'] = []
         if self.index is not None:
@@ -8560,6 +9641,10 @@ class ListIndexesResponseBody(TeaModel):
             self.index_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8605,6 +9690,10 @@ class ListIndexesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8643,6 +9732,10 @@ class ListLogicTablesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -8686,6 +9779,10 @@ class ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_ids is not None:
             result['OwnerIds'] = self.owner_ids
@@ -8709,6 +9806,10 @@ class ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_names is not None:
             result['OwnerNames'] = self.owner_names
@@ -8753,6 +9854,10 @@ class ListLogicTablesResponseBodyLogicTableListLogicTable(TeaModel):
             self.owner_name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.database_id is not None:
             result['DatabaseId'] = self.database_id
@@ -8817,6 +9922,10 @@ class ListLogicTablesResponseBodyLogicTableList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['LogicTable'] = []
         if self.logic_table is not None:
@@ -8856,6 +9965,10 @@ class ListLogicTablesResponseBody(TeaModel):
             self.logic_table_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -8905,6 +10018,10 @@ class ListLogicTablesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8935,6 +10052,10 @@ class GetTableTopologyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table_guid is not None:
             result['TableGuid'] = self.table_guid
@@ -8982,6 +10103,10 @@ class GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table_name_list is not None:
             result['TableNameList'] = self.table_name_list
@@ -9054,6 +10179,10 @@ class GetTableTopologyResponseBodyTableTopology(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table_guid is not None:
             result['TableGuid'] = self.table_guid
@@ -9104,6 +10233,10 @@ class GetTableTopologyResponseBody(TeaModel):
             self.table_topology.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9149,6 +10282,10 @@ class GetTableTopologyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9171,23 +10308,23 @@ class GetDataExportDownloadURLRequest(TeaModel):
         self,
         tid: int = None,
         order_id: int = None,
-        action_name: str = None,
     ):
         self.tid = tid
         self.order_id = order_id
-        self.action_name = action_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.order_id is not None:
             result['OrderId'] = self.order_id
-        if self.action_name is not None:
-            result['ActionName'] = self.action_name
         return result
 
     def from_map(self, m: dict = None):
@@ -9196,8 +10333,6 @@ class GetDataExportDownloadURLRequest(TeaModel):
             self.tid = m.get('Tid')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
-        if m.get('ActionName') is not None:
-            self.action_name = m.get('ActionName')
         return self
 
 
@@ -9216,6 +10351,10 @@ class GetDataExportDownloadURLResponseBodyDownloadURLResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.has_result is not None:
             result['HasResult'] = self.has_result
@@ -9256,6 +10395,10 @@ class GetDataExportDownloadURLResponseBody(TeaModel):
             self.download_urlresult.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.download_urlresult is not None:
             result['DownloadURLResult'] = self.download_urlresult.to_map()
@@ -9301,6 +10444,10 @@ class GetDataExportDownloadURLResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9331,6 +10478,10 @@ class CreateDataCronClearOrderRequestParamDbItemList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -9366,6 +10517,10 @@ class CreateDataCronClearOrderRequestParamCronClearItemList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table_name is not None:
             result['TableName'] = self.table_name
@@ -9422,6 +10577,10 @@ class CreateDataCronClearOrderRequestParam(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.classify is not None:
             result['Classify'] = self.classify
@@ -9484,6 +10643,10 @@ class CreateDataCronClearOrderRequest(TeaModel):
             self.param.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -9532,6 +10695,10 @@ class CreateDataCronClearOrderShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -9580,6 +10747,10 @@ class CreateDataCronClearOrderResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9624,6 +10795,10 @@ class CreateDataCronClearOrderResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9662,6 +10837,10 @@ class CreatePublishGroupTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -9713,6 +10892,10 @@ class CreatePublishGroupTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -9757,6 +10940,10 @@ class CreatePublishGroupTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9793,6 +10980,10 @@ class GetDatabaseRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -9832,6 +11023,10 @@ class GetDatabaseResponseBodyDatabaseOwnerIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_ids is not None:
             result['OwnerIds'] = self.owner_ids
@@ -9855,6 +11050,10 @@ class GetDatabaseResponseBodyDatabaseOwnerNameList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_names is not None:
             result['OwnerNames'] = self.owner_names
@@ -9911,6 +11110,10 @@ class GetDatabaseResponseBodyDatabase(TeaModel):
             self.owner_name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.database_id is not None:
             result['DatabaseId'] = self.database_id
@@ -10005,6 +11208,10 @@ class GetDatabaseResponseBody(TeaModel):
             self.database.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10050,6 +11257,10 @@ class GetDatabaseResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10080,6 +11291,10 @@ class GetOwnerApplyOrderDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
@@ -10117,6 +11332,10 @@ class GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResourcesResource
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.search_name is not None:
             result['SearchName'] = self.search_name
@@ -10165,6 +11384,10 @@ class GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResources(TeaMode
             self.resource_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.logic is not None:
             result['Logic'] = self.logic
@@ -10202,6 +11425,10 @@ class GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetail(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.apply_type is not None:
             result['ApplyType'] = self.apply_type
@@ -10244,6 +11471,10 @@ class GetOwnerApplyOrderDetailResponseBody(TeaModel):
             self.owner_apply_order_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10289,6 +11520,10 @@ class GetOwnerApplyOrderDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10327,6 +11562,10 @@ class GetOpLogRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -10382,6 +11621,10 @@ class GetOpLogResponseBodyOpLogDetailsOpLogDetail(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.module is not None:
             result['Module'] = self.module
@@ -10432,6 +11675,10 @@ class GetOpLogResponseBodyOpLogDetails(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['OpLogDetail'] = []
         if self.op_log_detail is not None:
@@ -10471,6 +11718,10 @@ class GetOpLogResponseBody(TeaModel):
             self.op_log_details.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -10520,6 +11771,10 @@ class GetOpLogResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10564,6 +11819,10 @@ class SearchTableRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -10619,6 +11878,10 @@ class SearchTableResponseBodySearchTableListSearchTableOwnerIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_ids is not None:
             result['OwnerIds'] = self.owner_ids
@@ -10642,6 +11905,10 @@ class SearchTableResponseBodySearchTableListSearchTableOwnerNameList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_names is not None:
             result['OwnerNames'] = self.owner_names
@@ -10696,6 +11963,10 @@ class SearchTableResponseBodySearchTableListSearchTable(TeaModel):
             self.owner_name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.database_id is not None:
             result['DatabaseId'] = self.database_id
@@ -10780,6 +12051,10 @@ class SearchTableResponseBodySearchTableList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SearchTable'] = []
         if self.search_table is not None:
@@ -10819,6 +12094,10 @@ class SearchTableResponseBody(TeaModel):
             self.search_table_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.search_table_list is not None:
             result['SearchTableList'] = self.search_table_list.to_map()
@@ -10868,6 +12147,10 @@ class SearchTableResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10902,6 +12185,10 @@ class ListDBTaskSQLJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dbtask_group_id is not None:
             result['DBTaskGroupId'] = self.dbtask_group_id
@@ -10957,6 +12244,10 @@ class ListDBTaskSQLJobResponseBodyDBTaskSQLJobList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job_id is not None:
             result['JobId'] = self.job_id
@@ -11034,6 +12325,10 @@ class ListDBTaskSQLJobResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11087,6 +12382,10 @@ class ListDBTaskSQLJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11117,6 +12416,10 @@ class DeleteUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -11150,6 +12453,10 @@ class DeleteUserResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11190,6 +12497,10 @@ class DeleteUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11224,6 +12535,10 @@ class GetDataCronClearTaskDetailListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
@@ -11265,6 +12580,10 @@ class GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dbtask_group_id is not None:
             result['DBTaskGroupId'] = self.dbtask_group_id
@@ -11314,6 +12633,10 @@ class GetDataCronClearTaskDetailListResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11367,6 +12690,10 @@ class GetDataCronClearTaskDetailListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11403,6 +12730,10 @@ class GetStructSyncJobAnalyzeResultRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
@@ -11444,6 +12775,10 @@ class GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResultSummary
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.compare_type is not None:
             result['CompareType'] = self.compare_type
@@ -11475,6 +12810,10 @@ class GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResultResultL
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_table_name is not None:
             result['SourceTableName'] = self.source_table_name
@@ -11515,6 +12854,10 @@ class GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResult(TeaMod
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SummaryList'] = []
         if self.summary_list is not None:
@@ -11562,6 +12905,10 @@ class GetStructSyncJobAnalyzeResultResponseBody(TeaModel):
             self.struct_sync_job_analyze_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11607,6 +12954,10 @@ class GetStructSyncJobAnalyzeResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11641,6 +12992,10 @@ class ApproveOrderRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -11682,6 +13037,10 @@ class ApproveOrderResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11722,6 +13081,10 @@ class ApproveOrderResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11752,6 +13115,10 @@ class GetDataCorrectTaskDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
@@ -11785,6 +13152,10 @@ class GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dbtask_group_id is not None:
             result['DBTaskGroupId'] = self.dbtask_group_id
@@ -11830,6 +13201,10 @@ class GetDataCorrectTaskDetailResponseBody(TeaModel):
             self.data_correct_task_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11875,6 +13250,10 @@ class GetDataCorrectTaskDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11897,13 +13276,11 @@ class CreateUploadFileJobRequest(TeaModel):
         self,
         file_source: str = None,
         file_name: str = None,
-        upload_type: str = None,
         upload_url: str = None,
         tid: int = None,
     ):
         self.file_source = file_source
         self.file_name = file_name
-        self.upload_type = upload_type
         self.upload_url = upload_url
         self.tid = tid
 
@@ -11911,13 +13288,15 @@ class CreateUploadFileJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_source is not None:
             result['FileSource'] = self.file_source
         if self.file_name is not None:
             result['FileName'] = self.file_name
-        if self.upload_type is not None:
-            result['UploadType'] = self.upload_type
         if self.upload_url is not None:
             result['UploadURL'] = self.upload_url
         if self.tid is not None:
@@ -11930,8 +13309,6 @@ class CreateUploadFileJobRequest(TeaModel):
             self.file_source = m.get('FileSource')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
-        if m.get('UploadType') is not None:
-            self.upload_type = m.get('UploadType')
         if m.get('UploadURL') is not None:
             self.upload_url = m.get('UploadURL')
         if m.get('Tid') is not None:
@@ -11959,6 +13336,10 @@ class CreateUploadFileJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12003,6 +13384,10 @@ class CreateUploadFileJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12035,6 +13420,10 @@ class ListLogicDatabasesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -12066,6 +13455,10 @@ class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseOwnerIdList(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_ids is not None:
             result['OwnerIds'] = self.owner_ids
@@ -12089,6 +13482,10 @@ class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseOwnerNameList(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_names is not None:
             result['OwnerNames'] = self.owner_names
@@ -12129,6 +13526,10 @@ class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase(TeaModel):
             self.owner_name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.database_id is not None:
             result['DatabaseId'] = self.database_id
@@ -12185,6 +13586,10 @@ class ListLogicDatabasesResponseBodyLogicDatabaseList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['LogicDatabase'] = []
         if self.logic_database is not None:
@@ -12224,6 +13629,10 @@ class ListLogicDatabasesResponseBody(TeaModel):
             self.logic_database_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -12273,6 +13682,10 @@ class ListLogicDatabasesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12303,6 +13716,10 @@ class CreateDataImportOrderRequestParamDbItemList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -12357,6 +13774,10 @@ class CreateDataImportOrderRequestParam(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.classify is not None:
             result['Classify'] = self.classify
@@ -12442,6 +13863,10 @@ class CreateDataImportOrderRequest(TeaModel):
             self.param.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -12490,6 +13915,10 @@ class CreateDataImportOrderShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -12538,6 +13967,10 @@ class CreateDataImportOrderResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12582,6 +14015,10 @@ class CreateDataImportOrderResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12614,6 +14051,10 @@ class CloseOrderRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -12651,6 +14092,10 @@ class CloseOrderResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12691,6 +14136,10 @@ class CloseOrderResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12723,6 +14172,10 @@ class SyncInstanceMetaRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -12760,6 +14213,10 @@ class SyncInstanceMetaResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12800,6 +14257,10 @@ class SyncInstanceMetaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12846,6 +14307,10 @@ class ListOrdersRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -12921,6 +14386,10 @@ class ListOrdersResponseBodyOrdersOrder(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -12979,6 +14448,10 @@ class ListOrdersResponseBodyOrders(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Order'] = []
         if self.order is not None:
@@ -13018,6 +14491,10 @@ class ListOrdersResponseBody(TeaModel):
             self.orders.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.orders is not None:
             result['Orders'] = self.orders.to_map()
@@ -13067,6 +14544,10 @@ class ListOrdersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13097,6 +14578,10 @@ class GetOrderBaseInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -13124,6 +14609,10 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfoRelatedUserNickList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.user_nicks is not None:
             result['UserNicks'] = self.user_nicks
@@ -13147,6 +14636,10 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfoRelatedUserList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.user_ids is not None:
             result['UserIds'] = self.user_ids
@@ -13197,6 +14690,10 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfo(TeaModel):
             self.related_user_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.related_user_nick_list is not None:
             result['RelatedUserNickList'] = self.related_user_nick_list.to_map()
@@ -13279,6 +14776,10 @@ class GetOrderBaseInfoResponseBody(TeaModel):
             self.order_base_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_base_info is not None:
             result['OrderBaseInfo'] = self.order_base_info.to_map()
@@ -13324,6 +14825,10 @@ class GetOrderBaseInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13352,6 +14857,10 @@ class ListUserTenantsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -13379,6 +14888,10 @@ class ListUserTenantsResponseBodyTenantList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -13421,6 +14934,10 @@ class ListUserTenantsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13470,6 +14987,10 @@ class ListUserTenantsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13504,6 +15025,10 @@ class SetOwnersRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -13545,6 +15070,10 @@ class SetOwnersResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13585,6 +15114,10 @@ class SetOwnersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13615,6 +15148,10 @@ class CreateDataCorrectOrderRequestParamDbItemList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -13661,6 +15198,10 @@ class CreateDataCorrectOrderRequestParam(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.classify is not None:
             result['Classify'] = self.classify
@@ -13730,6 +15271,10 @@ class CreateDataCorrectOrderRequest(TeaModel):
             self.param.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -13778,6 +15323,10 @@ class CreateDataCorrectOrderShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -13826,6 +15375,10 @@ class CreateDataCorrectOrderResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13870,6 +15423,10 @@ class CreateDataCorrectOrderResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13900,6 +15457,10 @@ class GetLogicDatabaseRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -13927,6 +15488,10 @@ class GetLogicDatabaseResponseBodyLogicDatabaseOwnerIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_ids is not None:
             result['OwnerIds'] = self.owner_ids
@@ -13950,6 +15515,10 @@ class GetLogicDatabaseResponseBodyLogicDatabaseOwnerNameList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_names is not None:
             result['OwnerNames'] = self.owner_names
@@ -13990,6 +15559,10 @@ class GetLogicDatabaseResponseBodyLogicDatabase(TeaModel):
             self.owner_name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.database_id is not None:
             result['DatabaseId'] = self.database_id
@@ -14052,6 +15625,10 @@ class GetLogicDatabaseResponseBody(TeaModel):
             self.logic_database.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.logic_database is not None:
             result['LogicDatabase'] = self.logic_database.to_map()
@@ -14097,6 +15674,10 @@ class GetLogicDatabaseResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14119,25 +15700,25 @@ class GetDataCorrectBackupFilesRequest(TeaModel):
         self,
         tid: int = None,
         order_id: int = None,
-        action_name: str = None,
         action_detail: Dict[str, Any] = None,
     ):
         self.tid = tid
         self.order_id = order_id
-        self.action_name = action_name
         self.action_detail = action_detail
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.order_id is not None:
             result['OrderId'] = self.order_id
-        if self.action_name is not None:
-            result['ActionName'] = self.action_name
         if self.action_detail is not None:
             result['ActionDetail'] = self.action_detail
         return result
@@ -14148,8 +15729,6 @@ class GetDataCorrectBackupFilesRequest(TeaModel):
             self.tid = m.get('Tid')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
-        if m.get('ActionName') is not None:
-            self.action_name = m.get('ActionName')
         if m.get('ActionDetail') is not None:
             self.action_detail = m.get('ActionDetail')
         return self
@@ -14160,25 +15739,25 @@ class GetDataCorrectBackupFilesShrinkRequest(TeaModel):
         self,
         tid: int = None,
         order_id: int = None,
-        action_name: str = None,
         action_detail_shrink: str = None,
     ):
         self.tid = tid
         self.order_id = order_id
-        self.action_name = action_name
         self.action_detail_shrink = action_detail_shrink
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.order_id is not None:
             result['OrderId'] = self.order_id
-        if self.action_name is not None:
-            result['ActionName'] = self.action_name
         if self.action_detail_shrink is not None:
             result['ActionDetail'] = self.action_detail_shrink
         return result
@@ -14189,8 +15768,6 @@ class GetDataCorrectBackupFilesShrinkRequest(TeaModel):
             self.tid = m.get('Tid')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
-        if m.get('ActionName') is not None:
-            self.action_name = m.get('ActionName')
         if m.get('ActionDetail') is not None:
             self.action_detail_shrink = m.get('ActionDetail')
         return self
@@ -14207,6 +15784,10 @@ class GetDataCorrectBackupFilesResponseBodyDataCorrectBackupFiles(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_url is not None:
             result['FileUrl'] = self.file_url
@@ -14239,6 +15820,10 @@ class GetDataCorrectBackupFilesResponseBody(TeaModel):
             self.data_correct_backup_files.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14284,6 +15869,10 @@ class GetDataCorrectBackupFilesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14354,6 +15943,10 @@ class RegisterInstanceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -14467,6 +16060,10 @@ class RegisterInstanceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14507,6 +16104,10 @@ class RegisterInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14541,6 +16142,10 @@ class CreateStructSyncOrderRequestParamSource(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -14582,6 +16187,10 @@ class CreateStructSyncOrderRequestParamTarget(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -14619,6 +16228,10 @@ class CreateStructSyncOrderRequestParamTableInfoList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_table_name is not None:
             result['SourceTableName'] = self.source_table_name
@@ -14659,6 +16272,10 @@ class CreateStructSyncOrderRequestParam(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source is not None:
             result['Source'] = self.source.to_map()
@@ -14710,6 +16327,10 @@ class CreateStructSyncOrderRequest(TeaModel):
             self.param.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -14758,6 +16379,10 @@ class CreateStructSyncOrderShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -14806,6 +16431,10 @@ class CreateStructSyncOrderResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14850,6 +16479,10 @@ class CreateStructSyncOrderResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14872,25 +16505,25 @@ class ExecuteDataExportRequest(TeaModel):
         self,
         tid: int = None,
         order_id: int = None,
-        action_name: str = None,
         action_detail: Dict[str, Any] = None,
     ):
         self.tid = tid
         self.order_id = order_id
-        self.action_name = action_name
         self.action_detail = action_detail
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.order_id is not None:
             result['OrderId'] = self.order_id
-        if self.action_name is not None:
-            result['ActionName'] = self.action_name
         if self.action_detail is not None:
             result['ActionDetail'] = self.action_detail
         return result
@@ -14901,8 +16534,6 @@ class ExecuteDataExportRequest(TeaModel):
             self.tid = m.get('Tid')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
-        if m.get('ActionName') is not None:
-            self.action_name = m.get('ActionName')
         if m.get('ActionDetail') is not None:
             self.action_detail = m.get('ActionDetail')
         return self
@@ -14913,25 +16544,25 @@ class ExecuteDataExportShrinkRequest(TeaModel):
         self,
         tid: int = None,
         order_id: int = None,
-        action_name: str = None,
         action_detail_shrink: str = None,
     ):
         self.tid = tid
         self.order_id = order_id
-        self.action_name = action_name
         self.action_detail_shrink = action_detail_shrink
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.order_id is not None:
             result['OrderId'] = self.order_id
-        if self.action_name is not None:
-            result['ActionName'] = self.action_name
         if self.action_detail_shrink is not None:
             result['ActionDetail'] = self.action_detail_shrink
         return result
@@ -14942,8 +16573,6 @@ class ExecuteDataExportShrinkRequest(TeaModel):
             self.tid = m.get('Tid')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
-        if m.get('ActionName') is not None:
-            self.action_name = m.get('ActionName')
         if m.get('ActionDetail') is not None:
             self.action_detail_shrink = m.get('ActionDetail')
         return self
@@ -14966,6 +16595,10 @@ class ExecuteDataExportResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15006,6 +16639,10 @@ class ExecuteDataExportResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15028,25 +16665,25 @@ class ExecuteDataCorrectRequest(TeaModel):
         self,
         tid: str = None,
         order_id: int = None,
-        action_name: str = None,
         action_detail: Dict[str, Any] = None,
     ):
         self.tid = tid
         self.order_id = order_id
-        self.action_name = action_name
         self.action_detail = action_detail
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.order_id is not None:
             result['OrderId'] = self.order_id
-        if self.action_name is not None:
-            result['ActionName'] = self.action_name
         if self.action_detail is not None:
             result['ActionDetail'] = self.action_detail
         return result
@@ -15057,8 +16694,6 @@ class ExecuteDataCorrectRequest(TeaModel):
             self.tid = m.get('Tid')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
-        if m.get('ActionName') is not None:
-            self.action_name = m.get('ActionName')
         if m.get('ActionDetail') is not None:
             self.action_detail = m.get('ActionDetail')
         return self
@@ -15069,25 +16704,25 @@ class ExecuteDataCorrectShrinkRequest(TeaModel):
         self,
         tid: str = None,
         order_id: int = None,
-        action_name: str = None,
         action_detail_shrink: str = None,
     ):
         self.tid = tid
         self.order_id = order_id
-        self.action_name = action_name
         self.action_detail_shrink = action_detail_shrink
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.order_id is not None:
             result['OrderId'] = self.order_id
-        if self.action_name is not None:
-            result['ActionName'] = self.action_name
         if self.action_detail_shrink is not None:
             result['ActionDetail'] = self.action_detail_shrink
         return result
@@ -15098,8 +16733,6 @@ class ExecuteDataCorrectShrinkRequest(TeaModel):
             self.tid = m.get('Tid')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
-        if m.get('ActionName') is not None:
-            self.action_name = m.get('ActionName')
         if m.get('ActionDetail') is not None:
             self.action_detail_shrink = m.get('ActionDetail')
         return self
@@ -15122,6 +16755,10 @@ class ExecuteDataCorrectResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15162,6 +16799,10 @@ class ExecuteDataCorrectResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15200,6 +16841,10 @@ class ListTablesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -15243,6 +16888,10 @@ class ListTablesResponseBodyTableListTableOwnerIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_ids is not None:
             result['OwnerIds'] = self.owner_ids
@@ -15266,6 +16915,10 @@ class ListTablesResponseBodyTableListTableOwnerNameList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_names is not None:
             result['OwnerNames'] = self.owner_names
@@ -15316,6 +16969,10 @@ class ListTablesResponseBodyTableListTable(TeaModel):
             self.owner_name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.database_id is not None:
             result['DatabaseId'] = self.database_id
@@ -15392,6 +17049,10 @@ class ListTablesResponseBodyTableList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Table'] = []
         if self.table is not None:
@@ -15431,6 +17092,10 @@ class ListTablesResponseBody(TeaModel):
             self.table_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -15480,6 +17145,10 @@ class ListTablesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15510,6 +17179,10 @@ class ListWorkFlowNodesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -15541,6 +17214,10 @@ class ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.real_name is not None:
             result['RealName'] = self.real_name
@@ -15575,6 +17252,10 @@ class ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AuditUser'] = []
         if self.audit_user is not None:
@@ -15616,6 +17297,10 @@ class ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode(TeaModel):
             self.audit_users.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -15667,6 +17352,10 @@ class ListWorkFlowNodesResponseBodyWorkflowNodes(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WorkflowNode'] = []
         if self.workflow_node is not None:
@@ -15704,6 +17393,10 @@ class ListWorkFlowNodesResponseBody(TeaModel):
             self.workflow_nodes.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15749,6 +17442,10 @@ class ListWorkFlowNodesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15779,6 +17476,10 @@ class GetStructSyncOrderDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
@@ -15814,6 +17515,10 @@ class GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInf
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -15861,6 +17566,10 @@ class GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInf
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -15900,6 +17609,10 @@ class GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.version_id is not None:
             result['VersionId'] = self.version_id
@@ -15923,6 +17636,10 @@ class GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.version_id is not None:
             result['VersionId'] = self.version_id
@@ -15948,6 +17665,10 @@ class GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_table_name is not None:
             result['SourceTableName'] = self.source_table_name
@@ -16000,6 +17721,10 @@ class GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_database_info is not None:
             result['SourceDatabaseInfo'] = self.source_database_info.to_map()
@@ -16070,6 +17795,10 @@ class GetStructSyncOrderDetailResponseBody(TeaModel):
             self.struct_sync_order_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16115,6 +17844,10 @@ class GetStructSyncOrderDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16149,6 +17882,10 @@ class ListSensitiveColumnsDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -16202,6 +17939,10 @@ class ListSensitiveColumnsDetailResponseBodySensitiveColumnsDetailListSensitiveC
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -16264,6 +18005,10 @@ class ListSensitiveColumnsDetailResponseBodySensitiveColumnsDetailList(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SensitiveColumnsDetail'] = []
         if self.sensitive_columns_detail is not None:
@@ -16301,6 +18046,10 @@ class ListSensitiveColumnsDetailResponseBody(TeaModel):
             self.sensitive_columns_detail_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16346,6 +18095,10 @@ class ListSensitiveColumnsDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16386,6 +18139,10 @@ class UpdateUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -16439,6 +18196,10 @@ class UpdateUserResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16479,6 +18240,10 @@ class UpdateUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16513,6 +18278,10 @@ class GetStructSyncExecSqlDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
@@ -16550,6 +18319,10 @@ class GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_sql_count is not None:
             result['TotalSqlCount'] = self.total_sql_count
@@ -16587,6 +18360,10 @@ class GetStructSyncExecSqlDetailResponseBody(TeaModel):
             self.struct_sync_exec_sql_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16632,6 +18409,10 @@ class GetStructSyncExecSqlDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16666,6 +18447,10 @@ class DeleteInstanceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -16707,6 +18492,10 @@ class DeleteInstanceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16747,6 +18536,10 @@ class DeleteInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16777,6 +18570,10 @@ class GetTableDBTopologyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -16808,6 +18605,10 @@ class GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableLis
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table_name is not None:
             result['TableName'] = self.table_name
@@ -16850,6 +18651,10 @@ class GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList(TeaMode
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
@@ -16905,6 +18710,10 @@ class GetTableDBTopologyResponseBodyDBTopologyDataSourceList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sid is not None:
             result['Sid'] = self.sid
@@ -16956,6 +18765,10 @@ class GetTableDBTopologyResponseBodyDBTopology(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table_name is not None:
             result['TableName'] = self.table_name
@@ -17001,6 +18814,10 @@ class GetTableDBTopologyResponseBody(TeaModel):
             self.dbtopology.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -17046,6 +18863,10 @@ class GetTableDBTopologyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

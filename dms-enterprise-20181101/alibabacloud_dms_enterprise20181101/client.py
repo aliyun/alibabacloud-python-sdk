@@ -50,7 +50,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse(),
             self.do_rpcrequest('SubmitStructSyncOrderApproval', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -63,7 +64,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse(),
             await self.do_rpcrequest_async('SubmitStructSyncOrderApproval', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -90,7 +92,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse(),
             self.do_rpcrequest('ListDatabaseUserPermssions', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -103,7 +106,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse(),
             await self.do_rpcrequest_async('ListDatabaseUserPermssions', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -130,7 +134,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListSensitiveColumnsResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListSensitiveColumnsResponse(),
             self.do_rpcrequest('ListSensitiveColumns', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -143,7 +148,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListSensitiveColumnsResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListSensitiveColumnsResponse(),
             await self.do_rpcrequest_async('ListSensitiveColumns', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -170,7 +176,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListUsersResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListUsersResponse(),
             self.do_rpcrequest('ListUsers', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -183,7 +190,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListUsersResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListUsersResponse(),
             await self.do_rpcrequest_async('ListUsers', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -210,7 +218,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SubmitOrderApprovalResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SubmitOrderApprovalResponse(),
             self.do_rpcrequest('SubmitOrderApproval', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -223,7 +232,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SubmitOrderApprovalResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SubmitOrderApprovalResponse(),
             await self.do_rpcrequest_async('SubmitOrderApproval', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -250,7 +260,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GrantUserPermissionResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GrantUserPermissionResponse(),
             self.do_rpcrequest('GrantUserPermission', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -263,7 +274,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GrantUserPermissionResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GrantUserPermissionResponse(),
             await self.do_rpcrequest_async('GrantUserPermission', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -290,7 +302,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse(),
             self.do_rpcrequest('GetMetaTableDetailInfo', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -303,7 +316,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse(),
             await self.do_rpcrequest_async('GetMetaTableDetailInfo', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -330,7 +344,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse(),
             self.do_rpcrequest('GetDataCorrectSQLFile', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -343,7 +358,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse(),
             await self.do_rpcrequest_async('GetDataCorrectSQLFile', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -376,7 +392,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse(),
             self.do_rpcrequest('CreateFreeLockCorrectOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -395,7 +412,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse(),
             await self.do_rpcrequest_async('CreateFreeLockCorrectOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -426,7 +444,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateOrderResponse(),
             self.do_rpcrequest('CreateOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -443,7 +462,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateOrderResponse(),
             await self.do_rpcrequest_async('CreateOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -470,7 +490,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListDatabasesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDatabasesResponse(),
             self.do_rpcrequest('ListDatabases', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -483,7 +504,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListDatabasesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDatabasesResponse(),
             await self.do_rpcrequest_async('ListDatabases', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -510,7 +532,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListUserPermissionsResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListUserPermissionsResponse(),
             self.do_rpcrequest('ListUserPermissions', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -523,7 +546,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListUserPermissionsResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListUserPermissionsResponse(),
             await self.do_rpcrequest_async('ListUserPermissions', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -550,7 +574,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse(),
             self.do_rpcrequest('ListWorkFlowTemplates', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -563,7 +588,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse(),
             await self.do_rpcrequest_async('ListWorkFlowTemplates', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -590,7 +616,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataExportOrderDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataExportOrderDetailResponse(),
             self.do_rpcrequest('GetDataExportOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -603,7 +630,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataExportOrderDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataExportOrderDetailResponse(),
             await self.do_rpcrequest_async('GetDataExportOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -630,7 +658,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListInstancesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListInstancesResponse(),
             self.do_rpcrequest('ListInstances', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -643,7 +672,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListInstancesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListInstancesResponse(),
             await self.do_rpcrequest_async('ListInstances', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -670,7 +700,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetUserUploadFileJobResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetUserUploadFileJobResponse(),
             self.do_rpcrequest('GetUserUploadFileJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -683,7 +714,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetUserUploadFileJobResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetUserUploadFileJobResponse(),
             await self.do_rpcrequest_async('GetUserUploadFileJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -701,6 +733,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_user_upload_file_job_with_options_async(request, runtime)
 
+    def list_ddlpublish_records_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListDDLPublishRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDDLPublishRecordsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDDLPublishRecordsResponse(),
+            self.do_rpcrequest('ListDDLPublishRecords', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_ddlpublish_records_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDDLPublishRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDDLPublishRecordsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDDLPublishRecordsResponse(),
+            await self.do_rpcrequest_async('ListDDLPublishRecords', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_ddlpublish_records(
+        self,
+        request: dms_enterprise_20181101_models.ListDDLPublishRecordsRequest,
+    ) -> dms_enterprise_20181101_models.ListDDLPublishRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_ddlpublish_records_with_options(request, runtime)
+
+    async def list_ddlpublish_records_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDDLPublishRecordsRequest,
+    ) -> dms_enterprise_20181101_models.ListDDLPublishRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_ddlpublish_records_with_options_async(request, runtime)
+
     def get_struct_sync_job_detail_with_options(
         self,
         request: dms_enterprise_20181101_models.GetStructSyncJobDetailRequest,
@@ -710,7 +784,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetStructSyncJobDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetStructSyncJobDetailResponse(),
             self.do_rpcrequest('GetStructSyncJobDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -723,7 +798,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetStructSyncJobDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetStructSyncJobDetailResponse(),
             await self.do_rpcrequest_async('GetStructSyncJobDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -754,7 +830,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateUploadOSSFileJobResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateUploadOSSFileJobResponse(),
             self.do_rpcrequest('CreateUploadOSSFileJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -771,7 +848,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateUploadOSSFileJobResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateUploadOSSFileJobResponse(),
             await self.do_rpcrequest_async('CreateUploadOSSFileJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -798,7 +876,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SearchDatabaseResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SearchDatabaseResponse(),
             self.do_rpcrequest('SearchDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -811,7 +890,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SearchDatabaseResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SearchDatabaseResponse(),
             await self.do_rpcrequest_async('SearchDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -838,7 +918,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SyncDatabaseMetaResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SyncDatabaseMetaResponse(),
             self.do_rpcrequest('SyncDatabaseMeta', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -851,7 +932,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SyncDatabaseMetaResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SyncDatabaseMetaResponse(),
             await self.do_rpcrequest_async('SyncDatabaseMeta', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -878,7 +960,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetUserResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetUserResponse(),
             self.do_rpcrequest('GetUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -891,7 +974,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetUserResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetUserResponse(),
             await self.do_rpcrequest_async('GetUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -918,7 +1002,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ExecuteStructSyncResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ExecuteStructSyncResponse(),
             self.do_rpcrequest('ExecuteStructSync', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -931,7 +1016,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ExecuteStructSyncResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ExecuteStructSyncResponse(),
             await self.do_rpcrequest_async('ExecuteStructSync', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -958,7 +1044,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse(),
             self.do_rpcrequest('GetDataCorrectOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -971,7 +1058,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse(),
             await self.do_rpcrequest_async('GetDataCorrectOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -998,7 +1086,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListColumnsResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListColumnsResponse(),
             self.do_rpcrequest('ListColumns', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1011,7 +1100,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListColumnsResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListColumnsResponse(),
             await self.do_rpcrequest_async('ListColumns', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1038,7 +1128,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.RevokeUserPermissionResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RevokeUserPermissionResponse(),
             self.do_rpcrequest('RevokeUserPermission', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1051,7 +1142,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.RevokeUserPermissionResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RevokeUserPermissionResponse(),
             await self.do_rpcrequest_async('RevokeUserPermission', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1078,7 +1170,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetMetaTableColumnResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetMetaTableColumnResponse(),
             self.do_rpcrequest('GetMetaTableColumn', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1091,7 +1184,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetMetaTableColumnResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetMetaTableColumnResponse(),
             await self.do_rpcrequest_async('GetMetaTableColumn', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1118,7 +1212,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.EnableUserResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.EnableUserResponse(),
             self.do_rpcrequest('EnableUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1131,7 +1226,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.EnableUserResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.EnableUserResponse(),
             await self.do_rpcrequest_async('EnableUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1158,7 +1254,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.UpdateInstanceResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateInstanceResponse(),
             self.do_rpcrequest('UpdateInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1171,7 +1268,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.UpdateInstanceResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateInstanceResponse(),
             await self.do_rpcrequest_async('UpdateInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1198,7 +1296,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ExecuteScriptResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ExecuteScriptResponse(),
             self.do_rpcrequest('ExecuteScript', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1211,7 +1310,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ExecuteScriptResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ExecuteScriptResponse(),
             await self.do_rpcrequest_async('ExecuteScript', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1238,7 +1338,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse(),
             self.do_rpcrequest('ListDBTaskSQLJobDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1251,7 +1352,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse(),
             await self.do_rpcrequest_async('ListDBTaskSQLJobDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1278,7 +1380,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.DisableUserResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DisableUserResponse(),
             self.do_rpcrequest('DisableUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1291,7 +1394,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.DisableUserResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DisableUserResponse(),
             await self.do_rpcrequest_async('DisableUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1318,7 +1422,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetApprovalDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetApprovalDetailResponse(),
             self.do_rpcrequest('GetApprovalDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1331,7 +1436,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetApprovalDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetApprovalDetailResponse(),
             await self.do_rpcrequest_async('GetApprovalDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1358,7 +1464,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetUserActiveTenantResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetUserActiveTenantResponse(),
             self.do_rpcrequest('GetUserActiveTenant', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1371,7 +1478,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetUserActiveTenantResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetUserActiveTenantResponse(),
             await self.do_rpcrequest_async('GetUserActiveTenant', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1398,7 +1506,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.RegisterUserResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RegisterUserResponse(),
             self.do_rpcrequest('RegisterUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1411,7 +1520,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.RegisterUserResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RegisterUserResponse(),
             await self.do_rpcrequest_async('RegisterUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1438,7 +1548,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetInstanceResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetInstanceResponse(),
             self.do_rpcrequest('GetInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1451,7 +1562,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetInstanceResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetInstanceResponse(),
             await self.do_rpcrequest_async('GetInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1478,7 +1590,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse(),
             self.do_rpcrequest('GetPermApplyOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1491,7 +1604,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse(),
             await self.do_rpcrequest_async('GetPermApplyOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1518,7 +1632,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListIndexesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListIndexesResponse(),
             self.do_rpcrequest('ListIndexes', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1531,7 +1646,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListIndexesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListIndexesResponse(),
             await self.do_rpcrequest_async('ListIndexes', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1558,7 +1674,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListLogicTablesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListLogicTablesResponse(),
             self.do_rpcrequest('ListLogicTables', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1571,7 +1688,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListLogicTablesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListLogicTablesResponse(),
             await self.do_rpcrequest_async('ListLogicTables', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1598,7 +1716,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetTableTopologyResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetTableTopologyResponse(),
             self.do_rpcrequest('GetTableTopology', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1611,7 +1730,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetTableTopologyResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetTableTopologyResponse(),
             await self.do_rpcrequest_async('GetTableTopology', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1638,7 +1758,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataExportDownloadURLResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataExportDownloadURLResponse(),
             self.do_rpcrequest('GetDataExportDownloadURL', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1651,7 +1772,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataExportDownloadURLResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataExportDownloadURLResponse(),
             await self.do_rpcrequest_async('GetDataExportDownloadURL', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1684,7 +1806,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateDataCronClearOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataCronClearOrderResponse(),
             self.do_rpcrequest('CreateDataCronClearOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1703,7 +1826,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateDataCronClearOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataCronClearOrderResponse(),
             await self.do_rpcrequest_async('CreateDataCronClearOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1730,7 +1854,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreatePublishGroupTaskResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreatePublishGroupTaskResponse(),
             self.do_rpcrequest('CreatePublishGroupTask', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1743,7 +1868,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreatePublishGroupTaskResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreatePublishGroupTaskResponse(),
             await self.do_rpcrequest_async('CreatePublishGroupTask', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1770,7 +1896,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDatabaseResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDatabaseResponse(),
             self.do_rpcrequest('GetDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1783,7 +1910,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDatabaseResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDatabaseResponse(),
             await self.do_rpcrequest_async('GetDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1810,7 +1938,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse(),
             self.do_rpcrequest('GetOwnerApplyOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1823,7 +1952,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse(),
             await self.do_rpcrequest_async('GetOwnerApplyOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1850,7 +1980,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetOpLogResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetOpLogResponse(),
             self.do_rpcrequest('GetOpLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1863,7 +1994,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetOpLogResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetOpLogResponse(),
             await self.do_rpcrequest_async('GetOpLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1890,7 +2022,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SearchTableResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SearchTableResponse(),
             self.do_rpcrequest('SearchTable', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1903,7 +2036,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SearchTableResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SearchTableResponse(),
             await self.do_rpcrequest_async('SearchTable', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1930,7 +2064,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListDBTaskSQLJobResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDBTaskSQLJobResponse(),
             self.do_rpcrequest('ListDBTaskSQLJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1943,7 +2078,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListDBTaskSQLJobResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDBTaskSQLJobResponse(),
             await self.do_rpcrequest_async('ListDBTaskSQLJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1970,7 +2106,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.DeleteUserResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteUserResponse(),
             self.do_rpcrequest('DeleteUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1983,7 +2120,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.DeleteUserResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteUserResponse(),
             await self.do_rpcrequest_async('DeleteUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2010,7 +2148,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse(),
             self.do_rpcrequest('GetDataCronClearTaskDetailList', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2023,7 +2162,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse(),
             await self.do_rpcrequest_async('GetDataCronClearTaskDetailList', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2050,7 +2190,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse(),
             self.do_rpcrequest('GetStructSyncJobAnalyzeResult', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2063,7 +2204,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse(),
             await self.do_rpcrequest_async('GetStructSyncJobAnalyzeResult', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2090,7 +2232,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ApproveOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ApproveOrderResponse(),
             self.do_rpcrequest('ApproveOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2103,7 +2246,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ApproveOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ApproveOrderResponse(),
             await self.do_rpcrequest_async('ApproveOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2130,7 +2274,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse(),
             self.do_rpcrequest('GetDataCorrectTaskDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2143,7 +2288,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse(),
             await self.do_rpcrequest_async('GetDataCorrectTaskDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2170,7 +2316,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateUploadFileJobResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateUploadFileJobResponse(),
             self.do_rpcrequest('CreateUploadFileJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2183,7 +2330,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateUploadFileJobResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateUploadFileJobResponse(),
             await self.do_rpcrequest_async('CreateUploadFileJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2210,7 +2358,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListLogicDatabasesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListLogicDatabasesResponse(),
             self.do_rpcrequest('ListLogicDatabases', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2223,7 +2372,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListLogicDatabasesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListLogicDatabasesResponse(),
             await self.do_rpcrequest_async('ListLogicDatabases', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2256,7 +2406,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateDataImportOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataImportOrderResponse(),
             self.do_rpcrequest('CreateDataImportOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2275,7 +2426,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateDataImportOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataImportOrderResponse(),
             await self.do_rpcrequest_async('CreateDataImportOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2302,7 +2454,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CloseOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CloseOrderResponse(),
             self.do_rpcrequest('CloseOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2315,7 +2468,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CloseOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CloseOrderResponse(),
             await self.do_rpcrequest_async('CloseOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2342,7 +2496,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SyncInstanceMetaResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SyncInstanceMetaResponse(),
             self.do_rpcrequest('SyncInstanceMeta', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2355,7 +2510,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SyncInstanceMetaResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SyncInstanceMetaResponse(),
             await self.do_rpcrequest_async('SyncInstanceMeta', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2382,7 +2538,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListOrdersResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListOrdersResponse(),
             self.do_rpcrequest('ListOrders', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2395,7 +2552,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListOrdersResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListOrdersResponse(),
             await self.do_rpcrequest_async('ListOrders', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2422,7 +2580,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetOrderBaseInfoResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetOrderBaseInfoResponse(),
             self.do_rpcrequest('GetOrderBaseInfo', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2435,7 +2594,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetOrderBaseInfoResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetOrderBaseInfoResponse(),
             await self.do_rpcrequest_async('GetOrderBaseInfo', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2462,7 +2622,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListUserTenantsResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListUserTenantsResponse(),
             self.do_rpcrequest('ListUserTenants', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2475,7 +2636,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListUserTenantsResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListUserTenantsResponse(),
             await self.do_rpcrequest_async('ListUserTenants', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2502,7 +2664,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SetOwnersResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SetOwnersResponse(),
             self.do_rpcrequest('SetOwners', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2515,7 +2678,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.SetOwnersResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SetOwnersResponse(),
             await self.do_rpcrequest_async('SetOwners', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2548,7 +2712,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateDataCorrectOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataCorrectOrderResponse(),
             self.do_rpcrequest('CreateDataCorrectOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2567,7 +2732,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateDataCorrectOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataCorrectOrderResponse(),
             await self.do_rpcrequest_async('CreateDataCorrectOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2594,7 +2760,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetLogicDatabaseResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetLogicDatabaseResponse(),
             self.do_rpcrequest('GetLogicDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2607,7 +2774,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetLogicDatabaseResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetLogicDatabaseResponse(),
             await self.do_rpcrequest_async('GetLogicDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2638,7 +2806,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataCorrectBackupFilesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCorrectBackupFilesResponse(),
             self.do_rpcrequest('GetDataCorrectBackupFiles', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2655,7 +2824,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetDataCorrectBackupFilesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCorrectBackupFilesResponse(),
             await self.do_rpcrequest_async('GetDataCorrectBackupFiles', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2682,7 +2852,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.RegisterInstanceResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RegisterInstanceResponse(),
             self.do_rpcrequest('RegisterInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2695,7 +2866,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.RegisterInstanceResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RegisterInstanceResponse(),
             await self.do_rpcrequest_async('RegisterInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2728,7 +2900,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateStructSyncOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateStructSyncOrderResponse(),
             self.do_rpcrequest('CreateStructSyncOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2747,7 +2920,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.CreateStructSyncOrderResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateStructSyncOrderResponse(),
             await self.do_rpcrequest_async('CreateStructSyncOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2778,7 +2952,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ExecuteDataExportResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ExecuteDataExportResponse(),
             self.do_rpcrequest('ExecuteDataExport', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2795,7 +2970,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ExecuteDataExportResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ExecuteDataExportResponse(),
             await self.do_rpcrequest_async('ExecuteDataExport', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2826,7 +3002,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ExecuteDataCorrectResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ExecuteDataCorrectResponse(),
             self.do_rpcrequest('ExecuteDataCorrect', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2843,7 +3020,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ExecuteDataCorrectResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ExecuteDataCorrectResponse(),
             await self.do_rpcrequest_async('ExecuteDataCorrect', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2870,7 +3048,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListTablesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTablesResponse(),
             self.do_rpcrequest('ListTables', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2883,7 +3062,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListTablesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTablesResponse(),
             await self.do_rpcrequest_async('ListTables', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2910,7 +3090,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListWorkFlowNodesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListWorkFlowNodesResponse(),
             self.do_rpcrequest('ListWorkFlowNodes', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2923,7 +3104,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListWorkFlowNodesResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListWorkFlowNodesResponse(),
             await self.do_rpcrequest_async('ListWorkFlowNodes', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2950,7 +3132,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse(),
             self.do_rpcrequest('GetStructSyncOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2963,7 +3146,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse(),
             await self.do_rpcrequest_async('GetStructSyncOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2990,7 +3174,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse(),
             self.do_rpcrequest('ListSensitiveColumnsDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3003,7 +3188,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse(),
             await self.do_rpcrequest_async('ListSensitiveColumnsDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3030,7 +3216,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.UpdateUserResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateUserResponse(),
             self.do_rpcrequest('UpdateUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3043,7 +3230,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.UpdateUserResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateUserResponse(),
             await self.do_rpcrequest_async('UpdateUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3070,7 +3258,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse(),
             self.do_rpcrequest('GetStructSyncExecSqlDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3083,7 +3272,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse(),
             await self.do_rpcrequest_async('GetStructSyncExecSqlDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3110,7 +3300,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.DeleteInstanceResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteInstanceResponse(),
             self.do_rpcrequest('DeleteInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3123,7 +3314,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.DeleteInstanceResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteInstanceResponse(),
             await self.do_rpcrequest_async('DeleteInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3150,7 +3342,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetTableDBTopologyResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetTableDBTopologyResponse(),
             self.do_rpcrequest('GetTableDBTopology', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3163,7 +3356,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dms_enterprise_20181101_models.GetTableDBTopologyResponse().from_map(
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetTableDBTopologyResponse(),
             await self.do_rpcrequest_async('GetTableDBTopology', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
