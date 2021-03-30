@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -56,8 +57,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20200618_models.ContrastSmartVerifyResponse().from_map(
-            self.do_rpcrequest('ContrastSmartVerify', '2020-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ContrastSmartVerify',
+            version='2020-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20200618_models.ContrastSmartVerifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def contrast_smart_verify_with_options_async(
@@ -69,8 +82,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20200618_models.ContrastSmartVerifyResponse().from_map(
-            await self.do_rpcrequest_async('ContrastSmartVerify', '2020-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ContrastSmartVerify',
+            version='2020-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20200618_models.ContrastSmartVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def contrast_smart_verify(
@@ -220,8 +245,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20200618_models.DescribeSmartVerifyResponse().from_map(
-            self.do_rpcrequest('DescribeSmartVerify', '2020-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSmartVerify',
+            version='2020-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20200618_models.DescribeSmartVerifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_smart_verify_with_options_async(
@@ -233,8 +270,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20200618_models.DescribeSmartVerifyResponse().from_map(
-            await self.do_rpcrequest_async('DescribeSmartVerify', '2020-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSmartVerify',
+            version='2020-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20200618_models.DescribeSmartVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_smart_verify(
@@ -260,8 +309,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20200618_models.ElementSmartVerifyResponse().from_map(
-            self.do_rpcrequest('ElementSmartVerify', '2020-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ElementSmartVerify',
+            version='2020-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20200618_models.ElementSmartVerifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def element_smart_verify_with_options_async(
@@ -273,8 +334,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20200618_models.ElementSmartVerifyResponse().from_map(
-            await self.do_rpcrequest_async('ElementSmartVerify', '2020-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ElementSmartVerify',
+            version='2020-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20200618_models.ElementSmartVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def element_smart_verify(
@@ -424,8 +497,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20200618_models.InitSmartVerifyResponse().from_map(
-            self.do_rpcrequest('InitSmartVerify', '2020-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InitSmartVerify',
+            version='2020-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20200618_models.InitSmartVerifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def init_smart_verify_with_options_async(
@@ -437,8 +522,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20200618_models.InitSmartVerifyResponse().from_map(
-            await self.do_rpcrequest_async('InitSmartVerify', '2020-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InitSmartVerify',
+            version='2020-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20200618_models.InitSmartVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def init_smart_verify(

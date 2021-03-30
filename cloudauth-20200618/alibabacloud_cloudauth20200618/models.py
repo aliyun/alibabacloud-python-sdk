@@ -37,6 +37,10 @@ class ContrastSmartVerifyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
@@ -126,6 +130,10 @@ class ContrastSmartVerifyAdvanceRequest(TeaModel):
         self.validate_required(self.face_pic_file_object, 'face_pic_file_object')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.face_pic_file_object is not None:
             result['FacePicFileObject'] = self.face_pic_file_object
@@ -201,6 +209,10 @@ class ContrastSmartVerifyResponseBodyResultObject(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.verify_info is not None:
             result['VerifyInfo'] = self.verify_info
@@ -247,6 +259,10 @@ class ContrastSmartVerifyResponseBody(TeaModel):
             self.result_object.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result_object is not None:
             result['ResultObject'] = self.result_object.to_map()
@@ -288,6 +304,10 @@ class ContrastSmartVerifyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -310,19 +330,27 @@ class DescribeSmartVerifyRequest(TeaModel):
         self,
         scene_id: int = None,
         certify_id: str = None,
+        picture_return_type: str = None,
     ):
         self.scene_id = scene_id
         self.certify_id = certify_id
+        self.picture_return_type = picture_return_type
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
         if self.certify_id is not None:
             result['CertifyId'] = self.certify_id
+        if self.picture_return_type is not None:
+            result['PictureReturnType'] = self.picture_return_type
         return result
 
     def from_map(self, m: dict = None):
@@ -331,6 +359,8 @@ class DescribeSmartVerifyRequest(TeaModel):
             self.scene_id = m.get('SceneId')
         if m.get('CertifyId') is not None:
             self.certify_id = m.get('CertifyId')
+        if m.get('PictureReturnType') is not None:
+            self.picture_return_type = m.get('PictureReturnType')
         return self
 
 
@@ -351,6 +381,10 @@ class DescribeSmartVerifyResponseBodyResultObject(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.passed_score is not None:
             result['PassedScore'] = self.passed_score
@@ -393,6 +427,10 @@ class DescribeSmartVerifyResponseBody(TeaModel):
             self.result_object.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result_object is not None:
             result['ResultObject'] = self.result_object.to_map()
@@ -434,6 +472,10 @@ class DescribeSmartVerifyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -476,6 +518,10 @@ class ElementSmartVerifyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
@@ -541,6 +587,10 @@ class ElementSmartVerifyAdvanceRequest(TeaModel):
         self.validate_required(self.cert_file_object, 'cert_file_object')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cert_file_object is not None:
             result['CertFileObject'] = self.cert_file_object
@@ -596,6 +646,10 @@ class ElementSmartVerifyResponseBodyResultObject(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.material_info is not None:
             result['MaterialInfo'] = self.material_info
@@ -634,6 +688,10 @@ class ElementSmartVerifyResponseBody(TeaModel):
             self.result_object.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result_object is not None:
             result['ResultObject'] = self.result_object.to_map()
@@ -675,6 +733,10 @@ class ElementSmartVerifyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -737,6 +799,10 @@ class InitSmartVerifyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
@@ -828,6 +894,10 @@ class InitSmartVerifyResponseBodyResultObject(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.certify_id is not None:
             result['CertifyId'] = self.certify_id
@@ -858,6 +928,10 @@ class InitSmartVerifyResponseBody(TeaModel):
             self.result_object.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result_object is not None:
             result['ResultObject'] = self.result_object.to_map()
@@ -899,6 +973,10 @@ class InitSmartVerifyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
