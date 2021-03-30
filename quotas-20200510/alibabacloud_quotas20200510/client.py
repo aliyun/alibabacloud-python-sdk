@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_quotas20200510 import models as quotas_20200510_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -48,8 +50,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.CreateQuotaAlarmResponse().from_map(
-            self.do_rpcrequest('CreateQuotaAlarm', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateQuotaAlarm',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.CreateQuotaAlarmResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_quota_alarm_with_options_async(
@@ -61,8 +75,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.CreateQuotaAlarmResponse().from_map(
-            await self.do_rpcrequest_async('CreateQuotaAlarm', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateQuotaAlarm',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.CreateQuotaAlarmResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_quota_alarm(
@@ -88,8 +114,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.CreateQuotaApplicationResponse().from_map(
-            self.do_rpcrequest('CreateQuotaApplication', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateQuotaApplication',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.CreateQuotaApplicationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_quota_application_with_options_async(
@@ -101,8 +139,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.CreateQuotaApplicationResponse().from_map(
-            await self.do_rpcrequest_async('CreateQuotaApplication', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateQuotaApplication',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.CreateQuotaApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_quota_application(
@@ -128,8 +178,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.DeleteQuotaAlarmResponse().from_map(
-            self.do_rpcrequest('DeleteQuotaAlarm', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteQuotaAlarm',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.DeleteQuotaAlarmResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_quota_alarm_with_options_async(
@@ -141,8 +203,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.DeleteQuotaAlarmResponse().from_map(
-            await self.do_rpcrequest_async('DeleteQuotaAlarm', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteQuotaAlarm',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.DeleteQuotaAlarmResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_quota_alarm(
@@ -168,8 +242,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.GetProductQuotaResponse().from_map(
-            self.do_rpcrequest('GetProductQuota', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProductQuota',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.GetProductQuotaResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_product_quota_with_options_async(
@@ -181,8 +267,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.GetProductQuotaResponse().from_map(
-            await self.do_rpcrequest_async('GetProductQuota', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProductQuota',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.GetProductQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_product_quota(
@@ -208,8 +306,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.GetProductQuotaDimensionResponse().from_map(
-            self.do_rpcrequest('GetProductQuotaDimension', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProductQuotaDimension',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.GetProductQuotaDimensionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_product_quota_dimension_with_options_async(
@@ -221,8 +331,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.GetProductQuotaDimensionResponse().from_map(
-            await self.do_rpcrequest_async('GetProductQuotaDimension', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProductQuotaDimension',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.GetProductQuotaDimensionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_product_quota_dimension(
@@ -248,8 +370,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.GetQuotaAlarmResponse().from_map(
-            self.do_rpcrequest('GetQuotaAlarm', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetQuotaAlarm',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.GetQuotaAlarmResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_quota_alarm_with_options_async(
@@ -261,8 +395,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.GetQuotaAlarmResponse().from_map(
-            await self.do_rpcrequest_async('GetQuotaAlarm', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetQuotaAlarm',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.GetQuotaAlarmResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_quota_alarm(
@@ -288,8 +434,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.GetQuotaApplicationResponse().from_map(
-            self.do_rpcrequest('GetQuotaApplication', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetQuotaApplication',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.GetQuotaApplicationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_quota_application_with_options_async(
@@ -301,8 +459,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.GetQuotaApplicationResponse().from_map(
-            await self.do_rpcrequest_async('GetQuotaApplication', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetQuotaApplication',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.GetQuotaApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_quota_application(
@@ -328,8 +498,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListAlarmHistoriesResponse().from_map(
-            self.do_rpcrequest('ListAlarmHistories', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAlarmHistories',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListAlarmHistoriesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_alarm_histories_with_options_async(
@@ -341,8 +523,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListAlarmHistoriesResponse().from_map(
-            await self.do_rpcrequest_async('ListAlarmHistories', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAlarmHistories',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListAlarmHistoriesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_alarm_histories(
@@ -368,8 +562,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListDependentQuotasResponse().from_map(
-            self.do_rpcrequest('ListDependentQuotas', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDependentQuotas',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListDependentQuotasResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_dependent_quotas_with_options_async(
@@ -381,8 +587,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListDependentQuotasResponse().from_map(
-            await self.do_rpcrequest_async('ListDependentQuotas', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDependentQuotas',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListDependentQuotasResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dependent_quotas(
@@ -399,6 +617,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_dependent_quotas_with_options_async(request, runtime)
 
+    def list_product_dimension_groups_with_options(
+        self,
+        request: quotas_20200510_models.ListProductDimensionGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quotas_20200510_models.ListProductDimensionGroupsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProductDimensionGroups',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListProductDimensionGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_product_dimension_groups_with_options_async(
+        self,
+        request: quotas_20200510_models.ListProductDimensionGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quotas_20200510_models.ListProductDimensionGroupsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProductDimensionGroups',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListProductDimensionGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_product_dimension_groups(
+        self,
+        request: quotas_20200510_models.ListProductDimensionGroupsRequest,
+    ) -> quotas_20200510_models.ListProductDimensionGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_product_dimension_groups_with_options(request, runtime)
+
+    async def list_product_dimension_groups_async(
+        self,
+        request: quotas_20200510_models.ListProductDimensionGroupsRequest,
+    ) -> quotas_20200510_models.ListProductDimensionGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_product_dimension_groups_with_options_async(request, runtime)
+
     def list_product_quota_dimensions_with_options(
         self,
         request: quotas_20200510_models.ListProductQuotaDimensionsRequest,
@@ -408,8 +692,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListProductQuotaDimensionsResponse().from_map(
-            self.do_rpcrequest('ListProductQuotaDimensions', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProductQuotaDimensions',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListProductQuotaDimensionsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_product_quota_dimensions_with_options_async(
@@ -421,8 +717,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListProductQuotaDimensionsResponse().from_map(
-            await self.do_rpcrequest_async('ListProductQuotaDimensions', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProductQuotaDimensions',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListProductQuotaDimensionsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_product_quota_dimensions(
@@ -448,8 +756,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListProductQuotasResponse().from_map(
-            self.do_rpcrequest('ListProductQuotas', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProductQuotas',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListProductQuotasResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_product_quotas_with_options_async(
@@ -461,8 +781,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListProductQuotasResponse().from_map(
-            await self.do_rpcrequest_async('ListProductQuotas', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProductQuotas',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListProductQuotasResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_product_quotas(
@@ -488,8 +820,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListProductsResponse().from_map(
-            self.do_rpcrequest('ListProducts', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProducts',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListProductsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_products_with_options_async(
@@ -501,8 +845,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListProductsResponse().from_map(
-            await self.do_rpcrequest_async('ListProducts', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProducts',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListProductsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_products(
@@ -528,8 +884,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListQuotaAlarmsResponse().from_map(
-            self.do_rpcrequest('ListQuotaAlarms', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListQuotaAlarms',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListQuotaAlarmsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_quota_alarms_with_options_async(
@@ -541,8 +909,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListQuotaAlarmsResponse().from_map(
-            await self.do_rpcrequest_async('ListQuotaAlarms', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListQuotaAlarms',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListQuotaAlarmsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_quota_alarms(
@@ -568,8 +948,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListQuotaApplicationsResponse().from_map(
-            self.do_rpcrequest('ListQuotaApplications', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListQuotaApplications',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListQuotaApplicationsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_quota_applications_with_options_async(
@@ -581,8 +973,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.ListQuotaApplicationsResponse().from_map(
-            await self.do_rpcrequest_async('ListQuotaApplications', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListQuotaApplications',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.ListQuotaApplicationsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_quota_applications(
@@ -608,8 +1012,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.UpdateQuotaAlarmResponse().from_map(
-            self.do_rpcrequest('UpdateQuotaAlarm', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateQuotaAlarm',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.UpdateQuotaAlarmResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_quota_alarm_with_options_async(
@@ -621,8 +1037,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return quotas_20200510_models.UpdateQuotaAlarmResponse().from_map(
-            await self.do_rpcrequest_async('UpdateQuotaAlarm', '2020-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateQuotaAlarm',
+            version='2020-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quotas_20200510_models.UpdateQuotaAlarmResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_quota_alarm(

@@ -17,6 +17,10 @@ class CreateQuotaAlarmRequestQuotaDimensions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -59,6 +63,10 @@ class CreateQuotaAlarmRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
@@ -113,6 +121,10 @@ class CreateQuotaAlarmResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.alarm_id is not None:
             result['AlarmId'] = self.alarm_id
@@ -145,6 +157,10 @@ class CreateQuotaAlarmResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -175,6 +191,10 @@ class CreateQuotaApplicationRequestDimensions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -200,6 +220,8 @@ class CreateQuotaApplicationRequest(TeaModel):
         reason: str = None,
         notice_type: int = None,
         dimensions: List[CreateQuotaApplicationRequestDimensions] = None,
+        quota_category: str = None,
+        audit_mode: str = None,
     ):
         self.product_code = product_code
         self.quota_action_code = quota_action_code
@@ -207,6 +229,8 @@ class CreateQuotaApplicationRequest(TeaModel):
         self.reason = reason
         self.notice_type = notice_type
         self.dimensions = dimensions
+        self.quota_category = quota_category
+        self.audit_mode = audit_mode
 
     def validate(self):
         if self.dimensions:
@@ -215,6 +239,10 @@ class CreateQuotaApplicationRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
@@ -230,6 +258,10 @@ class CreateQuotaApplicationRequest(TeaModel):
         if self.dimensions is not None:
             for k in self.dimensions:
                 result['Dimensions'].append(k.to_map() if k else None)
+        if self.quota_category is not None:
+            result['QuotaCategory'] = self.quota_category
+        if self.audit_mode is not None:
+            result['AuditMode'] = self.audit_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -249,6 +281,10 @@ class CreateQuotaApplicationRequest(TeaModel):
             for k in m.get('Dimensions'):
                 temp_model = CreateQuotaApplicationRequestDimensions()
                 self.dimensions.append(temp_model.from_map(k))
+        if m.get('QuotaCategory') is not None:
+            self.quota_category = m.get('QuotaCategory')
+        if m.get('AuditMode') is not None:
+            self.audit_mode = m.get('AuditMode')
         return self
 
 
@@ -256,28 +292,128 @@ class CreateQuotaApplicationResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        status: str = None,
+        desire_value: int = None,
+        quota_action_code: str = None,
+        quota_name: str = None,
         application_id: str = None,
+        reason: str = None,
+        audit_reason: str = None,
+        quota_description: str = None,
+        product_code: str = None,
+        quota_arn: str = None,
+        apply_time: str = None,
+        approve_value: float = None,
+        dimension: Dict[str, Any] = None,
+        notice_type: int = None,
+        effective_time: str = None,
+        expire_time: str = None,
+        quota_unit: str = None,
     ):
         self.request_id = request_id
+        self.status = status
+        self.desire_value = desire_value
+        self.quota_action_code = quota_action_code
+        self.quota_name = quota_name
         self.application_id = application_id
+        self.reason = reason
+        self.audit_reason = audit_reason
+        self.quota_description = quota_description
+        self.product_code = product_code
+        self.quota_arn = quota_arn
+        self.apply_time = apply_time
+        self.approve_value = approve_value
+        self.dimension = dimension
+        self.notice_type = notice_type
+        self.effective_time = effective_time
+        self.expire_time = expire_time
+        self.quota_unit = quota_unit
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.desire_value is not None:
+            result['DesireValue'] = self.desire_value
+        if self.quota_action_code is not None:
+            result['QuotaActionCode'] = self.quota_action_code
+        if self.quota_name is not None:
+            result['QuotaName'] = self.quota_name
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.audit_reason is not None:
+            result['AuditReason'] = self.audit_reason
+        if self.quota_description is not None:
+            result['QuotaDescription'] = self.quota_description
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.quota_arn is not None:
+            result['QuotaArn'] = self.quota_arn
+        if self.apply_time is not None:
+            result['ApplyTime'] = self.apply_time
+        if self.approve_value is not None:
+            result['ApproveValue'] = self.approve_value
+        if self.dimension is not None:
+            result['Dimension'] = self.dimension
+        if self.notice_type is not None:
+            result['NoticeType'] = self.notice_type
+        if self.effective_time is not None:
+            result['EffectiveTime'] = self.effective_time
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.quota_unit is not None:
+            result['QuotaUnit'] = self.quota_unit
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('DesireValue') is not None:
+            self.desire_value = m.get('DesireValue')
+        if m.get('QuotaActionCode') is not None:
+            self.quota_action_code = m.get('QuotaActionCode')
+        if m.get('QuotaName') is not None:
+            self.quota_name = m.get('QuotaName')
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('AuditReason') is not None:
+            self.audit_reason = m.get('AuditReason')
+        if m.get('QuotaDescription') is not None:
+            self.quota_description = m.get('QuotaDescription')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('QuotaArn') is not None:
+            self.quota_arn = m.get('QuotaArn')
+        if m.get('ApplyTime') is not None:
+            self.apply_time = m.get('ApplyTime')
+        if m.get('ApproveValue') is not None:
+            self.approve_value = m.get('ApproveValue')
+        if m.get('Dimension') is not None:
+            self.dimension = m.get('Dimension')
+        if m.get('NoticeType') is not None:
+            self.notice_type = m.get('NoticeType')
+        if m.get('EffectiveTime') is not None:
+            self.effective_time = m.get('EffectiveTime')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('QuotaUnit') is not None:
+            self.quota_unit = m.get('QuotaUnit')
         return self
 
 
@@ -297,6 +433,10 @@ class CreateQuotaApplicationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -325,6 +465,10 @@ class DeleteQuotaAlarmRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.alarm_id is not None:
             result['AlarmId'] = self.alarm_id
@@ -348,6 +492,10 @@ class DeleteQuotaAlarmResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -376,6 +524,10 @@ class DeleteQuotaAlarmResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -406,6 +558,10 @@ class GetProductQuotaRequestDimensions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -440,6 +596,10 @@ class GetProductQuotaRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
@@ -478,6 +638,10 @@ class GetProductQuotaResponseBodyQuotaPeriod(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.period_value is not None:
             result['PeriodValue'] = self.period_value
@@ -511,6 +675,10 @@ class GetProductQuotaResponseBodyQuotaQuotaItems(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -583,6 +751,10 @@ class GetProductQuotaResponseBodyQuota(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota_unit is not None:
             result['QuotaUnit'] = self.quota_unit
@@ -679,6 +851,10 @@ class GetProductQuotaResponseBody(TeaModel):
             self.quota.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -712,6 +888,10 @@ class GetProductQuotaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -742,6 +922,10 @@ class GetProductQuotaDimensionRequestDependentDimensions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -776,6 +960,10 @@ class GetProductQuotaDimensionRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
@@ -801,23 +989,65 @@ class GetProductQuotaDimensionRequest(TeaModel):
         return self
 
 
+class GetProductQuotaDimensionResponseBodyQuotaDimensionDimensionValueDetail(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetProductQuotaDimensionResponseBodyQuotaDimension(TeaModel):
     def __init__(
         self,
         dimension_key: str = None,
         dependent_dimensions: List[str] = None,
         dimension_values: List[str] = None,
+        dimension_value_detail: List[GetProductQuotaDimensionResponseBodyQuotaDimensionDimensionValueDetail] = None,
         name: str = None,
     ):
         self.dimension_key = dimension_key
         self.dependent_dimensions = dependent_dimensions
         self.dimension_values = dimension_values
+        self.dimension_value_detail = dimension_value_detail
         self.name = name
 
     def validate(self):
-        pass
+        if self.dimension_value_detail:
+            for k in self.dimension_value_detail:
+                if k:
+                    k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dimension_key is not None:
             result['DimensionKey'] = self.dimension_key
@@ -825,6 +1055,10 @@ class GetProductQuotaDimensionResponseBodyQuotaDimension(TeaModel):
             result['DependentDimensions'] = self.dependent_dimensions
         if self.dimension_values is not None:
             result['DimensionValues'] = self.dimension_values
+        result['DimensionValueDetail'] = []
+        if self.dimension_value_detail is not None:
+            for k in self.dimension_value_detail:
+                result['DimensionValueDetail'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
         return result
@@ -837,6 +1071,11 @@ class GetProductQuotaDimensionResponseBodyQuotaDimension(TeaModel):
             self.dependent_dimensions = m.get('DependentDimensions')
         if m.get('DimensionValues') is not None:
             self.dimension_values = m.get('DimensionValues')
+        self.dimension_value_detail = []
+        if m.get('DimensionValueDetail') is not None:
+            for k in m.get('DimensionValueDetail'):
+                temp_model = GetProductQuotaDimensionResponseBodyQuotaDimensionDimensionValueDetail()
+                self.dimension_value_detail.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
         return self
@@ -856,6 +1095,10 @@ class GetProductQuotaDimensionResponseBody(TeaModel):
             self.quota_dimension.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -889,6 +1132,10 @@ class GetProductQuotaDimensionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -917,6 +1164,10 @@ class GetQuotaAlarmRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.alarm_id is not None:
             result['AlarmId'] = self.alarm_id
@@ -962,6 +1213,10 @@ class GetQuotaAlarmResponseBodyQuotaAlarm(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.threshold_percent is not None:
             result['ThresholdPercent'] = self.threshold_percent
@@ -1032,6 +1287,10 @@ class GetQuotaAlarmResponseBody(TeaModel):
             self.quota_alarm.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1065,6 +1324,10 @@ class GetQuotaAlarmResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1093,6 +1356,10 @@ class GetQuotaApplicationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
@@ -1119,6 +1386,12 @@ class GetQuotaApplicationResponseBodyQuotaApplication(TeaModel):
         product_code: str = None,
         quota_arn: str = None,
         apply_time: str = None,
+        approve_value: float = None,
+        dimension: Dict[str, Any] = None,
+        notice_type: int = None,
+        effective_time: str = None,
+        expire_time: str = None,
+        quota_unit: str = None,
     ):
         self.status = status
         self.desire_value = desire_value
@@ -1131,11 +1404,21 @@ class GetQuotaApplicationResponseBodyQuotaApplication(TeaModel):
         self.product_code = product_code
         self.quota_arn = quota_arn
         self.apply_time = apply_time
+        self.approve_value = approve_value
+        self.dimension = dimension
+        self.notice_type = notice_type
+        self.effective_time = effective_time
+        self.expire_time = expire_time
+        self.quota_unit = quota_unit
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -1159,6 +1442,18 @@ class GetQuotaApplicationResponseBodyQuotaApplication(TeaModel):
             result['QuotaArn'] = self.quota_arn
         if self.apply_time is not None:
             result['ApplyTime'] = self.apply_time
+        if self.approve_value is not None:
+            result['ApproveValue'] = self.approve_value
+        if self.dimension is not None:
+            result['Dimension'] = self.dimension
+        if self.notice_type is not None:
+            result['NoticeType'] = self.notice_type
+        if self.effective_time is not None:
+            result['EffectiveTime'] = self.effective_time
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.quota_unit is not None:
+            result['QuotaUnit'] = self.quota_unit
         return result
 
     def from_map(self, m: dict = None):
@@ -1185,6 +1480,18 @@ class GetQuotaApplicationResponseBodyQuotaApplication(TeaModel):
             self.quota_arn = m.get('QuotaArn')
         if m.get('ApplyTime') is not None:
             self.apply_time = m.get('ApplyTime')
+        if m.get('ApproveValue') is not None:
+            self.approve_value = m.get('ApproveValue')
+        if m.get('Dimension') is not None:
+            self.dimension = m.get('Dimension')
+        if m.get('NoticeType') is not None:
+            self.notice_type = m.get('NoticeType')
+        if m.get('EffectiveTime') is not None:
+            self.effective_time = m.get('EffectiveTime')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('QuotaUnit') is not None:
+            self.quota_unit = m.get('QuotaUnit')
         return self
 
 
@@ -1202,6 +1509,10 @@ class GetQuotaApplicationResponseBody(TeaModel):
             self.quota_application.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1235,6 +1546,10 @@ class GetQuotaApplicationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1273,6 +1588,10 @@ class ListAlarmHistoriesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -1332,6 +1651,10 @@ class ListAlarmHistoriesResponseBodyAlarmHistories(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota_usage is not None:
             result['QuotaUsage'] = self.quota_usage
@@ -1398,6 +1721,10 @@ class ListAlarmHistoriesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -1447,6 +1774,10 @@ class ListAlarmHistoriesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1477,6 +1808,10 @@ class ListDependentQuotasRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
@@ -1508,6 +1843,10 @@ class ListDependentQuotasResponseBodyQuotasDimensions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dimension_key is not None:
             result['DimensionKey'] = self.dimension_key
@@ -1548,6 +1887,10 @@ class ListDependentQuotasResponseBodyQuotas(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota_action_code is not None:
             result['QuotaActionCode'] = self.quota_action_code
@@ -1593,6 +1936,10 @@ class ListDependentQuotasResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1630,6 +1977,10 @@ class ListDependentQuotasResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1647,7 +1998,7 @@ class ListDependentQuotasResponse(TeaModel):
         return self
 
 
-class ListProductQuotaDimensionsRequest(TeaModel):
+class ListProductDimensionGroupsRequest(TeaModel):
     def __init__(
         self,
         next_token: str = None,
@@ -1662,6 +2013,10 @@ class ListProductQuotaDimensionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -1682,6 +2037,225 @@ class ListProductQuotaDimensionsRequest(TeaModel):
         return self
 
 
+class ListProductDimensionGroupsResponseBodyDimensionGroups(TeaModel):
+    def __init__(
+        self,
+        product_code: str = None,
+        group_code: str = None,
+        group_name: str = None,
+        dimension_keys: List[str] = None,
+    ):
+        self.product_code = product_code
+        self.group_code = group_code
+        self.group_name = group_name
+        self.dimension_keys = dimension_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.group_code is not None:
+            result['GroupCode'] = self.group_code
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.dimension_keys is not None:
+            result['DimensionKeys'] = self.dimension_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('GroupCode') is not None:
+            self.group_code = m.get('GroupCode')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('DimensionKeys') is not None:
+            self.dimension_keys = m.get('DimensionKeys')
+        return self
+
+
+class ListProductDimensionGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        dimension_groups: List[ListProductDimensionGroupsResponseBodyDimensionGroups] = None,
+        total_count: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        max_results: int = None,
+    ):
+        self.dimension_groups = dimension_groups
+        self.total_count = total_count
+        self.next_token = next_token
+        self.request_id = request_id
+        self.max_results = max_results
+
+    def validate(self):
+        if self.dimension_groups:
+            for k in self.dimension_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DimensionGroups'] = []
+        if self.dimension_groups is not None:
+            for k in self.dimension_groups:
+                result['DimensionGroups'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dimension_groups = []
+        if m.get('DimensionGroups') is not None:
+            for k in m.get('DimensionGroups'):
+                temp_model = ListProductDimensionGroupsResponseBodyDimensionGroups()
+                self.dimension_groups.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        return self
+
+
+class ListProductDimensionGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListProductDimensionGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListProductDimensionGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListProductQuotaDimensionsRequest(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        max_results: int = None,
+        product_code: str = None,
+        quota_category: str = None,
+    ):
+        self.next_token = next_token
+        self.max_results = max_results
+        self.product_code = product_code
+        self.quota_category = quota_category
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.quota_category is not None:
+            result['QuotaCategory'] = self.quota_category
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('QuotaCategory') is not None:
+            self.quota_category = m.get('QuotaCategory')
+        return self
+
+
+class ListProductQuotaDimensionsResponseBodyQuotaDimensionsDimensionValueDetail(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListProductQuotaDimensionsResponseBodyQuotaDimensions(TeaModel):
     def __init__(
         self,
@@ -1689,18 +2263,27 @@ class ListProductQuotaDimensionsResponseBodyQuotaDimensions(TeaModel):
         dimension_key: str = None,
         dependent_dimensions: List[str] = None,
         dimension_values: List[str] = None,
+        dimension_value_detail: List[ListProductQuotaDimensionsResponseBodyQuotaDimensionsDimensionValueDetail] = None,
         name: str = None,
     ):
         self.requisite = requisite
         self.dimension_key = dimension_key
         self.dependent_dimensions = dependent_dimensions
         self.dimension_values = dimension_values
+        self.dimension_value_detail = dimension_value_detail
         self.name = name
 
     def validate(self):
-        pass
+        if self.dimension_value_detail:
+            for k in self.dimension_value_detail:
+                if k:
+                    k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.requisite is not None:
             result['Requisite'] = self.requisite
@@ -1710,6 +2293,10 @@ class ListProductQuotaDimensionsResponseBodyQuotaDimensions(TeaModel):
             result['DependentDimensions'] = self.dependent_dimensions
         if self.dimension_values is not None:
             result['DimensionValues'] = self.dimension_values
+        result['DimensionValueDetail'] = []
+        if self.dimension_value_detail is not None:
+            for k in self.dimension_value_detail:
+                result['DimensionValueDetail'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
         return result
@@ -1724,6 +2311,11 @@ class ListProductQuotaDimensionsResponseBodyQuotaDimensions(TeaModel):
             self.dependent_dimensions = m.get('DependentDimensions')
         if m.get('DimensionValues') is not None:
             self.dimension_values = m.get('DimensionValues')
+        self.dimension_value_detail = []
+        if m.get('DimensionValueDetail') is not None:
+            for k in m.get('DimensionValueDetail'):
+                temp_model = ListProductQuotaDimensionsResponseBodyQuotaDimensionsDimensionValueDetail()
+                self.dimension_value_detail.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
         return self
@@ -1751,6 +2343,10 @@ class ListProductQuotaDimensionsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['QuotaDimensions'] = []
         if self.quota_dimensions is not None:
@@ -1800,6 +2396,10 @@ class ListProductQuotaDimensionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1830,6 +2430,10 @@ class ListProductQuotasRequestDimensions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -1857,6 +2461,8 @@ class ListProductQuotasRequest(TeaModel):
         sort_field: str = None,
         sort_order: str = None,
         dimensions: List[ListProductQuotasRequestDimensions] = None,
+        quota_category: str = None,
+        group_code: str = None,
     ):
         self.next_token = next_token
         self.max_results = max_results
@@ -1866,6 +2472,8 @@ class ListProductQuotasRequest(TeaModel):
         self.sort_field = sort_field
         self.sort_order = sort_order
         self.dimensions = dimensions
+        self.quota_category = quota_category
+        self.group_code = group_code
 
     def validate(self):
         if self.dimensions:
@@ -1874,6 +2482,10 @@ class ListProductQuotasRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -1893,6 +2505,10 @@ class ListProductQuotasRequest(TeaModel):
         if self.dimensions is not None:
             for k in self.dimensions:
                 result['Dimensions'].append(k.to_map() if k else None)
+        if self.quota_category is not None:
+            result['QuotaCategory'] = self.quota_category
+        if self.group_code is not None:
+            result['GroupCode'] = self.group_code
         return result
 
     def from_map(self, m: dict = None):
@@ -1916,6 +2532,10 @@ class ListProductQuotasRequest(TeaModel):
             for k in m.get('Dimensions'):
                 temp_model = ListProductQuotasRequestDimensions()
                 self.dimensions.append(temp_model.from_map(k))
+        if m.get('QuotaCategory') is not None:
+            self.quota_category = m.get('QuotaCategory')
+        if m.get('GroupCode') is not None:
+            self.group_code = m.get('GroupCode')
         return self
 
 
@@ -1932,6 +2552,10 @@ class ListProductQuotasResponseBodyQuotasPeriod(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.period_value is not None:
             result['PeriodValue'] = self.period_value
@@ -1965,6 +2589,10 @@ class ListProductQuotasResponseBodyQuotasQuotaItems(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -2037,6 +2665,10 @@ class ListProductQuotasResponseBodyQuotas(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota_unit is not None:
             result['QuotaUnit'] = self.quota_unit
@@ -2141,6 +2773,10 @@ class ListProductQuotasResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -2190,6 +2826,10 @@ class ListProductQuotasResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2220,6 +2860,10 @@ class ListProductsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -2246,6 +2890,8 @@ class ListProductsResponseBodyProductInfo(TeaModel):
         second_category_name_en: str = None,
         second_category_name: str = None,
         product_code: str = None,
+        flow_control_support: str = None,
+        common_quota_support: str = None,
     ):
         self.product_name = product_name
         self.second_category_id = second_category_id
@@ -2254,11 +2900,19 @@ class ListProductsResponseBodyProductInfo(TeaModel):
         self.second_category_name_en = second_category_name_en
         self.second_category_name = second_category_name
         self.product_code = product_code
+        # 是否支持流程
+        self.flow_control_support = flow_control_support
+        # 通用配额是否支持
+        self.common_quota_support = common_quota_support
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product_name is not None:
             result['ProductName'] = self.product_name
@@ -2274,6 +2928,10 @@ class ListProductsResponseBodyProductInfo(TeaModel):
             result['SecondCategoryName'] = self.second_category_name
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+        if self.flow_control_support is not None:
+            result['FlowControlSupport'] = self.flow_control_support
+        if self.common_quota_support is not None:
+            result['CommonQuotaSupport'] = self.common_quota_support
         return result
 
     def from_map(self, m: dict = None):
@@ -2292,6 +2950,10 @@ class ListProductsResponseBodyProductInfo(TeaModel):
             self.second_category_name = m.get('SecondCategoryName')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+        if m.get('FlowControlSupport') is not None:
+            self.flow_control_support = m.get('FlowControlSupport')
+        if m.get('CommonQuotaSupport') is not None:
+            self.common_quota_support = m.get('CommonQuotaSupport')
         return self
 
 
@@ -2317,6 +2979,10 @@ class ListProductsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ProductInfo'] = []
         if self.product_info is not None:
@@ -2366,6 +3032,10 @@ class ListProductsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2396,6 +3066,10 @@ class ListQuotaAlarmsRequestQuotaDimensions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -2436,6 +3110,10 @@ class ListQuotaAlarmsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -2510,6 +3188,10 @@ class ListQuotaAlarmsResponseBodyQuotaAlarms(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.threshold_percent is not None:
             result['ThresholdPercent'] = self.threshold_percent
@@ -2596,6 +3278,10 @@ class ListQuotaAlarmsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -2645,6 +3331,10 @@ class ListQuotaAlarmsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2675,6 +3365,10 @@ class ListQuotaApplicationsRequestDimensions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -2701,6 +3395,7 @@ class ListQuotaApplicationsRequest(TeaModel):
         status: str = None,
         key_word: str = None,
         dimensions: List[ListQuotaApplicationsRequestDimensions] = None,
+        quota_category: str = None,
     ):
         self.next_token = next_token
         self.max_results = max_results
@@ -2709,6 +3404,7 @@ class ListQuotaApplicationsRequest(TeaModel):
         self.status = status
         self.key_word = key_word
         self.dimensions = dimensions
+        self.quota_category = quota_category
 
     def validate(self):
         if self.dimensions:
@@ -2717,6 +3413,10 @@ class ListQuotaApplicationsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -2734,6 +3434,8 @@ class ListQuotaApplicationsRequest(TeaModel):
         if self.dimensions is not None:
             for k in self.dimensions:
                 result['Dimensions'].append(k.to_map() if k else None)
+        if self.quota_category is not None:
+            result['QuotaCategory'] = self.quota_category
         return result
 
     def from_map(self, m: dict = None):
@@ -2755,6 +3457,41 @@ class ListQuotaApplicationsRequest(TeaModel):
             for k in m.get('Dimensions'):
                 temp_model = ListQuotaApplicationsRequestDimensions()
                 self.dimensions.append(temp_model.from_map(k))
+        if m.get('QuotaCategory') is not None:
+            self.quota_category = m.get('QuotaCategory')
+        return self
+
+
+class ListQuotaApplicationsResponseBodyQuotaApplicationsPeriod(TeaModel):
+    def __init__(
+        self,
+        period_value: int = None,
+        period_unit: str = None,
+    ):
+        self.period_value = period_value
+        self.period_unit = period_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.period_value is not None:
+            result['PeriodValue'] = self.period_value
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PeriodValue') is not None:
+            self.period_value = m.get('PeriodValue')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
         return self
 
 
@@ -2779,6 +3516,7 @@ class ListQuotaApplicationsResponseBodyQuotaApplications(TeaModel):
         reason: str = None,
         apply_time: str = None,
         product_code: str = None,
+        period: ListQuotaApplicationsResponseBodyQuotaApplicationsPeriod = None,
     ):
         self.status = status
         self.comment = comment
@@ -2798,11 +3536,17 @@ class ListQuotaApplicationsResponseBodyQuotaApplications(TeaModel):
         self.reason = reason
         self.apply_time = apply_time
         self.product_code = product_code
+        self.period = period
 
     def validate(self):
-        pass
+        if self.period:
+            self.period.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -2840,6 +3584,8 @@ class ListQuotaApplicationsResponseBodyQuotaApplications(TeaModel):
             result['ApplyTime'] = self.apply_time
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+        if self.period is not None:
+            result['Period'] = self.period.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -2880,6 +3626,9 @@ class ListQuotaApplicationsResponseBodyQuotaApplications(TeaModel):
             self.apply_time = m.get('ApplyTime')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+        if m.get('Period') is not None:
+            temp_model = ListQuotaApplicationsResponseBodyQuotaApplicationsPeriod()
+            self.period = temp_model.from_map(m['Period'])
         return self
 
 
@@ -2905,6 +3654,10 @@ class ListQuotaApplicationsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -2954,6 +3707,10 @@ class ListQuotaApplicationsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2990,6 +3747,10 @@ class UpdateQuotaAlarmRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.alarm_id is not None:
             result['AlarmId'] = self.alarm_id
@@ -3029,6 +3790,10 @@ class UpdateQuotaAlarmResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3057,6 +3822,10 @@ class UpdateQuotaAlarmResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
