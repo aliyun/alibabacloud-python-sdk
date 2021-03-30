@@ -17,6 +17,10 @@ class AddCustomLineRequestIpSegment(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_ip is not None:
             result['EndIp'] = self.end_ip
@@ -37,13 +41,11 @@ class AddCustomLineRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
         line_name: str = None,
         ip_segment: List[AddCustomLineRequestIpSegment] = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
         self.line_name = line_name
         self.ip_segment = ip_segment
@@ -55,11 +57,13 @@ class AddCustomLineRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.line_name is not None:
@@ -74,8 +78,6 @@ class AddCustomLineRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('LineName') is not None:
@@ -103,6 +105,10 @@ class AddCustomLineResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.line_id is not None:
             result['LineId'] = self.line_id
@@ -139,6 +145,10 @@ class AddCustomLineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -169,6 +179,10 @@ class AddDnsCacheDomainRequestSourceDnsServer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.host is not None:
             result['Host'] = self.host
@@ -189,7 +203,6 @@ class AddDnsCacheDomainRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
         instance_id: str = None,
         cache_ttl_min: int = None,
@@ -200,7 +213,6 @@ class AddDnsCacheDomainRequest(TeaModel):
         source_dns_server: List[AddDnsCacheDomainRequestSourceDnsServer] = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
         self.instance_id = instance_id
         self.cache_ttl_min = cache_ttl_min
@@ -217,11 +229,13 @@ class AddDnsCacheDomainRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.instance_id is not None:
@@ -246,8 +260,6 @@ class AddDnsCacheDomainRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('InstanceId') is not None:
@@ -281,6 +293,10 @@ class AddDnsCacheDomainResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -309,6 +325,10 @@ class AddDnsCacheDomainResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -339,6 +359,10 @@ class AddDnsGtmAccessStrategyRequestDefaultAddrPool(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lba_weight is not None:
             result['LbaWeight'] = self.lba_weight
@@ -368,6 +392,10 @@ class AddDnsGtmAccessStrategyRequestFailoverAddrPool(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lba_weight is not None:
             result['LbaWeight'] = self.lba_weight
@@ -388,7 +416,6 @@ class AddDnsGtmAccessStrategyRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
         strategy_name: str = None,
         lines: str = None,
@@ -407,7 +434,6 @@ class AddDnsGtmAccessStrategyRequest(TeaModel):
         failover_addr_pool: List[AddDnsGtmAccessStrategyRequestFailoverAddrPool] = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
         self.strategy_name = strategy_name
         self.lines = lines
@@ -436,11 +462,13 @@ class AddDnsGtmAccessStrategyRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.strategy_name is not None:
@@ -483,8 +511,6 @@ class AddDnsGtmAccessStrategyRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('StrategyName') is not None:
@@ -539,6 +565,10 @@ class AddDnsGtmAccessStrategyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -571,6 +601,10 @@ class AddDnsGtmAccessStrategyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -607,6 +641,10 @@ class AddDnsGtmAddressPoolRequestAddr(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.attribute_info is not None:
             result['AttributeInfo'] = self.attribute_info
@@ -648,6 +686,10 @@ class AddDnsGtmAddressPoolRequestIspCityNode(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_code is not None:
             result['CityCode'] = self.city_code
@@ -667,7 +709,6 @@ class AddDnsGtmAddressPoolRequestIspCityNode(TeaModel):
 class AddDnsGtmAddressPoolRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         instance_id: str = None,
         name: str = None,
@@ -682,7 +723,6 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
         addr: List[AddDnsGtmAddressPoolRequestAddr] = None,
         isp_city_node: List[AddDnsGtmAddressPoolRequestIspCityNode] = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.instance_id = instance_id
         self.name = name
@@ -708,9 +748,11 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.instance_id is not None:
@@ -745,8 +787,6 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
@@ -797,6 +837,10 @@ class AddDnsGtmAddressPoolResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -833,6 +877,10 @@ class AddDnsGtmAddressPoolResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -863,6 +911,10 @@ class AddDnsGtmMonitorRequestIspCityNode(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_code is not None:
             result['CityCode'] = self.city_code
@@ -882,7 +934,6 @@ class AddDnsGtmMonitorRequestIspCityNode(TeaModel):
 class AddDnsGtmMonitorRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         addr_pool_id: str = None,
         protocol_type: str = None,
@@ -892,7 +943,6 @@ class AddDnsGtmMonitorRequest(TeaModel):
         monitor_extend_info: str = None,
         isp_city_node: List[AddDnsGtmMonitorRequestIspCityNode] = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.addr_pool_id = addr_pool_id
         self.protocol_type = protocol_type
@@ -909,9 +959,11 @@ class AddDnsGtmMonitorRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.addr_pool_id is not None:
@@ -934,8 +986,6 @@ class AddDnsGtmMonitorRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('AddrPoolId') is not None:
@@ -971,6 +1021,10 @@ class AddDnsGtmMonitorResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1003,6 +1057,10 @@ class AddDnsGtmMonitorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1027,18 +1085,20 @@ class AddDomainRequest(TeaModel):
         domain_name: str = None,
         group_id: str = None,
         resource_group_id: str = None,
-        user_client_ip: str = None,
     ):
         self.lang = lang
         self.domain_name = domain_name
         self.group_id = group_id
         self.resource_group_id = resource_group_id
-        self.user_client_ip = user_client_ip
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -1048,8 +1108,6 @@ class AddDomainRequest(TeaModel):
             result['GroupId'] = self.group_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -1062,8 +1120,6 @@ class AddDomainRequest(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         return self
 
 
@@ -1078,6 +1134,10 @@ class AddDomainResponseBodyDnsServers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dns_server is not None:
             result['DnsServer'] = self.dns_server
@@ -1114,6 +1174,10 @@ class AddDomainResponseBody(TeaModel):
             self.dns_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_name is not None:
             result['GroupName'] = self.group_name
@@ -1167,6 +1231,10 @@ class AddDomainResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1190,17 +1258,19 @@ class AddDomainBackupRequest(TeaModel):
         lang: str = None,
         domain_name: str = None,
         period_type: str = None,
-        user_client_ip: str = None,
     ):
         self.lang = lang
         self.domain_name = domain_name
         self.period_type = period_type
-        self.user_client_ip = user_client_ip
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -1208,8 +1278,6 @@ class AddDomainBackupRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.period_type is not None:
             result['PeriodType'] = self.period_type
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -1220,8 +1288,6 @@ class AddDomainBackupRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('PeriodType') is not None:
             self.period_type = m.get('PeriodType')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         return self
 
 
@@ -1240,6 +1306,10 @@ class AddDomainBackupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.period_type is not None:
             result['PeriodType'] = self.period_type
@@ -1276,6 +1346,10 @@ class AddDomainBackupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1297,22 +1371,22 @@ class AddDomainGroupRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         group_name: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.group_name = group_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         return result
@@ -1321,8 +1395,6 @@ class AddDomainGroupRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         return self
@@ -1343,6 +1415,10 @@ class AddDomainGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_name is not None:
             result['GroupName'] = self.group_name
@@ -1379,6 +1455,10 @@ class AddDomainGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1423,6 +1503,10 @@ class AddDomainRecordRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -1480,6 +1564,10 @@ class AddDomainRecordResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1512,6 +1600,10 @@ class AddDomainRecordResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1533,7 +1625,6 @@ class AddGtmAccessStrategyRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
         strategy_name: str = None,
         default_addr_pool_id: str = None,
@@ -1541,7 +1632,6 @@ class AddGtmAccessStrategyRequest(TeaModel):
         access_lines: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
         self.strategy_name = strategy_name
         self.default_addr_pool_id = default_addr_pool_id
@@ -1552,11 +1642,13 @@ class AddGtmAccessStrategyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.strategy_name is not None:
@@ -1573,8 +1665,6 @@ class AddGtmAccessStrategyRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('StrategyName') is not None:
@@ -1601,6 +1691,10 @@ class AddGtmAccessStrategyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1633,6 +1727,10 @@ class AddGtmAccessStrategyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1665,6 +1763,10 @@ class AddGtmAddressPoolRequestAddr(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -1698,6 +1800,10 @@ class AddGtmAddressPoolRequestIspCityNode(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_code is not None:
             result['CityCode'] = self.city_code
@@ -1717,7 +1823,6 @@ class AddGtmAddressPoolRequestIspCityNode(TeaModel):
 class AddGtmAddressPoolRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         instance_id: str = None,
         name: str = None,
@@ -1732,7 +1837,6 @@ class AddGtmAddressPoolRequest(TeaModel):
         addr: List[AddGtmAddressPoolRequestAddr] = None,
         isp_city_node: List[AddGtmAddressPoolRequestIspCityNode] = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.instance_id = instance_id
         self.name = name
@@ -1758,9 +1862,11 @@ class AddGtmAddressPoolRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.instance_id is not None:
@@ -1795,8 +1901,6 @@ class AddGtmAddressPoolRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
@@ -1847,6 +1951,10 @@ class AddGtmAddressPoolResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1883,6 +1991,10 @@ class AddGtmAddressPoolResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1913,6 +2025,10 @@ class AddGtmMonitorRequestIspCityNode(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_code is not None:
             result['CityCode'] = self.city_code
@@ -1932,7 +2048,6 @@ class AddGtmMonitorRequestIspCityNode(TeaModel):
 class AddGtmMonitorRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         addr_pool_id: str = None,
         protocol_type: str = None,
@@ -1942,7 +2057,6 @@ class AddGtmMonitorRequest(TeaModel):
         monitor_extend_info: str = None,
         isp_city_node: List[AddGtmMonitorRequestIspCityNode] = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.addr_pool_id = addr_pool_id
         self.protocol_type = protocol_type
@@ -1959,9 +2073,11 @@ class AddGtmMonitorRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.addr_pool_id is not None:
@@ -1984,8 +2100,6 @@ class AddGtmMonitorRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('AddrPoolId') is not None:
@@ -2021,6 +2135,10 @@ class AddGtmMonitorResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2053,6 +2171,10 @@ class AddGtmMonitorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2074,13 +2196,11 @@ class AddGtmRecoveryPlanRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         name: str = None,
         remark: str = None,
         fault_addr_pool: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.name = name
         self.remark = remark
         self.fault_addr_pool = fault_addr_pool
@@ -2089,11 +2209,13 @@ class AddGtmRecoveryPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.name is not None:
             result['Name'] = self.name
         if self.remark is not None:
@@ -2106,8 +2228,6 @@ class AddGtmRecoveryPlanRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Remark') is not None:
@@ -2130,6 +2250,10 @@ class AddGtmRecoveryPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.recovery_plan_id is not None:
             result['RecoveryPlanId'] = self.recovery_plan_id
@@ -2162,6 +2286,10 @@ class AddGtmRecoveryPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2183,12 +2311,10 @@ class BindInstanceDomainsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
         domain_names: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
         self.domain_names = domain_names
 
@@ -2196,11 +2322,13 @@ class BindInstanceDomainsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.domain_names is not None:
@@ -2211,8 +2339,6 @@ class BindInstanceDomainsRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('DomainNames') is not None:
@@ -2235,6 +2361,10 @@ class BindInstanceDomainsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2271,6 +2401,10 @@ class BindInstanceDomainsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2292,12 +2426,10 @@ class ChangeDomainGroupRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
         group_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
         self.group_id = group_id
 
@@ -2305,11 +2437,13 @@ class ChangeDomainGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.group_id is not None:
@@ -2320,8 +2454,6 @@ class ChangeDomainGroupRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('GroupId') is not None:
@@ -2344,6 +2476,10 @@ class ChangeDomainGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_name is not None:
             result['GroupName'] = self.group_name
@@ -2380,6 +2516,10 @@ class ChangeDomainGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2416,6 +2556,10 @@ class ChangeDomainOfDnsProductRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -2457,6 +2601,10 @@ class ChangeDomainOfDnsProductResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2489,6 +2637,10 @@ class ChangeDomainOfDnsProductResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2509,13 +2661,11 @@ class ChangeDomainOfDnsProductResponse(TeaModel):
 class CopyGtmConfigRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         source_id: str = None,
         target_id: str = None,
         copy_type: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.source_id = source_id
         self.target_id = target_id
@@ -2525,9 +2675,11 @@ class CopyGtmConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.source_id is not None:
@@ -2540,8 +2692,6 @@ class CopyGtmConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('SourceId') is not None:
@@ -2564,6 +2714,10 @@ class CopyGtmConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2592,6 +2746,10 @@ class CopyGtmConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2613,22 +2771,22 @@ class DeleteCustomLinesRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         line_ids: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.line_ids = line_ids
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.line_ids is not None:
             result['LineIds'] = self.line_ids
         return result
@@ -2637,8 +2795,6 @@ class DeleteCustomLinesRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('LineIds') is not None:
             self.line_ids = m.get('LineIds')
         return self
@@ -2655,6 +2811,10 @@ class DeleteCustomLinesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2683,6 +2843,10 @@ class DeleteCustomLinesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2704,22 +2868,22 @@ class DeleteDnsCacheDomainRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         return result
@@ -2728,8 +2892,6 @@ class DeleteDnsCacheDomainRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         return self
@@ -2746,6 +2908,10 @@ class DeleteDnsCacheDomainResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2774,6 +2940,10 @@ class DeleteDnsCacheDomainResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2795,22 +2965,22 @@ class DeleteDnsGtmAccessStrategyRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         strategy_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.strategy_id = strategy_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.strategy_id is not None:
             result['StrategyId'] = self.strategy_id
         return result
@@ -2819,8 +2989,6 @@ class DeleteDnsGtmAccessStrategyRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('StrategyId') is not None:
             self.strategy_id = m.get('StrategyId')
         return self
@@ -2837,6 +3005,10 @@ class DeleteDnsGtmAccessStrategyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2865,6 +3037,10 @@ class DeleteDnsGtmAccessStrategyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2885,11 +3061,9 @@ class DeleteDnsGtmAccessStrategyResponse(TeaModel):
 class DeleteDnsGtmAddressPoolRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         addr_pool_id: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.addr_pool_id = addr_pool_id
 
@@ -2897,9 +3071,11 @@ class DeleteDnsGtmAddressPoolRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.addr_pool_id is not None:
@@ -2908,8 +3084,6 @@ class DeleteDnsGtmAddressPoolRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('AddrPoolId') is not None:
@@ -2928,6 +3102,10 @@ class DeleteDnsGtmAddressPoolResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2956,6 +3134,10 @@ class DeleteDnsGtmAddressPoolResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2977,22 +3159,22 @@ class DeleteDomainRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         return result
@@ -3001,8 +3183,6 @@ class DeleteDomainRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         return self
@@ -3021,6 +3201,10 @@ class DeleteDomainResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3053,6 +3237,10 @@ class DeleteDomainResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3074,22 +3262,22 @@ class DeleteDomainGroupRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         group_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.group_id = group_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         return result
@@ -3098,8 +3286,6 @@ class DeleteDomainGroupRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         return self
@@ -3118,6 +3304,10 @@ class DeleteDomainGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_name is not None:
             result['GroupName'] = self.group_name
@@ -3150,6 +3340,10 @@ class DeleteDomainGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3182,6 +3376,10 @@ class DeleteDomainRecordRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -3215,6 +3413,10 @@ class DeleteDomainRecordResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3247,6 +3449,10 @@ class DeleteDomainRecordResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3268,22 +3474,22 @@ class DeleteGtmAccessStrategyRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         strategy_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.strategy_id = strategy_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.strategy_id is not None:
             result['StrategyId'] = self.strategy_id
         return result
@@ -3292,8 +3498,6 @@ class DeleteGtmAccessStrategyRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('StrategyId') is not None:
             self.strategy_id = m.get('StrategyId')
         return self
@@ -3310,6 +3514,10 @@ class DeleteGtmAccessStrategyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3338,6 +3546,10 @@ class DeleteGtmAccessStrategyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3358,11 +3570,9 @@ class DeleteGtmAccessStrategyResponse(TeaModel):
 class DeleteGtmAddressPoolRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         addr_pool_id: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.addr_pool_id = addr_pool_id
 
@@ -3370,9 +3580,11 @@ class DeleteGtmAddressPoolRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.addr_pool_id is not None:
@@ -3381,8 +3593,6 @@ class DeleteGtmAddressPoolRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('AddrPoolId') is not None:
@@ -3401,6 +3611,10 @@ class DeleteGtmAddressPoolResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3429,6 +3643,10 @@ class DeleteGtmAddressPoolResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3450,22 +3668,22 @@ class DeleteGtmRecoveryPlanRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         recovery_plan_id: int = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.recovery_plan_id = recovery_plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.recovery_plan_id is not None:
             result['RecoveryPlanId'] = self.recovery_plan_id
         return result
@@ -3474,8 +3692,6 @@ class DeleteGtmRecoveryPlanRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('RecoveryPlanId') is not None:
             self.recovery_plan_id = m.get('RecoveryPlanId')
         return self
@@ -3492,6 +3708,10 @@ class DeleteGtmRecoveryPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3520,6 +3740,10 @@ class DeleteGtmRecoveryPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3556,6 +3780,10 @@ class DeleteSubDomainRecordsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -3599,6 +3827,10 @@ class DeleteSubDomainRecordsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rr is not None:
             result['RR'] = self.rr
@@ -3635,6 +3867,10 @@ class DeleteSubDomainRecordsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3656,12 +3892,10 @@ class DescribeBatchResultCountRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         task_id: int = None,
         batch_type: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.task_id = task_id
         self.batch_type = batch_type
 
@@ -3669,11 +3903,13 @@ class DescribeBatchResultCountRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.batch_type is not None:
@@ -3684,8 +3920,6 @@ class DescribeBatchResultCountRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('BatchType') is not None:
@@ -3718,6 +3952,10 @@ class DescribeBatchResultCountResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -3774,6 +4012,10 @@ class DescribeBatchResultCountResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3795,7 +4037,6 @@ class DescribeBatchResultDetailRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         page_number: int = None,
         page_size: int = None,
         task_id: int = None,
@@ -3803,7 +4044,6 @@ class DescribeBatchResultDetailRequest(TeaModel):
         status: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.page_number = page_number
         self.page_size = page_size
         self.task_id = task_id
@@ -3814,11 +4054,13 @@ class DescribeBatchResultDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -3835,8 +4077,6 @@ class DescribeBatchResultDetailRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -3891,6 +4131,10 @@ class DescribeBatchResultDetailResponseBodyBatchResultDetailsBatchResultDetail(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -3977,6 +4221,10 @@ class DescribeBatchResultDetailResponseBodyBatchResultDetails(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BatchResultDetail'] = []
         if self.batch_result_detail is not None:
@@ -4014,6 +4262,10 @@ class DescribeBatchResultDetailResponseBody(TeaModel):
             self.batch_result_details.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -4059,6 +4311,10 @@ class DescribeBatchResultDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4081,23 +4337,23 @@ class DescribeCustomLineRequest(TeaModel):
         self,
         line_id: int = None,
         lang: str = None,
-        user_client_ip: str = None,
     ):
         self.line_id = line_id
         self.lang = lang
-        self.user_client_ip = user_client_ip
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.line_id is not None:
             result['LineId'] = self.line_id
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -4106,8 +4362,6 @@ class DescribeCustomLineRequest(TeaModel):
             self.line_id = m.get('LineId')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         return self
 
 
@@ -4124,6 +4378,10 @@ class DescribeCustomLineResponseBodyIpSegmentList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_ip is not None:
             result['EndIp'] = self.end_ip
@@ -4164,6 +4422,10 @@ class DescribeCustomLineResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4217,6 +4479,10 @@ class DescribeCustomLineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4238,13 +4504,11 @@ class DescribeCustomLinesRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         page_number: int = None,
         page_size: int = None,
         domain_name: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.page_number = page_number
         self.page_size = page_size
         self.domain_name = domain_name
@@ -4253,11 +4517,13 @@ class DescribeCustomLinesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -4270,8 +4536,6 @@ class DescribeCustomLinesRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -4296,6 +4560,10 @@ class DescribeCustomLinesResponseBodyCustomLines(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -4340,6 +4608,10 @@ class DescribeCustomLinesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -4393,6 +4665,10 @@ class DescribeCustomLinesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4414,13 +4690,11 @@ class DescribeDnsCacheDomainsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         keyword: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.keyword = keyword
         self.page_number = page_number
         self.page_size = page_size
@@ -4429,11 +4703,13 @@ class DescribeDnsCacheDomainsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.keyword is not None:
             result['Keyword'] = self.keyword
         if self.page_number is not None:
@@ -4446,8 +4722,6 @@ class DescribeDnsCacheDomainsRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
         if m.get('PageNumber') is not None:
@@ -4470,6 +4744,10 @@ class DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.host is not None:
             result['Host'] = self.host
@@ -4530,6 +4808,10 @@ class DescribeDnsCacheDomainsResponseBodyDomains(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_protocol is not None:
             result['SourceProtocol'] = self.source_protocol
@@ -4629,6 +4911,10 @@ class DescribeDnsCacheDomainsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Domains'] = []
         if self.domains is not None:
@@ -4678,6 +4964,10 @@ class DescribeDnsCacheDomainsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4699,14 +4989,12 @@ class DescribeDnsGtmAccessStrategiesRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         strategy_mode: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
@@ -4716,11 +5004,13 @@ class DescribeDnsGtmAccessStrategiesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.page_number is not None:
@@ -4735,8 +5025,6 @@ class DescribeDnsGtmAccessStrategiesRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('PageNumber') is not None:
@@ -4765,6 +5053,10 @@ class DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrP
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lba_weight is not None:
             result['LbaWeight'] = self.lba_weight
@@ -4803,6 +5095,10 @@ class DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrP
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['EffectiveAddrPool'] = []
         if self.effective_addr_pool is not None:
@@ -4837,6 +5133,10 @@ class DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_name is not None:
             result['GroupName'] = self.group_name
@@ -4875,6 +5175,10 @@ class DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLines(TeaModel
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Line'] = []
         if self.line is not None:
@@ -4922,6 +5226,10 @@ class DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategy(TeaModel):
             self.lines.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.effective_lba_strategy is not None:
             result['EffectiveLbaStrategy'] = self.effective_lba_strategy
@@ -4982,6 +5290,10 @@ class DescribeDnsGtmAccessStrategiesResponseBodyStrategies(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Strategy'] = []
         if self.strategy is not None:
@@ -5021,6 +5333,10 @@ class DescribeDnsGtmAccessStrategiesResponseBody(TeaModel):
             self.strategies.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -5070,6 +5386,10 @@ class DescribeDnsGtmAccessStrategiesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5091,22 +5411,22 @@ class DescribeDnsGtmAccessStrategyRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         strategy_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.strategy_id = strategy_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.strategy_id is not None:
             result['StrategyId'] = self.strategy_id
         return result
@@ -5115,8 +5435,6 @@ class DescribeDnsGtmAccessStrategyRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('StrategyId') is not None:
             self.strategy_id = m.get('StrategyId')
         return self
@@ -5139,6 +5457,10 @@ class DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPoolsFailoverAddrPool(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lba_weight is not None:
             result['LbaWeight'] = self.lba_weight
@@ -5177,6 +5499,10 @@ class DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPools(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FailoverAddrPool'] = []
         if self.failover_addr_pool is not None:
@@ -5211,6 +5537,10 @@ class DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPoolsDefaultAddrPool(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lba_weight is not None:
             result['LbaWeight'] = self.lba_weight
@@ -5249,6 +5579,10 @@ class DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPools(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DefaultAddrPool'] = []
         if self.default_addr_pool is not None:
@@ -5283,6 +5617,10 @@ class DescribeDnsGtmAccessStrategyResponseBodyLinesLine(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_name is not None:
             result['GroupName'] = self.group_name
@@ -5321,6 +5659,10 @@ class DescribeDnsGtmAccessStrategyResponseBodyLines(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Line'] = []
         if self.line is not None:
@@ -5404,6 +5746,10 @@ class DescribeDnsGtmAccessStrategyResponseBody(TeaModel):
             self.lines.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.failover_min_available_addr_num is not None:
             result['FailoverMinAvailableAddrNum'] = self.failover_min_available_addr_num
@@ -5535,6 +5881,10 @@ class DescribeDnsGtmAccessStrategyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5556,12 +5906,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
         strategy_mode: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
         self.strategy_mode = strategy_mode
 
@@ -5569,11 +5917,13 @@ class DescribeDnsGtmAccessStrategyAvailableConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.strategy_mode is not None:
@@ -5584,8 +5934,6 @@ class DescribeDnsGtmAccessStrategyAvailableConfigRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('StrategyMode') is not None:
@@ -5604,6 +5952,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.selected_domain_line is not None:
             result['SelectedDomainLine'] = self.selected_domain_line
@@ -5631,6 +5983,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPoolsDoma
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -5665,6 +6021,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DomainAddrPool'] = []
         if self.domain_addr_pool is not None:
@@ -5697,6 +6057,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPoolsIpv4Ad
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -5731,6 +6095,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools(TeaMo
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Ipv4AddrPool'] = []
         if self.ipv_4addr_pool is not None:
@@ -5759,6 +6127,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.selected_ipv_4line is not None:
             result['SelectedIpv4Line'] = self.selected_ipv_4line
@@ -5786,6 +6158,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPoolsIpv6Ad
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -5820,6 +6196,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools(TeaMo
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Ipv6AddrPool'] = []
         if self.ipv_6addr_pool is not None:
@@ -5848,6 +6228,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.selected_ipv_6line is not None:
             result['SelectedIpv6Line'] = self.selected_ipv_6line
@@ -5879,6 +6263,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLinesLine(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.father_code is not None:
             result['FatherCode'] = self.father_code
@@ -5921,6 +6309,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Line'] = []
         if self.line is not None:
@@ -5978,6 +6370,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBody(TeaModel):
             self.lines.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.selected_domain_lines is not None:
             result['SelectedDomainLines'] = self.selected_domain_lines.to_map()
@@ -6045,6 +6441,10 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6066,12 +6466,10 @@ class DescribeDnsGtmAddrAttributeInfoRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         type: str = None,
         addrs: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.type = type
         self.addrs = addrs
 
@@ -6079,11 +6477,13 @@ class DescribeDnsGtmAddrAttributeInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.type is not None:
             result['Type'] = self.type
         if self.addrs is not None:
@@ -6094,8 +6494,6 @@ class DescribeDnsGtmAddrAttributeInfoRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('Addrs') is not None:
@@ -6122,6 +6520,10 @@ class DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddrAttributeInfo(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.father_code is not None:
             result['FatherCode'] = self.father_code
@@ -6164,6 +6566,10 @@ class DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddr(TeaModel):
             self.attribute_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.attribute_info is not None:
             result['AttributeInfo'] = self.attribute_info.to_map()
@@ -6195,6 +6601,10 @@ class DescribeDnsGtmAddrAttributeInfoResponseBodyAddr(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Addr'] = []
         if self.addr is not None:
@@ -6226,6 +6636,10 @@ class DescribeDnsGtmAddrAttributeInfoResponseBody(TeaModel):
             self.addr.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6259,6 +6673,10 @@ class DescribeDnsGtmAddrAttributeInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6280,22 +6698,22 @@ class DescribeDnsGtmAddressPoolAvailableConfigRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
@@ -6304,8 +6722,6 @@ class DescribeDnsGtmAddressPoolAvailableConfigRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -6330,6 +6746,10 @@ class DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfosAttribut
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.father_code is not None:
             result['FatherCode'] = self.father_code
@@ -6372,6 +6792,10 @@ class DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfos(TeaMode
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AttributeInfo'] = []
         if self.attribute_info is not None:
@@ -6403,6 +6827,10 @@ class DescribeDnsGtmAddressPoolAvailableConfigResponseBody(TeaModel):
             self.attribute_infos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6436,6 +6864,10 @@ class DescribeDnsGtmAddressPoolAvailableConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6457,28 +6889,26 @@ class DescribeDnsGtmAvailableAlertGroupRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         return self
 
 
@@ -6495,6 +6925,10 @@ class DescribeDnsGtmAvailableAlertGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6527,6 +6961,10 @@ class DescribeDnsGtmAvailableAlertGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6548,22 +6986,22 @@ class DescribeDnsGtmInstanceRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
@@ -6572,8 +7010,6 @@ class DescribeDnsGtmInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -6594,6 +7030,10 @@ class DescribeDnsGtmInstanceResponseBodyConfigAlertConfigAlertConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sms_notice is not None:
             result['SmsNotice'] = self.sms_notice
@@ -6628,6 +7068,10 @@ class DescribeDnsGtmInstanceResponseBodyConfigAlertConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AlertConfig'] = []
         if self.alert_config is not None:
@@ -6657,6 +7101,7 @@ class DescribeDnsGtmInstanceResponseBodyConfig(TeaModel):
         alert_config: DescribeDnsGtmInstanceResponseBodyConfigAlertConfig = None,
         public_user_domain_name: str = None,
         pubic_zone_name: str = None,
+        public_rr: str = None,
     ):
         self.ttl = ttl
         self.alert_group = alert_group
@@ -6667,12 +7112,17 @@ class DescribeDnsGtmInstanceResponseBodyConfig(TeaModel):
         self.alert_config = alert_config
         self.public_user_domain_name = public_user_domain_name
         self.pubic_zone_name = pubic_zone_name
+        self.public_rr = public_rr
 
     def validate(self):
         if self.alert_config:
             self.alert_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ttl is not None:
             result['Ttl'] = self.ttl
@@ -6692,6 +7142,8 @@ class DescribeDnsGtmInstanceResponseBodyConfig(TeaModel):
             result['PublicUserDomainName'] = self.public_user_domain_name
         if self.pubic_zone_name is not None:
             result['PubicZoneName'] = self.pubic_zone_name
+        if self.public_rr is not None:
+            result['PublicRr'] = self.public_rr
         return result
 
     def from_map(self, m: dict = None):
@@ -6715,6 +7167,8 @@ class DescribeDnsGtmInstanceResponseBodyConfig(TeaModel):
             self.public_user_domain_name = m.get('PublicUserDomainName')
         if m.get('PubicZoneName') is not None:
             self.pubic_zone_name = m.get('PubicZoneName')
+        if m.get('PublicRr') is not None:
+            self.public_rr = m.get('PublicRr')
         return self
 
 
@@ -6733,6 +7187,10 @@ class DescribeDnsGtmInstanceResponseBodyUsedQuota(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.email_used_count is not None:
             result['EmailUsedCount'] = self.email_used_count
@@ -6791,6 +7249,10 @@ class DescribeDnsGtmInstanceResponseBody(TeaModel):
             self.used_quota.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.expire_timestamp is not None:
             result['ExpireTimestamp'] = self.expire_timestamp
@@ -6869,6 +7331,10 @@ class DescribeDnsGtmInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6889,11 +7355,9 @@ class DescribeDnsGtmInstanceResponse(TeaModel):
 class DescribeDnsGtmInstanceAddressPoolRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         addr_pool_id: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.addr_pool_id = addr_pool_id
 
@@ -6901,9 +7365,11 @@ class DescribeDnsGtmInstanceAddressPoolRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.addr_pool_id is not None:
@@ -6912,8 +7378,6 @@ class DescribeDnsGtmInstanceAddressPoolRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('AddrPoolId') is not None:
@@ -6950,6 +7414,10 @@ class DescribeDnsGtmInstanceAddressPoolResponseBodyAddrsAddr(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.update_timestamp is not None:
             result['UpdateTimestamp'] = self.update_timestamp
@@ -7012,6 +7480,10 @@ class DescribeDnsGtmInstanceAddressPoolResponseBodyAddrs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Addr'] = []
         if self.addr is not None:
@@ -7065,6 +7537,10 @@ class DescribeDnsGtmInstanceAddressPoolResponseBody(TeaModel):
             self.addrs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.addrs is not None:
             result['Addrs'] = self.addrs.to_map()
@@ -7142,6 +7618,10 @@ class DescribeDnsGtmInstanceAddressPoolResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7162,13 +7642,11 @@ class DescribeDnsGtmInstanceAddressPoolResponse(TeaModel):
 class DescribeDnsGtmInstanceAddressPoolsRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.instance_id = instance_id
         self.page_number = page_number
@@ -7178,9 +7656,11 @@ class DescribeDnsGtmInstanceAddressPoolsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.instance_id is not None:
@@ -7193,8 +7673,6 @@ class DescribeDnsGtmInstanceAddressPoolsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
@@ -7237,6 +7715,10 @@ class DescribeDnsGtmInstanceAddressPoolsResponseBodyAddrPoolsAddrPool(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -7303,6 +7785,10 @@ class DescribeDnsGtmInstanceAddressPoolsResponseBodyAddrPools(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AddrPool'] = []
         if self.addr_pool is not None:
@@ -7342,6 +7828,10 @@ class DescribeDnsGtmInstanceAddressPoolsResponseBody(TeaModel):
             self.addr_pools.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -7391,6 +7881,10 @@ class DescribeDnsGtmInstanceAddressPoolsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7412,14 +7906,12 @@ class DescribeDnsGtmInstancesRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         page_number: int = None,
         page_size: int = None,
         keyword: str = None,
         resource_group_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.page_number = page_number
         self.page_size = page_size
         self.keyword = keyword
@@ -7429,11 +7921,13 @@ class DescribeDnsGtmInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -7448,8 +7942,6 @@ class DescribeDnsGtmInstancesRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -7476,6 +7968,10 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sms_notice is not None:
             result['SmsNotice'] = self.sms_notice
@@ -7508,6 +8004,7 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig(TeaModel):
         public_cname_mode: str = None,
         alert_config: List[DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig] = None,
         public_user_domain_name: str = None,
+        public_rr: str = None,
     ):
         self.ttl = ttl
         self.alert_group = alert_group
@@ -7518,6 +8015,7 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig(TeaModel):
         self.public_cname_mode = public_cname_mode
         self.alert_config = alert_config
         self.public_user_domain_name = public_user_domain_name
+        self.public_rr = public_rr
 
     def validate(self):
         if self.alert_config:
@@ -7526,6 +8024,10 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ttl is not None:
             result['Ttl'] = self.ttl
@@ -7547,6 +8049,8 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig(TeaModel):
                 result['AlertConfig'].append(k.to_map() if k else None)
         if self.public_user_domain_name is not None:
             result['PublicUserDomainName'] = self.public_user_domain_name
+        if self.public_rr is not None:
+            result['PublicRr'] = self.public_rr
         return result
 
     def from_map(self, m: dict = None):
@@ -7572,6 +8076,8 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig(TeaModel):
                 self.alert_config.append(temp_model.from_map(k))
         if m.get('PublicUserDomainName') is not None:
             self.public_user_domain_name = m.get('PublicUserDomainName')
+        if m.get('PublicRr') is not None:
+            self.public_rr = m.get('PublicRr')
         return self
 
 
@@ -7590,6 +8096,10 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstancesUsedQuota(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.email_used_count is not None:
             result['EmailUsedCount'] = self.email_used_count
@@ -7646,6 +8156,10 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstances(TeaModel):
             self.used_quota.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
@@ -7728,6 +8242,10 @@ class DescribeDnsGtmInstancesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -7781,6 +8299,10 @@ class DescribeDnsGtmInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7802,22 +8324,22 @@ class DescribeDnsGtmInstanceStatusRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
@@ -7826,8 +8348,6 @@ class DescribeDnsGtmInstanceStatusRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -7854,6 +8374,10 @@ class DescribeDnsGtmInstanceStatusResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.strategy_not_available_num is not None:
             result['StrategyNotAvailableNum'] = self.strategy_not_available_num
@@ -7902,6 +8426,10 @@ class DescribeDnsGtmInstanceStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7922,11 +8450,9 @@ class DescribeDnsGtmInstanceStatusResponse(TeaModel):
 class DescribeDnsGtmInstanceSystemCnameRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         instance_id: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.instance_id = instance_id
 
@@ -7934,9 +8460,11 @@ class DescribeDnsGtmInstanceSystemCnameRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.instance_id is not None:
@@ -7945,8 +8473,6 @@ class DescribeDnsGtmInstanceSystemCnameRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
@@ -7967,6 +8493,10 @@ class DescribeDnsGtmInstanceSystemCnameResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.system_cname is not None:
             result['SystemCname'] = self.system_cname
@@ -7999,6 +8529,10 @@ class DescribeDnsGtmInstanceSystemCnameResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8019,7 +8553,6 @@ class DescribeDnsGtmInstanceSystemCnameResponse(TeaModel):
 class DescribeDnsGtmLogsRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         instance_id: str = None,
         keyword: str = None,
@@ -8028,7 +8561,6 @@ class DescribeDnsGtmLogsRequest(TeaModel):
         start_timestamp: int = None,
         end_timestamp: int = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.instance_id = instance_id
         self.keyword = keyword
@@ -8041,9 +8573,11 @@ class DescribeDnsGtmLogsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.instance_id is not None:
@@ -8062,8 +8596,6 @@ class DescribeDnsGtmLogsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
@@ -8106,6 +8638,10 @@ class DescribeDnsGtmLogsResponseBodyLogsLog(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.oper_timestamp is not None:
             result['OperTimestamp'] = self.oper_timestamp
@@ -8160,6 +8696,10 @@ class DescribeDnsGtmLogsResponseBodyLogs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Log'] = []
         if self.log is not None:
@@ -8199,6 +8739,10 @@ class DescribeDnsGtmLogsResponseBody(TeaModel):
             self.logs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -8248,6 +8792,10 @@ class DescribeDnsGtmLogsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8268,29 +8816,54 @@ class DescribeDnsGtmLogsResponse(TeaModel):
 class DescribeDnsGtmMonitorAvailableConfigRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        return self
+
+
+class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps(TeaModel):
+    def __init__(
+        self,
+        ip: List[str] = None,
+    ):
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
         return self
 
 
@@ -8304,6 +8877,7 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCit
         isp_name: str = None,
         group_type: str = None,
         default_selected: bool = None,
+        ips: DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps = None,
     ):
         self.city_code = city_code
         self.group_name = group_name
@@ -8312,11 +8886,17 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCit
         self.isp_name = isp_name
         self.group_type = group_type
         self.default_selected = default_selected
+        self.ips = ips
 
     def validate(self):
-        pass
+        if self.ips:
+            self.ips.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_code is not None:
             result['CityCode'] = self.city_code
@@ -8332,6 +8912,8 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCit
             result['GroupType'] = self.group_type
         if self.default_selected is not None:
             result['DefaultSelected'] = self.default_selected
+        if self.ips is not None:
+            result['Ips'] = self.ips.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -8350,6 +8932,9 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCit
             self.group_type = m.get('GroupType')
         if m.get('DefaultSelected') is not None:
             self.default_selected = m.get('DefaultSelected')
+        if m.get('Ips') is not None:
+            temp_model = DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps()
+            self.ips = temp_model.from_map(m['Ips'])
         return self
 
 
@@ -8367,6 +8952,10 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodes(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Ipv4IspCityNode'] = []
         if self.ipv_4isp_city_node is not None:
@@ -8384,6 +8973,33 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodes(TeaModel)
         return self
 
 
+class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNodeIps(TeaModel):
+    def __init__(
+        self,
+        ip: List[str] = None,
+    ):
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        return self
+
+
 class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNode(TeaModel):
     def __init__(
         self,
@@ -8394,6 +9010,7 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDoma
         isp_name: str = None,
         group_type: str = None,
         default_selected: bool = None,
+        ips: DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNodeIps = None,
     ):
         self.city_code = city_code
         self.group_name = group_name
@@ -8402,11 +9019,17 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDoma
         self.isp_name = isp_name
         self.group_type = group_type
         self.default_selected = default_selected
+        self.ips = ips
 
     def validate(self):
-        pass
+        if self.ips:
+            self.ips.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_code is not None:
             result['CityCode'] = self.city_code
@@ -8422,6 +9045,8 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDoma
             result['GroupType'] = self.group_type
         if self.default_selected is not None:
             result['DefaultSelected'] = self.default_selected
+        if self.ips is not None:
+            result['Ips'] = self.ips.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -8440,6 +9065,9 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDoma
             self.group_type = m.get('GroupType')
         if m.get('DefaultSelected') is not None:
             self.default_selected = m.get('DefaultSelected')
+        if m.get('Ips') is not None:
+            temp_model = DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNodeIps()
+            self.ips = temp_model.from_map(m['Ips'])
         return self
 
 
@@ -8457,6 +9085,10 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodes(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DomainIpv4IspCityNode'] = []
         if self.domain_ipv_4isp_city_node is not None:
@@ -8474,6 +9106,33 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodes(Tea
         return self
 
 
+class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNodeIps(TeaModel):
+    def __init__(
+        self,
+        ip: List[str] = None,
+    ):
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ip') is not None:
+            self.ip = m.get('ip')
+        return self
+
+
 class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNode(TeaModel):
     def __init__(
         self,
@@ -8484,6 +9143,7 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDoma
         isp_name: str = None,
         group_type: str = None,
         default_selected: bool = None,
+        ips: DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNodeIps = None,
     ):
         self.city_code = city_code
         self.group_name = group_name
@@ -8492,11 +9152,17 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDoma
         self.isp_name = isp_name
         self.group_type = group_type
         self.default_selected = default_selected
+        self.ips = ips
 
     def validate(self):
-        pass
+        if self.ips:
+            self.ips.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_code is not None:
             result['CityCode'] = self.city_code
@@ -8512,6 +9178,8 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDoma
             result['GroupType'] = self.group_type
         if self.default_selected is not None:
             result['DefaultSelected'] = self.default_selected
+        if self.ips is not None:
+            result['Ips'] = self.ips.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -8530,6 +9198,9 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDoma
             self.group_type = m.get('GroupType')
         if m.get('DefaultSelected') is not None:
             self.default_selected = m.get('DefaultSelected')
+        if m.get('Ips') is not None:
+            temp_model = DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNodeIps()
+            self.ips = temp_model.from_map(m['Ips'])
         return self
 
 
@@ -8547,6 +9218,10 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodes(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DomainIpv6IspCityNode'] = []
         if self.domain_ipv_6isp_city_node is not None:
@@ -8564,6 +9239,33 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodes(Tea
         return self
 
 
+class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps(TeaModel):
+    def __init__(
+        self,
+        ip: List[str] = None,
+    ):
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        return self
+
+
 class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNode(TeaModel):
     def __init__(
         self,
@@ -8574,6 +9276,7 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCit
         isp_name: str = None,
         group_type: str = None,
         default_selected: bool = None,
+        ips: DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps = None,
     ):
         self.city_code = city_code
         self.group_name = group_name
@@ -8582,11 +9285,17 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCit
         self.isp_name = isp_name
         self.group_type = group_type
         self.default_selected = default_selected
+        self.ips = ips
 
     def validate(self):
-        pass
+        if self.ips:
+            self.ips.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_code is not None:
             result['CityCode'] = self.city_code
@@ -8602,6 +9311,8 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCit
             result['GroupType'] = self.group_type
         if self.default_selected is not None:
             result['DefaultSelected'] = self.default_selected
+        if self.ips is not None:
+            result['Ips'] = self.ips.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -8620,6 +9331,9 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCit
             self.group_type = m.get('GroupType')
         if m.get('DefaultSelected') is not None:
             self.default_selected = m.get('DefaultSelected')
+        if m.get('Ips') is not None:
+            temp_model = DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps()
+            self.ips = temp_model.from_map(m['Ips'])
         return self
 
 
@@ -8637,6 +9351,10 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Ipv6IspCityNode'] = []
         if self.ipv_6isp_city_node is not None:
@@ -8680,6 +9398,10 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBody(TeaModel):
             self.ipv_6isp_city_nodes.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ipv_4isp_city_nodes is not None:
             result['Ipv4IspCityNodes'] = self.ipv_4isp_city_nodes.to_map()
@@ -8728,6 +9450,10 @@ class DescribeDnsGtmMonitorAvailableConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8748,11 +9474,9 @@ class DescribeDnsGtmMonitorAvailableConfigResponse(TeaModel):
 class DescribeDnsGtmMonitorConfigRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         monitor_config_id: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.monitor_config_id = monitor_config_id
 
@@ -8760,9 +9484,11 @@ class DescribeDnsGtmMonitorConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.monitor_config_id is not None:
@@ -8771,8 +9497,6 @@ class DescribeDnsGtmMonitorConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('MonitorConfigId') is not None:
@@ -8801,6 +9525,10 @@ class DescribeDnsGtmMonitorConfigResponseBodyIspCityNodesIspCityNode(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_code is not None:
             result['CityCode'] = self.city_code
@@ -8847,6 +9575,10 @@ class DescribeDnsGtmMonitorConfigResponseBodyIspCityNodes(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['IspCityNode'] = []
         if self.isp_city_node is not None:
@@ -8898,6 +9630,10 @@ class DescribeDnsGtmMonitorConfigResponseBody(TeaModel):
             self.isp_city_nodes.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8971,6 +9707,10 @@ class DescribeDnsGtmMonitorConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9003,6 +9743,10 @@ class DescribeDnsProductInstanceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -9034,6 +9778,10 @@ class DescribeDnsProductInstanceResponseBodyDnsServers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dns_server is not None:
             result['DnsServer'] = self.dns_server
@@ -9126,6 +9874,10 @@ class DescribeDnsProductInstanceResponseBody(TeaModel):
             self.dns_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.monitor_node_count is not None:
             result['MonitorNodeCount'] = self.monitor_node_count
@@ -9291,6 +10043,10 @@ class DescribeDnsProductInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9329,6 +10085,10 @@ class DescribeDnsProductInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -9434,6 +10194,10 @@ class DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.oversea_line is not None:
             result['OverseaLine'] = self.oversea_line
@@ -9584,6 +10348,10 @@ class DescribeDnsProductInstancesResponseBodyDnsProducts(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DnsProduct'] = []
         if self.dns_product is not None:
@@ -9623,6 +10391,10 @@ class DescribeDnsProductInstancesResponseBody(TeaModel):
             self.dns_products.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -9672,6 +10444,10 @@ class DescribeDnsProductInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9710,6 +10486,10 @@ class DescribeDNSSLBSubDomainsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -9755,6 +10535,10 @@ class DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithm
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.line is not None:
             result['Line'] = self.line
@@ -9785,6 +10569,10 @@ class DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithm
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['LineAlgorithm'] = []
         if self.line_algorithm is not None:
@@ -9822,6 +10610,10 @@ class DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain(TeaModel):
             self.line_algorithms.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -9865,6 +10657,10 @@ class DescribeDNSSLBSubDomainsResponseBodySlbSubDomains(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SlbSubDomain'] = []
         if self.slb_sub_domain is not None:
@@ -9902,6 +10698,10 @@ class DescribeDNSSLBSubDomainsResponseBody(TeaModel):
             self.slb_sub_domains.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -9947,6 +10747,10 @@ class DescribeDNSSLBSubDomainsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9979,6 +10783,10 @@ class DescribeDohAccountStatisticsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -10020,6 +10828,10 @@ class DescribeDohAccountStatisticsResponseBodyStatistics(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.v_6http_count is not None:
             result['V6HttpCount'] = self.v_6http_count
@@ -10068,6 +10880,10 @@ class DescribeDohAccountStatisticsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10105,6 +10921,10 @@ class DescribeDohAccountStatisticsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10139,6 +10959,10 @@ class DescribeDohDomainStatisticsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -10184,6 +11008,10 @@ class DescribeDohDomainStatisticsResponseBodyStatistics(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.v_6http_count is not None:
             result['V6HttpCount'] = self.v_6http_count
@@ -10232,6 +11060,10 @@ class DescribeDohDomainStatisticsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10269,6 +11101,10 @@ class DescribeDohDomainStatisticsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10294,8 +11130,6 @@ class DescribeDohDomainStatisticsSummaryRequest(TeaModel):
         page_size: int = None,
         start_date: str = None,
         end_date: str = None,
-        order_by: str = None,
-        direction: str = None,
         domain_name: str = None,
     ):
         self.lang = lang
@@ -10303,14 +11137,16 @@ class DescribeDohDomainStatisticsSummaryRequest(TeaModel):
         self.page_size = page_size
         self.start_date = start_date
         self.end_date = end_date
-        self.order_by = order_by
-        self.direction = direction
         self.domain_name = domain_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -10322,10 +11158,6 @@ class DescribeDohDomainStatisticsSummaryRequest(TeaModel):
             result['StartDate'] = self.start_date
         if self.end_date is not None:
             result['EndDate'] = self.end_date
-        if self.order_by is not None:
-            result['OrderBy'] = self.order_by
-        if self.direction is not None:
-            result['Direction'] = self.direction
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         return result
@@ -10342,10 +11174,6 @@ class DescribeDohDomainStatisticsSummaryRequest(TeaModel):
             self.start_date = m.get('StartDate')
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
-        if m.get('OrderBy') is not None:
-            self.order_by = m.get('OrderBy')
-        if m.get('Direction') is not None:
-            self.direction = m.get('Direction')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         return self
@@ -10378,6 +11206,10 @@ class DescribeDohDomainStatisticsSummaryResponseBodyStatistics(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.v_6http_count is not None:
             result['V6HttpCount'] = self.v_6http_count
@@ -10446,6 +11278,10 @@ class DescribeDohDomainStatisticsSummaryResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -10499,6 +11335,10 @@ class DescribeDohDomainStatisticsSummaryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10533,6 +11373,10 @@ class DescribeDohSubDomainStatisticsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -10578,6 +11422,10 @@ class DescribeDohSubDomainStatisticsResponseBodyStatistics(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.v_6http_count is not None:
             result['V6HttpCount'] = self.v_6http_count
@@ -10626,6 +11474,10 @@ class DescribeDohSubDomainStatisticsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10663,6 +11515,10 @@ class DescribeDohSubDomainStatisticsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10688,8 +11544,6 @@ class DescribeDohSubDomainStatisticsSummaryRequest(TeaModel):
         page_size: int = None,
         start_date: str = None,
         end_date: str = None,
-        order_by: str = None,
-        direction: str = None,
         sub_domain: str = None,
         domain_name: str = None,
     ):
@@ -10698,8 +11552,6 @@ class DescribeDohSubDomainStatisticsSummaryRequest(TeaModel):
         self.page_size = page_size
         self.start_date = start_date
         self.end_date = end_date
-        self.order_by = order_by
-        self.direction = direction
         self.sub_domain = sub_domain
         self.domain_name = domain_name
 
@@ -10707,6 +11559,10 @@ class DescribeDohSubDomainStatisticsSummaryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -10718,10 +11574,6 @@ class DescribeDohSubDomainStatisticsSummaryRequest(TeaModel):
             result['StartDate'] = self.start_date
         if self.end_date is not None:
             result['EndDate'] = self.end_date
-        if self.order_by is not None:
-            result['OrderBy'] = self.order_by
-        if self.direction is not None:
-            result['Direction'] = self.direction
         if self.sub_domain is not None:
             result['SubDomain'] = self.sub_domain
         if self.domain_name is not None:
@@ -10740,10 +11592,6 @@ class DescribeDohSubDomainStatisticsSummaryRequest(TeaModel):
             self.start_date = m.get('StartDate')
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
-        if m.get('OrderBy') is not None:
-            self.order_by = m.get('OrderBy')
-        if m.get('Direction') is not None:
-            self.direction = m.get('Direction')
         if m.get('SubDomain') is not None:
             self.sub_domain = m.get('SubDomain')
         if m.get('DomainName') is not None:
@@ -10778,6 +11626,10 @@ class DescribeDohSubDomainStatisticsSummaryResponseBodyStatistics(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.v_6http_count is not None:
             result['V6HttpCount'] = self.v_6http_count
@@ -10846,6 +11698,10 @@ class DescribeDohSubDomainStatisticsSummaryResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -10899,6 +11755,10 @@ class DescribeDohSubDomainStatisticsSummaryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10931,6 +11791,10 @@ class DescribeDohUserInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -10968,6 +11832,10 @@ class DescribeDohUserInfoResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11008,6 +11876,10 @@ class DescribeDohUserInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11029,22 +11901,22 @@ class DescribeDomainDnssecInfoRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         return result
@@ -11053,8 +11925,6 @@ class DescribeDomainDnssecInfoRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         return self
@@ -11089,6 +11959,10 @@ class DescribeDomainDnssecInfoResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -11153,6 +12027,10 @@ class DescribeDomainDnssecInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11174,13 +12052,11 @@ class DescribeDomainGroupsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         key_word: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.key_word = key_word
         self.page_number = page_number
         self.page_size = page_size
@@ -11189,11 +12065,13 @@ class DescribeDomainGroupsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.key_word is not None:
             result['KeyWord'] = self.key_word
         if self.page_number is not None:
@@ -11206,8 +12084,6 @@ class DescribeDomainGroupsRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('KeyWord') is not None:
             self.key_word = m.get('KeyWord')
         if m.get('PageNumber') is not None:
@@ -11232,6 +12108,10 @@ class DescribeDomainGroupsResponseBodyDomainGroupsDomainGroup(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -11266,6 +12146,10 @@ class DescribeDomainGroupsResponseBodyDomainGroups(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DomainGroup'] = []
         if self.domain_group is not None:
@@ -11303,6 +12187,10 @@ class DescribeDomainGroupsResponseBody(TeaModel):
             self.domain_groups.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domain_groups is not None:
             result['DomainGroups'] = self.domain_groups.to_map()
@@ -11348,6 +12236,10 @@ class DescribeDomainGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11369,12 +12261,10 @@ class DescribeDomainInfoRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
         need_detail_attributes: bool = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
         self.need_detail_attributes = need_detail_attributes
 
@@ -11382,11 +12272,13 @@ class DescribeDomainInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.need_detail_attributes is not None:
@@ -11397,8 +12289,6 @@ class DescribeDomainInfoRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('NeedDetailAttributes') is not None:
@@ -11417,6 +12307,10 @@ class DescribeDomainInfoResponseBodyDnsServers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dns_server is not None:
             result['DnsServer'] = self.dns_server
@@ -11446,6 +12340,10 @@ class DescribeDomainInfoResponseBodyRecordLinesRecordLine(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.father_code is not None:
             result['FatherCode'] = self.father_code
@@ -11484,6 +12382,10 @@ class DescribeDomainInfoResponseBodyRecordLines(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RecordLine'] = []
         if self.record_line is not None:
@@ -11512,6 +12414,10 @@ class DescribeDomainInfoResponseBodyAvailableTtls(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.available_ttl is not None:
             result['AvailableTtl'] = self.available_ttl
@@ -11584,6 +12490,10 @@ class DescribeDomainInfoResponseBody(TeaModel):
             self.available_ttls.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.record_line_tree_json is not None:
             result['RecordLineTreeJson'] = self.record_line_tree_json
@@ -11703,6 +12613,10 @@ class DescribeDomainInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11724,7 +12638,6 @@ class DescribeDomainLogsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         key_word: str = None,
         group_id: str = None,
         page_number: int = None,
@@ -11734,7 +12647,6 @@ class DescribeDomainLogsRequest(TeaModel):
         type: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.key_word = key_word
         self.group_id = group_id
         self.page_number = page_number
@@ -11747,11 +12659,13 @@ class DescribeDomainLogsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.key_word is not None:
             result['KeyWord'] = self.key_word
         if self.group_id is not None:
@@ -11772,8 +12686,6 @@ class DescribeDomainLogsRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('KeyWord') is not None:
             self.key_word = m.get('KeyWord')
         if m.get('GroupId') is not None:
@@ -11814,6 +12726,10 @@ class DescribeDomainLogsResponseBodyDomainLogsDomainLog(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.action is not None:
             result['Action'] = self.action
@@ -11864,6 +12780,10 @@ class DescribeDomainLogsResponseBodyDomainLogs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DomainLog'] = []
         if self.domain_log is not None:
@@ -11901,6 +12821,10 @@ class DescribeDomainLogsResponseBody(TeaModel):
             self.domain_logs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -11946,6 +12870,10 @@ class DescribeDomainLogsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11967,40 +12895,32 @@ class DescribeDomainNsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
-        domain_type: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
-        self.domain_type = domain_type
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.domain_type is not None:
-            result['DomainType'] = self.domain_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('DomainType') is not None:
-            self.domain_type = m.get('DomainType')
         return self
 
 
@@ -12015,6 +12935,10 @@ class DescribeDomainNsResponseBodyExpectDnsServers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.expect_dns_server is not None:
             result['ExpectDnsServer'] = self.expect_dns_server
@@ -12038,6 +12962,10 @@ class DescribeDomainNsResponseBodyDnsServers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dns_server is not None:
             result['DnsServer'] = self.dns_server
@@ -12072,6 +13000,10 @@ class DescribeDomainNsResponseBody(TeaModel):
             self.dns_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.all_ali_dns is not None:
             result['AllAliDns'] = self.all_ali_dns
@@ -12118,6 +13050,10 @@ class DescribeDomainNsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12150,6 +13086,10 @@ class DescribeDomainRecordInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -12209,6 +13149,10 @@ class DescribeDomainRecordInfoResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -12293,6 +13237,10 @@ class DescribeDomainRecordInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12314,7 +13262,6 @@ class DescribeDomainRecordsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -12331,7 +13278,6 @@ class DescribeDomainRecordsRequest(TeaModel):
         status: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
         self.page_number = page_number
         self.page_size = page_size
@@ -12351,11 +13297,13 @@ class DescribeDomainRecordsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.page_number is not None:
@@ -12390,8 +13338,6 @@ class DescribeDomainRecordsRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('PageNumber') is not None:
@@ -12456,6 +13402,10 @@ class DescribeDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -12526,6 +13476,10 @@ class DescribeDomainRecordsResponseBodyDomainRecords(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Record'] = []
         if self.record is not None:
@@ -12563,6 +13517,10 @@ class DescribeDomainRecordsResponseBody(TeaModel):
             self.domain_records.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -12608,6 +13566,10 @@ class DescribeDomainRecordsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12625,67 +13587,38 @@ class DescribeDomainRecordsResponse(TeaModel):
         return self
 
 
-class DescribeDomainsRequestTag(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        return self
-
-
 class DescribeDomainsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         key_word: str = None,
         group_id: str = None,
         page_number: int = None,
         page_size: int = None,
         search_mode: str = None,
         resource_group_id: str = None,
-        order_by: str = None,
-        direction: str = None,
         starmark: bool = None,
-        start_date: str = None,
-        end_date: str = None,
-        tag: List[DescribeDomainsRequestTag] = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.key_word = key_word
         self.group_id = group_id
         self.page_number = page_number
         self.page_size = page_size
         self.search_mode = search_mode
         self.resource_group_id = resource_group_id
-        self.order_by = order_by
-        self.direction = direction
         self.starmark = starmark
-        self.start_date = start_date
-        self.end_date = end_date
-        self.tag = tag
 
     def validate(self):
-        if self.tag:
-            for k in self.tag:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.key_word is not None:
             result['KeyWord'] = self.key_word
         if self.group_id is not None:
@@ -12698,28 +13631,14 @@ class DescribeDomainsRequest(TeaModel):
             result['SearchMode'] = self.search_mode
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        if self.order_by is not None:
-            result['OrderBy'] = self.order_by
-        if self.direction is not None:
-            result['Direction'] = self.direction
         if self.starmark is not None:
             result['Starmark'] = self.starmark
-        if self.start_date is not None:
-            result['StartDate'] = self.start_date
-        if self.end_date is not None:
-            result['EndDate'] = self.end_date
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('KeyWord') is not None:
             self.key_word = m.get('KeyWord')
         if m.get('GroupId') is not None:
@@ -12732,21 +13651,8 @@ class DescribeDomainsRequest(TeaModel):
             self.search_mode = m.get('SearchMode')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('OrderBy') is not None:
-            self.order_by = m.get('OrderBy')
-        if m.get('Direction') is not None:
-            self.direction = m.get('Direction')
         if m.get('Starmark') is not None:
             self.starmark = m.get('Starmark')
-        if m.get('StartDate') is not None:
-            self.start_date = m.get('StartDate')
-        if m.get('EndDate') is not None:
-            self.end_date = m.get('EndDate')
-        self.tag = []
-        if m.get('Tag') is not None:
-            for k in m.get('Tag'):
-                temp_model = DescribeDomainsRequestTag()
-                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -12763,6 +13669,10 @@ class DescribeDomainsResponseBodyDomainsDomainTagsTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -12793,6 +13703,10 @@ class DescribeDomainsResponseBodyDomainsDomainTags(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -12821,6 +13735,10 @@ class DescribeDomainsResponseBodyDomainsDomainDnsServers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dns_server is not None:
             result['DnsServer'] = self.dns_server
@@ -12885,6 +13803,10 @@ class DescribeDomainsResponseBodyDomainsDomain(TeaModel):
             self.dns_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.remark is not None:
             result['Remark'] = self.remark
@@ -12989,6 +13911,10 @@ class DescribeDomainsResponseBodyDomains(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Domain'] = []
         if self.domain is not None:
@@ -13026,6 +13952,10 @@ class DescribeDomainsResponseBody(TeaModel):
             self.domains.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domains is not None:
             result['Domains'] = self.domains.to_map()
@@ -13071,6 +14001,10 @@ class DescribeDomainsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13092,14 +14026,12 @@ class DescribeDomainStatisticsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
         start_date: str = None,
         end_date: str = None,
         domain_type: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
         self.start_date = start_date
         self.end_date = end_date
@@ -13109,11 +14041,13 @@ class DescribeDomainStatisticsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.start_date is not None:
@@ -13128,8 +14062,6 @@ class DescribeDomainStatisticsRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('StartDate') is not None:
@@ -13154,6 +14086,10 @@ class DescribeDomainStatisticsResponseBodyStatisticsStatistic(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
@@ -13184,6 +14120,10 @@ class DescribeDomainStatisticsResponseBodyStatistics(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Statistic'] = []
         if self.statistic is not None:
@@ -13215,6 +14155,10 @@ class DescribeDomainStatisticsResponseBody(TeaModel):
             self.statistics.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13248,6 +14192,10 @@ class DescribeDomainStatisticsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13269,25 +14217,19 @@ class DescribeDomainStatisticsSummaryRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         page_number: int = None,
         page_size: int = None,
         start_date: str = None,
         end_date: str = None,
-        order_by: str = None,
-        direction: str = None,
         search_mode: str = None,
         keyword: str = None,
         threshold: int = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.page_number = page_number
         self.page_size = page_size
         self.start_date = start_date
         self.end_date = end_date
-        self.order_by = order_by
-        self.direction = direction
         self.search_mode = search_mode
         self.keyword = keyword
         self.threshold = threshold
@@ -13296,11 +14238,13 @@ class DescribeDomainStatisticsSummaryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -13309,10 +14253,6 @@ class DescribeDomainStatisticsSummaryRequest(TeaModel):
             result['StartDate'] = self.start_date
         if self.end_date is not None:
             result['EndDate'] = self.end_date
-        if self.order_by is not None:
-            result['OrderBy'] = self.order_by
-        if self.direction is not None:
-            result['Direction'] = self.direction
         if self.search_mode is not None:
             result['SearchMode'] = self.search_mode
         if self.keyword is not None:
@@ -13325,8 +14265,6 @@ class DescribeDomainStatisticsSummaryRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -13335,10 +14273,6 @@ class DescribeDomainStatisticsSummaryRequest(TeaModel):
             self.start_date = m.get('StartDate')
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
-        if m.get('OrderBy') is not None:
-            self.order_by = m.get('OrderBy')
-        if m.get('Direction') is not None:
-            self.direction = m.get('Direction')
         if m.get('SearchMode') is not None:
             self.search_mode = m.get('SearchMode')
         if m.get('Keyword') is not None:
@@ -13363,6 +14297,10 @@ class DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
@@ -13397,6 +14335,10 @@ class DescribeDomainStatisticsSummaryResponseBodyStatistics(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Statistic'] = []
         if self.statistic is not None:
@@ -13436,6 +14378,10 @@ class DescribeDomainStatisticsSummaryResponseBody(TeaModel):
             self.statistics.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -13485,6 +14431,10 @@ class DescribeDomainStatisticsSummaryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13506,13 +14456,11 @@ class DescribeGtmAccessStrategiesRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
@@ -13521,11 +14469,13 @@ class DescribeGtmAccessStrategiesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.page_number is not None:
@@ -13538,8 +14488,6 @@ class DescribeGtmAccessStrategiesRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('PageNumber') is not None:
@@ -13566,6 +14514,10 @@ class DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_name is not None:
             result['GroupName'] = self.group_name
@@ -13604,6 +14556,10 @@ class DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLines(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Line'] = []
         if self.line is not None:
@@ -13665,6 +14621,10 @@ class DescribeGtmAccessStrategiesResponseBodyStrategiesStrategy(TeaModel):
             self.lines.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_mode is not None:
             result['AccessMode'] = self.access_mode
@@ -13756,6 +14716,10 @@ class DescribeGtmAccessStrategiesResponseBodyStrategies(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Strategy'] = []
         if self.strategy is not None:
@@ -13795,6 +14759,10 @@ class DescribeGtmAccessStrategiesResponseBody(TeaModel):
             self.strategies.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -13844,6 +14812,10 @@ class DescribeGtmAccessStrategiesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13865,22 +14837,22 @@ class DescribeGtmAccessStrategyRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         strategy_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.strategy_id = strategy_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.strategy_id is not None:
             result['StrategyId'] = self.strategy_id
         return result
@@ -13889,8 +14861,6 @@ class DescribeGtmAccessStrategyRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('StrategyId') is not None:
             self.strategy_id = m.get('StrategyId')
         return self
@@ -13913,6 +14883,10 @@ class DescribeGtmAccessStrategyResponseBodyLinesLine(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_name is not None:
             result['GroupName'] = self.group_name
@@ -13951,6 +14925,10 @@ class DescribeGtmAccessStrategyResponseBodyLines(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Line'] = []
         if self.line is not None:
@@ -14010,6 +14988,10 @@ class DescribeGtmAccessStrategyResponseBody(TeaModel):
             self.lines.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14099,6 +15081,10 @@ class DescribeGtmAccessStrategyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14120,22 +15106,22 @@ class DescribeGtmAccessStrategyAvailableConfigRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
@@ -14144,8 +15130,6 @@ class DescribeGtmAccessStrategyAvailableConfigRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -14164,6 +15148,10 @@ class DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPoolsAddrPool(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.addr_pool_id is not None:
             result['AddrPoolId'] = self.addr_pool_id
@@ -14194,6 +15182,10 @@ class DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPools(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AddrPool'] = []
         if self.addr_pool is not None:
@@ -14232,6 +15224,10 @@ class DescribeGtmAccessStrategyAvailableConfigResponseBodyLinesLine(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -14278,6 +15274,10 @@ class DescribeGtmAccessStrategyAvailableConfigResponseBodyLines(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Line'] = []
         if self.line is not None:
@@ -14313,6 +15313,10 @@ class DescribeGtmAccessStrategyAvailableConfigResponseBody(TeaModel):
             self.lines.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14351,6 +15355,10 @@ class DescribeGtmAccessStrategyAvailableConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14372,28 +15380,26 @@ class DescribeGtmAvailableAlertGroupRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         return self
 
 
@@ -14410,6 +15416,10 @@ class DescribeGtmAvailableAlertGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14442,6 +15452,10 @@ class DescribeGtmAvailableAlertGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14463,12 +15477,10 @@ class DescribeGtmInstanceRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
         need_detail_attributes: bool = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
         self.need_detail_attributes = need_detail_attributes
 
@@ -14476,11 +15488,13 @@ class DescribeGtmInstanceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.need_detail_attributes is not None:
@@ -14491,8 +15505,6 @@ class DescribeGtmInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('NeedDetailAttributes') is not None:
@@ -14541,6 +15553,10 @@ class DescribeGtmInstanceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.expire_timestamp is not None:
             result['ExpireTimestamp'] = self.expire_timestamp
@@ -14629,6 +15645,10 @@ class DescribeGtmInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14649,11 +15669,9 @@ class DescribeGtmInstanceResponse(TeaModel):
 class DescribeGtmInstanceAddressPoolRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         addr_pool_id: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.addr_pool_id = addr_pool_id
 
@@ -14661,9 +15679,11 @@ class DescribeGtmInstanceAddressPoolRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.addr_pool_id is not None:
@@ -14672,8 +15692,6 @@ class DescribeGtmInstanceAddressPoolRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('AddrPoolId') is not None:
@@ -14708,6 +15726,10 @@ class DescribeGtmInstanceAddressPoolResponseBodyAddrsAddr(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -14766,6 +15788,10 @@ class DescribeGtmInstanceAddressPoolResponseBodyAddrs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Addr'] = []
         if self.addr is not None:
@@ -14821,6 +15847,10 @@ class DescribeGtmInstanceAddressPoolResponseBody(TeaModel):
             self.addrs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -14902,6 +15932,10 @@ class DescribeGtmInstanceAddressPoolResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14922,13 +15956,11 @@ class DescribeGtmInstanceAddressPoolResponse(TeaModel):
 class DescribeGtmInstanceAddressPoolsRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.instance_id = instance_id
         self.page_number = page_number
@@ -14938,9 +15970,11 @@ class DescribeGtmInstanceAddressPoolsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.instance_id is not None:
@@ -14953,8 +15987,6 @@ class DescribeGtmInstanceAddressPoolsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
@@ -14999,6 +16031,10 @@ class DescribeGtmInstanceAddressPoolsResponseBodyAddrPoolsAddrPool(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -15069,6 +16105,10 @@ class DescribeGtmInstanceAddressPoolsResponseBodyAddrPools(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AddrPool'] = []
         if self.addr_pool is not None:
@@ -15108,6 +16148,10 @@ class DescribeGtmInstanceAddressPoolsResponseBody(TeaModel):
             self.addr_pools.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -15157,6 +16201,10 @@ class DescribeGtmInstanceAddressPoolsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15178,7 +16226,6 @@ class DescribeGtmInstancesRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         page_number: int = None,
         page_size: int = None,
         keyword: str = None,
@@ -15186,7 +16233,6 @@ class DescribeGtmInstancesRequest(TeaModel):
         need_detail_attributes: bool = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.page_number = page_number
         self.page_size = page_size
         self.keyword = keyword
@@ -15197,11 +16243,13 @@ class DescribeGtmInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -15218,8 +16266,6 @@ class DescribeGtmInstancesRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -15272,6 +16318,10 @@ class DescribeGtmInstancesResponseBodyGtmInstancesGtmInstance(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
@@ -15354,6 +16404,10 @@ class DescribeGtmInstancesResponseBodyGtmInstances(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['GtmInstance'] = []
         if self.gtm_instance is not None:
@@ -15393,6 +16447,10 @@ class DescribeGtmInstancesResponseBody(TeaModel):
             self.gtm_instances.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -15442,6 +16500,10 @@ class DescribeGtmInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15463,22 +16525,22 @@ class DescribeGtmInstanceStatusRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
@@ -15487,8 +16549,6 @@ class DescribeGtmInstanceStatusRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -15517,6 +16577,10 @@ class DescribeGtmInstanceStatusResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -15569,6 +16633,10 @@ class DescribeGtmInstanceStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15589,11 +16657,9 @@ class DescribeGtmInstanceStatusResponse(TeaModel):
 class DescribeGtmInstanceSystemCnameRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         instance_id: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.instance_id = instance_id
 
@@ -15601,9 +16667,11 @@ class DescribeGtmInstanceSystemCnameRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.instance_id is not None:
@@ -15612,8 +16680,6 @@ class DescribeGtmInstanceSystemCnameRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
@@ -15634,6 +16700,10 @@ class DescribeGtmInstanceSystemCnameResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.system_cname is not None:
             result['SystemCname'] = self.system_cname
@@ -15666,6 +16736,10 @@ class DescribeGtmInstanceSystemCnameResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15686,7 +16760,6 @@ class DescribeGtmInstanceSystemCnameResponse(TeaModel):
 class DescribeGtmLogsRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         instance_id: str = None,
         keyword: str = None,
@@ -15695,7 +16768,6 @@ class DescribeGtmLogsRequest(TeaModel):
         start_timestamp: int = None,
         end_timestamp: int = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.instance_id = instance_id
         self.keyword = keyword
@@ -15708,9 +16780,11 @@ class DescribeGtmLogsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.instance_id is not None:
@@ -15729,8 +16803,6 @@ class DescribeGtmLogsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
@@ -15775,6 +16847,10 @@ class DescribeGtmLogsResponseBodyLogsLog(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.oper_timestamp is not None:
             result['OperTimestamp'] = self.oper_timestamp
@@ -15833,6 +16909,10 @@ class DescribeGtmLogsResponseBodyLogs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Log'] = []
         if self.log is not None:
@@ -15872,6 +16952,10 @@ class DescribeGtmLogsResponseBody(TeaModel):
             self.logs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -15921,6 +17005,10 @@ class DescribeGtmLogsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15941,27 +17029,25 @@ class DescribeGtmLogsResponse(TeaModel):
 class DescribeGtmMonitorAvailableConfigRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         return self
@@ -15992,6 +17078,10 @@ class DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodesIspCityNode(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_code is not None:
             result['CityCode'] = self.city_code
@@ -16046,6 +17136,10 @@ class DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodes(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['IspCityNode'] = []
         if self.isp_city_node is not None:
@@ -16077,6 +17171,10 @@ class DescribeGtmMonitorAvailableConfigResponseBody(TeaModel):
             self.isp_city_nodes.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16110,6 +17208,10 @@ class DescribeGtmMonitorAvailableConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16130,11 +17232,9 @@ class DescribeGtmMonitorAvailableConfigResponse(TeaModel):
 class DescribeGtmMonitorConfigRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         monitor_config_id: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.monitor_config_id = monitor_config_id
 
@@ -16142,9 +17242,11 @@ class DescribeGtmMonitorConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.monitor_config_id is not None:
@@ -16153,8 +17255,6 @@ class DescribeGtmMonitorConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('MonitorConfigId') is not None:
@@ -16183,6 +17283,10 @@ class DescribeGtmMonitorConfigResponseBodyIspCityNodesIspCityNode(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_code is not None:
             result['CityCode'] = self.city_code
@@ -16229,6 +17333,10 @@ class DescribeGtmMonitorConfigResponseBodyIspCityNodes(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['IspCityNode'] = []
         if self.isp_city_node is not None:
@@ -16280,6 +17388,10 @@ class DescribeGtmMonitorConfigResponseBody(TeaModel):
             self.isp_city_nodes.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16353,6 +17465,10 @@ class DescribeGtmMonitorConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16373,11 +17489,9 @@ class DescribeGtmMonitorConfigResponse(TeaModel):
 class DescribeGtmRecoveryPlanRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         recovery_plan_id: int = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.recovery_plan_id = recovery_plan_id
 
@@ -16385,9 +17499,11 @@ class DescribeGtmRecoveryPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.recovery_plan_id is not None:
@@ -16396,8 +17512,6 @@ class DescribeGtmRecoveryPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('RecoveryPlanId') is not None:
@@ -16420,6 +17534,10 @@ class DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrsAddr(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -16454,6 +17572,10 @@ class DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs(TeaMod
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Addr'] = []
         if self.addr is not None:
@@ -16489,6 +17611,10 @@ class DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPool(TeaModel):
             self.addrs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.addrs is not None:
             result['Addrs'] = self.addrs.to_map()
@@ -16528,6 +17654,10 @@ class DescribeGtmRecoveryPlanResponseBodyFaultAddrPools(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FaultAddrPool'] = []
         if self.fault_addr_pool is not None:
@@ -16585,6 +17715,10 @@ class DescribeGtmRecoveryPlanResponseBody(TeaModel):
             self.fault_addr_pools.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -16670,6 +17804,10 @@ class DescribeGtmRecoveryPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16691,28 +17829,26 @@ class DescribeGtmRecoveryPlanAvailableConfigRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         return self
 
 
@@ -16729,6 +17865,10 @@ class DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPoo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.addr_pool_id is not None:
             result['AddrPoolId'] = self.addr_pool_id
@@ -16759,6 +17899,10 @@ class DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPoo
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AddrPool'] = []
         if self.addr_pool is not None:
@@ -16792,6 +17936,10 @@ class DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstance(TeaMod
             self.addr_pools.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.addr_pools is not None:
             result['AddrPools'] = self.addr_pools.to_map()
@@ -16827,6 +17975,10 @@ class DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstances(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Instance'] = []
         if self.instance is not None:
@@ -16858,6 +18010,10 @@ class DescribeGtmRecoveryPlanAvailableConfigResponseBody(TeaModel):
             self.instances.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instances is not None:
             result['Instances'] = self.instances.to_map()
@@ -16891,6 +18047,10 @@ class DescribeGtmRecoveryPlanAvailableConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16912,13 +18072,11 @@ class DescribeGtmRecoveryPlansRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         keyword: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.keyword = keyword
         self.page_number = page_number
         self.page_size = page_size
@@ -16927,11 +18085,13 @@ class DescribeGtmRecoveryPlansRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.keyword is not None:
             result['Keyword'] = self.keyword
         if self.page_number is not None:
@@ -16944,8 +18104,6 @@ class DescribeGtmRecoveryPlansRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
         if m.get('PageNumber') is not None:
@@ -16990,6 +18148,10 @@ class DescribeGtmRecoveryPlansResponseBodyRecoveryPlansRecoveryPlan(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -17064,6 +18226,10 @@ class DescribeGtmRecoveryPlansResponseBodyRecoveryPlans(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RecoveryPlan'] = []
         if self.recovery_plan is not None:
@@ -17103,6 +18269,10 @@ class DescribeGtmRecoveryPlansResponseBody(TeaModel):
             self.recovery_plans.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.recovery_plans is not None:
             result['RecoveryPlans'] = self.recovery_plans.to_map()
@@ -17152,6 +18322,10 @@ class DescribeGtmRecoveryPlansResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17173,13 +18347,11 @@ class DescribeInstanceDomainsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         page_number: int = None,
         page_size: int = None,
         instance_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.page_number = page_number
         self.page_size = page_size
         self.instance_id = instance_id
@@ -17188,11 +18360,13 @@ class DescribeInstanceDomainsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -17205,8 +18379,6 @@ class DescribeInstanceDomainsRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -17231,6 +18403,10 @@ class DescribeInstanceDomainsResponseBodyInstanceDomains(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
@@ -17275,6 +18451,10 @@ class DescribeInstanceDomainsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -17328,6 +18508,10 @@ class DescribeInstanceDomainsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17370,6 +18554,10 @@ class DescribeRecordLogsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -17429,6 +18617,10 @@ class DescribeRecordLogsResponseBodyRecordLogsRecordLog(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.action is not None:
             result['Action'] = self.action
@@ -17471,6 +18663,10 @@ class DescribeRecordLogsResponseBodyRecordLogs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RecordLog'] = []
         if self.record_log is not None:
@@ -17508,6 +18704,10 @@ class DescribeRecordLogsResponseBody(TeaModel):
             self.record_logs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -17553,6 +18753,10 @@ class DescribeRecordLogsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17574,7 +18778,6 @@ class DescribeRecordStatisticsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         start_date: str = None,
         end_date: str = None,
         domain_name: str = None,
@@ -17582,7 +18785,6 @@ class DescribeRecordStatisticsRequest(TeaModel):
         domain_type: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.start_date = start_date
         self.end_date = end_date
         self.domain_name = domain_name
@@ -17593,11 +18795,13 @@ class DescribeRecordStatisticsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.start_date is not None:
             result['StartDate'] = self.start_date
         if self.end_date is not None:
@@ -17614,8 +18818,6 @@ class DescribeRecordStatisticsRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
         if m.get('EndDate') is not None:
@@ -17642,6 +18844,10 @@ class DescribeRecordStatisticsResponseBodyStatisticsStatistic(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
@@ -17672,6 +18878,10 @@ class DescribeRecordStatisticsResponseBodyStatistics(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Statistic'] = []
         if self.statistic is not None:
@@ -17703,6 +18913,10 @@ class DescribeRecordStatisticsResponseBody(TeaModel):
             self.statistics.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -17736,6 +18950,10 @@ class DescribeRecordStatisticsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17757,13 +18975,10 @@ class DescribeRecordStatisticsSummaryRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         page_number: int = None,
         page_size: int = None,
         start_date: str = None,
         end_date: str = None,
-        order_by: str = None,
-        direction: str = None,
         domain_name: str = None,
         search_mode: str = None,
         keyword: str = None,
@@ -17771,13 +18986,10 @@ class DescribeRecordStatisticsSummaryRequest(TeaModel):
         domain_type: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.page_number = page_number
         self.page_size = page_size
         self.start_date = start_date
         self.end_date = end_date
-        self.order_by = order_by
-        self.direction = direction
         self.domain_name = domain_name
         self.search_mode = search_mode
         self.keyword = keyword
@@ -17788,11 +19000,13 @@ class DescribeRecordStatisticsSummaryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -17801,10 +19015,6 @@ class DescribeRecordStatisticsSummaryRequest(TeaModel):
             result['StartDate'] = self.start_date
         if self.end_date is not None:
             result['EndDate'] = self.end_date
-        if self.order_by is not None:
-            result['OrderBy'] = self.order_by
-        if self.direction is not None:
-            result['Direction'] = self.direction
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.search_mode is not None:
@@ -17821,8 +19031,6 @@ class DescribeRecordStatisticsSummaryRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -17831,10 +19039,6 @@ class DescribeRecordStatisticsSummaryRequest(TeaModel):
             self.start_date = m.get('StartDate')
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
-        if m.get('OrderBy') is not None:
-            self.order_by = m.get('OrderBy')
-        if m.get('Direction') is not None:
-            self.direction = m.get('Direction')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('SearchMode') is not None:
@@ -17861,6 +19065,10 @@ class DescribeRecordStatisticsSummaryResponseBodyStatisticsStatistic(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sub_domain is not None:
             result['SubDomain'] = self.sub_domain
@@ -17891,6 +19099,10 @@ class DescribeRecordStatisticsSummaryResponseBodyStatistics(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Statistic'] = []
         if self.statistic is not None:
@@ -17930,6 +19142,10 @@ class DescribeRecordStatisticsSummaryResponseBody(TeaModel):
             self.statistics.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -17979,6 +19195,10 @@ class DescribeRecordStatisticsSummaryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18021,6 +19241,10 @@ class DescribeSubDomainRecordsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -18092,6 +19316,10 @@ class DescribeSubDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -18158,6 +19386,10 @@ class DescribeSubDomainRecordsResponseBodyDomainRecords(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Record'] = []
         if self.record is not None:
@@ -18195,6 +19427,10 @@ class DescribeSubDomainRecordsResponseBody(TeaModel):
             self.domain_records.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -18240,6 +19476,10 @@ class DescribeSubDomainRecordsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18272,6 +19512,10 @@ class DescribeSupportLinesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -18309,6 +19553,10 @@ class DescribeSupportLinesResponseBodyRecordLinesRecordLine(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.father_code is not None:
             result['FatherCode'] = self.father_code
@@ -18347,6 +19595,10 @@ class DescribeSupportLinesResponseBodyRecordLines(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RecordLine'] = []
         if self.record_line is not None:
@@ -18378,6 +19630,10 @@ class DescribeSupportLinesResponseBody(TeaModel):
             self.record_lines.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.record_lines is not None:
             result['RecordLines'] = self.record_lines.to_map()
@@ -18411,6 +19667,10 @@ class DescribeSupportLinesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18432,13 +19692,11 @@ class DescribeTagsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         resource_type: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.resource_type = resource_type
         self.page_number = page_number
         self.page_size = page_size
@@ -18447,11 +19705,13 @@ class DescribeTagsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.page_number is not None:
@@ -18464,8 +19724,6 @@ class DescribeTagsRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('PageNumber') is not None:
@@ -18488,6 +19746,10 @@ class DescribeTagsResponseBodyTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -18526,6 +19788,10 @@ class DescribeTagsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -18575,6 +19841,10 @@ class DescribeTagsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18596,7 +19866,6 @@ class DescribeTransferDomainsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         page_number: int = None,
         page_size: int = None,
         transfer_type: str = None,
@@ -18605,7 +19874,6 @@ class DescribeTransferDomainsRequest(TeaModel):
         target_user_id: int = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.page_number = page_number
         self.page_size = page_size
         self.transfer_type = transfer_type
@@ -18617,11 +19885,13 @@ class DescribeTransferDomainsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -18640,8 +19910,6 @@ class DescribeTransferDomainsRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -18678,6 +19946,10 @@ class DescribeTransferDomainsResponseBodyDomainTransfersDomainTransfer(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.from_user_id is not None:
             result['FromUserId'] = self.from_user_id
@@ -18724,6 +19996,10 @@ class DescribeTransferDomainsResponseBodyDomainTransfers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DomainTransfer'] = []
         if self.domain_transfer is not None:
@@ -18761,6 +20037,10 @@ class DescribeTransferDomainsResponseBody(TeaModel):
             self.domain_transfers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -18806,6 +20086,10 @@ class DescribeTransferDomainsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18827,22 +20111,22 @@ class ExecuteGtmRecoveryPlanRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         recovery_plan_id: int = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.recovery_plan_id = recovery_plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.recovery_plan_id is not None:
             result['RecoveryPlanId'] = self.recovery_plan_id
         return result
@@ -18851,8 +20135,6 @@ class ExecuteGtmRecoveryPlanRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('RecoveryPlanId') is not None:
             self.recovery_plan_id = m.get('RecoveryPlanId')
         return self
@@ -18869,6 +20151,10 @@ class ExecuteGtmRecoveryPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -18897,6 +20183,10 @@ class ExecuteGtmRecoveryPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18918,22 +20208,22 @@ class GetMainDomainNameRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         input_string: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.input_string = input_string
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.input_string is not None:
             result['InputString'] = self.input_string
         return result
@@ -18942,8 +20232,6 @@ class GetMainDomainNameRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InputString') is not None:
             self.input_string = m.get('InputString')
         return self
@@ -18966,6 +20254,10 @@ class GetMainDomainNameResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rr is not None:
             result['RR'] = self.rr
@@ -19006,6 +20298,10 @@ class GetMainDomainNameResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19029,17 +20325,19 @@ class GetTxtRecordForVerifyRequest(TeaModel):
         lang: str = None,
         domain_name: str = None,
         type: str = None,
-        user_client_ip: str = None,
     ):
         self.lang = lang
         self.domain_name = domain_name
         self.type = type
-        self.user_client_ip = user_client_ip
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -19047,8 +20345,6 @@ class GetTxtRecordForVerifyRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.type is not None:
             result['Type'] = self.type
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -19059,8 +20355,6 @@ class GetTxtRecordForVerifyRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('Type') is not None:
             self.type = m.get('Type')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         return self
 
 
@@ -19081,6 +20375,10 @@ class GetTxtRecordForVerifyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rr is not None:
             result['RR'] = self.rr
@@ -19121,6 +20419,10 @@ class GetTxtRecordForVerifyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19151,6 +20453,10 @@ class ListTagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -19171,18 +20477,14 @@ class ListTagResourcesRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         resource_type: str = None,
         next_token: str = None,
-        size: int = None,
         tag: List[ListTagResourcesRequestTag] = None,
         resource_id: List[str] = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.resource_type = resource_type
         self.next_token = next_token
-        self.size = size
         self.tag = tag
         self.resource_id = resource_id
 
@@ -19193,17 +20495,17 @@ class ListTagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.next_token is not None:
             result['NextToken'] = self.next_token
-        if self.size is not None:
-            result['Size'] = self.size
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -19216,14 +20518,10 @@ class ListTagResourcesRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -19251,6 +20549,10 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
@@ -19293,6 +20595,10 @@ class ListTagResourcesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -19334,6 +20640,10 @@ class ListTagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19366,6 +20676,10 @@ class ModifyHichinaDomainDNSRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -19397,6 +20711,10 @@ class ModifyHichinaDomainDNSResponseBodyNewDnsServers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dns_server is not None:
             result['DnsServer'] = self.dns_server
@@ -19420,6 +20738,10 @@ class ModifyHichinaDomainDNSResponseBodyOriginalDnsServers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dns_server is not None:
             result['DnsServer'] = self.dns_server
@@ -19450,6 +20772,10 @@ class ModifyHichinaDomainDNSResponseBody(TeaModel):
             self.original_dns_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -19488,6 +20814,10 @@ class ModifyHichinaDomainDNSResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19511,17 +20841,19 @@ class MoveDomainResourceGroupRequest(TeaModel):
         lang: str = None,
         resource_id: str = None,
         new_resource_group_id: str = None,
-        user_client_ip: str = None,
     ):
         self.lang = lang
         self.resource_id = resource_id
         self.new_resource_group_id = new_resource_group_id
-        self.user_client_ip = user_client_ip
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -19529,8 +20861,6 @@ class MoveDomainResourceGroupRequest(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.new_resource_group_id is not None:
             result['NewResourceGroupId'] = self.new_resource_group_id
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -19541,8 +20871,6 @@ class MoveDomainResourceGroupRequest(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('NewResourceGroupId') is not None:
             self.new_resource_group_id = m.get('NewResourceGroupId')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         return self
 
 
@@ -19557,6 +20885,10 @@ class MoveDomainResourceGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -19585,6 +20917,10 @@ class MoveDomainResourceGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19608,17 +20944,19 @@ class MoveGtmResourceGroupRequest(TeaModel):
         lang: str = None,
         resource_id: str = None,
         new_resource_group_id: str = None,
-        user_client_ip: str = None,
     ):
         self.lang = lang
         self.resource_id = resource_id
         self.new_resource_group_id = new_resource_group_id
-        self.user_client_ip = user_client_ip
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -19626,8 +20964,6 @@ class MoveGtmResourceGroupRequest(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.new_resource_group_id is not None:
             result['NewResourceGroupId'] = self.new_resource_group_id
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -19638,8 +20974,6 @@ class MoveGtmResourceGroupRequest(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('NewResourceGroupId') is not None:
             self.new_resource_group_id = m.get('NewResourceGroupId')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         return self
 
 
@@ -19654,6 +20988,10 @@ class MoveGtmResourceGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -19682,6 +21020,10 @@ class MoveGtmResourceGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19728,6 +21070,10 @@ class OperateBatchDomainRequestDomainRecordInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -19780,12 +21126,10 @@ class OperateBatchDomainRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         type: str = None,
         domain_record_info: List[OperateBatchDomainRequestDomainRecordInfo] = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.type = type
         self.domain_record_info = domain_record_info
 
@@ -19796,11 +21140,13 @@ class OperateBatchDomainRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.type is not None:
             result['Type'] = self.type
         result['DomainRecordInfo'] = []
@@ -19813,8 +21159,6 @@ class OperateBatchDomainRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         self.domain_record_info = []
@@ -19838,6 +21182,10 @@ class OperateBatchDomainResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -19870,6 +21218,10 @@ class OperateBatchDomainResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19891,13 +21243,11 @@ class PreviewGtmRecoveryPlanRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         recovery_plan_id: int = None,
         page_number: int = None,
         page_size: int = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.recovery_plan_id = recovery_plan_id
         self.page_number = page_number
         self.page_size = page_size
@@ -19906,11 +21256,13 @@ class PreviewGtmRecoveryPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.recovery_plan_id is not None:
             result['RecoveryPlanId'] = self.recovery_plan_id
         if self.page_number is not None:
@@ -19923,8 +21275,6 @@ class PreviewGtmRecoveryPlanRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('RecoveryPlanId') is not None:
             self.recovery_plan_id = m.get('RecoveryPlanId')
         if m.get('PageNumber') is not None:
@@ -19947,6 +21297,10 @@ class PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfosSwitchInfo(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.strategy_name is not None:
             result['StrategyName'] = self.strategy_name
@@ -19977,6 +21331,10 @@ class PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SwitchInfo'] = []
         if self.switch_info is not None:
@@ -20012,6 +21370,10 @@ class PreviewGtmRecoveryPlanResponseBodyPreviewsPreview(TeaModel):
             self.switch_infos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -20051,6 +21413,10 @@ class PreviewGtmRecoveryPlanResponseBodyPreviews(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Preview'] = []
         if self.preview is not None:
@@ -20090,6 +21456,10 @@ class PreviewGtmRecoveryPlanResponseBody(TeaModel):
             self.previews.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -20139,6 +21509,10 @@ class PreviewGtmRecoveryPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20160,22 +21534,22 @@ class RetrieveDomainRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         return result
@@ -20184,8 +21558,6 @@ class RetrieveDomainRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         return self
@@ -20202,6 +21574,10 @@ class RetrieveDomainResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20230,6 +21606,10 @@ class RetrieveDomainResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20251,22 +21631,22 @@ class RollbackGtmRecoveryPlanRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         recovery_plan_id: int = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.recovery_plan_id = recovery_plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.recovery_plan_id is not None:
             result['RecoveryPlanId'] = self.recovery_plan_id
         return result
@@ -20275,8 +21655,6 @@ class RollbackGtmRecoveryPlanRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('RecoveryPlanId') is not None:
             self.recovery_plan_id = m.get('RecoveryPlanId')
         return self
@@ -20293,6 +21671,10 @@ class RollbackGtmRecoveryPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20321,6 +21703,10 @@ class RollbackGtmRecoveryPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20342,12 +21728,10 @@ class SetDnsGtmAccessModeRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         strategy_id: str = None,
         access_mode: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.strategy_id = strategy_id
         self.access_mode = access_mode
 
@@ -20355,11 +21739,13 @@ class SetDnsGtmAccessModeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.strategy_id is not None:
             result['StrategyId'] = self.strategy_id
         if self.access_mode is not None:
@@ -20370,8 +21756,6 @@ class SetDnsGtmAccessModeRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('StrategyId') is not None:
             self.strategy_id = m.get('StrategyId')
         if m.get('AccessMode') is not None:
@@ -20390,6 +21774,10 @@ class SetDnsGtmAccessModeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20418,6 +21806,10 @@ class SetDnsGtmAccessModeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20438,12 +21830,10 @@ class SetDnsGtmAccessModeResponse(TeaModel):
 class SetDnsGtmMonitorStatusRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         monitor_config_id: str = None,
         status: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.monitor_config_id = monitor_config_id
         self.status = status
@@ -20452,9 +21842,11 @@ class SetDnsGtmMonitorStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.monitor_config_id is not None:
@@ -20465,8 +21857,6 @@ class SetDnsGtmMonitorStatusRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('MonitorConfigId') is not None:
@@ -20487,6 +21877,10 @@ class SetDnsGtmMonitorStatusResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20515,6 +21909,10 @@ class SetDnsGtmMonitorStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20555,6 +21953,10 @@ class SetDNSSLBStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -20606,6 +22008,10 @@ class SetDNSSLBStatusResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20642,6 +22048,10 @@ class SetDNSSLBStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20662,12 +22072,10 @@ class SetDNSSLBStatusResponse(TeaModel):
 class SetDomainDnssecStatusRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         domain_name: str = None,
         status: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.domain_name = domain_name
         self.status = status
@@ -20676,9 +22084,11 @@ class SetDomainDnssecStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.domain_name is not None:
@@ -20689,8 +22099,6 @@ class SetDomainDnssecStatusRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('DomainName') is not None:
@@ -20711,6 +22119,10 @@ class SetDomainDnssecStatusResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20739,6 +22151,10 @@ class SetDomainDnssecStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20773,6 +22189,10 @@ class SetDomainRecordStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -20812,6 +22232,10 @@ class SetDomainRecordStatusResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -20848,6 +22272,10 @@ class SetDomainRecordStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20869,12 +22297,10 @@ class SetGtmAccessModeRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         strategy_id: str = None,
         access_mode: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.strategy_id = strategy_id
         self.access_mode = access_mode
 
@@ -20882,11 +22308,13 @@ class SetGtmAccessModeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.strategy_id is not None:
             result['StrategyId'] = self.strategy_id
         if self.access_mode is not None:
@@ -20897,8 +22325,6 @@ class SetGtmAccessModeRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('StrategyId') is not None:
             self.strategy_id = m.get('StrategyId')
         if m.get('AccessMode') is not None:
@@ -20917,6 +22343,10 @@ class SetGtmAccessModeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20945,6 +22375,10 @@ class SetGtmAccessModeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20965,12 +22399,10 @@ class SetGtmAccessModeResponse(TeaModel):
 class SetGtmMonitorStatusRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         monitor_config_id: str = None,
         status: str = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.monitor_config_id = monitor_config_id
         self.status = status
@@ -20979,9 +22411,11 @@ class SetGtmMonitorStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.monitor_config_id is not None:
@@ -20992,8 +22426,6 @@ class SetGtmMonitorStatusRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('MonitorConfigId') is not None:
@@ -21014,6 +22446,10 @@ class SetGtmMonitorStatusResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -21042,6 +22478,10 @@ class SetGtmMonitorStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21063,12 +22503,10 @@ class SwitchDnsGtmInstanceStrategyModeRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
         strategy_mode: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
         self.strategy_mode = strategy_mode
 
@@ -21076,11 +22514,13 @@ class SwitchDnsGtmInstanceStrategyModeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.strategy_mode is not None:
@@ -21091,8 +22531,6 @@ class SwitchDnsGtmInstanceStrategyModeRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('StrategyMode') is not None:
@@ -21111,6 +22549,10 @@ class SwitchDnsGtmInstanceStrategyModeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -21139,6 +22581,10 @@ class SwitchDnsGtmInstanceStrategyModeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21169,6 +22615,10 @@ class TagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -21189,16 +22639,12 @@ class TagResourcesRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         resource_type: str = None,
-        over_write: bool = None,
         tag: List[TagResourcesRequestTag] = None,
         resource_id: List[str] = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.resource_type = resource_type
-        self.over_write = over_write
         self.tag = tag
         self.resource_id = resource_id
 
@@ -21209,15 +22655,15 @@ class TagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
-        if self.over_write is not None:
-            result['OverWrite'] = self.over_write
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -21230,12 +22676,8 @@ class TagResourcesRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
-        if m.get('OverWrite') is not None:
-            self.over_write = m.get('OverWrite')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -21257,6 +22699,10 @@ class TagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -21285,6 +22731,10 @@ class TagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21309,18 +22759,20 @@ class TransferDomainRequest(TeaModel):
         domain_names: str = None,
         remark: str = None,
         target_user_id: int = None,
-        user_client_ip: str = None,
     ):
         self.lang = lang
         self.domain_names = domain_names
         self.remark = remark
         self.target_user_id = target_user_id
-        self.user_client_ip = user_client_ip
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -21330,8 +22782,6 @@ class TransferDomainRequest(TeaModel):
             result['Remark'] = self.remark
         if self.target_user_id is not None:
             result['TargetUserId'] = self.target_user_id
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -21344,8 +22794,6 @@ class TransferDomainRequest(TeaModel):
             self.remark = m.get('Remark')
         if m.get('TargetUserId') is not None:
             self.target_user_id = m.get('TargetUserId')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         return self
 
 
@@ -21362,6 +22810,10 @@ class TransferDomainResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -21394,6 +22846,10 @@ class TransferDomainResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21415,12 +22871,10 @@ class UnbindInstanceDomainsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_names: str = None,
         instance_id: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_names = domain_names
         self.instance_id = instance_id
 
@@ -21428,11 +22882,13 @@ class UnbindInstanceDomainsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_names is not None:
             result['DomainNames'] = self.domain_names
         if self.instance_id is not None:
@@ -21443,8 +22899,6 @@ class UnbindInstanceDomainsRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainNames') is not None:
             self.domain_names = m.get('DomainNames')
         if m.get('InstanceId') is not None:
@@ -21467,6 +22921,10 @@ class UnbindInstanceDomainsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -21503,6 +22961,10 @@ class UnbindInstanceDomainsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21524,14 +22986,12 @@ class UntagResourcesRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         resource_type: str = None,
         all: bool = None,
         resource_id: List[str] = None,
         tag_key: List[str] = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.resource_type = resource_type
         self.all = all
         self.resource_id = resource_id
@@ -21541,11 +23001,13 @@ class UntagResourcesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.all is not None:
@@ -21560,8 +23022,6 @@ class UntagResourcesRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('All') is not None:
@@ -21584,6 +23044,10 @@ class UntagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -21612,6 +23076,10 @@ class UntagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21642,6 +23110,10 @@ class UpdateCustomLineRequestIpSegment(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_ip is not None:
             result['EndIp'] = self.end_ip
@@ -21662,13 +23134,11 @@ class UpdateCustomLineRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         line_name: str = None,
         line_id: int = None,
         ip_segment: List[UpdateCustomLineRequestIpSegment] = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.line_name = line_name
         self.line_id = line_id
         self.ip_segment = ip_segment
@@ -21680,11 +23150,13 @@ class UpdateCustomLineRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.line_name is not None:
             result['LineName'] = self.line_name
         if self.line_id is not None:
@@ -21699,8 +23171,6 @@ class UpdateCustomLineRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('LineName') is not None:
             self.line_name = m.get('LineName')
         if m.get('LineId') is not None:
@@ -21724,6 +23194,10 @@ class UpdateCustomLineResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -21752,6 +23226,10 @@ class UpdateCustomLineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21782,6 +23260,10 @@ class UpdateDnsCacheDomainRequestSourceDnsServer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.host is not None:
             result['Host'] = self.host
@@ -21802,7 +23284,6 @@ class UpdateDnsCacheDomainRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
         instance_id: str = None,
         cache_ttl_min: int = None,
@@ -21812,7 +23293,6 @@ class UpdateDnsCacheDomainRequest(TeaModel):
         source_dns_server: List[UpdateDnsCacheDomainRequestSourceDnsServer] = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
         self.instance_id = instance_id
         self.cache_ttl_min = cache_ttl_min
@@ -21828,11 +23308,13 @@ class UpdateDnsCacheDomainRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.instance_id is not None:
@@ -21855,8 +23337,6 @@ class UpdateDnsCacheDomainRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('InstanceId') is not None:
@@ -21888,6 +23368,10 @@ class UpdateDnsCacheDomainResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -21916,6 +23400,10 @@ class UpdateDnsCacheDomainResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21937,12 +23425,10 @@ class UpdateDnsCacheDomainRemarkRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
         remark: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
         self.remark = remark
 
@@ -21950,11 +23436,13 @@ class UpdateDnsCacheDomainRemarkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.remark is not None:
@@ -21965,8 +23453,6 @@ class UpdateDnsCacheDomainRemarkRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('Remark') is not None:
@@ -21985,6 +23471,10 @@ class UpdateDnsCacheDomainRemarkResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -22013,6 +23503,10 @@ class UpdateDnsCacheDomainRemarkResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22043,6 +23537,10 @@ class UpdateDnsGtmAccessStrategyRequestDefaultAddrPool(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lba_weight is not None:
             result['LbaWeight'] = self.lba_weight
@@ -22072,6 +23570,10 @@ class UpdateDnsGtmAccessStrategyRequestFailoverAddrPool(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lba_weight is not None:
             result['LbaWeight'] = self.lba_weight
@@ -22092,7 +23594,6 @@ class UpdateDnsGtmAccessStrategyRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         strategy_id: str = None,
         strategy_name: str = None,
         lines: str = None,
@@ -22110,7 +23611,6 @@ class UpdateDnsGtmAccessStrategyRequest(TeaModel):
         failover_addr_pool: List[UpdateDnsGtmAccessStrategyRequestFailoverAddrPool] = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.strategy_id = strategy_id
         self.strategy_name = strategy_name
         self.lines = lines
@@ -22138,11 +23638,13 @@ class UpdateDnsGtmAccessStrategyRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.strategy_id is not None:
             result['StrategyId'] = self.strategy_id
         if self.strategy_name is not None:
@@ -22183,8 +23685,6 @@ class UpdateDnsGtmAccessStrategyRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('StrategyId') is not None:
             self.strategy_id = m.get('StrategyId')
         if m.get('StrategyName') is not None:
@@ -22237,6 +23737,10 @@ class UpdateDnsGtmAccessStrategyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -22269,6 +23773,10 @@ class UpdateDnsGtmAccessStrategyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22305,6 +23813,10 @@ class UpdateDnsGtmAddressPoolRequestAddr(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.attribute_info is not None:
             result['AttributeInfo'] = self.attribute_info
@@ -22336,14 +23848,12 @@ class UpdateDnsGtmAddressPoolRequestAddr(TeaModel):
 class UpdateDnsGtmAddressPoolRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         addr_pool_id: str = None,
         name: str = None,
         lba_strategy: str = None,
         addr: List[UpdateDnsGtmAddressPoolRequestAddr] = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.addr_pool_id = addr_pool_id
         self.name = name
@@ -22357,9 +23867,11 @@ class UpdateDnsGtmAddressPoolRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.addr_pool_id is not None:
@@ -22376,8 +23888,6 @@ class UpdateDnsGtmAddressPoolRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('AddrPoolId') is not None:
@@ -22405,6 +23915,10 @@ class UpdateDnsGtmAddressPoolResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -22433,6 +23947,10 @@ class UpdateDnsGtmAddressPoolResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22465,6 +23983,10 @@ class UpdateDnsGtmInstanceGlobalConfigRequestAlertConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sms_notice is not None:
             result['SmsNotice'] = self.sms_notice
@@ -22489,7 +24011,6 @@ class UpdateDnsGtmInstanceGlobalConfigRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
         instance_name: str = None,
         ttl: int = None,
@@ -22499,9 +24020,10 @@ class UpdateDnsGtmInstanceGlobalConfigRequest(TeaModel):
         alert_group: str = None,
         cname_type: str = None,
         alert_config: List[UpdateDnsGtmInstanceGlobalConfigRequestAlertConfig] = None,
+        public_rr: str = None,
+        force_update: bool = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.ttl = ttl
@@ -22511,6 +24033,8 @@ class UpdateDnsGtmInstanceGlobalConfigRequest(TeaModel):
         self.alert_group = alert_group
         self.cname_type = cname_type
         self.alert_config = alert_config
+        self.public_rr = public_rr
+        self.force_update = force_update
 
     def validate(self):
         if self.alert_config:
@@ -22519,11 +24043,13 @@ class UpdateDnsGtmInstanceGlobalConfigRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
@@ -22544,14 +24070,16 @@ class UpdateDnsGtmInstanceGlobalConfigRequest(TeaModel):
         if self.alert_config is not None:
             for k in self.alert_config:
                 result['AlertConfig'].append(k.to_map() if k else None)
+        if self.public_rr is not None:
+            result['PublicRr'] = self.public_rr
+        if self.force_update is not None:
+            result['ForceUpdate'] = self.force_update
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
@@ -22573,6 +24101,10 @@ class UpdateDnsGtmInstanceGlobalConfigRequest(TeaModel):
             for k in m.get('AlertConfig'):
                 temp_model = UpdateDnsGtmInstanceGlobalConfigRequestAlertConfig()
                 self.alert_config.append(temp_model.from_map(k))
+        if m.get('PublicRr') is not None:
+            self.public_rr = m.get('PublicRr')
+        if m.get('ForceUpdate') is not None:
+            self.force_update = m.get('ForceUpdate')
         return self
 
 
@@ -22587,6 +24119,10 @@ class UpdateDnsGtmInstanceGlobalConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -22615,6 +24151,10 @@ class UpdateDnsGtmInstanceGlobalConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22645,6 +24185,10 @@ class UpdateDnsGtmMonitorRequestIspCityNode(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_code is not None:
             result['CityCode'] = self.city_code
@@ -22664,7 +24208,6 @@ class UpdateDnsGtmMonitorRequestIspCityNode(TeaModel):
 class UpdateDnsGtmMonitorRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         monitor_config_id: str = None,
         protocol_type: str = None,
@@ -22674,7 +24217,6 @@ class UpdateDnsGtmMonitorRequest(TeaModel):
         monitor_extend_info: str = None,
         isp_city_node: List[UpdateDnsGtmMonitorRequestIspCityNode] = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.monitor_config_id = monitor_config_id
         self.protocol_type = protocol_type
@@ -22691,9 +24233,11 @@ class UpdateDnsGtmMonitorRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.monitor_config_id is not None:
@@ -22716,8 +24260,6 @@ class UpdateDnsGtmMonitorRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('MonitorConfigId') is not None:
@@ -22751,6 +24293,10 @@ class UpdateDnsGtmMonitorResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -22779,6 +24325,10 @@ class UpdateDnsGtmMonitorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22813,6 +24363,10 @@ class UpdateDNSSLBWeightRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -22852,6 +24406,10 @@ class UpdateDNSSLBWeightResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -22888,6 +24446,10 @@ class UpdateDNSSLBWeightResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22909,12 +24471,10 @@ class UpdateDomainGroupRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         group_id: str = None,
         group_name: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.group_id = group_id
         self.group_name = group_name
 
@@ -22922,11 +24482,13 @@ class UpdateDomainGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.group_name is not None:
@@ -22937,8 +24499,6 @@ class UpdateDomainGroupRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('GroupName') is not None:
@@ -22961,6 +24521,10 @@ class UpdateDomainGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_name is not None:
             result['GroupName'] = self.group_name
@@ -22997,6 +24561,10 @@ class UpdateDomainGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -23041,6 +24609,10 @@ class UpdateDomainRecordRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -23098,6 +24670,10 @@ class UpdateDomainRecordResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -23130,6 +24706,10 @@ class UpdateDomainRecordResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -23164,6 +24744,10 @@ class UpdateDomainRecordRemarkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -23199,6 +24783,10 @@ class UpdateDomainRecordRemarkResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -23227,6 +24815,10 @@ class UpdateDomainRecordRemarkResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -23248,12 +24840,10 @@ class UpdateDomainRemarkRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         domain_name: str = None,
         remark: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.domain_name = domain_name
         self.remark = remark
 
@@ -23261,11 +24851,13 @@ class UpdateDomainRemarkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.remark is not None:
@@ -23276,8 +24868,6 @@ class UpdateDomainRemarkRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('Remark') is not None:
@@ -23296,6 +24886,10 @@ class UpdateDomainRemarkResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -23324,6 +24918,10 @@ class UpdateDomainRemarkResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -23345,7 +24943,6 @@ class UpdateGtmAccessStrategyRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         strategy_id: str = None,
         strategy_name: str = None,
         default_addr_pool_id: str = None,
@@ -23353,7 +24950,6 @@ class UpdateGtmAccessStrategyRequest(TeaModel):
         access_lines: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.strategy_id = strategy_id
         self.strategy_name = strategy_name
         self.default_addr_pool_id = default_addr_pool_id
@@ -23364,11 +24960,13 @@ class UpdateGtmAccessStrategyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.strategy_id is not None:
             result['StrategyId'] = self.strategy_id
         if self.strategy_name is not None:
@@ -23385,8 +24983,6 @@ class UpdateGtmAccessStrategyRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('StrategyId') is not None:
             self.strategy_id = m.get('StrategyId')
         if m.get('StrategyName') is not None:
@@ -23411,6 +25007,10 @@ class UpdateGtmAccessStrategyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -23439,6 +25039,10 @@ class UpdateGtmAccessStrategyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -23471,6 +25075,10 @@ class UpdateGtmAddressPoolRequestAddr(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -23494,7 +25102,6 @@ class UpdateGtmAddressPoolRequestAddr(TeaModel):
 class UpdateGtmAddressPoolRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         addr_pool_id: str = None,
         name: str = None,
@@ -23502,7 +25109,6 @@ class UpdateGtmAddressPoolRequest(TeaModel):
         min_available_addr_num: int = None,
         addr: List[UpdateGtmAddressPoolRequestAddr] = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.addr_pool_id = addr_pool_id
         self.name = name
@@ -23517,9 +25123,11 @@ class UpdateGtmAddressPoolRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.addr_pool_id is not None:
@@ -23538,8 +25146,6 @@ class UpdateGtmAddressPoolRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('AddrPoolId') is not None:
@@ -23569,6 +25175,10 @@ class UpdateGtmAddressPoolResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -23597,6 +25207,10 @@ class UpdateGtmAddressPoolResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -23618,7 +25232,6 @@ class UpdateGtmInstanceGlobalConfigRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         instance_id: str = None,
         instance_name: str = None,
         ttl: int = None,
@@ -23629,7 +25242,6 @@ class UpdateGtmInstanceGlobalConfigRequest(TeaModel):
         cname_custom_domain_name: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.ttl = ttl
@@ -23643,11 +25255,13 @@ class UpdateGtmInstanceGlobalConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
@@ -23670,8 +25284,6 @@ class UpdateGtmInstanceGlobalConfigRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
@@ -23702,6 +25314,10 @@ class UpdateGtmInstanceGlobalConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -23730,6 +25346,10 @@ class UpdateGtmInstanceGlobalConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -23760,6 +25380,10 @@ class UpdateGtmMonitorRequestIspCityNode(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_code is not None:
             result['CityCode'] = self.city_code
@@ -23779,7 +25403,6 @@ class UpdateGtmMonitorRequestIspCityNode(TeaModel):
 class UpdateGtmMonitorRequest(TeaModel):
     def __init__(
         self,
-        user_client_ip: str = None,
         lang: str = None,
         monitor_config_id: str = None,
         protocol_type: str = None,
@@ -23789,7 +25412,6 @@ class UpdateGtmMonitorRequest(TeaModel):
         monitor_extend_info: str = None,
         isp_city_node: List[UpdateGtmMonitorRequestIspCityNode] = None,
     ):
-        self.user_client_ip = user_client_ip
         self.lang = lang
         self.monitor_config_id = monitor_config_id
         self.protocol_type = protocol_type
@@ -23806,9 +25428,11 @@ class UpdateGtmMonitorRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.monitor_config_id is not None:
@@ -23831,8 +25455,6 @@ class UpdateGtmMonitorRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('MonitorConfigId') is not None:
@@ -23866,6 +25488,10 @@ class UpdateGtmMonitorResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -23894,6 +25520,10 @@ class UpdateGtmMonitorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -23915,14 +25545,12 @@ class UpdateGtmRecoveryPlanRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         recovery_plan_id: int = None,
         name: str = None,
         remark: str = None,
         fault_addr_pool: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.recovery_plan_id = recovery_plan_id
         self.name = name
         self.remark = remark
@@ -23932,11 +25560,13 @@ class UpdateGtmRecoveryPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.recovery_plan_id is not None:
             result['RecoveryPlanId'] = self.recovery_plan_id
         if self.name is not None:
@@ -23951,8 +25581,6 @@ class UpdateGtmRecoveryPlanRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('RecoveryPlanId') is not None:
             self.recovery_plan_id = m.get('RecoveryPlanId')
         if m.get('Name') is not None:
@@ -23975,6 +25603,10 @@ class UpdateGtmRecoveryPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -24003,6 +25635,10 @@ class UpdateGtmRecoveryPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -24024,22 +25660,22 @@ class ValidateDnsGtmAttributeInfoRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        user_client_ip: str = None,
         line_code: str = None,
     ):
         self.lang = lang
-        self.user_client_ip = user_client_ip
         self.line_code = line_code
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.user_client_ip is not None:
-            result['UserClientIp'] = self.user_client_ip
         if self.line_code is not None:
             result['LineCode'] = self.line_code
         return result
@@ -24048,8 +25684,6 @@ class ValidateDnsGtmAttributeInfoRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('UserClientIp') is not None:
-            self.user_client_ip = m.get('UserClientIp')
         if m.get('LineCode') is not None:
             self.line_code = m.get('LineCode')
         return self
@@ -24066,6 +25700,10 @@ class ValidateDnsGtmAttributeInfoResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -24094,6 +25732,10 @@ class ValidateDnsGtmAttributeInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -24107,6 +25749,127 @@ class ValidateDnsGtmAttributeInfoResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ValidateDnsGtmAttributeInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ValidateDnsGtmCnameRrCanUseRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        instance_id: str = None,
+        cname_rr: str = None,
+        cname_type: str = None,
+        cname_mode: str = None,
+        cname_zone: str = None,
+    ):
+        self.lang = lang
+        self.instance_id = instance_id
+        self.cname_rr = cname_rr
+        self.cname_type = cname_type
+        self.cname_mode = cname_mode
+        self.cname_zone = cname_zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.cname_rr is not None:
+            result['CnameRr'] = self.cname_rr
+        if self.cname_type is not None:
+            result['CnameType'] = self.cname_type
+        if self.cname_mode is not None:
+            result['CnameMode'] = self.cname_mode
+        if self.cname_zone is not None:
+            result['CnameZone'] = self.cname_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('CnameRr') is not None:
+            self.cname_rr = m.get('CnameRr')
+        if m.get('CnameType') is not None:
+            self.cname_type = m.get('CnameType')
+        if m.get('CnameMode') is not None:
+            self.cname_mode = m.get('CnameMode')
+        if m.get('CnameZone') is not None:
+            self.cname_zone = m.get('CnameZone')
+        return self
+
+
+class ValidateDnsGtmCnameRrCanUseResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ValidateDnsGtmCnameRrCanUseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ValidateDnsGtmCnameRrCanUseResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ValidateDnsGtmCnameRrCanUseResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
