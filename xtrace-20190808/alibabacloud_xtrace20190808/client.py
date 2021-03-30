@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_xtrace20190808 import models as xtrace_20190808_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -45,11 +47,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTagKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ServiceName'] = request.service_name
+        query['SpanName'] = request.span_name
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.GetTagKeyResponse().from_map(
-            self.do_rpcrequest('GetTagKey', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetTagKey',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.GetTagKeyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_tag_key_with_options_async(
@@ -58,11 +79,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTagKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ServiceName'] = request.service_name
+        query['SpanName'] = request.span_name
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.GetTagKeyResponse().from_map(
-            await self.do_rpcrequest_async('GetTagKey', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetTagKey',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.GetTagKeyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_tag_key(
@@ -85,11 +125,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTagValResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ServiceName'] = request.service_name
+        query['SpanName'] = request.span_name
+        query['TagKey'] = request.tag_key
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.GetTagValResponse().from_map(
-            self.do_rpcrequest('GetTagVal', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetTagVal',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.GetTagValResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_tag_val_with_options_async(
@@ -98,11 +158,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTagValResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ServiceName'] = request.service_name
+        query['SpanName'] = request.span_name
+        query['TagKey'] = request.tag_key
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.GetTagValResponse().from_map(
-            await self.do_rpcrequest_async('GetTagVal', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetTagVal',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.GetTagValResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_tag_val(
@@ -125,11 +205,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['AppType'] = request.app_type
+        query['ProxyUserId'] = request.proxy_user_id
+        query['IsForce'] = request.is_force
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.GetTokenResponse().from_map(
-            self.do_rpcrequest('GetToken', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetToken',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.GetTokenResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_token_with_options_async(
@@ -138,11 +236,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['AppType'] = request.app_type
+        query['ProxyUserId'] = request.proxy_user_id
+        query['IsForce'] = request.is_force
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.GetTokenResponse().from_map(
-            await self.do_rpcrequest_async('GetToken', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetToken',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.GetTokenResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_token(
@@ -165,11 +281,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTraceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TraceID'] = request.trace_id
+        query['AppType'] = request.app_type
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.GetTraceResponse().from_map(
-            self.do_rpcrequest('GetTrace', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetTrace',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.GetTraceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_trace_with_options_async(
@@ -178,11 +311,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTraceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TraceID'] = request.trace_id
+        query['AppType'] = request.app_type
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.GetTraceResponse().from_map(
-            await self.do_rpcrequest_async('GetTrace', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetTrace',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.GetTraceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_trace(
@@ -199,57 +349,35 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_trace_with_options_async(request, runtime)
 
-    def get_trace_analysis_with_options(
-        self,
-        request: xtrace_20190808_models.GetTraceAnalysisRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtrace_20190808_models.GetTraceAnalysisResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return xtrace_20190808_models.GetTraceAnalysisResponse().from_map(
-            self.do_rpcrequest('GetTraceAnalysis', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_trace_analysis_with_options_async(
-        self,
-        request: xtrace_20190808_models.GetTraceAnalysisRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtrace_20190808_models.GetTraceAnalysisResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return xtrace_20190808_models.GetTraceAnalysisResponse().from_map(
-            await self.do_rpcrequest_async('GetTraceAnalysis', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_trace_analysis(
-        self,
-        request: xtrace_20190808_models.GetTraceAnalysisRequest,
-    ) -> xtrace_20190808_models.GetTraceAnalysisResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_trace_analysis_with_options(request, runtime)
-
-    async def get_trace_analysis_async(
-        self,
-        request: xtrace_20190808_models.GetTraceAnalysisRequest,
-    ) -> xtrace_20190808_models.GetTraceAnalysisResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_trace_analysis_with_options_async(request, runtime)
-
     def list_ip_or_hosts_with_options(
         self,
         request: xtrace_20190808_models.ListIpOrHostsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListIpOrHostsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ServiceName'] = request.service_name
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.ListIpOrHostsResponse().from_map(
-            self.do_rpcrequest('ListIpOrHosts', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListIpOrHosts',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.ListIpOrHostsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_ip_or_hosts_with_options_async(
@@ -258,11 +386,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListIpOrHostsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ServiceName'] = request.service_name
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.ListIpOrHostsResponse().from_map(
-            await self.do_rpcrequest_async('ListIpOrHosts', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListIpOrHosts',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.ListIpOrHostsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_ip_or_hosts(
@@ -285,11 +431,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListServicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['AppType'] = request.app_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.ListServicesResponse().from_map(
-            self.do_rpcrequest('ListServices', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListServices',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.ListServicesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_services_with_options_async(
@@ -298,11 +460,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListServicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['AppType'] = request.app_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.ListServicesResponse().from_map(
-            await self.do_rpcrequest_async('ListServices', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListServices',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.ListServicesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_services(
@@ -325,11 +503,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListSpanNamesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ServiceName'] = request.service_name
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.ListSpanNamesResponse().from_map(
-            self.do_rpcrequest('ListSpanNames', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSpanNames',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.ListSpanNamesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_span_names_with_options_async(
@@ -338,11 +534,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListSpanNamesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ServiceName'] = request.service_name
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.ListSpanNamesResponse().from_map(
-            await self.do_rpcrequest_async('ListSpanNames', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSpanNames',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.ListSpanNamesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_span_names(
@@ -365,11 +579,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.QueryMetricResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IntervalInSec'] = request.interval_in_sec
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['OrderBy'] = request.order_by
+        query['Limit'] = request.limit
+        query['Metric'] = request.metric
+        query['Order'] = request.order
+        query['ProxyUserId'] = request.proxy_user_id
+        query['Filters'] = request.filters
+        query['Dimensions'] = request.dimensions
+        query['Measures'] = request.measures
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.QueryMetricResponse().from_map(
-            self.do_rpcrequest('QueryMetric', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryMetric',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.QueryMetricResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_metric_with_options_async(
@@ -378,11 +617,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.QueryMetricResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IntervalInSec'] = request.interval_in_sec
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['OrderBy'] = request.order_by
+        query['Limit'] = request.limit
+        query['Metric'] = request.metric
+        query['Order'] = request.order
+        query['ProxyUserId'] = request.proxy_user_id
+        query['Filters'] = request.filters
+        query['Dimensions'] = request.dimensions
+        query['Measures'] = request.measures
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.QueryMetricResponse().from_map(
-            await self.do_rpcrequest_async('QueryMetric', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryMetric',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.QueryMetricResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_metric(
@@ -405,11 +669,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.SearchTracesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['RegionId'] = request.region_id
+        query['ServiceName'] = request.service_name
+        query['OperationName'] = request.operation_name
+        query['MinDuration'] = request.min_duration
+        query['AppType'] = request.app_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Reverse'] = request.reverse
+        query['ServiceIp'] = request.service_ip
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.SearchTracesResponse().from_map(
-            self.do_rpcrequest('SearchTraces', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SearchTraces',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.SearchTracesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def search_traces_with_options_async(
@@ -418,11 +708,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.SearchTracesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['RegionId'] = request.region_id
+        query['ServiceName'] = request.service_name
+        query['OperationName'] = request.operation_name
+        query['MinDuration'] = request.min_duration
+        query['AppType'] = request.app_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Reverse'] = request.reverse
+        query['ServiceIp'] = request.service_ip
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return xtrace_20190808_models.SearchTracesResponse().from_map(
-            await self.do_rpcrequest_async('SearchTraces', '2019-08-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SearchTraces',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.SearchTracesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def search_traces(

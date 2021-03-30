@@ -23,6 +23,10 @@ class GetTagKeyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -62,6 +66,10 @@ class GetTagKeyResponseBodyTagKeys(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
@@ -88,6 +96,10 @@ class GetTagKeyResponseBody(TeaModel):
             self.tag_keys.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -121,6 +133,10 @@ class GetTagKeyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -159,6 +175,10 @@ class GetTagValRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -202,6 +222,10 @@ class GetTagValResponseBodyTagValues(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_value is not None:
             result['TagValue'] = self.tag_value
@@ -228,6 +252,10 @@ class GetTagValResponseBody(TeaModel):
             self.tag_values.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -261,6 +289,10 @@ class GetTagValResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -295,6 +327,10 @@ class GetTokenRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -336,6 +372,10 @@ class GetTokenResponseBodyToken(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domain is not None:
             result['Domain'] = self.domain
@@ -374,6 +414,10 @@ class GetTokenResponseBody(TeaModel):
             self.token.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -407,6 +451,10 @@ class GetTokenResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -439,6 +487,10 @@ class GetTraceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.trace_id is not None:
             result['TraceID'] = self.trace_id
@@ -472,6 +524,10 @@ class GetTraceResponseBodySpansSpanTagEntryListTagEntry(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -502,6 +558,10 @@ class GetTraceResponseBodySpansSpanTagEntryList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TagEntry'] = []
         if self.tag_entry is not None:
@@ -532,6 +592,10 @@ class GetTraceResponseBodySpansSpanLogEventListLogEventTagEntryListTagEntry(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -562,6 +626,10 @@ class GetTraceResponseBodySpansSpanLogEventListLogEventTagEntryList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TagEntry'] = []
         if self.tag_entry is not None:
@@ -593,6 +661,10 @@ class GetTraceResponseBodySpansSpanLogEventListLogEvent(TeaModel):
             self.tag_entry_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_entry_list is not None:
             result['TagEntryList'] = self.tag_entry_list.to_map()
@@ -624,6 +696,10 @@ class GetTraceResponseBodySpansSpanLogEventList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['LogEvent'] = []
         if self.log_event is not None:
@@ -679,6 +755,10 @@ class GetTraceResponseBodySpansSpan(TeaModel):
             self.log_event_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.span_id is not None:
             result['SpanId'] = self.span_id
@@ -755,6 +835,10 @@ class GetTraceResponseBodySpans(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Span'] = []
         if self.span is not None:
@@ -786,6 +870,10 @@ class GetTraceResponseBody(TeaModel):
             self.spans.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -819,6 +907,10 @@ class GetTraceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -832,109 +924,6 @@ class GetTraceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetTraceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetTraceAnalysisRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-        api: str = None,
-        query: str = None,
-        proxy_user_id: str = None,
-    ):
-        self.region_id = region_id
-        self.api = api
-        self.query = query
-        self.proxy_user_id = proxy_user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.api is not None:
-            result['Api'] = self.api
-        if self.query is not None:
-            result['Query'] = self.query
-        if self.proxy_user_id is not None:
-            result['ProxyUserId'] = self.proxy_user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('Api') is not None:
-            self.api = m.get('Api')
-        if m.get('Query') is not None:
-            self.query = m.get('Query')
-        if m.get('ProxyUserId') is not None:
-            self.proxy_user_id = m.get('ProxyUserId')
-        return self
-
-
-class GetTraceAnalysisResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class GetTraceAnalysisResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetTraceAnalysisResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetTraceAnalysisResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -956,6 +945,10 @@ class ListIpOrHostsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -991,6 +984,10 @@ class ListIpOrHostsResponseBodyIpNames(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ip_name is not None:
             result['IpName'] = self.ip_name
@@ -1017,6 +1014,10 @@ class ListIpOrHostsResponseBody(TeaModel):
             self.ip_names.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1050,6 +1051,10 @@ class ListIpOrHostsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1080,6 +1085,10 @@ class ListServicesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1111,6 +1120,10 @@ class ListServicesResponseBodyServicesService(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pid is not None:
             result['Pid'] = self.pid
@@ -1145,6 +1158,10 @@ class ListServicesResponseBodyServices(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Service'] = []
         if self.service is not None:
@@ -1176,6 +1193,10 @@ class ListServicesResponseBody(TeaModel):
             self.services.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.services is not None:
             result['Services'] = self.services.to_map()
@@ -1209,6 +1230,10 @@ class ListServicesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1243,6 +1268,10 @@ class ListSpanNamesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1278,6 +1307,10 @@ class ListSpanNamesResponseBodySpanNames(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.span_name is not None:
             result['SpanName'] = self.span_name
@@ -1304,6 +1337,10 @@ class ListSpanNamesResponseBody(TeaModel):
             self.span_names.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.span_names is not None:
             result['SpanNames'] = self.span_names.to_map()
@@ -1337,6 +1374,10 @@ class ListSpanNamesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1367,6 +1408,10 @@ class QueryMetricRequestFilters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -1417,6 +1462,10 @@ class QueryMetricRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.interval_in_sec is not None:
             result['IntervalInSec'] = self.interval_in_sec
@@ -1487,6 +1536,10 @@ class QueryMetricResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1519,6 +1572,10 @@ class QueryMetricResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1549,6 +1606,10 @@ class SearchTracesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -1601,6 +1662,10 @@ class SearchTracesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -1683,6 +1748,10 @@ class SearchTracesResponseBodyPageBeanTraceInfosTraceInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.operation_name is not None:
             result['OperationName'] = self.operation_name
@@ -1729,6 +1798,10 @@ class SearchTracesResponseBodyPageBeanTraceInfos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TraceInfo'] = []
         if self.trace_info is not None:
@@ -1764,6 +1837,10 @@ class SearchTracesResponseBodyPageBean(TeaModel):
             self.trace_infos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.trace_infos is not None:
             result['TraceInfos'] = self.trace_infos.to_map()
@@ -1803,6 +1880,10 @@ class SearchTracesResponseBody(TeaModel):
             self.page_bean.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_bean is not None:
             result['PageBean'] = self.page_bean.to_map()
@@ -1836,6 +1917,10 @@ class SearchTracesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
