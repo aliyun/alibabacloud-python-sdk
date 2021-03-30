@@ -17,6 +17,10 @@ class CreateContainerGroupRequestDnsConfigOption(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -51,6 +55,10 @@ class CreateContainerGroupRequestDnsConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name_server is not None:
             result['NameServer'] = self.name_server
@@ -89,6 +97,10 @@ class CreateContainerGroupRequestSecurityContextSysctl(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -119,6 +131,10 @@ class CreateContainerGroupRequestSecurityContext(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Sysctl'] = []
         if self.sysctl is not None:
@@ -149,6 +165,10 @@ class CreateContainerGroupRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -180,6 +200,10 @@ class CreateContainerGroupRequestImageRegistryCredential(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.password is not None:
             result['Password'] = self.password
@@ -211,6 +235,10 @@ class CreateContainerGroupRequestContainerReadinessProbeTcpSocket(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.port is not None:
             result['Port'] = self.port
@@ -238,6 +266,10 @@ class CreateContainerGroupRequestContainerReadinessProbeHttpGet(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scheme is not None:
             result['Scheme'] = self.scheme
@@ -269,6 +301,10 @@ class CreateContainerGroupRequestContainerReadinessProbeExec(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.command is not None:
             result['Command'] = self.command
@@ -314,6 +350,10 @@ class CreateContainerGroupRequestContainerReadinessProbe(TeaModel):
             self.exec.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timeout_seconds is not None:
             result['TimeoutSeconds'] = self.timeout_seconds
@@ -368,6 +408,10 @@ class CreateContainerGroupRequestContainerSecurityContextCapability(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.add is not None:
             result['Add'] = self.add
@@ -397,6 +441,10 @@ class CreateContainerGroupRequestContainerSecurityContext(TeaModel):
             self.capability.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.capability is not None:
             result['Capability'] = self.capability.to_map()
@@ -429,6 +477,10 @@ class CreateContainerGroupRequestContainerLivenessProbeTcpSocket(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.port is not None:
             result['Port'] = self.port
@@ -452,6 +504,10 @@ class CreateContainerGroupRequestContainerLivenessProbeExec(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.command is not None:
             result['Command'] = self.command
@@ -479,6 +535,10 @@ class CreateContainerGroupRequestContainerLivenessProbeHttpGet(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scheme is not None:
             result['Scheme'] = self.scheme
@@ -532,6 +592,10 @@ class CreateContainerGroupRequestContainerLivenessProbe(TeaModel):
             self.http_get.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.period_seconds is not None:
             result['PeriodSeconds'] = self.period_seconds
@@ -586,6 +650,10 @@ class CreateContainerGroupRequestContainerEnvironmentVarFieldRef(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_path is not None:
             result['FieldPath'] = self.field_path
@@ -615,6 +683,10 @@ class CreateContainerGroupRequestContainerEnvironmentVar(TeaModel):
             self.field_ref.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_ref is not None:
             result['FieldRef'] = self.field_ref.to_map()
@@ -639,11 +711,13 @@ class CreateContainerGroupRequestContainerEnvironmentVar(TeaModel):
 class CreateContainerGroupRequestContainerVolumeMount(TeaModel):
     def __init__(
         self,
+        mount_propagation: str = None,
         mount_path: str = None,
         read_only: bool = None,
         sub_path: str = None,
         name: str = None,
     ):
+        self.mount_propagation = mount_propagation
         self.mount_path = mount_path
         self.read_only = read_only
         self.sub_path = sub_path
@@ -653,7 +727,13 @@ class CreateContainerGroupRequestContainerVolumeMount(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.mount_propagation is not None:
+            result['MountPropagation'] = self.mount_propagation
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
         if self.read_only is not None:
@@ -666,6 +746,8 @@ class CreateContainerGroupRequestContainerVolumeMount(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MountPropagation') is not None:
+            self.mount_propagation = m.get('MountPropagation')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
         if m.get('ReadOnly') is not None:
@@ -690,6 +772,10 @@ class CreateContainerGroupRequestContainerPort(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.protocol is not None:
             result['Protocol'] = self.protocol
@@ -719,6 +805,10 @@ class CreateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHead
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -748,6 +838,10 @@ class CreateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHe
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -873,6 +967,10 @@ class CreateContainerGroupRequestContainer(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.readiness_probe is not None:
             result['ReadinessProbe'] = self.readiness_probe.to_map()
@@ -1068,6 +1166,10 @@ class CreateContainerGroupRequestVolumeDiskVolume(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.disk_size is not None:
             result['DiskSize'] = self.disk_size
@@ -1103,6 +1205,10 @@ class CreateContainerGroupRequestVolumeNFSVolume(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.path is not None:
             result['Path'] = self.path
@@ -1138,6 +1244,10 @@ class CreateContainerGroupRequestVolumeFlexVolume(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.fs_type is not None:
             result['FsType'] = self.fs_type
@@ -1171,6 +1281,10 @@ class CreateContainerGroupRequestVolumeHostPathVolume(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -1202,6 +1316,10 @@ class CreateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.path is not None:
             result['Path'] = self.path
@@ -1238,6 +1356,10 @@ class CreateContainerGroupRequestVolumeConfigFileVolume(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.default_mode is not None:
             result['DefaultMode'] = self.default_mode
@@ -1270,6 +1392,10 @@ class CreateContainerGroupRequestVolumeEmptyDirVolume(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.medium is not None:
             result['Medium'] = self.medium
@@ -1324,6 +1450,10 @@ class CreateContainerGroupRequestVolume(TeaModel):
             self.empty_dir_volume.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.disk_volume is not None:
             result['DiskVolume'] = self.disk_volume.to_map()
@@ -1381,6 +1511,10 @@ class CreateContainerGroupRequestInitContainerSecurityContextCapability(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.add is not None:
             result['Add'] = self.add
@@ -1410,6 +1544,10 @@ class CreateContainerGroupRequestInitContainerSecurityContext(TeaModel):
             self.capability.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.capability is not None:
             result['Capability'] = self.capability.to_map()
@@ -1434,11 +1572,13 @@ class CreateContainerGroupRequestInitContainerSecurityContext(TeaModel):
 class CreateContainerGroupRequestInitContainerVolumeMount(TeaModel):
     def __init__(
         self,
+        mount_propagation: str = None,
         mount_path: str = None,
         read_only: bool = None,
         sub_path: str = None,
         name: str = None,
     ):
+        self.mount_propagation = mount_propagation
         self.mount_path = mount_path
         self.read_only = read_only
         self.sub_path = sub_path
@@ -1448,7 +1588,13 @@ class CreateContainerGroupRequestInitContainerVolumeMount(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.mount_propagation is not None:
+            result['MountPropagation'] = self.mount_propagation
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
         if self.read_only is not None:
@@ -1461,6 +1607,8 @@ class CreateContainerGroupRequestInitContainerVolumeMount(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MountPropagation') is not None:
+            self.mount_propagation = m.get('MountPropagation')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
         if m.get('ReadOnly') is not None:
@@ -1485,6 +1633,10 @@ class CreateContainerGroupRequestInitContainerPort(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.protocol is not None:
             result['Protocol'] = self.protocol
@@ -1512,6 +1664,10 @@ class CreateContainerGroupRequestInitContainerEnvironmentVarFieldRef(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_path is not None:
             result['FieldPath'] = self.field_path
@@ -1541,6 +1697,10 @@ class CreateContainerGroupRequestInitContainerEnvironmentVar(TeaModel):
             self.field_ref.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_ref is not None:
             result['FieldRef'] = self.field_ref.to_map()
@@ -1615,6 +1775,10 @@ class CreateContainerGroupRequestInitContainer(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.security_context is not None:
             result['SecurityContext'] = self.security_context.to_map()
@@ -1712,6 +1876,10 @@ class CreateContainerGroupRequestHostAliase(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ip is not None:
             result['Ip'] = self.ip
@@ -1743,6 +1911,10 @@ class CreateContainerGroupRequestArn(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -1780,6 +1952,10 @@ class CreateContainerGroupRequestAcrRegistryInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domain is not None:
             result['Domain'] = self.domain
@@ -1831,7 +2007,6 @@ class CreateContainerGroupRequest(TeaModel):
         ram_role_name: str = None,
         termination_grace_period_seconds: int = None,
         auto_match_image_cache: bool = None,
-        vk_client_version: str = None,
         ipv_6address_count: int = None,
         active_deadline_seconds: int = None,
         spot_strategy: str = None,
@@ -1888,7 +2063,6 @@ class CreateContainerGroupRequest(TeaModel):
         self.ram_role_name = ram_role_name
         self.termination_grace_period_seconds = termination_grace_period_seconds
         self.auto_match_image_cache = auto_match_image_cache
-        self.vk_client_version = vk_client_version
         self.ipv_6address_count = ipv_6address_count
         self.active_deadline_seconds = active_deadline_seconds
         self.spot_strategy = spot_strategy
@@ -1960,6 +2134,10 @@ class CreateContainerGroupRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dns_config is not None:
             result['DnsConfig'] = self.dns_config.to_map()
@@ -2009,8 +2187,6 @@ class CreateContainerGroupRequest(TeaModel):
             result['TerminationGracePeriodSeconds'] = self.termination_grace_period_seconds
         if self.auto_match_image_cache is not None:
             result['AutoMatchImageCache'] = self.auto_match_image_cache
-        if self.vk_client_version is not None:
-            result['VkClientVersion'] = self.vk_client_version
         if self.ipv_6address_count is not None:
             result['Ipv6AddressCount'] = self.ipv_6address_count
         if self.active_deadline_seconds is not None:
@@ -2143,8 +2319,6 @@ class CreateContainerGroupRequest(TeaModel):
             self.termination_grace_period_seconds = m.get('TerminationGracePeriodSeconds')
         if m.get('AutoMatchImageCache') is not None:
             self.auto_match_image_cache = m.get('AutoMatchImageCache')
-        if m.get('VkClientVersion') is not None:
-            self.vk_client_version = m.get('VkClientVersion')
         if m.get('Ipv6AddressCount') is not None:
             self.ipv_6address_count = m.get('Ipv6AddressCount')
         if m.get('ActiveDeadlineSeconds') is not None:
@@ -2247,6 +2421,10 @@ class CreateContainerGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2279,6 +2457,10 @@ class CreateContainerGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2311,6 +2493,10 @@ class CreateImageCacheRequestImageRegistryCredential(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.password is not None:
             result['Password'] = self.password
@@ -2344,6 +2530,10 @@ class CreateImageCacheRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -2376,7 +2566,6 @@ class CreateImageCacheRequest(TeaModel):
         resource_group_id: str = None,
         client_token: str = None,
         image_cache_size: int = None,
-        vk_client_version: str = None,
         retention_days: int = None,
         auto_match_image_cache: bool = None,
         image_registry_credential: List[CreateImageCacheRequestImageRegistryCredential] = None,
@@ -2396,7 +2585,6 @@ class CreateImageCacheRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.client_token = client_token
         self.image_cache_size = image_cache_size
-        self.vk_client_version = vk_client_version
         self.retention_days = retention_days
         self.auto_match_image_cache = auto_match_image_cache
         self.image_registry_credential = image_registry_credential
@@ -2414,6 +2602,10 @@ class CreateImageCacheRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -2441,8 +2633,6 @@ class CreateImageCacheRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.image_cache_size is not None:
             result['ImageCacheSize'] = self.image_cache_size
-        if self.vk_client_version is not None:
-            result['VkClientVersion'] = self.vk_client_version
         if self.retention_days is not None:
             result['RetentionDays'] = self.retention_days
         if self.auto_match_image_cache is not None:
@@ -2487,8 +2677,6 @@ class CreateImageCacheRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('ImageCacheSize') is not None:
             self.image_cache_size = m.get('ImageCacheSize')
-        if m.get('VkClientVersion') is not None:
-            self.vk_client_version = m.get('VkClientVersion')
         if m.get('RetentionDays') is not None:
             self.retention_days = m.get('RetentionDays')
         if m.get('AutoMatchImageCache') is not None:
@@ -2523,6 +2711,10 @@ class CreateImageCacheResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2559,6 +2751,10 @@ class CreateImageCacheResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2586,7 +2782,6 @@ class DeleteContainerGroupRequest(TeaModel):
         region_id: str = None,
         container_group_id: str = None,
         client_token: str = None,
-        vk_client_version: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -2595,12 +2790,15 @@ class DeleteContainerGroupRequest(TeaModel):
         self.region_id = region_id
         self.container_group_id = container_group_id
         self.client_token = client_token
-        self.vk_client_version = vk_client_version
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -2616,8 +2814,6 @@ class DeleteContainerGroupRequest(TeaModel):
             result['ContainerGroupId'] = self.container_group_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
-        if self.vk_client_version is not None:
-            result['VkClientVersion'] = self.vk_client_version
         return result
 
     def from_map(self, m: dict = None):
@@ -2636,8 +2832,6 @@ class DeleteContainerGroupRequest(TeaModel):
             self.container_group_id = m.get('ContainerGroupId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
-        if m.get('VkClientVersion') is not None:
-            self.vk_client_version = m.get('VkClientVersion')
         return self
 
 
@@ -2652,6 +2846,10 @@ class DeleteContainerGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2680,6 +2878,10 @@ class DeleteContainerGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2707,7 +2909,6 @@ class DeleteImageCacheRequest(TeaModel):
         region_id: str = None,
         image_cache_id: str = None,
         client_token: str = None,
-        vk_client_version: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -2716,12 +2917,15 @@ class DeleteImageCacheRequest(TeaModel):
         self.region_id = region_id
         self.image_cache_id = image_cache_id
         self.client_token = client_token
-        self.vk_client_version = vk_client_version
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -2737,8 +2941,6 @@ class DeleteImageCacheRequest(TeaModel):
             result['ImageCacheId'] = self.image_cache_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
-        if self.vk_client_version is not None:
-            result['VkClientVersion'] = self.vk_client_version
         return result
 
     def from_map(self, m: dict = None):
@@ -2757,8 +2959,6 @@ class DeleteImageCacheRequest(TeaModel):
             self.image_cache_id = m.get('ImageCacheId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
-        if m.get('VkClientVersion') is not None:
-            self.vk_client_version = m.get('VkClientVersion')
         return self
 
 
@@ -2773,6 +2973,10 @@ class DeleteImageCacheResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2801,6 +3005,10 @@ class DeleteImageCacheResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2830,7 +3038,6 @@ class DescribeContainerGroupMetricRequest(TeaModel):
         start_time: str = None,
         end_time: str = None,
         period: str = None,
-        vk_client_version: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -2841,12 +3048,15 @@ class DescribeContainerGroupMetricRequest(TeaModel):
         self.start_time = start_time
         self.end_time = end_time
         self.period = period
-        self.vk_client_version = vk_client_version
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -2866,8 +3076,6 @@ class DescribeContainerGroupMetricRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.period is not None:
             result['Period'] = self.period
-        if self.vk_client_version is not None:
-            result['VkClientVersion'] = self.vk_client_version
         return result
 
     def from_map(self, m: dict = None):
@@ -2890,8 +3098,6 @@ class DescribeContainerGroupMetricRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Period') is not None:
             self.period = m.get('Period')
-        if m.get('VkClientVersion') is not None:
-            self.vk_client_version = m.get('VkClientVersion')
         return self
 
 
@@ -2899,46 +3105,74 @@ class DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces(TeaModel)
     def __init__(
         self,
         rx_errors: int = None,
+        tx_drops: int = None,
         tx_bytes: int = None,
+        rx_packets: int = None,
+        tx_packets: int = None,
         name: str = None,
         tx_errors: int = None,
         rx_bytes: int = None,
+        rx_drops: int = None,
     ):
         self.rx_errors = rx_errors
+        self.tx_drops = tx_drops
         self.tx_bytes = tx_bytes
+        self.rx_packets = rx_packets
+        self.tx_packets = tx_packets
         self.name = name
         self.tx_errors = tx_errors
         self.rx_bytes = rx_bytes
+        self.rx_drops = rx_drops
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rx_errors is not None:
             result['RxErrors'] = self.rx_errors
+        if self.tx_drops is not None:
+            result['TxDrops'] = self.tx_drops
         if self.tx_bytes is not None:
             result['TxBytes'] = self.tx_bytes
+        if self.rx_packets is not None:
+            result['RxPackets'] = self.rx_packets
+        if self.tx_packets is not None:
+            result['TxPackets'] = self.tx_packets
         if self.name is not None:
             result['Name'] = self.name
         if self.tx_errors is not None:
             result['TxErrors'] = self.tx_errors
         if self.rx_bytes is not None:
             result['RxBytes'] = self.rx_bytes
+        if self.rx_drops is not None:
+            result['RxDrops'] = self.rx_drops
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RxErrors') is not None:
             self.rx_errors = m.get('RxErrors')
+        if m.get('TxDrops') is not None:
+            self.tx_drops = m.get('TxDrops')
         if m.get('TxBytes') is not None:
             self.tx_bytes = m.get('TxBytes')
+        if m.get('RxPackets') is not None:
+            self.rx_packets = m.get('RxPackets')
+        if m.get('TxPackets') is not None:
+            self.tx_packets = m.get('TxPackets')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('TxErrors') is not None:
             self.tx_errors = m.get('TxErrors')
         if m.get('RxBytes') is not None:
             self.rx_bytes = m.get('RxBytes')
+        if m.get('RxDrops') is not None:
+            self.rx_drops = m.get('RxDrops')
         return self
 
 
@@ -2956,6 +3190,10 @@ class DescribeContainerGroupMetricResponseBodyRecordsNetwork(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Interfaces'] = []
         if self.interfaces is not None:
@@ -2990,6 +3228,10 @@ class DescribeContainerGroupMetricResponseBodyRecordsCPU(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.usage_nano_cores is not None:
             result['UsageNanoCores'] = self.usage_nano_cores
@@ -3014,6 +3256,57 @@ class DescribeContainerGroupMetricResponseBodyRecordsCPU(TeaModel):
         return self
 
 
+class DescribeContainerGroupMetricResponseBodyRecordsDisk(TeaModel):
+    def __init__(
+        self,
+        write_bytes: int = None,
+        write_io: int = None,
+        device: str = None,
+        read_io: int = None,
+        read_bytes: int = None,
+    ):
+        self.write_bytes = write_bytes
+        self.write_io = write_io
+        self.device = device
+        self.read_io = read_io
+        self.read_bytes = read_bytes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.write_bytes is not None:
+            result['WriteBytes'] = self.write_bytes
+        if self.write_io is not None:
+            result['WriteIO'] = self.write_io
+        if self.device is not None:
+            result['Device'] = self.device
+        if self.read_io is not None:
+            result['ReadIO'] = self.read_io
+        if self.read_bytes is not None:
+            result['ReadBytes'] = self.read_bytes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WriteBytes') is not None:
+            self.write_bytes = m.get('WriteBytes')
+        if m.get('WriteIO') is not None:
+            self.write_io = m.get('WriteIO')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        if m.get('ReadIO') is not None:
+            self.read_io = m.get('ReadIO')
+        if m.get('ReadBytes') is not None:
+            self.read_bytes = m.get('ReadBytes')
+        return self
+
+
 class DescribeContainerGroupMetricResponseBodyRecordsMemory(TeaModel):
     def __init__(
         self,
@@ -3033,6 +3326,10 @@ class DescribeContainerGroupMetricResponseBodyRecordsMemory(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rss is not None:
             result['Rss'] = self.rss
@@ -3061,6 +3358,51 @@ class DescribeContainerGroupMetricResponseBodyRecordsMemory(TeaModel):
         return self
 
 
+class DescribeContainerGroupMetricResponseBodyRecordsFilesystem(TeaModel):
+    def __init__(
+        self,
+        capacity: int = None,
+        available: int = None,
+        fs_name: str = None,
+        usage: int = None,
+    ):
+        self.capacity = capacity
+        self.available = available
+        self.fs_name = fs_name
+        self.usage = usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+        if self.available is not None:
+            result['Available'] = self.available
+        if self.fs_name is not None:
+            result['FsName'] = self.fs_name
+        if self.usage is not None:
+            result['Usage'] = self.usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+        if m.get('Available') is not None:
+            self.available = m.get('Available')
+        if m.get('FsName') is not None:
+            self.fs_name = m.get('FsName')
+        if m.get('Usage') is not None:
+            self.usage = m.get('Usage')
+        return self
+
+
 class DescribeContainerGroupMetricResponseBodyRecordsContainersCPU(TeaModel):
     def __init__(
         self,
@@ -3078,6 +3420,10 @@ class DescribeContainerGroupMetricResponseBodyRecordsContainersCPU(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.usage_nano_cores is not None:
             result['UsageNanoCores'] = self.usage_nano_cores
@@ -3121,6 +3467,10 @@ class DescribeContainerGroupMetricResponseBodyRecordsContainersMemory(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rss is not None:
             result['Rss'] = self.rss
@@ -3167,6 +3517,10 @@ class DescribeContainerGroupMetricResponseBodyRecordsContainers(TeaModel):
             self.memory.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cpu is not None:
             result['CPU'] = self.cpu.to_map()
@@ -3194,14 +3548,18 @@ class DescribeContainerGroupMetricResponseBodyRecords(TeaModel):
         self,
         network: DescribeContainerGroupMetricResponseBodyRecordsNetwork = None,
         cpu: DescribeContainerGroupMetricResponseBodyRecordsCPU = None,
+        disk: List[DescribeContainerGroupMetricResponseBodyRecordsDisk] = None,
         timestamp: str = None,
         memory: DescribeContainerGroupMetricResponseBodyRecordsMemory = None,
+        filesystem: List[DescribeContainerGroupMetricResponseBodyRecordsFilesystem] = None,
         containers: List[DescribeContainerGroupMetricResponseBodyRecordsContainers] = None,
     ):
         self.network = network
         self.cpu = cpu
+        self.disk = disk
         self.timestamp = timestamp
         self.memory = memory
+        self.filesystem = filesystem
         self.containers = containers
 
     def validate(self):
@@ -3209,23 +3567,43 @@ class DescribeContainerGroupMetricResponseBodyRecords(TeaModel):
             self.network.validate()
         if self.cpu:
             self.cpu.validate()
+        if self.disk:
+            for k in self.disk:
+                if k:
+                    k.validate()
         if self.memory:
             self.memory.validate()
+        if self.filesystem:
+            for k in self.filesystem:
+                if k:
+                    k.validate()
         if self.containers:
             for k in self.containers:
                 if k:
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.network is not None:
             result['Network'] = self.network.to_map()
         if self.cpu is not None:
             result['CPU'] = self.cpu.to_map()
+        result['Disk'] = []
+        if self.disk is not None:
+            for k in self.disk:
+                result['Disk'].append(k.to_map() if k else None)
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
         if self.memory is not None:
             result['Memory'] = self.memory.to_map()
+        result['Filesystem'] = []
+        if self.filesystem is not None:
+            for k in self.filesystem:
+                result['Filesystem'].append(k.to_map() if k else None)
         result['Containers'] = []
         if self.containers is not None:
             for k in self.containers:
@@ -3240,11 +3618,21 @@ class DescribeContainerGroupMetricResponseBodyRecords(TeaModel):
         if m.get('CPU') is not None:
             temp_model = DescribeContainerGroupMetricResponseBodyRecordsCPU()
             self.cpu = temp_model.from_map(m['CPU'])
+        self.disk = []
+        if m.get('Disk') is not None:
+            for k in m.get('Disk'):
+                temp_model = DescribeContainerGroupMetricResponseBodyRecordsDisk()
+                self.disk.append(temp_model.from_map(k))
         if m.get('Timestamp') is not None:
             self.timestamp = m.get('Timestamp')
         if m.get('Memory') is not None:
             temp_model = DescribeContainerGroupMetricResponseBodyRecordsMemory()
             self.memory = temp_model.from_map(m['Memory'])
+        self.filesystem = []
+        if m.get('Filesystem') is not None:
+            for k in m.get('Filesystem'):
+                temp_model = DescribeContainerGroupMetricResponseBodyRecordsFilesystem()
+                self.filesystem.append(temp_model.from_map(k))
         self.containers = []
         if m.get('Containers') is not None:
             for k in m.get('Containers'):
@@ -3271,6 +3659,10 @@ class DescribeContainerGroupMetricResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3312,6 +3704,10 @@ class DescribeContainerGroupMetricResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3343,6 +3739,7 @@ class DescribeContainerGroupPriceRequest(TeaModel):
         spot_strategy: str = None,
         zone_id: str = None,
         spot_price_limit: float = None,
+        ephemeral_storage: int = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -3355,11 +3752,16 @@ class DescribeContainerGroupPriceRequest(TeaModel):
         self.spot_strategy = spot_strategy
         self.zone_id = zone_id
         self.spot_price_limit = spot_price_limit
+        self.ephemeral_storage = ephemeral_storage
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3383,6 +3785,8 @@ class DescribeContainerGroupPriceRequest(TeaModel):
             result['ZoneId'] = self.zone_id
         if self.spot_price_limit is not None:
             result['SpotPriceLimit'] = self.spot_price_limit
+        if self.ephemeral_storage is not None:
+            result['EphemeralStorage'] = self.ephemeral_storage
         return result
 
     def from_map(self, m: dict = None):
@@ -3409,6 +3813,8 @@ class DescribeContainerGroupPriceRequest(TeaModel):
             self.zone_id = m.get('ZoneId')
         if m.get('SpotPriceLimit') is not None:
             self.spot_price_limit = m.get('SpotPriceLimit')
+        if m.get('EphemeralStorage') is not None:
+            self.ephemeral_storage = m.get('EphemeralStorage')
         return self
 
 
@@ -3429,6 +3835,10 @@ class DescribeContainerGroupPriceResponseBodyPriceInfoSpotPricesSpotPrice(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
@@ -3467,6 +3877,10 @@ class DescribeContainerGroupPriceResponseBodyPriceInfoSpotPrices(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SpotPrice'] = []
         if self.spot_price is not None:
@@ -3497,6 +3911,10 @@ class DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfosDetailInfo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
@@ -3527,6 +3945,10 @@ class DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfosDetailInfo
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Rule'] = []
         if self.rule is not None:
@@ -3564,6 +3986,10 @@ class DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfosDetailInfo
             self.rules.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource is not None:
             result['Resource'] = self.resource
@@ -3607,6 +4033,10 @@ class DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfos(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DetailInfo'] = []
         if self.detail_info is not None:
@@ -3644,6 +4074,10 @@ class DescribeContainerGroupPriceResponseBodyPriceInfoPrice(TeaModel):
             self.detail_infos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.discount_price is not None:
             result['DiscountPrice'] = self.discount_price
@@ -3686,6 +4120,10 @@ class DescribeContainerGroupPriceResponseBodyPriceInfoRulesRule(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
@@ -3716,6 +4154,10 @@ class DescribeContainerGroupPriceResponseBodyPriceInfoRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Rule'] = []
         if self.rule is not None:
@@ -3753,6 +4195,10 @@ class DescribeContainerGroupPriceResponseBodyPriceInfo(TeaModel):
             self.rules.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.spot_prices is not None:
             result['SpotPrices'] = self.spot_prices.to_map()
@@ -3790,6 +4236,10 @@ class DescribeContainerGroupPriceResponseBody(TeaModel):
             self.price_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3823,6 +4273,10 @@ class DescribeContainerGroupPriceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3853,6 +4307,10 @@ class DescribeContainerGroupsRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -3884,7 +4342,6 @@ class DescribeContainerGroupsRequest(TeaModel):
         container_group_ids: str = None,
         container_group_name: str = None,
         status: str = None,
-        vk_client_version: str = None,
         resource_group_id: str = None,
         with_event: bool = None,
         tag: List[DescribeContainerGroupsRequestTag] = None,
@@ -3901,7 +4358,6 @@ class DescribeContainerGroupsRequest(TeaModel):
         self.container_group_ids = container_group_ids
         self.container_group_name = container_group_name
         self.status = status
-        self.vk_client_version = vk_client_version
         self.resource_group_id = resource_group_id
         self.with_event = with_event
         self.tag = tag
@@ -3913,6 +4369,10 @@ class DescribeContainerGroupsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3938,8 +4398,6 @@ class DescribeContainerGroupsRequest(TeaModel):
             result['ContainerGroupName'] = self.container_group_name
         if self.status is not None:
             result['Status'] = self.status
-        if self.vk_client_version is not None:
-            result['VkClientVersion'] = self.vk_client_version
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.with_event is not None:
@@ -3976,8 +4434,6 @@ class DescribeContainerGroupsRequest(TeaModel):
             self.container_group_name = m.get('ContainerGroupName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('VkClientVersion') is not None:
-            self.vk_client_version = m.get('VkClientVersion')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('WithEvent') is not None:
@@ -4003,6 +4459,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsHostAliases(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.hostnames is not None:
             result['Hostnames'] = self.hostnames
@@ -4032,6 +4492,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -4071,6 +4535,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsEvents(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -4120,6 +4588,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeT
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.host is not None:
             result['Host'] = self.host
@@ -4151,6 +4623,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeH
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scheme is not None:
             result['Scheme'] = self.scheme
@@ -4199,6 +4675,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe(
             self.http_get.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.success_threshold is not None:
             result['SuccessThreshold'] = self.success_threshold
@@ -4244,10 +4724,12 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe(
 class DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts(TeaModel):
     def __init__(
         self,
+        mount_propagation: str = None,
         mount_path: str = None,
         read_only: bool = None,
         name: str = None,
     ):
+        self.mount_propagation = mount_propagation
         self.mount_path = mount_path
         self.read_only = read_only
         self.name = name
@@ -4256,7 +4738,13 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.mount_propagation is not None:
+            result['MountPropagation'] = self.mount_propagation
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
         if self.read_only is not None:
@@ -4267,6 +4755,8 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts(T
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MountPropagation') is not None:
+            self.mount_propagation = m.get('MountPropagation')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
         if m.get('ReadOnly') is not None:
@@ -4289,6 +4779,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.protocol is not None:
             result['Protocol'] = self.protocol
@@ -4330,6 +4824,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -4395,6 +4893,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -4446,6 +4948,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContex
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.adds is not None:
             result['Adds'] = self.adds
@@ -4474,6 +4980,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContex
             self.capability.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.read_only_root_filesystem is not None:
             result['ReadOnlyRootFilesystem'] = self.read_only_root_filesystem
@@ -4506,6 +5016,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVar
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_path is not None:
             result['FieldPath'] = self.field_path
@@ -4530,6 +5044,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVar
             self.field_ref.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_ref is not None:
             result['FieldRef'] = self.field_ref.to_map()
@@ -4559,6 +5077,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVar
             self.value_from.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -4593,6 +5115,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.host is not None:
             result['Host'] = self.host
@@ -4624,6 +5150,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scheme is not None:
             result['Scheme'] = self.scheme
@@ -4672,6 +5202,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe
             self.http_get.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.success_threshold is not None:
             result['SuccessThreshold'] = self.success_threshold
@@ -4788,6 +5322,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainers(TeaModel):
             self.readiness_probe.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.liveness_probe is not None:
             result['LivenessProbe'] = self.liveness_probe.to_map()
@@ -4907,10 +5445,12 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainers(TeaModel):
 class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts(TeaModel):
     def __init__(
         self,
+        mount_propagation: str = None,
         mount_path: str = None,
         read_only: bool = None,
         name: str = None,
     ):
+        self.mount_propagation = mount_propagation
         self.mount_path = mount_path
         self.read_only = read_only
         self.name = name
@@ -4919,7 +5459,13 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMoun
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.mount_propagation is not None:
+            result['MountPropagation'] = self.mount_propagation
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
         if self.read_only is not None:
@@ -4930,6 +5476,8 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMoun
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MountPropagation') is not None:
+            self.mount_propagation = m.get('MountPropagation')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
         if m.get('ReadOnly') is not None:
@@ -4952,6 +5500,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.protocol is not None:
             result['Protocol'] = self.protocol
@@ -4993,6 +5545,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousSt
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -5058,6 +5614,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentSta
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -5109,6 +5669,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityCo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.adds is not None:
             result['Adds'] = self.adds
@@ -5137,6 +5701,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityCo
             self.capability.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.read_only_root_filesystem is not None:
             result['ReadOnlyRootFilesystem'] = self.read_only_root_filesystem
@@ -5169,6 +5737,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmen
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_path is not None:
             result['FieldPath'] = self.field_path
@@ -5193,6 +5765,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmen
             self.field_ref.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_ref is not None:
             result['FieldRef'] = self.field_ref.to_map()
@@ -5222,6 +5798,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmen
             self.value_from.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -5303,6 +5883,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainers(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VolumeMounts'] = []
         if self.volume_mounts is not None:
@@ -5410,6 +5994,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -5444,6 +6032,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.searches is not None:
             result['Searches'] = self.searches
@@ -5482,6 +6074,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeC
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.path is not None:
             result['Path'] = self.path
@@ -5532,6 +6128,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsVolumes(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -5602,6 +6202,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctl
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -5632,6 +6236,10 @@ class DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext(TeaMo
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Sysctls'] = []
         if self.sysctls is not None:
@@ -5673,9 +6281,10 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         eni_instance_id: str = None,
         init_containers: List[DescribeContainerGroupsResponseBodyContainerGroupsInitContainers] = None,
         container_group_id: str = None,
+        tenant_eni_ip: str = None,
         instance_type: str = None,
-        ipv_6address: str = None,
         intranet_ip: str = None,
+        ipv_6address: str = None,
         region_id: str = None,
         dns_config: DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig = None,
         volumes: List[DescribeContainerGroupsResponseBodyContainerGroupsVolumes] = None,
@@ -5710,9 +6319,10 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         self.eni_instance_id = eni_instance_id
         self.init_containers = init_containers
         self.container_group_id = container_group_id
+        self.tenant_eni_ip = tenant_eni_ip
         self.instance_type = instance_type
-        self.ipv_6address = ipv_6address
         self.intranet_ip = intranet_ip
+        self.ipv_6address = ipv_6address
         self.region_id = region_id
         self.dns_config = dns_config
         self.volumes = volumes
@@ -5757,6 +6367,10 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
             self.eci_security_context.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -5810,12 +6424,14 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
                 result['InitContainers'].append(k.to_map() if k else None)
         if self.container_group_id is not None:
             result['ContainerGroupId'] = self.container_group_id
+        if self.tenant_eni_ip is not None:
+            result['TenantEniIp'] = self.tenant_eni_ip
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
-        if self.ipv_6address is not None:
-            result['Ipv6Address'] = self.ipv_6address
         if self.intranet_ip is not None:
             result['IntranetIp'] = self.intranet_ip
+        if self.ipv_6address is not None:
+            result['Ipv6Address'] = self.ipv_6address
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.dns_config is not None:
@@ -5903,12 +6519,14 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
                 self.init_containers.append(temp_model.from_map(k))
         if m.get('ContainerGroupId') is not None:
             self.container_group_id = m.get('ContainerGroupId')
+        if m.get('TenantEniIp') is not None:
+            self.tenant_eni_ip = m.get('TenantEniIp')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
-        if m.get('Ipv6Address') is not None:
-            self.ipv_6address = m.get('Ipv6Address')
         if m.get('IntranetIp') is not None:
             self.intranet_ip = m.get('IntranetIp')
+        if m.get('Ipv6Address') is not None:
+            self.ipv_6address = m.get('Ipv6Address')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('DnsConfig') is not None:
@@ -5961,6 +6579,10 @@ class DescribeContainerGroupsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -6006,6 +6628,10 @@ class DescribeContainerGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6058,6 +6684,10 @@ class DescribeContainerLogRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -6133,6 +6763,10 @@ class DescribeContainerLogResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6169,6 +6803,10 @@ class DescribeContainerLogResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6199,6 +6837,10 @@ class DescribeImageCachesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -6249,6 +6891,10 @@ class DescribeImageCachesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -6319,6 +6965,10 @@ class DescribeImageCachesResponseBodyImageCachesTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -6356,6 +7006,10 @@ class DescribeImageCachesResponseBodyImageCachesEvents(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -6403,6 +7057,7 @@ class DescribeImageCachesResponseBodyImageCaches(TeaModel):
         region_id: str = None,
         snapshot_id: str = None,
         resource_group_id: str = None,
+        image_cache_size: int = None,
         image_cache_name: str = None,
     ):
         self.images = images
@@ -6417,6 +7072,7 @@ class DescribeImageCachesResponseBodyImageCaches(TeaModel):
         self.region_id = region_id
         self.snapshot_id = snapshot_id
         self.resource_group_id = resource_group_id
+        self.image_cache_size = image_cache_size
         self.image_cache_name = image_cache_name
 
     def validate(self):
@@ -6430,6 +7086,10 @@ class DescribeImageCachesResponseBodyImageCaches(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.images is not None:
             result['Images'] = self.images
@@ -6459,6 +7119,8 @@ class DescribeImageCachesResponseBodyImageCaches(TeaModel):
             result['SnapshotId'] = self.snapshot_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.image_cache_size is not None:
+            result['ImageCacheSize'] = self.image_cache_size
         if self.image_cache_name is not None:
             result['ImageCacheName'] = self.image_cache_name
         return result
@@ -6495,6 +7157,8 @@ class DescribeImageCachesResponseBodyImageCaches(TeaModel):
             self.snapshot_id = m.get('SnapshotId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ImageCacheSize') is not None:
+            self.image_cache_size = m.get('ImageCacheSize')
         if m.get('ImageCacheName') is not None:
             self.image_cache_name = m.get('ImageCacheName')
         return self
@@ -6516,6 +7180,10 @@ class DescribeImageCachesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6553,6 +7221,10 @@ class DescribeImageCachesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6595,6 +7267,10 @@ class DescribeMultiContainerGroupMetricRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -6639,46 +7315,74 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInt
     def __init__(
         self,
         rx_errors: int = None,
+        tx_drops: int = None,
         tx_bytes: int = None,
+        rx_packets: int = None,
+        tx_packets: int = None,
         name: str = None,
         tx_errors: int = None,
         rx_bytes: int = None,
+        rx_drops: int = None,
     ):
         self.rx_errors = rx_errors
+        self.tx_drops = tx_drops
         self.tx_bytes = tx_bytes
+        self.rx_packets = rx_packets
+        self.tx_packets = tx_packets
         self.name = name
         self.tx_errors = tx_errors
         self.rx_bytes = rx_bytes
+        self.rx_drops = rx_drops
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rx_errors is not None:
             result['RxErrors'] = self.rx_errors
+        if self.tx_drops is not None:
+            result['TxDrops'] = self.tx_drops
         if self.tx_bytes is not None:
             result['TxBytes'] = self.tx_bytes
+        if self.rx_packets is not None:
+            result['RxPackets'] = self.rx_packets
+        if self.tx_packets is not None:
+            result['TxPackets'] = self.tx_packets
         if self.name is not None:
             result['Name'] = self.name
         if self.tx_errors is not None:
             result['TxErrors'] = self.tx_errors
         if self.rx_bytes is not None:
             result['RxBytes'] = self.rx_bytes
+        if self.rx_drops is not None:
+            result['RxDrops'] = self.rx_drops
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RxErrors') is not None:
             self.rx_errors = m.get('RxErrors')
+        if m.get('TxDrops') is not None:
+            self.tx_drops = m.get('TxDrops')
         if m.get('TxBytes') is not None:
             self.tx_bytes = m.get('TxBytes')
+        if m.get('RxPackets') is not None:
+            self.rx_packets = m.get('RxPackets')
+        if m.get('TxPackets') is not None:
+            self.tx_packets = m.get('TxPackets')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('TxErrors') is not None:
             self.tx_errors = m.get('TxErrors')
         if m.get('RxBytes') is not None:
             self.rx_bytes = m.get('RxBytes')
+        if m.get('RxDrops') is not None:
+            self.rx_drops = m.get('RxDrops')
         return self
 
 
@@ -6696,6 +7400,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetwork(Te
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Interfaces'] = []
         if self.interfaces is not None:
@@ -6730,6 +7438,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsCPU(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.usage_nano_cores is not None:
             result['UsageNanoCores'] = self.usage_nano_cores
@@ -6754,6 +7466,57 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsCPU(TeaMod
         return self
 
 
+class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk(TeaModel):
+    def __init__(
+        self,
+        write_bytes: int = None,
+        device: str = None,
+        write_io: int = None,
+        read_bytes: int = None,
+        read_io: int = None,
+    ):
+        self.write_bytes = write_bytes
+        self.device = device
+        self.write_io = write_io
+        self.read_bytes = read_bytes
+        self.read_io = read_io
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.write_bytes is not None:
+            result['WriteBytes'] = self.write_bytes
+        if self.device is not None:
+            result['Device'] = self.device
+        if self.write_io is not None:
+            result['WriteIo'] = self.write_io
+        if self.read_bytes is not None:
+            result['ReadBytes'] = self.read_bytes
+        if self.read_io is not None:
+            result['ReadIo'] = self.read_io
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WriteBytes') is not None:
+            self.write_bytes = m.get('WriteBytes')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        if m.get('WriteIo') is not None:
+            self.write_io = m.get('WriteIo')
+        if m.get('ReadBytes') is not None:
+            self.read_bytes = m.get('ReadBytes')
+        if m.get('ReadIo') is not None:
+            self.read_io = m.get('ReadIo')
+        return self
+
+
 class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsMemory(TeaModel):
     def __init__(
         self,
@@ -6773,6 +7536,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsMemory(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rss is not None:
             result['Rss'] = self.rss
@@ -6818,6 +7585,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainers
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.usage_nano_cores is not None:
             result['UsageNanoCores'] = self.usage_nano_cores
@@ -6861,6 +7632,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainers
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rss is not None:
             result['Rss'] = self.rss
@@ -6907,6 +7682,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainers
             self.memory.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cpu is not None:
             result['CPU'] = self.cpu.to_map()
@@ -6929,39 +7708,104 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainers
         return self
 
 
+class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem(TeaModel):
+    def __init__(
+        self,
+        capacity: int = None,
+        available: int = None,
+        fs_name: str = None,
+        usage: int = None,
+    ):
+        self.capacity = capacity
+        self.available = available
+        self.fs_name = fs_name
+        self.usage = usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+        if self.available is not None:
+            result['Available'] = self.available
+        if self.fs_name is not None:
+            result['FsName'] = self.fs_name
+        if self.usage is not None:
+            result['Usage'] = self.usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+        if m.get('Available') is not None:
+            self.available = m.get('Available')
+        if m.get('FsName') is not None:
+            self.fs_name = m.get('FsName')
+        if m.get('Usage') is not None:
+            self.usage = m.get('Usage')
+        return self
+
+
 class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords(TeaModel):
     def __init__(
         self,
         network: DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetwork = None,
         cpu: DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsCPU = None,
+        disk: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk] = None,
         timestamp: str = None,
         memory: DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsMemory = None,
         containers: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainers] = None,
+        filesystem: List[DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem] = None,
     ):
         self.network = network
         self.cpu = cpu
+        self.disk = disk
         self.timestamp = timestamp
         self.memory = memory
         self.containers = containers
+        self.filesystem = filesystem
 
     def validate(self):
         if self.network:
             self.network.validate()
         if self.cpu:
             self.cpu.validate()
+        if self.disk:
+            for k in self.disk:
+                if k:
+                    k.validate()
         if self.memory:
             self.memory.validate()
         if self.containers:
             for k in self.containers:
                 if k:
                     k.validate()
+        if self.filesystem:
+            for k in self.filesystem:
+                if k:
+                    k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.network is not None:
             result['Network'] = self.network.to_map()
         if self.cpu is not None:
             result['CPU'] = self.cpu.to_map()
+        result['Disk'] = []
+        if self.disk is not None:
+            for k in self.disk:
+                result['Disk'].append(k.to_map() if k else None)
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
         if self.memory is not None:
@@ -6970,6 +7814,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords(TeaModel)
         if self.containers is not None:
             for k in self.containers:
                 result['Containers'].append(k.to_map() if k else None)
+        result['Filesystem'] = []
+        if self.filesystem is not None:
+            for k in self.filesystem:
+                result['Filesystem'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -6980,6 +7828,11 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords(TeaModel)
         if m.get('CPU') is not None:
             temp_model = DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsCPU()
             self.cpu = temp_model.from_map(m['CPU'])
+        self.disk = []
+        if m.get('Disk') is not None:
+            for k in m.get('Disk'):
+                temp_model = DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk()
+                self.disk.append(temp_model.from_map(k))
         if m.get('Timestamp') is not None:
             self.timestamp = m.get('Timestamp')
         if m.get('Memory') is not None:
@@ -6990,6 +7843,11 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords(TeaModel)
             for k in m.get('Containers'):
                 temp_model = DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainers()
                 self.containers.append(temp_model.from_map(k))
+        self.filesystem = []
+        if m.get('Filesystem') is not None:
+            for k in m.get('Filesystem'):
+                temp_model = DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem()
+                self.filesystem.append(temp_model.from_map(k))
         return self
 
 
@@ -7008,6 +7866,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.limit is not None:
             result['Limit'] = self.limit
@@ -7047,6 +7909,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota is not None:
             result['Quota'] = self.quota
@@ -7111,6 +7977,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
             self.container_cpu.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -7200,6 +8070,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.close_wait is not None:
             result['CloseWait'] = self.close_wait
@@ -7279,6 +8153,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rx_errors is not None:
             result['RxErrors'] = self.rx_errors
@@ -7354,6 +8232,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.close_wait is not None:
             result['CloseWait'] = self.close_wait
@@ -7423,6 +8305,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tx_queued is not None:
             result['TxQueued'] = self.tx_queued
@@ -7464,6 +8350,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tx_queued is not None:
             result['TxQueued'] = self.tx_queued
@@ -7536,6 +8426,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
             self.udp_6.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rx_dropped is not None:
             result['RxDropped'] = self.rx_dropped
@@ -7658,6 +8552,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -7773,6 +8671,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.model is not None:
             result['Model'] = self.model
@@ -7834,6 +8736,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.user is not None:
             result['User'] = self.user
@@ -7873,6 +8779,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.throttled_time is not None:
             result['ThrottledTime'] = self.throttled_time
@@ -7911,6 +8821,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
             self.cpu_cfs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cpu_usage is not None:
             result['CpuUsage'] = self.cpu_usage.to_map()
@@ -7946,6 +8860,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pgmaj_fault is not None:
             result['PgmajFault'] = self.pgmaj_fault
@@ -7975,6 +8893,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pgmaj_fault is not None:
             result['PgmajFault'] = self.pgmaj_fault
@@ -8021,6 +8943,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
             self.container_data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.fail_cnt is not None:
             result['FailCnt'] = self.fail_cnt
@@ -8086,6 +9012,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.nr_uninterruptible is not None:
             result['NrUninterruptible'] = self.nr_uninterruptible
@@ -8131,6 +9061,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stats is not None:
             result['Stats'] = self.stats
@@ -8172,6 +9106,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stats is not None:
             result['Stats'] = self.stats
@@ -8213,6 +9151,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stats is not None:
             result['Stats'] = self.stats
@@ -8254,6 +9196,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stats is not None:
             result['Stats'] = self.stats
@@ -8295,6 +9241,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stats is not None:
             result['Stats'] = self.stats
@@ -8336,6 +9286,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stats is not None:
             result['Stats'] = self.stats
@@ -8377,6 +9331,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stats is not None:
             result['Stats'] = self.stats
@@ -8418,6 +9376,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stats is not None:
             result['Stats'] = self.stats
@@ -8498,6 +9460,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['IoServiced'] = []
         if self.io_serviced is not None:
@@ -8620,6 +9586,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfosCon
             self.disk_io_stats.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.network_stats is not None:
             result['NetworkStats'] = self.network_stats.to_map()
@@ -8703,6 +9673,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatasContainerInfos(Te
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.aliases is not None:
             result['Aliases'] = self.aliases
@@ -8767,6 +9741,10 @@ class DescribeMultiContainerGroupMetricResponseBodyMonitorDatas(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Records'] = []
         if self.records is not None:
@@ -8813,6 +9791,10 @@ class DescribeMultiContainerGroupMetricResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8850,6 +9832,10 @@ class DescribeMultiContainerGroupMetricResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8886,6 +9872,10 @@ class DescribeRegionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -8931,6 +9921,10 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.zones is not None:
             result['Zones'] = self.zones
@@ -8971,6 +9965,10 @@ class DescribeRegionsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9008,6 +10006,10 @@ class DescribeRegionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9054,6 +10056,10 @@ class ExecContainerCommandRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -9107,19 +10113,27 @@ class ExecContainerCommandResponseBody(TeaModel):
         self,
         request_id: str = None,
         web_socket_uri: str = None,
+        http_url: str = None,
     ):
         self.request_id = request_id
         self.web_socket_uri = web_socket_uri
+        self.http_url = http_url
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.web_socket_uri is not None:
             result['WebSocketUri'] = self.web_socket_uri
+        if self.http_url is not None:
+            result['HttpUrl'] = self.http_url
         return result
 
     def from_map(self, m: dict = None):
@@ -9128,6 +10142,8 @@ class ExecContainerCommandResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('WebSocketUri') is not None:
             self.web_socket_uri = m.get('WebSocketUri')
+        if m.get('HttpUrl') is not None:
+            self.http_url = m.get('HttpUrl')
         return self
 
 
@@ -9147,6 +10163,10 @@ class ExecContainerCommandResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9183,6 +10203,10 @@ class ListUsageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -9224,6 +10248,10 @@ class ListUsageResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9256,6 +10284,10 @@ class ListUsageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9283,7 +10315,6 @@ class RestartContainerGroupRequest(TeaModel):
         region_id: str = None,
         container_group_id: str = None,
         client_token: str = None,
-        vk_client_version: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -9292,12 +10323,15 @@ class RestartContainerGroupRequest(TeaModel):
         self.region_id = region_id
         self.container_group_id = container_group_id
         self.client_token = client_token
-        self.vk_client_version = vk_client_version
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -9313,8 +10347,6 @@ class RestartContainerGroupRequest(TeaModel):
             result['ContainerGroupId'] = self.container_group_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
-        if self.vk_client_version is not None:
-            result['VkClientVersion'] = self.vk_client_version
         return result
 
     def from_map(self, m: dict = None):
@@ -9333,8 +10365,6 @@ class RestartContainerGroupRequest(TeaModel):
             self.container_group_id = m.get('ContainerGroupId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
-        if m.get('VkClientVersion') is not None:
-            self.vk_client_version = m.get('VkClientVersion')
         return self
 
 
@@ -9349,6 +10379,10 @@ class RestartContainerGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9377,6 +10411,10 @@ class RestartContainerGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9407,6 +10445,10 @@ class UpdateContainerGroupRequestDnsConfigOption(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -9441,6 +10483,10 @@ class UpdateContainerGroupRequestDnsConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name_server is not None:
             result['NameServer'] = self.name_server
@@ -9479,6 +10525,10 @@ class UpdateContainerGroupRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -9510,6 +10560,10 @@ class UpdateContainerGroupRequestVolumeNFSVolume(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.path is not None:
             result['Path'] = self.path
@@ -9543,6 +10597,10 @@ class UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.path is not None:
             result['Path'] = self.path
@@ -9573,6 +10631,10 @@ class UpdateContainerGroupRequestVolumeConfigFileVolume(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ConfigFileToPath'] = []
         if self.config_file_to_path is not None:
@@ -9601,6 +10663,10 @@ class UpdateContainerGroupRequestVolumeEmptyDirVolume(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.medium is not None:
             result['Medium'] = self.medium
@@ -9640,6 +10706,10 @@ class UpdateContainerGroupRequestVolume(TeaModel):
             self.empty_dir_volume.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.nfsvolume is not None:
             result['NFSVolume'] = self.nfsvolume.to_map()
@@ -9682,6 +10752,10 @@ class UpdateContainerGroupRequestContainerReadinessProbeTcpSocket(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.port is not None:
             result['Port'] = self.port
@@ -9709,6 +10783,10 @@ class UpdateContainerGroupRequestContainerReadinessProbeHttpGet(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scheme is not None:
             result['Scheme'] = self.scheme
@@ -9740,6 +10818,10 @@ class UpdateContainerGroupRequestContainerReadinessProbeExec(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.command is not None:
             result['Command'] = self.command
@@ -9785,6 +10867,10 @@ class UpdateContainerGroupRequestContainerReadinessProbe(TeaModel):
             self.exec.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timeout_seconds is not None:
             result['TimeoutSeconds'] = self.timeout_seconds
@@ -9839,6 +10925,10 @@ class UpdateContainerGroupRequestContainerSecurityContextCapability(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.add is not None:
             result['Add'] = self.add
@@ -9868,6 +10958,10 @@ class UpdateContainerGroupRequestContainerSecurityContext(TeaModel):
             self.capability.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.capability is not None:
             result['Capability'] = self.capability.to_map()
@@ -9900,6 +10994,10 @@ class UpdateContainerGroupRequestContainerLivenessProbeTcpSocket(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.port is not None:
             result['Port'] = self.port
@@ -9923,6 +11021,10 @@ class UpdateContainerGroupRequestContainerLivenessProbeExec(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.command is not None:
             result['Command'] = self.command
@@ -9950,6 +11052,10 @@ class UpdateContainerGroupRequestContainerLivenessProbeHttpGet(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scheme is not None:
             result['Scheme'] = self.scheme
@@ -10003,6 +11109,10 @@ class UpdateContainerGroupRequestContainerLivenessProbe(TeaModel):
             self.http_get.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.period_seconds is not None:
             result['PeriodSeconds'] = self.period_seconds
@@ -10057,6 +11167,10 @@ class UpdateContainerGroupRequestContainerEnvironmentVarFieldRef(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_path is not None:
             result['FieldPath'] = self.field_path
@@ -10086,6 +11200,10 @@ class UpdateContainerGroupRequestContainerEnvironmentVar(TeaModel):
             self.field_ref.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_ref is not None:
             result['FieldRef'] = self.field_ref.to_map()
@@ -10110,11 +11228,13 @@ class UpdateContainerGroupRequestContainerEnvironmentVar(TeaModel):
 class UpdateContainerGroupRequestContainerVolumeMount(TeaModel):
     def __init__(
         self,
+        mount_propagation: str = None,
         mount_path: str = None,
         read_only: bool = None,
         sub_path: str = None,
         name: str = None,
     ):
+        self.mount_propagation = mount_propagation
         self.mount_path = mount_path
         self.read_only = read_only
         self.sub_path = sub_path
@@ -10124,7 +11244,13 @@ class UpdateContainerGroupRequestContainerVolumeMount(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.mount_propagation is not None:
+            result['MountPropagation'] = self.mount_propagation
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
         if self.read_only is not None:
@@ -10137,6 +11263,8 @@ class UpdateContainerGroupRequestContainerVolumeMount(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MountPropagation') is not None:
+            self.mount_propagation = m.get('MountPropagation')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
         if m.get('ReadOnly') is not None:
@@ -10161,6 +11289,10 @@ class UpdateContainerGroupRequestContainerPort(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.protocol is not None:
             result['Protocol'] = self.protocol
@@ -10190,6 +11322,10 @@ class UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHe
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -10219,6 +11355,10 @@ class UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHead
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -10340,6 +11480,10 @@ class UpdateContainerGroupRequestContainer(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.readiness_probe is not None:
             result['ReadinessProbe'] = self.readiness_probe.to_map()
@@ -10523,6 +11667,10 @@ class UpdateContainerGroupRequestInitContainerSecurityContextCapability(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.add is not None:
             result['Add'] = self.add
@@ -10552,6 +11700,10 @@ class UpdateContainerGroupRequestInitContainerSecurityContext(TeaModel):
             self.capability.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.capability is not None:
             result['Capability'] = self.capability.to_map()
@@ -10576,11 +11728,13 @@ class UpdateContainerGroupRequestInitContainerSecurityContext(TeaModel):
 class UpdateContainerGroupRequestInitContainerVolumeMount(TeaModel):
     def __init__(
         self,
+        mount_propagation: str = None,
         mount_path: str = None,
         read_only: bool = None,
         sub_path: str = None,
         name: str = None,
     ):
+        self.mount_propagation = mount_propagation
         self.mount_path = mount_path
         self.read_only = read_only
         self.sub_path = sub_path
@@ -10590,7 +11744,13 @@ class UpdateContainerGroupRequestInitContainerVolumeMount(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.mount_propagation is not None:
+            result['MountPropagation'] = self.mount_propagation
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
         if self.read_only is not None:
@@ -10603,6 +11763,8 @@ class UpdateContainerGroupRequestInitContainerVolumeMount(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MountPropagation') is not None:
+            self.mount_propagation = m.get('MountPropagation')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
         if m.get('ReadOnly') is not None:
@@ -10627,6 +11789,10 @@ class UpdateContainerGroupRequestInitContainerPort(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.protocol is not None:
             result['Protocol'] = self.protocol
@@ -10654,6 +11820,10 @@ class UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_path is not None:
             result['FieldPath'] = self.field_path
@@ -10683,6 +11853,10 @@ class UpdateContainerGroupRequestInitContainerEnvironmentVar(TeaModel):
             self.field_ref.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_ref is not None:
             result['FieldRef'] = self.field_ref.to_map()
@@ -10759,6 +11933,10 @@ class UpdateContainerGroupRequestInitContainer(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.security_context is not None:
             result['SecurityContext'] = self.security_context.to_map()
@@ -10862,6 +12040,10 @@ class UpdateContainerGroupRequestImageRegistryCredential(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.password is not None:
             result['Password'] = self.password
@@ -10946,6 +12128,10 @@ class UpdateContainerGroupRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dns_config is not None:
             result['DnsConfig'] = self.dns_config.to_map()
@@ -11059,6 +12245,10 @@ class UpdateContainerGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11087,6 +12277,10 @@ class UpdateContainerGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
