@@ -21,6 +21,10 @@ class AddClientToBlackListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -56,6 +60,10 @@ class AddClientToBlackListResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -84,6 +92,10 @@ class AddClientToBlackListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -114,6 +126,10 @@ class AddTagsRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -146,6 +162,10 @@ class AddTagsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -178,6 +198,10 @@ class AddTagsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -206,6 +230,10 @@ class AddTagsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -236,6 +264,10 @@ class ApplyAutoSnapshotPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_snapshot_policy_id is not None:
             result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
@@ -263,6 +295,10 @@ class ApplyAutoSnapshotPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -291,6 +327,10 @@ class ApplyAutoSnapshotPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -319,6 +359,10 @@ class CancelAutoSnapshotPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_ids is not None:
             result['FileSystemIds'] = self.file_system_ids
@@ -342,6 +386,10 @@ class CancelAutoSnapshotPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -370,6 +418,10 @@ class CancelAutoSnapshotPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -404,6 +456,10 @@ class CancelDirQuotaRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -441,6 +497,10 @@ class CancelDirQuotaResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -473,6 +533,10 @@ class CancelDirQuotaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -486,6 +550,97 @@ class CancelDirQuotaResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CancelDirQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CancelLifecycleRetrieveJobRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+    ):
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class CancelLifecycleRetrieveJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelLifecycleRetrieveJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CancelLifecycleRetrieveJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CancelLifecycleRetrieveJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -507,6 +662,10 @@ class CreateAccessGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_group_name is not None:
             result['AccessGroupName'] = self.access_group_name
@@ -544,6 +703,10 @@ class CreateAccessGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -576,6 +739,10 @@ class CreateAccessGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -616,6 +783,10 @@ class CreateAccessRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_group_name is not None:
             result['AccessGroupName'] = self.access_group_name
@@ -665,6 +836,10 @@ class CreateAccessRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -697,6 +872,10 @@ class CreateAccessRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -733,6 +912,10 @@ class CreateAutoSnapshotPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.repeat_weekdays is not None:
             result['RepeatWeekdays'] = self.repeat_weekdays
@@ -774,6 +957,10 @@ class CreateAutoSnapshotPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -806,6 +993,10 @@ class CreateAutoSnapshotPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -864,6 +1055,10 @@ class CreateFileSystemRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_type is not None:
             result['FileSystemType'] = self.file_system_type
@@ -949,6 +1144,10 @@ class CreateFileSystemResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -981,6 +1180,10 @@ class CreateFileSystemResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1015,6 +1218,10 @@ class CreateLDAPConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -1050,6 +1257,10 @@ class CreateLDAPConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1078,6 +1289,10 @@ class CreateLDAPConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1114,6 +1329,10 @@ class CreateLifecyclePolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -1155,6 +1374,10 @@ class CreateLifecyclePolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1187,6 +1410,10 @@ class CreateLifecyclePolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1200,6 +1427,109 @@ class CreateLifecyclePolicyResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateLifecyclePolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateLifecycleRetrieveJobRequest(TeaModel):
+    def __init__(
+        self,
+        file_system_id: str = None,
+        paths: List[str] = None,
+    ):
+        self.file_system_id = file_system_id
+        self.paths = paths
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.paths is not None:
+            result['Paths'] = self.paths
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('Paths') is not None:
+            self.paths = m.get('Paths')
+        return self
+
+
+class CreateLifecycleRetrieveJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        job_id: str = None,
+    ):
+        self.request_id = request_id
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class CreateLifecycleRetrieveJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateLifecycleRetrieveJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateLifecycleRetrieveJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1229,6 +1559,10 @@ class CreateMountTargetRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -1280,6 +1614,10 @@ class CreateMountTargetResponseBodyMountTargetExtra(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dual_stack_mount_target_domain is not None:
             result['DualStackMountTargetDomain'] = self.dual_stack_mount_target_domain
@@ -1308,6 +1646,10 @@ class CreateMountTargetResponseBody(TeaModel):
             self.mount_target_extra.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1345,6 +1687,10 @@ class CreateMountTargetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1379,6 +1725,10 @@ class CreateSnapshotRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -1416,6 +1766,10 @@ class CreateSnapshotResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
@@ -1448,6 +1802,10 @@ class CreateSnapshotResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1478,6 +1836,10 @@ class DeleteAccessGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_group_name is not None:
             result['AccessGroupName'] = self.access_group_name
@@ -1505,6 +1867,10 @@ class DeleteAccessGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1533,6 +1899,10 @@ class DeleteAccessGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1565,6 +1935,10 @@ class DeleteAccessRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_group_name is not None:
             result['AccessGroupName'] = self.access_group_name
@@ -1596,6 +1970,10 @@ class DeleteAccessRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1624,6 +2002,10 @@ class DeleteAccessRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1652,6 +2034,10 @@ class DeleteAutoSnapshotPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_snapshot_policy_id is not None:
             result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
@@ -1675,6 +2061,10 @@ class DeleteAutoSnapshotPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1703,6 +2093,10 @@ class DeleteAutoSnapshotPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1731,6 +2125,10 @@ class DeleteFileSystemRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -1754,6 +2152,10 @@ class DeleteFileSystemResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1782,6 +2184,10 @@ class DeleteFileSystemResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1810,6 +2216,10 @@ class DeleteLDAPConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -1833,6 +2243,10 @@ class DeleteLDAPConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1861,6 +2275,10 @@ class DeleteLDAPConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1891,6 +2309,10 @@ class DeleteLifecyclePolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -1920,6 +2342,10 @@ class DeleteLifecyclePolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1952,6 +2378,10 @@ class DeleteLifecyclePolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1982,6 +2412,10 @@ class DeleteMountTargetRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -2009,6 +2443,10 @@ class DeleteMountTargetResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2037,6 +2475,10 @@ class DeleteMountTargetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2065,6 +2507,10 @@ class DeleteSnapshotRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
@@ -2088,6 +2534,10 @@ class DeleteSnapshotResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2116,6 +2566,10 @@ class DeleteSnapshotResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2152,6 +2606,10 @@ class DescribeAccessGroupsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_group_name is not None:
             result['AccessGroupName'] = self.access_group_name
@@ -2199,6 +2657,10 @@ class DescribeAccessGroupsResponseBodyAccessGroupsAccessGroup(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_group_name is not None:
             result['AccessGroupName'] = self.access_group_name
@@ -2241,6 +2703,10 @@ class DescribeAccessGroupsResponseBodyAccessGroups(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AccessGroup'] = []
         if self.access_group is not None:
@@ -2278,6 +2744,10 @@ class DescribeAccessGroupsResponseBody(TeaModel):
             self.access_groups.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_groups is not None:
             result['AccessGroups'] = self.access_groups.to_map()
@@ -2323,6 +2793,10 @@ class DescribeAccessGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2345,39 +2819,35 @@ class DescribeAccessRulesRequest(TeaModel):
         self,
         access_group_name: str = None,
         access_rule_id: str = None,
-        source_cidr_ip: str = None,
         page_size: int = None,
         page_number: int = None,
         file_system_type: str = None,
-        source_cidr_ip_filter: str = None,
     ):
         self.access_group_name = access_group_name
         self.access_rule_id = access_rule_id
-        self.source_cidr_ip = source_cidr_ip
         self.page_size = page_size
         self.page_number = page_number
         self.file_system_type = file_system_type
-        self.source_cidr_ip_filter = source_cidr_ip_filter
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_group_name is not None:
             result['AccessGroupName'] = self.access_group_name
         if self.access_rule_id is not None:
             result['AccessRuleId'] = self.access_rule_id
-        if self.source_cidr_ip is not None:
-            result['SourceCidrIp'] = self.source_cidr_ip
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.file_system_type is not None:
             result['FileSystemType'] = self.file_system_type
-        if self.source_cidr_ip_filter is not None:
-            result['SourceCidrIpFilter'] = self.source_cidr_ip_filter
         return result
 
     def from_map(self, m: dict = None):
@@ -2386,16 +2856,12 @@ class DescribeAccessRulesRequest(TeaModel):
             self.access_group_name = m.get('AccessGroupName')
         if m.get('AccessRuleId') is not None:
             self.access_rule_id = m.get('AccessRuleId')
-        if m.get('SourceCidrIp') is not None:
-            self.source_cidr_ip = m.get('SourceCidrIp')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('FileSystemType') is not None:
             self.file_system_type = m.get('FileSystemType')
-        if m.get('SourceCidrIpFilter') is not None:
-            self.source_cidr_ip_filter = m.get('SourceCidrIpFilter')
         return self
 
 
@@ -2420,6 +2886,10 @@ class DescribeAccessRulesResponseBodyAccessRulesAccessRule(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_rule_id is not None:
             result['AccessRuleId'] = self.access_rule_id
@@ -2466,6 +2936,10 @@ class DescribeAccessRulesResponseBodyAccessRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AccessRule'] = []
         if self.access_rule is not None:
@@ -2503,6 +2977,10 @@ class DescribeAccessRulesResponseBody(TeaModel):
             self.access_rules.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -2548,6 +3026,10 @@ class DescribeAccessRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2582,6 +3064,10 @@ class DescribeAutoSnapshotPoliciesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_snapshot_policy_id is not None:
             result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
@@ -2633,6 +3119,10 @@ class DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time_points is not None:
             result['TimePoints'] = self.time_points
@@ -2691,6 +3181,10 @@ class DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPolicies(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AutoSnapshotPolicy'] = []
         if self.auto_snapshot_policy is not None:
@@ -2728,6 +3222,10 @@ class DescribeAutoSnapshotPoliciesResponseBody(TeaModel):
             self.auto_snapshot_policies.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -2773,6 +3271,10 @@ class DescribeAutoSnapshotPoliciesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2809,6 +3311,10 @@ class DescribeAutoSnapshotTasksRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_ids is not None:
             result['FileSystemIds'] = self.file_system_ids
@@ -2850,6 +3356,10 @@ class DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_file_system_id is not None:
             result['SourceFileSystemId'] = self.source_file_system_id
@@ -2880,6 +3390,10 @@ class DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasks(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AutoSnapshotTask'] = []
         if self.auto_snapshot_task is not None:
@@ -2917,6 +3431,10 @@ class DescribeAutoSnapshotTasksResponseBody(TeaModel):
             self.auto_snapshot_tasks.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -2962,6 +3480,10 @@ class DescribeAutoSnapshotTasksResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2994,6 +3516,10 @@ class DescribeBlackListClientsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -3027,6 +3553,10 @@ class DescribeBlackListClientsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3059,6 +3589,10 @@ class DescribeBlackListClientsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3093,6 +3627,10 @@ class DescribeDirQuotasRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -3140,6 +3678,10 @@ class DescribeDirQuotasResponseBodyDirQuotaInfosUserQuotaInfos(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_count_real is not None:
             result['FileCountReal'] = self.file_count_real
@@ -3196,6 +3738,10 @@ class DescribeDirQuotasResponseBodyDirQuotaInfos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -3247,6 +3793,10 @@ class DescribeDirQuotasResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -3296,6 +3846,10 @@ class DescribeDirQuotasResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3326,6 +3880,10 @@ class DescribeFileSystemsRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -3346,33 +3904,17 @@ class DescribeFileSystemsRequest(TeaModel):
     def __init__(
         self,
         file_system_id: str = None,
-        description: str = None,
         file_system_type: str = None,
         vpc_id: str = None,
         page_size: int = None,
         page_number: int = None,
-        use_utcdate_time: bool = None,
-        storage_type: str = None,
-        package_ids: str = None,
-        file_system_ids: str = None,
-        order_by_field: str = None,
-        sort_order: str = None,
-        charge_type: str = None,
         tag: List[DescribeFileSystemsRequestTag] = None,
     ):
         self.file_system_id = file_system_id
-        self.description = description
         self.file_system_type = file_system_type
         self.vpc_id = vpc_id
         self.page_size = page_size
         self.page_number = page_number
-        self.use_utcdate_time = use_utcdate_time
-        self.storage_type = storage_type
-        self.package_ids = package_ids
-        self.file_system_ids = file_system_ids
-        self.order_by_field = order_by_field
-        self.sort_order = sort_order
-        self.charge_type = charge_type
         self.tag = tag
 
     def validate(self):
@@ -3382,11 +3924,13 @@ class DescribeFileSystemsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
-        if self.description is not None:
-            result['Description'] = self.description
         if self.file_system_type is not None:
             result['FileSystemType'] = self.file_system_type
         if self.vpc_id is not None:
@@ -3395,20 +3939,6 @@ class DescribeFileSystemsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
-        if self.use_utcdate_time is not None:
-            result['UseUTCDateTime'] = self.use_utcdate_time
-        if self.storage_type is not None:
-            result['StorageType'] = self.storage_type
-        if self.package_ids is not None:
-            result['PackageIds'] = self.package_ids
-        if self.file_system_ids is not None:
-            result['FileSystemIds'] = self.file_system_ids
-        if self.order_by_field is not None:
-            result['OrderByField'] = self.order_by_field
-        if self.sort_order is not None:
-            result['SortOrder'] = self.sort_order
-        if self.charge_type is not None:
-            result['ChargeType'] = self.charge_type
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -3419,8 +3949,6 @@ class DescribeFileSystemsRequest(TeaModel):
         m = m or dict()
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
         if m.get('FileSystemType') is not None:
             self.file_system_type = m.get('FileSystemType')
         if m.get('VpcId') is not None:
@@ -3429,20 +3957,6 @@ class DescribeFileSystemsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
-        if m.get('UseUTCDateTime') is not None:
-            self.use_utcdate_time = m.get('UseUTCDateTime')
-        if m.get('StorageType') is not None:
-            self.storage_type = m.get('StorageType')
-        if m.get('PackageIds') is not None:
-            self.package_ids = m.get('PackageIds')
-        if m.get('FileSystemIds') is not None:
-            self.file_system_ids = m.get('FileSystemIds')
-        if m.get('OrderByField') is not None:
-            self.order_by_field = m.get('OrderByField')
-        if m.get('SortOrder') is not None:
-            self.sort_order = m.get('SortOrder')
-        if m.get('ChargeType') is not None:
-            self.charge_type = m.get('ChargeType')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -3464,6 +3978,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemTagsTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -3494,6 +4012,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemTags(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -3522,6 +4044,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemSupportedFeatures(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.supported_feature is not None:
             result['SupportedFeature'] = self.supported_feature
@@ -3549,6 +4075,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarge
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ecs_id is not None:
             result['EcsId'] = self.ecs_id
@@ -3583,6 +4113,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarge
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ClientMasterNode'] = []
         if self.client_master_node is not None:
@@ -3613,6 +4147,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarge
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -3643,6 +4181,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarge
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -3690,6 +4232,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarge
             self.tags.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
@@ -3750,6 +4296,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MountTarget'] = []
         if self.mount_target is not None:
@@ -3782,6 +4332,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bind_dn is not None:
             result['BindDN'] = self.bind_dn
@@ -3821,6 +4375,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -3863,6 +4421,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Package'] = []
         if self.package is not None:
@@ -3944,6 +4506,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             self.packages.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -4063,6 +4629,10 @@ class DescribeFileSystemsResponseBodyFileSystems(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FileSystem'] = []
         if self.file_system is not None:
@@ -4100,6 +4670,10 @@ class DescribeFileSystemsResponseBody(TeaModel):
             self.file_systems.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_systems is not None:
             result['FileSystems'] = self.file_systems.to_map()
@@ -4145,6 +4719,10 @@ class DescribeFileSystemsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4175,6 +4753,10 @@ class DescribeFileSystemStatisticsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -4208,6 +4790,10 @@ class DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPacka
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -4246,6 +4832,10 @@ class DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages(TeaM
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Package'] = []
         if self.package is not None:
@@ -4303,6 +4893,10 @@ class DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem(TeaModel):
             self.packages.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -4386,6 +4980,10 @@ class DescribeFileSystemStatisticsResponseBodyFileSystems(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FileSystem'] = []
         if self.file_system is not None:
@@ -4422,6 +5020,10 @@ class DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStat
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_type is not None:
             result['FileSystemType'] = self.file_system_type
@@ -4464,6 +5066,10 @@ class DescribeFileSystemStatisticsResponseBodyFileSystemStatistics(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FileSystemStatistic'] = []
         if self.file_system_statistic is not None:
@@ -4505,6 +5111,10 @@ class DescribeFileSystemStatisticsResponseBody(TeaModel):
             self.file_system_statistics.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_systems is not None:
             result['FileSystems'] = self.file_systems.to_map()
@@ -4555,6 +5165,10 @@ class DescribeFileSystemStatisticsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4583,6 +5197,10 @@ class DescribeLDAPConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -4610,6 +5228,10 @@ class DescribeLDAPConfigResponseBodyLdap(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bind_dn is not None:
             result['BindDN'] = self.bind_dn
@@ -4644,6 +5266,10 @@ class DescribeLDAPConfigResponseBody(TeaModel):
             self.ldap.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ldap is not None:
             result['Ldap'] = self.ldap.to_map()
@@ -4677,6 +5303,10 @@ class DescribeLDAPConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4709,6 +5339,10 @@ class DescribeLifecyclePoliciesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -4750,6 +5384,10 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -4804,6 +5442,10 @@ class DescribeLifecyclePoliciesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -4853,6 +5495,10 @@ class DescribeLifecyclePoliciesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4885,6 +5531,10 @@ class DescribeLogAnalysisRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -4922,6 +5572,10 @@ class DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -4960,6 +5614,10 @@ class DescribeLogAnalysisResponseBodyAnalysesAnalysis(TeaModel):
             self.meta_value.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.meta_key is not None:
             result['MetaKey'] = self.meta_key
@@ -4991,6 +5649,10 @@ class DescribeLogAnalysisResponseBodyAnalyses(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Analysis'] = []
         if self.analysis is not None:
@@ -5030,6 +5692,10 @@ class DescribeLogAnalysisResponseBody(TeaModel):
             self.analyses.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -5079,6 +5745,10 @@ class DescribeLogAnalysisResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5117,6 +5787,10 @@ class DescribeMountedClientsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -5160,6 +5834,10 @@ class DescribeMountedClientsResponseBodyClientsClient(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_ip is not None:
             result['ClientIP'] = self.client_ip
@@ -5186,6 +5864,10 @@ class DescribeMountedClientsResponseBodyClients(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Client'] = []
         if self.client is not None:
@@ -5223,6 +5905,10 @@ class DescribeMountedClientsResponseBody(TeaModel):
             self.clients.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -5268,6 +5954,10 @@ class DescribeMountedClientsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5304,6 +5994,10 @@ class DescribeMountTargetsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -5347,6 +6041,10 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodesCl
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ecs_id is not None:
             result['EcsId'] = self.ecs_id
@@ -5381,6 +6079,10 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodes(T
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ClientMasterNode'] = []
         if self.client_master_node is not None:
@@ -5424,6 +6126,10 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTarget(TeaModel):
             self.client_master_nodes.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
@@ -5479,6 +6185,10 @@ class DescribeMountTargetsResponseBodyMountTargets(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MountTarget'] = []
         if self.mount_target is not None:
@@ -5516,6 +6226,10 @@ class DescribeMountTargetsResponseBody(TeaModel):
             self.mount_targets.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -5561,6 +6275,10 @@ class DescribeMountTargetsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5593,6 +6311,10 @@ class DescribeRegionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -5628,6 +6350,10 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.local_name is not None:
             result['LocalName'] = self.local_name
@@ -5662,6 +6388,10 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Region'] = []
         if self.region is not None:
@@ -5699,6 +6429,10 @@ class DescribeRegionsResponseBody(TeaModel):
             self.regions.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -5744,6 +6478,10 @@ class DescribeRegionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5786,6 +6524,10 @@ class DescribeSnapshotsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_type is not None:
             result['FileSystemType'] = self.file_system_type
@@ -5859,6 +6601,10 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -5929,6 +6675,10 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Snapshot'] = []
         if self.snapshot is not None:
@@ -5966,6 +6716,10 @@ class DescribeSnapshotsResponseBody(TeaModel):
             self.snapshots.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -6011,6 +6765,10 @@ class DescribeSnapshotsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6045,6 +6803,10 @@ class DescribeStoragePackagesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -6092,6 +6854,10 @@ class DescribeStoragePackagesResponseBodyPackagesPackage(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -6142,6 +6908,10 @@ class DescribeStoragePackagesResponseBodyPackages(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Package'] = []
         if self.package is not None:
@@ -6179,6 +6949,10 @@ class DescribeStoragePackagesResponseBody(TeaModel):
             self.packages.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -6224,6 +6998,10 @@ class DescribeStoragePackagesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6254,6 +7032,10 @@ class DescribeTagsRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -6290,6 +7072,10 @@ class DescribeTagsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -6330,6 +7116,10 @@ class DescribeTagsResponseBodyTagsTagFileSystemIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -6358,6 +7148,10 @@ class DescribeTagsResponseBodyTagsTag(TeaModel):
             self.file_system_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -6393,6 +7187,10 @@ class DescribeTagsResponseBodyTags(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -6430,6 +7228,10 @@ class DescribeTagsResponseBody(TeaModel):
             self.tags.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -6475,6 +7277,10 @@ class DescribeTagsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6503,6 +7309,10 @@ class DescribeZonesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -6526,6 +7336,10 @@ class DescribeZonesResponseBodyZonesZonePerformance(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.protocol is not None:
             result['Protocol'] = self.protocol
@@ -6549,6 +7363,10 @@ class DescribeZonesResponseBodyZonesZoneCapacity(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.protocol is not None:
             result['Protocol'] = self.protocol
@@ -6579,6 +7397,10 @@ class DescribeZonesResponseBodyZonesZone(TeaModel):
             self.capacity.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.performance is not None:
             result['Performance'] = self.performance.to_map()
@@ -6615,6 +7437,10 @@ class DescribeZonesResponseBodyZones(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Zone'] = []
         if self.zone is not None:
@@ -6646,6 +7472,10 @@ class DescribeZonesResponseBody(TeaModel):
             self.zones.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6679,6 +7509,10 @@ class DescribeZonesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6696,6 +7530,630 @@ class DescribeZonesResponse(TeaModel):
         return self
 
 
+class GetDirectoryOrFilePropertiesRequest(TeaModel):
+    def __init__(
+        self,
+        file_system_id: str = None,
+        path: str = None,
+    ):
+        self.file_system_id = file_system_id
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.path is not None:
+            result['Path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        return self
+
+
+class GetDirectoryOrFilePropertiesResponseBodyEntry(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        has_infrequent_access_file: bool = None,
+        mtime: str = None,
+        atime: str = None,
+        size: int = None,
+        ctime: str = None,
+        storage_type: str = None,
+        name: str = None,
+        retrieve_time: str = None,
+        file_id: str = None,
+        inode: str = None,
+    ):
+        self.type = type
+        self.has_infrequent_access_file = has_infrequent_access_file
+        self.mtime = mtime
+        self.atime = atime
+        self.size = size
+        self.ctime = ctime
+        self.storage_type = storage_type
+        self.name = name
+        self.retrieve_time = retrieve_time
+        self.file_id = file_id
+        self.inode = inode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.has_infrequent_access_file is not None:
+            result['HasInfrequentAccessFile'] = self.has_infrequent_access_file
+        if self.mtime is not None:
+            result['MTime'] = self.mtime
+        if self.atime is not None:
+            result['ATime'] = self.atime
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.ctime is not None:
+            result['CTime'] = self.ctime
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.retrieve_time is not None:
+            result['RetrieveTime'] = self.retrieve_time
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.inode is not None:
+            result['Inode'] = self.inode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('HasInfrequentAccessFile') is not None:
+            self.has_infrequent_access_file = m.get('HasInfrequentAccessFile')
+        if m.get('MTime') is not None:
+            self.mtime = m.get('MTime')
+        if m.get('ATime') is not None:
+            self.atime = m.get('ATime')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('CTime') is not None:
+            self.ctime = m.get('CTime')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RetrieveTime') is not None:
+            self.retrieve_time = m.get('RetrieveTime')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('Inode') is not None:
+            self.inode = m.get('Inode')
+        return self
+
+
+class GetDirectoryOrFilePropertiesResponseBody(TeaModel):
+    def __init__(
+        self,
+        entry: GetDirectoryOrFilePropertiesResponseBodyEntry = None,
+        request_id: str = None,
+    ):
+        self.entry = entry
+        self.request_id = request_id
+
+    def validate(self):
+        if self.entry:
+            self.entry.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entry is not None:
+            result['Entry'] = self.entry.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Entry') is not None:
+            temp_model = GetDirectoryOrFilePropertiesResponseBodyEntry()
+            self.entry = temp_model.from_map(m['Entry'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDirectoryOrFilePropertiesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDirectoryOrFilePropertiesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDirectoryOrFilePropertiesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDirectoriesAndFilesRequest(TeaModel):
+    def __init__(
+        self,
+        file_system_id: str = None,
+        path: str = None,
+        next_token: str = None,
+        storage_type: str = None,
+        directory_only: bool = None,
+        max_results: int = None,
+    ):
+        self.file_system_id = file_system_id
+        self.path = path
+        self.next_token = next_token
+        self.storage_type = storage_type
+        self.directory_only = directory_only
+        self.max_results = max_results
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        if self.directory_only is not None:
+            result['DirectoryOnly'] = self.directory_only
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        if m.get('DirectoryOnly') is not None:
+            self.directory_only = m.get('DirectoryOnly')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        return self
+
+
+class ListDirectoriesAndFilesResponseBodyEntries(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        has_infrequent_access_file: bool = None,
+        ctime: str = None,
+        mtime: str = None,
+        size: int = None,
+        storage_type: str = None,
+        atime: str = None,
+        name: str = None,
+        retrieve_time: str = None,
+        inode: str = None,
+    ):
+        self.type = type
+        self.has_infrequent_access_file = has_infrequent_access_file
+        self.ctime = ctime
+        self.mtime = mtime
+        self.size = size
+        self.storage_type = storage_type
+        self.atime = atime
+        self.name = name
+        self.retrieve_time = retrieve_time
+        self.inode = inode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.has_infrequent_access_file is not None:
+            result['HasInfrequentAccessFile'] = self.has_infrequent_access_file
+        if self.ctime is not None:
+            result['Ctime'] = self.ctime
+        if self.mtime is not None:
+            result['Mtime'] = self.mtime
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        if self.atime is not None:
+            result['Atime'] = self.atime
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.retrieve_time is not None:
+            result['RetrieveTime'] = self.retrieve_time
+        if self.inode is not None:
+            result['Inode'] = self.inode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('HasInfrequentAccessFile') is not None:
+            self.has_infrequent_access_file = m.get('HasInfrequentAccessFile')
+        if m.get('Ctime') is not None:
+            self.ctime = m.get('Ctime')
+        if m.get('Mtime') is not None:
+            self.mtime = m.get('Mtime')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        if m.get('Atime') is not None:
+            self.atime = m.get('Atime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RetrieveTime') is not None:
+            self.retrieve_time = m.get('RetrieveTime')
+        if m.get('Inode') is not None:
+            self.inode = m.get('Inode')
+        return self
+
+
+class ListDirectoriesAndFilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        entries: List[ListDirectoriesAndFilesResponseBodyEntries] = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.entries = entries
+
+    def validate(self):
+        if self.entries:
+            for k in self.entries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Entries'] = []
+        if self.entries is not None:
+            for k in self.entries:
+                result['Entries'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.entries = []
+        if m.get('Entries') is not None:
+            for k in m.get('Entries'):
+                temp_model = ListDirectoriesAndFilesResponseBodyEntries()
+                self.entries.append(temp_model.from_map(k))
+        return self
+
+
+class ListDirectoriesAndFilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDirectoriesAndFilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDirectoriesAndFilesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListLifecycleRetrieveJobsRequest(TeaModel):
+    def __init__(
+        self,
+        page_size: int = None,
+        page_number: int = None,
+        file_system_id: str = None,
+        status: str = None,
+    ):
+        self.page_size = page_size
+        self.page_number = page_number
+        self.file_system_id = file_system_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs(TeaModel):
+    def __init__(
+        self,
+        file_system_id: str = None,
+        status: str = None,
+        discovered_file_count: int = None,
+        update_time: str = None,
+        paths: List[str] = None,
+        retrieved_file_count: int = None,
+        job_id: str = None,
+        create_time: str = None,
+    ):
+        self.file_system_id = file_system_id
+        self.status = status
+        self.discovered_file_count = discovered_file_count
+        self.update_time = update_time
+        self.paths = paths
+        self.retrieved_file_count = retrieved_file_count
+        self.job_id = job_id
+        self.create_time = create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.discovered_file_count is not None:
+            result['DiscoveredFileCount'] = self.discovered_file_count
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.paths is not None:
+            result['Paths'] = self.paths
+        if self.retrieved_file_count is not None:
+            result['RetrievedFileCount'] = self.retrieved_file_count
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('DiscoveredFileCount') is not None:
+            self.discovered_file_count = m.get('DiscoveredFileCount')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('Paths') is not None:
+            self.paths = m.get('Paths')
+        if m.get('RetrievedFileCount') is not None:
+            self.retrieved_file_count = m.get('RetrievedFileCount')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        return self
+
+
+class ListLifecycleRetrieveJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        request_id: str = None,
+        page_size: int = None,
+        page_number: int = None,
+        lifecycle_retrieve_jobs: List[ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs] = None,
+    ):
+        self.total_count = total_count
+        self.request_id = request_id
+        self.page_size = page_size
+        self.page_number = page_number
+        self.lifecycle_retrieve_jobs = lifecycle_retrieve_jobs
+
+    def validate(self):
+        if self.lifecycle_retrieve_jobs:
+            for k in self.lifecycle_retrieve_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        result['LifecycleRetrieveJobs'] = []
+        if self.lifecycle_retrieve_jobs is not None:
+            for k in self.lifecycle_retrieve_jobs:
+                result['LifecycleRetrieveJobs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        self.lifecycle_retrieve_jobs = []
+        if m.get('LifecycleRetrieveJobs') is not None:
+            for k in m.get('LifecycleRetrieveJobs'):
+                temp_model = ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs()
+                self.lifecycle_retrieve_jobs.append(temp_model.from_map(k))
+        return self
+
+
+class ListLifecycleRetrieveJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListLifecycleRetrieveJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListLifecycleRetrieveJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagResourcesRequestTag(TeaModel):
     def __init__(
         self,
@@ -6709,6 +8167,10 @@ class ListTagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -6745,6 +8207,10 @@ class ListTagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
@@ -6791,6 +8257,10 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
@@ -6829,6 +8299,10 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TagResource'] = []
         if self.tag_resource is not None:
@@ -6862,6 +8336,10 @@ class ListTagResourcesResponseBody(TeaModel):
             self.tag_resources.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -6899,6 +8377,10 @@ class ListTagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6931,6 +8413,10 @@ class ModifyAccessGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_group_name is not None:
             result['AccessGroupName'] = self.access_group_name
@@ -6962,6 +8448,10 @@ class ModifyAccessGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6990,6 +8480,10 @@ class ModifyAccessGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7032,6 +8526,10 @@ class ModifyAccessRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_group_name is not None:
             result['AccessGroupName'] = self.access_group_name
@@ -7083,6 +8581,10 @@ class ModifyAccessRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7111,6 +8613,10 @@ class ModifyAccessRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7147,6 +8653,10 @@ class ModifyAutoSnapshotPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_snapshot_policy_id is not None:
             result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
@@ -7186,6 +8696,10 @@ class ModifyAutoSnapshotPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7214,6 +8728,10 @@ class ModifyAutoSnapshotPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7244,6 +8762,10 @@ class ModifyFileSystemRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -7271,6 +8793,10 @@ class ModifyFileSystemResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7299,6 +8825,10 @@ class ModifyFileSystemResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7333,6 +8863,10 @@ class ModifyLDAPConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -7368,6 +8902,10 @@ class ModifyLDAPConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7396,6 +8934,10 @@ class ModifyLDAPConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7432,6 +8974,10 @@ class ModifyLifecyclePolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -7473,6 +9019,10 @@ class ModifyLifecyclePolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7505,6 +9055,10 @@ class ModifyLifecyclePolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7541,6 +9095,10 @@ class ModifyMountTargetRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -7580,6 +9138,10 @@ class ModifyMountTargetResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7608,6 +9170,10 @@ class ModifyMountTargetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7638,6 +9204,10 @@ class OpenNASServiceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7670,6 +9240,10 @@ class OpenNASServiceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7704,6 +9278,10 @@ class RemoveClientFromBlackListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -7739,6 +9317,10 @@ class RemoveClientFromBlackListResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7767,6 +9349,10 @@ class RemoveClientFromBlackListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7797,6 +9383,10 @@ class RemoveTagsRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -7829,6 +9419,10 @@ class RemoveTagsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -7861,6 +9455,10 @@ class RemoveTagsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7889,6 +9487,10 @@ class RemoveTagsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7919,6 +9521,10 @@ class ResetFileSystemRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -7946,6 +9552,10 @@ class ResetFileSystemResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7974,6 +9584,10 @@ class ResetFileSystemResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7987,6 +9601,97 @@ class ResetFileSystemResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ResetFileSystemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RetryLifecycleRetrieveJobRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+    ):
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class RetryLifecycleRetrieveJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RetryLifecycleRetrieveJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RetryLifecycleRetrieveJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RetryLifecycleRetrieveJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8014,6 +9719,10 @@ class SetDirQuotaRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -8063,6 +9772,10 @@ class SetDirQuotaResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8095,6 +9808,10 @@ class SetDirQuotaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8125,6 +9842,10 @@ class TagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -8159,6 +9880,10 @@ class TagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
@@ -8195,6 +9920,10 @@ class TagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8223,6 +9952,10 @@ class TagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8257,6 +9990,10 @@ class UntagResourcesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
@@ -8292,6 +10029,10 @@ class UntagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8320,6 +10061,10 @@ class UntagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8354,6 +10099,10 @@ class UpgradeFileSystemRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
@@ -8389,6 +10138,10 @@ class UpgradeFileSystemResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8417,6 +10170,10 @@ class UpgradeFileSystemResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
