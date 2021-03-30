@@ -7,14 +7,10 @@ from typing import Dict, Any, List
 class AddEventRecordPlanDeviceRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         plan_id: str = None,
         stream_type: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.plan_id = plan_id
         self.stream_type = stream_type
@@ -23,11 +19,11 @@ class AddEventRecordPlanDeviceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.plan_id is not None:
@@ -38,10 +34,6 @@ class AddEventRecordPlanDeviceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('PlanId') is not None:
@@ -68,6 +60,10 @@ class AddEventRecordPlanDeviceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -108,6 +104,10 @@ class AddEventRecordPlanDeviceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -128,13 +128,9 @@ class AddEventRecordPlanDeviceResponse(TeaModel):
 class AddFaceDeviceGroupRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         device_group_name: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.device_group_name = device_group_name
 
@@ -142,11 +138,11 @@ class AddFaceDeviceGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.device_group_name is not None:
@@ -155,10 +151,6 @@ class AddFaceDeviceGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('DeviceGroupName') is not None:
@@ -181,6 +173,10 @@ class AddFaceDeviceGroupResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.device_group_id is not None:
             result['DeviceGroupId'] = self.device_group_id
@@ -221,6 +217,10 @@ class AddFaceDeviceGroupResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -266,6 +266,10 @@ class AddFaceDeviceGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -286,16 +290,12 @@ class AddFaceDeviceGroupResponse(TeaModel):
 class AddFaceDeviceToDeviceGroupRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         iot_instance_id: str = None,
         product_key: str = None,
         device_name: str = None,
         device_group_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.iot_instance_id = iot_instance_id
         self.product_key = product_key
@@ -306,11 +306,11 @@ class AddFaceDeviceToDeviceGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.iot_instance_id is not None:
@@ -325,10 +325,6 @@ class AddFaceDeviceToDeviceGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('IotInstanceId') is not None:
@@ -359,6 +355,10 @@ class AddFaceDeviceToDeviceGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -399,6 +399,10 @@ class AddFaceDeviceToDeviceGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -419,16 +423,12 @@ class AddFaceDeviceToDeviceGroupResponse(TeaModel):
 class AddFaceUserRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         face_pic_url: str = None,
         custom_user_id: str = None,
         name: str = None,
         params: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.face_pic_url = face_pic_url
         self.custom_user_id = custom_user_id
@@ -439,11 +439,11 @@ class AddFaceUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.face_pic_url is not None:
@@ -458,10 +458,6 @@ class AddFaceUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('FacePicUrl') is not None:
@@ -492,6 +488,10 @@ class AddFaceUserResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.params is not None:
             result['Params'] = self.params
@@ -536,6 +536,10 @@ class AddFaceUserResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -581,6 +585,10 @@ class AddFaceUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -601,13 +609,9 @@ class AddFaceUserResponse(TeaModel):
 class AddFaceUserGroupRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         user_group_name: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.user_group_name = user_group_name
 
@@ -615,11 +619,11 @@ class AddFaceUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.user_group_name is not None:
@@ -628,10 +632,6 @@ class AddFaceUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('UserGroupName') is not None:
@@ -654,6 +654,10 @@ class AddFaceUserGroupResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
@@ -694,6 +698,10 @@ class AddFaceUserGroupResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -739,6 +747,10 @@ class AddFaceUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -759,16 +771,12 @@ class AddFaceUserGroupResponse(TeaModel):
 class AddFaceUserGroupAndDeviceGroupRelationRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         iot_instance_id: str = None,
         user_group_id: str = None,
         device_group_id: str = None,
         relation: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.iot_instance_id = iot_instance_id
         self.user_group_id = user_group_id
@@ -779,11 +787,11 @@ class AddFaceUserGroupAndDeviceGroupRelationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.iot_instance_id is not None:
@@ -798,10 +806,6 @@ class AddFaceUserGroupAndDeviceGroupRelationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('IotInstanceId') is not None:
@@ -828,6 +832,10 @@ class AddFaceUserGroupAndDeviceGroupRelationResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
@@ -864,6 +872,10 @@ class AddFaceUserGroupAndDeviceGroupRelationResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -909,6 +921,10 @@ class AddFaceUserGroupAndDeviceGroupRelationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -929,14 +945,10 @@ class AddFaceUserGroupAndDeviceGroupRelationResponse(TeaModel):
 class AddFaceUserPictureRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         user_id: str = None,
         face_pic_url: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.user_id = user_id
         self.face_pic_url = face_pic_url
@@ -945,11 +957,11 @@ class AddFaceUserPictureRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.user_id is not None:
@@ -960,10 +972,6 @@ class AddFaceUserPictureRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('UserId') is not None:
@@ -992,6 +1000,10 @@ class AddFaceUserPictureResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1036,6 +1048,10 @@ class AddFaceUserPictureResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1056,14 +1072,10 @@ class AddFaceUserPictureResponse(TeaModel):
 class AddFaceUserToUserGroupRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         user_id: str = None,
         user_group_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.user_id = user_id
         self.user_group_id = user_group_id
@@ -1072,11 +1084,11 @@ class AddFaceUserToUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.user_id is not None:
@@ -1087,10 +1099,6 @@ class AddFaceUserToUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('UserId') is not None:
@@ -1117,6 +1125,10 @@ class AddFaceUserToUserGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1157,6 +1169,10 @@ class AddFaceUserToUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1177,14 +1193,10 @@ class AddFaceUserToUserGroupResponse(TeaModel):
 class AddRecordPlanDeviceRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         plan_id: str = None,
         stream_type: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.plan_id = plan_id
         self.stream_type = stream_type
@@ -1193,11 +1205,11 @@ class AddRecordPlanDeviceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.plan_id is not None:
@@ -1208,10 +1220,6 @@ class AddRecordPlanDeviceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('PlanId') is not None:
@@ -1238,6 +1246,10 @@ class AddRecordPlanDeviceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1278,6 +1290,10 @@ class AddRecordPlanDeviceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1298,13 +1314,9 @@ class AddRecordPlanDeviceResponse(TeaModel):
 class BindAIPlanWithDevicesRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
         iot_id_list: List[str] = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
         self.iot_id_list = iot_id_list
 
@@ -1312,11 +1324,11 @@ class BindAIPlanWithDevicesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.iot_id_list is not None:
@@ -1325,10 +1337,6 @@ class BindAIPlanWithDevicesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('IotIdList') is not None:
@@ -1340,40 +1348,44 @@ class BindAIPlanWithDevicesResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
         error_message: str = None,
         code: str = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
         self.error_message = error_message
         self.code = code
+        self.success = success
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -1393,6 +1405,10 @@ class BindAIPlanWithDevicesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1413,39 +1429,37 @@ class BindAIPlanWithDevicesResponse(TeaModel):
 class BindPictureSearchAppWithDevicesRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         app_instance_id: str = None,
+        iot_instance_id: str = None,
         device_iot_ids: List[str] = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.app_instance_id = app_instance_id
+        self.iot_instance_id = iot_instance_id
         self.device_iot_ids = device_iot_ids
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.app_instance_id is not None:
             result['AppInstanceId'] = self.app_instance_id
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
         if self.device_iot_ids is not None:
             result['DeviceIotIds'] = self.device_iot_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AppInstanceId') is not None:
             self.app_instance_id = m.get('AppInstanceId')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
         if m.get('DeviceIotIds') is not None:
             self.device_iot_ids = m.get('DeviceIotIds')
         return self
@@ -1468,6 +1482,10 @@ class BindPictureSearchAppWithDevicesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1508,6 +1526,10 @@ class BindPictureSearchAppWithDevicesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1528,16 +1550,12 @@ class BindPictureSearchAppWithDevicesResponse(TeaModel):
 class CheckFaceUserDoExistOnDeviceRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         iot_instance_id: str = None,
         user_id: str = None,
         product_key: str = None,
         device_name: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.iot_instance_id = iot_instance_id
         self.user_id = user_id
@@ -1548,11 +1566,11 @@ class CheckFaceUserDoExistOnDeviceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.iot_instance_id is not None:
@@ -1567,10 +1585,6 @@ class CheckFaceUserDoExistOnDeviceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('IotInstanceId') is not None:
@@ -1595,6 +1609,10 @@ class CheckFaceUserDoExistOnDeviceResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.do_exist is not None:
             result['DoExist'] = self.do_exist
@@ -1627,6 +1645,10 @@ class CheckFaceUserDoExistOnDeviceResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1672,6 +1694,10 @@ class CheckFaceUserDoExistOnDeviceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1692,15 +1718,11 @@ class CheckFaceUserDoExistOnDeviceResponse(TeaModel):
 class ClearFaceDeviceDBRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         iot_instance_id: str = None,
         product_key: str = None,
         device_name: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.iot_instance_id = iot_instance_id
         self.product_key = product_key
@@ -1710,11 +1732,11 @@ class ClearFaceDeviceDBRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.iot_instance_id is not None:
@@ -1727,10 +1749,6 @@ class ClearFaceDeviceDBRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('IotInstanceId') is not None:
@@ -1761,6 +1779,10 @@ class ClearFaceDeviceDBResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1805,6 +1827,10 @@ class ClearFaceDeviceDBResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1825,46 +1851,46 @@ class ClearFaceDeviceDBResponse(TeaModel):
 class ConfigAIActionRequestDataTypeConfigList(TeaModel):
     def __init__(
         self,
-        configs: str = None,
         data_type: str = None,
+        configs: str = None,
     ):
-        self.configs = configs
         self.data_type = data_type
+        self.configs = configs
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.configs is not None:
-            result['Configs'] = self.configs
         if self.data_type is not None:
             result['DataType'] = self.data_type
+        if self.configs is not None:
+            result['Configs'] = self.configs
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Configs') is not None:
-            self.configs = m.get('Configs')
         if m.get('DataType') is not None:
             self.data_type = m.get('DataType')
+        if m.get('Configs') is not None:
+            self.configs = m.get('Configs')
         return self
 
 
 class ConfigAIActionRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         action_id: str = None,
-        data_type_config_list: List[ConfigAIActionRequestDataTypeConfigList] = None,
         algo_config: str = None,
+        data_type_config_list: List[ConfigAIActionRequestDataTypeConfigList] = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.action_id = action_id
-        self.data_type_config_list = data_type_config_list
         self.algo_config = algo_config
+        self.data_type_config_list = data_type_config_list
 
     def validate(self):
         if self.data_type_config_list:
@@ -1873,36 +1899,32 @@ class ConfigAIActionRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.action_id is not None:
             result['ActionId'] = self.action_id
+        if self.algo_config is not None:
+            result['AlgoConfig'] = self.algo_config
         result['DataTypeConfigList'] = []
         if self.data_type_config_list is not None:
             for k in self.data_type_config_list:
                 result['DataTypeConfigList'].append(k.to_map() if k else None)
-        if self.algo_config is not None:
-            result['AlgoConfig'] = self.algo_config
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('ActionId') is not None:
             self.action_id = m.get('ActionId')
+        if m.get('AlgoConfig') is not None:
+            self.algo_config = m.get('AlgoConfig')
         self.data_type_config_list = []
         if m.get('DataTypeConfigList') is not None:
             for k in m.get('DataTypeConfigList'):
                 temp_model = ConfigAIActionRequestDataTypeConfigList()
                 self.data_type_config_list.append(temp_model.from_map(k))
-        if m.get('AlgoConfig') is not None:
-            self.algo_config = m.get('AlgoConfig')
         return self
 
 
@@ -1910,40 +1932,44 @@ class ConfigAIActionResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
         error_message: str = None,
         code: str = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
         self.error_message = error_message
         self.code = code
+        self.success = success
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -1963,6 +1989,10 @@ class ConfigAIActionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1983,16 +2013,12 @@ class ConfigAIActionResponse(TeaModel):
 class CreateAIAppRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         app_template_id: str = None,
         app_template_version: str = None,
         level: int = None,
         name: str = None,
         description: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.app_template_id = app_template_id
         self.app_template_version = app_template_version
         self.level = level
@@ -2003,11 +2029,11 @@ class CreateAIAppRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.app_template_id is not None:
             result['AppTemplateId'] = self.app_template_id
         if self.app_template_version is not None:
@@ -2022,10 +2048,6 @@ class CreateAIAppRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AppTemplateId') is not None:
             self.app_template_id = m.get('AppTemplateId')
         if m.get('AppTemplateVersion') is not None:
@@ -2058,6 +2080,10 @@ class CreateAIAppResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2102,6 +2128,10 @@ class CreateAIAppResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2122,14 +2152,10 @@ class CreateAIAppResponse(TeaModel):
 class CreateAIPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         app_id: str = None,
         plan_template_id: str = None,
         description: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.app_id = app_id
         self.plan_template_id = plan_template_id
         self.description = description
@@ -2138,11 +2164,11 @@ class CreateAIPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.plan_template_id is not None:
@@ -2153,10 +2179,6 @@ class CreateAIPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('PlanTemplateId') is not None:
@@ -2185,6 +2207,10 @@ class CreateAIPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2229,6 +2255,10 @@ class CreateAIPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2249,13 +2279,9 @@ class CreateAIPlanResponse(TeaModel):
 class CreateAlgorithmRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         name: str = None,
         description: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.name = name
         self.description = description
 
@@ -2263,11 +2289,11 @@ class CreateAlgorithmRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.name is not None:
             result['Name'] = self.name
         if self.description is not None:
@@ -2276,10 +2302,6 @@ class CreateAlgorithmRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Description') is not None:
@@ -2306,6 +2328,10 @@ class CreateAlgorithmResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2350,6 +2376,10 @@ class CreateAlgorithmResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2370,14 +2400,10 @@ class CreateAlgorithmResponse(TeaModel):
 class CreateDevicePurifyJobRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         start_time: int = None,
         end_time: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.start_time = start_time
         self.end_time = end_time
@@ -2386,11 +2412,11 @@ class CreateDevicePurifyJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.start_time is not None:
@@ -2401,10 +2427,6 @@ class CreateDevicePurifyJobRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('StartTime') is not None:
@@ -2433,6 +2455,10 @@ class CreateDevicePurifyJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2477,6 +2503,10 @@ class CreateDevicePurifyJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2497,13 +2527,9 @@ class CreateDevicePurifyJobResponse(TeaModel):
 class CreateDevicePurifyJobByPlanIdRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
         utc: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
         self.utc = utc
 
@@ -2511,11 +2537,11 @@ class CreateDevicePurifyJobByPlanIdRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.utc is not None:
@@ -2524,10 +2550,6 @@ class CreateDevicePurifyJobByPlanIdRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('Utc') is not None:
@@ -2554,6 +2576,10 @@ class CreateDevicePurifyJobByPlanIdResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2598,6 +2624,10 @@ class CreateDevicePurifyJobByPlanIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2618,14 +2648,10 @@ class CreateDevicePurifyJobByPlanIdResponse(TeaModel):
 class CreateDevicePurifyPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         start_time: int = None,
         end_time: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.start_time = start_time
         self.end_time = end_time
@@ -2634,11 +2660,11 @@ class CreateDevicePurifyPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.start_time is not None:
@@ -2649,10 +2675,6 @@ class CreateDevicePurifyPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('StartTime') is not None:
@@ -2681,6 +2703,10 @@ class CreateDevicePurifyPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2725,6 +2751,10 @@ class CreateDevicePurifyPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2745,16 +2775,12 @@ class CreateDevicePurifyPlanResponse(TeaModel):
 class CreateEventRecordPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         name: str = None,
         event_types: str = None,
         pre_record_duration: int = None,
         record_duration: int = None,
         template_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.name = name
         self.event_types = event_types
         self.pre_record_duration = pre_record_duration
@@ -2765,11 +2791,11 @@ class CreateEventRecordPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.name is not None:
             result['Name'] = self.name
         if self.event_types is not None:
@@ -2784,10 +2810,6 @@ class CreateEventRecordPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('EventTypes') is not None:
@@ -2820,6 +2842,10 @@ class CreateEventRecordPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2864,6 +2890,10 @@ class CreateEventRecordPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2884,8 +2914,6 @@ class CreateEventRecordPlanResponse(TeaModel):
 class CreateModelRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         algorithm_id: int = None,
         name: str = None,
         model_package_standard: str = None,
@@ -2894,8 +2922,6 @@ class CreateModelRequest(TeaModel):
         need_encrypt: bool = None,
         description: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.algorithm_id = algorithm_id
         self.name = name
         self.model_package_standard = model_package_standard
@@ -2908,11 +2934,11 @@ class CreateModelRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.algorithm_id is not None:
             result['AlgorithmId'] = self.algorithm_id
         if self.name is not None:
@@ -2931,10 +2957,6 @@ class CreateModelRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AlgorithmId') is not None:
             self.algorithm_id = m.get('AlgorithmId')
         if m.get('Name') is not None:
@@ -2971,6 +2993,10 @@ class CreateModelResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3015,6 +3041,10 @@ class CreateModelResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3035,13 +3065,9 @@ class CreateModelResponse(TeaModel):
 class CreatePictureSearchAppRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         name: str = None,
         desc: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.name = name
         self.desc = desc
 
@@ -3049,11 +3075,11 @@ class CreatePictureSearchAppRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.name is not None:
             result['Name'] = self.name
         if self.desc is not None:
@@ -3062,10 +3088,6 @@ class CreatePictureSearchAppRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Desc') is not None:
@@ -3092,6 +3114,10 @@ class CreatePictureSearchAppResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3136,6 +3162,10 @@ class CreatePictureSearchAppResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3153,16 +3183,163 @@ class CreatePictureSearchAppResponse(TeaModel):
         return self
 
 
+class CreatePictureSearchJobRequest(TeaModel):
+    def __init__(
+        self,
+        app_instance_id: str = None,
+        search_pic_url: str = None,
+        start_time: int = None,
+        end_time: int = None,
+        threshold: float = None,
+        body_threshold: float = None,
+        picture_search_type: int = None,
+    ):
+        self.app_instance_id = app_instance_id
+        self.search_pic_url = search_pic_url
+        self.start_time = start_time
+        self.end_time = end_time
+        self.threshold = threshold
+        self.body_threshold = body_threshold
+        self.picture_search_type = picture_search_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_id is not None:
+            result['AppInstanceId'] = self.app_instance_id
+        if self.search_pic_url is not None:
+            result['SearchPicUrl'] = self.search_pic_url
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        if self.body_threshold is not None:
+            result['BodyThreshold'] = self.body_threshold
+        if self.picture_search_type is not None:
+            result['PictureSearchType'] = self.picture_search_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceId') is not None:
+            self.app_instance_id = m.get('AppInstanceId')
+        if m.get('SearchPicUrl') is not None:
+            self.search_pic_url = m.get('SearchPicUrl')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        if m.get('BodyThreshold') is not None:
+            self.body_threshold = m.get('BodyThreshold')
+        if m.get('PictureSearchType') is not None:
+            self.picture_search_type = m.get('PictureSearchType')
+        return self
+
+
+class CreatePictureSearchJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: str = None,
+        error_message: str = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+        self.error_message = error_message
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreatePictureSearchJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreatePictureSearchJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreatePictureSearchJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateRecordPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         name: str = None,
         template_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.name = name
         self.template_id = template_id
 
@@ -3170,11 +3347,11 @@ class CreateRecordPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.name is not None:
             result['Name'] = self.name
         if self.template_id is not None:
@@ -3183,10 +3360,6 @@ class CreateRecordPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('TemplateId') is not None:
@@ -3213,6 +3386,10 @@ class CreateRecordPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3257,6 +3434,10 @@ class CreateRecordPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3289,6 +3470,10 @@ class CreateTimeTemplateRequestTimeSections(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.day_of_week is not None:
             result['DayOfWeek'] = self.day_of_week
@@ -3312,14 +3497,10 @@ class CreateTimeTemplateRequestTimeSections(TeaModel):
 class CreateTimeTemplateRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         name: str = None,
         all_day: int = None,
         time_sections: List[CreateTimeTemplateRequestTimeSections] = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.name = name
         self.all_day = all_day
         self.time_sections = time_sections
@@ -3331,11 +3512,11 @@ class CreateTimeTemplateRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.name is not None:
             result['Name'] = self.name
         if self.all_day is not None:
@@ -3348,10 +3529,6 @@ class CreateTimeTemplateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('AllDay') is not None:
@@ -3383,6 +3560,10 @@ class CreateTimeTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3427,6 +3608,10 @@ class CreateTimeTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3447,33 +3632,25 @@ class CreateTimeTemplateResponse(TeaModel):
 class DeleteAlgorithmRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         algorithm_id: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.algorithm_id = algorithm_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.algorithm_id is not None:
             result['AlgorithmId'] = self.algorithm_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AlgorithmId') is not None:
             self.algorithm_id = m.get('AlgorithmId')
         return self
@@ -3496,6 +3673,10 @@ class DeleteAlgorithmResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3536,6 +3717,10 @@ class DeleteAlgorithmResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3556,33 +3741,25 @@ class DeleteAlgorithmResponse(TeaModel):
 class DeleteEventRecordPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         return self
@@ -3605,6 +3782,10 @@ class DeleteEventRecordPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3645,6 +3826,10 @@ class DeleteEventRecordPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3665,13 +3850,9 @@ class DeleteEventRecordPlanResponse(TeaModel):
 class DeleteEventRecordPlanDeviceRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         stream_type: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.stream_type = stream_type
 
@@ -3679,11 +3860,11 @@ class DeleteEventRecordPlanDeviceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.stream_type is not None:
@@ -3692,10 +3873,6 @@ class DeleteEventRecordPlanDeviceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('StreamType') is not None:
@@ -3720,6 +3897,10 @@ class DeleteEventRecordPlanDeviceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3760,6 +3941,10 @@ class DeleteEventRecordPlanDeviceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3780,13 +3965,9 @@ class DeleteEventRecordPlanDeviceResponse(TeaModel):
 class DeleteFaceDeviceGroupRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         device_group_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.device_group_id = device_group_id
 
@@ -3794,11 +3975,11 @@ class DeleteFaceDeviceGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.device_group_id is not None:
@@ -3807,10 +3988,6 @@ class DeleteFaceDeviceGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('DeviceGroupId') is not None:
@@ -3835,6 +4012,10 @@ class DeleteFaceDeviceGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3875,6 +4056,10 @@ class DeleteFaceDeviceGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3895,13 +4080,9 @@ class DeleteFaceDeviceGroupResponse(TeaModel):
 class DeleteFaceUserRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         user_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.user_id = user_id
 
@@ -3909,11 +4090,11 @@ class DeleteFaceUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.user_id is not None:
@@ -3922,10 +4103,6 @@ class DeleteFaceUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('UserId') is not None:
@@ -3950,6 +4127,10 @@ class DeleteFaceUserResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3990,6 +4171,10 @@ class DeleteFaceUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4010,13 +4195,9 @@ class DeleteFaceUserResponse(TeaModel):
 class DeleteFaceUserGroupRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         user_group_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.user_group_id = user_group_id
 
@@ -4024,11 +4205,11 @@ class DeleteFaceUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.user_group_id is not None:
@@ -4037,10 +4218,6 @@ class DeleteFaceUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('UserGroupId') is not None:
@@ -4065,6 +4242,10 @@ class DeleteFaceUserGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4105,6 +4286,10 @@ class DeleteFaceUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4125,13 +4310,9 @@ class DeleteFaceUserGroupResponse(TeaModel):
 class DeleteFaceUserGroupAndDeviceGroupRelationRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         control_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.control_id = control_id
 
@@ -4139,11 +4320,11 @@ class DeleteFaceUserGroupAndDeviceGroupRelationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.control_id is not None:
@@ -4152,10 +4333,6 @@ class DeleteFaceUserGroupAndDeviceGroupRelationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('ControlId') is not None:
@@ -4180,6 +4357,10 @@ class DeleteFaceUserGroupAndDeviceGroupRelationResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4220,6 +4401,10 @@ class DeleteFaceUserGroupAndDeviceGroupRelationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4240,14 +4425,10 @@ class DeleteFaceUserGroupAndDeviceGroupRelationResponse(TeaModel):
 class DeleteFaceUserPictureRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         user_id: str = None,
         face_pic_md_5: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.user_id = user_id
         self.face_pic_md_5 = face_pic_md_5
@@ -4256,11 +4437,11 @@ class DeleteFaceUserPictureRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.user_id is not None:
@@ -4271,10 +4452,6 @@ class DeleteFaceUserPictureRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('UserId') is not None:
@@ -4301,6 +4478,10 @@ class DeleteFaceUserPictureResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4341,6 +4522,10 @@ class DeleteFaceUserPictureResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4361,33 +4546,25 @@ class DeleteFaceUserPictureResponse(TeaModel):
 class DeleteModelRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         model_id: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.model_id = model_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.model_id is not None:
             result['ModelId'] = self.model_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('ModelId') is not None:
             self.model_id = m.get('ModelId')
         return self
@@ -4410,6 +4587,10 @@ class DeleteModelResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4450,6 +4631,10 @@ class DeleteModelResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4470,33 +4655,25 @@ class DeleteModelResponse(TeaModel):
 class DeleteRecordPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         return self
@@ -4519,6 +4696,10 @@ class DeleteRecordPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4559,6 +4740,10 @@ class DeleteRecordPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4579,13 +4764,9 @@ class DeleteRecordPlanResponse(TeaModel):
 class DeleteRecordPlanDeviceRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         stream_type: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.stream_type = stream_type
 
@@ -4593,11 +4774,11 @@ class DeleteRecordPlanDeviceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.stream_type is not None:
@@ -4606,10 +4787,6 @@ class DeleteRecordPlanDeviceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('StreamType') is not None:
@@ -4634,6 +4811,10 @@ class DeleteRecordPlanDeviceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4674,6 +4855,10 @@ class DeleteRecordPlanDeviceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4694,33 +4879,25 @@ class DeleteRecordPlanDeviceResponse(TeaModel):
 class DeleteTimeTemplateRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         template_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.template_id = template_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         return self
@@ -4743,6 +4920,10 @@ class DeleteTimeTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4783,6 +4964,10 @@ class DeleteTimeTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4815,6 +5000,10 @@ class DeployModelBatchRequestDeviceList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product_key is not None:
             result['ProductKey'] = self.product_key
@@ -4838,13 +5027,9 @@ class DeployModelBatchRequestDeviceList(TeaModel):
 class DeployModelBatchRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         model_id: int = None,
         device_list: List[DeployModelBatchRequestDeviceList] = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.model_id = model_id
         self.device_list = device_list
 
@@ -4855,11 +5040,11 @@ class DeployModelBatchRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.model_id is not None:
             result['ModelId'] = self.model_id
         result['DeviceList'] = []
@@ -4870,10 +5055,6 @@ class DeployModelBatchRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('ModelId') is not None:
             self.model_id = m.get('ModelId')
         self.device_list = []
@@ -4895,6 +5076,10 @@ class DeployModelBatchResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.deploy_task_result_volist is not None:
             result['DeployTaskResultVOList'] = self.deploy_task_result_volist
@@ -4927,6 +5112,10 @@ class DeployModelBatchResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4972,6 +5161,10 @@ class DeployModelBatchResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4992,33 +5185,25 @@ class DeployModelBatchResponse(TeaModel):
 class DetectUserFaceByUrlRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         face_pic_url: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.face_pic_url = face_pic_url
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.face_pic_url is not None:
             result['FacePicUrl'] = self.face_pic_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('FacePicUrl') is not None:
             self.face_pic_url = m.get('FacePicUrl')
         return self
@@ -5035,6 +5220,10 @@ class DetectUserFaceByUrlResponseBodyDataDataFaceRects(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.face_rects_data is not None:
             result['FaceRectsData'] = self.face_rects_data
@@ -5058,6 +5247,10 @@ class DetectUserFaceByUrlResponseBodyDataDataLandmarks(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.landmarks_data is not None:
             result['LandmarksData'] = self.landmarks_data
@@ -5073,17 +5266,27 @@ class DetectUserFaceByUrlResponseBodyDataDataLandmarks(TeaModel):
 class DetectUserFaceByUrlResponseBodyDataData(TeaModel):
     def __init__(
         self,
+        blur_score: float = None,
         gender: int = None,
         face_rects: DetectUserFaceByUrlResponseBodyDataDataFaceRects = None,
+        occlusion_score: float = None,
+        good_for_library: bool = None,
+        good_for_recognition: bool = None,
         age: int = None,
         landmarks: DetectUserFaceByUrlResponseBodyDataDataLandmarks = None,
         face_probability: float = None,
+        pose_score: float = None,
     ):
+        self.blur_score = blur_score
         self.gender = gender
         self.face_rects = face_rects
+        self.occlusion_score = occlusion_score
+        self.good_for_library = good_for_library
+        self.good_for_recognition = good_for_recognition
         self.age = age
         self.landmarks = landmarks
         self.face_probability = face_probability
+        self.pose_score = pose_score
 
     def validate(self):
         if self.face_rects:
@@ -5092,26 +5295,48 @@ class DetectUserFaceByUrlResponseBodyDataData(TeaModel):
             self.landmarks.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.blur_score is not None:
+            result['BlurScore'] = self.blur_score
         if self.gender is not None:
             result['Gender'] = self.gender
         if self.face_rects is not None:
             result['FaceRects'] = self.face_rects.to_map()
+        if self.occlusion_score is not None:
+            result['OcclusionScore'] = self.occlusion_score
+        if self.good_for_library is not None:
+            result['GoodForLibrary'] = self.good_for_library
+        if self.good_for_recognition is not None:
+            result['GoodForRecognition'] = self.good_for_recognition
         if self.age is not None:
             result['Age'] = self.age
         if self.landmarks is not None:
             result['Landmarks'] = self.landmarks.to_map()
         if self.face_probability is not None:
             result['FaceProbability'] = self.face_probability
+        if self.pose_score is not None:
+            result['PoseScore'] = self.pose_score
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BlurScore') is not None:
+            self.blur_score = m.get('BlurScore')
         if m.get('Gender') is not None:
             self.gender = m.get('Gender')
         if m.get('FaceRects') is not None:
             temp_model = DetectUserFaceByUrlResponseBodyDataDataFaceRects()
             self.face_rects = temp_model.from_map(m['FaceRects'])
+        if m.get('OcclusionScore') is not None:
+            self.occlusion_score = m.get('OcclusionScore')
+        if m.get('GoodForLibrary') is not None:
+            self.good_for_library = m.get('GoodForLibrary')
+        if m.get('GoodForRecognition') is not None:
+            self.good_for_recognition = m.get('GoodForRecognition')
         if m.get('Age') is not None:
             self.age = m.get('Age')
         if m.get('Landmarks') is not None:
@@ -5119,6 +5344,8 @@ class DetectUserFaceByUrlResponseBodyDataData(TeaModel):
             self.landmarks = temp_model.from_map(m['Landmarks'])
         if m.get('FaceProbability') is not None:
             self.face_probability = m.get('FaceProbability')
+        if m.get('PoseScore') is not None:
+            self.pose_score = m.get('PoseScore')
         return self
 
 
@@ -5136,6 +5363,10 @@ class DetectUserFaceByUrlResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['data'] = []
         if self.data is not None:
@@ -5173,6 +5404,10 @@ class DetectUserFaceByUrlResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5218,6 +5453,10 @@ class DetectUserFaceByUrlResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5238,33 +5477,25 @@ class DetectUserFaceByUrlResponse(TeaModel):
 class GetAIActionRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         action_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.action_id = action_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.action_id is not None:
             result['ActionId'] = self.action_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('ActionId') is not None:
             self.action_id = m.get('ActionId')
         return self
@@ -5273,65 +5504,69 @@ class GetAIActionRequest(TeaModel):
 class GetAIActionResponseBodyData(TeaModel):
     def __init__(
         self,
-        action_id: str = None,
-        plan_id: str = None,
-        action: str = None,
-        action_template_id: str = None,
-        action_index: int = None,
-        alog: str = None,
         algo_config: str = None,
+        action: str = None,
+        action_id: str = None,
+        action_template_id: str = None,
+        alog: str = None,
+        action_index: int = None,
         action_config: str = None,
+        plan_id: str = None,
     ):
-        self.action_id = action_id
-        self.plan_id = plan_id
-        self.action = action
-        self.action_template_id = action_template_id
-        self.action_index = action_index
-        self.alog = alog
         self.algo_config = algo_config
+        self.action = action
+        self.action_id = action_id
+        self.action_template_id = action_template_id
+        self.alog = alog
+        self.action_index = action_index
         self.action_config = action_config
+        self.plan_id = plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.action_id is not None:
-            result['ActionId'] = self.action_id
-        if self.plan_id is not None:
-            result['PlanId'] = self.plan_id
-        if self.action is not None:
-            result['Action'] = self.action
-        if self.action_template_id is not None:
-            result['ActionTemplateId'] = self.action_template_id
-        if self.action_index is not None:
-            result['ActionIndex'] = self.action_index
-        if self.alog is not None:
-            result['Alog'] = self.alog
         if self.algo_config is not None:
             result['AlgoConfig'] = self.algo_config
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.action_id is not None:
+            result['ActionId'] = self.action_id
+        if self.action_template_id is not None:
+            result['ActionTemplateId'] = self.action_template_id
+        if self.alog is not None:
+            result['Alog'] = self.alog
+        if self.action_index is not None:
+            result['ActionIndex'] = self.action_index
         if self.action_config is not None:
             result['ActionConfig'] = self.action_config
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ActionId') is not None:
-            self.action_id = m.get('ActionId')
-        if m.get('PlanId') is not None:
-            self.plan_id = m.get('PlanId')
-        if m.get('Action') is not None:
-            self.action = m.get('Action')
-        if m.get('ActionTemplateId') is not None:
-            self.action_template_id = m.get('ActionTemplateId')
-        if m.get('ActionIndex') is not None:
-            self.action_index = m.get('ActionIndex')
-        if m.get('Alog') is not None:
-            self.alog = m.get('Alog')
         if m.get('AlgoConfig') is not None:
             self.algo_config = m.get('AlgoConfig')
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ActionId') is not None:
+            self.action_id = m.get('ActionId')
+        if m.get('ActionTemplateId') is not None:
+            self.action_template_id = m.get('ActionTemplateId')
+        if m.get('Alog') is not None:
+            self.alog = m.get('Alog')
+        if m.get('ActionIndex') is not None:
+            self.action_index = m.get('ActionIndex')
         if m.get('ActionConfig') is not None:
             self.action_config = m.get('ActionConfig')
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
         return self
 
 
@@ -5339,48 +5574,52 @@ class GetAIActionResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
+        data: GetAIActionResponseBodyData = None,
         error_message: str = None,
         code: str = None,
-        data: GetAIActionResponseBodyData = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
+        self.data = data
         self.error_message = error_message
         self.code = code
-        self.data = data
+        self.success = success
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = GetAIActionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = GetAIActionResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -5400,6 +5639,10 @@ class GetAIActionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5420,13 +5663,9 @@ class GetAIActionResponse(TeaModel):
 class GetAIActionConfigRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         algo: str = None,
         algo_action: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.algo = algo
         self.algo_action = algo_action
 
@@ -5434,11 +5673,11 @@ class GetAIActionConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.algo is not None:
             result['Algo'] = self.algo
         if self.algo_action is not None:
@@ -5447,10 +5686,6 @@ class GetAIActionConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('Algo') is not None:
             self.algo = m.get('Algo')
         if m.get('AlgoAction') is not None:
@@ -5461,33 +5696,37 @@ class GetAIActionConfigRequest(TeaModel):
 class GetAIActionConfigResponseBodyDataInParamList(TeaModel):
     def __init__(
         self,
-        data_type: str = None,
         need_config: bool = None,
+        data_type: str = None,
         config_items: List[str] = None,
     ):
-        self.data_type = data_type
         self.need_config = need_config
+        self.data_type = data_type
         self.config_items = config_items
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.data_type is not None:
-            result['DataType'] = self.data_type
         if self.need_config is not None:
             result['NeedConfig'] = self.need_config
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
         if self.config_items is not None:
             result['ConfigItems'] = self.config_items
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DataType') is not None:
-            self.data_type = m.get('DataType')
         if m.get('NeedConfig') is not None:
             self.need_config = m.get('NeedConfig')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
         if m.get('ConfigItems') is not None:
             self.config_items = m.get('ConfigItems')
         return self
@@ -5496,33 +5735,37 @@ class GetAIActionConfigResponseBodyDataInParamList(TeaModel):
 class GetAIActionConfigResponseBodyDataOutParamList(TeaModel):
     def __init__(
         self,
-        data_type: str = None,
         need_config: bool = None,
+        data_type: str = None,
         config_items: List[str] = None,
     ):
-        self.data_type = data_type
         self.need_config = need_config
+        self.data_type = data_type
         self.config_items = config_items
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.data_type is not None:
-            result['DataType'] = self.data_type
         if self.need_config is not None:
             result['NeedConfig'] = self.need_config
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
         if self.config_items is not None:
             result['ConfigItems'] = self.config_items
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DataType') is not None:
-            self.data_type = m.get('DataType')
         if m.get('NeedConfig') is not None:
             self.need_config = m.get('NeedConfig')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
         if m.get('ConfigItems') is not None:
             self.config_items = m.get('ConfigItems')
         return self
@@ -5531,21 +5774,21 @@ class GetAIActionConfigResponseBodyDataOutParamList(TeaModel):
 class GetAIActionConfigResponseBodyData(TeaModel):
     def __init__(
         self,
-        algo_action: str = None,
-        des: str = None,
-        need_device: bool = None,
-        sync: str = None,
-        algo_config_items: str = None,
         in_param_list: List[GetAIActionConfigResponseBodyDataInParamList] = None,
+        algo_action: str = None,
+        sync: str = None,
+        need_device: bool = None,
         out_param_list: List[GetAIActionConfigResponseBodyDataOutParamList] = None,
+        algo_config_items: str = None,
+        des: str = None,
     ):
-        self.algo_action = algo_action
-        self.des = des
-        self.need_device = need_device
-        self.sync = sync
-        self.algo_config_items = algo_config_items
         self.in_param_list = in_param_list
+        self.algo_action = algo_action
+        self.sync = sync
+        self.need_device = need_device
         self.out_param_list = out_param_list
+        self.algo_config_items = algo_config_items
+        self.des = des
 
     def validate(self):
         if self.in_param_list:
@@ -5558,49 +5801,53 @@ class GetAIActionConfigResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.algo_action is not None:
-            result['AlgoAction'] = self.algo_action
-        if self.des is not None:
-            result['Des'] = self.des
-        if self.need_device is not None:
-            result['NeedDevice'] = self.need_device
-        if self.sync is not None:
-            result['Sync'] = self.sync
-        if self.algo_config_items is not None:
-            result['AlgoConfigItems'] = self.algo_config_items
         result['InParamList'] = []
         if self.in_param_list is not None:
             for k in self.in_param_list:
                 result['InParamList'].append(k.to_map() if k else None)
+        if self.algo_action is not None:
+            result['AlgoAction'] = self.algo_action
+        if self.sync is not None:
+            result['Sync'] = self.sync
+        if self.need_device is not None:
+            result['NeedDevice'] = self.need_device
         result['OutParamList'] = []
         if self.out_param_list is not None:
             for k in self.out_param_list:
                 result['OutParamList'].append(k.to_map() if k else None)
+        if self.algo_config_items is not None:
+            result['AlgoConfigItems'] = self.algo_config_items
+        if self.des is not None:
+            result['Des'] = self.des
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AlgoAction') is not None:
-            self.algo_action = m.get('AlgoAction')
-        if m.get('Des') is not None:
-            self.des = m.get('Des')
-        if m.get('NeedDevice') is not None:
-            self.need_device = m.get('NeedDevice')
-        if m.get('Sync') is not None:
-            self.sync = m.get('Sync')
-        if m.get('AlgoConfigItems') is not None:
-            self.algo_config_items = m.get('AlgoConfigItems')
         self.in_param_list = []
         if m.get('InParamList') is not None:
             for k in m.get('InParamList'):
                 temp_model = GetAIActionConfigResponseBodyDataInParamList()
                 self.in_param_list.append(temp_model.from_map(k))
+        if m.get('AlgoAction') is not None:
+            self.algo_action = m.get('AlgoAction')
+        if m.get('Sync') is not None:
+            self.sync = m.get('Sync')
+        if m.get('NeedDevice') is not None:
+            self.need_device = m.get('NeedDevice')
         self.out_param_list = []
         if m.get('OutParamList') is not None:
             for k in m.get('OutParamList'):
                 temp_model = GetAIActionConfigResponseBodyDataOutParamList()
                 self.out_param_list.append(temp_model.from_map(k))
+        if m.get('AlgoConfigItems') is not None:
+            self.algo_config_items = m.get('AlgoConfigItems')
+        if m.get('Des') is not None:
+            self.des = m.get('Des')
         return self
 
 
@@ -5608,48 +5855,52 @@ class GetAIActionConfigResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
+        data: GetAIActionConfigResponseBodyData = None,
         error_message: str = None,
         code: str = None,
-        data: GetAIActionConfigResponseBodyData = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
+        self.data = data
         self.error_message = error_message
         self.code = code
-        self.data = data
+        self.success = success
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = GetAIActionConfigResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = GetAIActionConfigResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -5669,6 +5920,10 @@ class GetAIActionConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5689,33 +5944,25 @@ class GetAIActionConfigResponse(TeaModel):
 class GetAIAppRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         app_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.app_id = app_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.app_id is not None:
             result['AppId'] = self.app_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         return self
@@ -5724,53 +5971,57 @@ class GetAIAppRequest(TeaModel):
 class GetAIAppResponseBodyData(TeaModel):
     def __init__(
         self,
+        description: str = None,
+        version: str = None,
         app_id: str = None,
         app_template_id: str = None,
-        version: str = None,
-        level: int = None,
         name: str = None,
-        description: str = None,
+        level: int = None,
     ):
+        self.description = description
+        self.version = version
         self.app_id = app_id
         self.app_template_id = app_template_id
-        self.version = version
-        self.level = level
         self.name = name
-        self.description = description
+        self.level = level
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.version is not None:
+            result['Version'] = self.version
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.app_template_id is not None:
             result['AppTemplateId'] = self.app_template_id
-        if self.version is not None:
-            result['Version'] = self.version
-        if self.level is not None:
-            result['Level'] = self.level
         if self.name is not None:
             result['Name'] = self.name
-        if self.description is not None:
-            result['Description'] = self.description
+        if self.level is not None:
+            result['Level'] = self.level
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AppTemplateId') is not None:
             self.app_template_id = m.get('AppTemplateId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
-        if m.get('Level') is not None:
-            self.level = m.get('Level')
         if m.get('Name') is not None:
             self.name = m.get('Name')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
         return self
 
 
@@ -5778,48 +6029,52 @@ class GetAIAppResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
+        data: GetAIAppResponseBodyData = None,
         error_message: str = None,
         code: str = None,
-        data: GetAIAppResponseBodyData = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
+        self.data = data
         self.error_message = error_message
         self.code = code
-        self.data = data
+        self.success = success
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = GetAIAppResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = GetAIAppResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -5839,6 +6094,10 @@ class GetAIAppResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5859,33 +6118,25 @@ class GetAIAppResponse(TeaModel):
 class GetAIJobRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         job_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.job_id = job_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.job_id is not None:
             result['JobId'] = self.job_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         return self
@@ -5894,51 +6145,55 @@ class GetAIJobRequest(TeaModel):
 class GetAIJobResponseBodyDataDataDTOList(TeaModel):
     def __init__(
         self,
-        data_id: str = None,
-        data_type: str = None,
         data_source: str = None,
+        data_type: str = None,
         algo_data: str = None,
         job_id: str = None,
+        data_id: str = None,
         iot_id: str = None,
     ):
-        self.data_id = data_id
-        self.data_type = data_type
         self.data_source = data_source
+        self.data_type = data_type
         self.algo_data = algo_data
         self.job_id = job_id
+        self.data_id = data_id
         self.iot_id = iot_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.data_id is not None:
-            result['DataId'] = self.data_id
-        if self.data_type is not None:
-            result['DataType'] = self.data_type
         if self.data_source is not None:
             result['DataSource'] = self.data_source
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
         if self.algo_data is not None:
             result['AlgoData'] = self.algo_data
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DataId') is not None:
-            self.data_id = m.get('DataId')
-        if m.get('DataType') is not None:
-            self.data_type = m.get('DataType')
         if m.get('DataSource') is not None:
             self.data_source = m.get('DataSource')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
         if m.get('AlgoData') is not None:
             self.algo_data = m.get('AlgoData')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         return self
@@ -5947,39 +6202,43 @@ class GetAIJobResponseBodyDataDataDTOList(TeaModel):
 class GetAIJobResponseBodyDataActionJobDTO(TeaModel):
     def __init__(
         self,
+        status: int = None,
         job_id: str = None,
         action_id: str = None,
-        status: int = None,
         iot_id: str = None,
     ):
+        self.status = status
         self.job_id = job_id
         self.action_id = action_id
-        self.status = status
         self.iot_id = iot_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
         if self.job_id is not None:
             result['JobId'] = self.job_id
         if self.action_id is not None:
             result['ActionId'] = self.action_id
-        if self.status is not None:
-            result['Status'] = self.status
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         if m.get('ActionId') is not None:
             self.action_id = m.get('ActionId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         return self
@@ -6003,6 +6262,10 @@ class GetAIJobResponseBodyData(TeaModel):
             self.action_job_dto.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DataDTOList'] = []
         if self.data_dtolist is not None:
@@ -6029,48 +6292,52 @@ class GetAIJobResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
+        data: GetAIJobResponseBodyData = None,
         error_message: str = None,
         code: str = None,
-        data: GetAIJobResponseBodyData = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
+        self.data = data
         self.error_message = error_message
         self.code = code
-        self.data = data
+        self.success = success
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = GetAIJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = GetAIJobResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -6090,6 +6357,10 @@ class GetAIJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6110,33 +6381,25 @@ class GetAIJobResponse(TeaModel):
 class GetAIPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         return self
@@ -6145,59 +6408,63 @@ class GetAIPlanRequest(TeaModel):
 class GetAIPlanResponseBodyData(TeaModel):
     def __init__(
         self,
-        plan_id: str = None,
-        app_id: str = None,
         plan_template_id: str = None,
         trigger_enum: int = None,
-        interval_timing: int = None,
-        pre_timing: int = None,
         description: str = None,
+        pre_timing: int = None,
+        app_id: str = None,
+        interval_timing: int = None,
+        plan_id: str = None,
     ):
-        self.plan_id = plan_id
-        self.app_id = app_id
         self.plan_template_id = plan_template_id
         self.trigger_enum = trigger_enum
-        self.interval_timing = interval_timing
-        self.pre_timing = pre_timing
         self.description = description
+        self.pre_timing = pre_timing
+        self.app_id = app_id
+        self.interval_timing = interval_timing
+        self.plan_id = plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.plan_id is not None:
-            result['PlanId'] = self.plan_id
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
         if self.plan_template_id is not None:
             result['PlanTemplateId'] = self.plan_template_id
         if self.trigger_enum is not None:
             result['TriggerEnum'] = self.trigger_enum
-        if self.interval_timing is not None:
-            result['IntervalTiming'] = self.interval_timing
-        if self.pre_timing is not None:
-            result['PreTiming'] = self.pre_timing
         if self.description is not None:
             result['Description'] = self.description
+        if self.pre_timing is not None:
+            result['PreTiming'] = self.pre_timing
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.interval_timing is not None:
+            result['IntervalTiming'] = self.interval_timing
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PlanId') is not None:
-            self.plan_id = m.get('PlanId')
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
         if m.get('PlanTemplateId') is not None:
             self.plan_template_id = m.get('PlanTemplateId')
         if m.get('TriggerEnum') is not None:
             self.trigger_enum = m.get('TriggerEnum')
-        if m.get('IntervalTiming') is not None:
-            self.interval_timing = m.get('IntervalTiming')
-        if m.get('PreTiming') is not None:
-            self.pre_timing = m.get('PreTiming')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('PreTiming') is not None:
+            self.pre_timing = m.get('PreTiming')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('IntervalTiming') is not None:
+            self.interval_timing = m.get('IntervalTiming')
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
         return self
 
 
@@ -6205,48 +6472,52 @@ class GetAIPlanResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
+        data: GetAIPlanResponseBodyData = None,
         error_message: str = None,
         code: str = None,
-        data: GetAIPlanResponseBodyData = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
+        self.data = data
         self.error_message = error_message
         self.code = code
-        self.data = data
+        self.success = success
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = GetAIPlanResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = GetAIPlanResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -6266,6 +6537,10 @@ class GetAIPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6286,33 +6561,25 @@ class GetAIPlanResponse(TeaModel):
 class GetAlgorithmDetailByIdRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         algorithm_id: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.algorithm_id = algorithm_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.algorithm_id is not None:
             result['AlgorithmId'] = self.algorithm_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AlgorithmId') is not None:
             self.algorithm_id = m.get('AlgorithmId')
         return self
@@ -6337,6 +6604,10 @@ class GetAlgorithmDetailByIdResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6381,6 +6652,10 @@ class GetAlgorithmDetailByIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6401,33 +6676,25 @@ class GetAlgorithmDetailByIdResponse(TeaModel):
 class GetAlgorithmDetailByNameRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         name: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.name = name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.name is not None:
             result['Name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         return self
@@ -6452,6 +6719,10 @@ class GetAlgorithmDetailByNameResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6496,6 +6767,10 @@ class GetAlgorithmDetailByNameResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6516,33 +6791,25 @@ class GetAlgorithmDetailByNameResponse(TeaModel):
 class GetDevicePurifyJobByJobIdRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         job_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.job_id = job_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.job_id is not None:
             result['JobId'] = self.job_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         return self
@@ -6581,6 +6848,10 @@ class GetDevicePurifyJobByJobIdResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -6657,6 +6928,10 @@ class GetDevicePurifyJobByJobIdResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6702,6 +6977,10 @@ class GetDevicePurifyJobByJobIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6722,13 +7001,9 @@ class GetDevicePurifyJobByJobIdResponse(TeaModel):
 class GetModelDetailRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         algorithm_id: int = None,
         version: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.algorithm_id = algorithm_id
         self.version = version
 
@@ -6736,11 +7011,11 @@ class GetModelDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.algorithm_id is not None:
             result['AlgorithmId'] = self.algorithm_id
         if self.version is not None:
@@ -6749,10 +7024,6 @@ class GetModelDetailRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AlgorithmId') is not None:
             self.algorithm_id = m.get('AlgorithmId')
         if m.get('Version') is not None:
@@ -6779,6 +7050,10 @@ class GetModelDetailResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6823,6 +7098,10 @@ class GetModelDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6843,33 +7122,25 @@ class GetModelDetailResponse(TeaModel):
 class GetModelDetailByIdRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         model_id: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.model_id = model_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.model_id is not None:
             result['ModelId'] = self.model_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('ModelId') is not None:
             self.model_id = m.get('ModelId')
         return self
@@ -6894,6 +7165,10 @@ class GetModelDetailByIdResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6938,6 +7213,10 @@ class GetModelDetailByIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6958,14 +7237,10 @@ class GetModelDetailByIdResponse(TeaModel):
 class GetModelOssPolicyRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         algorithm_id: int = None,
         hardware: str = None,
         model_package_standard: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.algorithm_id = algorithm_id
         self.hardware = hardware
         self.model_package_standard = model_package_standard
@@ -6974,11 +7249,11 @@ class GetModelOssPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.algorithm_id is not None:
             result['AlgorithmId'] = self.algorithm_id
         if self.hardware is not None:
@@ -6989,10 +7264,6 @@ class GetModelOssPolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AlgorithmId') is not None:
             self.algorithm_id = m.get('AlgorithmId')
         if m.get('Hardware') is not None:
@@ -7021,6 +7292,10 @@ class GetModelOssPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7065,6 +7340,10 @@ class GetModelOssPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7085,33 +7364,25 @@ class GetModelOssPolicyResponse(TeaModel):
 class GetPictureInfoWithVectorIdsRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         vector_id_list: List[str] = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.vector_id_list = vector_id_list
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.vector_id_list is not None:
             result['VectorIdList'] = self.vector_id_list
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('VectorIdList') is not None:
             self.vector_id_list = m.get('VectorIdList')
         return self
@@ -7132,6 +7403,10 @@ class GetPictureInfoWithVectorIdsResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pic_url is not None:
             result['PicUrl'] = self.pic_url
@@ -7174,6 +7449,10 @@ class GetPictureInfoWithVectorIdsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7223,6 +7502,10 @@ class GetPictureInfoWithVectorIdsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7240,36 +7523,214 @@ class GetPictureInfoWithVectorIdsResponse(TeaModel):
         return self
 
 
+class GetPictureSearchJobStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_instance_id: str = None,
+        job_id: str = None,
+    ):
+        self.app_instance_id = app_instance_id
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_id is not None:
+            result['AppInstanceId'] = self.app_instance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceId') is not None:
+            self.app_instance_id = m.get('AppInstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class GetPictureSearchJobStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        start_time: int = None,
+        job_status: int = None,
+        search_pic_url: str = None,
+        create_time: int = None,
+        job_id: str = None,
+        threshold: float = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+        self.job_status = job_status
+        self.search_pic_url = search_pic_url
+        self.create_time = create_time
+        self.job_id = job_id
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.job_status is not None:
+            result['JobStatus'] = self.job_status
+        if self.search_pic_url is not None:
+            result['SearchPicUrl'] = self.search_pic_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('JobStatus') is not None:
+            self.job_status = m.get('JobStatus')
+        if m.get('SearchPicUrl') is not None:
+            self.search_pic_url = m.get('SearchPicUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class GetPictureSearchJobStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: GetPictureSearchJobStatusResponseBodyData = None,
+        error_message: str = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+        self.error_message = error_message
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = GetPictureSearchJobStatusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetPictureSearchJobStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetPictureSearchJobStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetPictureSearchJobStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetPictureWithVectorIdRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         vector_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.vector_id = vector_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.vector_id is not None:
             result['VectorId'] = self.vector_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('VectorId') is not None:
             self.vector_id = m.get('VectorId')
         return self
@@ -7294,6 +7755,10 @@ class GetPictureWithVectorIdResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7338,6 +7803,10 @@ class GetPictureWithVectorIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7358,14 +7827,10 @@ class GetPictureWithVectorIdResponse(TeaModel):
 class ListAlgorithmsByPageRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         name_pattern: str = None,
         page_size: int = None,
         current_page: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.name_pattern = name_pattern
         self.page_size = page_size
         self.current_page = current_page
@@ -7374,11 +7839,11 @@ class ListAlgorithmsByPageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.name_pattern is not None:
             result['NamePattern'] = self.name_pattern
         if self.page_size is not None:
@@ -7389,10 +7854,6 @@ class ListAlgorithmsByPageRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('NamePattern') is not None:
             self.name_pattern = m.get('NamePattern')
         if m.get('PageSize') is not None:
@@ -7421,6 +7882,10 @@ class ListAlgorithmsByPageResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7465,6 +7930,10 @@ class ListAlgorithmsByPageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7497,6 +7966,10 @@ class ListDeployTaskByModelIdAndDevicesRequestDeviceList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product_key is not None:
             result['ProductKey'] = self.product_key
@@ -7520,13 +7993,9 @@ class ListDeployTaskByModelIdAndDevicesRequestDeviceList(TeaModel):
 class ListDeployTaskByModelIdAndDevicesRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         model_id: int = None,
         device_list: List[ListDeployTaskByModelIdAndDevicesRequestDeviceList] = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.model_id = model_id
         self.device_list = device_list
 
@@ -7537,11 +8006,11 @@ class ListDeployTaskByModelIdAndDevicesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.model_id is not None:
             result['ModelId'] = self.model_id
         result['DeviceList'] = []
@@ -7552,10 +8021,6 @@ class ListDeployTaskByModelIdAndDevicesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('ModelId') is not None:
             self.model_id = m.get('ModelId')
         self.device_list = []
@@ -7585,6 +8050,10 @@ class ListDeployTaskByModelIdAndDevicesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7629,6 +8098,10 @@ class ListDeployTaskByModelIdAndDevicesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7649,13 +8122,9 @@ class ListDeployTaskByModelIdAndDevicesResponse(TeaModel):
 class ListDeployTaskByPageRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         page_size: int = None,
         current_page: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.page_size = page_size
         self.current_page = current_page
 
@@ -7663,11 +8132,11 @@ class ListDeployTaskByPageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.current_page is not None:
@@ -7676,10 +8145,6 @@ class ListDeployTaskByPageRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('CurrentPage') is not None:
@@ -7706,6 +8171,10 @@ class ListDeployTaskByPageResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7750,6 +8219,10 @@ class ListDeployTaskByPageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7770,8 +8243,6 @@ class ListDeployTaskByPageResponse(TeaModel):
 class ListModelsByPageRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         algorithm_id: int = None,
         size_type: str = None,
         model_package_standard: str = None,
@@ -7780,8 +8251,6 @@ class ListModelsByPageRequest(TeaModel):
         page_size: int = None,
         current_page: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.algorithm_id = algorithm_id
         self.size_type = size_type
         self.model_package_standard = model_package_standard
@@ -7794,11 +8263,11 @@ class ListModelsByPageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.algorithm_id is not None:
             result['AlgorithmId'] = self.algorithm_id
         if self.size_type is not None:
@@ -7817,10 +8286,6 @@ class ListModelsByPageRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AlgorithmId') is not None:
             self.algorithm_id = m.get('AlgorithmId')
         if m.get('SizeType') is not None:
@@ -7857,6 +8322,10 @@ class ListModelsByPageResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7901,6 +8370,10 @@ class ListModelsByPageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7921,8 +8394,6 @@ class ListModelsByPageResponse(TeaModel):
 class ListModelVersionsByPageRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         algorithm_name: str = None,
         size_type: str = None,
         model_package_standard: str = None,
@@ -7930,8 +8401,6 @@ class ListModelVersionsByPageRequest(TeaModel):
         page_size: int = None,
         current_page: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.algorithm_name = algorithm_name
         self.size_type = size_type
         self.model_package_standard = model_package_standard
@@ -7943,11 +8412,11 @@ class ListModelVersionsByPageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.algorithm_name is not None:
             result['AlgorithmName'] = self.algorithm_name
         if self.size_type is not None:
@@ -7964,10 +8433,6 @@ class ListModelVersionsByPageRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AlgorithmName') is not None:
             self.algorithm_name = m.get('AlgorithmName')
         if m.get('SizeType') is not None:
@@ -8002,6 +8467,10 @@ class ListModelVersionsByPageResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8046,6 +8515,10 @@ class ListModelVersionsByPageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8066,8 +8539,6 @@ class ListModelVersionsByPageResponse(TeaModel):
 class PictureSearchPictureRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         app_instance_id: str = None,
         page_size: int = None,
         current_page: int = None,
@@ -8076,9 +8547,8 @@ class PictureSearchPictureRequest(TeaModel):
         end_time: int = None,
         threshold: float = None,
         contain_pic_url: bool = None,
+        picture_search_type: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.app_instance_id = app_instance_id
         self.page_size = page_size
         self.current_page = current_page
@@ -8087,16 +8557,17 @@ class PictureSearchPictureRequest(TeaModel):
         self.end_time = end_time
         self.threshold = threshold
         self.contain_pic_url = contain_pic_url
+        self.picture_search_type = picture_search_type
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.app_instance_id is not None:
             result['AppInstanceId'] = self.app_instance_id
         if self.page_size is not None:
@@ -8113,14 +8584,12 @@ class PictureSearchPictureRequest(TeaModel):
             result['Threshold'] = self.threshold
         if self.contain_pic_url is not None:
             result['ContainPicUrl'] = self.contain_pic_url
+        if self.picture_search_type is not None:
+            result['PictureSearchType'] = self.picture_search_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AppInstanceId') is not None:
             self.app_instance_id = m.get('AppInstanceId')
         if m.get('PageSize') is not None:
@@ -8137,6 +8606,8 @@ class PictureSearchPictureRequest(TeaModel):
             self.threshold = m.get('Threshold')
         if m.get('ContainPicUrl') is not None:
             self.contain_pic_url = m.get('ContainPicUrl')
+        if m.get('PictureSearchType') is not None:
+            self.picture_search_type = m.get('PictureSearchType')
         return self
 
 
@@ -8148,6 +8619,7 @@ class PictureSearchPictureResponseBodyDataPageData(TeaModel):
         gateway_iot_id: str = None,
         vector_id: str = None,
         threshold: float = None,
+        vector_type: int = None,
         iot_id: str = None,
     ):
         self.pic_url = pic_url
@@ -8155,12 +8627,17 @@ class PictureSearchPictureResponseBodyDataPageData(TeaModel):
         self.gateway_iot_id = gateway_iot_id
         self.vector_id = vector_id
         self.threshold = threshold
+        self.vector_type = vector_type
         self.iot_id = iot_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pic_url is not None:
             result['PicUrl'] = self.pic_url
@@ -8172,6 +8649,8 @@ class PictureSearchPictureResponseBodyDataPageData(TeaModel):
             result['VectorId'] = self.vector_id
         if self.threshold is not None:
             result['Threshold'] = self.threshold
+        if self.vector_type is not None:
+            result['VectorType'] = self.vector_type
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         return result
@@ -8188,6 +8667,8 @@ class PictureSearchPictureResponseBodyDataPageData(TeaModel):
             self.vector_id = m.get('VectorId')
         if m.get('Threshold') is not None:
             self.threshold = m.get('Threshold')
+        if m.get('VectorType') is not None:
+            self.vector_type = m.get('VectorType')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         return self
@@ -8215,6 +8696,10 @@ class PictureSearchPictureResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
@@ -8268,6 +8753,10 @@ class PictureSearchPictureResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8313,6 +8802,10 @@ class PictureSearchPictureResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8333,33 +8826,25 @@ class PictureSearchPictureResponse(TeaModel):
 class QueryAIActionRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         return self
@@ -8368,65 +8853,69 @@ class QueryAIActionRequest(TeaModel):
 class QueryAIActionResponseBodyData(TeaModel):
     def __init__(
         self,
+        algo_config: str = None,
+        action: str = None,
+        algo: str = None,
         action_id: str = None,
-        plan_id: str = None,
         action_template_id: str = None,
         action_index: int = None,
-        algo: str = None,
-        action: str = None,
-        algo_config: str = None,
         action_config: str = None,
+        plan_id: str = None,
     ):
+        self.algo_config = algo_config
+        self.action = action
+        self.algo = algo
         self.action_id = action_id
-        self.plan_id = plan_id
         self.action_template_id = action_template_id
         self.action_index = action_index
-        self.algo = algo
-        self.action = action
-        self.algo_config = algo_config
         self.action_config = action_config
+        self.plan_id = plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.algo_config is not None:
+            result['AlgoConfig'] = self.algo_config
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.algo is not None:
+            result['Algo'] = self.algo
         if self.action_id is not None:
             result['ActionId'] = self.action_id
-        if self.plan_id is not None:
-            result['PlanId'] = self.plan_id
         if self.action_template_id is not None:
             result['ActionTemplateId'] = self.action_template_id
         if self.action_index is not None:
             result['ActionIndex'] = self.action_index
-        if self.algo is not None:
-            result['Algo'] = self.algo
-        if self.action is not None:
-            result['Action'] = self.action
-        if self.algo_config is not None:
-            result['AlgoConfig'] = self.algo_config
         if self.action_config is not None:
             result['ActionConfig'] = self.action_config
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlgoConfig') is not None:
+            self.algo_config = m.get('AlgoConfig')
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Algo') is not None:
+            self.algo = m.get('Algo')
         if m.get('ActionId') is not None:
             self.action_id = m.get('ActionId')
-        if m.get('PlanId') is not None:
-            self.plan_id = m.get('PlanId')
         if m.get('ActionTemplateId') is not None:
             self.action_template_id = m.get('ActionTemplateId')
         if m.get('ActionIndex') is not None:
             self.action_index = m.get('ActionIndex')
-        if m.get('Algo') is not None:
-            self.algo = m.get('Algo')
-        if m.get('Action') is not None:
-            self.action = m.get('Action')
-        if m.get('AlgoConfig') is not None:
-            self.algo_config = m.get('AlgoConfig')
         if m.get('ActionConfig') is not None:
             self.action_config = m.get('ActionConfig')
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
         return self
 
 
@@ -8434,16 +8923,16 @@ class QueryAIActionResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
+        data: List[QueryAIActionResponseBodyData] = None,
         error_message: str = None,
         code: str = None,
-        data: List[QueryAIActionResponseBodyData] = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
+        self.data = data
         self.error_message = error_message
         self.code = code
-        self.data = data
+        self.success = success
 
     def validate(self):
         if self.data:
@@ -8452,36 +8941,40 @@ class QueryAIActionResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.code is not None:
-            result['Code'] = self.code
         result['Data'] = []
         if self.data is not None:
             for k in self.data:
                 result['Data'].append(k.to_map() if k else None)
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         self.data = []
         if m.get('Data') is not None:
             for k in m.get('Data'):
                 temp_model = QueryAIActionResponseBodyData()
                 self.data.append(temp_model.from_map(k))
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -8501,6 +8994,10 @@ class QueryAIActionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8521,13 +9018,9 @@ class QueryAIActionResponse(TeaModel):
 class QueryAIAppRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         page_size: int = None,
         current_page: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.page_size = page_size
         self.current_page = current_page
 
@@ -8535,11 +9028,11 @@ class QueryAIAppRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.current_page is not None:
@@ -8548,10 +9041,6 @@ class QueryAIAppRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('CurrentPage') is not None:
@@ -8562,70 +9051,74 @@ class QueryAIAppRequest(TeaModel):
 class QueryAIAppResponseBodyDataList(TeaModel):
     def __init__(
         self,
+        description: str = None,
+        version: str = None,
         app_id: str = None,
         app_template_id: str = None,
-        version: str = None,
-        level: int = None,
         name: str = None,
-        description: str = None,
+        level: int = None,
     ):
+        self.description = description
+        self.version = version
         self.app_id = app_id
         self.app_template_id = app_template_id
-        self.version = version
-        self.level = level
         self.name = name
-        self.description = description
+        self.level = level
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.version is not None:
+            result['Version'] = self.version
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.app_template_id is not None:
             result['AppTemplateId'] = self.app_template_id
-        if self.version is not None:
-            result['Version'] = self.version
-        if self.level is not None:
-            result['Level'] = self.level
         if self.name is not None:
             result['Name'] = self.name
-        if self.description is not None:
-            result['Description'] = self.description
+        if self.level is not None:
+            result['Level'] = self.level
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AppTemplateId') is not None:
             self.app_template_id = m.get('AppTemplateId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
-        if m.get('Level') is not None:
-            self.level = m.get('Level')
         if m.get('Name') is not None:
             self.name = m.get('Name')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
         return self
 
 
 class QueryAIAppResponseBodyData(TeaModel):
     def __init__(
         self,
+        current_page: int = None,
+        list: List[QueryAIAppResponseBodyDataList] = None,
+        page_size: int = None,
         total: int = None,
         page_count: int = None,
-        current_page: int = None,
-        page_size: int = None,
-        list: List[QueryAIAppResponseBodyDataList] = None,
     ):
+        self.current_page = current_page
+        self.list = list
+        self.page_size = page_size
         self.total = total
         self.page_count = page_count
-        self.current_page = current_page
-        self.page_size = page_size
-        self.list = list
 
     def validate(self):
         if self.list:
@@ -8634,36 +9127,40 @@ class QueryAIAppResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.total is not None:
-            result['Total'] = self.total
-        if self.page_count is not None:
-            result['PageCount'] = self.page_count
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.page_count is not None:
+            result['PageCount'] = self.page_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Total') is not None:
-            self.total = m.get('Total')
-        if m.get('PageCount') is not None:
-            self.page_count = m.get('PageCount')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = QueryAIAppResponseBodyDataList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('PageCount') is not None:
+            self.page_count = m.get('PageCount')
         return self
 
 
@@ -8671,48 +9168,52 @@ class QueryAIAppResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
+        data: QueryAIAppResponseBodyData = None,
         error_message: str = None,
         code: str = None,
-        data: QueryAIAppResponseBodyData = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
+        self.data = data
         self.error_message = error_message
         self.code = code
-        self.data = data
+        self.success = success
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = QueryAIAppResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = QueryAIAppResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -8732,6 +9233,10 @@ class QueryAIAppResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8752,15 +9257,11 @@ class QueryAIAppResponse(TeaModel):
 class QueryAIJobsRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         action_id: str = None,
         iot_id: str = None,
         page_size: int = None,
         current_page: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.action_id = action_id
         self.iot_id = iot_id
         self.page_size = page_size
@@ -8770,11 +9271,11 @@ class QueryAIJobsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.action_id is not None:
             result['ActionId'] = self.action_id
         if self.iot_id is not None:
@@ -8787,10 +9288,6 @@ class QueryAIJobsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('ActionId') is not None:
             self.action_id = m.get('ActionId')
         if m.get('IotId') is not None:
@@ -8805,39 +9302,43 @@ class QueryAIJobsRequest(TeaModel):
 class QueryAIJobsResponseBodyDataList(TeaModel):
     def __init__(
         self,
+        status: int = None,
         job_id: str = None,
         action_id: str = None,
-        status: int = None,
         iot_id: str = None,
     ):
+        self.status = status
         self.job_id = job_id
         self.action_id = action_id
-        self.status = status
         self.iot_id = iot_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
         if self.job_id is not None:
             result['JobId'] = self.job_id
         if self.action_id is not None:
             result['ActionId'] = self.action_id
-        if self.status is not None:
-            result['Status'] = self.status
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         if m.get('ActionId') is not None:
             self.action_id = m.get('ActionId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         return self
@@ -8846,17 +9347,17 @@ class QueryAIJobsResponseBodyDataList(TeaModel):
 class QueryAIJobsResponseBodyData(TeaModel):
     def __init__(
         self,
+        current_page: int = None,
+        list: List[QueryAIJobsResponseBodyDataList] = None,
+        page_size: int = None,
         total: int = None,
         page_count: int = None,
-        current_page: int = None,
-        page_size: int = None,
-        list: List[QueryAIJobsResponseBodyDataList] = None,
     ):
+        self.current_page = current_page
+        self.list = list
+        self.page_size = page_size
         self.total = total
         self.page_count = page_count
-        self.current_page = current_page
-        self.page_size = page_size
-        self.list = list
 
     def validate(self):
         if self.list:
@@ -8865,36 +9366,40 @@ class QueryAIJobsResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.total is not None:
-            result['Total'] = self.total
-        if self.page_count is not None:
-            result['PageCount'] = self.page_count
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.page_count is not None:
+            result['PageCount'] = self.page_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Total') is not None:
-            self.total = m.get('Total')
-        if m.get('PageCount') is not None:
-            self.page_count = m.get('PageCount')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = QueryAIJobsResponseBodyDataList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('PageCount') is not None:
+            self.page_count = m.get('PageCount')
         return self
 
 
@@ -8902,48 +9407,52 @@ class QueryAIJobsResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
+        data: QueryAIJobsResponseBodyData = None,
         error_message: str = None,
         code: str = None,
-        data: QueryAIJobsResponseBodyData = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
+        self.data = data
         self.error_message = error_message
         self.code = code
-        self.data = data
+        self.success = success
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = QueryAIJobsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = QueryAIJobsResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -8963,6 +9472,10 @@ class QueryAIJobsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8983,14 +9496,10 @@ class QueryAIJobsResponse(TeaModel):
 class QueryAIPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         app_id: str = None,
         page_size: int = None,
         current_page: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.app_id = app_id
         self.page_size = page_size
         self.current_page = current_page
@@ -8999,11 +9508,11 @@ class QueryAIPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.page_size is not None:
@@ -9014,10 +9523,6 @@ class QueryAIPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('PageSize') is not None:
@@ -9030,76 +9535,80 @@ class QueryAIPlanRequest(TeaModel):
 class QueryAIPlanResponseBodyDataList(TeaModel):
     def __init__(
         self,
-        plan_id: str = None,
-        app_id: str = None,
         plan_template_id: str = None,
         trigger_enum: int = None,
-        interval_timing: int = None,
-        pre_timing: int = None,
         description: str = None,
+        pre_timing: int = None,
+        app_id: str = None,
+        interval_timing: int = None,
+        plan_id: str = None,
     ):
-        self.plan_id = plan_id
-        self.app_id = app_id
         self.plan_template_id = plan_template_id
         self.trigger_enum = trigger_enum
-        self.interval_timing = interval_timing
-        self.pre_timing = pre_timing
         self.description = description
+        self.pre_timing = pre_timing
+        self.app_id = app_id
+        self.interval_timing = interval_timing
+        self.plan_id = plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.plan_id is not None:
-            result['PlanId'] = self.plan_id
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
         if self.plan_template_id is not None:
             result['PlanTemplateId'] = self.plan_template_id
         if self.trigger_enum is not None:
             result['TriggerEnum'] = self.trigger_enum
-        if self.interval_timing is not None:
-            result['IntervalTiming'] = self.interval_timing
-        if self.pre_timing is not None:
-            result['PreTiming'] = self.pre_timing
         if self.description is not None:
             result['Description'] = self.description
+        if self.pre_timing is not None:
+            result['PreTiming'] = self.pre_timing
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.interval_timing is not None:
+            result['IntervalTiming'] = self.interval_timing
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PlanId') is not None:
-            self.plan_id = m.get('PlanId')
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
         if m.get('PlanTemplateId') is not None:
             self.plan_template_id = m.get('PlanTemplateId')
         if m.get('TriggerEnum') is not None:
             self.trigger_enum = m.get('TriggerEnum')
-        if m.get('IntervalTiming') is not None:
-            self.interval_timing = m.get('IntervalTiming')
-        if m.get('PreTiming') is not None:
-            self.pre_timing = m.get('PreTiming')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('PreTiming') is not None:
+            self.pre_timing = m.get('PreTiming')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('IntervalTiming') is not None:
+            self.interval_timing = m.get('IntervalTiming')
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
         return self
 
 
 class QueryAIPlanResponseBodyData(TeaModel):
     def __init__(
         self,
+        current_page: int = None,
+        list: List[QueryAIPlanResponseBodyDataList] = None,
+        page_size: int = None,
         total: int = None,
         page_count: int = None,
-        current_page: int = None,
-        page_size: int = None,
-        list: List[QueryAIPlanResponseBodyDataList] = None,
     ):
+        self.current_page = current_page
+        self.list = list
+        self.page_size = page_size
         self.total = total
         self.page_count = page_count
-        self.current_page = current_page
-        self.page_size = page_size
-        self.list = list
 
     def validate(self):
         if self.list:
@@ -9108,36 +9617,40 @@ class QueryAIPlanResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.total is not None:
-            result['Total'] = self.total
-        if self.page_count is not None:
-            result['PageCount'] = self.page_count
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.page_count is not None:
+            result['PageCount'] = self.page_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Total') is not None:
-            self.total = m.get('Total')
-        if m.get('PageCount') is not None:
-            self.page_count = m.get('PageCount')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = QueryAIPlanResponseBodyDataList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('PageCount') is not None:
+            self.page_count = m.get('PageCount')
         return self
 
 
@@ -9145,48 +9658,52 @@ class QueryAIPlanResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
+        data: QueryAIPlanResponseBodyData = None,
         error_message: str = None,
         code: str = None,
-        data: QueryAIPlanResponseBodyData = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
+        self.data = data
         self.error_message = error_message
         self.code = code
-        self.data = data
+        self.success = success
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = QueryAIPlanResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = QueryAIPlanResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -9206,6 +9723,10 @@ class QueryAIPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9226,13 +9747,9 @@ class QueryAIPlanResponse(TeaModel):
 class QueryAIPlanTemplatesRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         app_template_id: str = None,
         app_version: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.app_template_id = app_template_id
         self.app_version = app_version
 
@@ -9240,11 +9757,11 @@ class QueryAIPlanTemplatesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.app_template_id is not None:
             result['AppTemplateId'] = self.app_template_id
         if self.app_version is not None:
@@ -9253,10 +9770,6 @@ class QueryAIPlanTemplatesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AppTemplateId') is not None:
             self.app_template_id = m.get('AppTemplateId')
         if m.get('AppVersion') is not None:
@@ -9268,52 +9781,56 @@ class QueryAIPlanTemplatesResponseBodyData(TeaModel):
     def __init__(
         self,
         plan_template_id: str = None,
-        app_template_id: str = None,
-        app_version: str = None,
         trigger_enum: int = None,
         description: str = None,
         interval_timing: int = None,
+        app_version: str = None,
+        app_template_id: str = None,
     ):
         self.plan_template_id = plan_template_id
-        self.app_template_id = app_template_id
-        self.app_version = app_version
         self.trigger_enum = trigger_enum
         self.description = description
         self.interval_timing = interval_timing
+        self.app_version = app_version
+        self.app_template_id = app_template_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.plan_template_id is not None:
             result['PlanTemplateId'] = self.plan_template_id
-        if self.app_template_id is not None:
-            result['AppTemplateId'] = self.app_template_id
-        if self.app_version is not None:
-            result['AppVersion'] = self.app_version
         if self.trigger_enum is not None:
             result['TriggerEnum'] = self.trigger_enum
         if self.description is not None:
             result['Description'] = self.description
         if self.interval_timing is not None:
             result['IntervalTiming'] = self.interval_timing
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        if self.app_template_id is not None:
+            result['AppTemplateId'] = self.app_template_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('PlanTemplateId') is not None:
             self.plan_template_id = m.get('PlanTemplateId')
-        if m.get('AppTemplateId') is not None:
-            self.app_template_id = m.get('AppTemplateId')
-        if m.get('AppVersion') is not None:
-            self.app_version = m.get('AppVersion')
         if m.get('TriggerEnum') is not None:
             self.trigger_enum = m.get('TriggerEnum')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('IntervalTiming') is not None:
             self.interval_timing = m.get('IntervalTiming')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        if m.get('AppTemplateId') is not None:
+            self.app_template_id = m.get('AppTemplateId')
         return self
 
 
@@ -9321,16 +9838,16 @@ class QueryAIPlanTemplatesResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
+        data: List[QueryAIPlanTemplatesResponseBodyData] = None,
         error_message: str = None,
         code: str = None,
-        data: List[QueryAIPlanTemplatesResponseBodyData] = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
+        self.data = data
         self.error_message = error_message
         self.code = code
-        self.data = data
+        self.success = success
 
     def validate(self):
         if self.data:
@@ -9339,36 +9856,40 @@ class QueryAIPlanTemplatesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.code is not None:
-            result['Code'] = self.code
         result['Data'] = []
         if self.data is not None:
             for k in self.data:
                 result['Data'].append(k.to_map() if k else None)
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         self.data = []
         if m.get('Data') is not None:
             for k in m.get('Data'):
                 temp_model = QueryAIPlanTemplatesResponseBodyData()
                 self.data.append(temp_model.from_map(k))
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -9388,6 +9909,10 @@ class QueryAIPlanTemplatesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9408,8 +9933,6 @@ class QueryAIPlanTemplatesResponse(TeaModel):
 class QueryDeviceEventRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         event_type: int = None,
         begin_time: int = None,
@@ -9418,8 +9941,6 @@ class QueryDeviceEventRequest(TeaModel):
         page_size: int = None,
         iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.event_type = event_type
         self.begin_time = begin_time
@@ -9432,11 +9953,11 @@ class QueryDeviceEventRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.event_type is not None:
@@ -9455,10 +9976,6 @@ class QueryDeviceEventRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('EventType') is not None:
@@ -9497,6 +10014,10 @@ class QueryDeviceEventResponseBodyDataList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.event_id is not None:
             result['EventId'] = self.event_id
@@ -9551,6 +10072,10 @@ class QueryDeviceEventResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['List'] = []
         if self.list is not None:
@@ -9604,6 +10129,10 @@ class QueryDeviceEventResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9649,6 +10178,10 @@ class QueryDeviceEventResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9669,14 +10202,10 @@ class QueryDeviceEventResponse(TeaModel):
 class QueryDeviceEventPictureRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         event_id: str = None,
         iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.event_id = event_id
         self.iot_instance_id = iot_instance_id
@@ -9685,11 +10214,11 @@ class QueryDeviceEventPictureRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.event_id is not None:
@@ -9700,10 +10229,6 @@ class QueryDeviceEventPictureRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('EventId') is not None:
@@ -9732,6 +10257,10 @@ class QueryDeviceEventPictureResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9776,6 +10305,10 @@ class QueryDeviceEventPictureResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9796,14 +10329,10 @@ class QueryDeviceEventPictureResponse(TeaModel):
 class QueryDeviceEventRecordRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         event_id: str = None,
         iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.event_id = event_id
         self.iot_instance_id = iot_instance_id
@@ -9812,11 +10341,11 @@ class QueryDeviceEventRecordRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.event_id is not None:
@@ -9827,10 +10356,6 @@ class QueryDeviceEventRecordRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('EventId') is not None:
@@ -9857,6 +10382,10 @@ class QueryDeviceEventRecordResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -9903,6 +10432,10 @@ class QueryDeviceEventRecordResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9952,6 +10485,10 @@ class QueryDeviceEventRecordResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9972,15 +10509,11 @@ class QueryDeviceEventRecordResponse(TeaModel):
 class QueryDeviceFileVodRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         file_name: str = None,
         should_encrypt: bool = None,
         encrypt_type: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.file_name = file_name
         self.should_encrypt = should_encrypt
@@ -9990,11 +10523,11 @@ class QueryDeviceFileVodRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.file_name is not None:
@@ -10007,10 +10540,6 @@ class QueryDeviceFileVodRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('FileName') is not None:
@@ -10033,6 +10562,10 @@ class QueryDeviceFileVodResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vod_url is not None:
             result['VodUrl'] = self.vod_url
@@ -10067,6 +10600,10 @@ class QueryDeviceFileVodResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10116,6 +10653,10 @@ class QueryDeviceFileVodResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10136,15 +10677,11 @@ class QueryDeviceFileVodResponse(TeaModel):
 class QueryDevicePictureFileRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         capture_id: str = None,
         picture_type: int = None,
         iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.capture_id = capture_id
         self.picture_type = picture_type
@@ -10154,11 +10691,11 @@ class QueryDevicePictureFileRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.capture_id is not None:
@@ -10171,10 +10708,6 @@ class QueryDevicePictureFileRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('CaptureId') is not None:
@@ -10205,6 +10738,10 @@ class QueryDevicePictureFileResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pic_url is not None:
             result['PicUrl'] = self.pic_url
@@ -10253,6 +10790,10 @@ class QueryDevicePictureFileResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10298,6 +10839,10 @@ class QueryDevicePictureFileResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10318,33 +10863,25 @@ class QueryDevicePictureFileResponse(TeaModel):
 class QueryDevicePictureLifeCycleRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         return self
@@ -10363,6 +10900,10 @@ class QueryDevicePictureLifeCycleResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.day is not None:
             result['Day'] = self.day
@@ -10399,6 +10940,10 @@ class QueryDevicePictureLifeCycleResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10444,6 +10989,10 @@ class QueryDevicePictureLifeCycleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10464,14 +11013,10 @@ class QueryDevicePictureLifeCycleResponse(TeaModel):
 class QueryDevicePurifyJobsRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         page_size: int = None,
         current_page: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.page_size = page_size
         self.current_page = current_page
@@ -10480,11 +11025,11 @@ class QueryDevicePurifyJobsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.page_size is not None:
@@ -10495,10 +11040,6 @@ class QueryDevicePurifyJobsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('PageSize') is not None:
@@ -10541,6 +11082,10 @@ class QueryDevicePurifyJobsResponseBodyDataList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -10619,6 +11164,10 @@ class QueryDevicePurifyJobsResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
@@ -10672,6 +11221,10 @@ class QueryDevicePurifyJobsResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10717,6 +11270,10 @@ class QueryDevicePurifyJobsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10737,33 +11294,25 @@ class QueryDevicePurifyJobsResponse(TeaModel):
 class QueryDevicePurifyPlanByPlanIdRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         return self
@@ -10794,6 +11343,10 @@ class QueryDevicePurifyPlanByPlanIdResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -10854,6 +11407,10 @@ class QueryDevicePurifyPlanByPlanIdResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10899,6 +11456,10 @@ class QueryDevicePurifyPlanByPlanIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10919,14 +11480,10 @@ class QueryDevicePurifyPlanByPlanIdResponse(TeaModel):
 class QueryDevicePurifyPlansRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         page_size: int = None,
         current_page: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.page_size = page_size
         self.current_page = current_page
@@ -10935,11 +11492,11 @@ class QueryDevicePurifyPlansRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.page_size is not None:
@@ -10950,10 +11507,6 @@ class QueryDevicePurifyPlansRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('PageSize') is not None:
@@ -10988,6 +11541,10 @@ class QueryDevicePurifyPlansResponseBodyDataList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -11050,6 +11607,10 @@ class QueryDevicePurifyPlansResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
@@ -11103,6 +11664,10 @@ class QueryDevicePurifyPlansResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11148,6 +11713,10 @@ class QueryDevicePurifyPlansResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11168,33 +11737,25 @@ class QueryDevicePurifyPlansResponse(TeaModel):
 class QueryDeviceRecordLifeCycleRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         device_list: List[str] = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.device_list = device_list
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.device_list is not None:
             result['DeviceList'] = self.device_list
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('DeviceList') is not None:
             self.device_list = m.get('DeviceList')
         return self
@@ -11213,6 +11774,10 @@ class QueryDeviceRecordLifeCycleResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.day is not None:
             result['Day'] = self.day
@@ -11251,6 +11816,10 @@ class QueryDeviceRecordLifeCycleResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11300,6 +11869,10 @@ class QueryDeviceRecordLifeCycleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11320,71 +11893,69 @@ class QueryDeviceRecordLifeCycleResponse(TeaModel):
 class QueryDeviceVodUrlRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
-        iot_id: str = None,
         file_name: str = None,
-        should_encrypt: bool = None,
-        encrypt_type: int = None,
         scheme: str = None,
         seek_time: int = None,
         iot_instance_id: str = None,
+        iot_id: str = None,
+        play_un_limited: bool = None,
+        encrypt_type: int = None,
+        should_encrypt: bool = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
-        self.iot_id = iot_id
         self.file_name = file_name
-        self.should_encrypt = should_encrypt
-        self.encrypt_type = encrypt_type
         self.scheme = scheme
         self.seek_time = seek_time
         self.iot_instance_id = iot_instance_id
+        self.iot_id = iot_id
+        self.play_un_limited = play_un_limited
+        self.encrypt_type = encrypt_type
+        self.should_encrypt = should_encrypt
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
-        if self.iot_id is not None:
-            result['IotId'] = self.iot_id
         if self.file_name is not None:
             result['FileName'] = self.file_name
-        if self.should_encrypt is not None:
-            result['ShouldEncrypt'] = self.should_encrypt
-        if self.encrypt_type is not None:
-            result['EncryptType'] = self.encrypt_type
         if self.scheme is not None:
             result['Scheme'] = self.scheme
         if self.seek_time is not None:
             result['SeekTime'] = self.seek_time
         if self.iot_instance_id is not None:
             result['IotInstanceId'] = self.iot_instance_id
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+        if self.play_un_limited is not None:
+            result['PlayUnLimited'] = self.play_un_limited
+        if self.encrypt_type is not None:
+            result['EncryptType'] = self.encrypt_type
+        if self.should_encrypt is not None:
+            result['ShouldEncrypt'] = self.should_encrypt
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
-        if m.get('IotId') is not None:
-            self.iot_id = m.get('IotId')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
-        if m.get('ShouldEncrypt') is not None:
-            self.should_encrypt = m.get('ShouldEncrypt')
-        if m.get('EncryptType') is not None:
-            self.encrypt_type = m.get('EncryptType')
         if m.get('Scheme') is not None:
             self.scheme = m.get('Scheme')
         if m.get('SeekTime') is not None:
             self.seek_time = m.get('SeekTime')
         if m.get('IotInstanceId') is not None:
             self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+        if m.get('PlayUnLimited') is not None:
+            self.play_un_limited = m.get('PlayUnLimited')
+        if m.get('EncryptType') is not None:
+            self.encrypt_type = m.get('EncryptType')
+        if m.get('ShouldEncrypt') is not None:
+            self.should_encrypt = m.get('ShouldEncrypt')
         return self
 
 
@@ -11399,6 +11970,10 @@ class QueryDeviceVodUrlResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vod_url is not None:
             result['VodUrl'] = self.vod_url
@@ -11433,6 +12008,10 @@ class QueryDeviceVodUrlResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11482,6 +12061,10 @@ class QueryDeviceVodUrlResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11499,36 +12082,226 @@ class QueryDeviceVodUrlResponse(TeaModel):
         return self
 
 
+class QueryDeviceVodUrlByTimeRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        scheme: str = None,
+        seek_time: int = None,
+        iot_instance_id: str = None,
+        begin_time: int = None,
+        iot_id: str = None,
+        play_un_limited: bool = None,
+        encrypt_type: int = None,
+        should_encrypt: bool = None,
+    ):
+        self.end_time = end_time
+        self.scheme = scheme
+        self.seek_time = seek_time
+        self.iot_instance_id = iot_instance_id
+        self.begin_time = begin_time
+        self.iot_id = iot_id
+        self.play_un_limited = play_un_limited
+        self.encrypt_type = encrypt_type
+        self.should_encrypt = should_encrypt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.scheme is not None:
+            result['Scheme'] = self.scheme
+        if self.seek_time is not None:
+            result['SeekTime'] = self.seek_time
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+        if self.play_un_limited is not None:
+            result['PlayUnLimited'] = self.play_un_limited
+        if self.encrypt_type is not None:
+            result['EncryptType'] = self.encrypt_type
+        if self.should_encrypt is not None:
+            result['ShouldEncrypt'] = self.should_encrypt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Scheme') is not None:
+            self.scheme = m.get('Scheme')
+        if m.get('SeekTime') is not None:
+            self.seek_time = m.get('SeekTime')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+        if m.get('PlayUnLimited') is not None:
+            self.play_un_limited = m.get('PlayUnLimited')
+        if m.get('EncryptType') is not None:
+            self.encrypt_type = m.get('EncryptType')
+        if m.get('ShouldEncrypt') is not None:
+            self.should_encrypt = m.get('ShouldEncrypt')
+        return self
+
+
+class QueryDeviceVodUrlByTimeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        vod_url: str = None,
+    ):
+        self.vod_url = vod_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vod_url is not None:
+            result['VodUrl'] = self.vod_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VodUrl') is not None:
+            self.vod_url = m.get('VodUrl')
+        return self
+
+
+class QueryDeviceVodUrlByTimeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        decrypt_key: str = None,
+        data: QueryDeviceVodUrlByTimeResponseBodyData = None,
+        error_message: str = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.decrypt_key = decrypt_key
+        self.data = data
+        self.error_message = error_message
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.decrypt_key is not None:
+            result['DecryptKey'] = self.decrypt_key
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('DecryptKey') is not None:
+            self.decrypt_key = m.get('DecryptKey')
+        if m.get('Data') is not None:
+            temp_model = QueryDeviceVodUrlByTimeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryDeviceVodUrlByTimeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryDeviceVodUrlByTimeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryDeviceVodUrlByTimeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryEventRecordPlanDetailRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         return self
@@ -11549,6 +12322,10 @@ class QueryEventRecordPlanDetailResponseBodyDataTemplateInfoTimeSectionList(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.day_of_week is not None:
             result['DayOfWeek'] = self.day_of_week
@@ -11591,6 +12368,10 @@ class QueryEventRecordPlanDetailResponseBodyDataTemplateInfo(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TimeSectionList'] = []
         if self.time_section_list is not None:
@@ -11646,6 +12427,10 @@ class QueryEventRecordPlanDetailResponseBodyData(TeaModel):
             self.template_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.record_duration is not None:
             result['RecordDuration'] = self.record_duration
@@ -11699,6 +12484,10 @@ class QueryEventRecordPlanDetailResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11744,6 +12533,10 @@ class QueryEventRecordPlanDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11764,13 +12557,9 @@ class QueryEventRecordPlanDetailResponse(TeaModel):
 class QueryEventRecordPlanDeviceByDeviceRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         stream_type: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.stream_type = stream_type
 
@@ -11778,11 +12567,11 @@ class QueryEventRecordPlanDeviceByDeviceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.stream_type is not None:
@@ -11791,10 +12580,6 @@ class QueryEventRecordPlanDeviceByDeviceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('StreamType') is not None:
@@ -11817,6 +12602,10 @@ class QueryEventRecordPlanDeviceByDeviceResponseBodyDataTemplateInfoTimeSectionL
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.day_of_week is not None:
             result['DayOfWeek'] = self.day_of_week
@@ -11859,6 +12648,10 @@ class QueryEventRecordPlanDeviceByDeviceResponseBodyDataTemplateInfo(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TimeSectionList'] = []
         if self.time_section_list is not None:
@@ -11914,6 +12707,10 @@ class QueryEventRecordPlanDeviceByDeviceResponseBodyData(TeaModel):
             self.template_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.record_duration is not None:
             result['RecordDuration'] = self.record_duration
@@ -11967,6 +12764,10 @@ class QueryEventRecordPlanDeviceByDeviceResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12012,6 +12813,10 @@ class QueryEventRecordPlanDeviceByDeviceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12032,14 +12837,10 @@ class QueryEventRecordPlanDeviceByDeviceResponse(TeaModel):
 class QueryEventRecordPlanDeviceByPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
         current_page: int = None,
         page_size: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
         self.current_page = current_page
         self.page_size = page_size
@@ -12048,11 +12849,11 @@ class QueryEventRecordPlanDeviceByPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.current_page is not None:
@@ -12063,10 +12864,6 @@ class QueryEventRecordPlanDeviceByPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('CurrentPage') is not None:
@@ -12089,6 +12886,10 @@ class QueryEventRecordPlanDeviceByPlanResponseBodyDataList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stream_type is not None:
             result['StreamType'] = self.stream_type
@@ -12127,6 +12928,10 @@ class QueryEventRecordPlanDeviceByPlanResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['List'] = []
         if self.list is not None:
@@ -12180,6 +12985,10 @@ class QueryEventRecordPlanDeviceByPlanResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12225,6 +13034,10 @@ class QueryEventRecordPlanDeviceByPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12245,13 +13058,9 @@ class QueryEventRecordPlanDeviceByPlanResponse(TeaModel):
 class QueryEventRecordPlansRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         current_page: int = None,
         page_size: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.current_page = current_page
         self.page_size = page_size
 
@@ -12259,11 +13068,11 @@ class QueryEventRecordPlansRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.page_size is not None:
@@ -12272,10 +13081,6 @@ class QueryEventRecordPlansRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('PageSize') is not None:
@@ -12304,6 +13109,10 @@ class QueryEventRecordPlansResponseBodyDataList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.event_type is not None:
             result['EventType'] = self.event_type
@@ -12358,6 +13167,10 @@ class QueryEventRecordPlansResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['List'] = []
         if self.list is not None:
@@ -12411,6 +13224,10 @@ class QueryEventRecordPlansResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12456,6 +13273,10 @@ class QueryEventRecordPlansResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12476,15 +13297,11 @@ class QueryEventRecordPlansResponse(TeaModel):
 class QueryFaceAllDeviceGroupRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         iot_instance_id: str = None,
         page_size: int = None,
         page_no: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.iot_instance_id = iot_instance_id
         self.page_size = page_size
@@ -12494,11 +13311,11 @@ class QueryFaceAllDeviceGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.iot_instance_id is not None:
@@ -12511,10 +13328,6 @@ class QueryFaceAllDeviceGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('IotInstanceId') is not None:
@@ -12541,6 +13354,10 @@ class QueryFaceAllDeviceGroupResponseBodyDataDeviceGroupList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.device_group_id is not None:
             result['DeviceGroupId'] = self.device_group_id
@@ -12581,6 +13398,10 @@ class QueryFaceAllDeviceGroupResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DeviceGroupList'] = []
         if self.device_group_list is not None:
@@ -12630,6 +13451,10 @@ class QueryFaceAllDeviceGroupResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12675,6 +13500,10 @@ class QueryFaceAllDeviceGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12695,14 +13524,10 @@ class QueryFaceAllDeviceGroupResponse(TeaModel):
 class QueryFaceAllUserGroupRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         page_size: int = None,
         page_no: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.page_size = page_size
         self.page_no = page_no
@@ -12711,11 +13536,11 @@ class QueryFaceAllUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.page_size is not None:
@@ -12726,10 +13551,6 @@ class QueryFaceAllUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('PageSize') is not None:
@@ -12754,6 +13575,10 @@ class QueryFaceAllUserGroupResponseBodyDataUserGroupList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
@@ -12794,6 +13619,10 @@ class QueryFaceAllUserGroupResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_no is not None:
             result['PageNo'] = self.page_no
@@ -12843,6 +13672,10 @@ class QueryFaceAllUserGroupResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12888,6 +13721,10 @@ class QueryFaceAllUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12908,14 +13745,10 @@ class QueryFaceAllUserGroupResponse(TeaModel):
 class QueryFaceAllUserGroupAndDeviceGroupRelationRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         page_size: int = None,
         page_no: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.page_size = page_size
         self.page_no = page_no
@@ -12924,11 +13757,11 @@ class QueryFaceAllUserGroupAndDeviceGroupRelationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.page_size is not None:
@@ -12939,10 +13772,6 @@ class QueryFaceAllUserGroupAndDeviceGroupRelationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('PageSize') is not None:
@@ -12971,6 +13800,10 @@ class QueryFaceAllUserGroupAndDeviceGroupRelationResponseBodyDataList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.device_group_id is not None:
             result['DeviceGroupId'] = self.device_group_id
@@ -13019,6 +13852,10 @@ class QueryFaceAllUserGroupAndDeviceGroupRelationResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['List'] = []
         if self.list is not None:
@@ -13068,6 +13905,10 @@ class QueryFaceAllUserGroupAndDeviceGroupRelationResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13113,6 +13954,10 @@ class QueryFaceAllUserGroupAndDeviceGroupRelationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13133,15 +13978,11 @@ class QueryFaceAllUserGroupAndDeviceGroupRelationResponse(TeaModel):
 class QueryFaceAllUserIdsByGroupIdRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         user_group_id: str = None,
         page_size: int = None,
         page_no: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.user_group_id = user_group_id
         self.page_size = page_size
@@ -13151,11 +13992,11 @@ class QueryFaceAllUserIdsByGroupIdRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.user_group_id is not None:
@@ -13168,10 +14009,6 @@ class QueryFaceAllUserIdsByGroupIdRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('UserGroupId') is not None:
@@ -13200,6 +14037,10 @@ class QueryFaceAllUserIdsByGroupIdResponseBodyDataList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.params is not None:
             result['Params'] = self.params
@@ -13244,6 +14085,10 @@ class QueryFaceAllUserIdsByGroupIdResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['List'] = []
         if self.list is not None:
@@ -13293,6 +14138,10 @@ class QueryFaceAllUserIdsByGroupIdResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13338,6 +14187,10 @@ class QueryFaceAllUserIdsByGroupIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13358,13 +14211,9 @@ class QueryFaceAllUserIdsByGroupIdResponse(TeaModel):
 class QueryFaceCustomUserIdByUserIdRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         user_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.user_id = user_id
 
@@ -13372,11 +14221,11 @@ class QueryFaceCustomUserIdByUserIdRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.user_id is not None:
@@ -13385,10 +14234,6 @@ class QueryFaceCustomUserIdByUserIdRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('UserId') is not None:
@@ -13415,6 +14260,10 @@ class QueryFaceCustomUserIdByUserIdResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13459,6 +14308,10 @@ class QueryFaceCustomUserIdByUserIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13479,8 +14332,6 @@ class QueryFaceCustomUserIdByUserIdResponse(TeaModel):
 class QueryFaceDeviceGroupsByDeviceRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         iot_instance_id: str = None,
         product_key: str = None,
@@ -13488,8 +14339,6 @@ class QueryFaceDeviceGroupsByDeviceRequest(TeaModel):
         page_size: int = None,
         page_no: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.iot_instance_id = iot_instance_id
         self.product_key = product_key
@@ -13501,11 +14350,11 @@ class QueryFaceDeviceGroupsByDeviceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.iot_instance_id is not None:
@@ -13522,10 +14371,6 @@ class QueryFaceDeviceGroupsByDeviceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('IotInstanceId') is not None:
@@ -13556,6 +14401,10 @@ class QueryFaceDeviceGroupsByDeviceResponseBodyDataDeviceGroupList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.device_group_id is not None:
             result['DeviceGroupId'] = self.device_group_id
@@ -13596,6 +14445,10 @@ class QueryFaceDeviceGroupsByDeviceResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DeviceGroupList'] = []
         if self.device_group_list is not None:
@@ -13645,6 +14498,10 @@ class QueryFaceDeviceGroupsByDeviceResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13690,6 +14547,10 @@ class QueryFaceDeviceGroupsByDeviceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13710,13 +14571,9 @@ class QueryFaceDeviceGroupsByDeviceResponse(TeaModel):
 class QueryFaceUserRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         user_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.user_id = user_id
 
@@ -13724,11 +14581,11 @@ class QueryFaceUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.user_id is not None:
@@ -13737,10 +14594,6 @@ class QueryFaceUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('UserId') is not None:
@@ -13769,6 +14622,10 @@ class QueryFaceUserResponseBodyDataFacePicListFeatureDTOList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.algorithm_name is not None:
             result['AlgorithmName'] = self.algorithm_name
@@ -13819,6 +14676,10 @@ class QueryFaceUserResponseBodyDataFacePicList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.face_url is not None:
             result['FaceUrl'] = self.face_url
@@ -13866,6 +14727,10 @@ class QueryFaceUserResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.params is not None:
             result['Params'] = self.params
@@ -13919,6 +14784,10 @@ class QueryFaceUserResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13964,6 +14833,10 @@ class QueryFaceUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13984,15 +14857,11 @@ class QueryFaceUserResponse(TeaModel):
 class QueryFaceUserGroupRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         user_id: str = None,
         page_size: int = None,
         page_no: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.user_id = user_id
         self.page_size = page_size
@@ -14002,11 +14871,11 @@ class QueryFaceUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.user_id is not None:
@@ -14019,10 +14888,6 @@ class QueryFaceUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('UserId') is not None:
@@ -14049,6 +14914,10 @@ class QueryFaceUserGroupResponseBodyDataUserGroupList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
@@ -14089,6 +14958,10 @@ class QueryFaceUserGroupResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_no is not None:
             result['PageNo'] = self.page_no
@@ -14138,6 +15011,10 @@ class QueryFaceUserGroupResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14183,6 +15060,10 @@ class QueryFaceUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14203,13 +15084,9 @@ class QueryFaceUserGroupResponse(TeaModel):
 class QueryFaceUserGroupAndDeviceGroupRelationRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         control_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.control_id = control_id
 
@@ -14217,11 +15094,11 @@ class QueryFaceUserGroupAndDeviceGroupRelationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.control_id is not None:
@@ -14230,10 +15107,6 @@ class QueryFaceUserGroupAndDeviceGroupRelationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('ControlId') is not None:
@@ -14260,6 +15133,10 @@ class QueryFaceUserGroupAndDeviceGroupRelationResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.device_group_id is not None:
             result['DeviceGroupId'] = self.device_group_id
@@ -14308,6 +15185,10 @@ class QueryFaceUserGroupAndDeviceGroupRelationResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14353,6 +15234,10 @@ class QueryFaceUserGroupAndDeviceGroupRelationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14373,13 +15258,9 @@ class QueryFaceUserGroupAndDeviceGroupRelationResponse(TeaModel):
 class QueryFaceUserIdByCustomUserIdRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         custom_user_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.custom_user_id = custom_user_id
 
@@ -14387,11 +15268,11 @@ class QueryFaceUserIdByCustomUserIdRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.custom_user_id is not None:
@@ -14400,10 +15281,6 @@ class QueryFaceUserIdByCustomUserIdRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('CustomUserId') is not None:
@@ -14428,6 +15305,10 @@ class QueryFaceUserIdByCustomUserIdResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.params is not None:
             result['Params'] = self.params
@@ -14472,6 +15353,10 @@ class QueryFaceUserIdByCustomUserIdResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14517,6 +15402,10 @@ class QueryFaceUserIdByCustomUserIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14537,14 +15426,10 @@ class QueryFaceUserIdByCustomUserIdResponse(TeaModel):
 class QueryIotIdsByAIPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
         page_size: int = None,
         current_page: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
         self.page_size = page_size
         self.current_page = current_page
@@ -14553,11 +15438,11 @@ class QueryIotIdsByAIPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.page_size is not None:
@@ -14568,10 +15453,6 @@ class QueryIotIdsByAIPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('PageSize') is not None:
@@ -14584,47 +15465,51 @@ class QueryIotIdsByAIPlanRequest(TeaModel):
 class QueryIotIdsByAIPlanResponseBodyData(TeaModel):
     def __init__(
         self,
+        current_page: int = None,
+        list: List[str] = None,
+        page_size: int = None,
         total: int = None,
         page_count: int = None,
-        current_page: int = None,
-        page_size: int = None,
-        list: List[str] = None,
     ):
+        self.current_page = current_page
+        self.list = list
+        self.page_size = page_size
         self.total = total
         self.page_count = page_count
-        self.current_page = current_page
-        self.page_size = page_size
-        self.list = list
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.list is not None:
+            result['List'] = self.list
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.total is not None:
             result['Total'] = self.total
         if self.page_count is not None:
             result['PageCount'] = self.page_count
-        if self.current_page is not None:
-            result['CurrentPage'] = self.current_page
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.list is not None:
-            result['List'] = self.list
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('List') is not None:
+            self.list = m.get('List')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('Total') is not None:
             self.total = m.get('Total')
         if m.get('PageCount') is not None:
             self.page_count = m.get('PageCount')
-        if m.get('CurrentPage') is not None:
-            self.current_page = m.get('CurrentPage')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('List') is not None:
-            self.list = m.get('List')
         return self
 
 
@@ -14632,48 +15517,52 @@ class QueryIotIdsByAIPlanResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
+        data: QueryIotIdsByAIPlanResponseBodyData = None,
         error_message: str = None,
         code: str = None,
-        data: QueryIotIdsByAIPlanResponseBodyData = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
+        self.data = data
         self.error_message = error_message
         self.code = code
-        self.data = data
+        self.success = success
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = QueryIotIdsByAIPlanResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = QueryIotIdsByAIPlanResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -14693,6 +15582,10 @@ class QueryIotIdsByAIPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14713,65 +15606,75 @@ class QueryIotIdsByAIPlanResponse(TeaModel):
 class QueryLiveStreamingRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
-        iot_id: str = None,
-        stream_type: int = None,
-        should_encrypt: bool = None,
-        encrypt_type: int = None,
         scheme: str = None,
         iot_instance_id: str = None,
+        stream_type: int = None,
+        cache_duration: int = None,
+        iot_id: str = None,
+        should_encrypt: bool = None,
+        play_un_limited: bool = None,
+        encrypt_type: int = None,
+        force_iframe: bool = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
-        self.iot_id = iot_id
-        self.stream_type = stream_type
-        self.should_encrypt = should_encrypt
-        self.encrypt_type = encrypt_type
         self.scheme = scheme
         self.iot_instance_id = iot_instance_id
+        self.stream_type = stream_type
+        self.cache_duration = cache_duration
+        self.iot_id = iot_id
+        self.should_encrypt = should_encrypt
+        self.play_un_limited = play_un_limited
+        self.encrypt_type = encrypt_type
+        self.force_iframe = force_iframe
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
-        if self.iot_id is not None:
-            result['IotId'] = self.iot_id
-        if self.stream_type is not None:
-            result['StreamType'] = self.stream_type
-        if self.should_encrypt is not None:
-            result['ShouldEncrypt'] = self.should_encrypt
-        if self.encrypt_type is not None:
-            result['EncryptType'] = self.encrypt_type
         if self.scheme is not None:
             result['Scheme'] = self.scheme
         if self.iot_instance_id is not None:
             result['IotInstanceId'] = self.iot_instance_id
+        if self.stream_type is not None:
+            result['StreamType'] = self.stream_type
+        if self.cache_duration is not None:
+            result['CacheDuration'] = self.cache_duration
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+        if self.should_encrypt is not None:
+            result['ShouldEncrypt'] = self.should_encrypt
+        if self.play_un_limited is not None:
+            result['PlayUnLimited'] = self.play_un_limited
+        if self.encrypt_type is not None:
+            result['EncryptType'] = self.encrypt_type
+        if self.force_iframe is not None:
+            result['ForceIFrame'] = self.force_iframe
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
-        if m.get('IotId') is not None:
-            self.iot_id = m.get('IotId')
-        if m.get('StreamType') is not None:
-            self.stream_type = m.get('StreamType')
-        if m.get('ShouldEncrypt') is not None:
-            self.should_encrypt = m.get('ShouldEncrypt')
-        if m.get('EncryptType') is not None:
-            self.encrypt_type = m.get('EncryptType')
         if m.get('Scheme') is not None:
             self.scheme = m.get('Scheme')
         if m.get('IotInstanceId') is not None:
             self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('StreamType') is not None:
+            self.stream_type = m.get('StreamType')
+        if m.get('CacheDuration') is not None:
+            self.cache_duration = m.get('CacheDuration')
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+        if m.get('ShouldEncrypt') is not None:
+            self.should_encrypt = m.get('ShouldEncrypt')
+        if m.get('PlayUnLimited') is not None:
+            self.play_un_limited = m.get('PlayUnLimited')
+        if m.get('EncryptType') is not None:
+            self.encrypt_type = m.get('EncryptType')
+        if m.get('ForceIFrame') is not None:
+            self.force_iframe = m.get('ForceIFrame')
         return self
 
 
@@ -14788,6 +15691,10 @@ class QueryLiveStreamingResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.path is not None:
             result['Path'] = self.path
@@ -14824,6 +15731,10 @@ class QueryLiveStreamingResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14869,6 +15780,10 @@ class QueryLiveStreamingResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14889,14 +15804,10 @@ class QueryLiveStreamingResponse(TeaModel):
 class QueryMonthRecordRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         month: str = None,
         iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.month = month
         self.iot_instance_id = iot_instance_id
@@ -14905,11 +15816,11 @@ class QueryMonthRecordRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.month is not None:
@@ -14920,10 +15831,6 @@ class QueryMonthRecordRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('Month') is not None:
@@ -14952,6 +15859,10 @@ class QueryMonthRecordResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14996,6 +15907,10 @@ class QueryMonthRecordResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15016,8 +15931,6 @@ class QueryMonthRecordResponse(TeaModel):
 class QueryPictureFilesRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         begin_time: int = None,
         end_time: int = None,
@@ -15027,8 +15940,6 @@ class QueryPictureFilesRequest(TeaModel):
         picture_source: int = None,
         iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.begin_time = begin_time
         self.end_time = end_time
@@ -15042,11 +15953,11 @@ class QueryPictureFilesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.begin_time is not None:
@@ -15067,10 +15978,6 @@ class QueryPictureFilesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('BeginTime') is not None:
@@ -15109,6 +16016,10 @@ class QueryPictureFilesResponseBodyDataList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pic_url is not None:
             result['PicUrl'] = self.pic_url
@@ -15155,6 +16066,10 @@ class QueryPictureFilesResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['List'] = []
         if self.list is not None:
@@ -15200,6 +16115,10 @@ class QueryPictureFilesResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15245,6 +16164,10 @@ class QueryPictureFilesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15265,47 +16188,45 @@ class QueryPictureFilesResponse(TeaModel):
 class QueryPictureSearchAiboxesRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         app_instance_id: str = None,
         page_size: int = None,
         current_page: int = None,
+        iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.app_instance_id = app_instance_id
         self.page_size = page_size
         self.current_page = current_page
+        self.iot_instance_id = iot_instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.app_instance_id is not None:
             result['AppInstanceId'] = self.app_instance_id
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AppInstanceId') is not None:
             self.app_instance_id = m.get('AppInstanceId')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
         return self
 
 
@@ -15322,6 +16243,10 @@ class QueryPictureSearchAiboxesResponseBodyDataPageData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.nick_name is not None:
             result['NickName'] = self.nick_name
@@ -15360,6 +16285,10 @@ class QueryPictureSearchAiboxesResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
@@ -15413,6 +16342,10 @@ class QueryPictureSearchAiboxesResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15458,6 +16391,10 @@ class QueryPictureSearchAiboxesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15472,35 +16409,6 @@ class QueryPictureSearchAiboxesResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = QueryPictureSearchAiboxesResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class QueryPictureSearchAppRequest(TeaModel):
-    def __init__(
-        self,
-        api_product: str = None,
-        api_revision: str = None,
-    ):
-        self.api_product = api_product
-        self.api_revision = api_revision
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         return self
 
 
@@ -15527,6 +16435,10 @@ class QueryPictureSearchAppResponseBodyDataData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_instance_id is not None:
             result['AppInstanceId'] = self.app_instance_id
@@ -15577,6 +16489,10 @@ class QueryPictureSearchAppResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['data'] = []
         if self.data is not None:
@@ -15614,6 +16530,10 @@ class QueryPictureSearchAppResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15659,6 +16579,10 @@ class QueryPictureSearchAppResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15676,17 +16600,258 @@ class QueryPictureSearchAppResponse(TeaModel):
         return self
 
 
+class QueryPictureSearchAppsRequest(TeaModel):
+    def __init__(
+        self,
+        page_size: int = None,
+        current_page: int = None,
+    ):
+        self.page_size = page_size
+        self.current_page = current_page
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        return self
+
+
+class QueryPictureSearchAppsResponseBodyDataPageData(TeaModel):
+    def __init__(
+        self,
+        app_instance_id: str = None,
+        modified_time: int = None,
+        description: str = None,
+        version: str = None,
+        create_time: int = None,
+        app_template_id: str = None,
+        name: str = None,
+    ):
+        self.app_instance_id = app_instance_id
+        self.modified_time = modified_time
+        self.description = description
+        self.version = version
+        self.create_time = create_time
+        self.app_template_id = app_template_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_id is not None:
+            result['AppInstanceId'] = self.app_instance_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.app_template_id is not None:
+            result['AppTemplateId'] = self.app_template_id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceId') is not None:
+            self.app_instance_id = m.get('AppInstanceId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('AppTemplateId') is not None:
+            self.app_template_id = m.get('AppTemplateId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class QueryPictureSearchAppsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_data: List[QueryPictureSearchAppsResponseBodyDataPageData] = None,
+        page_size: int = None,
+        total: int = None,
+        page_count: int = None,
+    ):
+        self.current_page = current_page
+        self.page_data = page_data
+        self.page_size = page_size
+        self.total = total
+        self.page_count = page_count
+
+    def validate(self):
+        if self.page_data:
+            for k in self.page_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['PageData'] = []
+        if self.page_data is not None:
+            for k in self.page_data:
+                result['PageData'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.page_count is not None:
+            result['PageCount'] = self.page_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.page_data = []
+        if m.get('PageData') is not None:
+            for k in m.get('PageData'):
+                temp_model = QueryPictureSearchAppsResponseBodyDataPageData()
+                self.page_data.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('PageCount') is not None:
+            self.page_count = m.get('PageCount')
+        return self
+
+
+class QueryPictureSearchAppsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: QueryPictureSearchAppsResponseBodyData = None,
+        error_message: str = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+        self.error_message = error_message
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = QueryPictureSearchAppsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryPictureSearchAppsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryPictureSearchAppsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryPictureSearchAppsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryPictureSearchDevicesRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         app_instance_id: str = None,
         page_size: int = None,
         current_page: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.app_instance_id = app_instance_id
         self.page_size = page_size
         self.current_page = current_page
@@ -15695,11 +16860,11 @@ class QueryPictureSearchDevicesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.app_instance_id is not None:
             result['AppInstanceId'] = self.app_instance_id
         if self.page_size is not None:
@@ -15710,10 +16875,6 @@ class QueryPictureSearchDevicesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AppInstanceId') is not None:
             self.app_instance_id = m.get('AppInstanceId')
         if m.get('PageSize') is not None:
@@ -15736,6 +16897,10 @@ class QueryPictureSearchDevicesResponseBodyDataPageData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.nick_name is not None:
             result['NickName'] = self.nick_name
@@ -15774,6 +16939,10 @@ class QueryPictureSearchDevicesResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
@@ -15827,6 +16996,10 @@ class QueryPictureSearchDevicesResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15872,6 +17045,10 @@ class QueryPictureSearchDevicesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15889,11 +17066,523 @@ class QueryPictureSearchDevicesResponse(TeaModel):
         return self
 
 
+class QueryPictureSearchJobRequest(TeaModel):
+    def __init__(
+        self,
+        app_instance_id: str = None,
+        job_status: int = None,
+        page_size: int = None,
+        current_page: int = None,
+    ):
+        self.app_instance_id = app_instance_id
+        self.job_status = job_status
+        self.page_size = page_size
+        self.current_page = current_page
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_id is not None:
+            result['AppInstanceId'] = self.app_instance_id
+        if self.job_status is not None:
+            result['JobStatus'] = self.job_status
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceId') is not None:
+            self.app_instance_id = m.get('AppInstanceId')
+        if m.get('JobStatus') is not None:
+            self.job_status = m.get('JobStatus')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        return self
+
+
+class QueryPictureSearchJobResponseBodyDataPageData(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        start_time: int = None,
+        job_status: int = None,
+        search_pic_url: str = None,
+        create_time: int = None,
+        job_id: str = None,
+        threshold: float = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+        self.job_status = job_status
+        self.search_pic_url = search_pic_url
+        self.create_time = create_time
+        self.job_id = job_id
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.job_status is not None:
+            result['JobStatus'] = self.job_status
+        if self.search_pic_url is not None:
+            result['SearchPicUrl'] = self.search_pic_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('JobStatus') is not None:
+            self.job_status = m.get('JobStatus')
+        if m.get('SearchPicUrl') is not None:
+            self.search_pic_url = m.get('SearchPicUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class QueryPictureSearchJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_data: List[QueryPictureSearchJobResponseBodyDataPageData] = None,
+        page_size: int = None,
+        total: int = None,
+        page_count: int = None,
+    ):
+        self.current_page = current_page
+        self.page_data = page_data
+        self.page_size = page_size
+        self.total = total
+        self.page_count = page_count
+
+    def validate(self):
+        if self.page_data:
+            for k in self.page_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['PageData'] = []
+        if self.page_data is not None:
+            for k in self.page_data:
+                result['PageData'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.page_count is not None:
+            result['PageCount'] = self.page_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.page_data = []
+        if m.get('PageData') is not None:
+            for k in m.get('PageData'):
+                temp_model = QueryPictureSearchJobResponseBodyDataPageData()
+                self.page_data.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('PageCount') is not None:
+            self.page_count = m.get('PageCount')
+        return self
+
+
+class QueryPictureSearchJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: QueryPictureSearchJobResponseBodyData = None,
+        error_message: str = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+        self.error_message = error_message
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = QueryPictureSearchJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryPictureSearchJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryPictureSearchJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryPictureSearchJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryPictureSearchJobResultRequest(TeaModel):
+    def __init__(
+        self,
+        app_instance_id: str = None,
+        job_id: str = None,
+        page_size: int = None,
+        current_page: int = None,
+    ):
+        self.app_instance_id = app_instance_id
+        self.job_id = job_id
+        self.page_size = page_size
+        self.current_page = current_page
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_id is not None:
+            result['AppInstanceId'] = self.app_instance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceId') is not None:
+            self.app_instance_id = m.get('AppInstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        return self
+
+
+class QueryPictureSearchJobResultResponseBodyDataPageData(TeaModel):
+    def __init__(
+        self,
+        pic_url: str = None,
+        event_time: int = None,
+        gateway_iot_id: str = None,
+        vector_id: str = None,
+        device_nick_name: str = None,
+        threshold: float = None,
+        iot_id: str = None,
+    ):
+        self.pic_url = pic_url
+        self.event_time = event_time
+        self.gateway_iot_id = gateway_iot_id
+        self.vector_id = vector_id
+        self.device_nick_name = device_nick_name
+        self.threshold = threshold
+        self.iot_id = iot_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pic_url is not None:
+            result['PicUrl'] = self.pic_url
+        if self.event_time is not None:
+            result['EventTime'] = self.event_time
+        if self.gateway_iot_id is not None:
+            result['GatewayIotId'] = self.gateway_iot_id
+        if self.vector_id is not None:
+            result['VectorId'] = self.vector_id
+        if self.device_nick_name is not None:
+            result['DeviceNickName'] = self.device_nick_name
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PicUrl') is not None:
+            self.pic_url = m.get('PicUrl')
+        if m.get('EventTime') is not None:
+            self.event_time = m.get('EventTime')
+        if m.get('GatewayIotId') is not None:
+            self.gateway_iot_id = m.get('GatewayIotId')
+        if m.get('VectorId') is not None:
+            self.vector_id = m.get('VectorId')
+        if m.get('DeviceNickName') is not None:
+            self.device_nick_name = m.get('DeviceNickName')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+        return self
+
+
+class QueryPictureSearchJobResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_data: List[QueryPictureSearchJobResultResponseBodyDataPageData] = None,
+        page_size: int = None,
+        total: int = None,
+        page_count: int = None,
+    ):
+        self.current_page = current_page
+        self.page_data = page_data
+        self.page_size = page_size
+        self.total = total
+        self.page_count = page_count
+
+    def validate(self):
+        if self.page_data:
+            for k in self.page_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['PageData'] = []
+        if self.page_data is not None:
+            for k in self.page_data:
+                result['PageData'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.page_count is not None:
+            result['PageCount'] = self.page_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.page_data = []
+        if m.get('PageData') is not None:
+            for k in m.get('PageData'):
+                temp_model = QueryPictureSearchJobResultResponseBodyDataPageData()
+                self.page_data.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('PageCount') is not None:
+            self.page_count = m.get('PageCount')
+        return self
+
+
+class QueryPictureSearchJobResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: QueryPictureSearchJobResultResponseBodyData = None,
+        error_message: str = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+        self.error_message = error_message
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = QueryPictureSearchJobResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryPictureSearchJobResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryPictureSearchJobResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryPictureSearchJobResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryRecordRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         stream_type: int = None,
         begin_time: int = None,
@@ -15904,8 +17593,6 @@ class QueryRecordRequest(TeaModel):
         need_snapshot: bool = None,
         iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.stream_type = stream_type
         self.begin_time = begin_time
@@ -15920,11 +17607,11 @@ class QueryRecordRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.stream_type is not None:
@@ -15947,10 +17634,6 @@ class QueryRecordRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('StreamType') is not None:
@@ -15997,6 +17680,10 @@ class QueryRecordResponseBodyDataList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.snapshot_url is not None:
             result['SnapshotUrl'] = self.snapshot_url
@@ -16055,6 +17742,10 @@ class QueryRecordResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['List'] = []
         if self.list is not None:
@@ -16100,6 +17791,10 @@ class QueryRecordResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16145,6 +17840,10 @@ class QueryRecordResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16165,14 +17864,10 @@ class QueryRecordResponse(TeaModel):
 class QueryRecordByRecordIdRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         record_id: str = None,
         iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.record_id = record_id
         self.iot_instance_id = iot_instance_id
@@ -16181,11 +17876,11 @@ class QueryRecordByRecordIdRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.record_id is not None:
@@ -16196,10 +17891,6 @@ class QueryRecordByRecordIdRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('RecordId') is not None:
@@ -16226,6 +17917,10 @@ class QueryRecordByRecordIdResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -16272,6 +17967,10 @@ class QueryRecordByRecordIdResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16321,6 +18020,10 @@ class QueryRecordByRecordIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16341,33 +18044,25 @@ class QueryRecordByRecordIdResponse(TeaModel):
 class QueryRecordPlanDetailRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         return self
@@ -16388,6 +18083,10 @@ class QueryRecordPlanDetailResponseBodyDataTemplateInfoTimeSectionList(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.day_of_week is not None:
             result['DayOfWeek'] = self.day_of_week
@@ -16430,6 +18129,10 @@ class QueryRecordPlanDetailResponseBodyDataTemplateInfo(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TimeSectionList'] = []
         if self.time_section_list is not None:
@@ -16481,6 +18184,10 @@ class QueryRecordPlanDetailResponseBodyData(TeaModel):
             self.template_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
@@ -16526,6 +18233,10 @@ class QueryRecordPlanDetailResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16571,6 +18282,10 @@ class QueryRecordPlanDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16591,13 +18306,9 @@ class QueryRecordPlanDetailResponse(TeaModel):
 class QueryRecordPlanDeviceByDeviceRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         stream_type: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.stream_type = stream_type
 
@@ -16605,11 +18316,11 @@ class QueryRecordPlanDeviceByDeviceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.stream_type is not None:
@@ -16618,10 +18329,6 @@ class QueryRecordPlanDeviceByDeviceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('StreamType') is not None:
@@ -16644,6 +18351,10 @@ class QueryRecordPlanDeviceByDeviceResponseBodyDataTemplateInfoTimeSectionList(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.day_of_week is not None:
             result['DayOfWeek'] = self.day_of_week
@@ -16686,6 +18397,10 @@ class QueryRecordPlanDeviceByDeviceResponseBodyDataTemplateInfo(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TimeSectionList'] = []
         if self.time_section_list is not None:
@@ -16737,6 +18452,10 @@ class QueryRecordPlanDeviceByDeviceResponseBodyData(TeaModel):
             self.template_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
@@ -16782,6 +18501,10 @@ class QueryRecordPlanDeviceByDeviceResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16827,6 +18550,10 @@ class QueryRecordPlanDeviceByDeviceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16847,14 +18574,10 @@ class QueryRecordPlanDeviceByDeviceResponse(TeaModel):
 class QueryRecordPlanDeviceByPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
         current_page: int = None,
         page_size: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
         self.current_page = current_page
         self.page_size = page_size
@@ -16863,11 +18586,11 @@ class QueryRecordPlanDeviceByPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.current_page is not None:
@@ -16878,10 +18601,6 @@ class QueryRecordPlanDeviceByPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('CurrentPage') is not None:
@@ -16904,6 +18623,10 @@ class QueryRecordPlanDeviceByPlanResponseBodyDataList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stream_type is not None:
             result['StreamType'] = self.stream_type
@@ -16942,6 +18665,10 @@ class QueryRecordPlanDeviceByPlanResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['List'] = []
         if self.list is not None:
@@ -16995,6 +18722,10 @@ class QueryRecordPlanDeviceByPlanResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -17040,6 +18771,10 @@ class QueryRecordPlanDeviceByPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17060,13 +18795,9 @@ class QueryRecordPlanDeviceByPlanResponse(TeaModel):
 class QueryRecordPlansRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         current_page: int = None,
         page_size: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.current_page = current_page
         self.page_size = page_size
 
@@ -17074,11 +18805,11 @@ class QueryRecordPlansRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.page_size is not None:
@@ -17087,10 +18818,6 @@ class QueryRecordPlansRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('PageSize') is not None:
@@ -17113,6 +18840,10 @@ class QueryRecordPlansResponseBodyDataList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
@@ -17155,6 +18886,10 @@ class QueryRecordPlansResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['List'] = []
         if self.list is not None:
@@ -17208,6 +18943,10 @@ class QueryRecordPlansResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -17253,6 +18992,10 @@ class QueryRecordPlansResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17273,14 +19016,10 @@ class QueryRecordPlansResponse(TeaModel):
 class QueryRecordUrlRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         file_name: str = None,
         iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.file_name = file_name
         self.iot_instance_id = iot_instance_id
@@ -17289,11 +19028,11 @@ class QueryRecordUrlRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.file_name is not None:
@@ -17304,10 +19043,6 @@ class QueryRecordUrlRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('FileName') is not None:
@@ -17336,6 +19071,10 @@ class QueryRecordUrlResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -17380,6 +19119,10 @@ class QueryRecordUrlResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17400,13 +19143,9 @@ class QueryRecordUrlResponse(TeaModel):
 class QueryStandardAIAppTemplatesRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         page_size: int = None,
         current_page: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.page_size = page_size
         self.current_page = current_page
 
@@ -17414,11 +19153,11 @@ class QueryStandardAIAppTemplatesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.current_page is not None:
@@ -17427,10 +19166,6 @@ class QueryStandardAIAppTemplatesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('CurrentPage') is not None:
@@ -17441,58 +19176,62 @@ class QueryStandardAIAppTemplatesRequest(TeaModel):
 class QueryStandardAIAppTemplatesResponseBodyDataList(TeaModel):
     def __init__(
         self,
-        app_template_id: str = None,
-        version: str = None,
-        name: str = None,
         description: str = None,
+        version: str = None,
+        app_template_id: str = None,
+        name: str = None,
     ):
-        self.app_template_id = app_template_id
-        self.version = version
-        self.name = name
         self.description = description
+        self.version = version
+        self.app_template_id = app_template_id
+        self.name = name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.app_template_id is not None:
-            result['AppTemplateId'] = self.app_template_id
-        if self.version is not None:
-            result['Version'] = self.version
-        if self.name is not None:
-            result['Name'] = self.name
         if self.description is not None:
             result['Description'] = self.description
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.app_template_id is not None:
+            result['AppTemplateId'] = self.app_template_id
+        if self.name is not None:
+            result['Name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AppTemplateId') is not None:
-            self.app_template_id = m.get('AppTemplateId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('AppTemplateId') is not None:
+            self.app_template_id = m.get('AppTemplateId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         return self
 
 
 class QueryStandardAIAppTemplatesResponseBodyData(TeaModel):
     def __init__(
         self,
+        current_page: int = None,
+        list: List[QueryStandardAIAppTemplatesResponseBodyDataList] = None,
+        page_size: int = None,
         total: int = None,
         page_count: int = None,
-        current_page: int = None,
-        page_size: int = None,
-        list: List[QueryStandardAIAppTemplatesResponseBodyDataList] = None,
     ):
+        self.current_page = current_page
+        self.list = list
+        self.page_size = page_size
         self.total = total
         self.page_count = page_count
-        self.current_page = current_page
-        self.page_size = page_size
-        self.list = list
 
     def validate(self):
         if self.list:
@@ -17501,36 +19240,40 @@ class QueryStandardAIAppTemplatesResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.total is not None:
-            result['Total'] = self.total
-        if self.page_count is not None:
-            result['PageCount'] = self.page_count
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         result['List'] = []
         if self.list is not None:
             for k in self.list:
                 result['List'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.page_count is not None:
+            result['PageCount'] = self.page_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Total') is not None:
-            self.total = m.get('Total')
-        if m.get('PageCount') is not None:
-            self.page_count = m.get('PageCount')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         self.list = []
         if m.get('List') is not None:
             for k in m.get('List'):
                 temp_model = QueryStandardAIAppTemplatesResponseBodyDataList()
                 self.list.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('PageCount') is not None:
+            self.page_count = m.get('PageCount')
         return self
 
 
@@ -17538,48 +19281,52 @@ class QueryStandardAIAppTemplatesResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
+        data: QueryStandardAIAppTemplatesResponseBodyData = None,
         error_message: str = None,
         code: str = None,
-        data: QueryStandardAIAppTemplatesResponseBodyData = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
+        self.data = data
         self.error_message = error_message
         self.code = code
-        self.data = data
+        self.success = success
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = QueryStandardAIAppTemplatesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = QueryStandardAIAppTemplatesResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -17599,6 +19346,10 @@ class QueryStandardAIAppTemplatesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17619,13 +19370,9 @@ class QueryStandardAIAppTemplatesResponse(TeaModel):
 class QueryTimeTemplateRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         page_size: int = None,
         current_page: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.page_size = page_size
         self.current_page = current_page
 
@@ -17633,11 +19380,11 @@ class QueryTimeTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.current_page is not None:
@@ -17646,10 +19393,6 @@ class QueryTimeTemplateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('CurrentPage') is not None:
@@ -17672,6 +19415,10 @@ class QueryTimeTemplateResponseBodyDataListTimeSectionList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.day_of_week is not None:
             result['DayOfWeek'] = self.day_of_week
@@ -17714,6 +19461,10 @@ class QueryTimeTemplateResponseBodyDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TimeSectionList'] = []
         if self.time_section_list is not None:
@@ -17769,6 +19520,10 @@ class QueryTimeTemplateResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['List'] = []
         if self.list is not None:
@@ -17822,6 +19577,10 @@ class QueryTimeTemplateResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -17867,6 +19626,10 @@ class QueryTimeTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17887,33 +19650,25 @@ class QueryTimeTemplateResponse(TeaModel):
 class QueryTimeTemplateDetailRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         template_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.template_id = template_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         return self
@@ -17934,6 +19689,10 @@ class QueryTimeTemplateDetailResponseBodyDataTimeSectionList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.day_of_week is not None:
             result['DayOfWeek'] = self.day_of_week
@@ -17976,6 +19735,10 @@ class QueryTimeTemplateDetailResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TimeSectionList'] = []
         if self.time_section_list is not None:
@@ -18029,6 +19792,10 @@ class QueryTimeTemplateDetailResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -18074,6 +19841,10 @@ class QueryTimeTemplateDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18094,13 +19865,9 @@ class QueryTimeTemplateDetailResponse(TeaModel):
 class QueryVoiceIntercomRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.iot_instance_id = iot_instance_id
 
@@ -18108,11 +19875,11 @@ class QueryVoiceIntercomRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.iot_instance_id is not None:
@@ -18121,10 +19888,6 @@ class QueryVoiceIntercomRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('IotInstanceId') is not None:
@@ -18145,6 +19908,10 @@ class QueryVoiceIntercomResponseBodyDataCryptoKey(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -18175,6 +19942,10 @@ class QueryVoiceIntercomResponseBodyData(TeaModel):
             self.crypto_key.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.crypto_key is not None:
             result['CryptoKey'] = self.crypto_key.to_map()
@@ -18212,6 +19983,10 @@ class QueryVoiceIntercomResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -18257,6 +20032,10 @@ class QueryVoiceIntercomResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18277,33 +20056,25 @@ class QueryVoiceIntercomResponse(TeaModel):
 class RemoveAIAppRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         app_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.app_id = app_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.app_id is not None:
             result['AppId'] = self.app_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         return self
@@ -18313,40 +20084,44 @@ class RemoveAIAppResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
         error_message: str = None,
         code: str = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
         self.error_message = error_message
         self.code = code
+        self.success = success
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -18366,6 +20141,10 @@ class RemoveAIAppResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18386,33 +20165,25 @@ class RemoveAIAppResponse(TeaModel):
 class RemoveAIPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         return self
@@ -18422,40 +20193,44 @@ class RemoveAIPlanResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
         error_message: str = None,
         code: str = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
         self.error_message = error_message
         self.code = code
+        self.success = success
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -18475,6 +20250,10 @@ class RemoveAIPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18495,33 +20274,25 @@ class RemoveAIPlanResponse(TeaModel):
 class RemoveDevicePurifyPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         return self
@@ -18544,6 +20315,10 @@ class RemoveDevicePurifyPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -18584,6 +20359,10 @@ class RemoveDevicePurifyPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18604,16 +20383,12 @@ class RemoveDevicePurifyPlanResponse(TeaModel):
 class RemoveFaceDeviceFromDeviceGroupRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         iot_instance_id: str = None,
         product_key: str = None,
         device_name: str = None,
         device_group_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.iot_instance_id = iot_instance_id
         self.product_key = product_key
@@ -18624,11 +20399,11 @@ class RemoveFaceDeviceFromDeviceGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.iot_instance_id is not None:
@@ -18643,10 +20418,6 @@ class RemoveFaceDeviceFromDeviceGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('IotInstanceId') is not None:
@@ -18677,6 +20448,10 @@ class RemoveFaceDeviceFromDeviceGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -18717,6 +20492,10 @@ class RemoveFaceDeviceFromDeviceGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18737,14 +20516,10 @@ class RemoveFaceDeviceFromDeviceGroupResponse(TeaModel):
 class RemoveFaceUserFromUserGroupRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         user_id: str = None,
         user_group_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.user_id = user_id
         self.user_group_id = user_group_id
@@ -18753,11 +20528,11 @@ class RemoveFaceUserFromUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.user_id is not None:
@@ -18768,10 +20543,6 @@ class RemoveFaceUserFromUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('UserId') is not None:
@@ -18798,6 +20569,10 @@ class RemoveFaceUserFromUserGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -18838,6 +20613,10 @@ class RemoveFaceUserFromUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18858,13 +20637,9 @@ class RemoveFaceUserFromUserGroupResponse(TeaModel):
 class SetDevicePictureLifeCycleRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         day: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.day = day
 
@@ -18872,11 +20647,11 @@ class SetDevicePictureLifeCycleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.day is not None:
@@ -18885,10 +20660,6 @@ class SetDevicePictureLifeCycleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('Day') is not None:
@@ -18913,6 +20684,10 @@ class SetDevicePictureLifeCycleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -18953,6 +20728,10 @@ class SetDevicePictureLifeCycleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18973,13 +20752,9 @@ class SetDevicePictureLifeCycleResponse(TeaModel):
 class SetDeviceRecordLifeCycleRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         day: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.day = day
 
@@ -18987,11 +20762,11 @@ class SetDeviceRecordLifeCycleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.day is not None:
@@ -19000,10 +20775,6 @@ class SetDeviceRecordLifeCycleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('Day') is not None:
@@ -19028,6 +20799,10 @@ class SetDeviceRecordLifeCycleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -19068,6 +20843,10 @@ class SetDeviceRecordLifeCycleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19088,14 +20867,10 @@ class SetDeviceRecordLifeCycleResponse(TeaModel):
 class StopLiveStreamingRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         stream_type: int = None,
         iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.stream_type = stream_type
         self.iot_instance_id = iot_instance_id
@@ -19104,11 +20879,11 @@ class StopLiveStreamingRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.stream_type is not None:
@@ -19119,10 +20894,6 @@ class StopLiveStreamingRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('StreamType') is not None:
@@ -19149,6 +20920,10 @@ class StopLiveStreamingResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -19189,6 +20964,10 @@ class StopLiveStreamingResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19209,13 +20988,9 @@ class StopLiveStreamingResponse(TeaModel):
 class StopTriggeredRecordRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         record_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.record_id = record_id
 
@@ -19223,11 +20998,11 @@ class StopTriggeredRecordRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.record_id is not None:
@@ -19236,10 +21011,6 @@ class StopTriggeredRecordRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('RecordId') is not None:
@@ -19264,6 +21035,10 @@ class StopTriggeredRecordResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -19304,6 +21079,10 @@ class StopTriggeredRecordResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19324,13 +21103,9 @@ class StopTriggeredRecordResponse(TeaModel):
 class TriggerCapturePictureRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.iot_instance_id = iot_instance_id
 
@@ -19338,11 +21113,11 @@ class TriggerCapturePictureRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.iot_instance_id is not None:
@@ -19351,10 +21126,6 @@ class TriggerCapturePictureRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('IotInstanceId') is not None:
@@ -19381,6 +21152,10 @@ class TriggerCapturePictureResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -19425,6 +21200,10 @@ class TriggerCapturePictureResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19445,16 +21224,12 @@ class TriggerCapturePictureResponse(TeaModel):
 class TriggerRecordRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         iot_id: str = None,
         stream_type: int = None,
         pre_record_duration: int = None,
         record_duration: int = None,
         iot_instance_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.iot_id = iot_id
         self.stream_type = stream_type
         self.pre_record_duration = pre_record_duration
@@ -19465,11 +21240,11 @@ class TriggerRecordRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         if self.stream_type is not None:
@@ -19484,10 +21259,6 @@ class TriggerRecordRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         if m.get('StreamType') is not None:
@@ -19520,6 +21291,10 @@ class TriggerRecordResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -19564,6 +21339,10 @@ class TriggerRecordResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19584,13 +21363,9 @@ class TriggerRecordResponse(TeaModel):
 class UnbindAIPlanWithDevicesRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
         iot_id_list: List[str] = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
         self.iot_id_list = iot_id_list
 
@@ -19598,11 +21373,11 @@ class UnbindAIPlanWithDevicesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.iot_id_list is not None:
@@ -19611,10 +21386,6 @@ class UnbindAIPlanWithDevicesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('IotIdList') is not None:
@@ -19626,40 +21397,44 @@ class UnbindAIPlanWithDevicesResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
         error_message: str = None,
         code: str = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
         self.error_message = error_message
         self.code = code
+        self.success = success
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -19679,6 +21454,10 @@ class UnbindAIPlanWithDevicesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19699,39 +21478,37 @@ class UnbindAIPlanWithDevicesResponse(TeaModel):
 class UnbindPictureSearchAppWithDevicesRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         app_instance_id: str = None,
+        iot_instance_id: str = None,
         device_iot_ids: List[str] = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.app_instance_id = app_instance_id
+        self.iot_instance_id = iot_instance_id
         self.device_iot_ids = device_iot_ids
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.app_instance_id is not None:
             result['AppInstanceId'] = self.app_instance_id
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
         if self.device_iot_ids is not None:
             result['DeviceIotIds'] = self.device_iot_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AppInstanceId') is not None:
             self.app_instance_id = m.get('AppInstanceId')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
         if m.get('DeviceIotIds') is not None:
             self.device_iot_ids = m.get('DeviceIotIds')
         return self
@@ -19754,6 +21531,10 @@ class UnbindPictureSearchAppWithDevicesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -19794,6 +21575,10 @@ class UnbindPictureSearchAppWithDevicesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19814,15 +21599,11 @@ class UnbindPictureSearchAppWithDevicesResponse(TeaModel):
 class UpdateAIAppRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         app_id: str = None,
         level: int = None,
         name: str = None,
         description: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.app_id = app_id
         self.level = level
         self.name = name
@@ -19832,11 +21613,11 @@ class UpdateAIAppRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.level is not None:
@@ -19849,10 +21630,6 @@ class UpdateAIAppRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('Level') is not None:
@@ -19868,40 +21645,44 @@ class UpdateAIAppResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
         error_message: str = None,
         code: str = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
         self.error_message = error_message
         self.code = code
+        self.success = success
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -19921,6 +21702,10 @@ class UpdateAIAppResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19941,13 +21726,9 @@ class UpdateAIAppResponse(TeaModel):
 class UpdateAIPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
         description: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
         self.description = description
 
@@ -19955,11 +21736,11 @@ class UpdateAIPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.description is not None:
@@ -19968,10 +21749,6 @@ class UpdateAIPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('Description') is not None:
@@ -19983,40 +21760,44 @@ class UpdateAIPlanResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        success: bool = None,
         error_message: str = None,
         code: str = None,
+        success: bool = None,
     ):
         self.request_id = request_id
-        self.success = success
         self.error_message = error_message
         self.code = code
+        self.success = success
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.code is not None:
             result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -20036,6 +21817,10 @@ class UpdateAIPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20056,14 +21841,10 @@ class UpdateAIPlanResponse(TeaModel):
 class UpdateDevicePurifyPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
         start_time: int = None,
         end_time: int = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
         self.start_time = start_time
         self.end_time = end_time
@@ -20072,11 +21853,11 @@ class UpdateDevicePurifyPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.start_time is not None:
@@ -20087,10 +21868,6 @@ class UpdateDevicePurifyPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('StartTime') is not None:
@@ -20117,6 +21894,10 @@ class UpdateDevicePurifyPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20157,6 +21938,10 @@ class UpdateDevicePurifyPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20177,8 +21962,6 @@ class UpdateDevicePurifyPlanResponse(TeaModel):
 class UpdateEventRecordPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
         name: str = None,
         event_types: str = None,
@@ -20186,8 +21969,6 @@ class UpdateEventRecordPlanRequest(TeaModel):
         record_duration: int = None,
         template_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
         self.name = name
         self.event_types = event_types
@@ -20199,11 +21980,11 @@ class UpdateEventRecordPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.name is not None:
@@ -20220,10 +22001,6 @@ class UpdateEventRecordPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('Name') is not None:
@@ -20256,6 +22033,10 @@ class UpdateEventRecordPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20296,6 +22077,10 @@ class UpdateEventRecordPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20316,8 +22101,6 @@ class UpdateEventRecordPlanResponse(TeaModel):
 class UpdateFaceUserRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         user_id: str = None,
         name: str = None,
@@ -20325,8 +22108,6 @@ class UpdateFaceUserRequest(TeaModel):
         face_pic_url: str = None,
         custom_user_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.user_id = user_id
         self.name = name
@@ -20338,11 +22119,11 @@ class UpdateFaceUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.user_id is not None:
@@ -20359,10 +22140,6 @@ class UpdateFaceUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('UserId') is not None:
@@ -20395,6 +22172,10 @@ class UpdateFaceUserResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20435,6 +22216,10 @@ class UpdateFaceUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20455,14 +22240,10 @@ class UpdateFaceUserResponse(TeaModel):
 class UpdateFaceUserGroupAndDeviceGroupRelationRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         isolation_id: str = None,
         control_id: str = None,
         relation: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.isolation_id = isolation_id
         self.control_id = control_id
         self.relation = relation
@@ -20471,11 +22252,11 @@ class UpdateFaceUserGroupAndDeviceGroupRelationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.isolation_id is not None:
             result['IsolationId'] = self.isolation_id
         if self.control_id is not None:
@@ -20486,10 +22267,6 @@ class UpdateFaceUserGroupAndDeviceGroupRelationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('IsolationId') is not None:
             self.isolation_id = m.get('IsolationId')
         if m.get('ControlId') is not None:
@@ -20512,6 +22289,10 @@ class UpdateFaceUserGroupAndDeviceGroupRelationResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
@@ -20548,6 +22329,10 @@ class UpdateFaceUserGroupAndDeviceGroupRelationResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20593,6 +22378,10 @@ class UpdateFaceUserGroupAndDeviceGroupRelationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20613,15 +22402,11 @@ class UpdateFaceUserGroupAndDeviceGroupRelationResponse(TeaModel):
 class UpdateModelRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         model_id: int = None,
         name: str = None,
         hardware: str = None,
         description: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.model_id = model_id
         self.name = name
         self.hardware = hardware
@@ -20631,11 +22416,11 @@ class UpdateModelRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.model_id is not None:
             result['ModelId'] = self.model_id
         if self.name is not None:
@@ -20648,10 +22433,6 @@ class UpdateModelRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('ModelId') is not None:
             self.model_id = m.get('ModelId')
         if m.get('Name') is not None:
@@ -20682,6 +22463,10 @@ class UpdateModelResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20726,6 +22511,10 @@ class UpdateModelResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20743,17 +22532,134 @@ class UpdateModelResponse(TeaModel):
         return self
 
 
+class UpdatePictureSearchAppRequest(TeaModel):
+    def __init__(
+        self,
+        app_instance_id: str = None,
+        name: str = None,
+        description: str = None,
+    ):
+        self.app_instance_id = app_instance_id
+        self.name = name
+        self.description = description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_id is not None:
+            result['AppInstanceId'] = self.app_instance_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.description is not None:
+            result['Description'] = self.description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceId') is not None:
+            self.app_instance_id = m.get('AppInstanceId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        return self
+
+
+class UpdatePictureSearchAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        error_message: str = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.error_message = error_message
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdatePictureSearchAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdatePictureSearchAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdatePictureSearchAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateRecordPlanRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         plan_id: str = None,
         name: str = None,
         template_id: str = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.plan_id = plan_id
         self.name = name
         self.template_id = template_id
@@ -20762,11 +22668,11 @@ class UpdateRecordPlanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.name is not None:
@@ -20777,10 +22683,6 @@ class UpdateRecordPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('Name') is not None:
@@ -20807,6 +22709,10 @@ class UpdateRecordPlanResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20847,6 +22753,10 @@ class UpdateRecordPlanResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20879,6 +22789,10 @@ class UpdateTimeTemplateRequestTimeSections(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.day_of_week is not None:
             result['DayOfWeek'] = self.day_of_week
@@ -20902,15 +22816,11 @@ class UpdateTimeTemplateRequestTimeSections(TeaModel):
 class UpdateTimeTemplateRequest(TeaModel):
     def __init__(
         self,
-        api_product: str = None,
-        api_revision: str = None,
         template_id: str = None,
         name: str = None,
         all_day: int = None,
         time_sections: List[UpdateTimeTemplateRequestTimeSections] = None,
     ):
-        self.api_product = api_product
-        self.api_revision = api_revision
         self.template_id = template_id
         self.name = name
         self.all_day = all_day
@@ -20923,11 +22833,11 @@ class UpdateTimeTemplateRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.api_product is not None:
-            result['ApiProduct'] = self.api_product
-        if self.api_revision is not None:
-            result['ApiRevision'] = self.api_revision
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         if self.name is not None:
@@ -20942,10 +22852,6 @@ class UpdateTimeTemplateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiProduct') is not None:
-            self.api_product = m.get('ApiProduct')
-        if m.get('ApiRevision') is not None:
-            self.api_revision = m.get('ApiRevision')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         if m.get('Name') is not None:
@@ -20977,6 +22883,10 @@ class UpdateTimeTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -21017,6 +22927,10 @@ class UpdateTimeTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

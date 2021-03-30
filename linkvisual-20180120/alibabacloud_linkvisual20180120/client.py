@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_linkvisual20180120 import models as linkvisual_20180120_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -99,11 +101,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddEventRecordPlanDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['PlanId'] = request.plan_id
+        query['StreamType'] = request.stream_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddEventRecordPlanDeviceResponse().from_map(
-            self.do_rpcrequest('AddEventRecordPlanDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddEventRecordPlanDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddEventRecordPlanDeviceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_event_record_plan_device_with_options_async(
@@ -112,11 +131,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddEventRecordPlanDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['PlanId'] = request.plan_id
+        query['StreamType'] = request.stream_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddEventRecordPlanDeviceResponse().from_map(
-            await self.do_rpcrequest_async('AddEventRecordPlanDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddEventRecordPlanDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddEventRecordPlanDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_event_record_plan_device(
@@ -139,11 +175,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['DeviceGroupName'] = request.device_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceDeviceGroupResponse().from_map(
-            self.do_rpcrequest('AddFaceDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceDeviceGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_face_device_group_with_options_async(
@@ -152,11 +204,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['DeviceGroupName'] = request.device_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceDeviceGroupResponse().from_map(
-            await self.do_rpcrequest_async('AddFaceDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceDeviceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_face_device_group(
@@ -179,11 +247,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceDeviceToDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['ProductKey'] = request.product_key
+        query['DeviceName'] = request.device_name
+        query['DeviceGroupId'] = request.device_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceDeviceToDeviceGroupResponse().from_map(
-            self.do_rpcrequest('AddFaceDeviceToDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceDeviceToDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceDeviceToDeviceGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_face_device_to_device_group_with_options_async(
@@ -192,11 +279,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceDeviceToDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['ProductKey'] = request.product_key
+        query['DeviceName'] = request.device_name
+        query['DeviceGroupId'] = request.device_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceDeviceToDeviceGroupResponse().from_map(
-            await self.do_rpcrequest_async('AddFaceDeviceToDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceDeviceToDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceDeviceToDeviceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_face_device_to_device_group(
@@ -219,11 +325,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['FacePicUrl'] = request.face_pic_url
+        query['CustomUserId'] = request.custom_user_id
+        query['Name'] = request.name
+        query['Params'] = request.params
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceUserResponse().from_map(
-            self.do_rpcrequest('AddFaceUser', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceUser',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_face_user_with_options_async(
@@ -232,11 +357,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['FacePicUrl'] = request.face_pic_url
+        query['CustomUserId'] = request.custom_user_id
+        query['Name'] = request.name
+        query['Params'] = request.params
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceUserResponse().from_map(
-            await self.do_rpcrequest_async('AddFaceUser', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceUser',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_face_user(
@@ -259,11 +403,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceUserGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserGroupName'] = request.user_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceUserGroupResponse().from_map(
-            self.do_rpcrequest('AddFaceUserGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceUserGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceUserGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_face_user_group_with_options_async(
@@ -272,11 +432,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceUserGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserGroupName'] = request.user_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceUserGroupResponse().from_map(
-            await self.do_rpcrequest_async('AddFaceUserGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceUserGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_face_user_group(
@@ -299,11 +475,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceUserGroupAndDeviceGroupRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['UserGroupId'] = request.user_group_id
+        query['DeviceGroupId'] = request.device_group_id
+        query['Relation'] = request.relation
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceUserGroupAndDeviceGroupRelationResponse().from_map(
-            self.do_rpcrequest('AddFaceUserGroupAndDeviceGroupRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceUserGroupAndDeviceGroupRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceUserGroupAndDeviceGroupRelationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_face_user_group_and_device_group_relation_with_options_async(
@@ -312,11 +507,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceUserGroupAndDeviceGroupRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['UserGroupId'] = request.user_group_id
+        query['DeviceGroupId'] = request.device_group_id
+        query['Relation'] = request.relation
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceUserGroupAndDeviceGroupRelationResponse().from_map(
-            await self.do_rpcrequest_async('AddFaceUserGroupAndDeviceGroupRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceUserGroupAndDeviceGroupRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceUserGroupAndDeviceGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_face_user_group_and_device_group_relation(
@@ -339,11 +553,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceUserPictureResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
+        query['FacePicUrl'] = request.face_pic_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceUserPictureResponse().from_map(
-            self.do_rpcrequest('AddFaceUserPicture', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceUserPicture',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceUserPictureResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_face_user_picture_with_options_async(
@@ -352,11 +583,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceUserPictureResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
+        query['FacePicUrl'] = request.face_pic_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceUserPictureResponse().from_map(
-            await self.do_rpcrequest_async('AddFaceUserPicture', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceUserPicture',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceUserPictureResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_face_user_picture(
@@ -379,11 +627,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceUserToUserGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
+        query['UserGroupId'] = request.user_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceUserToUserGroupResponse().from_map(
-            self.do_rpcrequest('AddFaceUserToUserGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceUserToUserGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceUserToUserGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_face_user_to_user_group_with_options_async(
@@ -392,11 +657,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddFaceUserToUserGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
+        query['UserGroupId'] = request.user_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddFaceUserToUserGroupResponse().from_map(
-            await self.do_rpcrequest_async('AddFaceUserToUserGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddFaceUserToUserGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddFaceUserToUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_face_user_to_user_group(
@@ -419,11 +701,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddRecordPlanDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['PlanId'] = request.plan_id
+        query['StreamType'] = request.stream_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddRecordPlanDeviceResponse().from_map(
-            self.do_rpcrequest('AddRecordPlanDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddRecordPlanDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddRecordPlanDeviceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_record_plan_device_with_options_async(
@@ -432,11 +731,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.AddRecordPlanDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['PlanId'] = request.plan_id
+        query['StreamType'] = request.stream_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.AddRecordPlanDeviceResponse().from_map(
-            await self.do_rpcrequest_async('AddRecordPlanDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddRecordPlanDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.AddRecordPlanDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_record_plan_device(
@@ -459,11 +775,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.BindAIPlanWithDevicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['IotIdList'] = request.iot_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.BindAIPlanWithDevicesResponse().from_map(
-            self.do_rpcrequest('BindAIPlanWithDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='BindAIPlanWithDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.BindAIPlanWithDevicesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def bind_aiplan_with_devices_with_options_async(
@@ -472,11 +804,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.BindAIPlanWithDevicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['IotIdList'] = request.iot_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.BindAIPlanWithDevicesResponse().from_map(
-            await self.do_rpcrequest_async('BindAIPlanWithDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='BindAIPlanWithDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.BindAIPlanWithDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def bind_aiplan_with_devices(
@@ -499,11 +847,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.BindPictureSearchAppWithDevicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['DeviceIotIds'] = request.device_iot_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.BindPictureSearchAppWithDevicesResponse().from_map(
-            self.do_rpcrequest('BindPictureSearchAppWithDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='BindPictureSearchAppWithDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.BindPictureSearchAppWithDevicesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def bind_picture_search_app_with_devices_with_options_async(
@@ -512,11 +877,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.BindPictureSearchAppWithDevicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['DeviceIotIds'] = request.device_iot_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.BindPictureSearchAppWithDevicesResponse().from_map(
-            await self.do_rpcrequest_async('BindPictureSearchAppWithDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='BindPictureSearchAppWithDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.BindPictureSearchAppWithDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def bind_picture_search_app_with_devices(
@@ -539,11 +921,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CheckFaceUserDoExistOnDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['UserId'] = request.user_id
+        query['ProductKey'] = request.product_key
+        query['DeviceName'] = request.device_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CheckFaceUserDoExistOnDeviceResponse().from_map(
-            self.do_rpcrequest('CheckFaceUserDoExistOnDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckFaceUserDoExistOnDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CheckFaceUserDoExistOnDeviceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def check_face_user_do_exist_on_device_with_options_async(
@@ -552,11 +953,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CheckFaceUserDoExistOnDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['UserId'] = request.user_id
+        query['ProductKey'] = request.product_key
+        query['DeviceName'] = request.device_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CheckFaceUserDoExistOnDeviceResponse().from_map(
-            await self.do_rpcrequest_async('CheckFaceUserDoExistOnDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckFaceUserDoExistOnDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CheckFaceUserDoExistOnDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_face_user_do_exist_on_device(
@@ -579,11 +999,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ClearFaceDeviceDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['ProductKey'] = request.product_key
+        query['DeviceName'] = request.device_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ClearFaceDeviceDBResponse().from_map(
-            self.do_rpcrequest('ClearFaceDeviceDB', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ClearFaceDeviceDB',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ClearFaceDeviceDBResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def clear_face_device_dbwith_options_async(
@@ -592,11 +1030,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ClearFaceDeviceDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['ProductKey'] = request.product_key
+        query['DeviceName'] = request.device_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ClearFaceDeviceDBResponse().from_map(
-            await self.do_rpcrequest_async('ClearFaceDeviceDB', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ClearFaceDeviceDB',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ClearFaceDeviceDBResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def clear_face_device_db(
@@ -619,11 +1075,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ConfigAIActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ActionId'] = request.action_id
+        query['AlgoConfig'] = request.algo_config
+        query['DataTypeConfigList'] = request.data_type_config_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ConfigAIActionResponse().from_map(
-            self.do_rpcrequest('ConfigAIAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ConfigAIAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ConfigAIActionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def config_aiaction_with_options_async(
@@ -632,11 +1105,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ConfigAIActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ActionId'] = request.action_id
+        query['AlgoConfig'] = request.algo_config
+        query['DataTypeConfigList'] = request.data_type_config_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ConfigAIActionResponse().from_map(
-            await self.do_rpcrequest_async('ConfigAIAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ConfigAIAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ConfigAIActionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def config_aiaction(
@@ -659,11 +1149,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateAIAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppTemplateId'] = request.app_template_id
+        query['AppTemplateVersion'] = request.app_template_version
+        query['Level'] = request.level
+        query['Name'] = request.name
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateAIAppResponse().from_map(
-            self.do_rpcrequest('CreateAIApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAIApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateAIAppResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_aiapp_with_options_async(
@@ -672,11 +1181,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateAIAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppTemplateId'] = request.app_template_id
+        query['AppTemplateVersion'] = request.app_template_version
+        query['Level'] = request.level
+        query['Name'] = request.name
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateAIAppResponse().from_map(
-            await self.do_rpcrequest_async('CreateAIApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAIApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateAIAppResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_aiapp(
@@ -699,11 +1227,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateAIPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['PlanTemplateId'] = request.plan_template_id
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateAIPlanResponse().from_map(
-            self.do_rpcrequest('CreateAIPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAIPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateAIPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_aiplan_with_options_async(
@@ -712,11 +1257,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateAIPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['PlanTemplateId'] = request.plan_template_id
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateAIPlanResponse().from_map(
-            await self.do_rpcrequest_async('CreateAIPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAIPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateAIPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_aiplan(
@@ -739,11 +1301,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateAlgorithmResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateAlgorithmResponse().from_map(
-            self.do_rpcrequest('CreateAlgorithm', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAlgorithm',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateAlgorithmResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_algorithm_with_options_async(
@@ -752,11 +1330,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateAlgorithmResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateAlgorithmResponse().from_map(
-            await self.do_rpcrequest_async('CreateAlgorithm', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAlgorithm',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateAlgorithmResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_algorithm(
@@ -779,11 +1373,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateDevicePurifyJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateDevicePurifyJobResponse().from_map(
-            self.do_rpcrequest('CreateDevicePurifyJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDevicePurifyJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateDevicePurifyJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_device_purify_job_with_options_async(
@@ -792,11 +1403,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateDevicePurifyJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateDevicePurifyJobResponse().from_map(
-            await self.do_rpcrequest_async('CreateDevicePurifyJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDevicePurifyJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateDevicePurifyJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_device_purify_job(
@@ -819,11 +1447,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateDevicePurifyJobByPlanIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['Utc'] = request.utc
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateDevicePurifyJobByPlanIdResponse().from_map(
-            self.do_rpcrequest('CreateDevicePurifyJobByPlanId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDevicePurifyJobByPlanId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateDevicePurifyJobByPlanIdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_device_purify_job_by_plan_id_with_options_async(
@@ -832,11 +1476,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateDevicePurifyJobByPlanIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['Utc'] = request.utc
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateDevicePurifyJobByPlanIdResponse().from_map(
-            await self.do_rpcrequest_async('CreateDevicePurifyJobByPlanId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDevicePurifyJobByPlanId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateDevicePurifyJobByPlanIdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_device_purify_job_by_plan_id(
@@ -859,11 +1519,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateDevicePurifyPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateDevicePurifyPlanResponse().from_map(
-            self.do_rpcrequest('CreateDevicePurifyPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDevicePurifyPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateDevicePurifyPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_device_purify_plan_with_options_async(
@@ -872,11 +1549,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateDevicePurifyPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateDevicePurifyPlanResponse().from_map(
-            await self.do_rpcrequest_async('CreateDevicePurifyPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDevicePurifyPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateDevicePurifyPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_device_purify_plan(
@@ -899,11 +1593,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateEventRecordPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['EventTypes'] = request.event_types
+        query['PreRecordDuration'] = request.pre_record_duration
+        query['RecordDuration'] = request.record_duration
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateEventRecordPlanResponse().from_map(
-            self.do_rpcrequest('CreateEventRecordPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateEventRecordPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateEventRecordPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_event_record_plan_with_options_async(
@@ -912,11 +1625,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateEventRecordPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['EventTypes'] = request.event_types
+        query['PreRecordDuration'] = request.pre_record_duration
+        query['RecordDuration'] = request.record_duration
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateEventRecordPlanResponse().from_map(
-            await self.do_rpcrequest_async('CreateEventRecordPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateEventRecordPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateEventRecordPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_event_record_plan(
@@ -939,11 +1671,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmId'] = request.algorithm_id
+        query['Name'] = request.name
+        query['ModelPackageStandard'] = request.model_package_standard
+        query['Hardware'] = request.hardware
+        query['UploadModelPath'] = request.upload_model_path
+        query['NeedEncrypt'] = request.need_encrypt
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateModelResponse().from_map(
-            self.do_rpcrequest('CreateModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateModelResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_model_with_options_async(
@@ -952,11 +1705,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmId'] = request.algorithm_id
+        query['Name'] = request.name
+        query['ModelPackageStandard'] = request.model_package_standard
+        query['Hardware'] = request.hardware
+        query['UploadModelPath'] = request.upload_model_path
+        query['NeedEncrypt'] = request.need_encrypt
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateModelResponse().from_map(
-            await self.do_rpcrequest_async('CreateModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateModelResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_model(
@@ -979,11 +1753,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreatePictureSearchAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['Desc'] = request.desc
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreatePictureSearchAppResponse().from_map(
-            self.do_rpcrequest('CreatePictureSearchApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreatePictureSearchApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreatePictureSearchAppResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_picture_search_app_with_options_async(
@@ -992,11 +1782,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreatePictureSearchAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['Desc'] = request.desc
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreatePictureSearchAppResponse().from_map(
-            await self.do_rpcrequest_async('CreatePictureSearchApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreatePictureSearchApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreatePictureSearchAppResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_picture_search_app(
@@ -1013,17 +1819,115 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_picture_search_app_with_options_async(request, runtime)
 
+    def create_picture_search_job_with_options(
+        self,
+        request: linkvisual_20180120_models.CreatePictureSearchJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.CreatePictureSearchJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['SearchPicUrl'] = request.search_pic_url
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['Threshold'] = request.threshold
+        query['BodyThreshold'] = request.body_threshold
+        query['PictureSearchType'] = request.picture_search_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreatePictureSearchJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreatePictureSearchJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_picture_search_job_with_options_async(
+        self,
+        request: linkvisual_20180120_models.CreatePictureSearchJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.CreatePictureSearchJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['SearchPicUrl'] = request.search_pic_url
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['Threshold'] = request.threshold
+        query['BodyThreshold'] = request.body_threshold
+        query['PictureSearchType'] = request.picture_search_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreatePictureSearchJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreatePictureSearchJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_picture_search_job(
+        self,
+        request: linkvisual_20180120_models.CreatePictureSearchJobRequest,
+    ) -> linkvisual_20180120_models.CreatePictureSearchJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_picture_search_job_with_options(request, runtime)
+
+    async def create_picture_search_job_async(
+        self,
+        request: linkvisual_20180120_models.CreatePictureSearchJobRequest,
+    ) -> linkvisual_20180120_models.CreatePictureSearchJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_picture_search_job_with_options_async(request, runtime)
+
     def create_record_plan_with_options(
         self,
         request: linkvisual_20180120_models.CreateRecordPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateRecordPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateRecordPlanResponse().from_map(
-            self.do_rpcrequest('CreateRecordPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRecordPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateRecordPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_record_plan_with_options_async(
@@ -1032,11 +1936,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateRecordPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateRecordPlanResponse().from_map(
-            await self.do_rpcrequest_async('CreateRecordPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRecordPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateRecordPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_record_plan(
@@ -1059,11 +1979,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateTimeTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['AllDay'] = request.all_day
+        query['TimeSections'] = request.time_sections
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateTimeTemplateResponse().from_map(
-            self.do_rpcrequest('CreateTimeTemplate', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateTimeTemplate',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateTimeTemplateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_time_template_with_options_async(
@@ -1072,11 +2009,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.CreateTimeTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['AllDay'] = request.all_day
+        query['TimeSections'] = request.time_sections
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.CreateTimeTemplateResponse().from_map(
-            await self.do_rpcrequest_async('CreateTimeTemplate', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateTimeTemplate',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateTimeTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_time_template(
@@ -1099,11 +2053,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteAlgorithmResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmId'] = request.algorithm_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteAlgorithmResponse().from_map(
-            self.do_rpcrequest('DeleteAlgorithm', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteAlgorithm',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteAlgorithmResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_algorithm_with_options_async(
@@ -1112,11 +2081,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteAlgorithmResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmId'] = request.algorithm_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteAlgorithmResponse().from_map(
-            await self.do_rpcrequest_async('DeleteAlgorithm', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteAlgorithm',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteAlgorithmResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_algorithm(
@@ -1139,11 +2123,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteEventRecordPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteEventRecordPlanResponse().from_map(
-            self.do_rpcrequest('DeleteEventRecordPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteEventRecordPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteEventRecordPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_event_record_plan_with_options_async(
@@ -1152,11 +2151,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteEventRecordPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteEventRecordPlanResponse().from_map(
-            await self.do_rpcrequest_async('DeleteEventRecordPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteEventRecordPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteEventRecordPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_event_record_plan(
@@ -1179,11 +2193,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteEventRecordPlanDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteEventRecordPlanDeviceResponse().from_map(
-            self.do_rpcrequest('DeleteEventRecordPlanDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteEventRecordPlanDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteEventRecordPlanDeviceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_event_record_plan_device_with_options_async(
@@ -1192,11 +2222,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteEventRecordPlanDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteEventRecordPlanDeviceResponse().from_map(
-            await self.do_rpcrequest_async('DeleteEventRecordPlanDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteEventRecordPlanDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteEventRecordPlanDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_event_record_plan_device(
@@ -1219,11 +2265,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteFaceDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['DeviceGroupId'] = request.device_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteFaceDeviceGroupResponse().from_map(
-            self.do_rpcrequest('DeleteFaceDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFaceDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteFaceDeviceGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_face_device_group_with_options_async(
@@ -1232,11 +2294,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteFaceDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['DeviceGroupId'] = request.device_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteFaceDeviceGroupResponse().from_map(
-            await self.do_rpcrequest_async('DeleteFaceDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFaceDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteFaceDeviceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_face_device_group(
@@ -1259,11 +2337,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteFaceUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteFaceUserResponse().from_map(
-            self.do_rpcrequest('DeleteFaceUser', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFaceUser',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteFaceUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_face_user_with_options_async(
@@ -1272,11 +2366,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteFaceUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteFaceUserResponse().from_map(
-            await self.do_rpcrequest_async('DeleteFaceUser', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFaceUser',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteFaceUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_face_user(
@@ -1299,11 +2409,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteFaceUserGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserGroupId'] = request.user_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteFaceUserGroupResponse().from_map(
-            self.do_rpcrequest('DeleteFaceUserGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFaceUserGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteFaceUserGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_face_user_group_with_options_async(
@@ -1312,11 +2438,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteFaceUserGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserGroupId'] = request.user_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteFaceUserGroupResponse().from_map(
-            await self.do_rpcrequest_async('DeleteFaceUserGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFaceUserGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteFaceUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_face_user_group(
@@ -1339,11 +2481,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteFaceUserGroupAndDeviceGroupRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['ControlId'] = request.control_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteFaceUserGroupAndDeviceGroupRelationResponse().from_map(
-            self.do_rpcrequest('DeleteFaceUserGroupAndDeviceGroupRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFaceUserGroupAndDeviceGroupRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteFaceUserGroupAndDeviceGroupRelationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_face_user_group_and_device_group_relation_with_options_async(
@@ -1352,11 +2510,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteFaceUserGroupAndDeviceGroupRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['ControlId'] = request.control_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteFaceUserGroupAndDeviceGroupRelationResponse().from_map(
-            await self.do_rpcrequest_async('DeleteFaceUserGroupAndDeviceGroupRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFaceUserGroupAndDeviceGroupRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteFaceUserGroupAndDeviceGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_face_user_group_and_device_group_relation(
@@ -1379,11 +2553,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteFaceUserPictureResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
+        query['FacePicMd5'] = request.face_pic_md_5
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteFaceUserPictureResponse().from_map(
-            self.do_rpcrequest('DeleteFaceUserPicture', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFaceUserPicture',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteFaceUserPictureResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_face_user_picture_with_options_async(
@@ -1392,11 +2583,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteFaceUserPictureResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
+        query['FacePicMd5'] = request.face_pic_md_5
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteFaceUserPictureResponse().from_map(
-            await self.do_rpcrequest_async('DeleteFaceUserPicture', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFaceUserPicture',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteFaceUserPictureResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_face_user_picture(
@@ -1419,11 +2627,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ModelId'] = request.model_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteModelResponse().from_map(
-            self.do_rpcrequest('DeleteModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteModelResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_model_with_options_async(
@@ -1432,11 +2655,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ModelId'] = request.model_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteModelResponse().from_map(
-            await self.do_rpcrequest_async('DeleteModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteModelResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_model(
@@ -1459,11 +2697,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteRecordPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteRecordPlanResponse().from_map(
-            self.do_rpcrequest('DeleteRecordPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteRecordPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteRecordPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_record_plan_with_options_async(
@@ -1472,11 +2725,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteRecordPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteRecordPlanResponse().from_map(
-            await self.do_rpcrequest_async('DeleteRecordPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteRecordPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteRecordPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_record_plan(
@@ -1499,11 +2767,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteRecordPlanDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteRecordPlanDeviceResponse().from_map(
-            self.do_rpcrequest('DeleteRecordPlanDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteRecordPlanDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteRecordPlanDeviceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_record_plan_device_with_options_async(
@@ -1512,11 +2796,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteRecordPlanDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteRecordPlanDeviceResponse().from_map(
-            await self.do_rpcrequest_async('DeleteRecordPlanDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteRecordPlanDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteRecordPlanDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_record_plan_device(
@@ -1539,11 +2839,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteTimeTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteTimeTemplateResponse().from_map(
-            self.do_rpcrequest('DeleteTimeTemplate', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteTimeTemplate',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteTimeTemplateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_time_template_with_options_async(
@@ -1552,11 +2867,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeleteTimeTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeleteTimeTemplateResponse().from_map(
-            await self.do_rpcrequest_async('DeleteTimeTemplate', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteTimeTemplate',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteTimeTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_time_template(
@@ -1579,11 +2909,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeployModelBatchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ModelId'] = request.model_id
+        query['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeployModelBatchResponse().from_map(
-            self.do_rpcrequest('DeployModelBatch', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeployModelBatch',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeployModelBatchResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def deploy_model_batch_with_options_async(
@@ -1592,11 +2938,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DeployModelBatchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ModelId'] = request.model_id
+        query['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DeployModelBatchResponse().from_map(
-            await self.do_rpcrequest_async('DeployModelBatch', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeployModelBatch',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeployModelBatchResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def deploy_model_batch(
@@ -1619,11 +2981,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DetectUserFaceByUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FacePicUrl'] = request.face_pic_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DetectUserFaceByUrlResponse().from_map(
-            self.do_rpcrequest('DetectUserFaceByUrl', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectUserFaceByUrl',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DetectUserFaceByUrlResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def detect_user_face_by_url_with_options_async(
@@ -1632,11 +3009,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.DetectUserFaceByUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FacePicUrl'] = request.face_pic_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.DetectUserFaceByUrlResponse().from_map(
-            await self.do_rpcrequest_async('DetectUserFaceByUrl', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectUserFaceByUrl',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DetectUserFaceByUrlResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_user_face_by_url(
@@ -1659,11 +3051,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAIActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ActionId'] = request.action_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAIActionResponse().from_map(
-            self.do_rpcrequest('GetAIAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAIAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAIActionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_aiaction_with_options_async(
@@ -1672,11 +3079,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAIActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ActionId'] = request.action_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAIActionResponse().from_map(
-            await self.do_rpcrequest_async('GetAIAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAIAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAIActionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_aiaction(
@@ -1699,11 +3121,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAIActionConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Algo'] = request.algo
+        query['AlgoAction'] = request.algo_action
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAIActionConfigResponse().from_map(
-            self.do_rpcrequest('GetAIActionConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAIActionConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAIActionConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_aiaction_config_with_options_async(
@@ -1712,11 +3150,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAIActionConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Algo'] = request.algo
+        query['AlgoAction'] = request.algo_action
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAIActionConfigResponse().from_map(
-            await self.do_rpcrequest_async('GetAIActionConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAIActionConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAIActionConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_aiaction_config(
@@ -1739,11 +3193,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAIAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAIAppResponse().from_map(
-            self.do_rpcrequest('GetAIApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAIApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAIAppResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_aiapp_with_options_async(
@@ -1752,11 +3221,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAIAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAIAppResponse().from_map(
-            await self.do_rpcrequest_async('GetAIApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAIApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAIAppResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_aiapp(
@@ -1779,11 +3263,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAIJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAIJobResponse().from_map(
-            self.do_rpcrequest('GetAIJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAIJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAIJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_aijob_with_options_async(
@@ -1792,11 +3291,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAIJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAIJobResponse().from_map(
-            await self.do_rpcrequest_async('GetAIJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAIJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAIJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_aijob(
@@ -1819,11 +3333,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAIPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAIPlanResponse().from_map(
-            self.do_rpcrequest('GetAIPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAIPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAIPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_aiplan_with_options_async(
@@ -1832,11 +3361,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAIPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAIPlanResponse().from_map(
-            await self.do_rpcrequest_async('GetAIPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAIPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAIPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_aiplan(
@@ -1859,11 +3403,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAlgorithmDetailByIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmId'] = request.algorithm_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAlgorithmDetailByIdResponse().from_map(
-            self.do_rpcrequest('GetAlgorithmDetailById', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAlgorithmDetailById',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAlgorithmDetailByIdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_algorithm_detail_by_id_with_options_async(
@@ -1872,11 +3431,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAlgorithmDetailByIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmId'] = request.algorithm_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAlgorithmDetailByIdResponse().from_map(
-            await self.do_rpcrequest_async('GetAlgorithmDetailById', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAlgorithmDetailById',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAlgorithmDetailByIdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_algorithm_detail_by_id(
@@ -1899,11 +3473,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAlgorithmDetailByNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAlgorithmDetailByNameResponse().from_map(
-            self.do_rpcrequest('GetAlgorithmDetailByName', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAlgorithmDetailByName',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAlgorithmDetailByNameResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_algorithm_detail_by_name_with_options_async(
@@ -1912,11 +3501,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetAlgorithmDetailByNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetAlgorithmDetailByNameResponse().from_map(
-            await self.do_rpcrequest_async('GetAlgorithmDetailByName', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAlgorithmDetailByName',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetAlgorithmDetailByNameResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_algorithm_detail_by_name(
@@ -1939,11 +3543,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetDevicePurifyJobByJobIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetDevicePurifyJobByJobIdResponse().from_map(
-            self.do_rpcrequest('GetDevicePurifyJobByJobId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetDevicePurifyJobByJobId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetDevicePurifyJobByJobIdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_device_purify_job_by_job_id_with_options_async(
@@ -1952,11 +3571,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetDevicePurifyJobByJobIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetDevicePurifyJobByJobIdResponse().from_map(
-            await self.do_rpcrequest_async('GetDevicePurifyJobByJobId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetDevicePurifyJobByJobId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetDevicePurifyJobByJobIdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_device_purify_job_by_job_id(
@@ -1979,11 +3613,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetModelDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmId'] = request.algorithm_id
+        query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetModelDetailResponse().from_map(
-            self.do_rpcrequest('GetModelDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetModelDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetModelDetailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_model_detail_with_options_async(
@@ -1992,11 +3642,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetModelDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmId'] = request.algorithm_id
+        query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetModelDetailResponse().from_map(
-            await self.do_rpcrequest_async('GetModelDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetModelDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetModelDetailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_model_detail(
@@ -2019,11 +3685,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetModelDetailByIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ModelId'] = request.model_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetModelDetailByIdResponse().from_map(
-            self.do_rpcrequest('GetModelDetailById', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetModelDetailById',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetModelDetailByIdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_model_detail_by_id_with_options_async(
@@ -2032,11 +3713,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetModelDetailByIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ModelId'] = request.model_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetModelDetailByIdResponse().from_map(
-            await self.do_rpcrequest_async('GetModelDetailById', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetModelDetailById',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetModelDetailByIdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_model_detail_by_id(
@@ -2059,11 +3755,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetModelOssPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmId'] = request.algorithm_id
+        query['Hardware'] = request.hardware
+        query['ModelPackageStandard'] = request.model_package_standard
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetModelOssPolicyResponse().from_map(
-            self.do_rpcrequest('GetModelOssPolicy', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetModelOssPolicy',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetModelOssPolicyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_model_oss_policy_with_options_async(
@@ -2072,11 +3785,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetModelOssPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmId'] = request.algorithm_id
+        query['Hardware'] = request.hardware
+        query['ModelPackageStandard'] = request.model_package_standard
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetModelOssPolicyResponse().from_map(
-            await self.do_rpcrequest_async('GetModelOssPolicy', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetModelOssPolicy',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetModelOssPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_model_oss_policy(
@@ -2099,11 +3829,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetPictureInfoWithVectorIdsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VectorIdList'] = request.vector_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetPictureInfoWithVectorIdsResponse().from_map(
-            self.do_rpcrequest('GetPictureInfoWithVectorIds', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetPictureInfoWithVectorIds',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetPictureInfoWithVectorIdsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_picture_info_with_vector_ids_with_options_async(
@@ -2112,11 +3857,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetPictureInfoWithVectorIdsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VectorIdList'] = request.vector_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetPictureInfoWithVectorIdsResponse().from_map(
-            await self.do_rpcrequest_async('GetPictureInfoWithVectorIds', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetPictureInfoWithVectorIds',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetPictureInfoWithVectorIdsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_picture_info_with_vector_ids(
@@ -2133,17 +3893,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_picture_info_with_vector_ids_with_options_async(request, runtime)
 
+    def get_picture_search_job_status_with_options(
+        self,
+        request: linkvisual_20180120_models.GetPictureSearchJobStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.GetPictureSearchJobStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetPictureSearchJobStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetPictureSearchJobStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_picture_search_job_status_with_options_async(
+        self,
+        request: linkvisual_20180120_models.GetPictureSearchJobStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.GetPictureSearchJobStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetPictureSearchJobStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetPictureSearchJobStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_picture_search_job_status(
+        self,
+        request: linkvisual_20180120_models.GetPictureSearchJobStatusRequest,
+    ) -> linkvisual_20180120_models.GetPictureSearchJobStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_picture_search_job_status_with_options(request, runtime)
+
+    async def get_picture_search_job_status_async(
+        self,
+        request: linkvisual_20180120_models.GetPictureSearchJobStatusRequest,
+    ) -> linkvisual_20180120_models.GetPictureSearchJobStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_picture_search_job_status_with_options_async(request, runtime)
+
     def get_picture_with_vector_id_with_options(
         self,
         request: linkvisual_20180120_models.GetPictureWithVectorIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetPictureWithVectorIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VectorId'] = request.vector_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetPictureWithVectorIdResponse().from_map(
-            self.do_rpcrequest('GetPictureWithVectorId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetPictureWithVectorId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetPictureWithVectorIdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_picture_with_vector_id_with_options_async(
@@ -2152,11 +3999,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.GetPictureWithVectorIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VectorId'] = request.vector_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.GetPictureWithVectorIdResponse().from_map(
-            await self.do_rpcrequest_async('GetPictureWithVectorId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetPictureWithVectorId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.GetPictureWithVectorIdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_picture_with_vector_id(
@@ -2179,11 +4041,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ListAlgorithmsByPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['NamePattern'] = request.name_pattern
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ListAlgorithmsByPageResponse().from_map(
-            self.do_rpcrequest('ListAlgorithmsByPage', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAlgorithmsByPage',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ListAlgorithmsByPageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_algorithms_by_page_with_options_async(
@@ -2192,11 +4071,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ListAlgorithmsByPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['NamePattern'] = request.name_pattern
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ListAlgorithmsByPageResponse().from_map(
-            await self.do_rpcrequest_async('ListAlgorithmsByPage', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAlgorithmsByPage',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ListAlgorithmsByPageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_algorithms_by_page(
@@ -2219,11 +4115,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ListDeployTaskByModelIdAndDevicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ModelId'] = request.model_id
+        query['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ListDeployTaskByModelIdAndDevicesResponse().from_map(
-            self.do_rpcrequest('ListDeployTaskByModelIdAndDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDeployTaskByModelIdAndDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ListDeployTaskByModelIdAndDevicesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_deploy_task_by_model_id_and_devices_with_options_async(
@@ -2232,11 +4144,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ListDeployTaskByModelIdAndDevicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ModelId'] = request.model_id
+        query['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ListDeployTaskByModelIdAndDevicesResponse().from_map(
-            await self.do_rpcrequest_async('ListDeployTaskByModelIdAndDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDeployTaskByModelIdAndDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ListDeployTaskByModelIdAndDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_deploy_task_by_model_id_and_devices(
@@ -2259,11 +4187,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ListDeployTaskByPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ListDeployTaskByPageResponse().from_map(
-            self.do_rpcrequest('ListDeployTaskByPage', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDeployTaskByPage',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ListDeployTaskByPageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_deploy_task_by_page_with_options_async(
@@ -2272,11 +4216,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ListDeployTaskByPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ListDeployTaskByPageResponse().from_map(
-            await self.do_rpcrequest_async('ListDeployTaskByPage', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDeployTaskByPage',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ListDeployTaskByPageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_deploy_task_by_page(
@@ -2299,11 +4259,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ListModelsByPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmId'] = request.algorithm_id
+        query['SizeType'] = request.size_type
+        query['ModelPackageStandard'] = request.model_package_standard
+        query['Hardware'] = request.hardware
+        query['NamePattern'] = request.name_pattern
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ListModelsByPageResponse().from_map(
-            self.do_rpcrequest('ListModelsByPage', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListModelsByPage',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ListModelsByPageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_models_by_page_with_options_async(
@@ -2312,11 +4293,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ListModelsByPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmId'] = request.algorithm_id
+        query['SizeType'] = request.size_type
+        query['ModelPackageStandard'] = request.model_package_standard
+        query['Hardware'] = request.hardware
+        query['NamePattern'] = request.name_pattern
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ListModelsByPageResponse().from_map(
-            await self.do_rpcrequest_async('ListModelsByPage', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListModelsByPage',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ListModelsByPageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_models_by_page(
@@ -2339,11 +4341,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ListModelVersionsByPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmName'] = request.algorithm_name
+        query['SizeType'] = request.size_type
+        query['ModelPackageStandard'] = request.model_package_standard
+        query['Hardware'] = request.hardware
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ListModelVersionsByPageResponse().from_map(
-            self.do_rpcrequest('ListModelVersionsByPage', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListModelVersionsByPage',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ListModelVersionsByPageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_model_versions_by_page_with_options_async(
@@ -2352,11 +4374,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.ListModelVersionsByPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AlgorithmName'] = request.algorithm_name
+        query['SizeType'] = request.size_type
+        query['ModelPackageStandard'] = request.model_package_standard
+        query['Hardware'] = request.hardware
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.ListModelVersionsByPageResponse().from_map(
-            await self.do_rpcrequest_async('ListModelVersionsByPage', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListModelVersionsByPage',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.ListModelVersionsByPageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_model_versions_by_page(
@@ -2379,11 +4421,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.PictureSearchPictureResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['SearchPicUrl'] = request.search_pic_url
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['Threshold'] = request.threshold
+        query['ContainPicUrl'] = request.contain_pic_url
+        query['PictureSearchType'] = request.picture_search_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.PictureSearchPictureResponse().from_map(
-            self.do_rpcrequest('PictureSearchPicture', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PictureSearchPicture',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.PictureSearchPictureResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def picture_search_picture_with_options_async(
@@ -2392,11 +4457,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.PictureSearchPictureResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['SearchPicUrl'] = request.search_pic_url
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['Threshold'] = request.threshold
+        query['ContainPicUrl'] = request.contain_pic_url
+        query['PictureSearchType'] = request.picture_search_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.PictureSearchPictureResponse().from_map(
-            await self.do_rpcrequest_async('PictureSearchPicture', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PictureSearchPicture',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.PictureSearchPictureResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def picture_search_picture(
@@ -2419,11 +4507,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryAIActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryAIActionResponse().from_map(
-            self.do_rpcrequest('QueryAIAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryAIAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryAIActionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_aiaction_with_options_async(
@@ -2432,11 +4535,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryAIActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryAIActionResponse().from_map(
-            await self.do_rpcrequest_async('QueryAIAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryAIAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryAIActionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_aiaction(
@@ -2459,11 +4577,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryAIAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryAIAppResponse().from_map(
-            self.do_rpcrequest('QueryAIApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryAIApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryAIAppResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_aiapp_with_options_async(
@@ -2472,11 +4606,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryAIAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryAIAppResponse().from_map(
-            await self.do_rpcrequest_async('QueryAIApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryAIApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryAIAppResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_aiapp(
@@ -2499,11 +4649,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryAIJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ActionId'] = request.action_id
+        query['IotId'] = request.iot_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryAIJobsResponse().from_map(
-            self.do_rpcrequest('QueryAIJobs', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryAIJobs',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryAIJobsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_aijobs_with_options_async(
@@ -2512,11 +4680,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryAIJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ActionId'] = request.action_id
+        query['IotId'] = request.iot_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryAIJobsResponse().from_map(
-            await self.do_rpcrequest_async('QueryAIJobs', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryAIJobs',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryAIJobsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_aijobs(
@@ -2539,11 +4725,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryAIPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryAIPlanResponse().from_map(
-            self.do_rpcrequest('QueryAIPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryAIPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryAIPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_aiplan_with_options_async(
@@ -2552,11 +4755,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryAIPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryAIPlanResponse().from_map(
-            await self.do_rpcrequest_async('QueryAIPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryAIPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryAIPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_aiplan(
@@ -2579,11 +4799,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryAIPlanTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppTemplateId'] = request.app_template_id
+        query['AppVersion'] = request.app_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryAIPlanTemplatesResponse().from_map(
-            self.do_rpcrequest('QueryAIPlanTemplates', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryAIPlanTemplates',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryAIPlanTemplatesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_aiplan_templates_with_options_async(
@@ -2592,11 +4828,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryAIPlanTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppTemplateId'] = request.app_template_id
+        query['AppVersion'] = request.app_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryAIPlanTemplatesResponse().from_map(
-            await self.do_rpcrequest_async('QueryAIPlanTemplates', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryAIPlanTemplates',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryAIPlanTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_aiplan_templates(
@@ -2619,11 +4871,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDeviceEventResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['EventType'] = request.event_type
+        query['BeginTime'] = request.begin_time
+        query['EndTime'] = request.end_time
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDeviceEventResponse().from_map(
-            self.do_rpcrequest('QueryDeviceEvent', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDeviceEvent',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceEventResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_event_with_options_async(
@@ -2632,11 +4905,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDeviceEventResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['EventType'] = request.event_type
+        query['BeginTime'] = request.begin_time
+        query['EndTime'] = request.end_time
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDeviceEventResponse().from_map(
-            await self.do_rpcrequest_async('QueryDeviceEvent', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDeviceEvent',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceEventResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_event(
@@ -2659,11 +4953,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDeviceEventPictureResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['EventId'] = request.event_id
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDeviceEventPictureResponse().from_map(
-            self.do_rpcrequest('QueryDeviceEventPicture', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDeviceEventPicture',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceEventPictureResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_event_picture_with_options_async(
@@ -2672,11 +4983,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDeviceEventPictureResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['EventId'] = request.event_id
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDeviceEventPictureResponse().from_map(
-            await self.do_rpcrequest_async('QueryDeviceEventPicture', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDeviceEventPicture',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceEventPictureResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_event_picture(
@@ -2699,11 +5027,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDeviceEventRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['EventId'] = request.event_id
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDeviceEventRecordResponse().from_map(
-            self.do_rpcrequest('QueryDeviceEventRecord', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDeviceEventRecord',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceEventRecordResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_event_record_with_options_async(
@@ -2712,11 +5057,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDeviceEventRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['EventId'] = request.event_id
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDeviceEventRecordResponse().from_map(
-            await self.do_rpcrequest_async('QueryDeviceEventRecord', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDeviceEventRecord',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceEventRecordResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_event_record(
@@ -2739,11 +5101,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDeviceFileVodResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['FileName'] = request.file_name
+        query['ShouldEncrypt'] = request.should_encrypt
+        query['EncryptType'] = request.encrypt_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDeviceFileVodResponse().from_map(
-            self.do_rpcrequest('QueryDeviceFileVod', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDeviceFileVod',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceFileVodResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_file_vod_with_options_async(
@@ -2752,11 +5132,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDeviceFileVodResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['FileName'] = request.file_name
+        query['ShouldEncrypt'] = request.should_encrypt
+        query['EncryptType'] = request.encrypt_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDeviceFileVodResponse().from_map(
-            await self.do_rpcrequest_async('QueryDeviceFileVod', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDeviceFileVod',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceFileVodResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_file_vod(
@@ -2779,11 +5177,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDevicePictureFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['CaptureId'] = request.capture_id
+        query['PictureType'] = request.picture_type
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDevicePictureFileResponse().from_map(
-            self.do_rpcrequest('QueryDevicePictureFile', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDevicePictureFile',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDevicePictureFileResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_picture_file_with_options_async(
@@ -2792,11 +5208,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDevicePictureFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['CaptureId'] = request.capture_id
+        query['PictureType'] = request.picture_type
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDevicePictureFileResponse().from_map(
-            await self.do_rpcrequest_async('QueryDevicePictureFile', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDevicePictureFile',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDevicePictureFileResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_picture_file(
@@ -2819,11 +5253,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDevicePictureLifeCycleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDevicePictureLifeCycleResponse().from_map(
-            self.do_rpcrequest('QueryDevicePictureLifeCycle', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDevicePictureLifeCycle',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDevicePictureLifeCycleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_picture_life_cycle_with_options_async(
@@ -2832,11 +5281,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDevicePictureLifeCycleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDevicePictureLifeCycleResponse().from_map(
-            await self.do_rpcrequest_async('QueryDevicePictureLifeCycle', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDevicePictureLifeCycle',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDevicePictureLifeCycleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_picture_life_cycle(
@@ -2859,11 +5323,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDevicePurifyJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDevicePurifyJobsResponse().from_map(
-            self.do_rpcrequest('QueryDevicePurifyJobs', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDevicePurifyJobs',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDevicePurifyJobsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_purify_jobs_with_options_async(
@@ -2872,11 +5353,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDevicePurifyJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDevicePurifyJobsResponse().from_map(
-            await self.do_rpcrequest_async('QueryDevicePurifyJobs', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDevicePurifyJobs',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDevicePurifyJobsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_purify_jobs(
@@ -2899,11 +5397,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDevicePurifyPlanByPlanIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDevicePurifyPlanByPlanIdResponse().from_map(
-            self.do_rpcrequest('QueryDevicePurifyPlanByPlanId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDevicePurifyPlanByPlanId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDevicePurifyPlanByPlanIdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_purify_plan_by_plan_id_with_options_async(
@@ -2912,11 +5425,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDevicePurifyPlanByPlanIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDevicePurifyPlanByPlanIdResponse().from_map(
-            await self.do_rpcrequest_async('QueryDevicePurifyPlanByPlanId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDevicePurifyPlanByPlanId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDevicePurifyPlanByPlanIdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_purify_plan_by_plan_id(
@@ -2939,11 +5467,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDevicePurifyPlansResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDevicePurifyPlansResponse().from_map(
-            self.do_rpcrequest('QueryDevicePurifyPlans', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDevicePurifyPlans',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDevicePurifyPlansResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_purify_plans_with_options_async(
@@ -2952,11 +5497,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDevicePurifyPlansResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDevicePurifyPlansResponse().from_map(
-            await self.do_rpcrequest_async('QueryDevicePurifyPlans', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDevicePurifyPlans',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDevicePurifyPlansResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_purify_plans(
@@ -2979,11 +5541,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDeviceRecordLifeCycleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDeviceRecordLifeCycleResponse().from_map(
-            self.do_rpcrequest('QueryDeviceRecordLifeCycle', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDeviceRecordLifeCycle',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceRecordLifeCycleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_record_life_cycle_with_options_async(
@@ -2992,11 +5569,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDeviceRecordLifeCycleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeviceList'] = request.device_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDeviceRecordLifeCycleResponse().from_map(
-            await self.do_rpcrequest_async('QueryDeviceRecordLifeCycle', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDeviceRecordLifeCycle',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceRecordLifeCycleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_record_life_cycle(
@@ -3019,11 +5611,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDeviceVodUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FileName'] = request.file_name
+        query['Scheme'] = request.scheme
+        query['SeekTime'] = request.seek_time
+        query['IotInstanceId'] = request.iot_instance_id
+        query['IotId'] = request.iot_id
+        query['PlayUnLimited'] = request.play_un_limited
+        query['EncryptType'] = request.encrypt_type
+        query['ShouldEncrypt'] = request.should_encrypt
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDeviceVodUrlResponse().from_map(
-            self.do_rpcrequest('QueryDeviceVodUrl', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDeviceVodUrl',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceVodUrlResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_vod_url_with_options_async(
@@ -3032,11 +5646,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryDeviceVodUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FileName'] = request.file_name
+        query['Scheme'] = request.scheme
+        query['SeekTime'] = request.seek_time
+        query['IotInstanceId'] = request.iot_instance_id
+        query['IotId'] = request.iot_id
+        query['PlayUnLimited'] = request.play_un_limited
+        query['EncryptType'] = request.encrypt_type
+        query['ShouldEncrypt'] = request.should_encrypt
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryDeviceVodUrlResponse().from_map(
-            await self.do_rpcrequest_async('QueryDeviceVodUrl', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDeviceVodUrl',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceVodUrlResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_vod_url(
@@ -3053,17 +5689,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_device_vod_url_with_options_async(request, runtime)
 
+    def query_device_vod_url_by_time_with_options(
+        self,
+        request: linkvisual_20180120_models.QueryDeviceVodUrlByTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryDeviceVodUrlByTimeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Scheme'] = request.scheme
+        query['SeekTime'] = request.seek_time
+        query['IotInstanceId'] = request.iot_instance_id
+        query['BeginTime'] = request.begin_time
+        query['IotId'] = request.iot_id
+        query['PlayUnLimited'] = request.play_un_limited
+        query['EncryptType'] = request.encrypt_type
+        query['ShouldEncrypt'] = request.should_encrypt
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceVodUrlByTime',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceVodUrlByTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_device_vod_url_by_time_with_options_async(
+        self,
+        request: linkvisual_20180120_models.QueryDeviceVodUrlByTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryDeviceVodUrlByTimeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Scheme'] = request.scheme
+        query['SeekTime'] = request.seek_time
+        query['IotInstanceId'] = request.iot_instance_id
+        query['BeginTime'] = request.begin_time
+        query['IotId'] = request.iot_id
+        query['PlayUnLimited'] = request.play_un_limited
+        query['EncryptType'] = request.encrypt_type
+        query['ShouldEncrypt'] = request.should_encrypt
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceVodUrlByTime',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryDeviceVodUrlByTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_device_vod_url_by_time(
+        self,
+        request: linkvisual_20180120_models.QueryDeviceVodUrlByTimeRequest,
+    ) -> linkvisual_20180120_models.QueryDeviceVodUrlByTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_device_vod_url_by_time_with_options(request, runtime)
+
+    async def query_device_vod_url_by_time_async(
+        self,
+        request: linkvisual_20180120_models.QueryDeviceVodUrlByTimeRequest,
+    ) -> linkvisual_20180120_models.QueryDeviceVodUrlByTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_device_vod_url_by_time_with_options_async(request, runtime)
+
     def query_event_record_plan_detail_with_options(
         self,
         request: linkvisual_20180120_models.QueryEventRecordPlanDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryEventRecordPlanDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryEventRecordPlanDetailResponse().from_map(
-            self.do_rpcrequest('QueryEventRecordPlanDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryEventRecordPlanDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryEventRecordPlanDetailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_event_record_plan_detail_with_options_async(
@@ -3072,11 +5809,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryEventRecordPlanDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryEventRecordPlanDetailResponse().from_map(
-            await self.do_rpcrequest_async('QueryEventRecordPlanDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryEventRecordPlanDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryEventRecordPlanDetailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_event_record_plan_detail(
@@ -3099,11 +5851,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryEventRecordPlanDeviceByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryEventRecordPlanDeviceByDeviceResponse().from_map(
-            self.do_rpcrequest('QueryEventRecordPlanDeviceByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryEventRecordPlanDeviceByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryEventRecordPlanDeviceByDeviceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_event_record_plan_device_by_device_with_options_async(
@@ -3112,11 +5880,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryEventRecordPlanDeviceByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryEventRecordPlanDeviceByDeviceResponse().from_map(
-            await self.do_rpcrequest_async('QueryEventRecordPlanDeviceByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryEventRecordPlanDeviceByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryEventRecordPlanDeviceByDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_event_record_plan_device_by_device(
@@ -3139,11 +5923,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryEventRecordPlanDeviceByPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryEventRecordPlanDeviceByPlanResponse().from_map(
-            self.do_rpcrequest('QueryEventRecordPlanDeviceByPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryEventRecordPlanDeviceByPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryEventRecordPlanDeviceByPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_event_record_plan_device_by_plan_with_options_async(
@@ -3152,11 +5953,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryEventRecordPlanDeviceByPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryEventRecordPlanDeviceByPlanResponse().from_map(
-            await self.do_rpcrequest_async('QueryEventRecordPlanDeviceByPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryEventRecordPlanDeviceByPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryEventRecordPlanDeviceByPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_event_record_plan_device_by_plan(
@@ -3179,11 +5997,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryEventRecordPlansResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryEventRecordPlansResponse().from_map(
-            self.do_rpcrequest('QueryEventRecordPlans', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryEventRecordPlans',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryEventRecordPlansResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_event_record_plans_with_options_async(
@@ -3192,11 +6026,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryEventRecordPlansResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryEventRecordPlansResponse().from_map(
-            await self.do_rpcrequest_async('QueryEventRecordPlans', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryEventRecordPlans',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryEventRecordPlansResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_event_record_plans(
@@ -3219,11 +6069,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceAllDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['PageSize'] = request.page_size
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceAllDeviceGroupResponse().from_map(
-            self.do_rpcrequest('QueryFaceAllDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceAllDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceAllDeviceGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_face_all_device_group_with_options_async(
@@ -3232,11 +6100,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceAllDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['PageSize'] = request.page_size
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceAllDeviceGroupResponse().from_map(
-            await self.do_rpcrequest_async('QueryFaceAllDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceAllDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceAllDeviceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_face_all_device_group(
@@ -3259,11 +6145,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceAllUserGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['PageSize'] = request.page_size
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceAllUserGroupResponse().from_map(
-            self.do_rpcrequest('QueryFaceAllUserGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceAllUserGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceAllUserGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_face_all_user_group_with_options_async(
@@ -3272,11 +6175,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceAllUserGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['PageSize'] = request.page_size
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceAllUserGroupResponse().from_map(
-            await self.do_rpcrequest_async('QueryFaceAllUserGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceAllUserGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceAllUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_face_all_user_group(
@@ -3299,11 +6219,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceAllUserGroupAndDeviceGroupRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['PageSize'] = request.page_size
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceAllUserGroupAndDeviceGroupRelationResponse().from_map(
-            self.do_rpcrequest('QueryFaceAllUserGroupAndDeviceGroupRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceAllUserGroupAndDeviceGroupRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceAllUserGroupAndDeviceGroupRelationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_face_all_user_group_and_device_group_relation_with_options_async(
@@ -3312,11 +6249,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceAllUserGroupAndDeviceGroupRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['PageSize'] = request.page_size
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceAllUserGroupAndDeviceGroupRelationResponse().from_map(
-            await self.do_rpcrequest_async('QueryFaceAllUserGroupAndDeviceGroupRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceAllUserGroupAndDeviceGroupRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceAllUserGroupAndDeviceGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_face_all_user_group_and_device_group_relation(
@@ -3339,11 +6293,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceAllUserIdsByGroupIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserGroupId'] = request.user_group_id
+        query['PageSize'] = request.page_size
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceAllUserIdsByGroupIdResponse().from_map(
-            self.do_rpcrequest('QueryFaceAllUserIdsByGroupId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceAllUserIdsByGroupId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceAllUserIdsByGroupIdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_face_all_user_ids_by_group_id_with_options_async(
@@ -3352,11 +6324,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceAllUserIdsByGroupIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserGroupId'] = request.user_group_id
+        query['PageSize'] = request.page_size
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceAllUserIdsByGroupIdResponse().from_map(
-            await self.do_rpcrequest_async('QueryFaceAllUserIdsByGroupId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceAllUserIdsByGroupId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceAllUserIdsByGroupIdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_face_all_user_ids_by_group_id(
@@ -3379,11 +6369,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceCustomUserIdByUserIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceCustomUserIdByUserIdResponse().from_map(
-            self.do_rpcrequest('QueryFaceCustomUserIdByUserId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceCustomUserIdByUserId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceCustomUserIdByUserIdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_face_custom_user_id_by_user_id_with_options_async(
@@ -3392,11 +6398,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceCustomUserIdByUserIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceCustomUserIdByUserIdResponse().from_map(
-            await self.do_rpcrequest_async('QueryFaceCustomUserIdByUserId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceCustomUserIdByUserId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceCustomUserIdByUserIdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_face_custom_user_id_by_user_id(
@@ -3419,11 +6441,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceDeviceGroupsByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['ProductKey'] = request.product_key
+        query['DeviceName'] = request.device_name
+        query['PageSize'] = request.page_size
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceDeviceGroupsByDeviceResponse().from_map(
-            self.do_rpcrequest('QueryFaceDeviceGroupsByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceDeviceGroupsByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceDeviceGroupsByDeviceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_face_device_groups_by_device_with_options_async(
@@ -3432,11 +6474,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceDeviceGroupsByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['ProductKey'] = request.product_key
+        query['DeviceName'] = request.device_name
+        query['PageSize'] = request.page_size
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceDeviceGroupsByDeviceResponse().from_map(
-            await self.do_rpcrequest_async('QueryFaceDeviceGroupsByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceDeviceGroupsByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceDeviceGroupsByDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_face_device_groups_by_device(
@@ -3459,11 +6521,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceUserResponse().from_map(
-            self.do_rpcrequest('QueryFaceUser', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceUser',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_face_user_with_options_async(
@@ -3472,11 +6550,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceUserResponse().from_map(
-            await self.do_rpcrequest_async('QueryFaceUser', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceUser',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_face_user(
@@ -3499,11 +6593,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceUserGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
+        query['PageSize'] = request.page_size
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceUserGroupResponse().from_map(
-            self.do_rpcrequest('QueryFaceUserGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceUserGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceUserGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_face_user_group_with_options_async(
@@ -3512,11 +6624,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceUserGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
+        query['PageSize'] = request.page_size
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceUserGroupResponse().from_map(
-            await self.do_rpcrequest_async('QueryFaceUserGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceUserGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_face_user_group(
@@ -3539,11 +6669,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceUserGroupAndDeviceGroupRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['ControlId'] = request.control_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceUserGroupAndDeviceGroupRelationResponse().from_map(
-            self.do_rpcrequest('QueryFaceUserGroupAndDeviceGroupRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceUserGroupAndDeviceGroupRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceUserGroupAndDeviceGroupRelationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_face_user_group_and_device_group_relation_with_options_async(
@@ -3552,11 +6698,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceUserGroupAndDeviceGroupRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['ControlId'] = request.control_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceUserGroupAndDeviceGroupRelationResponse().from_map(
-            await self.do_rpcrequest_async('QueryFaceUserGroupAndDeviceGroupRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceUserGroupAndDeviceGroupRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceUserGroupAndDeviceGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_face_user_group_and_device_group_relation(
@@ -3579,11 +6741,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceUserIdByCustomUserIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['CustomUserId'] = request.custom_user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceUserIdByCustomUserIdResponse().from_map(
-            self.do_rpcrequest('QueryFaceUserIdByCustomUserId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceUserIdByCustomUserId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceUserIdByCustomUserIdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_face_user_id_by_custom_user_id_with_options_async(
@@ -3592,11 +6770,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryFaceUserIdByCustomUserIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['CustomUserId'] = request.custom_user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryFaceUserIdByCustomUserIdResponse().from_map(
-            await self.do_rpcrequest_async('QueryFaceUserIdByCustomUserId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryFaceUserIdByCustomUserId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryFaceUserIdByCustomUserIdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_face_user_id_by_custom_user_id(
@@ -3619,11 +6813,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryIotIdsByAIPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryIotIdsByAIPlanResponse().from_map(
-            self.do_rpcrequest('QueryIotIdsByAIPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryIotIdsByAIPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryIotIdsByAIPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_iot_ids_by_aiplan_with_options_async(
@@ -3632,11 +6843,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryIotIdsByAIPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryIotIdsByAIPlanResponse().from_map(
-            await self.do_rpcrequest_async('QueryIotIdsByAIPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryIotIdsByAIPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryIotIdsByAIPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_iot_ids_by_aiplan(
@@ -3659,11 +6887,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryLiveStreamingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Scheme'] = request.scheme
+        query['IotInstanceId'] = request.iot_instance_id
+        query['StreamType'] = request.stream_type
+        query['CacheDuration'] = request.cache_duration
+        query['IotId'] = request.iot_id
+        query['ShouldEncrypt'] = request.should_encrypt
+        query['PlayUnLimited'] = request.play_un_limited
+        query['EncryptType'] = request.encrypt_type
+        query['ForceIFrame'] = request.force_iframe
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryLiveStreamingResponse().from_map(
-            self.do_rpcrequest('QueryLiveStreaming', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryLiveStreaming',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryLiveStreamingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_live_streaming_with_options_async(
@@ -3672,11 +6923,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryLiveStreamingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Scheme'] = request.scheme
+        query['IotInstanceId'] = request.iot_instance_id
+        query['StreamType'] = request.stream_type
+        query['CacheDuration'] = request.cache_duration
+        query['IotId'] = request.iot_id
+        query['ShouldEncrypt'] = request.should_encrypt
+        query['PlayUnLimited'] = request.play_un_limited
+        query['EncryptType'] = request.encrypt_type
+        query['ForceIFrame'] = request.force_iframe
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryLiveStreamingResponse().from_map(
-            await self.do_rpcrequest_async('QueryLiveStreaming', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryLiveStreaming',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryLiveStreamingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_live_streaming(
@@ -3699,11 +6973,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryMonthRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['Month'] = request.month
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryMonthRecordResponse().from_map(
-            self.do_rpcrequest('QueryMonthRecord', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryMonthRecord',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryMonthRecordResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_month_record_with_options_async(
@@ -3712,11 +7003,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryMonthRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['Month'] = request.month
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryMonthRecordResponse().from_map(
-            await self.do_rpcrequest_async('QueryMonthRecord', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryMonthRecord',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryMonthRecordResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_month_record(
@@ -3739,11 +7047,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryPictureFilesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['BeginTime'] = request.begin_time
+        query['EndTime'] = request.end_time
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
+        query['PictureType'] = request.picture_type
+        query['PictureSource'] = request.picture_source
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryPictureFilesResponse().from_map(
-            self.do_rpcrequest('QueryPictureFiles', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryPictureFiles',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureFilesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_picture_files_with_options_async(
@@ -3752,11 +7082,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryPictureFilesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['BeginTime'] = request.begin_time
+        query['EndTime'] = request.end_time
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
+        query['PictureType'] = request.picture_type
+        query['PictureSource'] = request.picture_source
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryPictureFilesResponse().from_map(
-            await self.do_rpcrequest_async('QueryPictureFiles', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryPictureFiles',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureFilesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_picture_files(
@@ -3779,11 +7131,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryPictureSearchAiboxesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryPictureSearchAiboxesResponse().from_map(
-            self.do_rpcrequest('QueryPictureSearchAiboxes', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryPictureSearchAiboxes',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureSearchAiboxesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_picture_search_aiboxes_with_options_async(
@@ -3792,11 +7162,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryPictureSearchAiboxesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryPictureSearchAiboxesResponse().from_map(
-            await self.do_rpcrequest_async('QueryPictureSearchAiboxes', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryPictureSearchAiboxes',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureSearchAiboxesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_picture_search_aiboxes(
@@ -3815,43 +7203,125 @@ class Client(OpenApiClient):
 
     def query_picture_search_app_with_options(
         self,
-        request: linkvisual_20180120_models.QueryPictureSearchAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryPictureSearchAppResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='QueryPictureSearchApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
-        return linkvisual_20180120_models.QueryPictureSearchAppResponse().from_map(
-            self.do_rpcrequest('QueryPictureSearchApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureSearchAppResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_picture_search_app_with_options_async(
         self,
-        request: linkvisual_20180120_models.QueryPictureSearchAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryPictureSearchAppResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='QueryPictureSearchApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureSearchAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_picture_search_app(self) -> linkvisual_20180120_models.QueryPictureSearchAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_picture_search_app_with_options(runtime)
+
+    async def query_picture_search_app_async(self) -> linkvisual_20180120_models.QueryPictureSearchAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_picture_search_app_with_options_async(runtime)
+
+    def query_picture_search_apps_with_options(
+        self,
+        request: linkvisual_20180120_models.QueryPictureSearchAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryPictureSearchAppsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryPictureSearchAppResponse().from_map(
-            await self.do_rpcrequest_async('QueryPictureSearchApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryPictureSearchApps',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureSearchAppsResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    def query_picture_search_app(
+    async def query_picture_search_apps_with_options_async(
         self,
-        request: linkvisual_20180120_models.QueryPictureSearchAppRequest,
-    ) -> linkvisual_20180120_models.QueryPictureSearchAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_picture_search_app_with_options(request, runtime)
+        request: linkvisual_20180120_models.QueryPictureSearchAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryPictureSearchAppsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryPictureSearchApps',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureSearchAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
-    async def query_picture_search_app_async(
+    def query_picture_search_apps(
         self,
-        request: linkvisual_20180120_models.QueryPictureSearchAppRequest,
-    ) -> linkvisual_20180120_models.QueryPictureSearchAppResponse:
+        request: linkvisual_20180120_models.QueryPictureSearchAppsRequest,
+    ) -> linkvisual_20180120_models.QueryPictureSearchAppsResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.query_picture_search_app_with_options_async(request, runtime)
+        return self.query_picture_search_apps_with_options(request, runtime)
+
+    async def query_picture_search_apps_async(
+        self,
+        request: linkvisual_20180120_models.QueryPictureSearchAppsRequest,
+    ) -> linkvisual_20180120_models.QueryPictureSearchAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_picture_search_apps_with_options_async(request, runtime)
 
     def query_picture_search_devices_with_options(
         self,
@@ -3859,11 +7329,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryPictureSearchDevicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryPictureSearchDevicesResponse().from_map(
-            self.do_rpcrequest('QueryPictureSearchDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryPictureSearchDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureSearchDevicesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_picture_search_devices_with_options_async(
@@ -3872,11 +7359,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryPictureSearchDevicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryPictureSearchDevicesResponse().from_map(
-            await self.do_rpcrequest_async('QueryPictureSearchDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryPictureSearchDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureSearchDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_picture_search_devices(
@@ -3893,17 +7397,192 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_picture_search_devices_with_options_async(request, runtime)
 
+    def query_picture_search_job_with_options(
+        self,
+        request: linkvisual_20180120_models.QueryPictureSearchJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryPictureSearchJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['JobStatus'] = request.job_status
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryPictureSearchJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureSearchJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_picture_search_job_with_options_async(
+        self,
+        request: linkvisual_20180120_models.QueryPictureSearchJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryPictureSearchJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['JobStatus'] = request.job_status
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryPictureSearchJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureSearchJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_picture_search_job(
+        self,
+        request: linkvisual_20180120_models.QueryPictureSearchJobRequest,
+    ) -> linkvisual_20180120_models.QueryPictureSearchJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_picture_search_job_with_options(request, runtime)
+
+    async def query_picture_search_job_async(
+        self,
+        request: linkvisual_20180120_models.QueryPictureSearchJobRequest,
+    ) -> linkvisual_20180120_models.QueryPictureSearchJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_picture_search_job_with_options_async(request, runtime)
+
+    def query_picture_search_job_result_with_options(
+        self,
+        request: linkvisual_20180120_models.QueryPictureSearchJobResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryPictureSearchJobResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['JobId'] = request.job_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryPictureSearchJobResult',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureSearchJobResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_picture_search_job_result_with_options_async(
+        self,
+        request: linkvisual_20180120_models.QueryPictureSearchJobResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryPictureSearchJobResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['JobId'] = request.job_id
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryPictureSearchJobResult',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryPictureSearchJobResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_picture_search_job_result(
+        self,
+        request: linkvisual_20180120_models.QueryPictureSearchJobResultRequest,
+    ) -> linkvisual_20180120_models.QueryPictureSearchJobResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_picture_search_job_result_with_options(request, runtime)
+
+    async def query_picture_search_job_result_async(
+        self,
+        request: linkvisual_20180120_models.QueryPictureSearchJobResultRequest,
+    ) -> linkvisual_20180120_models.QueryPictureSearchJobResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_picture_search_job_result_with_options_async(request, runtime)
+
     def query_record_with_options(
         self,
         request: linkvisual_20180120_models.QueryRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
+        query['BeginTime'] = request.begin_time
+        query['EndTime'] = request.end_time
+        query['RecordType'] = request.record_type
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
+        query['NeedSnapshot'] = request.need_snapshot
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordResponse().from_map(
-            self.do_rpcrequest('QueryRecord', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecord',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_record_with_options_async(
@@ -3912,11 +7591,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
+        query['BeginTime'] = request.begin_time
+        query['EndTime'] = request.end_time
+        query['RecordType'] = request.record_type
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
+        query['NeedSnapshot'] = request.need_snapshot
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordResponse().from_map(
-            await self.do_rpcrequest_async('QueryRecord', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecord',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_record(
@@ -3939,11 +7641,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordByRecordIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['RecordId'] = request.record_id
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordByRecordIdResponse().from_map(
-            self.do_rpcrequest('QueryRecordByRecordId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecordByRecordId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordByRecordIdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_record_by_record_id_with_options_async(
@@ -3952,11 +7671,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordByRecordIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['RecordId'] = request.record_id
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordByRecordIdResponse().from_map(
-            await self.do_rpcrequest_async('QueryRecordByRecordId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecordByRecordId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordByRecordIdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_record_by_record_id(
@@ -3979,11 +7715,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordPlanDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordPlanDetailResponse().from_map(
-            self.do_rpcrequest('QueryRecordPlanDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecordPlanDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordPlanDetailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_record_plan_detail_with_options_async(
@@ -3992,11 +7743,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordPlanDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordPlanDetailResponse().from_map(
-            await self.do_rpcrequest_async('QueryRecordPlanDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecordPlanDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordPlanDetailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_record_plan_detail(
@@ -4019,11 +7785,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordPlanDeviceByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordPlanDeviceByDeviceResponse().from_map(
-            self.do_rpcrequest('QueryRecordPlanDeviceByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecordPlanDeviceByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordPlanDeviceByDeviceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_record_plan_device_by_device_with_options_async(
@@ -4032,11 +7814,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordPlanDeviceByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordPlanDeviceByDeviceResponse().from_map(
-            await self.do_rpcrequest_async('QueryRecordPlanDeviceByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecordPlanDeviceByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordPlanDeviceByDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_record_plan_device_by_device(
@@ -4059,11 +7857,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordPlanDeviceByPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordPlanDeviceByPlanResponse().from_map(
-            self.do_rpcrequest('QueryRecordPlanDeviceByPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecordPlanDeviceByPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordPlanDeviceByPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_record_plan_device_by_plan_with_options_async(
@@ -4072,11 +7887,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordPlanDeviceByPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordPlanDeviceByPlanResponse().from_map(
-            await self.do_rpcrequest_async('QueryRecordPlanDeviceByPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecordPlanDeviceByPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordPlanDeviceByPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_record_plan_device_by_plan(
@@ -4099,11 +7931,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordPlansResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordPlansResponse().from_map(
-            self.do_rpcrequest('QueryRecordPlans', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecordPlans',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordPlansResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_record_plans_with_options_async(
@@ -4112,11 +7960,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordPlansResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CurrentPage'] = request.current_page
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordPlansResponse().from_map(
-            await self.do_rpcrequest_async('QueryRecordPlans', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecordPlans',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordPlansResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_record_plans(
@@ -4139,11 +8003,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['FileName'] = request.file_name
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordUrlResponse().from_map(
-            self.do_rpcrequest('QueryRecordUrl', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecordUrl',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordUrlResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_record_url_with_options_async(
@@ -4152,11 +8033,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryRecordUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['FileName'] = request.file_name
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryRecordUrlResponse().from_map(
-            await self.do_rpcrequest_async('QueryRecordUrl', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRecordUrl',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordUrlResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_record_url(
@@ -4179,11 +8077,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryStandardAIAppTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryStandardAIAppTemplatesResponse().from_map(
-            self.do_rpcrequest('QueryStandardAIAppTemplates', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryStandardAIAppTemplates',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryStandardAIAppTemplatesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_standard_aiapp_templates_with_options_async(
@@ -4192,11 +8106,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryStandardAIAppTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryStandardAIAppTemplatesResponse().from_map(
-            await self.do_rpcrequest_async('QueryStandardAIAppTemplates', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryStandardAIAppTemplates',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryStandardAIAppTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_standard_aiapp_templates(
@@ -4219,11 +8149,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryTimeTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryTimeTemplateResponse().from_map(
-            self.do_rpcrequest('QueryTimeTemplate', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryTimeTemplate',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryTimeTemplateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_time_template_with_options_async(
@@ -4232,11 +8178,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryTimeTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryTimeTemplateResponse().from_map(
-            await self.do_rpcrequest_async('QueryTimeTemplate', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryTimeTemplate',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryTimeTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_time_template(
@@ -4259,11 +8221,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryTimeTemplateDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryTimeTemplateDetailResponse().from_map(
-            self.do_rpcrequest('QueryTimeTemplateDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryTimeTemplateDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryTimeTemplateDetailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_time_template_detail_with_options_async(
@@ -4272,11 +8249,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryTimeTemplateDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryTimeTemplateDetailResponse().from_map(
-            await self.do_rpcrequest_async('QueryTimeTemplateDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryTimeTemplateDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryTimeTemplateDetailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_time_template_detail(
@@ -4299,11 +8291,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryVoiceIntercomResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryVoiceIntercomResponse().from_map(
-            self.do_rpcrequest('QueryVoiceIntercom', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryVoiceIntercom',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryVoiceIntercomResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_voice_intercom_with_options_async(
@@ -4312,11 +8320,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.QueryVoiceIntercomResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.QueryVoiceIntercomResponse().from_map(
-            await self.do_rpcrequest_async('QueryVoiceIntercom', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryVoiceIntercom',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryVoiceIntercomResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_voice_intercom(
@@ -4339,11 +8363,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.RemoveAIAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.RemoveAIAppResponse().from_map(
-            self.do_rpcrequest('RemoveAIApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveAIApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.RemoveAIAppResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def remove_aiapp_with_options_async(
@@ -4352,11 +8391,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.RemoveAIAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.RemoveAIAppResponse().from_map(
-            await self.do_rpcrequest_async('RemoveAIApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveAIApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.RemoveAIAppResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_aiapp(
@@ -4379,11 +8433,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.RemoveAIPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.RemoveAIPlanResponse().from_map(
-            self.do_rpcrequest('RemoveAIPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveAIPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.RemoveAIPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def remove_aiplan_with_options_async(
@@ -4392,11 +8461,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.RemoveAIPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.RemoveAIPlanResponse().from_map(
-            await self.do_rpcrequest_async('RemoveAIPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveAIPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.RemoveAIPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_aiplan(
@@ -4419,11 +8503,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.RemoveDevicePurifyPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.RemoveDevicePurifyPlanResponse().from_map(
-            self.do_rpcrequest('RemoveDevicePurifyPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveDevicePurifyPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.RemoveDevicePurifyPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def remove_device_purify_plan_with_options_async(
@@ -4432,11 +8531,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.RemoveDevicePurifyPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.RemoveDevicePurifyPlanResponse().from_map(
-            await self.do_rpcrequest_async('RemoveDevicePurifyPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveDevicePurifyPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.RemoveDevicePurifyPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_device_purify_plan(
@@ -4459,11 +8573,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.RemoveFaceDeviceFromDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['ProductKey'] = request.product_key
+        query['DeviceName'] = request.device_name
+        query['DeviceGroupId'] = request.device_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.RemoveFaceDeviceFromDeviceGroupResponse().from_map(
-            self.do_rpcrequest('RemoveFaceDeviceFromDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveFaceDeviceFromDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.RemoveFaceDeviceFromDeviceGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def remove_face_device_from_device_group_with_options_async(
@@ -4472,11 +8605,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.RemoveFaceDeviceFromDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['ProductKey'] = request.product_key
+        query['DeviceName'] = request.device_name
+        query['DeviceGroupId'] = request.device_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.RemoveFaceDeviceFromDeviceGroupResponse().from_map(
-            await self.do_rpcrequest_async('RemoveFaceDeviceFromDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveFaceDeviceFromDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.RemoveFaceDeviceFromDeviceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_face_device_from_device_group(
@@ -4499,11 +8651,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.RemoveFaceUserFromUserGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
+        query['UserGroupId'] = request.user_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.RemoveFaceUserFromUserGroupResponse().from_map(
-            self.do_rpcrequest('RemoveFaceUserFromUserGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveFaceUserFromUserGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.RemoveFaceUserFromUserGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def remove_face_user_from_user_group_with_options_async(
@@ -4512,11 +8681,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.RemoveFaceUserFromUserGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
+        query['UserGroupId'] = request.user_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.RemoveFaceUserFromUserGroupResponse().from_map(
-            await self.do_rpcrequest_async('RemoveFaceUserFromUserGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveFaceUserFromUserGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.RemoveFaceUserFromUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_face_user_from_user_group(
@@ -4539,11 +8725,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.SetDevicePictureLifeCycleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['Day'] = request.day
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.SetDevicePictureLifeCycleResponse().from_map(
-            self.do_rpcrequest('SetDevicePictureLifeCycle', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetDevicePictureLifeCycle',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.SetDevicePictureLifeCycleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def set_device_picture_life_cycle_with_options_async(
@@ -4552,11 +8754,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.SetDevicePictureLifeCycleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['Day'] = request.day
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.SetDevicePictureLifeCycleResponse().from_map(
-            await self.do_rpcrequest_async('SetDevicePictureLifeCycle', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetDevicePictureLifeCycle',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.SetDevicePictureLifeCycleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_device_picture_life_cycle(
@@ -4579,11 +8797,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.SetDeviceRecordLifeCycleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['Day'] = request.day
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.SetDeviceRecordLifeCycleResponse().from_map(
-            self.do_rpcrequest('SetDeviceRecordLifeCycle', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetDeviceRecordLifeCycle',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.SetDeviceRecordLifeCycleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def set_device_record_life_cycle_with_options_async(
@@ -4592,11 +8826,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.SetDeviceRecordLifeCycleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['Day'] = request.day
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.SetDeviceRecordLifeCycleResponse().from_map(
-            await self.do_rpcrequest_async('SetDeviceRecordLifeCycle', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetDeviceRecordLifeCycle',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.SetDeviceRecordLifeCycleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_device_record_life_cycle(
@@ -4619,11 +8869,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.StopLiveStreamingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.StopLiveStreamingResponse().from_map(
-            self.do_rpcrequest('StopLiveStreaming', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopLiveStreaming',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.StopLiveStreamingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def stop_live_streaming_with_options_async(
@@ -4632,11 +8899,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.StopLiveStreamingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.StopLiveStreamingResponse().from_map(
-            await self.do_rpcrequest_async('StopLiveStreaming', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopLiveStreaming',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.StopLiveStreamingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_live_streaming(
@@ -4659,11 +8943,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.StopTriggeredRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['RecordId'] = request.record_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.StopTriggeredRecordResponse().from_map(
-            self.do_rpcrequest('StopTriggeredRecord', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopTriggeredRecord',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.StopTriggeredRecordResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def stop_triggered_record_with_options_async(
@@ -4672,11 +8972,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.StopTriggeredRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['RecordId'] = request.record_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.StopTriggeredRecordResponse().from_map(
-            await self.do_rpcrequest_async('StopTriggeredRecord', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopTriggeredRecord',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.StopTriggeredRecordResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_triggered_record(
@@ -4699,11 +9015,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.TriggerCapturePictureResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.TriggerCapturePictureResponse().from_map(
-            self.do_rpcrequest('TriggerCapturePicture', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TriggerCapturePicture',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.TriggerCapturePictureResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def trigger_capture_picture_with_options_async(
@@ -4712,11 +9044,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.TriggerCapturePictureResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.TriggerCapturePictureResponse().from_map(
-            await self.do_rpcrequest_async('TriggerCapturePicture', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TriggerCapturePicture',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.TriggerCapturePictureResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def trigger_capture_picture(
@@ -4739,11 +9087,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.TriggerRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
+        query['PreRecordDuration'] = request.pre_record_duration
+        query['RecordDuration'] = request.record_duration
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.TriggerRecordResponse().from_map(
-            self.do_rpcrequest('TriggerRecord', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TriggerRecord',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.TriggerRecordResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def trigger_record_with_options_async(
@@ -4752,11 +9119,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.TriggerRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IotId'] = request.iot_id
+        query['StreamType'] = request.stream_type
+        query['PreRecordDuration'] = request.pre_record_duration
+        query['RecordDuration'] = request.record_duration
+        query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.TriggerRecordResponse().from_map(
-            await self.do_rpcrequest_async('TriggerRecord', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TriggerRecord',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.TriggerRecordResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def trigger_record(
@@ -4779,11 +9165,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UnbindAIPlanWithDevicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['IotIdList'] = request.iot_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UnbindAIPlanWithDevicesResponse().from_map(
-            self.do_rpcrequest('UnbindAIPlanWithDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UnbindAIPlanWithDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UnbindAIPlanWithDevicesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def unbind_aiplan_with_devices_with_options_async(
@@ -4792,11 +9194,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UnbindAIPlanWithDevicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['IotIdList'] = request.iot_id_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UnbindAIPlanWithDevicesResponse().from_map(
-            await self.do_rpcrequest_async('UnbindAIPlanWithDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UnbindAIPlanWithDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UnbindAIPlanWithDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def unbind_aiplan_with_devices(
@@ -4819,11 +9237,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UnbindPictureSearchAppWithDevicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['DeviceIotIds'] = request.device_iot_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UnbindPictureSearchAppWithDevicesResponse().from_map(
-            self.do_rpcrequest('UnbindPictureSearchAppWithDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UnbindPictureSearchAppWithDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UnbindPictureSearchAppWithDevicesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def unbind_picture_search_app_with_devices_with_options_async(
@@ -4832,11 +9267,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UnbindPictureSearchAppWithDevicesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['IotInstanceId'] = request.iot_instance_id
+        query['DeviceIotIds'] = request.device_iot_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UnbindPictureSearchAppWithDevicesResponse().from_map(
-            await self.do_rpcrequest_async('UnbindPictureSearchAppWithDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UnbindPictureSearchAppWithDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UnbindPictureSearchAppWithDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def unbind_picture_search_app_with_devices(
@@ -4859,11 +9311,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateAIAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['Level'] = request.level
+        query['Name'] = request.name
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateAIAppResponse().from_map(
-            self.do_rpcrequest('UpdateAIApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAIApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateAIAppResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_aiapp_with_options_async(
@@ -4872,11 +9342,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateAIAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['Level'] = request.level
+        query['Name'] = request.name
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateAIAppResponse().from_map(
-            await self.do_rpcrequest_async('UpdateAIApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAIApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateAIAppResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_aiapp(
@@ -4899,11 +9387,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateAIPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateAIPlanResponse().from_map(
-            self.do_rpcrequest('UpdateAIPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAIPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateAIPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_aiplan_with_options_async(
@@ -4912,11 +9416,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateAIPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateAIPlanResponse().from_map(
-            await self.do_rpcrequest_async('UpdateAIPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAIPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateAIPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_aiplan(
@@ -4939,11 +9459,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateDevicePurifyPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateDevicePurifyPlanResponse().from_map(
-            self.do_rpcrequest('UpdateDevicePurifyPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateDevicePurifyPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateDevicePurifyPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_device_purify_plan_with_options_async(
@@ -4952,11 +9489,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateDevicePurifyPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateDevicePurifyPlanResponse().from_map(
-            await self.do_rpcrequest_async('UpdateDevicePurifyPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateDevicePurifyPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateDevicePurifyPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_device_purify_plan(
@@ -4979,11 +9533,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateEventRecordPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['Name'] = request.name
+        query['EventTypes'] = request.event_types
+        query['PreRecordDuration'] = request.pre_record_duration
+        query['RecordDuration'] = request.record_duration
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateEventRecordPlanResponse().from_map(
-            self.do_rpcrequest('UpdateEventRecordPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateEventRecordPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateEventRecordPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_event_record_plan_with_options_async(
@@ -4992,11 +9566,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateEventRecordPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['Name'] = request.name
+        query['EventTypes'] = request.event_types
+        query['PreRecordDuration'] = request.pre_record_duration
+        query['RecordDuration'] = request.record_duration
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateEventRecordPlanResponse().from_map(
-            await self.do_rpcrequest_async('UpdateEventRecordPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateEventRecordPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateEventRecordPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_event_record_plan(
@@ -5019,11 +9613,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateFaceUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
+        query['Name'] = request.name
+        query['Params'] = request.params
+        query['FacePicUrl'] = request.face_pic_url
+        query['CustomUserId'] = request.custom_user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateFaceUserResponse().from_map(
-            self.do_rpcrequest('UpdateFaceUser', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateFaceUser',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateFaceUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_face_user_with_options_async(
@@ -5032,11 +9646,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateFaceUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['UserId'] = request.user_id
+        query['Name'] = request.name
+        query['Params'] = request.params
+        query['FacePicUrl'] = request.face_pic_url
+        query['CustomUserId'] = request.custom_user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateFaceUserResponse().from_map(
-            await self.do_rpcrequest_async('UpdateFaceUser', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateFaceUser',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateFaceUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_face_user(
@@ -5059,11 +9693,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateFaceUserGroupAndDeviceGroupRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['ControlId'] = request.control_id
+        query['Relation'] = request.relation
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateFaceUserGroupAndDeviceGroupRelationResponse().from_map(
-            self.do_rpcrequest('UpdateFaceUserGroupAndDeviceGroupRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateFaceUserGroupAndDeviceGroupRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateFaceUserGroupAndDeviceGroupRelationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_face_user_group_and_device_group_relation_with_options_async(
@@ -5072,11 +9723,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateFaceUserGroupAndDeviceGroupRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsolationId'] = request.isolation_id
+        query['ControlId'] = request.control_id
+        query['Relation'] = request.relation
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateFaceUserGroupAndDeviceGroupRelationResponse().from_map(
-            await self.do_rpcrequest_async('UpdateFaceUserGroupAndDeviceGroupRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateFaceUserGroupAndDeviceGroupRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateFaceUserGroupAndDeviceGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_face_user_group_and_device_group_relation(
@@ -5099,11 +9767,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ModelId'] = request.model_id
+        query['Name'] = request.name
+        query['Hardware'] = request.hardware
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateModelResponse().from_map(
-            self.do_rpcrequest('UpdateModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateModelResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_model_with_options_async(
@@ -5112,11 +9798,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ModelId'] = request.model_id
+        query['Name'] = request.name
+        query['Hardware'] = request.hardware
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateModelResponse().from_map(
-            await self.do_rpcrequest_async('UpdateModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateModelResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_model(
@@ -5133,17 +9837,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_model_with_options_async(request, runtime)
 
+    def update_picture_search_app_with_options(
+        self,
+        request: linkvisual_20180120_models.UpdatePictureSearchAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.UpdatePictureSearchAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdatePictureSearchApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdatePictureSearchAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_picture_search_app_with_options_async(
+        self,
+        request: linkvisual_20180120_models.UpdatePictureSearchAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.UpdatePictureSearchAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppInstanceId'] = request.app_instance_id
+        query['Name'] = request.name
+        query['Description'] = request.description
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdatePictureSearchApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdatePictureSearchAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_picture_search_app(
+        self,
+        request: linkvisual_20180120_models.UpdatePictureSearchAppRequest,
+    ) -> linkvisual_20180120_models.UpdatePictureSearchAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_picture_search_app_with_options(request, runtime)
+
+    async def update_picture_search_app_async(
+        self,
+        request: linkvisual_20180120_models.UpdatePictureSearchAppRequest,
+    ) -> linkvisual_20180120_models.UpdatePictureSearchAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_picture_search_app_with_options_async(request, runtime)
+
     def update_record_plan_with_options(
         self,
         request: linkvisual_20180120_models.UpdateRecordPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateRecordPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['Name'] = request.name
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateRecordPlanResponse().from_map(
-            self.do_rpcrequest('UpdateRecordPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateRecordPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateRecordPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_record_plan_with_options_async(
@@ -5152,11 +9947,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateRecordPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PlanId'] = request.plan_id
+        query['Name'] = request.name
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateRecordPlanResponse().from_map(
-            await self.do_rpcrequest_async('UpdateRecordPlan', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateRecordPlan',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateRecordPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_record_plan(
@@ -5179,11 +9991,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateTimeTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
+        query['Name'] = request.name
+        query['AllDay'] = request.all_day
+        query['TimeSections'] = request.time_sections
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateTimeTemplateResponse().from_map(
-            self.do_rpcrequest('UpdateTimeTemplate', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateTimeTemplate',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateTimeTemplateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_time_template_with_options_async(
@@ -5192,11 +10022,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> linkvisual_20180120_models.UpdateTimeTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
+        query['Name'] = request.name
+        query['AllDay'] = request.all_day
+        query['TimeSections'] = request.time_sections
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return linkvisual_20180120_models.UpdateTimeTemplateResponse().from_map(
-            await self.do_rpcrequest_async('UpdateTimeTemplate', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateTimeTemplate',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateTimeTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_time_template(
