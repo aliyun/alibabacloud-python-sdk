@@ -29,6 +29,10 @@ class DoIotChgBindOrUnBindRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -80,6 +84,10 @@ class DoIotChgBindOrUnBindResponseBodyIotModBind(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_mod_success is not None:
             result['IsModSuccess'] = self.is_mod_success
@@ -110,6 +118,10 @@ class DoIotChgBindOrUnBindResponseBody(TeaModel):
             self.iot_mod_bind.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.iot_mod_bind is not None:
             result['IotModBind'] = self.iot_mod_bind.to_map()
@@ -151,6 +163,10 @@ class DoIotChgBindOrUnBindResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -185,6 +201,10 @@ class DoIotIsImeiExistRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -220,6 +240,10 @@ class DoIotIsImeiExistResponseBodyIotImeiExist(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_imei_exist is not None:
             result['IsImeiExist'] = self.is_imei_exist
@@ -250,6 +274,10 @@ class DoIotIsImeiExistResponseBody(TeaModel):
             self.iot_imei_exist.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.iot_imei_exist is not None:
             result['IotImeiExist'] = self.iot_imei_exist.to_map()
@@ -291,6 +319,10 @@ class DoIotIsImeiExistResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -329,6 +361,10 @@ class DoIotPostImeiRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -372,6 +408,10 @@ class DoIotPostImeiResponseBodyIotPostImei(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_post_success is not None:
             result['IsPostSuccess'] = self.is_post_success
@@ -402,6 +442,10 @@ class DoIotPostImeiResponseBody(TeaModel):
             self.iot_post_imei.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.iot_post_imei is not None:
             result['IotPostImei'] = self.iot_post_imei.to_map()
@@ -443,6 +487,10 @@ class DoIotPostImeiResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -487,6 +535,10 @@ class DoIotRechargeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -546,6 +598,10 @@ class DoIotRechargeResponseBodyIotRecharge(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.order_no is not None:
             result['OrderNo'] = self.order_no
@@ -584,6 +640,10 @@ class DoIotRechargeResponseBody(TeaModel):
             self.iot_recharge.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -625,6 +685,10 @@ class DoIotRechargeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -663,6 +727,10 @@ class DoIotSetAbsoluteRemindConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -710,6 +778,10 @@ class DoIotSetAbsoluteRemindConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -746,6 +818,10 @@ class DoIotSetAbsoluteRemindConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -786,6 +862,10 @@ class DoIotSetRemindConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -837,6 +917,10 @@ class DoIotSetRemindConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -873,6 +957,10 @@ class DoIotSetRemindConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -907,6 +995,10 @@ class DoIotUnbindResumeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -948,6 +1040,10 @@ class DoIotUnbindResumeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -988,6 +1084,10 @@ class DoIotUnbindResumeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1024,6 +1124,10 @@ class DoIotUserStopResumeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1063,6 +1167,10 @@ class DoIotUserStopResumeResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.control_result is not None:
             result['ControlResult'] = self.control_result
@@ -1093,6 +1201,10 @@ class DoIotUserStopResumeResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1134,6 +1246,10 @@ class DoIotUserStopResumeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1174,6 +1290,10 @@ class DoSendIotSmsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1227,6 +1347,10 @@ class DoSendIotSmsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1267,6 +1391,10 @@ class DoSendIotSmsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1301,6 +1429,10 @@ class QueryCardFlowInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1354,6 +1486,10 @@ class QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.valid_date is not None:
             result['ValidDate'] = self.valid_date
@@ -1416,6 +1552,10 @@ class QueryCardFlowInfoResponseBodyCardFlowInfos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CardFlowInfo'] = []
         if self.card_flow_info is not None:
@@ -1451,6 +1591,10 @@ class QueryCardFlowInfoResponseBody(TeaModel):
             self.card_flow_infos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.card_flow_infos is not None:
             result['CardFlowInfos'] = self.card_flow_infos.to_map()
@@ -1492,6 +1636,10 @@ class QueryCardFlowInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1524,6 +1672,10 @@ class QueryCardHistoryFlowInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.iccid is not None:
             result['Iccid'] = self.iccid
@@ -1557,6 +1709,10 @@ class QueryCardHistoryFlowInfoResponseBodyDataDayUsageList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.day is not None:
             result['Day'] = self.day
@@ -1591,6 +1747,10 @@ class QueryCardHistoryFlowInfoResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DayUsageList'] = []
         if self.day_usage_list is not None:
@@ -1638,6 +1798,10 @@ class QueryCardHistoryFlowInfoResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1687,6 +1851,10 @@ class QueryCardHistoryFlowInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1721,6 +1889,10 @@ class QueryCardInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1770,6 +1942,10 @@ class QueryCardInfoResponseBodyCardInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.imsi is not None:
             result['Imsi'] = self.imsi
@@ -1828,6 +2004,10 @@ class QueryCardInfoResponseBody(TeaModel):
             self.card_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1869,6 +2049,10 @@ class QueryCardInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1903,6 +2087,10 @@ class QueryCardsInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1952,6 +2140,10 @@ class QueryCardsInfoResponseBodyCardsInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.imsi is not None:
             result['Imsi'] = self.imsi
@@ -2012,6 +2204,10 @@ class QueryCardsInfoResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2057,6 +2253,10 @@ class QueryCardsInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2091,6 +2291,10 @@ class QueryCardStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -2130,6 +2334,10 @@ class QueryCardStatusResponseBodyCardStatus(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.msisdn is not None:
             result['Msisdn'] = self.msisdn
@@ -2168,6 +2376,10 @@ class QueryCardStatusResponseBody(TeaModel):
             self.card_status.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2209,6 +2421,10 @@ class QueryCardStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2243,6 +2459,10 @@ class QueryIotCardOfferDtlRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -2286,6 +2506,10 @@ class QueryIotCardOfferDtlResponseBodyCardOfferDetailDetail(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.effective_time is not None:
             result['EffectiveTime'] = self.effective_time
@@ -2328,6 +2552,10 @@ class QueryIotCardOfferDtlResponseBodyCardOfferDetail(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['detail'] = []
         if self.detail is not None:
@@ -2363,6 +2591,10 @@ class QueryIotCardOfferDtlResponseBody(TeaModel):
             self.card_offer_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2404,6 +2636,10 @@ class QueryIotCardOfferDtlResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2438,6 +2674,10 @@ class QueryPersonalInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -2479,6 +2719,10 @@ class QueryPersonalInfoResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2519,6 +2763,10 @@ class QueryPersonalInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

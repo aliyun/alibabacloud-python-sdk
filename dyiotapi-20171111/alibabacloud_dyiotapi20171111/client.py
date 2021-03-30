@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dyiotapi20171111 import models as dyiotapi_20171111_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -45,11 +47,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotChgBindOrUnBindResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
+        query['Imei'] = request.imei
+        query['NewImei'] = request.new_imei
+        query['OpionType'] = request.opion_type
+        query['MidChannelId'] = request.mid_channel_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotChgBindOrUnBindResponse().from_map(
-            self.do_rpcrequest('DoIotChgBindOrUnBind', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotChgBindOrUnBind',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotChgBindOrUnBindResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def do_iot_chg_bind_or_un_bind_with_options_async(
@@ -58,11 +82,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotChgBindOrUnBindResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
+        query['Imei'] = request.imei
+        query['NewImei'] = request.new_imei
+        query['OpionType'] = request.opion_type
+        query['MidChannelId'] = request.mid_channel_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotChgBindOrUnBindResponse().from_map(
-            await self.do_rpcrequest_async('DoIotChgBindOrUnBind', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotChgBindOrUnBind',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotChgBindOrUnBindResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def do_iot_chg_bind_or_un_bind(
@@ -85,11 +131,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotIsImeiExistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Imei'] = request.imei
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotIsImeiExistResponse().from_map(
-            self.do_rpcrequest('DoIotIsImeiExist', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotIsImeiExist',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotIsImeiExistResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def do_iot_is_imei_exist_with_options_async(
@@ -98,11 +162,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotIsImeiExistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Imei'] = request.imei
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotIsImeiExistResponse().from_map(
-            await self.do_rpcrequest_async('DoIotIsImeiExist', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotIsImeiExist',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotIsImeiExistResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def do_iot_is_imei_exist(
@@ -125,11 +207,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotPostImeiResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Imei'] = request.imei
+        query['Comments'] = request.comments
+        query['DeviceType'] = request.device_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotPostImeiResponse().from_map(
-            self.do_rpcrequest('DoIotPostImei', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotPostImei',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotPostImeiResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def do_iot_post_imei_with_options_async(
@@ -138,11 +240,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotPostImeiResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Imei'] = request.imei
+        query['Comments'] = request.comments
+        query['DeviceType'] = request.device_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotPostImeiResponse().from_map(
-            await self.do_rpcrequest_async('DoIotPostImei', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotPostImei',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotPostImeiResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def do_iot_post_imei(
@@ -165,11 +287,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotRechargeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
+        query['OfferIds'] = request.offer_ids
+        query['OutId'] = request.out_id
+        query['Amount'] = request.amount
+        query['EffCode'] = request.eff_code
+        query['OrderNum'] = request.order_num
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotRechargeResponse().from_map(
-            self.do_rpcrequest('DoIotRecharge', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotRecharge',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotRechargeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def do_iot_recharge_with_options_async(
@@ -178,11 +323,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotRechargeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
+        query['OfferIds'] = request.offer_ids
+        query['OutId'] = request.out_id
+        query['Amount'] = request.amount
+        query['EffCode'] = request.eff_code
+        query['OrderNum'] = request.order_num
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotRechargeResponse().from_map(
-            await self.do_rpcrequest_async('DoIotRecharge', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotRecharge',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotRechargeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def do_iot_recharge(
@@ -205,11 +373,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotSetAbsoluteRemindConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['BizType'] = request.biz_type
+        query['BizId'] = request.biz_id
+        query['ConfigInfo'] = request.config_info
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotSetAbsoluteRemindConfigResponse().from_map(
-            self.do_rpcrequest('DoIotSetAbsoluteRemindConfig', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotSetAbsoluteRemindConfig',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotSetAbsoluteRemindConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def do_iot_set_absolute_remind_config_with_options_async(
@@ -218,11 +406,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotSetAbsoluteRemindConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['BizType'] = request.biz_type
+        query['BizId'] = request.biz_id
+        query['ConfigInfo'] = request.config_info
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotSetAbsoluteRemindConfigResponse().from_map(
-            await self.do_rpcrequest_async('DoIotSetAbsoluteRemindConfig', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotSetAbsoluteRemindConfig',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotSetAbsoluteRemindConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def do_iot_set_absolute_remind_config(
@@ -245,11 +453,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotSetRemindConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['BizType'] = request.biz_type
+        query['BizId'] = request.biz_id
+        query['OperationType'] = request.operation_type
+        query['ConfigInfo'] = request.config_info
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotSetRemindConfigResponse().from_map(
-            self.do_rpcrequest('DoIotSetRemindConfig', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotSetRemindConfig',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotSetRemindConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def do_iot_set_remind_config_with_options_async(
@@ -258,11 +487,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotSetRemindConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['BizType'] = request.biz_type
+        query['BizId'] = request.biz_id
+        query['OperationType'] = request.operation_type
+        query['ConfigInfo'] = request.config_info
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotSetRemindConfigResponse().from_map(
-            await self.do_rpcrequest_async('DoIotSetRemindConfig', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotSetRemindConfig',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotSetRemindConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def do_iot_set_remind_config(
@@ -285,11 +535,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotUnbindResumeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotUnbindResumeResponse().from_map(
-            self.do_rpcrequest('DoIotUnbindResume', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotUnbindResume',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotUnbindResumeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def do_iot_unbind_resume_with_options_async(
@@ -298,11 +566,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotUnbindResumeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotUnbindResumeResponse().from_map(
-            await self.do_rpcrequest_async('DoIotUnbindResume', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotUnbindResume',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotUnbindResumeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def do_iot_unbind_resume(
@@ -325,11 +611,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotUserStopResumeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
+        query['OptionType'] = request.option_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotUserStopResumeResponse().from_map(
-            self.do_rpcrequest('DoIotUserStopResume', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotUserStopResume',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotUserStopResumeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def do_iot_user_stop_resume_with_options_async(
@@ -338,11 +643,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoIotUserStopResumeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
+        query['OptionType'] = request.option_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoIotUserStopResumeResponse().from_map(
-            await self.do_rpcrequest_async('DoIotUserStopResume', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoIotUserStopResume',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoIotUserStopResumeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def do_iot_user_stop_resume(
@@ -365,11 +689,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoSendIotSmsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignName'] = request.sign_name
+        query['TemplateCode'] = request.template_code
+        query['PhoneNumbers'] = request.phone_numbers
+        query['TemplateParam'] = request.template_param
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoSendIotSmsResponse().from_map(
-            self.do_rpcrequest('DoSendIotSms', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoSendIotSms',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoSendIotSmsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def do_send_iot_sms_with_options_async(
@@ -378,11 +723,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.DoSendIotSmsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignName'] = request.sign_name
+        query['TemplateCode'] = request.template_code
+        query['PhoneNumbers'] = request.phone_numbers
+        query['TemplateParam'] = request.template_param
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.DoSendIotSmsResponse().from_map(
-            await self.do_rpcrequest_async('DoSendIotSms', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DoSendIotSms',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.DoSendIotSmsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def do_send_iot_sms(
@@ -405,11 +771,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryCardFlowInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryCardFlowInfoResponse().from_map(
-            self.do_rpcrequest('QueryCardFlowInfo', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryCardFlowInfo',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryCardFlowInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_card_flow_info_with_options_async(
@@ -418,11 +802,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryCardFlowInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryCardFlowInfoResponse().from_map(
-            await self.do_rpcrequest_async('QueryCardFlowInfo', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryCardFlowInfo',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryCardFlowInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_card_flow_info(
@@ -445,11 +847,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryCardHistoryFlowInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Iccid'] = request.iccid
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryCardHistoryFlowInfoResponse().from_map(
-            self.do_rpcrequest('QueryCardHistoryFlowInfo', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryCardHistoryFlowInfo',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryCardHistoryFlowInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_card_history_flow_info_with_options_async(
@@ -458,11 +877,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryCardHistoryFlowInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Iccid'] = request.iccid
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryCardHistoryFlowInfoResponse().from_map(
-            await self.do_rpcrequest_async('QueryCardHistoryFlowInfo', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryCardHistoryFlowInfo',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryCardHistoryFlowInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_card_history_flow_info(
@@ -485,11 +921,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryCardInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryCardInfoResponse().from_map(
-            self.do_rpcrequest('QueryCardInfo', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryCardInfo',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryCardInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_card_info_with_options_async(
@@ -498,11 +952,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryCardInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryCardInfoResponse().from_map(
-            await self.do_rpcrequest_async('QueryCardInfo', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryCardInfo',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryCardInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_card_info(
@@ -525,11 +997,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryCardsInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryCardsInfoResponse().from_map(
-            self.do_rpcrequest('QueryCardsInfo', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryCardsInfo',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryCardsInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_cards_info_with_options_async(
@@ -538,11 +1028,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryCardsInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryCardsInfoResponse().from_map(
-            await self.do_rpcrequest_async('QueryCardsInfo', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryCardsInfo',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryCardsInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_cards_info(
@@ -565,11 +1073,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryCardStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryCardStatusResponse().from_map(
-            self.do_rpcrequest('QueryCardStatus', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryCardStatus',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryCardStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_card_status_with_options_async(
@@ -578,11 +1104,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryCardStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryCardStatusResponse().from_map(
-            await self.do_rpcrequest_async('QueryCardStatus', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryCardStatus',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryCardStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_card_status(
@@ -605,11 +1149,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryIotCardOfferDtlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryIotCardOfferDtlResponse().from_map(
-            self.do_rpcrequest('QueryIotCardOfferDtl', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryIotCardOfferDtl',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryIotCardOfferDtlResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_iot_card_offer_dtl_with_options_async(
@@ -618,11 +1180,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryIotCardOfferDtlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryIotCardOfferDtlResponse().from_map(
-            await self.do_rpcrequest_async('QueryIotCardOfferDtl', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryIotCardOfferDtl',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryIotCardOfferDtlResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_iot_card_offer_dtl(
@@ -645,11 +1225,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryPersonalInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryPersonalInfoResponse().from_map(
-            self.do_rpcrequest('QueryPersonalInfo', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryPersonalInfo',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryPersonalInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_personal_info_with_options_async(
@@ -658,11 +1256,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyiotapi_20171111_models.QueryPersonalInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Iccid'] = request.iccid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return dyiotapi_20171111_models.QueryPersonalInfoResponse().from_map(
-            await self.do_rpcrequest_async('QueryPersonalInfo', '2017-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryPersonalInfo',
+            version='2017-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyiotapi_20171111_models.QueryPersonalInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_personal_info(
