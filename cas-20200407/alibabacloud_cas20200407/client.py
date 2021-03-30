@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_cas20200407 import models as cas_20200407_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -90,17 +92,261 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def cancel_certificate_for_package_request_with_options(
+        self,
+        request: cas_20200407_models.CancelCertificateForPackageRequestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CancelCertificateForPackageRequestResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelCertificateForPackageRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CancelCertificateForPackageRequestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_certificate_for_package_request_with_options_async(
+        self,
+        request: cas_20200407_models.CancelCertificateForPackageRequestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CancelCertificateForPackageRequestResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelCertificateForPackageRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CancelCertificateForPackageRequestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_certificate_for_package_request(
+        self,
+        request: cas_20200407_models.CancelCertificateForPackageRequestRequest,
+    ) -> cas_20200407_models.CancelCertificateForPackageRequestResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_certificate_for_package_request_with_options(request, runtime)
+
+    async def cancel_certificate_for_package_request_async(
+        self,
+        request: cas_20200407_models.CancelCertificateForPackageRequestRequest,
+    ) -> cas_20200407_models.CancelCertificateForPackageRequestResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_certificate_for_package_request_with_options_async(request, runtime)
+
+    def cancel_order_request_with_options(
+        self,
+        request: cas_20200407_models.CancelOrderRequestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CancelOrderRequestResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelOrderRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CancelOrderRequestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_order_request_with_options_async(
+        self,
+        request: cas_20200407_models.CancelOrderRequestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CancelOrderRequestResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelOrderRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CancelOrderRequestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_order_request(
+        self,
+        request: cas_20200407_models.CancelOrderRequestRequest,
+    ) -> cas_20200407_models.CancelOrderRequestResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_order_request_with_options(request, runtime)
+
+    async def cancel_order_request_async(
+        self,
+        request: cas_20200407_models.CancelOrderRequestRequest,
+    ) -> cas_20200407_models.CancelOrderRequestResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_order_request_with_options_async(request, runtime)
+
+    def create_certificate_for_package_request_with_options(
+        self,
+        request: cas_20200407_models.CreateCertificateForPackageRequestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CreateCertificateForPackageRequestResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['Csr'] = request.csr
+        query['ProductCode'] = request.product_code
+        query['Username'] = request.username
+        query['Phone'] = request.phone
+        query['Email'] = request.email
+        query['Domain'] = request.domain
+        query['CompanyName'] = request.company_name
+        query['ValidateType'] = request.validate_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCertificateForPackageRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateCertificateForPackageRequestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_certificate_for_package_request_with_options_async(
+        self,
+        request: cas_20200407_models.CreateCertificateForPackageRequestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CreateCertificateForPackageRequestResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['Csr'] = request.csr
+        query['ProductCode'] = request.product_code
+        query['Username'] = request.username
+        query['Phone'] = request.phone
+        query['Email'] = request.email
+        query['Domain'] = request.domain
+        query['CompanyName'] = request.company_name
+        query['ValidateType'] = request.validate_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCertificateForPackageRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateCertificateForPackageRequestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_certificate_for_package_request(
+        self,
+        request: cas_20200407_models.CreateCertificateForPackageRequestRequest,
+    ) -> cas_20200407_models.CreateCertificateForPackageRequestResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_certificate_for_package_request_with_options(request, runtime)
+
+    async def create_certificate_for_package_request_async(
+        self,
+        request: cas_20200407_models.CreateCertificateForPackageRequestRequest,
+    ) -> cas_20200407_models.CreateCertificateForPackageRequestResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_certificate_for_package_request_with_options_async(request, runtime)
+
     def create_certificate_request_with_options(
         self,
         request: cas_20200407_models.CreateCertificateRequestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cas_20200407_models.CreateCertificateRequestResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProductCode'] = request.product_code
+        query['Username'] = request.username
+        query['Phone'] = request.phone
+        query['Email'] = request.email
+        query['Domain'] = request.domain
+        query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20200407_models.CreateCertificateRequestResponse().from_map(
-            self.do_rpcrequest('CreateCertificateRequest', '2020-04-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateCertificateRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateCertificateRequestResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_certificate_request_with_options_async(
@@ -109,11 +355,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20200407_models.CreateCertificateRequestResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProductCode'] = request.product_code
+        query['Username'] = request.username
+        query['Phone'] = request.phone
+        query['Email'] = request.email
+        query['Domain'] = request.domain
+        query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20200407_models.CreateCertificateRequestResponse().from_map(
-            await self.do_rpcrequest_async('CreateCertificateRequest', '2020-04-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateCertificateRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateCertificateRequestResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_certificate_request(
@@ -136,11 +402,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20200407_models.CreateCertificateWithCsrRequestResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Csr'] = request.csr
+        query['ProductCode'] = request.product_code
+        query['Username'] = request.username
+        query['Phone'] = request.phone
+        query['Email'] = request.email
+        query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20200407_models.CreateCertificateWithCsrRequestResponse().from_map(
-            self.do_rpcrequest('CreateCertificateWithCsrRequest', '2020-04-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateCertificateWithCsrRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateCertificateWithCsrRequestResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_certificate_with_csr_request_with_options_async(
@@ -149,11 +435,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20200407_models.CreateCertificateWithCsrRequestResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Csr'] = request.csr
+        query['ProductCode'] = request.product_code
+        query['Username'] = request.username
+        query['Phone'] = request.phone
+        query['Email'] = request.email
+        query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20200407_models.CreateCertificateWithCsrRequestResponse().from_map(
-            await self.do_rpcrequest_async('CreateCertificateWithCsrRequest', '2020-04-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateCertificateWithCsrRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateCertificateWithCsrRequestResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_certificate_with_csr_request(
@@ -176,11 +482,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20200407_models.DeleteCertificateRequestResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20200407_models.DeleteCertificateRequestResponse().from_map(
-            self.do_rpcrequest('DeleteCertificateRequest', '2020-04-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteCertificateRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DeleteCertificateRequestResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_certificate_request_with_options_async(
@@ -189,11 +510,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20200407_models.DeleteCertificateRequestResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20200407_models.DeleteCertificateRequestResponse().from_map(
-            await self.do_rpcrequest_async('DeleteCertificateRequest', '2020-04-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteCertificateRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DeleteCertificateRequestResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_certificate_request(
@@ -216,11 +552,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20200407_models.DescribeCertificateStateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20200407_models.DescribeCertificateStateResponse().from_map(
-            self.do_rpcrequest('DescribeCertificateState', '2020-04-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeCertificateState',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DescribeCertificateStateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_certificate_state_with_options_async(
@@ -229,11 +580,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20200407_models.DescribeCertificateStateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20200407_models.DescribeCertificateStateResponse().from_map(
-            await self.do_rpcrequest_async('DescribeCertificateState', '2020-04-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeCertificateState',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DescribeCertificateStateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_certificate_state(
@@ -256,11 +622,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20200407_models.DescribePackageStateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20200407_models.DescribePackageStateResponse().from_map(
-            self.do_rpcrequest('DescribePackageState', '2020-04-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribePackageState',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DescribePackageStateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_package_state_with_options_async(
@@ -269,11 +650,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20200407_models.DescribePackageStateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20200407_models.DescribePackageStateResponse().from_map(
-            await self.do_rpcrequest_async('DescribePackageState', '2020-04-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribePackageState',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DescribePackageStateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_package_state(
@@ -289,3 +685,75 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.DescribePackageStateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_package_state_with_options_async(request, runtime)
+
+    def renew_certificate_order_for_package_request_with_options(
+        self,
+        request: cas_20200407_models.RenewCertificateOrderForPackageRequestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.RenewCertificateOrderForPackageRequestResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Csr'] = request.csr
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RenewCertificateOrderForPackageRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.RenewCertificateOrderForPackageRequestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_certificate_order_for_package_request_with_options_async(
+        self,
+        request: cas_20200407_models.RenewCertificateOrderForPackageRequestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.RenewCertificateOrderForPackageRequestResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Csr'] = request.csr
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RenewCertificateOrderForPackageRequest',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.RenewCertificateOrderForPackageRequestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_certificate_order_for_package_request(
+        self,
+        request: cas_20200407_models.RenewCertificateOrderForPackageRequestRequest,
+    ) -> cas_20200407_models.RenewCertificateOrderForPackageRequestResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.renew_certificate_order_for_package_request_with_options(request, runtime)
+
+    async def renew_certificate_order_for_package_request_async(
+        self,
+        request: cas_20200407_models.RenewCertificateOrderForPackageRequestRequest,
+    ) -> cas_20200407_models.RenewCertificateOrderForPackageRequestResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.renew_certificate_order_for_package_request_with_options_async(request, runtime)

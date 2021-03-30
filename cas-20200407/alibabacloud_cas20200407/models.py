@@ -4,10 +4,330 @@ from Tea.model import TeaModel
 from typing import Dict
 
 
+class CancelCertificateForPackageRequestRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+    ):
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class CancelCertificateForPackageRequestResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelCertificateForPackageRequestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CancelCertificateForPackageRequestResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CancelCertificateForPackageRequestResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CancelOrderRequestRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+    ):
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class CancelOrderRequestResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelOrderRequestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CancelOrderRequestResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CancelOrderRequestResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateCertificateForPackageRequestRequest(TeaModel):
+    def __init__(
+        self,
+        csr: str = None,
+        product_code: str = None,
+        username: str = None,
+        phone: str = None,
+        email: str = None,
+        domain: str = None,
+        company_name: str = None,
+        validate_type: str = None,
+    ):
+        self.csr = csr
+        self.product_code = product_code
+        self.username = username
+        self.phone = phone
+        self.email = email
+        self.domain = domain
+        self.company_name = company_name
+        self.validate_type = validate_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.csr is not None:
+            result['Csr'] = self.csr
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.username is not None:
+            result['Username'] = self.username
+        if self.phone is not None:
+            result['Phone'] = self.phone
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.company_name is not None:
+            result['CompanyName'] = self.company_name
+        if self.validate_type is not None:
+            result['ValidateType'] = self.validate_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Csr') is not None:
+            self.csr = m.get('Csr')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        if m.get('Phone') is not None:
+            self.phone = m.get('Phone')
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('CompanyName') is not None:
+            self.company_name = m.get('CompanyName')
+        if m.get('ValidateType') is not None:
+            self.validate_type = m.get('ValidateType')
+        return self
+
+
+class CreateCertificateForPackageRequestResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        order_id: int = None,
+    ):
+        self.request_id = request_id
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class CreateCertificateForPackageRequestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateCertificateForPackageRequestResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateCertificateForPackageRequestResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCertificateRequestRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         product_code: str = None,
         username: str = None,
         phone: str = None,
@@ -15,7 +335,6 @@ class CreateCertificateRequestRequest(TeaModel):
         domain: str = None,
         validate_type: str = None,
     ):
-        self.source_ip = source_ip
         self.product_code = product_code
         self.username = username
         self.phone = phone
@@ -27,9 +346,11 @@ class CreateCertificateRequestRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
         if self.username is not None:
@@ -46,8 +367,6 @@ class CreateCertificateRequestRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
         if m.get('Username') is not None:
@@ -76,6 +395,10 @@ class CreateCertificateRequestResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -108,6 +431,10 @@ class CreateCertificateRequestResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -128,7 +455,6 @@ class CreateCertificateRequestResponse(TeaModel):
 class CreateCertificateWithCsrRequestRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         csr: str = None,
         product_code: str = None,
         username: str = None,
@@ -136,7 +462,6 @@ class CreateCertificateWithCsrRequestRequest(TeaModel):
         email: str = None,
         validate_type: str = None,
     ):
-        self.source_ip = source_ip
         self.csr = csr
         self.product_code = product_code
         self.username = username
@@ -148,9 +473,11 @@ class CreateCertificateWithCsrRequestRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.csr is not None:
             result['Csr'] = self.csr
         if self.product_code is not None:
@@ -167,8 +494,6 @@ class CreateCertificateWithCsrRequestRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('Csr') is not None:
             self.csr = m.get('Csr')
         if m.get('ProductCode') is not None:
@@ -197,6 +522,10 @@ class CreateCertificateWithCsrRequestResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -229,6 +558,10 @@ class CreateCertificateWithCsrRequestResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -249,27 +582,25 @@ class CreateCertificateWithCsrRequestResponse(TeaModel):
 class DeleteCertificateRequestRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         order_id: int = None,
     ):
-        self.source_ip = source_ip
         self.order_id = order_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.order_id is not None:
             result['OrderId'] = self.order_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
         return self
@@ -286,6 +617,10 @@ class DeleteCertificateRequestResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -314,6 +649,10 @@ class DeleteCertificateRequestResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -334,27 +673,25 @@ class DeleteCertificateRequestResponse(TeaModel):
 class DescribeCertificateStateRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         order_id: int = None,
     ):
-        self.source_ip = source_ip
         self.order_id = order_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.order_id is not None:
             result['OrderId'] = self.order_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
         return self
@@ -391,6 +728,10 @@ class DescribeCertificateStateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -459,6 +800,10 @@ class DescribeCertificateStateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -479,27 +824,25 @@ class DescribeCertificateStateResponse(TeaModel):
 class DescribePackageStateRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         product_code: str = None,
     ):
-        self.source_ip = source_ip
         self.product_code = product_code
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
         return self
@@ -524,6 +867,10 @@ class DescribePackageStateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -568,6 +915,10 @@ class DescribePackageStateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -581,6 +932,109 @@ class DescribePackageStateResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribePackageStateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RenewCertificateOrderForPackageRequestRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        csr: str = None,
+    ):
+        self.order_id = order_id
+        self.csr = csr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.csr is not None:
+            result['Csr'] = self.csr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Csr') is not None:
+            self.csr = m.get('Csr')
+        return self
+
+
+class RenewCertificateOrderForPackageRequestResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        order_id: int = None,
+    ):
+        self.request_id = request_id
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class RenewCertificateOrderForPackageRequestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RenewCertificateOrderForPackageRequestResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RenewCertificateOrderForPackageRequestResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
