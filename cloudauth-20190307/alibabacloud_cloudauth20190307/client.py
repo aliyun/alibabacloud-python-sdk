@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,13 +9,13 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_cloudauth20190307 import models as cloudauth_20190307_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_tea_rpc import models as rpc_models
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_oss_util import models as ossutil_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_oss_sdk.client import Client as OSSClient
 
 
@@ -56,8 +57,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CompareFacesResponse().from_map(
-            self.do_rpcrequest('CompareFaces', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CompareFaces',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CompareFacesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def compare_faces_with_options_async(
@@ -69,8 +82,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CompareFacesResponse().from_map(
-            await self.do_rpcrequest_async('CompareFaces', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CompareFaces',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CompareFacesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def compare_faces(
@@ -96,8 +121,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CompareFaceVerifyResponse().from_map(
-            self.do_rpcrequest('CompareFaceVerify', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CompareFaceVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CompareFaceVerifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def compare_face_verify_with_options_async(
@@ -109,8 +146,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CompareFaceVerifyResponse().from_map(
-            await self.do_rpcrequest_async('CompareFaceVerify', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CompareFaceVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CompareFaceVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def compare_face_verify(
@@ -133,11 +182,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.ContrastFaceVerifyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Model'] = request.model
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.ContrastFaceVerifyResponse().from_map(
-            self.do_rpcrequest('ContrastFaceVerify', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ContrastFaceVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.ContrastFaceVerifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def contrast_face_verify_with_options_async(
@@ -146,11 +210,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.ContrastFaceVerifyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Model'] = request.model
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.ContrastFaceVerifyResponse().from_map(
-            await self.do_rpcrequest_async('ContrastFaceVerify', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ContrastFaceVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.ContrastFaceVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def contrast_face_verify(
@@ -297,11 +376,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CreateAuthKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['UserDeviceId'] = request.user_device_id
+        query['Test'] = request.test
+        query['AuthYears'] = request.auth_years
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CreateAuthKeyResponse().from_map(
-            self.do_rpcrequest('CreateAuthKey', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAuthKey',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateAuthKeyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_auth_key_with_options_async(
@@ -310,11 +407,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CreateAuthKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['UserDeviceId'] = request.user_device_id
+        query['Test'] = request.test
+        query['AuthYears'] = request.auth_years
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CreateAuthKeyResponse().from_map(
-            await self.do_rpcrequest_async('CreateAuthKey', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAuthKey',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateAuthKeyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_auth_key(
@@ -337,11 +452,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CreateFaceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['BizType'] = request.biz_type
+        query['BizName'] = request.biz_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CreateFaceConfigResponse().from_map(
-            self.do_rpcrequest('CreateFaceConfig', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFaceConfig',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateFaceConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_face_config_with_options_async(
@@ -350,11 +483,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CreateFaceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['BizType'] = request.biz_type
+        query['BizName'] = request.biz_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CreateFaceConfigResponse().from_map(
-            await self.do_rpcrequest_async('CreateFaceConfig', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFaceConfig',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateFaceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_face_config(
@@ -377,11 +528,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CreateRPSDKResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['AppUrl'] = request.app_url
+        query['Platform'] = request.platform
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CreateRPSDKResponse().from_map(
-            self.do_rpcrequest('CreateRPSDK', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRPSDK',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateRPSDKResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_rpsdkwith_options_async(
@@ -390,11 +559,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CreateRPSDKResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['AppUrl'] = request.app_url
+        query['Platform'] = request.platform
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CreateRPSDKResponse().from_map(
-            await self.do_rpcrequest_async('CreateRPSDK', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRPSDK',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateRPSDKResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_rpsdk(
@@ -417,11 +604,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CreateVerifySDKResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppUrl'] = request.app_url
+        query['Platform'] = request.platform
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CreateVerifySDKResponse().from_map(
-            self.do_rpcrequest('CreateVerifySDK', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVerifySDK',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateVerifySDKResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_verify_sdkwith_options_async(
@@ -430,11 +633,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CreateVerifySDKResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppUrl'] = request.app_url
+        query['Platform'] = request.platform
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CreateVerifySDKResponse().from_map(
-            await self.do_rpcrequest_async('CreateVerifySDK', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVerifySDK',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateVerifySDKResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_verify_sdk(
@@ -457,11 +676,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CreateVerifySettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['BizName'] = request.biz_name
+        query['Solution'] = request.solution
+        query['GuideStep'] = request.guide_step
+        query['PrivacyStep'] = request.privacy_step
+        query['ResultStep'] = request.result_step
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CreateVerifySettingResponse().from_map(
-            self.do_rpcrequest('CreateVerifySetting', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVerifySetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateVerifySettingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_verify_setting_with_options_async(
@@ -470,11 +709,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CreateVerifySettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['BizName'] = request.biz_name
+        query['Solution'] = request.solution
+        query['GuideStep'] = request.guide_step
+        query['PrivacyStep'] = request.privacy_step
+        query['ResultStep'] = request.result_step
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CreateVerifySettingResponse().from_map(
-            await self.do_rpcrequest_async('CreateVerifySetting', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVerifySetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateVerifySettingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_verify_setting(
@@ -497,11 +756,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CreateWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['BizType'] = request.biz_type
+        query['BizId'] = request.biz_id
+        query['IdCardNum'] = request.id_card_num
+        query['ValidDay'] = request.valid_day
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CreateWhitelistResponse().from_map(
-            self.do_rpcrequest('CreateWhitelist', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateWhitelist',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateWhitelistResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_whitelist_with_options_async(
@@ -510,11 +789,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CreateWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['BizType'] = request.biz_type
+        query['BizId'] = request.biz_id
+        query['IdCardNum'] = request.id_card_num
+        query['ValidDay'] = request.valid_day
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.CreateWhitelistResponse().from_map(
-            await self.do_rpcrequest_async('CreateWhitelist', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateWhitelist',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CreateWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_whitelist(
@@ -537,11 +836,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DeleteWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['Ids'] = request.ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DeleteWhitelistResponse().from_map(
-            self.do_rpcrequest('DeleteWhitelist', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteWhitelist',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteWhitelistResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_whitelist_with_options_async(
@@ -550,11 +866,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DeleteWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['Ids'] = request.ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DeleteWhitelistResponse().from_map(
-            await self.do_rpcrequest_async('DeleteWhitelist', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteWhitelist',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_whitelist(
@@ -577,11 +910,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeAppInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['Platform'] = request.platform
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeAppInfoResponse().from_map(
-            self.do_rpcrequest('DescribeAppInfo', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAppInfo',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeAppInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_app_info_with_options_async(
@@ -590,11 +940,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeAppInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['Platform'] = request.platform
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeAppInfoResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAppInfo', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAppInfo',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeAppInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_app_info(
@@ -617,11 +984,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeDeviceInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['DeviceId'] = request.device_id
+        query['BizType'] = request.biz_type
+        query['UserDeviceId'] = request.user_device_id
+        query['ExpiredStartDay'] = request.expired_start_day
+        query['ExpiredEndDay'] = request.expired_end_day
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeDeviceInfoResponse().from_map(
-            self.do_rpcrequest('DescribeDeviceInfo', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDeviceInfo',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeDeviceInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_device_info_with_options_async(
@@ -630,11 +1018,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeDeviceInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['DeviceId'] = request.device_id
+        query['BizType'] = request.biz_type
+        query['UserDeviceId'] = request.user_device_id
+        query['ExpiredStartDay'] = request.expired_start_day
+        query['ExpiredEndDay'] = request.expired_end_day
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeDeviceInfoResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDeviceInfo', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDeviceInfo',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeDeviceInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_device_info(
@@ -657,11 +1066,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeFaceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeFaceConfigResponse().from_map(
-            self.do_rpcrequest('DescribeFaceConfig', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFaceConfig',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeFaceConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_face_config_with_options_async(
@@ -670,11 +1095,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeFaceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeFaceConfigResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFaceConfig', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFaceConfig',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeFaceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_face_config(
@@ -697,11 +1138,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeFaceUsageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['StartDate'] = request.start_date
+        query['EndDate'] = request.end_date
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeFaceUsageResponse().from_map(
-            self.do_rpcrequest('DescribeFaceUsage', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFaceUsage',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeFaceUsageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_face_usage_with_options_async(
@@ -710,11 +1167,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeFaceUsageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['StartDate'] = request.start_date
+        query['EndDate'] = request.end_date
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeFaceUsageResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFaceUsage', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFaceUsage',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeFaceUsageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_face_usage(
@@ -737,11 +1210,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeFaceVerifyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
+        query['CertifyId'] = request.certify_id
+        query['PictureReturnType'] = request.picture_return_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeFaceVerifyResponse().from_map(
-            self.do_rpcrequest('DescribeFaceVerify', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFaceVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeFaceVerifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_face_verify_with_options_async(
@@ -750,11 +1240,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeFaceVerifyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
+        query['CertifyId'] = request.certify_id
+        query['PictureReturnType'] = request.picture_return_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeFaceVerifyResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFaceVerify', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFaceVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeFaceVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_face_verify(
@@ -773,43 +1280,53 @@ class Client(OpenApiClient):
 
     def describe_oss_upload_token_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeOssUploadTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeOssUploadTokenResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeOssUploadToken',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
-        return cloudauth_20190307_models.DescribeOssUploadTokenResponse().from_map(
-            self.do_rpcrequest('DescribeOssUploadToken', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeOssUploadTokenResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_oss_upload_token_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeOssUploadTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeOssUploadTokenResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeOssUploadToken',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
-        return cloudauth_20190307_models.DescribeOssUploadTokenResponse().from_map(
-            await self.do_rpcrequest_async('DescribeOssUploadToken', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeOssUploadTokenResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def describe_oss_upload_token(
-        self,
-        request: cloudauth_20190307_models.DescribeOssUploadTokenRequest,
-    ) -> cloudauth_20190307_models.DescribeOssUploadTokenResponse:
+    def describe_oss_upload_token(self) -> cloudauth_20190307_models.DescribeOssUploadTokenResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_oss_upload_token_with_options(request, runtime)
+        return self.describe_oss_upload_token_with_options(runtime)
 
-    async def describe_oss_upload_token_async(
-        self,
-        request: cloudauth_20190307_models.DescribeOssUploadTokenRequest,
-    ) -> cloudauth_20190307_models.DescribeOssUploadTokenResponse:
+    async def describe_oss_upload_token_async(self) -> cloudauth_20190307_models.DescribeOssUploadTokenResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_oss_upload_token_with_options_async(request, runtime)
+        return await self.describe_oss_upload_token_with_options_async(runtime)
 
     def describe_rpsdkwith_options(
         self,
@@ -817,11 +1334,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeRPSDKResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeRPSDKResponse().from_map(
-            self.do_rpcrequest('DescribeRPSDK', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRPSDK',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeRPSDKResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_rpsdkwith_options_async(
@@ -830,11 +1364,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeRPSDKResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeRPSDKResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRPSDK', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRPSDK',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeRPSDKResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_rpsdk(
@@ -857,11 +1408,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeSdkUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['Debug'] = request.debug
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeSdkUrlResponse().from_map(
-            self.do_rpcrequest('DescribeSdkUrl', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSdkUrl',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeSdkUrlResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_sdk_url_with_options_async(
@@ -870,11 +1437,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeSdkUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['Debug'] = request.debug
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeSdkUrlResponse().from_map(
-            await self.do_rpcrequest_async('DescribeSdkUrl', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSdkUrl',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeSdkUrlResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_sdk_url(
@@ -897,11 +1480,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeUpdatePackageResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeUpdatePackageResultResponse().from_map(
-            self.do_rpcrequest('DescribeUpdatePackageResult', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeUpdatePackageResult',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeUpdatePackageResultResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_update_package_result_with_options_async(
@@ -910,11 +1508,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeUpdatePackageResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeUpdatePackageResultResponse().from_map(
-            await self.do_rpcrequest_async('DescribeUpdatePackageResult', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeUpdatePackageResult',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeUpdatePackageResultResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_update_package_result(
@@ -937,11 +1550,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeUploadInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Biz'] = request.biz
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeUploadInfoResponse().from_map(
-            self.do_rpcrequest('DescribeUploadInfo', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeUploadInfo',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeUploadInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_upload_info_with_options_async(
@@ -950,11 +1578,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeUploadInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Biz'] = request.biz
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeUploadInfoResponse().from_map(
-            await self.do_rpcrequest_async('DescribeUploadInfo', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeUploadInfo',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeUploadInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_upload_info(
@@ -973,43 +1616,53 @@ class Client(OpenApiClient):
 
     def describe_user_status_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeUserStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeUserStatusResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeUserStatus',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
-        return cloudauth_20190307_models.DescribeUserStatusResponse().from_map(
-            self.do_rpcrequest('DescribeUserStatus', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeUserStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_status_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeUserStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeUserStatusResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeUserStatus',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
-        return cloudauth_20190307_models.DescribeUserStatusResponse().from_map(
-            await self.do_rpcrequest_async('DescribeUserStatus', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeUserStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def describe_user_status(
-        self,
-        request: cloudauth_20190307_models.DescribeUserStatusRequest,
-    ) -> cloudauth_20190307_models.DescribeUserStatusResponse:
+    def describe_user_status(self) -> cloudauth_20190307_models.DescribeUserStatusResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_user_status_with_options(request, runtime)
+        return self.describe_user_status_with_options(runtime)
 
-    async def describe_user_status_async(
-        self,
-        request: cloudauth_20190307_models.DescribeUserStatusRequest,
-    ) -> cloudauth_20190307_models.DescribeUserStatusResponse:
+    async def describe_user_status_async(self) -> cloudauth_20190307_models.DescribeUserStatusResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_user_status_with_options_async(request, runtime)
+        return await self.describe_user_status_with_options_async(runtime)
 
     def describe_verify_records_with_options(
         self,
@@ -1017,11 +1670,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeVerifyRecordsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TotalCount'] = request.total_count
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['BizType'] = request.biz_type
+        query['StartDate'] = request.start_date
+        query['EndDate'] = request.end_date
+        query['BizId'] = request.biz_id
+        query['IdCardNum'] = request.id_card_num
+        query['StatusList'] = request.status_list
+        query['QueryId'] = request.query_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeVerifyRecordsResponse().from_map(
-            self.do_rpcrequest('DescribeVerifyRecords', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeVerifyRecords',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyRecordsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_verify_records_with_options_async(
@@ -1030,11 +1707,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeVerifyRecordsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TotalCount'] = request.total_count
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['BizType'] = request.biz_type
+        query['StartDate'] = request.start_date
+        query['EndDate'] = request.end_date
+        query['BizId'] = request.biz_id
+        query['IdCardNum'] = request.id_card_num
+        query['StatusList'] = request.status_list
+        query['QueryId'] = request.query_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeVerifyRecordsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeVerifyRecords', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeVerifyRecords',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_records(
@@ -1057,11 +1758,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeVerifyResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizId'] = request.biz_id
+        query['BizType'] = request.biz_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeVerifyResultResponse().from_map(
-            self.do_rpcrequest('DescribeVerifyResult', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeVerifyResult',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyResultResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_verify_result_with_options_async(
@@ -1070,11 +1787,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeVerifyResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizId'] = request.biz_id
+        query['BizType'] = request.biz_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeVerifyResultResponse().from_map(
-            await self.do_rpcrequest_async('DescribeVerifyResult', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeVerifyResult',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyResultResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_result(
@@ -1097,11 +1830,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeVerifySDKResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeVerifySDKResponse().from_map(
-            self.do_rpcrequest('DescribeVerifySDK', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeVerifySDK',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifySDKResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_verify_sdkwith_options_async(
@@ -1110,11 +1858,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeVerifySDKResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeVerifySDKResponse().from_map(
-            await self.do_rpcrequest_async('DescribeVerifySDK', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeVerifySDK',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifySDKResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_sdk(
@@ -1133,43 +1896,53 @@ class Client(OpenApiClient):
 
     def describe_verify_setting_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeVerifySettingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeVerifySettingResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeVerifySetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
-        return cloudauth_20190307_models.DescribeVerifySettingResponse().from_map(
-            self.do_rpcrequest('DescribeVerifySetting', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifySettingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_verify_setting_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifySettingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeVerifySettingResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeVerifySetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
-        return cloudauth_20190307_models.DescribeVerifySettingResponse().from_map(
-            await self.do_rpcrequest_async('DescribeVerifySetting', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifySettingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def describe_verify_setting(
-        self,
-        request: cloudauth_20190307_models.DescribeVerifySettingRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifySettingResponse:
+    def describe_verify_setting(self) -> cloudauth_20190307_models.DescribeVerifySettingResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_verify_setting_with_options(request, runtime)
+        return self.describe_verify_setting_with_options(runtime)
 
-    async def describe_verify_setting_async(
-        self,
-        request: cloudauth_20190307_models.DescribeVerifySettingRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifySettingResponse:
+    async def describe_verify_setting_async(self) -> cloudauth_20190307_models.DescribeVerifySettingResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_verify_setting_with_options_async(request, runtime)
+        return await self.describe_verify_setting_with_options_async(runtime)
 
     def describe_verify_token_with_options(
         self,
@@ -1177,11 +1950,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeVerifyTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IdCardBackImageUrl'] = request.id_card_back_image_url
+        query['BizType'] = request.biz_type
+        query['FailedRedirectUrl'] = request.failed_redirect_url
+        query['FaceRetainedImageUrl'] = request.face_retained_image_url
+        query['CallbackSeed'] = request.callback_seed
+        query['IdCardFrontImageUrl'] = request.id_card_front_image_url
+        query['UserId'] = request.user_id
+        query['BizId'] = request.biz_id
+        query['Name'] = request.name
+        query['IdCardNumber'] = request.id_card_number
+        query['PassedRedirectUrl'] = request.passed_redirect_url
+        query['CallbackUrl'] = request.callback_url
+        query['UserIp'] = request.user_ip
+        query['UserPhoneNumber'] = request.user_phone_number
+        query['UserRegistTime'] = request.user_regist_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeVerifyTokenResponse().from_map(
-            self.do_rpcrequest('DescribeVerifyToken', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeVerifyToken',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyTokenResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_verify_token_with_options_async(
@@ -1190,11 +1992,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeVerifyTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IdCardBackImageUrl'] = request.id_card_back_image_url
+        query['BizType'] = request.biz_type
+        query['FailedRedirectUrl'] = request.failed_redirect_url
+        query['FaceRetainedImageUrl'] = request.face_retained_image_url
+        query['CallbackSeed'] = request.callback_seed
+        query['IdCardFrontImageUrl'] = request.id_card_front_image_url
+        query['UserId'] = request.user_id
+        query['BizId'] = request.biz_id
+        query['Name'] = request.name
+        query['IdCardNumber'] = request.id_card_number
+        query['PassedRedirectUrl'] = request.passed_redirect_url
+        query['CallbackUrl'] = request.callback_url
+        query['UserIp'] = request.user_ip
+        query['UserPhoneNumber'] = request.user_phone_number
+        query['UserRegistTime'] = request.user_regist_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeVerifyTokenResponse().from_map(
-            await self.do_rpcrequest_async('DescribeVerifyToken', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeVerifyToken',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyTokenResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_token(
@@ -1217,11 +2048,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeVerifyUsageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['StartDate'] = request.start_date
+        query['EndDate'] = request.end_date
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeVerifyUsageResponse().from_map(
-            self.do_rpcrequest('DescribeVerifyUsage', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeVerifyUsage',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyUsageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_verify_usage_with_options_async(
@@ -1230,11 +2078,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeVerifyUsageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['StartDate'] = request.start_date
+        query['EndDate'] = request.end_date
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeVerifyUsageResponse().from_map(
-            await self.do_rpcrequest_async('DescribeVerifyUsage', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeVerifyUsage',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeVerifyUsageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_usage(
@@ -1257,11 +2122,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['BizType'] = request.biz_type
+        query['BizId'] = request.biz_id
+        query['IdCardNum'] = request.id_card_num
+        query['ValidStartDate'] = request.valid_start_date
+        query['ValidEndDate'] = request.valid_end_date
+        query['Valid'] = request.valid
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeWhitelistResponse().from_map(
-            self.do_rpcrequest('DescribeWhitelist', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeWhitelist',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeWhitelistResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_whitelist_with_options_async(
@@ -1270,11 +2159,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DescribeWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['BizType'] = request.biz_type
+        query['BizId'] = request.biz_id
+        query['IdCardNum'] = request.id_card_num
+        query['ValidStartDate'] = request.valid_start_date
+        query['ValidEndDate'] = request.valid_end_date
+        query['Valid'] = request.valid
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DescribeWhitelistResponse().from_map(
-            await self.do_rpcrequest_async('DescribeWhitelist', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeWhitelist',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_whitelist(
@@ -1300,8 +2213,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DetectFaceAttributesResponse().from_map(
-            self.do_rpcrequest('DetectFaceAttributes', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectFaceAttributes',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DetectFaceAttributesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def detect_face_attributes_with_options_async(
@@ -1313,8 +2238,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.DetectFaceAttributesResponse().from_map(
-            await self.do_rpcrequest_async('DetectFaceAttributes', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectFaceAttributes',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DetectFaceAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_face_attributes(
@@ -1337,11 +2274,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.InitDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertifyId'] = request.certify_id
+        query['OuterOrderNo'] = request.outer_order_no
+        query['Channel'] = request.channel
+        query['Merchant'] = request.merchant
+        query['ProductName'] = request.product_name
+        query['ProduceNode'] = request.produce_node
+        query['BizData'] = request.biz_data
+        query['MetaInfo'] = request.meta_info
+        query['CertifyPrincipal'] = request.certify_principal
+        query['AppVersion'] = request.app_version
+        query['DeviceToken'] = request.device_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.InitDeviceResponse().from_map(
-            self.do_rpcrequest('InitDevice', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InitDevice',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.InitDeviceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def init_device_with_options_async(
@@ -1350,11 +2312,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.InitDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertifyId'] = request.certify_id
+        query['OuterOrderNo'] = request.outer_order_no
+        query['Channel'] = request.channel
+        query['Merchant'] = request.merchant
+        query['ProductName'] = request.product_name
+        query['ProduceNode'] = request.produce_node
+        query['BizData'] = request.biz_data
+        query['MetaInfo'] = request.meta_info
+        query['CertifyPrincipal'] = request.certify_principal
+        query['AppVersion'] = request.app_version
+        query['DeviceToken'] = request.device_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.InitDeviceResponse().from_map(
-            await self.do_rpcrequest_async('InitDevice', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InitDevice',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.InitDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def init_device(
@@ -1377,11 +2364,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.InitFaceVerifyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
+        query['OuterOrderNo'] = request.outer_order_no
+        query['ProductCode'] = request.product_code
+        query['CertType'] = request.cert_type
+        query['CertName'] = request.cert_name
+        query['CertNo'] = request.cert_no
+        query['ReturnUrl'] = request.return_url
+        query['MetaInfo'] = request.meta_info
+        query['Mobile'] = request.mobile
+        query['Ip'] = request.ip
+        query['UserId'] = request.user_id
+        query['FaceContrastPictureUrl'] = request.face_contrast_picture_url
+        query['CertifyId'] = request.certify_id
+        query['OssBucketName'] = request.oss_bucket_name
+        query['OssObjectName'] = request.oss_object_name
+        query['CallbackUrl'] = request.callback_url
+        query['CallbackToken'] = request.callback_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.InitFaceVerifyResponse().from_map(
-            self.do_rpcrequest('InitFaceVerify', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InitFaceVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.InitFaceVerifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def init_face_verify_with_options_async(
@@ -1390,11 +2408,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.InitFaceVerifyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
+        query['OuterOrderNo'] = request.outer_order_no
+        query['ProductCode'] = request.product_code
+        query['CertType'] = request.cert_type
+        query['CertName'] = request.cert_name
+        query['CertNo'] = request.cert_no
+        query['ReturnUrl'] = request.return_url
+        query['MetaInfo'] = request.meta_info
+        query['Mobile'] = request.mobile
+        query['Ip'] = request.ip
+        query['UserId'] = request.user_id
+        query['FaceContrastPictureUrl'] = request.face_contrast_picture_url
+        query['CertifyId'] = request.certify_id
+        query['OssBucketName'] = request.oss_bucket_name
+        query['OssObjectName'] = request.oss_object_name
+        query['CallbackUrl'] = request.callback_url
+        query['CallbackToken'] = request.callback_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.InitFaceVerifyResponse().from_map(
-            await self.do_rpcrequest_async('InitFaceVerify', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InitFaceVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.InitFaceVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def init_face_verify(
@@ -1417,11 +2466,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.LivenessFaceVerifyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Model'] = request.model
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.LivenessFaceVerifyResponse().from_map(
-            self.do_rpcrequest('LivenessFaceVerify', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='LivenessFaceVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.LivenessFaceVerifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def liveness_face_verify_with_options_async(
@@ -1430,11 +2494,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.LivenessFaceVerifyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Model'] = request.model
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.LivenessFaceVerifyResponse().from_map(
-            await self.do_rpcrequest_async('LivenessFaceVerify', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='LivenessFaceVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.LivenessFaceVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def liveness_face_verify(
@@ -1457,11 +2536,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.ModifyDeviceInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeviceId'] = request.device_id
+        query['UserDeviceId'] = request.user_device_id
+        query['BizType'] = request.biz_type
+        query['Duration'] = request.duration
+        query['ExpiredDay'] = request.expired_day
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.ModifyDeviceInfoResponse().from_map(
-            self.do_rpcrequest('ModifyDeviceInfo', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDeviceInfo',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.ModifyDeviceInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_device_info_with_options_async(
@@ -1470,11 +2568,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.ModifyDeviceInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeviceId'] = request.device_id
+        query['UserDeviceId'] = request.user_device_id
+        query['BizType'] = request.biz_type
+        query['Duration'] = request.duration
+        query['ExpiredDay'] = request.expired_day
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.ModifyDeviceInfoResponse().from_map(
-            await self.do_rpcrequest_async('ModifyDeviceInfo', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDeviceInfo',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.ModifyDeviceInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_device_info(
@@ -1497,11 +2614,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.UpdateAppPackageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['PackageUrl'] = request.package_url
+        query['Platform'] = request.platform
+        query['Debug'] = request.debug
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.UpdateAppPackageResponse().from_map(
-            self.do_rpcrequest('UpdateAppPackage', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAppPackage',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.UpdateAppPackageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_app_package_with_options_async(
@@ -1510,11 +2645,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.UpdateAppPackageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['PackageUrl'] = request.package_url
+        query['Platform'] = request.platform
+        query['Debug'] = request.debug
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.UpdateAppPackageResponse().from_map(
-            await self.do_rpcrequest_async('UpdateAppPackage', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAppPackage',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.UpdateAppPackageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_app_package(
@@ -1537,11 +2690,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.UpdateFaceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['BizType'] = request.biz_type
+        query['BizName'] = request.biz_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.UpdateFaceConfigResponse().from_map(
-            self.do_rpcrequest('UpdateFaceConfig', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateFaceConfig',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.UpdateFaceConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_face_config_with_options_async(
@@ -1550,11 +2721,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.UpdateFaceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['BizType'] = request.biz_type
+        query['BizName'] = request.biz_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.UpdateFaceConfigResponse().from_map(
-            await self.do_rpcrequest_async('UpdateFaceConfig', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateFaceConfig',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.UpdateFaceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_face_config(
@@ -1577,11 +2766,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.UpdateVerifySettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['BizName'] = request.biz_name
+        query['Solution'] = request.solution
+        query['GuideStep'] = request.guide_step
+        query['PrivacyStep'] = request.privacy_step
+        query['ResultStep'] = request.result_step
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.UpdateVerifySettingResponse().from_map(
-            self.do_rpcrequest('UpdateVerifySetting', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateVerifySetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.UpdateVerifySettingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_verify_setting_with_options_async(
@@ -1590,11 +2799,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.UpdateVerifySettingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['BizName'] = request.biz_name
+        query['Solution'] = request.solution
+        query['GuideStep'] = request.guide_step
+        query['PrivacyStep'] = request.privacy_step
+        query['ResultStep'] = request.result_step
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.UpdateVerifySettingResponse().from_map(
-            await self.do_rpcrequest_async('UpdateVerifySetting', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateVerifySetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.UpdateVerifySettingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_verify_setting(
@@ -1617,11 +2846,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.VerifyDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertifyId'] = request.certify_id
+        query['CertifyData'] = request.certify_data
+        query['AppVersion'] = request.app_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.VerifyDeviceResponse().from_map(
-            self.do_rpcrequest('VerifyDevice', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='VerifyDevice',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.VerifyDeviceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def verify_device_with_options_async(
@@ -1630,11 +2876,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.VerifyDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertifyId'] = request.certify_id
+        query['CertifyData'] = request.certify_data
+        query['AppVersion'] = request.app_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.VerifyDeviceResponse().from_map(
-            await self.do_rpcrequest_async('VerifyDevice', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='VerifyDevice',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.VerifyDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def verify_device(
@@ -1657,11 +2920,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.VerifyMaterialResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IdCardBackImageUrl'] = request.id_card_back_image_url
+        query['FaceImageUrl'] = request.face_image_url
+        query['BizType'] = request.biz_type
+        query['BizId'] = request.biz_id
+        query['Name'] = request.name
+        query['IdCardNumber'] = request.id_card_number
+        query['IdCardFrontImageUrl'] = request.id_card_front_image_url
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.VerifyMaterialResponse().from_map(
-            self.do_rpcrequest('VerifyMaterial', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='VerifyMaterial',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.VerifyMaterialResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def verify_material_with_options_async(
@@ -1670,11 +2955,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.VerifyMaterialResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IdCardBackImageUrl'] = request.id_card_back_image_url
+        query['FaceImageUrl'] = request.face_image_url
+        query['BizType'] = request.biz_type
+        query['BizId'] = request.biz_id
+        query['Name'] = request.name
+        query['IdCardNumber'] = request.id_card_number
+        query['IdCardFrontImageUrl'] = request.id_card_front_image_url
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cloudauth_20190307_models.VerifyMaterialResponse().from_map(
-            await self.do_rpcrequest_async('VerifyMaterial', '2019-03-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='VerifyMaterial',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.VerifyMaterialResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def verify_material(
