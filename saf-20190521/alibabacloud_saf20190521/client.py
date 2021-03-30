@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_saf20190521 import models as saf_20190521_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -48,11 +50,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> saf_20190521_models.ExecuteExtendServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Region'] = request.region
+        query['Service'] = request.service
+        query['ServiceParameters'] = request.service_parameters
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return saf_20190521_models.ExecuteExtendServiceResponse().from_map(
-            self.do_rpcrequest('ExecuteExtendService', '2019-05-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ExecuteExtendService',
+            version='2019-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            saf_20190521_models.ExecuteExtendServiceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def execute_extend_service_with_options_async(
@@ -61,11 +80,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> saf_20190521_models.ExecuteExtendServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Region'] = request.region
+        query['Service'] = request.service
+        query['ServiceParameters'] = request.service_parameters
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return saf_20190521_models.ExecuteExtendServiceResponse().from_map(
-            await self.do_rpcrequest_async('ExecuteExtendService', '2019-05-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ExecuteExtendService',
+            version='2019-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            saf_20190521_models.ExecuteExtendServiceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def execute_extend_service(
@@ -88,11 +124,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> saf_20190521_models.ExecuteRequestResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ServiceParameters'] = request.service_parameters
+        query['Service'] = request.service
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return saf_20190521_models.ExecuteRequestResponse().from_map(
-            self.do_rpcrequest('ExecuteRequest', '2019-05-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ExecuteRequest',
+            version='2019-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            saf_20190521_models.ExecuteRequestResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def execute_request_with_options_async(
@@ -101,11 +153,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> saf_20190521_models.ExecuteRequestResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ServiceParameters'] = request.service_parameters
+        query['Service'] = request.service
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return saf_20190521_models.ExecuteRequestResponse().from_map(
-            await self.do_rpcrequest_async('ExecuteRequest', '2019-05-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ExecuteRequest',
+            version='2019-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            saf_20190521_models.ExecuteRequestResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def execute_request(
@@ -128,11 +196,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> saf_20190521_models.ExecuteRequestMLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ServiceParameters'] = request.service_parameters
+        query['Service'] = request.service
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return saf_20190521_models.ExecuteRequestMLResponse().from_map(
-            self.do_rpcrequest('ExecuteRequestML', '2019-05-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ExecuteRequestML',
+            version='2019-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            saf_20190521_models.ExecuteRequestMLResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def execute_request_mlwith_options_async(
@@ -141,11 +225,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> saf_20190521_models.ExecuteRequestMLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ServiceParameters'] = request.service_parameters
+        query['Service'] = request.service
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return saf_20190521_models.ExecuteRequestMLResponse().from_map(
-            await self.do_rpcrequest_async('ExecuteRequestML', '2019-05-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ExecuteRequestML',
+            version='2019-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            saf_20190521_models.ExecuteRequestMLResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def execute_request_ml(
@@ -168,11 +268,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> saf_20190521_models.ExecuteRequestSGResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ServiceParameters'] = request.service_parameters
+        query['Service'] = request.service
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return saf_20190521_models.ExecuteRequestSGResponse().from_map(
-            self.do_rpcrequest('ExecuteRequestSG', '2019-05-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ExecuteRequestSG',
+            version='2019-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            saf_20190521_models.ExecuteRequestSGResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def execute_request_sgwith_options_async(
@@ -181,11 +297,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> saf_20190521_models.ExecuteRequestSGResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ServiceParameters'] = request.service_parameters
+        query['Service'] = request.service
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return saf_20190521_models.ExecuteRequestSGResponse().from_map(
-            await self.do_rpcrequest_async('ExecuteRequestSG', '2019-05-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ExecuteRequestSG',
+            version='2019-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            saf_20190521_models.ExecuteRequestSGResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def execute_request_sg(
