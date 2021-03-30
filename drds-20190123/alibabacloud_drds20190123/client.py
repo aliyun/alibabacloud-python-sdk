@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_drds20190123 import models as drds_20190123_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -88,11 +90,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CheckDrdsDbNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CheckDrdsDbNameResponse().from_map(
-            self.do_rpcrequest('CheckDrdsDbName', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckDrdsDbName',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CheckDrdsDbNameResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def check_drds_db_name_with_options_async(
@@ -101,11 +119,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CheckDrdsDbNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CheckDrdsDbNameResponse().from_map(
-            await self.do_rpcrequest_async('CheckDrdsDbName', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckDrdsDbName',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CheckDrdsDbNameResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_drds_db_name(
@@ -128,11 +162,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CheckExpandStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CheckExpandStatusResponse().from_map(
-            self.do_rpcrequest('CheckExpandStatus', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckExpandStatus',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CheckExpandStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def check_expand_status_with_options_async(
@@ -141,11 +191,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CheckExpandStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CheckExpandStatusResponse().from_map(
-            await self.do_rpcrequest_async('CheckExpandStatus', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckExpandStatus',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CheckExpandStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_expand_status(
@@ -168,11 +234,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CheckSqlAuditEnableStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CheckSqlAuditEnableStatusResponse().from_map(
-            self.do_rpcrequest('CheckSqlAuditEnableStatus', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckSqlAuditEnableStatus',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CheckSqlAuditEnableStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def check_sql_audit_enable_status_with_options_async(
@@ -181,11 +263,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CheckSqlAuditEnableStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CheckSqlAuditEnableStatusResponse().from_map(
-            await self.do_rpcrequest_async('CheckSqlAuditEnableStatus', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckSqlAuditEnableStatus',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CheckSqlAuditEnableStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_sql_audit_enable_status(
@@ -208,11 +306,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateDrdsDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Encode'] = request.encode
+        query['Password'] = request.password
+        query['Type'] = request.type
+        query['DbInstType'] = request.db_inst_type
+        query['DbInstanceIsCreating'] = request.db_instance_is_creating
+        query['AccountName'] = request.account_name
+        query['RdsInstance'] = request.rds_instance
+        query['RdsSuperAccount'] = request.rds_super_account
+        query['InstDbName'] = request.inst_db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CreateDrdsDBResponse().from_map(
-            self.do_rpcrequest('CreateDrdsDB', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDrdsDB',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CreateDrdsDBResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_drds_dbwith_options_async(
@@ -221,11 +344,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateDrdsDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Encode'] = request.encode
+        query['Password'] = request.password
+        query['Type'] = request.type
+        query['DbInstType'] = request.db_inst_type
+        query['DbInstanceIsCreating'] = request.db_instance_is_creating
+        query['AccountName'] = request.account_name
+        query['RdsInstance'] = request.rds_instance
+        query['RdsSuperAccount'] = request.rds_super_account
+        query['InstDbName'] = request.inst_db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CreateDrdsDBResponse().from_map(
-            await self.do_rpcrequest_async('CreateDrdsDB', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDrdsDB',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CreateDrdsDBResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_drds_db(
@@ -248,11 +396,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateDrdsInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Description'] = request.description
+        query['RegionId'] = request.region_id
+        query['ZoneId'] = request.zone_id
+        query['Type'] = request.type
+        query['Quantity'] = request.quantity
+        query['InstanceSeries'] = request.instance_series
+        query['Specification'] = request.specification
+        query['ClientToken'] = request.client_token
+        query['PayType'] = request.pay_type
+        query['VpcId'] = request.vpc_id
+        query['VswitchId'] = request.vswitch_id
+        query['isHa'] = request.is_ha
+        query['PricingCycle'] = request.pricing_cycle
+        query['Duration'] = request.duration
+        query['IsAutoRenew'] = request.is_auto_renew
+        query['MasterInstId'] = request.master_inst_id
+        query['MySQLVersion'] = request.my_sqlversion
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CreateDrdsInstanceResponse().from_map(
-            self.do_rpcrequest('CreateDrdsInstance', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDrdsInstance',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CreateDrdsInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_drds_instance_with_options_async(
@@ -261,11 +441,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateDrdsInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Description'] = request.description
+        query['RegionId'] = request.region_id
+        query['ZoneId'] = request.zone_id
+        query['Type'] = request.type
+        query['Quantity'] = request.quantity
+        query['InstanceSeries'] = request.instance_series
+        query['Specification'] = request.specification
+        query['ClientToken'] = request.client_token
+        query['PayType'] = request.pay_type
+        query['VpcId'] = request.vpc_id
+        query['VswitchId'] = request.vswitch_id
+        query['isHa'] = request.is_ha
+        query['PricingCycle'] = request.pricing_cycle
+        query['Duration'] = request.duration
+        query['IsAutoRenew'] = request.is_auto_renew
+        query['MasterInstId'] = request.master_inst_id
+        query['MySQLVersion'] = request.my_sqlversion
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CreateDrdsInstanceResponse().from_map(
-            await self.do_rpcrequest_async('CreateDrdsInstance', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDrdsInstance',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CreateDrdsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_drds_instance(
@@ -288,11 +500,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateInstanceAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['AccountName'] = request.account_name
+        query['Password'] = request.password
+        query['DbPrivilege'] = request.db_privilege
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CreateInstanceAccountResponse().from_map(
-            self.do_rpcrequest('CreateInstanceAccount', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateInstanceAccount',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CreateInstanceAccountResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_instance_account_with_options_async(
@@ -301,11 +531,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateInstanceAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['AccountName'] = request.account_name
+        query['Password'] = request.password
+        query['DbPrivilege'] = request.db_privilege
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CreateInstanceAccountResponse().from_map(
-            await self.do_rpcrequest_async('CreateInstanceAccount', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateInstanceAccount',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CreateInstanceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_instance_account(
@@ -328,11 +576,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateInstanceInternetAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CreateInstanceInternetAddressResponse().from_map(
-            self.do_rpcrequest('CreateInstanceInternetAddress', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateInstanceInternetAddress',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CreateInstanceInternetAddressResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_instance_internet_address_with_options_async(
@@ -341,11 +605,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateInstanceInternetAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CreateInstanceInternetAddressResponse().from_map(
-            await self.do_rpcrequest_async('CreateInstanceInternetAddress', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateInstanceInternetAddress',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CreateInstanceInternetAddressResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_instance_internet_address(
@@ -368,11 +648,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateOrderForRdsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['Params'] = request.params
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CreateOrderForRdsResponse().from_map(
-            self.do_rpcrequest('CreateOrderForRds', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateOrderForRds',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CreateOrderForRdsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_order_for_rds_with_options_async(
@@ -381,11 +677,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateOrderForRdsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['Params'] = request.params
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CreateOrderForRdsResponse().from_map(
-            await self.do_rpcrequest_async('CreateOrderForRds', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateOrderForRds',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CreateOrderForRdsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_order_for_rds(
@@ -408,11 +720,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateShardTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['SourceTableName'] = request.source_table_name
+        query['TargetTableName'] = request.target_table_name
+        query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CreateShardTaskResponse().from_map(
-            self.do_rpcrequest('CreateShardTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateShardTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CreateShardTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_shard_task_with_options_async(
@@ -421,11 +753,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateShardTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['SourceTableName'] = request.source_table_name
+        query['TargetTableName'] = request.target_table_name
+        query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.CreateShardTaskResponse().from_map(
-            await self.do_rpcrequest_async('CreateShardTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateShardTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.CreateShardTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_shard_task(
@@ -448,11 +800,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBackMenuResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBackMenuResponse().from_map(
-            self.do_rpcrequest('DescribeBackMenu', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackMenu',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBackMenuResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_back_menu_with_options_async(
@@ -461,11 +828,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBackMenuResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBackMenuResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBackMenu', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackMenu',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBackMenuResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_back_menu(
@@ -488,11 +870,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBackupDbsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['PreferredRestoreTime'] = request.preferred_restore_time
+        query['BackupId'] = request.backup_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBackupDbsResponse().from_map(
-            self.do_rpcrequest('DescribeBackupDbs', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupDbs',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBackupDbsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_dbs_with_options_async(
@@ -501,11 +900,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBackupDbsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['PreferredRestoreTime'] = request.preferred_restore_time
+        query['BackupId'] = request.backup_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBackupDbsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBackupDbs', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupDbs',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBackupDbsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_dbs(
@@ -528,11 +944,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBackupLocalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBackupLocalResponse().from_map(
-            self.do_rpcrequest('DescribeBackupLocal', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupLocal',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBackupLocalResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_local_with_options_async(
@@ -541,11 +972,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBackupLocalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBackupLocalResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBackupLocal', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupLocal',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBackupLocalResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_local(
@@ -568,11 +1014,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBackupPolicyResponse().from_map(
-            self.do_rpcrequest('DescribeBackupPolicy', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_policy_with_options_async(
@@ -581,11 +1042,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBackupPolicyResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBackupPolicy', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_policy(
@@ -608,11 +1084,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBackupSetsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBackupSetsResponse().from_map(
-            self.do_rpcrequest('DescribeBackupSets', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupSets',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBackupSetsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_sets_with_options_async(
@@ -621,11 +1114,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBackupSetsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBackupSetsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBackupSets', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupSets',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBackupSetsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_sets(
@@ -648,11 +1158,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBackupTimesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBackupTimesResponse().from_map(
-            self.do_rpcrequest('DescribeBackupTimes', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupTimes',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBackupTimesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_times_with_options_async(
@@ -661,11 +1186,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBackupTimesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBackupTimesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBackupTimes', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupTimes',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBackupTimesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_times(
@@ -688,11 +1228,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBroadcastTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Query'] = request.query
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBroadcastTablesResponse().from_map(
-            self.do_rpcrequest('DescribeBroadcastTables', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBroadcastTables',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBroadcastTablesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_broadcast_tables_with_options_async(
@@ -701,11 +1261,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeBroadcastTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Query'] = request.query
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeBroadcastTablesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBroadcastTables', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBroadcastTables',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeBroadcastTablesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_broadcast_tables(
@@ -728,11 +1308,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDbInstanceDbsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbInstanceId'] = request.db_instance_id
+        query['AccountName'] = request.account_name
+        query['Password'] = request.password
+        query['DbInstType'] = request.db_inst_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDbInstanceDbsResponse().from_map(
-            self.do_rpcrequest('DescribeDbInstanceDbs', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDbInstanceDbs',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDbInstanceDbsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_db_instance_dbs_with_options_async(
@@ -741,11 +1340,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDbInstanceDbsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbInstanceId'] = request.db_instance_id
+        query['AccountName'] = request.account_name
+        query['Password'] = request.password
+        query['DbInstType'] = request.db_inst_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDbInstanceDbsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDbInstanceDbs', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDbInstanceDbs',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDbInstanceDbsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_db_instance_dbs(
@@ -768,11 +1386,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDbInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['Search'] = request.search
+        query['DbInstType'] = request.db_inst_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDbInstancesResponse().from_map(
-            self.do_rpcrequest('DescribeDbInstances', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDbInstances',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDbInstancesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_db_instances_with_options_async(
@@ -781,11 +1418,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDbInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['Search'] = request.search
+        query['DbInstType'] = request.db_inst_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDbInstancesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDbInstances', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDbInstances',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDbInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_db_instances(
@@ -808,11 +1464,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDBResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsDB', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDB',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDBResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_dbwith_options_async(
@@ -821,11 +1493,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDBResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsDB', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDB',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDBResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_db(
@@ -848,11 +1536,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDBClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['DbInstanceId'] = request.db_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDBClusterResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsDBCluster', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDBCluster',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDBClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_dbcluster_with_options_async(
@@ -861,11 +1566,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDBClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['DbInstanceId'] = request.db_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDBClusterResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsDBCluster', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDBCluster',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDBClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_dbcluster(
@@ -888,11 +1610,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDbInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['DbInstanceId'] = request.db_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDbInstanceResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsDbInstance', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDbInstance',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDbInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_db_instance_with_options_async(
@@ -901,11 +1640,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDbInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['DbInstanceId'] = request.db_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDbInstanceResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsDbInstance', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDbInstance',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDbInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_db_instance(
@@ -928,11 +1684,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDbInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDbInstancesResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsDbInstances', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDbInstances',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDbInstancesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_db_instances_with_options_async(
@@ -941,11 +1715,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDbInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDbInstancesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsDbInstances', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDbInstances',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDbInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_db_instances(
@@ -968,11 +1760,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDBIpWhiteListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['GroupName'] = request.group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDBIpWhiteListResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsDBIpWhiteList', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDBIpWhiteList',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDBIpWhiteListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_dbip_white_list_with_options_async(
@@ -981,11 +1790,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDBIpWhiteListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['GroupName'] = request.group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDBIpWhiteListResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsDBIpWhiteList', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDBIpWhiteList',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDBIpWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_dbip_white_list(
@@ -1008,11 +1834,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDbRdsNameListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDbRdsNameListResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsDbRdsNameList', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDbRdsNameList',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDbRdsNameListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_db_rds_name_list_with_options_async(
@@ -1021,11 +1863,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDbRdsNameListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDbRdsNameListResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsDbRdsNameList', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDbRdsNameList',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDbRdsNameListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_db_rds_name_list(
@@ -1048,11 +1906,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDBsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDBsResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsDBs', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDBs',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDBsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_dbs_with_options_async(
@@ -1061,11 +1937,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDBsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDBsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsDBs', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDBs',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDBsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_dbs(
@@ -1088,11 +1982,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDbTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDbTasksResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsDbTasks', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDbTasks',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDbTasksResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_db_tasks_with_options_async(
@@ -1101,11 +2012,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsDbTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsDbTasksResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsDbTasks', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsDbTasks',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDbTasksResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_db_tasks(
@@ -1128,11 +2056,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsInstanceResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsInstance', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsInstance',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_instance_with_options_async(
@@ -1141,11 +2085,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsInstanceResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsInstance', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsInstance',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_instance(
@@ -1168,11 +2128,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsInstanceDbMonitorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Key'] = request.key
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsInstanceDbMonitorResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsInstanceDbMonitor', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsInstanceDbMonitor',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsInstanceDbMonitorResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_instance_db_monitor_with_options_async(
@@ -1181,11 +2161,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsInstanceDbMonitorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Key'] = request.key
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsInstanceDbMonitorResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsInstanceDbMonitor', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsInstanceDbMonitor',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsInstanceDbMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_instance_db_monitor(
@@ -1208,11 +2208,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsInstanceLevelTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsInstanceLevelTasksResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsInstanceLevelTasks', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsInstanceLevelTasks',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsInstanceLevelTasksResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_instance_level_tasks_with_options_async(
@@ -1221,11 +2236,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsInstanceLevelTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsInstanceLevelTasksResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsInstanceLevelTasks', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsInstanceLevelTasks',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsInstanceLevelTasksResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_instance_level_tasks(
@@ -1248,11 +2278,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsInstanceMonitorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['Key'] = request.key
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['PeriodMultiple'] = request.period_multiple
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsInstanceMonitorResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsInstanceMonitor', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsInstanceMonitor',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsInstanceMonitorResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_instance_monitor_with_options_async(
@@ -1261,11 +2311,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsInstanceMonitorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['Key'] = request.key
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['PeriodMultiple'] = request.period_multiple
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsInstanceMonitorResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsInstanceMonitor', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsInstanceMonitor',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsInstanceMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_instance_monitor(
@@ -1288,11 +2358,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Type'] = request.type
+        query['Description'] = request.description
+        query['Expired'] = request.expired
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
+        query['RegionId'] = request.region_id
+        query['Mix'] = request.mix
+        query['ProductVersion'] = request.product_version
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsInstancesResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsInstances', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsInstances',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsInstancesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_instances_with_options_async(
@@ -1301,11 +2395,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Type'] = request.type
+        query['Description'] = request.description
+        query['Expired'] = request.expired
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
+        query['RegionId'] = request.region_id
+        query['Mix'] = request.mix
+        query['ProductVersion'] = request.product_version
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsInstancesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsInstances', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsInstances',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_instances(
@@ -1328,11 +2446,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsInstanceVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsInstanceVersionResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsInstanceVersion', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsInstanceVersion',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsInstanceVersionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_instance_version_with_options_async(
@@ -1341,11 +2475,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsInstanceVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsInstanceVersionResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsInstanceVersion', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsInstanceVersion',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsInstanceVersionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_instance_version(
@@ -1368,11 +2518,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsParamsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['ParamLevel'] = request.param_level
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsParamsResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsParams', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsParams',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsParamsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_params_with_options_async(
@@ -1381,11 +2549,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsParamsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['ParamLevel'] = request.param_level
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsParamsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsParams', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsParams',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsParamsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_params(
@@ -1408,11 +2594,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsShardingDbsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['DbNamePattern'] = request.db_name_pattern
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsShardingDbsResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsShardingDbs', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsShardingDbs',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsShardingDbsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_sharding_dbs_with_options_async(
@@ -1421,11 +2624,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsShardingDbsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['DbNamePattern'] = request.db_name_pattern
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsShardingDbsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsShardingDbs', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsShardingDbs',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsShardingDbsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_sharding_dbs(
@@ -1448,11 +2668,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsSlowSqlsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['ExeTime'] = request.exe_time
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsSlowSqlsResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsSlowSqls', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsSlowSqls',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsSlowSqlsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_slow_sqls_with_options_async(
@@ -1461,11 +2702,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsSlowSqlsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['ExeTime'] = request.exe_time
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsSlowSqlsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsSlowSqls', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsSlowSqls',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsSlowSqlsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_slow_sqls(
@@ -1488,11 +2750,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsSqlAuditStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsSqlAuditStatusResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsSqlAuditStatus', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsSqlAuditStatus',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsSqlAuditStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_sql_audit_status_with_options_async(
@@ -1501,11 +2778,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsSqlAuditStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsSqlAuditStatusResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsSqlAuditStatus', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsSqlAuditStatus',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsSqlAuditStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_sql_audit_status(
@@ -1528,11 +2820,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsTasksResponse().from_map(
-            self.do_rpcrequest('DescribeDrdsTasks', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsTasks',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsTasksResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_drds_tasks_with_options_async(
@@ -1541,11 +2850,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeDrdsTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeDrdsTasksResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDrdsTasks', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDrdsTasks',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsTasksResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_drds_tasks(
@@ -1568,11 +2894,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeExpandLogicTableInfoListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeExpandLogicTableInfoListResponse().from_map(
-            self.do_rpcrequest('DescribeExpandLogicTableInfoList', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeExpandLogicTableInfoList',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeExpandLogicTableInfoListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_expand_logic_table_info_list_with_options_async(
@@ -1581,11 +2923,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeExpandLogicTableInfoListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeExpandLogicTableInfoListResponse().from_map(
-            await self.do_rpcrequest_async('DescribeExpandLogicTableInfoList', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeExpandLogicTableInfoList',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeExpandLogicTableInfoListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_expand_logic_table_info_list(
@@ -1608,11 +2966,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeHiStoreInstanceInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['HistoreInstanceId'] = request.histore_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeHiStoreInstanceInfoResponse().from_map(
-            self.do_rpcrequest('DescribeHiStoreInstanceInfo', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeHiStoreInstanceInfo',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeHiStoreInstanceInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_hi_store_instance_info_with_options_async(
@@ -1621,11 +2995,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeHiStoreInstanceInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['HistoreInstanceId'] = request.histore_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeHiStoreInstanceInfoResponse().from_map(
-            await self.do_rpcrequest_async('DescribeHiStoreInstanceInfo', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeHiStoreInstanceInfo',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeHiStoreInstanceInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_hi_store_instance_info(
@@ -1648,11 +3038,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeHotDbListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeHotDbListResponse().from_map(
-            self.do_rpcrequest('DescribeHotDbList', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeHotDbList',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeHotDbListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_hot_db_list_with_options_async(
@@ -1661,11 +3067,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeHotDbListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeHotDbListResponse().from_map(
-            await self.do_rpcrequest_async('DescribeHotDbList', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeHotDbList',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeHotDbListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_hot_db_list(
@@ -1688,11 +3110,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstanceAccountsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeInstanceAccountsResponse().from_map(
-            self.do_rpcrequest('DescribeInstanceAccounts', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstanceAccounts',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeInstanceAccountsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_instance_accounts_with_options_async(
@@ -1701,11 +3138,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstanceAccountsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeInstanceAccountsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeInstanceAccounts', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstanceAccounts',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeInstanceAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_instance_accounts(
@@ -1728,11 +3180,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstanceMenuSwitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeInstanceMenuSwitchResponse().from_map(
-            self.do_rpcrequest('DescribeInstanceMenuSwitch', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstanceMenuSwitch',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeInstanceMenuSwitchResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_instance_menu_switch_with_options_async(
@@ -1741,11 +3208,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstanceMenuSwitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeInstanceMenuSwitchResponse().from_map(
-            await self.do_rpcrequest_async('DescribeInstanceMenuSwitch', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstanceMenuSwitch',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeInstanceMenuSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_instance_menu_switch(
@@ -1768,11 +3250,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstanceSwitchAzoneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeInstanceSwitchAzoneResponse().from_map(
-            self.do_rpcrequest('DescribeInstanceSwitchAzone', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstanceSwitchAzone',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeInstanceSwitchAzoneResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_instance_switch_azone_with_options_async(
@@ -1781,11 +3278,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstanceSwitchAzoneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeInstanceSwitchAzoneResponse().from_map(
-            await self.do_rpcrequest_async('DescribeInstanceSwitchAzone', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstanceSwitchAzone',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeInstanceSwitchAzoneResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_instance_switch_azone(
@@ -1808,11 +3320,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstanceSwitchNetworkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeInstanceSwitchNetworkResponse().from_map(
-            self.do_rpcrequest('DescribeInstanceSwitchNetwork', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstanceSwitchNetwork',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeInstanceSwitchNetworkResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_instance_switch_network_with_options_async(
@@ -1821,11 +3348,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstanceSwitchNetworkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeInstanceSwitchNetworkResponse().from_map(
-            await self.do_rpcrequest_async('DescribeInstanceSwitchNetwork', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstanceSwitchNetwork',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeInstanceSwitchNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_instance_switch_network(
@@ -1848,11 +3390,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstDbLogInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeInstDbLogInfoResponse().from_map(
-            self.do_rpcrequest('DescribeInstDbLogInfo', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstDbLogInfo',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeInstDbLogInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_inst_db_log_info_with_options_async(
@@ -1861,11 +3419,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstDbLogInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeInstDbLogInfoResponse().from_map(
-            await self.do_rpcrequest_async('DescribeInstDbLogInfo', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstDbLogInfo',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeInstDbLogInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_inst_db_log_info(
@@ -1888,11 +3462,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstDbSlsInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeInstDbSlsInfoResponse().from_map(
-            self.do_rpcrequest('DescribeInstDbSlsInfo', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstDbSlsInfo',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeInstDbSlsInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_inst_db_sls_info_with_options_async(
@@ -1901,11 +3491,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstDbSlsInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeInstDbSlsInfoResponse().from_map(
-            await self.do_rpcrequest_async('DescribeInstDbSlsInfo', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstDbSlsInfo',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeInstDbSlsInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_inst_db_sls_info(
@@ -1928,11 +3534,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribePreCheckResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribePreCheckResultResponse().from_map(
-            self.do_rpcrequest('DescribePreCheckResult', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribePreCheckResult',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribePreCheckResultResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_pre_check_result_with_options_async(
@@ -1941,11 +3564,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribePreCheckResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribePreCheckResultResponse().from_map(
-            await self.do_rpcrequest_async('DescribePreCheckResult', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribePreCheckResult',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribePreCheckResultResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_pre_check_result(
@@ -1968,11 +3608,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeRdsCommodityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['CommodityCode'] = request.commodity_code
+        query['OrderType'] = request.order_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeRdsCommodityResponse().from_map(
-            self.do_rpcrequest('DescribeRdsCommodity', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRdsCommodity',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeRdsCommodityResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_rds_commodity_with_options_async(
@@ -1981,11 +3638,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeRdsCommodityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['CommodityCode'] = request.commodity_code
+        query['OrderType'] = request.order_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeRdsCommodityResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRdsCommodity', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRdsCommodity',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeRdsCommodityResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_rds_commodity(
@@ -2008,11 +3682,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeRDSPerformanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RdsInstanceId'] = request.rds_instance_id
+        query['Keys'] = request.keys
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['DbInstType'] = request.db_inst_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeRDSPerformanceResponse().from_map(
-            self.do_rpcrequest('DescribeRDSPerformance', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRDSPerformance',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeRDSPerformanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_rdsperformance_with_options_async(
@@ -2021,11 +3715,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeRDSPerformanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RdsInstanceId'] = request.rds_instance_id
+        query['Keys'] = request.keys
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['DbInstType'] = request.db_inst_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeRDSPerformanceResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRDSPerformance', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRDSPerformance',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeRDSPerformanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_rdsperformance(
@@ -2048,11 +3762,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeRdsPerformanceSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RdsInstanceId'] = request.rds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeRdsPerformanceSummaryResponse().from_map(
-            self.do_rpcrequest('DescribeRdsPerformanceSummary', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRdsPerformanceSummary',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeRdsPerformanceSummaryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_rds_performance_summary_with_options_async(
@@ -2061,11 +3792,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeRdsPerformanceSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RdsInstanceId'] = request.rds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeRdsPerformanceSummaryResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRdsPerformanceSummary', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRdsPerformanceSummary',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeRdsPerformanceSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_rds_performance_summary(
@@ -2088,11 +3836,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeRdsSuperAccountInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbInstType'] = request.db_inst_type
+        query['RdsInstance'] = request.rds_instance
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeRdsSuperAccountInstancesResponse().from_map(
-            self.do_rpcrequest('DescribeRdsSuperAccountInstances', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRdsSuperAccountInstances',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeRdsSuperAccountInstancesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_rds_super_account_instances_with_options_async(
@@ -2101,11 +3866,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeRdsSuperAccountInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbInstType'] = request.db_inst_type
+        query['RdsInstance'] = request.rds_instance
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeRdsSuperAccountInstancesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRdsSuperAccountInstances', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRdsSuperAccountInstances',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeRdsSuperAccountInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_rds_super_account_instances(
@@ -2128,11 +3910,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeRestoreOrderResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['PreferredBackupTime'] = request.preferred_backup_time
+        query['BackupMode'] = request.backup_mode
+        query['BackupLevel'] = request.backup_level
+        query['BackupDbNames'] = request.backup_db_names
+        query['BackupId'] = request.backup_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeRestoreOrderResponse().from_map(
-            self.do_rpcrequest('DescribeRestoreOrder', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRestoreOrder',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeRestoreOrderResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_restore_order_with_options_async(
@@ -2141,11 +3943,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeRestoreOrderResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['PreferredBackupTime'] = request.preferred_backup_time
+        query['BackupMode'] = request.backup_mode
+        query['BackupLevel'] = request.backup_level
+        query['BackupDbNames'] = request.backup_db_names
+        query['BackupId'] = request.backup_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeRestoreOrderResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRestoreOrder', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRestoreOrder',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeRestoreOrderResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_restore_order(
@@ -2168,11 +3990,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeShardTaskInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['SourceTableName'] = request.source_table_name
+        query['TargetTableName'] = request.target_table_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeShardTaskInfoResponse().from_map(
-            self.do_rpcrequest('DescribeShardTaskInfo', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeShardTaskInfo',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeShardTaskInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_shard_task_info_with_options_async(
@@ -2181,11 +4022,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeShardTaskInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['SourceTableName'] = request.source_table_name
+        query['TargetTableName'] = request.target_table_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeShardTaskInfoResponse().from_map(
-            await self.do_rpcrequest_async('DescribeShardTaskInfo', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeShardTaskInfo',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeShardTaskInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_shard_task_info(
@@ -2202,17 +4062,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_shard_task_info_with_options_async(request, runtime)
 
+    def describe_shard_task_list_with_options(
+        self,
+        request: drds_20190123_models.DescribeShardTaskListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> drds_20190123_models.DescribeShardTaskListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Query'] = request.query
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeShardTaskList',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeShardTaskListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_shard_task_list_with_options_async(
+        self,
+        request: drds_20190123_models.DescribeShardTaskListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> drds_20190123_models.DescribeShardTaskListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Query'] = request.query
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeShardTaskList',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeShardTaskListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_shard_task_list(
+        self,
+        request: drds_20190123_models.DescribeShardTaskListRequest,
+    ) -> drds_20190123_models.DescribeShardTaskListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_shard_task_list_with_options(request, runtime)
+
+    async def describe_shard_task_list_async(
+        self,
+        request: drds_20190123_models.DescribeShardTaskListRequest,
+    ) -> drds_20190123_models.DescribeShardTaskListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_shard_task_list_with_options_async(request, runtime)
+
     def describe_sql_flashbak_task_with_options(
         self,
         request: drds_20190123_models.DescribeSqlFlashbakTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeSqlFlashbakTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeSqlFlashbakTaskResponse().from_map(
-            self.do_rpcrequest('DescribeSqlFlashbakTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSqlFlashbakTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeSqlFlashbakTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_sql_flashbak_task_with_options_async(
@@ -2221,11 +4178,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeSqlFlashbakTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeSqlFlashbakTaskResponse().from_map(
-            await self.do_rpcrequest_async('DescribeSqlFlashbakTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSqlFlashbakTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeSqlFlashbakTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_sql_flashbak_task(
@@ -2248,11 +4220,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeTableResponse().from_map(
-            self.do_rpcrequest('DescribeTable', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeTable',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeTableResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_table_with_options_async(
@@ -2261,11 +4251,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeTableResponse().from_map(
-            await self.do_rpcrequest_async('DescribeTable', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeTable',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeTableResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_table(
@@ -2288,11 +4296,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeTableListByTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Query'] = request.query
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['TableType'] = request.table_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeTableListByTypeResponse().from_map(
-            self.do_rpcrequest('DescribeTableListByType', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeTableListByType',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeTableListByTypeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_table_list_by_type_with_options_async(
@@ -2301,11 +4330,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeTableListByTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Query'] = request.query
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['TableType'] = request.table_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeTableListByTypeResponse().from_map(
-            await self.do_rpcrequest_async('DescribeTableListByType', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeTableListByType',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeTableListByTypeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_table_list_by_type(
@@ -2328,11 +4378,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Query'] = request.query
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeTablesResponse().from_map(
-            self.do_rpcrequest('DescribeTables', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeTables',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeTablesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_tables_with_options_async(
@@ -2341,11 +4411,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Query'] = request.query
+        query['PageSize'] = request.page_size
+        query['CurrentPage'] = request.current_page
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DescribeTablesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeTables', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeTables',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeTablesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_tables(
@@ -2368,11 +4458,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DisableSqlAuditResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DisableSqlAuditResponse().from_map(
-            self.do_rpcrequest('DisableSqlAudit', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DisableSqlAudit',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DisableSqlAuditResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def disable_sql_audit_with_options_async(
@@ -2381,11 +4487,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DisableSqlAuditResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.DisableSqlAuditResponse().from_map(
-            await self.do_rpcrequest_async('DisableSqlAudit', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DisableSqlAudit',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DisableSqlAuditResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_sql_audit(
@@ -2408,11 +4530,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.EnableSqlAuditResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['IsRecall'] = request.is_recall
+        query['RecallStartTimestamp'] = request.recall_start_timestamp
+        query['RecallEndTimestamp'] = request.recall_end_timestamp
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.EnableSqlAuditResponse().from_map(
-            self.do_rpcrequest('EnableSqlAudit', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EnableSqlAudit',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.EnableSqlAuditResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def enable_sql_audit_with_options_async(
@@ -2421,11 +4562,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.EnableSqlAuditResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['IsRecall'] = request.is_recall
+        query['RecallStartTimestamp'] = request.recall_start_timestamp
+        query['RecallEndTimestamp'] = request.recall_end_timestamp
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.EnableSqlAuditResponse().from_map(
-            await self.do_rpcrequest_async('EnableSqlAudit', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EnableSqlAudit',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.EnableSqlAuditResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_sql_audit(
@@ -2448,11 +4608,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.EnableSqlFlashbackMatchSwitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.EnableSqlFlashbackMatchSwitchResponse().from_map(
-            self.do_rpcrequest('EnableSqlFlashbackMatchSwitch', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EnableSqlFlashbackMatchSwitch',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.EnableSqlFlashbackMatchSwitchResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def enable_sql_flashback_match_switch_with_options_async(
@@ -2461,11 +4637,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.EnableSqlFlashbackMatchSwitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.EnableSqlFlashbackMatchSwitchResponse().from_map(
-            await self.do_rpcrequest_async('EnableSqlFlashbackMatchSwitch', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EnableSqlFlashbackMatchSwitch',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.EnableSqlFlashbackMatchSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_sql_flashback_match_switch(
@@ -2488,11 +4680,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['NextToken'] = request.next_token
+        query['Tag'] = request.tag
+        query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ListTagResourcesResponse().from_map(
-            self.do_rpcrequest('ListTagResources', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
@@ -2501,11 +4712,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['NextToken'] = request.next_token
+        query['Tag'] = request.tag
+        query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ListTagResourcesResponse().from_map(
-            await self.do_rpcrequest_async('ListTagResources', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
@@ -2528,11 +4758,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ManagePrivateRdsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DBInstanceId'] = request.dbinstance_id
+        query['RdsAction'] = request.rds_action
+        query['Params'] = request.params
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ManagePrivateRdsResponse().from_map(
-            self.do_rpcrequest('ManagePrivateRds', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ManagePrivateRds',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ManagePrivateRdsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def manage_private_rds_with_options_async(
@@ -2541,11 +4790,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ManagePrivateRdsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DBInstanceId'] = request.dbinstance_id
+        query['RdsAction'] = request.rds_action
+        query['Params'] = request.params
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ManagePrivateRdsResponse().from_map(
-            await self.do_rpcrequest_async('ManagePrivateRds', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ManagePrivateRds',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ManagePrivateRdsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def manage_private_rds(
@@ -2568,11 +4836,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ModifyDrdsInstanceDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ModifyDrdsInstanceDescriptionResponse().from_map(
-            self.do_rpcrequest('ModifyDrdsInstanceDescription', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDrdsInstanceDescription',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ModifyDrdsInstanceDescriptionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_drds_instance_description_with_options_async(
@@ -2581,11 +4865,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ModifyDrdsInstanceDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ModifyDrdsInstanceDescriptionResponse().from_map(
-            await self.do_rpcrequest_async('ModifyDrdsInstanceDescription', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDrdsInstanceDescription',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ModifyDrdsInstanceDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_drds_instance_description(
@@ -2608,11 +4908,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ModifyDrdsIpWhiteListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['IpWhiteList'] = request.ip_white_list
+        query['Mode'] = request.mode
+        query['GroupName'] = request.group_name
+        query['GroupAttribute'] = request.group_attribute
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ModifyDrdsIpWhiteListResponse().from_map(
-            self.do_rpcrequest('ModifyDrdsIpWhiteList', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDrdsIpWhiteList',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ModifyDrdsIpWhiteListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_drds_ip_white_list_with_options_async(
@@ -2621,11 +4941,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ModifyDrdsIpWhiteListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['IpWhiteList'] = request.ip_white_list
+        query['Mode'] = request.mode
+        query['GroupName'] = request.group_name
+        query['GroupAttribute'] = request.group_attribute
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ModifyDrdsIpWhiteListResponse().from_map(
-            await self.do_rpcrequest_async('ModifyDrdsIpWhiteList', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDrdsIpWhiteList',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ModifyDrdsIpWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_drds_ip_white_list(
@@ -2648,11 +4988,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ModifyRdsReadWeightResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['InstanceNames'] = request.instance_names
+        query['Weights'] = request.weights
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ModifyRdsReadWeightResponse().from_map(
-            self.do_rpcrequest('ModifyRdsReadWeight', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyRdsReadWeight',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ModifyRdsReadWeightResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_rds_read_weight_with_options_async(
@@ -2661,11 +5019,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ModifyRdsReadWeightResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['InstanceNames'] = request.instance_names
+        query['Weights'] = request.weights
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ModifyRdsReadWeightResponse().from_map(
-            await self.do_rpcrequest_async('ModifyRdsReadWeight', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyRdsReadWeight',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ModifyRdsReadWeightResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_rds_read_weight(
@@ -2688,11 +5064,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.PutStartBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['BackupMode'] = request.backup_mode
+        query['BackupLevel'] = request.backup_level
+        query['BackupDbNames'] = request.backup_db_names
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.PutStartBackupResponse().from_map(
-            self.do_rpcrequest('PutStartBackup', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PutStartBackup',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.PutStartBackupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def put_start_backup_with_options_async(
@@ -2701,11 +5095,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.PutStartBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['BackupMode'] = request.backup_mode
+        query['BackupLevel'] = request.backup_level
+        query['BackupDbNames'] = request.backup_db_names
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.PutStartBackupResponse().from_map(
-            await self.do_rpcrequest_async('PutStartBackup', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PutStartBackup',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.PutStartBackupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def put_start_backup(
@@ -2728,11 +5140,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ReleaseInstanceInternetAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ReleaseInstanceInternetAddressResponse().from_map(
-            self.do_rpcrequest('ReleaseInstanceInternetAddress', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ReleaseInstanceInternetAddress',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ReleaseInstanceInternetAddressResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def release_instance_internet_address_with_options_async(
@@ -2741,11 +5169,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ReleaseInstanceInternetAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ReleaseInstanceInternetAddressResponse().from_map(
-            await self.do_rpcrequest_async('ReleaseInstanceInternetAddress', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ReleaseInstanceInternetAddress',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ReleaseInstanceInternetAddressResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def release_instance_internet_address(
@@ -2768,11 +5212,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.RemoveBackupsSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['BackupId'] = request.backup_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.RemoveBackupsSetResponse().from_map(
-            self.do_rpcrequest('RemoveBackupsSet', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveBackupsSet',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.RemoveBackupsSetResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def remove_backups_set_with_options_async(
@@ -2781,11 +5241,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.RemoveBackupsSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['BackupId'] = request.backup_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.RemoveBackupsSetResponse().from_map(
-            await self.do_rpcrequest_async('RemoveBackupsSet', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveBackupsSet',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.RemoveBackupsSetResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_backups_set(
@@ -2808,11 +5284,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.RemoveDrdsDbResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.RemoveDrdsDbResponse().from_map(
-            self.do_rpcrequest('RemoveDrdsDb', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveDrdsDb',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.RemoveDrdsDbResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def remove_drds_db_with_options_async(
@@ -2821,11 +5313,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.RemoveDrdsDbResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.RemoveDrdsDbResponse().from_map(
-            await self.do_rpcrequest_async('RemoveDrdsDb', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveDrdsDb',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.RemoveDrdsDbResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_drds_db(
@@ -2848,11 +5356,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.RemoveDrdsDbFailedRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.RemoveDrdsDbFailedRecordResponse().from_map(
-            self.do_rpcrequest('RemoveDrdsDbFailedRecord', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveDrdsDbFailedRecord',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.RemoveDrdsDbFailedRecordResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def remove_drds_db_failed_record_with_options_async(
@@ -2861,11 +5385,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.RemoveDrdsDbFailedRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.RemoveDrdsDbFailedRecordResponse().from_map(
-            await self.do_rpcrequest_async('RemoveDrdsDbFailedRecord', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveDrdsDbFailedRecord',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.RemoveDrdsDbFailedRecordResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_drds_db_failed_record(
@@ -2888,11 +5428,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.RemoveDrdsInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.RemoveDrdsInstanceResponse().from_map(
-            self.do_rpcrequest('RemoveDrdsInstance', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveDrdsInstance',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.RemoveDrdsInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def remove_drds_instance_with_options_async(
@@ -2901,11 +5456,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.RemoveDrdsInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.RemoveDrdsInstanceResponse().from_map(
-            await self.do_rpcrequest_async('RemoveDrdsInstance', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveDrdsInstance',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.RemoveDrdsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_drds_instance(
@@ -2928,11 +5498,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.RemoveInstanceAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['AccountName'] = request.account_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.RemoveInstanceAccountResponse().from_map(
-            self.do_rpcrequest('RemoveInstanceAccount', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveInstanceAccount',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.RemoveInstanceAccountResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def remove_instance_account_with_options_async(
@@ -2941,11 +5527,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.RemoveInstanceAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['AccountName'] = request.account_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.RemoveInstanceAccountResponse().from_map(
-            await self.do_rpcrequest_async('RemoveInstanceAccount', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RemoveInstanceAccount',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.RemoveInstanceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_instance_account(
@@ -2968,11 +5570,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SetBackupLocalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['LocalLogRetentionHours'] = request.local_log_retention_hours
+        query['LocalLogRetentionSpace'] = request.local_log_retention_space
+        query['HighSpaceUsageProtection'] = request.high_space_usage_protection
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SetBackupLocalResponse().from_map(
-            self.do_rpcrequest('SetBackupLocal', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetBackupLocal',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SetBackupLocalResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def set_backup_local_with_options_async(
@@ -2981,11 +5601,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SetBackupLocalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['LocalLogRetentionHours'] = request.local_log_retention_hours
+        query['LocalLogRetentionSpace'] = request.local_log_retention_space
+        query['HighSpaceUsageProtection'] = request.high_space_usage_protection
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SetBackupLocalResponse().from_map(
-            await self.do_rpcrequest_async('SetBackupLocal', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetBackupLocal',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SetBackupLocalResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_backup_local(
@@ -3008,11 +5646,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SetBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['PreferredBackupPeriod'] = request.preferred_backup_period
+        query['PreferredBackupStartTime'] = request.preferred_backup_start_time
+        query['PreferredBackupEndTime'] = request.preferred_backup_end_time
+        query['BackupMode'] = request.backup_mode
+        query['BackupLevel'] = request.backup_level
+        query['BackupDbNames'] = request.backup_db_names
+        query['BackupLog'] = request.backup_log
+        query['DataBackupRetentionPeriod'] = request.data_backup_retention_period
+        query['LogBackupRetentionPeriod'] = request.log_backup_retention_period
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SetBackupPolicyResponse().from_map(
-            self.do_rpcrequest('SetBackupPolicy', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetBackupPolicy',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SetBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def set_backup_policy_with_options_async(
@@ -3021,11 +5683,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SetBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['PreferredBackupPeriod'] = request.preferred_backup_period
+        query['PreferredBackupStartTime'] = request.preferred_backup_start_time
+        query['PreferredBackupEndTime'] = request.preferred_backup_end_time
+        query['BackupMode'] = request.backup_mode
+        query['BackupLevel'] = request.backup_level
+        query['BackupDbNames'] = request.backup_db_names
+        query['BackupLog'] = request.backup_log
+        query['DataBackupRetentionPeriod'] = request.data_backup_retention_period
+        query['LogBackupRetentionPeriod'] = request.log_backup_retention_period
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SetBackupPolicyResponse().from_map(
-            await self.do_rpcrequest_async('SetBackupPolicy', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetBackupPolicy',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SetBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_backup_policy(
@@ -3048,11 +5734,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SetupBroadcastTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Active'] = request.active
+        query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SetupBroadcastTablesResponse().from_map(
-            self.do_rpcrequest('SetupBroadcastTables', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetupBroadcastTables',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SetupBroadcastTablesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def setup_broadcast_tables_with_options_async(
@@ -3061,11 +5766,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SetupBroadcastTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['Active'] = request.active
+        query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SetupBroadcastTablesResponse().from_map(
-            await self.do_rpcrequest_async('SetupBroadcastTables', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetupBroadcastTables',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SetupBroadcastTablesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def setup_broadcast_tables(
@@ -3088,11 +5812,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SetupDrdsParamsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['ParamLevel'] = request.param_level
+        query['Data'] = request.data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SetupDrdsParamsResponse().from_map(
-            self.do_rpcrequest('SetupDrdsParams', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetupDrdsParams',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SetupDrdsParamsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def setup_drds_params_with_options_async(
@@ -3101,11 +5843,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SetupDrdsParamsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['ParamLevel'] = request.param_level
+        query['Data'] = request.data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SetupDrdsParamsResponse().from_map(
-            await self.do_rpcrequest_async('SetupDrdsParams', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetupDrdsParams',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SetupDrdsParamsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def setup_drds_params(
@@ -3128,11 +5888,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SetupTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['AllowFullTableScan'] = request.allow_full_table_scan
+        query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SetupTableResponse().from_map(
-            self.do_rpcrequest('SetupTable', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetupTable',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SetupTableResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def setup_table_with_options_async(
@@ -3141,11 +5920,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SetupTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['AllowFullTableScan'] = request.allow_full_table_scan
+        query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SetupTableResponse().from_map(
-            await self.do_rpcrequest_async('SetupTable', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetupTable',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SetupTableResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def setup_table(
@@ -3168,11 +5966,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.StartRestoreResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['PreferredBackupTime'] = request.preferred_backup_time
+        query['BackupMode'] = request.backup_mode
+        query['BackupLevel'] = request.backup_level
+        query['BackupDbNames'] = request.backup_db_names
+        query['BackupId'] = request.backup_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.StartRestoreResponse().from_map(
-            self.do_rpcrequest('StartRestore', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartRestore',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.StartRestoreResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def start_restore_with_options_async(
@@ -3181,11 +5999,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.StartRestoreResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['PreferredBackupTime'] = request.preferred_backup_time
+        query['BackupMode'] = request.backup_mode
+        query['BackupLevel'] = request.backup_level
+        query['BackupDbNames'] = request.backup_db_names
+        query['BackupId'] = request.backup_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.StartRestoreResponse().from_map(
-            await self.do_rpcrequest_async('StartRestore', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartRestore',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.StartRestoreResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_restore(
@@ -3208,11 +6046,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitCleanTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['ParentJobId'] = request.parent_job_id
+        query['JobId'] = request.job_id
+        query['ExpandType'] = request.expand_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitCleanTaskResponse().from_map(
-            self.do_rpcrequest('SubmitCleanTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitCleanTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitCleanTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def submit_clean_task_with_options_async(
@@ -3221,11 +6078,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitCleanTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['ParentJobId'] = request.parent_job_id
+        query['JobId'] = request.job_id
+        query['ExpandType'] = request.expand_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitCleanTaskResponse().from_map(
-            await self.do_rpcrequest_async('SubmitCleanTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitCleanTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitCleanTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_clean_task(
@@ -3248,11 +6124,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitHotExpandPreCheckTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['DbInstType'] = request.db_inst_type
+        query['TableList'] = request.table_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitHotExpandPreCheckTaskResponse().from_map(
-            self.do_rpcrequest('SubmitHotExpandPreCheckTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitHotExpandPreCheckTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitHotExpandPreCheckTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def submit_hot_expand_pre_check_task_with_options_async(
@@ -3261,11 +6155,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitHotExpandPreCheckTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['DbInstType'] = request.db_inst_type
+        query['TableList'] = request.table_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitHotExpandPreCheckTaskResponse().from_map(
-            await self.do_rpcrequest_async('SubmitHotExpandPreCheckTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitHotExpandPreCheckTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitHotExpandPreCheckTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_hot_expand_pre_check_task(
@@ -3288,11 +6200,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitHotExpandTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['TaskName'] = request.task_name
+        query['TaskDesc'] = request.task_desc
+        query['InstanceDbMapping'] = request.instance_db_mapping
+        query['Mapping'] = request.mapping
+        query['SupperAccountMapping'] = request.supper_account_mapping
+        query['ExtendedMapping'] = request.extended_mapping
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitHotExpandTaskResponse().from_map(
-            self.do_rpcrequest('SubmitHotExpandTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitHotExpandTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitHotExpandTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def submit_hot_expand_task_with_options_async(
@@ -3301,11 +6235,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitHotExpandTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['TaskName'] = request.task_name
+        query['TaskDesc'] = request.task_desc
+        query['InstanceDbMapping'] = request.instance_db_mapping
+        query['Mapping'] = request.mapping
+        query['SupperAccountMapping'] = request.supper_account_mapping
+        query['ExtendedMapping'] = request.extended_mapping
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitHotExpandTaskResponse().from_map(
-            await self.do_rpcrequest_async('SubmitHotExpandTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitHotExpandTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitHotExpandTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_hot_expand_task(
@@ -3328,11 +6284,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitSmoothExpandPreCheckResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['DbInstType'] = request.db_inst_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitSmoothExpandPreCheckResponse().from_map(
-            self.do_rpcrequest('SubmitSmoothExpandPreCheck', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitSmoothExpandPreCheck',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitSmoothExpandPreCheckResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def submit_smooth_expand_pre_check_with_options_async(
@@ -3341,11 +6314,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitSmoothExpandPreCheckResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['DbInstType'] = request.db_inst_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitSmoothExpandPreCheckResponse().from_map(
-            await self.do_rpcrequest_async('SubmitSmoothExpandPreCheck', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitSmoothExpandPreCheck',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitSmoothExpandPreCheckResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_smooth_expand_pre_check(
@@ -3368,11 +6358,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitSmoothExpandPreCheckTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitSmoothExpandPreCheckTaskResponse().from_map(
-            self.do_rpcrequest('SubmitSmoothExpandPreCheckTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitSmoothExpandPreCheckTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitSmoothExpandPreCheckTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def submit_smooth_expand_pre_check_task_with_options_async(
@@ -3381,11 +6387,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitSmoothExpandPreCheckTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitSmoothExpandPreCheckTaskResponse().from_map(
-            await self.do_rpcrequest_async('SubmitSmoothExpandPreCheckTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitSmoothExpandPreCheckTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitSmoothExpandPreCheckTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_smooth_expand_pre_check_task(
@@ -3408,11 +6430,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitSmoothExpandTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['DbInstanceIsCreating'] = request.db_instance_is_creating
+        query['TransferTaskInfos'] = request.transfer_task_infos
+        query['RdsSuperInstances'] = request.rds_super_instances
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitSmoothExpandTaskResponse().from_map(
-            self.do_rpcrequest('SubmitSmoothExpandTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitSmoothExpandTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitSmoothExpandTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def submit_smooth_expand_task_with_options_async(
@@ -3421,11 +6462,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitSmoothExpandTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['DbInstanceIsCreating'] = request.db_instance_is_creating
+        query['TransferTaskInfos'] = request.transfer_task_infos
+        query['RdsSuperInstances'] = request.rds_super_instances
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitSmoothExpandTaskResponse().from_map(
-            await self.do_rpcrequest_async('SubmitSmoothExpandTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitSmoothExpandTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitSmoothExpandTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_smooth_expand_task(
@@ -3448,11 +6508,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitSqlFlashbackTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['TraceId'] = request.trace_id
+        query['TableName'] = request.table_name
+        query['SqlType'] = request.sql_type
+        query['SqlPk'] = request.sql_pk
+        query['RecallType'] = request.recall_type
+        query['RecallRestoreType'] = request.recall_restore_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitSqlFlashbackTaskResponse().from_map(
-            self.do_rpcrequest('SubmitSqlFlashbackTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitSqlFlashbackTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitSqlFlashbackTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def submit_sql_flashback_task_with_options_async(
@@ -3461,11 +6545,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitSqlFlashbackTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
+        query['TraceId'] = request.trace_id
+        query['TableName'] = request.table_name
+        query['SqlType'] = request.sql_type
+        query['SqlPk'] = request.sql_pk
+        query['RecallType'] = request.recall_type
+        query['RecallRestoreType'] = request.recall_restore_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitSqlFlashbackTaskResponse().from_map(
-            await self.do_rpcrequest_async('SubmitSqlFlashbackTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitSqlFlashbackTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitSqlFlashbackTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_sql_flashback_task(
@@ -3488,11 +6596,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitSwitchTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['ParentJobId'] = request.parent_job_id
+        query['JobId'] = request.job_id
+        query['ExpandType'] = request.expand_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitSwitchTaskResponse().from_map(
-            self.do_rpcrequest('SubmitSwitchTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitSwitchTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitSwitchTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def submit_switch_task_with_options_async(
@@ -3501,11 +6628,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SubmitSwitchTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['ParentJobId'] = request.parent_job_id
+        query['JobId'] = request.job_id
+        query['ExpandType'] = request.expand_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SubmitSwitchTaskResponse().from_map(
-            await self.do_rpcrequest_async('SubmitSwitchTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitSwitchTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SubmitSwitchTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_switch_task(
@@ -3528,11 +6674,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SwitchGlobalBroadcastTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SwitchGlobalBroadcastTypeResponse().from_map(
-            self.do_rpcrequest('SwitchGlobalBroadcastType', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SwitchGlobalBroadcastType',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SwitchGlobalBroadcastTypeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def switch_global_broadcast_type_with_options_async(
@@ -3541,11 +6704,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.SwitchGlobalBroadcastTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.SwitchGlobalBroadcastTypeResponse().from_map(
-            await self.do_rpcrequest_async('SwitchGlobalBroadcastType', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SwitchGlobalBroadcastType',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.SwitchGlobalBroadcastTypeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def switch_global_broadcast_type(
@@ -3568,11 +6748,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
+        query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.TagResourcesResponse().from_map(
-            self.do_rpcrequest('TagResources', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -3581,11 +6779,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
+        query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.TagResourcesResponse().from_map(
-            await self.do_rpcrequest_async('TagResources', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
@@ -3608,11 +6824,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['All'] = request.all
+        query['ResourceId'] = request.resource_id
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.UntagResourcesResponse().from_map(
-            self.do_rpcrequest('UntagResources', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
@@ -3621,11 +6856,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['All'] = request.all
+        query['ResourceId'] = request.resource_id
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.UntagResourcesResponse().from_map(
-            await self.do_rpcrequest_async('UntagResources', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
@@ -3648,11 +6902,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.UpdateInstanceNetworkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['SrcInstanceNetworkType'] = request.src_instance_network_type
+        query['RetainClassic'] = request.retain_classic
+        query['ClassicExpiredDays'] = request.classic_expired_days
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.UpdateInstanceNetworkResponse().from_map(
-            self.do_rpcrequest('UpdateInstanceNetwork', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateInstanceNetwork',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.UpdateInstanceNetworkResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_instance_network_with_options_async(
@@ -3661,11 +6933,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.UpdateInstanceNetworkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['SrcInstanceNetworkType'] = request.src_instance_network_type
+        query['RetainClassic'] = request.retain_classic
+        query['ClassicExpiredDays'] = request.classic_expired_days
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.UpdateInstanceNetworkResponse().from_map(
-            await self.do_rpcrequest_async('UpdateInstanceNetwork', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateInstanceNetwork',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.UpdateInstanceNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_instance_network(
@@ -3682,17 +6972,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_network_with_options_async(request, runtime)
 
+    def update_resource_group_attribute_with_options(
+        self,
+        request: drds_20190123_models.UpdateResourceGroupAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> drds_20190123_models.UpdateResourceGroupAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['NewResourceGroupId'] = request.new_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateResourceGroupAttribute',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.UpdateResourceGroupAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_resource_group_attribute_with_options_async(
+        self,
+        request: drds_20190123_models.UpdateResourceGroupAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> drds_20190123_models.UpdateResourceGroupAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['NewResourceGroupId'] = request.new_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateResourceGroupAttribute',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.UpdateResourceGroupAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_resource_group_attribute(
+        self,
+        request: drds_20190123_models.UpdateResourceGroupAttributeRequest,
+    ) -> drds_20190123_models.UpdateResourceGroupAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_resource_group_attribute_with_options(request, runtime)
+
+    async def update_resource_group_attribute_async(
+        self,
+        request: drds_20190123_models.UpdateResourceGroupAttributeRequest,
+    ) -> drds_20190123_models.UpdateResourceGroupAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_resource_group_attribute_with_options_async(request, runtime)
+
     def upgrade_hi_store_instance_with_options(
         self,
         request: drds_20190123_models.UpgradeHiStoreInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.UpgradeHiStoreInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RegionId'] = request.region_id
+        query['HistoreInstanceId'] = request.histore_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.UpgradeHiStoreInstanceResponse().from_map(
-            self.do_rpcrequest('UpgradeHiStoreInstance', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeHiStoreInstance',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.UpgradeHiStoreInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_hi_store_instance_with_options_async(
@@ -3701,11 +7082,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.UpgradeHiStoreInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RegionId'] = request.region_id
+        query['HistoreInstanceId'] = request.histore_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.UpgradeHiStoreInstanceResponse().from_map(
-            await self.do_rpcrequest_async('UpgradeHiStoreInstance', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeHiStoreInstance',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.UpgradeHiStoreInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_hi_store_instance(
@@ -3728,11 +7126,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.UpgradeInstanceVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RegionId'] = request.region_id
+        query['Rpm'] = request.rpm
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.UpgradeInstanceVersionResponse().from_map(
-            self.do_rpcrequest('UpgradeInstanceVersion', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeInstanceVersion',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.UpgradeInstanceVersionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_instance_version_with_options_async(
@@ -3741,11 +7156,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.UpgradeInstanceVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['RegionId'] = request.region_id
+        query['Rpm'] = request.rpm
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.UpgradeInstanceVersionResponse().from_map(
-            await self.do_rpcrequest_async('UpgradeInstanceVersion', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeInstanceVersion',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.UpgradeInstanceVersionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_instance_version(
@@ -3768,11 +7200,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ValidateShardTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['SourceTableName'] = request.source_table_name
+        query['TargetTableName'] = request.target_table_name
+        query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ValidateShardTaskResponse().from_map(
-            self.do_rpcrequest('ValidateShardTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ValidateShardTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ValidateShardTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def validate_shard_task_with_options_async(
@@ -3781,11 +7233,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.ValidateShardTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['DrdsInstanceId'] = request.drds_instance_id
+        query['DbName'] = request.db_name
+        query['SourceTableName'] = request.source_table_name
+        query['TargetTableName'] = request.target_table_name
+        query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return drds_20190123_models.ValidateShardTaskResponse().from_map(
-            await self.do_rpcrequest_async('ValidateShardTask', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ValidateShardTask',
+            version='2019-01-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.ValidateShardTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def validate_shard_task(
