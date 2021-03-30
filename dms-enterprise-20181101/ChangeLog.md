@@ -1,3 +1,6 @@
+2021-03-30 Version: 1.15.1
+- Generated python 2018-11-01 for dms-enterprise.
+
 2021-03-30 Version: 1.15.0
 - Support ListDDLPublishRecords API.
 - Fixed GetMetaTableColumn, GetMetaTableDetailInfo API response param DataLength lack of precision.
