@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -68,8 +69,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.AttachDatasetResponse().from_map(
-            self.do_roarequest('AttachDataset', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/actions/current', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AttachDataset',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/actions/current',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.AttachDatasetResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def attach_dataset_with_options_async(
@@ -82,8 +95,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.AttachDatasetResponse().from_map(
-            await self.do_roarequest_async('AttachDataset', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/actions/current', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AttachDataset',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/actions/current',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.AttachDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_diversify(
@@ -111,8 +136,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.CreateDiversifyResponse().from_map(
-            self.do_roarequest('CreateDiversify', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/diversifies', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDiversify',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/diversifies',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.CreateDiversifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_diversify_with_options_async(
@@ -124,8 +161,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.CreateDiversifyResponse().from_map(
-            await self.do_roarequest_async('CreateDiversify', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/diversifies', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDiversify',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/diversifies',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.CreateDiversifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_instance(self) -> airec_20181012_models.CreateInstanceResponse:
@@ -146,8 +195,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.CreateInstanceResponse().from_map(
-            self.do_roarequest('CreateInstance', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.CreateInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_instance_with_options_async(
@@ -158,8 +219,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.CreateInstanceResponse().from_map(
-            await self.do_roarequest_async('CreateInstance', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.CreateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_mix(
@@ -187,8 +260,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.CreateMixResponse().from_map(
-            self.do_roarequest('CreateMix', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/mixes', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateMix',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/mixes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.CreateMixResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_mix_with_options_async(
@@ -200,8 +285,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.CreateMixResponse().from_map(
-            await self.do_roarequest_async('CreateMix', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/mixes', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateMix',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/mixes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.CreateMixResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_rule(
@@ -229,8 +326,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.CreateRuleResponse().from_map(
-            self.do_roarequest('CreateRule', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/rules', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRule',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rules',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.CreateRuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_rule_with_options_async(
@@ -242,8 +351,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.CreateRuleResponse().from_map(
-            await self.do_roarequest_async('CreateRule', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/rules', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRule',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rules',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.CreateRuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_scene(
@@ -279,8 +400,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.CreateSceneResponse().from_map(
-            self.do_roarequest('CreateScene', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/scenes', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateScene',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.CreateSceneResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_scene_with_options_async(
@@ -298,8 +431,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.CreateSceneResponse().from_map(
-            await self.do_roarequest_async('CreateScene', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/scenes', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateScene',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.CreateSceneResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_data_set(
@@ -330,8 +475,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DeleteDataSetResponse().from_map(
-            self.do_roarequest('DeleteDataSet', '2018-10-12', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteDataSet',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DeleteDataSetResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_data_set_with_options_async(
@@ -344,8 +501,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DeleteDataSetResponse().from_map(
-            await self.do_roarequest_async('DeleteDataSet', '2018-10-12', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteDataSet',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DeleteDataSetResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_diversify(
@@ -376,8 +545,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DeleteDiversifyResponse().from_map(
-            self.do_roarequest('DeleteDiversify', '2018-10-12', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/diversifies/{{Name}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteDiversify',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/diversifies/{{Name}}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DeleteDiversifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_diversify_with_options_async(
@@ -390,8 +571,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DeleteDiversifyResponse().from_map(
-            await self.do_roarequest_async('DeleteDiversify', '2018-10-12', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/diversifies/{{Name}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteDiversify',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/diversifies/{{Name}}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DeleteDiversifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_mix(
@@ -422,8 +615,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DeleteMixResponse().from_map(
-            self.do_roarequest('DeleteMix', '2018-10-12', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/mixes/{{Name}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteMix',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/mixes/{{Name}}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DeleteMixResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_mix_with_options_async(
@@ -436,8 +641,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DeleteMixResponse().from_map(
-            await self.do_roarequest_async('DeleteMix', '2018-10-12', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/mixes/{{Name}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteMix',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/mixes/{{Name}}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DeleteMixResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_scene(
@@ -468,8 +685,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DeleteSceneResponse().from_map(
-            self.do_roarequest('DeleteScene', '2018-10-12', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/scenes/{{SceneId}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteScene',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes/{{SceneId}}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DeleteSceneResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_scene_with_options_async(
@@ -482,8 +711,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DeleteSceneResponse().from_map(
-            await self.do_roarequest_async('DeleteScene', '2018-10-12', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/scenes/{{SceneId}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteScene',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes/{{SceneId}}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DeleteSceneResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_data_set_message(
@@ -514,8 +755,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeDataSetMessageResponse().from_map(
-            self.do_roarequest('DescribeDataSetMessage', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/messages', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDataSetMessage',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/messages',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeDataSetMessageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_data_set_message_with_options_async(
@@ -528,8 +781,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeDataSetMessageResponse().from_map(
-            await self.do_roarequest_async('DescribeDataSetMessage', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/messages', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDataSetMessage',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/messages',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeDataSetMessageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_data_set_report(
@@ -560,8 +825,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeDataSetReportResponse().from_map(
-            self.do_roarequest('DescribeDataSetReport', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/report', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDataSetReport',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/report',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeDataSetReportResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_data_set_report_with_options_async(
@@ -574,8 +851,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeDataSetReportResponse().from_map(
-            await self.do_roarequest_async('DescribeDataSetReport', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/report', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDataSetReport',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/report',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeDataSetReportResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_diversify(
@@ -606,8 +895,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeDiversifyResponse().from_map(
-            self.do_roarequest('DescribeDiversify', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/diversifies/{{Name}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDiversify',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/diversifies/{{Name}}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeDiversifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_diversify_with_options_async(
@@ -620,8 +921,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeDiversifyResponse().from_map(
-            await self.do_roarequest_async('DescribeDiversify', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/diversifies/{{Name}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDiversify',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/diversifies/{{Name}}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeDiversifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_exposure_settings(
@@ -649,8 +962,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeExposureSettingsResponse().from_map(
-            self.do_roarequest('DescribeExposureSettings', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/exposure-settings', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeExposureSettings',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/exposure-settings',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeExposureSettingsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_exposure_settings_with_options_async(
@@ -662,8 +987,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeExposureSettingsResponse().from_map(
-            await self.do_roarequest_async('DescribeExposureSettings', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/exposure-settings', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeExposureSettings',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/exposure-settings',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeExposureSettingsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_instance(
@@ -691,8 +1028,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeInstanceResponse().from_map(
-            self.do_roarequest('DescribeInstance', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_instance_with_options_async(
@@ -704,8 +1053,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeInstanceResponse().from_map(
-            await self.do_roarequest_async('DescribeInstance', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_mix(
@@ -736,8 +1097,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeMixResponse().from_map(
-            self.do_roarequest('DescribeMix', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/mixes/{{Name}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeMix',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/mixes/{{Name}}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeMixResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_mix_with_options_async(
@@ -750,8 +1123,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeMixResponse().from_map(
-            await self.do_roarequest_async('DescribeMix', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/mixes/{{Name}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeMix',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/mixes/{{Name}}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeMixResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_quota(
@@ -779,8 +1164,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeQuotaResponse().from_map(
-            self.do_roarequest('DescribeQuota', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/quota', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeQuota',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/quota',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeQuotaResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_quota_with_options_async(
@@ -792,8 +1189,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeQuotaResponse().from_map(
-            await self.do_roarequest_async('DescribeQuota', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/quota', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeQuota',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/quota',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(
@@ -826,8 +1235,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.DescribeRegionsResponse().from_map(
-            self.do_roarequest('DescribeRegions', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/configurations/regions', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/configurations/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -844,8 +1265,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.DescribeRegionsResponse().from_map(
-            await self.do_roarequest_async('DescribeRegions', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/configurations/regions', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/configurations/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_rule(
@@ -886,8 +1319,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.DescribeRuleResponse().from_map(
-            self.do_roarequest('DescribeRule', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/rules/{{RuleId}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRule',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rules/{{RuleId}}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeRuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_rule_with_options_async(
@@ -908,8 +1353,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.DescribeRuleResponse().from_map(
-            await self.do_roarequest_async('DescribeRule', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/rules/{{RuleId}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRule',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rules/{{RuleId}}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeRuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_scene(
@@ -940,8 +1397,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeSceneResponse().from_map(
-            self.do_roarequest('DescribeScene', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/scenes/{{SceneId}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScene',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes/{{SceneId}}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeSceneResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_scene_with_options_async(
@@ -954,8 +1423,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeSceneResponse().from_map(
-            await self.do_roarequest_async('DescribeScene', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/scenes/{{SceneId}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeScene',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes/{{SceneId}}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeSceneResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_scene_throughput(
@@ -986,8 +1467,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeSceneThroughputResponse().from_map(
-            self.do_roarequest('DescribeSceneThroughput', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/scenes/{{SceneId}}/throughput', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSceneThroughput',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes/{{SceneId}}/throughput',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeSceneThroughputResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_scene_throughput_with_options_async(
@@ -1000,8 +1493,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DescribeSceneThroughputResponse().from_map(
-            await self.do_roarequest_async('DescribeSceneThroughput', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/scenes/{{SceneId}}/throughput', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSceneThroughput',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes/{{SceneId}}/throughput',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeSceneThroughputResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_sync_report_detail(
@@ -1043,8 +1548,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.DescribeSyncReportDetailResponse().from_map(
-            self.do_roarequest('DescribeSyncReportDetail', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/sync-reports/detail', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSyncReportDetail',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/sync-reports/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeSyncReportDetailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_sync_report_detail_with_options_async(
@@ -1068,8 +1585,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.DescribeSyncReportDetailResponse().from_map(
-            await self.do_roarequest_async('DescribeSyncReportDetail', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/sync-reports/detail', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSyncReportDetail',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/sync-reports/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeSyncReportDetailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_sync_report_outliers(
@@ -1113,8 +1642,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.DescribeSyncReportOutliersResponse().from_map(
-            self.do_roarequest('DescribeSyncReportOutliers', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/sync-reports/outliers', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSyncReportOutliers',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/sync-reports/outliers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeSyncReportOutliersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_sync_report_outliers_with_options_async(
@@ -1140,8 +1681,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.DescribeSyncReportOutliersResponse().from_map(
-            await self.do_roarequest_async('DescribeSyncReportOutliers', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/sync-reports/outliers', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSyncReportOutliers',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/sync-reports/outliers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeSyncReportOutliersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_metrics(
@@ -1181,8 +1734,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.DescribeUserMetricsResponse().from_map(
-            self.do_roarequest('DescribeUserMetrics', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/metrics', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeUserMetrics',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/metrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeUserMetricsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_metrics_with_options_async(
@@ -1204,8 +1769,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.DescribeUserMetricsResponse().from_map(
-            await self.do_roarequest_async('DescribeUserMetrics', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/metrics', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeUserMetrics',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/metrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DescribeUserMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def downgrade_instance(
@@ -1233,8 +1810,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DowngradeInstanceResponse().from_map(
-            self.do_roarequest('DowngradeInstance', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/downgrade', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DowngradeInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/actions/downgrade',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DowngradeInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def downgrade_instance_with_options_async(
@@ -1246,8 +1835,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.DowngradeInstanceResponse().from_map(
-            await self.do_roarequest_async('DowngradeInstance', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/downgrade', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DowngradeInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/actions/downgrade',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.DowngradeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dashboard(
@@ -1293,8 +1894,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListDashboardResponse().from_map(
-            self.do_roarequest('ListDashboard', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/statistics', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboard',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/statistics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_dashboard_with_options_async(
@@ -1322,8 +1935,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListDashboardResponse().from_map(
-            await self.do_roarequest_async('ListDashboard', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/statistics', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboard',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/statistics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dashboard_details(
@@ -1367,8 +1992,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListDashboardDetailsResponse().from_map(
-            self.do_roarequest('ListDashboardDetails', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/details', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboardDetails',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/details',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardDetailsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_dashboard_details_with_options_async(
@@ -1394,8 +2031,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListDashboardDetailsResponse().from_map(
-            await self.do_roarequest_async('ListDashboardDetails', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/details', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboardDetails',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/details',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dashboard_details_flows(
@@ -1439,8 +2088,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListDashboardDetailsFlowsResponse().from_map(
-            self.do_roarequest('ListDashboardDetailsFlows', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/details/flows', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboardDetailsFlows',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/details/flows',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardDetailsFlowsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_dashboard_details_flows_with_options_async(
@@ -1466,8 +2127,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListDashboardDetailsFlowsResponse().from_map(
-            await self.do_roarequest_async('ListDashboardDetailsFlows', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/details/flows', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboardDetailsFlows',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/details/flows',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardDetailsFlowsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dashboard_metrics(
@@ -1507,8 +2180,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListDashboardMetricsResponse().from_map(
-            self.do_roarequest('ListDashboardMetrics', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/metrics', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboardMetrics',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/metrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardMetricsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_dashboard_metrics_with_options_async(
@@ -1530,8 +2215,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListDashboardMetricsResponse().from_map(
-            await self.do_roarequest_async('ListDashboardMetrics', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/metrics', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboardMetrics',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/metrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dashboard_metrics_flows(
@@ -1571,8 +2268,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListDashboardMetricsFlowsResponse().from_map(
-            self.do_roarequest('ListDashboardMetricsFlows', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/metrics/flows', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboardMetricsFlows',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/metrics/flows',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardMetricsFlowsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_dashboard_metrics_flows_with_options_async(
@@ -1594,8 +2303,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListDashboardMetricsFlowsResponse().from_map(
-            await self.do_roarequest_async('ListDashboardMetricsFlows', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/metrics/flows', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboardMetricsFlows',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/metrics/flows',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardMetricsFlowsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dashboard_parameters(
@@ -1623,8 +2344,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListDashboardParametersResponse().from_map(
-            self.do_roarequest('ListDashboardParameters', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/parameters', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboardParameters',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/parameters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardParametersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_dashboard_parameters_with_options_async(
@@ -1636,8 +2369,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListDashboardParametersResponse().from_map(
-            await self.do_roarequest_async('ListDashboardParameters', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/parameters', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboardParameters',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/parameters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardParametersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dashboard_uid(
@@ -1665,8 +2410,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListDashboardUidResponse().from_map(
-            self.do_roarequest('ListDashboardUid', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/uid', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboardUid',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/uid',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardUidResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_dashboard_uid_with_options_async(
@@ -1678,8 +2435,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListDashboardUidResponse().from_map(
-            await self.do_roarequest_async('ListDashboardUid', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dashboard/uid', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDashboardUid',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dashboard/uid',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDashboardUidResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_data_set(
@@ -1707,8 +2476,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListDataSetResponse().from_map(
-            self.do_roarequest('ListDataSet', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dataSets', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDataSet',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSets',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDataSetResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_data_set_with_options_async(
@@ -1720,8 +2501,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListDataSetResponse().from_map(
-            await self.do_roarequest_async('ListDataSet', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dataSets', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDataSet',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSets',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDataSetResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_data_source(
@@ -1749,8 +2542,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListDataSourceResponse().from_map(
-            self.do_roarequest('ListDataSource', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dataSources', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDataSource',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDataSourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_data_source_with_options_async(
@@ -1762,8 +2567,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListDataSourceResponse().from_map(
-            await self.do_roarequest_async('ListDataSource', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dataSources', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDataSource',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_diversify(
@@ -1791,8 +2608,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListDiversifyResponse().from_map(
-            self.do_roarequest('ListDiversify', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/diversifies', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDiversify',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/diversifies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDiversifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_diversify_with_options_async(
@@ -1804,8 +2633,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListDiversifyResponse().from_map(
-            await self.do_roarequest_async('ListDiversify', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/diversifies', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDiversify',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/diversifies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListDiversifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_instance(
@@ -1846,8 +2687,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListInstanceResponse().from_map(
-            self.do_roarequest('ListInstance', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_instance_with_options_async(
@@ -1872,8 +2725,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListInstanceResponse().from_map(
-            await self.do_roarequest_async('ListInstance', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_instance_task(
@@ -1901,8 +2766,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListInstanceTaskResponse().from_map(
-            self.do_roarequest('ListInstanceTask', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/tasks', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInstanceTask',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListInstanceTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_instance_task_with_options_async(
@@ -1914,8 +2791,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListInstanceTaskResponse().from_map(
-            await self.do_roarequest_async('ListInstanceTask', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/tasks', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInstanceTask',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListInstanceTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_items(
@@ -1953,8 +2842,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListItemsResponse().from_map(
-            self.do_roarequest('ListItems', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/items/actions/list', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListItems',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/items/actions/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListItemsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_items_with_options_async(
@@ -1974,8 +2875,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListItemsResponse().from_map(
-            await self.do_roarequest_async('ListItems', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/items/actions/list', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListItems',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/items/actions/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListItemsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_logs(
@@ -2019,8 +2932,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListLogsResponse().from_map(
-            self.do_roarequest('ListLogs', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/logs', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListLogs',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/logs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListLogsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_logs_with_options_async(
@@ -2046,8 +2971,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListLogsResponse().from_map(
-            await self.do_roarequest_async('ListLogs', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/logs', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListLogs',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/logs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListLogsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_mix(
@@ -2075,8 +3012,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListMixResponse().from_map(
-            self.do_roarequest('ListMix', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/mixes', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListMix',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/mixes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListMixResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_mix_with_options_async(
@@ -2088,8 +3037,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListMixResponse().from_map(
-            await self.do_roarequest_async('ListMix', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/mixes', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListMix',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/mixes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListMixResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_rule_conditions(
@@ -2117,8 +3078,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListRuleConditionsResponse().from_map(
-            self.do_roarequest('ListRuleConditions', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/rule-conditions', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListRuleConditions',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rule-conditions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListRuleConditionsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_rule_conditions_with_options_async(
@@ -2130,8 +3103,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListRuleConditionsResponse().from_map(
-            await self.do_roarequest_async('ListRuleConditions', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/rule-conditions', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListRuleConditions',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rule-conditions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListRuleConditionsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_rules(
@@ -2168,9 +3153,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.page):
-            query['Page'] = request.page
+            query['page'] = request.page
         if not UtilClient.is_unset(request.size):
-            query['Size'] = request.size
+            query['size'] = request.size
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.end_time):
@@ -2179,8 +3164,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListRulesResponse().from_map(
-            self.do_roarequest('ListRules', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/rules', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListRules',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rules',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListRulesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_rules_with_options_async(
@@ -2199,9 +3196,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.page):
-            query['Page'] = request.page
+            query['page'] = request.page
         if not UtilClient.is_unset(request.size):
-            query['Size'] = request.size
+            query['size'] = request.size
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.end_time):
@@ -2210,8 +3207,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListRulesResponse().from_map(
-            await self.do_roarequest_async('ListRules', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/rules', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListRules',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rules',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListRulesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_rule_tasks(
@@ -2247,8 +3256,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListRuleTasksResponse().from_map(
-            self.do_roarequest('ListRuleTasks', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/rule-tasks', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListRuleTasks',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rule-tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListRuleTasksResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_rule_tasks_with_options_async(
@@ -2266,8 +3287,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListRuleTasksResponse().from_map(
-            await self.do_roarequest_async('ListRuleTasks', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/rule-tasks', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListRuleTasks',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rule-tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListRuleTasksResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_scene_items(
@@ -2316,8 +3349,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListSceneItemsResponse().from_map(
-            self.do_roarequest('ListSceneItems', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/scenes/{{SceneId}}/items', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSceneItems',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes/{{SceneId}}/items',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListSceneItemsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_scene_items_with_options_async(
@@ -2346,8 +3391,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListSceneItemsResponse().from_map(
-            await self.do_roarequest_async('ListSceneItems', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/scenes/{{SceneId}}/items', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSceneItems',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes/{{SceneId}}/items',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListSceneItemsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_scenes(
@@ -2383,8 +3440,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListScenesResponse().from_map(
-            self.do_roarequest('ListScenes', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/scenes', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListScenes',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListScenesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_scenes_with_options_async(
@@ -2402,8 +3471,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.ListScenesResponse().from_map(
-            await self.do_roarequest_async('ListScenes', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/scenes', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListScenes',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListScenesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_umeng_appkeys(self) -> airec_20181012_models.ListUmengAppkeysResponse:
@@ -2424,8 +3505,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListUmengAppkeysResponse().from_map(
-            self.do_roarequest('ListUmengAppkeys', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/umeng/appkeys', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListUmengAppkeys',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/umeng/appkeys',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListUmengAppkeysResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_umeng_appkeys_with_options_async(
@@ -2436,8 +3529,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ListUmengAppkeysResponse().from_map(
-            await self.do_roarequest_async('ListUmengAppkeys', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/umeng/appkeys', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListUmengAppkeys',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/umeng/appkeys',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ListUmengAppkeysResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_data_source(
@@ -2468,8 +3573,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyDataSourceResponse().from_map(
-            self.do_roarequest('ModifyDataSource', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/dataSources/{{TableName}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDataSource',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSources/{{TableName}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyDataSourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_data_source_with_options_async(
@@ -2482,8 +3599,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyDataSourceResponse().from_map(
-            await self.do_roarequest_async('ModifyDataSource', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/dataSources/{{TableName}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDataSource',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSources/{{TableName}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_diversify(
@@ -2514,8 +3643,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyDiversifyResponse().from_map(
-            self.do_roarequest('ModifyDiversify', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/diversifies/{{Name}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDiversify',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/diversifies/{{Name}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyDiversifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_diversify_with_options_async(
@@ -2528,8 +3669,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyDiversifyResponse().from_map(
-            await self.do_roarequest_async('ModifyDiversify', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/diversifies/{{Name}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDiversify',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/diversifies/{{Name}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyDiversifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_exposure_settings(
@@ -2557,8 +3710,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyExposureSettingsResponse().from_map(
-            self.do_roarequest('ModifyExposureSettings', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/exposure-settings', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyExposureSettings',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/exposure-settings',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyExposureSettingsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_exposure_settings_with_options_async(
@@ -2570,8 +3735,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyExposureSettingsResponse().from_map(
-            await self.do_roarequest_async('ModifyExposureSettings', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/exposure-settings', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyExposureSettings',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/exposure-settings',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyExposureSettingsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_instance(
@@ -2599,8 +3776,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyInstanceResponse().from_map(
-            self.do_roarequest('ModifyInstance', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_instance_with_options_async(
@@ -2612,8 +3801,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyInstanceResponse().from_map(
-            await self.do_roarequest_async('ModifyInstance', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_items(
@@ -2641,8 +3842,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyItemsResponse().from_map(
-            self.do_roarequest('ModifyItems', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/items', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyItems',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/items',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyItemsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_items_with_options_async(
@@ -2654,8 +3867,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyItemsResponse().from_map(
-            await self.do_roarequest_async('ModifyItems', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/items', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyItems',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/items',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyItemsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_mix(
@@ -2686,8 +3911,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyMixResponse().from_map(
-            self.do_roarequest('ModifyMix', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/mixes/{{Name}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyMix',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/mixes/{{Name}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyMixResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_mix_with_options_async(
@@ -2700,8 +3937,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyMixResponse().from_map(
-            await self.do_roarequest_async('ModifyMix', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/mixes/{{Name}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyMix',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/mixes/{{Name}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyMixResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_rule(
@@ -2732,8 +3981,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyRuleResponse().from_map(
-            self.do_roarequest('ModifyRule', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/rules/{{RuleId}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyRule',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rules/{{RuleId}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyRuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_rule_with_options_async(
@@ -2746,8 +4007,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifyRuleResponse().from_map(
-            await self.do_roarequest_async('ModifyRule', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/rules/{{RuleId}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyRule',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rules/{{RuleId}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifyRuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_scene(
@@ -2778,8 +4051,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifySceneResponse().from_map(
-            self.do_roarequest('ModifyScene', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/scenes/{{SceneId}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyScene',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes/{{SceneId}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifySceneResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_scene_with_options_async(
@@ -2792,8 +4077,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ModifySceneResponse().from_map(
-            await self.do_roarequest_async('ModifyScene', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/scenes/{{SceneId}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyScene',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/scenes/{{SceneId}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ModifySceneResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def publish_rule(
@@ -2834,8 +4131,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.PublishRuleResponse().from_map(
-            self.do_roarequest('PublishRule', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/rules/{{RuleId}}/actions/publish', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PublishRule',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rules/{{RuleId}}/actions/publish',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.PublishRuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def publish_rule_with_options_async(
@@ -2856,8 +4165,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.PublishRuleResponse().from_map(
-            await self.do_roarequest_async('PublishRule', '2018-10-12', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/rules/{{RuleId}}/actions/publish', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PublishRule',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/rules/{{RuleId}}/actions/publish',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.PublishRuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def push_document(
@@ -2888,8 +4209,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.PushDocumentResponse().from_map(
-            self.do_roarequest('PushDocument', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/tables/{{TableName}}/actions/bulk', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PushDocument',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/tables/{{TableName}}/actions/bulk',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.PushDocumentResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def push_document_with_options_async(
@@ -2902,8 +4235,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.PushDocumentResponse().from_map(
-            await self.do_roarequest_async('PushDocument', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/tables/{{TableName}}/actions/bulk', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PushDocument',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/tables/{{TableName}}/actions/bulk',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.PushDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def push_intervention(
@@ -2931,8 +4276,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.PushInterventionResponse().from_map(
-            self.do_roarequest('PushIntervention', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/intervene', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PushIntervention',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/actions/intervene',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.PushInterventionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def push_intervention_with_options_async(
@@ -2944,8 +4301,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.PushInterventionResponse().from_map(
-            await self.do_roarequest_async('PushIntervention', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/intervene', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PushIntervention',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/actions/intervene',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.PushInterventionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_data_message(
@@ -3008,8 +4377,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.QueryDataMessageResponse().from_map(
-            self.do_roarequest('QueryDataMessage', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/tables/{{Table}}/data-message', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDataMessage',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/tables/{{Table}}/data-message',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QueryDataMessageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_data_message_with_options_async(
@@ -3052,8 +4433,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.QueryDataMessageResponse().from_map(
-            await self.do_roarequest_async('QueryDataMessage', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/tables/{{Table}}/data-message', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDataMessage',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/tables/{{Table}}/data-message',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QueryDataMessageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_data_message_statistics(
@@ -3112,8 +4505,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.QueryDataMessageStatisticsResponse().from_map(
-            self.do_roarequest('QueryDataMessageStatistics', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/tables/{{Table}}/data-message-statistics', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDataMessageStatistics',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/tables/{{Table}}/data-message-statistics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QueryDataMessageStatisticsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_data_message_statistics_with_options_async(
@@ -3152,8 +4557,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.QueryDataMessageStatisticsResponse().from_map(
-            await self.do_roarequest_async('QueryDataMessageStatistics', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/tables/{{Table}}/data-message-statistics', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDataMessageStatistics',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/tables/{{Table}}/data-message-statistics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QueryDataMessageStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_exception_history(
@@ -3193,8 +4610,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.QueryExceptionHistoryResponse().from_map(
-            self.do_roarequest('QueryExceptionHistory', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/sync-reports/exception-history', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryExceptionHistory',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/sync-reports/exception-history',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QueryExceptionHistoryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_exception_history_with_options_async(
@@ -3216,8 +4645,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.QueryExceptionHistoryResponse().from_map(
-            await self.do_roarequest_async('QueryExceptionHistory', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/sync-reports/exception-history', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryExceptionHistory',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/sync-reports/exception-history',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QueryExceptionHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_raw_data(
@@ -3262,8 +4703,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.QueryRawDataResponse().from_map(
-            self.do_roarequest('QueryRawData', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/tables/{{Table}}/raw-data', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRawData',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/tables/{{Table}}/raw-data',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QueryRawDataResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_raw_data_with_options_async(
@@ -3288,8 +4741,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.QueryRawDataResponse().from_map(
-            await self.do_roarequest_async('QueryRawData', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/tables/{{Table}}/raw-data', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryRawData',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/tables/{{Table}}/raw-data',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QueryRawDataResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_single_aggregation_report(
@@ -3317,8 +4782,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.QuerySingleAggregationReportResponse().from_map(
-            self.do_roarequest('QuerySingleAggregationReport', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/sync-reports/single-aggregation-report', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QuerySingleAggregationReport',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/sync-reports/single-aggregation-report',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QuerySingleAggregationReportResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_single_aggregation_report_with_options_async(
@@ -3330,8 +4807,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.QuerySingleAggregationReportResponse().from_map(
-            await self.do_roarequest_async('QuerySingleAggregationReport', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/sync-reports/single-aggregation-report', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QuerySingleAggregationReport',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/sync-reports/single-aggregation-report',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QuerySingleAggregationReportResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_single_report(
@@ -3367,8 +4856,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.QuerySingleReportResponse().from_map(
-            self.do_roarequest('QuerySingleReport', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/sync-reports/single-report', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QuerySingleReport',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/sync-reports/single-report',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QuerySingleReportResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_single_report_with_options_async(
@@ -3386,8 +4887,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.QuerySingleReportResponse().from_map(
-            await self.do_roarequest_async('QuerySingleReport', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/sync-reports/single-report', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QuerySingleReport',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/sync-reports/single-report',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QuerySingleReportResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_sync_report_aggregation(
@@ -3425,8 +4938,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.QuerySyncReportAggregationResponse().from_map(
-            self.do_roarequest('QuerySyncReportAggregation', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/sync-reports/aggregation', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QuerySyncReportAggregation',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/sync-reports/aggregation',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QuerySyncReportAggregationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_sync_report_aggregation_with_options_async(
@@ -3446,8 +4971,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.QuerySyncReportAggregationResponse().from_map(
-            await self.do_roarequest_async('QuerySyncReportAggregation', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/sync-reports/aggregation', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QuerySyncReportAggregation',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/sync-reports/aggregation',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.QuerySyncReportAggregationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def recommend(
@@ -3498,8 +5035,20 @@ class Client(OpenApiClient):
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.RecommendResponse().from_map(
-            self.do_roarequest('Recommend', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/actions/recommend', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='Recommend',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/actions/recommend',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.RecommendResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def recommend_with_options_async(
@@ -3532,8 +5081,20 @@ class Client(OpenApiClient):
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
         )
-        return airec_20181012_models.RecommendResponse().from_map(
-            await self.do_roarequest_async('Recommend', '2018-10-12', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/actions/recommend', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='Recommend',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/actions/recommend',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.RecommendResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def run_instance(
@@ -3561,8 +5122,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.RunInstanceResponse().from_map(
-            self.do_roarequest('RunInstance', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/import', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RunInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/actions/import',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.RunInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def run_instance_with_options_async(
@@ -3574,8 +5147,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.RunInstanceResponse().from_map(
-            await self.do_roarequest_async('RunInstance', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/import', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RunInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/actions/import',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.RunInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_data_set(
@@ -3606,8 +5191,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.StopDataSetResponse().from_map(
-            self.do_roarequest('StopDataSet', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/actions/stop', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopDataSet',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/actions/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.StopDataSetResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def stop_data_set_with_options_async(
@@ -3620,8 +5217,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.StopDataSetResponse().from_map(
-            await self.do_roarequest_async('StopDataSet', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/actions/stop', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopDataSet',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/dataSets/{{VersionId}}/actions/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.StopDataSetResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_instance(
@@ -3649,8 +5258,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.UpgradeInstanceResponse().from_map(
-            self.do_roarequest('UpgradeInstance', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/upgrade', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/actions/upgrade',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.UpgradeInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_instance_with_options_async(
@@ -3662,8 +5283,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.UpgradeInstanceResponse().from_map(
-            await self.do_roarequest_async('UpgradeInstance', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/upgrade', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/actions/upgrade',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.UpgradeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def validate_instance(
@@ -3691,8 +5324,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ValidateInstanceResponse().from_map(
-            self.do_roarequest('ValidateInstance', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/validate', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ValidateInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/actions/validate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ValidateInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def validate_instance_with_options_async(
@@ -3704,6 +5349,18 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return airec_20181012_models.ValidateInstanceResponse().from_map(
-            await self.do_roarequest_async('ValidateInstance', '2018-10-12', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/validate', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ValidateInstance',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname=f'/openapi/instances/{instance_id}/actions/validate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airec_20181012_models.ValidateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
