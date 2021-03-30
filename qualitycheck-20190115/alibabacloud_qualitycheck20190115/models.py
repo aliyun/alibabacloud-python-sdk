@@ -7,27 +7,25 @@ from typing import Dict, List
 class AddBusinessCategoryRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -52,6 +50,10 @@ class AddBusinessCategoryResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -96,6 +98,10 @@ class AddBusinessCategoryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -116,27 +122,25 @@ class AddBusinessCategoryResponse(TeaModel):
 class AddRuleCategoryRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -153,6 +157,10 @@ class AddRuleCategoryResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.select is not None:
             result['Select'] = self.select
@@ -185,6 +193,10 @@ class AddRuleCategoryResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -230,6 +242,10 @@ class AddRuleCategoryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -250,27 +266,25 @@ class AddRuleCategoryResponse(TeaModel):
 class AddThesaurusForApiRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -295,6 +309,10 @@ class AddThesaurusForApiResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -339,6 +357,10 @@ class AddThesaurusForApiResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -359,27 +381,25 @@ class AddThesaurusForApiResponse(TeaModel):
 class AddUploadDataSetRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -404,6 +424,10 @@ class AddUploadDataSetResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -448,6 +472,10 @@ class AddUploadDataSetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -468,27 +496,25 @@ class AddUploadDataSetResponse(TeaModel):
 class AssignReviewerRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -511,6 +537,10 @@ class AssignReviewerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -551,6 +581,10 @@ class AssignReviewerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -571,27 +605,25 @@ class AssignReviewerResponse(TeaModel):
 class ConfigDataSetRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -610,6 +642,10 @@ class ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRang
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.from_ is not None:
             result['From'] = self.from_
@@ -641,6 +677,10 @@ class ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRang
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cid is not None:
             result['Cid'] = self.cid
@@ -681,6 +721,10 @@ class ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRang
             self.anchor.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.range is not None:
             result['Range'] = self.range.to_map()
@@ -718,6 +762,10 @@ class ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperators
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.keywords is not None:
             result['Keywords'] = self.keywords
@@ -744,6 +792,10 @@ class ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperators
             self.keywords.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.keywords is not None:
             result['Keywords'] = self.keywords.to_map()
@@ -777,6 +829,10 @@ class ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperators
             self.param.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -812,6 +868,10 @@ class ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperators
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['OperatorBasicInfo'] = []
         if self.operator_basic_info is not None:
@@ -849,6 +909,10 @@ class ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo(TeaModel
             self.operators.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.check_range is not None:
             result['CheckRange'] = self.check_range.to_map()
@@ -889,6 +953,10 @@ class ConfigDataSetResponseBodyDataRuleInfoConditions(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ConditionBasicInfo'] = []
         if self.condition_basic_info is not None:
@@ -921,6 +989,10 @@ class ConfigDataSetResponseBodyDataRuleInfoRulesRuleBasicInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.external_property is not None:
             result['ExternalProperty'] = self.external_property
@@ -955,6 +1027,10 @@ class ConfigDataSetResponseBodyDataRuleInfoRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RuleBasicInfo'] = []
         if self.rule_basic_info is not None:
@@ -988,6 +1064,10 @@ class ConfigDataSetResponseBodyDataRuleInfo(TeaModel):
             self.rules.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.conditions is not None:
             result['Conditions'] = self.conditions.to_map()
@@ -1026,6 +1106,10 @@ class ConfigDataSetResponseBodyData(TeaModel):
             self.rule_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_info is not None:
             result['RuleInfo'] = self.rule_info.to_map()
@@ -1075,6 +1159,10 @@ class ConfigDataSetResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1120,6 +1208,10 @@ class ConfigDataSetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1140,27 +1232,25 @@ class ConfigDataSetResponse(TeaModel):
 class CreateAsrVocabRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -1185,6 +1275,10 @@ class CreateAsrVocabResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1229,6 +1323,10 @@ class CreateAsrVocabResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1249,27 +1347,25 @@ class CreateAsrVocabResponse(TeaModel):
 class CreateRuleRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -1294,6 +1390,10 @@ class CreateRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1338,6 +1438,10 @@ class CreateRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1358,27 +1462,25 @@ class CreateRuleResponse(TeaModel):
 class CreateSkillGroupConfigRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -1403,6 +1505,10 @@ class CreateSkillGroupConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1447,6 +1553,10 @@ class CreateSkillGroupConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1467,27 +1577,25 @@ class CreateSkillGroupConfigResponse(TeaModel):
 class CreateTaskAssignRuleRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -1512,6 +1620,10 @@ class CreateTaskAssignRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1556,6 +1668,10 @@ class CreateTaskAssignRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1576,27 +1692,25 @@ class CreateTaskAssignRuleResponse(TeaModel):
 class CreateUserRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -1619,6 +1733,10 @@ class CreateUserResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1659,6 +1777,10 @@ class CreateUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1679,27 +1801,25 @@ class CreateUserResponse(TeaModel):
 class CreateWarningConfigRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -1724,6 +1844,10 @@ class CreateWarningConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1768,6 +1892,10 @@ class CreateWarningConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1788,27 +1916,25 @@ class CreateWarningConfigResponse(TeaModel):
 class DeleteAsrVocabRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -1833,6 +1959,10 @@ class DeleteAsrVocabResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1877,6 +2007,10 @@ class DeleteAsrVocabResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1897,27 +2031,25 @@ class DeleteAsrVocabResponse(TeaModel):
 class DeleteBusinessCategoryRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -1942,6 +2074,10 @@ class DeleteBusinessCategoryResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1986,6 +2122,10 @@ class DeleteBusinessCategoryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2006,27 +2146,25 @@ class DeleteBusinessCategoryResponse(TeaModel):
 class DeleteCustomizationConfigRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2051,6 +2189,10 @@ class DeleteCustomizationConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2095,6 +2237,10 @@ class DeleteCustomizationConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2115,27 +2261,25 @@ class DeleteCustomizationConfigResponse(TeaModel):
 class DeleteDataSetRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2158,6 +2302,10 @@ class DeleteDataSetResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2198,6 +2346,10 @@ class DeleteDataSetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2218,27 +2370,25 @@ class DeleteDataSetResponse(TeaModel):
 class DeletePrecisionTaskRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2261,6 +2411,10 @@ class DeletePrecisionTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2301,6 +2455,10 @@ class DeletePrecisionTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2321,27 +2479,25 @@ class DeletePrecisionTaskResponse(TeaModel):
 class DeleteScoreForApiRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2364,6 +2520,10 @@ class DeleteScoreForApiResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2404,6 +2564,10 @@ class DeleteScoreForApiResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2424,27 +2588,25 @@ class DeleteScoreForApiResponse(TeaModel):
 class DeleteSkillGroupConfigRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2467,6 +2629,10 @@ class DeleteSkillGroupConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2507,6 +2673,10 @@ class DeleteSkillGroupConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2527,27 +2697,25 @@ class DeleteSkillGroupConfigResponse(TeaModel):
 class DeleteSubScoreForApiRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2570,6 +2738,10 @@ class DeleteSubScoreForApiResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2610,6 +2782,10 @@ class DeleteSubScoreForApiResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2630,27 +2806,25 @@ class DeleteSubScoreForApiResponse(TeaModel):
 class DeleteTaskAssignRuleRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2673,6 +2847,10 @@ class DeleteTaskAssignRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2713,6 +2891,10 @@ class DeleteTaskAssignRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2733,27 +2915,25 @@ class DeleteTaskAssignRuleResponse(TeaModel):
 class DeleteUserRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2776,6 +2956,10 @@ class DeleteUserResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2816,6 +3000,10 @@ class DeleteUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2836,27 +3024,25 @@ class DeleteUserResponse(TeaModel):
 class DeleteWarningConfigRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2879,6 +3065,10 @@ class DeleteWarningConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2919,6 +3109,10 @@ class DeleteWarningConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2939,27 +3133,25 @@ class DeleteWarningConfigResponse(TeaModel):
 class DelRuleCategoryRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -2976,6 +3168,10 @@ class DelRuleCategoryResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.select is not None:
             result['Select'] = self.select
@@ -3008,6 +3204,10 @@ class DelRuleCategoryResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -3053,6 +3253,10 @@ class DelRuleCategoryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3073,27 +3277,25 @@ class DelRuleCategoryResponse(TeaModel):
 class DelThesaurusForApiRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -3116,6 +3318,10 @@ class DelThesaurusForApiResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -3156,6 +3362,10 @@ class DelThesaurusForApiResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3176,27 +3386,25 @@ class DelThesaurusForApiResponse(TeaModel):
 class EditThesaurusForApiRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -3221,6 +3429,10 @@ class EditThesaurusForApiResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -3265,6 +3477,10 @@ class EditThesaurusForApiResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3285,27 +3501,25 @@ class EditThesaurusForApiResponse(TeaModel):
 class GetAsrVocabRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -3324,6 +3538,10 @@ class GetAsrVocabResponseBodyDataWordsWord(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.weight is not None:
             result['Weight'] = self.weight
@@ -3354,6 +3572,10 @@ class GetAsrVocabResponseBodyDataWords(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Word'] = []
         if self.word is not None:
@@ -3385,6 +3607,10 @@ class GetAsrVocabResponseBodyData(TeaModel):
             self.words.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words.to_map()
@@ -3422,6 +3648,10 @@ class GetAsrVocabResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -3467,6 +3697,10 @@ class GetAsrVocabResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3487,27 +3721,25 @@ class GetAsrVocabResponse(TeaModel):
 class GetBusinessCategoryListRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -3528,6 +3760,10 @@ class GetBusinessCategoryListResponseBodyDataBusinessCategoryBasicInfo(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.business_name is not None:
             result['BusinessName'] = self.business_name
@@ -3562,6 +3798,10 @@ class GetBusinessCategoryListResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BusinessCategoryBasicInfo'] = []
         if self.business_category_basic_info is not None:
@@ -3599,6 +3839,10 @@ class GetBusinessCategoryListResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -3644,6 +3888,10 @@ class GetBusinessCategoryListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3664,27 +3912,25 @@ class GetBusinessCategoryListResponse(TeaModel):
 class GetCustomizationConfigListRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -3711,6 +3957,10 @@ class GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_type is not None:
             result['TaskType'] = self.task_type
@@ -3757,6 +4007,10 @@ class GetCustomizationConfigListResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ModelCustomizationDataSetPo'] = []
         if self.model_customization_data_set_po is not None:
@@ -3794,6 +4048,10 @@ class GetCustomizationConfigListResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -3839,6 +4097,10 @@ class GetCustomizationConfigListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3859,27 +4121,25 @@ class GetCustomizationConfigListResponse(TeaModel):
 class GetHitResultRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -3898,6 +4158,10 @@ class GetHitResultResponseBodyDataResultInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -3928,6 +4192,10 @@ class GetHitResultResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ResultInfo'] = []
         if self.result_info is not None:
@@ -3971,6 +4239,10 @@ class GetHitResultResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4028,6 +4300,10 @@ class GetHitResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4048,27 +4324,25 @@ class GetHitResultResponse(TeaModel):
 class GetNextResultToVerifyRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -4085,6 +4359,10 @@ class GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSourceLin
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.line is not None:
             result['Line'] = self.line
@@ -4111,6 +4389,10 @@ class GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSource(Te
             self.line.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.line is not None:
             result['Line'] = self.line.to_map()
@@ -4139,6 +4421,10 @@ class GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaTargetLin
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.line is not None:
             result['Line'] = self.line
@@ -4165,6 +4451,10 @@ class GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaTarget(Te
             self.line.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.line is not None:
             result['Line'] = self.line.to_map()
@@ -4200,6 +4490,10 @@ class GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDelta(TeaModel
             self.target.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -4236,6 +4530,10 @@ class GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltas(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Delta'] = []
         if self.delta is not None:
@@ -4291,6 +4589,10 @@ class GetNextResultToVerifyResponseBodyDataDialoguesDialogue(TeaModel):
             self.deltas.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.deltas is not None:
             result['Deltas'] = self.deltas.to_map()
@@ -4370,6 +4672,10 @@ class GetNextResultToVerifyResponseBodyDataDialogues(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Dialogue'] = []
         if self.dialogue is not None:
@@ -4425,6 +4731,10 @@ class GetNextResultToVerifyResponseBodyData(TeaModel):
             self.dialogues.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.audio_scheme is not None:
             result['AudioScheme'] = self.audio_scheme
@@ -4510,6 +4820,10 @@ class GetNextResultToVerifyResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -4555,6 +4869,10 @@ class GetNextResultToVerifyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4575,27 +4893,25 @@ class GetNextResultToVerifyResponse(TeaModel):
 class GetPrecisionTaskRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -4620,6 +4936,10 @@ class GetPrecisionTaskResponseBodyDataPrecisionsPrecision(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -4662,6 +4982,10 @@ class GetPrecisionTaskResponseBodyDataPrecisions(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Precision'] = []
         if self.precision is not None:
@@ -4713,6 +5037,10 @@ class GetPrecisionTaskResponseBodyData(TeaModel):
             self.precisions.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -4790,6 +5118,10 @@ class GetPrecisionTaskResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -4835,6 +5167,10 @@ class GetPrecisionTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4855,27 +5191,25 @@ class GetPrecisionTaskResponse(TeaModel):
 class GetResultRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -4896,6 +5230,10 @@ class GetResultResponseBodyDataResultInfoAgent(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -4937,6 +5275,10 @@ class GetResultResponseBodyDataResultInfoAsrResultAsrResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words
@@ -4983,6 +5325,10 @@ class GetResultResponseBodyDataResultInfoAsrResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AsrResult'] = []
         if self.asr_result is not None:
@@ -5017,6 +5363,10 @@ class GetResultResponseBodyDataResultInfoHitScoreHitScore(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score_name is not None:
             result['ScoreName'] = self.score_name
@@ -5055,6 +5405,10 @@ class GetResultResponseBodyDataResultInfoHitScore(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['HitScore'] = []
         if self.hit_score is not None:
@@ -5091,6 +5445,10 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultHitsHitPhrase(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words
@@ -5136,6 +5494,10 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultHitsHitKeyWordsKeyWor
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.from_ is not None:
             result['From'] = self.from_
@@ -5174,6 +5536,10 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultHitsHitKeyWords(TeaMo
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['KeyWord'] = []
         if self.key_word is not None:
@@ -5202,6 +5568,10 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultHitsHitCid(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cid is not None:
             result['Cid'] = self.cid
@@ -5234,6 +5604,10 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultHitsHit(TeaModel):
             self.cid.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.phrase is not None:
             result['Phrase'] = self.phrase.to_map()
@@ -5271,6 +5645,10 @@ class GetResultResponseBodyDataResultInfoHitResultHitResultHits(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Hit'] = []
         if self.hit is not None:
@@ -5308,6 +5686,10 @@ class GetResultResponseBodyDataResultInfoHitResultHitResult(TeaModel):
             self.hits.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -5351,6 +5733,10 @@ class GetResultResponseBodyDataResultInfoHitResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['HitResult'] = []
         if self.hit_result is not None:
@@ -5373,6 +5759,7 @@ class GetResultResponseBodyDataResultInfoRecording(TeaModel):
         self,
         remark_13: str = None,
         callee: str = None,
+        dialogue_size: int = None,
         primary_id: str = None,
         remark_12: str = None,
         remark_1: str = None,
@@ -5399,6 +5786,7 @@ class GetResultResponseBodyDataResultInfoRecording(TeaModel):
     ):
         self.remark_13 = remark_13
         self.callee = callee
+        self.dialogue_size = dialogue_size
         self.primary_id = primary_id
         self.remark_12 = remark_12
         self.remark_1 = remark_1
@@ -5427,11 +5815,17 @@ class GetResultResponseBodyDataResultInfoRecording(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.remark_13 is not None:
             result['Remark13'] = self.remark_13
         if self.callee is not None:
             result['Callee'] = self.callee
+        if self.dialogue_size is not None:
+            result['DialogueSize'] = self.dialogue_size
         if self.primary_id is not None:
             result['PrimaryId'] = self.primary_id
         if self.remark_12 is not None:
@@ -5486,6 +5880,8 @@ class GetResultResponseBodyDataResultInfoRecording(TeaModel):
             self.remark_13 = m.get('Remark13')
         if m.get('Callee') is not None:
             self.callee = m.get('Callee')
+        if m.get('DialogueSize') is not None:
+            self.dialogue_size = m.get('DialogueSize')
         if m.get('PrimaryId') is not None:
             self.primary_id = m.get('PrimaryId')
         if m.get('Remark12') is not None:
@@ -5597,6 +5993,10 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
             self.recording.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -5712,6 +6112,10 @@ class GetResultResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ResultInfo'] = []
         if self.result_info is not None:
@@ -5757,6 +6161,10 @@ class GetResultResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5818,6 +6226,10 @@ class GetResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5838,27 +6250,25 @@ class GetResultResponse(TeaModel):
 class GetResultCallbackRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -5881,6 +6291,10 @@ class GetResultCallbackResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -5921,6 +6335,10 @@ class GetResultCallbackResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5941,27 +6359,25 @@ class GetResultCallbackResponse(TeaModel):
 class GetResultToReviewRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -5990,6 +6406,10 @@ class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -6040,6 +6460,10 @@ class GetResultToReviewResponseBodyDataReviewHistoryList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ReviewHistory'] = []
         if self.review_history is not None:
@@ -6080,6 +6504,10 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words
@@ -6137,6 +6565,10 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.from_ is not None:
             result['From'] = self.from_
@@ -6183,6 +6615,10 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoCon
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['KeyWord'] = []
         if self.key_word is not None:
@@ -6211,6 +6647,10 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cid is not None:
             result['Cid'] = self.cid
@@ -6243,6 +6683,10 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoCon
             self.cid.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.phrase is not None:
             result['Phrase'] = self.phrase.to_map()
@@ -6280,6 +6724,10 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoCon
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ConditionHitInfo'] = []
         if self.condition_hit_info is not None:
@@ -6316,6 +6764,10 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoRev
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.review_time is not None:
             result['ReviewTime'] = self.review_time
@@ -6363,6 +6815,10 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoCom
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.operator_name is not None:
             result['OperatorName'] = self.operator_name
@@ -6405,6 +6861,10 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoCom
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ComplainHistories'] = []
         if self.complain_histories is not None:
@@ -6458,6 +6918,10 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo(Te
             self.complain_histories.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.condition_hit_info_list is not None:
             result['ConditionHitInfoList'] = self.condition_hit_info_list.to_map()
@@ -6527,6 +6991,10 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['HitRuleReviewInfo'] = []
         if self.hit_rule_review_info is not None:
@@ -6563,6 +7031,10 @@ class GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfoComplai
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.operator_name is not None:
             result['OperatorName'] = self.operator_name
@@ -6605,6 +7077,10 @@ class GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfoComplai
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ComplainHistories'] = []
         if self.complain_histories is not None:
@@ -6644,6 +7120,10 @@ class GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfo(TeaMod
             self.complain_histories.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score_sub_name is not None:
             result['ScoreSubName'] = self.score_sub_name
@@ -6691,6 +7171,10 @@ class GetResultToReviewResponseBodyDataManualScoreInfoList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ManualScoreInfo'] = []
         if self.manual_score_info is not None:
@@ -6737,6 +7221,10 @@ class GetResultToReviewResponseBodyDataDialoguesDialogue(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words
@@ -6799,6 +7287,10 @@ class GetResultToReviewResponseBodyDataDialogues(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Dialogue'] = []
         if self.dialogue is not None:
@@ -6854,6 +7346,10 @@ class GetResultToReviewResponseBodyData(TeaModel):
             self.dialogues.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.audio_scheme is not None:
             result['AudioScheme'] = self.audio_scheme
@@ -6930,6 +7426,10 @@ class GetResultToReviewResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -6975,6 +7475,10 @@ class GetResultToReviewResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6995,27 +7499,25 @@ class GetResultToReviewResponse(TeaModel):
 class GetReviewInfoRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -7044,6 +7546,10 @@ class GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words
@@ -7099,6 +7605,10 @@ class GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.from_ is not None:
             result['From'] = self.from_
@@ -7141,6 +7651,10 @@ class GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditi
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['KeyWord'] = []
         if self.key_word is not None:
@@ -7169,6 +7683,10 @@ class GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cid is not None:
             result['Cid'] = self.cid
@@ -7201,6 +7719,10 @@ class GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditi
             self.cid.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.phrase is not None:
             result['Phrase'] = self.phrase.to_map()
@@ -7238,6 +7760,10 @@ class GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditi
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ConditionHitInfo'] = []
         if self.condition_hit_info is not None:
@@ -7268,6 +7794,10 @@ class GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewI
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.hit_id is not None:
             result['HitId'] = self.hit_id
@@ -7316,6 +7846,10 @@ class GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo(TeaMod
             self.review_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_score_type is not None:
             result['RuleScoreType'] = self.rule_score_type
@@ -7380,6 +7914,10 @@ class GetReviewInfoResponseBodyDataHitRuleReviewInfoList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['HitRuleReviewInfo'] = []
         if self.hit_rule_review_info is not None:
@@ -7408,6 +7946,10 @@ class GetReviewInfoResponseBodyDataManualScoreMappingList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.manual_score_mapping_list is not None:
             result['ManualScoreMappingList'] = self.manual_score_mapping_list
@@ -7449,6 +7991,10 @@ class GetReviewInfoResponseBodyDataDialoguesDialogue(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words
@@ -7511,6 +8057,10 @@ class GetReviewInfoResponseBodyDataDialogues(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Dialogue'] = []
         if self.dialogue is not None:
@@ -7547,6 +8097,10 @@ class GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score_sub_name is not None:
             result['ScoreSubName'] = self.score_sub_name
@@ -7589,6 +8143,10 @@ class GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ScoreParam'] = []
         if self.score_param is not None:
@@ -7622,6 +8180,10 @@ class GetReviewInfoResponseBodyDataHandScoreInfoListScorePo(TeaModel):
             self.score_infos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score_infos is not None:
             result['ScoreInfos'] = self.score_infos.to_map()
@@ -7657,6 +8219,10 @@ class GetReviewInfoResponseBodyDataHandScoreInfoList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ScorePo'] = []
         if self.score_po is not None:
@@ -7726,6 +8292,10 @@ class GetReviewInfoResponseBodyData(TeaModel):
             self.hand_score_info_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.audio_url is not None:
             result['AudioURL'] = self.audio_url
@@ -7830,6 +8400,10 @@ class GetReviewInfoResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -7875,6 +8449,10 @@ class GetReviewInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7895,27 +8473,25 @@ class GetReviewInfoResponse(TeaModel):
 class GetRuleRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -7932,6 +8508,10 @@ class GetRuleResponseBodyDataRulesRuleInfoBusinessCategoryNameList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.business_category_name_list is not None:
             result['BusinessCategoryNameList'] = self.business_category_name_list
@@ -7998,6 +8578,10 @@ class GetRuleResponseBodyDataRulesRuleInfo(TeaModel):
             self.business_category_name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -8109,6 +8693,10 @@ class GetRuleResponseBodyDataRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RuleInfo'] = []
         if self.rule_info is not None:
@@ -8138,6 +8726,10 @@ class GetRuleResponseBodyData(TeaModel):
             self.rules.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rules is not None:
             result['Rules'] = self.rules.to_map()
@@ -8171,6 +8763,10 @@ class GetRuleResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -8216,6 +8812,10 @@ class GetRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8236,27 +8836,25 @@ class GetRuleResponse(TeaModel):
 class GetRuleCategoryRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -8277,6 +8875,10 @@ class GetRuleCategoryResponseBodyDataRuleCountInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -8311,6 +8913,10 @@ class GetRuleCategoryResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RuleCountInfo'] = []
         if self.rule_count_info is not None:
@@ -8348,6 +8954,10 @@ class GetRuleCategoryResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -8393,6 +9003,10 @@ class GetRuleCategoryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8413,27 +9027,25 @@ class GetRuleCategoryResponse(TeaModel):
 class GetRuleDetailRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -8450,6 +9062,10 @@ class GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperator
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.oper_key_word is not None:
             result['OperKeyWord'] = self.oper_key_word
@@ -8473,6 +9089,10 @@ class GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperator
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.reference is not None:
             result['Reference'] = self.reference
@@ -8496,6 +9116,10 @@ class GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperator
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.similarly_sentence is not None:
             result['SimilarlySentence'] = self.similarly_sentence
@@ -8519,6 +9143,10 @@ class GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperator
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.excludes is not None:
             result['Excludes'] = self.excludes
@@ -8599,6 +9227,10 @@ class GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperator
             self.excludes.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.regex is not None:
             result['Regex'] = self.regex
@@ -8733,6 +9365,10 @@ class GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperatorsOperator
             self.param.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.oid is not None:
             result['Oid'] = self.oid
@@ -8772,6 +9408,10 @@ class GetRuleDetailResponseBodyDataConditionsConditionBasicInfoOperators(TeaMode
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['OperatorBasicInfo'] = []
         if self.operator_basic_info is not None:
@@ -8804,6 +9444,10 @@ class GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRangeAnchor(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.anchor_cid is not None:
             result['AnchorCid'] = self.anchor_cid
@@ -8837,6 +9481,10 @@ class GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRangeRange(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.from_ is not None:
             result['From'] = self.from_
@@ -8873,6 +9521,10 @@ class GetRuleDetailResponseBodyDataConditionsConditionBasicInfoCheckRange(TeaMod
             self.range.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role is not None:
             result['Role'] = self.role
@@ -8919,6 +9571,10 @@ class GetRuleDetailResponseBodyDataConditionsConditionBasicInfo(TeaModel):
             self.check_range.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.condition_info_cid is not None:
             result['ConditionInfoCid'] = self.condition_info_cid
@@ -8959,6 +9615,10 @@ class GetRuleDetailResponseBodyDataConditions(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ConditionBasicInfo'] = []
         if self.condition_basic_info is not None:
@@ -8987,6 +9647,10 @@ class GetRuleDetailResponseBodyDataRulesRuleBasicInfoTriggers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.trigger is not None:
             result['Trigger'] = self.trigger
@@ -9014,6 +9678,10 @@ class GetRuleDetailResponseBodyDataRulesRuleBasicInfoBusinessCategoriesBusinessC
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bid is not None:
             result['Bid'] = self.bid
@@ -9048,6 +9716,10 @@ class GetRuleDetailResponseBodyDataRulesRuleBasicInfoBusinessCategories(TeaModel
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BusinessCategoryBasicInfo'] = []
         if self.business_category_basic_info is not None:
@@ -9085,6 +9757,10 @@ class GetRuleDetailResponseBodyDataRulesRuleBasicInfo(TeaModel):
             self.business_categories.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rid is not None:
             result['Rid'] = self.rid
@@ -9125,6 +9801,10 @@ class GetRuleDetailResponseBodyDataRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RuleBasicInfo'] = []
         if self.rule_basic_info is not None:
@@ -9158,6 +9838,10 @@ class GetRuleDetailResponseBodyData(TeaModel):
             self.rules.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.conditions is not None:
             result['Conditions'] = self.conditions.to_map()
@@ -9196,6 +9880,10 @@ class GetRuleDetailResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9241,6 +9929,10 @@ class GetRuleDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9261,27 +9953,25 @@ class GetRuleDetailResponse(TeaModel):
 class GetRuleDimensionRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -9332,6 +10022,10 @@ class GetRuleDimensionResponseBodyDataRuleCountInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -9426,6 +10120,10 @@ class GetRuleDimensionResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RuleCountInfo'] = []
         if self.rule_count_info is not None:
@@ -9477,6 +10175,10 @@ class GetRuleDimensionResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comp_sub_task_count is not None:
             result['CompSubTaskCount'] = self.comp_sub_task_count
@@ -9550,6 +10252,10 @@ class GetRuleDimensionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9570,27 +10276,25 @@ class GetRuleDimensionResponse(TeaModel):
 class GetScoreInfoRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -9613,6 +10317,10 @@ class GetScoreInfoResponseBodyDataScorePoScoreInfosScoreParam(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score_sub_name is not None:
             result['ScoreSubName'] = self.score_sub_name
@@ -9651,6 +10359,10 @@ class GetScoreInfoResponseBodyDataScorePoScoreInfos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ScoreParam'] = []
         if self.score_param is not None:
@@ -9684,6 +10396,10 @@ class GetScoreInfoResponseBodyDataScorePo(TeaModel):
             self.score_infos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score_infos is not None:
             result['ScoreInfos'] = self.score_infos.to_map()
@@ -9719,6 +10435,10 @@ class GetScoreInfoResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ScorePo'] = []
         if self.score_po is not None:
@@ -9756,6 +10476,10 @@ class GetScoreInfoResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -9801,6 +10525,10 @@ class GetScoreInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9821,27 +10549,25 @@ class GetScoreInfoResponse(TeaModel):
 class GetSkillGroupConfigRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -9860,6 +10586,10 @@ class GetSkillGroupConfigResponseBodyDataAllRuleListRuleNameInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -9890,6 +10620,10 @@ class GetSkillGroupConfigResponseBodyDataAllRuleList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RuleNameInfo'] = []
         if self.rule_name_info is not None:
@@ -9920,6 +10654,10 @@ class GetSkillGroupConfigResponseBodyDataRuleListRuleNameInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -9950,6 +10688,10 @@ class GetSkillGroupConfigResponseBodyDataRuleList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RuleNameInfo'] = []
         if self.rule_name_info is not None:
@@ -10019,6 +10761,10 @@ class GetSkillGroupConfigResponseBodyData(TeaModel):
             self.rule_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -10129,6 +10875,10 @@ class GetSkillGroupConfigResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -10174,6 +10924,10 @@ class GetSkillGroupConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10202,6 +10956,10 @@ class GetSyncResultRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
@@ -10229,6 +10987,10 @@ class GetSyncResultResponseBodyDataAgent(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -10272,6 +11034,10 @@ class GetSyncResultResponseBodyDataAsrResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words
@@ -10331,6 +11097,10 @@ class GetSyncResultResponseBodyDataHitResultHitsPhrase(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words
@@ -10384,6 +11154,10 @@ class GetSyncResultResponseBodyDataHitResultHitsKeyWords(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.from_ is not None:
             result['From'] = self.from_
@@ -10428,6 +11202,10 @@ class GetSyncResultResponseBodyDataHitResultHits(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.phrase is not None:
             result['Phrase'] = self.phrase.to_map()
@@ -10476,6 +11254,10 @@ class GetSyncResultResponseBodyDataHitResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -10548,6 +11330,10 @@ class GetSyncResultResponseBodyDataRecording(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.callee is not None:
             result['Callee'] = self.callee
@@ -10666,6 +11452,10 @@ class GetSyncResultResponseBodyData(TeaModel):
             self.recording.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -10776,6 +11566,10 @@ class GetSyncResultResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10841,6 +11635,10 @@ class GetSyncResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10861,27 +11659,25 @@ class GetSyncResultResponse(TeaModel):
 class GetTaskFileResultListRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -10898,6 +11694,10 @@ class GetTaskFileResultListResponseBodyDataTaskResultReviewInfoHitRuleSet(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.hit_rule_set is not None:
             result['HitRuleSet'] = self.hit_rule_set
@@ -10956,6 +11756,10 @@ class GetTaskFileResultListResponseBodyDataTaskResultReviewInfo(TeaModel):
             self.hit_rule_set.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -11051,6 +11855,10 @@ class GetTaskFileResultListResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TaskResultReviewInfo'] = []
         if self.task_result_review_info is not None:
@@ -11094,6 +11902,10 @@ class GetTaskFileResultListResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -11151,6 +11963,10 @@ class GetTaskFileResultListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11171,27 +11987,25 @@ class GetTaskFileResultListResponse(TeaModel):
 class GetTaskRuleListRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -11242,6 +12056,10 @@ class GetTaskRuleListResponseBodyDataRuleCountInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -11336,6 +12154,10 @@ class GetTaskRuleListResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RuleCountInfo'] = []
         if self.rule_count_info is not None:
@@ -11387,6 +12209,10 @@ class GetTaskRuleListResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comp_sub_task_count is not None:
             result['CompSubTaskCount'] = self.comp_sub_task_count
@@ -11460,6 +12286,10 @@ class GetTaskRuleListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11480,27 +12310,25 @@ class GetTaskRuleListResponse(TeaModel):
 class GetThesaurusBySynonymForApiRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -11517,6 +12345,10 @@ class GetThesaurusBySynonymForApiResponseBodyDataThesaurusPoSynonymList(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synonym_list is not None:
             result['SynonymList'] = self.synonym_list
@@ -11545,6 +12377,10 @@ class GetThesaurusBySynonymForApiResponseBodyDataThesaurusPo(TeaModel):
             self.synonym_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.business is not None:
             result['Business'] = self.business
@@ -11580,6 +12416,10 @@ class GetThesaurusBySynonymForApiResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ThesaurusPo'] = []
         if self.thesaurus_po is not None:
@@ -11617,6 +12457,10 @@ class GetThesaurusBySynonymForApiResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -11662,6 +12506,10 @@ class GetThesaurusBySynonymForApiResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11682,27 +12530,25 @@ class GetThesaurusBySynonymForApiResponse(TeaModel):
 class HandleComplaintRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -11727,6 +12573,10 @@ class HandleComplaintResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -11771,6 +12621,10 @@ class HandleComplaintResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11791,27 +12645,25 @@ class HandleComplaintResponse(TeaModel):
 class InsertScoreForApiRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -11830,6 +12682,10 @@ class InsertScoreForApiResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score_name is not None:
             result['ScoreName'] = self.score_name
@@ -11866,6 +12722,10 @@ class InsertScoreForApiResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -11911,6 +12771,10 @@ class InsertScoreForApiResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11931,27 +12795,25 @@ class InsertScoreForApiResponse(TeaModel):
 class InsertSubScoreForApiRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -11970,6 +12832,10 @@ class InsertSubScoreForApiResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score_sub_name is not None:
             result['ScoreSubName'] = self.score_sub_name
@@ -12006,6 +12872,10 @@ class InsertSubScoreForApiResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -12051,6 +12921,10 @@ class InsertSubScoreForApiResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12071,27 +12945,25 @@ class InsertSubScoreForApiResponse(TeaModel):
 class InvalidRuleRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -12116,6 +12988,10 @@ class InvalidRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -12160,6 +13036,10 @@ class InvalidRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12180,27 +13060,25 @@ class InvalidRuleResponse(TeaModel):
 class ListAsrVocabRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -12225,6 +13103,10 @@ class ListAsrVocabResponseBodyDataAsrVocab(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vocabulary_id is not None:
             result['VocabularyId'] = self.vocabulary_id
@@ -12267,6 +13149,10 @@ class ListAsrVocabResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AsrVocab'] = []
         if self.asr_vocab is not None:
@@ -12304,6 +13190,10 @@ class ListAsrVocabResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -12349,6 +13239,10 @@ class ListAsrVocabResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12369,27 +13263,25 @@ class ListAsrVocabResponse(TeaModel):
 class ListDataSetTaskRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -12408,6 +13300,10 @@ class ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoListRuleNameInfo(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -12438,6 +13334,10 @@ class ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RuleNameInfo'] = []
         if self.rule_name_info is not None:
@@ -12466,6 +13366,10 @@ class ListDataSetTaskResponseBodyDataPageTaskInfoDataSets(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.data_sets is not None:
             result['dataSets'] = self.data_sets
@@ -12510,6 +13414,10 @@ class ListDataSetTaskResponseBodyDataPageTaskInfo(TeaModel):
             self.data_sets.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -12574,6 +13482,10 @@ class ListDataSetTaskResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PageTaskInfo'] = []
         if self.page_task_info is not None:
@@ -12621,6 +13533,10 @@ class ListDataSetTaskResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -12686,6 +13602,10 @@ class ListDataSetTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12706,27 +13626,25 @@ class ListDataSetTaskResponse(TeaModel):
 class ListHotWordsTasksRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -12747,6 +13665,10 @@ class ListHotWordsTasksResponseBodyDataHotWordsTaskPoWordsParam(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.excludes is not None:
             result['Excludes'] = self.excludes
@@ -12792,6 +13714,10 @@ class ListHotWordsTasksResponseBodyDataHotWordsTaskPoDialogueParam(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -12870,6 +13796,10 @@ class ListHotWordsTasksResponseBodyDataHotWordsTaskPo(TeaModel):
             self.dialogue_param.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -12946,6 +13876,10 @@ class ListHotWordsTasksResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['HotWordsTaskPo'] = []
         if self.hot_words_task_po is not None:
@@ -12989,6 +13923,10 @@ class ListHotWordsTasksResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13046,6 +13984,10 @@ class ListHotWordsTasksResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13066,27 +14008,25 @@ class ListHotWordsTasksResponse(TeaModel):
 class ListPrecisionTaskRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -13113,6 +14053,10 @@ class ListPrecisionTaskResponseBodyDataPrecisionTaskPrecisionsPrecision(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -13159,6 +14103,10 @@ class ListPrecisionTaskResponseBodyDataPrecisionTaskPrecisions(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Precision'] = []
         if self.precision is not None:
@@ -13212,6 +14160,10 @@ class ListPrecisionTaskResponseBodyDataPrecisionTask(TeaModel):
             self.precisions.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -13287,6 +14239,10 @@ class ListPrecisionTaskResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PrecisionTask'] = []
         if self.precision_task is not None:
@@ -13330,6 +14286,10 @@ class ListPrecisionTaskResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13387,6 +14347,10 @@ class ListPrecisionTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13407,27 +14371,25 @@ class ListPrecisionTaskResponse(TeaModel):
 class ListRolesRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -13454,6 +14416,10 @@ class ListRolesResponseBodyDataRole(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
@@ -13500,6 +14466,10 @@ class ListRolesResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Role'] = []
         if self.role is not None:
@@ -13537,6 +14507,10 @@ class ListRolesResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -13582,6 +14556,10 @@ class ListRolesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13602,27 +14580,25 @@ class ListRolesResponse(TeaModel):
 class ListRulesRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -13653,6 +14629,10 @@ class ListRulesResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -13721,6 +14701,10 @@ class ListRulesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13782,6 +14766,10 @@ class ListRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13802,27 +14790,25 @@ class ListRulesResponse(TeaModel):
 class ListSkillGroupConfigRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -13841,6 +14827,10 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfigAllRuleListRuleNameInf
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -13871,6 +14861,10 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfigAllRuleList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RuleNameInfo'] = []
         if self.rule_name_info is not None:
@@ -13901,6 +14895,10 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleListRuleNameInfo(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -13931,6 +14929,10 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfigRuleList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RuleNameInfo'] = []
         if self.rule_name_info is not None:
@@ -13965,6 +14967,10 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreensSkill
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -14003,6 +15009,10 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens(TeaM
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SkillGroupScreen'] = []
         if self.skill_group_screen is not None:
@@ -14078,6 +15088,10 @@ class ListSkillGroupConfigResponseBodyDataSkillGroupConfig(TeaModel):
             self.skill_group_screens.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -14191,6 +15205,10 @@ class ListSkillGroupConfigResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SkillGroupConfig'] = []
         if self.skill_group_config is not None:
@@ -14228,6 +15246,10 @@ class ListSkillGroupConfigResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -14273,6 +15295,10 @@ class ListSkillGroupConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14293,27 +15319,25 @@ class ListSkillGroupConfigResponse(TeaModel):
 class ListTaskAssignRulesRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -14332,6 +15356,10 @@ class ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoRulesRuleBasicInfo(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -14362,6 +15390,10 @@ class ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RuleBasicInfo'] = []
         if self.rule_basic_info is not None:
@@ -14392,6 +15424,10 @@ class ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSkillGroupsSkillGroup
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.skill_id is not None:
             result['SkillId'] = self.skill_id
@@ -14422,6 +15458,10 @@ class ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoSkillGroups(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SkillGroup'] = []
         if self.skill_group is not None:
@@ -14452,6 +15492,10 @@ class ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgentsAgent(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.agent_id is not None:
             result['AgentId'] = self.agent_id
@@ -14482,6 +15526,10 @@ class ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgents(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Agent'] = []
         if self.agent is not None:
@@ -14512,6 +15560,10 @@ class ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoReviewersReviewer(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.reviewer_name is not None:
             result['ReviewerName'] = self.reviewer_name
@@ -14542,6 +15594,10 @@ class ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoReviewers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Reviewer'] = []
         if self.reviewer is not None:
@@ -14603,6 +15659,10 @@ class ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfo(TeaModel):
             self.reviewers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.skill_groups_str is not None:
             result['SkillGroupsStr'] = self.skill_groups_str
@@ -14685,6 +15745,10 @@ class ListTaskAssignRulesResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TaskAssignRuleInfo'] = []
         if self.task_assign_rule_info is not None:
@@ -14728,6 +15792,10 @@ class ListTaskAssignRulesResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14785,6 +15853,10 @@ class ListTaskAssignRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14805,27 +15877,25 @@ class ListTaskAssignRulesResponse(TeaModel):
 class ListUsersRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -14858,6 +15928,10 @@ class ListUsersResponseBodyDataUser(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
@@ -14916,6 +15990,10 @@ class ListUsersResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['User'] = []
         if self.user is not None:
@@ -14959,6 +16037,10 @@ class ListUsersResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15016,6 +16098,10 @@ class ListUsersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15036,27 +16122,25 @@ class ListUsersResponse(TeaModel):
 class ListWarningConfigRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -15073,6 +16157,10 @@ class ListWarningConfigResponseBodyDataWarningConfigInfoRidList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rid_list is not None:
             result['RidList'] = self.rid_list
@@ -15098,6 +16186,10 @@ class ListWarningConfigResponseBodyDataWarningConfigInfoChannelsChannel(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -15128,6 +16220,10 @@ class ListWarningConfigResponseBodyDataWarningConfigInfoChannels(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Channel'] = []
         if self.channel is not None:
@@ -15158,6 +16254,10 @@ class ListWarningConfigResponseBodyDataWarningConfigInfoRuleListWarningRule(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -15188,6 +16288,10 @@ class ListWarningConfigResponseBodyDataWarningConfigInfoRuleList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WarningRule'] = []
         if self.warning_rule is not None:
@@ -15235,6 +16339,10 @@ class ListWarningConfigResponseBodyDataWarningConfigInfo(TeaModel):
             self.rule_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -15292,6 +16400,10 @@ class ListWarningConfigResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WarningConfigInfo'] = []
         if self.warning_config_info is not None:
@@ -15329,6 +16441,10 @@ class ListWarningConfigResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -15374,6 +16490,10 @@ class ListWarningConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15394,27 +16514,25 @@ class ListWarningConfigResponse(TeaModel):
 class RemoveAndGetTaskRulesRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -15437,6 +16555,10 @@ class RemoveAndGetTaskRulesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -15477,6 +16599,10 @@ class RemoveAndGetTaskRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15497,27 +16623,25 @@ class RemoveAndGetTaskRulesResponse(TeaModel):
 class RestartAsrTaskRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -15538,6 +16662,10 @@ class RestartAsrTaskResponseBodyDataRestartResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.data is not None:
             result['Data'] = self.data
@@ -15572,6 +16700,10 @@ class RestartAsrTaskResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RestartResult'] = []
         if self.restart_result is not None:
@@ -15609,6 +16741,10 @@ class RestartAsrTaskResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -15654,6 +16790,10 @@ class RestartAsrTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15674,27 +16814,25 @@ class RestartAsrTaskResponse(TeaModel):
 class ReviewSingleResultByIdRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -15723,6 +16861,10 @@ class ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewIn
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words
@@ -15778,6 +16920,10 @@ class ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewIn
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.from_ is not None:
             result['From'] = self.from_
@@ -15820,6 +16966,10 @@ class ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewIn
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['KeyWord'] = []
         if self.key_word is not None:
@@ -15848,6 +16998,10 @@ class ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewIn
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cid is not None:
             result['Cid'] = self.cid
@@ -15880,6 +17034,10 @@ class ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewIn
             self.cid.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.phrase is not None:
             result['Phrase'] = self.phrase.to_map()
@@ -15917,6 +17075,10 @@ class ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewIn
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ConditionHitInfo'] = []
         if self.condition_hit_info is not None:
@@ -15947,6 +17109,10 @@ class ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewIn
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.hit_id is not None:
             result['HitId'] = self.hit_id
@@ -15997,6 +17163,10 @@ class ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewIn
             self.review_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_score_type is not None:
             result['RuleScoreType'] = self.rule_score_type
@@ -16065,6 +17235,10 @@ class ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['HitRuleReviewInfo'] = []
         if self.hit_rule_review_info is not None:
@@ -16093,6 +17267,10 @@ class ReviewSingleResultByIdResponseBodyDataManualScoreMappingList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.manual_score_mapping_list is not None:
             result['ManualScoreMappingList'] = self.manual_score_mapping_list
@@ -16134,6 +17312,10 @@ class ReviewSingleResultByIdResponseBodyDataDialoguesDialogue(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words
@@ -16196,6 +17378,10 @@ class ReviewSingleResultByIdResponseBodyDataDialogues(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Dialogue'] = []
         if self.dialogue is not None:
@@ -16232,6 +17418,10 @@ class ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosSc
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score_sub_name is not None:
             result['ScoreSubName'] = self.score_sub_name
@@ -16274,6 +17464,10 @@ class ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfos(T
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ScoreParam'] = []
         if self.score_param is not None:
@@ -16307,6 +17501,10 @@ class ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePo(TeaModel):
             self.score_infos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score_infos is not None:
             result['ScoreInfos'] = self.score_infos.to_map()
@@ -16342,6 +17540,10 @@ class ReviewSingleResultByIdResponseBodyDataHandScoreInfoList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ScorePo'] = []
         if self.score_po is not None:
@@ -16411,6 +17613,10 @@ class ReviewSingleResultByIdResponseBodyData(TeaModel):
             self.hand_score_info_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.audio_url is not None:
             result['AudioURL'] = self.audio_url
@@ -16515,6 +17721,10 @@ class ReviewSingleResultByIdResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -16560,6 +17770,10 @@ class ReviewSingleResultByIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16580,27 +17794,25 @@ class ReviewSingleResultByIdResponse(TeaModel):
 class SaveConfigDataSetRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -16623,6 +17835,10 @@ class SaveConfigDataSetResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -16663,6 +17879,10 @@ class SaveConfigDataSetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16683,27 +17903,25 @@ class SaveConfigDataSetResponse(TeaModel):
 class SubmitComplaintRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -16728,6 +17946,10 @@ class SubmitComplaintResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -16772,6 +17994,10 @@ class SubmitComplaintResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16792,27 +18018,25 @@ class SubmitComplaintResponse(TeaModel):
 class SubmitCustomizationConfigRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -16835,6 +18059,10 @@ class SubmitCustomizationConfigResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.model_status is not None:
             result['ModelStatus'] = self.model_status
@@ -16879,6 +18107,10 @@ class SubmitCustomizationConfigResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -16924,6 +18156,10 @@ class SubmitCustomizationConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16944,27 +18180,25 @@ class SubmitCustomizationConfigResponse(TeaModel):
 class SubmitPrecisionTaskRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -16989,6 +18223,10 @@ class SubmitPrecisionTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -17033,6 +18271,10 @@ class SubmitPrecisionTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17053,27 +18295,25 @@ class SubmitPrecisionTaskResponse(TeaModel):
 class SubmitQualityCheckTaskRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -17098,6 +18338,10 @@ class SubmitQualityCheckTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -17142,6 +18386,10 @@ class SubmitQualityCheckTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17162,27 +18410,25 @@ class SubmitQualityCheckTaskResponse(TeaModel):
 class SubmitReviewInfoRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -17207,6 +18453,10 @@ class SubmitReviewInfoResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -17251,6 +18501,10 @@ class SubmitReviewInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17271,27 +18525,25 @@ class SubmitReviewInfoResponse(TeaModel):
 class SyncQualityCheckRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -17322,6 +18574,10 @@ class SyncQualityCheckResponseBodyDataRulesHitPhrase(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words
@@ -17381,6 +18637,10 @@ class SyncQualityCheckResponseBodyDataRulesHitHitKeyWords(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.from_ is not None:
             result['From'] = self.from_
@@ -17427,6 +18687,10 @@ class SyncQualityCheckResponseBodyDataRulesHit(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.phrase is not None:
             result['Phrase'] = self.phrase.to_map()
@@ -17467,6 +18731,10 @@ class SyncQualityCheckResponseBodyDataRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Hit'] = []
         if self.hit is not None:
@@ -17514,6 +18782,10 @@ class SyncQualityCheckResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -17567,6 +18839,10 @@ class SyncQualityCheckResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -17612,6 +18888,10 @@ class SyncQualityCheckResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17632,27 +18912,25 @@ class SyncQualityCheckResponse(TeaModel):
 class TestRuleRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -17681,6 +18959,10 @@ class TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHit
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words
@@ -17736,6 +19018,10 @@ class TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHit
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.from_ is not None:
             result['From'] = self.from_
@@ -17778,6 +19064,10 @@ class TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHit
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['KeyWord'] = []
         if self.key_word is not None:
@@ -17806,6 +19096,10 @@ class TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHit
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cid is not None:
             result['cid'] = self.cid
@@ -17838,6 +19132,10 @@ class TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHit
             self.cid.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.phrase is not None:
             result['Phrase'] = self.phrase.to_map()
@@ -17875,6 +19173,10 @@ class TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHit
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ConditionHitInfo'] = []
         if self.condition_hit_info is not None:
@@ -17906,6 +19208,10 @@ class TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo(TeaModel):
             self.condition_hit_info_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.condition_hit_info_list is not None:
             result['ConditionHitInfoList'] = self.condition_hit_info_list.to_map()
@@ -17937,6 +19243,10 @@ class TestRuleResponseBodyDataHitRuleReviewInfoList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['HitRuleReviewInfo'] = []
         if self.hit_rule_review_info is not None:
@@ -17968,6 +19278,10 @@ class TestRuleResponseBodyData(TeaModel):
             self.hit_rule_review_info_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.hit_rule_review_info_list is not None:
             result['HitRuleReviewInfoList'] = self.hit_rule_review_info_list.to_map()
@@ -18005,6 +19319,10 @@ class TestRuleResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -18050,6 +19368,10 @@ class TestRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18070,27 +19392,25 @@ class TestRuleResponse(TeaModel):
 class UpdateAsrVocabRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -18115,6 +19435,10 @@ class UpdateAsrVocabResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -18159,6 +19483,10 @@ class UpdateAsrVocabResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18179,27 +19507,25 @@ class UpdateAsrVocabResponse(TeaModel):
 class UpdateOnPurchaseSuccessRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -18224,6 +19550,10 @@ class UpdateOnPurchaseSuccessResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -18268,6 +19598,10 @@ class UpdateOnPurchaseSuccessResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18288,27 +19622,25 @@ class UpdateOnPurchaseSuccessResponse(TeaModel):
 class UpdateRuleRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -18333,6 +19665,10 @@ class UpdateRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -18377,6 +19713,10 @@ class UpdateRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18397,27 +19737,25 @@ class UpdateRuleResponse(TeaModel):
 class UpdateScoreForApiRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -18440,6 +19778,10 @@ class UpdateScoreForApiResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -18480,6 +19822,10 @@ class UpdateScoreForApiResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18500,27 +19846,25 @@ class UpdateScoreForApiResponse(TeaModel):
 class UpdateSkillGroupConfigRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -18543,6 +19887,10 @@ class UpdateSkillGroupConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -18583,6 +19931,10 @@ class UpdateSkillGroupConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18603,27 +19955,25 @@ class UpdateSkillGroupConfigResponse(TeaModel):
 class UpdateSubScoreForApiRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -18646,6 +19996,10 @@ class UpdateSubScoreForApiResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -18686,6 +20040,10 @@ class UpdateSubScoreForApiResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18706,27 +20064,25 @@ class UpdateSubScoreForApiResponse(TeaModel):
 class UpdateSyncQualityCheckDataRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -18745,6 +20101,10 @@ class UpdateSyncQualityCheckDataResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -18781,6 +20141,10 @@ class UpdateSyncQualityCheckDataResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -18826,6 +20190,10 @@ class UpdateSyncQualityCheckDataResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18846,27 +20214,25 @@ class UpdateSyncQualityCheckDataResponse(TeaModel):
 class UpdateTaskAssignRuleRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -18889,6 +20255,10 @@ class UpdateTaskAssignRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -18929,6 +20299,10 @@ class UpdateTaskAssignRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18949,27 +20323,25 @@ class UpdateTaskAssignRuleResponse(TeaModel):
 class UpdateUserRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -18992,6 +20364,10 @@ class UpdateUserResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -19032,6 +20408,10 @@ class UpdateUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19052,27 +20432,25 @@ class UpdateUserResponse(TeaModel):
 class UpdateUserConfigRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -19095,6 +20473,10 @@ class UpdateUserConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -19135,6 +20517,10 @@ class UpdateUserConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19155,27 +20541,25 @@ class UpdateUserConfigResponse(TeaModel):
 class UpdateWarningConfigRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -19198,6 +20582,10 @@ class UpdateWarningConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -19238,6 +20626,10 @@ class UpdateWarningConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19258,27 +20650,25 @@ class UpdateWarningConfigResponse(TeaModel):
 class UploadAudioDataRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -19303,6 +20693,10 @@ class UploadAudioDataResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -19347,6 +20741,10 @@ class UploadAudioDataResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19367,27 +20765,25 @@ class UploadAudioDataResponse(TeaModel):
 class UploadDataRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -19412,6 +20808,10 @@ class UploadDataResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -19456,6 +20856,10 @@ class UploadDataResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19476,27 +20880,25 @@ class UploadDataResponse(TeaModel):
 class UploadDataSyncRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -19523,6 +20925,10 @@ class UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInf
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.words is not None:
             result['Words'] = self.words
@@ -19566,6 +20972,10 @@ class UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInf
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cid_item is not None:
             result['CidItem'] = self.cid_item
@@ -19597,6 +21007,10 @@ class UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInf
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.from_ is not None:
             result['From'] = self.from_
@@ -19639,6 +21053,10 @@ class UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInf
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['HitKeyWord'] = []
         if self.hit_key_word is not None:
@@ -19676,6 +21094,10 @@ class UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHitConditionHitInf
             self.hit_key_words.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.phrase is not None:
             result['Phrase'] = self.phrase.to_map()
@@ -19713,6 +21135,10 @@ class UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHit(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ConditionHitInfo'] = []
         if self.condition_hit_info is not None:
@@ -19741,6 +21167,10 @@ class UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfoCondi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.condition_info_cid is not None:
             result['ConditionInfoCid'] = self.condition_info_cid
@@ -19767,6 +21197,10 @@ class UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo(TeaM
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ConditionBasicInfo'] = []
         if self.condition_basic_info is not None:
@@ -19804,6 +21238,10 @@ class UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo(TeaModel):
             self.condition_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tid is not None:
             result['Tid'] = self.tid
@@ -19844,6 +21282,10 @@ class UploadDataSyncResponseBodyDataResultInfoRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RuleHitInfo'] = []
         if self.rule_hit_info is not None:
@@ -19872,6 +21314,10 @@ class UploadDataSyncResponseBodyDataResultInfoHandScoreIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.hand_score_id_list is not None:
             result['HandScoreIdList'] = self.hand_score_id_list
@@ -19902,6 +21348,10 @@ class UploadDataSyncResponseBodyDataResultInfo(TeaModel):
             self.hand_score_id_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -19938,6 +21388,10 @@ class UploadDataSyncResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ResultInfo'] = []
         if self.result_info is not None:
@@ -19975,6 +21429,10 @@ class UploadDataSyncResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -20020,6 +21478,10 @@ class UploadDataSyncResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20040,27 +21502,25 @@ class UploadDataSyncResponse(TeaModel):
 class UploadRuleRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -20077,6 +21537,10 @@ class UploadRuleResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rid_info is not None:
             result['RidInfo'] = self.rid_info
@@ -20109,6 +21573,10 @@ class UploadRuleResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -20154,6 +21622,10 @@ class UploadRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20174,27 +21646,25 @@ class UploadRuleResponse(TeaModel):
 class VerifyFileRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -20219,6 +21689,10 @@ class VerifyFileResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -20263,6 +21737,10 @@ class VerifyFileResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20283,27 +21761,25 @@ class VerifyFileResponse(TeaModel):
 class VerifySentenceRequest(TeaModel):
     def __init__(
         self,
-        resource_owner_id: int = None,
         json_str: str = None,
     ):
-        self.resource_owner_id = resource_owner_id
         self.json_str = json_str
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.json_str is not None:
             result['JsonStr'] = self.json_str
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('JsonStr') is not None:
             self.json_str = m.get('JsonStr')
         return self
@@ -20320,6 +21796,10 @@ class VerifySentenceResponseBodyDataDeltaSourceLine(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.line is not None:
             result['Line'] = self.line
@@ -20346,6 +21826,10 @@ class VerifySentenceResponseBodyDataDeltaSource(TeaModel):
             self.line.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.line is not None:
             result['Line'] = self.line.to_map()
@@ -20374,6 +21858,10 @@ class VerifySentenceResponseBodyDataDeltaTargetLine(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.line is not None:
             result['Line'] = self.line
@@ -20400,6 +21888,10 @@ class VerifySentenceResponseBodyDataDeltaTarget(TeaModel):
             self.line.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.line is not None:
             result['Line'] = self.line.to_map()
@@ -20435,6 +21927,10 @@ class VerifySentenceResponseBodyDataDelta(TeaModel):
             self.target.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -20471,6 +21967,10 @@ class VerifySentenceResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Delta'] = []
         if self.delta is not None:
@@ -20514,6 +22014,10 @@ class VerifySentenceResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_role is not None:
             result['SourceRole'] = self.source_role
@@ -20571,6 +22075,10 @@ class VerifySentenceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
