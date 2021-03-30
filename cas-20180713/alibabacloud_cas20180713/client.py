@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_cas20180713 import models as cas_20180713_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -96,11 +98,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.CreateDVOrderAuditResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['InstanceId'] = request.instance_id
+        query['Domain'] = request.domain
+        query['DomainVerifyType'] = request.domain_verify_type
+        query['Username'] = request.username
+        query['Email'] = request.email
+        query['Mobile'] = request.mobile
+        query['Province'] = request.province
+        query['City'] = request.city
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.CreateDVOrderAuditResponse().from_map(
-            self.do_rpcrequest('CreateDVOrderAudit', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDVOrderAudit',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.CreateDVOrderAuditResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_dvorder_audit_with_options_async(
@@ -109,11 +135,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.CreateDVOrderAuditResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['InstanceId'] = request.instance_id
+        query['Domain'] = request.domain
+        query['DomainVerifyType'] = request.domain_verify_type
+        query['Username'] = request.username
+        query['Email'] = request.email
+        query['Mobile'] = request.mobile
+        query['Province'] = request.province
+        query['City'] = request.city
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.CreateDVOrderAuditResponse().from_map(
-            await self.do_rpcrequest_async('CreateDVOrderAudit', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDVOrderAudit',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.CreateDVOrderAuditResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_dvorder_audit(
@@ -136,11 +186,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.CreateUserCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['Cert'] = request.cert
+        query['Key'] = request.key
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.CreateUserCertificateResponse().from_map(
-            self.do_rpcrequest('CreateUserCertificate', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateUserCertificate',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.CreateUserCertificateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_user_certificate_with_options_async(
@@ -149,11 +218,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.CreateUserCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['Cert'] = request.cert
+        query['Key'] = request.key
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.CreateUserCertificateResponse().from_map(
-            await self.do_rpcrequest_async('CreateUserCertificate', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateUserCertificate',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.CreateUserCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_user_certificate(
@@ -176,11 +264,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.DeleteUserCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertId'] = request.cert_id
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.DeleteUserCertificateResponse().from_map(
-            self.do_rpcrequest('DeleteUserCertificate', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteUserCertificate',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.DeleteUserCertificateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_user_certificate_with_options_async(
@@ -189,11 +294,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.DeleteUserCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertId'] = request.cert_id
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.DeleteUserCertificateResponse().from_map(
-            await self.do_rpcrequest_async('DeleteUserCertificate', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteUserCertificate',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.DeleteUserCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_user_certificate(
@@ -216,11 +338,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.DescribeDVOrderResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.DescribeDVOrderResultResponse().from_map(
-            self.do_rpcrequest('DescribeDVOrderResult', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDVOrderResult',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.DescribeDVOrderResultResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dvorder_result_with_options_async(
@@ -229,11 +368,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.DescribeDVOrderResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.DescribeDVOrderResultResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDVOrderResult', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDVOrderResult',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.DescribeDVOrderResultResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dvorder_result(
@@ -256,11 +412,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.DescribeOrderInstanceListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['StartIndex'] = request.start_index
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.DescribeOrderInstanceListResponse().from_map(
-            self.do_rpcrequest('DescribeOrderInstanceList', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeOrderInstanceList',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.DescribeOrderInstanceListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_order_instance_list_with_options_async(
@@ -269,11 +442,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.DescribeOrderInstanceListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
+        query['StartIndex'] = request.start_index
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.DescribeOrderInstanceListResponse().from_map(
-            await self.do_rpcrequest_async('DescribeOrderInstanceList', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeOrderInstanceList',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.DescribeOrderInstanceListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_order_instance_list(
@@ -296,11 +486,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.DescribeUserCertificateDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertId'] = request.cert_id
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.DescribeUserCertificateDetailResponse().from_map(
-            self.do_rpcrequest('DescribeUserCertificateDetail', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeUserCertificateDetail',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.DescribeUserCertificateDetailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_certificate_detail_with_options_async(
@@ -309,11 +516,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.DescribeUserCertificateDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertId'] = request.cert_id
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.DescribeUserCertificateDetailResponse().from_map(
-            await self.do_rpcrequest_async('DescribeUserCertificateDetail', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeUserCertificateDetail',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.DescribeUserCertificateDetailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_certificate_detail(
@@ -336,11 +560,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.DescribeUserCertificateListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ShowSize'] = request.show_size
+        query['CurrentPage'] = request.current_page
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.DescribeUserCertificateListResponse().from_map(
-            self.do_rpcrequest('DescribeUserCertificateList', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeUserCertificateList',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.DescribeUserCertificateListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_certificate_list_with_options_async(
@@ -349,11 +591,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cas_20180713_models.DescribeUserCertificateListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ShowSize'] = request.show_size
+        query['CurrentPage'] = request.current_page
+        query['SourceIp'] = request.source_ip
+        query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return cas_20180713_models.DescribeUserCertificateListResponse().from_map(
-            await self.do_rpcrequest_async('DescribeUserCertificateList', '2018-07-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeUserCertificateList',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20180713_models.DescribeUserCertificateListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_certificate_list(
