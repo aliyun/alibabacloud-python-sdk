@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -80,11 +81,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.CreateTrailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['OssBucketName'] = request.oss_bucket_name
+        query['OssKeyPrefix'] = request.oss_key_prefix
+        query['RoleName'] = request.role_name
+        query['SlsProjectArn'] = request.sls_project_arn
+        query['SlsWriteRoleArn'] = request.sls_write_role_arn
+        query['EventRW'] = request.event_rw
+        query['TrailRegion'] = request.trail_region
+        query['MnsTopicArn'] = request.mns_topic_arn
+        query['IsOrganizationTrail'] = request.is_organization_trail
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return actiontrail_20171204_models.CreateTrailResponse().from_map(
-            self.do_rpcrequest('CreateTrail', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateTrail',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.CreateTrailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_trail_with_options_async(
@@ -93,11 +118,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.CreateTrailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['OssBucketName'] = request.oss_bucket_name
+        query['OssKeyPrefix'] = request.oss_key_prefix
+        query['RoleName'] = request.role_name
+        query['SlsProjectArn'] = request.sls_project_arn
+        query['SlsWriteRoleArn'] = request.sls_write_role_arn
+        query['EventRW'] = request.event_rw
+        query['TrailRegion'] = request.trail_region
+        query['MnsTopicArn'] = request.mns_topic_arn
+        query['IsOrganizationTrail'] = request.is_organization_trail
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return actiontrail_20171204_models.CreateTrailResponse().from_map(
-            await self.do_rpcrequest_async('CreateTrail', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateTrail',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.CreateTrailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_trail(
@@ -120,11 +169,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.DeleteTrailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return actiontrail_20171204_models.DeleteTrailResponse().from_map(
-            self.do_rpcrequest('DeleteTrail', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteTrail',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.DeleteTrailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_trail_with_options_async(
@@ -133,11 +197,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.DeleteTrailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return actiontrail_20171204_models.DeleteTrailResponse().from_map(
-            await self.do_rpcrequest_async('DeleteTrail', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteTrail',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.DeleteTrailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_trail(
@@ -159,8 +238,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.DescribeRegionsResponse:
         req = open_api_models.OpenApiRequest()
-        return actiontrail_20171204_models.DescribeRegionsResponse().from_map(
-            self.do_rpcrequest('DescribeRegions', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -168,8 +259,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.DescribeRegionsResponse:
         req = open_api_models.OpenApiRequest()
-        return actiontrail_20171204_models.DescribeRegionsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRegions', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(self) -> actiontrail_20171204_models.DescribeRegionsResponse:
@@ -186,11 +289,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.DescribeTrailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IncludeShadowTrails'] = request.include_shadow_trails
+        query['NameList'] = request.name_list
+        query['IncludeOrganizationTrail'] = request.include_organization_trail
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return actiontrail_20171204_models.DescribeTrailsResponse().from_map(
-            self.do_rpcrequest('DescribeTrails', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeTrails',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.DescribeTrailsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_trails_with_options_async(
@@ -199,11 +319,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.DescribeTrailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IncludeShadowTrails'] = request.include_shadow_trails
+        query['NameList'] = request.name_list
+        query['IncludeOrganizationTrail'] = request.include_organization_trail
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return actiontrail_20171204_models.DescribeTrailsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeTrails', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeTrails',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.DescribeTrailsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_trails(
@@ -226,11 +363,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.GetTrailStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['IsOrganizationTrail'] = request.is_organization_trail
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return actiontrail_20171204_models.GetTrailStatusResponse().from_map(
-            self.do_rpcrequest('GetTrailStatus', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetTrailStatus',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.GetTrailStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_trail_status_with_options_async(
@@ -239,11 +392,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.GetTrailStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['IsOrganizationTrail'] = request.is_organization_trail
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return actiontrail_20171204_models.GetTrailStatusResponse().from_map(
-            await self.do_rpcrequest_async('GetTrailStatus', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetTrailStatus',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.GetTrailStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_trail_status(
@@ -266,11 +435,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.LookupEventsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Event'] = request.event
+        query['Request'] = request.request
+        query['EventType'] = request.event_type
+        query['ServiceName'] = request.service_name
+        query['EventName'] = request.event_name
+        query['User'] = request.user
+        query['ResourceType'] = request.resource_type
+        query['ResourceName'] = request.resource_name
+        query['EventRW'] = request.event_rw
+        query['EventAccessKeyId'] = request.event_access_key_id
+        query['NextToken'] = request.next_token
+        query['MaxResults'] = request.max_results
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return actiontrail_20171204_models.LookupEventsResponse().from_map(
-            self.do_rpcrequest('LookupEvents', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='LookupEvents',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.LookupEventsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def lookup_events_with_options_async(
@@ -279,11 +476,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.LookupEventsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Event'] = request.event
+        query['Request'] = request.request
+        query['EventType'] = request.event_type
+        query['ServiceName'] = request.service_name
+        query['EventName'] = request.event_name
+        query['User'] = request.user
+        query['ResourceType'] = request.resource_type
+        query['ResourceName'] = request.resource_name
+        query['EventRW'] = request.event_rw
+        query['EventAccessKeyId'] = request.event_access_key_id
+        query['NextToken'] = request.next_token
+        query['MaxResults'] = request.max_results
+        query['StartTime'] = request.start_time
+        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return actiontrail_20171204_models.LookupEventsResponse().from_map(
-            await self.do_rpcrequest_async('LookupEvents', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='LookupEvents',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.LookupEventsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def lookup_events(
@@ -308,10 +533,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return actiontrail_20171204_models.StartLoggingResponse().from_map(
-            self.do_rpcrequest('StartLogging', '2017-12-04', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartLogging',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.StartLoggingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def start_logging_with_options_async(
@@ -322,10 +559,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return actiontrail_20171204_models.StartLoggingResponse().from_map(
-            await self.do_rpcrequest_async('StartLogging', '2017-12-04', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartLogging',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.StartLoggingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_logging(
@@ -350,10 +599,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return actiontrail_20171204_models.StopLoggingResponse().from_map(
-            self.do_rpcrequest('StopLogging', '2017-12-04', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopLogging',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.StopLoggingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def stop_logging_with_options_async(
@@ -364,10 +625,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return actiontrail_20171204_models.StopLoggingResponse().from_map(
-            await self.do_rpcrequest_async('StopLogging', '2017-12-04', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopLogging',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.StopLoggingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_logging(
@@ -390,11 +663,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.UpdateTrailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['OssBucketName'] = request.oss_bucket_name
+        query['OssKeyPrefix'] = request.oss_key_prefix
+        query['RoleName'] = request.role_name
+        query['SlsProjectArn'] = request.sls_project_arn
+        query['SlsWriteRoleArn'] = request.sls_write_role_arn
+        query['EventRW'] = request.event_rw
+        query['TrailRegion'] = request.trail_region
+        query['MnsTopicArn'] = request.mns_topic_arn
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return actiontrail_20171204_models.UpdateTrailResponse().from_map(
-            self.do_rpcrequest('UpdateTrail', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateTrail',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.UpdateTrailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_trail_with_options_async(
@@ -403,11 +699,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> actiontrail_20171204_models.UpdateTrailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['OssBucketName'] = request.oss_bucket_name
+        query['OssKeyPrefix'] = request.oss_key_prefix
+        query['RoleName'] = request.role_name
+        query['SlsProjectArn'] = request.sls_project_arn
+        query['SlsWriteRoleArn'] = request.sls_write_role_arn
+        query['EventRW'] = request.event_rw
+        query['TrailRegion'] = request.trail_region
+        query['MnsTopicArn'] = request.mns_topic_arn
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return actiontrail_20171204_models.UpdateTrailResponse().from_map(
-            await self.do_rpcrequest_async('UpdateTrail', '2017-12-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateTrail',
+            version='2017-12-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20171204_models.UpdateTrailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_trail(
