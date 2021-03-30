@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -48,10 +49,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.AddContainerAppResponse().from_map(
-            self.do_rpcrequest('AddContainerApp', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddContainerApp',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.AddContainerAppResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_container_app_with_options_async(
@@ -62,10 +75,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.AddContainerAppResponse().from_map(
-            await self.do_rpcrequest_async('AddContainerApp', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddContainerApp',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.AddContainerAppResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_container_app(
@@ -90,10 +115,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.AddLocalNodesResponse().from_map(
-            self.do_rpcrequest('AddLocalNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddLocalNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.AddLocalNodesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_local_nodes_with_options_async(
@@ -104,10 +141,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.AddLocalNodesResponse().from_map(
-            await self.do_rpcrequest_async('AddLocalNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddLocalNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.AddLocalNodesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_local_nodes(
@@ -132,10 +181,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.AddNodesResponse().from_map(
-            self.do_rpcrequest('AddNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.AddNodesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_nodes_with_options_async(
@@ -146,10 +207,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.AddNodesResponse().from_map(
-            await self.do_rpcrequest_async('AddNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.AddNodesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_nodes(
@@ -174,10 +247,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.AddQueueResponse().from_map(
-            self.do_rpcrequest('AddQueue', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddQueue',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.AddQueueResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_queue_with_options_async(
@@ -188,10 +273,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.AddQueueResponse().from_map(
-            await self.do_rpcrequest_async('AddQueue', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddQueue',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.AddQueueResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_queue(
@@ -216,10 +313,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.AddSecurityGroupResponse().from_map(
-            self.do_rpcrequest('AddSecurityGroup', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddSecurityGroup',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.AddSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_security_group_with_options_async(
@@ -230,10 +339,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.AddSecurityGroupResponse().from_map(
-            await self.do_rpcrequest_async('AddSecurityGroup', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddSecurityGroup',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.AddSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_security_group(
@@ -258,10 +379,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.AddUsersResponse().from_map(
-            self.do_rpcrequest('AddUsers', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddUsers',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.AddUsersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_users_with_options_async(
@@ -272,10 +405,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.AddUsersResponse().from_map(
-            await self.do_rpcrequest_async('AddUsers', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddUsers',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.AddUsersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_users(
@@ -300,10 +445,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ApplyNodesResponse().from_map(
-            self.do_rpcrequest('ApplyNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ApplyNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ApplyNodesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def apply_nodes_with_options_async(
@@ -314,10 +471,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ApplyNodesResponse().from_map(
-            await self.do_rpcrequest_async('ApplyNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ApplyNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ApplyNodesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def apply_nodes(
@@ -342,10 +511,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.BindAccountToClusterUserResponse().from_map(
-            self.do_rpcrequest('BindAccountToClusterUser', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='BindAccountToClusterUser',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.BindAccountToClusterUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def bind_account_to_cluster_user_with_options_async(
@@ -356,10 +537,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.BindAccountToClusterUserResponse().from_map(
-            await self.do_rpcrequest_async('BindAccountToClusterUser', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='BindAccountToClusterUser',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.BindAccountToClusterUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def bind_account_to_cluster_user(
@@ -384,10 +577,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateClusterResponse().from_map(
-            self.do_rpcrequest('CreateCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_cluster_with_options_async(
@@ -398,10 +603,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateClusterResponse().from_map(
-            await self.do_rpcrequest_async('CreateCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_cluster(
@@ -426,10 +643,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateGWSClusterResponse().from_map(
-            self.do_rpcrequest('CreateGWSCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateGWSCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateGWSClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_gwscluster_with_options_async(
@@ -440,10 +669,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateGWSClusterResponse().from_map(
-            await self.do_rpcrequest_async('CreateGWSCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateGWSCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateGWSClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_gwscluster(
@@ -468,10 +709,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateGWSImageResponse().from_map(
-            self.do_rpcrequest('CreateGWSImage', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateGWSImage',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateGWSImageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_gwsimage_with_options_async(
@@ -482,10 +735,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateGWSImageResponse().from_map(
-            await self.do_rpcrequest_async('CreateGWSImage', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateGWSImage',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateGWSImageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_gwsimage(
@@ -510,10 +775,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateGWSInstanceResponse().from_map(
-            self.do_rpcrequest('CreateGWSInstance', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateGWSInstance',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateGWSInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_gwsinstance_with_options_async(
@@ -524,10 +801,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateGWSInstanceResponse().from_map(
-            await self.do_rpcrequest_async('CreateGWSInstance', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateGWSInstance',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateGWSInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_gwsinstance(
@@ -552,10 +841,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateHybridClusterResponse().from_map(
-            self.do_rpcrequest('CreateHybridCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateHybridCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateHybridClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_hybrid_cluster_with_options_async(
@@ -566,10 +867,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateHybridClusterResponse().from_map(
-            await self.do_rpcrequest_async('CreateHybridCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateHybridCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateHybridClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_hybrid_cluster(
@@ -594,10 +907,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateJobFileResponse().from_map(
-            self.do_rpcrequest('CreateJobFile', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateJobFile',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateJobFileResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_job_file_with_options_async(
@@ -608,10 +933,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateJobFileResponse().from_map(
-            await self.do_rpcrequest_async('CreateJobFile', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateJobFile',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateJobFileResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_job_file(
@@ -636,10 +973,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateJobTemplateResponse().from_map(
-            self.do_rpcrequest('CreateJobTemplate', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateJobTemplate',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateJobTemplateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_job_template_with_options_async(
@@ -650,10 +999,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.CreateJobTemplateResponse().from_map(
-            await self.do_rpcrequest_async('CreateJobTemplate', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateJobTemplate',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.CreateJobTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_job_template(
@@ -678,10 +1039,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteClusterResponse().from_map(
-            self.do_rpcrequest('DeleteCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_cluster_with_options_async(
@@ -692,10 +1065,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteClusterResponse().from_map(
-            await self.do_rpcrequest_async('DeleteCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_cluster(
@@ -720,10 +1105,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteContainerAppsResponse().from_map(
-            self.do_rpcrequest('DeleteContainerApps', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteContainerApps',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteContainerAppsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_container_apps_with_options_async(
@@ -734,10 +1131,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteContainerAppsResponse().from_map(
-            await self.do_rpcrequest_async('DeleteContainerApps', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteContainerApps',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteContainerAppsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_container_apps(
@@ -762,10 +1171,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteGWSClusterResponse().from_map(
-            self.do_rpcrequest('DeleteGWSCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteGWSCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteGWSClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_gwscluster_with_options_async(
@@ -776,10 +1197,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteGWSClusterResponse().from_map(
-            await self.do_rpcrequest_async('DeleteGWSCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteGWSCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteGWSClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_gwscluster(
@@ -804,10 +1237,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteGWSInstanceResponse().from_map(
-            self.do_rpcrequest('DeleteGWSInstance', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteGWSInstance',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteGWSInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_gwsinstance_with_options_async(
@@ -818,10 +1263,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteGWSInstanceResponse().from_map(
-            await self.do_rpcrequest_async('DeleteGWSInstance', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteGWSInstance',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteGWSInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_gwsinstance(
@@ -846,10 +1303,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteImageResponse().from_map(
-            self.do_rpcrequest('DeleteImage', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteImageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_image_with_options_async(
@@ -860,10 +1329,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteImageResponse().from_map(
-            await self.do_rpcrequest_async('DeleteImage', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteImageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_image(
@@ -888,10 +1369,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteJobsResponse().from_map(
-            self.do_rpcrequest('DeleteJobs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteJobsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_jobs_with_options_async(
@@ -902,10 +1395,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteJobsResponse().from_map(
-            await self.do_rpcrequest_async('DeleteJobs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteJobsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_jobs(
@@ -930,10 +1435,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteJobTemplatesResponse().from_map(
-            self.do_rpcrequest('DeleteJobTemplates', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteJobTemplates',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteJobTemplatesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_job_templates_with_options_async(
@@ -944,10 +1461,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteJobTemplatesResponse().from_map(
-            await self.do_rpcrequest_async('DeleteJobTemplates', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteJobTemplates',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteJobTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_job_templates(
@@ -972,10 +1501,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteNodesResponse().from_map(
-            self.do_rpcrequest('DeleteNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteNodesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_nodes_with_options_async(
@@ -986,10 +1527,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteNodesResponse().from_map(
-            await self.do_rpcrequest_async('DeleteNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteNodesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_nodes(
@@ -1014,10 +1567,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteQueueResponse().from_map(
-            self.do_rpcrequest('DeleteQueue', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteQueue',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteQueueResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_queue_with_options_async(
@@ -1028,10 +1593,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteQueueResponse().from_map(
-            await self.do_rpcrequest_async('DeleteQueue', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteQueue',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteQueueResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_queue(
@@ -1056,10 +1633,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteSecurityGroupResponse().from_map(
-            self.do_rpcrequest('DeleteSecurityGroup', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteSecurityGroup',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_security_group_with_options_async(
@@ -1070,10 +1659,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteSecurityGroupResponse().from_map(
-            await self.do_rpcrequest_async('DeleteSecurityGroup', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteSecurityGroup',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_security_group(
@@ -1098,10 +1699,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteUsersResponse().from_map(
-            self.do_rpcrequest('DeleteUsers', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteUsers',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteUsersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_users_with_options_async(
@@ -1112,10 +1725,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DeleteUsersResponse().from_map(
-            await self.do_rpcrequest_async('DeleteUsers', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteUsers',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DeleteUsersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_users(
@@ -1140,10 +1765,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeAutoScaleConfigResponse().from_map(
-            self.do_rpcrequest('DescribeAutoScaleConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAutoScaleConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeAutoScaleConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_auto_scale_config_with_options_async(
@@ -1154,10 +1791,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeAutoScaleConfigResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAutoScaleConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAutoScaleConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeAutoScaleConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_auto_scale_config(
@@ -1182,10 +1831,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeClusterResponse().from_map(
-            self.do_rpcrequest('DescribeCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_with_options_async(
@@ -1196,10 +1857,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeClusterResponse().from_map(
-            await self.do_rpcrequest_async('DescribeCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster(
@@ -1224,10 +1897,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeContainerAppResponse().from_map(
-            self.do_rpcrequest('DescribeContainerApp', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeContainerApp',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeContainerAppResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_container_app_with_options_async(
@@ -1238,10 +1923,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeContainerAppResponse().from_map(
-            await self.do_rpcrequest_async('DescribeContainerApp', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeContainerApp',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeContainerAppResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_container_app(
@@ -1264,11 +1961,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeGWSClusterPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClusterId'] = request.cluster_id
+        query['TaskId'] = request.task_id
+        query['AsyncMode'] = request.async_mode
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return ehpc20180412_models.DescribeGWSClusterPolicyResponse().from_map(
-            self.do_rpcrequest('DescribeGWSClusterPolicy', '2018-04-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeGWSClusterPolicy',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeGWSClusterPolicyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_gwscluster_policy_with_options_async(
@@ -1277,11 +1991,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribeGWSClusterPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClusterId'] = request.cluster_id
+        query['TaskId'] = request.task_id
+        query['AsyncMode'] = request.async_mode
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return ehpc20180412_models.DescribeGWSClusterPolicyResponse().from_map(
-            await self.do_rpcrequest_async('DescribeGWSClusterPolicy', '2018-04-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeGWSClusterPolicy',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeGWSClusterPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_gwscluster_policy(
@@ -1306,10 +2037,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeGWSClustersResponse().from_map(
-            self.do_rpcrequest('DescribeGWSClusters', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeGWSClusters',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeGWSClustersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_gwsclusters_with_options_async(
@@ -1320,10 +2063,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeGWSClustersResponse().from_map(
-            await self.do_rpcrequest_async('DescribeGWSClusters', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeGWSClusters',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeGWSClustersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_gwsclusters(
@@ -1348,10 +2103,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeGWSImagesResponse().from_map(
-            self.do_rpcrequest('DescribeGWSImages', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeGWSImages',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeGWSImagesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_gwsimages_with_options_async(
@@ -1362,10 +2129,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeGWSImagesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeGWSImages', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeGWSImages',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeGWSImagesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_gwsimages(
@@ -1390,10 +2169,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeGWSInstancesResponse().from_map(
-            self.do_rpcrequest('DescribeGWSInstances', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeGWSInstances',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeGWSInstancesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_gwsinstances_with_options_async(
@@ -1404,10 +2195,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeGWSInstancesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeGWSInstances', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeGWSInstances',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeGWSInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_gwsinstances(
@@ -1432,10 +2235,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeImageResponse().from_map(
-            self.do_rpcrequest('DescribeImage', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeImage',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeImageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_image_with_options_async(
@@ -1446,10 +2261,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeImageResponse().from_map(
-            await self.do_rpcrequest_async('DescribeImage', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeImage',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeImageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_image(
@@ -1474,10 +2301,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeImageGatewayConfigResponse().from_map(
-            self.do_rpcrequest('DescribeImageGatewayConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeImageGatewayConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeImageGatewayConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_image_gateway_config_with_options_async(
@@ -1488,10 +2327,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeImageGatewayConfigResponse().from_map(
-            await self.do_rpcrequest_async('DescribeImageGatewayConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeImageGatewayConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeImageGatewayConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_image_gateway_config(
@@ -1516,10 +2367,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeImagePriceResponse().from_map(
-            self.do_rpcrequest('DescribeImagePrice', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeImagePrice',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeImagePriceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_image_price_with_options_async(
@@ -1530,10 +2393,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeImagePriceResponse().from_map(
-            await self.do_rpcrequest_async('DescribeImagePrice', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeImagePrice',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeImagePriceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_image_price(
@@ -1558,10 +2433,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeJobResponse().from_map(
-            self.do_rpcrequest('DescribeJob', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeJob',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_job_with_options_async(
@@ -1572,10 +2459,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeJobResponse().from_map(
-            await self.do_rpcrequest_async('DescribeJob', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeJob',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_job(
@@ -1600,10 +2499,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeNFSClientStatusResponse().from_map(
-            self.do_rpcrequest('DescribeNFSClientStatus', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeNFSClientStatus',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeNFSClientStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_nfsclient_status_with_options_async(
@@ -1614,10 +2525,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribeNFSClientStatusResponse().from_map(
-            await self.do_rpcrequest_async('DescribeNFSClientStatus', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeNFSClientStatus',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeNFSClientStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_nfsclient_status(
@@ -1642,10 +2565,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribePriceResponse().from_map(
-            self.do_rpcrequest('DescribePrice', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribePrice',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribePriceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_price_with_options_async(
@@ -1656,10 +2591,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.DescribePriceResponse().from_map(
-            await self.do_rpcrequest_async('DescribePrice', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribePrice',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribePriceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_price(
@@ -1676,6 +2623,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_with_options_async(request, runtime)
 
+    def ecd_delete_desktops_with_options(
+        self,
+        request: ehpc20180412_models.EcdDeleteDesktopsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.EcdDeleteDesktopsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EcdDeleteDesktops',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.EcdDeleteDesktopsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ecd_delete_desktops_with_options_async(
+        self,
+        request: ehpc20180412_models.EcdDeleteDesktopsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.EcdDeleteDesktopsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EcdDeleteDesktops',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.EcdDeleteDesktopsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ecd_delete_desktops(
+        self,
+        request: ehpc20180412_models.EcdDeleteDesktopsRequest,
+    ) -> ehpc20180412_models.EcdDeleteDesktopsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.ecd_delete_desktops_with_options(request, runtime)
+
+    async def ecd_delete_desktops_async(
+        self,
+        request: ehpc20180412_models.EcdDeleteDesktopsRequest,
+    ) -> ehpc20180412_models.EcdDeleteDesktopsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.ecd_delete_desktops_with_options_async(request, runtime)
+
     def edit_job_template_with_options(
         self,
         request: ehpc20180412_models.EditJobTemplateRequest,
@@ -1684,10 +2697,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.EditJobTemplateResponse().from_map(
-            self.do_rpcrequest('EditJobTemplate', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EditJobTemplate',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.EditJobTemplateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def edit_job_template_with_options_async(
@@ -1698,10 +2723,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.EditJobTemplateResponse().from_map(
-            await self.do_rpcrequest_async('EditJobTemplate', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EditJobTemplate',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.EditJobTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def edit_job_template(
@@ -1726,10 +2763,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetAccountingReportResponse().from_map(
-            self.do_rpcrequest('GetAccountingReport', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAccountingReport',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetAccountingReportResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_accounting_report_with_options_async(
@@ -1740,10 +2789,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetAccountingReportResponse().from_map(
-            await self.do_rpcrequest_async('GetAccountingReport', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAccountingReport',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetAccountingReportResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_accounting_report(
@@ -1768,10 +2829,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetAutoScaleConfigResponse().from_map(
-            self.do_rpcrequest('GetAutoScaleConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAutoScaleConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetAutoScaleConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_auto_scale_config_with_options_async(
@@ -1782,10 +2855,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetAutoScaleConfigResponse().from_map(
-            await self.do_rpcrequest_async('GetAutoScaleConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetAutoScaleConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetAutoScaleConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_auto_scale_config(
@@ -1810,10 +2895,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetCloudMetricLogsResponse().from_map(
-            self.do_rpcrequest('GetCloudMetricLogs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetCloudMetricLogs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetCloudMetricLogsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_cloud_metric_logs_with_options_async(
@@ -1824,10 +2921,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetCloudMetricLogsResponse().from_map(
-            await self.do_rpcrequest_async('GetCloudMetricLogs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetCloudMetricLogs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetCloudMetricLogsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_cloud_metric_logs(
@@ -1852,10 +2961,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetCloudMetricProfilingResponse().from_map(
-            self.do_rpcrequest('GetCloudMetricProfiling', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetCloudMetricProfiling',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetCloudMetricProfilingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_cloud_metric_profiling_with_options_async(
@@ -1866,10 +2987,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetCloudMetricProfilingResponse().from_map(
-            await self.do_rpcrequest_async('GetCloudMetricProfiling', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetCloudMetricProfiling',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetCloudMetricProfilingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_cloud_metric_profiling(
@@ -1894,10 +3027,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetClusterVolumesResponse().from_map(
-            self.do_rpcrequest('GetClusterVolumes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetClusterVolumes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetClusterVolumesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_cluster_volumes_with_options_async(
@@ -1908,10 +3053,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetClusterVolumesResponse().from_map(
-            await self.do_rpcrequest_async('GetClusterVolumes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetClusterVolumes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetClusterVolumesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_cluster_volumes(
@@ -1936,10 +3093,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetGWSConnectTicketResponse().from_map(
-            self.do_rpcrequest('GetGWSConnectTicket', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetGWSConnectTicket',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetGWSConnectTicketResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_gwsconnect_ticket_with_options_async(
@@ -1950,10 +3119,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetGWSConnectTicketResponse().from_map(
-            await self.do_rpcrequest_async('GetGWSConnectTicket', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetGWSConnectTicket',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetGWSConnectTicketResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_gwsconnect_ticket(
@@ -1978,10 +3159,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetHealthMonitorLogsResponse().from_map(
-            self.do_rpcrequest('GetHealthMonitorLogs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetHealthMonitorLogs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetHealthMonitorLogsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_health_monitor_logs_with_options_async(
@@ -1992,10 +3185,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetHealthMonitorLogsResponse().from_map(
-            await self.do_rpcrequest_async('GetHealthMonitorLogs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetHealthMonitorLogs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetHealthMonitorLogsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_health_monitor_logs(
@@ -2020,10 +3225,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetHybridClusterConfigResponse().from_map(
-            self.do_rpcrequest('GetHybridClusterConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetHybridClusterConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetHybridClusterConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_hybrid_cluster_config_with_options_async(
@@ -2034,10 +3251,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetHybridClusterConfigResponse().from_map(
-            await self.do_rpcrequest_async('GetHybridClusterConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetHybridClusterConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetHybridClusterConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_hybrid_cluster_config(
@@ -2062,10 +3291,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetIfEcsTypeSupportHtConfigResponse().from_map(
-            self.do_rpcrequest('GetIfEcsTypeSupportHtConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetIfEcsTypeSupportHtConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetIfEcsTypeSupportHtConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_if_ecs_type_support_ht_config_with_options_async(
@@ -2076,10 +3317,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetIfEcsTypeSupportHtConfigResponse().from_map(
-            await self.do_rpcrequest_async('GetIfEcsTypeSupportHtConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetIfEcsTypeSupportHtConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetIfEcsTypeSupportHtConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_if_ecs_type_support_ht_config(
@@ -2104,10 +3357,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetVisualServiceStatusResponse().from_map(
-            self.do_rpcrequest('GetVisualServiceStatus', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetVisualServiceStatus',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetVisualServiceStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_visual_service_status_with_options_async(
@@ -2118,10 +3383,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetVisualServiceStatusResponse().from_map(
-            await self.do_rpcrequest_async('GetVisualServiceStatus', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetVisualServiceStatus',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetVisualServiceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_visual_service_status(
@@ -2146,10 +3423,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetWorkbenchTokenResponse().from_map(
-            self.do_rpcrequest('GetWorkbenchToken', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetWorkbenchToken',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetWorkbenchTokenResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_workbench_token_with_options_async(
@@ -2160,10 +3449,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.GetWorkbenchTokenResponse().from_map(
-            await self.do_rpcrequest_async('GetWorkbenchToken', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetWorkbenchToken',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetWorkbenchTokenResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_workbench_token(
@@ -2188,10 +3489,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.InitializeEHPCResponse().from_map(
-            self.do_rpcrequest('InitializeEHPC', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InitializeEHPC',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.InitializeEHPCResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def initialize_ehpcwith_options_async(
@@ -2202,10 +3515,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.InitializeEHPCResponse().from_map(
-            await self.do_rpcrequest_async('InitializeEHPC', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InitializeEHPC',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.InitializeEHPCResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def initialize_ehpc(
@@ -2230,10 +3555,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.InstallSoftwareResponse().from_map(
-            self.do_rpcrequest('InstallSoftware', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InstallSoftware',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.InstallSoftwareResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def install_software_with_options_async(
@@ -2244,10 +3581,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.InstallSoftwareResponse().from_map(
-            await self.do_rpcrequest_async('InstallSoftware', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InstallSoftware',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.InstallSoftwareResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def install_software(
@@ -2272,10 +3621,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.InvokeShellCommandResponse().from_map(
-            self.do_rpcrequest('InvokeShellCommand', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InvokeShellCommand',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.InvokeShellCommandResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def invoke_shell_command_with_options_async(
@@ -2286,10 +3647,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.InvokeShellCommandResponse().from_map(
-            await self.do_rpcrequest_async('InvokeShellCommand', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InvokeShellCommand',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.InvokeShellCommandResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def invoke_shell_command(
@@ -2314,10 +3687,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListAccountMappingResponse().from_map(
-            self.do_rpcrequest('ListAccountMapping', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAccountMapping',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListAccountMappingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_account_mapping_with_options_async(
@@ -2328,10 +3713,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListAccountMappingResponse().from_map(
-            await self.do_rpcrequest_async('ListAccountMapping', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAccountMapping',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListAccountMappingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_account_mapping(
@@ -2356,10 +3753,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListAvailableEcsTypesResponse().from_map(
-            self.do_rpcrequest('ListAvailableEcsTypes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAvailableEcsTypes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListAvailableEcsTypesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_available_ecs_types_with_options_async(
@@ -2370,10 +3779,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListAvailableEcsTypesResponse().from_map(
-            await self.do_rpcrequest_async('ListAvailableEcsTypes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAvailableEcsTypes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListAvailableEcsTypesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_available_ecs_types(
@@ -2395,8 +3816,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListAvailableFileSystemTypesResponse:
         req = open_api_models.OpenApiRequest()
-        return ehpc20180412_models.ListAvailableFileSystemTypesResponse().from_map(
-            self.do_rpcrequest('ListAvailableFileSystemTypes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAvailableFileSystemTypes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListAvailableFileSystemTypesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_available_file_system_types_with_options_async(
@@ -2404,8 +3837,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListAvailableFileSystemTypesResponse:
         req = open_api_models.OpenApiRequest()
-        return ehpc20180412_models.ListAvailableFileSystemTypesResponse().from_map(
-            await self.do_rpcrequest_async('ListAvailableFileSystemTypes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAvailableFileSystemTypes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListAvailableFileSystemTypesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_available_file_system_types(self) -> ehpc20180412_models.ListAvailableFileSystemTypesResponse:
@@ -2424,10 +3869,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListCloudMetricProfilingsResponse().from_map(
-            self.do_rpcrequest('ListCloudMetricProfilings', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListCloudMetricProfilings',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListCloudMetricProfilingsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cloud_metric_profilings_with_options_async(
@@ -2438,10 +3895,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListCloudMetricProfilingsResponse().from_map(
-            await self.do_rpcrequest_async('ListCloudMetricProfilings', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListCloudMetricProfilings',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListCloudMetricProfilingsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cloud_metric_profilings(
@@ -2466,10 +3935,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListClusterLogsResponse().from_map(
-            self.do_rpcrequest('ListClusterLogs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterLogs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListClusterLogsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cluster_logs_with_options_async(
@@ -2480,10 +3961,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListClusterLogsResponse().from_map(
-            await self.do_rpcrequest_async('ListClusterLogs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusterLogs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListClusterLogsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_logs(
@@ -2508,10 +4001,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListClustersResponse().from_map(
-            self.do_rpcrequest('ListClusters', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListClustersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_clusters_with_options_async(
@@ -2522,10 +4027,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListClustersResponse().from_map(
-            await self.do_rpcrequest_async('ListClusters', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListClustersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_clusters(
@@ -2550,10 +4067,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListClustersMetaResponse().from_map(
-            self.do_rpcrequest('ListClustersMeta', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClustersMeta',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListClustersMetaResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_clusters_meta_with_options_async(
@@ -2564,10 +4093,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListClustersMetaResponse().from_map(
-            await self.do_rpcrequest_async('ListClustersMeta', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListClustersMeta',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListClustersMetaResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_clusters_meta(
@@ -2592,10 +4133,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListCommandsResponse().from_map(
-            self.do_rpcrequest('ListCommands', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListCommands',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListCommandsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_commands_with_options_async(
@@ -2606,10 +4159,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListCommandsResponse().from_map(
-            await self.do_rpcrequest_async('ListCommands', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListCommands',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListCommandsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_commands(
@@ -2634,10 +4199,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListContainerAppsResponse().from_map(
-            self.do_rpcrequest('ListContainerApps', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListContainerApps',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListContainerAppsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_container_apps_with_options_async(
@@ -2648,10 +4225,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListContainerAppsResponse().from_map(
-            await self.do_rpcrequest_async('ListContainerApps', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListContainerApps',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListContainerAppsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_container_apps(
@@ -2676,10 +4265,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListContainerImagesResponse().from_map(
-            self.do_rpcrequest('ListContainerImages', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListContainerImages',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListContainerImagesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_container_images_with_options_async(
@@ -2690,10 +4291,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListContainerImagesResponse().from_map(
-            await self.do_rpcrequest_async('ListContainerImages', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListContainerImages',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListContainerImagesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_container_images(
@@ -2718,10 +4331,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListCpfsFileSystemsResponse().from_map(
-            self.do_rpcrequest('ListCpfsFileSystems', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListCpfsFileSystems',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListCpfsFileSystemsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_cpfs_file_systems_with_options_async(
@@ -2732,10 +4357,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListCpfsFileSystemsResponse().from_map(
-            await self.do_rpcrequest_async('ListCpfsFileSystems', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListCpfsFileSystems',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListCpfsFileSystemsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_cpfs_file_systems(
@@ -2757,8 +4394,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCurrentClientVersionResponse:
         req = open_api_models.OpenApiRequest()
-        return ehpc20180412_models.ListCurrentClientVersionResponse().from_map(
-            self.do_rpcrequest('ListCurrentClientVersion', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListCurrentClientVersion',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListCurrentClientVersionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_current_client_version_with_options_async(
@@ -2766,8 +4415,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListCurrentClientVersionResponse:
         req = open_api_models.OpenApiRequest()
-        return ehpc20180412_models.ListCurrentClientVersionResponse().from_map(
-            await self.do_rpcrequest_async('ListCurrentClientVersion', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListCurrentClientVersion',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListCurrentClientVersionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_current_client_version(self) -> ehpc20180412_models.ListCurrentClientVersionResponse:
@@ -2786,10 +4447,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListCustomImagesResponse().from_map(
-            self.do_rpcrequest('ListCustomImages', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListCustomImages',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListCustomImagesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_custom_images_with_options_async(
@@ -2800,10 +4473,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListCustomImagesResponse().from_map(
-            await self.do_rpcrequest_async('ListCustomImages', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListCustomImages',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListCustomImagesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_custom_images(
@@ -2828,10 +4513,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListFileSystemWithMountTargetsResponse().from_map(
-            self.do_rpcrequest('ListFileSystemWithMountTargets', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFileSystemWithMountTargets',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListFileSystemWithMountTargetsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_file_system_with_mount_targets_with_options_async(
@@ -2842,10 +4539,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListFileSystemWithMountTargetsResponse().from_map(
-            await self.do_rpcrequest_async('ListFileSystemWithMountTargets', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFileSystemWithMountTargets',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListFileSystemWithMountTargetsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_file_system_with_mount_targets(
@@ -2870,10 +4579,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListImagesResponse().from_map(
-            self.do_rpcrequest('ListImages', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListImages',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListImagesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_images_with_options_async(
@@ -2884,10 +4605,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListImagesResponse().from_map(
-            await self.do_rpcrequest_async('ListImages', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListImages',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListImagesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_images(
@@ -2912,10 +4645,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListInstalledSoftwareResponse().from_map(
-            self.do_rpcrequest('ListInstalledSoftware', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInstalledSoftware',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListInstalledSoftwareResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_installed_software_with_options_async(
@@ -2926,10 +4671,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListInstalledSoftwareResponse().from_map(
-            await self.do_rpcrequest_async('ListInstalledSoftware', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInstalledSoftware',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListInstalledSoftwareResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_installed_software(
@@ -2954,10 +4711,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListInvocationResultsResponse().from_map(
-            self.do_rpcrequest('ListInvocationResults', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInvocationResults',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListInvocationResultsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_invocation_results_with_options_async(
@@ -2968,10 +4737,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListInvocationResultsResponse().from_map(
-            await self.do_rpcrequest_async('ListInvocationResults', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInvocationResults',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListInvocationResultsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_invocation_results(
@@ -2996,10 +4777,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListInvocationStatusResponse().from_map(
-            self.do_rpcrequest('ListInvocationStatus', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInvocationStatus',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListInvocationStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_invocation_status_with_options_async(
@@ -3010,10 +4803,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListInvocationStatusResponse().from_map(
-            await self.do_rpcrequest_async('ListInvocationStatus', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInvocationStatus',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListInvocationStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_invocation_status(
@@ -3038,10 +4843,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListJobsResponse().from_map(
-            self.do_rpcrequest('ListJobs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListJobsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_jobs_with_options_async(
@@ -3052,10 +4869,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListJobsResponse().from_map(
-            await self.do_rpcrequest_async('ListJobs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListJobsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_jobs(
@@ -3080,10 +4909,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListJobTemplatesResponse().from_map(
-            self.do_rpcrequest('ListJobTemplates', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListJobTemplates',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListJobTemplatesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_job_templates_with_options_async(
@@ -3094,10 +4935,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListJobTemplatesResponse().from_map(
-            await self.do_rpcrequest_async('ListJobTemplates', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListJobTemplates',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListJobTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_job_templates(
@@ -3122,10 +4975,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListNodesResponse().from_map(
-            self.do_rpcrequest('ListNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListNodesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_nodes_with_options_async(
@@ -3136,10 +5001,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListNodesResponse().from_map(
-            await self.do_rpcrequest_async('ListNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListNodesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_nodes(
@@ -3164,10 +5041,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListNodesByQueueResponse().from_map(
-            self.do_rpcrequest('ListNodesByQueue', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListNodesByQueue',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListNodesByQueueResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_nodes_by_queue_with_options_async(
@@ -3178,10 +5067,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListNodesByQueueResponse().from_map(
-            await self.do_rpcrequest_async('ListNodesByQueue', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListNodesByQueue',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListNodesByQueueResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_nodes_by_queue(
@@ -3206,10 +5107,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListNodesNoPagingResponse().from_map(
-            self.do_rpcrequest('ListNodesNoPaging', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListNodesNoPaging',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListNodesNoPagingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_nodes_no_paging_with_options_async(
@@ -3220,10 +5133,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListNodesNoPagingResponse().from_map(
-            await self.do_rpcrequest_async('ListNodesNoPaging', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListNodesNoPaging',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListNodesNoPagingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_nodes_no_paging(
@@ -3248,10 +5173,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListPreferredEcsTypesResponse().from_map(
-            self.do_rpcrequest('ListPreferredEcsTypes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListPreferredEcsTypes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListPreferredEcsTypesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_preferred_ecs_types_with_options_async(
@@ -3262,10 +5199,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListPreferredEcsTypesResponse().from_map(
-            await self.do_rpcrequest_async('ListPreferredEcsTypes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListPreferredEcsTypes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListPreferredEcsTypesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_preferred_ecs_types(
@@ -3290,10 +5239,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListQueuesResponse().from_map(
-            self.do_rpcrequest('ListQueues', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListQueues',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListQueuesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_queues_with_options_async(
@@ -3304,10 +5265,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListQueuesResponse().from_map(
-            await self.do_rpcrequest_async('ListQueues', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListQueues',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListQueuesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_queues(
@@ -3329,8 +5302,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListRegionsResponse:
         req = open_api_models.OpenApiRequest()
-        return ehpc20180412_models.ListRegionsResponse().from_map(
-            self.do_rpcrequest('ListRegions', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListRegionsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_regions_with_options_async(
@@ -3338,8 +5323,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.ListRegionsResponse:
         req = open_api_models.OpenApiRequest()
-        return ehpc20180412_models.ListRegionsResponse().from_map(
-            await self.do_rpcrequest_async('ListRegions', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_regions(self) -> ehpc20180412_models.ListRegionsResponse:
@@ -3358,10 +5355,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListSecurityGroupsResponse().from_map(
-            self.do_rpcrequest('ListSecurityGroups', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSecurityGroups',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListSecurityGroupsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_security_groups_with_options_async(
@@ -3372,10 +5381,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListSecurityGroupsResponse().from_map(
-            await self.do_rpcrequest_async('ListSecurityGroups', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSecurityGroups',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListSecurityGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_security_groups(
@@ -3400,10 +5421,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListSoftwaresResponse().from_map(
-            self.do_rpcrequest('ListSoftwares', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSoftwares',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListSoftwaresResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_softwares_with_options_async(
@@ -3414,10 +5447,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListSoftwaresResponse().from_map(
-            await self.do_rpcrequest_async('ListSoftwares', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSoftwares',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListSoftwaresResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_softwares(
@@ -3442,10 +5487,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListTasksResponse().from_map(
-            self.do_rpcrequest('ListTasks', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTasks',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListTasksResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_tasks_with_options_async(
@@ -3456,10 +5513,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListTasksResponse().from_map(
-            await self.do_rpcrequest_async('ListTasks', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTasks',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListTasksResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tasks(
@@ -3484,10 +5553,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListUsersResponse().from_map(
-            self.do_rpcrequest('ListUsers', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListUsers',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListUsersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_users_with_options_async(
@@ -3498,10 +5579,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListUsersResponse().from_map(
-            await self.do_rpcrequest_async('ListUsers', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListUsers',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListUsersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_users(
@@ -3526,10 +5619,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListVolumesResponse().from_map(
-            self.do_rpcrequest('ListVolumes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVolumes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListVolumesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_volumes_with_options_async(
@@ -3540,10 +5645,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ListVolumesResponse().from_map(
-            await self.do_rpcrequest_async('ListVolumes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVolumes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListVolumesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_volumes(
@@ -3568,10 +5685,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ModifyClusterAttributesResponse().from_map(
-            self.do_rpcrequest('ModifyClusterAttributes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterAttributes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ModifyClusterAttributesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_attributes_with_options_async(
@@ -3582,10 +5711,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ModifyClusterAttributesResponse().from_map(
-            await self.do_rpcrequest_async('ModifyClusterAttributes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterAttributes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ModifyClusterAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster_attributes(
@@ -3610,10 +5751,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ModifyContainerAppAttributesResponse().from_map(
-            self.do_rpcrequest('ModifyContainerAppAttributes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyContainerAppAttributes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ModifyContainerAppAttributesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_container_app_attributes_with_options_async(
@@ -3624,10 +5777,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ModifyContainerAppAttributesResponse().from_map(
-            await self.do_rpcrequest_async('ModifyContainerAppAttributes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyContainerAppAttributes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ModifyContainerAppAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_container_app_attributes(
@@ -3652,10 +5817,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ModifyImageGatewayConfigResponse().from_map(
-            self.do_rpcrequest('ModifyImageGatewayConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyImageGatewayConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ModifyImageGatewayConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_image_gateway_config_with_options_async(
@@ -3666,10 +5843,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ModifyImageGatewayConfigResponse().from_map(
-            await self.do_rpcrequest_async('ModifyImageGatewayConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyImageGatewayConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ModifyImageGatewayConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_image_gateway_config(
@@ -3694,10 +5883,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ModifyUserGroupsResponse().from_map(
-            self.do_rpcrequest('ModifyUserGroups', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyUserGroups',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ModifyUserGroupsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_user_groups_with_options_async(
@@ -3708,10 +5909,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ModifyUserGroupsResponse().from_map(
-            await self.do_rpcrequest_async('ModifyUserGroups', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyUserGroups',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ModifyUserGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_user_groups(
@@ -3736,10 +5949,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ModifyUserPasswordsResponse().from_map(
-            self.do_rpcrequest('ModifyUserPasswords', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyUserPasswords',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ModifyUserPasswordsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_user_passwords_with_options_async(
@@ -3750,10 +5975,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ModifyUserPasswordsResponse().from_map(
-            await self.do_rpcrequest_async('ModifyUserPasswords', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyUserPasswords',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ModifyUserPasswordsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_user_passwords(
@@ -3778,10 +6015,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ModifyVisualServicePasswdResponse().from_map(
-            self.do_rpcrequest('ModifyVisualServicePasswd', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyVisualServicePasswd',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ModifyVisualServicePasswdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_visual_service_passwd_with_options_async(
@@ -3792,10 +6041,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ModifyVisualServicePasswdResponse().from_map(
-            await self.do_rpcrequest_async('ModifyVisualServicePasswd', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyVisualServicePasswd',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ModifyVisualServicePasswdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_visual_service_passwd(
@@ -3820,10 +6081,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.MountNFSResponse().from_map(
-            self.do_rpcrequest('MountNFS', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='MountNFS',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.MountNFSResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def mount_nfswith_options_async(
@@ -3834,10 +6107,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.MountNFSResponse().from_map(
-            await self.do_rpcrequest_async('MountNFS', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='MountNFS',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.MountNFSResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def mount_nfs(
@@ -3862,10 +6147,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.PullImageResponse().from_map(
-            self.do_rpcrequest('PullImage', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PullImage',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.PullImageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def pull_image_with_options_async(
@@ -3876,10 +6173,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.PullImageResponse().from_map(
-            await self.do_rpcrequest_async('PullImage', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PullImage',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.PullImageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def pull_image(
@@ -3901,8 +6210,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.QueryServicePackAndPriceResponse:
         req = open_api_models.OpenApiRequest()
-        return ehpc20180412_models.QueryServicePackAndPriceResponse().from_map(
-            self.do_rpcrequest('QueryServicePackAndPrice', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryServicePackAndPrice',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.QueryServicePackAndPriceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_service_pack_and_price_with_options_async(
@@ -3910,8 +6231,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.QueryServicePackAndPriceResponse:
         req = open_api_models.OpenApiRequest()
-        return ehpc20180412_models.QueryServicePackAndPriceResponse().from_map(
-            await self.do_rpcrequest_async('QueryServicePackAndPrice', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryServicePackAndPrice',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.QueryServicePackAndPriceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_service_pack_and_price(self) -> ehpc20180412_models.QueryServicePackAndPriceResponse:
@@ -3930,10 +6263,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.RecoverClusterResponse().from_map(
-            self.do_rpcrequest('RecoverCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RecoverCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.RecoverClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def recover_cluster_with_options_async(
@@ -3944,10 +6289,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.RecoverClusterResponse().from_map(
-            await self.do_rpcrequest_async('RecoverCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RecoverCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.RecoverClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def recover_cluster(
@@ -3972,10 +6329,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.RerunJobsResponse().from_map(
-            self.do_rpcrequest('RerunJobs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RerunJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.RerunJobsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def rerun_jobs_with_options_async(
@@ -3986,10 +6355,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.RerunJobsResponse().from_map(
-            await self.do_rpcrequest_async('RerunJobs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RerunJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.RerunJobsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def rerun_jobs(
@@ -4014,10 +6395,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ResetNodesResponse().from_map(
-            self.do_rpcrequest('ResetNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResetNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ResetNodesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def reset_nodes_with_options_async(
@@ -4028,10 +6421,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.ResetNodesResponse().from_map(
-            await self.do_rpcrequest_async('ResetNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResetNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ResetNodesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def reset_nodes(
@@ -4056,10 +6461,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.RunCloudMetricProfilingResponse().from_map(
-            self.do_rpcrequest('RunCloudMetricProfiling', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RunCloudMetricProfiling',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.RunCloudMetricProfilingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def run_cloud_metric_profiling_with_options_async(
@@ -4070,10 +6487,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.RunCloudMetricProfilingResponse().from_map(
-            await self.do_rpcrequest_async('RunCloudMetricProfiling', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RunCloudMetricProfiling',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.RunCloudMetricProfilingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def run_cloud_metric_profiling(
@@ -4098,10 +6527,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.SetAutoScaleConfigResponse().from_map(
-            self.do_rpcrequest('SetAutoScaleConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetAutoScaleConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetAutoScaleConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def set_auto_scale_config_with_options_async(
@@ -4112,10 +6553,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.SetAutoScaleConfigResponse().from_map(
-            await self.do_rpcrequest_async('SetAutoScaleConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetAutoScaleConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetAutoScaleConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_auto_scale_config(
@@ -4138,11 +6591,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SetGWSClusterPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClusterId'] = request.cluster_id
+        query['Clipboard'] = request.clipboard
+        query['LocalDrive'] = request.local_drive
+        query['UsbRedirect'] = request.usb_redirect
+        query['Watermark'] = request.watermark
+        query['UdpPort'] = request.udp_port
+        query['AsyncMode'] = request.async_mode
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return ehpc20180412_models.SetGWSClusterPolicyResponse().from_map(
-            self.do_rpcrequest('SetGWSClusterPolicy', '2018-04-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetGWSClusterPolicy',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetGWSClusterPolicyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def set_gwscluster_policy_with_options_async(
@@ -4151,11 +6625,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SetGWSClusterPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClusterId'] = request.cluster_id
+        query['Clipboard'] = request.clipboard
+        query['LocalDrive'] = request.local_drive
+        query['UsbRedirect'] = request.usb_redirect
+        query['Watermark'] = request.watermark
+        query['UdpPort'] = request.udp_port
+        query['AsyncMode'] = request.async_mode
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return ehpc20180412_models.SetGWSClusterPolicyResponse().from_map(
-            await self.do_rpcrequest_async('SetGWSClusterPolicy', '2018-04-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetGWSClusterPolicy',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetGWSClusterPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_gwscluster_policy(
@@ -4180,10 +6675,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.SetGWSInstanceNameResponse().from_map(
-            self.do_rpcrequest('SetGWSInstanceName', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetGWSInstanceName',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetGWSInstanceNameResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def set_gwsinstance_name_with_options_async(
@@ -4194,10 +6701,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.SetGWSInstanceNameResponse().from_map(
-            await self.do_rpcrequest_async('SetGWSInstanceName', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetGWSInstanceName',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetGWSInstanceNameResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_gwsinstance_name(
@@ -4222,10 +6741,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.SetGWSInstanceUserResponse().from_map(
-            self.do_rpcrequest('SetGWSInstanceUser', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetGWSInstanceUser',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetGWSInstanceUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def set_gwsinstance_user_with_options_async(
@@ -4236,10 +6767,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.SetGWSInstanceUserResponse().from_map(
-            await self.do_rpcrequest_async('SetGWSInstanceUser', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetGWSInstanceUser',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetGWSInstanceUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_gwsinstance_user(
@@ -4264,10 +6807,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.SetJobUserResponse().from_map(
-            self.do_rpcrequest('SetJobUser', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetJobUser',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetJobUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def set_job_user_with_options_async(
@@ -4278,10 +6833,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.SetJobUserResponse().from_map(
-            await self.do_rpcrequest_async('SetJobUser', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetJobUser',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetJobUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_job_user(
@@ -4306,10 +6873,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.SetQueueResponse().from_map(
-            self.do_rpcrequest('SetQueue', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetQueue',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetQueueResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def set_queue_with_options_async(
@@ -4320,10 +6899,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.SetQueueResponse().from_map(
-            await self.do_rpcrequest_async('SetQueue', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SetQueue',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetQueueResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_queue(
@@ -4348,10 +6939,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StartClusterResponse().from_map(
-            self.do_rpcrequest('StartCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StartClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def start_cluster_with_options_async(
@@ -4362,10 +6965,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StartClusterResponse().from_map(
-            await self.do_rpcrequest_async('StartCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StartClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_cluster(
@@ -4390,10 +7005,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StartGWSInstanceResponse().from_map(
-            self.do_rpcrequest('StartGWSInstance', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartGWSInstance',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StartGWSInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def start_gwsinstance_with_options_async(
@@ -4404,10 +7031,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StartGWSInstanceResponse().from_map(
-            await self.do_rpcrequest_async('StartGWSInstance', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartGWSInstance',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StartGWSInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_gwsinstance(
@@ -4432,10 +7071,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StartNodesResponse().from_map(
-            self.do_rpcrequest('StartNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StartNodesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def start_nodes_with_options_async(
@@ -4446,10 +7097,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StartNodesResponse().from_map(
-            await self.do_rpcrequest_async('StartNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StartNodesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_nodes(
@@ -4474,10 +7137,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StartVisualServiceResponse().from_map(
-            self.do_rpcrequest('StartVisualService', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartVisualService',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StartVisualServiceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def start_visual_service_with_options_async(
@@ -4488,10 +7163,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StartVisualServiceResponse().from_map(
-            await self.do_rpcrequest_async('StartVisualService', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StartVisualService',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StartVisualServiceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_visual_service(
@@ -4516,10 +7203,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StopClusterResponse().from_map(
-            self.do_rpcrequest('StopCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StopClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def stop_cluster_with_options_async(
@@ -4530,10 +7229,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StopClusterResponse().from_map(
-            await self.do_rpcrequest_async('StopCluster', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopCluster',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StopClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_cluster(
@@ -4558,10 +7269,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StopGWSInstanceResponse().from_map(
-            self.do_rpcrequest('StopGWSInstance', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopGWSInstance',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StopGWSInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def stop_gwsinstance_with_options_async(
@@ -4572,10 +7295,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StopGWSInstanceResponse().from_map(
-            await self.do_rpcrequest_async('StopGWSInstance', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopGWSInstance',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StopGWSInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_gwsinstance(
@@ -4600,10 +7335,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StopJobsResponse().from_map(
-            self.do_rpcrequest('StopJobs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StopJobsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def stop_jobs_with_options_async(
@@ -4614,10 +7361,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StopJobsResponse().from_map(
-            await self.do_rpcrequest_async('StopJobs', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopJobs',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StopJobsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_jobs(
@@ -4642,10 +7401,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StopNodesResponse().from_map(
-            self.do_rpcrequest('StopNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StopNodesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def stop_nodes_with_options_async(
@@ -4656,10 +7427,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StopNodesResponse().from_map(
-            await self.do_rpcrequest_async('StopNodes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopNodes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StopNodesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_nodes(
@@ -4684,10 +7467,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StopVisualServiceResponse().from_map(
-            self.do_rpcrequest('StopVisualService', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopVisualService',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StopVisualServiceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def stop_visual_service_with_options_async(
@@ -4698,10 +7493,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.StopVisualServiceResponse().from_map(
-            await self.do_rpcrequest_async('StopVisualService', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='StopVisualService',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.StopVisualServiceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_visual_service(
@@ -4726,10 +7533,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.SubmitJobResponse().from_map(
-            self.do_rpcrequest('SubmitJob', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitJob',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SubmitJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def submit_job_with_options_async(
@@ -4740,10 +7559,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.SubmitJobResponse().from_map(
-            await self.do_rpcrequest_async('SubmitJob', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SubmitJob',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SubmitJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_job(
@@ -4768,10 +7599,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.UnbindAccountToClusterUserResponse().from_map(
-            self.do_rpcrequest('UnbindAccountToClusterUser', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UnbindAccountToClusterUser',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.UnbindAccountToClusterUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def unbind_account_to_cluster_user_with_options_async(
@@ -4782,10 +7625,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.UnbindAccountToClusterUserResponse().from_map(
-            await self.do_rpcrequest_async('UnbindAccountToClusterUser', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UnbindAccountToClusterUser',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.UnbindAccountToClusterUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def unbind_account_to_cluster_user(
@@ -4810,10 +7665,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.UninstallSoftwareResponse().from_map(
-            self.do_rpcrequest('UninstallSoftware', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UninstallSoftware',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.UninstallSoftwareResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def uninstall_software_with_options_async(
@@ -4824,10 +7691,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.UninstallSoftwareResponse().from_map(
-            await self.do_rpcrequest_async('UninstallSoftware', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UninstallSoftware',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.UninstallSoftwareResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def uninstall_software(
@@ -4852,10 +7731,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.UpdateClusterVolumesResponse().from_map(
-            self.do_rpcrequest('UpdateClusterVolumes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateClusterVolumes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.UpdateClusterVolumesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_cluster_volumes_with_options_async(
@@ -4866,10 +7757,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.UpdateClusterVolumesResponse().from_map(
-            await self.do_rpcrequest_async('UpdateClusterVolumes', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateClusterVolumes',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.UpdateClusterVolumesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_cluster_volumes(
@@ -4894,10 +7797,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.UpdateQueueConfigResponse().from_map(
-            self.do_rpcrequest('UpdateQueueConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateQueueConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.UpdateQueueConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_queue_config_with_options_async(
@@ -4908,10 +7823,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.UpdateQueueConfigResponse().from_map(
-            await self.do_rpcrequest_async('UpdateQueueConfig', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateQueueConfig',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.UpdateQueueConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_queue_config(
@@ -4936,10 +7863,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.UpgradeClientResponse().from_map(
-            self.do_rpcrequest('UpgradeClient', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeClient',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.UpgradeClientResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_client_with_options_async(
@@ -4950,10 +7889,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return ehpc20180412_models.UpgradeClientResponse().from_map(
-            await self.do_rpcrequest_async('UpgradeClient', '2018-04-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeClient',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.UpgradeClientResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_client(
