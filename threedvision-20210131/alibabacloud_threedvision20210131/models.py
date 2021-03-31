@@ -4,147 +4,6 @@ from Tea.model import TeaModel
 from typing import BinaryIO, Dict
 
 
-class ReconstructBodyBySingleImageRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        # A short description of struct
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class ReconstructBodyBySingleImageAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
-
-    def to_map(self):
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
-        return self
-
-
-class ReconstructBodyBySingleImageResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        depth_url: str = None,
-        mesh_url: str = None,
-    ):
-        self.depth_url = depth_url
-        self.mesh_url = mesh_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.depth_url is not None:
-            result['DepthURL'] = self.depth_url
-        if self.mesh_url is not None:
-            result['MeshURL'] = self.mesh_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DepthURL') is not None:
-            self.depth_url = m.get('DepthURL')
-        if m.get('MeshURL') is not None:
-            self.mesh_url = m.get('MeshURL')
-        return self
-
-
-class ReconstructBodyBySingleImageResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: ReconstructBodyBySingleImageResponseBodyData = None,
-    ):
-        # Id of the request
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = ReconstructBodyBySingleImageResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class ReconstructBodyBySingleImageResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ReconstructBodyBySingleImageResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ReconstructBodyBySingleImageResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class EstimateMonocularImageDepthRequest(TeaModel):
     def __init__(
         self,
@@ -157,6 +16,10 @@ class EstimateMonocularImageDepthRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -180,6 +43,10 @@ class EstimateMonocularImageDepthAdvanceRequest(TeaModel):
         self.validate_required(self.image_urlobject, 'image_urlobject')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
@@ -205,6 +72,10 @@ class EstimateMonocularImageDepthResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.depth_map_url is not None:
             result['DepthMapUrl'] = self.depth_map_url
@@ -236,6 +107,10 @@ class EstimateMonocularImageDepthResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -269,6 +144,10 @@ class EstimateMonocularImageDepthResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -300,6 +179,10 @@ class EstimateStereoImageDepthRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.left_image_url is not None:
             result['LeftImageURL'] = self.left_image_url
@@ -329,6 +212,10 @@ class EstimateStereoImageDepthResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.disparity_map_url is not None:
             result['DisparityMapURL'] = self.disparity_map_url
@@ -360,6 +247,10 @@ class EstimateStereoImageDepthResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -393,6 +284,10 @@ class EstimateStereoImageDepthResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
