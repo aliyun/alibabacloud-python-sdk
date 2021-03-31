@@ -17,6 +17,10 @@ class AddFacesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -44,6 +48,10 @@ class AddFacesResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -69,6 +77,10 @@ class AddGroupsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -96,6 +108,10 @@ class AddGroupsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -121,6 +137,10 @@ class AddPersonRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -148,6 +168,10 @@ class AddPersonResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -171,6 +195,10 @@ class AddSimilarityImageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -194,6 +222,10 @@ class AddSimilarityImageResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -217,6 +249,10 @@ class AddSimilarityLibraryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -240,6 +276,10 @@ class AddSimilarityLibraryResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -263,6 +303,10 @@ class AddVideoDnaRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -286,6 +330,10 @@ class AddVideoDnaResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -309,6 +357,10 @@ class AddVideoDnaGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -332,6 +384,10 @@ class AddVideoDnaGroupResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -357,6 +413,10 @@ class DeleteFacesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -384,6 +444,10 @@ class DeleteFacesResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -409,6 +473,10 @@ class DeleteGroupsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -436,6 +504,10 @@ class DeleteGroupsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -461,6 +533,10 @@ class DeletePersonRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -488,6 +564,10 @@ class DeletePersonResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -511,6 +591,10 @@ class DeleteSimilarityImageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -534,6 +618,10 @@ class DeleteSimilarityImageResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -557,6 +645,10 @@ class DeleteSimilarityLibraryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -580,6 +672,10 @@ class DeleteSimilarityLibraryResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -603,6 +699,10 @@ class DeleteVideoDnaRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -626,6 +726,10 @@ class DeleteVideoDnaResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -649,6 +753,10 @@ class DeleteVideoDnaGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -672,6 +780,10 @@ class DeleteVideoDnaGroupResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -695,6 +807,10 @@ class DetectFaceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -718,6 +834,10 @@ class DetectFaceResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -741,6 +861,10 @@ class FileAsyncScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -764,6 +888,10 @@ class FileAsyncScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -787,6 +915,10 @@ class FileAsyncScanResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -810,6 +942,10 @@ class FileAsyncScanResultsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -833,6 +969,10 @@ class GetAddVideoDnaResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -856,6 +996,10 @@ class GetAddVideoDnaResultsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -881,6 +1025,10 @@ class GetFacesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -908,6 +1056,10 @@ class GetFacesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -936,6 +1088,10 @@ class GetFacesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -966,6 +1122,10 @@ class GetGroupsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -993,6 +1153,10 @@ class GetGroupsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1018,6 +1182,10 @@ class GetPersonRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1045,6 +1213,10 @@ class GetPersonResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1070,6 +1242,10 @@ class GetPersonsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1097,6 +1273,10 @@ class GetPersonsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1120,6 +1300,10 @@ class GetSimilarityImageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1143,6 +1327,10 @@ class GetSimilarityImageResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1166,6 +1354,10 @@ class GetSimilarityLibraryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1189,6 +1381,10 @@ class GetSimilarityLibraryResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1212,6 +1408,10 @@ class ImageAsyncManualScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1235,6 +1435,10 @@ class ImageAsyncManualScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1258,6 +1462,10 @@ class ImageAsyncManualScanResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1281,6 +1489,10 @@ class ImageAsyncManualScanResultsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1304,6 +1516,10 @@ class ImageAsyncScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1327,6 +1543,10 @@ class ImageAsyncScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1350,6 +1570,10 @@ class ImageAsyncScanResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1373,6 +1597,10 @@ class ImageAsyncScanResultsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1396,6 +1624,10 @@ class ImageScanFeedbackRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1419,6 +1651,10 @@ class ImageScanFeedbackResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1442,6 +1678,10 @@ class ImageSyncScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1465,6 +1705,10 @@ class ImageSyncScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1488,6 +1732,10 @@ class ListSimilarityImagesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1511,6 +1759,10 @@ class ListSimilarityImagesResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1534,6 +1786,10 @@ class ListSimilarityLibrariesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1557,6 +1813,10 @@ class ListSimilarityLibrariesResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1580,6 +1840,10 @@ class LiveStreamAsyncScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1603,6 +1867,10 @@ class LiveStreamAsyncScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1626,6 +1894,10 @@ class LiveStreamAsyncScanResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1649,6 +1921,10 @@ class LiveStreamAsyncScanResultsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1672,6 +1948,10 @@ class LiveStreamCancelScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1695,6 +1975,118 @@ class LiveStreamCancelScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class PostAsyncScanRequest(TeaModel):
+    def __init__(
+        self,
+        client_info: str = None,
+    ):
+        self.client_info = client_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_info is not None:
+            result['ClientInfo'] = self.client_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientInfo') is not None:
+            self.client_info = m.get('ClientInfo')
+        return self
+
+
+class PostAsyncScanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class PostAsyncScanResultsRequest(TeaModel):
+    def __init__(
+        self,
+        client_info: str = None,
+    ):
+        self.client_info = client_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_info is not None:
+            result['ClientInfo'] = self.client_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientInfo') is not None:
+            self.client_info = m.get('ClientInfo')
+        return self
+
+
+class PostAsyncScanResultsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1720,6 +2112,10 @@ class SearchPersonRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1747,6 +2143,10 @@ class SearchPersonResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1772,6 +2172,10 @@ class SetPersonRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1799,6 +2203,10 @@ class SetPersonResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1822,6 +2230,10 @@ class TextAsyncManualScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1845,6 +2257,10 @@ class TextAsyncManualScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1868,6 +2284,10 @@ class TextAsyncManualScanResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1891,6 +2311,10 @@ class TextAsyncManualScanResultsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1914,6 +2338,10 @@ class TextFeedbackRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1937,6 +2365,10 @@ class TextFeedbackResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1960,6 +2392,10 @@ class TextScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -1983,6 +2419,10 @@ class TextScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2008,6 +2448,10 @@ class UploadCredentialsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -2035,6 +2479,10 @@ class UploadCredentialsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2058,6 +2506,10 @@ class VideoAsyncManualScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2081,6 +2533,10 @@ class VideoAsyncManualScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2104,6 +2560,10 @@ class VideoAsyncManualScanResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2127,6 +2587,10 @@ class VideoAsyncManualScanResultsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2150,6 +2614,10 @@ class VideoAsyncScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2173,6 +2641,10 @@ class VideoAsyncScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2196,6 +2668,10 @@ class VideoAsyncScanResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2219,6 +2695,10 @@ class VideoAsyncScanResultsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2242,6 +2722,10 @@ class VideoCancelScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2265,6 +2749,10 @@ class VideoCancelScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2288,6 +2776,10 @@ class VideoFeedbackRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2311,6 +2803,10 @@ class VideoFeedbackResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2334,6 +2830,10 @@ class VideoSyncScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2357,6 +2857,10 @@ class VideoSyncScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2380,6 +2884,10 @@ class VodAsyncScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2403,6 +2911,10 @@ class VodAsyncScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2426,6 +2938,10 @@ class VodAsyncScanResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2449,6 +2965,10 @@ class VodAsyncScanResultsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2472,6 +2992,10 @@ class VoiceAsyncManualScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2495,6 +3019,10 @@ class VoiceAsyncManualScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2518,6 +3046,10 @@ class VoiceAsyncManualScanResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2541,6 +3073,10 @@ class VoiceAsyncManualScanResultsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2564,6 +3100,10 @@ class VoiceAsyncScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2587,6 +3127,10 @@ class VoiceAsyncScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2610,6 +3154,10 @@ class VoiceAsyncScanResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2633,6 +3181,10 @@ class VoiceAsyncScanResultsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2656,6 +3208,10 @@ class VoiceCancelScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -2679,6 +3235,10 @@ class VoiceCancelScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2704,6 +3264,10 @@ class VoiceIdentityCheckRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -2731,6 +3295,10 @@ class VoiceIdentityCheckResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2756,6 +3324,10 @@ class VoiceIdentityRegisterRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -2783,6 +3355,10 @@ class VoiceIdentityRegisterResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2808,6 +3384,10 @@ class VoiceIdentityStartCheckRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -2835,6 +3415,10 @@ class VoiceIdentityStartCheckResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2860,6 +3444,10 @@ class VoiceIdentityStartRegisterRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -2887,6 +3475,10 @@ class VoiceIdentityStartRegisterResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2912,6 +3504,10 @@ class VoiceIdentityUnregisterRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -2939,6 +3535,10 @@ class VoiceIdentityUnregisterResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2964,6 +3564,10 @@ class VoiceSyncScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -2991,6 +3595,10 @@ class VoiceSyncScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3014,6 +3622,10 @@ class WebpageAsyncScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -3037,6 +3649,10 @@ class WebpageAsyncScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3060,6 +3676,10 @@ class WebpageAsyncScanResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -3083,6 +3703,10 @@ class WebpageAsyncScanResultsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3106,6 +3730,10 @@ class WebpageSyncScanRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
@@ -3129,6 +3757,10 @@ class WebpageSyncScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

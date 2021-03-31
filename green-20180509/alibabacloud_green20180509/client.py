@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -92,7 +93,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddFacesResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddFacesResponse(),
             self.do_roarequest('AddFaces', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/face/add', 'none', req, runtime)
         )
 
@@ -112,7 +114,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddFacesResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddFacesResponse(),
             await self.do_roarequest_async('AddFaces', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/face/add', 'none', req, runtime)
         )
 
@@ -148,7 +151,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddGroupsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddGroupsResponse(),
             self.do_roarequest('AddGroups', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/groups/add', 'none', req, runtime)
         )
 
@@ -168,7 +172,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddGroupsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddGroupsResponse(),
             await self.do_roarequest_async('AddGroups', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/groups/add', 'none', req, runtime)
         )
 
@@ -204,7 +209,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddPersonResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddPersonResponse(),
             self.do_roarequest('AddPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/add', 'none', req, runtime)
         )
 
@@ -224,7 +230,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddPersonResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddPersonResponse(),
             await self.do_roarequest_async('AddPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/add', 'none', req, runtime)
         )
 
@@ -258,7 +265,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddSimilarityImageResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddSimilarityImageResponse(),
             self.do_roarequest('AddSimilarityImage', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/add', 'none', req, runtime)
         )
 
@@ -276,7 +284,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddSimilarityImageResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddSimilarityImageResponse(),
             await self.do_roarequest_async('AddSimilarityImage', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/add', 'none', req, runtime)
         )
 
@@ -310,7 +319,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddSimilarityLibraryResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddSimilarityLibraryResponse(),
             self.do_roarequest('AddSimilarityLibrary', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/add', 'none', req, runtime)
         )
 
@@ -328,7 +338,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddSimilarityLibraryResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddSimilarityLibraryResponse(),
             await self.do_roarequest_async('AddSimilarityLibrary', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/add', 'none', req, runtime)
         )
 
@@ -362,7 +373,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddVideoDnaResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddVideoDnaResponse(),
             self.do_roarequest('AddVideoDna', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/add', 'none', req, runtime)
         )
 
@@ -380,7 +392,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddVideoDnaResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddVideoDnaResponse(),
             await self.do_roarequest_async('AddVideoDna', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/add', 'none', req, runtime)
         )
 
@@ -414,7 +427,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddVideoDnaGroupResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddVideoDnaGroupResponse(),
             self.do_roarequest('AddVideoDnaGroup', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/group/add', 'none', req, runtime)
         )
 
@@ -432,7 +446,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.AddVideoDnaGroupResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.AddVideoDnaGroupResponse(),
             await self.do_roarequest_async('AddVideoDnaGroup', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/group/add', 'none', req, runtime)
         )
 
@@ -468,7 +483,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeleteFacesResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeleteFacesResponse(),
             self.do_roarequest('DeleteFaces', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/face/delete', 'none', req, runtime)
         )
 
@@ -488,7 +504,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeleteFacesResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeleteFacesResponse(),
             await self.do_roarequest_async('DeleteFaces', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/face/delete', 'none', req, runtime)
         )
 
@@ -524,7 +541,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeleteGroupsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeleteGroupsResponse(),
             self.do_roarequest('DeleteGroups', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/groups/delete', 'none', req, runtime)
         )
 
@@ -544,7 +562,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeleteGroupsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeleteGroupsResponse(),
             await self.do_roarequest_async('DeleteGroups', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/groups/delete', 'none', req, runtime)
         )
 
@@ -580,7 +599,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeletePersonResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeletePersonResponse(),
             self.do_roarequest('DeletePerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/delete', 'none', req, runtime)
         )
 
@@ -600,7 +620,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeletePersonResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeletePersonResponse(),
             await self.do_roarequest_async('DeletePerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/delete', 'none', req, runtime)
         )
 
@@ -634,7 +655,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeleteSimilarityImageResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeleteSimilarityImageResponse(),
             self.do_roarequest('DeleteSimilarityImage', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/delete', 'none', req, runtime)
         )
 
@@ -652,7 +674,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeleteSimilarityImageResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeleteSimilarityImageResponse(),
             await self.do_roarequest_async('DeleteSimilarityImage', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/delete', 'none', req, runtime)
         )
 
@@ -686,7 +709,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeleteSimilarityLibraryResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeleteSimilarityLibraryResponse(),
             self.do_roarequest('DeleteSimilarityLibrary', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/delete', 'none', req, runtime)
         )
 
@@ -704,7 +728,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeleteSimilarityLibraryResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeleteSimilarityLibraryResponse(),
             await self.do_roarequest_async('DeleteSimilarityLibrary', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/delete', 'none', req, runtime)
         )
 
@@ -738,7 +763,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeleteVideoDnaResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeleteVideoDnaResponse(),
             self.do_roarequest('DeleteVideoDna', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/delete', 'none', req, runtime)
         )
 
@@ -756,7 +782,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeleteVideoDnaResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeleteVideoDnaResponse(),
             await self.do_roarequest_async('DeleteVideoDna', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/delete', 'none', req, runtime)
         )
 
@@ -790,7 +817,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeleteVideoDnaGroupResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeleteVideoDnaGroupResponse(),
             self.do_roarequest('DeleteVideoDnaGroup', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/group/delete', 'none', req, runtime)
         )
 
@@ -808,7 +836,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DeleteVideoDnaGroupResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DeleteVideoDnaGroupResponse(),
             await self.do_roarequest_async('DeleteVideoDnaGroup', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/group/delete', 'none', req, runtime)
         )
 
@@ -842,7 +871,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DetectFaceResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DetectFaceResponse(),
             self.do_roarequest('DetectFace', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/face/detect', 'none', req, runtime)
         )
 
@@ -860,7 +890,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.DetectFaceResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.DetectFaceResponse(),
             await self.do_roarequest_async('DetectFace', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/face/detect', 'none', req, runtime)
         )
 
@@ -894,7 +925,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.FileAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.FileAsyncScanResponse(),
             self.do_roarequest('FileAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/file/asyncscan', 'none', req, runtime)
         )
 
@@ -912,7 +944,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.FileAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.FileAsyncScanResponse(),
             await self.do_roarequest_async('FileAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/file/asyncscan', 'none', req, runtime)
         )
 
@@ -946,7 +979,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.FileAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.FileAsyncScanResultsResponse(),
             self.do_roarequest('FileAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/file/results', 'none', req, runtime)
         )
 
@@ -964,7 +998,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.FileAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.FileAsyncScanResultsResponse(),
             await self.do_roarequest_async('FileAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/file/results', 'none', req, runtime)
         )
 
@@ -998,7 +1033,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetAddVideoDnaResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetAddVideoDnaResultsResponse(),
             self.do_roarequest('GetAddVideoDnaResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/add/results', 'none', req, runtime)
         )
 
@@ -1016,7 +1052,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetAddVideoDnaResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetAddVideoDnaResultsResponse(),
             await self.do_roarequest_async('GetAddVideoDnaResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/add/results', 'none', req, runtime)
         )
 
@@ -1052,7 +1089,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetFacesResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetFacesResponse(),
             self.do_roarequest('GetFaces', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/faces', 'json', req, runtime)
         )
 
@@ -1072,7 +1110,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetFacesResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetFacesResponse(),
             await self.do_roarequest_async('GetFaces', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/faces', 'json', req, runtime)
         )
 
@@ -1108,7 +1147,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetGroupsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetGroupsResponse(),
             self.do_roarequest('GetGroups', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/groups', 'none', req, runtime)
         )
 
@@ -1128,7 +1168,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetGroupsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetGroupsResponse(),
             await self.do_roarequest_async('GetGroups', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/groups', 'none', req, runtime)
         )
 
@@ -1164,7 +1205,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetPersonResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetPersonResponse(),
             self.do_roarequest('GetPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person', 'none', req, runtime)
         )
 
@@ -1184,7 +1226,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetPersonResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetPersonResponse(),
             await self.do_roarequest_async('GetPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person', 'none', req, runtime)
         )
 
@@ -1220,7 +1263,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetPersonsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetPersonsResponse(),
             self.do_roarequest('GetPersons', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/group/persons', 'none', req, runtime)
         )
 
@@ -1240,7 +1284,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetPersonsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetPersonsResponse(),
             await self.do_roarequest_async('GetPersons', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/group/persons', 'none', req, runtime)
         )
 
@@ -1274,7 +1319,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetSimilarityImageResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetSimilarityImageResponse(),
             self.do_roarequest('GetSimilarityImage', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/get', 'none', req, runtime)
         )
 
@@ -1292,7 +1338,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetSimilarityImageResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetSimilarityImageResponse(),
             await self.do_roarequest_async('GetSimilarityImage', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/get', 'none', req, runtime)
         )
 
@@ -1326,7 +1373,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetSimilarityLibraryResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetSimilarityLibraryResponse(),
             self.do_roarequest('GetSimilarityLibrary', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/get', 'none', req, runtime)
         )
 
@@ -1344,7 +1392,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.GetSimilarityLibraryResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.GetSimilarityLibraryResponse(),
             await self.do_roarequest_async('GetSimilarityLibrary', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/get', 'none', req, runtime)
         )
 
@@ -1378,7 +1427,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ImageAsyncManualScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ImageAsyncManualScanResponse(),
             self.do_roarequest('ImageAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/manual/asyncScan', 'none', req, runtime)
         )
 
@@ -1396,7 +1446,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ImageAsyncManualScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ImageAsyncManualScanResponse(),
             await self.do_roarequest_async('ImageAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/manual/asyncScan', 'none', req, runtime)
         )
 
@@ -1430,7 +1481,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ImageAsyncManualScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ImageAsyncManualScanResultsResponse(),
             self.do_roarequest('ImageAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/manual/scan/results', 'none', req, runtime)
         )
 
@@ -1448,7 +1500,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ImageAsyncManualScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ImageAsyncManualScanResultsResponse(),
             await self.do_roarequest_async('ImageAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/manual/scan/results', 'none', req, runtime)
         )
 
@@ -1482,7 +1535,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ImageAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ImageAsyncScanResponse(),
             self.do_roarequest('ImageAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/asyncscan', 'none', req, runtime)
         )
 
@@ -1500,7 +1554,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ImageAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ImageAsyncScanResponse(),
             await self.do_roarequest_async('ImageAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/asyncscan', 'none', req, runtime)
         )
 
@@ -1534,7 +1589,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ImageAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ImageAsyncScanResultsResponse(),
             self.do_roarequest('ImageAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/results', 'none', req, runtime)
         )
 
@@ -1552,7 +1608,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ImageAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ImageAsyncScanResultsResponse(),
             await self.do_roarequest_async('ImageAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/results', 'none', req, runtime)
         )
 
@@ -1586,7 +1643,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ImageScanFeedbackResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ImageScanFeedbackResponse(),
             self.do_roarequest('ImageScanFeedback', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/feedback', 'none', req, runtime)
         )
 
@@ -1604,7 +1662,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ImageScanFeedbackResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ImageScanFeedbackResponse(),
             await self.do_roarequest_async('ImageScanFeedback', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/feedback', 'none', req, runtime)
         )
 
@@ -1638,7 +1697,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ImageSyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ImageSyncScanResponse(),
             self.do_roarequest('ImageSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/scan', 'none', req, runtime)
         )
 
@@ -1656,7 +1716,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ImageSyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ImageSyncScanResponse(),
             await self.do_roarequest_async('ImageSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/scan', 'none', req, runtime)
         )
 
@@ -1690,7 +1751,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ListSimilarityImagesResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ListSimilarityImagesResponse(),
             self.do_roarequest('ListSimilarityImages', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/list', 'none', req, runtime)
         )
 
@@ -1708,7 +1770,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ListSimilarityImagesResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ListSimilarityImagesResponse(),
             await self.do_roarequest_async('ListSimilarityImages', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/list', 'none', req, runtime)
         )
 
@@ -1742,7 +1805,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ListSimilarityLibrariesResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ListSimilarityLibrariesResponse(),
             self.do_roarequest('ListSimilarityLibraries', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/list', 'none', req, runtime)
         )
 
@@ -1760,7 +1824,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.ListSimilarityLibrariesResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.ListSimilarityLibrariesResponse(),
             await self.do_roarequest_async('ListSimilarityLibraries', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/list', 'none', req, runtime)
         )
 
@@ -1794,7 +1859,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.LiveStreamAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.LiveStreamAsyncScanResponse(),
             self.do_roarequest('LiveStreamAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/livestream/asyncscan', 'none', req, runtime)
         )
 
@@ -1812,7 +1878,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.LiveStreamAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.LiveStreamAsyncScanResponse(),
             await self.do_roarequest_async('LiveStreamAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/livestream/asyncscan', 'none', req, runtime)
         )
 
@@ -1846,7 +1913,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.LiveStreamAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.LiveStreamAsyncScanResultsResponse(),
             self.do_roarequest('LiveStreamAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/livestream/results', 'none', req, runtime)
         )
 
@@ -1864,7 +1932,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.LiveStreamAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.LiveStreamAsyncScanResultsResponse(),
             await self.do_roarequest_async('LiveStreamAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/livestream/results', 'none', req, runtime)
         )
 
@@ -1898,7 +1967,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.LiveStreamCancelScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.LiveStreamCancelScanResponse(),
             self.do_roarequest('LiveStreamCancelScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/livestream/cancelscan', 'none', req, runtime)
         )
 
@@ -1916,8 +1986,117 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.LiveStreamCancelScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.LiveStreamCancelScanResponse(),
             await self.do_roarequest_async('LiveStreamCancelScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/livestream/cancelscan', 'none', req, runtime)
+        )
+
+    def post_async_scan(
+        self,
+        request: green_20180509_models.PostAsyncScanRequest,
+    ) -> green_20180509_models.PostAsyncScanResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.post_async_scan_with_options(request, headers, runtime)
+
+    async def post_async_scan_async(
+        self,
+        request: green_20180509_models.PostAsyncScanRequest,
+    ) -> green_20180509_models.PostAsyncScanResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.post_async_scan_with_options_async(request, headers, runtime)
+
+    def post_async_scan_with_options(
+        self,
+        request: green_20180509_models.PostAsyncScanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20180509_models.PostAsyncScanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_info):
+            query['ClientInfo'] = request.client_info
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            green_20180509_models.PostAsyncScanResponse(),
+            self.do_roarequest('PostAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/post/asyncscan', 'none', req, runtime)
+        )
+
+    async def post_async_scan_with_options_async(
+        self,
+        request: green_20180509_models.PostAsyncScanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20180509_models.PostAsyncScanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_info):
+            query['ClientInfo'] = request.client_info
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            green_20180509_models.PostAsyncScanResponse(),
+            await self.do_roarequest_async('PostAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/post/asyncscan', 'none', req, runtime)
+        )
+
+    def post_async_scan_results(
+        self,
+        request: green_20180509_models.PostAsyncScanResultsRequest,
+    ) -> green_20180509_models.PostAsyncScanResultsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.post_async_scan_results_with_options(request, headers, runtime)
+
+    async def post_async_scan_results_async(
+        self,
+        request: green_20180509_models.PostAsyncScanResultsRequest,
+    ) -> green_20180509_models.PostAsyncScanResultsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.post_async_scan_results_with_options_async(request, headers, runtime)
+
+    def post_async_scan_results_with_options(
+        self,
+        request: green_20180509_models.PostAsyncScanResultsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20180509_models.PostAsyncScanResultsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_info):
+            query['ClientInfo'] = request.client_info
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            green_20180509_models.PostAsyncScanResultsResponse(),
+            self.do_roarequest('PostAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/post/results', 'none', req, runtime)
+        )
+
+    async def post_async_scan_results_with_options_async(
+        self,
+        request: green_20180509_models.PostAsyncScanResultsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20180509_models.PostAsyncScanResultsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_info):
+            query['ClientInfo'] = request.client_info
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            green_20180509_models.PostAsyncScanResultsResponse(),
+            await self.do_roarequest_async('PostAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/post/results', 'none', req, runtime)
         )
 
     def search_person(
@@ -1952,7 +2131,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.SearchPersonResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.SearchPersonResponse(),
             self.do_roarequest('SearchPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/search', 'none', req, runtime)
         )
 
@@ -1972,7 +2152,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.SearchPersonResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.SearchPersonResponse(),
             await self.do_roarequest_async('SearchPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/search', 'none', req, runtime)
         )
 
@@ -2008,7 +2189,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.SetPersonResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.SetPersonResponse(),
             self.do_roarequest('SetPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/update', 'none', req, runtime)
         )
 
@@ -2028,7 +2210,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.SetPersonResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.SetPersonResponse(),
             await self.do_roarequest_async('SetPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/update', 'none', req, runtime)
         )
 
@@ -2062,7 +2245,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.TextAsyncManualScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.TextAsyncManualScanResponse(),
             self.do_roarequest('TextAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/manual/asyncScan', 'none', req, runtime)
         )
 
@@ -2080,7 +2264,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.TextAsyncManualScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.TextAsyncManualScanResponse(),
             await self.do_roarequest_async('TextAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/manual/asyncScan', 'none', req, runtime)
         )
 
@@ -2114,7 +2299,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.TextAsyncManualScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.TextAsyncManualScanResultsResponse(),
             self.do_roarequest('TextAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/manual/scan/results', 'none', req, runtime)
         )
 
@@ -2132,7 +2318,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.TextAsyncManualScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.TextAsyncManualScanResultsResponse(),
             await self.do_roarequest_async('TextAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/manual/scan/results', 'none', req, runtime)
         )
 
@@ -2166,7 +2353,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.TextFeedbackResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.TextFeedbackResponse(),
             self.do_roarequest('TextFeedback', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/feedback', 'none', req, runtime)
         )
 
@@ -2184,7 +2372,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.TextFeedbackResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.TextFeedbackResponse(),
             await self.do_roarequest_async('TextFeedback', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/feedback', 'none', req, runtime)
         )
 
@@ -2218,7 +2407,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.TextScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.TextScanResponse(),
             self.do_roarequest('TextScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/scan', 'none', req, runtime)
         )
 
@@ -2236,7 +2426,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.TextScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.TextScanResponse(),
             await self.do_roarequest_async('TextScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/scan', 'none', req, runtime)
         )
 
@@ -2272,7 +2463,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.UploadCredentialsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.UploadCredentialsResponse(),
             self.do_roarequest('UploadCredentials', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/credentials/uploadcredentials', 'none', req, runtime)
         )
 
@@ -2292,7 +2484,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.UploadCredentialsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.UploadCredentialsResponse(),
             await self.do_roarequest_async('UploadCredentials', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/credentials/uploadcredentials', 'none', req, runtime)
         )
 
@@ -2326,7 +2519,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoAsyncManualScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoAsyncManualScanResponse(),
             self.do_roarequest('VideoAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/manual/asyncScan', 'none', req, runtime)
         )
 
@@ -2344,7 +2538,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoAsyncManualScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoAsyncManualScanResponse(),
             await self.do_roarequest_async('VideoAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/manual/asyncScan', 'none', req, runtime)
         )
 
@@ -2378,7 +2573,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoAsyncManualScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoAsyncManualScanResultsResponse(),
             self.do_roarequest('VideoAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/manual/scan/results', 'none', req, runtime)
         )
 
@@ -2396,7 +2592,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoAsyncManualScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoAsyncManualScanResultsResponse(),
             await self.do_roarequest_async('VideoAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/manual/scan/results', 'none', req, runtime)
         )
 
@@ -2430,7 +2627,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoAsyncScanResponse(),
             self.do_roarequest('VideoAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/asyncscan', 'none', req, runtime)
         )
 
@@ -2448,7 +2646,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoAsyncScanResponse(),
             await self.do_roarequest_async('VideoAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/asyncscan', 'none', req, runtime)
         )
 
@@ -2482,7 +2681,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoAsyncScanResultsResponse(),
             self.do_roarequest('VideoAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/results', 'none', req, runtime)
         )
 
@@ -2500,7 +2700,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoAsyncScanResultsResponse(),
             await self.do_roarequest_async('VideoAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/results', 'none', req, runtime)
         )
 
@@ -2534,7 +2735,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoCancelScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoCancelScanResponse(),
             self.do_roarequest('VideoCancelScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/cancelscan', 'none', req, runtime)
         )
 
@@ -2552,7 +2754,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoCancelScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoCancelScanResponse(),
             await self.do_roarequest_async('VideoCancelScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/cancelscan', 'none', req, runtime)
         )
 
@@ -2586,7 +2789,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoFeedbackResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoFeedbackResponse(),
             self.do_roarequest('VideoFeedback', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/feedback', 'none', req, runtime)
         )
 
@@ -2604,7 +2808,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoFeedbackResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoFeedbackResponse(),
             await self.do_roarequest_async('VideoFeedback', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/feedback', 'none', req, runtime)
         )
 
@@ -2638,7 +2843,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoSyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoSyncScanResponse(),
             self.do_roarequest('VideoSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/syncscan', 'none', req, runtime)
         )
 
@@ -2656,7 +2862,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VideoSyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VideoSyncScanResponse(),
             await self.do_roarequest_async('VideoSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/syncscan', 'none', req, runtime)
         )
 
@@ -2690,7 +2897,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VodAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VodAsyncScanResponse(),
             self.do_roarequest('VodAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/vod/asyncscan', 'none', req, runtime)
         )
 
@@ -2708,7 +2916,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VodAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VodAsyncScanResponse(),
             await self.do_roarequest_async('VodAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/vod/asyncscan', 'none', req, runtime)
         )
 
@@ -2742,7 +2951,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VodAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VodAsyncScanResultsResponse(),
             self.do_roarequest('VodAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/vod/results', 'none', req, runtime)
         )
 
@@ -2760,7 +2970,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VodAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VodAsyncScanResultsResponse(),
             await self.do_roarequest_async('VodAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/vod/results', 'none', req, runtime)
         )
 
@@ -2794,7 +3005,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceAsyncManualScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceAsyncManualScanResponse(),
             self.do_roarequest('VoiceAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/manual/asyncScan', 'none', req, runtime)
         )
 
@@ -2812,7 +3024,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceAsyncManualScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceAsyncManualScanResponse(),
             await self.do_roarequest_async('VoiceAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/manual/asyncScan', 'none', req, runtime)
         )
 
@@ -2846,7 +3059,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceAsyncManualScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceAsyncManualScanResultsResponse(),
             self.do_roarequest('VoiceAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/manual/scan/results', 'none', req, runtime)
         )
 
@@ -2864,7 +3078,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceAsyncManualScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceAsyncManualScanResultsResponse(),
             await self.do_roarequest_async('VoiceAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/manual/scan/results', 'none', req, runtime)
         )
 
@@ -2898,7 +3113,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceAsyncScanResponse(),
             self.do_roarequest('VoiceAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/asyncscan', 'none', req, runtime)
         )
 
@@ -2916,7 +3132,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceAsyncScanResponse(),
             await self.do_roarequest_async('VoiceAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/asyncscan', 'none', req, runtime)
         )
 
@@ -2950,7 +3167,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceAsyncScanResultsResponse(),
             self.do_roarequest('VoiceAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/results', 'none', req, runtime)
         )
 
@@ -2968,7 +3186,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceAsyncScanResultsResponse(),
             await self.do_roarequest_async('VoiceAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/results', 'none', req, runtime)
         )
 
@@ -3002,7 +3221,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceCancelScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceCancelScanResponse(),
             self.do_roarequest('VoiceCancelScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/cancelscan', 'none', req, runtime)
         )
 
@@ -3020,7 +3240,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceCancelScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceCancelScanResponse(),
             await self.do_roarequest_async('VoiceCancelScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/cancelscan', 'none', req, runtime)
         )
 
@@ -3056,7 +3277,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceIdentityCheckResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceIdentityCheckResponse(),
             self.do_roarequest('VoiceIdentityCheck', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/check', 'none', req, runtime)
         )
 
@@ -3076,7 +3298,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceIdentityCheckResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceIdentityCheckResponse(),
             await self.do_roarequest_async('VoiceIdentityCheck', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/check', 'none', req, runtime)
         )
 
@@ -3112,7 +3335,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceIdentityRegisterResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceIdentityRegisterResponse(),
             self.do_roarequest('VoiceIdentityRegister', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/register', 'none', req, runtime)
         )
 
@@ -3132,7 +3356,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceIdentityRegisterResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceIdentityRegisterResponse(),
             await self.do_roarequest_async('VoiceIdentityRegister', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/register', 'none', req, runtime)
         )
 
@@ -3168,7 +3393,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceIdentityStartCheckResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceIdentityStartCheckResponse(),
             self.do_roarequest('VoiceIdentityStartCheck', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/start/check', 'none', req, runtime)
         )
 
@@ -3188,7 +3414,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceIdentityStartCheckResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceIdentityStartCheckResponse(),
             await self.do_roarequest_async('VoiceIdentityStartCheck', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/start/check', 'none', req, runtime)
         )
 
@@ -3224,7 +3451,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceIdentityStartRegisterResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceIdentityStartRegisterResponse(),
             self.do_roarequest('VoiceIdentityStartRegister', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/start/register', 'none', req, runtime)
         )
 
@@ -3244,7 +3472,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceIdentityStartRegisterResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceIdentityStartRegisterResponse(),
             await self.do_roarequest_async('VoiceIdentityStartRegister', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/start/register', 'none', req, runtime)
         )
 
@@ -3280,7 +3509,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceIdentityUnregisterResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceIdentityUnregisterResponse(),
             self.do_roarequest('VoiceIdentityUnregister', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/unregister', 'none', req, runtime)
         )
 
@@ -3300,7 +3530,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceIdentityUnregisterResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceIdentityUnregisterResponse(),
             await self.do_roarequest_async('VoiceIdentityUnregister', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/unregister', 'none', req, runtime)
         )
 
@@ -3336,7 +3567,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceSyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceSyncScanResponse(),
             self.do_roarequest('VoiceSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/syncscan', 'none', req, runtime)
         )
 
@@ -3356,7 +3588,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.VoiceSyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.VoiceSyncScanResponse(),
             await self.do_roarequest_async('VoiceSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/syncscan', 'none', req, runtime)
         )
 
@@ -3390,7 +3623,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.WebpageAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.WebpageAsyncScanResponse(),
             self.do_roarequest('WebpageAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/webpage/asyncscan', 'none', req, runtime)
         )
 
@@ -3408,7 +3642,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.WebpageAsyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.WebpageAsyncScanResponse(),
             await self.do_roarequest_async('WebpageAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/webpage/asyncscan', 'none', req, runtime)
         )
 
@@ -3442,7 +3677,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.WebpageAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.WebpageAsyncScanResultsResponse(),
             self.do_roarequest('WebpageAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/webpage/results', 'none', req, runtime)
         )
 
@@ -3460,7 +3696,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.WebpageAsyncScanResultsResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.WebpageAsyncScanResultsResponse(),
             await self.do_roarequest_async('WebpageAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/webpage/results', 'none', req, runtime)
         )
 
@@ -3494,7 +3731,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.WebpageSyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.WebpageSyncScanResponse(),
             self.do_roarequest('WebpageSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/webpage/scan', 'none', req, runtime)
         )
 
@@ -3512,6 +3750,7 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return green_20180509_models.WebpageSyncScanResponse().from_map(
+        return TeaCore.from_map(
+            green_20180509_models.WebpageSyncScanResponse(),
             await self.do_roarequest_async('WebpageSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/webpage/scan', 'none', req, runtime)
         )
