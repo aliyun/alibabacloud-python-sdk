@@ -1,3 +1,6 @@
+2021-03-31 Version: 1.0.2
+- Generated python 2020-08-25 for cmn.
+
 2021-03-08 Version: 1.0.1
 - NEW CMN SDK.
 
