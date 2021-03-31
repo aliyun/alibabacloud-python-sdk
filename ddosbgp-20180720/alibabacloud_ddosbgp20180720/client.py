@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -71,7 +72,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.AddIpResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.AddIpResponse(),
             self.do_rpcrequest('AddIp', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -84,7 +86,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.AddIpResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.AddIpResponse(),
             await self.do_rpcrequest_async('AddIp', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -102,6 +105,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_ip_with_options_async(request, runtime)
 
+    def check_access_log_auth_with_options(
+        self,
+        request: ddosbgp_20180720_models.CheckAccessLogAuthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.CheckAccessLogAuthResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.CheckAccessLogAuthResponse(),
+            self.do_rpcrequest('CheckAccessLogAuth', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def check_access_log_auth_with_options_async(
+        self,
+        request: ddosbgp_20180720_models.CheckAccessLogAuthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.CheckAccessLogAuthResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.CheckAccessLogAuthResponse(),
+            await self.do_rpcrequest_async('CheckAccessLogAuth', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def check_access_log_auth(
+        self,
+        request: ddosbgp_20180720_models.CheckAccessLogAuthRequest,
+    ) -> ddosbgp_20180720_models.CheckAccessLogAuthResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_access_log_auth_with_options(request, runtime)
+
+    async def check_access_log_auth_async(
+        self,
+        request: ddosbgp_20180720_models.CheckAccessLogAuthRequest,
+    ) -> ddosbgp_20180720_models.CheckAccessLogAuthResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_access_log_auth_with_options_async(request, runtime)
+
     def check_grant_with_options(
         self,
         request: ddosbgp_20180720_models.CheckGrantRequest,
@@ -112,7 +157,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ddosbgp_20180720_models.CheckGrantResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.CheckGrantResponse(),
             self.do_rpcrequest('CheckGrant', '2018-07-20', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -126,7 +172,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ddosbgp_20180720_models.CheckGrantResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.CheckGrantResponse(),
             await self.do_rpcrequest_async('CheckGrant', '2018-07-20', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -153,7 +200,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.ConfigSchedruleOnDemandResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ConfigSchedruleOnDemandResponse(),
             self.do_rpcrequest('ConfigSchedruleOnDemand', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -166,7 +214,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.ConfigSchedruleOnDemandResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ConfigSchedruleOnDemandResponse(),
             await self.do_rpcrequest_async('ConfigSchedruleOnDemand', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -193,7 +242,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.CreateSchedruleOnDemandResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.CreateSchedruleOnDemandResponse(),
             self.do_rpcrequest('CreateSchedruleOnDemand', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -206,7 +256,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.CreateSchedruleOnDemandResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.CreateSchedruleOnDemandResponse(),
             await self.do_rpcrequest_async('CreateSchedruleOnDemand', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -233,7 +284,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DeleteBlackholeResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DeleteBlackholeResponse(),
             self.do_rpcrequest('DeleteBlackhole', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -246,7 +298,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DeleteBlackholeResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DeleteBlackholeResponse(),
             await self.do_rpcrequest_async('DeleteBlackhole', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -273,7 +326,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DeleteIpResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DeleteIpResponse(),
             self.do_rpcrequest('DeleteIp', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -286,7 +340,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DeleteIpResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DeleteIpResponse(),
             await self.do_rpcrequest_async('DeleteIp', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -313,7 +368,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DeleteSchedruleOnDemandResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DeleteSchedruleOnDemandResponse(),
             self.do_rpcrequest('DeleteSchedruleOnDemand', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -326,7 +382,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DeleteSchedruleOnDemandResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DeleteSchedruleOnDemandResponse(),
             await self.do_rpcrequest_async('DeleteSchedruleOnDemand', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -353,7 +410,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeDdosEventResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeDdosEventResponse(),
             self.do_rpcrequest('DescribeDdosEvent', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -366,7 +424,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeDdosEventResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeDdosEventResponse(),
             await self.do_rpcrequest_async('DescribeDdosEvent', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -393,7 +452,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeExcpetionCountResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeExcpetionCountResponse(),
             self.do_rpcrequest('DescribeExcpetionCount', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -406,7 +466,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeExcpetionCountResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeExcpetionCountResponse(),
             await self.do_rpcrequest_async('DescribeExcpetionCount', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -433,7 +494,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeInstanceListResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeInstanceListResponse(),
             self.do_rpcrequest('DescribeInstanceList', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -446,7 +508,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeInstanceListResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeInstanceListResponse(),
             await self.do_rpcrequest_async('DescribeInstanceList', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -473,7 +536,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeInstanceSpecsResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeInstanceSpecsResponse(),
             self.do_rpcrequest('DescribeInstanceSpecs', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -486,7 +550,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeInstanceSpecsResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeInstanceSpecsResponse(),
             await self.do_rpcrequest_async('DescribeInstanceSpecs', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -513,7 +578,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeOnDemandDdosEventResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeOnDemandDdosEventResponse(),
             self.do_rpcrequest('DescribeOnDemandDdosEvent', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -526,7 +592,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeOnDemandDdosEventResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeOnDemandDdosEventResponse(),
             await self.do_rpcrequest_async('DescribeOnDemandDdosEvent', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -553,7 +620,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeOnDemandInstanceStatusResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeOnDemandInstanceStatusResponse(),
             self.do_rpcrequest('DescribeOnDemandInstanceStatus', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -566,7 +634,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeOnDemandInstanceStatusResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeOnDemandInstanceStatusResponse(),
             await self.do_rpcrequest_async('DescribeOnDemandInstanceStatus', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -593,7 +662,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeOpEntitiesResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeOpEntitiesResponse(),
             self.do_rpcrequest('DescribeOpEntities', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -606,7 +676,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeOpEntitiesResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeOpEntitiesResponse(),
             await self.do_rpcrequest_async('DescribeOpEntities', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -633,7 +704,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribePackIpListResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribePackIpListResponse(),
             self.do_rpcrequest('DescribePackIpList', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -646,7 +718,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribePackIpListResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribePackIpListResponse(),
             await self.do_rpcrequest_async('DescribePackIpList', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -673,7 +746,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribePackPaidTrafficResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribePackPaidTrafficResponse(),
             self.do_rpcrequest('DescribePackPaidTraffic', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -686,7 +760,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribePackPaidTrafficResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribePackPaidTrafficResponse(),
             await self.do_rpcrequest_async('DescribePackPaidTraffic', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -713,7 +788,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeRegionsResponse(),
             self.do_rpcrequest('DescribeRegions', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -726,7 +802,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeRegionsResponse(),
             await self.do_rpcrequest_async('DescribeRegions', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -753,7 +830,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeResourcePackInstancesResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeResourcePackInstancesResponse(),
             self.do_rpcrequest('DescribeResourcePackInstances', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -766,7 +844,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeResourcePackInstancesResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeResourcePackInstancesResponse(),
             await self.do_rpcrequest_async('DescribeResourcePackInstances', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -793,7 +872,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeResourcePackStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeResourcePackStatisticsResponse(),
             self.do_rpcrequest('DescribeResourcePackStatistics', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -806,7 +886,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeResourcePackStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeResourcePackStatisticsResponse(),
             await self.do_rpcrequest_async('DescribeResourcePackStatistics', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -833,7 +914,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeResourcePackUsageResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeResourcePackUsageResponse(),
             self.do_rpcrequest('DescribeResourcePackUsage', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -846,7 +928,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeResourcePackUsageResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeResourcePackUsageResponse(),
             await self.do_rpcrequest_async('DescribeResourcePackUsage', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -873,7 +956,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeTrafficResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeTrafficResponse(),
             self.do_rpcrequest('DescribeTraffic', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -886,7 +970,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.DescribeTrafficResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DescribeTrafficResponse(),
             await self.do_rpcrequest_async('DescribeTraffic', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -904,6 +989,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_traffic_with_options_async(request, runtime)
 
+    def get_sls_open_status_with_options(
+        self,
+        request: ddosbgp_20180720_models.GetSlsOpenStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.GetSlsOpenStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.GetSlsOpenStatusResponse(),
+            self.do_rpcrequest('GetSlsOpenStatus', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_sls_open_status_with_options_async(
+        self,
+        request: ddosbgp_20180720_models.GetSlsOpenStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.GetSlsOpenStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.GetSlsOpenStatusResponse(),
+            await self.do_rpcrequest_async('GetSlsOpenStatus', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_sls_open_status(
+        self,
+        request: ddosbgp_20180720_models.GetSlsOpenStatusRequest,
+    ) -> ddosbgp_20180720_models.GetSlsOpenStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_sls_open_status_with_options(request, runtime)
+
+    async def get_sls_open_status_async(
+        self,
+        request: ddosbgp_20180720_models.GetSlsOpenStatusRequest,
+    ) -> ddosbgp_20180720_models.GetSlsOpenStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sls_open_status_with_options_async(request, runtime)
+
+    def list_opened_access_log_instances_with_options(
+        self,
+        request: ddosbgp_20180720_models.ListOpenedAccessLogInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.ListOpenedAccessLogInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ListOpenedAccessLogInstancesResponse(),
+            self.do_rpcrequest('ListOpenedAccessLogInstances', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_opened_access_log_instances_with_options_async(
+        self,
+        request: ddosbgp_20180720_models.ListOpenedAccessLogInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.ListOpenedAccessLogInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ListOpenedAccessLogInstancesResponse(),
+            await self.do_rpcrequest_async('ListOpenedAccessLogInstances', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_opened_access_log_instances(
+        self,
+        request: ddosbgp_20180720_models.ListOpenedAccessLogInstancesRequest,
+    ) -> ddosbgp_20180720_models.ListOpenedAccessLogInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_opened_access_log_instances_with_options(request, runtime)
+
+    async def list_opened_access_log_instances_async(
+        self,
+        request: ddosbgp_20180720_models.ListOpenedAccessLogInstancesRequest,
+    ) -> ddosbgp_20180720_models.ListOpenedAccessLogInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_opened_access_log_instances_with_options_async(request, runtime)
+
     def list_tag_keys_with_options(
         self,
         request: ddosbgp_20180720_models.ListTagKeysRequest,
@@ -913,7 +1082,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.ListTagKeysResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ListTagKeysResponse(),
             self.do_rpcrequest('ListTagKeys', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -926,7 +1096,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.ListTagKeysResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ListTagKeysResponse(),
             await self.do_rpcrequest_async('ListTagKeys', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -953,7 +1124,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ListTagResourcesResponse(),
             self.do_rpcrequest('ListTagResources', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -966,7 +1138,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ListTagResourcesResponse(),
             await self.do_rpcrequest_async('ListTagResources', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -993,7 +1166,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.ModifyRemarkResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ModifyRemarkResponse(),
             self.do_rpcrequest('ModifyRemark', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1006,7 +1180,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.ModifyRemarkResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ModifyRemarkResponse(),
             await self.do_rpcrequest_async('ModifyRemark', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1033,7 +1208,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.QuerySchedruleOnDemandResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.QuerySchedruleOnDemandResponse(),
             self.do_rpcrequest('QuerySchedruleOnDemand', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1046,7 +1222,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.QuerySchedruleOnDemandResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.QuerySchedruleOnDemandResponse(),
             await self.do_rpcrequest_async('QuerySchedruleOnDemand', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1073,7 +1250,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.SetInstanceModeOnDemandResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.SetInstanceModeOnDemandResponse(),
             self.do_rpcrequest('SetInstanceModeOnDemand', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1086,7 +1264,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.SetInstanceModeOnDemandResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.SetInstanceModeOnDemandResponse(),
             await self.do_rpcrequest_async('SetInstanceModeOnDemand', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1113,7 +1292,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.TagResourcesResponse(),
             self.do_rpcrequest('TagResources', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1126,7 +1306,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.TagResourcesResponse(),
             await self.do_rpcrequest_async('TagResources', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1153,7 +1334,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.UntagResourcesResponse(),
             self.do_rpcrequest('UntagResources', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1166,7 +1348,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ddosbgp_20180720_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.UntagResourcesResponse(),
             await self.do_rpcrequest_async('UntagResources', '2018-07-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
