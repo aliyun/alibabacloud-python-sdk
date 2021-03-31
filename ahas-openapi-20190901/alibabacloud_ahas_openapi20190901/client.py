@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -49,86 +50,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_application_emp_id_relation_with_options(
-        self,
-        request: ahas_openapi_20190901_models.AddApplicationEmpIdRelationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.AddApplicationEmpIdRelationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.AddApplicationEmpIdRelationResponse().from_map(
-            self.do_rpcrequest('AddApplicationEmpIdRelation', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def add_application_emp_id_relation_with_options_async(
-        self,
-        request: ahas_openapi_20190901_models.AddApplicationEmpIdRelationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.AddApplicationEmpIdRelationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.AddApplicationEmpIdRelationResponse().from_map(
-            await self.do_rpcrequest_async('AddApplicationEmpIdRelation', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def add_application_emp_id_relation(
-        self,
-        request: ahas_openapi_20190901_models.AddApplicationEmpIdRelationRequest,
-    ) -> ahas_openapi_20190901_models.AddApplicationEmpIdRelationResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.add_application_emp_id_relation_with_options(request, runtime)
-
-    async def add_application_emp_id_relation_async(
-        self,
-        request: ahas_openapi_20190901_models.AddApplicationEmpIdRelationRequest,
-    ) -> ahas_openapi_20190901_models.AddApplicationEmpIdRelationResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.add_application_emp_id_relation_with_options_async(request, runtime)
-
-    def check_experiment_permission_for_mk_with_options(
-        self,
-        request: ahas_openapi_20190901_models.CheckExperimentPermissionForMkRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.CheckExperimentPermissionForMkResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.CheckExperimentPermissionForMkResponse().from_map(
-            self.do_rpcrequest('CheckExperimentPermissionForMk', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def check_experiment_permission_for_mk_with_options_async(
-        self,
-        request: ahas_openapi_20190901_models.CheckExperimentPermissionForMkRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.CheckExperimentPermissionForMkResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.CheckExperimentPermissionForMkResponse().from_map(
-            await self.do_rpcrequest_async('CheckExperimentPermissionForMk', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def check_experiment_permission_for_mk(
-        self,
-        request: ahas_openapi_20190901_models.CheckExperimentPermissionForMkRequest,
-    ) -> ahas_openapi_20190901_models.CheckExperimentPermissionForMkResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.check_experiment_permission_for_mk_with_options(request, runtime)
-
-    async def check_experiment_permission_for_mk_async(
-        self,
-        request: ahas_openapi_20190901_models.CheckExperimentPermissionForMkRequest,
-    ) -> ahas_openapi_20190901_models.CheckExperimentPermissionForMkResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.check_experiment_permission_for_mk_with_options_async(request, runtime)
-
     def check_experiment_runnable_with_options(
         self,
         request: ahas_openapi_20190901_models.CheckExperimentRunnableRequest,
@@ -138,7 +59,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CheckExperimentRunnableResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CheckExperimentRunnableResponse(),
             self.do_rpcrequest('CheckExperimentRunnable', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -151,7 +73,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CheckExperimentRunnableResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CheckExperimentRunnableResponse(),
             await self.do_rpcrequest_async('CheckExperimentRunnable', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -178,7 +101,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateDegradeRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateDegradeRuleResponse(),
             self.do_rpcrequest('CreateDegradeRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -191,7 +115,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateDegradeRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateDegradeRuleResponse(),
             await self.do_rpcrequest_async('CreateDegradeRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -218,7 +143,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateExperimentResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateExperimentResponse(),
             self.do_rpcrequest('CreateExperiment', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -231,7 +157,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateExperimentResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateExperimentResponse(),
             await self.do_rpcrequest_async('CreateExperiment', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -258,7 +185,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateFlowRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateFlowRuleResponse(),
             self.do_rpcrequest('CreateFlowRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -271,7 +199,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateFlowRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateFlowRuleResponse(),
             await self.do_rpcrequest_async('CreateFlowRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -298,7 +227,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateHotParamItemsResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateHotParamItemsResponse(),
             self.do_rpcrequest('CreateHotParamItems', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -311,7 +241,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateHotParamItemsResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateHotParamItemsResponse(),
             await self.do_rpcrequest_async('CreateHotParamItems', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -338,7 +269,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateHotParamRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateHotParamRuleResponse(),
             self.do_rpcrequest('CreateHotParamRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -351,7 +283,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateHotParamRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateHotParamRuleResponse(),
             await self.do_rpcrequest_async('CreateHotParamRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -378,7 +311,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateIsolationRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateIsolationRuleResponse(),
             self.do_rpcrequest('CreateIsolationRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -391,7 +325,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateIsolationRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateIsolationRuleResponse(),
             await self.do_rpcrequest_async('CreateIsolationRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -418,7 +353,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateSystemRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateSystemRuleResponse(),
             self.do_rpcrequest('CreateSystemRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -431,7 +367,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.CreateSystemRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.CreateSystemRuleResponse(),
             await self.do_rpcrequest_async('CreateSystemRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -449,46 +386,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_system_rule_with_options_async(request, runtime)
 
-    def delete_application_emp_id_relation_with_options(
-        self,
-        request: ahas_openapi_20190901_models.DeleteApplicationEmpIdRelationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.DeleteApplicationEmpIdRelationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.DeleteApplicationEmpIdRelationResponse().from_map(
-            self.do_rpcrequest('DeleteApplicationEmpIdRelation', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_application_emp_id_relation_with_options_async(
-        self,
-        request: ahas_openapi_20190901_models.DeleteApplicationEmpIdRelationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.DeleteApplicationEmpIdRelationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.DeleteApplicationEmpIdRelationResponse().from_map(
-            await self.do_rpcrequest_async('DeleteApplicationEmpIdRelation', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_application_emp_id_relation(
-        self,
-        request: ahas_openapi_20190901_models.DeleteApplicationEmpIdRelationRequest,
-    ) -> ahas_openapi_20190901_models.DeleteApplicationEmpIdRelationResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_application_emp_id_relation_with_options(request, runtime)
-
-    async def delete_application_emp_id_relation_async(
-        self,
-        request: ahas_openapi_20190901_models.DeleteApplicationEmpIdRelationRequest,
-    ) -> ahas_openapi_20190901_models.DeleteApplicationEmpIdRelationResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_application_emp_id_relation_with_options_async(request, runtime)
-
     def delete_degrade_rule_with_options(
         self,
         request: ahas_openapi_20190901_models.DeleteDegradeRuleRequest,
@@ -498,7 +395,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DeleteDegradeRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DeleteDegradeRuleResponse(),
             self.do_rpcrequest('DeleteDegradeRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -511,7 +409,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DeleteDegradeRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DeleteDegradeRuleResponse(),
             await self.do_rpcrequest_async('DeleteDegradeRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -538,7 +437,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DeleteFlowRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DeleteFlowRuleResponse(),
             self.do_rpcrequest('DeleteFlowRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -551,7 +451,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DeleteFlowRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DeleteFlowRuleResponse(),
             await self.do_rpcrequest_async('DeleteFlowRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -578,7 +479,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DeleteHotParamRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DeleteHotParamRuleResponse(),
             self.do_rpcrequest('DeleteHotParamRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -591,7 +493,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DeleteHotParamRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DeleteHotParamRuleResponse(),
             await self.do_rpcrequest_async('DeleteHotParamRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -618,7 +521,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DeleteIsolationRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DeleteIsolationRuleResponse(),
             self.do_rpcrequest('DeleteIsolationRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -631,7 +535,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DeleteIsolationRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DeleteIsolationRuleResponse(),
             await self.do_rpcrequest_async('DeleteIsolationRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -658,7 +563,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DeleteSystemRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DeleteSystemRuleResponse(),
             self.do_rpcrequest('DeleteSystemRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -671,7 +577,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DeleteSystemRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DeleteSystemRuleResponse(),
             await self.do_rpcrequest_async('DeleteSystemRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -698,7 +605,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DescribeRegionsResponse(),
             self.do_rpcrequest('DescribeRegions', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -711,7 +619,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DescribeRegionsResponse(),
             await self.do_rpcrequest_async('DescribeRegions', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -738,7 +647,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DisableDegradeRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DisableDegradeRuleResponse(),
             self.do_rpcrequest('DisableDegradeRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -751,7 +661,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DisableDegradeRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DisableDegradeRuleResponse(),
             await self.do_rpcrequest_async('DisableDegradeRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -778,7 +689,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DisableFlowRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DisableFlowRuleResponse(),
             self.do_rpcrequest('DisableFlowRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -791,7 +703,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DisableFlowRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DisableFlowRuleResponse(),
             await self.do_rpcrequest_async('DisableFlowRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -818,7 +731,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DisableHotParamRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DisableHotParamRuleResponse(),
             self.do_rpcrequest('DisableHotParamRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -831,7 +745,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DisableHotParamRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DisableHotParamRuleResponse(),
             await self.do_rpcrequest_async('DisableHotParamRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -858,7 +773,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DisableIsolationRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DisableIsolationRuleResponse(),
             self.do_rpcrequest('DisableIsolationRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -871,7 +787,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DisableIsolationRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DisableIsolationRuleResponse(),
             await self.do_rpcrequest_async('DisableIsolationRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -898,7 +815,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DisableSystemRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DisableSystemRuleResponse(),
             self.do_rpcrequest('DisableSystemRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -911,7 +829,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.DisableSystemRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.DisableSystemRuleResponse(),
             await self.do_rpcrequest_async('DisableSystemRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -938,7 +857,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.EnableDegradeRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.EnableDegradeRuleResponse(),
             self.do_rpcrequest('EnableDegradeRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -951,7 +871,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.EnableDegradeRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.EnableDegradeRuleResponse(),
             await self.do_rpcrequest_async('EnableDegradeRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -978,7 +899,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.EnableFlowRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.EnableFlowRuleResponse(),
             self.do_rpcrequest('EnableFlowRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -991,7 +913,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.EnableFlowRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.EnableFlowRuleResponse(),
             await self.do_rpcrequest_async('EnableFlowRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1018,7 +941,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.EnableHotParamRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.EnableHotParamRuleResponse(),
             self.do_rpcrequest('EnableHotParamRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1031,7 +955,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.EnableHotParamRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.EnableHotParamRuleResponse(),
             await self.do_rpcrequest_async('EnableHotParamRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1058,7 +983,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.EnableIsolationRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.EnableIsolationRuleResponse(),
             self.do_rpcrequest('EnableIsolationRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1071,7 +997,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.EnableIsolationRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.EnableIsolationRuleResponse(),
             await self.do_rpcrequest_async('EnableIsolationRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1098,7 +1025,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.EnableSystemRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.EnableSystemRuleResponse(),
             self.do_rpcrequest('EnableSystemRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1111,7 +1039,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.EnableSystemRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.EnableSystemRuleResponse(),
             await self.do_rpcrequest_async('EnableSystemRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1138,7 +1067,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ExecuteExperimentResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ExecuteExperimentResponse(),
             self.do_rpcrequest('ExecuteExperiment', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1151,7 +1081,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ExecuteExperimentResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ExecuteExperimentResponse(),
             await self.do_rpcrequest_async('ExecuteExperiment', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1178,7 +1109,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.FinishExperimentTaskResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.FinishExperimentTaskResponse(),
             self.do_rpcrequest('FinishExperimentTask', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1191,7 +1123,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.FinishExperimentTaskResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.FinishExperimentTaskResponse(),
             await self.do_rpcrequest_async('FinishExperimentTask', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1218,7 +1151,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetActivityTaskResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetActivityTaskResponse(),
             self.do_rpcrequest('GetActivityTask', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1231,7 +1165,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetActivityTaskResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetActivityTaskResponse(),
             await self.do_rpcrequest_async('GetActivityTask', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1249,46 +1184,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_activity_task_with_options_async(request, runtime)
 
-    def get_application_emp_id_relation_with_options(
-        self,
-        request: ahas_openapi_20190901_models.GetApplicationEmpIdRelationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.GetApplicationEmpIdRelationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.GetApplicationEmpIdRelationResponse().from_map(
-            self.do_rpcrequest('GetApplicationEmpIdRelation', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_application_emp_id_relation_with_options_async(
-        self,
-        request: ahas_openapi_20190901_models.GetApplicationEmpIdRelationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.GetApplicationEmpIdRelationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.GetApplicationEmpIdRelationResponse().from_map(
-            await self.do_rpcrequest_async('GetApplicationEmpIdRelation', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_application_emp_id_relation(
-        self,
-        request: ahas_openapi_20190901_models.GetApplicationEmpIdRelationRequest,
-    ) -> ahas_openapi_20190901_models.GetApplicationEmpIdRelationResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_application_emp_id_relation_with_options(request, runtime)
-
-    async def get_application_emp_id_relation_async(
-        self,
-        request: ahas_openapi_20190901_models.GetApplicationEmpIdRelationRequest,
-    ) -> ahas_openapi_20190901_models.GetApplicationEmpIdRelationResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_application_emp_id_relation_with_options_async(request, runtime)
-
     def get_experiment_meta_with_options(
         self,
         request: ahas_openapi_20190901_models.GetExperimentMetaRequest,
@@ -1298,7 +1193,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetExperimentMetaResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetExperimentMetaResponse(),
             self.do_rpcrequest('GetExperimentMeta', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1311,7 +1207,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetExperimentMetaResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetExperimentMetaResponse(),
             await self.do_rpcrequest_async('GetExperimentMeta', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1338,7 +1235,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetExperimentTaskResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetExperimentTaskResponse(),
             self.do_rpcrequest('GetExperimentTask', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1351,7 +1249,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetExperimentTaskResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetExperimentTaskResponse(),
             await self.do_rpcrequest_async('GetExperimentTask', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1369,46 +1268,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_experiment_task_with_options_async(request, runtime)
 
-    def get_hit_count_with_options(
-        self,
-        request: ahas_openapi_20190901_models.GetHitCountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.GetHitCountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.GetHitCountResponse().from_map(
-            self.do_rpcrequest('GetHitCount', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_hit_count_with_options_async(
-        self,
-        request: ahas_openapi_20190901_models.GetHitCountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.GetHitCountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.GetHitCountResponse().from_map(
-            await self.do_rpcrequest_async('GetHitCount', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_hit_count(
-        self,
-        request: ahas_openapi_20190901_models.GetHitCountRequest,
-    ) -> ahas_openapi_20190901_models.GetHitCountResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_hit_count_with_options(request, runtime)
-
-    async def get_hit_count_async(
-        self,
-        request: ahas_openapi_20190901_models.GetHitCountRequest,
-    ) -> ahas_openapi_20190901_models.GetHitCountResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_hit_count_with_options_async(request, runtime)
-
     def get_license_key_with_options(
         self,
         request: ahas_openapi_20190901_models.GetLicenseKeyRequest,
@@ -1418,7 +1277,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetLicenseKeyResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetLicenseKeyResponse(),
             self.do_rpcrequest('GetLicenseKey', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1431,7 +1291,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetLicenseKeyResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetLicenseKeyResponse(),
             await self.do_rpcrequest_async('GetLicenseKey', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1458,7 +1319,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetMetricsOfAppResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetMetricsOfAppResponse(),
             self.do_rpcrequest('GetMetricsOfApp', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1471,7 +1333,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetMetricsOfAppResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetMetricsOfAppResponse(),
             await self.do_rpcrequest_async('GetMetricsOfApp', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1498,7 +1361,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetMetricsOfResourceResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetMetricsOfResourceResponse(),
             self.do_rpcrequest('GetMetricsOfResource', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1511,7 +1375,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetMetricsOfResourceResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetMetricsOfResourceResponse(),
             await self.do_rpcrequest_async('GetMetricsOfResource', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1538,7 +1403,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetSentinelAppSumMetricResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetSentinelAppSumMetricResponse(),
             self.do_rpcrequest('GetSentinelAppSumMetric', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1551,7 +1417,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetSentinelAppSumMetricResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetSentinelAppSumMetricResponse(),
             await self.do_rpcrequest_async('GetSentinelAppSumMetric', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1578,7 +1445,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetUserApplicationsResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetUserApplicationsResponse(),
             self.do_rpcrequest('GetUserApplications', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1591,7 +1459,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.GetUserApplicationsResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetUserApplicationsResponse(),
             await self.do_rpcrequest_async('GetUserApplications', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1609,45 +1478,47 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_user_applications_with_options_async(request, runtime)
 
-    def import_experiment_from_mk_with_options(
+    def get_user_workspace_with_options(
         self,
-        request: ahas_openapi_20190901_models.ImportExperimentFromMkRequest,
+        request: ahas_openapi_20190901_models.GetUserWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.ImportExperimentFromMkResponse:
+    ) -> ahas_openapi_20190901_models.GetUserWorkspaceResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ImportExperimentFromMkResponse().from_map(
-            self.do_rpcrequest('ImportExperimentFromMk', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetUserWorkspaceResponse(),
+            self.do_rpcrequest('GetUserWorkspace', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def import_experiment_from_mk_with_options_async(
+    async def get_user_workspace_with_options_async(
         self,
-        request: ahas_openapi_20190901_models.ImportExperimentFromMkRequest,
+        request: ahas_openapi_20190901_models.GetUserWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.ImportExperimentFromMkResponse:
+    ) -> ahas_openapi_20190901_models.GetUserWorkspaceResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ImportExperimentFromMkResponse().from_map(
-            await self.do_rpcrequest_async('ImportExperimentFromMk', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.GetUserWorkspaceResponse(),
+            await self.do_rpcrequest_async('GetUserWorkspace', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def import_experiment_from_mk(
+    def get_user_workspace(
         self,
-        request: ahas_openapi_20190901_models.ImportExperimentFromMkRequest,
-    ) -> ahas_openapi_20190901_models.ImportExperimentFromMkResponse:
+        request: ahas_openapi_20190901_models.GetUserWorkspaceRequest,
+    ) -> ahas_openapi_20190901_models.GetUserWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
-        return self.import_experiment_from_mk_with_options(request, runtime)
+        return self.get_user_workspace_with_options(request, runtime)
 
-    async def import_experiment_from_mk_async(
+    async def get_user_workspace_async(
         self,
-        request: ahas_openapi_20190901_models.ImportExperimentFromMkRequest,
-    ) -> ahas_openapi_20190901_models.ImportExperimentFromMkResponse:
+        request: ahas_openapi_20190901_models.GetUserWorkspaceRequest,
+    ) -> ahas_openapi_20190901_models.GetUserWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.import_experiment_from_mk_with_options_async(request, runtime)
+        return await self.get_user_workspace_with_options_async(request, runtime)
 
     def list_active_apps_with_options(
         self,
@@ -1658,7 +1529,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListActiveAppsResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListActiveAppsResponse(),
             self.do_rpcrequest('ListActiveApps', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1671,7 +1543,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListActiveAppsResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListActiveAppsResponse(),
             await self.do_rpcrequest_async('ListActiveApps', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1698,7 +1571,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListDegradeRulesOfAppResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListDegradeRulesOfAppResponse(),
             self.do_rpcrequest('ListDegradeRulesOfApp', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1711,7 +1585,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListDegradeRulesOfAppResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListDegradeRulesOfAppResponse(),
             await self.do_rpcrequest_async('ListDegradeRulesOfApp', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1738,7 +1613,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListDegradeRulesOfResourceResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListDegradeRulesOfResourceResponse(),
             self.do_rpcrequest('ListDegradeRulesOfResource', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1751,7 +1627,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListDegradeRulesOfResourceResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListDegradeRulesOfResourceResponse(),
             await self.do_rpcrequest_async('ListDegradeRulesOfResource', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1778,7 +1655,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListExperimentMetasResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListExperimentMetasResponse(),
             self.do_rpcrequest('ListExperimentMetas', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1791,7 +1669,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListExperimentMetasResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListExperimentMetasResponse(),
             await self.do_rpcrequest_async('ListExperimentMetas', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1818,7 +1697,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListFlowRulesOfAppResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListFlowRulesOfAppResponse(),
             self.do_rpcrequest('ListFlowRulesOfApp', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1831,7 +1711,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListFlowRulesOfAppResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListFlowRulesOfAppResponse(),
             await self.do_rpcrequest_async('ListFlowRulesOfApp', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1858,7 +1739,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListFlowRulesOfResourceResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListFlowRulesOfResourceResponse(),
             self.do_rpcrequest('ListFlowRulesOfResource', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1871,7 +1753,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListFlowRulesOfResourceResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListFlowRulesOfResourceResponse(),
             await self.do_rpcrequest_async('ListFlowRulesOfResource', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1898,7 +1781,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListHotParamRulesOfAppResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListHotParamRulesOfAppResponse(),
             self.do_rpcrequest('ListHotParamRulesOfApp', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1911,7 +1795,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListHotParamRulesOfAppResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListHotParamRulesOfAppResponse(),
             await self.do_rpcrequest_async('ListHotParamRulesOfApp', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1938,7 +1823,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListHotParamRulesOfResourceResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListHotParamRulesOfResourceResponse(),
             self.do_rpcrequest('ListHotParamRulesOfResource', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1951,7 +1837,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListHotParamRulesOfResourceResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListHotParamRulesOfResourceResponse(),
             await self.do_rpcrequest_async('ListHotParamRulesOfResource', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1978,7 +1865,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListIsolationRulesOfAppResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListIsolationRulesOfAppResponse(),
             self.do_rpcrequest('ListIsolationRulesOfApp', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1991,7 +1879,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListIsolationRulesOfAppResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListIsolationRulesOfAppResponse(),
             await self.do_rpcrequest_async('ListIsolationRulesOfApp', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2018,7 +1907,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListIsolationRulesOfResourceResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListIsolationRulesOfResourceResponse(),
             self.do_rpcrequest('ListIsolationRulesOfResource', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2031,7 +1921,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListIsolationRulesOfResourceResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListIsolationRulesOfResourceResponse(),
             await self.do_rpcrequest_async('ListIsolationRulesOfResource', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2058,7 +1949,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListSystemRulesResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListSystemRulesResponse(),
             self.do_rpcrequest('ListSystemRules', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2071,7 +1963,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ListSystemRulesResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ListSystemRulesResponse(),
             await self.do_rpcrequest_async('ListSystemRules', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2098,7 +1991,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ModifyDegradeRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ModifyDegradeRuleResponse(),
             self.do_rpcrequest('ModifyDegradeRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2111,7 +2005,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ModifyDegradeRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ModifyDegradeRuleResponse(),
             await self.do_rpcrequest_async('ModifyDegradeRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2138,7 +2033,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ModifyFlowRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ModifyFlowRuleResponse(),
             self.do_rpcrequest('ModifyFlowRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2151,7 +2047,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ModifyFlowRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ModifyFlowRuleResponse(),
             await self.do_rpcrequest_async('ModifyFlowRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2178,7 +2075,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ModifyHotParamRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ModifyHotParamRuleResponse(),
             self.do_rpcrequest('ModifyHotParamRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2191,7 +2089,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ModifyHotParamRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ModifyHotParamRuleResponse(),
             await self.do_rpcrequest_async('ModifyHotParamRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2218,7 +2117,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ModifyIsolationRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ModifyIsolationRuleResponse(),
             self.do_rpcrequest('ModifyIsolationRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2231,7 +2131,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ModifyIsolationRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ModifyIsolationRuleResponse(),
             await self.do_rpcrequest_async('ModifyIsolationRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2258,7 +2159,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ModifySystemRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ModifySystemRuleResponse(),
             self.do_rpcrequest('ModifySystemRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2271,7 +2173,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.ModifySystemRuleResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.ModifySystemRuleResponse(),
             await self.do_rpcrequest_async('ModifySystemRule', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2298,7 +2201,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.OpenAhasServiceResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.OpenAhasServiceResponse(),
             self.do_rpcrequest('OpenAhasService', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2311,7 +2215,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.OpenAhasServiceResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.OpenAhasServiceResponse(),
             await self.do_rpcrequest_async('OpenAhasService', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2329,6 +2234,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.open_ahas_service_with_options_async(request, runtime)
 
+    def pageable_query_experiment_task_by_experiment_id_with_options(
+        self,
+        request: ahas_openapi_20190901_models.PageableQueryExperimentTaskByExperimentIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ahas_openapi_20190901_models.PageableQueryExperimentTaskByExperimentIdResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.PageableQueryExperimentTaskByExperimentIdResponse(),
+            self.do_rpcrequest('PageableQueryExperimentTaskByExperimentId', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def pageable_query_experiment_task_by_experiment_id_with_options_async(
+        self,
+        request: ahas_openapi_20190901_models.PageableQueryExperimentTaskByExperimentIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ahas_openapi_20190901_models.PageableQueryExperimentTaskByExperimentIdResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.PageableQueryExperimentTaskByExperimentIdResponse(),
+            await self.do_rpcrequest_async('PageableQueryExperimentTaskByExperimentId', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def pageable_query_experiment_task_by_experiment_id(
+        self,
+        request: ahas_openapi_20190901_models.PageableQueryExperimentTaskByExperimentIdRequest,
+    ) -> ahas_openapi_20190901_models.PageableQueryExperimentTaskByExperimentIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pageable_query_experiment_task_by_experiment_id_with_options(request, runtime)
+
+    async def pageable_query_experiment_task_by_experiment_id_async(
+        self,
+        request: ahas_openapi_20190901_models.PageableQueryExperimentTaskByExperimentIdRequest,
+    ) -> ahas_openapi_20190901_models.PageableQueryExperimentTaskByExperimentIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pageable_query_experiment_task_by_experiment_id_with_options_async(request, runtime)
+
+    def pageable_query_user_experiment_with_options(
+        self,
+        request: ahas_openapi_20190901_models.PageableQueryUserExperimentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ahas_openapi_20190901_models.PageableQueryUserExperimentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.PageableQueryUserExperimentResponse(),
+            self.do_rpcrequest('PageableQueryUserExperiment', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def pageable_query_user_experiment_with_options_async(
+        self,
+        request: ahas_openapi_20190901_models.PageableQueryUserExperimentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ahas_openapi_20190901_models.PageableQueryUserExperimentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.PageableQueryUserExperimentResponse(),
+            await self.do_rpcrequest_async('PageableQueryUserExperiment', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def pageable_query_user_experiment(
+        self,
+        request: ahas_openapi_20190901_models.PageableQueryUserExperimentRequest,
+    ) -> ahas_openapi_20190901_models.PageableQueryUserExperimentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pageable_query_user_experiment_with_options(request, runtime)
+
+    async def pageable_query_user_experiment_async(
+        self,
+        request: ahas_openapi_20190901_models.PageableQueryUserExperimentRequest,
+    ) -> ahas_openapi_20190901_models.PageableQueryUserExperimentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pageable_query_user_experiment_with_options_async(request, runtime)
+
     def push_experiment_task_with_options(
         self,
         request: ahas_openapi_20190901_models.PushExperimentTaskRequest,
@@ -2338,7 +2327,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.PushExperimentTaskResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.PushExperimentTaskResponse(),
             self.do_rpcrequest('PushExperimentTask', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2351,7 +2341,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.PushExperimentTaskResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.PushExperimentTaskResponse(),
             await self.do_rpcrequest_async('PushExperimentTask', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2369,206 +2360,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.push_experiment_task_with_options_async(request, runtime)
 
-    def query_experiments_by_emp_id_with_options(
-        self,
-        request: ahas_openapi_20190901_models.QueryExperimentsByEmpIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.QueryExperimentsByEmpIdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.QueryExperimentsByEmpIdResponse().from_map(
-            self.do_rpcrequest('QueryExperimentsByEmpId', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def query_experiments_by_emp_id_with_options_async(
-        self,
-        request: ahas_openapi_20190901_models.QueryExperimentsByEmpIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.QueryExperimentsByEmpIdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.QueryExperimentsByEmpIdResponse().from_map(
-            await self.do_rpcrequest_async('QueryExperimentsByEmpId', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_experiments_by_emp_id(
-        self,
-        request: ahas_openapi_20190901_models.QueryExperimentsByEmpIdRequest,
-    ) -> ahas_openapi_20190901_models.QueryExperimentsByEmpIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_experiments_by_emp_id_with_options(request, runtime)
-
-    async def query_experiments_by_emp_id_async(
-        self,
-        request: ahas_openapi_20190901_models.QueryExperimentsByEmpIdRequest,
-    ) -> ahas_openapi_20190901_models.QueryExperimentsByEmpIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_experiments_by_emp_id_with_options_async(request, runtime)
-
-    def query_experiment_simple_info_for_mk_with_options(
-        self,
-        request: ahas_openapi_20190901_models.QueryExperimentSimpleInfoForMkRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.QueryExperimentSimpleInfoForMkResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.QueryExperimentSimpleInfoForMkResponse().from_map(
-            self.do_rpcrequest('QueryExperimentSimpleInfoForMk', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def query_experiment_simple_info_for_mk_with_options_async(
-        self,
-        request: ahas_openapi_20190901_models.QueryExperimentSimpleInfoForMkRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.QueryExperimentSimpleInfoForMkResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.QueryExperimentSimpleInfoForMkResponse().from_map(
-            await self.do_rpcrequest_async('QueryExperimentSimpleInfoForMk', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_experiment_simple_info_for_mk(
-        self,
-        request: ahas_openapi_20190901_models.QueryExperimentSimpleInfoForMkRequest,
-    ) -> ahas_openapi_20190901_models.QueryExperimentSimpleInfoForMkResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_experiment_simple_info_for_mk_with_options(request, runtime)
-
-    async def query_experiment_simple_info_for_mk_async(
-        self,
-        request: ahas_openapi_20190901_models.QueryExperimentSimpleInfoForMkRequest,
-    ) -> ahas_openapi_20190901_models.QueryExperimentSimpleInfoForMkResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_experiment_simple_info_for_mk_with_options_async(request, runtime)
-
-    def query_experiment_task_id_by_exp_id_with_options(
-        self,
-        request: ahas_openapi_20190901_models.QueryExperimentTaskIdByExpIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.QueryExperimentTaskIdByExpIdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.QueryExperimentTaskIdByExpIdResponse().from_map(
-            self.do_rpcrequest('QueryExperimentTaskIdByExpId', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def query_experiment_task_id_by_exp_id_with_options_async(
-        self,
-        request: ahas_openapi_20190901_models.QueryExperimentTaskIdByExpIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.QueryExperimentTaskIdByExpIdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.QueryExperimentTaskIdByExpIdResponse().from_map(
-            await self.do_rpcrequest_async('QueryExperimentTaskIdByExpId', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_experiment_task_id_by_exp_id(
-        self,
-        request: ahas_openapi_20190901_models.QueryExperimentTaskIdByExpIdRequest,
-    ) -> ahas_openapi_20190901_models.QueryExperimentTaskIdByExpIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_experiment_task_id_by_exp_id_with_options(request, runtime)
-
-    async def query_experiment_task_id_by_exp_id_async(
-        self,
-        request: ahas_openapi_20190901_models.QueryExperimentTaskIdByExpIdRequest,
-    ) -> ahas_openapi_20190901_models.QueryExperimentTaskIdByExpIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_experiment_task_id_by_exp_id_with_options_async(request, runtime)
-
-    def search_application_scopes_with_options(
-        self,
-        request: ahas_openapi_20190901_models.SearchApplicationScopesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.SearchApplicationScopesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.SearchApplicationScopesResponse().from_map(
-            self.do_rpcrequest('SearchApplicationScopes', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def search_application_scopes_with_options_async(
-        self,
-        request: ahas_openapi_20190901_models.SearchApplicationScopesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.SearchApplicationScopesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.SearchApplicationScopesResponse().from_map(
-            await self.do_rpcrequest_async('SearchApplicationScopes', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def search_application_scopes(
-        self,
-        request: ahas_openapi_20190901_models.SearchApplicationScopesRequest,
-    ) -> ahas_openapi_20190901_models.SearchApplicationScopesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.search_application_scopes_with_options(request, runtime)
-
-    async def search_application_scopes_async(
-        self,
-        request: ahas_openapi_20190901_models.SearchApplicationScopesRequest,
-    ) -> ahas_openapi_20190901_models.SearchApplicationScopesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.search_application_scopes_with_options_async(request, runtime)
-
-    def search_user_applications_with_options(
-        self,
-        request: ahas_openapi_20190901_models.SearchUserApplicationsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.SearchUserApplicationsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.SearchUserApplicationsResponse().from_map(
-            self.do_rpcrequest('SearchUserApplications', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def search_user_applications_with_options_async(
-        self,
-        request: ahas_openapi_20190901_models.SearchUserApplicationsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ahas_openapi_20190901_models.SearchUserApplicationsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return ahas_openapi_20190901_models.SearchUserApplicationsResponse().from_map(
-            await self.do_rpcrequest_async('SearchUserApplications', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def search_user_applications(
-        self,
-        request: ahas_openapi_20190901_models.SearchUserApplicationsRequest,
-    ) -> ahas_openapi_20190901_models.SearchUserApplicationsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.search_user_applications_with_options(request, runtime)
-
-    async def search_user_applications_async(
-        self,
-        request: ahas_openapi_20190901_models.SearchUserApplicationsRequest,
-    ) -> ahas_openapi_20190901_models.SearchUserApplicationsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.search_user_applications_with_options_async(request, runtime)
-
     def update_experiment_with_options(
         self,
         request: ahas_openapi_20190901_models.UpdateExperimentRequest,
@@ -2578,7 +2369,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.UpdateExperimentResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.UpdateExperimentResponse(),
             self.do_rpcrequest('UpdateExperiment', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2591,7 +2383,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.UpdateExperimentResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.UpdateExperimentResponse(),
             await self.do_rpcrequest_async('UpdateExperiment', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2618,7 +2411,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.UpdateExperimentBasicInfoResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.UpdateExperimentBasicInfoResponse(),
             self.do_rpcrequest('UpdateExperimentBasicInfo', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2631,7 +2425,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ahas_openapi_20190901_models.UpdateExperimentBasicInfoResponse().from_map(
+        return TeaCore.from_map(
+            ahas_openapi_20190901_models.UpdateExperimentBasicInfoResponse(),
             await self.do_rpcrequest_async('UpdateExperimentBasicInfo', '2019-09-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
