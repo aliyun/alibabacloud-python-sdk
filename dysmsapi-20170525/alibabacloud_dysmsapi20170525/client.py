@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -56,46 +57,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_short_url_with_options(
-        self,
-        request: dysmsapi_20170525_models.AddShortUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.AddShortUrlResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dysmsapi_20170525_models.AddShortUrlResponse().from_map(
-            self.do_rpcrequest('AddShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def add_short_url_with_options_async(
-        self,
-        request: dysmsapi_20170525_models.AddShortUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.AddShortUrlResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dysmsapi_20170525_models.AddShortUrlResponse().from_map(
-            await self.do_rpcrequest_async('AddShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def add_short_url(
-        self,
-        request: dysmsapi_20170525_models.AddShortUrlRequest,
-    ) -> dysmsapi_20170525_models.AddShortUrlResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.add_short_url_with_options(request, runtime)
-
-    async def add_short_url_async(
-        self,
-        request: dysmsapi_20170525_models.AddShortUrlRequest,
-    ) -> dysmsapi_20170525_models.AddShortUrlResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.add_short_url_with_options_async(request, runtime)
-
     def add_sms_sign_with_options(
         self,
         request: dysmsapi_20170525_models.AddSmsSignRequest,
@@ -105,7 +66,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.AddSmsSignResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.AddSmsSignResponse(),
             self.do_rpcrequest('AddSmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -118,7 +80,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.AddSmsSignResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.AddSmsSignResponse(),
             await self.do_rpcrequest_async('AddSmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -145,7 +108,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.AddSmsTemplateResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.AddSmsTemplateResponse(),
             self.do_rpcrequest('AddSmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -158,7 +122,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.AddSmsTemplateResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.AddSmsTemplateResponse(),
             await self.do_rpcrequest_async('AddSmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -176,86 +141,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_sms_template_with_options_async(request, runtime)
 
-    def create_short_param_with_options(
-        self,
-        request: dysmsapi_20170525_models.CreateShortParamRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.CreateShortParamResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dysmsapi_20170525_models.CreateShortParamResponse().from_map(
-            self.do_rpcrequest('CreateShortParam', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_short_param_with_options_async(
-        self,
-        request: dysmsapi_20170525_models.CreateShortParamRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.CreateShortParamResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dysmsapi_20170525_models.CreateShortParamResponse().from_map(
-            await self.do_rpcrequest_async('CreateShortParam', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_short_param(
-        self,
-        request: dysmsapi_20170525_models.CreateShortParamRequest,
-    ) -> dysmsapi_20170525_models.CreateShortParamResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_short_param_with_options(request, runtime)
-
-    async def create_short_param_async(
-        self,
-        request: dysmsapi_20170525_models.CreateShortParamRequest,
-    ) -> dysmsapi_20170525_models.CreateShortParamResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_short_param_with_options_async(request, runtime)
-
-    def delete_short_url_with_options(
-        self,
-        request: dysmsapi_20170525_models.DeleteShortUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dysmsapi_20170525_models.DeleteShortUrlResponse().from_map(
-            self.do_rpcrequest('DeleteShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_short_url_with_options_async(
-        self,
-        request: dysmsapi_20170525_models.DeleteShortUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dysmsapi_20170525_models.DeleteShortUrlResponse().from_map(
-            await self.do_rpcrequest_async('DeleteShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_short_url(
-        self,
-        request: dysmsapi_20170525_models.DeleteShortUrlRequest,
-    ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_short_url_with_options(request, runtime)
-
-    async def delete_short_url_async(
-        self,
-        request: dysmsapi_20170525_models.DeleteShortUrlRequest,
-    ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_short_url_with_options_async(request, runtime)
-
     def delete_sms_sign_with_options(
         self,
         request: dysmsapi_20170525_models.DeleteSmsSignRequest,
@@ -265,7 +150,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.DeleteSmsSignResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.DeleteSmsSignResponse(),
             self.do_rpcrequest('DeleteSmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -278,7 +164,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.DeleteSmsSignResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.DeleteSmsSignResponse(),
             await self.do_rpcrequest_async('DeleteSmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -305,7 +192,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.DeleteSmsTemplateResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.DeleteSmsTemplateResponse(),
             self.do_rpcrequest('DeleteSmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -318,7 +206,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.DeleteSmsTemplateResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.DeleteSmsTemplateResponse(),
             await self.do_rpcrequest_async('DeleteSmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -345,7 +234,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.ModifySmsSignResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.ModifySmsSignResponse(),
             self.do_rpcrequest('ModifySmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -358,7 +248,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.ModifySmsSignResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.ModifySmsSignResponse(),
             await self.do_rpcrequest_async('ModifySmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -385,7 +276,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.ModifySmsTemplateResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.ModifySmsTemplateResponse(),
             self.do_rpcrequest('ModifySmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -398,7 +290,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.ModifySmsTemplateResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.ModifySmsTemplateResponse(),
             await self.do_rpcrequest_async('ModifySmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -425,7 +318,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.QuerySendDetailsResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySendDetailsResponse(),
             self.do_rpcrequest('QuerySendDetails', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -438,7 +332,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.QuerySendDetailsResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySendDetailsResponse(),
             await self.do_rpcrequest_async('QuerySendDetails', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -456,46 +351,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_send_details_with_options_async(request, runtime)
 
-    def query_short_url_with_options(
-        self,
-        request: dysmsapi_20170525_models.QueryShortUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dysmsapi_20170525_models.QueryShortUrlResponse().from_map(
-            self.do_rpcrequest('QueryShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def query_short_url_with_options_async(
-        self,
-        request: dysmsapi_20170525_models.QueryShortUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dysmsapi_20170525_models.QueryShortUrlResponse().from_map(
-            await self.do_rpcrequest_async('QueryShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_short_url(
-        self,
-        request: dysmsapi_20170525_models.QueryShortUrlRequest,
-    ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_short_url_with_options(request, runtime)
-
-    async def query_short_url_async(
-        self,
-        request: dysmsapi_20170525_models.QueryShortUrlRequest,
-    ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_short_url_with_options_async(request, runtime)
-
     def query_sms_sign_with_options(
         self,
         request: dysmsapi_20170525_models.QuerySmsSignRequest,
@@ -505,7 +360,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.QuerySmsSignResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySmsSignResponse(),
             self.do_rpcrequest('QuerySmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -518,7 +374,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.QuerySmsSignResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySmsSignResponse(),
             await self.do_rpcrequest_async('QuerySmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -545,7 +402,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.QuerySmsTemplateResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySmsTemplateResponse(),
             self.do_rpcrequest('QuerySmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -558,7 +416,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.QuerySmsTemplateResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySmsTemplateResponse(),
             await self.do_rpcrequest_async('QuerySmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -585,7 +444,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.SendBatchSmsResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendBatchSmsResponse(),
             self.do_rpcrequest('SendBatchSms', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -598,7 +458,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.SendBatchSmsResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendBatchSmsResponse(),
             await self.do_rpcrequest_async('SendBatchSms', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -616,6 +477,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.send_batch_sms_with_options_async(request, runtime)
 
+    def send_message_to_globe_with_options(
+        self,
+        request: dysmsapi_20170525_models.SendMessageToGlobeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.SendMessageToGlobeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendMessageToGlobeResponse(),
+            self.do_rpcrequest('SendMessageToGlobe', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def send_message_to_globe_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.SendMessageToGlobeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.SendMessageToGlobeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendMessageToGlobeResponse(),
+            await self.do_rpcrequest_async('SendMessageToGlobe', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def send_message_to_globe(
+        self,
+        request: dysmsapi_20170525_models.SendMessageToGlobeRequest,
+    ) -> dysmsapi_20170525_models.SendMessageToGlobeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_message_to_globe_with_options(request, runtime)
+
+    async def send_message_to_globe_async(
+        self,
+        request: dysmsapi_20170525_models.SendMessageToGlobeRequest,
+    ) -> dysmsapi_20170525_models.SendMessageToGlobeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_message_to_globe_with_options_async(request, runtime)
+
     def send_sms_with_options(
         self,
         request: dysmsapi_20170525_models.SendSmsRequest,
@@ -625,7 +528,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.SendSmsResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendSmsResponse(),
             self.do_rpcrequest('SendSms', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -638,7 +542,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dysmsapi_20170525_models.SendSmsResponse().from_map(
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendSmsResponse(),
             await self.do_rpcrequest_async('SendSms', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
