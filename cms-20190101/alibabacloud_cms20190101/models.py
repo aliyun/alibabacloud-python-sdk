@@ -17,6 +17,10 @@ class AddTagsRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -49,6 +53,10 @@ class AddTagsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -87,6 +95,10 @@ class AddTagsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -127,6 +139,10 @@ class AddTagsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -169,6 +185,10 @@ class ApplyMetricRuleTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.silence_time is not None:
             result['SilenceTime'] = self.silence_time
@@ -212,53 +232,51 @@ class ApplyMetricRuleTemplateRequest(TeaModel):
 class ApplyMetricRuleTemplateResponseBodyResourceAlertResults(TeaModel):
     def __init__(
         self,
-        group_id: int = None,
         success: bool = None,
         code: str = None,
         message: str = None,
-        rule_id: str = None,
         rule_name: str = None,
+        rule_id: str = None,
     ):
-        self.group_id = group_id
         self.success = success
         self.code = code
         self.message = message
-        self.rule_id = rule_id
         self.rule_name = rule_name
+        self.rule_id = rule_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
         if self.success is not None:
             result['Success'] = self.success
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
-        if self.rule_id is not None:
-            result['RuleId'] = self.rule_id
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
-        if m.get('RuleId') is not None:
-            self.rule_id = m.get('RuleId')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
         return self
 
 
@@ -278,6 +296,10 @@ class ApplyMetricRuleTemplateResponseBodyResource(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AlertResults'] = []
         if self.alert_results is not None:
@@ -319,6 +341,10 @@ class ApplyMetricRuleTemplateResponseBody(TeaModel):
             self.resource.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -364,6 +390,10 @@ class ApplyMetricRuleTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -402,6 +432,10 @@ class CreateCmsCallNumOrderRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.period is not None:
             result['Period'] = self.period
@@ -447,6 +481,10 @@ class CreateCmsCallNumOrderResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -479,6 +517,10 @@ class CreateCmsCallNumOrderResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -539,6 +581,10 @@ class CreateCmsOrderRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.period is not None:
             result['Period'] = self.period
@@ -628,6 +674,10 @@ class CreateCmsOrderResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -660,6 +710,10 @@ class CreateCmsOrderResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -698,6 +752,10 @@ class CreateCmsSmspackageOrderRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.period is not None:
             result['Period'] = self.period
@@ -743,6 +801,10 @@ class CreateCmsSmspackageOrderResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -775,6 +837,10 @@ class CreateCmsSmspackageOrderResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -805,6 +871,10 @@ class CreateDynamicTagGroupRequestMatchExpress(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_value_match_function is not None:
             result['TagValueMatchFunction'] = self.tag_value_match_function
@@ -847,6 +917,10 @@ class CreateDynamicTagGroupRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
@@ -905,6 +979,10 @@ class CreateDynamicTagGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -945,6 +1023,10 @@ class CreateDynamicTagGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -979,6 +1061,10 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.threshold is not None:
             result['Threshold'] = self.threshold
@@ -1020,6 +1106,10 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.threshold is not None:
             result['Threshold'] = self.threshold
@@ -1061,6 +1151,10 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.times is not None:
             result['Times'] = self.times
@@ -1108,6 +1202,10 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalations(TeaModel):
             self.critical.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.info is not None:
             result['Info'] = self.info.to_map()
@@ -1170,6 +1268,10 @@ class CreateGroupMetricRulesRequestGroupMetricRules(TeaModel):
             self.escalations.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.escalations is not None:
             result['Escalations'] = self.escalations.to_map()
@@ -1251,6 +1353,10 @@ class CreateGroupMetricRulesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -1291,6 +1397,10 @@ class CreateGroupMetricRulesResponseBodyResourcesAlertResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.success is not None:
             result['Success'] = self.success
@@ -1333,6 +1443,10 @@ class CreateGroupMetricRulesResponseBodyResources(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AlertResult'] = []
         if self.alert_result is not None:
@@ -1370,6 +1484,10 @@ class CreateGroupMetricRulesResponseBody(TeaModel):
             self.resources.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1415,6 +1533,10 @@ class CreateGroupMetricRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1447,6 +1569,10 @@ class CreateGroupMonitoringAgentProcessRequestMatchExpress(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -1494,6 +1620,10 @@ class CreateGroupMonitoringAgentProcessRequestAlertConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.silence_time is not None:
             result['SilenceTime'] = self.silence_time
@@ -1564,6 +1694,10 @@ class CreateGroupMonitoringAgentProcessRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -1619,6 +1753,10 @@ class CreateGroupMonitoringAgentProcessResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -1659,6 +1797,10 @@ class CreateGroupMonitoringAgentProcessResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1686,6 +1828,7 @@ class CreateHostAvailabilityRequestTaskOption(TeaModel):
         http_response_match_content: str = None,
         http_method: str = None,
         http_negative: bool = None,
+        http_header: str = None,
     ):
         self.http_uri = http_uri
         self.telnet_or_ping_host = telnet_or_ping_host
@@ -1694,11 +1837,16 @@ class CreateHostAvailabilityRequestTaskOption(TeaModel):
         self.http_response_match_content = http_response_match_content
         self.http_method = http_method
         self.http_negative = http_negative
+        self.http_header = http_header
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.http_uri is not None:
             result['HttpURI'] = self.http_uri
@@ -1714,6 +1862,8 @@ class CreateHostAvailabilityRequestTaskOption(TeaModel):
             result['HttpMethod'] = self.http_method
         if self.http_negative is not None:
             result['HttpNegative'] = self.http_negative
+        if self.http_header is not None:
+            result['HttpHeader'] = self.http_header
         return result
 
     def from_map(self, m: dict = None):
@@ -1732,6 +1882,8 @@ class CreateHostAvailabilityRequestTaskOption(TeaModel):
             self.http_method = m.get('HttpMethod')
         if m.get('HttpNegative') is not None:
             self.http_negative = m.get('HttpNegative')
+        if m.get('HttpHeader') is not None:
+            self.http_header = m.get('HttpHeader')
         return self
 
 
@@ -1754,6 +1906,10 @@ class CreateHostAvailabilityRequestAlertConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.notify_type is not None:
             result['NotifyType'] = self.notify_type
@@ -1801,6 +1957,10 @@ class CreateHostAvailabilityRequestAlertConfigEscalationList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -1861,6 +2021,10 @@ class CreateHostAvailabilityRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_option is not None:
             result['TaskOption'] = self.task_option.to_map()
@@ -1927,6 +2091,10 @@ class CreateHostAvailabilityResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -1971,6 +2139,10 @@ class CreateHostAvailabilityResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2003,6 +2175,10 @@ class CreateMetricRuleResourcesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
@@ -2040,6 +2216,10 @@ class CreateMetricRuleResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2080,6 +2260,10 @@ class CreateMetricRuleResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2114,6 +2298,10 @@ class CreateMetricRuleTemplateRequestAlertTemplatesEscalationsInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.threshold is not None:
             result['Threshold'] = self.threshold
@@ -2155,6 +2343,10 @@ class CreateMetricRuleTemplateRequestAlertTemplatesEscalationsWarn(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.threshold is not None:
             result['Threshold'] = self.threshold
@@ -2196,6 +2388,10 @@ class CreateMetricRuleTemplateRequestAlertTemplatesEscalationsCritical(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.times is not None:
             result['Times'] = self.times
@@ -2243,6 +2439,10 @@ class CreateMetricRuleTemplateRequestAlertTemplatesEscalations(TeaModel):
             self.critical.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.info is not None:
             result['Info'] = self.info.to_map()
@@ -2293,6 +2493,10 @@ class CreateMetricRuleTemplateRequestAlertTemplates(TeaModel):
             self.escalations.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.escalations is not None:
             result['Escalations'] = self.escalations.to_map()
@@ -2352,6 +2556,10 @@ class CreateMetricRuleTemplateRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -2396,6 +2604,10 @@ class CreateMetricRuleTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2440,6 +2652,10 @@ class CreateMetricRuleTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2472,6 +2688,10 @@ class CreateMonitorAgentProcessRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.process_name is not None:
             result['ProcessName'] = self.process_name
@@ -2511,6 +2731,10 @@ class CreateMonitorAgentProcessResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2555,6 +2779,10 @@ class CreateMonitorAgentProcessResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2575,53 +2803,33 @@ class CreateMonitorAgentProcessResponse(TeaModel):
 class CreateMonitorGroupRequest(TeaModel):
     def __init__(
         self,
-        type: str = None,
         group_name: str = None,
-        service_id: int = None,
-        bind_url: str = None,
         contact_groups: str = None,
-        options: str = None,
     ):
-        self.type = type
         self.group_name = group_name
-        self.service_id = service_id
-        self.bind_url = bind_url
         self.contact_groups = contact_groups
-        self.options = options
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
         if self.group_name is not None:
             result['GroupName'] = self.group_name
-        if self.service_id is not None:
-            result['ServiceId'] = self.service_id
-        if self.bind_url is not None:
-            result['BindUrl'] = self.bind_url
         if self.contact_groups is not None:
             result['ContactGroups'] = self.contact_groups
-        if self.options is not None:
-            result['Options'] = self.options
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
-        if m.get('ServiceId') is not None:
-            self.service_id = m.get('ServiceId')
-        if m.get('BindUrl') is not None:
-            self.bind_url = m.get('BindUrl')
         if m.get('ContactGroups') is not None:
             self.contact_groups = m.get('ContactGroups')
-        if m.get('Options') is not None:
-            self.options = m.get('Options')
         return self
 
 
@@ -2644,6 +2852,10 @@ class CreateMonitorGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2688,6 +2900,10 @@ class CreateMonitorGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2726,6 +2942,10 @@ class CreateMonitorGroupByResourceGroupIdRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.enable_subscribe_event is not None:
             result['EnableSubscribeEvent'] = self.enable_subscribe_event
@@ -2775,6 +2995,10 @@ class CreateMonitorGroupByResourceGroupIdResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2815,6 +3039,10 @@ class CreateMonitorGroupByResourceGroupIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2849,6 +3077,10 @@ class CreateMonitorGroupInstancesRequestInstances(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
@@ -2889,6 +3121,10 @@ class CreateMonitorGroupInstancesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -2927,6 +3163,10 @@ class CreateMonitorGroupInstancesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -2967,6 +3207,10 @@ class CreateMonitorGroupInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3001,6 +3245,10 @@ class CreateMonitorGroupNotifyPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.policy_type is not None:
             result['PolicyType'] = self.policy_type
@@ -3044,6 +3292,10 @@ class CreateMonitorGroupNotifyPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -3088,6 +3340,10 @@ class CreateMonitorGroupNotifyPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3120,6 +3376,10 @@ class CreateMonitoringAgentProcessRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.process_name is not None:
             result['ProcessName'] = self.process_name
@@ -3159,6 +3419,10 @@ class CreateMonitoringAgentProcessResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -3203,6 +3467,10 @@ class CreateMonitoringAgentProcessResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3243,6 +3511,10 @@ class CreateSiteMonitorRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.address is not None:
             result['Address'] = self.address
@@ -3298,6 +3570,10 @@ class CreateSiteMonitorResponseBodyDataAttachAlertResultContact(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3340,6 +3616,10 @@ class CreateSiteMonitorResponseBodyDataAttachAlertResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Contact'] = []
         if self.contact is not None:
@@ -3369,6 +3649,10 @@ class CreateSiteMonitorResponseBodyData(TeaModel):
             self.attach_alert_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.attach_alert_result is not None:
             result['AttachAlertResult'] = self.attach_alert_result.to_map()
@@ -3395,6 +3679,10 @@ class CreateSiteMonitorResponseBodyCreateResultListCreateResultList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_name is not None:
             result['TaskName'] = self.task_name
@@ -3425,6 +3713,10 @@ class CreateSiteMonitorResponseBodyCreateResultList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CreateResultList'] = []
         if self.create_result_list is not None:
@@ -3466,6 +3758,10 @@ class CreateSiteMonitorResponseBody(TeaModel):
             self.create_result_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -3516,6 +3812,10 @@ class CreateSiteMonitorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3544,6 +3844,10 @@ class DeleteContactRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_name is not None:
             result['ContactName'] = self.contact_name
@@ -3573,6 +3877,10 @@ class DeleteContactResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -3613,6 +3921,10 @@ class DeleteContactResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3641,6 +3953,10 @@ class DeleteContactGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_group_name is not None:
             result['ContactGroupName'] = self.contact_group_name
@@ -3670,6 +3986,10 @@ class DeleteContactGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -3710,6 +4030,10 @@ class DeleteContactGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3744,6 +4068,10 @@ class DeleteCustomMetricRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -3783,6 +4111,10 @@ class DeleteCustomMetricResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -3819,6 +4151,10 @@ class DeleteCustomMetricResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3847,6 +4183,10 @@ class DeleteDynamicTagGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dynamic_tag_rule_id is not None:
             result['DynamicTagRuleId'] = self.dynamic_tag_rule_id
@@ -3876,6 +4216,10 @@ class DeleteDynamicTagGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -3916,6 +4260,10 @@ class DeleteDynamicTagGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3944,6 +4292,10 @@ class DeleteEventRulesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_names is not None:
             result['RuleNames'] = self.rule_names
@@ -3973,6 +4325,10 @@ class DeleteEventRulesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -4013,6 +4369,10 @@ class DeleteEventRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4043,6 +4403,10 @@ class DeleteEventRuleTargetsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -4076,6 +4440,10 @@ class DeleteEventRuleTargetsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -4116,6 +4484,10 @@ class DeleteEventRuleTargetsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4144,6 +4516,10 @@ class DeleteExporterOutputRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dest_name is not None:
             result['DestName'] = self.dest_name
@@ -4173,6 +4549,10 @@ class DeleteExporterOutputResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -4213,6 +4593,10 @@ class DeleteExporterOutputResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4241,6 +4625,10 @@ class DeleteExporterRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -4270,6 +4658,10 @@ class DeleteExporterRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -4310,6 +4702,10 @@ class DeleteExporterRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4340,6 +4736,10 @@ class DeleteGroupMonitoringAgentProcessRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -4373,6 +4773,10 @@ class DeleteGroupMonitoringAgentProcessResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -4413,6 +4817,10 @@ class DeleteGroupMonitoringAgentProcessResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4441,6 +4849,10 @@ class DeleteHostAvailabilityRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
@@ -4470,6 +4882,10 @@ class DeleteHostAvailabilityResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -4510,6 +4926,10 @@ class DeleteHostAvailabilityResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4538,6 +4958,10 @@ class DeleteLogMonitorRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.log_id is not None:
             result['LogId'] = self.log_id
@@ -4567,6 +4991,10 @@ class DeleteLogMonitorResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -4607,6 +5035,10 @@ class DeleteLogMonitorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4637,6 +5069,10 @@ class DeleteMetricRuleResourcesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
@@ -4670,6 +5106,10 @@ class DeleteMetricRuleResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -4710,6 +5150,10 @@ class DeleteMetricRuleResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4738,6 +5182,10 @@ class DeleteMetricRulesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
@@ -4767,6 +5215,10 @@ class DeleteMetricRulesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -4807,6 +5259,10 @@ class DeleteMetricRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4837,6 +5293,10 @@ class DeleteMetricRuleTargetsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
@@ -4864,6 +5324,10 @@ class DeleteMetricRuleTargetsResponseBodyFailIdsTargetIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.target_id is not None:
             result['TargetId'] = self.target_id
@@ -4888,6 +5352,10 @@ class DeleteMetricRuleTargetsResponseBodyFailIds(TeaModel):
             self.target_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.target_ids is not None:
             result['TargetIds'] = self.target_ids.to_map()
@@ -4921,6 +5389,10 @@ class DeleteMetricRuleTargetsResponseBody(TeaModel):
             self.fail_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -4966,6 +5438,10 @@ class DeleteMetricRuleTargetsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4994,6 +5470,10 @@ class DeleteMetricRuleTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
@@ -5017,6 +5497,10 @@ class DeleteMetricRuleTemplateResponseBodyResource(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
@@ -5049,6 +5533,10 @@ class DeleteMetricRuleTemplateResponseBody(TeaModel):
             self.resource.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -5094,6 +5582,10 @@ class DeleteMetricRuleTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5122,6 +5614,10 @@ class DeleteMonitorGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -5145,6 +5641,10 @@ class DeleteMonitorGroupResponseBodyGroupContactGroupsContactGroup(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -5171,6 +5671,10 @@ class DeleteMonitorGroupResponseBodyGroupContactGroups(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ContactGroup'] = []
         if self.contact_group is not None:
@@ -5202,6 +5706,10 @@ class DeleteMonitorGroupResponseBodyGroup(TeaModel):
             self.contact_groups.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_name is not None:
             result['GroupName'] = self.group_name
@@ -5239,6 +5747,10 @@ class DeleteMonitorGroupResponseBody(TeaModel):
             self.group.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group is not None:
             result['Group'] = self.group.to_map()
@@ -5284,6 +5796,10 @@ class DeleteMonitorGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5314,6 +5830,10 @@ class DeleteMonitorGroupDynamicRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -5347,6 +5867,10 @@ class DeleteMonitorGroupDynamicRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -5387,6 +5911,10 @@ class DeleteMonitorGroupDynamicRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5419,6 +5947,10 @@ class DeleteMonitorGroupInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -5456,6 +5988,10 @@ class DeleteMonitorGroupInstancesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -5496,6 +6032,10 @@ class DeleteMonitorGroupInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5526,6 +6066,10 @@ class DeleteMonitorGroupNotifyPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.policy_type is not None:
             result['PolicyType'] = self.policy_type
@@ -5561,6 +6105,10 @@ class DeleteMonitorGroupNotifyPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -5605,6 +6153,10 @@ class DeleteMonitorGroupNotifyPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5637,6 +6189,10 @@ class DeleteMonitoringAgentProcessRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -5674,6 +6230,10 @@ class DeleteMonitoringAgentProcessResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -5714,6 +6274,10 @@ class DeleteMonitoringAgentProcessResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5744,6 +6308,10 @@ class DeleteSiteMonitorsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_ids is not None:
             result['TaskIds'] = self.task_ids
@@ -5771,6 +6339,10 @@ class DeleteSiteMonitorsResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.count is not None:
             result['count'] = self.count
@@ -5803,6 +6375,10 @@ class DeleteSiteMonitorsResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -5848,6 +6424,10 @@ class DeleteSiteMonitorsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5876,6 +6456,10 @@ class DescribeActiveMetricRuleListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product is not None:
             result['Product'] = self.product
@@ -5905,6 +6489,10 @@ class DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsCritical(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
@@ -5946,6 +6534,10 @@ class DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsInfo(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
@@ -5987,6 +6579,10 @@ class DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsWarn(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
@@ -6031,6 +6627,10 @@ class DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalations(TeaModel
             self.warn.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.critical is not None:
             result['Critical'] = self.critical.to_map()
@@ -6096,6 +6696,10 @@ class DescribeActiveMetricRuleListResponseBodyAlertListAlert(TeaModel):
             self.escalations.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.silence_time is not None:
             result['SilenceTime'] = self.silence_time
@@ -6183,6 +6787,10 @@ class DescribeActiveMetricRuleListResponseBodyAlertList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Alert'] = []
         if self.alert is not None:
@@ -6241,6 +6849,10 @@ class DescribeActiveMetricRuleListResponseBodyDatapointsAlarm(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.silence_time is not None:
             result['SilenceTime'] = self.silence_time
@@ -6327,6 +6939,10 @@ class DescribeActiveMetricRuleListResponseBodyDatapoints(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Alarm'] = []
         if self.alarm is not None:
@@ -6368,6 +6984,10 @@ class DescribeActiveMetricRuleListResponseBody(TeaModel):
             self.datapoints.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -6418,6 +7038,10 @@ class DescribeActiveMetricRuleListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6468,6 +7092,10 @@ class DescribeAlertHistoryListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
@@ -6535,6 +7163,10 @@ class DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContacts(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact is not None:
             result['Contact'] = self.contact
@@ -6558,6 +7190,10 @@ class DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContactGro
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_group is not None:
             result['ContactGroup'] = self.contact_group
@@ -6581,6 +7217,10 @@ class DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContactSms
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_sms is not None:
             result['ContactSms'] = self.contact_sms
@@ -6604,6 +7244,10 @@ class DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContactALI
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_aliim is not None:
             result['ContactALIIM'] = self.contact_aliim
@@ -6627,6 +7271,10 @@ class DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContactMai
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_mail is not None:
             result['ContactMail'] = self.contact_mail
@@ -6699,6 +7347,10 @@ class DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistory(TeaModel)
             self.contact_mails.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -6810,6 +7462,10 @@ class DescribeAlertHistoryListResponseBodyAlarmHistoryList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AlarmHistory'] = []
         if self.alarm_history is not None:
@@ -6849,6 +7505,10 @@ class DescribeAlertHistoryListResponseBody(TeaModel):
             self.alarm_history_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.alarm_history_list is not None:
             result['AlarmHistoryList'] = self.alarm_history_list.to_map()
@@ -6898,6 +7558,10 @@ class DescribeAlertHistoryListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6911,6 +7575,417 @@ class DescribeAlertHistoryListResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeAlertHistoryListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAlertingMetricRuleResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        rule_id: str = None,
+        group_id: str = None,
+        page: int = None,
+        page_size: int = None,
+        namespace: str = None,
+    ):
+        self.rule_id = rule_id
+        self.group_id = group_id
+        self.page = page
+        self.page_size = page_size
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        return self
+
+
+class DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResource(TeaModel):
+    def __init__(
+        self,
+        comparison_operator: str = None,
+        pre_condition: str = None,
+        expression: str = None,
+        times: int = None,
+        tag: str = None,
+        threshold: str = None,
+        level: int = None,
+    ):
+        self.comparison_operator = comparison_operator
+        self.pre_condition = pre_condition
+        self.expression = expression
+        self.times = times
+        self.tag = tag
+        self.threshold = threshold
+        self.level = level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comparison_operator is not None:
+            result['ComparisonOperator'] = self.comparison_operator
+        if self.pre_condition is not None:
+            result['PreCondition'] = self.pre_condition
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.times is not None:
+            result['Times'] = self.times
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        if self.level is not None:
+            result['Level'] = self.level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComparisonOperator') is not None:
+            self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('PreCondition') is not None:
+            self.pre_condition = m.get('PreCondition')
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Times') is not None:
+            self.times = m.get('Times')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        return self
+
+
+class DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalation(TeaModel):
+    def __init__(
+        self,
+        resource: List[DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResource] = None,
+    ):
+        self.resource = resource
+
+    def validate(self):
+        if self.resource:
+            for k in self.resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Resource'] = []
+        if self.resource is not None:
+            for k in self.resource:
+                result['Resource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.resource = []
+        if m.get('Resource') is not None:
+            for k in m.get('Resource'):
+                temp_model = DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResource()
+                self.resource.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource(TeaModel):
+    def __init__(
+        self,
+        metric_name: str = None,
+        retry_times: str = None,
+        metric_values: str = None,
+        namespace: str = None,
+        escalation: DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalation = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        product_category: str = None,
+        resource: str = None,
+        start_time: str = None,
+        group_id: str = None,
+        last_modify_time: str = None,
+        dimensions: str = None,
+        last_alert_time: str = None,
+        level: int = None,
+        threshold: str = None,
+        statistics: str = None,
+        enable: str = None,
+    ):
+        self.metric_name = metric_name
+        self.retry_times = retry_times
+        self.metric_values = metric_values
+        self.namespace = namespace
+        self.escalation = escalation
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.product_category = product_category
+        self.resource = resource
+        self.start_time = start_time
+        self.group_id = group_id
+        self.last_modify_time = last_modify_time
+        self.dimensions = dimensions
+        self.last_alert_time = last_alert_time
+        self.level = level
+        self.threshold = threshold
+        self.statistics = statistics
+        self.enable = enable
+
+    def validate(self):
+        if self.escalation:
+            self.escalation.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.retry_times is not None:
+            result['RetryTimes'] = self.retry_times
+        if self.metric_values is not None:
+            result['MetricValues'] = self.metric_values
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.escalation is not None:
+            result['Escalation'] = self.escalation.to_map()
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.product_category is not None:
+            result['ProductCategory'] = self.product_category
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.last_modify_time is not None:
+            result['LastModifyTime'] = self.last_modify_time
+        if self.dimensions is not None:
+            result['Dimensions'] = self.dimensions
+        if self.last_alert_time is not None:
+            result['LastAlertTime'] = self.last_alert_time
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        if self.statistics is not None:
+            result['Statistics'] = self.statistics
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('RetryTimes') is not None:
+            self.retry_times = m.get('RetryTimes')
+        if m.get('MetricValues') is not None:
+            self.metric_values = m.get('MetricValues')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Escalation') is not None:
+            temp_model = DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalation()
+            self.escalation = temp_model.from_map(m['Escalation'])
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ProductCategory') is not None:
+            self.product_category = m.get('ProductCategory')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('LastModifyTime') is not None:
+            self.last_modify_time = m.get('LastModifyTime')
+        if m.get('Dimensions') is not None:
+            self.dimensions = m.get('Dimensions')
+        if m.get('LastAlertTime') is not None:
+            self.last_alert_time = m.get('LastAlertTime')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        if m.get('Statistics') is not None:
+            self.statistics = m.get('Statistics')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class DescribeAlertingMetricRuleResourcesResponseBodyResources(TeaModel):
+    def __init__(
+        self,
+        resource: List[DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource] = None,
+    ):
+        self.resource = resource
+
+    def validate(self):
+        if self.resource:
+            for k in self.resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Resource'] = []
+        if self.resource is not None:
+            for k in self.resource:
+                result['Resource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.resource = []
+        if m.get('Resource') is not None:
+            for k in m.get('Resource'):
+                temp_model = DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource()
+                self.resource.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAlertingMetricRuleResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        total: int = None,
+        resources: DescribeAlertingMetricRuleResourcesResponseBodyResources = None,
+        code: int = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.total = total
+        self.resources = resources
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        if self.resources:
+            self.resources.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.resources is not None:
+            result['Resources'] = self.resources.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Resources') is not None:
+            temp_model = DescribeAlertingMetricRuleResourcesResponseBodyResources()
+            self.resources = temp_model.from_map(m['Resources'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeAlertingMetricRuleResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeAlertingMetricRuleResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeAlertingMetricRuleResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6954,6 +8029,10 @@ class DescribeAlertLogCountRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -7035,6 +8114,10 @@ class DescribeAlertLogCountResponseBodyAlertLogCountLogs(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -7067,6 +8150,10 @@ class DescribeAlertLogCountResponseBodyAlertLogCount(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Logs'] = []
         if self.logs is not None:
@@ -7110,6 +8197,10 @@ class DescribeAlertLogCountResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -7159,6 +8250,10 @@ class DescribeAlertLogCountResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7215,6 +8310,10 @@ class DescribeAlertLogHistogramRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -7298,6 +8397,10 @@ class DescribeAlertLogHistogramResponseBodyAlertLogHistogramList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.from_ is not None:
             result['From'] = self.from_
@@ -7340,6 +8443,10 @@ class DescribeAlertLogHistogramResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -7389,6 +8496,10 @@ class DescribeAlertLogHistogramResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7445,6 +8556,10 @@ class DescribeAlertLogListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -7526,6 +8641,10 @@ class DescribeAlertLogListResponseBodyAlertLogListExtendedInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -7555,6 +8674,10 @@ class DescribeAlertLogListResponseBodyAlertLogListDimensions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -7586,6 +8709,10 @@ class DescribeAlertLogListResponseBodyAlertLogListEscalation(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.expression is not None:
             result['Expression'] = self.expression
@@ -7676,6 +8803,10 @@ class DescribeAlertLogListResponseBodyAlertLogList(TeaModel):
             self.escalation.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
@@ -7827,6 +8958,10 @@ class DescribeAlertLogListResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AlertLogList'] = []
         if self.alert_log_list is not None:
@@ -7888,6 +9023,10 @@ class DescribeAlertLogListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7918,6 +9057,10 @@ class DescribeContactGroupListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -7945,6 +9088,10 @@ class DescribeContactGroupListResponseBodyContactGroupListContactGroupContacts(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact is not None:
             result['Contact'] = self.contact
@@ -7981,6 +9128,10 @@ class DescribeContactGroupListResponseBodyContactGroupListContactGroup(TeaModel)
             self.contacts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.describe is not None:
             result['Describe'] = self.describe
@@ -8032,6 +9183,10 @@ class DescribeContactGroupListResponseBodyContactGroupList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ContactGroup'] = []
         if self.contact_group is not None:
@@ -8060,6 +9215,10 @@ class DescribeContactGroupListResponseBodyContactGroups(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_group is not None:
             result['ContactGroup'] = self.contact_group
@@ -8098,6 +9257,10 @@ class DescribeContactGroupListResponseBody(TeaModel):
             self.contact_groups.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_group_list is not None:
             result['ContactGroupList'] = self.contact_group_list.to_map()
@@ -8152,6 +9315,10 @@ class DescribeContactGroupListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8188,6 +9355,10 @@ class DescribeContactListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -8233,6 +9404,10 @@ class DescribeContactListResponseBodyContactsContactChannelsState(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ding_web_hook is not None:
             result['DingWebHook'] = self.ding_web_hook
@@ -8268,6 +9443,10 @@ class DescribeContactListResponseBodyContactsContactContactGroups(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_group is not None:
             result['ContactGroup'] = self.contact_group
@@ -8297,6 +9476,10 @@ class DescribeContactListResponseBodyContactsContactChannels(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ding_web_hook is not None:
             result['DingWebHook'] = self.ding_web_hook
@@ -8351,6 +9534,10 @@ class DescribeContactListResponseBodyContactsContact(TeaModel):
             self.channels.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
@@ -8408,6 +9595,10 @@ class DescribeContactListResponseBodyContacts(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Contact'] = []
         if self.contact is not None:
@@ -8447,6 +9638,10 @@ class DescribeContactListResponseBody(TeaModel):
             self.contacts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -8496,6 +9691,10 @@ class DescribeContactListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8524,6 +9723,10 @@ class DescribeContactListByContactGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_group_name is not None:
             result['ContactGroupName'] = self.contact_group_name
@@ -8553,6 +9756,10 @@ class DescribeContactListByContactGroupResponseBodyContactsContactChannels(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ding_web_hook is not None:
             result['DingWebHook'] = self.ding_web_hook
@@ -8597,6 +9804,10 @@ class DescribeContactListByContactGroupResponseBodyContactsContact(TeaModel):
             self.channels.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
@@ -8640,6 +9851,10 @@ class DescribeContactListByContactGroupResponseBodyContacts(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Contact'] = []
         if self.contact is not None:
@@ -8677,6 +9892,10 @@ class DescribeContactListByContactGroupResponseBody(TeaModel):
             self.contacts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -8722,6 +9941,10 @@ class DescribeContactListByContactGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8764,6 +9987,10 @@ class DescribeCustomEventAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -8823,6 +10050,10 @@ class DescribeCustomEventAttributeResponseBodyCustomEventsCustomEvent(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -8865,6 +10096,10 @@ class DescribeCustomEventAttributeResponseBodyCustomEvents(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CustomEvent'] = []
         if self.custom_event is not None:
@@ -8902,6 +10137,10 @@ class DescribeCustomEventAttributeResponseBody(TeaModel):
             self.custom_events.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.custom_events is not None:
             result['CustomEvents'] = self.custom_events.to_map()
@@ -8947,6 +10186,10 @@ class DescribeCustomEventAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8985,6 +10228,10 @@ class DescribeCustomEventCountRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -9032,6 +10279,10 @@ class DescribeCustomEventCountResponseBodyCustomEventCountsCustomEventCount(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -9066,6 +10317,10 @@ class DescribeCustomEventCountResponseBodyCustomEventCounts(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CustomEventCount'] = []
         if self.custom_event_count is not None:
@@ -9103,6 +10358,10 @@ class DescribeCustomEventCountResponseBody(TeaModel):
             self.custom_event_counts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.custom_event_counts is not None:
             result['CustomEventCounts'] = self.custom_event_counts.to_map()
@@ -9148,6 +10407,10 @@ class DescribeCustomEventCountResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9188,6 +10451,10 @@ class DescribeCustomEventHistogramRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -9239,6 +10506,10 @@ class DescribeCustomEventHistogramResponseBodyEventHistogramsEventHistogram(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -9273,6 +10544,10 @@ class DescribeCustomEventHistogramResponseBodyEventHistograms(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['EventHistogram'] = []
         if self.event_histogram is not None:
@@ -9310,6 +10585,10 @@ class DescribeCustomEventHistogramResponseBody(TeaModel):
             self.event_histograms.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -9355,6 +10634,10 @@ class DescribeCustomEventHistogramResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9393,6 +10676,10 @@ class DescribeCustomMetricListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -9442,6 +10729,10 @@ class DescribeCustomMetricListResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -9482,6 +10773,10 @@ class DescribeCustomMetricListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9514,6 +10809,10 @@ class DescribeDynamicTagRuleListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
@@ -9547,6 +10846,10 @@ class DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpressMatc
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_value_match_function is not None:
             result['TagValueMatchFunction'] = self.tag_value_match_function
@@ -9577,6 +10880,10 @@ class DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpress(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MatchExpress'] = []
         if self.match_express is not None:
@@ -9605,6 +10912,10 @@ class DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupTemplateIdList(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_id_list is not None:
             result['TemplateIdList'] = self.template_id_list
@@ -9643,6 +10954,10 @@ class DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroup(TeaModel):
             self.template_id_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -9695,6 +11010,10 @@ class DescribeDynamicTagRuleListResponseBodyTagGroupList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TagGroup'] = []
         if self.tag_group is not None:
@@ -9738,6 +11057,10 @@ class DescribeDynamicTagRuleListResponseBody(TeaModel):
             self.tag_group_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9795,6 +11118,10 @@ class DescribeDynamicTagRuleListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9823,6 +11150,10 @@ class DescribeEventRuleAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -9846,6 +11177,10 @@ class DescribeEventRuleAttributeResponseBodyResultEventPatternStatusList(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status_list is not None:
             result['StatusList'] = self.status_list
@@ -9869,6 +11204,10 @@ class DescribeEventRuleAttributeResponseBodyResultEventPatternLevelList(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.level_list is not None:
             result['LevelList'] = self.level_list
@@ -9892,6 +11231,10 @@ class DescribeEventRuleAttributeResponseBodyResultEventPatternNameList(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name_list is not None:
             result['NameList'] = self.name_list
@@ -9926,6 +11269,10 @@ class DescribeEventRuleAttributeResponseBodyResultEventPattern(TeaModel):
             self.name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status_list is not None:
             result['StatusList'] = self.status_list.to_map()
@@ -9975,6 +11322,10 @@ class DescribeEventRuleAttributeResponseBodyResult(TeaModel):
             self.event_pattern.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.event_type is not None:
             result['EventType'] = self.event_type
@@ -10028,6 +11379,10 @@ class DescribeEventRuleAttributeResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -10073,6 +11428,10 @@ class DescribeEventRuleAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10107,6 +11466,10 @@ class DescribeEventRuleListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name_prefix is not None:
             result['NamePrefix'] = self.name_prefix
@@ -10142,6 +11505,10 @@ class DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatte
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.event_type_list is not None:
             result['EventTypeList'] = self.event_type_list
@@ -10165,6 +11532,10 @@ class DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatte
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.level_list is not None:
             result['LevelList'] = self.level_list
@@ -10188,6 +11559,10 @@ class DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatte
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name_list is not None:
             result['NameList'] = self.name_list
@@ -10222,6 +11597,10 @@ class DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatte
             self.name_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.event_type_list is not None:
             result['EventTypeList'] = self.event_type_list.to_map()
@@ -10263,6 +11642,10 @@ class DescribeEventRuleListResponseBodyEventRulesEventRuleEventPattern(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['EventPattern'] = []
         if self.event_pattern is not None:
@@ -10302,6 +11685,10 @@ class DescribeEventRuleListResponseBodyEventRulesEventRule(TeaModel):
             self.event_pattern.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.event_type is not None:
             result['EventType'] = self.event_type
@@ -10349,6 +11736,10 @@ class DescribeEventRuleListResponseBodyEventRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['EventRule'] = []
         if self.event_rule is not None:
@@ -10388,6 +11779,10 @@ class DescribeEventRuleListResponseBody(TeaModel):
             self.event_rules.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -10437,6 +11832,10 @@ class DescribeEventRuleListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10465,6 +11864,10 @@ class DescribeEventRuleTargetListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -10492,6 +11895,10 @@ class DescribeEventRuleTargetListResponseBodyContactParametersContactParameter(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_group_name is not None:
             result['ContactGroupName'] = self.contact_group_name
@@ -10526,6 +11933,10 @@ class DescribeEventRuleTargetListResponseBodyContactParameters(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ContactParameter'] = []
         if self.contact_parameter is not None:
@@ -10562,6 +11973,10 @@ class DescribeEventRuleTargetListResponseBodySlsParametersSlsParameter(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.log_store is not None:
             result['LogStore'] = self.log_store
@@ -10604,6 +12019,10 @@ class DescribeEventRuleTargetListResponseBodySlsParameters(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SlsParameter'] = []
         if self.sls_parameter is not None:
@@ -10638,6 +12057,10 @@ class DescribeEventRuleTargetListResponseBodyWebhookParametersWebhookParameter(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.protocol is not None:
             result['Protocol'] = self.protocol
@@ -10676,6 +12099,10 @@ class DescribeEventRuleTargetListResponseBodyWebhookParameters(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WebhookParameter'] = []
         if self.webhook_parameter is not None:
@@ -10712,6 +12139,10 @@ class DescribeEventRuleTargetListResponseBodyFcParametersFCParameter(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.function_name is not None:
             result['FunctionName'] = self.function_name
@@ -10754,6 +12185,10 @@ class DescribeEventRuleTargetListResponseBodyFcParameters(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FCParameter'] = []
         if self.fcparameter is not None:
@@ -10788,6 +12223,10 @@ class DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region is not None:
             result['Region'] = self.region
@@ -10826,6 +12265,10 @@ class DescribeEventRuleTargetListResponseBodyMnsParameters(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MnsParameter'] = []
         if self.mns_parameter is not None:
@@ -10877,6 +12320,10 @@ class DescribeEventRuleTargetListResponseBody(TeaModel):
             self.mns_parameters.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -10938,6 +12385,10 @@ class DescribeEventRuleTargetListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10968,6 +12419,10 @@ class DescribeExporterOutputListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -11003,6 +12458,10 @@ class DescribeExporterOutputListResponseBodyDatapointsDatapointConfigJson(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.as_ is not None:
             result['as'] = self.as_
@@ -11049,6 +12508,10 @@ class DescribeExporterOutputListResponseBodyDatapointsDatapoint(TeaModel):
             self.config_json.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
@@ -11088,6 +12551,10 @@ class DescribeExporterOutputListResponseBodyDatapoints(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Datapoint'] = []
         if self.datapoint is not None:
@@ -11129,6 +12596,10 @@ class DescribeExporterOutputListResponseBody(TeaModel):
             self.datapoints.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11182,6 +12653,10 @@ class DescribeExporterOutputListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11212,6 +12687,10 @@ class DescribeExporterRuleListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -11239,6 +12718,10 @@ class DescribeExporterRuleListResponseBodyDatapointsDatapointDstName(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dst_name is not None:
             result['DstName'] = self.dst_name
@@ -11279,6 +12762,10 @@ class DescribeExporterRuleListResponseBodyDatapointsDatapoint(TeaModel):
             self.dst_name.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
@@ -11338,6 +12825,10 @@ class DescribeExporterRuleListResponseBodyDatapoints(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Datapoint'] = []
         if self.datapoint is not None:
@@ -11379,6 +12870,10 @@ class DescribeExporterRuleListResponseBody(TeaModel):
             self.datapoints.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11432,6 +12927,10 @@ class DescribeExporterRuleListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11466,6 +12965,10 @@ class DescribeGroupMonitoringAgentProcessRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -11505,6 +13008,10 @@ class DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpres
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -11539,6 +13046,10 @@ class DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpres
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MatchExpress'] = []
         if self.match_express is not None:
@@ -11583,6 +13094,10 @@ class DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfig
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
@@ -11641,6 +13156,10 @@ class DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfig
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AlertConfig'] = []
         if self.alert_config is not None:
@@ -11682,6 +13201,10 @@ class DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcess(TeaModel):
             self.alert_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.process_name is not None:
             result['ProcessName'] = self.process_name
@@ -11730,6 +13253,10 @@ class DescribeGroupMonitoringAgentProcessResponseBodyProcesses(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Process'] = []
         if self.process is not None:
@@ -11773,6 +13300,10 @@ class DescribeGroupMonitoringAgentProcessResponseBody(TeaModel):
             self.processes.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11830,6 +13361,10 @@ class DescribeGroupMonitoringAgentProcessResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11866,6 +13401,10 @@ class DescribeHostAvailabilityListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
@@ -11917,6 +13456,10 @@ class DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigTaskOption(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.http_method is not None:
             result['HttpMethod'] = self.http_method
@@ -11972,6 +13515,10 @@ class DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigE
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -12014,6 +13561,10 @@ class DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigE
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['escalationList'] = []
         if self.escalation_list is not None:
@@ -12053,6 +13604,10 @@ class DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig(
             self.escalation_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.silence_time is not None:
             result['SilenceTime'] = self.silence_time
@@ -12097,6 +13652,10 @@ class DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigInstances(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance is not None:
             result['Instance'] = self.instance
@@ -12143,6 +13702,10 @@ class DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfig(TeaModel):
             self.instances.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_type is not None:
             result['TaskType'] = self.task_type
@@ -12208,6 +13771,10 @@ class DescribeHostAvailabilityListResponseBodyTaskList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['NodeTaskConfig'] = []
         if self.node_task_config is not None:
@@ -12247,6 +13814,10 @@ class DescribeHostAvailabilityListResponseBody(TeaModel):
             self.task_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -12296,6 +13867,10 @@ class DescribeHostAvailabilityListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12324,6 +13899,10 @@ class DescribeLogMonitorAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
@@ -12351,6 +13930,10 @@ class DescribeLogMonitorAttributeResponseBodyLogMonitorValueFilter(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -12390,6 +13973,10 @@ class DescribeLogMonitorAttributeResponseBodyLogMonitorAggregates(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -12460,6 +14047,10 @@ class DescribeLogMonitorAttributeResponseBodyLogMonitor(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value_filter_relation is not None:
             result['ValueFilterRelation'] = self.value_filter_relation
@@ -12550,6 +14141,10 @@ class DescribeLogMonitorAttributeResponseBody(TeaModel):
             self.log_monitor.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -12595,6 +14190,10 @@ class DescribeLogMonitorAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12629,6 +14228,10 @@ class DescribeLogMonitorListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -12668,6 +14271,10 @@ class DescribeLogMonitorListResponseBodyLogMonitorListValueFilter(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -12718,6 +14325,10 @@ class DescribeLogMonitorListResponseBodyLogMonitorList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value_filter_relation is not None:
             result['ValueFilterRelation'] = self.value_filter_relation
@@ -12795,6 +14406,10 @@ class DescribeLogMonitorListResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12856,6 +14471,10 @@ class DescribeLogMonitorListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12898,6 +14517,10 @@ class DescribeMetricDataRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.namespace is not None:
             result['Namespace'] = self.namespace
@@ -12957,6 +14580,10 @@ class DescribeMetricDataResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -13001,6 +14628,10 @@ class DescribeMetricDataResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13045,6 +14676,10 @@ class DescribeMetricLastRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.namespace is not None:
             result['Namespace'] = self.namespace
@@ -13112,6 +14747,10 @@ class DescribeMetricLastResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -13164,6 +14803,10 @@ class DescribeMetricLastResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13208,6 +14851,10 @@ class DescribeMetricListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.namespace is not None:
             result['Namespace'] = self.namespace
@@ -13275,6 +14922,10 @@ class DescribeMetricListResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -13327,6 +14978,10 @@ class DescribeMetricListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13363,6 +15018,10 @@ class DescribeMetricMetaListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.namespace is not None:
             result['Namespace'] = self.namespace
@@ -13416,6 +15075,10 @@ class DescribeMetricMetaListResponseBodyResourcesResource(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
@@ -13470,6 +15133,10 @@ class DescribeMetricMetaListResponseBodyResources(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Resource'] = []
         if self.resource is not None:
@@ -13509,6 +15176,10 @@ class DescribeMetricMetaListResponseBody(TeaModel):
             self.resources.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -13558,6 +15229,10 @@ class DescribeMetricMetaListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13588,6 +15263,10 @@ class DescribeMetricRuleCountRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.namespace is not None:
             result['Namespace'] = self.namespace
@@ -13623,6 +15302,10 @@ class DescribeMetricRuleCountResponseBodyMetricRuleCount(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ok is not None:
             result['Ok'] = self.ok
@@ -13671,6 +15354,10 @@ class DescribeMetricRuleCountResponseBody(TeaModel):
             self.metric_rule_count.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_rule_count is not None:
             result['MetricRuleCount'] = self.metric_rule_count.to_map()
@@ -13716,6 +15403,10 @@ class DescribeMetricRuleCountResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13762,6 +15453,10 @@ class DescribeMetricRuleListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
@@ -13829,6 +15524,10 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarmEscalationsCritical(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
@@ -13876,6 +15575,10 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarmEscalationsInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
@@ -13923,6 +15626,10 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarmEscalationsWarn(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
@@ -13971,6 +15678,10 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarmEscalations(TeaModel):
             self.warn.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.critical is not None:
             result['Critical'] = self.critical.to_map()
@@ -14042,6 +15753,10 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(TeaModel):
             self.escalations.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.silence_time is not None:
             result['SilenceTime'] = self.silence_time
@@ -14141,6 +15856,10 @@ class DescribeMetricRuleListResponseBodyAlarms(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Alarm'] = []
         if self.alarm is not None:
@@ -14180,6 +15899,10 @@ class DescribeMetricRuleListResponseBody(TeaModel):
             self.alarms.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -14229,6 +15952,10 @@ class DescribeMetricRuleListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14257,6 +15984,10 @@ class DescribeMetricRuleTargetsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
@@ -14284,6 +16015,10 @@ class DescribeMetricRuleTargetsResponseBodyTargetsTarget(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
@@ -14318,6 +16053,10 @@ class DescribeMetricRuleTargetsResponseBodyTargets(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Target'] = []
         if self.target is not None:
@@ -14355,6 +16094,10 @@ class DescribeMetricRuleTargetsResponseBody(TeaModel):
             self.targets.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -14400,6 +16143,10 @@ class DescribeMetricRuleTargetsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14430,6 +16177,10 @@ class DescribeMetricRuleTemplateAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -14463,6 +16214,10 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
@@ -14504,6 +16259,10 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
@@ -14545,6 +16304,10 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
@@ -14589,6 +16352,10 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
             self.warn.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.critical is not None:
             result['Critical'] = self.critical.to_map()
@@ -14636,6 +16403,10 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
             self.escalations.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
@@ -14687,6 +16458,10 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplates(TeaM
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AlertTemplate'] = []
         if self.alert_template is not None:
@@ -14724,6 +16499,10 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResource(TeaModel):
             self.alert_templates.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
@@ -14773,6 +16552,10 @@ class DescribeMetricRuleTemplateAttributeResponseBody(TeaModel):
             self.resource.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -14818,6 +16601,10 @@ class DescribeMetricRuleTemplateAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14856,6 +16643,10 @@ class DescribeMetricRuleTemplateListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -14903,6 +16694,10 @@ class DescribeMetricRuleTemplateListResponseBodyTemplatesTemplateApplyHistoriesA
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -14937,6 +16732,10 @@ class DescribeMetricRuleTemplateListResponseBodyTemplatesTemplateApplyHistories(
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ApplyHistory'] = []
         if self.apply_history is not None:
@@ -14978,6 +16777,10 @@ class DescribeMetricRuleTemplateListResponseBodyTemplatesTemplate(TeaModel):
             self.apply_histories.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.apply_histories is not None:
             result['ApplyHistories'] = self.apply_histories.to_map()
@@ -15029,6 +16832,10 @@ class DescribeMetricRuleTemplateListResponseBodyTemplates(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Template'] = []
         if self.template is not None:
@@ -15068,6 +16875,10 @@ class DescribeMetricRuleTemplateListResponseBody(TeaModel):
             self.templates.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -15117,6 +16928,10 @@ class DescribeMetricRuleTemplateListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15163,6 +16978,10 @@ class DescribeMetricTopRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.period is not None:
             result['Period'] = self.period
@@ -15230,6 +17049,10 @@ class DescribeMetricTopResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -15274,6 +17097,10 @@ class DescribeMetricTopResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15302,6 +17129,10 @@ class DescribeMonitorGroupCategoriesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -15327,6 +17158,10 @@ class DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategoriesMonitorGro
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
@@ -15357,6 +17192,10 @@ class DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategoriesMonitorGro
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CategoryItem'] = []
         if self.category_item is not None:
@@ -15388,6 +17227,10 @@ class DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategories(TeaModel)
             self.monitor_group_category.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -15425,6 +17268,10 @@ class DescribeMonitorGroupCategoriesResponseBody(TeaModel):
             self.monitor_group_categories.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -15470,6 +17317,10 @@ class DescribeMonitorGroupCategoriesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15498,6 +17349,10 @@ class DescribeMonitorGroupDynamicRulesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -15525,6 +17380,10 @@ class DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFiltersFilter(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -15559,6 +17418,10 @@ class DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFilters(TeaMod
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Filter'] = []
         if self.filter is not None:
@@ -15592,6 +17455,10 @@ class DescribeMonitorGroupDynamicRulesResponseBodyResourceResource(TeaModel):
             self.filters.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.filter_relation is not None:
             result['FilterRelation'] = self.filter_relation
@@ -15627,6 +17494,10 @@ class DescribeMonitorGroupDynamicRulesResponseBodyResource(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Resource'] = []
         if self.resource is not None:
@@ -15664,6 +17535,10 @@ class DescribeMonitorGroupDynamicRulesResponseBody(TeaModel):
             self.resource.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -15709,6 +17584,10 @@ class DescribeMonitorGroupDynamicRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15749,6 +17628,10 @@ class DescribeMonitorGroupInstanceAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -15798,6 +17681,10 @@ class DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceRegion(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.availability_zone is not None:
             result['AvailabilityZone'] = self.availability_zone
@@ -15827,6 +17714,10 @@ class DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceVpc(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vswitch_instance_id is not None:
             result['VswitchInstanceId'] = self.vswitch_instance_id
@@ -15856,6 +17747,10 @@ class DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTagsTag(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -15886,6 +17781,10 @@ class DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTags(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -15935,6 +17834,10 @@ class DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResource(TeaMode
             self.tags.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
@@ -15996,6 +17899,10 @@ class DescribeMonitorGroupInstanceAttributeResponseBodyResources(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Resource'] = []
         if self.resource is not None:
@@ -16039,6 +17946,10 @@ class DescribeMonitorGroupInstanceAttributeResponseBody(TeaModel):
             self.resources.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16096,6 +18007,10 @@ class DescribeMonitorGroupInstanceAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16134,6 +18049,10 @@ class DescribeMonitorGroupInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -16185,6 +18104,10 @@ class DescribeMonitorGroupInstancesResponseBodyResourcesResource(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
@@ -16227,6 +18150,10 @@ class DescribeMonitorGroupInstancesResponseBodyResources(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Resource'] = []
         if self.resource is not None:
@@ -16270,6 +18197,10 @@ class DescribeMonitorGroupInstancesResponseBody(TeaModel):
             self.resources.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16327,6 +18258,10 @@ class DescribeMonitorGroupInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16361,6 +18296,10 @@ class DescribeMonitorGroupNotifyPolicyListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.policy_type is not None:
             result['PolicyType'] = self.policy_type
@@ -16404,6 +18343,10 @@ class DescribeMonitorGroupNotifyPolicyListResponseBodyNotifyPolicyListNotifyPoli
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -16446,6 +18389,10 @@ class DescribeMonitorGroupNotifyPolicyListResponseBodyNotifyPolicyList(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['NotifyPolicy'] = []
         if self.notify_policy is not None:
@@ -16485,6 +18432,10 @@ class DescribeMonitorGroupNotifyPolicyListResponseBody(TeaModel):
             self.notify_policy_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.notify_policy_list is not None:
             result['NotifyPolicyList'] = self.notify_policy_list.to_map()
@@ -16534,6 +18485,10 @@ class DescribeMonitorGroupNotifyPolicyListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16564,6 +18519,10 @@ class DescribeMonitorGroupsRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -16593,8 +18552,6 @@ class DescribeMonitorGroupsRequest(TeaModel):
         type: str = None,
         dynamic_tag_rule_id: str = None,
         group_id: str = None,
-        service_id: str = None,
-        resource_group_id: str = None,
         tag: List[DescribeMonitorGroupsRequestTag] = None,
     ):
         self.select_contact_groups = select_contact_groups
@@ -16607,8 +18564,6 @@ class DescribeMonitorGroupsRequest(TeaModel):
         self.type = type
         self.dynamic_tag_rule_id = dynamic_tag_rule_id
         self.group_id = group_id
-        self.service_id = service_id
-        self.resource_group_id = resource_group_id
         self.tag = tag
 
     def validate(self):
@@ -16618,6 +18573,10 @@ class DescribeMonitorGroupsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.select_contact_groups is not None:
             result['SelectContactGroups'] = self.select_contact_groups
@@ -16639,10 +18598,6 @@ class DescribeMonitorGroupsRequest(TeaModel):
             result['DynamicTagRuleId'] = self.dynamic_tag_rule_id
         if self.group_id is not None:
             result['GroupId'] = self.group_id
-        if self.service_id is not None:
-            result['ServiceId'] = self.service_id
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -16671,10 +18626,6 @@ class DescribeMonitorGroupsRequest(TeaModel):
             self.dynamic_tag_rule_id = m.get('DynamicTagRuleId')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
-        if m.get('ServiceId') is not None:
-            self.service_id = m.get('ServiceId')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -16694,6 +18645,10 @@ class DescribeMonitorGroupsResponseBodyResourcesResourceContactGroupsContactGrou
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -16720,6 +18675,10 @@ class DescribeMonitorGroupsResponseBodyResourcesResourceContactGroups(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ContactGroup'] = []
         if self.contact_group is not None:
@@ -16750,6 +18709,10 @@ class DescribeMonitorGroupsResponseBodyResourcesResourceTagsTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -16780,6 +18743,10 @@ class DescribeMonitorGroupsResponseBodyResourcesResourceTags(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -16808,6 +18775,10 @@ class DescribeMonitorGroupsResponseBodyResourcesResourceTemplateIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
@@ -16860,6 +18831,10 @@ class DescribeMonitorGroupsResponseBodyResourcesResource(TeaModel):
             self.template_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -16937,6 +18912,10 @@ class DescribeMonitorGroupsResponseBodyResources(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Resource'] = []
         if self.resource is not None:
@@ -16980,6 +18959,10 @@ class DescribeMonitorGroupsResponseBody(TeaModel):
             self.resources.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -17037,6 +19020,10 @@ class DescribeMonitorGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17075,6 +19062,10 @@ class DescribeMonitoringAgentAccessKeyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.secret_key is not None:
             result['SecretKey'] = self.secret_key
@@ -17123,6 +19114,10 @@ class DescribeMonitoringAgentAccessKeyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17163,6 +19158,10 @@ class DescribeMonitoringAgentConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.enable_active_alert is not None:
             result['EnableActiveAlert'] = self.enable_active_alert
@@ -17215,6 +19214,10 @@ class DescribeMonitoringAgentConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17259,6 +19262,10 @@ class DescribeMonitoringAgentHostsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key_word is not None:
             result['KeyWord'] = self.key_word
@@ -17340,6 +19347,10 @@ class DescribeMonitoringAgentHostsResponseBodyHostsHost(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
@@ -17418,6 +19429,10 @@ class DescribeMonitoringAgentHostsResponseBodyHosts(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Host'] = []
         if self.host is not None:
@@ -17463,6 +19478,10 @@ class DescribeMonitoringAgentHostsResponseBody(TeaModel):
             self.hosts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.hosts is not None:
             result['Hosts'] = self.hosts.to_map()
@@ -17524,6 +19543,10 @@ class DescribeMonitoringAgentHostsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17552,6 +19575,10 @@ class DescribeMonitoringAgentProcessesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -17585,6 +19612,10 @@ class DescribeMonitoringAgentProcessesResponseBodyNodeProcessesNodeProcess(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.process_name is not None:
             result['ProcessName'] = self.process_name
@@ -17631,6 +19662,10 @@ class DescribeMonitoringAgentProcessesResponseBodyNodeProcesses(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['NodeProcess'] = []
         if self.node_process is not None:
@@ -17668,6 +19703,10 @@ class DescribeMonitoringAgentProcessesResponseBody(TeaModel):
             self.node_processes.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -17713,6 +19752,10 @@ class DescribeMonitoringAgentProcessesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17741,6 +19784,10 @@ class DescribeMonitoringAgentStatusesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
@@ -17768,6 +19815,10 @@ class DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -17802,6 +19853,10 @@ class DescribeMonitoringAgentStatusesResponseBodyNodeStatusList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['NodeStatus'] = []
         if self.node_status is not None:
@@ -17839,6 +19894,10 @@ class DescribeMonitoringAgentStatusesResponseBody(TeaModel):
             self.node_status_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -17884,6 +19943,10 @@ class DescribeMonitoringAgentStatusesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17922,6 +19985,10 @@ class DescribeMonitoringConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_install is not None:
             result['AutoInstall'] = self.auto_install
@@ -17970,6 +20037,10 @@ class DescribeMonitoringConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17998,6 +20069,10 @@ class DescribeMonitorResourceQuotaAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.show_used is not None:
             result['ShowUsed'] = self.show_used
@@ -18025,6 +20100,10 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaApi(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota_limit is not None:
             result['QuotaLimit'] = self.quota_limit
@@ -18060,6 +20139,10 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaCustomMonito
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota_limit is not None:
             result['QuotaLimit'] = self.quota_limit
@@ -18095,6 +20178,10 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEventMonitor
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota_limit is not None:
             result['QuotaLimit'] = self.quota_limit
@@ -18130,6 +20217,10 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorT
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota_limit is not None:
             result['QuotaLimit'] = self.quota_limit
@@ -18165,6 +20256,10 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaPhone(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota_limit is not None:
             result['QuotaLimit'] = self.quota_limit
@@ -18200,6 +20295,10 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSMS(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota_limit is not None:
             result['QuotaLimit'] = self.quota_limit
@@ -18235,6 +20334,10 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaLogMonitor(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota_limit is not None:
             result['QuotaLimit'] = self.quota_limit
@@ -18270,6 +20373,10 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorO
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota_limit is not None:
             result['QuotaLimit'] = self.quota_limit
@@ -18305,6 +20412,10 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorE
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quota_limit is not None:
             result['QuotaLimit'] = self.quota_limit
@@ -18375,6 +20486,10 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota(TeaModel):
             self.site_monitor_ecs_probe.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.api is not None:
             result['Api'] = self.api.to_map()
@@ -18458,6 +20573,10 @@ class DescribeMonitorResourceQuotaAttributeResponseBody(TeaModel):
             self.resource_quota.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -18499,6 +20618,10 @@ class DescribeMonitorResourceQuotaAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18527,6 +20650,10 @@ class DescribeProductResourceTagKeyListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -18550,6 +20677,10 @@ class DescribeProductResourceTagKeyListResponseBodyTagKeys(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
@@ -18584,6 +20715,10 @@ class DescribeProductResourceTagKeyListResponseBody(TeaModel):
             self.tag_keys.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -18633,6 +20768,10 @@ class DescribeProductResourceTagKeyListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18671,6 +20810,10 @@ class DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleList
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
@@ -18717,6 +20860,10 @@ class DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleList
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AlertInitConfig'] = []
         if self.alert_init_config is not None:
@@ -18748,6 +20895,10 @@ class DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleList
             self.alert_init_config_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product is not None:
             result['Product'] = self.product
@@ -18779,6 +20930,10 @@ class DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleList
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AllProductInitMetricRule'] = []
         if self.all_product_init_metric_rule is not None:
@@ -18818,6 +20973,10 @@ class DescribeProductsOfActiveMetricRuleResponseBody(TeaModel):
             self.all_product_init_metric_rule_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -18867,6 +21026,10 @@ class DescribeProductsOfActiveMetricRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18899,6 +21062,10 @@ class DescribeProjectMetaRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.labels is not None:
             result['Labels'] = self.labels
@@ -18934,6 +21101,10 @@ class DescribeProjectMetaResponseBodyResourcesResource(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
@@ -18968,6 +21139,10 @@ class DescribeProjectMetaResponseBodyResources(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Resource'] = []
         if self.resource is not None:
@@ -19011,6 +21186,10 @@ class DescribeProjectMetaResponseBody(TeaModel):
             self.resources.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -19068,6 +21247,10 @@ class DescribeProjectMetaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19098,6 +21281,10 @@ class DescribeSiteMonitorAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -19155,6 +21342,10 @@ class DescribeSiteMonitorAttributeResponseBodyMetricRulesMetricRule(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
@@ -19241,6 +21432,10 @@ class DescribeSiteMonitorAttributeResponseBodyMetricRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MetricRule'] = []
         if self.metric_rule is not None:
@@ -19305,6 +21500,10 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.password is not None:
             result['password'] = self.password
@@ -19406,6 +21605,10 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.city_name is not None:
             result['CityName'] = self.city_name
@@ -19444,6 +21647,10 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCities(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['IspCity'] = []
         if self.isp_city is not None:
@@ -19489,6 +21696,10 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitors(TeaModel):
             self.isp_cities.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_type is not None:
             result['TaskType'] = self.task_type
@@ -19555,6 +21766,10 @@ class DescribeSiteMonitorAttributeResponseBody(TeaModel):
             self.site_monitors.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_rules is not None:
             result['MetricRules'] = self.metric_rules.to_map()
@@ -19605,6 +21820,10 @@ class DescribeSiteMonitorAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19647,6 +21866,10 @@ class DescribeSiteMonitorDataRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -19708,6 +21931,10 @@ class DescribeSiteMonitorDataResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -19756,6 +21983,10 @@ class DescribeSiteMonitorDataResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19792,6 +22023,10 @@ class DescribeSiteMonitorListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -19867,6 +22102,10 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.password is not None:
             result['password'] = self.password
@@ -19979,6 +22218,10 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitor(TeaModel):
             self.options_json.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_type is not None:
             result['TaskType'] = self.task_type
@@ -20038,6 +22281,10 @@ class DescribeSiteMonitorListResponseBodySiteMonitors(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SiteMonitor'] = []
         if self.site_monitor is not None:
@@ -20081,6 +22328,10 @@ class DescribeSiteMonitorListResponseBody(TeaModel):
             self.site_monitors.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -20138,6 +22389,10 @@ class DescribeSiteMonitorListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20176,6 +22431,10 @@ class DescribeSiteMonitorQuotaResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.site_monitor_operator_quota_quota is not None:
             result['SiteMonitorOperatorQuotaQuota'] = self.site_monitor_operator_quota_quota
@@ -20228,6 +22487,10 @@ class DescribeSiteMonitorQuotaResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -20273,6 +22536,10 @@ class DescribeSiteMonitorQuotaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20307,6 +22574,10 @@ class DescribeSiteMonitorStatisticsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -20350,6 +22621,10 @@ class DescribeSiteMonitorStatisticsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -20394,6 +22669,10 @@ class DescribeSiteMonitorStatisticsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20442,6 +22721,10 @@ class DescribeSystemEventAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product is not None:
             result['Product'] = self.product
@@ -20523,6 +22806,10 @@ class DescribeSystemEventAttributeResponseBodySystemEventsSystemEvent(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -20585,6 +22872,10 @@ class DescribeSystemEventAttributeResponseBodySystemEvents(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SystemEvent'] = []
         if self.system_event is not None:
@@ -20622,6 +22913,10 @@ class DescribeSystemEventAttributeResponseBody(TeaModel):
             self.system_events.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.system_events is not None:
             result['SystemEvents'] = self.system_events.to_map()
@@ -20667,6 +22962,10 @@ class DescribeSystemEventAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20711,6 +23010,10 @@ class DescribeSystemEventCountRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product is not None:
             result['Product'] = self.product
@@ -20786,6 +23089,10 @@ class DescribeSystemEventCountResponseBodySystemEventCountsSystemEventCount(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -20852,6 +23159,10 @@ class DescribeSystemEventCountResponseBodySystemEventCounts(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SystemEventCount'] = []
         if self.system_event_count is not None:
@@ -20889,6 +23200,10 @@ class DescribeSystemEventCountResponseBody(TeaModel):
             self.system_event_counts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -20934,6 +23249,10 @@ class DescribeSystemEventCountResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20978,6 +23297,10 @@ class DescribeSystemEventHistogramRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product is not None:
             result['Product'] = self.product
@@ -21037,6 +23360,10 @@ class DescribeSystemEventHistogramResponseBodySystemEventHistogramsSystemEventHi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -21071,6 +23398,10 @@ class DescribeSystemEventHistogramResponseBodySystemEventHistograms(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SystemEventHistogram'] = []
         if self.system_event_histogram is not None:
@@ -21108,6 +23439,10 @@ class DescribeSystemEventHistogramResponseBody(TeaModel):
             self.system_event_histograms.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -21153,6 +23488,10 @@ class DescribeSystemEventHistogramResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21183,6 +23522,10 @@ class DescribeTagKeyListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -21210,6 +23553,10 @@ class DescribeTagKeyListResponseBodyTagKeys(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
@@ -21242,6 +23589,10 @@ class DescribeTagKeyListResponseBody(TeaModel):
             self.tag_keys.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -21287,6 +23638,10 @@ class DescribeTagKeyListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21319,6 +23674,10 @@ class DescribeTagValueListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -21350,6 +23709,10 @@ class DescribeTagValueListResponseBodyTagValues(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_value is not None:
             result['TagValue'] = self.tag_value
@@ -21382,6 +23745,10 @@ class DescribeTagValueListResponseBody(TeaModel):
             self.tag_values.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -21427,6 +23794,10 @@ class DescribeTagValueListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21455,6 +23826,10 @@ class DescribeUnhealthyHostAvailabilityRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
@@ -21478,6 +23853,10 @@ class DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyListNodeTaskInstance
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -21504,6 +23883,10 @@ class DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyListNodeTaskInstance
             self.instance_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_list is not None:
             result['InstanceList'] = self.instance_list.to_map()
@@ -21535,6 +23918,10 @@ class DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['NodeTaskInstance'] = []
         if self.node_task_instance is not None:
@@ -21572,6 +23959,10 @@ class DescribeUnhealthyHostAvailabilityResponseBody(TeaModel):
             self.unhealthy_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -21617,6 +24008,10 @@ class DescribeUnhealthyHostAvailabilityResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21645,6 +24040,10 @@ class DisableActiveMetricRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product is not None:
             result['Product'] = self.product
@@ -21674,6 +24073,10 @@ class DisableActiveMetricRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -21714,6 +24117,10 @@ class DisableActiveMetricRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21742,6 +24149,10 @@ class DisableEventRulesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_names is not None:
             result['RuleNames'] = self.rule_names
@@ -21771,6 +24182,10 @@ class DisableEventRulesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -21811,6 +24226,10 @@ class DisableEventRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21839,6 +24258,10 @@ class DisableHostAvailabilityRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
@@ -21868,6 +24291,10 @@ class DisableHostAvailabilityResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -21908,6 +24335,10 @@ class DisableHostAvailabilityResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -21936,6 +24367,10 @@ class DisableMetricRulesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
@@ -21965,6 +24400,10 @@ class DisableMetricRulesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -22005,6 +24444,10 @@ class DisableMetricRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22033,6 +24476,10 @@ class DisableSiteMonitorsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_ids is not None:
             result['TaskIds'] = self.task_ids
@@ -22056,6 +24503,10 @@ class DisableSiteMonitorsResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.count is not None:
             result['count'] = self.count
@@ -22088,6 +24539,10 @@ class DisableSiteMonitorsResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -22133,6 +24588,10 @@ class DisableSiteMonitorsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22161,6 +24620,10 @@ class EnableActiveMetricRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product is not None:
             result['Product'] = self.product
@@ -22190,6 +24653,10 @@ class EnableActiveMetricRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -22230,6 +24697,10 @@ class EnableActiveMetricRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22258,6 +24729,10 @@ class EnableEventRulesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_names is not None:
             result['RuleNames'] = self.rule_names
@@ -22287,6 +24762,10 @@ class EnableEventRulesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -22327,6 +24806,10 @@ class EnableEventRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22355,6 +24838,10 @@ class EnableHostAvailabilityRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
@@ -22384,6 +24871,10 @@ class EnableHostAvailabilityResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -22424,6 +24915,10 @@ class EnableHostAvailabilityResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22452,6 +24947,10 @@ class EnableMetricRulesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
@@ -22481,6 +24980,10 @@ class EnableMetricRulesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -22521,6 +25024,10 @@ class EnableMetricRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22549,6 +25056,10 @@ class EnableSiteMonitorsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_ids is not None:
             result['TaskIds'] = self.task_ids
@@ -22572,6 +25083,10 @@ class EnableSiteMonitorsResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.count is not None:
             result['count'] = self.count
@@ -22604,6 +25119,10 @@ class EnableSiteMonitorsResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -22649,6 +25168,10 @@ class EnableSiteMonitorsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22679,6 +25202,10 @@ class InstallMonitoringAgentRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.force is not None:
             result['Force'] = self.force
@@ -22712,6 +25239,10 @@ class InstallMonitoringAgentResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -22752,6 +25283,10 @@ class InstallMonitoringAgentResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22796,6 +25331,10 @@ class ModifyGroupMonitoringAgentProcessRequestAlertConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.silence_time is not None:
             result['SilenceTime'] = self.silence_time
@@ -22860,6 +25399,10 @@ class ModifyGroupMonitoringAgentProcessRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
@@ -22906,6 +25449,10 @@ class ModifyGroupMonitoringAgentProcessResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -22946,6 +25493,10 @@ class ModifyGroupMonitoringAgentProcessResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -22973,6 +25524,7 @@ class ModifyHostAvailabilityRequestTaskOption(TeaModel):
         http_response_match_content: str = None,
         http_method: str = None,
         http_negative: bool = None,
+        http_header: str = None,
     ):
         self.http_uri = http_uri
         self.telnet_or_ping_host = telnet_or_ping_host
@@ -22981,11 +25533,16 @@ class ModifyHostAvailabilityRequestTaskOption(TeaModel):
         self.http_response_match_content = http_response_match_content
         self.http_method = http_method
         self.http_negative = http_negative
+        self.http_header = http_header
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.http_uri is not None:
             result['HttpURI'] = self.http_uri
@@ -23001,6 +25558,8 @@ class ModifyHostAvailabilityRequestTaskOption(TeaModel):
             result['HttpMethod'] = self.http_method
         if self.http_negative is not None:
             result['HttpNegative'] = self.http_negative
+        if self.http_header is not None:
+            result['HttpHeader'] = self.http_header
         return result
 
     def from_map(self, m: dict = None):
@@ -23019,6 +25578,8 @@ class ModifyHostAvailabilityRequestTaskOption(TeaModel):
             self.http_method = m.get('HttpMethod')
         if m.get('HttpNegative') is not None:
             self.http_negative = m.get('HttpNegative')
+        if m.get('HttpHeader') is not None:
+            self.http_header = m.get('HttpHeader')
         return self
 
 
@@ -23041,6 +25602,10 @@ class ModifyHostAvailabilityRequestAlertConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.notify_type is not None:
             result['NotifyType'] = self.notify_type
@@ -23088,6 +25653,10 @@ class ModifyHostAvailabilityRequestAlertConfigEscalationList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -23148,6 +25717,10 @@ class ModifyHostAvailabilityRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_option is not None:
             result['TaskOption'] = self.task_option.to_map()
@@ -23212,6 +25785,10 @@ class ModifyHostAvailabilityResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -23252,6 +25829,10 @@ class ModifyHostAvailabilityResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -23282,6 +25863,10 @@ class ModifyHostInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -23315,6 +25900,10 @@ class ModifyHostInfoResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -23355,6 +25944,10 @@ class ModifyHostInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -23389,6 +25982,10 @@ class ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.threshold is not None:
             result['Threshold'] = self.threshold
@@ -23430,6 +26027,10 @@ class ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsWarn(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.threshold is not None:
             result['Threshold'] = self.threshold
@@ -23471,6 +26072,10 @@ class ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsCritical(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.times is not None:
             result['Times'] = self.times
@@ -23518,6 +26123,10 @@ class ModifyMetricRuleTemplateRequestAlertTemplatesEscalations(TeaModel):
             self.critical.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.info is not None:
             result['Info'] = self.info.to_map()
@@ -23568,6 +26177,10 @@ class ModifyMetricRuleTemplateRequestAlertTemplates(TeaModel):
             self.escalations.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.escalations is not None:
             result['Escalations'] = self.escalations.to_map()
@@ -23631,6 +26244,10 @@ class ModifyMetricRuleTemplateRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
@@ -23681,6 +26298,10 @@ class ModifyMetricRuleTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -23721,6 +26342,10 @@ class ModifyMetricRuleTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -23741,14 +26366,10 @@ class ModifyMetricRuleTemplateResponse(TeaModel):
 class ModifyMonitorGroupRequest(TeaModel):
     def __init__(
         self,
-        bind_urls: str = None,
-        service_id: int = None,
         group_id: str = None,
         group_name: str = None,
         contact_groups: str = None,
     ):
-        self.bind_urls = bind_urls
-        self.service_id = service_id
         self.group_id = group_id
         self.group_name = group_name
         self.contact_groups = contact_groups
@@ -23757,11 +26378,11 @@ class ModifyMonitorGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.bind_urls is not None:
-            result['BindUrls'] = self.bind_urls
-        if self.service_id is not None:
-            result['ServiceId'] = self.service_id
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.group_name is not None:
@@ -23772,10 +26393,6 @@ class ModifyMonitorGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('BindUrls') is not None:
-            self.bind_urls = m.get('BindUrls')
-        if m.get('ServiceId') is not None:
-            self.service_id = m.get('ServiceId')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('GroupName') is not None:
@@ -23802,6 +26419,10 @@ class ModifyMonitorGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -23842,6 +26463,10 @@ class ModifyMonitorGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -23876,6 +26501,10 @@ class ModifyMonitorGroupInstancesRequestInstances(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
@@ -23916,6 +26545,10 @@ class ModifyMonitorGroupInstancesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -23954,6 +26587,10 @@ class ModifyMonitorGroupInstancesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -23994,6 +26631,10 @@ class ModifyMonitorGroupInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -24034,6 +26675,10 @@ class ModifySiteMonitorRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.address is not None:
             result['Address'] = self.address
@@ -24081,6 +26726,10 @@ class ModifySiteMonitorResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.count is not None:
             result['count'] = self.count
@@ -24113,6 +26762,10 @@ class ModifySiteMonitorResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -24158,6 +26811,10 @@ class ModifySiteMonitorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -24188,6 +26845,10 @@ class OpenCmsServiceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -24220,6 +26881,10 @@ class OpenCmsServiceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -24254,6 +26919,10 @@ class PutContactRequestChannels(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sms is not None:
             result['SMS'] = self.sms
@@ -24296,6 +26965,10 @@ class PutContactRequest(TeaModel):
             self.channels.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.channels is not None:
             result['Channels'] = self.channels.to_map()
@@ -24338,6 +27011,10 @@ class PutContactResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -24378,6 +27055,10 @@ class PutContactResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -24412,6 +27093,10 @@ class PutContactGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_group_name is not None:
             result['ContactGroupName'] = self.contact_group_name
@@ -24453,6 +27138,10 @@ class PutContactGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -24493,6 +27182,10 @@ class PutContactGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -24527,6 +27220,10 @@ class PutCustomEventRequestEventInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -24565,6 +27262,10 @@ class PutCustomEventRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['EventInfo'] = []
         if self.event_info is not None:
@@ -24597,6 +27298,10 @@ class PutCustomEventResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -24633,6 +27338,10 @@ class PutCustomEventResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -24681,6 +27390,10 @@ class PutCustomEventRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -24750,6 +27463,10 @@ class PutCustomEventRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -24790,6 +27507,10 @@ class PutCustomEventRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -24830,6 +27551,10 @@ class PutCustomMetricRequestMetricList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -24880,6 +27605,10 @@ class PutCustomMetricRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MetricList'] = []
         if self.metric_list is not None:
@@ -24912,6 +27641,10 @@ class PutCustomMetricResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -24948,6 +27681,10 @@ class PutCustomMetricResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -25006,6 +27743,10 @@ class PutCustomMetricRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -25095,6 +27836,10 @@ class PutCustomMetricRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -25135,6 +27880,10 @@ class PutCustomMetricRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -25171,6 +27920,10 @@ class PutEventRuleRequestEventPattern(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.event_type_list is not None:
             result['EventTypeList'] = self.event_type_list
@@ -25223,6 +27976,10 @@ class PutEventRuleRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -25279,6 +28036,10 @@ class PutEventRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -25323,6 +28084,10 @@ class PutEventRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -25357,6 +28122,10 @@ class PutEventRuleTargetsRequestFcParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.function_name is not None:
             result['FunctionName'] = self.function_name
@@ -25396,6 +28165,10 @@ class PutEventRuleTargetsRequestContactParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_group_name is not None:
             result['ContactGroupName'] = self.contact_group_name
@@ -25431,6 +28204,10 @@ class PutEventRuleTargetsRequestMnsParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region is not None:
             result['Region'] = self.region
@@ -25468,6 +28245,10 @@ class PutEventRuleTargetsRequestWebhookParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.protocol is not None:
             result['Protocol'] = self.protocol
@@ -25509,6 +28290,10 @@ class PutEventRuleTargetsRequestSlsParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.log_store is not None:
             result['LogStore'] = self.log_store
@@ -25573,6 +28358,10 @@ class PutEventRuleTargetsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -25645,6 +28434,10 @@ class PutEventRuleTargetsResponseBodyFailedMnsParametersMnsParameter(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region is not None:
             result['Region'] = self.region
@@ -25679,6 +28472,10 @@ class PutEventRuleTargetsResponseBodyFailedMnsParameters(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MnsParameter'] = []
         if self.mns_parameter is not None:
@@ -25713,6 +28510,10 @@ class PutEventRuleTargetsResponseBodyFailedFcParametersFcParameter(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.function_name is not None:
             result['FunctionName'] = self.function_name
@@ -25751,6 +28552,10 @@ class PutEventRuleTargetsResponseBodyFailedFcParameters(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FcParameter'] = []
         if self.fc_parameter is not None:
@@ -25783,6 +28588,10 @@ class PutEventRuleTargetsResponseBodyFailedContactParametersContactParameter(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contact_group_name is not None:
             result['ContactGroupName'] = self.contact_group_name
@@ -25817,6 +28626,10 @@ class PutEventRuleTargetsResponseBodyFailedContactParameters(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ContactParameter'] = []
         if self.contact_parameter is not None:
@@ -25864,6 +28677,10 @@ class PutEventRuleTargetsResponseBody(TeaModel):
             self.failed_contact_parameters.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -25923,6 +28740,10 @@ class PutEventRuleTargetsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -25957,6 +28778,10 @@ class PutExporterOutputRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dest_name is not None:
             result['DestName'] = self.dest_name
@@ -25998,6 +28823,10 @@ class PutExporterOutputResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -26038,6 +28867,10 @@ class PutExporterOutputResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -26076,6 +28909,10 @@ class PutExporterRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -26125,6 +28962,10 @@ class PutExporterRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -26165,6 +29006,10 @@ class PutExporterRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -26199,6 +29044,10 @@ class PutGroupMetricRuleRequestEscalationsCritical(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.statistics is not None:
             result['Statistics'] = self.statistics
@@ -26240,6 +29089,10 @@ class PutGroupMetricRuleRequestEscalationsWarn(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.statistics is not None:
             result['Statistics'] = self.statistics
@@ -26281,6 +29134,10 @@ class PutGroupMetricRuleRequestEscalationsInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.statistics is not None:
             result['Statistics'] = self.statistics
@@ -26328,6 +29185,10 @@ class PutGroupMetricRuleRequestEscalations(TeaModel):
             self.info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.critical is not None:
             result['Critical'] = self.critical.to_map()
@@ -26362,6 +29223,7 @@ class PutGroupMetricRuleRequest(TeaModel):
         namespace: str = None,
         metric_name: str = None,
         dimensions: str = None,
+        extra_dimension_json: str = None,
         effective_interval: str = None,
         no_effective_interval: str = None,
         silence_time: int = None,
@@ -26379,6 +29241,7 @@ class PutGroupMetricRuleRequest(TeaModel):
         self.namespace = namespace
         self.metric_name = metric_name
         self.dimensions = dimensions
+        self.extra_dimension_json = extra_dimension_json
         self.effective_interval = effective_interval
         self.no_effective_interval = no_effective_interval
         self.silence_time = silence_time
@@ -26393,6 +29256,10 @@ class PutGroupMetricRuleRequest(TeaModel):
             self.escalations.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.escalations is not None:
             result['Escalations'] = self.escalations.to_map()
@@ -26410,6 +29277,8 @@ class PutGroupMetricRuleRequest(TeaModel):
             result['MetricName'] = self.metric_name
         if self.dimensions is not None:
             result['Dimensions'] = self.dimensions
+        if self.extra_dimension_json is not None:
+            result['ExtraDimensionJson'] = self.extra_dimension_json
         if self.effective_interval is not None:
             result['EffectiveInterval'] = self.effective_interval
         if self.no_effective_interval is not None:
@@ -26447,6 +29316,8 @@ class PutGroupMetricRuleRequest(TeaModel):
             self.metric_name = m.get('MetricName')
         if m.get('Dimensions') is not None:
             self.dimensions = m.get('Dimensions')
+        if m.get('ExtraDimensionJson') is not None:
+            self.extra_dimension_json = m.get('ExtraDimensionJson')
         if m.get('EffectiveInterval') is not None:
             self.effective_interval = m.get('EffectiveInterval')
         if m.get('NoEffectiveInterval') is not None:
@@ -26483,6 +29354,10 @@ class PutGroupMetricRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -26523,6 +29398,10 @@ class PutGroupMetricRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -26555,6 +29434,10 @@ class PutLogMonitorRequestAggregates(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_name is not None:
             result['FieldName'] = self.field_name
@@ -26588,6 +29471,10 @@ class PutLogMonitorRequestGroupbys(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.field_name is not None:
             result['FieldName'] = self.field_name
@@ -26619,6 +29506,10 @@ class PutLogMonitorRequestValueFilter(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -26685,6 +29576,10 @@ class PutLogMonitorRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.log_id is not None:
             result['LogId'] = self.log_id
@@ -26779,6 +29674,10 @@ class PutLogMonitorResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -26823,6 +29722,10 @@ class PutLogMonitorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -26855,6 +29758,10 @@ class PutMetricRuleTargetsRequestTargets(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.arn is not None:
             result['Arn'] = self.arn
@@ -26891,6 +29798,10 @@ class PutMetricRuleTargetsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
@@ -26927,6 +29838,10 @@ class PutMetricRuleTargetsResponseBodyFailDataTargetsTarget(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
@@ -26961,6 +29876,10 @@ class PutMetricRuleTargetsResponseBodyFailDataTargets(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Target'] = []
         if self.target is not None:
@@ -26990,6 +29909,10 @@ class PutMetricRuleTargetsResponseBodyFailData(TeaModel):
             self.targets.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.targets is not None:
             result['Targets'] = self.targets.to_map()
@@ -27023,6 +29946,10 @@ class PutMetricRuleTargetsResponseBody(TeaModel):
             self.fail_data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -27068,6 +29995,10 @@ class PutMetricRuleTargetsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -27100,6 +30031,10 @@ class PutMonitorGroupDynamicRuleRequestGroupRulesFilters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -27138,6 +30073,10 @@ class PutMonitorGroupDynamicRuleRequestGroupRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.filter_relation is not None:
             result['FilterRelation'] = self.filter_relation
@@ -27179,6 +30118,10 @@ class PutMonitorGroupDynamicRuleRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -27217,6 +30160,10 @@ class PutMonitorGroupDynamicRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -27257,6 +30204,10 @@ class PutMonitorGroupDynamicRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -27287,6 +30238,10 @@ class PutMonitoringConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_install is not None:
             result['AutoInstall'] = self.auto_install
@@ -27320,6 +30275,10 @@ class PutMonitoringConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -27360,6 +30319,10 @@ class PutMonitoringConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -27394,6 +30357,10 @@ class PutResourceMetricRuleRequestEscalationsCritical(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.statistics is not None:
             result['Statistics'] = self.statistics
@@ -27435,6 +30402,10 @@ class PutResourceMetricRuleRequestEscalationsWarn(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.statistics is not None:
             result['Statistics'] = self.statistics
@@ -27476,6 +30447,10 @@ class PutResourceMetricRuleRequestEscalationsInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.statistics is not None:
             result['Statistics'] = self.statistics
@@ -27523,6 +30498,10 @@ class PutResourceMetricRuleRequestEscalations(TeaModel):
             self.info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.critical is not None:
             result['Critical'] = self.critical.to_map()
@@ -27584,6 +30563,10 @@ class PutResourceMetricRuleRequest(TeaModel):
             self.escalations.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.escalations is not None:
             result['Escalations'] = self.escalations.to_map()
@@ -27666,6 +30649,10 @@ class PutResourceMetricRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -27706,6 +30693,10 @@ class PutResourceMetricRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -27740,6 +30731,10 @@ class PutResourceMetricRulesRequestRulesEscalationsInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.threshold is not None:
             result['Threshold'] = self.threshold
@@ -27781,6 +30776,10 @@ class PutResourceMetricRulesRequestRulesEscalationsWarn(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.threshold is not None:
             result['Threshold'] = self.threshold
@@ -27822,6 +30821,10 @@ class PutResourceMetricRulesRequestRulesEscalationsCritical(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.times is not None:
             result['Times'] = self.times
@@ -27869,6 +30872,10 @@ class PutResourceMetricRulesRequestRulesEscalations(TeaModel):
             self.critical.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.info is not None:
             result['Info'] = self.info.to_map()
@@ -27931,6 +30938,10 @@ class PutResourceMetricRulesRequestRules(TeaModel):
             self.escalations.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.escalations is not None:
             result['Escalations'] = self.escalations.to_map()
@@ -28010,6 +31021,10 @@ class PutResourceMetricRulesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Rules'] = []
         if self.rules is not None:
@@ -28042,6 +31057,10 @@ class PutResourceMetricRulesResponseBodyFailedListResultTargetResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.success is not None:
             result['Success'] = self.success
@@ -28076,6 +31095,10 @@ class PutResourceMetricRulesResponseBodyFailedListResultTarget(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['Result'] = self.result.to_map()
@@ -28107,6 +31130,10 @@ class PutResourceMetricRulesResponseBodyFailedListResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Target'] = []
         if self.target is not None:
@@ -28144,6 +31171,10 @@ class PutResourceMetricRulesResponseBody(TeaModel):
             self.failed_list_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -28189,6 +31220,10 @@ class PutResourceMetricRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -28219,6 +31254,10 @@ class RemoveTagsRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -28251,6 +31290,10 @@ class RemoveTagsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -28283,6 +31326,10 @@ class RemoveTagsResponseBodyTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tags is not None:
             result['Tags'] = self.tags
@@ -28315,6 +31362,10 @@ class RemoveTagsResponseBody(TeaModel):
             self.tag.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -28360,6 +31411,10 @@ class RemoveTagsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -28394,6 +31449,10 @@ class SendDryRunSystemEventRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product is not None:
             result['Product'] = self.product
@@ -28435,6 +31494,10 @@ class SendDryRunSystemEventResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -28475,6 +31538,10 @@ class SendDryRunSystemEventResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -28503,6 +31570,10 @@ class UninstallMonitoringAgentRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -28532,6 +31603,10 @@ class UninstallMonitoringAgentResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -28572,6 +31647,10 @@ class UninstallMonitoringAgentResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

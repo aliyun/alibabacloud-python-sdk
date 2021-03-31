@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -49,7 +50,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.AddTagsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.AddTagsResponse(),
             self.do_rpcrequest('AddTags', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -62,7 +64,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.AddTagsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.AddTagsResponse(),
             await self.do_rpcrequest_async('AddTags', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -89,7 +92,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ApplyMetricRuleTemplateResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ApplyMetricRuleTemplateResponse(),
             self.do_rpcrequest('ApplyMetricRuleTemplate', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -102,7 +106,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ApplyMetricRuleTemplateResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ApplyMetricRuleTemplateResponse(),
             await self.do_rpcrequest_async('ApplyMetricRuleTemplate', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -129,7 +134,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateCmsCallNumOrderResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateCmsCallNumOrderResponse(),
             self.do_rpcrequest('CreateCmsCallNumOrder', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -142,7 +148,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateCmsCallNumOrderResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateCmsCallNumOrderResponse(),
             await self.do_rpcrequest_async('CreateCmsCallNumOrder', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -169,7 +176,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateCmsOrderResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateCmsOrderResponse(),
             self.do_rpcrequest('CreateCmsOrder', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -182,7 +190,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateCmsOrderResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateCmsOrderResponse(),
             await self.do_rpcrequest_async('CreateCmsOrder', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -209,7 +218,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateCmsSmspackageOrderResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateCmsSmspackageOrderResponse(),
             self.do_rpcrequest('CreateCmsSmspackageOrder', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -222,7 +232,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateCmsSmspackageOrderResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateCmsSmspackageOrderResponse(),
             await self.do_rpcrequest_async('CreateCmsSmspackageOrder', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -249,7 +260,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateDynamicTagGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateDynamicTagGroupResponse(),
             self.do_rpcrequest('CreateDynamicTagGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -262,7 +274,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateDynamicTagGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateDynamicTagGroupResponse(),
             await self.do_rpcrequest_async('CreateDynamicTagGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -289,7 +302,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateGroupMetricRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateGroupMetricRulesResponse(),
             self.do_rpcrequest('CreateGroupMetricRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -302,7 +316,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateGroupMetricRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateGroupMetricRulesResponse(),
             await self.do_rpcrequest_async('CreateGroupMetricRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -329,7 +344,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateGroupMonitoringAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateGroupMonitoringAgentProcessResponse(),
             self.do_rpcrequest('CreateGroupMonitoringAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -342,7 +358,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateGroupMonitoringAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateGroupMonitoringAgentProcessResponse(),
             await self.do_rpcrequest_async('CreateGroupMonitoringAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -369,7 +386,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateHostAvailabilityResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateHostAvailabilityResponse(),
             self.do_rpcrequest('CreateHostAvailability', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -382,7 +400,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateHostAvailabilityResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateHostAvailabilityResponse(),
             await self.do_rpcrequest_async('CreateHostAvailability', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -409,7 +428,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMetricRuleResourcesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMetricRuleResourcesResponse(),
             self.do_rpcrequest('CreateMetricRuleResources', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -422,7 +442,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMetricRuleResourcesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMetricRuleResourcesResponse(),
             await self.do_rpcrequest_async('CreateMetricRuleResources', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -449,7 +470,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMetricRuleTemplateResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMetricRuleTemplateResponse(),
             self.do_rpcrequest('CreateMetricRuleTemplate', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -462,7 +484,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMetricRuleTemplateResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMetricRuleTemplateResponse(),
             await self.do_rpcrequest_async('CreateMetricRuleTemplate', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -489,7 +512,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMonitorAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMonitorAgentProcessResponse(),
             self.do_rpcrequest('CreateMonitorAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -502,7 +526,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMonitorAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMonitorAgentProcessResponse(),
             await self.do_rpcrequest_async('CreateMonitorAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -529,7 +554,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMonitorGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMonitorGroupResponse(),
             self.do_rpcrequest('CreateMonitorGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -542,7 +568,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMonitorGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMonitorGroupResponse(),
             await self.do_rpcrequest_async('CreateMonitorGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -569,7 +596,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMonitorGroupByResourceGroupIdResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMonitorGroupByResourceGroupIdResponse(),
             self.do_rpcrequest('CreateMonitorGroupByResourceGroupId', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -582,7 +610,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMonitorGroupByResourceGroupIdResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMonitorGroupByResourceGroupIdResponse(),
             await self.do_rpcrequest_async('CreateMonitorGroupByResourceGroupId', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -609,7 +638,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMonitorGroupInstancesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMonitorGroupInstancesResponse(),
             self.do_rpcrequest('CreateMonitorGroupInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -622,7 +652,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMonitorGroupInstancesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMonitorGroupInstancesResponse(),
             await self.do_rpcrequest_async('CreateMonitorGroupInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -649,7 +680,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMonitorGroupNotifyPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMonitorGroupNotifyPolicyResponse(),
             self.do_rpcrequest('CreateMonitorGroupNotifyPolicy', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -662,7 +694,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMonitorGroupNotifyPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMonitorGroupNotifyPolicyResponse(),
             await self.do_rpcrequest_async('CreateMonitorGroupNotifyPolicy', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -689,7 +722,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMonitoringAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMonitoringAgentProcessResponse(),
             self.do_rpcrequest('CreateMonitoringAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -702,7 +736,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateMonitoringAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateMonitoringAgentProcessResponse(),
             await self.do_rpcrequest_async('CreateMonitoringAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -729,7 +764,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateSiteMonitorResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateSiteMonitorResponse(),
             self.do_rpcrequest('CreateSiteMonitor', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -742,7 +778,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.CreateSiteMonitorResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.CreateSiteMonitorResponse(),
             await self.do_rpcrequest_async('CreateSiteMonitor', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -769,7 +806,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteContactResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteContactResponse(),
             self.do_rpcrequest('DeleteContact', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -782,7 +820,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteContactResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteContactResponse(),
             await self.do_rpcrequest_async('DeleteContact', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -809,7 +848,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteContactGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteContactGroupResponse(),
             self.do_rpcrequest('DeleteContactGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -822,7 +862,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteContactGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteContactGroupResponse(),
             await self.do_rpcrequest_async('DeleteContactGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -849,7 +890,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteCustomMetricResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteCustomMetricResponse(),
             self.do_rpcrequest('DeleteCustomMetric', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -862,7 +904,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteCustomMetricResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteCustomMetricResponse(),
             await self.do_rpcrequest_async('DeleteCustomMetric', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -889,7 +932,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteDynamicTagGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteDynamicTagGroupResponse(),
             self.do_rpcrequest('DeleteDynamicTagGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -902,7 +946,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteDynamicTagGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteDynamicTagGroupResponse(),
             await self.do_rpcrequest_async('DeleteDynamicTagGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -929,7 +974,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteEventRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteEventRulesResponse(),
             self.do_rpcrequest('DeleteEventRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -942,7 +988,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteEventRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteEventRulesResponse(),
             await self.do_rpcrequest_async('DeleteEventRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -969,7 +1016,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteEventRuleTargetsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteEventRuleTargetsResponse(),
             self.do_rpcrequest('DeleteEventRuleTargets', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -982,7 +1030,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteEventRuleTargetsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteEventRuleTargetsResponse(),
             await self.do_rpcrequest_async('DeleteEventRuleTargets', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1009,7 +1058,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteExporterOutputResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteExporterOutputResponse(),
             self.do_rpcrequest('DeleteExporterOutput', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1022,7 +1072,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteExporterOutputResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteExporterOutputResponse(),
             await self.do_rpcrequest_async('DeleteExporterOutput', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1049,7 +1100,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteExporterRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteExporterRuleResponse(),
             self.do_rpcrequest('DeleteExporterRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1062,7 +1114,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteExporterRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteExporterRuleResponse(),
             await self.do_rpcrequest_async('DeleteExporterRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1089,7 +1142,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteGroupMonitoringAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteGroupMonitoringAgentProcessResponse(),
             self.do_rpcrequest('DeleteGroupMonitoringAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1102,7 +1156,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteGroupMonitoringAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteGroupMonitoringAgentProcessResponse(),
             await self.do_rpcrequest_async('DeleteGroupMonitoringAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1129,7 +1184,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteHostAvailabilityResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteHostAvailabilityResponse(),
             self.do_rpcrequest('DeleteHostAvailability', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1142,7 +1198,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteHostAvailabilityResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteHostAvailabilityResponse(),
             await self.do_rpcrequest_async('DeleteHostAvailability', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1169,7 +1226,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteLogMonitorResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteLogMonitorResponse(),
             self.do_rpcrequest('DeleteLogMonitor', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1182,7 +1240,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteLogMonitorResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteLogMonitorResponse(),
             await self.do_rpcrequest_async('DeleteLogMonitor', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1209,7 +1268,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMetricRuleResourcesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMetricRuleResourcesResponse(),
             self.do_rpcrequest('DeleteMetricRuleResources', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1222,7 +1282,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMetricRuleResourcesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMetricRuleResourcesResponse(),
             await self.do_rpcrequest_async('DeleteMetricRuleResources', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1249,7 +1310,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMetricRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMetricRulesResponse(),
             self.do_rpcrequest('DeleteMetricRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1262,7 +1324,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMetricRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMetricRulesResponse(),
             await self.do_rpcrequest_async('DeleteMetricRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1289,7 +1352,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMetricRuleTargetsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMetricRuleTargetsResponse(),
             self.do_rpcrequest('DeleteMetricRuleTargets', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1302,7 +1366,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMetricRuleTargetsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMetricRuleTargetsResponse(),
             await self.do_rpcrequest_async('DeleteMetricRuleTargets', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1329,7 +1394,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMetricRuleTemplateResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMetricRuleTemplateResponse(),
             self.do_rpcrequest('DeleteMetricRuleTemplate', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1342,7 +1408,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMetricRuleTemplateResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMetricRuleTemplateResponse(),
             await self.do_rpcrequest_async('DeleteMetricRuleTemplate', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1369,7 +1436,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMonitorGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMonitorGroupResponse(),
             self.do_rpcrequest('DeleteMonitorGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1382,7 +1450,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMonitorGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMonitorGroupResponse(),
             await self.do_rpcrequest_async('DeleteMonitorGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1409,7 +1478,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMonitorGroupDynamicRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMonitorGroupDynamicRuleResponse(),
             self.do_rpcrequest('DeleteMonitorGroupDynamicRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1422,7 +1492,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMonitorGroupDynamicRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMonitorGroupDynamicRuleResponse(),
             await self.do_rpcrequest_async('DeleteMonitorGroupDynamicRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1449,7 +1520,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMonitorGroupInstancesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMonitorGroupInstancesResponse(),
             self.do_rpcrequest('DeleteMonitorGroupInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1462,7 +1534,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMonitorGroupInstancesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMonitorGroupInstancesResponse(),
             await self.do_rpcrequest_async('DeleteMonitorGroupInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1489,7 +1562,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMonitorGroupNotifyPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMonitorGroupNotifyPolicyResponse(),
             self.do_rpcrequest('DeleteMonitorGroupNotifyPolicy', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1502,7 +1576,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMonitorGroupNotifyPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMonitorGroupNotifyPolicyResponse(),
             await self.do_rpcrequest_async('DeleteMonitorGroupNotifyPolicy', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1529,7 +1604,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMonitoringAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMonitoringAgentProcessResponse(),
             self.do_rpcrequest('DeleteMonitoringAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1542,7 +1618,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteMonitoringAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteMonitoringAgentProcessResponse(),
             await self.do_rpcrequest_async('DeleteMonitoringAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1569,7 +1646,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteSiteMonitorsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteSiteMonitorsResponse(),
             self.do_rpcrequest('DeleteSiteMonitors', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1582,7 +1660,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DeleteSiteMonitorsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteSiteMonitorsResponse(),
             await self.do_rpcrequest_async('DeleteSiteMonitors', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1610,7 +1689,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return cms_20190101_models.DescribeActiveMetricRuleListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeActiveMetricRuleListResponse(),
             self.do_rpcrequest('DescribeActiveMetricRuleList', '2019-01-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1624,7 +1704,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return cms_20190101_models.DescribeActiveMetricRuleListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeActiveMetricRuleListResponse(),
             await self.do_rpcrequest_async('DescribeActiveMetricRuleList', '2019-01-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1651,7 +1732,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeAlertHistoryListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeAlertHistoryListResponse(),
             self.do_rpcrequest('DescribeAlertHistoryList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1664,7 +1746,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeAlertHistoryListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeAlertHistoryListResponse(),
             await self.do_rpcrequest_async('DescribeAlertHistoryList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1682,6 +1765,50 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_alert_history_list_with_options_async(request, runtime)
 
+    def describe_alerting_metric_rule_resources_with_options(
+        self,
+        request: cms_20190101_models.DescribeAlertingMetricRuleResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeAlertingMetricRuleResourcesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeAlertingMetricRuleResourcesResponse(),
+            self.do_rpcrequest('DescribeAlertingMetricRuleResources', '2019-01-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_alerting_metric_rule_resources_with_options_async(
+        self,
+        request: cms_20190101_models.DescribeAlertingMetricRuleResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeAlertingMetricRuleResourcesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeAlertingMetricRuleResourcesResponse(),
+            await self.do_rpcrequest_async('DescribeAlertingMetricRuleResources', '2019-01-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def describe_alerting_metric_rule_resources(
+        self,
+        request: cms_20190101_models.DescribeAlertingMetricRuleResourcesRequest,
+    ) -> cms_20190101_models.DescribeAlertingMetricRuleResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_alerting_metric_rule_resources_with_options(request, runtime)
+
+    async def describe_alerting_metric_rule_resources_async(
+        self,
+        request: cms_20190101_models.DescribeAlertingMetricRuleResourcesRequest,
+    ) -> cms_20190101_models.DescribeAlertingMetricRuleResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_alerting_metric_rule_resources_with_options_async(request, runtime)
+
     def describe_alert_log_count_with_options(
         self,
         request: cms_20190101_models.DescribeAlertLogCountRequest,
@@ -1691,7 +1818,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeAlertLogCountResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeAlertLogCountResponse(),
             self.do_rpcrequest('DescribeAlertLogCount', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1704,7 +1832,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeAlertLogCountResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeAlertLogCountResponse(),
             await self.do_rpcrequest_async('DescribeAlertLogCount', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1731,7 +1860,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeAlertLogHistogramResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeAlertLogHistogramResponse(),
             self.do_rpcrequest('DescribeAlertLogHistogram', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1744,7 +1874,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeAlertLogHistogramResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeAlertLogHistogramResponse(),
             await self.do_rpcrequest_async('DescribeAlertLogHistogram', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1771,7 +1902,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeAlertLogListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeAlertLogListResponse(),
             self.do_rpcrequest('DescribeAlertLogList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1784,7 +1916,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeAlertLogListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeAlertLogListResponse(),
             await self.do_rpcrequest_async('DescribeAlertLogList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1811,7 +1944,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeContactGroupListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeContactGroupListResponse(),
             self.do_rpcrequest('DescribeContactGroupList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1824,7 +1958,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeContactGroupListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeContactGroupListResponse(),
             await self.do_rpcrequest_async('DescribeContactGroupList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1851,7 +1986,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeContactListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeContactListResponse(),
             self.do_rpcrequest('DescribeContactList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1864,7 +2000,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeContactListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeContactListResponse(),
             await self.do_rpcrequest_async('DescribeContactList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1891,7 +2028,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeContactListByContactGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeContactListByContactGroupResponse(),
             self.do_rpcrequest('DescribeContactListByContactGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1904,7 +2042,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeContactListByContactGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeContactListByContactGroupResponse(),
             await self.do_rpcrequest_async('DescribeContactListByContactGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1931,7 +2070,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeCustomEventAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeCustomEventAttributeResponse(),
             self.do_rpcrequest('DescribeCustomEventAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1944,7 +2084,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeCustomEventAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeCustomEventAttributeResponse(),
             await self.do_rpcrequest_async('DescribeCustomEventAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1971,7 +2112,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeCustomEventCountResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeCustomEventCountResponse(),
             self.do_rpcrequest('DescribeCustomEventCount', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1984,7 +2126,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeCustomEventCountResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeCustomEventCountResponse(),
             await self.do_rpcrequest_async('DescribeCustomEventCount', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2011,7 +2154,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeCustomEventHistogramResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeCustomEventHistogramResponse(),
             self.do_rpcrequest('DescribeCustomEventHistogram', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2024,7 +2168,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeCustomEventHistogramResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeCustomEventHistogramResponse(),
             await self.do_rpcrequest_async('DescribeCustomEventHistogram', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2051,7 +2196,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeCustomMetricListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeCustomMetricListResponse(),
             self.do_rpcrequest('DescribeCustomMetricList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2064,7 +2210,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeCustomMetricListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeCustomMetricListResponse(),
             await self.do_rpcrequest_async('DescribeCustomMetricList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2091,7 +2238,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeDynamicTagRuleListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeDynamicTagRuleListResponse(),
             self.do_rpcrequest('DescribeDynamicTagRuleList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2104,7 +2252,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeDynamicTagRuleListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeDynamicTagRuleListResponse(),
             await self.do_rpcrequest_async('DescribeDynamicTagRuleList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2131,7 +2280,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeEventRuleAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeEventRuleAttributeResponse(),
             self.do_rpcrequest('DescribeEventRuleAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2144,7 +2294,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeEventRuleAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeEventRuleAttributeResponse(),
             await self.do_rpcrequest_async('DescribeEventRuleAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2171,7 +2322,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeEventRuleListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeEventRuleListResponse(),
             self.do_rpcrequest('DescribeEventRuleList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2184,7 +2336,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeEventRuleListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeEventRuleListResponse(),
             await self.do_rpcrequest_async('DescribeEventRuleList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2211,7 +2364,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeEventRuleTargetListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeEventRuleTargetListResponse(),
             self.do_rpcrequest('DescribeEventRuleTargetList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2224,7 +2378,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeEventRuleTargetListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeEventRuleTargetListResponse(),
             await self.do_rpcrequest_async('DescribeEventRuleTargetList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2251,7 +2406,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeExporterOutputListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeExporterOutputListResponse(),
             self.do_rpcrequest('DescribeExporterOutputList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2264,7 +2420,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeExporterOutputListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeExporterOutputListResponse(),
             await self.do_rpcrequest_async('DescribeExporterOutputList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2291,7 +2448,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeExporterRuleListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeExporterRuleListResponse(),
             self.do_rpcrequest('DescribeExporterRuleList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2304,7 +2462,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeExporterRuleListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeExporterRuleListResponse(),
             await self.do_rpcrequest_async('DescribeExporterRuleList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2331,7 +2490,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeGroupMonitoringAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeGroupMonitoringAgentProcessResponse(),
             self.do_rpcrequest('DescribeGroupMonitoringAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2344,7 +2504,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeGroupMonitoringAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeGroupMonitoringAgentProcessResponse(),
             await self.do_rpcrequest_async('DescribeGroupMonitoringAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2371,7 +2532,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeHostAvailabilityListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeHostAvailabilityListResponse(),
             self.do_rpcrequest('DescribeHostAvailabilityList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2384,7 +2546,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeHostAvailabilityListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeHostAvailabilityListResponse(),
             await self.do_rpcrequest_async('DescribeHostAvailabilityList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2412,7 +2575,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return cms_20190101_models.DescribeLogMonitorAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeLogMonitorAttributeResponse(),
             self.do_rpcrequest('DescribeLogMonitorAttribute', '2019-01-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -2426,7 +2590,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return cms_20190101_models.DescribeLogMonitorAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeLogMonitorAttributeResponse(),
             await self.do_rpcrequest_async('DescribeLogMonitorAttribute', '2019-01-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -2453,7 +2618,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeLogMonitorListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeLogMonitorListResponse(),
             self.do_rpcrequest('DescribeLogMonitorList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2466,7 +2632,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeLogMonitorListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeLogMonitorListResponse(),
             await self.do_rpcrequest_async('DescribeLogMonitorList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2493,7 +2660,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricDataResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricDataResponse(),
             self.do_rpcrequest('DescribeMetricData', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2506,7 +2674,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricDataResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricDataResponse(),
             await self.do_rpcrequest_async('DescribeMetricData', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2533,7 +2702,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricLastResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricLastResponse(),
             self.do_rpcrequest('DescribeMetricLast', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2546,7 +2716,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricLastResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricLastResponse(),
             await self.do_rpcrequest_async('DescribeMetricLast', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2573,7 +2744,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricListResponse(),
             self.do_rpcrequest('DescribeMetricList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2586,7 +2758,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricListResponse(),
             await self.do_rpcrequest_async('DescribeMetricList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2613,7 +2786,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricMetaListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricMetaListResponse(),
             self.do_rpcrequest('DescribeMetricMetaList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2626,7 +2800,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricMetaListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricMetaListResponse(),
             await self.do_rpcrequest_async('DescribeMetricMetaList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2654,7 +2829,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return cms_20190101_models.DescribeMetricRuleCountResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricRuleCountResponse(),
             self.do_rpcrequest('DescribeMetricRuleCount', '2019-01-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -2668,7 +2844,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return cms_20190101_models.DescribeMetricRuleCountResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricRuleCountResponse(),
             await self.do_rpcrequest_async('DescribeMetricRuleCount', '2019-01-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -2695,7 +2872,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricRuleListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricRuleListResponse(),
             self.do_rpcrequest('DescribeMetricRuleList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2708,7 +2886,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricRuleListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricRuleListResponse(),
             await self.do_rpcrequest_async('DescribeMetricRuleList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2735,7 +2914,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricRuleTargetsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricRuleTargetsResponse(),
             self.do_rpcrequest('DescribeMetricRuleTargets', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2748,7 +2928,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricRuleTargetsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricRuleTargetsResponse(),
             await self.do_rpcrequest_async('DescribeMetricRuleTargets', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2775,7 +2956,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricRuleTemplateAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricRuleTemplateAttributeResponse(),
             self.do_rpcrequest('DescribeMetricRuleTemplateAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2788,7 +2970,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricRuleTemplateAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricRuleTemplateAttributeResponse(),
             await self.do_rpcrequest_async('DescribeMetricRuleTemplateAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2815,7 +2998,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricRuleTemplateListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricRuleTemplateListResponse(),
             self.do_rpcrequest('DescribeMetricRuleTemplateList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2828,7 +3012,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricRuleTemplateListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricRuleTemplateListResponse(),
             await self.do_rpcrequest_async('DescribeMetricRuleTemplateList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2855,7 +3040,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricTopResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricTopResponse(),
             self.do_rpcrequest('DescribeMetricTop', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2868,7 +3054,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMetricTopResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMetricTopResponse(),
             await self.do_rpcrequest_async('DescribeMetricTop', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2895,7 +3082,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorGroupCategoriesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorGroupCategoriesResponse(),
             self.do_rpcrequest('DescribeMonitorGroupCategories', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2908,7 +3096,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorGroupCategoriesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorGroupCategoriesResponse(),
             await self.do_rpcrequest_async('DescribeMonitorGroupCategories', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2935,7 +3124,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorGroupDynamicRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorGroupDynamicRulesResponse(),
             self.do_rpcrequest('DescribeMonitorGroupDynamicRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2948,7 +3138,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorGroupDynamicRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorGroupDynamicRulesResponse(),
             await self.do_rpcrequest_async('DescribeMonitorGroupDynamicRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2975,7 +3166,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorGroupInstanceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorGroupInstanceAttributeResponse(),
             self.do_rpcrequest('DescribeMonitorGroupInstanceAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2988,7 +3180,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorGroupInstanceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorGroupInstanceAttributeResponse(),
             await self.do_rpcrequest_async('DescribeMonitorGroupInstanceAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3015,7 +3208,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorGroupInstancesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorGroupInstancesResponse(),
             self.do_rpcrequest('DescribeMonitorGroupInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3028,7 +3222,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorGroupInstancesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorGroupInstancesResponse(),
             await self.do_rpcrequest_async('DescribeMonitorGroupInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3055,7 +3250,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorGroupNotifyPolicyListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorGroupNotifyPolicyListResponse(),
             self.do_rpcrequest('DescribeMonitorGroupNotifyPolicyList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3068,7 +3264,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorGroupNotifyPolicyListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorGroupNotifyPolicyListResponse(),
             await self.do_rpcrequest_async('DescribeMonitorGroupNotifyPolicyList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3095,7 +3292,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorGroupsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorGroupsResponse(),
             self.do_rpcrequest('DescribeMonitorGroups', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3108,7 +3306,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorGroupsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorGroupsResponse(),
             await self.do_rpcrequest_async('DescribeMonitorGroups', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3131,7 +3330,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse:
         req = open_api_models.OpenApiRequest()
-        return cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse(),
             self.do_rpcrequest('DescribeMonitoringAgentAccessKey', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3140,7 +3340,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse:
         req = open_api_models.OpenApiRequest()
-        return cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse(),
             await self.do_rpcrequest_async('DescribeMonitoringAgentAccessKey', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3157,7 +3358,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentConfigResponse:
         req = open_api_models.OpenApiRequest()
-        return cms_20190101_models.DescribeMonitoringAgentConfigResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitoringAgentConfigResponse(),
             self.do_rpcrequest('DescribeMonitoringAgentConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3166,7 +3368,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentConfigResponse:
         req = open_api_models.OpenApiRequest()
-        return cms_20190101_models.DescribeMonitoringAgentConfigResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitoringAgentConfigResponse(),
             await self.do_rpcrequest_async('DescribeMonitoringAgentConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3187,7 +3390,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitoringAgentHostsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitoringAgentHostsResponse(),
             self.do_rpcrequest('DescribeMonitoringAgentHosts', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3200,7 +3404,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitoringAgentHostsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitoringAgentHostsResponse(),
             await self.do_rpcrequest_async('DescribeMonitoringAgentHosts', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3227,7 +3432,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitoringAgentProcessesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitoringAgentProcessesResponse(),
             self.do_rpcrequest('DescribeMonitoringAgentProcesses', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3240,7 +3446,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitoringAgentProcessesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitoringAgentProcessesResponse(),
             await self.do_rpcrequest_async('DescribeMonitoringAgentProcesses', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3267,7 +3474,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitoringAgentStatusesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitoringAgentStatusesResponse(),
             self.do_rpcrequest('DescribeMonitoringAgentStatuses', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3280,7 +3488,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitoringAgentStatusesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitoringAgentStatusesResponse(),
             await self.do_rpcrequest_async('DescribeMonitoringAgentStatuses', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3303,7 +3512,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringConfigResponse:
         req = open_api_models.OpenApiRequest()
-        return cms_20190101_models.DescribeMonitoringConfigResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitoringConfigResponse(),
             self.do_rpcrequest('DescribeMonitoringConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3312,7 +3522,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringConfigResponse:
         req = open_api_models.OpenApiRequest()
-        return cms_20190101_models.DescribeMonitoringConfigResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitoringConfigResponse(),
             await self.do_rpcrequest_async('DescribeMonitoringConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3333,7 +3544,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorResourceQuotaAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorResourceQuotaAttributeResponse(),
             self.do_rpcrequest('DescribeMonitorResourceQuotaAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3346,7 +3558,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeMonitorResourceQuotaAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeMonitorResourceQuotaAttributeResponse(),
             await self.do_rpcrequest_async('DescribeMonitorResourceQuotaAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3373,7 +3586,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeProductResourceTagKeyListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeProductResourceTagKeyListResponse(),
             self.do_rpcrequest('DescribeProductResourceTagKeyList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3386,7 +3600,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeProductResourceTagKeyListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeProductResourceTagKeyListResponse(),
             await self.do_rpcrequest_async('DescribeProductResourceTagKeyList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3409,7 +3624,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse:
         req = open_api_models.OpenApiRequest()
-        return cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse(),
             self.do_rpcrequest('DescribeProductsOfActiveMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3418,7 +3634,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse:
         req = open_api_models.OpenApiRequest()
-        return cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse(),
             await self.do_rpcrequest_async('DescribeProductsOfActiveMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3439,7 +3656,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeProjectMetaResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeProjectMetaResponse(),
             self.do_rpcrequest('DescribeProjectMeta', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3452,7 +3670,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeProjectMetaResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeProjectMetaResponse(),
             await self.do_rpcrequest_async('DescribeProjectMeta', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3479,7 +3698,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSiteMonitorAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSiteMonitorAttributeResponse(),
             self.do_rpcrequest('DescribeSiteMonitorAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3492,7 +3712,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSiteMonitorAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSiteMonitorAttributeResponse(),
             await self.do_rpcrequest_async('DescribeSiteMonitorAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3519,7 +3740,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSiteMonitorDataResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSiteMonitorDataResponse(),
             self.do_rpcrequest('DescribeSiteMonitorData', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3532,7 +3754,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSiteMonitorDataResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSiteMonitorDataResponse(),
             await self.do_rpcrequest_async('DescribeSiteMonitorData', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3559,7 +3782,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSiteMonitorListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSiteMonitorListResponse(),
             self.do_rpcrequest('DescribeSiteMonitorList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3572,7 +3796,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSiteMonitorListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSiteMonitorListResponse(),
             await self.do_rpcrequest_async('DescribeSiteMonitorList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3595,7 +3820,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorQuotaResponse:
         req = open_api_models.OpenApiRequest()
-        return cms_20190101_models.DescribeSiteMonitorQuotaResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSiteMonitorQuotaResponse(),
             self.do_rpcrequest('DescribeSiteMonitorQuota', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3604,7 +3830,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorQuotaResponse:
         req = open_api_models.OpenApiRequest()
-        return cms_20190101_models.DescribeSiteMonitorQuotaResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSiteMonitorQuotaResponse(),
             await self.do_rpcrequest_async('DescribeSiteMonitorQuota', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3625,7 +3852,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSiteMonitorStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSiteMonitorStatisticsResponse(),
             self.do_rpcrequest('DescribeSiteMonitorStatistics', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3638,7 +3866,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSiteMonitorStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSiteMonitorStatisticsResponse(),
             await self.do_rpcrequest_async('DescribeSiteMonitorStatistics', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3665,7 +3894,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSystemEventAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSystemEventAttributeResponse(),
             self.do_rpcrequest('DescribeSystemEventAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3678,7 +3908,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSystemEventAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSystemEventAttributeResponse(),
             await self.do_rpcrequest_async('DescribeSystemEventAttribute', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3705,7 +3936,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSystemEventCountResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSystemEventCountResponse(),
             self.do_rpcrequest('DescribeSystemEventCount', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3718,7 +3950,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSystemEventCountResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSystemEventCountResponse(),
             await self.do_rpcrequest_async('DescribeSystemEventCount', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3745,7 +3978,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSystemEventHistogramResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSystemEventHistogramResponse(),
             self.do_rpcrequest('DescribeSystemEventHistogram', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3758,7 +3992,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeSystemEventHistogramResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSystemEventHistogramResponse(),
             await self.do_rpcrequest_async('DescribeSystemEventHistogram', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3785,7 +4020,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeTagKeyListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeTagKeyListResponse(),
             self.do_rpcrequest('DescribeTagKeyList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3798,7 +4034,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeTagKeyListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeTagKeyListResponse(),
             await self.do_rpcrequest_async('DescribeTagKeyList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3825,7 +4062,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeTagValueListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeTagValueListResponse(),
             self.do_rpcrequest('DescribeTagValueList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3838,7 +4076,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeTagValueListResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeTagValueListResponse(),
             await self.do_rpcrequest_async('DescribeTagValueList', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3865,7 +4104,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeUnhealthyHostAvailabilityResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeUnhealthyHostAvailabilityResponse(),
             self.do_rpcrequest('DescribeUnhealthyHostAvailability', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3878,7 +4118,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DescribeUnhealthyHostAvailabilityResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeUnhealthyHostAvailabilityResponse(),
             await self.do_rpcrequest_async('DescribeUnhealthyHostAvailability', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3905,7 +4146,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DisableActiveMetricRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DisableActiveMetricRuleResponse(),
             self.do_rpcrequest('DisableActiveMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3918,7 +4160,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DisableActiveMetricRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DisableActiveMetricRuleResponse(),
             await self.do_rpcrequest_async('DisableActiveMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3945,7 +4188,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DisableEventRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DisableEventRulesResponse(),
             self.do_rpcrequest('DisableEventRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3958,7 +4202,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DisableEventRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DisableEventRulesResponse(),
             await self.do_rpcrequest_async('DisableEventRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3985,7 +4230,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DisableHostAvailabilityResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DisableHostAvailabilityResponse(),
             self.do_rpcrequest('DisableHostAvailability', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3998,7 +4244,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DisableHostAvailabilityResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DisableHostAvailabilityResponse(),
             await self.do_rpcrequest_async('DisableHostAvailability', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4025,7 +4272,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DisableMetricRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DisableMetricRulesResponse(),
             self.do_rpcrequest('DisableMetricRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4038,7 +4286,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DisableMetricRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DisableMetricRulesResponse(),
             await self.do_rpcrequest_async('DisableMetricRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4065,7 +4314,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DisableSiteMonitorsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DisableSiteMonitorsResponse(),
             self.do_rpcrequest('DisableSiteMonitors', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4078,7 +4328,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.DisableSiteMonitorsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.DisableSiteMonitorsResponse(),
             await self.do_rpcrequest_async('DisableSiteMonitors', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4105,7 +4356,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.EnableActiveMetricRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.EnableActiveMetricRuleResponse(),
             self.do_rpcrequest('EnableActiveMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4118,7 +4370,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.EnableActiveMetricRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.EnableActiveMetricRuleResponse(),
             await self.do_rpcrequest_async('EnableActiveMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4145,7 +4398,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.EnableEventRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.EnableEventRulesResponse(),
             self.do_rpcrequest('EnableEventRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4158,7 +4412,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.EnableEventRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.EnableEventRulesResponse(),
             await self.do_rpcrequest_async('EnableEventRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4185,7 +4440,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.EnableHostAvailabilityResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.EnableHostAvailabilityResponse(),
             self.do_rpcrequest('EnableHostAvailability', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4198,7 +4454,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.EnableHostAvailabilityResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.EnableHostAvailabilityResponse(),
             await self.do_rpcrequest_async('EnableHostAvailability', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4225,7 +4482,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.EnableMetricRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.EnableMetricRulesResponse(),
             self.do_rpcrequest('EnableMetricRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4238,7 +4496,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.EnableMetricRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.EnableMetricRulesResponse(),
             await self.do_rpcrequest_async('EnableMetricRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4265,7 +4524,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.EnableSiteMonitorsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.EnableSiteMonitorsResponse(),
             self.do_rpcrequest('EnableSiteMonitors', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4278,7 +4538,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.EnableSiteMonitorsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.EnableSiteMonitorsResponse(),
             await self.do_rpcrequest_async('EnableSiteMonitors', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4305,7 +4566,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.InstallMonitoringAgentResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.InstallMonitoringAgentResponse(),
             self.do_rpcrequest('InstallMonitoringAgent', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4318,7 +4580,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.InstallMonitoringAgentResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.InstallMonitoringAgentResponse(),
             await self.do_rpcrequest_async('InstallMonitoringAgent', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4345,7 +4608,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifyGroupMonitoringAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyGroupMonitoringAgentProcessResponse(),
             self.do_rpcrequest('ModifyGroupMonitoringAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4358,7 +4622,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifyGroupMonitoringAgentProcessResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyGroupMonitoringAgentProcessResponse(),
             await self.do_rpcrequest_async('ModifyGroupMonitoringAgentProcess', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4385,7 +4650,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifyHostAvailabilityResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyHostAvailabilityResponse(),
             self.do_rpcrequest('ModifyHostAvailability', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4398,7 +4664,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifyHostAvailabilityResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyHostAvailabilityResponse(),
             await self.do_rpcrequest_async('ModifyHostAvailability', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4425,7 +4692,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifyHostInfoResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyHostInfoResponse(),
             self.do_rpcrequest('ModifyHostInfo', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4438,7 +4706,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifyHostInfoResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyHostInfoResponse(),
             await self.do_rpcrequest_async('ModifyHostInfo', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4465,7 +4734,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifyMetricRuleTemplateResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyMetricRuleTemplateResponse(),
             self.do_rpcrequest('ModifyMetricRuleTemplate', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4478,7 +4748,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifyMetricRuleTemplateResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyMetricRuleTemplateResponse(),
             await self.do_rpcrequest_async('ModifyMetricRuleTemplate', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4505,7 +4776,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifyMonitorGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyMonitorGroupResponse(),
             self.do_rpcrequest('ModifyMonitorGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4518,7 +4790,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifyMonitorGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyMonitorGroupResponse(),
             await self.do_rpcrequest_async('ModifyMonitorGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4545,7 +4818,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifyMonitorGroupInstancesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyMonitorGroupInstancesResponse(),
             self.do_rpcrequest('ModifyMonitorGroupInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4558,7 +4832,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifyMonitorGroupInstancesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyMonitorGroupInstancesResponse(),
             await self.do_rpcrequest_async('ModifyMonitorGroupInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4585,7 +4860,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifySiteMonitorResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifySiteMonitorResponse(),
             self.do_rpcrequest('ModifySiteMonitor', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4598,7 +4874,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.ModifySiteMonitorResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.ModifySiteMonitorResponse(),
             await self.do_rpcrequest_async('ModifySiteMonitor', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4621,7 +4898,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.OpenCmsServiceResponse:
         req = open_api_models.OpenApiRequest()
-        return cms_20190101_models.OpenCmsServiceResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.OpenCmsServiceResponse(),
             self.do_rpcrequest('OpenCmsService', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4630,7 +4908,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.OpenCmsServiceResponse:
         req = open_api_models.OpenApiRequest()
-        return cms_20190101_models.OpenCmsServiceResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.OpenCmsServiceResponse(),
             await self.do_rpcrequest_async('OpenCmsService', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4651,7 +4930,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutContactResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutContactResponse(),
             self.do_rpcrequest('PutContact', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4664,7 +4944,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutContactResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutContactResponse(),
             await self.do_rpcrequest_async('PutContact', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4691,7 +4972,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutContactGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutContactGroupResponse(),
             self.do_rpcrequest('PutContactGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4704,7 +4986,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutContactGroupResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutContactGroupResponse(),
             await self.do_rpcrequest_async('PutContactGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4731,7 +5014,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutCustomEventResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutCustomEventResponse(),
             self.do_rpcrequest('PutCustomEvent', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4744,7 +5028,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutCustomEventResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutCustomEventResponse(),
             await self.do_rpcrequest_async('PutCustomEvent', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4771,7 +5056,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutCustomEventRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutCustomEventRuleResponse(),
             self.do_rpcrequest('PutCustomEventRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4784,7 +5070,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutCustomEventRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutCustomEventRuleResponse(),
             await self.do_rpcrequest_async('PutCustomEventRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4811,7 +5098,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutCustomMetricResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutCustomMetricResponse(),
             self.do_rpcrequest('PutCustomMetric', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4824,7 +5112,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutCustomMetricResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutCustomMetricResponse(),
             await self.do_rpcrequest_async('PutCustomMetric', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4851,7 +5140,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutCustomMetricRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutCustomMetricRuleResponse(),
             self.do_rpcrequest('PutCustomMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4864,7 +5154,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutCustomMetricRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutCustomMetricRuleResponse(),
             await self.do_rpcrequest_async('PutCustomMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4891,7 +5182,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutEventRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutEventRuleResponse(),
             self.do_rpcrequest('PutEventRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4904,7 +5196,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutEventRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutEventRuleResponse(),
             await self.do_rpcrequest_async('PutEventRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4931,7 +5224,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutEventRuleTargetsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutEventRuleTargetsResponse(),
             self.do_rpcrequest('PutEventRuleTargets', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4944,7 +5238,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutEventRuleTargetsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutEventRuleTargetsResponse(),
             await self.do_rpcrequest_async('PutEventRuleTargets', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4971,7 +5266,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutExporterOutputResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutExporterOutputResponse(),
             self.do_rpcrequest('PutExporterOutput', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4984,7 +5280,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutExporterOutputResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutExporterOutputResponse(),
             await self.do_rpcrequest_async('PutExporterOutput', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5011,7 +5308,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutExporterRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutExporterRuleResponse(),
             self.do_rpcrequest('PutExporterRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5024,7 +5322,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutExporterRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutExporterRuleResponse(),
             await self.do_rpcrequest_async('PutExporterRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5051,7 +5350,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutGroupMetricRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutGroupMetricRuleResponse(),
             self.do_rpcrequest('PutGroupMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5064,7 +5364,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutGroupMetricRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutGroupMetricRuleResponse(),
             await self.do_rpcrequest_async('PutGroupMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5091,7 +5392,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutLogMonitorResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutLogMonitorResponse(),
             self.do_rpcrequest('PutLogMonitor', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5104,7 +5406,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutLogMonitorResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutLogMonitorResponse(),
             await self.do_rpcrequest_async('PutLogMonitor', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5131,7 +5434,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutMetricRuleTargetsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutMetricRuleTargetsResponse(),
             self.do_rpcrequest('PutMetricRuleTargets', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5144,7 +5448,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutMetricRuleTargetsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutMetricRuleTargetsResponse(),
             await self.do_rpcrequest_async('PutMetricRuleTargets', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5171,7 +5476,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutMonitorGroupDynamicRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutMonitorGroupDynamicRuleResponse(),
             self.do_rpcrequest('PutMonitorGroupDynamicRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5184,7 +5490,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutMonitorGroupDynamicRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutMonitorGroupDynamicRuleResponse(),
             await self.do_rpcrequest_async('PutMonitorGroupDynamicRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5211,7 +5518,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutMonitoringConfigResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutMonitoringConfigResponse(),
             self.do_rpcrequest('PutMonitoringConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5224,7 +5532,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutMonitoringConfigResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutMonitoringConfigResponse(),
             await self.do_rpcrequest_async('PutMonitoringConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5251,7 +5560,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutResourceMetricRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutResourceMetricRuleResponse(),
             self.do_rpcrequest('PutResourceMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5264,7 +5574,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutResourceMetricRuleResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutResourceMetricRuleResponse(),
             await self.do_rpcrequest_async('PutResourceMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5291,7 +5602,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutResourceMetricRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutResourceMetricRulesResponse(),
             self.do_rpcrequest('PutResourceMetricRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5304,7 +5616,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.PutResourceMetricRulesResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.PutResourceMetricRulesResponse(),
             await self.do_rpcrequest_async('PutResourceMetricRules', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5331,7 +5644,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.RemoveTagsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.RemoveTagsResponse(),
             self.do_rpcrequest('RemoveTags', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5344,7 +5658,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.RemoveTagsResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.RemoveTagsResponse(),
             await self.do_rpcrequest_async('RemoveTags', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5371,7 +5686,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.SendDryRunSystemEventResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.SendDryRunSystemEventResponse(),
             self.do_rpcrequest('SendDryRunSystemEvent', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5384,7 +5700,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.SendDryRunSystemEventResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.SendDryRunSystemEventResponse(),
             await self.do_rpcrequest_async('SendDryRunSystemEvent', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5411,7 +5728,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.UninstallMonitoringAgentResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.UninstallMonitoringAgentResponse(),
             self.do_rpcrequest('UninstallMonitoringAgent', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5424,7 +5742,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cms_20190101_models.UninstallMonitoringAgentResponse().from_map(
+        return TeaCore.from_map(
+            cms_20190101_models.UninstallMonitoringAgentResponse(),
             await self.do_rpcrequest_async('UninstallMonitoringAgent', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
