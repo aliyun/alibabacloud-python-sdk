@@ -1,3 +1,6 @@
+2021-03-31 Version: 1.0.3
+- ElementSmartVerify api add certNationalEmblemUrl parameter.
+
 2021-03-30 Version: 2.0.1
 - Generated python 2020-06-18 for Cloudauth.
 
