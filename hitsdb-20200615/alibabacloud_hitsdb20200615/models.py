@@ -25,6 +25,10 @@ class DescribeRegionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
@@ -72,6 +76,10 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.local_name is not None:
             result['LocalName'] = self.local_name
@@ -108,6 +116,10 @@ class DescribeRegionsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -145,6 +157,10 @@ class DescribeRegionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -185,6 +201,10 @@ class GetInstanceIpWhiteListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
@@ -236,6 +256,10 @@ class GetInstanceIpWhiteListResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -272,6 +296,10 @@ class GetInstanceIpWhiteListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -312,6 +340,10 @@ class GetLindormInstanceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
@@ -369,6 +401,10 @@ class GetLindormInstanceResponseBodyEngineList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.version is not None:
             result['Version'] = self.version
@@ -457,6 +493,10 @@ class GetLindormInstanceResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['EngineList'] = []
         if self.engine_list is not None:
@@ -574,6 +614,10 @@ class GetLindormInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -614,6 +658,10 @@ class GetLindormInstanceEngineListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
@@ -667,6 +715,10 @@ class GetLindormInstanceEngineListResponseBodyEngineListNetInfoList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_type is not None:
             result['AccessType'] = self.access_type
@@ -707,6 +759,10 @@ class GetLindormInstanceEngineListResponseBodyEngineList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.engine_type is not None:
             result['EngineType'] = self.engine_type
@@ -746,6 +802,10 @@ class GetLindormInstanceEngineListResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['EngineList'] = []
         if self.engine_list is not None:
@@ -787,6 +847,10 @@ class GetLindormInstanceEngineListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -835,6 +899,10 @@ class GetLindormInstanceListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
@@ -924,6 +992,10 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
@@ -1010,6 +1082,10 @@ class GetLindormInstanceListResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1059,6 +1135,10 @@ class GetLindormInstanceListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1101,6 +1181,10 @@ class UpdateInstanceIpWhiteListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
@@ -1152,6 +1236,10 @@ class UpdateInstanceIpWhiteListResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1180,6 +1268,10 @@ class UpdateInstanceIpWhiteListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

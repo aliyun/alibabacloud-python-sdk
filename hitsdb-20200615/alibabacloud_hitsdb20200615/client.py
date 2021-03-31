@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -97,7 +98,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return hitsdb_20200615_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DescribeRegionsResponse(),
             self.do_rpcrequest('DescribeRegions', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -110,7 +112,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return hitsdb_20200615_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DescribeRegionsResponse(),
             await self.do_rpcrequest_async('DescribeRegions', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -137,7 +140,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return hitsdb_20200615_models.GetInstanceIpWhiteListResponse().from_map(
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetInstanceIpWhiteListResponse(),
             self.do_rpcrequest('GetInstanceIpWhiteList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -150,7 +154,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return hitsdb_20200615_models.GetInstanceIpWhiteListResponse().from_map(
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetInstanceIpWhiteListResponse(),
             await self.do_rpcrequest_async('GetInstanceIpWhiteList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -177,7 +182,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return hitsdb_20200615_models.GetLindormInstanceResponse().from_map(
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormInstanceResponse(),
             self.do_rpcrequest('GetLindormInstance', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -190,7 +196,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return hitsdb_20200615_models.GetLindormInstanceResponse().from_map(
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormInstanceResponse(),
             await self.do_rpcrequest_async('GetLindormInstance', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -217,7 +224,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return hitsdb_20200615_models.GetLindormInstanceEngineListResponse().from_map(
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormInstanceEngineListResponse(),
             self.do_rpcrequest('GetLindormInstanceEngineList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -230,7 +238,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return hitsdb_20200615_models.GetLindormInstanceEngineListResponse().from_map(
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormInstanceEngineListResponse(),
             await self.do_rpcrequest_async('GetLindormInstanceEngineList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -257,7 +266,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return hitsdb_20200615_models.GetLindormInstanceListResponse().from_map(
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormInstanceListResponse(),
             self.do_rpcrequest('GetLindormInstanceList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -270,7 +280,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return hitsdb_20200615_models.GetLindormInstanceListResponse().from_map(
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormInstanceListResponse(),
             await self.do_rpcrequest_async('GetLindormInstanceList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -297,7 +308,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse().from_map(
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse(),
             self.do_rpcrequest('UpdateInstanceIpWhiteList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -310,7 +322,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse().from_map(
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse(),
             await self.do_rpcrequest_async('UpdateInstanceIpWhiteList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
