@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -49,7 +50,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.CancelExecutionResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.CancelExecutionResponse(),
             self.do_rpcrequest('CancelExecution', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -62,7 +64,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.CancelExecutionResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.CancelExecutionResponse(),
             await self.do_rpcrequest_async('CancelExecution', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -82,27 +85,37 @@ class Client(OpenApiClient):
 
     def create_parameter_with_options(
         self,
-        request: oos_20190601_models.CreateParameterRequest,
+        tmp_req: oos_20190601_models.CreateParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateParameterResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.CreateParameterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.CreateParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.CreateParameterResponse(),
             self.do_rpcrequest('CreateParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_parameter_with_options_async(
         self,
-        request: oos_20190601_models.CreateParameterRequest,
+        tmp_req: oos_20190601_models.CreateParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateParameterResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.CreateParameterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.CreateParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.CreateParameterResponse(),
             await self.do_rpcrequest_async('CreateParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -120,6 +133,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_parameter_with_options_async(request, runtime)
 
+    def create_patch_baseline_with_options(
+        self,
+        request: oos_20190601_models.CreatePatchBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CreatePatchBaselineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CreatePatchBaselineResponse(),
+            self.do_rpcrequest('CreatePatchBaseline', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_patch_baseline_with_options_async(
+        self,
+        request: oos_20190601_models.CreatePatchBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CreatePatchBaselineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CreatePatchBaselineResponse(),
+            await self.do_rpcrequest_async('CreatePatchBaseline', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_patch_baseline(
+        self,
+        request: oos_20190601_models.CreatePatchBaselineRequest,
+    ) -> oos_20190601_models.CreatePatchBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_patch_baseline_with_options(request, runtime)
+
+    async def create_patch_baseline_async(
+        self,
+        request: oos_20190601_models.CreatePatchBaselineRequest,
+    ) -> oos_20190601_models.CreatePatchBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_patch_baseline_with_options_async(request, runtime)
+
     def create_secret_parameter_with_options(
         self,
         request: oos_20190601_models.CreateSecretParameterRequest,
@@ -129,7 +184,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.CreateSecretParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.CreateSecretParameterResponse(),
             self.do_rpcrequest('CreateSecretParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -142,7 +198,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.CreateSecretParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.CreateSecretParameterResponse(),
             await self.do_rpcrequest_async('CreateSecretParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -160,6 +217,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_secret_parameter_with_options_async(request, runtime)
 
+    def create_state_configuration_with_options(
+        self,
+        tmp_req: oos_20190601_models.CreateStateConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CreateStateConfigurationResponse:
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.CreateStateConfigurationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CreateStateConfigurationResponse(),
+            self.do_rpcrequest('CreateStateConfiguration', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_state_configuration_with_options_async(
+        self,
+        tmp_req: oos_20190601_models.CreateStateConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CreateStateConfigurationResponse:
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.CreateStateConfigurationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CreateStateConfigurationResponse(),
+            await self.do_rpcrequest_async('CreateStateConfiguration', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_state_configuration(
+        self,
+        request: oos_20190601_models.CreateStateConfigurationRequest,
+    ) -> oos_20190601_models.CreateStateConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_state_configuration_with_options(request, runtime)
+
+    async def create_state_configuration_async(
+        self,
+        request: oos_20190601_models.CreateStateConfigurationRequest,
+    ) -> oos_20190601_models.CreateStateConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_state_configuration_with_options_async(request, runtime)
+
     def create_template_with_options(
         self,
         tmp_req: oos_20190601_models.CreateTemplateRequest,
@@ -173,7 +280,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.CreateTemplateResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.CreateTemplateResponse(),
             self.do_rpcrequest('CreateTemplate', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -190,7 +298,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.CreateTemplateResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.CreateTemplateResponse(),
             await self.do_rpcrequest_async('CreateTemplate', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -217,7 +326,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.DeleteExecutionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteExecutionsResponse(),
             self.do_rpcrequest('DeleteExecutions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -230,7 +340,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.DeleteExecutionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteExecutionsResponse(),
             await self.do_rpcrequest_async('DeleteExecutions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -257,7 +368,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.DeleteParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteParameterResponse(),
             self.do_rpcrequest('DeleteParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -270,7 +382,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.DeleteParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteParameterResponse(),
             await self.do_rpcrequest_async('DeleteParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -288,6 +401,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_parameter_with_options_async(request, runtime)
 
+    def delete_patch_baseline_with_options(
+        self,
+        request: oos_20190601_models.DeletePatchBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.DeletePatchBaselineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.DeletePatchBaselineResponse(),
+            self.do_rpcrequest('DeletePatchBaseline', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_patch_baseline_with_options_async(
+        self,
+        request: oos_20190601_models.DeletePatchBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.DeletePatchBaselineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.DeletePatchBaselineResponse(),
+            await self.do_rpcrequest_async('DeletePatchBaseline', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_patch_baseline(
+        self,
+        request: oos_20190601_models.DeletePatchBaselineRequest,
+    ) -> oos_20190601_models.DeletePatchBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_patch_baseline_with_options(request, runtime)
+
+    async def delete_patch_baseline_async(
+        self,
+        request: oos_20190601_models.DeletePatchBaselineRequest,
+    ) -> oos_20190601_models.DeletePatchBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_patch_baseline_with_options_async(request, runtime)
+
     def delete_secret_parameter_with_options(
         self,
         request: oos_20190601_models.DeleteSecretParameterRequest,
@@ -297,7 +452,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.DeleteSecretParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteSecretParameterResponse(),
             self.do_rpcrequest('DeleteSecretParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -310,7 +466,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.DeleteSecretParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteSecretParameterResponse(),
             await self.do_rpcrequest_async('DeleteSecretParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -328,6 +485,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_secret_parameter_with_options_async(request, runtime)
 
+    def delete_state_configurations_with_options(
+        self,
+        request: oos_20190601_models.DeleteStateConfigurationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.DeleteStateConfigurationsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteStateConfigurationsResponse(),
+            self.do_rpcrequest('DeleteStateConfigurations', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_state_configurations_with_options_async(
+        self,
+        request: oos_20190601_models.DeleteStateConfigurationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.DeleteStateConfigurationsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteStateConfigurationsResponse(),
+            await self.do_rpcrequest_async('DeleteStateConfigurations', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_state_configurations(
+        self,
+        request: oos_20190601_models.DeleteStateConfigurationsRequest,
+    ) -> oos_20190601_models.DeleteStateConfigurationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_state_configurations_with_options(request, runtime)
+
+    async def delete_state_configurations_async(
+        self,
+        request: oos_20190601_models.DeleteStateConfigurationsRequest,
+    ) -> oos_20190601_models.DeleteStateConfigurationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_state_configurations_with_options_async(request, runtime)
+
     def delete_template_with_options(
         self,
         request: oos_20190601_models.DeleteTemplateRequest,
@@ -337,7 +536,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.DeleteTemplateResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteTemplateResponse(),
             self.do_rpcrequest('DeleteTemplate', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -350,7 +550,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.DeleteTemplateResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteTemplateResponse(),
             await self.do_rpcrequest_async('DeleteTemplate', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -377,7 +578,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.DeleteTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteTemplatesResponse(),
             self.do_rpcrequest('DeleteTemplates', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -390,7 +592,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.DeleteTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteTemplatesResponse(),
             await self.do_rpcrequest_async('DeleteTemplates', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -417,7 +620,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.DescribeRegionsResponse(),
             self.do_rpcrequest('DescribeRegions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -430,7 +634,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.DescribeRegionsResponse(),
             await self.do_rpcrequest_async('DescribeRegions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -457,7 +662,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GenerateExecutionPolicyResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GenerateExecutionPolicyResponse(),
             self.do_rpcrequest('GenerateExecutionPolicy', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -470,7 +676,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GenerateExecutionPolicyResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GenerateExecutionPolicyResponse(),
             await self.do_rpcrequest_async('GenerateExecutionPolicy', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -497,7 +704,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetExecutionTemplateResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetExecutionTemplateResponse(),
             self.do_rpcrequest('GetExecutionTemplate', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -510,7 +718,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetExecutionTemplateResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetExecutionTemplateResponse(),
             await self.do_rpcrequest_async('GetExecutionTemplate', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -537,7 +746,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetInventorySchemaResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetInventorySchemaResponse(),
             self.do_rpcrequest('GetInventorySchema', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -550,7 +760,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetInventorySchemaResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetInventorySchemaResponse(),
             await self.do_rpcrequest_async('GetInventorySchema', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -577,7 +788,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetParameterResponse(),
             self.do_rpcrequest('GetParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -590,7 +802,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetParameterResponse(),
             await self.do_rpcrequest_async('GetParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -617,7 +830,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetParametersResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetParametersResponse(),
             self.do_rpcrequest('GetParameters', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -630,7 +844,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetParametersResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetParametersResponse(),
             await self.do_rpcrequest_async('GetParameters', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -657,7 +872,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetParametersByPathResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetParametersByPathResponse(),
             self.do_rpcrequest('GetParametersByPath', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -670,7 +886,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetParametersByPathResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetParametersByPathResponse(),
             await self.do_rpcrequest_async('GetParametersByPath', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -688,6 +905,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_parameters_by_path_with_options_async(request, runtime)
 
+    def get_patch_baseline_with_options(
+        self,
+        request: oos_20190601_models.GetPatchBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetPatchBaselineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetPatchBaselineResponse(),
+            self.do_rpcrequest('GetPatchBaseline', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_patch_baseline_with_options_async(
+        self,
+        request: oos_20190601_models.GetPatchBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetPatchBaselineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetPatchBaselineResponse(),
+            await self.do_rpcrequest_async('GetPatchBaseline', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_patch_baseline(
+        self,
+        request: oos_20190601_models.GetPatchBaselineRequest,
+    ) -> oos_20190601_models.GetPatchBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_patch_baseline_with_options(request, runtime)
+
+    async def get_patch_baseline_async(
+        self,
+        request: oos_20190601_models.GetPatchBaselineRequest,
+    ) -> oos_20190601_models.GetPatchBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_patch_baseline_with_options_async(request, runtime)
+
     def get_secret_parameter_with_options(
         self,
         request: oos_20190601_models.GetSecretParameterRequest,
@@ -697,7 +956,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetSecretParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetSecretParameterResponse(),
             self.do_rpcrequest('GetSecretParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -710,7 +970,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetSecretParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetSecretParameterResponse(),
             await self.do_rpcrequest_async('GetSecretParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -737,7 +998,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetSecretParametersResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetSecretParametersResponse(),
             self.do_rpcrequest('GetSecretParameters', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -750,7 +1012,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetSecretParametersResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetSecretParametersResponse(),
             await self.do_rpcrequest_async('GetSecretParameters', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -777,7 +1040,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetSecretParametersByPathResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetSecretParametersByPathResponse(),
             self.do_rpcrequest('GetSecretParametersByPath', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -790,7 +1054,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetSecretParametersByPathResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetSecretParametersByPathResponse(),
             await self.do_rpcrequest_async('GetSecretParametersByPath', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -810,29 +1075,45 @@ class Client(OpenApiClient):
 
     def get_service_settings_with_options(
         self,
+        request: oos_20190601_models.GetServiceSettingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetServiceSettingsResponse:
-        req = open_api_models.OpenApiRequest()
-        return oos_20190601_models.GetServiceSettingsResponse().from_map(
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetServiceSettingsResponse(),
             self.do_rpcrequest('GetServiceSettings', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_service_settings_with_options_async(
         self,
+        request: oos_20190601_models.GetServiceSettingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetServiceSettingsResponse:
-        req = open_api_models.OpenApiRequest()
-        return oos_20190601_models.GetServiceSettingsResponse().from_map(
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetServiceSettingsResponse(),
             await self.do_rpcrequest_async('GetServiceSettings', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def get_service_settings(self) -> oos_20190601_models.GetServiceSettingsResponse:
+    def get_service_settings(
+        self,
+        request: oos_20190601_models.GetServiceSettingsRequest,
+    ) -> oos_20190601_models.GetServiceSettingsResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_service_settings_with_options(runtime)
+        return self.get_service_settings_with_options(request, runtime)
 
-    async def get_service_settings_async(self) -> oos_20190601_models.GetServiceSettingsResponse:
+    async def get_service_settings_async(
+        self,
+        request: oos_20190601_models.GetServiceSettingsRequest,
+    ) -> oos_20190601_models.GetServiceSettingsResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_service_settings_with_options_async(runtime)
+        return await self.get_service_settings_with_options_async(request, runtime)
 
     def get_template_with_options(
         self,
@@ -843,7 +1124,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetTemplateResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetTemplateResponse(),
             self.do_rpcrequest('GetTemplate', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -856,7 +1138,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.GetTemplateResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.GetTemplateResponse(),
             await self.do_rpcrequest_async('GetTemplate', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -883,7 +1166,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListActionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListActionsResponse(),
             self.do_rpcrequest('ListActions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -896,7 +1180,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListActionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListActionsResponse(),
             await self.do_rpcrequest_async('ListActions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -923,7 +1208,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListExecutionLogsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListExecutionLogsResponse(),
             self.do_rpcrequest('ListExecutionLogs', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -936,7 +1222,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListExecutionLogsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListExecutionLogsResponse(),
             await self.do_rpcrequest_async('ListExecutionLogs', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -963,7 +1250,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListExecutionRiskyTasksResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListExecutionRiskyTasksResponse(),
             self.do_rpcrequest('ListExecutionRiskyTasks', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -976,7 +1264,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListExecutionRiskyTasksResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListExecutionRiskyTasksResponse(),
             await self.do_rpcrequest_async('ListExecutionRiskyTasks', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1007,7 +1296,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListExecutionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListExecutionsResponse(),
             self.do_rpcrequest('ListExecutions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1024,7 +1314,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListExecutionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListExecutionsResponse(),
             await self.do_rpcrequest_async('ListExecutions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1042,6 +1333,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_executions_with_options_async(request, runtime)
 
+    def list_instance_patches_with_options(
+        self,
+        request: oos_20190601_models.ListInstancePatchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListInstancePatchesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListInstancePatchesResponse(),
+            self.do_rpcrequest('ListInstancePatches', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_instance_patches_with_options_async(
+        self,
+        request: oos_20190601_models.ListInstancePatchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListInstancePatchesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListInstancePatchesResponse(),
+            await self.do_rpcrequest_async('ListInstancePatches', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_instance_patches(
+        self,
+        request: oos_20190601_models.ListInstancePatchesRequest,
+    ) -> oos_20190601_models.ListInstancePatchesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_patches_with_options(request, runtime)
+
+    async def list_instance_patches_async(
+        self,
+        request: oos_20190601_models.ListInstancePatchesRequest,
+    ) -> oos_20190601_models.ListInstancePatchesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_patches_with_options_async(request, runtime)
+
+    def list_instance_patch_states_with_options(
+        self,
+        request: oos_20190601_models.ListInstancePatchStatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListInstancePatchStatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListInstancePatchStatesResponse(),
+            self.do_rpcrequest('ListInstancePatchStates', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_instance_patch_states_with_options_async(
+        self,
+        request: oos_20190601_models.ListInstancePatchStatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListInstancePatchStatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListInstancePatchStatesResponse(),
+            await self.do_rpcrequest_async('ListInstancePatchStates', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_instance_patch_states(
+        self,
+        request: oos_20190601_models.ListInstancePatchStatesRequest,
+    ) -> oos_20190601_models.ListInstancePatchStatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_patch_states_with_options(request, runtime)
+
+    async def list_instance_patch_states_async(
+        self,
+        request: oos_20190601_models.ListInstancePatchStatesRequest,
+    ) -> oos_20190601_models.ListInstancePatchStatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_patch_states_with_options_async(request, runtime)
+
+    def list_instance_state_reports_with_options(
+        self,
+        request: oos_20190601_models.ListInstanceStateReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListInstanceStateReportsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListInstanceStateReportsResponse(),
+            self.do_rpcrequest('ListInstanceStateReports', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_instance_state_reports_with_options_async(
+        self,
+        request: oos_20190601_models.ListInstanceStateReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListInstanceStateReportsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListInstanceStateReportsResponse(),
+            await self.do_rpcrequest_async('ListInstanceStateReports', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_instance_state_reports(
+        self,
+        request: oos_20190601_models.ListInstanceStateReportsRequest,
+    ) -> oos_20190601_models.ListInstanceStateReportsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_state_reports_with_options(request, runtime)
+
+    async def list_instance_state_reports_async(
+        self,
+        request: oos_20190601_models.ListInstanceStateReportsRequest,
+    ) -> oos_20190601_models.ListInstanceStateReportsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_state_reports_with_options_async(request, runtime)
+
     def list_inventory_entries_with_options(
         self,
         request: oos_20190601_models.ListInventoryEntriesRequest,
@@ -1051,7 +1468,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListInventoryEntriesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListInventoryEntriesResponse(),
             self.do_rpcrequest('ListInventoryEntries', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1064,7 +1482,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListInventoryEntriesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListInventoryEntriesResponse(),
             await self.do_rpcrequest_async('ListInventoryEntries', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1084,27 +1503,37 @@ class Client(OpenApiClient):
 
     def list_parameters_with_options(
         self,
-        request: oos_20190601_models.ListParametersRequest,
+        tmp_req: oos_20190601_models.ListParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListParametersResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.ListParametersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListParametersResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListParametersResponse(),
             self.do_rpcrequest('ListParameters', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_parameters_with_options_async(
         self,
-        request: oos_20190601_models.ListParametersRequest,
+        tmp_req: oos_20190601_models.ListParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListParametersResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.ListParametersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListParametersResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListParametersResponse(),
             await self.do_rpcrequest_async('ListParameters', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1131,7 +1560,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListParameterVersionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListParameterVersionsResponse(),
             self.do_rpcrequest('ListParameterVersions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1144,7 +1574,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListParameterVersionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListParameterVersionsResponse(),
             await self.do_rpcrequest_async('ListParameterVersions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1162,6 +1593,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_parameter_versions_with_options_async(request, runtime)
 
+    def list_patch_baselines_with_options(
+        self,
+        request: oos_20190601_models.ListPatchBaselinesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListPatchBaselinesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListPatchBaselinesResponse(),
+            self.do_rpcrequest('ListPatchBaselines', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_patch_baselines_with_options_async(
+        self,
+        request: oos_20190601_models.ListPatchBaselinesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListPatchBaselinesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListPatchBaselinesResponse(),
+            await self.do_rpcrequest_async('ListPatchBaselines', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_patch_baselines(
+        self,
+        request: oos_20190601_models.ListPatchBaselinesRequest,
+    ) -> oos_20190601_models.ListPatchBaselinesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_patch_baselines_with_options(request, runtime)
+
+    async def list_patch_baselines_async(
+        self,
+        request: oos_20190601_models.ListPatchBaselinesRequest,
+    ) -> oos_20190601_models.ListPatchBaselinesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_patch_baselines_with_options_async(request, runtime)
+
     def list_resource_execution_status_with_options(
         self,
         request: oos_20190601_models.ListResourceExecutionStatusRequest,
@@ -1171,7 +1644,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListResourceExecutionStatusResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListResourceExecutionStatusResponse(),
             self.do_rpcrequest('ListResourceExecutionStatus', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1184,7 +1658,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListResourceExecutionStatusResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListResourceExecutionStatusResponse(),
             await self.do_rpcrequest_async('ListResourceExecutionStatus', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1204,27 +1679,37 @@ class Client(OpenApiClient):
 
     def list_secret_parameters_with_options(
         self,
-        request: oos_20190601_models.ListSecretParametersRequest,
+        tmp_req: oos_20190601_models.ListSecretParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListSecretParametersResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.ListSecretParametersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListSecretParametersResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListSecretParametersResponse(),
             self.do_rpcrequest('ListSecretParameters', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_secret_parameters_with_options_async(
         self,
-        request: oos_20190601_models.ListSecretParametersRequest,
+        tmp_req: oos_20190601_models.ListSecretParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListSecretParametersResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.ListSecretParametersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListSecretParametersResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListSecretParametersResponse(),
             await self.do_rpcrequest_async('ListSecretParameters', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1251,7 +1736,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListSecretParameterVersionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListSecretParameterVersionsResponse(),
             self.do_rpcrequest('ListSecretParameterVersions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1264,7 +1750,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListSecretParameterVersionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListSecretParameterVersionsResponse(),
             await self.do_rpcrequest_async('ListSecretParameterVersions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1282,6 +1769,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_secret_parameter_versions_with_options_async(request, runtime)
 
+    def list_state_configurations_with_options(
+        self,
+        tmp_req: oos_20190601_models.ListStateConfigurationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListStateConfigurationsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.ListStateConfigurationsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListStateConfigurationsResponse(),
+            self.do_rpcrequest('ListStateConfigurations', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_state_configurations_with_options_async(
+        self,
+        tmp_req: oos_20190601_models.ListStateConfigurationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListStateConfigurationsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.ListStateConfigurationsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListStateConfigurationsResponse(),
+            await self.do_rpcrequest_async('ListStateConfigurations', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_state_configurations(
+        self,
+        request: oos_20190601_models.ListStateConfigurationsRequest,
+    ) -> oos_20190601_models.ListStateConfigurationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_state_configurations_with_options(request, runtime)
+
+    async def list_state_configurations_async(
+        self,
+        request: oos_20190601_models.ListStateConfigurationsRequest,
+    ) -> oos_20190601_models.ListStateConfigurationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_state_configurations_with_options_async(request, runtime)
+
     def list_tag_keys_with_options(
         self,
         request: oos_20190601_models.ListTagKeysRequest,
@@ -1291,7 +1828,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListTagKeysResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListTagKeysResponse(),
             self.do_rpcrequest('ListTagKeys', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1304,7 +1842,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListTagKeysResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListTagKeysResponse(),
             await self.do_rpcrequest_async('ListTagKeys', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1337,7 +1876,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListTagResourcesResponse(),
             self.do_rpcrequest('ListTagResources', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1356,7 +1896,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListTagResourcesResponse(),
             await self.do_rpcrequest_async('ListTagResources', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1383,7 +1924,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListTagValuesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListTagValuesResponse(),
             self.do_rpcrequest('ListTagValues', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1396,7 +1938,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListTagValuesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListTagValuesResponse(),
             await self.do_rpcrequest_async('ListTagValues', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1423,7 +1966,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListTaskExecutionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListTaskExecutionsResponse(),
             self.do_rpcrequest('ListTaskExecutions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1436,7 +1980,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListTaskExecutionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListTaskExecutionsResponse(),
             await self.do_rpcrequest_async('ListTaskExecutions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1467,7 +2012,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListTemplatesResponse(),
             self.do_rpcrequest('ListTemplates', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1484,7 +2030,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListTemplatesResponse(),
             await self.do_rpcrequest_async('ListTemplates', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1511,7 +2058,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListTemplateVersionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListTemplateVersionsResponse(),
             self.do_rpcrequest('ListTemplateVersions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1524,7 +2072,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ListTemplateVersionsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ListTemplateVersionsResponse(),
             await self.do_rpcrequest_async('ListTemplateVersions', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1551,7 +2100,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.NotifyExecutionResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.NotifyExecutionResponse(),
             self.do_rpcrequest('NotifyExecution', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1564,7 +2114,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.NotifyExecutionResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.NotifyExecutionResponse(),
             await self.do_rpcrequest_async('NotifyExecution', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1582,6 +2133,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.notify_execution_with_options_async(request, runtime)
 
+    def register_default_patch_baseline_with_options(
+        self,
+        request: oos_20190601_models.RegisterDefaultPatchBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.RegisterDefaultPatchBaselineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.RegisterDefaultPatchBaselineResponse(),
+            self.do_rpcrequest('RegisterDefaultPatchBaseline', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def register_default_patch_baseline_with_options_async(
+        self,
+        request: oos_20190601_models.RegisterDefaultPatchBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.RegisterDefaultPatchBaselineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.RegisterDefaultPatchBaselineResponse(),
+            await self.do_rpcrequest_async('RegisterDefaultPatchBaseline', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def register_default_patch_baseline(
+        self,
+        request: oos_20190601_models.RegisterDefaultPatchBaselineRequest,
+    ) -> oos_20190601_models.RegisterDefaultPatchBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.register_default_patch_baseline_with_options(request, runtime)
+
+    async def register_default_patch_baseline_async(
+        self,
+        request: oos_20190601_models.RegisterDefaultPatchBaselineRequest,
+    ) -> oos_20190601_models.RegisterDefaultPatchBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.register_default_patch_baseline_with_options_async(request, runtime)
+
     def search_inventory_with_options(
         self,
         request: oos_20190601_models.SearchInventoryRequest,
@@ -1591,7 +2184,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.SearchInventoryResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.SearchInventoryResponse(),
             self.do_rpcrequest('SearchInventory', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1604,7 +2198,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.SearchInventoryResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.SearchInventoryResponse(),
             await self.do_rpcrequest_async('SearchInventory', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1631,7 +2226,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.SetServiceSettingsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.SetServiceSettingsResponse(),
             self.do_rpcrequest('SetServiceSettings', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1644,7 +2240,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.SetServiceSettingsResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.SetServiceSettingsResponse(),
             await self.do_rpcrequest_async('SetServiceSettings', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1675,7 +2272,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.StartExecutionResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.StartExecutionResponse(),
             self.do_rpcrequest('StartExecution', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1692,7 +2290,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.StartExecutionResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.StartExecutionResponse(),
             await self.do_rpcrequest_async('StartExecution', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1725,7 +2324,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.TagResourcesResponse(),
             self.do_rpcrequest('TagResources', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1744,7 +2344,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.TagResourcesResponse(),
             await self.do_rpcrequest_async('TagResources', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1771,7 +2372,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.TriggerExecutionResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.TriggerExecutionResponse(),
             self.do_rpcrequest('TriggerExecution', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1784,7 +2386,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.TriggerExecutionResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.TriggerExecutionResponse(),
             await self.do_rpcrequest_async('TriggerExecution', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1817,7 +2420,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.UntagResourcesResponse(),
             self.do_rpcrequest('UntagResources', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1836,7 +2440,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.UntagResourcesResponse(),
             await self.do_rpcrequest_async('UntagResources', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1863,7 +2468,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.UpdateExecutionResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateExecutionResponse(),
             self.do_rpcrequest('UpdateExecution', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1876,7 +2482,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.UpdateExecutionResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateExecutionResponse(),
             await self.do_rpcrequest_async('UpdateExecution', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1903,7 +2510,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.UpdateInstanceInformationResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateInstanceInformationResponse(),
             self.do_rpcrequest('UpdateInstanceInformation', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1916,7 +2524,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.UpdateInstanceInformationResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateInstanceInformationResponse(),
             await self.do_rpcrequest_async('UpdateInstanceInformation', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1943,7 +2552,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.UpdateParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateParameterResponse(),
             self.do_rpcrequest('UpdateParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1956,7 +2566,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.UpdateParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateParameterResponse(),
             await self.do_rpcrequest_async('UpdateParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1974,29 +2585,81 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_parameter_with_options_async(request, runtime)
 
-    def update_secret_parameter_with_options(
+    def update_patch_baseline_with_options(
         self,
-        request: oos_20190601_models.UpdateSecretParameterRequest,
+        request: oos_20190601_models.UpdatePatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> oos_20190601_models.UpdateSecretParameterResponse:
+    ) -> oos_20190601_models.UpdatePatchBaselineResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.UpdateSecretParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.UpdatePatchBaselineResponse(),
+            self.do_rpcrequest('UpdatePatchBaseline', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_patch_baseline_with_options_async(
+        self,
+        request: oos_20190601_models.UpdatePatchBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.UpdatePatchBaselineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.UpdatePatchBaselineResponse(),
+            await self.do_rpcrequest_async('UpdatePatchBaseline', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_patch_baseline(
+        self,
+        request: oos_20190601_models.UpdatePatchBaselineRequest,
+    ) -> oos_20190601_models.UpdatePatchBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_patch_baseline_with_options(request, runtime)
+
+    async def update_patch_baseline_async(
+        self,
+        request: oos_20190601_models.UpdatePatchBaselineRequest,
+    ) -> oos_20190601_models.UpdatePatchBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_patch_baseline_with_options_async(request, runtime)
+
+    def update_secret_parameter_with_options(
+        self,
+        tmp_req: oos_20190601_models.UpdateSecretParameterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.UpdateSecretParameterResponse:
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.UpdateSecretParameterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateSecretParameterResponse(),
             self.do_rpcrequest('UpdateSecretParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_secret_parameter_with_options_async(
         self,
-        request: oos_20190601_models.UpdateSecretParameterRequest,
+        tmp_req: oos_20190601_models.UpdateSecretParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateSecretParameterResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.UpdateSecretParameterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.UpdateSecretParameterResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateSecretParameterResponse(),
             await self.do_rpcrequest_async('UpdateSecretParameter', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2014,6 +2677,60 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_secret_parameter_with_options_async(request, runtime)
 
+    def update_state_configuration_with_options(
+        self,
+        tmp_req: oos_20190601_models.UpdateStateConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.UpdateStateConfigurationResponse:
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.UpdateStateConfigurationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateStateConfigurationResponse(),
+            self.do_rpcrequest('UpdateStateConfiguration', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_state_configuration_with_options_async(
+        self,
+        tmp_req: oos_20190601_models.UpdateStateConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.UpdateStateConfigurationResponse:
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.UpdateStateConfigurationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateStateConfigurationResponse(),
+            await self.do_rpcrequest_async('UpdateStateConfiguration', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_state_configuration(
+        self,
+        request: oos_20190601_models.UpdateStateConfigurationRequest,
+    ) -> oos_20190601_models.UpdateStateConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_state_configuration_with_options(request, runtime)
+
+    async def update_state_configuration_async(
+        self,
+        request: oos_20190601_models.UpdateStateConfigurationRequest,
+    ) -> oos_20190601_models.UpdateStateConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_state_configuration_with_options_async(request, runtime)
+
     def update_template_with_options(
         self,
         tmp_req: oos_20190601_models.UpdateTemplateRequest,
@@ -2027,7 +2744,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.UpdateTemplateResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateTemplateResponse(),
             self.do_rpcrequest('UpdateTemplate', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2044,7 +2762,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.UpdateTemplateResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateTemplateResponse(),
             await self.do_rpcrequest_async('UpdateTemplate', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2071,7 +2790,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ValidateTemplateContentResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ValidateTemplateContentResponse(),
             self.do_rpcrequest('ValidateTemplateContent', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2084,7 +2804,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return oos_20190601_models.ValidateTemplateContentResponse().from_map(
+        return TeaCore.from_map(
+            oos_20190601_models.ValidateTemplateContentResponse(),
             await self.do_rpcrequest_async('ValidateTemplateContent', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
