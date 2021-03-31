@@ -29,6 +29,10 @@ class CreateInstanceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -84,6 +88,10 @@ class CreateInstanceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -120,6 +128,10 @@ class CreateInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -152,6 +164,10 @@ class DeleteRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -183,6 +199,10 @@ class DeleteRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -211,6 +231,10 @@ class DeleteRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -239,6 +263,10 @@ class DescribeAutoDelConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -264,6 +292,10 @@ class DescribeAutoDelConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -296,6 +328,10 @@ class DescribeAutoDelConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -328,6 +364,10 @@ class DescribeCheckWarningDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -373,6 +413,10 @@ class DescribeCheckWarningDetailResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.item is not None:
             result['Item'] = self.item
@@ -429,6 +473,10 @@ class DescribeCheckWarningDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -459,6 +507,10 @@ class DescribeConcernNecessityRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -488,6 +540,10 @@ class DescribeConcernNecessityResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -520,6 +576,10 @@ class DescribeConcernNecessityResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -552,6 +612,10 @@ class DescribeInstanceStatisticsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -593,6 +657,10 @@ class DescribeInstanceStatisticsResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.account is not None:
             result['Account'] = self.account
@@ -641,6 +709,10 @@ class DescribeInstanceStatisticsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -678,6 +750,10 @@ class DescribeInstanceStatisticsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -708,6 +784,10 @@ class DescribeStrategyExecDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -743,6 +823,10 @@ class DescribeStrategyExecDetailResponseBodyFailedEcsList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.internet_ip is not None:
             result['InternetIp'] = self.internet_ip
@@ -801,6 +885,10 @@ class DescribeStrategyExecDetailResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -866,6 +954,10 @@ class DescribeStrategyExecDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -898,6 +990,10 @@ class DescribeStratetyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -933,6 +1029,10 @@ class DescribeStratetyResponseBodyStrategiesConfigTargets(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.flag is not None:
             result['Flag'] = self.flag
@@ -987,6 +1087,10 @@ class DescribeStratetyResponseBodyStrategies(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.exec_status is not None:
             result['ExecStatus'] = self.exec_status
@@ -1060,6 +1164,10 @@ class DescribeStratetyResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1097,6 +1205,10 @@ class DescribeStratetyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1129,6 +1241,10 @@ class DescribeVulWhitelistRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -1166,6 +1282,10 @@ class DescribeVulWhitelistResponseBodyVulWhitelists(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -1212,6 +1332,10 @@ class DescribeVulWhitelistResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -1261,6 +1385,10 @@ class DescribeVulWhitelistResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1299,6 +1427,10 @@ class RenewInstanceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1344,6 +1476,10 @@ class RenewInstanceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1376,6 +1512,10 @@ class RenewInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1412,6 +1552,10 @@ class UpgradeInstanceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1453,6 +1597,10 @@ class UpgradeInstanceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1485,6 +1633,10 @@ class UpgradeInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

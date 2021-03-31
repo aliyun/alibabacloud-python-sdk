@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -48,7 +49,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.CreateInstanceResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.CreateInstanceResponse(),
             self.do_rpcrequest('CreateInstance', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -61,7 +63,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.CreateInstanceResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.CreateInstanceResponse(),
             await self.do_rpcrequest_async('CreateInstance', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -88,7 +91,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DeleteRuleResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DeleteRuleResponse(),
             self.do_rpcrequest('DeleteRule', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -101,7 +105,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DeleteRuleResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DeleteRuleResponse(),
             await self.do_rpcrequest_async('DeleteRule', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -128,7 +133,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeAutoDelConfigResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeAutoDelConfigResponse(),
             self.do_rpcrequest('DescribeAutoDelConfig', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -141,7 +147,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeAutoDelConfigResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeAutoDelConfigResponse(),
             await self.do_rpcrequest_async('DescribeAutoDelConfig', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -168,7 +175,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeCheckWarningDetailResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeCheckWarningDetailResponse(),
             self.do_rpcrequest('DescribeCheckWarningDetail', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -181,7 +189,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeCheckWarningDetailResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeCheckWarningDetailResponse(),
             await self.do_rpcrequest_async('DescribeCheckWarningDetail', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -208,7 +217,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeConcernNecessityResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeConcernNecessityResponse(),
             self.do_rpcrequest('DescribeConcernNecessity', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -221,7 +231,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeConcernNecessityResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeConcernNecessityResponse(),
             await self.do_rpcrequest_async('DescribeConcernNecessity', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -248,7 +259,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeInstanceStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeInstanceStatisticsResponse(),
             self.do_rpcrequest('DescribeInstanceStatistics', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -261,7 +273,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeInstanceStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeInstanceStatisticsResponse(),
             await self.do_rpcrequest_async('DescribeInstanceStatistics', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -288,7 +301,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeStrategyExecDetailResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeStrategyExecDetailResponse(),
             self.do_rpcrequest('DescribeStrategyExecDetail', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -301,7 +315,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeStrategyExecDetailResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeStrategyExecDetailResponse(),
             await self.do_rpcrequest_async('DescribeStrategyExecDetail', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -328,7 +343,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeStratetyResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeStratetyResponse(),
             self.do_rpcrequest('DescribeStratety', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -341,7 +357,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeStratetyResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeStratetyResponse(),
             await self.do_rpcrequest_async('DescribeStratety', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -368,7 +385,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeVulWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeVulWhitelistResponse(),
             self.do_rpcrequest('DescribeVulWhitelist', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -381,7 +399,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.DescribeVulWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.DescribeVulWhitelistResponse(),
             await self.do_rpcrequest_async('DescribeVulWhitelist', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -408,7 +427,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.RenewInstanceResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.RenewInstanceResponse(),
             self.do_rpcrequest('RenewInstance', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -421,7 +441,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.RenewInstanceResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.RenewInstanceResponse(),
             await self.do_rpcrequest_async('RenewInstance', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -448,7 +469,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.UpgradeInstanceResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.UpgradeInstanceResponse(),
             self.do_rpcrequest('UpgradeInstance', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -461,7 +483,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return aegis_20161111_models.UpgradeInstanceResponse().from_map(
+        return TeaCore.from_map(
+            aegis_20161111_models.UpgradeInstanceResponse(),
             await self.do_rpcrequest_async('UpgradeInstance', '2016-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
