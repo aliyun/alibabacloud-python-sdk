@@ -4,6 +4,355 @@ from Tea.model import TeaModel
 from typing import Dict, Any, List
 
 
+class ConfigureDtsJobRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_name: str = None,
+        source_endpoint_instance_type: str = None,
+        source_endpoint_instance_id: str = None,
+        source_endpoint_engine_name: str = None,
+        source_endpoint_region: str = None,
+        source_endpoint_ip: str = None,
+        source_endpoint_port: str = None,
+        source_endpoint_oracle_sid: str = None,
+        source_endpoint_database_name: str = None,
+        source_endpoint_user_name: str = None,
+        source_endpoint_password: str = None,
+        source_endpoint_owner_id: str = None,
+        source_endpoint_role: str = None,
+        destination_endpoint_instance_type: str = None,
+        destination_endpoint_instance_id: str = None,
+        destination_endpoint_engine_name: str = None,
+        destination_endpoint_region: str = None,
+        destination_endpoint_ip: str = None,
+        destination_endpoint_port: str = None,
+        destination_endpoint_data_base_name: str = None,
+        destination_endpoint_user_name: str = None,
+        destination_endpoint_password: str = None,
+        structure_initialization: bool = None,
+        data_initialization: bool = None,
+        data_synchronization: bool = None,
+        db_list: str = None,
+        reserve: str = None,
+        checkpoint: str = None,
+        owner_id: str = None,
+        destination_endpoint_oracle_sid: str = None,
+        job_type: str = None,
+        dts_job_id: str = None,
+        dts_instance_id: str = None,
+        delay_phone: str = None,
+        delay_rule_time: int = None,
+        delay_notice: bool = None,
+        error_phone: str = None,
+        error_notice: bool = None,
+    ):
+        self.dts_job_name = dts_job_name
+        self.source_endpoint_instance_type = source_endpoint_instance_type
+        self.source_endpoint_instance_id = source_endpoint_instance_id
+        self.source_endpoint_engine_name = source_endpoint_engine_name
+        self.source_endpoint_region = source_endpoint_region
+        self.source_endpoint_ip = source_endpoint_ip
+        self.source_endpoint_port = source_endpoint_port
+        self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
+        self.source_endpoint_database_name = source_endpoint_database_name
+        self.source_endpoint_user_name = source_endpoint_user_name
+        self.source_endpoint_password = source_endpoint_password
+        self.source_endpoint_owner_id = source_endpoint_owner_id
+        self.source_endpoint_role = source_endpoint_role
+        self.destination_endpoint_instance_type = destination_endpoint_instance_type
+        self.destination_endpoint_instance_id = destination_endpoint_instance_id
+        self.destination_endpoint_engine_name = destination_endpoint_engine_name
+        self.destination_endpoint_region = destination_endpoint_region
+        self.destination_endpoint_ip = destination_endpoint_ip
+        self.destination_endpoint_port = destination_endpoint_port
+        self.destination_endpoint_data_base_name = destination_endpoint_data_base_name
+        self.destination_endpoint_user_name = destination_endpoint_user_name
+        self.destination_endpoint_password = destination_endpoint_password
+        self.structure_initialization = structure_initialization
+        self.data_initialization = data_initialization
+        self.data_synchronization = data_synchronization
+        self.db_list = db_list
+        self.reserve = reserve
+        self.checkpoint = checkpoint
+        self.owner_id = owner_id
+        self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
+        self.job_type = job_type
+        self.dts_job_id = dts_job_id
+        self.dts_instance_id = dts_instance_id
+        self.delay_phone = delay_phone
+        self.delay_rule_time = delay_rule_time
+        self.delay_notice = delay_notice
+        self.error_phone = error_phone
+        self.error_notice = error_notice
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_name is not None:
+            result['DtsJobName'] = self.dts_job_name
+        if self.source_endpoint_instance_type is not None:
+            result['SourceEndpointInstanceType'] = self.source_endpoint_instance_type
+        if self.source_endpoint_instance_id is not None:
+            result['SourceEndpointInstanceID'] = self.source_endpoint_instance_id
+        if self.source_endpoint_engine_name is not None:
+            result['SourceEndpointEngineName'] = self.source_endpoint_engine_name
+        if self.source_endpoint_region is not None:
+            result['SourceEndpointRegion'] = self.source_endpoint_region
+        if self.source_endpoint_ip is not None:
+            result['SourceEndpointIP'] = self.source_endpoint_ip
+        if self.source_endpoint_port is not None:
+            result['SourceEndpointPort'] = self.source_endpoint_port
+        if self.source_endpoint_oracle_sid is not None:
+            result['SourceEndpointOracleSID'] = self.source_endpoint_oracle_sid
+        if self.source_endpoint_database_name is not None:
+            result['SourceEndpointDatabaseName'] = self.source_endpoint_database_name
+        if self.source_endpoint_user_name is not None:
+            result['SourceEndpointUserName'] = self.source_endpoint_user_name
+        if self.source_endpoint_password is not None:
+            result['SourceEndpointPassword'] = self.source_endpoint_password
+        if self.source_endpoint_owner_id is not None:
+            result['SourceEndpointOwnerID'] = self.source_endpoint_owner_id
+        if self.source_endpoint_role is not None:
+            result['SourceEndpointRole'] = self.source_endpoint_role
+        if self.destination_endpoint_instance_type is not None:
+            result['DestinationEndpointInstanceType'] = self.destination_endpoint_instance_type
+        if self.destination_endpoint_instance_id is not None:
+            result['DestinationEndpointInstanceID'] = self.destination_endpoint_instance_id
+        if self.destination_endpoint_engine_name is not None:
+            result['DestinationEndpointEngineName'] = self.destination_endpoint_engine_name
+        if self.destination_endpoint_region is not None:
+            result['DestinationEndpointRegion'] = self.destination_endpoint_region
+        if self.destination_endpoint_ip is not None:
+            result['DestinationEndpointIP'] = self.destination_endpoint_ip
+        if self.destination_endpoint_port is not None:
+            result['DestinationEndpointPort'] = self.destination_endpoint_port
+        if self.destination_endpoint_data_base_name is not None:
+            result['DestinationEndpointDataBaseName'] = self.destination_endpoint_data_base_name
+        if self.destination_endpoint_user_name is not None:
+            result['DestinationEndpointUserName'] = self.destination_endpoint_user_name
+        if self.destination_endpoint_password is not None:
+            result['DestinationEndpointPassword'] = self.destination_endpoint_password
+        if self.structure_initialization is not None:
+            result['StructureInitialization'] = self.structure_initialization
+        if self.data_initialization is not None:
+            result['DataInitialization'] = self.data_initialization
+        if self.data_synchronization is not None:
+            result['DataSynchronization'] = self.data_synchronization
+        if self.db_list is not None:
+            result['DbList'] = self.db_list
+        if self.reserve is not None:
+            result['Reserve'] = self.reserve
+        if self.checkpoint is not None:
+            result['Checkpoint'] = self.checkpoint
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.destination_endpoint_oracle_sid is not None:
+            result['DestinationEndpointOracleSID'] = self.destination_endpoint_oracle_sid
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.delay_phone is not None:
+            result['DelayPhone'] = self.delay_phone
+        if self.delay_rule_time is not None:
+            result['DelayRuleTime'] = self.delay_rule_time
+        if self.delay_notice is not None:
+            result['DelayNotice'] = self.delay_notice
+        if self.error_phone is not None:
+            result['ErrorPhone'] = self.error_phone
+        if self.error_notice is not None:
+            result['ErrorNotice'] = self.error_notice
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobName') is not None:
+            self.dts_job_name = m.get('DtsJobName')
+        if m.get('SourceEndpointInstanceType') is not None:
+            self.source_endpoint_instance_type = m.get('SourceEndpointInstanceType')
+        if m.get('SourceEndpointInstanceID') is not None:
+            self.source_endpoint_instance_id = m.get('SourceEndpointInstanceID')
+        if m.get('SourceEndpointEngineName') is not None:
+            self.source_endpoint_engine_name = m.get('SourceEndpointEngineName')
+        if m.get('SourceEndpointRegion') is not None:
+            self.source_endpoint_region = m.get('SourceEndpointRegion')
+        if m.get('SourceEndpointIP') is not None:
+            self.source_endpoint_ip = m.get('SourceEndpointIP')
+        if m.get('SourceEndpointPort') is not None:
+            self.source_endpoint_port = m.get('SourceEndpointPort')
+        if m.get('SourceEndpointOracleSID') is not None:
+            self.source_endpoint_oracle_sid = m.get('SourceEndpointOracleSID')
+        if m.get('SourceEndpointDatabaseName') is not None:
+            self.source_endpoint_database_name = m.get('SourceEndpointDatabaseName')
+        if m.get('SourceEndpointUserName') is not None:
+            self.source_endpoint_user_name = m.get('SourceEndpointUserName')
+        if m.get('SourceEndpointPassword') is not None:
+            self.source_endpoint_password = m.get('SourceEndpointPassword')
+        if m.get('SourceEndpointOwnerID') is not None:
+            self.source_endpoint_owner_id = m.get('SourceEndpointOwnerID')
+        if m.get('SourceEndpointRole') is not None:
+            self.source_endpoint_role = m.get('SourceEndpointRole')
+        if m.get('DestinationEndpointInstanceType') is not None:
+            self.destination_endpoint_instance_type = m.get('DestinationEndpointInstanceType')
+        if m.get('DestinationEndpointInstanceID') is not None:
+            self.destination_endpoint_instance_id = m.get('DestinationEndpointInstanceID')
+        if m.get('DestinationEndpointEngineName') is not None:
+            self.destination_endpoint_engine_name = m.get('DestinationEndpointEngineName')
+        if m.get('DestinationEndpointRegion') is not None:
+            self.destination_endpoint_region = m.get('DestinationEndpointRegion')
+        if m.get('DestinationEndpointIP') is not None:
+            self.destination_endpoint_ip = m.get('DestinationEndpointIP')
+        if m.get('DestinationEndpointPort') is not None:
+            self.destination_endpoint_port = m.get('DestinationEndpointPort')
+        if m.get('DestinationEndpointDataBaseName') is not None:
+            self.destination_endpoint_data_base_name = m.get('DestinationEndpointDataBaseName')
+        if m.get('DestinationEndpointUserName') is not None:
+            self.destination_endpoint_user_name = m.get('DestinationEndpointUserName')
+        if m.get('DestinationEndpointPassword') is not None:
+            self.destination_endpoint_password = m.get('DestinationEndpointPassword')
+        if m.get('StructureInitialization') is not None:
+            self.structure_initialization = m.get('StructureInitialization')
+        if m.get('DataInitialization') is not None:
+            self.data_initialization = m.get('DataInitialization')
+        if m.get('DataSynchronization') is not None:
+            self.data_synchronization = m.get('DataSynchronization')
+        if m.get('DbList') is not None:
+            self.db_list = m.get('DbList')
+        if m.get('Reserve') is not None:
+            self.reserve = m.get('Reserve')
+        if m.get('Checkpoint') is not None:
+            self.checkpoint = m.get('Checkpoint')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('DestinationEndpointOracleSID') is not None:
+            self.destination_endpoint_oracle_sid = m.get('DestinationEndpointOracleSID')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('DelayPhone') is not None:
+            self.delay_phone = m.get('DelayPhone')
+        if m.get('DelayRuleTime') is not None:
+            self.delay_rule_time = m.get('DelayRuleTime')
+        if m.get('DelayNotice') is not None:
+            self.delay_notice = m.get('DelayNotice')
+        if m.get('ErrorPhone') is not None:
+            self.error_phone = m.get('ErrorPhone')
+        if m.get('ErrorNotice') is not None:
+            self.error_notice = m.get('ErrorNotice')
+        return self
+
+
+class ConfigureDtsJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        request_id: str = None,
+        http_status_code: str = None,
+        err_message: str = None,
+        dts_instance_id: str = None,
+        success: str = None,
+        err_code: str = None,
+    ):
+        self.dts_job_id = dts_job_id
+        self.request_id = request_id
+        self.http_status_code = http_status_code
+        self.err_message = err_message
+        self.dts_instance_id = dts_instance_id
+        self.success = success
+        self.err_code = err_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        return self
+
+
+class ConfigureDtsJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ConfigureDtsJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ConfigureDtsJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ConfigureMigrationJobRequestSourceEndpoint(TeaModel):
     def __init__(
         self,
@@ -37,6 +386,10 @@ class ConfigureMigrationJobRequestSourceEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -122,6 +475,10 @@ class ConfigureMigrationJobRequestDestinationEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -185,6 +542,10 @@ class ConfigureMigrationJobRequestMigrationMode(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.structure_intialization is not None:
             result['StructureIntialization'] = self.structure_intialization
@@ -239,6 +600,10 @@ class ConfigureMigrationJobRequest(TeaModel):
             self.migration_mode.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_endpoint is not None:
             result['SourceEndpoint'] = self.source_endpoint.to_map()
@@ -307,6 +672,10 @@ class ConfigureMigrationJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -347,6 +716,10 @@ class ConfigureMigrationJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -389,6 +762,10 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.migration_job_id is not None:
             result['MigrationJobId'] = self.migration_job_id
@@ -446,6 +823,10 @@ class ConfigureMigrationJobAlertResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -486,6 +867,10 @@ class ConfigureMigrationJobAlertResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -532,6 +917,10 @@ class ConfigureSubscriptionInstanceRequestSourceEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -593,6 +982,10 @@ class ConfigureSubscriptionInstanceRequestSubscriptionDataType(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ddl is not None:
             result['DDL'] = self.ddl
@@ -622,6 +1015,10 @@ class ConfigureSubscriptionInstanceRequestSubscriptionInstance(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vpcid is not None:
             result['VPCId'] = self.vpcid
@@ -670,6 +1067,10 @@ class ConfigureSubscriptionInstanceRequest(TeaModel):
             self.subscription_instance.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_endpoint is not None:
             result['SourceEndpoint'] = self.source_endpoint.to_map()
@@ -734,6 +1135,10 @@ class ConfigureSubscriptionInstanceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -774,6 +1179,10 @@ class ConfigureSubscriptionInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -816,6 +1225,10 @@ class ConfigureSubscriptionInstanceAlertRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
@@ -873,6 +1286,10 @@ class ConfigureSubscriptionInstanceAlertResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -913,6 +1330,10 @@ class ConfigureSubscriptionInstanceAlertResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -957,6 +1378,10 @@ class ConfigureSynchronizationJobRequestSourceEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -1024,6 +1449,10 @@ class ConfigureSynchronizationJobRequestDestinationEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -1079,6 +1508,10 @@ class ConfigureSynchronizationJobRequestPartitionKey(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.modify_time_year is not None:
             result['ModifyTime_Year'] = self.modify_time_year
@@ -1147,6 +1580,10 @@ class ConfigureSynchronizationJobRequest(TeaModel):
             self.partition_key.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_endpoint is not None:
             result['SourceEndpoint'] = self.source_endpoint.to_map()
@@ -1227,6 +1664,10 @@ class ConfigureSynchronizationJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1267,6 +1708,10 @@ class ConfigureSynchronizationJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1311,6 +1756,10 @@ class ConfigureSynchronizationJobAlertRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
@@ -1372,6 +1821,10 @@ class ConfigureSynchronizationJobAlertResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1412,6 +1865,10 @@ class ConfigureSynchronizationJobAlertResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1450,6 +1907,10 @@ class ConfigureSynchronizationJobReplicatorCompareRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
@@ -1499,6 +1960,10 @@ class ConfigureSynchronizationJobReplicatorCompareResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1539,6 +2004,10 @@ class ConfigureSynchronizationJobReplicatorCompareResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1577,6 +2046,10 @@ class CreateConsumerGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
@@ -1628,6 +2101,10 @@ class CreateConsumerGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.consumer_group_id is not None:
             result['ConsumerGroupID'] = self.consumer_group_id
@@ -1672,6 +2149,10 @@ class CreateConsumerGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1685,6 +2166,211 @@ class CreateConsumerGroupResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateConsumerGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDtsInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        instance_class: str = None,
+        pay_type: str = None,
+        period: str = None,
+        sync_architecture: str = None,
+        auto_start: bool = None,
+        used_time: int = None,
+        quantity: int = None,
+        auto_pay: bool = None,
+        type: str = None,
+        database_count: int = None,
+        source_region: str = None,
+        destination_region: str = None,
+        source_endpoint_engine_name: str = None,
+        destination_endpoint_engine_name: str = None,
+    ):
+        self.job_id = job_id
+        self.instance_class = instance_class
+        self.pay_type = pay_type
+        self.period = period
+        self.sync_architecture = sync_architecture
+        self.auto_start = auto_start
+        self.used_time = used_time
+        self.quantity = quantity
+        self.auto_pay = auto_pay
+        self.type = type
+        self.database_count = database_count
+        self.source_region = source_region
+        self.destination_region = destination_region
+        self.source_endpoint_engine_name = source_endpoint_engine_name
+        self.destination_endpoint_engine_name = destination_endpoint_engine_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.sync_architecture is not None:
+            result['SyncArchitecture'] = self.sync_architecture
+        if self.auto_start is not None:
+            result['AutoStart'] = self.auto_start
+        if self.used_time is not None:
+            result['UsedTime'] = self.used_time
+        if self.quantity is not None:
+            result['Quantity'] = self.quantity
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.database_count is not None:
+            result['DatabaseCount'] = self.database_count
+        if self.source_region is not None:
+            result['SourceRegion'] = self.source_region
+        if self.destination_region is not None:
+            result['DestinationRegion'] = self.destination_region
+        if self.source_endpoint_engine_name is not None:
+            result['SourceEndpointEngineName'] = self.source_endpoint_engine_name
+        if self.destination_endpoint_engine_name is not None:
+            result['DestinationEndpointEngineName'] = self.destination_endpoint_engine_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('SyncArchitecture') is not None:
+            self.sync_architecture = m.get('SyncArchitecture')
+        if m.get('AutoStart') is not None:
+            self.auto_start = m.get('AutoStart')
+        if m.get('UsedTime') is not None:
+            self.used_time = m.get('UsedTime')
+        if m.get('Quantity') is not None:
+            self.quantity = m.get('Quantity')
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('DatabaseCount') is not None:
+            self.database_count = m.get('DatabaseCount')
+        if m.get('SourceRegion') is not None:
+            self.source_region = m.get('SourceRegion')
+        if m.get('DestinationRegion') is not None:
+            self.destination_region = m.get('DestinationRegion')
+        if m.get('SourceEndpointEngineName') is not None:
+            self.source_endpoint_engine_name = m.get('SourceEndpointEngineName')
+        if m.get('DestinationEndpointEngineName') is not None:
+            self.destination_endpoint_engine_name = m.get('DestinationEndpointEngineName')
+        return self
+
+
+class CreateDtsInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        instance_id: str = None,
+        err_message: str = None,
+        success: str = None,
+        job_id: str = None,
+        err_code: str = None,
+    ):
+        self.request_id = request_id
+        self.instance_id = instance_id
+        self.err_message = err_message
+        self.success = success
+        self.job_id = job_id
+        self.err_code = err_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        return self
+
+
+class CreateDtsInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateDtsInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateDtsInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1708,6 +2394,10 @@ class CreateMigrationJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region is not None:
             result['Region'] = self.region
@@ -1755,6 +2445,10 @@ class CreateMigrationJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1799,6 +2493,10 @@ class CreateMigrationJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1827,6 +2525,10 @@ class CreateSubscriptionInstanceRequestSourceEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -1865,6 +2567,10 @@ class CreateSubscriptionInstanceRequest(TeaModel):
             self.source_endpoint.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_endpoint is not None:
             result['SourceEndpoint'] = self.source_endpoint.to_map()
@@ -1925,6 +2631,10 @@ class CreateSubscriptionInstanceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1969,6 +2679,10 @@ class CreateSubscriptionInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1997,6 +2711,10 @@ class CreateSynchronizationJobRequestSourceEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -2020,6 +2738,10 @@ class CreateSynchronizationJobRequestDestinationEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -2072,6 +2794,10 @@ class CreateSynchronizationJobRequest(TeaModel):
             self.destination_endpoint.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_endpoint is not None:
             result['SourceEndpoint'] = self.source_endpoint.to_map()
@@ -2157,6 +2883,10 @@ class CreateSynchronizationJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
@@ -2201,6 +2931,10 @@ class CreateSynchronizationJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2235,6 +2969,10 @@ class DeleteConsumerGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
@@ -2276,6 +3014,10 @@ class DeleteConsumerGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2316,6 +3058,10 @@ class DeleteConsumerGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2329,6 +3075,145 @@ class DeleteConsumerGroupResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteConsumerGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDtsJobRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        dts_instance_id: str = None,
+        synchronization_direction: str = None,
+    ):
+        self.dts_job_id = dts_job_id
+        self.dts_instance_id = dts_instance_id
+        self.synchronization_direction = synchronization_direction
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.synchronization_direction is not None:
+            result['SynchronizationDirection'] = self.synchronization_direction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('SynchronizationDirection') is not None:
+            self.synchronization_direction = m.get('SynchronizationDirection')
+        return self
+
+
+class DeleteDtsJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        http_status_code: int = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_message: str = None,
+        success: bool = None,
+        err_code: str = None,
+    ):
+        self.request_id = request_id
+        self.http_status_code = http_status_code
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_message = err_message
+        self.success = success
+        self.err_code = err_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        return self
+
+
+class DeleteDtsJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteDtsJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteDtsJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2348,6 +3233,10 @@ class DeleteMigrationJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.migration_job_id is not None:
             result['MigrationJobId'] = self.migration_job_id
@@ -2385,6 +3274,10 @@ class DeleteMigrationJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2425,6 +3318,10 @@ class DeleteMigrationJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2457,6 +3354,10 @@ class DeleteSubscriptionInstanceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
@@ -2494,6 +3395,10 @@ class DeleteSubscriptionInstanceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2534,6 +3439,10 @@ class DeleteSubscriptionInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2566,6 +3475,10 @@ class DeleteSynchronizationJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
@@ -2603,6 +3516,10 @@ class DeleteSynchronizationJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2643,6 +3560,10 @@ class DeleteSynchronizationJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2683,8 +3604,8 @@ class DescribeConnectionStatusRequest(TeaModel):
         destination_endpoint_database_name: str = None,
         destination_endpoint_user_name: str = None,
         destination_endpoint_password: str = None,
-        destination_endpoint_oracle_sid: bool = None,
-        destination_endpoint_architecture: bool = None,
+        destination_endpoint_oracle_sid: str = None,
+        destination_endpoint_architecture: str = None,
     ):
         self.source_endpoint_architecture = source_endpoint_architecture
         self.source_endpoint_instance_type = source_endpoint_instance_type
@@ -2713,6 +3634,10 @@ class DescribeConnectionStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_endpoint_architecture is not None:
             result['SourceEndpointArchitecture'] = self.source_endpoint_architecture
@@ -2830,6 +3755,10 @@ class DescribeConnectionStatusResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_connection_status is not None:
             result['SourceConnectionStatus'] = self.source_connection_status
@@ -2878,6 +3807,10 @@ class DescribeConnectionStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2914,6 +3847,10 @@ class DescribeConsumerGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -2963,6 +3900,10 @@ class DescribeConsumerGroupResponseBodyConsumerChannelsDescribeConsumerChannel(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.consumer_group_user_name is not None:
             result['ConsumerGroupUserName'] = self.consumer_group_user_name
@@ -3009,6 +3950,10 @@ class DescribeConsumerGroupResponseBodyConsumerChannels(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DescribeConsumerChannel'] = []
         if self.describe_consumer_channel is not None:
@@ -3052,6 +3997,10 @@ class DescribeConsumerGroupResponseBody(TeaModel):
             self.consumer_channels.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_record_count is not None:
             result['TotalRecordCount'] = self.total_record_count
@@ -3109,6 +4058,10 @@ class DescribeConsumerGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3139,6 +4092,10 @@ class DescribeDTSIPRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_endpoint_region is not None:
             result['SourceEndpointRegion'] = self.source_endpoint_region
@@ -3176,6 +4133,10 @@ class DescribeDTSIPResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3224,6 +4185,10 @@ class DescribeDTSIPResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3237,6 +4202,2030 @@ class DescribeDTSIPResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeDTSIPResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDtsJobDetailRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+    ):
+        self.dts_job_id = dts_job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        return self
+
+
+class DescribeDtsJobDetailResponseBodyMigrationMode(TeaModel):
+    def __init__(
+        self,
+        data_initialization: bool = None,
+        data_synchronization: bool = None,
+        structure_initialization: bool = None,
+    ):
+        self.data_initialization = data_initialization
+        self.data_synchronization = data_synchronization
+        self.structure_initialization = structure_initialization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_initialization is not None:
+            result['DataInitialization'] = self.data_initialization
+        if self.data_synchronization is not None:
+            result['DataSynchronization'] = self.data_synchronization
+        if self.structure_initialization is not None:
+            result['StructureInitialization'] = self.structure_initialization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataInitialization') is not None:
+            self.data_initialization = m.get('DataInitialization')
+        if m.get('DataSynchronization') is not None:
+            self.data_synchronization = m.get('DataSynchronization')
+        if m.get('StructureInitialization') is not None:
+            self.structure_initialization = m.get('StructureInitialization')
+        return self
+
+
+class DescribeDtsJobDetailResponseBodyDestinationEndpoint(TeaModel):
+    def __init__(
+        self,
+        ssl_solution_enum: str = None,
+        oracle_sid: str = None,
+        database_name: str = None,
+        region: str = None,
+        ip: str = None,
+        instance_id: str = None,
+        port: str = None,
+        instance_type: str = None,
+        user_name: str = None,
+        engine_name: str = None,
+    ):
+        self.ssl_solution_enum = ssl_solution_enum
+        self.oracle_sid = oracle_sid
+        self.database_name = database_name
+        self.region = region
+        self.ip = ip
+        self.instance_id = instance_id
+        self.port = port
+        self.instance_type = instance_type
+        self.user_name = user_name
+        self.engine_name = engine_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ssl_solution_enum is not None:
+            result['SslSolutionEnum'] = self.ssl_solution_enum
+        if self.oracle_sid is not None:
+            result['OracleSID'] = self.oracle_sid
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.instance_id is not None:
+            result['InstanceID'] = self.instance_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.engine_name is not None:
+            result['EngineName'] = self.engine_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SslSolutionEnum') is not None:
+            self.ssl_solution_enum = m.get('SslSolutionEnum')
+        if m.get('OracleSID') is not None:
+            self.oracle_sid = m.get('OracleSID')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('InstanceID') is not None:
+            self.instance_id = m.get('InstanceID')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('EngineName') is not None:
+            self.engine_name = m.get('EngineName')
+        return self
+
+
+class DescribeDtsJobDetailResponseBodySourceEndpoint(TeaModel):
+    def __init__(
+        self,
+        ssl_solution_enum: str = None,
+        oracle_sid: str = None,
+        ip: str = None,
+        role_name: str = None,
+        instance_id: str = None,
+        port: str = None,
+        instance_type: str = None,
+        engine_name: str = None,
+        database_name: str = None,
+        region: str = None,
+        aliyun_uid: str = None,
+        user_name: str = None,
+    ):
+        self.ssl_solution_enum = ssl_solution_enum
+        self.oracle_sid = oracle_sid
+        self.ip = ip
+        self.role_name = role_name
+        self.instance_id = instance_id
+        self.port = port
+        self.instance_type = instance_type
+        self.engine_name = engine_name
+        self.database_name = database_name
+        self.region = region
+        self.aliyun_uid = aliyun_uid
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ssl_solution_enum is not None:
+            result['SslSolutionEnum'] = self.ssl_solution_enum
+        if self.oracle_sid is not None:
+            result['OracleSID'] = self.oracle_sid
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
+        if self.instance_id is not None:
+            result['InstanceID'] = self.instance_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.engine_name is not None:
+            result['EngineName'] = self.engine_name
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.aliyun_uid is not None:
+            result['AliyunUid'] = self.aliyun_uid
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SslSolutionEnum') is not None:
+            self.ssl_solution_enum = m.get('SslSolutionEnum')
+        if m.get('OracleSID') is not None:
+            self.oracle_sid = m.get('OracleSID')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
+        if m.get('InstanceID') is not None:
+            self.instance_id = m.get('InstanceID')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('EngineName') is not None:
+            self.engine_name = m.get('EngineName')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('AliyunUid') is not None:
+            self.aliyun_uid = m.get('AliyunUid')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class DescribeDtsJobDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        dts_job_name: str = None,
+        dynamic_message: str = None,
+        dts_instance_id: str = None,
+        delay: int = None,
+        success: bool = None,
+        migration_mode: DescribeDtsJobDetailResponseBodyMigrationMode = None,
+        dts_job_class: str = None,
+        dts_job_id: str = None,
+        finish_time: str = None,
+        http_status_code: int = None,
+        status: str = None,
+        request_id: str = None,
+        db_object: str = None,
+        create_time: str = None,
+        pay_type: str = None,
+        err_message: str = None,
+        code: int = None,
+        err_code: str = None,
+        checkpoint: int = None,
+        dts_job_direction: str = None,
+        destination_endpoint: DescribeDtsJobDetailResponseBodyDestinationEndpoint = None,
+        source_endpoint: DescribeDtsJobDetailResponseBodySourceEndpoint = None,
+        error_message: str = None,
+        expire_time: str = None,
+        reserved: str = None,
+    ):
+        self.dts_job_name = dts_job_name
+        self.dynamic_message = dynamic_message
+        self.dts_instance_id = dts_instance_id
+        self.delay = delay
+        self.success = success
+        self.migration_mode = migration_mode
+        self.dts_job_class = dts_job_class
+        self.dts_job_id = dts_job_id
+        self.finish_time = finish_time
+        self.http_status_code = http_status_code
+        self.status = status
+        self.request_id = request_id
+        self.db_object = db_object
+        self.create_time = create_time
+        self.pay_type = pay_type
+        self.err_message = err_message
+        self.code = code
+        self.err_code = err_code
+        self.checkpoint = checkpoint
+        self.dts_job_direction = dts_job_direction
+        self.destination_endpoint = destination_endpoint
+        self.source_endpoint = source_endpoint
+        self.error_message = error_message
+        self.expire_time = expire_time
+        self.reserved = reserved
+
+    def validate(self):
+        if self.migration_mode:
+            self.migration_mode.validate()
+        if self.destination_endpoint:
+            self.destination_endpoint.validate()
+        if self.source_endpoint:
+            self.source_endpoint.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_name is not None:
+            result['DtsJobName'] = self.dts_job_name
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.dts_instance_id is not None:
+            result['DtsInstanceID'] = self.dts_instance_id
+        if self.delay is not None:
+            result['Delay'] = self.delay
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.migration_mode is not None:
+            result['MigrationMode'] = self.migration_mode.to_map()
+        if self.dts_job_class is not None:
+            result['DtsJobClass'] = self.dts_job_class
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.db_object is not None:
+            result['DbObject'] = self.db_object
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.checkpoint is not None:
+            result['Checkpoint'] = self.checkpoint
+        if self.dts_job_direction is not None:
+            result['DtsJobDirection'] = self.dts_job_direction
+        if self.destination_endpoint is not None:
+            result['DestinationEndpoint'] = self.destination_endpoint.to_map()
+        if self.source_endpoint is not None:
+            result['SourceEndpoint'] = self.source_endpoint.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobName') is not None:
+            self.dts_job_name = m.get('DtsJobName')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('DtsInstanceID') is not None:
+            self.dts_instance_id = m.get('DtsInstanceID')
+        if m.get('Delay') is not None:
+            self.delay = m.get('Delay')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('MigrationMode') is not None:
+            temp_model = DescribeDtsJobDetailResponseBodyMigrationMode()
+            self.migration_mode = temp_model.from_map(m['MigrationMode'])
+        if m.get('DtsJobClass') is not None:
+            self.dts_job_class = m.get('DtsJobClass')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('DbObject') is not None:
+            self.db_object = m.get('DbObject')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('Checkpoint') is not None:
+            self.checkpoint = m.get('Checkpoint')
+        if m.get('DtsJobDirection') is not None:
+            self.dts_job_direction = m.get('DtsJobDirection')
+        if m.get('DestinationEndpoint') is not None:
+            temp_model = DescribeDtsJobDetailResponseBodyDestinationEndpoint()
+            self.destination_endpoint = temp_model.from_map(m['DestinationEndpoint'])
+        if m.get('SourceEndpoint') is not None:
+            temp_model = DescribeDtsJobDetailResponseBodySourceEndpoint()
+            self.source_endpoint = temp_model.from_map(m['SourceEndpoint'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        return self
+
+
+class DescribeDtsJobDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeDtsJobDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeDtsJobDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDtsJobsRequest(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        params: str = None,
+        region: str = None,
+        status: str = None,
+        order_direction: str = None,
+        order_column: str = None,
+        tags: str = None,
+        page_size: int = None,
+        page_number: int = None,
+        job_type: str = None,
+    ):
+        self.type = type
+        self.params = params
+        self.region = region
+        self.status = status
+        self.order_direction = order_direction
+        self.order_column = order_column
+        self.tags = tags
+        self.page_size = page_size
+        self.page_number = page_number
+        self.job_type = job_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.order_direction is not None:
+            result['OrderDirection'] = self.order_direction
+        if self.order_column is not None:
+            result['OrderColumn'] = self.order_column
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('OrderDirection') is not None:
+            self.order_direction = m.get('OrderDirection')
+        if m.get('OrderColumn') is not None:
+            self.order_column = m.get('OrderColumn')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListStructureInitializationStatus(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        percent: str = None,
+        progress: str = None,
+        error_message: str = None,
+    ):
+        self.status = status
+        self.percent = percent
+        self.progress = progress
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListPrecheckStatusDetail(TeaModel):
+    def __init__(
+        self,
+        check_result: str = None,
+        check_item_description: str = None,
+        check_item: str = None,
+        repair_method: str = None,
+        failed_reason: str = None,
+    ):
+        self.check_result = check_result
+        self.check_item_description = check_item_description
+        self.check_item = check_item
+        self.repair_method = repair_method
+        self.failed_reason = failed_reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_result is not None:
+            result['CheckResult'] = self.check_result
+        if self.check_item_description is not None:
+            result['CheckItemDescription'] = self.check_item_description
+        if self.check_item is not None:
+            result['CheckItem'] = self.check_item
+        if self.repair_method is not None:
+            result['RepairMethod'] = self.repair_method
+        if self.failed_reason is not None:
+            result['FailedReason'] = self.failed_reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckResult') is not None:
+            self.check_result = m.get('CheckResult')
+        if m.get('CheckItemDescription') is not None:
+            self.check_item_description = m.get('CheckItemDescription')
+        if m.get('CheckItem') is not None:
+            self.check_item = m.get('CheckItem')
+        if m.get('RepairMethod') is not None:
+            self.repair_method = m.get('RepairMethod')
+        if m.get('FailedReason') is not None:
+            self.failed_reason = m.get('FailedReason')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        percent: str = None,
+        error_message: str = None,
+        detail: List[DescribeDtsJobsResponseBodyDtsJobListPrecheckStatusDetail] = None,
+    ):
+        self.status = status
+        self.percent = percent
+        self.error_message = error_message
+        self.detail = detail
+
+    def validate(self):
+        if self.detail:
+            for k in self.detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        result['Detail'] = []
+        if self.detail is not None:
+            for k in self.detail:
+                result['Detail'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        self.detail = []
+        if m.get('Detail') is not None:
+            for k in m.get('Detail'):
+                temp_model = DescribeDtsJobsResponseBodyDtsJobListPrecheckStatusDetail()
+                self.detail.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint(TeaModel):
+    def __init__(
+        self,
+        ssl_solution_enum: str = None,
+        oracle_sid: str = None,
+        region: str = None,
+        database_name: str = None,
+        ip: str = None,
+        instance_id: str = None,
+        port: str = None,
+        instance_type: str = None,
+        user_name: str = None,
+        engine_name: str = None,
+    ):
+        self.ssl_solution_enum = ssl_solution_enum
+        self.oracle_sid = oracle_sid
+        self.region = region
+        self.database_name = database_name
+        self.ip = ip
+        self.instance_id = instance_id
+        self.port = port
+        self.instance_type = instance_type
+        self.user_name = user_name
+        self.engine_name = engine_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ssl_solution_enum is not None:
+            result['SslSolutionEnum'] = self.ssl_solution_enum
+        if self.oracle_sid is not None:
+            result['OracleSID'] = self.oracle_sid
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.instance_id is not None:
+            result['InstanceID'] = self.instance_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.engine_name is not None:
+            result['EngineName'] = self.engine_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SslSolutionEnum') is not None:
+            self.ssl_solution_enum = m.get('SslSolutionEnum')
+        if m.get('OracleSID') is not None:
+            self.oracle_sid = m.get('OracleSID')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('InstanceID') is not None:
+            self.instance_id = m.get('InstanceID')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('EngineName') is not None:
+            self.engine_name = m.get('EngineName')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListTagList(TeaModel):
+    def __init__(
+        self,
+        tag_value: str = None,
+        tag_key: str = None,
+    ):
+        self.tag_value = tag_value
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint(TeaModel):
+    def __init__(
+        self,
+        ssl_solution_enum: str = None,
+        oracle_sid: str = None,
+        region: str = None,
+        database_name: str = None,
+        ip: str = None,
+        instance_id: str = None,
+        port: str = None,
+        instance_type: str = None,
+        user_name: str = None,
+        engine_name: str = None,
+    ):
+        self.ssl_solution_enum = ssl_solution_enum
+        self.oracle_sid = oracle_sid
+        self.region = region
+        self.database_name = database_name
+        self.ip = ip
+        self.instance_id = instance_id
+        self.port = port
+        self.instance_type = instance_type
+        self.user_name = user_name
+        self.engine_name = engine_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ssl_solution_enum is not None:
+            result['SslSolutionEnum'] = self.ssl_solution_enum
+        if self.oracle_sid is not None:
+            result['OracleSID'] = self.oracle_sid
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.instance_id is not None:
+            result['InstanceID'] = self.instance_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.engine_name is not None:
+            result['EngineName'] = self.engine_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SslSolutionEnum') is not None:
+            self.ssl_solution_enum = m.get('SslSolutionEnum')
+        if m.get('OracleSID') is not None:
+            self.oracle_sid = m.get('OracleSID')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('InstanceID') is not None:
+            self.instance_id = m.get('InstanceID')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('EngineName') is not None:
+            self.engine_name = m.get('EngineName')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        percent: str = None,
+        progress: str = None,
+        error_message: str = None,
+    ):
+        self.status = status
+        self.percent = percent
+        self.progress = progress
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListMigrationMode(TeaModel):
+    def __init__(
+        self,
+        data_initialization: bool = None,
+        data_synchronization: bool = None,
+        structure_initialization: bool = None,
+    ):
+        self.data_initialization = data_initialization
+        self.data_synchronization = data_synchronization
+        self.structure_initialization = structure_initialization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_initialization is not None:
+            result['DataInitialization'] = self.data_initialization
+        if self.data_synchronization is not None:
+            result['DataSynchronization'] = self.data_synchronization
+        if self.structure_initialization is not None:
+            result['StructureInitialization'] = self.structure_initialization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataInitialization') is not None:
+            self.data_initialization = m.get('DataInitialization')
+        if m.get('DataSynchronization') is not None:
+            self.data_synchronization = m.get('DataSynchronization')
+        if m.get('StructureInitialization') is not None:
+            self.structure_initialization = m.get('StructureInitialization')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListReverseJobPerformance(TeaModel):
+    def __init__(
+        self,
+        flow: str = None,
+        rps: str = None,
+    ):
+        self.flow = flow
+        self.rps = rps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow is not None:
+            result['Flow'] = self.flow
+        if self.rps is not None:
+            result['Rps'] = self.rps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Flow') is not None:
+            self.flow = m.get('Flow')
+        if m.get('Rps') is not None:
+            self.rps = m.get('Rps')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureInitializationStatus(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        percent: str = None,
+        progress: str = None,
+        error_message: str = None,
+    ):
+        self.status = status
+        self.percent = percent
+        self.progress = progress
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatusDetail(TeaModel):
+    def __init__(
+        self,
+        check_result: str = None,
+        check_item_description: str = None,
+        check_item: str = None,
+        repair_method: str = None,
+        failed_reason: str = None,
+    ):
+        self.check_result = check_result
+        self.check_item_description = check_item_description
+        self.check_item = check_item
+        self.repair_method = repair_method
+        self.failed_reason = failed_reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_result is not None:
+            result['CheckResult'] = self.check_result
+        if self.check_item_description is not None:
+            result['CheckItemDescription'] = self.check_item_description
+        if self.check_item is not None:
+            result['CheckItem'] = self.check_item
+        if self.repair_method is not None:
+            result['RepairMethod'] = self.repair_method
+        if self.failed_reason is not None:
+            result['FailedReason'] = self.failed_reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckResult') is not None:
+            self.check_result = m.get('CheckResult')
+        if m.get('CheckItemDescription') is not None:
+            self.check_item_description = m.get('CheckItemDescription')
+        if m.get('CheckItem') is not None:
+            self.check_item = m.get('CheckItem')
+        if m.get('RepairMethod') is not None:
+            self.repair_method = m.get('RepairMethod')
+        if m.get('FailedReason') is not None:
+            self.failed_reason = m.get('FailedReason')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatus(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        percent: str = None,
+        error_message: str = None,
+        detail: List[DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatusDetail] = None,
+    ):
+        self.status = status
+        self.percent = percent
+        self.error_message = error_message
+        self.detail = detail
+
+    def validate(self):
+        if self.detail:
+            for k in self.detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        result['Detail'] = []
+        if self.detail is not None:
+            for k in self.detail:
+                result['Detail'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        self.detail = []
+        if m.get('Detail') is not None:
+            for k in m.get('Detail'):
+                temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatusDetail()
+                self.detail.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListReverseJobDataInitializationStatus(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        percent: str = None,
+        progress: str = None,
+        error_message: str = None,
+    ):
+        self.status = status
+        self.percent = percent
+        self.progress = progress
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint(TeaModel):
+    def __init__(
+        self,
+        ssl_solution_enum: str = None,
+        oracle_sid: str = None,
+        region: str = None,
+        database_name: str = None,
+        ip: str = None,
+        instance_id: str = None,
+        port: str = None,
+        instance_type: str = None,
+        user_name: str = None,
+        engine_name: str = None,
+    ):
+        self.ssl_solution_enum = ssl_solution_enum
+        self.oracle_sid = oracle_sid
+        self.region = region
+        self.database_name = database_name
+        self.ip = ip
+        self.instance_id = instance_id
+        self.port = port
+        self.instance_type = instance_type
+        self.user_name = user_name
+        self.engine_name = engine_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ssl_solution_enum is not None:
+            result['SslSolutionEnum'] = self.ssl_solution_enum
+        if self.oracle_sid is not None:
+            result['OracleSID'] = self.oracle_sid
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.instance_id is not None:
+            result['InstanceID'] = self.instance_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.engine_name is not None:
+            result['EngineName'] = self.engine_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SslSolutionEnum') is not None:
+            self.ssl_solution_enum = m.get('SslSolutionEnum')
+        if m.get('OracleSID') is not None:
+            self.oracle_sid = m.get('OracleSID')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('InstanceID') is not None:
+            self.instance_id = m.get('InstanceID')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('EngineName') is not None:
+            self.engine_name = m.get('EngineName')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListReverseJobDataSynchronizationStatus(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        percent: str = None,
+        progress: str = None,
+        error_message: str = None,
+    ):
+        self.status = status
+        self.percent = percent
+        self.progress = progress
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListReverseJobSourceEndpoint(TeaModel):
+    def __init__(
+        self,
+        ssl_solution_enum: str = None,
+        oracle_sid: str = None,
+        region: str = None,
+        database_name: str = None,
+        ip: str = None,
+        instance_id: str = None,
+        port: str = None,
+        instance_type: str = None,
+        user_name: str = None,
+        engine_name: str = None,
+    ):
+        self.ssl_solution_enum = ssl_solution_enum
+        self.oracle_sid = oracle_sid
+        self.region = region
+        self.database_name = database_name
+        self.ip = ip
+        self.instance_id = instance_id
+        self.port = port
+        self.instance_type = instance_type
+        self.user_name = user_name
+        self.engine_name = engine_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ssl_solution_enum is not None:
+            result['SslSolutionEnum'] = self.ssl_solution_enum
+        if self.oracle_sid is not None:
+            result['OracleSID'] = self.oracle_sid
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.instance_id is not None:
+            result['InstanceID'] = self.instance_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.engine_name is not None:
+            result['EngineName'] = self.engine_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SslSolutionEnum') is not None:
+            self.ssl_solution_enum = m.get('SslSolutionEnum')
+        if m.get('OracleSID') is not None:
+            self.oracle_sid = m.get('OracleSID')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('InstanceID') is not None:
+            self.instance_id = m.get('InstanceID')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('EngineName') is not None:
+            self.engine_name = m.get('EngineName')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode(TeaModel):
+    def __init__(
+        self,
+        data_initialization: bool = None,
+        data_synchronization: bool = None,
+        structure_initialization: bool = None,
+    ):
+        self.data_initialization = data_initialization
+        self.data_synchronization = data_synchronization
+        self.structure_initialization = structure_initialization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_initialization is not None:
+            result['DataInitialization'] = self.data_initialization
+        if self.data_synchronization is not None:
+            result['DataSynchronization'] = self.data_synchronization
+        if self.structure_initialization is not None:
+            result['StructureInitialization'] = self.structure_initialization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataInitialization') is not None:
+            self.data_initialization = m.get('DataInitialization')
+        if m.get('DataSynchronization') is not None:
+            self.data_synchronization = m.get('DataSynchronization')
+        if m.get('StructureInitialization') is not None:
+            self.structure_initialization = m.get('StructureInitialization')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        dts_job_name: str = None,
+        performance: DescribeDtsJobsResponseBodyDtsJobListReverseJobPerformance = None,
+        delay: int = None,
+        structure_initialization_status: DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureInitializationStatus = None,
+        precheck_status: DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatus = None,
+        error_message: str = None,
+        expire_time: str = None,
+        dts_job_id: str = None,
+        create_time: str = None,
+        pay_type: str = None,
+        reserved: str = None,
+        db_object: str = None,
+        dts_job_class: str = None,
+        data_initialization_status: DescribeDtsJobsResponseBodyDtsJobListReverseJobDataInitializationStatus = None,
+        dts_instance_id: str = None,
+        destination_endpoint: DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint = None,
+        data_synchronization_status: DescribeDtsJobsResponseBodyDtsJobListReverseJobDataSynchronizationStatus = None,
+        source_endpoint: DescribeDtsJobsResponseBodyDtsJobListReverseJobSourceEndpoint = None,
+        dts_job_direction: str = None,
+        migration_mode: DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode = None,
+        checkpoint: str = None,
+    ):
+        self.status = status
+        self.dts_job_name = dts_job_name
+        self.performance = performance
+        self.delay = delay
+        self.structure_initialization_status = structure_initialization_status
+        self.precheck_status = precheck_status
+        self.error_message = error_message
+        self.expire_time = expire_time
+        self.dts_job_id = dts_job_id
+        self.create_time = create_time
+        self.pay_type = pay_type
+        self.reserved = reserved
+        self.db_object = db_object
+        self.dts_job_class = dts_job_class
+        self.data_initialization_status = data_initialization_status
+        self.dts_instance_id = dts_instance_id
+        self.destination_endpoint = destination_endpoint
+        self.data_synchronization_status = data_synchronization_status
+        self.source_endpoint = source_endpoint
+        self.dts_job_direction = dts_job_direction
+        self.migration_mode = migration_mode
+        self.checkpoint = checkpoint
+
+    def validate(self):
+        if self.performance:
+            self.performance.validate()
+        if self.structure_initialization_status:
+            self.structure_initialization_status.validate()
+        if self.precheck_status:
+            self.precheck_status.validate()
+        if self.data_initialization_status:
+            self.data_initialization_status.validate()
+        if self.destination_endpoint:
+            self.destination_endpoint.validate()
+        if self.data_synchronization_status:
+            self.data_synchronization_status.validate()
+        if self.source_endpoint:
+            self.source_endpoint.validate()
+        if self.migration_mode:
+            self.migration_mode.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.dts_job_name is not None:
+            result['DtsJobName'] = self.dts_job_name
+        if self.performance is not None:
+            result['Performance'] = self.performance.to_map()
+        if self.delay is not None:
+            result['Delay'] = self.delay
+        if self.structure_initialization_status is not None:
+            result['StructureInitializationStatus'] = self.structure_initialization_status.to_map()
+        if self.precheck_status is not None:
+            result['PrecheckStatus'] = self.precheck_status.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.db_object is not None:
+            result['DbObject'] = self.db_object
+        if self.dts_job_class is not None:
+            result['DtsJobClass'] = self.dts_job_class
+        if self.data_initialization_status is not None:
+            result['DataInitializationStatus'] = self.data_initialization_status.to_map()
+        if self.dts_instance_id is not None:
+            result['DtsInstanceID'] = self.dts_instance_id
+        if self.destination_endpoint is not None:
+            result['DestinationEndpoint'] = self.destination_endpoint.to_map()
+        if self.data_synchronization_status is not None:
+            result['DataSynchronizationStatus'] = self.data_synchronization_status.to_map()
+        if self.source_endpoint is not None:
+            result['SourceEndpoint'] = self.source_endpoint.to_map()
+        if self.dts_job_direction is not None:
+            result['DtsJobDirection'] = self.dts_job_direction
+        if self.migration_mode is not None:
+            result['MigrationMode'] = self.migration_mode.to_map()
+        if self.checkpoint is not None:
+            result['Checkpoint'] = self.checkpoint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('DtsJobName') is not None:
+            self.dts_job_name = m.get('DtsJobName')
+        if m.get('Performance') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobPerformance()
+            self.performance = temp_model.from_map(m['Performance'])
+        if m.get('Delay') is not None:
+            self.delay = m.get('Delay')
+        if m.get('StructureInitializationStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureInitializationStatus()
+            self.structure_initialization_status = temp_model.from_map(m['StructureInitializationStatus'])
+        if m.get('PrecheckStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatus()
+            self.precheck_status = temp_model.from_map(m['PrecheckStatus'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('DbObject') is not None:
+            self.db_object = m.get('DbObject')
+        if m.get('DtsJobClass') is not None:
+            self.dts_job_class = m.get('DtsJobClass')
+        if m.get('DataInitializationStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobDataInitializationStatus()
+            self.data_initialization_status = temp_model.from_map(m['DataInitializationStatus'])
+        if m.get('DtsInstanceID') is not None:
+            self.dts_instance_id = m.get('DtsInstanceID')
+        if m.get('DestinationEndpoint') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint()
+            self.destination_endpoint = temp_model.from_map(m['DestinationEndpoint'])
+        if m.get('DataSynchronizationStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobDataSynchronizationStatus()
+            self.data_synchronization_status = temp_model.from_map(m['DataSynchronizationStatus'])
+        if m.get('SourceEndpoint') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobSourceEndpoint()
+            self.source_endpoint = temp_model.from_map(m['SourceEndpoint'])
+        if m.get('DtsJobDirection') is not None:
+            self.dts_job_direction = m.get('DtsJobDirection')
+        if m.get('MigrationMode') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode()
+            self.migration_mode = temp_model.from_map(m['MigrationMode'])
+        if m.get('Checkpoint') is not None:
+            self.checkpoint = m.get('Checkpoint')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListPerformance(TeaModel):
+    def __init__(
+        self,
+        flow: str = None,
+        rps: str = None,
+    ):
+        self.flow = flow
+        self.rps = rps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow is not None:
+            result['Flow'] = self.flow
+        if self.rps is not None:
+            result['Rps'] = self.rps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Flow') is not None:
+            self.flow = m.get('Flow')
+        if m.get('Rps') is not None:
+            self.rps = m.get('Rps')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListDataInitializationStatus(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        percent: str = None,
+        progress: str = None,
+        error_message: str = None,
+    ):
+        self.status = status
+        self.percent = percent
+        self.progress = progress
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        dts_job_name: str = None,
+        structure_initialization_status: DescribeDtsJobsResponseBodyDtsJobListStructureInitializationStatus = None,
+        precheck_status: DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus = None,
+        error_message: str = None,
+        dts_job_id: str = None,
+        create_time: str = None,
+        pay_type: str = None,
+        reserved: str = None,
+        dts_job_class: str = None,
+        dts_instance_id: str = None,
+        destination_endpoint: DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint = None,
+        tag_list: List[DescribeDtsJobsResponseBodyDtsJobListTagList] = None,
+        source_endpoint: DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint = None,
+        data_synchronization_status: DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus = None,
+        migration_mode: DescribeDtsJobsResponseBodyDtsJobListMigrationMode = None,
+        reverse_job: DescribeDtsJobsResponseBodyDtsJobListReverseJob = None,
+        checkpoint: str = None,
+        performance: DescribeDtsJobsResponseBodyDtsJobListPerformance = None,
+        delay: int = None,
+        expire_time: str = None,
+        db_object: str = None,
+        data_initialization_status: DescribeDtsJobsResponseBodyDtsJobListDataInitializationStatus = None,
+        dts_job_direction: str = None,
+    ):
+        self.status = status
+        self.dts_job_name = dts_job_name
+        self.structure_initialization_status = structure_initialization_status
+        self.precheck_status = precheck_status
+        self.error_message = error_message
+        self.dts_job_id = dts_job_id
+        self.create_time = create_time
+        self.pay_type = pay_type
+        self.reserved = reserved
+        self.dts_job_class = dts_job_class
+        self.dts_instance_id = dts_instance_id
+        self.destination_endpoint = destination_endpoint
+        self.tag_list = tag_list
+        self.source_endpoint = source_endpoint
+        self.data_synchronization_status = data_synchronization_status
+        self.migration_mode = migration_mode
+        self.reverse_job = reverse_job
+        self.checkpoint = checkpoint
+        self.performance = performance
+        self.delay = delay
+        self.expire_time = expire_time
+        self.db_object = db_object
+        self.data_initialization_status = data_initialization_status
+        self.dts_job_direction = dts_job_direction
+
+    def validate(self):
+        if self.structure_initialization_status:
+            self.structure_initialization_status.validate()
+        if self.precheck_status:
+            self.precheck_status.validate()
+        if self.destination_endpoint:
+            self.destination_endpoint.validate()
+        if self.tag_list:
+            for k in self.tag_list:
+                if k:
+                    k.validate()
+        if self.source_endpoint:
+            self.source_endpoint.validate()
+        if self.data_synchronization_status:
+            self.data_synchronization_status.validate()
+        if self.migration_mode:
+            self.migration_mode.validate()
+        if self.reverse_job:
+            self.reverse_job.validate()
+        if self.performance:
+            self.performance.validate()
+        if self.data_initialization_status:
+            self.data_initialization_status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.dts_job_name is not None:
+            result['DtsJobName'] = self.dts_job_name
+        if self.structure_initialization_status is not None:
+            result['StructureInitializationStatus'] = self.structure_initialization_status.to_map()
+        if self.precheck_status is not None:
+            result['PrecheckStatus'] = self.precheck_status.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.dts_job_class is not None:
+            result['DtsJobClass'] = self.dts_job_class
+        if self.dts_instance_id is not None:
+            result['DtsInstanceID'] = self.dts_instance_id
+        if self.destination_endpoint is not None:
+            result['DestinationEndpoint'] = self.destination_endpoint.to_map()
+        result['TagList'] = []
+        if self.tag_list is not None:
+            for k in self.tag_list:
+                result['TagList'].append(k.to_map() if k else None)
+        if self.source_endpoint is not None:
+            result['SourceEndpoint'] = self.source_endpoint.to_map()
+        if self.data_synchronization_status is not None:
+            result['DataSynchronizationStatus'] = self.data_synchronization_status.to_map()
+        if self.migration_mode is not None:
+            result['MigrationMode'] = self.migration_mode.to_map()
+        if self.reverse_job is not None:
+            result['ReverseJob'] = self.reverse_job.to_map()
+        if self.checkpoint is not None:
+            result['Checkpoint'] = self.checkpoint
+        if self.performance is not None:
+            result['Performance'] = self.performance.to_map()
+        if self.delay is not None:
+            result['Delay'] = self.delay
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.db_object is not None:
+            result['DbObject'] = self.db_object
+        if self.data_initialization_status is not None:
+            result['DataInitializationStatus'] = self.data_initialization_status.to_map()
+        if self.dts_job_direction is not None:
+            result['DtsJobDirection'] = self.dts_job_direction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('DtsJobName') is not None:
+            self.dts_job_name = m.get('DtsJobName')
+        if m.get('StructureInitializationStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListStructureInitializationStatus()
+            self.structure_initialization_status = temp_model.from_map(m['StructureInitializationStatus'])
+        if m.get('PrecheckStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus()
+            self.precheck_status = temp_model.from_map(m['PrecheckStatus'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('DtsJobClass') is not None:
+            self.dts_job_class = m.get('DtsJobClass')
+        if m.get('DtsInstanceID') is not None:
+            self.dts_instance_id = m.get('DtsInstanceID')
+        if m.get('DestinationEndpoint') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint()
+            self.destination_endpoint = temp_model.from_map(m['DestinationEndpoint'])
+        self.tag_list = []
+        if m.get('TagList') is not None:
+            for k in m.get('TagList'):
+                temp_model = DescribeDtsJobsResponseBodyDtsJobListTagList()
+                self.tag_list.append(temp_model.from_map(k))
+        if m.get('SourceEndpoint') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint()
+            self.source_endpoint = temp_model.from_map(m['SourceEndpoint'])
+        if m.get('DataSynchronizationStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus()
+            self.data_synchronization_status = temp_model.from_map(m['DataSynchronizationStatus'])
+        if m.get('MigrationMode') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListMigrationMode()
+            self.migration_mode = temp_model.from_map(m['MigrationMode'])
+        if m.get('ReverseJob') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJob()
+            self.reverse_job = temp_model.from_map(m['ReverseJob'])
+        if m.get('Checkpoint') is not None:
+            self.checkpoint = m.get('Checkpoint')
+        if m.get('Performance') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListPerformance()
+            self.performance = temp_model.from_map(m['Performance'])
+        if m.get('Delay') is not None:
+            self.delay = m.get('Delay')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('DbObject') is not None:
+            self.db_object = m.get('DbObject')
+        if m.get('DataInitializationStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListDataInitializationStatus()
+            self.data_initialization_status = temp_model.from_map(m['DataInitializationStatus'])
+        if m.get('DtsJobDirection') is not None:
+            self.dts_job_direction = m.get('DtsJobDirection')
+        return self
+
+
+class DescribeDtsJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        total_record_count: int = None,
+        page_record_count: int = None,
+        dts_job_list: List[DescribeDtsJobsResponseBodyDtsJobList] = None,
+        request_id: str = None,
+        page_number: int = None,
+        http_status_code: int = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_message: str = None,
+        success: bool = None,
+        err_code: str = None,
+    ):
+        self.total_record_count = total_record_count
+        self.page_record_count = page_record_count
+        self.dts_job_list = dts_job_list
+        self.request_id = request_id
+        self.page_number = page_number
+        self.http_status_code = http_status_code
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_message = err_message
+        self.success = success
+        self.err_code = err_code
+
+    def validate(self):
+        if self.dts_job_list:
+            for k in self.dts_job_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        if self.page_record_count is not None:
+            result['PageRecordCount'] = self.page_record_count
+        result['DtsJobList'] = []
+        if self.dts_job_list is not None:
+            for k in self.dts_job_list:
+                result['DtsJobList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        if m.get('PageRecordCount') is not None:
+            self.page_record_count = m.get('PageRecordCount')
+        self.dts_job_list = []
+        if m.get('DtsJobList') is not None:
+            for k in m.get('DtsJobList'):
+                temp_model = DescribeDtsJobsResponseBodyDtsJobList()
+                self.dts_job_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        return self
+
+
+class DescribeDtsJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeDtsJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeDtsJobsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3258,6 +6247,10 @@ class DescribeEndpointSwitchStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -3303,6 +6296,10 @@ class DescribeEndpointSwitchStatusResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -3351,6 +6348,10 @@ class DescribeEndpointSwitchStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3387,6 +6388,10 @@ class DescribeInitializationStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
@@ -3438,6 +6443,10 @@ class DescribeInitializationStatusResponseBodyStructureInitializationDetailsCons
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -3502,6 +6511,10 @@ class DescribeInitializationStatusResponseBodyStructureInitializationDetails(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -3572,6 +6585,10 @@ class DescribeInitializationStatusResponseBodyDataInitializationDetails(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_owner_dbname is not None:
             result['SourceOwnerDBName'] = self.source_owner_dbname
@@ -3631,6 +6648,10 @@ class DescribeInitializationStatusResponseBodyDataSynchronizationDetails(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -3693,6 +6714,10 @@ class DescribeInitializationStatusResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['StructureInitializationDetails'] = []
         if self.structure_initialization_details is not None:
@@ -3760,6 +6785,10 @@ class DescribeInitializationStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3794,6 +6823,10 @@ class DescribeMigrationJobAlertRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.migration_job_id is not None:
             result['MigrationJobId'] = self.migration_job_id
@@ -3849,6 +6882,10 @@ class DescribeMigrationJobAlertResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.error_alert_phone is not None:
             result['ErrorAlertPhone'] = self.error_alert_phone
@@ -3917,6 +6954,10 @@ class DescribeMigrationJobAlertResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3949,6 +6990,10 @@ class DescribeMigrationJobDetailRequestMigrationMode(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.structure_initialization is not None:
             result['StructureInitialization'] = self.structure_initialization
@@ -3993,6 +7038,10 @@ class DescribeMigrationJobDetailRequest(TeaModel):
             self.migration_mode.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.migration_mode is not None:
             result['MigrationMode'] = self.migration_mode.to_map()
@@ -4049,6 +7098,10 @@ class DescribeMigrationJobDetailResponseBodyDataSynchronizationDetailListDataSyn
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -4091,6 +7144,10 @@ class DescribeMigrationJobDetailResponseBodyDataSynchronizationDetailList(TeaMod
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DataSynchronizationDetail'] = []
         if self.data_synchronization_detail is not None:
@@ -4133,6 +7190,10 @@ class DescribeMigrationJobDetailResponseBodyDataInitializationDetailListDataInit
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_owner_dbname is not None:
             result['SourceOwnerDBName'] = self.source_owner_dbname
@@ -4187,6 +7248,10 @@ class DescribeMigrationJobDetailResponseBodyDataInitializationDetailList(TeaMode
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DataInitializationDetail'] = []
         if self.data_initialization_detail is not None:
@@ -4227,6 +7292,10 @@ class DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStr
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -4277,6 +7346,10 @@ class DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStr
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['StructureInitializationDetail'] = []
         if self.structure_initialization_detail is not None:
@@ -4320,6 +7393,10 @@ class DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStr
             self.constraint_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -4375,6 +7452,10 @@ class DescribeMigrationJobDetailResponseBodyStructureInitializationDetailList(Te
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['StructureInitializationDetail'] = []
         if self.structure_initialization_detail is not None:
@@ -4426,6 +7507,10 @@ class DescribeMigrationJobDetailResponseBody(TeaModel):
             self.structure_initialization_detail_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_record_count is not None:
             result['TotalRecordCount'] = self.total_record_count
@@ -4493,6 +7578,10 @@ class DescribeMigrationJobDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4523,6 +7612,10 @@ class DescribeMigrationJobsRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -4563,6 +7656,10 @@ class DescribeMigrationJobsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -4617,6 +7714,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobDataInitializati
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.percent is not None:
             result['Percent'] = self.percent
@@ -4654,6 +7755,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobPrecheck(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -4687,6 +7792,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobStructureInitial
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.percent is not None:
             result['Percent'] = self.percent
@@ -4724,6 +7833,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobTagsTag(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -4754,6 +7867,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobTags(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -4782,6 +7899,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationObjectS
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table is not None:
             result['Table'] = self.table
@@ -4810,6 +7931,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationObjectS
             self.table_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.whole_database is not None:
             result['WholeDatabase'] = self.whole_database
@@ -4845,6 +7970,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationObject(
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SynchronousObject'] = []
         if self.synchronous_object is not None:
@@ -4879,6 +8008,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobDataSynchronizat
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.delay is not None:
             result['Delay'] = self.delay
@@ -4928,6 +8061,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobDestinationEndpo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.oracle_sid is not None:
             result['OracleSID'] = self.oracle_sid
@@ -4993,6 +8130,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobSourceEndpoint(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.oracle_sid is not None:
             result['OracleSID'] = self.oracle_sid
@@ -5048,6 +8189,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationMode(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.data_initialization is not None:
             result['DataInitialization'] = self.data_initialization
@@ -5122,6 +8267,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJob(TeaModel):
             self.migration_mode.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.data_initialization is not None:
             result['DataInitialization'] = self.data_initialization.to_map()
@@ -5209,6 +8358,10 @@ class DescribeMigrationJobsResponseBodyMigrationJobs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MigrationJob'] = []
         if self.migration_job is not None:
@@ -5252,6 +8405,10 @@ class DescribeMigrationJobsResponseBody(TeaModel):
             self.migration_jobs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_record_count is not None:
             result['TotalRecordCount'] = self.total_record_count
@@ -5309,6 +8466,10 @@ class DescribeMigrationJobsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5343,6 +8504,10 @@ class DescribeMigrationJobStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.migration_job_id is not None:
             result['MigrationJobId'] = self.migration_job_id
@@ -5384,6 +8549,10 @@ class DescribeMigrationJobStatusResponseBodyDataInitializationStatus(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -5423,6 +8592,10 @@ class DescribeMigrationJobStatusResponseBodyMigrationMode(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.data_initialization is not None:
             result['dataInitialization'] = self.data_initialization
@@ -5460,6 +8633,10 @@ class DescribeMigrationJobStatusResponseBodyPrecheckStatusDetailCheckItem(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.check_status is not None:
             result['CheckStatus'] = self.check_status
@@ -5498,6 +8675,10 @@ class DescribeMigrationJobStatusResponseBodyPrecheckStatusDetail(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CheckItem'] = []
         if self.check_item is not None:
@@ -5531,6 +8712,10 @@ class DescribeMigrationJobStatusResponseBodyPrecheckStatus(TeaModel):
             self.detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -5577,6 +8762,10 @@ class DescribeMigrationJobStatusResponseBodyDestinationEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.database_name is not None:
             result['DatabaseName'] = self.database_name
@@ -5642,6 +8831,10 @@ class DescribeMigrationJobStatusResponseBodySourceEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.database_name is not None:
             result['DatabaseName'] = self.database_name
@@ -5699,6 +8892,10 @@ class DescribeMigrationJobStatusResponseBodyStructureInitializationStatus(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -5742,6 +8939,10 @@ class DescribeMigrationJobStatusResponseBodyDataSynchronizationStatus(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -5773,6 +8974,7 @@ class DescribeMigrationJobStatusResponseBodyDataSynchronizationStatus(TeaModel):
 class DescribeMigrationJobStatusResponseBody(TeaModel):
     def __init__(
         self,
+        task_id: str = None,
         data_initialization_status: DescribeMigrationJobStatusResponseBodyDataInitializationStatus = None,
         request_id: str = None,
         migration_job_name: str = None,
@@ -5791,6 +8993,7 @@ class DescribeMigrationJobStatusResponseBody(TeaModel):
         structure_initialization_status: DescribeMigrationJobStatusResponseBodyStructureInitializationStatus = None,
         data_synchronization_status: DescribeMigrationJobStatusResponseBodyDataSynchronizationStatus = None,
     ):
+        self.task_id = task_id
         self.data_initialization_status = data_initialization_status
         self.request_id = request_id
         self.migration_job_name = migration_job_name
@@ -5826,7 +9029,13 @@ class DescribeMigrationJobStatusResponseBody(TeaModel):
             self.data_synchronization_status.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         if self.data_initialization_status is not None:
             result['DataInitializationStatus'] = self.data_initialization_status.to_map()
         if self.request_id is not None:
@@ -5865,6 +9074,8 @@ class DescribeMigrationJobStatusResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         if m.get('DataInitializationStatus') is not None:
             temp_model = DescribeMigrationJobStatusResponseBodyDataInitializationStatus()
             self.data_initialization_status = temp_model.from_map(m['DataInitializationStatus'])
@@ -5925,6 +9136,10 @@ class DescribeMigrationJobStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5938,6 +9153,389 @@ class DescribeMigrationJobStatusResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeMigrationJobStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribePreCheckStatusRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        page_no: str = None,
+        page_size: str = None,
+        job_code: str = None,
+        struct_type: str = None,
+    ):
+        self.dts_job_id = dts_job_id
+        self.page_no = page_no
+        self.page_size = page_size
+        self.job_code = job_code
+        self.struct_type = struct_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.job_code is not None:
+            result['JobCode'] = self.job_code
+        if self.struct_type is not None:
+            result['StructType'] = self.struct_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('JobCode') is not None:
+            self.job_code = m.get('JobCode')
+        if m.get('StructType') is not None:
+            self.struct_type = m.get('StructType')
+        return self
+
+
+class DescribePreCheckStatusResponseBodyJobProgressLogs(TeaModel):
+    def __init__(
+        self,
+        err_data: str = None,
+        log_level: str = None,
+        err_msg: str = None,
+        err_type: str = None,
+    ):
+        self.err_data = err_data
+        self.log_level = log_level
+        self.err_msg = err_msg
+        self.err_type = err_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_data is not None:
+            result['ErrData'] = self.err_data
+        if self.log_level is not None:
+            result['LogLevel'] = self.log_level
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        if self.err_type is not None:
+            result['ErrType'] = self.err_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrData') is not None:
+            self.err_data = m.get('ErrData')
+        if m.get('LogLevel') is not None:
+            self.log_level = m.get('LogLevel')
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        if m.get('ErrType') is not None:
+            self.err_type = m.get('ErrType')
+        return self
+
+
+class DescribePreCheckStatusResponseBodyJobProgress(TeaModel):
+    def __init__(
+        self,
+        skip: bool = None,
+        finish_time: int = None,
+        delay_seconds: int = None,
+        ignore_flag: str = None,
+        ddl_sql: str = None,
+        state: str = None,
+        boot_time: int = None,
+        item: str = None,
+        sub: str = None,
+        target_names: str = None,
+        total: int = None,
+        can_skip: bool = None,
+        names: str = None,
+        err_detail: str = None,
+        diff_row: int = None,
+        job_id: str = None,
+        logs: List[DescribePreCheckStatusResponseBodyJobProgressLogs] = None,
+        source_schema: str = None,
+        err_msg: str = None,
+        dest_schema: str = None,
+        parent_obj: str = None,
+        order_num: int = None,
+        repair_method: str = None,
+    ):
+        self.skip = skip
+        self.finish_time = finish_time
+        self.delay_seconds = delay_seconds
+        self.ignore_flag = ignore_flag
+        self.ddl_sql = ddl_sql
+        self.state = state
+        self.boot_time = boot_time
+        self.item = item
+        self.sub = sub
+        self.target_names = target_names
+        self.total = total
+        self.can_skip = can_skip
+        self.names = names
+        self.err_detail = err_detail
+        self.diff_row = diff_row
+        self.job_id = job_id
+        self.logs = logs
+        self.source_schema = source_schema
+        self.err_msg = err_msg
+        self.dest_schema = dest_schema
+        self.parent_obj = parent_obj
+        self.order_num = order_num
+        self.repair_method = repair_method
+
+    def validate(self):
+        if self.logs:
+            for k in self.logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.skip is not None:
+            result['Skip'] = self.skip
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.delay_seconds is not None:
+            result['DelaySeconds'] = self.delay_seconds
+        if self.ignore_flag is not None:
+            result['IgnoreFlag'] = self.ignore_flag
+        if self.ddl_sql is not None:
+            result['DdlSql'] = self.ddl_sql
+        if self.state is not None:
+            result['State'] = self.state
+        if self.boot_time is not None:
+            result['BootTime'] = self.boot_time
+        if self.item is not None:
+            result['Item'] = self.item
+        if self.sub is not None:
+            result['Sub'] = self.sub
+        if self.target_names is not None:
+            result['TargetNames'] = self.target_names
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.can_skip is not None:
+            result['CanSkip'] = self.can_skip
+        if self.names is not None:
+            result['Names'] = self.names
+        if self.err_detail is not None:
+            result['ErrDetail'] = self.err_detail
+        if self.diff_row is not None:
+            result['DiffRow'] = self.diff_row
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        result['Logs'] = []
+        if self.logs is not None:
+            for k in self.logs:
+                result['Logs'].append(k.to_map() if k else None)
+        if self.source_schema is not None:
+            result['SourceSchema'] = self.source_schema
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        if self.dest_schema is not None:
+            result['DestSchema'] = self.dest_schema
+        if self.parent_obj is not None:
+            result['ParentObj'] = self.parent_obj
+        if self.order_num is not None:
+            result['OrderNum'] = self.order_num
+        if self.repair_method is not None:
+            result['RepairMethod'] = self.repair_method
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Skip') is not None:
+            self.skip = m.get('Skip')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('DelaySeconds') is not None:
+            self.delay_seconds = m.get('DelaySeconds')
+        if m.get('IgnoreFlag') is not None:
+            self.ignore_flag = m.get('IgnoreFlag')
+        if m.get('DdlSql') is not None:
+            self.ddl_sql = m.get('DdlSql')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('BootTime') is not None:
+            self.boot_time = m.get('BootTime')
+        if m.get('Item') is not None:
+            self.item = m.get('Item')
+        if m.get('Sub') is not None:
+            self.sub = m.get('Sub')
+        if m.get('TargetNames') is not None:
+            self.target_names = m.get('TargetNames')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('CanSkip') is not None:
+            self.can_skip = m.get('CanSkip')
+        if m.get('Names') is not None:
+            self.names = m.get('Names')
+        if m.get('ErrDetail') is not None:
+            self.err_detail = m.get('ErrDetail')
+        if m.get('DiffRow') is not None:
+            self.diff_row = m.get('DiffRow')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        self.logs = []
+        if m.get('Logs') is not None:
+            for k in m.get('Logs'):
+                temp_model = DescribePreCheckStatusResponseBodyJobProgressLogs()
+                self.logs.append(temp_model.from_map(k))
+        if m.get('SourceSchema') is not None:
+            self.source_schema = m.get('SourceSchema')
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        if m.get('DestSchema') is not None:
+            self.dest_schema = m.get('DestSchema')
+        if m.get('ParentObj') is not None:
+            self.parent_obj = m.get('ParentObj')
+        if m.get('OrderNum') is not None:
+            self.order_num = m.get('OrderNum')
+        if m.get('RepairMethod') is not None:
+            self.repair_method = m.get('RepairMethod')
+        return self
+
+
+class DescribePreCheckStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        state: str = None,
+        total: int = None,
+        http_status_code: int = None,
+        job_name: str = None,
+        error_item: int = None,
+        code: str = None,
+        success: bool = None,
+        job_progress: List[DescribePreCheckStatusResponseBodyJobProgress] = None,
+    ):
+        self.request_id = request_id
+        self.state = state
+        self.total = total
+        self.http_status_code = http_status_code
+        self.job_name = job_name
+        self.error_item = error_item
+        self.code = code
+        self.success = success
+        self.job_progress = job_progress
+
+    def validate(self):
+        if self.job_progress:
+            for k in self.job_progress:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.state is not None:
+            result['State'] = self.state
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        if self.error_item is not None:
+            result['ErrorItem'] = self.error_item
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        result['JobProgress'] = []
+        if self.job_progress is not None:
+            for k in self.job_progress:
+                result['JobProgress'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        if m.get('ErrorItem') is not None:
+            self.error_item = m.get('ErrorItem')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        self.job_progress = []
+        if m.get('JobProgress') is not None:
+            for k in m.get('JobProgress'):
+                temp_model = DescribePreCheckStatusResponseBodyJobProgress()
+                self.job_progress.append(temp_model.from_map(k))
+        return self
+
+
+class DescribePreCheckStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribePreCheckStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribePreCheckStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5959,6 +9557,10 @@ class DescribeSubscriptionInstanceAlertRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
@@ -6014,6 +9616,10 @@ class DescribeSubscriptionInstanceAlertResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.error_alert_phone is not None:
             result['ErrorAlertPhone'] = self.error_alert_phone
@@ -6082,6 +9688,10 @@ class DescribeSubscriptionInstanceAlertResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6112,6 +9722,10 @@ class DescribeSubscriptionInstancesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -6154,6 +9768,10 @@ class DescribeSubscriptionInstancesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -6208,6 +9826,10 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -6238,6 +9860,10 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -6266,6 +9892,10 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table is not None:
             result['Table'] = self.table
@@ -6294,6 +9924,10 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
             self.table_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.whole_database is not None:
             result['WholeDatabase'] = self.whole_database
@@ -6329,6 +9963,10 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SynchronousObject'] = []
         if self.synchronous_object is not None:
@@ -6361,6 +9999,10 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.private_host is not None:
             result['PrivateHost'] = self.private_host
@@ -6394,6 +10036,10 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceID'] = self.instance_id
@@ -6423,6 +10069,10 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dml is not None:
             result['DML'] = self.dml
@@ -6487,6 +10137,10 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
             self.subscription_data_type.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -6574,6 +10228,10 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstances(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubscriptionInstance'] = []
         if self.subscription_instance is not None:
@@ -6617,6 +10275,10 @@ class DescribeSubscriptionInstancesResponseBody(TeaModel):
             self.subscription_instances.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_record_count is not None:
             result['TotalRecordCount'] = self.total_record_count
@@ -6674,6 +10336,10 @@ class DescribeSubscriptionInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6706,6 +10372,10 @@ class DescribeSubscriptionInstanceStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
@@ -6737,6 +10407,10 @@ class DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchronou
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table is not None:
             result['Table'] = self.table
@@ -6765,6 +10439,10 @@ class DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchronou
             self.table_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.database_name is not None:
             result['DatabaseName'] = self.database_name
@@ -6800,6 +10478,10 @@ class DescribeSubscriptionInstanceStatusResponseBodySubscriptionObject(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SynchronousObject'] = []
         if self.synchronous_object is not None:
@@ -6830,6 +10512,10 @@ class DescribeSubscriptionInstanceStatusResponseBodySourceEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceID'] = self.instance_id
@@ -6859,6 +10545,10 @@ class DescribeSubscriptionInstanceStatusResponseBodySubscriptionDataType(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ddl is not None:
             result['DDL'] = self.ddl
@@ -6890,6 +10580,10 @@ class DescribeSubscriptionInstanceStatusResponseBodySubscriptionHost(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.private_host is not None:
             result['PrivateHost'] = self.private_host
@@ -6927,6 +10621,7 @@ class DescribeSubscriptionInstanceStatusResponseBody(TeaModel):
         err_code: str = None,
         success: str = None,
         error_message: str = None,
+        task_id: str = None,
         subscription_object: DescribeSubscriptionInstanceStatusResponseBodySubscriptionObject = None,
         source_endpoint: DescribeSubscriptionInstanceStatusResponseBodySourceEndpoint = None,
         subscription_data_type: DescribeSubscriptionInstanceStatusResponseBodySubscriptionDataType = None,
@@ -6946,6 +10641,7 @@ class DescribeSubscriptionInstanceStatusResponseBody(TeaModel):
         self.err_code = err_code
         self.success = success
         self.error_message = error_message
+        self.task_id = task_id
         self.subscription_object = subscription_object
         self.source_endpoint = source_endpoint
         self.subscription_data_type = subscription_data_type
@@ -6962,6 +10658,10 @@ class DescribeSubscriptionInstanceStatusResponseBody(TeaModel):
             self.subscription_host.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.begin_timestamp is not None:
             result['BeginTimestamp'] = self.begin_timestamp
@@ -6991,6 +10691,8 @@ class DescribeSubscriptionInstanceStatusResponseBody(TeaModel):
             result['Success'] = self.success
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         if self.subscription_object is not None:
             result['SubscriptionObject'] = self.subscription_object.to_map()
         if self.source_endpoint is not None:
@@ -7031,6 +10733,8 @@ class DescribeSubscriptionInstanceStatusResponseBody(TeaModel):
             self.success = m.get('Success')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         if m.get('SubscriptionObject') is not None:
             temp_model = DescribeSubscriptionInstanceStatusResponseBodySubscriptionObject()
             self.subscription_object = temp_model.from_map(m['SubscriptionObject'])
@@ -7062,6 +10766,10 @@ class DescribeSubscriptionInstanceStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7098,6 +10806,10 @@ class DescribeSynchronizationJobAlertRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
@@ -7159,6 +10871,10 @@ class DescribeSynchronizationJobAlertResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.error_alert_phone is not None:
             result['ErrorAlertPhone'] = self.error_alert_phone
@@ -7231,6 +10947,10 @@ class DescribeSynchronizationJobAlertResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7267,6 +10987,10 @@ class DescribeSynchronizationJobReplicatorCompareRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
@@ -7314,6 +11038,10 @@ class DescribeSynchronizationJobReplicatorCompareResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7358,6 +11086,10 @@ class DescribeSynchronizationJobReplicatorCompareResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7388,6 +11120,10 @@ class DescribeSynchronizationJobsRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -7430,6 +11166,10 @@ class DescribeSynchronizationJobsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -7484,6 +11224,10 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesPerformance
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.flow is not None:
             result['FLOW'] = self.flow
@@ -7517,6 +11261,10 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckSta
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.check_status is not None:
             result['CheckStatus'] = self.check_status
@@ -7559,6 +11307,10 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckSta
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -7601,6 +11353,10 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesStructureIn
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -7636,6 +11392,10 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchroniza
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table_name is not None:
             result['TableName'] = self.table_name
@@ -7659,6 +11419,10 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchroniza
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table_name is not None:
             result['TableName'] = self.table_name
@@ -7695,6 +11459,10 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchroniza
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.new_schema_name is not None:
             result['NewSchemaName'] = self.new_schema_name
@@ -7742,6 +11510,10 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesTags(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -7775,6 +11547,10 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataInitial
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -7820,6 +11596,10 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesDestination
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -7869,6 +11649,10 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataSynchro
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -7914,6 +11698,10 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesSourceEndpo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -8018,6 +11806,10 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstances(TeaModel):
             self.source_endpoint.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_name is not None:
             result['SynchronizationJobName'] = self.synchronization_job_name
@@ -8149,6 +11941,10 @@ class DescribeSynchronizationJobsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_record_count is not None:
             result['TotalRecordCount'] = self.total_record_count
@@ -8198,6 +11994,10 @@ class DescribeSynchronizationJobsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8234,6 +12034,10 @@ class DescribeSynchronizationJobStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
@@ -8279,6 +12083,10 @@ class DescribeSynchronizationJobStatusResponseBodyDataInitializationStatus(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -8314,6 +12122,10 @@ class DescribeSynchronizationJobStatusResponseBodySynchronizationObjectsTableInc
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table_name is not None:
             result['TableName'] = self.table_name
@@ -8337,6 +12149,10 @@ class DescribeSynchronizationJobStatusResponseBodySynchronizationObjectsTableExc
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.table_name is not None:
             result['TableName'] = self.table_name
@@ -8373,6 +12189,10 @@ class DescribeSynchronizationJobStatusResponseBodySynchronizationObjects(TeaMode
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.new_schema_name is not None:
             result['NewSchemaName'] = self.new_schema_name
@@ -8428,6 +12248,10 @@ class DescribeSynchronizationJobStatusResponseBodyDataSynchronizationStatus(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -8477,6 +12301,10 @@ class DescribeSynchronizationJobStatusResponseBodyPrecheckStatusDetail(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.check_status is not None:
             result['CheckStatus'] = self.check_status
@@ -8519,6 +12347,10 @@ class DescribeSynchronizationJobStatusResponseBodyPrecheckStatus(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -8565,6 +12397,10 @@ class DescribeSynchronizationJobStatusResponseBodyDestinationEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -8618,6 +12454,10 @@ class DescribeSynchronizationJobStatusResponseBodySourceEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -8663,6 +12503,10 @@ class DescribeSynchronizationJobStatusResponseBodyPerformance(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.flow is not None:
             result['FLOW'] = self.flow
@@ -8696,6 +12540,10 @@ class DescribeSynchronizationJobStatusResponseBodyStructureInitializationStatus(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -8723,6 +12571,7 @@ class DescribeSynchronizationJobStatusResponseBodyStructureInitializationStatus(
 class DescribeSynchronizationJobStatusResponseBody(TeaModel):
     def __init__(
         self,
+        task_id: str = None,
         data_initialization_status: DescribeSynchronizationJobStatusResponseBodyDataInitializationStatus = None,
         synchronization_objects: List[DescribeSynchronizationJobStatusResponseBodySynchronizationObjects] = None,
         delay: str = None,
@@ -8749,6 +12598,7 @@ class DescribeSynchronizationJobStatusResponseBody(TeaModel):
         synchronization_direction: str = None,
         structure_initialization_status: DescribeSynchronizationJobStatusResponseBodyStructureInitializationStatus = None,
     ):
+        self.task_id = task_id
         self.data_initialization_status = data_initialization_status
         self.synchronization_objects = synchronization_objects
         self.delay = delay
@@ -8796,7 +12646,13 @@ class DescribeSynchronizationJobStatusResponseBody(TeaModel):
             self.structure_initialization_status.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         if self.data_initialization_status is not None:
             result['DataInitializationStatus'] = self.data_initialization_status.to_map()
         result['SynchronizationObjects'] = []
@@ -8853,6 +12709,8 @@ class DescribeSynchronizationJobStatusResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         if m.get('DataInitializationStatus') is not None:
             temp_model = DescribeSynchronizationJobStatusResponseBodyDataInitializationStatus()
             self.data_initialization_status = temp_model.from_map(m['DataInitializationStatus'])
@@ -8932,6 +12790,10 @@ class DescribeSynchronizationJobStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8966,6 +12828,10 @@ class DescribeSynchronizationJobStatusListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id_list_json_str is not None:
             result['SynchronizationJobIdListJsonStr'] = self.synchronization_job_id_list_json_str
@@ -9005,6 +12871,10 @@ class DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStat
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -9041,6 +12911,10 @@ class DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStat
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
@@ -9090,6 +12964,10 @@ class DescribeSynchronizationJobStatusListResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_record_count is not None:
             result['TotalRecordCount'] = self.total_record_count
@@ -9151,6 +13029,10 @@ class DescribeSynchronizationJobStatusListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9185,6 +13067,10 @@ class DescribeSynchronizationObjectModifyStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -9226,6 +13112,10 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatusDetail(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.check_status is not None:
             result['CheckStatus'] = self.check_status
@@ -9268,6 +13158,10 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatus(TeaMod
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -9310,6 +13204,10 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyDataInitializationSta
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -9351,6 +13249,10 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyStructureInitializati
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -9392,6 +13294,10 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyDataSynchronizationSt
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -9452,6 +13358,10 @@ class DescribeSynchronizationObjectModifyStatusResponseBody(TeaModel):
             self.data_synchronization_status.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -9520,6 +13430,10 @@ class DescribeSynchronizationObjectModifyStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9550,6 +13464,10 @@ class ListTagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -9588,6 +13506,10 @@ class ListTagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -9638,6 +13560,10 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
@@ -9676,6 +13602,10 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TagResource'] = []
         if self.tag_resource is not None:
@@ -9715,6 +13645,10 @@ class ListTagResourcesResponseBody(TeaModel):
             self.tag_resources.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -9764,6 +13698,10 @@ class ListTagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9806,6 +13744,10 @@ class ModifyConsumerGroupPasswordRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
@@ -9863,6 +13805,10 @@ class ModifyConsumerGroupPasswordResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9903,6 +13849,10 @@ class ModifyConsumerGroupPasswordResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9937,6 +13887,10 @@ class ModifyConsumptionTimestampRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
@@ -9978,6 +13932,10 @@ class ModifyConsumptionTimestampResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10018,6 +13976,10 @@ class ModifyConsumptionTimestampResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10031,6 +13993,468 @@ class ModifyConsumptionTimestampResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ModifyConsumptionTimestampResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDtsJobRequest(TeaModel):
+    def __init__(
+        self,
+        dts_instance_id: str = None,
+        synchronization_direction: str = None,
+        client_token: str = None,
+        db_list: Dict[str, Any] = None,
+    ):
+        self.dts_instance_id = dts_instance_id
+        self.synchronization_direction = synchronization_direction
+        self.client_token = client_token
+        self.db_list = db_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.synchronization_direction is not None:
+            result['SynchronizationDirection'] = self.synchronization_direction
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.db_list is not None:
+            result['DbList'] = self.db_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('SynchronizationDirection') is not None:
+            self.synchronization_direction = m.get('SynchronizationDirection')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DbList') is not None:
+            self.db_list = m.get('DbList')
+        return self
+
+
+class ModifyDtsJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dts_instance_id: str = None,
+        synchronization_direction: str = None,
+        client_token: str = None,
+        db_list_shrink: str = None,
+    ):
+        self.dts_instance_id = dts_instance_id
+        self.synchronization_direction = synchronization_direction
+        self.client_token = client_token
+        self.db_list_shrink = db_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.synchronization_direction is not None:
+            result['SynchronizationDirection'] = self.synchronization_direction
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.db_list_shrink is not None:
+            result['DbList'] = self.db_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('SynchronizationDirection') is not None:
+            self.synchronization_direction = m.get('SynchronizationDirection')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DbList') is not None:
+            self.db_list_shrink = m.get('DbList')
+        return self
+
+
+class ModifyDtsJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        dts_job_id: str = None,
+        request_id: str = None,
+        err_message: bool = None,
+        success: bool = None,
+        err_code: str = None,
+    ):
+        self.status = status
+        self.dts_job_id = dts_job_id
+        self.request_id = request_id
+        self.err_message = err_message
+        self.success = success
+        self.err_code = err_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        return self
+
+
+class ModifyDtsJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyDtsJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyDtsJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDtsJobNameRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        dts_job_name: str = None,
+    ):
+        self.dts_job_id = dts_job_id
+        self.dts_job_name = dts_job_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.dts_job_name is not None:
+            result['DtsJobName'] = self.dts_job_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('DtsJobName') is not None:
+            self.dts_job_name = m.get('DtsJobName')
+        return self
+
+
+class ModifyDtsJobNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        http_status_code: int = None,
+        dynamic_message: str = None,
+        err_message: str = None,
+        code: str = None,
+        success: bool = None,
+        err_code: str = None,
+    ):
+        self.request_id = request_id
+        self.http_status_code = http_status_code
+        self.dynamic_message = dynamic_message
+        self.err_message = err_message
+        self.code = code
+        self.success = success
+        self.err_code = err_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        return self
+
+
+class ModifyDtsJobNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyDtsJobNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyDtsJobNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDtsJobPasswordRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        user_name: str = None,
+        password: str = None,
+        endpoint: str = None,
+    ):
+        self.dts_job_id = dts_job_id
+        self.user_name = user_name
+        self.password = password
+        self.endpoint = endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        return self
+
+
+class ModifyDtsJobPasswordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        http_status_code: int = None,
+        dynamic_message: str = None,
+        err_message: str = None,
+        code: str = None,
+        success: bool = None,
+        err_code: str = None,
+    ):
+        self.request_id = request_id
+        self.http_status_code = http_status_code
+        self.dynamic_message = dynamic_message
+        self.err_message = err_message
+        self.code = code
+        self.success = success
+        self.err_code = err_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        return self
+
+
+class ModifyDtsJobPasswordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyDtsJobPasswordResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyDtsJobPasswordResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10052,6 +14476,10 @@ class ModifySubscriptionObjectRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
@@ -10093,6 +14521,10 @@ class ModifySubscriptionObjectResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10133,6 +14565,10 @@ class ModifySubscriptionObjectResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10169,6 +14605,10 @@ class ModifySynchronizationObjectRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
@@ -10216,6 +14656,10 @@ class ModifySynchronizationObjectResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -10260,6 +14704,10 @@ class ModifySynchronizationObjectResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10273,6 +14721,145 @@ class ModifySynchronizationObjectResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ModifySynchronizationObjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ResetDtsJobRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        dts_instance_id: str = None,
+        synchronization_direction: str = None,
+    ):
+        self.dts_job_id = dts_job_id
+        self.dts_instance_id = dts_instance_id
+        self.synchronization_direction = synchronization_direction
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.synchronization_direction is not None:
+            result['SynchronizationDirection'] = self.synchronization_direction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('SynchronizationDirection') is not None:
+            self.synchronization_direction = m.get('SynchronizationDirection')
+        return self
+
+
+class ResetDtsJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        http_status_code: int = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_message: str = None,
+        success: bool = None,
+        err_code: str = None,
+    ):
+        self.request_id = request_id
+        self.http_status_code = http_status_code
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_message = err_message
+        self.success = success
+        self.err_code = err_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        return self
+
+
+class ResetDtsJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ResetDtsJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ResetDtsJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10294,6 +14881,10 @@ class ResetSynchronizationJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
@@ -10335,6 +14926,10 @@ class ResetSynchronizationJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10375,6 +14970,10 @@ class ResetSynchronizationJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10405,6 +15004,10 @@ class ShieldPrecheckRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dts_instance_id is not None:
             result['DtsInstanceId'] = self.dts_instance_id
@@ -10438,6 +15041,10 @@ class ShieldPrecheckResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10478,6 +15085,10 @@ class ShieldPrecheckResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10491,6 +15102,314 @@ class ShieldPrecheckResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ShieldPrecheckResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SkipPreCheckRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        skip: bool = None,
+        skip_pre_check_items: str = None,
+        skip_pre_check_names: str = None,
+    ):
+        self.job_id = job_id
+        self.skip = skip
+        self.skip_pre_check_items = skip_pre_check_items
+        self.skip_pre_check_names = skip_pre_check_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.skip is not None:
+            result['Skip'] = self.skip
+        if self.skip_pre_check_items is not None:
+            result['SkipPreCheckItems'] = self.skip_pre_check_items
+        if self.skip_pre_check_names is not None:
+            result['SkipPreCheckNames'] = self.skip_pre_check_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Skip') is not None:
+            self.skip = m.get('Skip')
+        if m.get('SkipPreCheckItems') is not None:
+            self.skip_pre_check_items = m.get('SkipPreCheckItems')
+        if m.get('SkipPreCheckNames') is not None:
+            self.skip_pre_check_names = m.get('SkipPreCheckNames')
+        return self
+
+
+class SkipPreCheckResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        skip_items: str = None,
+        schedule_job_id: str = None,
+        http_status_code: int = None,
+        skip_names: str = None,
+        dynamic_message: str = None,
+        err_message: str = None,
+        code: str = None,
+        success: bool = None,
+        err_code: str = None,
+        migration_job_id: str = None,
+    ):
+        self.request_id = request_id
+        self.skip_items = skip_items
+        self.schedule_job_id = schedule_job_id
+        self.http_status_code = http_status_code
+        self.skip_names = skip_names
+        self.dynamic_message = dynamic_message
+        self.err_message = err_message
+        self.code = code
+        self.success = success
+        self.err_code = err_code
+        self.migration_job_id = migration_job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.skip_items is not None:
+            result['SkipItems'] = self.skip_items
+        if self.schedule_job_id is not None:
+            result['ScheduleJobId'] = self.schedule_job_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.skip_names is not None:
+            result['SkipNames'] = self.skip_names
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.migration_job_id is not None:
+            result['MigrationJobId'] = self.migration_job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SkipItems') is not None:
+            self.skip_items = m.get('SkipItems')
+        if m.get('ScheduleJobId') is not None:
+            self.schedule_job_id = m.get('ScheduleJobId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('SkipNames') is not None:
+            self.skip_names = m.get('SkipNames')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('MigrationJobId') is not None:
+            self.migration_job_id = m.get('MigrationJobId')
+        return self
+
+
+class SkipPreCheckResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SkipPreCheckResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SkipPreCheckResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartDtsJobRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        dts_instance_id: str = None,
+        synchronization_direction: str = None,
+    ):
+        self.dts_job_id = dts_job_id
+        self.dts_instance_id = dts_instance_id
+        self.synchronization_direction = synchronization_direction
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.synchronization_direction is not None:
+            result['SynchronizationDirection'] = self.synchronization_direction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('SynchronizationDirection') is not None:
+            self.synchronization_direction = m.get('SynchronizationDirection')
+        return self
+
+
+class StartDtsJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        http_status_code: int = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_message: str = None,
+        success: bool = None,
+        err_code: str = None,
+    ):
+        self.request_id = request_id
+        self.http_status_code = http_status_code
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_message = err_message
+        self.success = success
+        self.err_code = err_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        return self
+
+
+class StartDtsJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: StartDtsJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = StartDtsJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10510,6 +15429,10 @@ class StartMigrationJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.migration_job_id is not None:
             result['MigrationJobId'] = self.migration_job_id
@@ -10547,6 +15470,10 @@ class StartMigrationJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10587,6 +15514,10 @@ class StartMigrationJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10619,6 +15550,10 @@ class StartSubscriptionInstanceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subscription_instance_id is not None:
             result['SubscriptionInstanceId'] = self.subscription_instance_id
@@ -10658,6 +15593,10 @@ class StartSubscriptionInstanceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -10702,6 +15641,10 @@ class StartSubscriptionInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10736,6 +15679,10 @@ class StartSynchronizationJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
@@ -10777,6 +15724,10 @@ class StartSynchronizationJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10817,6 +15768,10 @@ class StartSynchronizationJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10830,6 +15785,145 @@ class StartSynchronizationJobResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = StartSynchronizationJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopDtsJobRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        dts_instance_id: str = None,
+        synchronization_direction: str = None,
+    ):
+        self.dts_job_id = dts_job_id
+        self.dts_instance_id = dts_instance_id
+        self.synchronization_direction = synchronization_direction
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.synchronization_direction is not None:
+            result['SynchronizationDirection'] = self.synchronization_direction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('SynchronizationDirection') is not None:
+            self.synchronization_direction = m.get('SynchronizationDirection')
+        return self
+
+
+class StopDtsJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        http_status_code: int = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_message: str = None,
+        success: bool = None,
+        err_code: str = None,
+    ):
+        self.request_id = request_id
+        self.http_status_code = http_status_code
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_message = err_message
+        self.success = success
+        self.err_code = err_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        return self
+
+
+class StopDtsJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: StopDtsJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = StopDtsJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10851,6 +15945,10 @@ class StopMigrationJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.migration_job_id is not None:
             result['MigrationJobId'] = self.migration_job_id
@@ -10892,6 +15990,10 @@ class StopMigrationJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10932,6 +16034,10 @@ class StopMigrationJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10945,6 +16051,145 @@ class StopMigrationJobResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = StopMigrationJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SuspendDtsJobRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+        dts_instance_id: str = None,
+        synchronization_direction: str = None,
+    ):
+        self.dts_job_id = dts_job_id
+        self.dts_instance_id = dts_instance_id
+        self.synchronization_direction = synchronization_direction
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.synchronization_direction is not None:
+            result['SynchronizationDirection'] = self.synchronization_direction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('SynchronizationDirection') is not None:
+            self.synchronization_direction = m.get('SynchronizationDirection')
+        return self
+
+
+class SuspendDtsJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        http_status_code: int = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_message: str = None,
+        success: bool = None,
+        err_code: str = None,
+    ):
+        self.request_id = request_id
+        self.http_status_code = http_status_code
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_message = err_message
+        self.success = success
+        self.err_code = err_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        return self
+
+
+class SuspendDtsJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SuspendDtsJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SuspendDtsJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10966,6 +16211,10 @@ class SuspendMigrationJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.migration_job_id is not None:
             result['MigrationJobId'] = self.migration_job_id
@@ -11007,6 +16256,10 @@ class SuspendMigrationJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11047,6 +16300,10 @@ class SuspendMigrationJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11081,6 +16338,10 @@ class SuspendSynchronizationJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.synchronization_job_id is not None:
             result['SynchronizationJobId'] = self.synchronization_job_id
@@ -11122,6 +16383,10 @@ class SuspendSynchronizationJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11162,6 +16427,10 @@ class SuspendSynchronizationJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11198,6 +16467,10 @@ class SwitchSynchronizationEndpointRequestEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -11239,6 +16512,10 @@ class SwitchSynchronizationEndpointRequestSourceEndpoint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerID'] = self.owner_id
@@ -11279,6 +16556,10 @@ class SwitchSynchronizationEndpointRequest(TeaModel):
             self.source_endpoint.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint.to_map()
@@ -11332,6 +16613,10 @@ class SwitchSynchronizationEndpointResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -11376,6 +16661,10 @@ class SwitchSynchronizationEndpointResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11406,6 +16695,10 @@ class TagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -11442,6 +16735,10 @@ class TagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -11488,6 +16785,10 @@ class TagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11528,6 +16829,10 @@ class TagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11564,6 +16869,10 @@ class UntagResourcesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -11609,6 +16918,10 @@ class UntagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11649,6 +16962,10 @@ class UntagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
