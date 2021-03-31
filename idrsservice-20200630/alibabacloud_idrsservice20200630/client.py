@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_idrsservice20200630 import models as idrsservice_20200630_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -104,7 +106,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CheckServiceLinkedRoleResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CheckServiceLinkedRoleResponse(),
             self.do_rpcrequest('CheckServiceLinkedRole', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -117,7 +120,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CheckServiceLinkedRoleResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CheckServiceLinkedRoleResponse(),
             await self.do_rpcrequest_async('CheckServiceLinkedRole', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -144,7 +148,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateAppResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateAppResponse(),
             self.do_rpcrequest('CreateApp', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -157,7 +162,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateAppResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateAppResponse(),
             await self.do_rpcrequest_async('CreateApp', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -184,7 +190,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateDepartmentResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateDepartmentResponse(),
             self.do_rpcrequest('CreateDepartment', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -197,7 +204,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateDepartmentResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateDepartmentResponse(),
             await self.do_rpcrequest_async('CreateDepartment', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -224,7 +232,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateDetectProcessResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateDetectProcessResponse(),
             self.do_rpcrequest('CreateDetectProcess', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -237,7 +246,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateDetectProcessResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateDetectProcessResponse(),
             await self.do_rpcrequest_async('CreateDetectProcess', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -264,7 +274,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateLiveResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateLiveResponse(),
             self.do_rpcrequest('CreateLive', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -277,7 +288,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateLiveResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateLiveResponse(),
             await self.do_rpcrequest_async('CreateLive', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -304,7 +316,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateLiveDetectionResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateLiveDetectionResponse(),
             self.do_rpcrequest('CreateLiveDetection', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -317,7 +330,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateLiveDetectionResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateLiveDetectionResponse(),
             await self.do_rpcrequest_async('CreateLiveDetection', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -335,6 +349,64 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_live_detection_with_options_async(request, runtime)
 
+    def create_live_record_template_with_options(
+        self,
+        tmp_req: idrsservice_20200630_models.CreateLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.CreateLiveRecordTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = idrsservice_20200630_models.CreateLiveRecordTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.backgrounds):
+            request.backgrounds_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.backgrounds, 'Backgrounds', 'json')
+        if not UtilClient.is_unset(tmp_req.watermarks):
+            request.watermarks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.watermarks, 'Watermarks', 'json')
+        if not UtilClient.is_unset(tmp_req.clock_widgets):
+            request.clock_widgets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.clock_widgets, 'ClockWidgets', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateLiveRecordTemplateResponse(),
+            self.do_rpcrequest('CreateLiveRecordTemplate', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_live_record_template_with_options_async(
+        self,
+        tmp_req: idrsservice_20200630_models.CreateLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.CreateLiveRecordTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = idrsservice_20200630_models.CreateLiveRecordTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.backgrounds):
+            request.backgrounds_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.backgrounds, 'Backgrounds', 'json')
+        if not UtilClient.is_unset(tmp_req.watermarks):
+            request.watermarks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.watermarks, 'Watermarks', 'json')
+        if not UtilClient.is_unset(tmp_req.clock_widgets):
+            request.clock_widgets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.clock_widgets, 'ClockWidgets', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateLiveRecordTemplateResponse(),
+            await self.do_rpcrequest_async('CreateLiveRecordTemplate', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_live_record_template(
+        self,
+        request: idrsservice_20200630_models.CreateLiveRecordTemplateRequest,
+    ) -> idrsservice_20200630_models.CreateLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_live_record_template_with_options(request, runtime)
+
+    async def create_live_record_template_async(
+        self,
+        request: idrsservice_20200630_models.CreateLiveRecordTemplateRequest,
+    ) -> idrsservice_20200630_models.CreateLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_live_record_template_with_options_async(request, runtime)
+
     def create_rule_with_options(
         self,
         request: idrsservice_20200630_models.CreateRuleRequest,
@@ -344,7 +416,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateRuleResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateRuleResponse(),
             self.do_rpcrequest('CreateRule', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -357,7 +430,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateRuleResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateRuleResponse(),
             await self.do_rpcrequest_async('CreateRule', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -384,7 +458,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateStatisticsRecordResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateStatisticsRecordResponse(),
             self.do_rpcrequest('CreateStatisticsRecord', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -397,7 +472,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateStatisticsRecordResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateStatisticsRecordResponse(),
             await self.do_rpcrequest_async('CreateStatisticsRecord', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -424,7 +500,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateStatisticsTaskResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateStatisticsTaskResponse(),
             self.do_rpcrequest('CreateStatisticsTask', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -437,7 +514,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateStatisticsTaskResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateStatisticsTaskResponse(),
             await self.do_rpcrequest_async('CreateStatisticsTask', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -464,7 +542,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateTaskGroupResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateTaskGroupResponse(),
             self.do_rpcrequest('CreateTaskGroup', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -477,7 +556,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateTaskGroupResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateTaskGroupResponse(),
             await self.do_rpcrequest_async('CreateTaskGroup', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -504,7 +584,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateUserDepartmentsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateUserDepartmentsResponse(),
             self.do_rpcrequest('CreateUserDepartments', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -517,7 +598,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.CreateUserDepartmentsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.CreateUserDepartmentsResponse(),
             await self.do_rpcrequest_async('CreateUserDepartments', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -544,7 +626,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.DeleteAppResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteAppResponse(),
             self.do_rpcrequest('DeleteApp', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -557,7 +640,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.DeleteAppResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteAppResponse(),
             await self.do_rpcrequest_async('DeleteApp', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -584,7 +668,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.DeleteDepartmentResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteDepartmentResponse(),
             self.do_rpcrequest('DeleteDepartment', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -597,7 +682,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.DeleteDepartmentResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteDepartmentResponse(),
             await self.do_rpcrequest_async('DeleteDepartment', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -624,7 +710,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.DeleteDetectProcessResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteDetectProcessResponse(),
             self.do_rpcrequest('DeleteDetectProcess', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -637,7 +724,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.DeleteDetectProcessResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteDetectProcessResponse(),
             await self.do_rpcrequest_async('DeleteDetectProcess', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -655,6 +743,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_detect_process_with_options_async(request, runtime)
 
+    def delete_live_record_template_with_options(
+        self,
+        request: idrsservice_20200630_models.DeleteLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.DeleteLiveRecordTemplateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteLiveRecordTemplateResponse(),
+            self.do_rpcrequest('DeleteLiveRecordTemplate', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_live_record_template_with_options_async(
+        self,
+        request: idrsservice_20200630_models.DeleteLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.DeleteLiveRecordTemplateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteLiveRecordTemplateResponse(),
+            await self.do_rpcrequest_async('DeleteLiveRecordTemplate', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_live_record_template(
+        self,
+        request: idrsservice_20200630_models.DeleteLiveRecordTemplateRequest,
+    ) -> idrsservice_20200630_models.DeleteLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_live_record_template_with_options(request, runtime)
+
+    async def delete_live_record_template_async(
+        self,
+        request: idrsservice_20200630_models.DeleteLiveRecordTemplateRequest,
+    ) -> idrsservice_20200630_models.DeleteLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_live_record_template_with_options_async(request, runtime)
+
     def delete_rule_with_options(
         self,
         request: idrsservice_20200630_models.DeleteRuleRequest,
@@ -664,7 +794,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.DeleteRuleResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteRuleResponse(),
             self.do_rpcrequest('DeleteRule', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -677,7 +808,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.DeleteRuleResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteRuleResponse(),
             await self.do_rpcrequest_async('DeleteRule', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -704,7 +836,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.DeleteUserResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteUserResponse(),
             self.do_rpcrequest('DeleteUser', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -717,7 +850,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.DeleteUserResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteUserResponse(),
             await self.do_rpcrequest_async('DeleteUser', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -744,7 +878,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.DeleteUserDepartmentsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteUserDepartmentsResponse(),
             self.do_rpcrequest('DeleteUserDepartments', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -757,7 +892,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.DeleteUserDepartmentsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.DeleteUserDepartmentsResponse(),
             await self.do_rpcrequest_async('DeleteUserDepartments', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -784,7 +920,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ExitLiveResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ExitLiveResponse(),
             self.do_rpcrequest('ExitLive', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -797,7 +934,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ExitLiveResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ExitLiveResponse(),
             await self.do_rpcrequest_async('ExitLive', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -824,7 +962,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetAppResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetAppResponse(),
             self.do_rpcrequest('GetApp', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -837,7 +976,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetAppResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetAppResponse(),
             await self.do_rpcrequest_async('GetApp', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -864,7 +1004,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetBatchSignedUrlResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetBatchSignedUrlResponse(),
             self.do_rpcrequest('GetBatchSignedUrl', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -877,7 +1018,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetBatchSignedUrlResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetBatchSignedUrlResponse(),
             await self.do_rpcrequest_async('GetBatchSignedUrl', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -904,7 +1046,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetDepartmentResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetDepartmentResponse(),
             self.do_rpcrequest('GetDepartment', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -917,7 +1060,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetDepartmentResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetDepartmentResponse(),
             await self.do_rpcrequest_async('GetDepartment', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -944,7 +1088,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetDetectEvaluationResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetDetectEvaluationResponse(),
             self.do_rpcrequest('GetDetectEvaluation', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -957,7 +1102,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetDetectEvaluationResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetDetectEvaluationResponse(),
             await self.do_rpcrequest_async('GetDetectEvaluation', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -984,7 +1130,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetDetectionResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetDetectionResponse(),
             self.do_rpcrequest('GetDetection', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -997,7 +1144,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetDetectionResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetDetectionResponse(),
             await self.do_rpcrequest_async('GetDetection', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1024,7 +1172,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetDetectProcessResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetDetectProcessResponse(),
             self.do_rpcrequest('GetDetectProcess', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1037,7 +1186,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetDetectProcessResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetDetectProcessResponse(),
             await self.do_rpcrequest_async('GetDetectProcess', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1064,7 +1214,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetDetectProcessJsonFileResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetDetectProcessJsonFileResponse(),
             self.do_rpcrequest('GetDetectProcessJsonFile', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1077,7 +1228,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetDetectProcessJsonFileResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetDetectProcessJsonFileResponse(),
             await self.do_rpcrequest_async('GetDetectProcessJsonFile', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1100,7 +1252,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> idrsservice_20200630_models.GetDetectProcessTemplateResponse:
         req = open_api_models.OpenApiRequest()
-        return idrsservice_20200630_models.GetDetectProcessTemplateResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetDetectProcessTemplateResponse(),
             self.do_rpcrequest('GetDetectProcessTemplate', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1109,7 +1262,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> idrsservice_20200630_models.GetDetectProcessTemplateResponse:
         req = open_api_models.OpenApiRequest()
-        return idrsservice_20200630_models.GetDetectProcessTemplateResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetDetectProcessTemplateResponse(),
             await self.do_rpcrequest_async('GetDetectProcessTemplate', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1130,7 +1284,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetGlobalConfigResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetGlobalConfigResponse(),
             self.do_rpcrequest('GetGlobalConfig', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1143,7 +1298,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetGlobalConfigResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetGlobalConfigResponse(),
             await self.do_rpcrequest_async('GetGlobalConfig', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1161,6 +1317,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_global_config_with_options_async(request, runtime)
 
+    def get_live_record_template_with_options(
+        self,
+        request: idrsservice_20200630_models.GetLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.GetLiveRecordTemplateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetLiveRecordTemplateResponse(),
+            self.do_rpcrequest('GetLiveRecordTemplate', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_live_record_template_with_options_async(
+        self,
+        request: idrsservice_20200630_models.GetLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.GetLiveRecordTemplateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetLiveRecordTemplateResponse(),
+            await self.do_rpcrequest_async('GetLiveRecordTemplate', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_live_record_template(
+        self,
+        request: idrsservice_20200630_models.GetLiveRecordTemplateRequest,
+    ) -> idrsservice_20200630_models.GetLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_live_record_template_with_options(request, runtime)
+
+    async def get_live_record_template_async(
+        self,
+        request: idrsservice_20200630_models.GetLiveRecordTemplateRequest,
+    ) -> idrsservice_20200630_models.GetLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_live_record_template_with_options_async(request, runtime)
+
     def get_model_signed_url_with_options(
         self,
         request: idrsservice_20200630_models.GetModelSignedUrlRequest,
@@ -1170,7 +1368,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetModelSignedUrlResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetModelSignedUrlResponse(),
             self.do_rpcrequest('GetModelSignedUrl', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1183,7 +1382,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetModelSignedUrlResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetModelSignedUrlResponse(),
             await self.do_rpcrequest_async('GetModelSignedUrl', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1210,7 +1410,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetPreSignedUrlResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetPreSignedUrlResponse(),
             self.do_rpcrequest('GetPreSignedUrl', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1223,7 +1424,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetPreSignedUrlResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetPreSignedUrlResponse(),
             await self.do_rpcrequest_async('GetPreSignedUrl', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1250,7 +1452,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetRuleResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetRuleResponse(),
             self.do_rpcrequest('GetRule', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1263,7 +1466,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetRuleResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetRuleResponse(),
             await self.do_rpcrequest_async('GetRule', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1290,7 +1494,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetServiceConfigurationResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetServiceConfigurationResponse(),
             self.do_rpcrequest('GetServiceConfiguration', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1303,7 +1508,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetServiceConfigurationResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetServiceConfigurationResponse(),
             await self.do_rpcrequest_async('GetServiceConfiguration', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1330,7 +1536,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetSignedUrlResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetSignedUrlResponse(),
             self.do_rpcrequest('GetSignedUrl', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1343,7 +1550,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetSignedUrlResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetSignedUrlResponse(),
             await self.do_rpcrequest_async('GetSignedUrl', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1370,7 +1578,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetSlrConfigurationResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetSlrConfigurationResponse(),
             self.do_rpcrequest('GetSlrConfiguration', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1383,7 +1592,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetSlrConfigurationResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetSlrConfigurationResponse(),
             await self.do_rpcrequest_async('GetSlrConfiguration', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1410,7 +1620,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetStatisticsResponse(),
             self.do_rpcrequest('GetStatistics', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1423,7 +1634,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetStatisticsResponse(),
             await self.do_rpcrequest_async('GetStatistics', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1450,7 +1662,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetTaskResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetTaskResponse(),
             self.do_rpcrequest('GetTask', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1463,7 +1676,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetTaskResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetTaskResponse(),
             await self.do_rpcrequest_async('GetTask', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1490,7 +1704,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetTaskGroupResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetTaskGroupResponse(),
             self.do_rpcrequest('GetTaskGroup', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1503,7 +1718,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetTaskGroupResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetTaskGroupResponse(),
             await self.do_rpcrequest_async('GetTaskGroup', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1530,7 +1746,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetUserResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetUserResponse(),
             self.do_rpcrequest('GetUser', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1543,7 +1760,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.GetUserResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.GetUserResponse(),
             await self.do_rpcrequest_async('GetUser', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1570,7 +1788,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.InitializeServiceLinkedRoleResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.InitializeServiceLinkedRoleResponse(),
             self.do_rpcrequest('InitializeServiceLinkedRole', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1583,7 +1802,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.InitializeServiceLinkedRoleResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.InitializeServiceLinkedRoleResponse(),
             await self.do_rpcrequest_async('InitializeServiceLinkedRole', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1610,7 +1830,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.JoinLiveResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.JoinLiveResponse(),
             self.do_rpcrequest('JoinLive', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1623,7 +1844,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.JoinLiveResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.JoinLiveResponse(),
             await self.do_rpcrequest_async('JoinLive', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1650,7 +1872,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListAppsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListAppsResponse(),
             self.do_rpcrequest('ListApps', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1663,7 +1886,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListAppsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListAppsResponse(),
             await self.do_rpcrequest_async('ListApps', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1690,7 +1914,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListDepartmentsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListDepartmentsResponse(),
             self.do_rpcrequest('ListDepartments', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1703,7 +1928,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListDepartmentsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListDepartmentsResponse(),
             await self.do_rpcrequest_async('ListDepartments', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1730,7 +1956,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListDetectionsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListDetectionsResponse(),
             self.do_rpcrequest('ListDetections', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1743,7 +1970,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListDetectionsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListDetectionsResponse(),
             await self.do_rpcrequest_async('ListDetections', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1770,7 +1998,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListDetectProcessesResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListDetectProcessesResponse(),
             self.do_rpcrequest('ListDetectProcesses', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1783,7 +2012,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListDetectProcessesResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListDetectProcessesResponse(),
             await self.do_rpcrequest_async('ListDetectProcesses', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1810,7 +2040,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListFilesResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListFilesResponse(),
             self.do_rpcrequest('ListFiles', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1823,7 +2054,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListFilesResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListFilesResponse(),
             await self.do_rpcrequest_async('ListFiles', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1841,6 +2073,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_files_with_options_async(request, runtime)
 
+    def list_live_apps_with_options(
+        self,
+        request: idrsservice_20200630_models.ListLiveAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.ListLiveAppsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListLiveAppsResponse(),
+            self.do_rpcrequest('ListLiveApps', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_live_apps_with_options_async(
+        self,
+        request: idrsservice_20200630_models.ListLiveAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.ListLiveAppsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListLiveAppsResponse(),
+            await self.do_rpcrequest_async('ListLiveApps', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_live_apps(
+        self,
+        request: idrsservice_20200630_models.ListLiveAppsRequest,
+    ) -> idrsservice_20200630_models.ListLiveAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_live_apps_with_options(request, runtime)
+
+    async def list_live_apps_async(
+        self,
+        request: idrsservice_20200630_models.ListLiveAppsRequest,
+    ) -> idrsservice_20200630_models.ListLiveAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_live_apps_with_options_async(request, runtime)
+
+    def list_live_record_templates_with_options(
+        self,
+        request: idrsservice_20200630_models.ListLiveRecordTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.ListLiveRecordTemplatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListLiveRecordTemplatesResponse(),
+            self.do_rpcrequest('ListLiveRecordTemplates', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_live_record_templates_with_options_async(
+        self,
+        request: idrsservice_20200630_models.ListLiveRecordTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.ListLiveRecordTemplatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListLiveRecordTemplatesResponse(),
+            await self.do_rpcrequest_async('ListLiveRecordTemplates', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_live_record_templates(
+        self,
+        request: idrsservice_20200630_models.ListLiveRecordTemplatesRequest,
+    ) -> idrsservice_20200630_models.ListLiveRecordTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_live_record_templates_with_options(request, runtime)
+
+    async def list_live_record_templates_async(
+        self,
+        request: idrsservice_20200630_models.ListLiveRecordTemplatesRequest,
+    ) -> idrsservice_20200630_models.ListLiveRecordTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_live_record_templates_with_options_async(request, runtime)
+
     def list_lives_with_options(
         self,
         request: idrsservice_20200630_models.ListLivesRequest,
@@ -1850,7 +2166,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListLivesResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListLivesResponse(),
             self.do_rpcrequest('ListLives', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1863,7 +2180,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListLivesResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListLivesResponse(),
             await self.do_rpcrequest_async('ListLives', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1886,7 +2204,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> idrsservice_20200630_models.ListRolesResponse:
         req = open_api_models.OpenApiRequest()
-        return idrsservice_20200630_models.ListRolesResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListRolesResponse(),
             self.do_rpcrequest('ListRoles', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1895,7 +2214,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> idrsservice_20200630_models.ListRolesResponse:
         req = open_api_models.OpenApiRequest()
-        return idrsservice_20200630_models.ListRolesResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListRolesResponse(),
             await self.do_rpcrequest_async('ListRoles', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1916,7 +2236,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListRulesResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListRulesResponse(),
             self.do_rpcrequest('ListRules', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1929,7 +2250,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListRulesResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListRulesResponse(),
             await self.do_rpcrequest_async('ListRules', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1956,7 +2278,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListStatisticsTaskResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListStatisticsTaskResponse(),
             self.do_rpcrequest('ListStatisticsTask', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1969,7 +2292,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListStatisticsTaskResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListStatisticsTaskResponse(),
             await self.do_rpcrequest_async('ListStatisticsTask', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1996,7 +2320,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListTaskGroupsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListTaskGroupsResponse(),
             self.do_rpcrequest('ListTaskGroups', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2009,7 +2334,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListTaskGroupsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListTaskGroupsResponse(),
             await self.do_rpcrequest_async('ListTaskGroups', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2036,7 +2362,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListTaskItemsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListTaskItemsResponse(),
             self.do_rpcrequest('ListTaskItems', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2049,7 +2376,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListTaskItemsResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListTaskItemsResponse(),
             await self.do_rpcrequest_async('ListTaskItems', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2076,7 +2404,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListTasksResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListTasksResponse(),
             self.do_rpcrequest('ListTasks', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2089,7 +2418,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListTasksResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListTasksResponse(),
             await self.do_rpcrequest_async('ListTasks', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2116,7 +2446,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListUsersResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListUsersResponse(),
             self.do_rpcrequest('ListUsers', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2129,7 +2460,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.ListUsersResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.ListUsersResponse(),
             await self.do_rpcrequest_async('ListUsers', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2156,7 +2488,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.RenameDetectProcessResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.RenameDetectProcessResponse(),
             self.do_rpcrequest('RenameDetectProcess', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2169,7 +2502,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.RenameDetectProcessResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.RenameDetectProcessResponse(),
             await self.do_rpcrequest_async('RenameDetectProcess', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2187,6 +2521,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.rename_detect_process_with_options_async(request, runtime)
 
+    def start_live_record_task_with_options(
+        self,
+        tmp_req: idrsservice_20200630_models.StartLiveRecordTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.StartLiveRecordTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = idrsservice_20200630_models.StartLiveRecordTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.clock_widgets):
+            request.clock_widgets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.clock_widgets, 'ClockWidgets', 'json')
+        if not UtilClient.is_unset(tmp_req.user_panes):
+            request.user_panes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_panes, 'UserPanes', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.StartLiveRecordTaskResponse(),
+            self.do_rpcrequest('StartLiveRecordTask', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def start_live_record_task_with_options_async(
+        self,
+        tmp_req: idrsservice_20200630_models.StartLiveRecordTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.StartLiveRecordTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = idrsservice_20200630_models.StartLiveRecordTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.clock_widgets):
+            request.clock_widgets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.clock_widgets, 'ClockWidgets', 'json')
+        if not UtilClient.is_unset(tmp_req.user_panes):
+            request.user_panes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_panes, 'UserPanes', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.StartLiveRecordTaskResponse(),
+            await self.do_rpcrequest_async('StartLiveRecordTask', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def start_live_record_task(
+        self,
+        request: idrsservice_20200630_models.StartLiveRecordTaskRequest,
+    ) -> idrsservice_20200630_models.StartLiveRecordTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_live_record_task_with_options(request, runtime)
+
+    async def start_live_record_task_async(
+        self,
+        request: idrsservice_20200630_models.StartLiveRecordTaskRequest,
+    ) -> idrsservice_20200630_models.StartLiveRecordTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_live_record_task_with_options_async(request, runtime)
+
+    def stop_live_record_task_with_options(
+        self,
+        request: idrsservice_20200630_models.StopLiveRecordTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.StopLiveRecordTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.StopLiveRecordTaskResponse(),
+            self.do_rpcrequest('StopLiveRecordTask', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def stop_live_record_task_with_options_async(
+        self,
+        request: idrsservice_20200630_models.StopLiveRecordTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.StopLiveRecordTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.StopLiveRecordTaskResponse(),
+            await self.do_rpcrequest_async('StopLiveRecordTask', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def stop_live_record_task(
+        self,
+        request: idrsservice_20200630_models.StopLiveRecordTaskRequest,
+    ) -> idrsservice_20200630_models.StopLiveRecordTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_live_record_task_with_options(request, runtime)
+
+    async def stop_live_record_task_async(
+        self,
+        request: idrsservice_20200630_models.StopLiveRecordTaskRequest,
+    ) -> idrsservice_20200630_models.StopLiveRecordTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_live_record_task_with_options_async(request, runtime)
+
     def update_app_with_options(
         self,
         request: idrsservice_20200630_models.UpdateAppRequest,
@@ -2196,7 +2626,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateAppResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateAppResponse(),
             self.do_rpcrequest('UpdateApp', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2209,7 +2640,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateAppResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateAppResponse(),
             await self.do_rpcrequest_async('UpdateApp', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2236,7 +2668,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateDepartmentResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateDepartmentResponse(),
             self.do_rpcrequest('UpdateDepartment', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2249,7 +2682,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateDepartmentResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateDepartmentResponse(),
             await self.do_rpcrequest_async('UpdateDepartment', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2276,7 +2710,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateDetectProcessResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateDetectProcessResponse(),
             self.do_rpcrequest('UpdateDetectProcess', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2289,7 +2724,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateDetectProcessResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateDetectProcessResponse(),
             await self.do_rpcrequest_async('UpdateDetectProcess', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2316,7 +2752,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateLiveResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateLiveResponse(),
             self.do_rpcrequest('UpdateLive', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2329,7 +2766,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateLiveResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateLiveResponse(),
             await self.do_rpcrequest_async('UpdateLive', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2347,6 +2785,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_live_with_options_async(request, runtime)
 
+    def update_live_record_task_with_options(
+        self,
+        tmp_req: idrsservice_20200630_models.UpdateLiveRecordTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.UpdateLiveRecordTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = idrsservice_20200630_models.UpdateLiveRecordTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.clock_widgets):
+            request.clock_widgets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.clock_widgets, 'ClockWidgets', 'json')
+        if not UtilClient.is_unset(tmp_req.user_panes):
+            request.user_panes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_panes, 'UserPanes', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateLiveRecordTaskResponse(),
+            self.do_rpcrequest('UpdateLiveRecordTask', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_live_record_task_with_options_async(
+        self,
+        tmp_req: idrsservice_20200630_models.UpdateLiveRecordTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.UpdateLiveRecordTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = idrsservice_20200630_models.UpdateLiveRecordTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.clock_widgets):
+            request.clock_widgets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.clock_widgets, 'ClockWidgets', 'json')
+        if not UtilClient.is_unset(tmp_req.user_panes):
+            request.user_panes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_panes, 'UserPanes', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateLiveRecordTaskResponse(),
+            await self.do_rpcrequest_async('UpdateLiveRecordTask', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_live_record_task(
+        self,
+        request: idrsservice_20200630_models.UpdateLiveRecordTaskRequest,
+    ) -> idrsservice_20200630_models.UpdateLiveRecordTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_live_record_task_with_options(request, runtime)
+
+    async def update_live_record_task_async(
+        self,
+        request: idrsservice_20200630_models.UpdateLiveRecordTaskRequest,
+    ) -> idrsservice_20200630_models.UpdateLiveRecordTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_live_record_task_with_options_async(request, runtime)
+
+    def update_live_record_template_with_options(
+        self,
+        tmp_req: idrsservice_20200630_models.UpdateLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.UpdateLiveRecordTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = idrsservice_20200630_models.UpdateLiveRecordTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.backgrounds):
+            request.backgrounds_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.backgrounds, 'Backgrounds', 'json')
+        if not UtilClient.is_unset(tmp_req.watermarks):
+            request.watermarks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.watermarks, 'Watermarks', 'json')
+        if not UtilClient.is_unset(tmp_req.clock_widgets):
+            request.clock_widgets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.clock_widgets, 'ClockWidgets', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateLiveRecordTemplateResponse(),
+            self.do_rpcrequest('UpdateLiveRecordTemplate', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_live_record_template_with_options_async(
+        self,
+        tmp_req: idrsservice_20200630_models.UpdateLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> idrsservice_20200630_models.UpdateLiveRecordTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = idrsservice_20200630_models.UpdateLiveRecordTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.backgrounds):
+            request.backgrounds_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.backgrounds, 'Backgrounds', 'json')
+        if not UtilClient.is_unset(tmp_req.watermarks):
+            request.watermarks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.watermarks, 'Watermarks', 'json')
+        if not UtilClient.is_unset(tmp_req.clock_widgets):
+            request.clock_widgets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.clock_widgets, 'ClockWidgets', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateLiveRecordTemplateResponse(),
+            await self.do_rpcrequest_async('UpdateLiveRecordTemplate', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_live_record_template(
+        self,
+        request: idrsservice_20200630_models.UpdateLiveRecordTemplateRequest,
+    ) -> idrsservice_20200630_models.UpdateLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_live_record_template_with_options(request, runtime)
+
+    async def update_live_record_template_async(
+        self,
+        request: idrsservice_20200630_models.UpdateLiveRecordTemplateRequest,
+    ) -> idrsservice_20200630_models.UpdateLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_live_record_template_with_options_async(request, runtime)
+
     def update_rule_with_options(
         self,
         request: idrsservice_20200630_models.UpdateRuleRequest,
@@ -2356,7 +2906,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateRuleResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateRuleResponse(),
             self.do_rpcrequest('UpdateRule', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2369,7 +2920,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateRuleResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateRuleResponse(),
             await self.do_rpcrequest_async('UpdateRule', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2396,7 +2948,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateServiceConfigurationResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateServiceConfigurationResponse(),
             self.do_rpcrequest('UpdateServiceConfiguration', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2409,7 +2962,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateServiceConfigurationResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateServiceConfigurationResponse(),
             await self.do_rpcrequest_async('UpdateServiceConfiguration', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2436,7 +2990,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateSlrConfigurationResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateSlrConfigurationResponse(),
             self.do_rpcrequest('UpdateSlrConfiguration', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2449,7 +3004,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateSlrConfigurationResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateSlrConfigurationResponse(),
             await self.do_rpcrequest_async('UpdateSlrConfiguration', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2476,7 +3032,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateUserResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateUserResponse(),
             self.do_rpcrequest('UpdateUser', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2489,7 +3046,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return idrsservice_20200630_models.UpdateUserResponse().from_map(
+        return TeaCore.from_map(
+            idrsservice_20200630_models.UpdateUserResponse(),
             await self.do_rpcrequest_async('UpdateUser', '2020-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
