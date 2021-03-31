@@ -15,6 +15,10 @@ class CompileSortScriptResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -43,6 +47,10 @@ class CompileSortScriptResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -83,6 +91,10 @@ class CreateABTestExperimentResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -133,6 +145,10 @@ class CreateABTestExperimentResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -166,6 +182,10 @@ class CreateABTestExperimentResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -202,6 +222,10 @@ class CreateABTestGroupResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -244,6 +268,10 @@ class CreateABTestGroupResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -277,6 +305,10 @@ class CreateABTestGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -315,6 +347,10 @@ class CreateABTestSceneResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -361,6 +397,10 @@ class CreateABTestSceneResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -394,6 +434,10 @@ class CreateABTestSceneResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -422,6 +466,10 @@ class CreateAppRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
@@ -447,6 +495,10 @@ class CreateAppResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -479,6 +531,10 @@ class CreateAppResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -511,6 +567,10 @@ class CreateAppGroupResponseBodyResultQuota(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.spec is not None:
             result['spec'] = self.spec
@@ -554,10 +614,11 @@ class CreateAppGroupResponseBodyResult(TeaModel):
         commodity_code: str = None,
         switched_time: int = None,
         expire_on: str = None,
+        domain: str = None,
         description: str = None,
         first_rank_algo_deployment_id: int = None,
-        locked_by_expiration: int = None,
         produced: int = None,
+        locked_by_expiration: int = None,
     ):
         self.created = created
         self.current_version = current_version
@@ -579,16 +640,21 @@ class CreateAppGroupResponseBodyResult(TeaModel):
         self.commodity_code = commodity_code
         self.switched_time = switched_time
         self.expire_on = expire_on
+        self.domain = domain
         self.description = description
         self.first_rank_algo_deployment_id = first_rank_algo_deployment_id
-        self.locked_by_expiration = locked_by_expiration
         self.produced = produced
+        self.locked_by_expiration = locked_by_expiration
 
     def validate(self):
         if self.quota:
             self.quota.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -630,14 +696,16 @@ class CreateAppGroupResponseBodyResult(TeaModel):
             result['switchedTime'] = self.switched_time
         if self.expire_on is not None:
             result['expireOn'] = self.expire_on
+        if self.domain is not None:
+            result['domain'] = self.domain
         if self.description is not None:
             result['description'] = self.description
         if self.first_rank_algo_deployment_id is not None:
             result['firstRankAlgoDeploymentId'] = self.first_rank_algo_deployment_id
-        if self.locked_by_expiration is not None:
-            result['lockedByExpiration'] = self.locked_by_expiration
         if self.produced is not None:
             result['produced'] = self.produced
+        if self.locked_by_expiration is not None:
+            result['lockedByExpiration'] = self.locked_by_expiration
         return result
 
     def from_map(self, m: dict = None):
@@ -683,14 +751,16 @@ class CreateAppGroupResponseBodyResult(TeaModel):
             self.switched_time = m.get('switchedTime')
         if m.get('expireOn') is not None:
             self.expire_on = m.get('expireOn')
+        if m.get('domain') is not None:
+            self.domain = m.get('domain')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('firstRankAlgoDeploymentId') is not None:
             self.first_rank_algo_deployment_id = m.get('firstRankAlgoDeploymentId')
-        if m.get('lockedByExpiration') is not None:
-            self.locked_by_expiration = m.get('lockedByExpiration')
         if m.get('produced') is not None:
             self.produced = m.get('produced')
+        if m.get('lockedByExpiration') is not None:
+            self.locked_by_expiration = m.get('lockedByExpiration')
         return self
 
 
@@ -708,6 +778,10 @@ class CreateAppGroupResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -741,6 +815,10 @@ class CreateAppGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -785,6 +863,10 @@ class CreateDataCollectionResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -843,6 +925,10 @@ class CreateDataCollectionResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -876,6 +962,10 @@ class CreateDataCollectionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -904,6 +994,10 @@ class CreateFirstRankRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
@@ -931,6 +1025,10 @@ class CreateFirstRankResponseBodyResultMeta(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.arg is not None:
             result['arg'] = self.arg
@@ -969,6 +1067,10 @@ class CreateFirstRankResponseBodyResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.active is not None:
             result['active'] = self.active
@@ -1008,6 +1110,10 @@ class CreateFirstRankResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -1041,6 +1147,10 @@ class CreateFirstRankResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1061,78 +1171,86 @@ class CreateFirstRankResponse(TeaModel):
 class CreateInterventionDictionaryResponseBodyResult(TeaModel):
     def __init__(
         self,
-        created: str = None,
+        name: str = None,
         type: str = None,
         analyzer: str = None,
+        created: str = None,
         updated: str = None,
-        name: str = None,
     ):
-        self.created = created
+        self.name = name
         self.type = type
         self.analyzer = analyzer
+        self.created = created
         self.updated = updated
-        self.name = name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.created is not None:
-            result['created'] = self.created
+        if self.name is not None:
+            result['name'] = self.name
         if self.type is not None:
             result['type'] = self.type
         if self.analyzer is not None:
             result['analyzer'] = self.analyzer
+        if self.created is not None:
+            result['created'] = self.created
         if self.updated is not None:
             result['updated'] = self.updated
-        if self.name is not None:
-            result['name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('created') is not None:
-            self.created = m.get('created')
+        if m.get('name') is not None:
+            self.name = m.get('name')
         if m.get('type') is not None:
             self.type = m.get('type')
         if m.get('analyzer') is not None:
             self.analyzer = m.get('analyzer')
+        if m.get('created') is not None:
+            self.created = m.get('created')
         if m.get('updated') is not None:
             self.updated = m.get('updated')
-        if m.get('name') is not None:
-            self.name = m.get('name')
         return self
 
 
 class CreateInterventionDictionaryResponseBody(TeaModel):
     def __init__(
         self,
-        result: CreateInterventionDictionaryResponseBodyResult = None,
         request_id: str = None,
+        result: CreateInterventionDictionaryResponseBodyResult = None,
     ):
-        self.result = result
         self.request_id = request_id
+        self.result = result
 
     def validate(self):
         if self.result:
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.result is not None:
-            result['result'] = self.result.to_map()
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('result') is not None:
             temp_model = CreateInterventionDictionaryResponseBodyResult()
             self.result = temp_model.from_map(m['result'])
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         return self
 
 
@@ -1152,6 +1270,10 @@ class CreateInterventionDictionaryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1182,6 +1304,10 @@ class CreateModelResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -1214,6 +1340,10 @@ class CreateModelResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1242,6 +1372,10 @@ class CreateQueryProcessorRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
@@ -1277,6 +1411,10 @@ class CreateQueryProcessorResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -1327,6 +1465,10 @@ class CreateQueryProcessorResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -1360,6 +1502,10 @@ class CreateQueryProcessorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1390,6 +1536,10 @@ class CreateScheduledTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -1422,6 +1572,10 @@ class CreateScheduledTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1450,6 +1604,10 @@ class CreateSecondRankRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
@@ -1475,6 +1633,10 @@ class CreateSecondRankResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -1507,6 +1669,10 @@ class CreateSecondRankResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1535,6 +1701,10 @@ class CreateSortScriptResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -1563,6 +1733,10 @@ class CreateSortScriptResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1593,6 +1767,10 @@ class CreateUserAnalyzerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -1625,6 +1803,10 @@ class CreateUserAnalyzerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1655,6 +1837,10 @@ class DeleteABTestExperimentResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -1687,6 +1873,10 @@ class DeleteABTestExperimentResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1717,6 +1907,10 @@ class DeleteABTestGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -1749,6 +1943,10 @@ class DeleteABTestGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1779,6 +1977,10 @@ class DeleteABTestSceneResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -1811,6 +2013,10 @@ class DeleteABTestSceneResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1841,6 +2047,10 @@ class DeleteModelResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -1873,6 +2083,10 @@ class DeleteModelResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1901,6 +2115,10 @@ class DeleteSortScriptResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -1929,6 +2147,10 @@ class DeleteSortScriptResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1957,6 +2179,10 @@ class DeleteSortScriptFileResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -1985,6 +2211,10 @@ class DeleteSortScriptFileResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2013,6 +2243,10 @@ class DescribeABTestExperimentResponseBodyResultParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.first_formula_name is not None:
             result['first_formula_name'] = self.first_formula_name
@@ -2049,6 +2283,10 @@ class DescribeABTestExperimentResponseBodyResult(TeaModel):
             self.params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -2100,6 +2338,10 @@ class DescribeABTestExperimentResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -2133,6 +2375,10 @@ class DescribeABTestExperimentResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2169,6 +2415,10 @@ class DescribeABTestGroupResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -2211,6 +2461,10 @@ class DescribeABTestGroupResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -2244,6 +2498,10 @@ class DescribeABTestGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2282,6 +2540,10 @@ class DescribeABTestSceneResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -2328,6 +2590,10 @@ class DescribeABTestSceneResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -2361,6 +2627,10 @@ class DescribeABTestSceneResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2375,6 +2645,86 @@ class DescribeABTestSceneResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribeABTestSceneResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAppResponseBodyResultDomainFunctions(TeaModel):
+    def __init__(
+        self,
+        service: List[str] = None,
+        qp: List[str] = None,
+        algo: List[str] = None,
+    ):
+        self.service = service
+        self.qp = qp
+        self.algo = algo
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service is not None:
+            result['service'] = self.service
+        if self.qp is not None:
+            result['qp'] = self.qp
+        if self.algo is not None:
+            result['algo'] = self.algo
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('service') is not None:
+            self.service = m.get('service')
+        if m.get('qp') is not None:
+            self.qp = m.get('qp')
+        if m.get('algo') is not None:
+            self.algo = m.get('algo')
+        return self
+
+
+class DescribeAppResponseBodyResultDomain(TeaModel):
+    def __init__(
+        self,
+        functions: DescribeAppResponseBodyResultDomainFunctions = None,
+        category: str = None,
+        name: str = None,
+    ):
+        self.functions = functions
+        self.category = category
+        self.name = name
+
+    def validate(self):
+        if self.functions:
+            self.functions.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.functions is not None:
+            result['functions'] = self.functions.to_map()
+        if self.category is not None:
+            result['category'] = self.category
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('functions') is not None:
+            temp_model = DescribeAppResponseBodyResultDomainFunctions()
+            self.functions = temp_model.from_map(m['functions'])
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('name') is not None:
+            self.name = m.get('name')
         return self
 
 
@@ -2395,6 +2745,10 @@ class DescribeAppResponseBodyResultQuota(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.spec is not None:
             result['spec'] = self.spec
@@ -2431,6 +2785,7 @@ class DescribeAppResponseBodyResult(TeaModel):
         progress_percent: int = None,
         id: str = None,
         algo_deployment_id: int = None,
+        domain: DescribeAppResponseBodyResultDomain = None,
         description: str = None,
         fetch_fields: List[str] = None,
         quota: DescribeAppResponseBodyResultQuota = None,
@@ -2444,15 +2799,22 @@ class DescribeAppResponseBodyResult(TeaModel):
         self.progress_percent = progress_percent
         self.id = id
         self.algo_deployment_id = algo_deployment_id
+        self.domain = domain
         self.description = description
         self.fetch_fields = fetch_fields
         self.quota = quota
 
     def validate(self):
+        if self.domain:
+            self.domain.validate()
         if self.quota:
             self.quota.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -2472,6 +2834,8 @@ class DescribeAppResponseBodyResult(TeaModel):
             result['id'] = self.id
         if self.algo_deployment_id is not None:
             result['algoDeploymentId'] = self.algo_deployment_id
+        if self.domain is not None:
+            result['domain'] = self.domain.to_map()
         if self.description is not None:
             result['description'] = self.description
         if self.fetch_fields is not None:
@@ -2500,6 +2864,9 @@ class DescribeAppResponseBodyResult(TeaModel):
             self.id = m.get('id')
         if m.get('algoDeploymentId') is not None:
             self.algo_deployment_id = m.get('algoDeploymentId')
+        if m.get('domain') is not None:
+            temp_model = DescribeAppResponseBodyResultDomain()
+            self.domain = temp_model.from_map(m['domain'])
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('fetchFields') is not None:
@@ -2524,6 +2891,10 @@ class DescribeAppResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -2557,6 +2928,10 @@ class DescribeAppResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2589,6 +2964,10 @@ class DescribeAppGroupResponseBodyResultQuota(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.spec is not None:
             result['spec'] = self.spec
@@ -2632,10 +3011,11 @@ class DescribeAppGroupResponseBodyResult(TeaModel):
         commodity_code: str = None,
         switched_time: int = None,
         expire_on: str = None,
+        domain: str = None,
         description: str = None,
         first_rank_algo_deployment_id: int = None,
-        locked_by_expiration: int = None,
         produced: int = None,
+        locked_by_expiration: int = None,
     ):
         self.created = created
         self.current_version = current_version
@@ -2657,16 +3037,21 @@ class DescribeAppGroupResponseBodyResult(TeaModel):
         self.commodity_code = commodity_code
         self.switched_time = switched_time
         self.expire_on = expire_on
+        self.domain = domain
         self.description = description
         self.first_rank_algo_deployment_id = first_rank_algo_deployment_id
-        self.locked_by_expiration = locked_by_expiration
         self.produced = produced
+        self.locked_by_expiration = locked_by_expiration
 
     def validate(self):
         if self.quota:
             self.quota.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -2708,14 +3093,16 @@ class DescribeAppGroupResponseBodyResult(TeaModel):
             result['switchedTime'] = self.switched_time
         if self.expire_on is not None:
             result['expireOn'] = self.expire_on
+        if self.domain is not None:
+            result['domain'] = self.domain
         if self.description is not None:
             result['description'] = self.description
         if self.first_rank_algo_deployment_id is not None:
             result['firstRankAlgoDeploymentId'] = self.first_rank_algo_deployment_id
-        if self.locked_by_expiration is not None:
-            result['lockedByExpiration'] = self.locked_by_expiration
         if self.produced is not None:
             result['produced'] = self.produced
+        if self.locked_by_expiration is not None:
+            result['lockedByExpiration'] = self.locked_by_expiration
         return result
 
     def from_map(self, m: dict = None):
@@ -2761,14 +3148,16 @@ class DescribeAppGroupResponseBodyResult(TeaModel):
             self.switched_time = m.get('switchedTime')
         if m.get('expireOn') is not None:
             self.expire_on = m.get('expireOn')
+        if m.get('domain') is not None:
+            self.domain = m.get('domain')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('firstRankAlgoDeploymentId') is not None:
             self.first_rank_algo_deployment_id = m.get('firstRankAlgoDeploymentId')
-        if m.get('lockedByExpiration') is not None:
-            self.locked_by_expiration = m.get('lockedByExpiration')
         if m.get('produced') is not None:
             self.produced = m.get('produced')
+        if m.get('lockedByExpiration') is not None:
+            self.locked_by_expiration = m.get('lockedByExpiration')
         return self
 
 
@@ -2786,6 +3175,10 @@ class DescribeAppGroupResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -2819,6 +3212,10 @@ class DescribeAppGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2849,6 +3246,10 @@ class DescribeAppGroupDataReportRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['startTime'] = self.start_time
@@ -2894,6 +3295,10 @@ class DescribeAppGroupDataReportResponseBodyResultReceivedSampleMessage(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.event_id is not None:
             result['eventId'] = self.event_id
@@ -2956,6 +3361,10 @@ class DescribeAppGroupDataReportResponseBodyResultReceivedSample(TeaModel):
             self.message.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.received_time_ms is not None:
             result['receivedTimeMs'] = self.received_time_ms
@@ -2989,6 +3398,10 @@ class DescribeAppGroupDataReportResponseBodyResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['receivedSample'] = []
         if self.received_sample is not None:
@@ -3024,6 +3437,10 @@ class DescribeAppGroupDataReportResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -3057,6 +3474,10 @@ class DescribeAppGroupDataReportResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3087,6 +3508,10 @@ class DescribeAppsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -3119,6 +3544,10 @@ class DescribeAppsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3149,6 +3578,10 @@ class DescribeAppStatisticsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -3181,6 +3614,10 @@ class DescribeAppStatisticsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3225,6 +3662,10 @@ class DescribeDataCollctionResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -3283,6 +3724,10 @@ class DescribeDataCollctionResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -3316,6 +3761,10 @@ class DescribeDataCollctionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3348,6 +3797,10 @@ class DescribeFirstRankResponseBodyResultMeta(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.arg is not None:
             result['arg'] = self.arg
@@ -3388,6 +3841,10 @@ class DescribeFirstRankResponseBodyResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.active is not None:
             result['active'] = self.active
@@ -3431,6 +3888,10 @@ class DescribeFirstRankResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -3464,6 +3925,10 @@ class DescribeFirstRankResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3500,6 +3965,10 @@ class DescribeInterventionDictionaryResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -3542,6 +4011,10 @@ class DescribeInterventionDictionaryResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -3575,6 +4048,10 @@ class DescribeInterventionDictionaryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3605,6 +4082,10 @@ class DescribeModelResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -3637,6 +4118,10 @@ class DescribeModelResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3677,6 +4162,10 @@ class DescribeQueryProcessorResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -3727,6 +4216,10 @@ class DescribeQueryProcessorResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -3760,6 +4253,10 @@ class DescribeQueryProcessorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3790,6 +4287,10 @@ class DescribeRegionResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['regionId'] = self.region_id
@@ -3820,6 +4321,10 @@ class DescribeRegionResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -3853,6 +4358,10 @@ class DescribeRegionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3887,6 +4396,10 @@ class DescribeRegionsResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['regionId'] = self.region_id
@@ -3927,6 +4440,10 @@ class DescribeRegionsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -3964,6 +4481,10 @@ class DescribeRegionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3994,6 +4515,10 @@ class DescribeScheduledTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -4026,6 +4551,10 @@ class DescribeScheduledTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4070,6 +4599,10 @@ class DescribeSecondRankResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -4128,6 +4661,10 @@ class DescribeSecondRankResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -4161,6 +4698,10 @@ class DescribeSecondRankResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4193,6 +4734,10 @@ class DescribeSlowQueryStatusResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region is not None:
             result['region'] = self.region
@@ -4227,6 +4772,10 @@ class DescribeSlowQueryStatusResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -4260,6 +4809,10 @@ class DescribeSlowQueryStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4288,6 +4841,10 @@ class DescribeUserAnalyzerRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.with_ is not None:
             result['with'] = self.with_
@@ -4313,6 +4870,10 @@ class DescribeUserAnalyzerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -4345,6 +4906,10 @@ class DescribeUserAnalyzerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4375,6 +4940,10 @@ class DisableSlowQueryResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -4407,6 +4976,10 @@ class DisableSlowQueryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4437,6 +5010,10 @@ class EnableSlowQueryResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -4469,6 +5046,10 @@ class EnableSlowQueryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4486,6 +5067,103 @@ class EnableSlowQueryResponse(TeaModel):
         return self
 
 
+class GetDomainRequest(TeaModel):
+    def __init__(
+        self,
+        app_group_identity: str = None,
+    ):
+        self.app_group_identity = app_group_identity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_group_identity is not None:
+            result['appGroupIdentity'] = self.app_group_identity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appGroupIdentity') is not None:
+            self.app_group_identity = m.get('appGroupIdentity')
+        return self
+
+
+class GetDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        result: Dict[str, Any] = None,
+        request_id: str = None,
+    ):
+        self.result = result
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['result'] = self.result
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetModelProgressResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -4499,6 +5177,10 @@ class GetModelProgressResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['status'] = self.status
@@ -4529,6 +5211,10 @@ class GetModelProgressResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -4562,6 +5248,10 @@ class GetModelProgressResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4592,6 +5282,10 @@ class GetModelReportResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -4624,6 +5318,10 @@ class GetModelReportResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4656,6 +5354,10 @@ class GetScriptFileNamesResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_name is not None:
             result['fileName'] = self.file_name
@@ -4692,6 +5394,10 @@ class GetScriptFileNamesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -4729,6 +5435,10 @@ class GetScriptFileNamesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4765,6 +5475,10 @@ class GetSortScriptResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['type'] = self.type
@@ -4807,6 +5521,10 @@ class GetSortScriptResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -4840,6 +5558,10 @@ class GetSortScriptResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4874,6 +5596,10 @@ class GetSortScriptFileResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.content is not None:
             result['content'] = self.content
@@ -4912,6 +5638,10 @@ class GetSortScriptFileResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -4945,6 +5675,10 @@ class GetSortScriptFileResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4973,6 +5707,10 @@ class GetValidationErrorRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.error_code is not None:
             result['errorCode'] = self.error_code
@@ -4998,6 +5736,10 @@ class GetValidationErrorResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -5030,6 +5772,10 @@ class GetValidationErrorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5058,6 +5804,10 @@ class GetValidationReportRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['type'] = self.type
@@ -5083,6 +5833,10 @@ class GetValidationReportResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -5115,6 +5869,10 @@ class GetValidationReportResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5155,6 +5913,10 @@ class ListABTestExperimentsResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -5207,6 +5969,10 @@ class ListABTestExperimentsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -5244,6 +6010,10 @@ class ListABTestExperimentsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5274,6 +6044,10 @@ class ListABTestFixedFlowDividersResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -5306,6 +6080,10 @@ class ListABTestFixedFlowDividersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5342,6 +6120,10 @@ class ListABTestGroupsResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -5386,6 +6168,10 @@ class ListABTestGroupsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -5423,6 +6209,10 @@ class ListABTestGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5465,6 +6255,10 @@ class ListABTestMetricsResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.zero_hit_rate is not None:
             result['zeroHitRate'] = self.zero_hit_rate
@@ -5521,6 +6315,10 @@ class ListABTestMetricsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -5558,6 +6356,10 @@ class ListABTestMetricsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5596,6 +6398,10 @@ class ListABTestScenesResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -5644,6 +6450,10 @@ class ListABTestScenesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -5681,6 +6491,10 @@ class ListABTestScenesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5717,6 +6531,10 @@ class ListAppGroupErrorsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['appId'] = self.app_id
@@ -5760,6 +6578,10 @@ class ListAppGroupErrorsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -5796,6 +6618,10 @@ class ListAppGroupErrorsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5830,6 +6656,10 @@ class ListAppGroupMetricsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_type is not None:
             result['metricType'] = self.metric_type
@@ -5867,6 +6697,10 @@ class ListAppGroupMetricsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -5899,6 +6733,10 @@ class ListAppGroupMetricsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5925,6 +6763,7 @@ class ListAppGroupsRequest(TeaModel):
         name: str = None,
         type: str = None,
         sort_by: int = None,
+        resource_group_id: str = None,
     ):
         self.page_number = page_number
         self.page_size = page_size
@@ -5932,11 +6771,16 @@ class ListAppGroupsRequest(TeaModel):
         self.name = name
         self.type = type
         self.sort_by = sort_by
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
@@ -5950,6 +6794,8 @@ class ListAppGroupsRequest(TeaModel):
             result['type'] = self.type
         if self.sort_by is not None:
             result['sortBy'] = self.sort_by
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5966,6 +6812,8 @@ class ListAppGroupsRequest(TeaModel):
             self.type = m.get('type')
         if m.get('sortBy') is not None:
             self.sort_by = m.get('sortBy')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
         return self
 
 
@@ -5984,6 +6832,10 @@ class ListAppGroupsResponseBodyResultQuota(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.spec is not None:
             result['spec'] = self.spec
@@ -6027,10 +6879,11 @@ class ListAppGroupsResponseBodyResult(TeaModel):
         commodity_code: str = None,
         switched_time: int = None,
         expire_on: str = None,
+        domain: str = None,
         description: str = None,
         first_rank_algo_deployment_id: int = None,
-        locked_by_expiration: int = None,
         produced: int = None,
+        locked_by_expiration: int = None,
     ):
         self.created = created
         self.current_version = current_version
@@ -6052,16 +6905,21 @@ class ListAppGroupsResponseBodyResult(TeaModel):
         self.commodity_code = commodity_code
         self.switched_time = switched_time
         self.expire_on = expire_on
+        self.domain = domain
         self.description = description
         self.first_rank_algo_deployment_id = first_rank_algo_deployment_id
-        self.locked_by_expiration = locked_by_expiration
         self.produced = produced
+        self.locked_by_expiration = locked_by_expiration
 
     def validate(self):
         if self.quota:
             self.quota.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -6103,14 +6961,16 @@ class ListAppGroupsResponseBodyResult(TeaModel):
             result['switchedTime'] = self.switched_time
         if self.expire_on is not None:
             result['expireOn'] = self.expire_on
+        if self.domain is not None:
+            result['domain'] = self.domain
         if self.description is not None:
             result['description'] = self.description
         if self.first_rank_algo_deployment_id is not None:
             result['firstRankAlgoDeploymentId'] = self.first_rank_algo_deployment_id
-        if self.locked_by_expiration is not None:
-            result['lockedByExpiration'] = self.locked_by_expiration
         if self.produced is not None:
             result['produced'] = self.produced
+        if self.locked_by_expiration is not None:
+            result['lockedByExpiration'] = self.locked_by_expiration
         return result
 
     def from_map(self, m: dict = None):
@@ -6156,14 +7016,16 @@ class ListAppGroupsResponseBodyResult(TeaModel):
             self.switched_time = m.get('switchedTime')
         if m.get('expireOn') is not None:
             self.expire_on = m.get('expireOn')
+        if m.get('domain') is not None:
+            self.domain = m.get('domain')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('firstRankAlgoDeploymentId') is not None:
             self.first_rank_algo_deployment_id = m.get('firstRankAlgoDeploymentId')
-        if m.get('lockedByExpiration') is not None:
-            self.locked_by_expiration = m.get('lockedByExpiration')
         if m.get('produced') is not None:
             self.produced = m.get('produced')
+        if m.get('lockedByExpiration') is not None:
+            self.locked_by_expiration = m.get('lockedByExpiration')
         return self
 
 
@@ -6185,6 +7047,10 @@ class ListAppGroupsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -6226,6 +7092,10 @@ class ListAppGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6258,6 +7128,10 @@ class ListAppsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group is not None:
             result['group'] = self.group
@@ -6289,6 +7163,10 @@ class ListAppsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6314,6 +7192,10 @@ class ListDataCollectionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
@@ -6357,6 +7239,10 @@ class ListDataCollectionsResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -6419,6 +7305,10 @@ class ListDataCollectionsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -6460,6 +7350,10 @@ class ListDataCollectionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6490,6 +7384,10 @@ class ListDeployedAlgorithmModelsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.in_service_only is not None:
             result['inServiceOnly'] = self.in_service_only
@@ -6527,6 +7425,10 @@ class ListDeployedAlgorithmModelsResponseBodyResultModels(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.model_name is not None:
             result['modelName'] = self.model_name
@@ -6589,6 +7491,10 @@ class ListDeployedAlgorithmModelsResponseBodyResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.apps is not None:
             result['apps'] = self.apps
@@ -6654,6 +7560,10 @@ class ListDeployedAlgorithmModelsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -6691,6 +7601,10 @@ class ListDeployedAlgorithmModelsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6723,6 +7637,10 @@ class ListFirstRanksResponseBodyResultMeta(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.arg is not None:
             result['arg'] = self.arg
@@ -6767,6 +7685,10 @@ class ListFirstRanksResponseBodyResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -6820,6 +7742,10 @@ class ListFirstRanksResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -6857,6 +7783,10 @@ class ListFirstRanksResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6889,6 +7819,10 @@ class ListInterventionDictionariesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['pageSize'] = self.page_size
@@ -6930,6 +7864,10 @@ class ListInterventionDictionariesResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -6980,6 +7918,10 @@ class ListInterventionDictionariesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -7021,6 +7963,10 @@ class ListInterventionDictionariesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7053,6 +7999,10 @@ class ListInterventionDictionaryEntriesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.word is not None:
             result['word'] = self.word
@@ -7090,6 +8040,10 @@ class ListInterventionDictionaryEntriesResponseBodyResultTokens(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_label is not None:
             result['tagLabel'] = self.tag_label
@@ -7140,6 +8094,10 @@ class ListInterventionDictionaryEntriesResponseBodyResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cmd is not None:
             result['cmd'] = self.cmd
@@ -7199,6 +8157,10 @@ class ListInterventionDictionaryEntriesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -7240,6 +8202,10 @@ class ListInterventionDictionaryEntriesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7268,6 +8234,10 @@ class ListInterventionDictionaryNerResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.query is not None:
             result['query'] = self.query
@@ -7297,6 +8267,10 @@ class ListInterventionDictionaryNerResultsResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_label is not None:
             result['tagLabel'] = self.tag_label
@@ -7337,6 +8311,10 @@ class ListInterventionDictionaryNerResultsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -7374,6 +8352,10 @@ class ListInterventionDictionaryNerResultsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7404,6 +8386,10 @@ class ListInterventionDictionaryRelatedEntitiesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -7436,6 +8422,10 @@ class ListInterventionDictionaryRelatedEntitiesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7468,6 +8458,10 @@ class ListModelsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
@@ -7501,6 +8495,10 @@ class ListModelsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -7533,6 +8531,10 @@ class ListModelsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7561,6 +8563,10 @@ class ListQueryProcessorNersRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domain is not None:
             result['domain'] = self.domain
@@ -7590,6 +8596,10 @@ class ListQueryProcessorNersResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.label is not None:
             result['label'] = self.label
@@ -7630,6 +8640,10 @@ class ListQueryProcessorNersResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -7667,6 +8681,10 @@ class ListQueryProcessorNersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7695,6 +8713,10 @@ class ListQueryProcessorsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_active is not None:
             result['isActive'] = self.is_active
@@ -7730,6 +8752,10 @@ class ListQueryProcessorsResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -7782,6 +8808,10 @@ class ListQueryProcessorsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -7819,6 +8849,10 @@ class ListQueryProcessorsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7851,6 +8885,10 @@ class ListScheduledTasksRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['type'] = self.type
@@ -7886,6 +8924,10 @@ class ListScheduledTasksResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -7922,6 +8964,10 @@ class ListScheduledTasksResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7966,6 +9012,10 @@ class ListSecondRanksResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -8028,6 +9078,10 @@ class ListSecondRanksResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -8069,6 +9123,10 @@ class ListSecondRanksResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8101,6 +9159,10 @@ class ListSlowQueryCategoriesResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['start'] = self.start
@@ -8135,6 +9197,10 @@ class ListSlowQueryCategoriesResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -8168,6 +9234,10 @@ class ListSlowQueryCategoriesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8202,6 +9272,10 @@ class ListSlowQueryQueriesResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['index'] = self.index
@@ -8240,6 +9314,10 @@ class ListSlowQueryQueriesResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -8273,6 +9351,10 @@ class ListSlowQueryQueriesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8309,6 +9391,10 @@ class ListSortExpressionsResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -8353,6 +9439,10 @@ class ListSortExpressionsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -8390,6 +9480,10 @@ class ListSortExpressionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8428,6 +9522,10 @@ class ListSortScriptsResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['type'] = self.type
@@ -8476,6 +9574,10 @@ class ListSortScriptsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -8513,6 +9615,10 @@ class ListSortScriptsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8555,6 +9661,10 @@ class ListStatisticLogsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['startTime'] = self.start_time
@@ -8610,6 +9720,10 @@ class ListStatisticLogsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -8646,6 +9760,10 @@ class ListStatisticLogsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8684,6 +9802,10 @@ class ListStatisticReportRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['startTime'] = self.start_time
@@ -8731,6 +9853,10 @@ class ListStatisticReportResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -8767,6 +9893,10 @@ class ListStatisticReportResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8799,6 +9929,10 @@ class ListUserAnalyzerEntriesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.word is not None:
             result['word'] = self.word
@@ -8832,6 +9966,10 @@ class ListUserAnalyzerEntriesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -8864,6 +10002,10 @@ class ListUserAnalyzerEntriesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8894,6 +10036,10 @@ class ListUserAnalyzersRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
@@ -8933,6 +10079,10 @@ class ListUserAnalyzersResponseBodyResultDicts(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -8995,6 +10145,10 @@ class ListUserAnalyzersResponseBodyResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -9054,6 +10208,10 @@ class ListUserAnalyzersResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['result'] = []
         if self.result is not None:
@@ -9095,6 +10253,10 @@ class ListUserAnalyzersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9127,6 +10289,10 @@ class ModifyAppGroupResponseBodyResultQuota(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.spec is not None:
             result['spec'] = self.spec
@@ -9170,10 +10336,11 @@ class ModifyAppGroupResponseBodyResult(TeaModel):
         commodity_code: str = None,
         switched_time: int = None,
         expire_on: str = None,
+        domain: str = None,
         description: str = None,
         first_rank_algo_deployment_id: int = None,
-        locked_by_expiration: int = None,
         produced: int = None,
+        locked_by_expiration: int = None,
     ):
         self.created = created
         self.current_version = current_version
@@ -9195,16 +10362,21 @@ class ModifyAppGroupResponseBodyResult(TeaModel):
         self.commodity_code = commodity_code
         self.switched_time = switched_time
         self.expire_on = expire_on
+        self.domain = domain
         self.description = description
         self.first_rank_algo_deployment_id = first_rank_algo_deployment_id
-        self.locked_by_expiration = locked_by_expiration
         self.produced = produced
+        self.locked_by_expiration = locked_by_expiration
 
     def validate(self):
         if self.quota:
             self.quota.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -9246,14 +10418,16 @@ class ModifyAppGroupResponseBodyResult(TeaModel):
             result['switchedTime'] = self.switched_time
         if self.expire_on is not None:
             result['expireOn'] = self.expire_on
+        if self.domain is not None:
+            result['domain'] = self.domain
         if self.description is not None:
             result['description'] = self.description
         if self.first_rank_algo_deployment_id is not None:
             result['firstRankAlgoDeploymentId'] = self.first_rank_algo_deployment_id
-        if self.locked_by_expiration is not None:
-            result['lockedByExpiration'] = self.locked_by_expiration
         if self.produced is not None:
             result['produced'] = self.produced
+        if self.locked_by_expiration is not None:
+            result['lockedByExpiration'] = self.locked_by_expiration
         return result
 
     def from_map(self, m: dict = None):
@@ -9299,14 +10473,16 @@ class ModifyAppGroupResponseBodyResult(TeaModel):
             self.switched_time = m.get('switchedTime')
         if m.get('expireOn') is not None:
             self.expire_on = m.get('expireOn')
+        if m.get('domain') is not None:
+            self.domain = m.get('domain')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('firstRankAlgoDeploymentId') is not None:
             self.first_rank_algo_deployment_id = m.get('firstRankAlgoDeploymentId')
-        if m.get('lockedByExpiration') is not None:
-            self.locked_by_expiration = m.get('lockedByExpiration')
         if m.get('produced') is not None:
             self.produced = m.get('produced')
+        if m.get('lockedByExpiration') is not None:
+            self.locked_by_expiration = m.get('lockedByExpiration')
         return self
 
 
@@ -9324,6 +10500,10 @@ class ModifyAppGroupResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -9357,6 +10537,10 @@ class ModifyAppGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9389,6 +10573,10 @@ class ModifyAppGroupQuotaResponseBodyResultQuota(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.spec is not None:
             result['spec'] = self.spec
@@ -9467,6 +10655,10 @@ class ModifyAppGroupQuotaResponseBodyResult(TeaModel):
             self.quota.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -9586,6 +10778,10 @@ class ModifyAppGroupQuotaResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -9619,6 +10815,10 @@ class ModifyAppGroupQuotaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9647,6 +10847,10 @@ class ModifyFirstRankRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
@@ -9674,6 +10878,10 @@ class ModifyFirstRankResponseBodyResultMeta(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.arg is not None:
             result['arg'] = self.arg
@@ -9714,6 +10922,10 @@ class ModifyFirstRankResponseBodyResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.active is not None:
             result['active'] = self.active
@@ -9757,6 +10969,10 @@ class ModifyFirstRankResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -9790,6 +11006,10 @@ class ModifyFirstRankResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9820,6 +11040,10 @@ class ModifyModelResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -9852,6 +11076,10 @@ class ModifyModelResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9880,6 +11108,10 @@ class ModifyQueryProcessorRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
@@ -9915,6 +11147,10 @@ class ModifyQueryProcessorResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -9965,6 +11201,10 @@ class ModifyQueryProcessorResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -9998,6 +11238,10 @@ class ModifyQueryProcessorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10028,6 +11272,10 @@ class ModifyScheduledTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -10060,6 +11308,10 @@ class ModifyScheduledTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10088,6 +11340,10 @@ class ModifySecondRankRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
@@ -10127,6 +11383,10 @@ class ModifySecondRankResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -10185,6 +11445,10 @@ class ModifySecondRankResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -10218,6 +11482,10 @@ class ModifySecondRankResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10246,6 +11514,10 @@ class PreviewModelRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.query is not None:
             result['query'] = self.query
@@ -10273,6 +11545,10 @@ class PreviewModelResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -10309,6 +11585,10 @@ class PreviewModelResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10339,6 +11619,10 @@ class PushInterventionDictionaryEntriesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -10371,6 +11655,10 @@ class PushInterventionDictionaryEntriesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10401,6 +11689,10 @@ class PushUserAnalyzerEntriesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -10433,6 +11725,10 @@ class PushUserAnalyzerEntriesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10461,6 +11757,10 @@ class RankPreviewQueryResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -10489,6 +11789,10 @@ class RankPreviewQueryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10517,6 +11821,10 @@ class ReleaseSortScriptResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -10545,6 +11853,10 @@ class ReleaseSortScriptResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10575,6 +11887,10 @@ class RemoveAppResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -10607,6 +11923,10 @@ class RemoveAppResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10637,6 +11957,10 @@ class RemoveAppGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -10669,6 +11993,10 @@ class RemoveAppGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10699,6 +12027,10 @@ class RemoveDataCollectionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -10731,6 +12063,10 @@ class RemoveDataCollectionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10763,6 +12099,10 @@ class RemoveFirstRankResponseBodyResultMeta(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.arg is not None:
             result['arg'] = self.arg
@@ -10803,6 +12143,10 @@ class RemoveFirstRankResponseBodyResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.active is not None:
             result['active'] = self.active
@@ -10846,6 +12190,10 @@ class RemoveFirstRankResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -10879,6 +12227,10 @@ class RemoveFirstRankResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10915,6 +12267,10 @@ class RemoveInterventionDictionaryResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -10957,6 +12313,10 @@ class RemoveInterventionDictionaryResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -10990,6 +12350,10 @@ class RemoveInterventionDictionaryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11020,6 +12384,10 @@ class RemoveQueryProcessorResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -11052,6 +12420,10 @@ class RemoveQueryProcessorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11082,6 +12454,10 @@ class RemoveScheduledTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -11114,6 +12490,10 @@ class RemoveScheduledTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11144,6 +12524,10 @@ class RemoveSecondRankResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -11176,6 +12560,10 @@ class RemoveSecondRankResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11206,6 +12594,10 @@ class RemoveUserAnalyzerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -11238,6 +12630,10 @@ class RemoveUserAnalyzerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11266,6 +12662,10 @@ class RenewAppGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -11294,6 +12694,10 @@ class RenewAppGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11326,6 +12730,10 @@ class ReplaceAppGroupCommodityCodeResponseBodyResultQuota(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.spec is not None:
             result['spec'] = self.spec
@@ -11406,6 +12814,10 @@ class ReplaceAppGroupCommodityCodeResponseBodyResult(TeaModel):
             self.quota.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -11529,6 +12941,10 @@ class ReplaceAppGroupCommodityCodeResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -11562,6 +12978,10 @@ class ReplaceAppGroupCommodityCodeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11590,6 +13010,10 @@ class SaveSortScriptFileResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -11618,6 +13042,10 @@ class SaveSortScriptFileResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11648,6 +13076,10 @@ class StartSlowQueryAnalyzerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -11680,6 +13112,10 @@ class StartSlowQueryAnalyzerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11710,6 +13146,10 @@ class TrainModelResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -11742,6 +13182,10 @@ class TrainModelResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11782,6 +13226,10 @@ class UpdateABTestExperimentResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -11832,6 +13280,10 @@ class UpdateABTestExperimentResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -11865,6 +13317,10 @@ class UpdateABTestExperimentResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11895,6 +13351,10 @@ class UpdateABTestFixedFlowDividersResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -11927,6 +13387,10 @@ class UpdateABTestFixedFlowDividersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11963,6 +13427,10 @@ class UpdateABTestGroupResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -12005,6 +13473,10 @@ class UpdateABTestGroupResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -12038,6 +13510,10 @@ class UpdateABTestGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12078,6 +13554,10 @@ class UpdateABTestSceneResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -12128,6 +13608,10 @@ class UpdateABTestSceneResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result.to_map()
@@ -12161,6 +13645,10 @@ class UpdateABTestSceneResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12189,6 +13677,10 @@ class UpdateFetchFieldsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
@@ -12214,6 +13706,10 @@ class UpdateFetchFieldsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -12246,6 +13742,10 @@ class UpdateFetchFieldsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12274,6 +13774,10 @@ class UpdateSummariesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
@@ -12299,6 +13803,10 @@ class UpdateSummariesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -12331,6 +13839,10 @@ class UpdateSummariesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
