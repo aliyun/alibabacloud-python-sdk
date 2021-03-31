@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_polardb20170801 import models as polardb_20170801_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -96,7 +98,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CancelScheduleTasksResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CancelScheduleTasksResponse(),
             self.do_rpcrequest('CancelScheduleTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -109,7 +112,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CancelScheduleTasksResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CancelScheduleTasksResponse(),
             await self.do_rpcrequest_async('CancelScheduleTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -136,7 +140,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CheckAccountNameResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CheckAccountNameResponse(),
             self.do_rpcrequest('CheckAccountName', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -149,7 +154,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CheckAccountNameResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CheckAccountNameResponse(),
             await self.do_rpcrequest_async('CheckAccountName', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -176,7 +182,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CheckDBNameResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CheckDBNameResponse(),
             self.do_rpcrequest('CheckDBName', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -189,7 +196,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CheckDBNameResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CheckDBNameResponse(),
             await self.do_rpcrequest_async('CheckDBName', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -216,7 +224,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CloseDBClusterMigrationResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CloseDBClusterMigrationResponse(),
             self.do_rpcrequest('CloseDBClusterMigration', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -229,7 +238,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CloseDBClusterMigrationResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CloseDBClusterMigrationResponse(),
             await self.do_rpcrequest_async('CloseDBClusterMigration', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -256,7 +266,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateAccountResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateAccountResponse(),
             self.do_rpcrequest('CreateAccount', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -269,7 +280,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateAccountResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateAccountResponse(),
             await self.do_rpcrequest_async('CreateAccount', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -296,7 +308,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateBackupResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateBackupResponse(),
             self.do_rpcrequest('CreateBackup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -309,7 +322,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateBackupResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateBackupResponse(),
             await self.do_rpcrequest_async('CreateBackup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -336,7 +350,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateDatabaseResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDatabaseResponse(),
             self.do_rpcrequest('CreateDatabase', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -349,7 +364,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateDatabaseResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDatabaseResponse(),
             await self.do_rpcrequest_async('CreateDatabase', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -376,7 +392,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateDBClusterResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDBClusterResponse(),
             self.do_rpcrequest('CreateDBCluster', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -389,7 +406,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateDBClusterResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDBClusterResponse(),
             await self.do_rpcrequest_async('CreateDBCluster', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -416,7 +434,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateDBClusterEndpointResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDBClusterEndpointResponse(),
             self.do_rpcrequest('CreateDBClusterEndpoint', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -429,7 +448,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateDBClusterEndpointResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDBClusterEndpointResponse(),
             await self.do_rpcrequest_async('CreateDBClusterEndpoint', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -456,7 +476,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateDBEndpointAddressResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDBEndpointAddressResponse(),
             self.do_rpcrequest('CreateDBEndpointAddress', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -469,7 +490,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateDBEndpointAddressResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDBEndpointAddressResponse(),
             await self.do_rpcrequest_async('CreateDBEndpointAddress', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -496,7 +518,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateDBLinkResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDBLinkResponse(),
             self.do_rpcrequest('CreateDBLink', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -509,7 +532,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateDBLinkResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDBLinkResponse(),
             await self.do_rpcrequest_async('CreateDBLink', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -536,7 +560,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateDBNodesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDBNodesResponse(),
             self.do_rpcrequest('CreateDBNodes', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -549,7 +574,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.CreateDBNodesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDBNodesResponse(),
             await self.do_rpcrequest_async('CreateDBNodes', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -567,6 +593,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dbnodes_with_options_async(request, runtime)
 
+    def create_parameter_group_with_options(
+        self,
+        request: polardb_20170801_models.CreateParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateParameterGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateParameterGroupResponse(),
+            self.do_rpcrequest('CreateParameterGroup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_parameter_group_with_options_async(
+        self,
+        request: polardb_20170801_models.CreateParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateParameterGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateParameterGroupResponse(),
+            await self.do_rpcrequest_async('CreateParameterGroup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_parameter_group(
+        self,
+        request: polardb_20170801_models.CreateParameterGroupRequest,
+    ) -> polardb_20170801_models.CreateParameterGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_parameter_group_with_options(request, runtime)
+
+    async def create_parameter_group_async(
+        self,
+        request: polardb_20170801_models.CreateParameterGroupRequest,
+    ) -> polardb_20170801_models.CreateParameterGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_parameter_group_with_options_async(request, runtime)
+
     def delete_account_with_options(
         self,
         request: polardb_20170801_models.DeleteAccountRequest,
@@ -576,7 +644,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteAccountResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteAccountResponse(),
             self.do_rpcrequest('DeleteAccount', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -589,7 +658,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteAccountResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteAccountResponse(),
             await self.do_rpcrequest_async('DeleteAccount', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -616,7 +686,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteBackupResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteBackupResponse(),
             self.do_rpcrequest('DeleteBackup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -629,7 +700,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteBackupResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteBackupResponse(),
             await self.do_rpcrequest_async('DeleteBackup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -656,7 +728,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteDatabaseResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDatabaseResponse(),
             self.do_rpcrequest('DeleteDatabase', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -669,7 +742,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteDatabaseResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDatabaseResponse(),
             await self.do_rpcrequest_async('DeleteDatabase', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -696,7 +770,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteDBClusterResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDBClusterResponse(),
             self.do_rpcrequest('DeleteDBCluster', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -709,7 +784,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteDBClusterResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDBClusterResponse(),
             await self.do_rpcrequest_async('DeleteDBCluster', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -736,7 +812,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteDBClusterEndpointResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDBClusterEndpointResponse(),
             self.do_rpcrequest('DeleteDBClusterEndpoint', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -749,7 +826,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteDBClusterEndpointResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDBClusterEndpointResponse(),
             await self.do_rpcrequest_async('DeleteDBClusterEndpoint', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -776,7 +854,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteDBEndpointAddressResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDBEndpointAddressResponse(),
             self.do_rpcrequest('DeleteDBEndpointAddress', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -789,7 +868,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteDBEndpointAddressResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDBEndpointAddressResponse(),
             await self.do_rpcrequest_async('DeleteDBEndpointAddress', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -816,7 +896,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteDBLinkResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDBLinkResponse(),
             self.do_rpcrequest('DeleteDBLink', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -829,7 +910,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteDBLinkResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDBLinkResponse(),
             await self.do_rpcrequest_async('DeleteDBLink', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -856,7 +938,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteDBNodesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDBNodesResponse(),
             self.do_rpcrequest('DeleteDBNodes', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -869,7 +952,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DeleteDBNodesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDBNodesResponse(),
             await self.do_rpcrequest_async('DeleteDBNodes', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -887,6 +971,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbnodes_with_options_async(request, runtime)
 
+    def delete_parameter_group_with_options(
+        self,
+        request: polardb_20170801_models.DeleteParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteParameterGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteParameterGroupResponse(),
+            self.do_rpcrequest('DeleteParameterGroup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_parameter_group_with_options_async(
+        self,
+        request: polardb_20170801_models.DeleteParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteParameterGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteParameterGroupResponse(),
+            await self.do_rpcrequest_async('DeleteParameterGroup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_parameter_group(
+        self,
+        request: polardb_20170801_models.DeleteParameterGroupRequest,
+    ) -> polardb_20170801_models.DeleteParameterGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_parameter_group_with_options(request, runtime)
+
+    async def delete_parameter_group_async(
+        self,
+        request: polardb_20170801_models.DeleteParameterGroupRequest,
+    ) -> polardb_20170801_models.DeleteParameterGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_parameter_group_with_options_async(request, runtime)
+
     def describe_accounts_with_options(
         self,
         request: polardb_20170801_models.DescribeAccountsRequest,
@@ -896,7 +1022,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeAccountsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeAccountsResponse(),
             self.do_rpcrequest('DescribeAccounts', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -909,7 +1036,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeAccountsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeAccountsResponse(),
             await self.do_rpcrequest_async('DescribeAccounts', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -936,7 +1064,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeAutoRenewAttributeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeAutoRenewAttributeResponse(),
             self.do_rpcrequest('DescribeAutoRenewAttribute', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -949,7 +1078,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeAutoRenewAttributeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeAutoRenewAttributeResponse(),
             await self.do_rpcrequest_async('DescribeAutoRenewAttribute', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -976,7 +1106,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeBackupLogsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeBackupLogsResponse(),
             self.do_rpcrequest('DescribeBackupLogs', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -989,7 +1120,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeBackupLogsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeBackupLogsResponse(),
             await self.do_rpcrequest_async('DescribeBackupLogs', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1016,7 +1148,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeBackupPolicyResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeBackupPolicyResponse(),
             self.do_rpcrequest('DescribeBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1029,7 +1162,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeBackupPolicyResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeBackupPolicyResponse(),
             await self.do_rpcrequest_async('DescribeBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1056,7 +1190,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeBackupsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeBackupsResponse(),
             self.do_rpcrequest('DescribeBackups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1069,7 +1204,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeBackupsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeBackupsResponse(),
             await self.do_rpcrequest_async('DescribeBackups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1096,7 +1232,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeBackupTasksResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeBackupTasksResponse(),
             self.do_rpcrequest('DescribeBackupTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1109,7 +1246,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeBackupTasksResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeBackupTasksResponse(),
             await self.do_rpcrequest_async('DescribeBackupTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1136,7 +1274,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeCharacterSetNameResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeCharacterSetNameResponse(),
             self.do_rpcrequest('DescribeCharacterSetName', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1149,7 +1288,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeCharacterSetNameResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeCharacterSetNameResponse(),
             await self.do_rpcrequest_async('DescribeCharacterSetName', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1176,7 +1316,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDatabasesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDatabasesResponse(),
             self.do_rpcrequest('DescribeDatabases', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1189,7 +1330,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDatabasesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDatabasesResponse(),
             await self.do_rpcrequest_async('DescribeDatabases', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1216,7 +1358,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse(),
             self.do_rpcrequest('DescribeDBClusterAccessWhitelist', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1229,7 +1372,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse(),
             await self.do_rpcrequest_async('DescribeDBClusterAccessWhitelist', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1256,7 +1400,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterAttributeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterAttributeResponse(),
             self.do_rpcrequest('DescribeDBClusterAttribute', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1269,7 +1414,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterAttributeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterAttributeResponse(),
             await self.do_rpcrequest_async('DescribeDBClusterAttribute', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1296,7 +1442,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse(),
             self.do_rpcrequest('DescribeDBClusterAuditLogCollector', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1309,7 +1456,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse(),
             await self.do_rpcrequest_async('DescribeDBClusterAuditLogCollector', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1336,7 +1484,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse(),
             self.do_rpcrequest('DescribeDBClusterAvailableResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1349,7 +1498,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse(),
             await self.do_rpcrequest_async('DescribeDBClusterAvailableResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1376,7 +1526,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterEndpointsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterEndpointsResponse(),
             self.do_rpcrequest('DescribeDBClusterEndpoints', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1389,7 +1540,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterEndpointsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterEndpointsResponse(),
             await self.do_rpcrequest_async('DescribeDBClusterEndpoints', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1416,7 +1568,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterMigrationResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterMigrationResponse(),
             self.do_rpcrequest('DescribeDBClusterMigration', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1429,7 +1582,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterMigrationResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterMigrationResponse(),
             await self.do_rpcrequest_async('DescribeDBClusterMigration', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1456,7 +1610,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterMonitorResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterMonitorResponse(),
             self.do_rpcrequest('DescribeDBClusterMonitor', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1469,7 +1624,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterMonitorResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterMonitorResponse(),
             await self.do_rpcrequest_async('DescribeDBClusterMonitor', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1496,7 +1652,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterParametersResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterParametersResponse(),
             self.do_rpcrequest('DescribeDBClusterParameters', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1509,7 +1666,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterParametersResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterParametersResponse(),
             await self.do_rpcrequest_async('DescribeDBClusterParameters', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1536,7 +1694,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterPerformanceResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterPerformanceResponse(),
             self.do_rpcrequest('DescribeDBClusterPerformance', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1549,7 +1708,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterPerformanceResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterPerformanceResponse(),
             await self.do_rpcrequest_async('DescribeDBClusterPerformance', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1576,7 +1736,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClustersResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClustersResponse(),
             self.do_rpcrequest('DescribeDBClusters', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1589,7 +1750,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClustersResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClustersResponse(),
             await self.do_rpcrequest_async('DescribeDBClusters', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1616,7 +1778,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterSSLResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterSSLResponse(),
             self.do_rpcrequest('DescribeDBClusterSSL', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1629,7 +1792,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterSSLResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterSSLResponse(),
             await self.do_rpcrequest_async('DescribeDBClusterSSL', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1656,7 +1820,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClustersWithBackupsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClustersWithBackupsResponse(),
             self.do_rpcrequest('DescribeDBClustersWithBackups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1669,7 +1834,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClustersWithBackupsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClustersWithBackupsResponse(),
             await self.do_rpcrequest_async('DescribeDBClustersWithBackups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1696,7 +1862,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterTDEResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterTDEResponse(),
             self.do_rpcrequest('DescribeDBClusterTDE', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1709,7 +1876,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterTDEResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterTDEResponse(),
             await self.do_rpcrequest_async('DescribeDBClusterTDE', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1736,7 +1904,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterVersionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterVersionResponse(),
             self.do_rpcrequest('DescribeDBClusterVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1749,7 +1918,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBClusterVersionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterVersionResponse(),
             await self.do_rpcrequest_async('DescribeDBClusterVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1776,7 +1946,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBInitializeVariableResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBInitializeVariableResponse(),
             self.do_rpcrequest('DescribeDBInitializeVariable', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1789,7 +1960,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBInitializeVariableResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBInitializeVariableResponse(),
             await self.do_rpcrequest_async('DescribeDBInitializeVariable', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1816,7 +1988,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBLinksResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBLinksResponse(),
             self.do_rpcrequest('DescribeDBLinks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1829,7 +2002,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBLinksResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBLinksResponse(),
             await self.do_rpcrequest_async('DescribeDBLinks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1856,7 +2030,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBNodePerformanceResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBNodePerformanceResponse(),
             self.do_rpcrequest('DescribeDBNodePerformance', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1869,7 +2044,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDBNodePerformanceResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBNodePerformanceResponse(),
             await self.do_rpcrequest_async('DescribeDBNodePerformance', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1896,7 +2072,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDetachedBackupsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDetachedBackupsResponse(),
             self.do_rpcrequest('DescribeDetachedBackups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1909,7 +2086,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeDetachedBackupsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDetachedBackupsResponse(),
             await self.do_rpcrequest_async('DescribeDetachedBackups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1936,7 +2114,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse(),
             self.do_rpcrequest('DescribeGlobalDatabaseNetworks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1949,7 +2128,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse(),
             await self.do_rpcrequest_async('DescribeGlobalDatabaseNetworks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1976,7 +2156,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeLogBackupPolicyResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeLogBackupPolicyResponse(),
             self.do_rpcrequest('DescribeLogBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1989,7 +2170,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeLogBackupPolicyResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeLogBackupPolicyResponse(),
             await self.do_rpcrequest_async('DescribeLogBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2016,7 +2198,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeMetaListResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeMetaListResponse(),
             self.do_rpcrequest('DescribeMetaList', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2029,7 +2212,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeMetaListResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeMetaListResponse(),
             await self.do_rpcrequest_async('DescribeMetaList', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2047,6 +2231,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_meta_list_with_options_async(request, runtime)
 
+    def describe_parameter_group_with_options(
+        self,
+        request: polardb_20170801_models.DescribeParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeParameterGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeParameterGroupResponse(),
+            self.do_rpcrequest('DescribeParameterGroup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_parameter_group_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeParameterGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeParameterGroupResponse(),
+            await self.do_rpcrequest_async('DescribeParameterGroup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_parameter_group(
+        self,
+        request: polardb_20170801_models.DescribeParameterGroupRequest,
+    ) -> polardb_20170801_models.DescribeParameterGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_parameter_group_with_options(request, runtime)
+
+    async def describe_parameter_group_async(
+        self,
+        request: polardb_20170801_models.DescribeParameterGroupRequest,
+    ) -> polardb_20170801_models.DescribeParameterGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_parameter_group_with_options_async(request, runtime)
+
+    def describe_parameter_groups_with_options(
+        self,
+        request: polardb_20170801_models.DescribeParameterGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeParameterGroupsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeParameterGroupsResponse(),
+            self.do_rpcrequest('DescribeParameterGroups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_parameter_groups_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeParameterGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeParameterGroupsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeParameterGroupsResponse(),
+            await self.do_rpcrequest_async('DescribeParameterGroups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_parameter_groups(
+        self,
+        request: polardb_20170801_models.DescribeParameterGroupsRequest,
+    ) -> polardb_20170801_models.DescribeParameterGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_parameter_groups_with_options(request, runtime)
+
+    async def describe_parameter_groups_async(
+        self,
+        request: polardb_20170801_models.DescribeParameterGroupsRequest,
+    ) -> polardb_20170801_models.DescribeParameterGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_parameter_groups_with_options_async(request, runtime)
+
+    def describe_parameter_templates_with_options(
+        self,
+        request: polardb_20170801_models.DescribeParameterTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeParameterTemplatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeParameterTemplatesResponse(),
+            self.do_rpcrequest('DescribeParameterTemplates', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_parameter_templates_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeParameterTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeParameterTemplatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeParameterTemplatesResponse(),
+            await self.do_rpcrequest_async('DescribeParameterTemplates', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_parameter_templates(
+        self,
+        request: polardb_20170801_models.DescribeParameterTemplatesRequest,
+    ) -> polardb_20170801_models.DescribeParameterTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_parameter_templates_with_options(request, runtime)
+
+    async def describe_parameter_templates_async(
+        self,
+        request: polardb_20170801_models.DescribeParameterTemplatesRequest,
+    ) -> polardb_20170801_models.DescribeParameterTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_parameter_templates_with_options_async(request, runtime)
+
     def describe_pending_maintenance_action_with_options(
         self,
         request: polardb_20170801_models.DescribePendingMaintenanceActionRequest,
@@ -2056,7 +2366,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribePendingMaintenanceActionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribePendingMaintenanceActionResponse(),
             self.do_rpcrequest('DescribePendingMaintenanceAction', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2069,7 +2380,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribePendingMaintenanceActionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribePendingMaintenanceActionResponse(),
             await self.do_rpcrequest_async('DescribePendingMaintenanceAction', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2096,7 +2408,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribePendingMaintenanceActionsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribePendingMaintenanceActionsResponse(),
             self.do_rpcrequest('DescribePendingMaintenanceActions', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2109,7 +2422,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribePendingMaintenanceActionsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribePendingMaintenanceActionsResponse(),
             await self.do_rpcrequest_async('DescribePendingMaintenanceActions', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2127,6 +2441,50 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_pending_maintenance_actions_with_options_async(request, runtime)
 
+    def describe_polar_sqlcollector_policy_with_options(
+        self,
+        request: polardb_20170801_models.DescribePolarSQLCollectorPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse(),
+            self.do_rpcrequest('DescribePolarSQLCollectorPolicy', '2017-08-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_polar_sqlcollector_policy_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribePolarSQLCollectorPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse(),
+            await self.do_rpcrequest_async('DescribePolarSQLCollectorPolicy', '2017-08-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def describe_polar_sqlcollector_policy(
+        self,
+        request: polardb_20170801_models.DescribePolarSQLCollectorPolicyRequest,
+    ) -> polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_polar_sqlcollector_policy_with_options(request, runtime)
+
+    async def describe_polar_sqlcollector_policy_async(
+        self,
+        request: polardb_20170801_models.DescribePolarSQLCollectorPolicyRequest,
+    ) -> polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_polar_sqlcollector_policy_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: polardb_20170801_models.DescribeRegionsRequest,
@@ -2136,7 +2494,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeRegionsResponse(),
             self.do_rpcrequest('DescribeRegions', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2149,7 +2508,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeRegionsResponse(),
             await self.do_rpcrequest_async('DescribeRegions', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2176,7 +2536,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeScheduleTasksResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeScheduleTasksResponse(),
             self.do_rpcrequest('DescribeScheduleTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2189,7 +2550,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeScheduleTasksResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeScheduleTasksResponse(),
             await self.do_rpcrequest_async('DescribeScheduleTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2216,7 +2578,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeSlowLogRecordsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeSlowLogRecordsResponse(),
             self.do_rpcrequest('DescribeSlowLogRecords', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2229,7 +2592,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeSlowLogRecordsResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeSlowLogRecordsResponse(),
             await self.do_rpcrequest_async('DescribeSlowLogRecords', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2247,246 +2611,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_log_records_with_options_async(request, runtime)
 
-    def describe_sqlexplorer_policy_with_options(
-        self,
-        request: polardb_20170801_models.DescribeSQLExplorerPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeSQLExplorerPolicyResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return polardb_20170801_models.DescribeSQLExplorerPolicyResponse().from_map(
-            self.do_rpcrequest('DescribeSQLExplorerPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_sqlexplorer_policy_with_options_async(
-        self,
-        request: polardb_20170801_models.DescribeSQLExplorerPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeSQLExplorerPolicyResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return polardb_20170801_models.DescribeSQLExplorerPolicyResponse().from_map(
-            await self.do_rpcrequest_async('DescribeSQLExplorerPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_sqlexplorer_policy(
-        self,
-        request: polardb_20170801_models.DescribeSQLExplorerPolicyRequest,
-    ) -> polardb_20170801_models.DescribeSQLExplorerPolicyResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_sqlexplorer_policy_with_options(request, runtime)
-
-    async def describe_sqlexplorer_policy_async(
-        self,
-        request: polardb_20170801_models.DescribeSQLExplorerPolicyRequest,
-    ) -> polardb_20170801_models.DescribeSQLExplorerPolicyResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_sqlexplorer_policy_with_options_async(request, runtime)
-
-    def describe_sqlexplorer_retention_with_options(
-        self,
-        request: polardb_20170801_models.DescribeSQLExplorerRetentionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeSQLExplorerRetentionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return polardb_20170801_models.DescribeSQLExplorerRetentionResponse().from_map(
-            self.do_rpcrequest('DescribeSQLExplorerRetention', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_sqlexplorer_retention_with_options_async(
-        self,
-        request: polardb_20170801_models.DescribeSQLExplorerRetentionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeSQLExplorerRetentionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return polardb_20170801_models.DescribeSQLExplorerRetentionResponse().from_map(
-            await self.do_rpcrequest_async('DescribeSQLExplorerRetention', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_sqlexplorer_retention(
-        self,
-        request: polardb_20170801_models.DescribeSQLExplorerRetentionRequest,
-    ) -> polardb_20170801_models.DescribeSQLExplorerRetentionResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_sqlexplorer_retention_with_options(request, runtime)
-
-    async def describe_sqlexplorer_retention_async(
-        self,
-        request: polardb_20170801_models.DescribeSQLExplorerRetentionRequest,
-    ) -> polardb_20170801_models.DescribeSQLExplorerRetentionResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_sqlexplorer_retention_with_options_async(request, runtime)
-
-    def describe_sqlexplorer_version_with_options(
-        self,
-        request: polardb_20170801_models.DescribeSQLExplorerVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeSQLExplorerVersionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return polardb_20170801_models.DescribeSQLExplorerVersionResponse().from_map(
-            self.do_rpcrequest('DescribeSQLExplorerVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_sqlexplorer_version_with_options_async(
-        self,
-        request: polardb_20170801_models.DescribeSQLExplorerVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeSQLExplorerVersionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return polardb_20170801_models.DescribeSQLExplorerVersionResponse().from_map(
-            await self.do_rpcrequest_async('DescribeSQLExplorerVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_sqlexplorer_version(
-        self,
-        request: polardb_20170801_models.DescribeSQLExplorerVersionRequest,
-    ) -> polardb_20170801_models.DescribeSQLExplorerVersionResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_sqlexplorer_version_with_options(request, runtime)
-
-    async def describe_sqlexplorer_version_async(
-        self,
-        request: polardb_20170801_models.DescribeSQLExplorerVersionRequest,
-    ) -> polardb_20170801_models.DescribeSQLExplorerVersionResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_sqlexplorer_version_with_options_async(request, runtime)
-
-    def describe_sqllog_records_with_options(
-        self,
-        request: polardb_20170801_models.DescribeSQLLogRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeSQLLogRecordsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return polardb_20170801_models.DescribeSQLLogRecordsResponse().from_map(
-            self.do_rpcrequest('DescribeSQLLogRecords', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_sqllog_records_with_options_async(
-        self,
-        request: polardb_20170801_models.DescribeSQLLogRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeSQLLogRecordsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return polardb_20170801_models.DescribeSQLLogRecordsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeSQLLogRecords', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_sqllog_records(
-        self,
-        request: polardb_20170801_models.DescribeSQLLogRecordsRequest,
-    ) -> polardb_20170801_models.DescribeSQLLogRecordsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_sqllog_records_with_options(request, runtime)
-
-    async def describe_sqllog_records_async(
-        self,
-        request: polardb_20170801_models.DescribeSQLLogRecordsRequest,
-    ) -> polardb_20170801_models.DescribeSQLLogRecordsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_sqllog_records_with_options_async(request, runtime)
-
-    def describe_sqllog_templates_with_options(
-        self,
-        request: polardb_20170801_models.DescribeSQLLogTemplatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeSQLLogTemplatesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return polardb_20170801_models.DescribeSQLLogTemplatesResponse().from_map(
-            self.do_rpcrequest('DescribeSQLLogTemplates', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_sqllog_templates_with_options_async(
-        self,
-        request: polardb_20170801_models.DescribeSQLLogTemplatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeSQLLogTemplatesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return polardb_20170801_models.DescribeSQLLogTemplatesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeSQLLogTemplates', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_sqllog_templates(
-        self,
-        request: polardb_20170801_models.DescribeSQLLogTemplatesRequest,
-    ) -> polardb_20170801_models.DescribeSQLLogTemplatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_sqllog_templates_with_options(request, runtime)
-
-    async def describe_sqllog_templates_async(
-        self,
-        request: polardb_20170801_models.DescribeSQLLogTemplatesRequest,
-    ) -> polardb_20170801_models.DescribeSQLLogTemplatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_sqllog_templates_with_options_async(request, runtime)
-
-    def describe_sql_log_trial_status_with_options(
-        self,
-        request: polardb_20170801_models.DescribeSqlLogTrialStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeSqlLogTrialStatusResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return polardb_20170801_models.DescribeSqlLogTrialStatusResponse().from_map(
-            self.do_rpcrequest('DescribeSqlLogTrialStatus', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_sql_log_trial_status_with_options_async(
-        self,
-        request: polardb_20170801_models.DescribeSqlLogTrialStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeSqlLogTrialStatusResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return polardb_20170801_models.DescribeSqlLogTrialStatusResponse().from_map(
-            await self.do_rpcrequest_async('DescribeSqlLogTrialStatus', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_sql_log_trial_status(
-        self,
-        request: polardb_20170801_models.DescribeSqlLogTrialStatusRequest,
-    ) -> polardb_20170801_models.DescribeSqlLogTrialStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_sql_log_trial_status_with_options(request, runtime)
-
-    async def describe_sql_log_trial_status_async(
-        self,
-        request: polardb_20170801_models.DescribeSqlLogTrialStatusRequest,
-    ) -> polardb_20170801_models.DescribeSqlLogTrialStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_sql_log_trial_status_with_options_async(request, runtime)
-
     def describe_tasks_with_options(
         self,
         request: polardb_20170801_models.DescribeTasksRequest,
@@ -2496,7 +2620,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeTasksResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeTasksResponse(),
             self.do_rpcrequest('DescribeTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2509,7 +2634,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.DescribeTasksResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeTasksResponse(),
             await self.do_rpcrequest_async('DescribeTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2536,7 +2662,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.FailoverDBClusterResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.FailoverDBClusterResponse(),
             self.do_rpcrequest('FailoverDBCluster', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2549,7 +2676,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.FailoverDBClusterResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.FailoverDBClusterResponse(),
             await self.do_rpcrequest_async('FailoverDBCluster', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2576,7 +2704,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.GrantAccountPrivilegeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.GrantAccountPrivilegeResponse(),
             self.do_rpcrequest('GrantAccountPrivilege', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2589,7 +2718,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.GrantAccountPrivilegeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.GrantAccountPrivilegeResponse(),
             await self.do_rpcrequest_async('GrantAccountPrivilege', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2616,7 +2746,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ListTagResourcesResponse(),
             self.do_rpcrequest('ListTagResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2629,7 +2760,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ListTagResourcesResponse(),
             await self.do_rpcrequest_async('ListTagResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2656,7 +2788,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyAccountDescriptionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyAccountDescriptionResponse(),
             self.do_rpcrequest('ModifyAccountDescription', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2669,7 +2802,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyAccountDescriptionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyAccountDescriptionResponse(),
             await self.do_rpcrequest_async('ModifyAccountDescription', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2696,7 +2830,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyAccountPasswordResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyAccountPasswordResponse(),
             self.do_rpcrequest('ModifyAccountPassword', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2709,7 +2844,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyAccountPasswordResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyAccountPasswordResponse(),
             await self.do_rpcrequest_async('ModifyAccountPassword', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2736,7 +2872,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyAutoRenewAttributeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyAutoRenewAttributeResponse(),
             self.do_rpcrequest('ModifyAutoRenewAttribute', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2749,7 +2886,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyAutoRenewAttributeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyAutoRenewAttributeResponse(),
             await self.do_rpcrequest_async('ModifyAutoRenewAttribute', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2776,7 +2914,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyBackupPolicyResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyBackupPolicyResponse(),
             self.do_rpcrequest('ModifyBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2789,7 +2928,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyBackupPolicyResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyBackupPolicyResponse(),
             await self.do_rpcrequest_async('ModifyBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2816,7 +2956,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse(),
             self.do_rpcrequest('ModifyDBClusterAccessWhitelist', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2829,7 +2970,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse(),
             await self.do_rpcrequest_async('ModifyDBClusterAccessWhitelist', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2856,7 +2998,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse(),
             self.do_rpcrequest('ModifyDBClusterAuditLogCollector', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2869,7 +3012,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse(),
             await self.do_rpcrequest_async('ModifyDBClusterAuditLogCollector', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2896,7 +3040,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterDescriptionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterDescriptionResponse(),
             self.do_rpcrequest('ModifyDBClusterDescription', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2909,7 +3054,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterDescriptionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterDescriptionResponse(),
             await self.do_rpcrequest_async('ModifyDBClusterDescription', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2936,7 +3082,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterEndpointResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterEndpointResponse(),
             self.do_rpcrequest('ModifyDBClusterEndpoint', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2949,7 +3096,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterEndpointResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterEndpointResponse(),
             await self.do_rpcrequest_async('ModifyDBClusterEndpoint', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2976,7 +3124,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterMaintainTimeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterMaintainTimeResponse(),
             self.do_rpcrequest('ModifyDBClusterMaintainTime', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2989,7 +3138,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterMaintainTimeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterMaintainTimeResponse(),
             await self.do_rpcrequest_async('ModifyDBClusterMaintainTime', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3016,7 +3166,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterMigrationResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterMigrationResponse(),
             self.do_rpcrequest('ModifyDBClusterMigration', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3029,7 +3180,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterMigrationResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterMigrationResponse(),
             await self.do_rpcrequest_async('ModifyDBClusterMigration', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3056,7 +3208,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterMonitorResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterMonitorResponse(),
             self.do_rpcrequest('ModifyDBClusterMonitor', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3069,7 +3222,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterMonitorResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterMonitorResponse(),
             await self.do_rpcrequest_async('ModifyDBClusterMonitor', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3096,7 +3250,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterParametersResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterParametersResponse(),
             self.do_rpcrequest('ModifyDBClusterParameters', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3109,7 +3264,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterParametersResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterParametersResponse(),
             await self.do_rpcrequest_async('ModifyDBClusterParameters', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3136,7 +3292,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse(),
             self.do_rpcrequest('ModifyDBClusterPrimaryZone', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3149,7 +3306,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse(),
             await self.do_rpcrequest_async('ModifyDBClusterPrimaryZone', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3176,7 +3334,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterSSLResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterSSLResponse(),
             self.do_rpcrequest('ModifyDBClusterSSL', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3189,7 +3348,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterSSLResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterSSLResponse(),
             await self.do_rpcrequest_async('ModifyDBClusterSSL', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3216,7 +3376,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterTDEResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterTDEResponse(),
             self.do_rpcrequest('ModifyDBClusterTDE', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3229,7 +3390,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBClusterTDEResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterTDEResponse(),
             await self.do_rpcrequest_async('ModifyDBClusterTDE', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3256,7 +3418,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBDescriptionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBDescriptionResponse(),
             self.do_rpcrequest('ModifyDBDescription', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3269,7 +3432,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBDescriptionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBDescriptionResponse(),
             await self.do_rpcrequest_async('ModifyDBDescription', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3296,7 +3460,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBEndpointAddressResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBEndpointAddressResponse(),
             self.do_rpcrequest('ModifyDBEndpointAddress', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3309,7 +3474,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBEndpointAddressResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBEndpointAddressResponse(),
             await self.do_rpcrequest_async('ModifyDBEndpointAddress', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3336,7 +3502,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBNodeClassResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBNodeClassResponse(),
             self.do_rpcrequest('ModifyDBNodeClass', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3349,7 +3516,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyDBNodeClassResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBNodeClassResponse(),
             await self.do_rpcrequest_async('ModifyDBNodeClass', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3376,7 +3544,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyLogBackupPolicyResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyLogBackupPolicyResponse(),
             self.do_rpcrequest('ModifyLogBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3389,7 +3558,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyLogBackupPolicyResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyLogBackupPolicyResponse(),
             await self.do_rpcrequest_async('ModifyLogBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3416,7 +3586,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyPendingMaintenanceActionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyPendingMaintenanceActionResponse(),
             self.do_rpcrequest('ModifyPendingMaintenanceAction', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3429,7 +3600,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ModifyPendingMaintenanceActionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyPendingMaintenanceActionResponse(),
             await self.do_rpcrequest_async('ModifyPendingMaintenanceAction', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3456,7 +3628,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ResetAccountResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ResetAccountResponse(),
             self.do_rpcrequest('ResetAccount', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3469,7 +3642,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.ResetAccountResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.ResetAccountResponse(),
             await self.do_rpcrequest_async('ResetAccount', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3496,7 +3670,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.RestartDBNodeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.RestartDBNodeResponse(),
             self.do_rpcrequest('RestartDBNode', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3509,7 +3684,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.RestartDBNodeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.RestartDBNodeResponse(),
             await self.do_rpcrequest_async('RestartDBNode', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3536,7 +3712,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.RestoreTableResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.RestoreTableResponse(),
             self.do_rpcrequest('RestoreTable', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3549,7 +3726,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.RestoreTableResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.RestoreTableResponse(),
             await self.do_rpcrequest_async('RestoreTable', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3576,7 +3754,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.RevokeAccountPrivilegeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.RevokeAccountPrivilegeResponse(),
             self.do_rpcrequest('RevokeAccountPrivilege', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3589,7 +3768,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.RevokeAccountPrivilegeResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.RevokeAccountPrivilegeResponse(),
             await self.do_rpcrequest_async('RevokeAccountPrivilege', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3616,7 +3796,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.TagResourcesResponse(),
             self.do_rpcrequest('TagResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3629,7 +3810,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.TagResourcesResponse(),
             await self.do_rpcrequest_async('TagResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3656,7 +3838,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.UntagResourcesResponse(),
             self.do_rpcrequest('UntagResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3669,7 +3852,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.UntagResourcesResponse(),
             await self.do_rpcrequest_async('UntagResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3696,7 +3880,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.UpgradeDBClusterMinorVersionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.UpgradeDBClusterMinorVersionResponse(),
             self.do_rpcrequest('UpgradeDBClusterMinorVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3709,7 +3894,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.UpgradeDBClusterMinorVersionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.UpgradeDBClusterMinorVersionResponse(),
             await self.do_rpcrequest_async('UpgradeDBClusterMinorVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3736,7 +3922,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.UpgradeDBClusterVersionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.UpgradeDBClusterVersionResponse(),
             self.do_rpcrequest('UpgradeDBClusterVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3749,7 +3936,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return polardb_20170801_models.UpgradeDBClusterVersionResponse().from_map(
+        return TeaCore.from_map(
+            polardb_20170801_models.UpgradeDBClusterVersionResponse(),
             await self.do_rpcrequest_async('UpgradeDBClusterVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
