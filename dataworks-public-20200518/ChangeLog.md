@@ -1,3 +1,6 @@
+2021-03-31 Version: 2.2.0
+- Generated python 2020-05-18 for dataworks-public.
+
 2020-11-25 Version: 2.1.1
 - Generated python 2020-05-18 for dataworks-public.
 
