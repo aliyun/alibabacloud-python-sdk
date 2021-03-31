@@ -11,8 +11,6 @@ class AddAccessControlListEntryRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         region_id: str = None,
         acl_id: str = None,
         acl_entrys: str = None,
@@ -21,8 +19,6 @@ class AddAccessControlListEntryRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.region_id = region_id
         self.acl_id = acl_id
         self.acl_entrys = acl_entrys
@@ -31,6 +27,10 @@ class AddAccessControlListEntryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -40,10 +40,6 @@ class AddAccessControlListEntryRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.acl_id is not None:
@@ -62,10 +58,6 @@ class AddAccessControlListEntryRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('AclId') is not None:
@@ -86,6 +78,10 @@ class AddAccessControlListEntryResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -114,6 +110,10 @@ class AddAccessControlListEntryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -141,8 +141,6 @@ class AddBackendServersRequest(TeaModel):
         load_balancer_id: str = None,
         backend_servers: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -151,13 +149,15 @@ class AddBackendServersRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.backend_servers = backend_servers
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -173,10 +173,6 @@ class AddBackendServersRequest(TeaModel):
             result['BackendServers'] = self.backend_servers
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -195,10 +191,6 @@ class AddBackendServersRequest(TeaModel):
             self.backend_servers = m.get('BackendServers')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -219,6 +211,10 @@ class AddBackendServersResponseBodyBackendServersBackendServer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -257,6 +253,10 @@ class AddBackendServersResponseBodyBackendServers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BackendServer'] = []
         if self.backend_server is not None:
@@ -290,6 +290,10 @@ class AddBackendServersResponseBody(TeaModel):
             self.backend_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -327,6 +331,10 @@ class AddBackendServersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -355,9 +363,7 @@ class AddListenerWhiteListItemRequest(TeaModel):
         listener_port: int = None,
         source_items: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
         listener_protocol: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -367,14 +373,16 @@ class AddListenerWhiteListItemRequest(TeaModel):
         self.listener_port = listener_port
         self.source_items = source_items
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.listener_protocol = listener_protocol
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -392,12 +400,8 @@ class AddListenerWhiteListItemRequest(TeaModel):
             result['SourceItems'] = self.source_items
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.listener_protocol is not None:
             result['ListenerProtocol'] = self.listener_protocol
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -418,12 +422,8 @@ class AddListenerWhiteListItemRequest(TeaModel):
             self.source_items = m.get('SourceItems')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('ListenerProtocol') is not None:
             self.listener_protocol = m.get('ListenerProtocol')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -438,6 +438,10 @@ class AddListenerWhiteListItemResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -466,6 +470,10 @@ class AddListenerWhiteListItemResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -490,7 +498,6 @@ class AddTagsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         region_id: str = None,
         load_balancer_id: str = None,
         tags: str = None,
@@ -499,7 +506,6 @@ class AddTagsRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.region_id = region_id
         self.load_balancer_id = load_balancer_id
         self.tags = tags
@@ -508,6 +514,10 @@ class AddTagsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -517,8 +527,6 @@ class AddTagsRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.load_balancer_id is not None:
@@ -537,8 +545,6 @@ class AddTagsRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('LoadBalancerId') is not None:
@@ -559,6 +565,10 @@ class AddTagsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -587,6 +597,10 @@ class AddTagsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -612,8 +626,6 @@ class AddVServerGroupBackendServersRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         vserver_group_id: str = None,
         backend_servers: str = None,
     ):
@@ -622,8 +634,6 @@ class AddVServerGroupBackendServersRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.vserver_group_id = vserver_group_id
         self.backend_servers = backend_servers
 
@@ -631,6 +641,10 @@ class AddVServerGroupBackendServersRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -642,10 +656,6 @@ class AddVServerGroupBackendServersRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
         if self.backend_servers is not None:
@@ -664,10 +674,6 @@ class AddVServerGroupBackendServersRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
         if m.get('BackendServers') is not None:
@@ -694,6 +700,10 @@ class AddVServerGroupBackendServersResponseBodyBackendServersBackendServer(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -736,6 +746,10 @@ class AddVServerGroupBackendServersResponseBodyBackendServers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BackendServer'] = []
         if self.backend_server is not None:
@@ -769,6 +783,10 @@ class AddVServerGroupBackendServersResponseBody(TeaModel):
             self.backend_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -806,6 +824,10 @@ class AddVServerGroupBackendServersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -830,8 +852,6 @@ class CreateAccessControlListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         region_id: str = None,
         acl_name: str = None,
         address_ipversion: str = None,
@@ -841,8 +861,6 @@ class CreateAccessControlListRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.region_id = region_id
         self.acl_name = acl_name
         self.address_ipversion = address_ipversion
@@ -852,6 +870,10 @@ class CreateAccessControlListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -861,10 +883,6 @@ class CreateAccessControlListRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.acl_name is not None:
@@ -885,10 +903,6 @@ class CreateAccessControlListRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('AclName') is not None:
@@ -913,6 +927,10 @@ class CreateAccessControlListResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -945,6 +963,10 @@ class CreateAccessControlListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -962,22 +984,6 @@ class CreateAccessControlListResponse(TeaModel):
         return self
 
 
-class CreateDomainExtensionRequestServerCertificate(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        return self
-
-
 class CreateDomainExtensionRequest(TeaModel):
     def __init__(
         self,
@@ -986,36 +992,29 @@ class CreateDomainExtensionRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         load_balancer_id: str = None,
         listener_port: int = None,
         domain: str = None,
         server_certificate_id: str = None,
-        certificate_id: List[str] = None,
-        server_certificate: List[CreateDomainExtensionRequestServerCertificate] = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.load_balancer_id = load_balancer_id
         self.listener_port = listener_port
         self.domain = domain
         self.server_certificate_id = server_certificate_id
-        self.certificate_id = certificate_id
-        self.server_certificate = server_certificate
 
     def validate(self):
-        if self.server_certificate:
-            for k in self.server_certificate:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1027,10 +1026,6 @@ class CreateDomainExtensionRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
         if self.listener_port is not None:
@@ -1039,12 +1034,6 @@ class CreateDomainExtensionRequest(TeaModel):
             result['Domain'] = self.domain
         if self.server_certificate_id is not None:
             result['ServerCertificateId'] = self.server_certificate_id
-        if self.certificate_id is not None:
-            result['CertificateId'] = self.certificate_id
-        result['ServerCertificate'] = []
-        if self.server_certificate is not None:
-            for k in self.server_certificate:
-                result['ServerCertificate'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1059,10 +1048,6 @@ class CreateDomainExtensionRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('ListenerPort') is not None:
@@ -1071,13 +1056,6 @@ class CreateDomainExtensionRequest(TeaModel):
             self.domain = m.get('Domain')
         if m.get('ServerCertificateId') is not None:
             self.server_certificate_id = m.get('ServerCertificateId')
-        if m.get('CertificateId') is not None:
-            self.certificate_id = m.get('CertificateId')
-        self.server_certificate = []
-        if m.get('ServerCertificate') is not None:
-            for k in m.get('ServerCertificate'):
-                temp_model = CreateDomainExtensionRequestServerCertificate()
-                self.server_certificate.append(temp_model.from_map(k))
         return self
 
 
@@ -1096,6 +1074,10 @@ class CreateDomainExtensionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.listener_port is not None:
             result['ListenerPort'] = self.listener_port
@@ -1132,6 +1114,10 @@ class CreateDomainExtensionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1166,9 +1152,6 @@ class CreateLoadBalancerRequest(TeaModel):
         owner_account: str = None,
         master_zone_id: str = None,
         slave_zone_id: str = None,
-        access_key_id: str = None,
-        tags: str = None,
-        enable_vpc_vip_flow: str = None,
         load_balancer_spec: str = None,
         resource_group_id: str = None,
         pay_type: str = None,
@@ -1177,10 +1160,7 @@ class CreateLoadBalancerRequest(TeaModel):
         auto_pay: bool = None,
         address_ipversion: str = None,
         address: str = None,
-        ratio: int = None,
         delete_protection: str = None,
-        cloud_type: str = None,
-        support_private_link: bool = None,
         modification_protection_status: str = None,
         modification_protection_reason: str = None,
     ):
@@ -1198,9 +1178,6 @@ class CreateLoadBalancerRequest(TeaModel):
         self.owner_account = owner_account
         self.master_zone_id = master_zone_id
         self.slave_zone_id = slave_zone_id
-        self.access_key_id = access_key_id
-        self.tags = tags
-        self.enable_vpc_vip_flow = enable_vpc_vip_flow
         self.load_balancer_spec = load_balancer_spec
         self.resource_group_id = resource_group_id
         self.pay_type = pay_type
@@ -1209,10 +1186,7 @@ class CreateLoadBalancerRequest(TeaModel):
         self.auto_pay = auto_pay
         self.address_ipversion = address_ipversion
         self.address = address
-        self.ratio = ratio
         self.delete_protection = delete_protection
-        self.cloud_type = cloud_type
-        self.support_private_link = support_private_link
         self.modification_protection_status = modification_protection_status
         self.modification_protection_reason = modification_protection_reason
 
@@ -1220,6 +1194,10 @@ class CreateLoadBalancerRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1249,12 +1227,6 @@ class CreateLoadBalancerRequest(TeaModel):
             result['MasterZoneId'] = self.master_zone_id
         if self.slave_zone_id is not None:
             result['SlaveZoneId'] = self.slave_zone_id
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
-        if self.enable_vpc_vip_flow is not None:
-            result['EnableVpcVipFlow'] = self.enable_vpc_vip_flow
         if self.load_balancer_spec is not None:
             result['LoadBalancerSpec'] = self.load_balancer_spec
         if self.resource_group_id is not None:
@@ -1271,14 +1243,8 @@ class CreateLoadBalancerRequest(TeaModel):
             result['AddressIPVersion'] = self.address_ipversion
         if self.address is not None:
             result['Address'] = self.address
-        if self.ratio is not None:
-            result['Ratio'] = self.ratio
         if self.delete_protection is not None:
             result['DeleteProtection'] = self.delete_protection
-        if self.cloud_type is not None:
-            result['CloudType'] = self.cloud_type
-        if self.support_private_link is not None:
-            result['SupportPrivateLink'] = self.support_private_link
         if self.modification_protection_status is not None:
             result['ModificationProtectionStatus'] = self.modification_protection_status
         if self.modification_protection_reason is not None:
@@ -1315,12 +1281,6 @@ class CreateLoadBalancerRequest(TeaModel):
             self.master_zone_id = m.get('MasterZoneId')
         if m.get('SlaveZoneId') is not None:
             self.slave_zone_id = m.get('SlaveZoneId')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
-        if m.get('EnableVpcVipFlow') is not None:
-            self.enable_vpc_vip_flow = m.get('EnableVpcVipFlow')
         if m.get('LoadBalancerSpec') is not None:
             self.load_balancer_spec = m.get('LoadBalancerSpec')
         if m.get('ResourceGroupId') is not None:
@@ -1337,14 +1297,8 @@ class CreateLoadBalancerRequest(TeaModel):
             self.address_ipversion = m.get('AddressIPVersion')
         if m.get('Address') is not None:
             self.address = m.get('Address')
-        if m.get('Ratio') is not None:
-            self.ratio = m.get('Ratio')
         if m.get('DeleteProtection') is not None:
             self.delete_protection = m.get('DeleteProtection')
-        if m.get('CloudType') is not None:
-            self.cloud_type = m.get('CloudType')
-        if m.get('SupportPrivateLink') is not None:
-            self.support_private_link = m.get('SupportPrivateLink')
         if m.get('ModificationProtectionStatus') is not None:
             self.modification_protection_status = m.get('ModificationProtectionStatus')
         if m.get('ModificationProtectionReason') is not None:
@@ -1381,6 +1335,10 @@ class CreateLoadBalancerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.load_balancer_name is not None:
             result['LoadBalancerName'] = self.load_balancer_name
@@ -1445,6 +1403,10 @@ class CreateLoadBalancerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1480,9 +1442,6 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         cookie_timeout: int = None,
         cookie: str = None,
         health_check: str = None,
-        health_check_type: str = None,
-        health_check_method: str = None,
-        health_check_http_version: str = None,
         health_check_domain: str = None,
         health_check_uri: str = None,
         healthy_threshold: int = None,
@@ -1491,11 +1450,8 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         health_check_connect_port: int = None,
         health_check_interval: int = None,
         health_check_http_code: str = None,
-        max_connection: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         vserver_group_id: str = None,
-        tags: str = None,
         xforwarded_for__slbip: str = None,
         xforwarded_for__slbid: str = None,
         xforwarded_for_proto: str = None,
@@ -1503,15 +1459,11 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         acl_id: str = None,
         acl_type: str = None,
         acl_status: str = None,
-        vpc_ids: str = None,
         description: str = None,
         listener_forward: str = None,
         forward_port: int = None,
         idle_timeout: int = None,
         request_timeout: int = None,
-        xforwarded_for__slbport: str = None,
-        xforwarded_for__client_src_port: str = None,
-        forward_code: int = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -1528,9 +1480,6 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         self.cookie_timeout = cookie_timeout
         self.cookie = cookie
         self.health_check = health_check
-        self.health_check_type = health_check_type
-        self.health_check_method = health_check_method
-        self.health_check_http_version = health_check_http_version
         self.health_check_domain = health_check_domain
         self.health_check_uri = health_check_uri
         self.healthy_threshold = healthy_threshold
@@ -1539,11 +1488,8 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         self.health_check_connect_port = health_check_connect_port
         self.health_check_interval = health_check_interval
         self.health_check_http_code = health_check_http_code
-        self.max_connection = max_connection
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.vserver_group_id = vserver_group_id
-        self.tags = tags
         self.xforwarded_for__slbip = xforwarded_for__slbip
         self.xforwarded_for__slbid = xforwarded_for__slbid
         self.xforwarded_for_proto = xforwarded_for_proto
@@ -1551,20 +1497,20 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         self.acl_id = acl_id
         self.acl_type = acl_type
         self.acl_status = acl_status
-        self.vpc_ids = vpc_ids
         self.description = description
         self.listener_forward = listener_forward
         self.forward_port = forward_port
         self.idle_timeout = idle_timeout
         self.request_timeout = request_timeout
-        self.xforwarded_for__slbport = xforwarded_for__slbport
-        self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
-        self.forward_code = forward_code
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1596,12 +1542,6 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
             result['Cookie'] = self.cookie
         if self.health_check is not None:
             result['HealthCheck'] = self.health_check
-        if self.health_check_type is not None:
-            result['HealthCheckType'] = self.health_check_type
-        if self.health_check_method is not None:
-            result['HealthCheckMethod'] = self.health_check_method
-        if self.health_check_http_version is not None:
-            result['HealthCheckHttpVersion'] = self.health_check_http_version
         if self.health_check_domain is not None:
             result['HealthCheckDomain'] = self.health_check_domain
         if self.health_check_uri is not None:
@@ -1618,16 +1558,10 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
             result['HealthCheckInterval'] = self.health_check_interval
         if self.health_check_http_code is not None:
             result['HealthCheckHttpCode'] = self.health_check_http_code
-        if self.max_connection is not None:
-            result['MaxConnection'] = self.max_connection
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.xforwarded_for__slbip is not None:
             result['XForwardedFor_SLBIP'] = self.xforwarded_for__slbip
         if self.xforwarded_for__slbid is not None:
@@ -1642,8 +1576,6 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
             result['AclType'] = self.acl_type
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
-        if self.vpc_ids is not None:
-            result['VpcIds'] = self.vpc_ids
         if self.description is not None:
             result['Description'] = self.description
         if self.listener_forward is not None:
@@ -1654,12 +1586,6 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
             result['IdleTimeout'] = self.idle_timeout
         if self.request_timeout is not None:
             result['RequestTimeout'] = self.request_timeout
-        if self.xforwarded_for__slbport is not None:
-            result['XForwardedFor_SLBPORT'] = self.xforwarded_for__slbport
-        if self.xforwarded_for__client_src_port is not None:
-            result['XForwardedFor_ClientSrcPort'] = self.xforwarded_for__client_src_port
-        if self.forward_code is not None:
-            result['ForwardCode'] = self.forward_code
         return result
 
     def from_map(self, m: dict = None):
@@ -1694,12 +1620,6 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
             self.cookie = m.get('Cookie')
         if m.get('HealthCheck') is not None:
             self.health_check = m.get('HealthCheck')
-        if m.get('HealthCheckType') is not None:
-            self.health_check_type = m.get('HealthCheckType')
-        if m.get('HealthCheckMethod') is not None:
-            self.health_check_method = m.get('HealthCheckMethod')
-        if m.get('HealthCheckHttpVersion') is not None:
-            self.health_check_http_version = m.get('HealthCheckHttpVersion')
         if m.get('HealthCheckDomain') is not None:
             self.health_check_domain = m.get('HealthCheckDomain')
         if m.get('HealthCheckURI') is not None:
@@ -1716,16 +1636,10 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
             self.health_check_interval = m.get('HealthCheckInterval')
         if m.get('HealthCheckHttpCode') is not None:
             self.health_check_http_code = m.get('HealthCheckHttpCode')
-        if m.get('MaxConnection') is not None:
-            self.max_connection = m.get('MaxConnection')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('XForwardedFor_SLBIP') is not None:
             self.xforwarded_for__slbip = m.get('XForwardedFor_SLBIP')
         if m.get('XForwardedFor_SLBID') is not None:
@@ -1740,8 +1654,6 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
             self.acl_type = m.get('AclType')
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
-        if m.get('VpcIds') is not None:
-            self.vpc_ids = m.get('VpcIds')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ListenerForward') is not None:
@@ -1752,12 +1664,6 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
             self.idle_timeout = m.get('IdleTimeout')
         if m.get('RequestTimeout') is not None:
             self.request_timeout = m.get('RequestTimeout')
-        if m.get('XForwardedFor_SLBPORT') is not None:
-            self.xforwarded_for__slbport = m.get('XForwardedFor_SLBPORT')
-        if m.get('XForwardedFor_ClientSrcPort') is not None:
-            self.xforwarded_for__client_src_port = m.get('XForwardedFor_ClientSrcPort')
-        if m.get('ForwardCode') is not None:
-            self.forward_code = m.get('ForwardCode')
         return self
 
 
@@ -1772,6 +1678,10 @@ class CreateLoadBalancerHTTPListenerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1800,6 +1710,10 @@ class CreateLoadBalancerHTTPListenerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1817,22 +1731,6 @@ class CreateLoadBalancerHTTPListenerResponse(TeaModel):
         return self
 
 
-class CreateLoadBalancerHTTPSListenerRequestServerCertificate(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        return self
-
-
 class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
     def __init__(
         self,
@@ -1844,7 +1742,6 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         bandwidth: int = None,
         listener_port: int = None,
         backend_server_port: int = None,
-        backend_protocol: str = None,
         xforwarded_for: str = None,
         scheduler: str = None,
         sticky_session: str = None,
@@ -1852,9 +1749,6 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         cookie_timeout: int = None,
         cookie: str = None,
         health_check: str = None,
-        health_check_type: str = None,
-        health_check_method: str = None,
-        health_check_http_version: str = None,
         health_check_domain: str = None,
         health_check_uri: str = None,
         healthy_threshold: int = None,
@@ -1864,12 +1758,9 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         health_check_interval: int = None,
         health_check_http_code: str = None,
         server_certificate_id: str = None,
-        max_connection: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         vserver_group_id: str = None,
         cacertificate_id: str = None,
-        tags: str = None,
         xforwarded_for__slbip: str = None,
         xforwarded_for__slbid: str = None,
         xforwarded_for_proto: str = None,
@@ -1877,23 +1768,11 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         acl_id: str = None,
         acl_type: str = None,
         acl_status: str = None,
-        vpc_ids: str = None,
         description: str = None,
         idle_timeout: int = None,
         request_timeout: int = None,
         enable_http_2: str = None,
         tlscipher_policy: str = None,
-        xforwarded_for__slbport: str = None,
-        xforwarded_for__client_src_port: str = None,
-        xforwarded_for__client_cert_subject_dn: str = None,
-        xforwarded_for__client_cert_issuer_dn: str = None,
-        xforwarded_for__client_cert_fingerprint: str = None,
-        xforwarded_for__client_cert_client_verify: str = None,
-        xforwarded_for__client_cert_issuer_dnalias: str = None,
-        xforwarded_for__client_cert_subject_dnalias: str = None,
-        xforwarded_for__client_cert_fingerprint_alias: str = None,
-        xforwarded_for__client_cert_client_verify_alias: str = None,
-        server_certificate: List[CreateLoadBalancerHTTPSListenerRequestServerCertificate] = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -1903,7 +1782,6 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         self.bandwidth = bandwidth
         self.listener_port = listener_port
         self.backend_server_port = backend_server_port
-        self.backend_protocol = backend_protocol
         self.xforwarded_for = xforwarded_for
         self.scheduler = scheduler
         self.sticky_session = sticky_session
@@ -1911,9 +1789,6 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         self.cookie_timeout = cookie_timeout
         self.cookie = cookie
         self.health_check = health_check
-        self.health_check_type = health_check_type
-        self.health_check_method = health_check_method
-        self.health_check_http_version = health_check_http_version
         self.health_check_domain = health_check_domain
         self.health_check_uri = health_check_uri
         self.healthy_threshold = healthy_threshold
@@ -1923,12 +1798,9 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         self.health_check_interval = health_check_interval
         self.health_check_http_code = health_check_http_code
         self.server_certificate_id = server_certificate_id
-        self.max_connection = max_connection
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.vserver_group_id = vserver_group_id
         self.cacertificate_id = cacertificate_id
-        self.tags = tags
         self.xforwarded_for__slbip = xforwarded_for__slbip
         self.xforwarded_for__slbid = xforwarded_for__slbid
         self.xforwarded_for_proto = xforwarded_for_proto
@@ -1936,31 +1808,20 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         self.acl_id = acl_id
         self.acl_type = acl_type
         self.acl_status = acl_status
-        self.vpc_ids = vpc_ids
         self.description = description
         self.idle_timeout = idle_timeout
         self.request_timeout = request_timeout
         self.enable_http_2 = enable_http_2
         self.tlscipher_policy = tlscipher_policy
-        self.xforwarded_for__slbport = xforwarded_for__slbport
-        self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
-        self.xforwarded_for__client_cert_subject_dn = xforwarded_for__client_cert_subject_dn
-        self.xforwarded_for__client_cert_issuer_dn = xforwarded_for__client_cert_issuer_dn
-        self.xforwarded_for__client_cert_fingerprint = xforwarded_for__client_cert_fingerprint
-        self.xforwarded_for__client_cert_client_verify = xforwarded_for__client_cert_client_verify
-        self.xforwarded_for__client_cert_issuer_dnalias = xforwarded_for__client_cert_issuer_dnalias
-        self.xforwarded_for__client_cert_subject_dnalias = xforwarded_for__client_cert_subject_dnalias
-        self.xforwarded_for__client_cert_fingerprint_alias = xforwarded_for__client_cert_fingerprint_alias
-        self.xforwarded_for__client_cert_client_verify_alias = xforwarded_for__client_cert_client_verify_alias
-        self.server_certificate = server_certificate
 
     def validate(self):
-        if self.server_certificate:
-            for k in self.server_certificate:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1978,8 +1839,6 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
             result['ListenerPort'] = self.listener_port
         if self.backend_server_port is not None:
             result['BackendServerPort'] = self.backend_server_port
-        if self.backend_protocol is not None:
-            result['BackendProtocol'] = self.backend_protocol
         if self.xforwarded_for is not None:
             result['XForwardedFor'] = self.xforwarded_for
         if self.scheduler is not None:
@@ -1994,12 +1853,6 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
             result['Cookie'] = self.cookie
         if self.health_check is not None:
             result['HealthCheck'] = self.health_check
-        if self.health_check_type is not None:
-            result['HealthCheckType'] = self.health_check_type
-        if self.health_check_method is not None:
-            result['HealthCheckMethod'] = self.health_check_method
-        if self.health_check_http_version is not None:
-            result['HealthCheckHttpVersion'] = self.health_check_http_version
         if self.health_check_domain is not None:
             result['HealthCheckDomain'] = self.health_check_domain
         if self.health_check_uri is not None:
@@ -2018,18 +1871,12 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
             result['HealthCheckHttpCode'] = self.health_check_http_code
         if self.server_certificate_id is not None:
             result['ServerCertificateId'] = self.server_certificate_id
-        if self.max_connection is not None:
-            result['MaxConnection'] = self.max_connection
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
         if self.cacertificate_id is not None:
             result['CACertificateId'] = self.cacertificate_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.xforwarded_for__slbip is not None:
             result['XForwardedFor_SLBIP'] = self.xforwarded_for__slbip
         if self.xforwarded_for__slbid is not None:
@@ -2044,8 +1891,6 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
             result['AclType'] = self.acl_type
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
-        if self.vpc_ids is not None:
-            result['VpcIds'] = self.vpc_ids
         if self.description is not None:
             result['Description'] = self.description
         if self.idle_timeout is not None:
@@ -2056,30 +1901,6 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
             result['EnableHttp2'] = self.enable_http_2
         if self.tlscipher_policy is not None:
             result['TLSCipherPolicy'] = self.tlscipher_policy
-        if self.xforwarded_for__slbport is not None:
-            result['XForwardedFor_SLBPORT'] = self.xforwarded_for__slbport
-        if self.xforwarded_for__client_src_port is not None:
-            result['XForwardedFor_ClientSrcPort'] = self.xforwarded_for__client_src_port
-        if self.xforwarded_for__client_cert_subject_dn is not None:
-            result['XForwardedFor_ClientCertSubjectDN'] = self.xforwarded_for__client_cert_subject_dn
-        if self.xforwarded_for__client_cert_issuer_dn is not None:
-            result['XForwardedFor_ClientCertIssuerDN'] = self.xforwarded_for__client_cert_issuer_dn
-        if self.xforwarded_for__client_cert_fingerprint is not None:
-            result['XForwardedFor_ClientCertFingerprint'] = self.xforwarded_for__client_cert_fingerprint
-        if self.xforwarded_for__client_cert_client_verify is not None:
-            result['XForwardedFor_ClientCertClientVerify'] = self.xforwarded_for__client_cert_client_verify
-        if self.xforwarded_for__client_cert_issuer_dnalias is not None:
-            result['XForwardedFor_ClientCertIssuerDNAlias'] = self.xforwarded_for__client_cert_issuer_dnalias
-        if self.xforwarded_for__client_cert_subject_dnalias is not None:
-            result['XForwardedFor_ClientCertSubjectDNAlias'] = self.xforwarded_for__client_cert_subject_dnalias
-        if self.xforwarded_for__client_cert_fingerprint_alias is not None:
-            result['XForwardedFor_ClientCertFingerprintAlias'] = self.xforwarded_for__client_cert_fingerprint_alias
-        if self.xforwarded_for__client_cert_client_verify_alias is not None:
-            result['XForwardedFor_ClientCertClientVerifyAlias'] = self.xforwarded_for__client_cert_client_verify_alias
-        result['ServerCertificate'] = []
-        if self.server_certificate is not None:
-            for k in self.server_certificate:
-                result['ServerCertificate'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2100,8 +1921,6 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
             self.listener_port = m.get('ListenerPort')
         if m.get('BackendServerPort') is not None:
             self.backend_server_port = m.get('BackendServerPort')
-        if m.get('BackendProtocol') is not None:
-            self.backend_protocol = m.get('BackendProtocol')
         if m.get('XForwardedFor') is not None:
             self.xforwarded_for = m.get('XForwardedFor')
         if m.get('Scheduler') is not None:
@@ -2116,12 +1935,6 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
             self.cookie = m.get('Cookie')
         if m.get('HealthCheck') is not None:
             self.health_check = m.get('HealthCheck')
-        if m.get('HealthCheckType') is not None:
-            self.health_check_type = m.get('HealthCheckType')
-        if m.get('HealthCheckMethod') is not None:
-            self.health_check_method = m.get('HealthCheckMethod')
-        if m.get('HealthCheckHttpVersion') is not None:
-            self.health_check_http_version = m.get('HealthCheckHttpVersion')
         if m.get('HealthCheckDomain') is not None:
             self.health_check_domain = m.get('HealthCheckDomain')
         if m.get('HealthCheckURI') is not None:
@@ -2140,18 +1953,12 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
             self.health_check_http_code = m.get('HealthCheckHttpCode')
         if m.get('ServerCertificateId') is not None:
             self.server_certificate_id = m.get('ServerCertificateId')
-        if m.get('MaxConnection') is not None:
-            self.max_connection = m.get('MaxConnection')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
         if m.get('CACertificateId') is not None:
             self.cacertificate_id = m.get('CACertificateId')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('XForwardedFor_SLBIP') is not None:
             self.xforwarded_for__slbip = m.get('XForwardedFor_SLBIP')
         if m.get('XForwardedFor_SLBID') is not None:
@@ -2166,8 +1973,6 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
             self.acl_type = m.get('AclType')
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
-        if m.get('VpcIds') is not None:
-            self.vpc_ids = m.get('VpcIds')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('IdleTimeout') is not None:
@@ -2178,31 +1983,6 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
             self.enable_http_2 = m.get('EnableHttp2')
         if m.get('TLSCipherPolicy') is not None:
             self.tlscipher_policy = m.get('TLSCipherPolicy')
-        if m.get('XForwardedFor_SLBPORT') is not None:
-            self.xforwarded_for__slbport = m.get('XForwardedFor_SLBPORT')
-        if m.get('XForwardedFor_ClientSrcPort') is not None:
-            self.xforwarded_for__client_src_port = m.get('XForwardedFor_ClientSrcPort')
-        if m.get('XForwardedFor_ClientCertSubjectDN') is not None:
-            self.xforwarded_for__client_cert_subject_dn = m.get('XForwardedFor_ClientCertSubjectDN')
-        if m.get('XForwardedFor_ClientCertIssuerDN') is not None:
-            self.xforwarded_for__client_cert_issuer_dn = m.get('XForwardedFor_ClientCertIssuerDN')
-        if m.get('XForwardedFor_ClientCertFingerprint') is not None:
-            self.xforwarded_for__client_cert_fingerprint = m.get('XForwardedFor_ClientCertFingerprint')
-        if m.get('XForwardedFor_ClientCertClientVerify') is not None:
-            self.xforwarded_for__client_cert_client_verify = m.get('XForwardedFor_ClientCertClientVerify')
-        if m.get('XForwardedFor_ClientCertIssuerDNAlias') is not None:
-            self.xforwarded_for__client_cert_issuer_dnalias = m.get('XForwardedFor_ClientCertIssuerDNAlias')
-        if m.get('XForwardedFor_ClientCertSubjectDNAlias') is not None:
-            self.xforwarded_for__client_cert_subject_dnalias = m.get('XForwardedFor_ClientCertSubjectDNAlias')
-        if m.get('XForwardedFor_ClientCertFingerprintAlias') is not None:
-            self.xforwarded_for__client_cert_fingerprint_alias = m.get('XForwardedFor_ClientCertFingerprintAlias')
-        if m.get('XForwardedFor_ClientCertClientVerifyAlias') is not None:
-            self.xforwarded_for__client_cert_client_verify_alias = m.get('XForwardedFor_ClientCertClientVerifyAlias')
-        self.server_certificate = []
-        if m.get('ServerCertificate') is not None:
-            for k in m.get('ServerCertificate'):
-                temp_model = CreateLoadBalancerHTTPSListenerRequestServerCertificate()
-                self.server_certificate.append(temp_model.from_map(k))
         return self
 
 
@@ -2217,6 +1997,10 @@ class CreateLoadBalancerHTTPSListenerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2245,6 +2029,10 @@ class CreateLoadBalancerHTTPSListenerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2259,22 +2047,6 @@ class CreateLoadBalancerHTTPSListenerResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = CreateLoadBalancerHTTPSListenerResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateLoadBalancerTCPListenerRequestPortRange(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
         return self
 
 
@@ -2300,22 +2072,16 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         health_check_domain: str = None,
         health_check_uri: str = None,
         health_check_http_code: str = None,
-        health_check_method: str = None,
         health_check_type: str = None,
-        max_connection: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         vserver_group_id: str = None,
         master_slave_server_group_id: str = None,
-        tags: str = None,
         acl_id: str = None,
         acl_type: str = None,
         acl_status: str = None,
-        vpc_ids: str = None,
         description: str = None,
         connection_drain: str = None,
         connection_drain_timeout: int = None,
-        port_range: List[CreateLoadBalancerTCPListenerRequestPortRange] = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -2336,30 +2102,25 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         self.health_check_domain = health_check_domain
         self.health_check_uri = health_check_uri
         self.health_check_http_code = health_check_http_code
-        self.health_check_method = health_check_method
         self.health_check_type = health_check_type
-        self.max_connection = max_connection
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.vserver_group_id = vserver_group_id
         self.master_slave_server_group_id = master_slave_server_group_id
-        self.tags = tags
         self.acl_id = acl_id
         self.acl_type = acl_type
         self.acl_status = acl_status
-        self.vpc_ids = vpc_ids
         self.description = description
         self.connection_drain = connection_drain
         self.connection_drain_timeout = connection_drain_timeout
-        self.port_range = port_range
 
     def validate(self):
-        if self.port_range:
-            for k in self.port_range:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -2399,40 +2160,26 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
             result['HealthCheckURI'] = self.health_check_uri
         if self.health_check_http_code is not None:
             result['HealthCheckHttpCode'] = self.health_check_http_code
-        if self.health_check_method is not None:
-            result['HealthCheckMethod'] = self.health_check_method
         if self.health_check_type is not None:
             result['HealthCheckType'] = self.health_check_type
-        if self.max_connection is not None:
-            result['MaxConnection'] = self.max_connection
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
         if self.master_slave_server_group_id is not None:
             result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
         if self.acl_type is not None:
             result['AclType'] = self.acl_type
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
-        if self.vpc_ids is not None:
-            result['VpcIds'] = self.vpc_ids
         if self.description is not None:
             result['Description'] = self.description
         if self.connection_drain is not None:
             result['ConnectionDrain'] = self.connection_drain
         if self.connection_drain_timeout is not None:
             result['ConnectionDrainTimeout'] = self.connection_drain_timeout
-        result['PortRange'] = []
-        if self.port_range is not None:
-            for k in self.port_range:
-                result['PortRange'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2475,41 +2222,26 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
             self.health_check_uri = m.get('HealthCheckURI')
         if m.get('HealthCheckHttpCode') is not None:
             self.health_check_http_code = m.get('HealthCheckHttpCode')
-        if m.get('HealthCheckMethod') is not None:
-            self.health_check_method = m.get('HealthCheckMethod')
         if m.get('HealthCheckType') is not None:
             self.health_check_type = m.get('HealthCheckType')
-        if m.get('MaxConnection') is not None:
-            self.max_connection = m.get('MaxConnection')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
         if m.get('MasterSlaveServerGroupId') is not None:
             self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
         if m.get('AclType') is not None:
             self.acl_type = m.get('AclType')
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
-        if m.get('VpcIds') is not None:
-            self.vpc_ids = m.get('VpcIds')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ConnectionDrain') is not None:
             self.connection_drain = m.get('ConnectionDrain')
         if m.get('ConnectionDrainTimeout') is not None:
             self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
-        self.port_range = []
-        if m.get('PortRange') is not None:
-            for k in m.get('PortRange'):
-                temp_model = CreateLoadBalancerTCPListenerRequestPortRange()
-                self.port_range.append(temp_model.from_map(k))
         return self
 
 
@@ -2524,6 +2256,10 @@ class CreateLoadBalancerTCPListenerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2552,6 +2288,10 @@ class CreateLoadBalancerTCPListenerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2569,22 +2309,6 @@ class CreateLoadBalancerTCPListenerResponse(TeaModel):
         return self
 
 
-class CreateLoadBalancerUDPListenerRequestPortRange(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        return self
-
-
 class CreateLoadBalancerUDPListenerRequest(TeaModel):
     def __init__(
         self,
@@ -2597,7 +2321,6 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
         backend_server_port: int = None,
         bandwidth: int = None,
         scheduler: str = None,
-        persistence_timeout: int = None,
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
         health_check_connect_timeout: int = None,
@@ -2605,20 +2328,13 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
         health_check_interval: int = None,
         health_check_req: str = None,
         health_check_exp: str = None,
-        max_connection: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         vserver_group_id: str = None,
         master_slave_server_group_id: str = None,
-        tags: str = None,
         acl_id: str = None,
         acl_type: str = None,
         acl_status: str = None,
-        vpc_ids: str = None,
         description: str = None,
-        connection_drain: str = None,
-        connection_drain_timeout: int = None,
-        port_range: List[CreateLoadBalancerUDPListenerRequestPortRange] = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -2629,7 +2345,6 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
         self.backend_server_port = backend_server_port
         self.bandwidth = bandwidth
         self.scheduler = scheduler
-        self.persistence_timeout = persistence_timeout
         self.healthy_threshold = healthy_threshold
         self.unhealthy_threshold = unhealthy_threshold
         self.health_check_connect_timeout = health_check_connect_timeout
@@ -2637,28 +2352,22 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
         self.health_check_interval = health_check_interval
         self.health_check_req = health_check_req
         self.health_check_exp = health_check_exp
-        self.max_connection = max_connection
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.vserver_group_id = vserver_group_id
         self.master_slave_server_group_id = master_slave_server_group_id
-        self.tags = tags
         self.acl_id = acl_id
         self.acl_type = acl_type
         self.acl_status = acl_status
-        self.vpc_ids = vpc_ids
         self.description = description
-        self.connection_drain = connection_drain
-        self.connection_drain_timeout = connection_drain_timeout
-        self.port_range = port_range
 
     def validate(self):
-        if self.port_range:
-            for k in self.port_range:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -2678,8 +2387,6 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
             result['Bandwidth'] = self.bandwidth
         if self.scheduler is not None:
             result['Scheduler'] = self.scheduler
-        if self.persistence_timeout is not None:
-            result['PersistenceTimeout'] = self.persistence_timeout
         if self.healthy_threshold is not None:
             result['HealthyThreshold'] = self.healthy_threshold
         if self.unhealthy_threshold is not None:
@@ -2694,36 +2401,20 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
             result['healthCheckReq'] = self.health_check_req
         if self.health_check_exp is not None:
             result['healthCheckExp'] = self.health_check_exp
-        if self.max_connection is not None:
-            result['MaxConnection'] = self.max_connection
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
         if self.master_slave_server_group_id is not None:
             result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
         if self.acl_type is not None:
             result['AclType'] = self.acl_type
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
-        if self.vpc_ids is not None:
-            result['VpcIds'] = self.vpc_ids
         if self.description is not None:
             result['Description'] = self.description
-        if self.connection_drain is not None:
-            result['ConnectionDrain'] = self.connection_drain
-        if self.connection_drain_timeout is not None:
-            result['ConnectionDrainTimeout'] = self.connection_drain_timeout
-        result['PortRange'] = []
-        if self.port_range is not None:
-            for k in self.port_range:
-                result['PortRange'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2746,8 +2437,6 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
             self.bandwidth = m.get('Bandwidth')
         if m.get('Scheduler') is not None:
             self.scheduler = m.get('Scheduler')
-        if m.get('PersistenceTimeout') is not None:
-            self.persistence_timeout = m.get('PersistenceTimeout')
         if m.get('HealthyThreshold') is not None:
             self.healthy_threshold = m.get('HealthyThreshold')
         if m.get('UnhealthyThreshold') is not None:
@@ -2762,37 +2451,20 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
             self.health_check_req = m.get('healthCheckReq')
         if m.get('healthCheckExp') is not None:
             self.health_check_exp = m.get('healthCheckExp')
-        if m.get('MaxConnection') is not None:
-            self.max_connection = m.get('MaxConnection')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
         if m.get('MasterSlaveServerGroupId') is not None:
             self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
         if m.get('AclType') is not None:
             self.acl_type = m.get('AclType')
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
-        if m.get('VpcIds') is not None:
-            self.vpc_ids = m.get('VpcIds')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('ConnectionDrain') is not None:
-            self.connection_drain = m.get('ConnectionDrain')
-        if m.get('ConnectionDrainTimeout') is not None:
-            self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
-        self.port_range = []
-        if m.get('PortRange') is not None:
-            for k in m.get('PortRange'):
-                temp_model = CreateLoadBalancerUDPListenerRequestPortRange()
-                self.port_range.append(temp_model.from_map(k))
         return self
 
 
@@ -2807,6 +2479,10 @@ class CreateLoadBalancerUDPListenerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2835,6 +2511,10 @@ class CreateLoadBalancerUDPListenerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2860,8 +2540,6 @@ class CreateMasterSlaveServerGroupRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         load_balancer_id: str = None,
         master_slave_server_group_name: str = None,
         master_slave_backend_servers: str = None,
@@ -2871,8 +2549,6 @@ class CreateMasterSlaveServerGroupRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.load_balancer_id = load_balancer_id
         self.master_slave_server_group_name = master_slave_server_group_name
         self.master_slave_backend_servers = master_slave_backend_servers
@@ -2881,6 +2557,10 @@ class CreateMasterSlaveServerGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -2892,10 +2572,6 @@ class CreateMasterSlaveServerGroupRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
         if self.master_slave_server_group_name is not None:
@@ -2916,10 +2592,6 @@ class CreateMasterSlaveServerGroupRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('MasterSlaveServerGroupName') is not None:
@@ -2950,6 +2622,10 @@ class CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSla
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -2996,6 +2672,10 @@ class CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers(TeaModel
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MasterSlaveBackendServer'] = []
         if self.master_slave_backend_server is not None:
@@ -3029,6 +2709,10 @@ class CreateMasterSlaveServerGroupResponseBody(TeaModel):
             self.master_slave_backend_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3066,6 +2750,10 @@ class CreateMasterSlaveServerGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3091,8 +2779,6 @@ class CreateRulesRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         load_balancer_id: str = None,
         listener_port: int = None,
         listener_protocol: str = None,
@@ -3103,8 +2789,6 @@ class CreateRulesRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.load_balancer_id = load_balancer_id
         self.listener_port = listener_port
         self.listener_protocol = listener_protocol
@@ -3114,6 +2798,10 @@ class CreateRulesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3125,10 +2813,6 @@ class CreateRulesRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
         if self.listener_port is not None:
@@ -3151,10 +2835,6 @@ class CreateRulesRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('ListenerPort') is not None:
@@ -3179,6 +2859,10 @@ class CreateRulesResponseBodyRulesRule(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -3209,6 +2893,10 @@ class CreateRulesResponseBodyRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Rule'] = []
         if self.rule is not None:
@@ -3240,6 +2928,10 @@ class CreateRulesResponseBody(TeaModel):
             self.rules.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3273,6 +2965,10 @@ class CreateRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3317,6 +3013,10 @@ class CreateTLSCipherPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3374,6 +3074,10 @@ class CreateTLSCipherPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3406,6 +3110,10 @@ class CreateTLSCipherPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3431,8 +3139,6 @@ class CreateVServerGroupRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         load_balancer_id: str = None,
         vserver_group_name: str = None,
         backend_servers: str = None,
@@ -3442,8 +3148,6 @@ class CreateVServerGroupRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.load_balancer_id = load_balancer_id
         self.vserver_group_name = vserver_group_name
         self.backend_servers = backend_servers
@@ -3452,6 +3156,10 @@ class CreateVServerGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3463,10 +3171,6 @@ class CreateVServerGroupRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
         if self.vserver_group_name is not None:
@@ -3487,10 +3191,6 @@ class CreateVServerGroupRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('VServerGroupName') is not None:
@@ -3519,6 +3219,10 @@ class CreateVServerGroupResponseBodyBackendServersBackendServer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -3561,6 +3265,10 @@ class CreateVServerGroupResponseBodyBackendServers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BackendServer'] = []
         if self.backend_server is not None:
@@ -3594,6 +3302,10 @@ class CreateVServerGroupResponseBody(TeaModel):
             self.backend_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -3631,6 +3343,10 @@ class CreateVServerGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3655,8 +3371,6 @@ class DeleteAccessControlListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         region_id: str = None,
         acl_id: str = None,
     ):
@@ -3664,8 +3378,6 @@ class DeleteAccessControlListRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.region_id = region_id
         self.acl_id = acl_id
 
@@ -3673,6 +3385,10 @@ class DeleteAccessControlListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3682,10 +3398,6 @@ class DeleteAccessControlListRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.acl_id is not None:
@@ -3702,10 +3414,6 @@ class DeleteAccessControlListRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('AclId') is not None:
@@ -3724,6 +3432,10 @@ class DeleteAccessControlListResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3752,6 +3464,10 @@ class DeleteAccessControlListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3776,7 +3492,6 @@ class DeleteCACertificateRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         region_id: str = None,
         cacertificate_id: str = None,
     ):
@@ -3784,7 +3499,6 @@ class DeleteCACertificateRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.region_id = region_id
         self.cacertificate_id = cacertificate_id
 
@@ -3792,6 +3506,10 @@ class DeleteCACertificateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3801,8 +3519,6 @@ class DeleteCACertificateRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.cacertificate_id is not None:
@@ -3819,8 +3535,6 @@ class DeleteCACertificateRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('CACertificateId') is not None:
@@ -3839,6 +3553,10 @@ class DeleteCACertificateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3867,6 +3585,10 @@ class DeleteCACertificateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3892,8 +3614,6 @@ class DeleteDomainExtensionRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         domain_extension_id: str = None,
     ):
         self.owner_id = owner_id
@@ -3901,14 +3621,16 @@ class DeleteDomainExtensionRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.domain_extension_id = domain_extension_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3920,10 +3642,6 @@ class DeleteDomainExtensionRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.domain_extension_id is not None:
             result['DomainExtensionId'] = self.domain_extension_id
         return result
@@ -3940,10 +3658,6 @@ class DeleteDomainExtensionRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('DomainExtensionId') is not None:
             self.domain_extension_id = m.get('DomainExtensionId')
         return self
@@ -3960,6 +3674,10 @@ class DeleteDomainExtensionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3988,6 +3706,10 @@ class DeleteDomainExtensionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4014,8 +3736,6 @@ class DeleteLoadBalancerRequest(TeaModel):
         resource_owner_id: int = None,
         load_balancer_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -4023,13 +3743,15 @@ class DeleteLoadBalancerRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -4043,10 +3765,6 @@ class DeleteLoadBalancerRequest(TeaModel):
             result['LoadBalancerId'] = self.load_balancer_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -4063,10 +3781,6 @@ class DeleteLoadBalancerRequest(TeaModel):
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -4081,6 +3795,10 @@ class DeleteLoadBalancerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4109,6 +3827,10 @@ class DeleteLoadBalancerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4137,8 +3859,6 @@ class DeleteLoadBalancerListenerRequest(TeaModel):
         listener_port: int = None,
         listener_protocol: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -4148,13 +3868,15 @@ class DeleteLoadBalancerListenerRequest(TeaModel):
         self.listener_port = listener_port
         self.listener_protocol = listener_protocol
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -4172,10 +3894,6 @@ class DeleteLoadBalancerListenerRequest(TeaModel):
             result['ListenerProtocol'] = self.listener_protocol
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -4196,10 +3914,6 @@ class DeleteLoadBalancerListenerRequest(TeaModel):
             self.listener_protocol = m.get('ListenerProtocol')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -4214,6 +3928,10 @@ class DeleteLoadBalancerListenerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4242,6 +3960,10 @@ class DeleteLoadBalancerListenerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4267,8 +3989,6 @@ class DeleteMasterSlaveServerGroupRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         master_slave_server_group_id: str = None,
     ):
         self.owner_id = owner_id
@@ -4276,14 +3996,16 @@ class DeleteMasterSlaveServerGroupRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.master_slave_server_group_id = master_slave_server_group_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4295,10 +4017,6 @@ class DeleteMasterSlaveServerGroupRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.master_slave_server_group_id is not None:
             result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
         return result
@@ -4315,10 +4033,6 @@ class DeleteMasterSlaveServerGroupRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('MasterSlaveServerGroupId') is not None:
             self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
         return self
@@ -4335,6 +4049,10 @@ class DeleteMasterSlaveServerGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4363,6 +4081,10 @@ class DeleteMasterSlaveServerGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4388,8 +4110,6 @@ class DeleteRulesRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         rule_ids: str = None,
     ):
         self.owner_id = owner_id
@@ -4397,14 +4117,16 @@ class DeleteRulesRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.rule_ids = rule_ids
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4416,10 +4138,6 @@ class DeleteRulesRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.rule_ids is not None:
             result['RuleIds'] = self.rule_ids
         return result
@@ -4436,10 +4154,6 @@ class DeleteRulesRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('RuleIds') is not None:
             self.rule_ids = m.get('RuleIds')
         return self
@@ -4456,6 +4170,10 @@ class DeleteRulesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4484,6 +4202,10 @@ class DeleteRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4510,8 +4232,6 @@ class DeleteServerCertificateRequest(TeaModel):
         region_id: str = None,
         server_certificate_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -4519,13 +4239,15 @@ class DeleteServerCertificateRequest(TeaModel):
         self.region_id = region_id
         self.server_certificate_id = server_certificate_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4539,10 +4261,6 @@ class DeleteServerCertificateRequest(TeaModel):
             result['ServerCertificateId'] = self.server_certificate_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -4559,10 +4277,6 @@ class DeleteServerCertificateRequest(TeaModel):
             self.server_certificate_id = m.get('ServerCertificateId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -4577,6 +4291,10 @@ class DeleteServerCertificateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4605,6 +4323,10 @@ class DeleteServerCertificateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4645,6 +4367,10 @@ class DeleteTLSCipherPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4692,6 +4418,10 @@ class DeleteTLSCipherPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4720,6 +4450,10 @@ class DeleteTLSCipherPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4745,8 +4479,6 @@ class DeleteVServerGroupRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         vserver_group_id: str = None,
     ):
         self.owner_id = owner_id
@@ -4754,14 +4486,16 @@ class DeleteVServerGroupRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.vserver_group_id = vserver_group_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4773,10 +4507,6 @@ class DeleteVServerGroupRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
         return result
@@ -4793,10 +4523,6 @@ class DeleteVServerGroupRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
         return self
@@ -4813,6 +4539,10 @@ class DeleteVServerGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4841,6 +4571,10 @@ class DeleteVServerGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4865,8 +4599,6 @@ class DescribeAccessControlListAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         region_id: str = None,
         acl_id: str = None,
         acl_entry_comment: str = None,
@@ -4875,8 +4607,6 @@ class DescribeAccessControlListAttributeRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.region_id = region_id
         self.acl_id = acl_id
         self.acl_entry_comment = acl_entry_comment
@@ -4885,6 +4615,10 @@ class DescribeAccessControlListAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4894,10 +4628,6 @@ class DescribeAccessControlListAttributeRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.acl_id is not None:
@@ -4916,10 +4646,6 @@ class DescribeAccessControlListAttributeRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('AclId') is not None:
@@ -4942,6 +4668,10 @@ class DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.acl_entry_comment is not None:
             result['AclEntryComment'] = self.acl_entry_comment
@@ -4972,6 +4702,10 @@ class DescribeAccessControlListAttributeResponseBodyAclEntrys(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AclEntry'] = []
         if self.acl_entry is not None:
@@ -5006,6 +4740,10 @@ class DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListe
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.acl_type is not None:
             result['AclType'] = self.acl_type
@@ -5044,6 +4782,10 @@ class DescribeAccessControlListAttributeResponseBodyRelatedListeners(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RelatedListener'] = []
         if self.related_listener is not None:
@@ -5087,6 +4829,10 @@ class DescribeAccessControlListAttributeResponseBody(TeaModel):
             self.related_listeners.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.acl_entrys is not None:
             result['AclEntrys'] = self.acl_entrys.to_map()
@@ -5141,6 +4887,10 @@ class DescribeAccessControlListAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5158,22 +4908,6 @@ class DescribeAccessControlListAttributeResponse(TeaModel):
         return self
 
 
-class DescribeAccessControlListsRequestTag(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        return self
-
-
 class DescribeAccessControlListsRequest(TeaModel):
     def __init__(
         self,
@@ -5181,37 +4915,32 @@ class DescribeAccessControlListsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         region_id: str = None,
         acl_name: str = None,
         address_ipversion: str = None,
         page_size: int = None,
         page_number: int = None,
         resource_group_id: str = None,
-        tag: List[DescribeAccessControlListsRequestTag] = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.region_id = region_id
         self.acl_name = acl_name
         self.address_ipversion = address_ipversion
         self.page_size = page_size
         self.page_number = page_number
         self.resource_group_id = resource_group_id
-        self.tag = tag
 
     def validate(self):
-        if self.tag:
-            for k in self.tag:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5221,10 +4950,6 @@ class DescribeAccessControlListsRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.acl_name is not None:
@@ -5237,10 +4962,6 @@ class DescribeAccessControlListsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -5253,10 +4974,6 @@ class DescribeAccessControlListsRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('AclName') is not None:
@@ -5269,11 +4986,6 @@ class DescribeAccessControlListsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        self.tag = []
-        if m.get('Tag') is not None:
-            for k in m.get('Tag'):
-                temp_model = DescribeAccessControlListsRequestTag()
-                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -5294,6 +5006,10 @@ class DescribeAccessControlListsResponseBodyAclsAcl(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
@@ -5332,6 +5048,10 @@ class DescribeAccessControlListsResponseBodyAcls(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Acl'] = []
         if self.acl is not None:
@@ -5371,6 +5091,10 @@ class DescribeAccessControlListsResponseBody(TeaModel):
             self.acls.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -5420,6 +5144,10 @@ class DescribeAccessControlListsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5444,7 +5172,6 @@ class DescribeAvailableResourceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         region_id: str = None,
         address_type: str = None,
         address_ipversion: str = None,
@@ -5453,7 +5180,6 @@ class DescribeAvailableResourceRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.region_id = region_id
         self.address_type = address_type
         self.address_ipversion = address_ipversion
@@ -5462,6 +5188,10 @@ class DescribeAvailableResourceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5471,8 +5201,6 @@ class DescribeAvailableResourceRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.address_type is not None:
@@ -5491,8 +5219,6 @@ class DescribeAvailableResourceRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('AddressType') is not None:
@@ -5515,6 +5241,10 @@ class DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSu
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.address_ipversion is not None:
             result['AddressIPVersion'] = self.address_ipversion
@@ -5545,6 +5275,10 @@ class DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSu
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SupportResource'] = []
         if self.support_resource is not None:
@@ -5578,6 +5312,10 @@ class DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource(T
             self.support_resources.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.slave_zone_id is not None:
             result['SlaveZoneId'] = self.slave_zone_id
@@ -5613,6 +5351,10 @@ class DescribeAvailableResourceResponseBodyAvailableResources(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AvailableResource'] = []
         if self.available_resource is not None:
@@ -5644,6 +5386,10 @@ class DescribeAvailableResourceResponseBody(TeaModel):
             self.available_resources.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5677,6 +5423,10 @@ class DescribeAvailableResourceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5694,22 +5444,6 @@ class DescribeAvailableResourceResponse(TeaModel):
         return self
 
 
-class DescribeCACertificatesRequestTag(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        return self
-
-
 class DescribeCACertificatesRequest(TeaModel):
     def __init__(
         self,
@@ -5717,29 +5451,26 @@ class DescribeCACertificatesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         region_id: str = None,
         cacertificate_id: str = None,
         resource_group_id: str = None,
-        tag: List[DescribeCACertificatesRequestTag] = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.region_id = region_id
         self.cacertificate_id = cacertificate_id
         self.resource_group_id = resource_group_id
-        self.tag = tag
 
     def validate(self):
-        if self.tag:
-            for k in self.tag:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5749,18 +5480,12 @@ class DescribeCACertificatesRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.cacertificate_id is not None:
             result['CACertificateId'] = self.cacertificate_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -5773,19 +5498,12 @@ class DescribeCACertificatesRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('CACertificateId') is not None:
             self.cacertificate_id = m.get('CACertificateId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        self.tag = []
-        if m.get('Tag') is not None:
-            for k in m.get('Tag'):
-                temp_model = DescribeCACertificatesRequestTag()
-                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -5818,6 +5536,10 @@ class DescribeCACertificatesResponseBodyCACertificatesCACertificate(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.create_time_stamp is not None:
             result['CreateTimeStamp'] = self.create_time_stamp
@@ -5880,6 +5602,10 @@ class DescribeCACertificatesResponseBodyCACertificates(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CACertificate'] = []
         if self.cacertificate is not None:
@@ -5911,6 +5637,10 @@ class DescribeCACertificatesResponseBody(TeaModel):
             self.cacertificates.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5944,6 +5674,10 @@ class DescribeCACertificatesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5969,8 +5703,6 @@ class DescribeDomainExtensionAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         domain_extension_id: str = None,
     ):
         self.owner_id = owner_id
@@ -5978,14 +5710,16 @@ class DescribeDomainExtensionAttributeRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.domain_extension_id = domain_extension_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5997,10 +5731,6 @@ class DescribeDomainExtensionAttributeRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.domain_extension_id is not None:
             result['DomainExtensionId'] = self.domain_extension_id
         return result
@@ -6017,10 +5747,6 @@ class DescribeDomainExtensionAttributeRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('DomainExtensionId') is not None:
             self.domain_extension_id = m.get('DomainExtensionId')
         return self
@@ -6047,6 +5773,10 @@ class DescribeDomainExtensionAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.listener_port is not None:
             result['ListenerPort'] = self.listener_port
@@ -6095,6 +5825,10 @@ class DescribeDomainExtensionAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6120,8 +5854,6 @@ class DescribeDomainExtensionsRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         load_balancer_id: str = None,
         listener_port: int = None,
         domain_extension_id: str = None,
@@ -6131,8 +5863,6 @@ class DescribeDomainExtensionsRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.load_balancer_id = load_balancer_id
         self.listener_port = listener_port
         self.domain_extension_id = domain_extension_id
@@ -6141,6 +5871,10 @@ class DescribeDomainExtensionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -6152,10 +5886,6 @@ class DescribeDomainExtensionsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
         if self.listener_port is not None:
@@ -6176,10 +5906,6 @@ class DescribeDomainExtensionsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('ListenerPort') is not None:
@@ -6204,6 +5930,10 @@ class DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domain is not None:
             result['Domain'] = self.domain
@@ -6238,6 +5968,10 @@ class DescribeDomainExtensionsResponseBodyDomainExtensions(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DomainExtension'] = []
         if self.domain_extension is not None:
@@ -6269,6 +6003,10 @@ class DescribeDomainExtensionsResponseBody(TeaModel):
             self.domain_extensions.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6302,6 +6040,10 @@ class DescribeDomainExtensionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6328,8 +6070,6 @@ class DescribeHealthStatusRequest(TeaModel):
         load_balancer_id: str = None,
         listener_port: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         listener_protocol: str = None,
         region_id: str = None,
     ):
@@ -6339,8 +6079,6 @@ class DescribeHealthStatusRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.listener_port = listener_port
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.listener_protocol = listener_protocol
         self.region_id = region_id
 
@@ -6348,6 +6086,10 @@ class DescribeHealthStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -6361,10 +6103,6 @@ class DescribeHealthStatusRequest(TeaModel):
             result['ListenerPort'] = self.listener_port
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.listener_protocol is not None:
             result['ListenerProtocol'] = self.listener_protocol
         if self.region_id is not None:
@@ -6385,10 +6123,6 @@ class DescribeHealthStatusRequest(TeaModel):
             self.listener_port = m.get('ListenerPort')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('ListenerProtocol') is not None:
             self.listener_protocol = m.get('ListenerProtocol')
         if m.get('RegionId') is not None:
@@ -6421,6 +6155,10 @@ class DescribeHealthStatusResponseBodyBackendServersBackendServer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -6475,6 +6213,10 @@ class DescribeHealthStatusResponseBodyBackendServers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BackendServer'] = []
         if self.backend_server is not None:
@@ -6506,6 +6248,10 @@ class DescribeHealthStatusResponseBody(TeaModel):
             self.backend_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6539,6 +6285,10 @@ class DescribeHealthStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6567,8 +6317,6 @@ class DescribeListenerAccessControlAttributeRequest(TeaModel):
         listener_port: int = None,
         listener_protocol: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -6578,13 +6326,15 @@ class DescribeListenerAccessControlAttributeRequest(TeaModel):
         self.listener_port = listener_port
         self.listener_protocol = listener_protocol
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -6602,10 +6352,6 @@ class DescribeListenerAccessControlAttributeRequest(TeaModel):
             result['ListenerProtocol'] = self.listener_protocol
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -6626,10 +6372,6 @@ class DescribeListenerAccessControlAttributeRequest(TeaModel):
             self.listener_protocol = m.get('ListenerProtocol')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -6648,6 +6390,10 @@ class DescribeListenerAccessControlAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_control_status is not None:
             result['AccessControlStatus'] = self.access_control_status
@@ -6684,6 +6430,10 @@ class DescribeListenerAccessControlAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6710,9 +6460,6 @@ class DescribeLoadBalancerAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         load_balancer_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
-        include_reserved_data: bool = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -6720,14 +6467,15 @@ class DescribeLoadBalancerAttributeRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
-        self.include_reserved_data = include_reserved_data
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -6741,12 +6489,6 @@ class DescribeLoadBalancerAttributeRequest(TeaModel):
             result['LoadBalancerId'] = self.load_balancer_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
-        if self.include_reserved_data is not None:
-            result['IncludeReservedData'] = self.include_reserved_data
         return result
 
     def from_map(self, m: dict = None):
@@ -6763,12 +6505,6 @@ class DescribeLoadBalancerAttributeRequest(TeaModel):
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
-        if m.get('IncludeReservedData') is not None:
-            self.include_reserved_data = m.get('IncludeReservedData')
         return self
 
 
@@ -6785,6 +6521,10 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerP
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.listener_protocal is not None:
             result['ListenerProtocal'] = self.listener_protocal
@@ -6815,6 +6555,10 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal(TeaModel
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ListenerPortAndProtocal'] = []
         if self.listener_port_and_protocal is not None:
@@ -6849,6 +6593,10 @@ class DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -6887,6 +6635,10 @@ class DescribeLoadBalancerAttributeResponseBodyBackendServers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BackendServer'] = []
         if self.backend_server is not None:
@@ -6915,6 +6667,10 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPorts(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.listener_port is not None:
             result['ListenerPort'] = self.listener_port
@@ -6946,6 +6702,10 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerP
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.listener_protocol is not None:
             result['ListenerProtocol'] = self.listener_protocol
@@ -6988,6 +6748,10 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol(TeaModel
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ListenerPortAndProtocol'] = []
         if self.listener_port_and_protocol is not None:
@@ -7089,6 +6853,10 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
             self.listener_ports_and_protocol.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.address is not None:
             result['Address'] = self.address
@@ -7253,6 +7021,10 @@ class DescribeLoadBalancerAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7280,8 +7052,6 @@ class DescribeLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         load_balancer_id: str = None,
         listener_port: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -7290,13 +7060,15 @@ class DescribeLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.listener_port = listener_port
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -7312,10 +7084,6 @@ class DescribeLoadBalancerHTTPListenerAttributeRequest(TeaModel):
             result['ListenerPort'] = self.listener_port
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -7334,10 +7102,6 @@ class DescribeLoadBalancerHTTPListenerAttributeRequest(TeaModel):
             self.listener_port = m.get('ListenerPort')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -7360,6 +7124,10 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -7402,6 +7170,10 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Rule'] = []
         if self.rule is not None:
@@ -7499,6 +7271,10 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
             self.rules.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cookie_timeout is not None:
             result['CookieTimeout'] = self.cookie_timeout
@@ -7664,6 +7440,10 @@ class DescribeLoadBalancerHTTPListenerAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7691,8 +7471,6 @@ class DescribeLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         load_balancer_id: str = None,
         listener_port: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -7701,13 +7479,15 @@ class DescribeLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.listener_port = listener_port
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -7723,10 +7503,6 @@ class DescribeLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             result['ListenerPort'] = self.listener_port
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -7745,10 +7521,6 @@ class DescribeLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             self.listener_port = m.get('ListenerPort')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -7767,6 +7539,10 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDoma
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domain is not None:
             result['Domain'] = self.domain
@@ -7801,6 +7577,10 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DomainExtension'] = []
         if self.domain_extension is not None:
@@ -7837,6 +7617,10 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -7879,6 +7663,10 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Rule'] = []
         if self.rule is not None:
@@ -7996,6 +7784,10 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
             self.rules.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.unhealthy_threshold is not None:
             result['UnhealthyThreshold'] = self.unhealthy_threshold
@@ -8198,6 +7990,10 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8212,22 +8008,6 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribeLoadBalancerHTTPSListenerAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeLoadBalancersRequestTag(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
         return self
 
 
@@ -8253,16 +8033,11 @@ class DescribeLoadBalancersRequest(TeaModel):
         master_zone_id: str = None,
         slave_zone_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
         tags: str = None,
         pay_type: str = None,
         resource_group_id: str = None,
         page_number: int = None,
         page_size: int = None,
-        support_private_link: bool = None,
-        fuzzy: str = None,
-        business_status: str = None,
-        tag: List[DescribeLoadBalancersRequestTag] = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -8283,24 +8058,20 @@ class DescribeLoadBalancersRequest(TeaModel):
         self.master_zone_id = master_zone_id
         self.slave_zone_id = slave_zone_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.tags = tags
         self.pay_type = pay_type
         self.resource_group_id = resource_group_id
         self.page_number = page_number
         self.page_size = page_size
-        self.support_private_link = support_private_link
-        self.fuzzy = fuzzy
-        self.business_status = business_status
-        self.tag = tag
 
     def validate(self):
-        if self.tag:
-            for k in self.tag:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -8340,8 +8111,6 @@ class DescribeLoadBalancersRequest(TeaModel):
             result['SlaveZoneId'] = self.slave_zone_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.tags is not None:
             result['Tags'] = self.tags
         if self.pay_type is not None:
@@ -8352,16 +8121,6 @@ class DescribeLoadBalancersRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.support_private_link is not None:
-            result['SupportPrivateLink'] = self.support_private_link
-        if self.fuzzy is not None:
-            result['Fuzzy'] = self.fuzzy
-        if self.business_status is not None:
-            result['BusinessStatus'] = self.business_status
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -8404,8 +8163,6 @@ class DescribeLoadBalancersRequest(TeaModel):
             self.slave_zone_id = m.get('SlaveZoneId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
         if m.get('PayType') is not None:
@@ -8416,17 +8173,6 @@ class DescribeLoadBalancersRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('SupportPrivateLink') is not None:
-            self.support_private_link = m.get('SupportPrivateLink')
-        if m.get('Fuzzy') is not None:
-            self.fuzzy = m.get('Fuzzy')
-        if m.get('BusinessStatus') is not None:
-            self.business_status = m.get('BusinessStatus')
-        self.tag = []
-        if m.get('Tag') is not None:
-            for k in m.get('Tag'):
-                temp_model = DescribeLoadBalancersRequestTag()
-                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -8440,19 +8186,19 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
         pay_type: str = None,
         address_type: str = None,
         network_type: str = None,
-        region_id: str = None,
-        modification_protection_reason: str = None,
-        modification_protection_status: str = None,
         address_ipversion: str = None,
-        v_switch_id: str = None,
-        load_balancer_status: str = None,
         load_balancer_name: str = None,
-        resource_group_id: str = None,
-        internet_charge_type: str = None,
         address: str = None,
         slave_zone_id: str = None,
-        region_id_alias: str = None,
         master_zone_id: str = None,
+        modification_protection_reason: str = None,
+        region_id: str = None,
+        modification_protection_status: str = None,
+        v_switch_id: str = None,
+        load_balancer_status: str = None,
+        resource_group_id: str = None,
+        internet_charge_type: str = None,
+        region_id_alias: str = None,
     ):
         self.vpc_id = vpc_id
         self.create_time_stamp = create_time_stamp
@@ -8461,24 +8207,28 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
         self.pay_type = pay_type
         self.address_type = address_type
         self.network_type = network_type
-        self.region_id = region_id
-        self.modification_protection_reason = modification_protection_reason
-        self.modification_protection_status = modification_protection_status
         self.address_ipversion = address_ipversion
-        self.v_switch_id = v_switch_id
-        self.load_balancer_status = load_balancer_status
         self.load_balancer_name = load_balancer_name
-        self.resource_group_id = resource_group_id
-        self.internet_charge_type = internet_charge_type
         self.address = address
         self.slave_zone_id = slave_zone_id
-        self.region_id_alias = region_id_alias
         self.master_zone_id = master_zone_id
+        self.modification_protection_reason = modification_protection_reason
+        self.region_id = region_id
+        self.modification_protection_status = modification_protection_status
+        self.v_switch_id = v_switch_id
+        self.load_balancer_status = load_balancer_status
+        self.resource_group_id = resource_group_id
+        self.internet_charge_type = internet_charge_type
+        self.region_id_alias = region_id_alias
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
@@ -8494,32 +8244,32 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
             result['AddressType'] = self.address_type
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.modification_protection_reason is not None:
-            result['ModificationProtectionReason'] = self.modification_protection_reason
-        if self.modification_protection_status is not None:
-            result['ModificationProtectionStatus'] = self.modification_protection_status
         if self.address_ipversion is not None:
             result['AddressIPVersion'] = self.address_ipversion
-        if self.v_switch_id is not None:
-            result['VSwitchId'] = self.v_switch_id
-        if self.load_balancer_status is not None:
-            result['LoadBalancerStatus'] = self.load_balancer_status
         if self.load_balancer_name is not None:
             result['LoadBalancerName'] = self.load_balancer_name
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.internet_charge_type is not None:
-            result['InternetChargeType'] = self.internet_charge_type
         if self.address is not None:
             result['Address'] = self.address
         if self.slave_zone_id is not None:
             result['SlaveZoneId'] = self.slave_zone_id
-        if self.region_id_alias is not None:
-            result['RegionIdAlias'] = self.region_id_alias
         if self.master_zone_id is not None:
             result['MasterZoneId'] = self.master_zone_id
+        if self.modification_protection_reason is not None:
+            result['ModificationProtectionReason'] = self.modification_protection_reason
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.modification_protection_status is not None:
+            result['ModificationProtectionStatus'] = self.modification_protection_status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.load_balancer_status is not None:
+            result['LoadBalancerStatus'] = self.load_balancer_status
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+        if self.region_id_alias is not None:
+            result['RegionIdAlias'] = self.region_id_alias
         return result
 
     def from_map(self, m: dict = None):
@@ -8538,32 +8288,32 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
             self.address_type = m.get('AddressType')
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ModificationProtectionReason') is not None:
-            self.modification_protection_reason = m.get('ModificationProtectionReason')
-        if m.get('ModificationProtectionStatus') is not None:
-            self.modification_protection_status = m.get('ModificationProtectionStatus')
         if m.get('AddressIPVersion') is not None:
             self.address_ipversion = m.get('AddressIPVersion')
-        if m.get('VSwitchId') is not None:
-            self.v_switch_id = m.get('VSwitchId')
-        if m.get('LoadBalancerStatus') is not None:
-            self.load_balancer_status = m.get('LoadBalancerStatus')
         if m.get('LoadBalancerName') is not None:
             self.load_balancer_name = m.get('LoadBalancerName')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('InternetChargeType') is not None:
-            self.internet_charge_type = m.get('InternetChargeType')
         if m.get('Address') is not None:
             self.address = m.get('Address')
         if m.get('SlaveZoneId') is not None:
             self.slave_zone_id = m.get('SlaveZoneId')
-        if m.get('RegionIdAlias') is not None:
-            self.region_id_alias = m.get('RegionIdAlias')
         if m.get('MasterZoneId') is not None:
             self.master_zone_id = m.get('MasterZoneId')
+        if m.get('ModificationProtectionReason') is not None:
+            self.modification_protection_reason = m.get('ModificationProtectionReason')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ModificationProtectionStatus') is not None:
+            self.modification_protection_status = m.get('ModificationProtectionStatus')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('LoadBalancerStatus') is not None:
+            self.load_balancer_status = m.get('LoadBalancerStatus')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('RegionIdAlias') is not None:
+            self.region_id_alias = m.get('RegionIdAlias')
         return self
 
 
@@ -8581,6 +8331,10 @@ class DescribeLoadBalancersResponseBodyLoadBalancers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['LoadBalancer'] = []
         if self.load_balancer is not None:
@@ -8618,6 +8372,10 @@ class DescribeLoadBalancersResponseBody(TeaModel):
             self.load_balancers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -8663,6 +8421,10 @@ class DescribeLoadBalancersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8690,8 +8452,6 @@ class DescribeLoadBalancerTCPListenerAttributeRequest(TeaModel):
         load_balancer_id: str = None,
         listener_port: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -8700,13 +8460,15 @@ class DescribeLoadBalancerTCPListenerAttributeRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.listener_port = listener_port
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -8722,10 +8484,6 @@ class DescribeLoadBalancerTCPListenerAttributeRequest(TeaModel):
             result['ListenerPort'] = self.listener_port
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -8744,10 +8502,6 @@ class DescribeLoadBalancerTCPListenerAttributeRequest(TeaModel):
             self.listener_port = m.get('ListenerPort')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -8762,6 +8516,7 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         scheduler: str = None,
         health_check: str = None,
         backend_server_port: int = None,
+        connection_drain_timeout: int = None,
         persistence_timeout: int = None,
         health_check_connect_port: int = None,
         health_check_method: str = None,
@@ -8774,6 +8529,7 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         request_id: str = None,
         acl_id: str = None,
         health_check_connect_timeout: int = None,
+        connection_drain: str = None,
         acl_status: str = None,
         healthy_threshold: int = None,
         master_slave_server_group_id: str = None,
@@ -8789,6 +8545,7 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         self.scheduler = scheduler
         self.health_check = health_check
         self.backend_server_port = backend_server_port
+        self.connection_drain_timeout = connection_drain_timeout
         self.persistence_timeout = persistence_timeout
         self.health_check_connect_port = health_check_connect_port
         self.health_check_method = health_check_method
@@ -8801,6 +8558,7 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         self.request_id = request_id
         self.acl_id = acl_id
         self.health_check_connect_timeout = health_check_connect_timeout
+        self.connection_drain = connection_drain
         self.acl_status = acl_status
         self.healthy_threshold = healthy_threshold
         self.master_slave_server_group_id = master_slave_server_group_id
@@ -8812,6 +8570,10 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -8829,6 +8591,8 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
             result['HealthCheck'] = self.health_check
         if self.backend_server_port is not None:
             result['BackendServerPort'] = self.backend_server_port
+        if self.connection_drain_timeout is not None:
+            result['ConnectionDrainTimeout'] = self.connection_drain_timeout
         if self.persistence_timeout is not None:
             result['PersistenceTimeout'] = self.persistence_timeout
         if self.health_check_connect_port is not None:
@@ -8853,6 +8617,8 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
             result['AclId'] = self.acl_id
         if self.health_check_connect_timeout is not None:
             result['HealthCheckConnectTimeout'] = self.health_check_connect_timeout
+        if self.connection_drain is not None:
+            result['ConnectionDrain'] = self.connection_drain
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
         if self.healthy_threshold is not None:
@@ -8885,6 +8651,8 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
             self.health_check = m.get('HealthCheck')
         if m.get('BackendServerPort') is not None:
             self.backend_server_port = m.get('BackendServerPort')
+        if m.get('ConnectionDrainTimeout') is not None:
+            self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
         if m.get('PersistenceTimeout') is not None:
             self.persistence_timeout = m.get('PersistenceTimeout')
         if m.get('HealthCheckConnectPort') is not None:
@@ -8909,6 +8677,8 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
             self.acl_id = m.get('AclId')
         if m.get('HealthCheckConnectTimeout') is not None:
             self.health_check_connect_timeout = m.get('HealthCheckConnectTimeout')
+        if m.get('ConnectionDrain') is not None:
+            self.connection_drain = m.get('ConnectionDrain')
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
         if m.get('HealthyThreshold') is not None:
@@ -8940,6 +8710,10 @@ class DescribeLoadBalancerTCPListenerAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8967,8 +8741,6 @@ class DescribeLoadBalancerUDPListenerAttributeRequest(TeaModel):
         load_balancer_id: str = None,
         listener_port: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -8977,13 +8749,15 @@ class DescribeLoadBalancerUDPListenerAttributeRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.listener_port = listener_port
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -8999,10 +8773,6 @@ class DescribeLoadBalancerUDPListenerAttributeRequest(TeaModel):
             result['ListenerPort'] = self.listener_port
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -9021,10 +8791,6 @@ class DescribeLoadBalancerUDPListenerAttributeRequest(TeaModel):
             self.listener_port = m.get('ListenerPort')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -9077,6 +8843,10 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -9181,6 +8951,10 @@ class DescribeLoadBalancerUDPListenerAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9206,8 +8980,6 @@ class DescribeMasterSlaveServerGroupAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         master_slave_server_group_id: str = None,
     ):
         self.owner_id = owner_id
@@ -9215,14 +8987,16 @@ class DescribeMasterSlaveServerGroupAttributeRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.master_slave_server_group_id = master_slave_server_group_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -9234,10 +9008,6 @@ class DescribeMasterSlaveServerGroupAttributeRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.master_slave_server_group_id is not None:
             result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
         return result
@@ -9254,10 +9024,6 @@ class DescribeMasterSlaveServerGroupAttributeRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('MasterSlaveServerGroupId') is not None:
             self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
         return self
@@ -9284,6 +9050,10 @@ class DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServe
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -9330,6 +9100,10 @@ class DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServe
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MasterSlaveBackendServer'] = []
         if self.master_slave_backend_server is not None:
@@ -9367,6 +9141,10 @@ class DescribeMasterSlaveServerGroupAttributeResponseBody(TeaModel):
             self.master_slave_backend_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9412,6 +9190,10 @@ class DescribeMasterSlaveServerGroupAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9437,8 +9219,6 @@ class DescribeMasterSlaveServerGroupsRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         load_balancer_id: str = None,
         include_listener: bool = None,
     ):
@@ -9447,8 +9227,6 @@ class DescribeMasterSlaveServerGroupsRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.load_balancer_id = load_balancer_id
         self.include_listener = include_listener
 
@@ -9456,6 +9234,10 @@ class DescribeMasterSlaveServerGroupsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -9467,10 +9249,6 @@ class DescribeMasterSlaveServerGroupsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
         if self.include_listener is not None:
@@ -9489,10 +9267,6 @@ class DescribeMasterSlaveServerGroupsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('IncludeListener') is not None:
@@ -9513,6 +9287,10 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSl
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.protocol is not None:
             result['Protocol'] = self.protocol
@@ -9543,6 +9321,10 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSl
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Listener'] = []
         if self.listener is not None:
@@ -9572,6 +9354,10 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSl
             self.listeners.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.listeners is not None:
             result['Listeners'] = self.listeners.to_map()
@@ -9601,6 +9387,10 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSl
             self.associated_objects.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.master_slave_server_group_id is not None:
             result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
@@ -9636,6 +9426,10 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups(TeaMode
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MasterSlaveServerGroup'] = []
         if self.master_slave_server_group is not None:
@@ -9667,6 +9461,10 @@ class DescribeMasterSlaveServerGroupsResponseBody(TeaModel):
             self.master_slave_server_groups.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9700,6 +9498,10 @@ class DescribeMasterSlaveServerGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9726,8 +9528,6 @@ class DescribeRegionsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.accept_language = accept_language
         self.region_id = region_id
@@ -9735,13 +9535,15 @@ class DescribeRegionsRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
@@ -9755,10 +9557,6 @@ class DescribeRegionsRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -9775,10 +9573,6 @@ class DescribeRegionsRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -9797,6 +9591,10 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.local_name is not None:
             result['LocalName'] = self.local_name
@@ -9831,6 +9629,10 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Region'] = []
         if self.region is not None:
@@ -9862,6 +9664,10 @@ class DescribeRegionsResponseBody(TeaModel):
             self.regions.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9895,6 +9701,10 @@ class DescribeRegionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9920,8 +9730,6 @@ class DescribeRuleAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         rule_id: str = None,
     ):
         self.owner_id = owner_id
@@ -9929,14 +9737,16 @@ class DescribeRuleAttributeRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.rule_id = rule_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -9948,10 +9758,6 @@ class DescribeRuleAttributeRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         return result
@@ -9968,10 +9774,6 @@ class DescribeRuleAttributeRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         return self
@@ -10032,6 +9834,10 @@ class DescribeRuleAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cookie is not None:
             result['Cookie'] = self.cookie
@@ -10148,6 +9954,10 @@ class DescribeRuleAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10173,8 +9983,6 @@ class DescribeRulesRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         load_balancer_id: str = None,
         listener_protocol: str = None,
         listener_port: int = None,
@@ -10184,8 +9992,6 @@ class DescribeRulesRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.load_balancer_id = load_balancer_id
         self.listener_protocol = listener_protocol
         self.listener_port = listener_port
@@ -10194,6 +10000,10 @@ class DescribeRulesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -10205,10 +10015,6 @@ class DescribeRulesRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
         if self.listener_protocol is not None:
@@ -10229,10 +10035,6 @@ class DescribeRulesRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('ListenerProtocol') is not None:
@@ -10291,6 +10093,10 @@ class DescribeRulesResponseBodyRulesRule(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -10393,6 +10199,10 @@ class DescribeRulesResponseBodyRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Rule'] = []
         if self.rule is not None:
@@ -10424,6 +10234,10 @@ class DescribeRulesResponseBody(TeaModel):
             self.rules.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10457,6 +10271,10 @@ class DescribeRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10474,22 +10292,6 @@ class DescribeRulesResponse(TeaModel):
         return self
 
 
-class DescribeServerCertificatesRequestTag(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        return self
-
-
 class DescribeServerCertificatesRequest(TeaModel):
     def __init__(
         self,
@@ -10499,10 +10301,7 @@ class DescribeServerCertificatesRequest(TeaModel):
         region_id: str = None,
         server_certificate_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         resource_group_id: str = None,
-        tag: List[DescribeServerCertificatesRequestTag] = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -10510,18 +10309,16 @@ class DescribeServerCertificatesRequest(TeaModel):
         self.region_id = region_id
         self.server_certificate_id = server_certificate_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.resource_group_id = resource_group_id
-        self.tag = tag
 
     def validate(self):
-        if self.tag:
-            for k in self.tag:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -10535,16 +10332,8 @@ class DescribeServerCertificatesRequest(TeaModel):
             result['ServerCertificateId'] = self.server_certificate_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -10561,17 +10350,8 @@ class DescribeServerCertificatesRequest(TeaModel):
             self.server_certificate_id = m.get('ServerCertificateId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        self.tag = []
-        if m.get('Tag') is not None:
-            for k in m.get('Tag'):
-                temp_model = DescribeServerCertificatesRequestTag()
-                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -10586,6 +10366,10 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateS
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subject_alternative_name is not None:
             result['SubjectAlternativeName'] = self.subject_alternative_name
@@ -10636,6 +10420,10 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate(
             self.subject_alternative_names.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ali_cloud_certificate_name is not None:
             result['AliCloudCertificateName'] = self.ali_cloud_certificate_name
@@ -10715,6 +10503,10 @@ class DescribeServerCertificatesResponseBodyServerCertificates(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ServerCertificate'] = []
         if self.server_certificate is not None:
@@ -10746,6 +10538,10 @@ class DescribeServerCertificatesResponseBody(TeaModel):
             self.server_certificates.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10779,6 +10575,10 @@ class DescribeServerCertificatesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10803,7 +10603,6 @@ class DescribeTagsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         region_id: str = None,
         load_balancer_id: str = None,
         tags: str = None,
@@ -10815,7 +10614,6 @@ class DescribeTagsRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.region_id = region_id
         self.load_balancer_id = load_balancer_id
         self.tags = tags
@@ -10827,6 +10625,10 @@ class DescribeTagsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -10836,8 +10638,6 @@ class DescribeTagsRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.load_balancer_id is not None:
@@ -10862,8 +10662,6 @@ class DescribeTagsRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('LoadBalancerId') is not None:
@@ -10894,6 +10692,10 @@ class DescribeTagsResponseBodyTagSetsTagSet(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_count is not None:
             result['InstanceCount'] = self.instance_count
@@ -10928,6 +10730,10 @@ class DescribeTagsResponseBodyTagSets(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TagSet'] = []
         if self.tag_set is not None:
@@ -10965,6 +10771,10 @@ class DescribeTagsResponseBody(TeaModel):
             self.tag_sets.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -11010,6 +10820,10 @@ class DescribeTagsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11035,8 +10849,6 @@ class DescribeVServerGroupAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         vserver_group_id: str = None,
     ):
         self.owner_id = owner_id
@@ -11044,14 +10856,16 @@ class DescribeVServerGroupAttributeRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.vserver_group_id = vserver_group_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -11063,10 +10877,6 @@ class DescribeVServerGroupAttributeRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
         return result
@@ -11083,10 +10893,6 @@ class DescribeVServerGroupAttributeRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
         return self
@@ -11111,6 +10917,10 @@ class DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -11153,6 +10963,10 @@ class DescribeVServerGroupAttributeResponseBodyBackendServers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BackendServer'] = []
         if self.backend_server is not None:
@@ -11190,6 +11004,10 @@ class DescribeVServerGroupAttributeResponseBody(TeaModel):
             self.backend_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -11235,6 +11053,10 @@ class DescribeVServerGroupAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11260,8 +11082,6 @@ class DescribeVServerGroupsRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         load_balancer_id: str = None,
         include_rule: bool = None,
         include_listener: bool = None,
@@ -11271,8 +11091,6 @@ class DescribeVServerGroupsRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.load_balancer_id = load_balancer_id
         self.include_rule = include_rule
         self.include_listener = include_listener
@@ -11281,6 +11099,10 @@ class DescribeVServerGroupsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -11292,10 +11114,6 @@ class DescribeVServerGroupsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
         if self.include_rule is not None:
@@ -11316,10 +11134,6 @@ class DescribeVServerGroupsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('IncludeRule') is not None:
@@ -11342,6 +11156,10 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.protocol is not None:
             result['Protocol'] = self.protocol
@@ -11372,6 +11190,10 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Listener'] = []
         if self.listener is not None:
@@ -11406,6 +11228,10 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domain is not None:
             result['Domain'] = self.domain
@@ -11444,6 +11270,10 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Rule'] = []
         if self.rule is not None:
@@ -11477,6 +11307,10 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
             self.rules.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.listeners is not None:
             result['Listeners'] = self.listeners.to_map()
@@ -11511,6 +11345,10 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup(TeaModel):
             self.associated_objects.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -11546,6 +11384,10 @@ class DescribeVServerGroupsResponseBodyVServerGroups(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VServerGroup'] = []
         if self.vserver_group is not None:
@@ -11577,6 +11419,10 @@ class DescribeVServerGroupsResponseBody(TeaModel):
             self.vserver_groups.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11610,6 +11456,10 @@ class DescribeVServerGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11634,22 +11484,22 @@ class DescribeZonesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         region_id: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.region_id = region_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -11659,10 +11509,6 @@ class DescribeZonesRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -11677,10 +11523,6 @@ class DescribeZonesRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -11699,6 +11541,10 @@ class DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.local_name is not None:
             result['LocalName'] = self.local_name
@@ -11729,6 +11575,10 @@ class DescribeZonesResponseBodyZonesZoneSlaveZones(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SlaveZone'] = []
         if self.slave_zone is not None:
@@ -11762,6 +11612,10 @@ class DescribeZonesResponseBodyZonesZone(TeaModel):
             self.slave_zones.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.local_name is not None:
             result['LocalName'] = self.local_name
@@ -11797,6 +11651,10 @@ class DescribeZonesResponseBodyZones(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Zone'] = []
         if self.zone is not None:
@@ -11828,6 +11686,10 @@ class DescribeZonesResponseBody(TeaModel):
             self.zones.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11861,6 +11723,10 @@ class DescribeZonesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11891,6 +11757,10 @@ class ListTagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -11914,7 +11784,6 @@ class ListTagResourcesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         region_id: str = None,
         resource_type: str = None,
         next_token: str = None,
@@ -11925,7 +11794,6 @@ class ListTagResourcesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.region_id = region_id
         self.resource_type = resource_type
         self.next_token = next_token
@@ -11939,6 +11807,10 @@ class ListTagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -11948,8 +11820,6 @@ class ListTagResourcesRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_type is not None:
@@ -11974,8 +11844,6 @@ class ListTagResourcesRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceType') is not None:
@@ -12009,6 +11877,10 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
@@ -12047,6 +11919,10 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TagResource'] = []
         if self.tag_resource is not None:
@@ -12080,6 +11956,10 @@ class ListTagResourcesResponseBody(TeaModel):
             self.tag_resources.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -12117,6 +11997,10 @@ class ListTagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12165,6 +12049,10 @@ class ListTLSCipherPoliciesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -12232,6 +12120,10 @@ class ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.protocol is not None:
             result['Protocol'] = self.protocol
@@ -12278,6 +12170,10 @@ class ListTLSCipherPoliciesResponseBodyTLSCipherPolicies(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -12341,6 +12237,10 @@ class ListTLSCipherPoliciesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -12390,6 +12290,10 @@ class ListTLSCipherPoliciesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12416,8 +12320,6 @@ class ModifyLoadBalancerInstanceSpecRequest(TeaModel):
         resource_owner_id: int = None,
         load_balancer_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         load_balancer_spec: str = None,
         auto_pay: bool = None,
     ):
@@ -12427,8 +12329,6 @@ class ModifyLoadBalancerInstanceSpecRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.load_balancer_spec = load_balancer_spec
         self.auto_pay = auto_pay
 
@@ -12436,6 +12336,10 @@ class ModifyLoadBalancerInstanceSpecRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -12449,10 +12353,6 @@ class ModifyLoadBalancerInstanceSpecRequest(TeaModel):
             result['LoadBalancerId'] = self.load_balancer_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.load_balancer_spec is not None:
             result['LoadBalancerSpec'] = self.load_balancer_spec
         if self.auto_pay is not None:
@@ -12473,10 +12373,6 @@ class ModifyLoadBalancerInstanceSpecRequest(TeaModel):
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('LoadBalancerSpec') is not None:
             self.load_balancer_spec = m.get('LoadBalancerSpec')
         if m.get('AutoPay') is not None:
@@ -12497,6 +12393,10 @@ class ModifyLoadBalancerInstanceSpecResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12529,6 +12429,10 @@ class ModifyLoadBalancerInstanceSpecResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12557,10 +12461,7 @@ class ModifyLoadBalancerInternetSpecRequest(TeaModel):
         internet_charge_type: str = None,
         bandwidth: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         auto_pay: bool = None,
-        ratio: int = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -12570,15 +12471,16 @@ class ModifyLoadBalancerInternetSpecRequest(TeaModel):
         self.internet_charge_type = internet_charge_type
         self.bandwidth = bandwidth
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.auto_pay = auto_pay
-        self.ratio = ratio
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -12596,14 +12498,8 @@ class ModifyLoadBalancerInternetSpecRequest(TeaModel):
             result['Bandwidth'] = self.bandwidth
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
-        if self.ratio is not None:
-            result['Ratio'] = self.ratio
         return result
 
     def from_map(self, m: dict = None):
@@ -12624,14 +12520,8 @@ class ModifyLoadBalancerInternetSpecRequest(TeaModel):
             self.bandwidth = m.get('Bandwidth')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
-        if m.get('Ratio') is not None:
-            self.ratio = m.get('Ratio')
         return self
 
 
@@ -12648,6 +12538,10 @@ class ModifyLoadBalancerInternetSpecResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12680,6 +12574,10 @@ class ModifyLoadBalancerInternetSpecResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12705,8 +12603,6 @@ class ModifyLoadBalancerPayTypeRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         load_balancer_id: str = None,
         pay_type: str = None,
         pricing_cycle: str = None,
@@ -12718,8 +12614,6 @@ class ModifyLoadBalancerPayTypeRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.load_balancer_id = load_balancer_id
         self.pay_type = pay_type
         self.pricing_cycle = pricing_cycle
@@ -12730,6 +12624,10 @@ class ModifyLoadBalancerPayTypeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -12741,10 +12639,6 @@ class ModifyLoadBalancerPayTypeRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
         if self.pay_type is not None:
@@ -12769,10 +12663,6 @@ class ModifyLoadBalancerPayTypeRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('PayType') is not None:
@@ -12799,6 +12689,10 @@ class ModifyLoadBalancerPayTypeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12831,6 +12725,10 @@ class ModifyLoadBalancerPayTypeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12856,8 +12754,6 @@ class ModifyVServerGroupBackendServersRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         vserver_group_id: str = None,
         old_backend_servers: str = None,
         new_backend_servers: str = None,
@@ -12867,8 +12763,6 @@ class ModifyVServerGroupBackendServersRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.vserver_group_id = vserver_group_id
         self.old_backend_servers = old_backend_servers
         self.new_backend_servers = new_backend_servers
@@ -12877,6 +12771,10 @@ class ModifyVServerGroupBackendServersRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -12888,10 +12786,6 @@ class ModifyVServerGroupBackendServersRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
         if self.old_backend_servers is not None:
@@ -12912,10 +12806,6 @@ class ModifyVServerGroupBackendServersRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
         if m.get('OldBackendServers') is not None:
@@ -12944,6 +12834,10 @@ class ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -12986,6 +12880,10 @@ class ModifyVServerGroupBackendServersResponseBodyBackendServers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BackendServer'] = []
         if self.backend_server is not None:
@@ -13019,6 +12917,10 @@ class ModifyVServerGroupBackendServersResponseBody(TeaModel):
             self.backend_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -13056,6 +12958,10 @@ class ModifyVServerGroupBackendServersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13080,8 +12986,6 @@ class RemoveAccessControlListEntryRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         region_id: str = None,
         acl_id: str = None,
         acl_entrys: str = None,
@@ -13090,8 +12994,6 @@ class RemoveAccessControlListEntryRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.region_id = region_id
         self.acl_id = acl_id
         self.acl_entrys = acl_entrys
@@ -13100,6 +13002,10 @@ class RemoveAccessControlListEntryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -13109,10 +13015,6 @@ class RemoveAccessControlListEntryRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.acl_id is not None:
@@ -13131,10 +13033,6 @@ class RemoveAccessControlListEntryRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('AclId') is not None:
@@ -13155,6 +13053,10 @@ class RemoveAccessControlListEntryResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13183,6 +13085,10 @@ class RemoveAccessControlListEntryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13210,8 +13116,6 @@ class RemoveBackendServersRequest(TeaModel):
         load_balancer_id: str = None,
         backend_servers: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -13220,13 +13124,15 @@ class RemoveBackendServersRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.backend_servers = backend_servers
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -13242,10 +13148,6 @@ class RemoveBackendServersRequest(TeaModel):
             result['BackendServers'] = self.backend_servers
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -13264,10 +13166,6 @@ class RemoveBackendServersRequest(TeaModel):
             self.backend_servers = m.get('BackendServers')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -13288,6 +13186,10 @@ class RemoveBackendServersResponseBodyBackendServersBackendServer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -13326,6 +13228,10 @@ class RemoveBackendServersResponseBodyBackendServers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BackendServer'] = []
         if self.backend_server is not None:
@@ -13359,6 +13265,10 @@ class RemoveBackendServersResponseBody(TeaModel):
             self.backend_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13396,6 +13306,10 @@ class RemoveBackendServersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13424,9 +13338,7 @@ class RemoveListenerWhiteListItemRequest(TeaModel):
         listener_port: int = None,
         source_items: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
         listener_protocol: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -13436,14 +13348,16 @@ class RemoveListenerWhiteListItemRequest(TeaModel):
         self.listener_port = listener_port
         self.source_items = source_items
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.listener_protocol = listener_protocol
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -13461,12 +13375,8 @@ class RemoveListenerWhiteListItemRequest(TeaModel):
             result['SourceItems'] = self.source_items
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.listener_protocol is not None:
             result['ListenerProtocol'] = self.listener_protocol
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -13487,12 +13397,8 @@ class RemoveListenerWhiteListItemRequest(TeaModel):
             self.source_items = m.get('SourceItems')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('ListenerProtocol') is not None:
             self.listener_protocol = m.get('ListenerProtocol')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -13507,6 +13413,10 @@ class RemoveListenerWhiteListItemResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13535,6 +13445,10 @@ class RemoveListenerWhiteListItemResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13559,7 +13473,6 @@ class RemoveTagsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         region_id: str = None,
         load_balancer_id: str = None,
         tags: str = None,
@@ -13568,7 +13481,6 @@ class RemoveTagsRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.region_id = region_id
         self.load_balancer_id = load_balancer_id
         self.tags = tags
@@ -13577,6 +13489,10 @@ class RemoveTagsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -13586,8 +13502,6 @@ class RemoveTagsRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.load_balancer_id is not None:
@@ -13606,8 +13520,6 @@ class RemoveTagsRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('LoadBalancerId') is not None:
@@ -13628,6 +13540,10 @@ class RemoveTagsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13656,6 +13572,10 @@ class RemoveTagsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13681,8 +13601,6 @@ class RemoveVServerGroupBackendServersRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         vserver_group_id: str = None,
         backend_servers: str = None,
     ):
@@ -13691,8 +13609,6 @@ class RemoveVServerGroupBackendServersRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.vserver_group_id = vserver_group_id
         self.backend_servers = backend_servers
 
@@ -13700,6 +13616,10 @@ class RemoveVServerGroupBackendServersRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -13711,10 +13631,6 @@ class RemoveVServerGroupBackendServersRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
         if self.backend_servers is not None:
@@ -13733,10 +13649,6 @@ class RemoveVServerGroupBackendServersRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
         if m.get('BackendServers') is not None:
@@ -13763,6 +13675,10 @@ class RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -13805,6 +13721,10 @@ class RemoveVServerGroupBackendServersResponseBodyBackendServers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BackendServer'] = []
         if self.backend_server is not None:
@@ -13838,6 +13758,10 @@ class RemoveVServerGroupBackendServersResponseBody(TeaModel):
             self.backend_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -13875,6 +13799,10 @@ class RemoveVServerGroupBackendServersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13899,8 +13827,6 @@ class SetAccessControlListAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         region_id: str = None,
         acl_id: str = None,
         acl_name: str = None,
@@ -13909,8 +13835,6 @@ class SetAccessControlListAttributeRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.region_id = region_id
         self.acl_id = acl_id
         self.acl_name = acl_name
@@ -13919,6 +13843,10 @@ class SetAccessControlListAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -13928,10 +13856,6 @@ class SetAccessControlListAttributeRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.acl_id is not None:
@@ -13950,10 +13874,6 @@ class SetAccessControlListAttributeRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('AclId') is not None:
@@ -13976,6 +13896,10 @@ class SetAccessControlListAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14008,6 +13932,10 @@ class SetAccessControlListAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14035,8 +13963,6 @@ class SetBackendServersRequest(TeaModel):
         load_balancer_id: str = None,
         backend_servers: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -14045,13 +13971,15 @@ class SetBackendServersRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.backend_servers = backend_servers
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -14067,10 +13995,6 @@ class SetBackendServersRequest(TeaModel):
             result['BackendServers'] = self.backend_servers
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -14089,10 +14013,6 @@ class SetBackendServersRequest(TeaModel):
             self.backend_servers = m.get('BackendServers')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -14113,6 +14033,10 @@ class SetBackendServersResponseBodyBackendServersBackendServer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -14151,6 +14075,10 @@ class SetBackendServersResponseBodyBackendServers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BackendServer'] = []
         if self.backend_server is not None:
@@ -14184,6 +14112,10 @@ class SetBackendServersResponseBody(TeaModel):
             self.backend_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14221,6 +14153,10 @@ class SetBackendServersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14245,7 +14181,6 @@ class SetCACertificateNameRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         region_id: str = None,
         cacertificate_id: str = None,
         cacertificate_name: str = None,
@@ -14254,7 +14189,6 @@ class SetCACertificateNameRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.region_id = region_id
         self.cacertificate_id = cacertificate_id
         self.cacertificate_name = cacertificate_name
@@ -14263,6 +14197,10 @@ class SetCACertificateNameRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -14272,8 +14210,6 @@ class SetCACertificateNameRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.cacertificate_id is not None:
@@ -14292,8 +14228,6 @@ class SetCACertificateNameRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('CACertificateId') is not None:
@@ -14314,6 +14248,10 @@ class SetCACertificateNameResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14342,6 +14280,10 @@ class SetCACertificateNameResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14359,22 +14301,6 @@ class SetCACertificateNameResponse(TeaModel):
         return self
 
 
-class SetDomainExtensionAttributeRequestServerCertificate(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        return self
-
-
 class SetDomainExtensionAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -14383,32 +14309,25 @@ class SetDomainExtensionAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         domain_extension_id: str = None,
         server_certificate_id: str = None,
-        certificate_id: List[str] = None,
-        server_certificate: List[SetDomainExtensionAttributeRequestServerCertificate] = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.domain_extension_id = domain_extension_id
         self.server_certificate_id = server_certificate_id
-        self.certificate_id = certificate_id
-        self.server_certificate = server_certificate
 
     def validate(self):
-        if self.server_certificate:
-            for k in self.server_certificate:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -14420,20 +14339,10 @@ class SetDomainExtensionAttributeRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.domain_extension_id is not None:
             result['DomainExtensionId'] = self.domain_extension_id
         if self.server_certificate_id is not None:
             result['ServerCertificateId'] = self.server_certificate_id
-        if self.certificate_id is not None:
-            result['CertificateId'] = self.certificate_id
-        result['ServerCertificate'] = []
-        if self.server_certificate is not None:
-            for k in self.server_certificate:
-                result['ServerCertificate'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -14448,21 +14357,10 @@ class SetDomainExtensionAttributeRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('DomainExtensionId') is not None:
             self.domain_extension_id = m.get('DomainExtensionId')
         if m.get('ServerCertificateId') is not None:
             self.server_certificate_id = m.get('ServerCertificateId')
-        if m.get('CertificateId') is not None:
-            self.certificate_id = m.get('CertificateId')
-        self.server_certificate = []
-        if m.get('ServerCertificate') is not None:
-            for k in m.get('ServerCertificate'):
-                temp_model = SetDomainExtensionAttributeRequestServerCertificate()
-                self.server_certificate.append(temp_model.from_map(k))
         return self
 
 
@@ -14477,6 +14375,10 @@ class SetDomainExtensionAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14505,6 +14407,10 @@ class SetDomainExtensionAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14533,9 +14439,7 @@ class SetListenerAccessControlStatusRequest(TeaModel):
         listener_port: int = None,
         access_control_status: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
         listener_protocol: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -14545,14 +14449,16 @@ class SetListenerAccessControlStatusRequest(TeaModel):
         self.listener_port = listener_port
         self.access_control_status = access_control_status
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.listener_protocol = listener_protocol
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -14570,12 +14476,8 @@ class SetListenerAccessControlStatusRequest(TeaModel):
             result['AccessControlStatus'] = self.access_control_status
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.listener_protocol is not None:
             result['ListenerProtocol'] = self.listener_protocol
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -14596,12 +14498,8 @@ class SetListenerAccessControlStatusRequest(TeaModel):
             self.access_control_status = m.get('AccessControlStatus')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('ListenerProtocol') is not None:
             self.listener_protocol = m.get('ListenerProtocol')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -14616,6 +14514,10 @@ class SetListenerAccessControlStatusResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14644,6 +14546,10 @@ class SetListenerAccessControlStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14671,8 +14577,6 @@ class SetLoadBalancerDeleteProtectionRequest(TeaModel):
         load_balancer_id: str = None,
         delete_protection: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -14681,13 +14585,15 @@ class SetLoadBalancerDeleteProtectionRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.delete_protection = delete_protection
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -14703,10 +14609,6 @@ class SetLoadBalancerDeleteProtectionRequest(TeaModel):
             result['DeleteProtection'] = self.delete_protection
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -14725,10 +14627,6 @@ class SetLoadBalancerDeleteProtectionRequest(TeaModel):
             self.delete_protection = m.get('DeleteProtection')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -14743,6 +14641,10 @@ class SetLoadBalancerDeleteProtectionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14771,6 +14673,10 @@ class SetLoadBalancerDeleteProtectionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14805,8 +14711,6 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         cookie_timeout: int = None,
         cookie: str = None,
         health_check: str = None,
-        health_check_type: str = None,
-        health_check_method: str = None,
         health_check_domain: str = None,
         health_check_uri: str = None,
         healthy_threshold: int = None,
@@ -14815,12 +14719,9 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         health_check_interval: int = None,
         health_check_connect_port: int = None,
         health_check_http_code: str = None,
-        max_connection: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         vserver_group: str = None,
         vserver_group_id: str = None,
-        tags: str = None,
         xforwarded_for__slbip: str = None,
         xforwarded_for__slbid: str = None,
         xforwarded_for_proto: str = None,
@@ -14828,13 +14729,9 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         acl_id: str = None,
         acl_type: str = None,
         acl_status: str = None,
-        vpc_ids: str = None,
         idle_timeout: int = None,
         request_timeout: int = None,
         description: str = None,
-        xforwarded_for__slbport: str = None,
-        xforwarded_for__client_src_port: str = None,
-        forward_code: int = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -14850,8 +14747,6 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         self.cookie_timeout = cookie_timeout
         self.cookie = cookie
         self.health_check = health_check
-        self.health_check_type = health_check_type
-        self.health_check_method = health_check_method
         self.health_check_domain = health_check_domain
         self.health_check_uri = health_check_uri
         self.healthy_threshold = healthy_threshold
@@ -14860,12 +14755,9 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         self.health_check_interval = health_check_interval
         self.health_check_connect_port = health_check_connect_port
         self.health_check_http_code = health_check_http_code
-        self.max_connection = max_connection
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.vserver_group = vserver_group
         self.vserver_group_id = vserver_group_id
-        self.tags = tags
         self.xforwarded_for__slbip = xforwarded_for__slbip
         self.xforwarded_for__slbid = xforwarded_for__slbid
         self.xforwarded_for_proto = xforwarded_for_proto
@@ -14873,18 +14765,18 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         self.acl_id = acl_id
         self.acl_type = acl_type
         self.acl_status = acl_status
-        self.vpc_ids = vpc_ids
         self.idle_timeout = idle_timeout
         self.request_timeout = request_timeout
         self.description = description
-        self.xforwarded_for__slbport = xforwarded_for__slbport
-        self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
-        self.forward_code = forward_code
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -14914,10 +14806,6 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
             result['Cookie'] = self.cookie
         if self.health_check is not None:
             result['HealthCheck'] = self.health_check
-        if self.health_check_type is not None:
-            result['HealthCheckType'] = self.health_check_type
-        if self.health_check_method is not None:
-            result['HealthCheckMethod'] = self.health_check_method
         if self.health_check_domain is not None:
             result['HealthCheckDomain'] = self.health_check_domain
         if self.health_check_uri is not None:
@@ -14934,18 +14822,12 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
             result['HealthCheckConnectPort'] = self.health_check_connect_port
         if self.health_check_http_code is not None:
             result['HealthCheckHttpCode'] = self.health_check_http_code
-        if self.max_connection is not None:
-            result['MaxConnection'] = self.max_connection
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.vserver_group is not None:
             result['VServerGroup'] = self.vserver_group
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.xforwarded_for__slbip is not None:
             result['XForwardedFor_SLBIP'] = self.xforwarded_for__slbip
         if self.xforwarded_for__slbid is not None:
@@ -14960,20 +14842,12 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
             result['AclType'] = self.acl_type
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
-        if self.vpc_ids is not None:
-            result['VpcIds'] = self.vpc_ids
         if self.idle_timeout is not None:
             result['IdleTimeout'] = self.idle_timeout
         if self.request_timeout is not None:
             result['RequestTimeout'] = self.request_timeout
         if self.description is not None:
             result['Description'] = self.description
-        if self.xforwarded_for__slbport is not None:
-            result['XForwardedFor_SLBPORT'] = self.xforwarded_for__slbport
-        if self.xforwarded_for__client_src_port is not None:
-            result['XForwardedFor_ClientSrcPort'] = self.xforwarded_for__client_src_port
-        if self.forward_code is not None:
-            result['ForwardCode'] = self.forward_code
         return result
 
     def from_map(self, m: dict = None):
@@ -15006,10 +14880,6 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
             self.cookie = m.get('Cookie')
         if m.get('HealthCheck') is not None:
             self.health_check = m.get('HealthCheck')
-        if m.get('HealthCheckType') is not None:
-            self.health_check_type = m.get('HealthCheckType')
-        if m.get('HealthCheckMethod') is not None:
-            self.health_check_method = m.get('HealthCheckMethod')
         if m.get('HealthCheckDomain') is not None:
             self.health_check_domain = m.get('HealthCheckDomain')
         if m.get('HealthCheckURI') is not None:
@@ -15026,18 +14896,12 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
             self.health_check_connect_port = m.get('HealthCheckConnectPort')
         if m.get('HealthCheckHttpCode') is not None:
             self.health_check_http_code = m.get('HealthCheckHttpCode')
-        if m.get('MaxConnection') is not None:
-            self.max_connection = m.get('MaxConnection')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('VServerGroup') is not None:
             self.vserver_group = m.get('VServerGroup')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('XForwardedFor_SLBIP') is not None:
             self.xforwarded_for__slbip = m.get('XForwardedFor_SLBIP')
         if m.get('XForwardedFor_SLBID') is not None:
@@ -15052,20 +14916,12 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
             self.acl_type = m.get('AclType')
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
-        if m.get('VpcIds') is not None:
-            self.vpc_ids = m.get('VpcIds')
         if m.get('IdleTimeout') is not None:
             self.idle_timeout = m.get('IdleTimeout')
         if m.get('RequestTimeout') is not None:
             self.request_timeout = m.get('RequestTimeout')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('XForwardedFor_SLBPORT') is not None:
-            self.xforwarded_for__slbport = m.get('XForwardedFor_SLBPORT')
-        if m.get('XForwardedFor_ClientSrcPort') is not None:
-            self.xforwarded_for__client_src_port = m.get('XForwardedFor_ClientSrcPort')
-        if m.get('ForwardCode') is not None:
-            self.forward_code = m.get('ForwardCode')
         return self
 
 
@@ -15080,6 +14936,10 @@ class SetLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15108,6 +14968,10 @@ class SetLoadBalancerHTTPListenerAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15125,22 +14989,6 @@ class SetLoadBalancerHTTPListenerAttributeResponse(TeaModel):
         return self
 
 
-class SetLoadBalancerHTTPSListenerAttributeRequestServerCertificate(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        return self
-
-
 class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -15151,7 +14999,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         load_balancer_id: str = None,
         listener_port: int = None,
         bandwidth: int = None,
-        backend_protocol: str = None,
         xforwarded_for: str = None,
         scheduler: str = None,
         sticky_session: str = None,
@@ -15159,8 +15006,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         cookie_timeout: int = None,
         cookie: str = None,
         health_check: str = None,
-        health_check_type: str = None,
-        health_check_method: str = None,
         health_check_domain: str = None,
         health_check_uri: str = None,
         healthy_threshold: int = None,
@@ -15169,14 +15014,11 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         health_check_interval: int = None,
         health_check_connect_port: int = None,
         health_check_http_code: str = None,
-        max_connection: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         server_certificate_id: str = None,
         cacertificate_id: str = None,
         vserver_group: str = None,
         vserver_group_id: str = None,
-        tags: str = None,
         xforwarded_for__slbip: str = None,
         xforwarded_for__slbid: str = None,
         xforwarded_for_proto: str = None,
@@ -15184,23 +15026,11 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         acl_id: str = None,
         acl_type: str = None,
         acl_status: str = None,
-        vpc_ids: str = None,
         idle_timeout: int = None,
         request_timeout: int = None,
         enable_http_2: str = None,
         tlscipher_policy: str = None,
         description: str = None,
-        xforwarded_for__slbport: str = None,
-        xforwarded_for__client_src_port: str = None,
-        xforwarded_for__client_cert_subject_dn: str = None,
-        xforwarded_for__client_cert_issuer_dn: str = None,
-        xforwarded_for__client_cert_fingerprint: str = None,
-        xforwarded_for__client_cert_client_verify: str = None,
-        xforwarded_for__client_cert_subject_dnalias: str = None,
-        xforwarded_for__client_cert_issuer_dnalias: str = None,
-        xforwarded_for__client_cert_fingerprint_alias: str = None,
-        xforwarded_for__client_cert_client_verify_alias: str = None,
-        server_certificate: List[SetLoadBalancerHTTPSListenerAttributeRequestServerCertificate] = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -15209,7 +15039,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.listener_port = listener_port
         self.bandwidth = bandwidth
-        self.backend_protocol = backend_protocol
         self.xforwarded_for = xforwarded_for
         self.scheduler = scheduler
         self.sticky_session = sticky_session
@@ -15217,8 +15046,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         self.cookie_timeout = cookie_timeout
         self.cookie = cookie
         self.health_check = health_check
-        self.health_check_type = health_check_type
-        self.health_check_method = health_check_method
         self.health_check_domain = health_check_domain
         self.health_check_uri = health_check_uri
         self.healthy_threshold = healthy_threshold
@@ -15227,14 +15054,11 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         self.health_check_interval = health_check_interval
         self.health_check_connect_port = health_check_connect_port
         self.health_check_http_code = health_check_http_code
-        self.max_connection = max_connection
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.server_certificate_id = server_certificate_id
         self.cacertificate_id = cacertificate_id
         self.vserver_group = vserver_group
         self.vserver_group_id = vserver_group_id
-        self.tags = tags
         self.xforwarded_for__slbip = xforwarded_for__slbip
         self.xforwarded_for__slbid = xforwarded_for__slbid
         self.xforwarded_for_proto = xforwarded_for_proto
@@ -15242,31 +15066,20 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         self.acl_id = acl_id
         self.acl_type = acl_type
         self.acl_status = acl_status
-        self.vpc_ids = vpc_ids
         self.idle_timeout = idle_timeout
         self.request_timeout = request_timeout
         self.enable_http_2 = enable_http_2
         self.tlscipher_policy = tlscipher_policy
         self.description = description
-        self.xforwarded_for__slbport = xforwarded_for__slbport
-        self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
-        self.xforwarded_for__client_cert_subject_dn = xforwarded_for__client_cert_subject_dn
-        self.xforwarded_for__client_cert_issuer_dn = xforwarded_for__client_cert_issuer_dn
-        self.xforwarded_for__client_cert_fingerprint = xforwarded_for__client_cert_fingerprint
-        self.xforwarded_for__client_cert_client_verify = xforwarded_for__client_cert_client_verify
-        self.xforwarded_for__client_cert_subject_dnalias = xforwarded_for__client_cert_subject_dnalias
-        self.xforwarded_for__client_cert_issuer_dnalias = xforwarded_for__client_cert_issuer_dnalias
-        self.xforwarded_for__client_cert_fingerprint_alias = xforwarded_for__client_cert_fingerprint_alias
-        self.xforwarded_for__client_cert_client_verify_alias = xforwarded_for__client_cert_client_verify_alias
-        self.server_certificate = server_certificate
 
     def validate(self):
-        if self.server_certificate:
-            for k in self.server_certificate:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -15282,8 +15095,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             result['ListenerPort'] = self.listener_port
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
-        if self.backend_protocol is not None:
-            result['BackendProtocol'] = self.backend_protocol
         if self.xforwarded_for is not None:
             result['XForwardedFor'] = self.xforwarded_for
         if self.scheduler is not None:
@@ -15298,10 +15109,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             result['Cookie'] = self.cookie
         if self.health_check is not None:
             result['HealthCheck'] = self.health_check
-        if self.health_check_type is not None:
-            result['HealthCheckType'] = self.health_check_type
-        if self.health_check_method is not None:
-            result['HealthCheckMethod'] = self.health_check_method
         if self.health_check_domain is not None:
             result['HealthCheckDomain'] = self.health_check_domain
         if self.health_check_uri is not None:
@@ -15318,12 +15125,8 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             result['HealthCheckConnectPort'] = self.health_check_connect_port
         if self.health_check_http_code is not None:
             result['HealthCheckHttpCode'] = self.health_check_http_code
-        if self.max_connection is not None:
-            result['MaxConnection'] = self.max_connection
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.server_certificate_id is not None:
             result['ServerCertificateId'] = self.server_certificate_id
         if self.cacertificate_id is not None:
@@ -15332,8 +15135,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             result['VServerGroup'] = self.vserver_group
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.xforwarded_for__slbip is not None:
             result['XForwardedFor_SLBIP'] = self.xforwarded_for__slbip
         if self.xforwarded_for__slbid is not None:
@@ -15348,8 +15149,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             result['AclType'] = self.acl_type
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
-        if self.vpc_ids is not None:
-            result['VpcIds'] = self.vpc_ids
         if self.idle_timeout is not None:
             result['IdleTimeout'] = self.idle_timeout
         if self.request_timeout is not None:
@@ -15360,30 +15159,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             result['TLSCipherPolicy'] = self.tlscipher_policy
         if self.description is not None:
             result['Description'] = self.description
-        if self.xforwarded_for__slbport is not None:
-            result['XForwardedFor_SLBPORT'] = self.xforwarded_for__slbport
-        if self.xforwarded_for__client_src_port is not None:
-            result['XForwardedFor_ClientSrcPort'] = self.xforwarded_for__client_src_port
-        if self.xforwarded_for__client_cert_subject_dn is not None:
-            result['XForwardedFor_ClientCertSubjectDN'] = self.xforwarded_for__client_cert_subject_dn
-        if self.xforwarded_for__client_cert_issuer_dn is not None:
-            result['XForwardedFor_ClientCertIssuerDN'] = self.xforwarded_for__client_cert_issuer_dn
-        if self.xforwarded_for__client_cert_fingerprint is not None:
-            result['XForwardedFor_ClientCertFingerprint'] = self.xforwarded_for__client_cert_fingerprint
-        if self.xforwarded_for__client_cert_client_verify is not None:
-            result['XForwardedFor_ClientCertClientVerify'] = self.xforwarded_for__client_cert_client_verify
-        if self.xforwarded_for__client_cert_subject_dnalias is not None:
-            result['XForwardedFor_ClientCertSubjectDNAlias'] = self.xforwarded_for__client_cert_subject_dnalias
-        if self.xforwarded_for__client_cert_issuer_dnalias is not None:
-            result['XForwardedFor_ClientCertIssuerDNAlias'] = self.xforwarded_for__client_cert_issuer_dnalias
-        if self.xforwarded_for__client_cert_fingerprint_alias is not None:
-            result['XForwardedFor_ClientCertFingerprintAlias'] = self.xforwarded_for__client_cert_fingerprint_alias
-        if self.xforwarded_for__client_cert_client_verify_alias is not None:
-            result['XForwardedFor_ClientCertClientVerifyAlias'] = self.xforwarded_for__client_cert_client_verify_alias
-        result['ServerCertificate'] = []
-        if self.server_certificate is not None:
-            for k in self.server_certificate:
-                result['ServerCertificate'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -15402,8 +15177,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             self.listener_port = m.get('ListenerPort')
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
-        if m.get('BackendProtocol') is not None:
-            self.backend_protocol = m.get('BackendProtocol')
         if m.get('XForwardedFor') is not None:
             self.xforwarded_for = m.get('XForwardedFor')
         if m.get('Scheduler') is not None:
@@ -15418,10 +15191,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             self.cookie = m.get('Cookie')
         if m.get('HealthCheck') is not None:
             self.health_check = m.get('HealthCheck')
-        if m.get('HealthCheckType') is not None:
-            self.health_check_type = m.get('HealthCheckType')
-        if m.get('HealthCheckMethod') is not None:
-            self.health_check_method = m.get('HealthCheckMethod')
         if m.get('HealthCheckDomain') is not None:
             self.health_check_domain = m.get('HealthCheckDomain')
         if m.get('HealthCheckURI') is not None:
@@ -15438,12 +15207,8 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             self.health_check_connect_port = m.get('HealthCheckConnectPort')
         if m.get('HealthCheckHttpCode') is not None:
             self.health_check_http_code = m.get('HealthCheckHttpCode')
-        if m.get('MaxConnection') is not None:
-            self.max_connection = m.get('MaxConnection')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('ServerCertificateId') is not None:
             self.server_certificate_id = m.get('ServerCertificateId')
         if m.get('CACertificateId') is not None:
@@ -15452,8 +15217,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             self.vserver_group = m.get('VServerGroup')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('XForwardedFor_SLBIP') is not None:
             self.xforwarded_for__slbip = m.get('XForwardedFor_SLBIP')
         if m.get('XForwardedFor_SLBID') is not None:
@@ -15468,8 +15231,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             self.acl_type = m.get('AclType')
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
-        if m.get('VpcIds') is not None:
-            self.vpc_ids = m.get('VpcIds')
         if m.get('IdleTimeout') is not None:
             self.idle_timeout = m.get('IdleTimeout')
         if m.get('RequestTimeout') is not None:
@@ -15480,31 +15241,6 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             self.tlscipher_policy = m.get('TLSCipherPolicy')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('XForwardedFor_SLBPORT') is not None:
-            self.xforwarded_for__slbport = m.get('XForwardedFor_SLBPORT')
-        if m.get('XForwardedFor_ClientSrcPort') is not None:
-            self.xforwarded_for__client_src_port = m.get('XForwardedFor_ClientSrcPort')
-        if m.get('XForwardedFor_ClientCertSubjectDN') is not None:
-            self.xforwarded_for__client_cert_subject_dn = m.get('XForwardedFor_ClientCertSubjectDN')
-        if m.get('XForwardedFor_ClientCertIssuerDN') is not None:
-            self.xforwarded_for__client_cert_issuer_dn = m.get('XForwardedFor_ClientCertIssuerDN')
-        if m.get('XForwardedFor_ClientCertFingerprint') is not None:
-            self.xforwarded_for__client_cert_fingerprint = m.get('XForwardedFor_ClientCertFingerprint')
-        if m.get('XForwardedFor_ClientCertClientVerify') is not None:
-            self.xforwarded_for__client_cert_client_verify = m.get('XForwardedFor_ClientCertClientVerify')
-        if m.get('XForwardedFor_ClientCertSubjectDNAlias') is not None:
-            self.xforwarded_for__client_cert_subject_dnalias = m.get('XForwardedFor_ClientCertSubjectDNAlias')
-        if m.get('XForwardedFor_ClientCertIssuerDNAlias') is not None:
-            self.xforwarded_for__client_cert_issuer_dnalias = m.get('XForwardedFor_ClientCertIssuerDNAlias')
-        if m.get('XForwardedFor_ClientCertFingerprintAlias') is not None:
-            self.xforwarded_for__client_cert_fingerprint_alias = m.get('XForwardedFor_ClientCertFingerprintAlias')
-        if m.get('XForwardedFor_ClientCertClientVerifyAlias') is not None:
-            self.xforwarded_for__client_cert_client_verify_alias = m.get('XForwardedFor_ClientCertClientVerifyAlias')
-        self.server_certificate = []
-        if m.get('ServerCertificate') is not None:
-            for k in m.get('ServerCertificate'):
-                temp_model = SetLoadBalancerHTTPSListenerAttributeRequestServerCertificate()
-                self.server_certificate.append(temp_model.from_map(k))
         return self
 
 
@@ -15519,6 +15255,10 @@ class SetLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15547,6 +15287,10 @@ class SetLoadBalancerHTTPSListenerAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15589,6 +15333,10 @@ class SetLoadBalancerModificationProtectionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -15640,6 +15388,10 @@ class SetLoadBalancerModificationProtectionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15668,6 +15420,10 @@ class SetLoadBalancerModificationProtectionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15695,8 +15451,6 @@ class SetLoadBalancerNameRequest(TeaModel):
         load_balancer_id: str = None,
         load_balancer_name: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -15705,13 +15459,15 @@ class SetLoadBalancerNameRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.load_balancer_name = load_balancer_name
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -15727,10 +15483,6 @@ class SetLoadBalancerNameRequest(TeaModel):
             result['LoadBalancerName'] = self.load_balancer_name
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -15749,10 +15501,6 @@ class SetLoadBalancerNameRequest(TeaModel):
             self.load_balancer_name = m.get('LoadBalancerName')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -15767,6 +15515,10 @@ class SetLoadBalancerNameResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15795,6 +15547,10 @@ class SetLoadBalancerNameResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15822,8 +15578,6 @@ class SetLoadBalancerStatusRequest(TeaModel):
         load_balancer_id: str = None,
         load_balancer_status: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -15832,13 +15586,15 @@ class SetLoadBalancerStatusRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.load_balancer_status = load_balancer_status
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -15854,10 +15610,6 @@ class SetLoadBalancerStatusRequest(TeaModel):
             result['LoadBalancerStatus'] = self.load_balancer_status
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -15876,10 +15628,6 @@ class SetLoadBalancerStatusRequest(TeaModel):
             self.load_balancer_status = m.get('LoadBalancerStatus')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -15894,6 +15642,10 @@ class SetLoadBalancerStatusResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15922,6 +15674,10 @@ class SetLoadBalancerStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15936,22 +15692,6 @@ class SetLoadBalancerStatusResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = SetLoadBalancerStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SetLoadBalancerTCPListenerAttributeRequestPortRange(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
         return self
 
 
@@ -15977,12 +15717,8 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         health_check_uri: str = None,
         health_check_http_code: str = None,
         health_check_type: str = None,
-        health_check_method: str = None,
         syn_proxy: str = None,
-        max_connection: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         vserver_group: str = None,
         vserver_group_id: str = None,
         master_slave_server_group_id: str = None,
@@ -15990,11 +15726,9 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         acl_id: str = None,
         acl_type: str = None,
         acl_status: str = None,
-        vpc_ids: str = None,
         description: str = None,
         connection_drain: str = None,
         connection_drain_timeout: int = None,
-        port_range: List[SetLoadBalancerTCPListenerAttributeRequestPortRange] = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -16015,12 +15749,8 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         self.health_check_uri = health_check_uri
         self.health_check_http_code = health_check_http_code
         self.health_check_type = health_check_type
-        self.health_check_method = health_check_method
         self.syn_proxy = syn_proxy
-        self.max_connection = max_connection
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.vserver_group = vserver_group
         self.vserver_group_id = vserver_group_id
         self.master_slave_server_group_id = master_slave_server_group_id
@@ -16028,19 +15758,18 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         self.acl_id = acl_id
         self.acl_type = acl_type
         self.acl_status = acl_status
-        self.vpc_ids = vpc_ids
         self.description = description
         self.connection_drain = connection_drain
         self.connection_drain_timeout = connection_drain_timeout
-        self.port_range = port_range
 
     def validate(self):
-        if self.port_range:
-            for k in self.port_range:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -16080,18 +15809,10 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
             result['HealthCheckHttpCode'] = self.health_check_http_code
         if self.health_check_type is not None:
             result['HealthCheckType'] = self.health_check_type
-        if self.health_check_method is not None:
-            result['HealthCheckMethod'] = self.health_check_method
         if self.syn_proxy is not None:
             result['SynProxy'] = self.syn_proxy
-        if self.max_connection is not None:
-            result['MaxConnection'] = self.max_connection
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.vserver_group is not None:
             result['VServerGroup'] = self.vserver_group
         if self.vserver_group_id is not None:
@@ -16106,18 +15827,12 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
             result['AclType'] = self.acl_type
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
-        if self.vpc_ids is not None:
-            result['VpcIds'] = self.vpc_ids
         if self.description is not None:
             result['Description'] = self.description
         if self.connection_drain is not None:
             result['ConnectionDrain'] = self.connection_drain
         if self.connection_drain_timeout is not None:
             result['ConnectionDrainTimeout'] = self.connection_drain_timeout
-        result['PortRange'] = []
-        if self.port_range is not None:
-            for k in self.port_range:
-                result['PortRange'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -16160,18 +15875,10 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
             self.health_check_http_code = m.get('HealthCheckHttpCode')
         if m.get('HealthCheckType') is not None:
             self.health_check_type = m.get('HealthCheckType')
-        if m.get('HealthCheckMethod') is not None:
-            self.health_check_method = m.get('HealthCheckMethod')
         if m.get('SynProxy') is not None:
             self.syn_proxy = m.get('SynProxy')
-        if m.get('MaxConnection') is not None:
-            self.max_connection = m.get('MaxConnection')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('VServerGroup') is not None:
             self.vserver_group = m.get('VServerGroup')
         if m.get('VServerGroupId') is not None:
@@ -16186,19 +15893,12 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
             self.acl_type = m.get('AclType')
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
-        if m.get('VpcIds') is not None:
-            self.vpc_ids = m.get('VpcIds')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ConnectionDrain') is not None:
             self.connection_drain = m.get('ConnectionDrain')
         if m.get('ConnectionDrainTimeout') is not None:
             self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
-        self.port_range = []
-        if m.get('PortRange') is not None:
-            for k in m.get('PortRange'):
-                temp_model = SetLoadBalancerTCPListenerAttributeRequestPortRange()
-                self.port_range.append(temp_model.from_map(k))
         return self
 
 
@@ -16213,6 +15913,10 @@ class SetLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16241,6 +15945,10 @@ class SetLoadBalancerTCPListenerAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16258,22 +15966,6 @@ class SetLoadBalancerTCPListenerAttributeResponse(TeaModel):
         return self
 
 
-class SetLoadBalancerUDPListenerAttributeRequestPortRange(TeaModel):
-    def __init__(self):
-        pass
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        return self
-
-
 class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -16285,7 +15977,6 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         listener_port: int = None,
         bandwidth: int = None,
         scheduler: str = None,
-        persistence_timeout: int = None,
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
         health_check_connect_timeout: int = None,
@@ -16293,10 +15984,7 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         health_check_interval: int = None,
         health_check_req: str = None,
         health_check_exp: str = None,
-        max_connection: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         vserver_group: str = None,
         vserver_group_id: str = None,
         master_slave_server_group_id: str = None,
@@ -16304,11 +15992,7 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         acl_id: str = None,
         acl_type: str = None,
         acl_status: str = None,
-        vpc_ids: str = None,
         description: str = None,
-        connection_drain: str = None,
-        connection_drain_timeout: int = None,
-        port_range: List[SetLoadBalancerUDPListenerAttributeRequestPortRange] = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -16318,7 +16002,6 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         self.listener_port = listener_port
         self.bandwidth = bandwidth
         self.scheduler = scheduler
-        self.persistence_timeout = persistence_timeout
         self.healthy_threshold = healthy_threshold
         self.unhealthy_threshold = unhealthy_threshold
         self.health_check_connect_timeout = health_check_connect_timeout
@@ -16326,10 +16009,7 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         self.health_check_interval = health_check_interval
         self.health_check_req = health_check_req
         self.health_check_exp = health_check_exp
-        self.max_connection = max_connection
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.vserver_group = vserver_group
         self.vserver_group_id = vserver_group_id
         self.master_slave_server_group_id = master_slave_server_group_id
@@ -16337,19 +16017,16 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         self.acl_id = acl_id
         self.acl_type = acl_type
         self.acl_status = acl_status
-        self.vpc_ids = vpc_ids
         self.description = description
-        self.connection_drain = connection_drain
-        self.connection_drain_timeout = connection_drain_timeout
-        self.port_range = port_range
 
     def validate(self):
-        if self.port_range:
-            for k in self.port_range:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -16367,8 +16044,6 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
             result['Bandwidth'] = self.bandwidth
         if self.scheduler is not None:
             result['Scheduler'] = self.scheduler
-        if self.persistence_timeout is not None:
-            result['PersistenceTimeout'] = self.persistence_timeout
         if self.healthy_threshold is not None:
             result['HealthyThreshold'] = self.healthy_threshold
         if self.unhealthy_threshold is not None:
@@ -16383,14 +16058,8 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
             result['healthCheckReq'] = self.health_check_req
         if self.health_check_exp is not None:
             result['healthCheckExp'] = self.health_check_exp
-        if self.max_connection is not None:
-            result['MaxConnection'] = self.max_connection
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.vserver_group is not None:
             result['VServerGroup'] = self.vserver_group
         if self.vserver_group_id is not None:
@@ -16405,18 +16074,8 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
             result['AclType'] = self.acl_type
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
-        if self.vpc_ids is not None:
-            result['VpcIds'] = self.vpc_ids
         if self.description is not None:
             result['Description'] = self.description
-        if self.connection_drain is not None:
-            result['ConnectionDrain'] = self.connection_drain
-        if self.connection_drain_timeout is not None:
-            result['ConnectionDrainTimeout'] = self.connection_drain_timeout
-        result['PortRange'] = []
-        if self.port_range is not None:
-            for k in self.port_range:
-                result['PortRange'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -16437,8 +16096,6 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
             self.bandwidth = m.get('Bandwidth')
         if m.get('Scheduler') is not None:
             self.scheduler = m.get('Scheduler')
-        if m.get('PersistenceTimeout') is not None:
-            self.persistence_timeout = m.get('PersistenceTimeout')
         if m.get('HealthyThreshold') is not None:
             self.healthy_threshold = m.get('HealthyThreshold')
         if m.get('UnhealthyThreshold') is not None:
@@ -16453,14 +16110,8 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
             self.health_check_req = m.get('healthCheckReq')
         if m.get('healthCheckExp') is not None:
             self.health_check_exp = m.get('healthCheckExp')
-        if m.get('MaxConnection') is not None:
-            self.max_connection = m.get('MaxConnection')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('VServerGroup') is not None:
             self.vserver_group = m.get('VServerGroup')
         if m.get('VServerGroupId') is not None:
@@ -16475,19 +16126,8 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
             self.acl_type = m.get('AclType')
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
-        if m.get('VpcIds') is not None:
-            self.vpc_ids = m.get('VpcIds')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('ConnectionDrain') is not None:
-            self.connection_drain = m.get('ConnectionDrain')
-        if m.get('ConnectionDrainTimeout') is not None:
-            self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
-        self.port_range = []
-        if m.get('PortRange') is not None:
-            for k in m.get('PortRange'):
-                temp_model = SetLoadBalancerUDPListenerAttributeRequestPortRange()
-                self.port_range.append(temp_model.from_map(k))
         return self
 
 
@@ -16502,6 +16142,10 @@ class SetLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16530,6 +16174,10 @@ class SetLoadBalancerUDPListenerAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16555,8 +16203,6 @@ class SetRuleRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         rule_id: str = None,
         vserver_group_id: str = None,
         rule_name: str = None,
@@ -16581,8 +16227,6 @@ class SetRuleRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.rule_id = rule_id
         self.vserver_group_id = vserver_group_id
         self.rule_name = rule_name
@@ -16606,6 +16250,10 @@ class SetRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -16617,10 +16265,6 @@ class SetRuleRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         if self.vserver_group_id is not None:
@@ -16671,10 +16315,6 @@ class SetRuleRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         if m.get('VServerGroupId') is not None:
@@ -16725,6 +16365,10 @@ class SetRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16753,6 +16397,10 @@ class SetRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16780,8 +16428,6 @@ class SetServerCertificateNameRequest(TeaModel):
         server_certificate_id: str = None,
         server_certificate_name: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -16790,13 +16436,15 @@ class SetServerCertificateNameRequest(TeaModel):
         self.server_certificate_id = server_certificate_id
         self.server_certificate_name = server_certificate_name
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -16812,10 +16460,6 @@ class SetServerCertificateNameRequest(TeaModel):
             result['ServerCertificateName'] = self.server_certificate_name
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -16834,10 +16478,6 @@ class SetServerCertificateNameRequest(TeaModel):
             self.server_certificate_name = m.get('ServerCertificateName')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -16852,6 +16492,10 @@ class SetServerCertificateNameResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16880,6 +16524,10 @@ class SetServerCertificateNameResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16926,6 +16574,10 @@ class SetTLSCipherPolicyAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -16987,6 +16639,10 @@ class SetTLSCipherPolicyAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -17019,6 +16675,10 @@ class SetTLSCipherPolicyAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17044,8 +16704,6 @@ class SetVServerGroupAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         region_id: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         vserver_group_id: str = None,
         vserver_group_name: str = None,
         backend_servers: str = None,
@@ -17055,8 +16713,6 @@ class SetVServerGroupAttributeRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.region_id = region_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.vserver_group_id = vserver_group_id
         self.vserver_group_name = vserver_group_name
         self.backend_servers = backend_servers
@@ -17065,6 +16721,10 @@ class SetVServerGroupAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -17076,10 +16736,6 @@ class SetVServerGroupAttributeRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
         if self.vserver_group_name is not None:
@@ -17100,10 +16756,6 @@ class SetVServerGroupAttributeRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
         if m.get('VServerGroupName') is not None:
@@ -17132,6 +16784,10 @@ class SetVServerGroupAttributeResponseBodyBackendServersBackendServer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -17174,6 +16830,10 @@ class SetVServerGroupAttributeResponseBodyBackendServers(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['BackendServer'] = []
         if self.backend_server is not None:
@@ -17209,6 +16869,10 @@ class SetVServerGroupAttributeResponseBody(TeaModel):
             self.backend_servers.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -17250,6 +16914,10 @@ class SetVServerGroupAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17277,9 +16945,7 @@ class StartLoadBalancerListenerRequest(TeaModel):
         load_balancer_id: str = None,
         listener_port: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         listener_protocol: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -17288,14 +16954,16 @@ class StartLoadBalancerListenerRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.listener_port = listener_port
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.listener_protocol = listener_protocol
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -17311,12 +16979,8 @@ class StartLoadBalancerListenerRequest(TeaModel):
             result['ListenerPort'] = self.listener_port
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.listener_protocol is not None:
             result['ListenerProtocol'] = self.listener_protocol
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -17335,12 +16999,8 @@ class StartLoadBalancerListenerRequest(TeaModel):
             self.listener_port = m.get('ListenerPort')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('ListenerProtocol') is not None:
             self.listener_protocol = m.get('ListenerProtocol')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -17355,6 +17015,10 @@ class StartLoadBalancerListenerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -17383,6 +17047,10 @@ class StartLoadBalancerListenerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17410,9 +17078,7 @@ class StopLoadBalancerListenerRequest(TeaModel):
         load_balancer_id: str = None,
         listener_port: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         listener_protocol: str = None,
-        tags: str = None,
     ):
         self.region_id = region_id
         self.owner_id = owner_id
@@ -17421,14 +17087,16 @@ class StopLoadBalancerListenerRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.listener_port = listener_port
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.listener_protocol = listener_protocol
-        self.tags = tags
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -17444,12 +17112,8 @@ class StopLoadBalancerListenerRequest(TeaModel):
             result['ListenerPort'] = self.listener_port
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.listener_protocol is not None:
             result['ListenerProtocol'] = self.listener_protocol
-        if self.tags is not None:
-            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -17468,12 +17132,8 @@ class StopLoadBalancerListenerRequest(TeaModel):
             self.listener_port = m.get('ListenerPort')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('ListenerProtocol') is not None:
             self.listener_protocol = m.get('ListenerProtocol')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         return self
 
 
@@ -17488,6 +17148,10 @@ class StopLoadBalancerListenerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -17516,6 +17180,10 @@ class StopLoadBalancerListenerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17546,6 +17214,10 @@ class TagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -17569,7 +17241,6 @@ class TagResourcesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         region_id: str = None,
         resource_type: str = None,
         resource_id: List[str] = None,
@@ -17579,7 +17250,6 @@ class TagResourcesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.region_id = region_id
         self.resource_type = resource_type
         self.resource_id = resource_id
@@ -17592,6 +17262,10 @@ class TagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -17601,8 +17275,6 @@ class TagResourcesRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_type is not None:
@@ -17625,8 +17297,6 @@ class TagResourcesRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceType') is not None:
@@ -17652,6 +17322,10 @@ class TagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -17680,6 +17354,10 @@ class TagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17704,7 +17382,6 @@ class UntagResourcesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         region_id: str = None,
         resource_type: str = None,
         all: bool = None,
@@ -17715,7 +17392,6 @@ class UntagResourcesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.region_id = region_id
         self.resource_type = resource_type
         self.all = all
@@ -17726,6 +17402,10 @@ class UntagResourcesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -17735,8 +17415,6 @@ class UntagResourcesRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_type is not None:
@@ -17759,8 +17437,6 @@ class UntagResourcesRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceType') is not None:
@@ -17785,6 +17461,10 @@ class UntagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -17813,6 +17493,10 @@ class UntagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -17837,28 +17521,28 @@ class UploadCACertificateRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
-        access_key_id: str = None,
         region_id: str = None,
         cacertificate: str = None,
         cacertificate_name: str = None,
         resource_group_id: str = None,
-        standard_type: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
         self.region_id = region_id
         self.cacertificate = cacertificate
         self.cacertificate_name = cacertificate_name
         self.resource_group_id = resource_group_id
-        self.standard_type = standard_type
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -17868,8 +17552,6 @@ class UploadCACertificateRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.cacertificate is not None:
@@ -17878,8 +17560,6 @@ class UploadCACertificateRequest(TeaModel):
             result['CACertificateName'] = self.cacertificate_name
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        if self.standard_type is not None:
-            result['StandardType'] = self.standard_type
         return result
 
     def from_map(self, m: dict = None):
@@ -17892,8 +17572,6 @@ class UploadCACertificateRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('CACertificate') is not None:
@@ -17902,8 +17580,6 @@ class UploadCACertificateRequest(TeaModel):
             self.cacertificate_name = m.get('CACertificateName')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('StandardType') is not None:
-            self.standard_type = m.get('StandardType')
         return self
 
 
@@ -17936,6 +17612,10 @@ class UploadCACertificateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.fingerprint is not None:
             result['Fingerprint'] = self.fingerprint
@@ -18000,6 +17680,10 @@ class UploadCACertificateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -18031,10 +17715,7 @@ class UploadServerCertificateRequest(TeaModel):
         private_key: str = None,
         server_certificate_name: str = None,
         owner_account: str = None,
-        access_key_id: str = None,
-        tags: str = None,
         resource_group_id: str = None,
-        standard_type: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -18047,15 +17728,16 @@ class UploadServerCertificateRequest(TeaModel):
         self.private_key = private_key
         self.server_certificate_name = server_certificate_name
         self.owner_account = owner_account
-        self.access_key_id = access_key_id
-        self.tags = tags
         self.resource_group_id = resource_group_id
-        self.standard_type = standard_type
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -18079,14 +17761,8 @@ class UploadServerCertificateRequest(TeaModel):
             result['ServerCertificateName'] = self.server_certificate_name
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        if self.standard_type is not None:
-            result['StandardType'] = self.standard_type
         return result
 
     def from_map(self, m: dict = None):
@@ -18113,14 +17789,8 @@ class UploadServerCertificateRequest(TeaModel):
             self.server_certificate_name = m.get('ServerCertificateName')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('StandardType') is not None:
-            self.standard_type = m.get('StandardType')
         return self
 
 
@@ -18135,6 +17805,10 @@ class UploadServerCertificateResponseBodySubjectAlternativeNames(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subject_alternative_name is not None:
             result['SubjectAlternativeName'] = self.subject_alternative_name
@@ -18187,6 +17861,10 @@ class UploadServerCertificateResponseBody(TeaModel):
             self.subject_alternative_names.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.fingerprint is not None:
             result['Fingerprint'] = self.fingerprint
@@ -18272,6 +17950,10 @@ class UploadServerCertificateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
